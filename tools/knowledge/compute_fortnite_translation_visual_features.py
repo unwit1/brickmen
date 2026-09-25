@@ -203,14 +203,58 @@ def delta(src: dict, lego: dict):
     }
 
 
+def norm_name(value: str) -> str:
+    return " ".join(str(value or "").casefold().split())
+
+
+def attach_alias_fallbacks(pairs: list[dict]) -> int:
+    """Resolve missing LEGO image URLs from same-name image-bearing pair aliases.
+
+    Prefer legacy/current combat IDs (CID_A_*) over casual Character_* aliases because
+    placeholder recruits share the Default C3 body family with the combat records.
+    The fallback remains explicit provenance and never rewrites the original pair ID.
+    """
+    by_name: dict[str, list[dict]] = {}
+    for pair in pairs:
+        name = norm_name((pair.get("source_appearance") or {}).get("name"))
+        if name and preferred_url(pair.get("lego_target") or {}):
+            by_name.setdefault(name, []).append(pair)
+    resolved = 0
+    for pair in pairs:
+        if preferred_url(pair.get("lego_target") or {}):
+            continue
+        name = norm_name((pair.get("source_appearance") or {}).get("name"))
+        candidates = by_name.get(name, [])
+        if not candidates:
+            continue
+        def rank(candidate):
+            sid = str((candidate.get("source_appearance") or {}).get("br_id") or "")
+            return (0 if sid.startswith("CID_A_") else 1, candidate.get("translation_pair_id") or "")
+        chosen = sorted(candidates, key=rank)[0]
+        pair["_lego_alias_fallback"] = {
+            "image_url": preferred_url(chosen.get("lego_target") or {}),
+            "alias_pair_id": chosen.get("translation_pair_id"),
+            "alias_source_id": (chosen.get("source_appearance") or {}).get("br_id"),
+            "alias_lego_id": (chosen.get("lego_target") or {}).get("lego_id"),
+            "method": "same_normalized_source_name_prefer_CID_A_combat_alias",
+        }
+        resolved += 1
+    return resolved
+
+
 def process_pair(pair: dict):
     pid = pair.get("translation_pair_id")
     su = preferred_url(pair.get("source_appearance") or {})
     lu = preferred_url(pair.get("lego_target") or {})
+    fallback = pair.get("_lego_alias_fallback") or {}
+    if not lu and fallback.get("image_url"):
+        lu = fallback["image_url"]
     rec = {
         "translation_pair_id": pid,
         "source_image_url": su,
         "lego_image_url": lu,
+        "lego_image_resolution": "alias_fallback" if fallback else "direct_pair",
+        "lego_alias_fallback": fallback or None,
         "processor_version": VERSION,
     }
     if not su or not lu:
@@ -237,6 +281,7 @@ def main():
     pairs = list(load_jsonl(args.pairs))
     if args.limit:
         pairs = pairs[: args.limit]
+    alias_resolved = attach_alias_fallbacks(pairs)
 
     results = [None] * len(pairs)
     with ThreadPoolExecutor(max_workers=max(1, args.workers)) as pool:
@@ -265,6 +310,8 @@ def main():
         "complete": len(complete),
         "errors": len(errors),
         "missing_preferred_image": len(missing),
+        "alias_fallbacks_attached": alias_resolved,
+        "complete_via_alias_fallback": sum(r.get("status") == "complete" and r.get("lego_image_resolution") == "alias_fallback" for r in results),
         "heuristic_signal_counts": signal_counts,
         "semantic_policy": "derived visual measurements support review; they do not auto-assert preserve/simplify/omit/mould/accessory labels",
     }
