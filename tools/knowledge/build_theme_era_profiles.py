@@ -59,6 +59,12 @@ def main():
 
     def profile(name,kind,items):
         figs={s.get("fig_num"):s for s,_ in items}
+        year_by_fig={}
+        for sample,yr in items:
+            if yr:
+                key=sample.get("fig_num")
+                prev=year_by_fig.get(key)
+                year_by_fig[key]=min(prev, int(yr)) if prev else int(yr)
         role=Counter(); printed=Counter(); colors=Counter(); printed_colors=Counter()
         part_counts=[]; printed_per=[]; headgear_figs=bodywear_figs=weapon_figs=0
         years=[]
@@ -77,8 +83,8 @@ def main():
             headgear_figs += int("headgear" in seen_roles)
             bodywear_figs += int("bodywear" in seen_roles)
             weapon_figs += int("weapon_or_tool" in seen_roles)
-            for _,yr in items:
-                if _ is s and yr: years.append(int(yr))
+            yr=year_by_fig.get(fig_num)
+            if yr: years.append(yr)
         n=max(1,len(figs))
         return {
             "profile_id":f"{kind}:{name}",
