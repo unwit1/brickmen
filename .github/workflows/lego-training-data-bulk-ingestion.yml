@@ -176,6 +176,82 @@ jobs:
           PY
           exit 0
 
+      - name: Index official LEGO source and Skywalker Saga ZIP bundles
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          src="$OUT/sources/official_zip_bundles"; mkdir -p "$src"
+          declare -A urls
+          urls[minifigure_40th]="https://www.lego.com/cdn/cs/aboutus/assets/bltc241695af5a4e401/assets.zip"
+          urls[lego_games_25_year]="https://www.lego.com/cdn/cs/aboutus/assets/bltfd3ccb605641c314/LEGO_Games_Asset_Bundle.zip"
+          urls[skywalker_jedi]="https://www.lego.com/cdn/cs/catalog/assets/blt814631c7161a8fbe/Jedi.zip"
+          urls[skywalker_dark_side]="https://www.lego.com/cdn/cs/catalog/assets/bltd21c93a75bb1fc88/Dark_Side.zip"
+          urls[skywalker_hero]="https://www.lego.com/cdn/cs/catalog/assets/blt248569e8450ae5f3/Hero.zip"
+          urls[skywalker_villain]="https://www.lego.com/cdn/cs/catalog/assets/blt9a5602e35e69be8f/Villain.zip"
+          urls[skywalker_scavenger]="https://www.lego.com/cdn/cs/catalog/assets/blt2eefd607fc52ab6c/Scavenger.zip"
+          urls[skywalker_scoundrel]="https://www.lego.com/cdn/cs/catalog/assets/blt626c99f2400b9da9/Scoundrel.zip"
+          urls[skywalker_bounty_hunter]="https://www.lego.com/cdn/cs/catalog/assets/bltf2b858555922801e/Bounty_Hunter.zip"
+          urls[skywalker_astromech]="https://www.lego.com/cdn/cs/catalog/assets/blt9f0021b547d9d9f5/Astromech.zip"
+          urls[skywalker_protocol]="https://www.lego.com/cdn/cs/catalog/assets/bltaefd80825ac1b1b8/Protocol.zip"
+          urls[skywalker_extra]="https://www.lego.com/cdn/cs/catalog/assets/bltdf5a538c4d3523d9/Extras.zip"
+          : > "$src/all-assets.jsonl"
+          : > "$src/status-lines.jsonl"
+          all_ok=1
+          for id in minifigure_40th lego_games_25_year skywalker_jedi skywalker_dark_side skywalker_hero skywalker_villain skywalker_scavenger skywalker_scoundrel skywalker_bounty_hunter skywalker_astromech skywalker_protocol skywalker_extra; do
+            dir="$src/$id"; mkdir -p "$dir"
+            url="${urls[$id]}"
+            curl --fail --location --retry 3 --retry-delay 2 --connect-timeout 30 \
+              --user-agent "BrickmenResearch/1.0" -o "$dir/source.zip" "$url"
+            rc=$?
+            if [ "$rc" = 0 ]; then
+              python tools/knowledge/index_zip_bundle.py \
+                --zip "$dir/source.zip" --bundle-id "$id" --source-url "$url" \
+                --output "$dir/assets.jsonl" --summary "$dir/summary.json"
+              rc=$?
+            fi
+            if [ "$rc" = 0 ]; then
+              cat "$dir/assets.jsonl" >> "$src/all-assets.jsonl"
+              ID="$id" DIR="$dir" python - <<'PY' >> "$src/status-lines.jsonl"
+          import json,os
+          from pathlib import Path
+          d=Path(os.environ["DIR"])
+          x=json.loads((d/"summary.json").read_text())
+          print(json.dumps({"bundle_id":os.environ["ID"],"status":"complete",**x}))
+          PY
+            else
+              all_ok=0
+              ID="$id" URL="$url" RC="$rc" python - <<'PY' >> "$src/status-lines.jsonl"
+          import json,os
+          print(json.dumps({"bundle_id":os.environ["ID"],"status":"failed","exit_code":int(os.environ["RC"]),"source_url":os.environ["URL"]}))
+          PY
+            fi
+          done
+          SRC="$src" python - <<'PY'
+          import json,os,shutil
+          from datetime import datetime,timezone
+          from pathlib import Path
+          src=Path(os.environ["SRC"]); rows=[]
+          for line in (src/"status-lines.jsonl").read_text().splitlines():
+              if line.strip(): rows.append(json.loads(line))
+          status={
+            "source_id":"official_lego_zip_bundles",
+            "created_at":datetime.now(timezone.utc).isoformat(),
+            "bundle_count":len(rows),
+            "complete":sum(r.get("status")=="complete" for r in rows),
+            "failed":sum(r.get("status")!="complete" for r in rows),
+            "bundles":rows,
+            "status":"complete" if rows and all(r.get("status")=="complete" for r in rows) else "partial"
+          }
+          Path(os.environ["OUT"],"status/official_lego_zip_bundles.json").write_text(json.dumps(status,indent=2))
+          dest=Path(os.environ["DEST"])
+          (dest/"official-lego-zip-bundle-summary-latest.json").write_text(json.dumps(status,indent=2)+"\n")
+          assets=src/"all-assets.jsonl"
+          if assets.exists() and assets.stat().st_size < 8_000_000:
+              shutil.copy2(assets,dest/"official-lego-zip-bundle-assets-latest.jsonl")
+          PY
+          exit 0
+
       - name: Vector and decal repository inventories
         continue-on-error: true
         shell: bash
