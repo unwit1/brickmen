@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.1",
+  "schema_version": "0.2",
   "researched_at": "2026-09-25",
   "sources": [
     {
@@ -166,6 +166,84 @@
       ],
       "status": "candidate_geometry_requires_semantic_review",
       "notes": "Automatic primitives are not asserted as eyes/brows/mouths. Review or independent validation is required before semantic landmark promotion."
+    },
+    {
+      "id": "iechevarria_lego_face_vae_indexed",
+      "authority": "community_training_dataset_derived_from_bricklink",
+      "source_repo": "https://github.com/iechevarria/lego-face-VAE",
+      "indexed_corpus": {
+        "image_records": 2574,
+        "image_dimensions": "128x128",
+        "head_table_records": 2890,
+        "images_matched_to_head_table": 2574,
+        "unmatched_images": 0,
+        "unique_matched_head_parts": 1938
+      },
+      "strongest_catalog_descriptors": {
+        "eyebrows": 1529,
+        "smile": 852,
+        "lips": 487,
+        "teeth": 425,
+        "pupils": 421,
+        "angry": 289,
+        "beard": 284,
+        "moustache": 280,
+        "glasses": 236,
+        "stubble": 224,
+        "scared": 208,
+        "grin": 171,
+        "frown": 157,
+        "eyelashes": 155,
+        "goatee": 135,
+        "freckles": 105,
+        "wrinkles": 102,
+        "scar": 77,
+        "sunglasses": 76,
+        "tongue": 57,
+        "headset": 53,
+        "eyepatch": 41,
+        "sad": 38,
+        "surprised": 22
+      },
+      "supervision": [
+        "normalized face images",
+        "BrickLink head part ID",
+        "catalog semantic descriptors",
+        "facial feature vocabulary",
+        "weak expression labels"
+      ],
+      "training_permission_basis": "project_specific_permission",
+      "use": "large image-level face corpus; catalog descriptors are weak semantics, not human-rated emotion ground truth",
+      "artifacts": [
+        "data/bulk-ingestion/lego-face-vae-records-latest.jsonl",
+        "data/bulk-ingestion/lego-face-vae-summary-latest.json"
+      ]
+    },
+    {
+      "id": "rioforce_face_svg_geometry",
+      "authority": "community_scan_reconstruction",
+      "indexed_corpus": {
+        "face_like_svg_records": 38,
+        "png_siblings": 36,
+        "records_with_primitive_geometry": 33,
+        "primitive_candidates": 145,
+        "parse_errors": 0
+      },
+      "supervision": [
+        "vector face geometry",
+        "primitive candidates",
+        "source canvas dimensions",
+        "color/fill structure",
+        "front/reverse filename hints",
+        "weak filename semantics"
+      ],
+      "training_permission_basis": "project_specific_permission",
+      "use": "reviewable vector geometry for landmark normalization; primitives are not semantic landmarks until reviewed",
+      "artifacts": [
+        "data/bulk-ingestion/rioforce-face-svg-records-latest.jsonl",
+        "data/bulk-ingestion/rioforce-face-svg-summary-latest.json",
+        "data/face-landmark-schema.json"
+      ]
     }
   ],
   "proposed_annotation_layers": [
@@ -181,11 +259,16 @@
     "head_base_color",
     "emotion_probability_distribution",
     "rater_disagreement",
-    "context_conditioned_expression"
+    "context_conditioned_expression",
+    "catalog_part_id",
+    "image_level_semantic_descriptors",
+    "vector_primitive_candidates",
+    "leakage_safe_dataset_split"
   ],
   "missing_data": [
     "machine-readable Bartneck raw 627/722 stimulus-to-rating table",
     "exact crosswalk from Bartneck stimuli to BrickLink/LDraw head IDs",
-    "reviewed eye/brow/mouth landmarks for the 38-materialized rioforce face candidates and a statistically useful broader official head sample"
+    "reviewed eye/brow/mouth landmarks for a statistically useful subset of the now-indexed 2,574-image / 1,938-head face corpus",
+    "machine-readable Bartneck raw 627/722 stimulus-to-rating table remains unresolved"
   ]
 }
