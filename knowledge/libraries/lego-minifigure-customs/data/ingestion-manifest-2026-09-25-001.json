@@ -1,0 +1,28 @@
+{
+  "manifest_version": "1.0",
+  "id": "brickmen-gap-ingestion-2026-09-25-001",
+  "created_at": "2026-09-25",
+  "objective": "Audit post-migration Brickmen gaps and begin filling the highest-value unresolved supervision with structured evidence.",
+  "created_files": [
+    "data/mask-headgear-decision-resolution-2026-09-25.json",
+    "data/research-gap-status-2026-09-25.json",
+    "data/ingestion-manifest-2026-09-25-001.json"
+  ],
+  "updated_files": [
+    "data/training-supervision-gap-matrix.json"
+  ],
+  "key_findings": [
+    "The initial 15-item mask/headgear unresolved queue can be resolved from release-specific component inventories without visual guessing.",
+    "The largest remaining value is not additional generic prose; it is structured supervision: flat official print art, source-to-LEGO semantic differences, multi-view physical ground truth, expression landmarks, digital-only official variants, and asset-level provenance.",
+    "Several major acquisition pipelines already exist but still need execution/materialization: Rebrickable bulk census, current LDraw pattern indexing, image materialization/dedupe/features, game asset extraction, and film frame extraction.",
+    "Catalog, customizer, accessory and pricing coverage is broad but not exhaustive; historical/long-tail sources and time-series observations remain open."
+  ],
+  "next_actions": [
+    "Run the Rebrickable bulk census and record actual row/crosswalk coverage.",
+    "Run the current LDraw minifigure-pattern index and crosswalk flat art to component IDs.",
+    "Expand source-to-LEGO semantic translation labels beyond identity-only pairing.",
+    "Materialize permitted flat-art and reference assets into local content-addressed storage and compute hashes/features.",
+    "Build expression-landmark and negative-control populations.",
+    "Begin physical multi-view capture when hardware/sample access is available."
+  ]
+}
