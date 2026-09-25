@@ -1,6 +1,6 @@
 {
   "schema_version": "0.1",
-  "researched_at": "2026-09-24",
+  "researched_at": "2026-09-25",
   "sources": [
     {
       "id": "bartneck_agents_with_faces",
@@ -143,6 +143,29 @@
         "Perceived expression labels are therefore probabilistic/distributed rather than objectively singular."
       ],
       "use": "train/evaluate probabilistic expression distributions and reviewer-variance-aware scoring"
+    },
+    {
+      "id": "rioforce_face_svg_geometry_candidates",
+      "authority": "community_scan_reconstruction",
+      "source": "rioforce/LEGO-Textures",
+      "snapshot_date": "2026-09-25",
+      "sample": {
+        "face_like_svg_records": 38,
+        "png_siblings": 36,
+        "records_with_primitive_candidates": 33,
+        "primitive_candidates_total": 145,
+        "parse_errors": 0
+      },
+      "supervision": [
+        "vector face canvas dimensions",
+        "SVG primitive geometry candidates",
+        "fill/stroke/color structure",
+        "transform chains",
+        "weak filename semantic descriptors",
+        "front/reverse hints"
+      ],
+      "status": "candidate_geometry_requires_semantic_review",
+      "notes": "Automatic primitives are not asserted as eyes/brows/mouths. Review or independent validation is required before semantic landmark promotion."
     }
   ],
   "proposed_annotation_layers": [
@@ -163,6 +186,6 @@
   "missing_data": [
     "machine-readable Bartneck raw 627/722 stimulus-to-rating table",
     "exact crosswalk from Bartneck stimuli to BrickLink/LDraw head IDs",
-    "reviewed eye/brow/mouth landmarks for a statistically useful official head sample"
+    "reviewed eye/brow/mouth landmarks for the 38-materialized rioforce face candidates and a statistically useful broader official head sample"
   ]
 }
