@@ -179,6 +179,40 @@ jobs:
           done
           exit 0
 
+      - name: Build flat-art crosswalk candidates
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          src="$OUT/sources/flat_art_crosswalk"; mkdir -p "$src"
+          rio="$OUT/sources/rioforce_lego_textures/output/rioforce_semantic_index.jsonl"
+          ldraw="$OUT/sources/ldraw/output/ldraw_minifig_patterns.jsonl"
+          python tools/knowledge/build_flat_art_crosswalk_candidates.py \
+            --rioforce-index "$rio" \
+            --ldraw-index "$ldraw" \
+            --output "$src/candidates.jsonl" \
+            --summary "$src/summary.json"
+          rc=$?
+          RC="$rc" SRC="$src" python - <<'PY'
+          import json,os,shutil
+          from datetime import datetime,timezone
+          from pathlib import Path
+          src=Path(os.environ["SRC"]);rc=int(os.environ["RC"]);summary={}
+          p=src/"summary.json"
+          if p.exists():
+              try: summary=json.loads(p.read_text())
+              except Exception: pass
+          status={"source_id":"flat_art_crosswalk","status":"complete" if rc==0 else "failed",
+                  "exit_code":rc,"created_at":datetime.now(timezone.utc).isoformat(),**summary}
+          Path(os.environ["OUT"],"status/flat_art_crosswalk.json").write_text(json.dumps(status,indent=2))
+          if rc==0:
+              shutil.copy2(src/"summary.json",Path(os.environ["DEST"])/"flat-art-crosswalk-summary-latest.json")
+              candidates=src/"candidates.jsonl"
+              if candidates.exists() and candidates.stat().st_size < 8_000_000:
+                  shutil.copy2(candidates,Path(os.environ["DEST"])/"flat-art-crosswalk-candidates-latest.jsonl")
+          PY
+          exit 0
+
       - name: Hugging Face minifigure-caption dataset metadata
         continue-on-error: true
         shell: bash
@@ -238,8 +272,29 @@ jobs:
           if pair.exists() and pair.stat().st_size < 8_000_000:
               shutil.copy2(pair,Path(os.environ["DEST"])/"fortnite-lego-translation-pairs-latest.jsonl")
           queue=src/"output/fortnite_lego_semantic_annotation_queue.jsonl"
-          if queue.exists() and queue.stat().st_size < 8_000_000:
-              shutil.copy2(queue,Path(os.environ["DEST"])/"fortnite-lego-semantic-annotation-queue-latest.jsonl")
+          if queue.exists():
+              dest=Path(os.environ["DEST"])
+              for old in dest.glob("fortnite-lego-semantic-annotation-queue-part-*.jsonl"):
+                  old.unlink()
+              lines=[line for line in queue.read_text(encoding="utf-8").splitlines() if line.strip()]
+              shard_size=250
+              shard_names=[]
+              for start in range(0,len(lines),shard_size):
+                  index=start//shard_size+1
+                  name=f"fortnite-lego-semantic-annotation-queue-part-{index:02d}.jsonl"
+                  (dest/name).write_text("\\n".join(lines[start:start+shard_size])+"\\n",encoding="utf-8")
+                  shard_names.append(name)
+              manifest={
+                  "schema":"fortnite-lego-semantic-annotation-queue-manifest/v1",
+                  "records":len(lines),
+                  "shard_size":shard_size,
+                  "shard_count":len(shard_names),
+                  "shards":shard_names,
+                  "processor_version":summary.get("processor_version")
+              }
+              (dest/"fortnite-lego-semantic-annotation-queue-manifest-latest.json").write_text(
+                  json.dumps(manifest,indent=2)+"\\n",encoding="utf-8"
+              )
           PY
           exit 0
 
