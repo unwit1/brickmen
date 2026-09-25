@@ -1,0 +1,386 @@
+{
+  "schema": "external-source-tree-snapshot/v1",
+  "researched_at": "2026-09-24",
+  "source_repo": "Armaggheddon/BricksFinder",
+  "tree_sha": "68139a2bb1d356f0a37d8edcc8df16de74b9f70d",
+  "truncated": false,
+  "license": "MIT code; dataset provenance tracked separately",
+  "authority": "community_ml_dataset_builder",
+  "file_count": 69,
+  "total_bytes": 57949136,
+  "top_level_counts": {
+    "datasets": 31,
+    "model_finetuning": 21,
+    "bricks_finder": 11,
+    ".github": 3,
+    ".gitignore": 1,
+    "LICENSE": 1,
+    "live_demo": 1
+  },
+  "extension_counts": {
+    ".py": 10,
+    ".md": 9,
+    ".parquet": 8,
+    ".png": 7,
+    ".gitignore": 7,
+    "<none>": 5,
+    ".ipynb": 5,
+    ".txt": 4,
+    ".webp": 3,
+    ".yaml": 3,
+    ".env": 3,
+    ".yml": 3,
+    ".dockerignore": 1,
+    ".gitkeep": 1
+  },
+  "paired_svg_png": 0,
+  "svg_only": 0,
+  "png_only": 7,
+  "files": [
+    {
+      "path": ".github/README.md",
+      "sha": "b905a5de7e7e5f1369c5020d4f6c29dd47e4df25",
+      "size": 9063
+    },
+    {
+      "path": ".github/images/bricksfinder.png",
+      "sha": "79df40fcf9eaab26152ec8d9dec92bc0ed2bb3dc",
+      "size": 667027
+    },
+    {
+      "path": ".github/images/webui_demo.webp",
+      "sha": "7470bf8c623a3ba99259bd2bcebb032d0680b37d",
+      "size": 13324954
+    },
+    {
+      "path": ".gitignore",
+      "sha": "9cd38e041a353d5bbeef956a68c0e0b0a5dd9a8d",
+      "size": 35
+    },
+    {
+      "path": "LICENSE",
+      "sha": "99e2ae4f4934e173a2c61699c88f4745ec24fb1f",
+      "size": 1076
+    },
+    {
+      "path": "bricks_finder/.dockerignore",
+      "sha": "2dbeb4bd6f6fdbbaa9b20f5955ee769f5869aef6",
+      "size": 14
+    },
+    {
+      "path": "bricks_finder/.gitignore",
+      "sha": "82ddcd8d15c8597d4d88c33f68a901baf09d775b",
+      "size": 52
+    },
+    {
+      "path": "bricks_finder/Dockerfile",
+      "sha": "228ef6f1a987f371d09bae956246bed0a7342d01",
+      "size": 162
+    },
+    {
+      "path": "bricks_finder/dev-docker-compose.yaml",
+      "sha": "50abbc163656bda660566a5f6580cddd52a92e35",
+      "size": 489
+    },
+    {
+      "path": "bricks_finder/docker-compose.yaml",
+      "sha": "10ddb9a38b10af016134a35763f15ebd4a626b46",
+      "size": 606
+    },
+    {
+      "path": "bricks_finder/gpu-Dockerfile",
+      "sha": "7afd857583e35fd645c457025eec2d7435fe7b24",
+      "size": 181
+    },
+    {
+      "path": "bricks_finder/gpu-docker-compose.yaml",
+      "sha": "d8d954abf3cfbd42ac4a91ae21e118193c268443",
+      "size": 797
+    },
+    {
+      "path": "bricks_finder/requirements.txt",
+      "sha": "235a803d3f7ef14262b58d6c6dd1e462a31ef8d4",
+      "size": 45
+    },
+    {
+      "path": "bricks_finder/src/main.py",
+      "sha": "3157db52ea23cb6c82396a1f21849d0328fa3953",
+      "size": 6488
+    },
+    {
+      "path": "bricks_finder/src/query_helper.py",
+      "sha": "80866636ac4c82010984d6698ab2cb026d493b1c",
+      "size": 10936
+    },
+    {
+      "path": "bricks_finder/src/static/bricksfinder.png",
+      "sha": "79df40fcf9eaab26152ec8d9dec92bc0ed2bb3dc",
+      "size": 667027
+    },
+    {
+      "path": "datasets/.gitignore",
+      "sha": "d7b8b35fe0a6819218e164bad81be8fcb3070c7c",
+      "size": 50
+    },
+    {
+      "path": "datasets/README.md",
+      "sha": "de6526d8407f9455aabcc848abd7d840987245e9",
+      "size": 7353
+    },
+    {
+      "path": "datasets/create_lego_bricks_dataset.py",
+      "sha": "6aba24885f80ef04c46bbdb9ea706ad0909f9f2d",
+      "size": 9937
+    },
+    {
+      "path": "datasets/create_lego_minifigures_dataset.py",
+      "sha": "5b21b68147845f3dadf1b5ebdda50f5fbdb22263",
+      "size": 8660
+    },
+    {
+      "path": "datasets/download_and_convert_raw.py",
+      "sha": "1ee040aabd045bdf8e2202b562ef425830f696f3",
+      "size": 3083
+    },
+    {
+      "path": "datasets/example.env",
+      "sha": "8e0be39e3c43cc301ec7690b018447074ea23b7f",
+      "size": 71
+    },
+    {
+      "path": "datasets/gemini_caption.ipynb",
+      "sha": "4a21b26b666a95a05f2d01baf984a13e5b8e6be5",
+      "size": 329147
+    },
+    {
+      "path": "datasets/image_captioning/.gitignore",
+      "sha": "2eea525d885d5148108f6f3a9a8613863f783d36",
+      "size": 4
+    },
+    {
+      "path": "datasets/image_captioning/Dockerfile",
+      "sha": "f2f7d12e9c531fead89726a279c38b54e11275e2",
+      "size": 152
+    },
+    {
+      "path": "datasets/image_captioning/README.md",
+      "sha": "4cbea93d223f00688501f21a656d44ba947277ec",
+      "size": 98
+    },
+    {
+      "path": "datasets/image_captioning/docker-compose.yml",
+      "sha": "8949ab5cf4287bae1ff1eb1c8ce9f3b1f1aed41a",
+      "size": 423
+    },
+    {
+      "path": "datasets/image_captioning/example.env",
+      "sha": "12dffb2fec1a927bd7c9afa959f9fbfecfc33990",
+      "size": 31
+    },
+    {
+      "path": "datasets/image_captioning/requirements.txt",
+      "sha": "30673b210e1d539b51d08bfe2106876df4d35a18",
+      "size": 46
+    },
+    {
+      "path": "datasets/image_captioning/src/compare_captions.ipynb",
+      "sha": "01376ecfd96e00f8ff33a511047728e47a7f1eb6",
+      "size": 1360274
+    },
+    {
+      "path": "datasets/lego_brick_captions/.gitignore",
+      "sha": "0c418d2fcc1527adab4eaa96b452c5761b88ca9b",
+      "size": 23
+    },
+    {
+      "path": "datasets/lego_brick_captions/README.md",
+      "sha": "2c78877ceaeba4b2c056b0a994261afcbac26c42",
+      "size": 4394
+    },
+    {
+      "path": "datasets/lego_brick_captions/hf_README.md",
+      "sha": "b6cdac5fa559b7b02cf29ed8ddc69e6cf832d52b",
+      "size": 5541
+    },
+    {
+      "path": "datasets/lego_brick_captions/lego_bricks_no_img.parquet",
+      "sha": "859ffb2db85dad17522df01a6d629b0518906676",
+      "size": 9025710
+    },
+    {
+      "path": "datasets/lego_minifigures_captions/.gitignore",
+      "sha": "0c418d2fcc1527adab4eaa96b452c5761b88ca9b",
+      "size": 23
+    },
+    {
+      "path": "datasets/lego_minifigures_captions/README.md",
+      "sha": "d8b89205926b366262545293ac7b1afefa3f54b7",
+      "size": 2867
+    },
+    {
+      "path": "datasets/lego_minifigures_captions/hf_README.md",
+      "sha": "7764826cb41708c5e0d03b578c784b53fe097a51",
+      "size": 3778
+    },
+    {
+      "path": "datasets/lego_minifigures_captions/minifigures_no_img.parquet",
+      "sha": "17b89856dfe8b260c880873574c9dab7c6fb056d",
+      "size": 675889
+    },
+    {
+      "path": "datasets/merge_dataset.ipynb",
+      "sha": "25a317a8c238e93fe372a54ab4c7dfff92396e41",
+      "size": 6638
+    },
+    {
+      "path": "datasets/raw_data/colors.parquet",
+      "sha": "d1bf25d91112822c9458df87ce3926e3002e3aff",
+      "size": 8752
+    },
+    {
+      "path": "datasets/raw_data/inventories.parquet",
+      "sha": "6c76764946e5b385f6ba44e39c1817fae6417fa8",
+      "size": 558748
+    },
+    {
+      "path": "datasets/raw_data/inventory_minifigs.parquet",
+      "sha": "8dec5d38d9c2f91cb28f241f8ccaf5a6ee713114",
+      "size": 190518
+    },
+    {
+      "path": "datasets/raw_data/inventory_parts.parquet",
+      "sha": "d6f47ca2399d3719dbfd16033e666cea269b2b7b",
+      "size": 14947082
+    },
+    {
+      "path": "datasets/raw_data/minifigs.parquet",
+      "sha": "99c4039f54f9eef839b43bfb1513b57d140a3c60",
+      "size": 508087
+    },
+    {
+      "path": "datasets/raw_data/parts.parquet",
+      "sha": "9c113619c8d91894d1997fc4b390e2ab3f239794",
+      "size": 1722545
+    },
+    {
+      "path": "datasets/requirements.txt",
+      "sha": "ef0fb1ee4b01d9ad9467d122014c8a3ccf98c974",
+      "size": 123
+    },
+    {
+      "path": "datasets/utils.py",
+      "sha": "8ee1f96f4a50fcec0bc93e89c0b5cb91936890f8",
+      "size": 7732
+    },
+    {
+      "path": "live_demo/live_demo.ipynb",
+      "sha": "02320ac28f5a276f70d333d24b99ae988039015d",
+      "size": 893155
+    },
+    {
+      "path": "model_finetuning/.gitignore",
+      "sha": "b0f6dbc166f2d756bbb190af7227d1bb21525b71",
+      "size": 82
+    },
+    {
+      "path": "model_finetuning/Dockerfile",
+      "sha": "995b15bc716a42344876649c615136f86a562960",
+      "size": 182
+    },
+    {
+      "path": "model_finetuning/dev-docker-compose.yml",
+      "sha": "6f59ee29aa426f0111800698c3e55d8e44560e0b",
+      "size": 451
+    },
+    {
+      "path": "model_finetuning/docker-compose.yml",
+      "sha": "69299d4fb4fedc6ef18661c6a086e48efe5c6f01",
+      "size": 486
+    },
+    {
+      "path": "model_finetuning/example.env",
+      "sha": "0cca1dbacaf563a9c7aaae0fc3eb89e03a35fb6c",
+      "size": 763
+    },
+    {
+      "path": "model_finetuning/finetune_results/.gitkeep",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "size": 0
+    },
+    {
+      "path": "model_finetuning/hf_brick_README.md",
+      "sha": "f04f92c5c02c99ca17daf9ba20df4c87c6d3d55f",
+      "size": 14381
+    },
+    {
+      "path": "model_finetuning/hf_minifigure_README.md",
+      "sha": "da271eaa70d3cca3e9c43f21895a522428c13120",
+      "size": 10176
+    },
+    {
+      "path": "model_finetuning/images/bricks/base_vs_finetuned.png",
+      "sha": "029e5d58ef3fe17ff3477bb6be72f09c64428dbb",
+      "size": 58197
+    },
+    {
+      "path": "model_finetuning/images/bricks/short_caption_vs_caption.png",
+      "sha": "350daf4468c299a98fef2bc394edcd7db284c06c",
+      "size": 62028
+    },
+    {
+      "path": "model_finetuning/images/bricks/webui_demo.webp",
+      "sha": "4ffb29b6163b742c4dc1743eb9bf020f24f21620",
+      "size": 6640918
+    },
+    {
+      "path": "model_finetuning/images/bricks/zero_shot_sample_image.png",
+      "sha": "1399c805c57f0f615d84ad0eb3eddaaeaa3dea1b",
+      "size": 34489
+    },
+    {
+      "path": "model_finetuning/images/minifigures/model_caption_compare.png",
+      "sha": "f29f37c4cbc534be98dcf78f9b45fceed769a563",
+      "size": 55744
+    },
+    {
+      "path": "model_finetuning/images/minifigures/webui_demo.webp",
+      "sha": "9f5d77f0fedf9dd199fa24904d91a2152082097d",
+      "size": 5953260
+    },
+    {
+      "path": "model_finetuning/images/minifigures/zero_shot_sample_image.png",
+      "sha": "60aacb12de93f247afd8d4240553bd64b42c823f",
+      "size": 53292
+    },
+    {
+      "path": "model_finetuning/requirements.txt",
+      "sha": "8fe39bb44334f0c154f565c1a660c1125d4e26f3",
+      "size": 55
+    },
+    {
+      "path": "model_finetuning/src/compare_finetune.ipynb",
+      "sha": "2a5847dc11194ac35acf3cb0d53d1693e5af8b5c",
+      "size": 84004
+    },
+    {
+      "path": "model_finetuning/src/entrypoint.py",
+      "sha": "3fa92b0c9d35210d262310cd341727a0b9cd1aa3",
+      "size": 3804
+    },
+    {
+      "path": "model_finetuning/src/finetune.py",
+      "sha": "3abece8fcfc3f2d3d8e091795cdc50d336264d0a",
+      "size": 3565
+    },
+    {
+      "path": "model_finetuning/src/openai_train.py",
+      "sha": "74b7e190cdc03e120269be460521b7cad6e6fab7",
+      "size": 2150
+    },
+    {
+      "path": "model_finetuning/src/push_to_hub.py",
+      "sha": "703a8a96571af82e9e5d36f5e12858931e115af2",
+      "size": 1223
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "schema_version": "0.1",
+  "source_id": "armaggheddon_lego_minifigure_captions",
+  "source_repository": "Armaggheddon/BricksFinder",
+  "source_dataset": "Armaggheddon/lego_minifigure_captions",
+  "snapshot_date": "2024-11-27",
+  "ingested_at": "2026-09-25",
+  "authority": "community_derived_from_rebrickable",
+  "dataset_card_license": "MIT",
+  "counts": {
+    "source_minifigs_rows": 14985,
+    "image_caption_examples": 12966,
+    "unavailable_or_failed_images": 2019,
+    "image_coverage_fraction": 0.8652652652652653
+  },
+  "size": {
+    "examples": 12966,
+    "download_bytes": 558421106,
+    "dataset_bytes": 597626808,
+    "shards": 3
+  },
+  "columns": [
+    "image",
+    "short_caption",
+    "caption",
+    "fig_num",
+    "num_parts",
+    "minifig_inventory_id",
+    "part_inventory_id",
+    "part_num"
+  ],
+  "image_source": "Rebrickable minifigs.csv img_url",
+  "caption_model": "Gemini 1.5 Flash 002",
+  "caption_prompt": "Describe LEGO minifigures in a single sentence, focusing on attire, accessories, facial expression and theme; specific but concise.",
+  "raw_rebrickable_parquets_present_in_repository": [
+    "colors.parquet",
+    "inventories.parquet",
+    "inventory_minifigs.parquet",
+    "inventory_parts.parquet",
+    "minifigs.parquet",
+    "parts.parquet"
+  ],
+  "useful_supervision": [
+    "figure image -> descriptive caption",
+    "fig_num -> component part numbers",
+    "figure image -> parts inventory",
+    "historic 2024-11-27 physical corpus snapshot",
+    "caption baseline for later higher-quality structured recaptioning"
+  ],
+  "cautions": [
+    "Captions are model-generated and must not be treated as authoritative identity/style labels.",
+    "2024 snapshot predates newer figures and should be versioned rather than merged without dates.",
+    "Underlying images originate from Rebrickable; preserve both dataset and source provenance."
+  ],
+  "promotion": {
+    "research_reference": true,
+    "direct_official_style_weight": "secondary",
+    "caption_training_weight": "low_until_validated",
+    "identity_crosswalk_value": "high"
+  }
+}
