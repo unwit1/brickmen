@@ -1,0 +1,194 @@
+{
+  "schema_version": "0.1",
+  "researched_at": "2026-09-24",
+  "purpose": "Preserve and ingest official LEGO browser/web-game visual references that are absent from commercial game catalogs.",
+  "scope_rules": [
+    "A web game must be shown to have been published/commissioned by LEGO or hosted in an official LEGO web property before its assets become official-corpus evidence.",
+    "Community archives and wikis are discovery/preservation sources, not style authorities.",
+    "Standard minifigure-form assets feed the main corpus; BIONICLE, Hero Factory, minidoll and other systems get separate form profiles.",
+    "Use original local game assets where preserved; use screenshots only when source assets cannot be decoded."
+  ],
+  "discovery_sources": [
+    {
+      "id": "research_realm_lego_web_games",
+      "name": "Research Realm LEGO web-game list",
+      "authority": "secondary_specialist_discovery",
+      "url": "https://wiki.researchrealm.net/index.php/List_of_LEGO_web_games",
+      "roles": [
+        "historical_title_census",
+        "developer",
+        "theme",
+        "release_date",
+        "technology"
+      ],
+      "notes": "Documents LEGO browser titles beginning in 1996 and technology families including $HTML, Java, Superscape VRT, Shockwave, Flash, Unity Web Player and HTML5."
+    },
+    {
+      "id": "brickipedia_online_games",
+      "name": "Brickipedia Online games category",
+      "authority": "secondary_discovery",
+      "url": "https://brickipedia.fandom.com/wiki/Category:Online_games",
+      "roles": [
+        "candidate_title_discovery",
+        "theme_grouping"
+      ],
+      "observed_items_2026_09_24": 174,
+      "notes": "Community maintained and incomplete; use only to find candidates."
+    },
+    {
+      "id": "flashpoint_archive",
+      "name": "Flashpoint Archive",
+      "authority": "preservation_archive",
+      "url": "https://flashpointarchive.org/",
+      "roles": [
+        "preserved_game_lookup",
+        "local_data_recovery",
+        "technology_emulation",
+        "original_file_access"
+      ],
+      "notes": "Flashpoint FAQ reports 220,648 games/animations as of 2026-09-22 and support for 100+ web technologies. Downloaded entries are normally stored under Data/Games as UUID ZIPs; older entries may be in Legacy/htdocs."
+    }
+  ],
+  "technology_strategies": [
+    {
+      "technology": "Flash / SWF",
+      "status": "strong_tooling",
+      "preferred_tool": {
+        "name": "JPEXS Free Flash Decompiler",
+        "url": "https://github.com/jindrapetrik/jpexs-decompiler",
+        "capabilities": [
+          "extract images",
+          "sounds",
+          "fonts",
+          "text",
+          "ActionScript",
+          "convert/decompile SWF resources"
+        ]
+      },
+      "target_assets": [
+        "bitmaps",
+        "vector shapes",
+        "sprites",
+        "character sheets",
+        "embedded PNG/JPEG",
+        "timeline states"
+      ]
+    },
+    {
+      "technology": "Shockwave / Director",
+      "status": "strong_tooling",
+      "preferred_tool": {
+        "name": "ProjectorRays",
+        "url": "https://github.com/ProjectorRays/ProjectorRays",
+        "capabilities": [
+          "decompile DCR/DXR",
+          "reconstruct Lingo",
+          "generate editable DIR projects"
+        ]
+      },
+      "target_assets": [
+        "cast members",
+        "bitmaps",
+        "sprites",
+        "3D/media resources",
+        "scripts identifying characters"
+      ]
+    },
+    {
+      "technology": "Unity Web Player / Unity",
+      "status": "strong_tooling",
+      "preferred_tools": [
+        {
+          "name": "UnityPy",
+          "url": "https://github.com/K0lb3/UnityPy",
+          "capabilities": [
+            "load/extract Unity assets",
+            "Texture2D",
+            "Sprite",
+            "Mesh and serialized object inspection"
+          ]
+        },
+        {
+          "name": "Unity WebExtract / binary2text",
+          "url": "https://docs.unity.com/en-us/engine/6000.6/manual/assets-and-media/assets-optimizing/assets-analyze-built-assets",
+          "capabilities": [
+            "extract Unity archives",
+            "inspect serialized files"
+          ]
+        }
+      ],
+      "target_assets": [
+        "Texture2D",
+        "Sprite",
+        "Mesh",
+        "Material",
+        "AssetBundle/container paths",
+        "character prefabs"
+      ]
+    },
+    {
+      "technology": "Java applet / JAR",
+      "status": "generic_archive_tooling",
+      "preferred_tool": "ZIP/JAR extraction plus Java class/resource inspection",
+      "target_assets": [
+        "PNG",
+        "GIF",
+        "JPEG",
+        "models",
+        "resource files",
+        "class/string references"
+      ],
+      "notes": "JAR is ZIP-compatible; prefer resources/metadata over unnecessary code decompilation."
+    },
+    {
+      "technology": "HTML5 / JavaScript",
+      "status": "generic_web_asset_tooling",
+      "preferred_tool": "local preserved bundle inspection",
+      "target_assets": [
+        "PNG",
+        "JPEG",
+        "WebP",
+        "SVG",
+        "sprite atlases",
+        "JSON",
+        "WebGL/Three.js assets",
+        "audio/video",
+        "GLTF/OBJ where present"
+      ],
+      "notes": "Prefer preserved original files over live recursive crawling."
+    },
+    {
+      "technology": "Superscape VRT",
+      "status": "research_needed",
+      "target_assets": [
+        "3D models",
+        "textures",
+        "character references"
+      ],
+      "notes": "Keep as explicit blocker; do not substitute guessed screenshots if preserved VRT assets can later be decoded."
+    },
+    {
+      "technology": "$HTML / proprietary Mondo server experience",
+      "status": "research_needed_or_preservation_capture",
+      "target_assets": [
+        "server-rendered images",
+        "sprites",
+        "HTML resources"
+      ],
+      "notes": "May require archive-specific reconstruction because original server behavior was dynamic."
+    }
+  ],
+  "flashpoint_local_layout": {
+    "database": "<Flashpoint root>/Data/flashpoint.sqlite",
+    "downloaded_modern_entries": "<Flashpoint root>/Data/Games/<entry-uuid>.zip",
+    "legacy_entries": "<Flashpoint root>/Legacy/htdocs/...",
+    "source": "https://flashpointarchive.org/faq"
+  },
+  "extraction_preference": [
+    "original vector/texture/model asset",
+    "original sprite sheet or character image",
+    "reconstructed render from original asset",
+    "clean preserved gameplay frame",
+    "secondary screenshot"
+  ]
+}
