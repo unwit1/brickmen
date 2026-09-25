@@ -6,7 +6,7 @@
     {
       "id": "exact_flat_official_print_art",
       "priority": "critical",
-      "status": "structured_pattern_and_secondary_flat_art_indexed_crosswalk_partial",
+      "status": "catalog_crosswalk_running_candidate_layer_materialized_exact_links_partial",
       "why": "Assembled renders hide curvature and back/side regions; flat maps are strongest supervision for template generation.",
       "sources": [
         "LDraw patterns",
@@ -16,8 +16,9 @@
         "BrickLink Studio reference templates"
       ],
       "next_actions": [
-        "run rioforce-to-LDraw candidate crosswalk and independently confirm high-value mappings",
-        "crosswalk confirmed flat maps to Rebrickable/BrickLink/LEGO component IDs",
+        "review and promote the 10 exact part-ID links where rioforce identity is independently confirmed",
+        "resolve the 30 rioforce records without catalog figure candidates using theme/character aliases and direct part evidence",
+        "improve figure-name normalization for the 82 non-high-confidence figure candidate groups",
         "materialize Mecabricks official UV/decoration assets in approved local/network runtime",
         "extract official game texture files from local installations",
         "derive flat maps from controlled physical captures where no source texture exists"
@@ -30,13 +31,19 @@
         "AV Figures/custom flat-art sources classified",
         "2026-09-25 current LDraw run indexed 4,352 patterned minifigure-related records",
         "2026-09-25 rioforce inventory confirmed 117 SVG and 122 PNG assets across 129 semantic groups",
-        "2026-09-25 minifig-svg-decals inventory confirmed 213 SVG records for custom/control supervision"
+        "2026-09-25 minifig-svg-decals inventory confirmed 213 SVG records for custom/control supervision",
+        "2026-09-25 current LDraw index: 4,352 minifigure-related patterned/printed records",
+        "2026-09-25 rioforce index: 129 semantic asset groups",
+        "catalog-backed crosswalk: 99/129 rioforce records have Rebrickable figure candidates",
+        "catalog-backed crosswalk: 88/129 have component candidates from actual candidate figure inventories",
+        "10 rioforce records currently have exact Rebrickable part-number = LDraw part-ID links",
+        "30 rioforce records remain without figure candidates; only 6 top figure matches currently meet the high-confidence heuristic"
       ]
     },
     {
       "id": "source_to_lego_translation_pairs",
       "priority": "critical",
-      "status": "identity_pairing_complete_for_current_fortnite_snapshot_semantic_visual_differencing_in_progress",
+      "status": "identity_pairing_complete_for_current_fortnite_corpus_visual_features_materialized_semantic_review_pending",
       "why": "Directly teaches which source details LEGO preserves/simplifies/omits/moves to mould/accessory.",
       "sources": [
         "Fortnite Outfit -> LEGO Style pairs",
@@ -45,9 +52,8 @@
         "Wednesday/Nightmare/BTS/Viking/Pirates designer articles"
       ],
       "next_actions": [
-        "complete deterministic visual feature extraction for all image-backed Fortnite pairs",
-        "review/label preserve/simplify/omit/exaggerate/mould/accessory/cloth decisions using exact paired views",
-        "investigate the 14 LEGO Style records missing a LEGO image reference",
+        "resolve the 14 pairs missing preferred LEGO imagery",
+        "review visual pairs into preserve/simplify/omit/exaggerate/mould/accessory/cloth labels without promoting heuristics as ground truth",
         "expand exact source-frame/panel pair resolution theme-by-theme",
         "use official asset bundles and local film/game media to pin exact source appearances"
       ],
@@ -59,7 +65,11 @@
         "2026-09-25 Fortnite v2 census resolves all 2,494 LEGO Style records to source cosmetic identities with zero unmatched records",
         "2,494/2,494 source records expose image references; 2,480/2,494 pairs expose both source and LEGO image references",
         "2,494-record semantic annotation queue is persisted in 10 deterministic shards with preserve/simplify/omit/exaggerate/mould/accessory/cloth/color/print-region targets",
-        "Epic LEGO asset inventory page is now captured as an accessible primary/developer source profile"
+        "Epic LEGO asset inventory page is now captured as an accessible primary/developer source profile",
+        "2026-09-25 refresh confirms 2,494/2,494 Fortnite LEGO Style identities paired by embedded BR ID with zero unmatched LEGO records",
+        "2,480 pairs have both source and LEGO preferred images and deterministic visual-difference features",
+        "14 pairs still lack a preferred LEGO image",
+        "semantic annotation queue is sharded across all 2,494 pairs for preserve/simplify/omit/mould/accessory review"
       ]
     },
     {
