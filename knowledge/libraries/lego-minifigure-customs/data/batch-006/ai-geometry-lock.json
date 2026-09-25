@@ -1,0 +1,19 @@
+{
+  "title": "Geometry lock",
+  "required": [
+    "canonical_part_ids",
+    "geometry_hashes",
+    "pose_transforms",
+    "camera",
+    "silhouette",
+    "part_masks"
+  ],
+  "reject": [
+    "extra joints",
+    "missing parts",
+    "changed proportions",
+    "connector invention",
+    "left-right swaps"
+  ],
+  "schema_version": "0.1"
+}
