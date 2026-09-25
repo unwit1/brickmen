@@ -380,6 +380,98 @@ def main():
             "processor_version": VERSION,
         })
 
+    # Prioritized entity-resolution queue.
+    entity_review = []
+    for g in group_rows:
+        reasons = []
+        score = 0
+        if g.get("cross_source_candidate"):
+            reasons.append("cross_source")
+            score += 10
+        if "multiple_identities" in (g.get("ambiguity_flags") or []):
+            reasons.append("multiple_identities")
+            score += 25
+        if "multiple_universes" in (g.get("ambiguity_flags") or []):
+            reasons.append("multiple_universes")
+            score += 25
+        if "many_variants" in (g.get("ambiguity_flags") or []):
+            reasons.append("many_variants")
+            score += 15
+        score += min(20, int(g.get("record_count") or 0) // 5)
+        if reasons:
+            entity_review.append({
+                "character_group_candidate_id": g.get("character_group_candidate_id"),
+                "normalized_name": g.get("normalized_name"),
+                "observed_names": g.get("observed_names"),
+                "record_count": g.get("record_count"),
+                "source_file_count": g.get("source_file_count"),
+                "identities": g.get("identities"),
+                "variants": g.get("variants"),
+                "universes": g.get("universes"),
+                "review_reasons": reasons,
+                "review_priority_score": score,
+                "review_status": "pending",
+                "policy": "Priority only; never merge identities/universes/variants automatically from this queue.",
+                "processor_version": VERSION,
+            })
+    entity_review.sort(key=lambda x: (-x["review_priority_score"], x.get("normalized_name") or ""))
+
+    # Conservative collection/design-gap candidates at strict name+identity+variant+universe granularity.
+    owned_like = {"YES","TRUE","LEGO","CLONE","CUSTOM","PREPPED","ORDERED","SHIPPED","OWNED","HAVE"}
+    missing_like = {"NO","FALSE","MISSING"}
+    maybe_like = {"MAYBE"}
+    gap_rows = []
+    for item in strict_rows:
+        recs = item.get("records") or []
+        target = any(r.get("record_class") in {"design_target","wishlist"} for r in recs)
+        if not target:
+            continue
+        statuses = []
+        any_owned = False
+        any_missing = False
+        any_maybe = False
+        wishlist = any(r.get("record_class") == "wishlist" for r in recs)
+        explicit_false = False
+        for r in recs:
+            if r.get("have") is True:
+                any_owned = True
+            elif r.get("have") is False:
+                explicit_false = True
+                any_missing = True
+            raw = str(r.get("ownership_status") or "").strip().upper()
+            if raw in owned_like:
+                any_owned = True
+            elif raw in missing_like:
+                any_missing = True
+            elif raw in maybe_like:
+                any_maybe = True
+            if raw:
+                statuses.append(raw)
+        if any_owned:
+            state = "target_covered_or_in_pipeline"
+        elif wishlist:
+            state = "wishlist_gap_candidate"
+        elif any_missing or explicit_false:
+            state = "explicit_missing_design_target"
+        elif any_maybe:
+            state = "maybe_gap_candidate"
+        else:
+            state = "unknown_target_state"
+        if state == "target_covered_or_in_pipeline":
+            continue
+        gap_rows.append({
+            "strict_group_key": item.get("strict_group_key"),
+            "candidate_state": state,
+            "record_count": item.get("record_count"),
+            "source_files": item.get("source_files"),
+            "observed_statuses": sorted(set(statuses)),
+            "records": recs,
+            "promotion_policy": "Only explicit missing/wishlist states are actionable gap candidates. Unknown/maybe states require review before backlog promotion.",
+            "processor_version": VERSION,
+        })
+    gap_rank = {"wishlist_gap_candidate":0,"explicit_missing_design_target":1,"maybe_gap_candidate":2,"unknown_target_state":3}
+    gap_rows.sort(key=lambda x: (gap_rank.get(x["candidate_state"],9), x.get("strict_group_key") or ""))
+
     # FigureRelease candidates: group maker product codes without collapsing name/variant conflicts.
     release_groups = defaultdict(list)
     for row in code_rows:
@@ -453,6 +545,10 @@ def main():
         "groups_with_many_variants": sum("many_variants" in x["ambiguity_flags"] for x in group_rows),
         "strict_duplicate_candidate_groups": len(strict_rows),
         "strict_cross_source_duplicate_candidate_groups": sum(x["cross_source_duplicate_candidate"] for x in strict_rows),
+        "entity_resolution_review_records": len(entity_review),
+        "entity_resolution_high_priority_records": sum(x["review_priority_score"] >= 40 for x in entity_review),
+        "collection_gap_candidate_records": len(gap_rows),
+        "collection_gap_state_counts": dict(Counter(x["candidate_state"] for x in gap_rows)),
         "coded_records": len(code_rows),
         "maker_product_code_records": sum(x.get("product_code_namespace") == "maker_product_code" for x in code_rows),
         "external_catalog_id_records": sum(x.get("product_code_namespace") == "bricklink_minifigure_id" for x in code_rows),
