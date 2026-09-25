@@ -1,0 +1,298 @@
+{
+  "schema_version": "0.1",
+  "researched_at": "2026-09-24",
+  "source_classes": [
+    {
+      "id": "bricklink_minifig_catalog",
+      "medium": "physical",
+      "authority": "structured_catalog",
+      "url": "https://www.bricklink.com/catalogList.asp?catType=M",
+      "roles": [
+        "catalog_census",
+        "figure_ids",
+        "names",
+        "categories",
+        "inventories",
+        "images",
+        "authenticated_api_item_images",
+        "authenticated_api_subsets",
+        "color_specific_part_images"
+      ],
+      "observed_count": 19250,
+      "notes": "Catalog records, not unique characters.",
+      "api": {
+        "url": "https://www.bricklink.com/v3/api.page",
+        "auth": "OAuth 1.0-style credentials; registered client IP required",
+        "useful_methods": [
+          "Get Item",
+          "Get Item Image",
+          "Get Subsets",
+          "Get Supersets",
+          "Get Known Colors"
+        ],
+        "local_adapter": "tools/knowledge/enrich_bricklink_minifigure_references.py"
+      }
+    },
+    {
+      "id": "brickset_minifigs",
+      "medium": "physical",
+      "authority": "structured_catalog_secondary",
+      "url": "https://brickset.com/minifigs",
+      "roles": [
+        "year_facets",
+        "character_facets",
+        "tag_facets",
+        "outlier_discovery"
+      ],
+      "observed_count": 19240,
+      "notes": "Brickset states minifigure data is displayed courtesy of BrickLink."
+    },
+    {
+      "id": "rebrickable_bulk",
+      "medium": "physical",
+      "authority": "structured_catalog",
+      "url": "https://rebrickable.com/api/v3/docs/",
+      "roles": [
+        "bulk_minifig_census",
+        "set_membership",
+        "parts",
+        "colors",
+        "themes",
+        "image_urls"
+      ],
+      "notes": "Rebrickable explicitly requires bulk CSV downloads for full-catalog/high-volume usage."
+    },
+    {
+      "id": "lego_product_media",
+      "medium": "physical",
+      "authority": "lego_primary",
+      "url": "https://www.lego.com/",
+      "roles": [
+        "official_product_photos",
+        "official_renders",
+        "press_assets",
+        "release_context"
+      ]
+    },
+    {
+      "id": "lego_building_instructions",
+      "medium": "physical",
+      "authority": "lego_primary",
+      "url": "https://www.lego.com/en-us/service/building-instructions/",
+      "roles": [
+        "instruction_pdfs",
+        "set_context",
+        "alternate_views"
+      ]
+    },
+    {
+      "id": "lego_kids_characters",
+      "medium": "physical_and_digital",
+      "authority": "lego_primary",
+      "url": "https://kids.lego.com/",
+      "roles": [
+        "character_renders",
+        "named_character_identity",
+        "theme_character_pages"
+      ]
+    },
+    {
+      "id": "ldraw_library",
+      "medium": "structured_geometry",
+      "authority": "community_structured",
+      "url": "https://library.ldraw.org/",
+      "roles": [
+        "official_part_geometry_reconstruction",
+        "patterned_component_index",
+        "multi_view_rendering"
+      ],
+      "notes": "LDraw Official means accepted in LDraw, not approved/authored by LEGO."
+    },
+    {
+      "id": "lego_games_catalog",
+      "medium": "game",
+      "authority": "lego_primary",
+      "url": "https://www.lego.com/en-us/games",
+      "roles": [
+        "current_game_inventory",
+        "official_trailers",
+        "official_game_pages"
+      ]
+    },
+    {
+      "id": "ttgames_catalog",
+      "medium": "game",
+      "authority": "developer_primary",
+      "url": "https://www.ttgames.com/games",
+      "roles": [
+        "TT_title_inventory",
+        "release_dates",
+        "game_media"
+      ]
+    },
+    {
+      "id": "skywalker_profile_icons",
+      "medium": "game",
+      "authority": "lego_primary",
+      "url": "https://www.lego.com/en-us/themes/star-wars/games/skywalker-saga",
+      "roles": [
+        "hundreds_of_official_game_minifigure_icons",
+        "playable_character_reference"
+      ],
+      "notes": "Official page states >300 playable characters and hundreds of profile-icon minifigures."
+    },
+    {
+      "id": "ttgames_explorer_rebirth",
+      "medium": "game_asset_extraction",
+      "authority": "community_tool",
+      "url": "https://github.com/AcK77/TTGames-Explorer-Rebirth",
+      "roles": [
+        "archive_extraction",
+        "texture_view_export",
+        "model_viewing"
+      ],
+      "notes": "Supports DAT/FPK/PAC/PAK and several TT texture/model formats."
+    },
+    {
+      "id": "ttgames_lego_documentation",
+      "medium": "game_asset_extraction",
+      "authority": "community_documentation",
+      "url": "https://github.com/AlubJ/TTGames-LEGO-Documentation",
+      "roles": [
+        "archive_extraction_guides",
+        "format_research",
+        "game_specific_notes"
+      ]
+    },
+    {
+      "id": "brickvault",
+      "medium": "game_asset_extraction",
+      "authority": "community_tool",
+      "url": "https://github.com/connorh315/BrickVault",
+      "roles": [
+        "archive_extraction",
+        "skywalker_saga_support"
+      ],
+      "notes": "Skywalker Saga extraction needs the game's own Oodle library on Windows."
+    },
+    {
+      "id": "quickbms_ttgames_scripts",
+      "medium": "game_asset_extraction",
+      "authority": "community_tool",
+      "url": "https://github.com/linterniGamer/Tt-Games-quickbms-scripts",
+      "roles": [
+        "archive_extraction",
+        "texture_conversion",
+        "game_specific_scripts"
+      ]
+    },
+    {
+      "id": "lego_movie2_press",
+      "medium": "film",
+      "authority": "lego_primary",
+      "url": "https://www.lego.com/en-us/aboutus/news/2019/october/lego-movie-2-building-sets-released",
+      "roles": [
+        "film_press_assets",
+        "film_physical_crosswalk"
+      ]
+    },
+    {
+      "id": "lego_ninjago_movie_product",
+      "medium": "film",
+      "authority": "lego_primary",
+      "url": "https://www.lego.com/en-us/product/the-lego-ninjago-movie-71019",
+      "roles": [
+        "film_character_roster",
+        "physical_variants",
+        "official_images"
+      ]
+    },
+    {
+      "id": "lego_batman_movie_products",
+      "medium": "film",
+      "authority": "lego_primary",
+      "url": "https://www.lego.com/en-us/product/the-lego-batman-movie-series-2-71020",
+      "roles": [
+        "film_character_roster",
+        "physical_variants",
+        "official_images"
+      ]
+    },
+    {
+      "id": "piece_by_piece",
+      "medium": "film",
+      "authority": "lego_primary",
+      "url": "https://www.lego.com/en-us/categories/adults-welcome/article/how-pharrell-williams-co-designed-his-set",
+      "roles": [
+        "film_reference",
+        "face_diversity",
+        "film_physical_crosswalk"
+      ],
+      "notes": "Official LEGO article says associated set contains 30+ new minifigure heads."
+    },
+    {
+      "id": "lego_games_30_history",
+      "medium": "game",
+      "authority": "lego_primary",
+      "url": "https://www.lego.com/en-es/aboutus/news/2025/december/game-on-30-years-of-lego-video-games",
+      "roles": [
+        "global_game_history",
+        "legacy_game_anchors",
+        "official_over_200_titles_fact"
+      ],
+      "notes": "LEGO says it has produced over 200 game titles since 1995; confirms Fun to Build as first title and highlights Island/Racers/Star Wars."
+    },
+    {
+      "id": "lego_retro_pc_games",
+      "medium": "game",
+      "authority": "lego_primary",
+      "url": "https://www.lego.com/en-us/categories/adults-welcome/article/best-retro-lego-pc-games",
+      "roles": [
+        "1990s_pc_title_inventory",
+        "legacy_character_reference"
+      ],
+      "notes": "Lists seven 1990s PC games including Island, Loco, Chess, Creator, Friends, Racers and Rock Raiders."
+    },
+    {
+      "id": "bits_n_bricks_lego_island",
+      "medium": "game",
+      "authority": "lego_primary",
+      "url": "https://www.lego.com/cdn/cs/set/assets/bltd399c039fb565168/bits_n_bricks_s01e04_lego_island_feature_and_transcript.pdf",
+      "roles": [
+        "legacy_game_history",
+        "digital_minifigure_design_history",
+        "character_context"
+      ]
+    },
+    {
+      "id": "lego_games_25_timeline",
+      "medium": "game",
+      "authority": "lego_primary",
+      "url": "https://www.lego.com/cdn/cs/legal/assets/blt21bc97206babfbab/lego_games_25_years_timeline_2020_highres_download.pdf",
+      "roles": [
+        "official_game_timeline",
+        "legacy_title_discovery",
+        "release_history"
+      ]
+    },
+    {
+      "id": "wikipedia_lego_video_games",
+      "medium": "game",
+      "authority": "secondary_discovery",
+      "url": "https://en.wikipedia.org/wiki/List_of_Lego_video_games",
+      "roles": [
+        "historical_candidate_title_inventory",
+        "platform_discovery"
+      ],
+      "notes": "Discovery only; verify candidates against LEGO/developer/publisher sources."
+    }
+  ],
+  "priority_order": [
+    "lego_primary",
+    "developer_primary",
+    "structured_catalog",
+    "community_structured",
+    "community_tool",
+    "secondary_discovery"
+  ]
+}

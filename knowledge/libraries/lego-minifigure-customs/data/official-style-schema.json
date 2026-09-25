@@ -1,0 +1,192 @@
+{
+  "schema_version": "0.1",
+  "purpose": "Official physical/digital minifigure visual corpus and style-learning schema",
+  "sample": {
+    "sample_id": "",
+    "medium": [
+      "physical",
+      "digital_game",
+      "digital_marketing",
+      "instruction_art"
+    ],
+    "authority": [
+      "lego_primary",
+      "licensed_game_primary",
+      "structured_catalog",
+      "secondary_structured_vector",
+      "secondary_research"
+    ],
+    "catalog_ids": {
+      "bricklink": null,
+      "rebrickable": null,
+      "brickset": null,
+      "lego_element_ids": [],
+      "ldraw": []
+    },
+    "year": null,
+    "theme": "",
+    "subtheme": "",
+    "figure_form": "",
+    "character_id": "",
+    "incarnation_id": "",
+    "appearance_id": "",
+    "outfit_design_id": "",
+    "physical_release_id": null,
+    "digital_title": null,
+    "digital_correspondence": [
+      "exact_physical_match",
+      "physical_release_variant",
+      "digital_only_official_design",
+      "game_embellished_physical_design",
+      "digital_non_minifigure",
+      null
+    ],
+    "source": {
+      "url": "",
+      "observed_at": "",
+      "published_at": null,
+      "confidence": "",
+      "image_reference_url": null,
+      "local_cache_hash": null,
+      "storage_policy": "metadata_and_derived_features_only"
+    },
+    "components": [],
+    "base_part_colors": [],
+    "print_surfaces": [],
+    "style_profile": "",
+    "expression": {
+      "primary": null,
+      "secondary": null,
+      "labels": []
+    },
+    "derived_features": {},
+    "review_status": [
+      "unprocessed",
+      "machine_extracted",
+      "needs_review",
+      "validated",
+      "excluded"
+    ]
+  },
+  "face_features": {
+    "feature_bbox_norm": [
+      "x",
+      "y",
+      "w",
+      "h"
+    ],
+    "eyes": [
+      "center_norm",
+      "width_norm",
+      "height_norm",
+      "pupil_style",
+      "highlight_style",
+      "symmetry"
+    ],
+    "eyebrows": [
+      "center_norm",
+      "angle_deg",
+      "length_norm",
+      "thickness_class",
+      "curvature_class",
+      "color_role",
+      "hair_relation"
+    ],
+    "mouth": [
+      "center_norm",
+      "width_norm",
+      "curvature_class",
+      "open_state",
+      "teeth",
+      "tongue",
+      "corner_marks",
+      "asymmetry"
+    ],
+    "anatomy": [
+      "nose_mark",
+      "cheek_marks",
+      "dimples",
+      "wrinkles",
+      "scars",
+      "freckles"
+    ],
+    "facial_hair": [
+      "moustache",
+      "beard",
+      "stubble",
+      "sideburns"
+    ],
+    "eyewear_mask": [
+      "type",
+      "coverage"
+    ],
+    "reverse_face": [
+      "present",
+      "expression_role",
+      "occlusion_requirement"
+    ]
+  },
+  "torso_features": {
+    "neckline": "",
+    "garment_layer_graph": [],
+    "major_regions": [],
+    "emblem_bbox_norm": null,
+    "belt_waist_transition": "",
+    "pockets": 0,
+    "fasteners": [],
+    "fold_primitives": [],
+    "armor_panels": [],
+    "primary_symmetry": "",
+    "front_back_links": [],
+    "side_links": []
+  },
+  "limb_features": {
+    "arm_print_present": false,
+    "sleeve_boundary": null,
+    "shoulder_insignia": null,
+    "glove_gauntlet": null,
+    "leg_print_present": false,
+    "hip_print_present": false,
+    "knee_markers": [],
+    "boot_shoe_transition": null,
+    "side_continuation": []
+  },
+  "global_features": {
+    "visual_color_roles": [],
+    "base_plastic_negative_space_ratio": null,
+    "line_classes": {
+      "primary_outline": null,
+      "structural_internal": null,
+      "facial_primary": null,
+      "facial_secondary": null,
+      "microdetail": null
+    },
+    "detail_density": null,
+    "symmetry_score": null,
+    "largest_identity_cue": "",
+    "identity_critical_motifs": [],
+    "physical_readability_score": null,
+    "print_surface_coverage": []
+  },
+  "evaluation": {
+    "reference_fidelity_0_100": null,
+    "official_likeness_0_100": null,
+    "production_quality_0_100": null,
+    "critical_failures": [],
+    "notes": []
+  },
+  "style_profiles": [
+    "official_physical_classic_simple",
+    "official_physical_expression_expansion",
+    "official_physical_licensed_early",
+    "official_physical_modern",
+    "official_digital_game"
+  ],
+  "non_inference_rules": [
+    "Do not infer exact print-line thickness from scaled web renders.",
+    "Do not invent the exact eyebrow-to-hair color mapping absent published evidence.",
+    "Do not allow digital deformation/shader effects into physical decoration statistics without physical corroboration.",
+    "Do not collapse catalog assembly count into unique character count.",
+    "Do not store custom designs as official baseline evidence."
+  ]
+}

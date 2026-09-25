@@ -1,0 +1,107 @@
+{
+  "schema_version": "0.1",
+  "researched_at": "2026-09-24",
+  "sources": [
+    {
+      "id": "lego_media_assets_hub",
+      "authority": "lego_primary",
+      "url": "https://www.lego.com/en-us/aboutus/newsroom/media-assets",
+      "roles": [
+        "discovery_hub",
+        "asset_permission_metadata"
+      ],
+      "notes": [
+        "Links production, offices, stores, sustainability, headshots/portraits, brand/logo and LEGO House asset libraries."
+      ]
+    },
+    {
+      "id": "lego_production_assets",
+      "authority": "lego_primary",
+      "url": "https://www.lego.com/en-us/aboutus/newsroom/lego-production-assets",
+      "roles": [
+        "manufacturing_context",
+        "moulding_process",
+        "factory_visuals",
+        "freshly_moulded_element_reference"
+      ],
+      "examples": [
+        "freshly moulded elements",
+        "elements being made",
+        "brick moulding machines",
+        "automated guided vehicles",
+        "factory moulding halls"
+      ],
+      "corpus_role": "manufacturing_context_only_not_style_ground_truth"
+    },
+    {
+      "id": "lego_production_facility_visuals_2022",
+      "authority": "lego_primary",
+      "url": "https://www.lego.com/en-us/aboutus/news/2014/september/lego-production-facility-visuals",
+      "reported_bundle_size_mb": 441,
+      "roles": [
+        "factory_visuals",
+        "manufacturing_context"
+      ],
+      "corpus_role": "manufacturing_context_only"
+    },
+    {
+      "id": "lego_headshots_portraits",
+      "authority": "lego_primary",
+      "url": "https://www.lego.com/en-us/aboutus/newsroom/media-assets",
+      "roles": [
+        "controlled_real_person_photography",
+        "potential_human_likeness_pair_source"
+      ],
+      "corpus_role": "reference_identity_only_when_corresponding_lego_minifigure_exists",
+      "notes": [
+        "Do not treat corporate portraits as minifigure style supervision."
+      ]
+    },
+    {
+      "id": "lego_minifigure_40_history",
+      "authority": "lego_primary",
+      "url": "https://www.lego.com/en-us/aboutus/news/2019/october/minifigure-40",
+      "reported_bundle_size_mb": 12,
+      "roles": [
+        "historical_style_evolution",
+        "face_history",
+        "mould_history",
+        "character_count_context"
+      ],
+      "explicit_facts": {
+        "1978_face": "two solid black eyes and black painted smile",
+        "2018_unique_faces_over": 650,
+        "historical_minifigure_count_over": 8000
+      },
+      "corpus_role": "historical_official_style_reference"
+    },
+    {
+      "id": "lego_factory_precision_context",
+      "authority": "lego_primary",
+      "url": "https://www.lego.com/en-us/aboutus/news/2022/june/the-lego-group-to-build-us-1-billion-carbon-neutral-run-factory-in-virginia-usa",
+      "roles": [
+        "dimensional_precision_context",
+        "manufacturing_quality"
+      ],
+      "explicit_fact": "LEGO states elements are moulded to approximately 0.005 mm / a hair's width in this release.",
+      "corpus_role": "manufacturing_constraint_context"
+    },
+    {
+      "id": "lego_sustainability_material_assets",
+      "authority": "lego_primary",
+      "url": "https://www.lego.com/en-us/aboutus/newsroom/lego-sustainability-assets",
+      "roles": [
+        "material_reference",
+        "resin/material_visual_context",
+        "lab_testing"
+      ],
+      "corpus_role": "materials_context_not_graphic_style"
+    }
+  ],
+  "ingestion_policy": {
+    "style_weight": "Only minifigure-history/product/design assets contribute to style distributions.",
+    "identity_weight": "Headshots can become identity references only when paired to an official minifigure representation of that person.",
+    "manufacturing_weight": "Production/factory visuals inform process and physical constraints but never linework/facial grammar.",
+    "raw_asset_status": "Direct downloadable files require a network-enabled/local runtime for materialization; URLs and roles are canonical now."
+  }
+}

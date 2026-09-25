@@ -1,0 +1,91 @@
+{
+  "schema_version": "0.1",
+  "status_values": [
+    "unmeasured",
+    "queued",
+    "measured_once",
+    "replicated",
+    "validated",
+    "conflict",
+    "superseded"
+  ],
+  "priority_items": [
+    {
+      "target": "973 torso",
+      "measure": [
+        "front/back printable polygon",
+        "width/height landmarks",
+        "neck relation",
+        "side curvature",
+        "jig datums"
+      ],
+      "priority": "critical"
+    },
+    {
+      "target": "3626-family head variants",
+      "measure": [
+        "diameter",
+        "printable cylindrical height",
+        "stud variants",
+        "front landmark datum",
+        "indexed-rotation repeatability"
+      ],
+      "priority": "critical"
+    },
+    {
+      "target": "3818/3819 arms",
+      "measure": [
+        "printable curvature",
+        "rotation datum",
+        "hand-hole relation",
+        "left/right mirroring"
+      ],
+      "priority": "critical"
+    },
+    {
+      "target": "3820 hand",
+      "measure": [
+        "grip opening",
+        "cuff interface",
+        "UV-safe regions"
+      ],
+      "priority": "high"
+    },
+    {
+      "target": "current hips/leg variants",
+      "measure": [
+        "front/side print zones",
+        "hip-leg articulation clearance",
+        "foot region",
+        "dual-mould boundaries"
+      ],
+      "priority": "critical"
+    },
+    {
+      "target": "common headwear/hair",
+      "measure": [
+        "head interface",
+        "clearance envelope",
+        "UV-printable zones"
+      ],
+      "priority": "high"
+    }
+  ],
+  "measurement_record": [
+    "sample_id",
+    "source_part_id",
+    "mould_marks",
+    "color",
+    "condition",
+    "instrument",
+    "instrument_resolution",
+    "operator",
+    "temperature_optional",
+    "measurement_name",
+    "value_mm",
+    "repeat_count",
+    "photos",
+    "notes"
+  ],
+  "rule": "Never convert LDU-derived or community dimensions into manufacturing-approved dimensions without physical validation."
+}

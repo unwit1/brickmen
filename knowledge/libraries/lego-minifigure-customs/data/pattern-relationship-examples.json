@@ -1,0 +1,43 @@
+{
+  "schema_version": "0.1",
+  "purpose": "Seed examples proving that decoration, base geometry and assemblies must be separate graph entities.",
+  "examples": [
+    {
+      "patterned_part": "973pct3.dat",
+      "description": "Minifig Torso with Toa Tahu Pattern",
+      "base_family": "973",
+      "role": "torso_pattern"
+    },
+    {
+      "patterned_part": "76382pct3.dat",
+      "description": "Minifig Torso with Arms and Hands with Toa Tahu Pattern",
+      "role": "upper_assembly_pattern"
+    },
+    {
+      "patterned_part": "3815bpct3.dat",
+      "description": "Minifig Hips with Toa Tahu Pattern",
+      "role": "hips_pattern"
+    },
+    {
+      "patterned_part": "20460bpct3.dat",
+      "description": "Minifig Leg Left with Red Lower Leg and Toa Tahu Pattern",
+      "role": "leg_pattern_multicolor"
+    },
+    {
+      "patterned_part": "21019bpct3.dat",
+      "description": "Minifig Hips and Legs with Red Lower Leg and Toa Tahu Pattern",
+      "role": "lower_assembly_pattern"
+    },
+    {
+      "patterned_part": "28621pct3.dat",
+      "description": "Minifig Head with Balaclava, Bright Pink Headband and Smirk Pattern",
+      "role": "head_pattern"
+    }
+  ],
+  "rules": [
+    "Patterned records do not redefine base connector geometry.",
+    "Assembly patterns may depend on multiple individually patterned components.",
+    "Multi-colour moulding and surface decoration must be distinguishable where source metadata supports it."
+  ],
+  "source": "https://library.ldraw.org/parts/list?tableSearch=pct3"
+}

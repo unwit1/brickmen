@@ -1,0 +1,297 @@
+{
+  "schema_version": "0.1",
+  "researched_at": "2026-09-24",
+  "purpose": "Primary-source LEGO designer statements converted into supervised design-decision rules for source-to-LEGO translation.",
+  "rules": [
+    {
+      "id": "gather_complete_visual_reference_first",
+      "source_id": "star_wars_graphic_designer_6218782",
+      "authority": "lego_primary_designer",
+      "source": "https://www.lego.com/cdn/product-assets/product.bi.core.pdf/6218782.pdf",
+      "designer": "Marie Sertillanges",
+      "rule": "Begin by gathering all available visual references and building a coherent overall picture of the character before drawing decoration.",
+      "labels": [
+        "reference_acquisition",
+        "identity_resolution"
+      ],
+      "confidence": "explicit"
+    },
+    {
+      "id": "choose_base_lego_colors_before_detail",
+      "source_id": "star_wars_graphic_designer_6218782",
+      "authority": "lego_primary_designer",
+      "source": "https://www.lego.com/cdn/product-assets/product.bi.core.pdf/6218782.pdf",
+      "designer": "Marie Sertillanges",
+      "rule": "Choose LEGO colors for torso, arms, legs and hands before detailed graphic refinement.",
+      "labels": [
+        "color_role_mapping",
+        "base_plastic_selection"
+      ],
+      "confidence": "explicit"
+    },
+    {
+      "id": "simple_large_shapes_first",
+      "source_id": "star_wars_graphic_designer_6218782",
+      "authority": "lego_primary_designer",
+      "source": "https://www.lego.com/cdn/product-assets/product.bi.core.pdf/6218782.pdf",
+      "designer": "Marie Sertillanges",
+      "rule": "Start with extra-simple, large shapes so composition and readability work before subdividing them into detail.",
+      "labels": [
+        "linework",
+        "detail_density",
+        "composition",
+        "readability"
+      ],
+      "confidence": "explicit"
+    },
+    {
+      "id": "select_only_identity_defining_details",
+      "source_id": "star_wars_graphic_designer_6218782",
+      "authority": "lego_primary_designer",
+      "source": "https://www.lego.com/cdn/product-assets/product.bi.core.pdf/6218782.pdf",
+      "designer": "Marie Sertillanges",
+      "rule": "Choose the details that best capture the character's appearance or personality rather than attempting complete literal transcription.",
+      "labels": [
+        "identity_cues",
+        "simplification",
+        "omission"
+      ],
+      "confidence": "explicit"
+    },
+    {
+      "id": "iterative_reference_to_sketch_loop",
+      "source_id": "star_wars_graphic_designer_6218782",
+      "authority": "lego_primary_designer",
+      "source": "https://www.lego.com/cdn/product-assets/product.bi.core.pdf/6218782.pdf",
+      "designer": "Marie Sertillanges",
+      "rule": "Iterate back and forth between source references and the LEGO sketch until the translation works.",
+      "labels": [
+        "iterative_design",
+        "reference_fidelity"
+      ],
+      "confidence": "explicit"
+    },
+    {
+      "id": "licensed_source_prefers_primary_production_reference",
+      "source_id": "star_wars_graphic_designer_6218782",
+      "authority": "lego_primary_designer",
+      "source": "https://www.lego.com/cdn/product-assets/product.bi.core.pdf/6218782.pdf",
+      "designer": "Marie Sertillanges",
+      "rule": "For older Star Wars designs, LEGO used film stills and production photography supplied by Lucasfilm as primary reference material.",
+      "labels": [
+        "source_authority",
+        "licensed_reference"
+      ],
+      "confidence": "explicit"
+    },
+    {
+      "id": "lego_filter_not_literal_realism",
+      "source_id": "star_wars_graphic_designer_6218779",
+      "authority": "lego_primary_designer",
+      "source": "https://www.lego.com/cdn/product-assets/product.bi.core.pdf/6218779.pdf",
+      "rule": "Do not reproduce everything literally; identify what makes the character special and translate reality through a LEGO filter.",
+      "labels": [
+        "simplification",
+        "official_style",
+        "identity_cues"
+      ],
+      "confidence": "explicit"
+    },
+    {
+      "id": "material_can_be_implied_with_graphic_cues",
+      "source_id": "star_wars_graphic_designer_6218779",
+      "authority": "lego_primary_designer",
+      "source": "https://www.lego.com/cdn/product-assets/product.bi.core.pdf/6218779.pdf",
+      "rule": "Layering, materials and wrinkles can be selectively represented when they communicate material quality, disorder or dynamism.",
+      "labels": [
+        "material_graphics",
+        "fold_grammar",
+        "selective_detail"
+      ],
+      "confidence": "explicit"
+    },
+    {
+      "id": "arm_printing_is_exceptional",
+      "source_id": "star_wars_graphic_designer_6218779",
+      "authority": "lego_primary_designer",
+      "source": "https://www.lego.com/cdn/product-assets/product.bi.core.pdf/6218779.pdf",
+      "rule": "Torso, head and legs are normal decoration regions; arm decoration is reserved for special minifigures rather than treated as default.",
+      "labels": [
+        "print_region_allocation",
+        "detail_budget"
+      ],
+      "confidence": "explicit"
+    },
+    {
+      "id": "side_characters_need_differentiating_cues",
+      "source_id": "star_wars_graphic_designer_6218779",
+      "authority": "lego_primary_designer",
+      "source": "https://www.lego.com/cdn/product-assets/product.bi.core.pdf/6218779.pdf",
+      "rule": "Generic or secondary characters require closer study to find the small cues that distinguish them from similar figures.",
+      "labels": [
+        "identity_discrimination",
+        "long_tail_characters"
+      ],
+      "confidence": "explicit"
+    },
+    {
+      "id": "reuse_existing_elements_when_shape_matches",
+      "source_id": "nightmare_before_christmas_designer",
+      "authority": "lego_primary_designer",
+      "source": "https://www.lego.com/en-tw/categories/adults-welcome/article/nightmare-before-christmas-designer-interview",
+      "rule": "If a character shape maps well to existing LEGO elements, reuse those elements and add printing rather than creating unnecessary new geometry.",
+      "example": "The Mayor",
+      "labels": [
+        "existing_mould",
+        "print_vs_mould",
+        "part_reuse"
+      ],
+      "confidence": "explicit"
+    },
+    {
+      "id": "expression_research_selects_characteristic_states",
+      "source_id": "nightmare_before_christmas_designer",
+      "authority": "lego_primary_designer",
+      "source": "https://www.lego.com/en-tw/categories/adults-welcome/article/nightmare-before-christmas-designer-interview",
+      "rule": "Research multiple characteristic expressions and choose a main/secondary expression that conveys personality while remaining appropriate for the product.",
+      "labels": [
+        "expression_translation",
+        "dual_face"
+      ],
+      "confidence": "explicit"
+    },
+    {
+      "id": "age_audience_can_reduce_source_scariness",
+      "source_id": "nightmare_before_christmas_designer",
+      "authority": "lego_primary_designer",
+      "source": "https://www.lego.com/en-tw/categories/adults-welcome/article/nightmare-before-christmas-designer-interview",
+      "rule": "Source fidelity can be intentionally moderated to meet LEGO audience/design principles, e.g. keeping characters close to film while reducing scariness.",
+      "labels": [
+        "audience_filter",
+        "controlled_deviation"
+      ],
+      "confidence": "explicit"
+    },
+    {
+      "id": "new_element_when_existing_geometry_cannot_preserve_identity",
+      "source_id": "wednesday_designer",
+      "authority": "lego_primary_designer",
+      "source": "https://www.lego.com/en-us/categories/adults-welcome/article/surprises-lego-wednesday",
+      "rule": "Create a new element when the existing vocabulary cannot achieve the needed identity and visual balance.",
+      "example": "Wednesday face element; roughly fifty iterations",
+      "labels": [
+        "new_mould",
+        "identity",
+        "iteration"
+      ],
+      "confidence": "explicit"
+    },
+    {
+      "id": "minimalism_and_source_tone_are_joint_objectives",
+      "source_id": "wednesday_designer",
+      "authority": "lego_primary_designer",
+      "source": "https://www.lego.com/en-us/categories/adults-welcome/article/surprises-lego-wednesday",
+      "rule": "Balance minimal LEGO visual language against the source property's distinctive tone, using graphics to restore identity where geometry alone is insufficient.",
+      "labels": [
+        "minimalism",
+        "style_balance",
+        "graphics_plus_geometry"
+      ],
+      "confidence": "explicit"
+    },
+    {
+      "id": "print_vs_build_is_explicit_decision",
+      "source_id": "kpop_demon_hunters_derpy",
+      "authority": "lego_primary_designer",
+      "source": "https://www.lego.com/en-us/aboutus/news/2026/june/lego-kpop-demon-hunters-derpy-tiger-and-sussie-bird",
+      "rule": "Explicitly decide whether identity should be brick-built, printed, or a hybrid; use printing for accuracy/details while geometry carries major form.",
+      "labels": [
+        "print_vs_geometry",
+        "hybrid",
+        "identity"
+      ],
+      "confidence": "explicit"
+    },
+    {
+      "id": "small_expression_geometry_changes_have_large_identity_effect",
+      "source_id": "kpop_demon_hunters_derpy",
+      "authority": "lego_primary_designer",
+      "source": "https://www.lego.com/en-us/aboutus/news/2026/june/lego-kpop-demon-hunters-derpy-tiger-and-sussie-bird",
+      "rule": "Small changes in eye shape, angle and placement can strongly change perceived character/expression and deserve focused iteration.",
+      "labels": [
+        "facial_landmarks",
+        "expression",
+        "sensitivity"
+      ],
+      "confidence": "explicit"
+    },
+    {
+      "id": "historical_reference_research_guides_graphics",
+      "source_id": "viking_village_designer",
+      "authority": "lego_primary_designer",
+      "source": "https://www.lego.com/en-us/categories/adults-welcome/article/return-of-lego-vikings-village",
+      "rule": "Research source-appropriate clothing, materials and colors before designing character graphics.",
+      "labels": [
+        "historical_reference",
+        "materials",
+        "color",
+        "costume"
+      ],
+      "confidence": "explicit"
+    },
+    {
+      "id": "distinctive_character_traits_map_to_mould_print_accessory",
+      "source_id": "one_piece_baratie",
+      "authority": "lego_primary",
+      "source": "https://www.lego.com/en-us/categories/adults-welcome/article/introducing-lego-one-piece-baratie-restaurant-kit",
+      "rule": "Use whichever channel best carries each signature cue: new hair/headgear elements, double-sided expressions, beard/pegleg silhouette, glasses/uniform, or a new weapon element.",
+      "labels": [
+        "multi_channel_identity",
+        "new_mould",
+        "expression",
+        "accessory"
+      ],
+      "confidence": "explicit"
+    },
+    {
+      "id": "graphics_are_integrated_across_stickers_prints_logos_minifigures",
+      "source_id": "rivendell_visual_design",
+      "authority": "lego_primary_designer",
+      "source": "https://www.lego.com/en-fr/discover/insiders-articles/visual-design-for-lego-lord-of-the-rings",
+      "rule": "Treat minifigure designs, printed elements, stickers and logos as one coordinated visual-design system rather than isolated outputs.",
+      "labels": [
+        "visual_system",
+        "cross_asset_consistency"
+      ],
+      "confidence": "explicit_summary"
+    },
+    {
+      "id": "individuality_vs_reference_at_tiny_scale",
+      "source_id": "ghostbusters_ideas_6115700",
+      "authority": "lego_primary_designer",
+      "source": "https://www.lego.com/cdn/product-assets/product.bi.core.pdf/6115700.pdf",
+      "designer": "Adam Corbally",
+      "rule": "At minifigure scale, maximize individual differentiation while staying close to film references; small scale creates an explicit tradeoff between likeness and readable distinctiveness.",
+      "labels": [
+        "identity_discrimination",
+        "reference_fidelity",
+        "small_scale_readability",
+        "detail_budget"
+      ],
+      "confidence": "explicit"
+    }
+  ],
+  "derived_training_targets": [
+    "reference_selection_policy",
+    "identity_feature_priority",
+    "detail_budget",
+    "print_region_allocation",
+    "existing_part_vs_new_mould",
+    "print_vs_geometry",
+    "expression_selection",
+    "audience_filter",
+    "color_role_mapping",
+    "material_graphic_cues",
+    "iteration_priority"
+  ]
+}

@@ -1,0 +1,267 @@
+{
+  "schema_version": "0.1",
+  "researched_at": "2026-09-24",
+  "sources": [
+    {
+      "id": "lego_minifigure_history",
+      "name": "LEGO - The history of LEGO minifigures",
+      "authority": "lego_primary",
+      "url": "https://www.lego.com/uk-ua/categories/adults-welcome/article/history-of-lego-minifigures",
+      "uses": [
+        "historical eras",
+        "body-print history",
+        "simplicity/customizability",
+        "dual-expression context"
+      ],
+      "notes": "Primary historical/design overview."
+    },
+    {
+      "id": "lego_complete_guidelines_transcript",
+      "name": "Bits N' Bricks - LEGO Minifigures: A Conversation",
+      "authority": "lego_primary",
+      "url": "https://www.lego.com/cdn/cs/set/assets/blt6b793d2604b98954/bits_n_bricks_s01e08_lego_minfigures_a_conversation_feature_and_transcript.pdf",
+      "uses": [
+        "internal style-guide existence",
+        "eyebrow guidance",
+        "expression guidance",
+        "digital-vs-physical rules",
+        "proportions",
+        "posing"
+      ],
+      "notes": "Public transcript discusses the roughly 300-page Complete Minifigure Guidelines. Exact internal numerical rules are not public."
+    },
+    {
+      "id": "lego_marie_sertillanges",
+      "name": "LEGO Star Wars graphic designer interview - Marie Sertillanges",
+      "authority": "lego_primary",
+      "url": "https://www.lego.com/cdn/product-assets/product.bi.core.pdf/6218782.pdf",
+      "uses": [
+        "reference gathering",
+        "LEGO color selection",
+        "big-shape workflow",
+        "detail carving",
+        "licensed reference fidelity"
+      ],
+      "notes": "Primary description of minifigure decoration workflow."
+    },
+    {
+      "id": "lego_paul_turcanu",
+      "name": "LEGO Star Wars graphic designer interview - Paul Constantin Turcanu",
+      "authority": "lego_primary",
+      "url": "https://www.lego.com/cdn/product-assets/product.bi.core.pdf/6143203.pdf",
+      "uses": [
+        "official reference study",
+        "paper-to-digital workflow",
+        "simplicity",
+        "iconic-feature selection"
+      ],
+      "notes": "Primary description of simplifying detailed references."
+    },
+    {
+      "id": "lego_wednesday_design",
+      "name": "LEGO Wednesday design interview",
+      "authority": "lego_primary",
+      "url": "https://www.lego.com/en-pt/categories/adults-welcome/article/surprises-lego-wednesday",
+      "uses": [
+        "minimalistic design DNA",
+        "expression iteration",
+        "licensed-tone balance"
+      ],
+      "notes": "Reports about 50 iterations for Wednesday's face."
+    },
+    {
+      "id": "lego_nightmare_design",
+      "name": "LEGO Nightmare Before Christmas designer interview",
+      "authority": "lego_primary",
+      "url": "https://www.lego.com/en-sk/categories/adults-welcome/article/nightmare-before-christmas-designer-interview",
+      "uses": [
+        "expression-family research",
+        "main/secondary expression selection",
+        "licensed likeness"
+      ],
+      "notes": "Explicitly discusses surprised/grumpy/sneaky/mischievous expression selection."
+    },
+    {
+      "id": "lego_viking_design",
+      "name": "LEGO Viking Village designer interview",
+      "authority": "lego_primary",
+      "url": "https://www.lego.com/en-za/categories/adults-welcome/article/return-of-lego-vikings-village",
+      "uses": [
+        "costume research",
+        "material/color cues",
+        "small detail selection",
+        "historical abstraction"
+      ]
+    },
+    {
+      "id": "lego_bts_design",
+      "name": "LEGO BTS Dynamite design article",
+      "authority": "lego_primary",
+      "url": "https://www.lego.com/en-cz/categories/adults-welcome/article/best-features-lego-dynamite-bts-set",
+      "uses": [
+        "outfit mimicry",
+        "licensed costume recognition",
+        "hair-piece identity"
+      ]
+    },
+    {
+      "id": "lego_create_minifigure",
+      "name": "LEGO Create a Minifigure / Minifigure Factory",
+      "authority": "lego_primary",
+      "url": "https://www.lego.com/en-us/pick-and-build/create-a-minifigure",
+      "uses": [
+        "official component mix-and-match",
+        "current torso-customization boundary",
+        "official printed-part combinations"
+      ]
+    },
+    {
+      "id": "bricklink_studio_decorated_minifig",
+      "name": "BrickLink Studio decorated minifig guide",
+      "authority": "official_ecosystem_reference",
+      "url": "https://studiohelp.bricklink.com/hc/en-us/articles/5877834417303-Creating-a-decorated-minifig",
+      "uses": [
+        "head canvas reference",
+        "face-feature reference box",
+        "decorated-part preview workflow"
+      ],
+      "notes": "Explicitly says its guide is reference, not definitive design guideline."
+    },
+    {
+      "id": "bricklink_minifigure_catalog",
+      "name": "BrickLink Minifigure Reference Catalog",
+      "authority": "structured_catalog",
+      "url": "https://www.bricklink.com/catalogList.asp?catType=M",
+      "uses": [
+        "census",
+        "catalog IDs",
+        "categories",
+        "variants",
+        "inventories"
+      ],
+      "observed_count_2026_09_24": 19250
+    },
+    {
+      "id": "brickset_minifigure_catalog",
+      "name": "Brickset Minifigure Catalog",
+      "authority": "structured_catalog_secondary",
+      "url": "https://brickset.com/minifigs",
+      "uses": [
+        "year facets",
+        "character names",
+        "tags",
+        "theme cross-check"
+      ],
+      "observed_count_2026_09_24": 19240,
+      "notes": "Brickset states minifigure data is displayed courtesy of BrickLink."
+    },
+    {
+      "id": "rebrickable_bulk",
+      "name": "Rebrickable LEGO catalog and bulk downloads",
+      "authority": "structured_catalog",
+      "url": "https://rebrickable.com/api/v3/docs/",
+      "uses": [
+        "bulk official minifig census",
+        "part inventories",
+        "colors",
+        "external IDs",
+        "theme/set relationships"
+      ],
+      "notes": "Docs direct full-list users to bulk CSV downloads."
+    },
+    {
+      "id": "ldraw_official_patterned_parts",
+      "name": "LDraw Official Parts Library - patterned minifigure parts",
+      "authority": "secondary_structured_vector",
+      "url": "https://library.ldraw.org/",
+      "uses": [
+        "structured pattern geometry",
+        "part/pattern indexing",
+        "derived vector measurements"
+      ],
+      "notes": "LDraw 'Official' means accepted into LDraw, not authored/approved by LEGO."
+    },
+    {
+      "id": "lego_skywalker_saga",
+      "name": "LEGO Star Wars: The Skywalker Saga",
+      "authority": "licensed_game_primary",
+      "url": "https://www.lego.com/en-us/themes/star-wars/games/skywalker-saga",
+      "uses": [
+        "official digital minifigures",
+        "digital-only/variant character designs",
+        "profile-icon encyclopedia"
+      ],
+      "notes": "LEGO page says more than 300 playable characters and hundreds of minifigures in profile icons."
+    },
+    {
+      "id": "lego_marvel_superheroes_game",
+      "name": "LEGO Marvel Super Heroes",
+      "authority": "licensed_game_primary",
+      "url": "https://www.lego.com/en-be/themes/marvel/games/super-heroes",
+      "uses": [
+        "official digital Marvel designs",
+        "digital-only variants",
+        "source-to-LEGO translation"
+      ]
+    },
+    {
+      "id": "lego_marvel_avengers_game",
+      "name": "LEGO Marvel Avengers",
+      "authority": "licensed_game_primary",
+      "url": "https://www.lego.com/en-us/themes/marvel/games/avengers",
+      "uses": [
+        "official digital MCU designs",
+        "physical/digital comparison"
+      ]
+    },
+    {
+      "id": "lego_jurassic_world_game",
+      "name": "LEGO Jurassic World game",
+      "authority": "licensed_game_primary",
+      "url": "https://www.lego.com/en-us/themes/jurassic-world/games/lego-jurassic-world",
+      "uses": [
+        "official digital licensed character translation",
+        "physical/digital comparison"
+      ]
+    },
+    {
+      "id": "lego_dimensions",
+      "name": "LEGO Dimensions",
+      "authority": "licensed_game_primary",
+      "url": "https://www.lego.com/en-us/aboutus/news/2019/november/lego-dimensions",
+      "uses": [
+        "cross-franchise physical/digital correspondence",
+        "official multiverse character designs"
+      ]
+    },
+    {
+      "id": "lego_batman_legacy",
+      "name": "LEGO Batman: Legacy of the Dark Knight",
+      "authority": "licensed_game_primary",
+      "url": "https://www.lego.com/en-us/aboutus/news/2025/august/lego-batman-legacy-of-the-dark-knight",
+      "uses": [
+        "modern official digital Batman designs",
+        "cross-media costume translation"
+      ]
+    },
+    {
+      "id": "bartneck_face_expression_study",
+      "name": "The Emotional Expressions of LEGO Minifigure Faces",
+      "authority": "secondary_research",
+      "url": "https://www.minifigure.org/2012/08/the-emotional-expressions-of-lego-minifigure-faces/",
+      "uses": [
+        "historical expression validation",
+        "secondary emotion clustering"
+      ],
+      "notes": "Not official LEGO guidance; reported six perceived clusters and a 1989 diversity shift."
+    }
+  ],
+  "source_priority": [
+    "lego_primary",
+    "licensed_game_primary",
+    "structured_catalog",
+    "official_ecosystem_reference",
+    "secondary_structured_vector",
+    "secondary_research"
+  ]
+}
