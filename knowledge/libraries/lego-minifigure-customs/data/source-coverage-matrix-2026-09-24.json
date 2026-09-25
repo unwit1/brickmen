@@ -273,18 +273,35 @@
     },
     {
       "domain": "user_collection_reconciliation",
-      "status": "not_yet_executed_this_pass",
+      "status": "source_intake_complete_for_major_trackers_canonical_reconciliation_pending",
       "sources": [
         "Bootlego MASTER",
-        "franchise trackers",
         "Minifig Variants to Make",
-        "Lego Wishlist"
+        "Lego Wishlist",
+        "MARVEL Avengers tracker",
+        "DRAGON BALL - Collection Tracker"
       ],
       "remaining": [
-        "map every row to canonical release/component IDs",
-        "deduplicate aliases",
-        "calculate gaps and upgrade/design candidates"
-      ]
+        "deduplicate overlapping characters/variants across trackers",
+        "map product codes to canonical maker/release IDs with evidence",
+        "map explicit BrickLink wishlist IDs to official physical records",
+        "resolve character/identity/variant/source-appearance entities",
+        "calculate owned/missing/preferred/custom-design gaps",
+        "promote verified missing variants into custom-design backlog"
+      ],
+      "completed_2026_09_25": {
+        "bootlego_structured_records": 705,
+        "bootlego_legacy_records": 1575,
+        "bootlego_total_records": 2280,
+        "minifig_variants_core_design_targets": 6649,
+        "additional_design_targets": 312,
+        "total_design_targets": 6961,
+        "dragon_ball_collection_records": 141,
+        "avengers_collection_records": 113,
+        "official_wishlist_records": 67,
+        "total_collection_and_wishlist_records": 2601,
+        "total_user_sourced_records_before_deduplication": 9562
+      }
     }
   ],
   "exhaustive_definition": "A domain becomes exhausted only after primary/authoritative sources and significant secondary discovery sources are indexed, identities/codes are normalized, contradictions are retained or resolved, time-sensitive facts are dated, and remaining unknowns are explicit.",
