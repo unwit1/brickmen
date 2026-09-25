@@ -317,7 +317,7 @@ jobs:
               for start in range(0,len(lines),shard_size):
                   index=start//shard_size+1
                   name=f"fortnite-lego-semantic-annotation-queue-part-{index:02d}.jsonl"
-                  (dest/name).write_text("\\n".join(lines[start:start+shard_size])+"\\n",encoding="utf-8")
+                  (dest/name).write_text("\n".join(lines[start:start+shard_size])+"\n",encoding="utf-8")
                   shard_names.append(name)
               manifest={
                   "schema":"fortnite-lego-semantic-annotation-queue-manifest/v1",
@@ -328,7 +328,7 @@ jobs:
                   "processor_version":summary.get("processor_version")
               }
               (dest/"fortnite-lego-semantic-annotation-queue-manifest-latest.json").write_text(
-                  json.dumps(manifest,indent=2)+"\\n",encoding="utf-8"
+                  json.dumps(manifest,indent=2)+"\n",encoding="utf-8"
               )
           PY
           exit 0
