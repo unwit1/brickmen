@@ -1,0 +1,40 @@
+{
+  "schema": "lego-pick-a-brick-snapshot/v1",
+  "processor_version": "lego-pick-a-brick-snapshot/v1",
+  "created_at": "2026-09-25T20:42:05.010022+00:00",
+  "locale": "en-US",
+  "query": "",
+  "endpoint": "https://www.lego.com/api/graphql/PickABrickQuery",
+  "total_reported": 4442,
+  "primary_results": 4442,
+  "unique_element_variants": 17241,
+  "pages": 12,
+  "page_counts": [
+    400,
+    400,
+    400,
+    400,
+    400,
+    400,
+    400,
+    400,
+    400,
+    400,
+    400,
+    42
+  ],
+  "availability_counts": {
+    "AVAILABLE": 16616,
+    "OUT_OF_STOCK": 625
+  },
+  "delivery_channel_counts": {
+    "bap": 1894,
+    "pab": 15186,
+    "None": 161
+  },
+  "currency_counts": {
+    "None": 12799,
+    "USD": 4442
+  },
+  "next_stage": "crosswalk element_id/design_id against official/Rebrickable/BrickLink component records and classify minifigure surfaces"
+}
