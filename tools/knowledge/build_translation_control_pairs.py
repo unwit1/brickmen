@@ -26,18 +26,18 @@ def cid(kind,a,b):
     return "control-"+hashlib.sha256(raw).hexdigest()[:24]
 
 def compact(pair):
-    src=pair.get("source") or {}
-    lego=pair.get("lego") or {}
+    src=pair.get("source_appearance") or pair.get("source") or {}
+    lego=pair.get("lego_target") or pair.get("lego") or {}
     meta=src.get("metadata") or {}
     series=(meta.get("series") or {}).get("value") if isinstance(meta.get("series"),dict) else None
     setv=(meta.get("set") or {}).get("value") if isinstance(meta.get("set"),dict) else None
     return {
         "pair_id":pair.get("translation_pair_id"),
-        "source_id":src.get("id"),
+        "source_id":src.get("br_id") or src.get("id"),
         "source_name":src.get("name"),
-        "source_image_url":first_image([u for u in src.get("images",[]) if "/cosmetics/br/" in u] or src.get("images")),
-        "lego_id":lego.get("id"),
-        "lego_image_url":first_image(lego.get("images")),
+        "source_image_url":((src.get("preferred_image") or {}).get("url") if isinstance(src.get("preferred_image"),dict) else None) or first_image([u for u in src.get("images",[]) if "/cosmetics/br/" in u] or src.get("images")),
+        "lego_id":lego.get("lego_id") or lego.get("id"),
+        "lego_image_url":((lego.get("preferred_image") or {}).get("url") if isinstance(lego.get("preferred_image"),dict) else None) or first_image(lego.get("images")),
         "series":series,
         "set":setv,
     }
