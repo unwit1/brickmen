@@ -1,0 +1,68 @@
+{
+  "schema_version": "0.1",
+  "researched_at": "2026-09-24",
+  "source_page": "https://www.lego.com/en-us/themes/star-wars/games/skywalker-saga",
+  "authority": "lego_primary",
+  "game": "LEGO Star Wars: The Skywalker Saga",
+  "page_facts": {
+    "playable_characters": "more than 300",
+    "profile_icon_description": "hundreds of minifigures featured in the game",
+    "classes": [
+      "Jedi",
+      "Dark Side",
+      "Hero",
+      "Villain",
+      "Scavenger",
+      "Scoundrel",
+      "Bounty Hunter",
+      "Astromech Droid",
+      "Protocol Droid",
+      "Extra"
+    ]
+  },
+  "bundles": [
+    {
+      "class": "Jedi",
+      "url": "https://www.lego.com/cdn/cs/catalog/assets/blt814631c7161a8fbe/Jedi.zip"
+    },
+    {
+      "class": "Dark Side",
+      "url": "https://www.lego.com/cdn/cs/catalog/assets/bltd21c93a75bb1fc88/Dark_Side.zip"
+    },
+    {
+      "class": "Hero",
+      "url": "https://www.lego.com/cdn/cs/catalog/assets/blt248569e8450ae5f3/Hero.zip"
+    },
+    {
+      "class": "Villain",
+      "url": "https://www.lego.com/cdn/cs/catalog/assets/blt9a5602e35e69be8f/Villain.zip"
+    },
+    {
+      "class": "Scavenger",
+      "url": "https://www.lego.com/cdn/cs/catalog/assets/blt2eefd607fc52ab6c/Scavenger.zip"
+    },
+    {
+      "class": "Scoundrel",
+      "url": "https://www.lego.com/cdn/cs/catalog/assets/blt626c99f2400b9da9/Scoundrel.zip"
+    },
+    {
+      "class": "Bounty Hunter",
+      "url": "https://www.lego.com/cdn/cs/catalog/assets/bltf2b858555922801e/Bounty_Hunter.zip"
+    },
+    {
+      "class": "Astromech Droid",
+      "url": "https://www.lego.com/cdn/cs/catalog/assets/blt9f0021b547d9d9f5/Astromech.zip"
+    },
+    {
+      "class": "Protocol Droid",
+      "url": "https://www.lego.com/cdn/cs/catalog/assets/bltaefd80825ac1b1b8/Protocol.zip"
+    },
+    {
+      "class": "Extra",
+      "url": "https://www.lego.com/cdn/cs/catalog/assets/bltdf5a538c4d3523d9/Extras.zip"
+    }
+  ],
+  "ingestion_status": "direct_bundle_urls_resolved_download_blocked_in_current_runtime",
+  "blocker": "Current web/container tooling can resolve the ZIP URLs but cannot materialize application/zip bytes in this session.",
+  "next_stage": "Download bundles in a network-enabled/local runtime; hash ZIPs; enumerate contained image files; map filenames to characters; deduplicate against game assets/physical releases."
+}
