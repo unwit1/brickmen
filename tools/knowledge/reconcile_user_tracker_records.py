@@ -71,8 +71,12 @@ def canonical_source_stub(rec, source_path):
         "collection": rec.get("collection") or rec.get("group"),
         "product_code": rec.get("product_code") or rec.get("bricklink_minifigure_id"),
         "product_code_namespace": (
-            "maker_product_code" if rec.get("product_code")
-            else "bricklink_minifigure_id" if rec.get("bricklink_minifigure_id")
+            "maker_product_code"
+            if rec.get("product_code") and re.search(r"\d", str(rec.get("product_code")))
+            else "unstructured_source_code_text"
+            if rec.get("product_code")
+            else "bricklink_minifigure_id"
+            if rec.get("bricklink_minifigure_id")
             else None
         ),
         "have": rec.get("have"),
@@ -334,9 +338,14 @@ def main():
             "brand_candidates": candidates,
             "candidate_method": method,
             "resolution_status": (
-                "external_catalog_id_observed" if namespace != "maker_product_code"
-                else "brand_candidate_single" if len(candidates) == 1
-                else "brand_candidate_ambiguous" if len(candidates) > 1
+                "external_catalog_id_observed"
+                if namespace == "bricklink_minifigure_id"
+                else "unstructured_source_code_text"
+                if namespace == "unstructured_source_code_text"
+                else "brand_candidate_single"
+                if len(candidates) == 1
+                else "brand_candidate_ambiguous"
+                if len(candidates) > 1
                 else "unresolved_prefix"
             ),
             "policy": "Prefix or exact brand-token evidence proposes a brand only; release identity, ownership/factory relationships and chronology require independent evidence.",
@@ -414,13 +423,15 @@ def main():
         "strict_cross_source_duplicate_candidate_groups": sum(x["cross_source_duplicate_candidate"] for x in strict_rows),
         "coded_records": len(code_rows),
         "maker_product_code_records": sum(x.get("product_code_namespace") == "maker_product_code" for x in code_rows),
-        "external_catalog_id_records": sum(x.get("product_code_namespace") != "maker_product_code" for x in code_rows),
+        "external_catalog_id_records": sum(x.get("product_code_namespace") == "bricklink_minifigure_id" for x in code_rows),
+        "unstructured_source_code_text_records": sum(x.get("product_code_namespace") == "unstructured_source_code_text" for x in code_rows),
         "figure_release_candidate_records": len(release_rows),
         "figure_release_candidates_with_identity_conflicts": sum(bool(x.get("identity_conflict_flags")) for x in release_rows),
         "single_brand_candidates": sum(x["resolution_status"] == "brand_candidate_single" for x in code_rows),
         "ambiguous_brand_candidates": sum(x["resolution_status"] == "brand_candidate_ambiguous" for x in code_rows),
         "unresolved_code_prefix_records": sum(x["resolution_status"] == "unresolved_prefix" for x in code_rows),
         "external_catalog_ids_observed": sum(x["resolution_status"] == "external_catalog_id_observed" for x in code_rows),
+        "unstructured_code_text_observations": sum(x["resolution_status"] == "unstructured_source_code_text" for x in code_rows),
         "unresolved_prefix_counts": dict(unresolved_prefix.most_common()),
         "largest_name_groups": [
             {
