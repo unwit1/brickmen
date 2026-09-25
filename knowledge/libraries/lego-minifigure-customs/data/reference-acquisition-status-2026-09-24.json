@@ -3,7 +3,7 @@
   "created_at": "2026-09-24",
   "objective": "Acquire and resolve every practical official standard-minifigure visual design across physical sets, games and films.",
   "physical": {
-    "status": "pipeline_ready_bulk_not_run_in_this_session",
+    "status": "current_rebrickable_bulk_census_complete",
     "known_catalog_scale": {
       "bricklink_records": 19250,
       "brickset_records": 19240
@@ -20,8 +20,26 @@
       "v2 resolves minifigure component inventories and component image references when Rebrickable bulk part tables are present"
     ],
     "blockers": [
-      "Current Rebrickable bulk files are not materialized in this execution environment",
       "Raw reference URLs have not yet been bulk-downloaded"
+    ],
+    "completed_snapshot": {
+      "created_at": "2026-09-25T19:24:38.011715+00:00",
+      "physical_samples": 17226,
+      "figure_reference_assets": 17226,
+      "component_records": 82411,
+      "component_reference_assets": 82273,
+      "printed_component_records": 30375,
+      "set_occurrence_links": 25826,
+      "figures_without_catalog_image": 0,
+      "figures_without_set_occurrence": 318,
+      "figures_without_component_inventory": 1,
+      "source_snapshot": "data/physical-census-latest.json"
+    },
+    "next_needed": [
+      "resolve the 318 figures with no observed set occurrence",
+      "investigate the single figure without resolved component inventory",
+      "crosswalk Rebrickable component IDs to BrickLink/LEGO/LDraw identifiers",
+      "materialize selected visual references into local content-addressed storage"
     ]
   },
   "games": {
@@ -75,5 +93,6 @@
     "schema": "data/translation-pair-schema.json",
     "purpose": "Pair exact external source appearance with official LEGO interpretation to learn what LEGO preserves, simplifies, omits, or moves into new moulds/accessories."
   },
-  "completion_rule": "Do not claim complete training coverage until every physical catalog record, every in-scope official game title/character design and every in-scope film visual design is enumerated, source-linked, deduplicated and either resolved or explicitly listed as unresolved."
+  "completion_rule": "Do not claim complete training coverage until every physical catalog record, every in-scope official game title/character design and every in-scope film visual design is enumerated, source-linked, deduplicated and either resolved or explicitly listed as unresolved.",
+  "updated_at": "2026-09-25"
 }
