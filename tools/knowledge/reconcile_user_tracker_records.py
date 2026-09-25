@@ -182,6 +182,14 @@ def dc_normalized_record(rec):
                 "reason": "adjacent Xinh XH1879/XH1881 wave plus independent catalog confirmation for Catwoman/Selina Kyle XH1880",
                 "evidence_sources": ["HeroBloks","Brixtoy","DownTheBlocks"]
             }
+        elif raw_code == "X1881" and "batman" in norm(up.get("C")):
+            normalized_code = "XH1881"
+            correction = {
+                "raw": "X1881",
+                "normalized": "XH1881",
+                "reason": "independent HeroBloks catalog confirmation for Xinh XH1881 Batman (Tim Burton/Michael Keaton)",
+                "evidence_sources": ["HeroBloks"]
+            }
         field.update(
             ownership_status=up.get("A") or None,
             name=up.get("C") or None,
