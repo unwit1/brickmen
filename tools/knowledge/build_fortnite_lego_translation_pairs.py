@@ -70,16 +70,43 @@ def first(obj, *keys):
     return None
 
 
-def image_urls(obj):
-    vals = []
+def image_refs(obj):
+    refs = []
+    seen = set()
     for k, v in scalars(obj):
         if (
             isinstance(v, str)
             and v.startswith(("http://", "https://"))
-            and any(x in k.casefold() for x in ("image", "icon", "small", "large", "wide"))
+            and any(x in k.casefold() for x in ("image", "icon", "small", "large", "wide", "featured"))
         ):
-            vals.append(v)
-    return sorted(set(vals))
+            if v not in seen:
+                refs.append({"field": k, "url": v})
+                seen.add(v)
+    return refs
+
+
+def image_urls(obj):
+    return [r["url"] for r in image_refs(obj)]
+
+
+def preferred_image_ref(obj):
+    refs = image_refs(obj)
+    if not refs:
+        return None
+    def rank(ref):
+        key = ref["field"].casefold()
+        if "featured" in key:
+            return (0, len(key))
+        if "large" in key and "icon" in key:
+            return (1, len(key))
+        if key.endswith(".icon") or "images.icon" in key:
+            return (2, len(key))
+        if "small" in key and "icon" in key:
+            return (3, len(key))
+        if "icon" in key:
+            return (4, len(key))
+        return (5, len(key))
+    return sorted(refs, key=rank)[0]
 
 
 def stable(*parts):
@@ -227,6 +254,10 @@ def main():
         bname = str(first(candidate, "name", "displayName") or "")
         source_images = image_urls(candidate)
         lego_images = image_urls(l)
+        source_image_refs = image_refs(candidate)
+        lego_image_refs = image_refs(l)
+        source_preferred = preferred_image_ref(candidate)
+        lego_preferred = preferred_image_ref(l)
         if source_images:
             image_coverage["source_has_image"] += 1
         if lego_images:
@@ -242,6 +273,8 @@ def main():
                 "br_id": bid or None,
                 "name": bname or None,
                 "images": source_images,
+                "image_refs": source_image_refs,
+                "preferred_image": source_preferred,
                 "metadata": selected_metadata(candidate),
             },
             "lego_target": {
@@ -249,6 +282,8 @@ def main():
                 "lego_id": lid or None,
                 "name": lname or None,
                 "images": lego_images,
+                "image_refs": lego_image_refs,
+                "preferred_image": lego_preferred,
                 "metadata": selected_metadata(l),
             },
             "join_method": method,
