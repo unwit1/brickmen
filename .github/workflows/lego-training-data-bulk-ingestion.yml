@@ -462,7 +462,7 @@ jobs:
           src="$OUT/sources/skywalker_crosswalk"
           mkdir -p "$src/review"
           python tools/knowledge/build_skywalker_crosswalk_review.py \
-            --candidates "$src/candidates.jsonl" \
+            --candidates "$src/records.jsonl" \
             --output "$src/review/records.jsonl" \
             --groups-output "$src/review/groups.jsonl" \
             --summary "$src/review/summary.json"
