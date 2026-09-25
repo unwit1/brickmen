@@ -20,6 +20,10 @@ VERSION = "flat-art-crosswalk-candidates/v1"
 STOP = {
     "lego", "minifig", "minifigure", "with", "and", "the", "a", "an", "pattern",
     "printed", "print", "logo", "classic", "figure", "fig", "left", "right",
+    "front", "back", "rear", "face", "head", "torso", "hips", "hip", "leg", "legs",
+    "arm", "arms", "helmet", "hair", "cowl", "male", "female", "man", "woman",
+    "guy", "girl", "black", "white", "red", "blue", "green", "yellow", "gray",
+    "grey", "brown", "tan", "orange", "purple", "pink", "gold", "silver",
 }
 
 COMPONENT_HINTS = (
@@ -146,7 +150,7 @@ def main() -> None:
         ranked = []
         for rec, rec_tokens in pool:
             score, overlap = similarity(rio_tokens, rec_tokens)
-            if component and rec.get("component_type") == component:
+            if component and rec.get("component_type") == component and score > 0:
                 score = min(1.0, score + 0.12)
             if score < args.min_score:
                 continue
