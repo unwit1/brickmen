@@ -1,0 +1,30 @@
+{
+  "schema": "physical-census-exception-resolution/v1",
+  "created_at": "2026-09-25",
+  "records": [
+    {
+      "fig_num": "fig-011590",
+      "rebrickable_name": "Minifigure Factory Figure",
+      "census_exception": "no_component_inventory",
+      "classification": "configurable_product_not_fixed_figure_inventory",
+      "status": "explained_not_import_failure",
+      "rationale": [
+        "Rebrickable reports the catalog record with zero resolved component rows in the current bulk census.",
+        "LEGO's current Minifigure Factory is explicitly configurable: users choose component options and customize the torso, so there is no single stable component inventory that correctly represents every produced figure.",
+        "The canonical model should treat this record as a configurable product/program and attach generated or ordered instances as separate assemblies when instance-level evidence exists."
+      ],
+      "lego_primary_sources": [
+        "https://www.lego.com/en-us/minifigure-factory",
+        "https://www.lego.com/en-us/pick-and-build/create-a-minifigure"
+      ],
+      "recommended_modeling": {
+        "record_type": "configurable_minifigure_program",
+        "fixed_inventory_required": false,
+        "instance_inventory_source": "order/design instance when available",
+        "preserve_catalog_record": true,
+        "exclude_from_fixed_inventory_completeness_denominator": true
+      },
+      "confidence": 1
+    }
+  ]
+}
