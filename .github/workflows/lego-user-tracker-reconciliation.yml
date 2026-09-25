@@ -70,4 +70,5 @@ jobs:
             exit 0
           fi
           git commit -m "knowledge: refresh user tracker reconciliation snapshots"
+          git pull --rebase origin main
           git push
