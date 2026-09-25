@@ -1,6 +1,6 @@
 {
-  "schema_version": "0.1",
-  "researched_at": "2026-09-24",
+  "schema_version": "0.2",
+  "researched_at": "2026-09-25",
   "purpose": "Seed evidence for compatible-brand code families. Prefixes are observations, not proof of common factories, ownership or permanent brand identity.",
   "families": [
     {
@@ -20,6 +20,16 @@
             "WM127",
             "WM200"
           ]
+        },
+        {
+          "source": "HeroBloks complete figure list census",
+          "source_date": "2026-09-25",
+          "brand_slug": "world-minifigures",
+          "prefix_observation": {
+            "prefix": "WM",
+            "count": 1729
+          },
+          "snapshot_sha256": "6df9106a9e608f96e2633363847520b08d721baac239d5932042c12cd013b155"
         }
       ],
       "confidence": "catalog-high"
@@ -50,6 +60,16 @@
             "XH1226",
             "XH742"
           ]
+        },
+        {
+          "source": "HeroBloks complete figure list census",
+          "source_date": "2026-09-25",
+          "brand_slug": "xinh",
+          "prefix_observation": {
+            "prefix": "XH",
+            "count": 422
+          },
+          "snapshot_sha256": "6df9106a9e608f96e2633363847520b08d721baac239d5932042c12cd013b155"
         }
       ],
       "confidence": "catalog-high"
@@ -61,7 +81,8 @@
         "GH-brand"
       ],
       "observed_product_prefixes": [
-        "G"
+        "G",
+        "GH"
       ],
       "evidence": [
         {
@@ -78,10 +99,26 @@
           "examples": [
             "G0199"
           ]
+        },
+        {
+          "source": "HeroBloks complete figure list census",
+          "source_date": "2026-09-25",
+          "brand_slug": "g-(2)",
+          "prefix_observations": [
+            {
+              "prefix": "GH",
+              "count": 689
+            },
+            {
+              "prefix": "G",
+              "count": 83
+            }
+          ],
+          "snapshot_sha256": "6df9106a9e608f96e2633363847520b08d721baac239d5932042c12cd013b155"
         }
       ],
-      "confidence": "community-corroborated",
-      "notes": "Treat relationship as a candidate/alias history, not a proven ownership/factory identity."
+      "confidence": "catalog-high-for-prefixes_relationship-still-unresolved",
+      "notes": "HeroBloks strongly corroborates GH and G as serial prefixes under its G (2) brand facet, but this does not by itself prove ownership/factory identity or the historical relationship to XINH."
     },
     {
       "brand": "Koruit",
@@ -118,6 +155,16 @@
             "XP590",
             "XP715"
           ]
+        },
+        {
+          "source": "HeroBloks complete figure list census",
+          "source_date": "2026-09-25",
+          "brand_slug": "koruit",
+          "prefix_observation": {
+            "prefix": "XP",
+            "count": 646
+          },
+          "snapshot_sha256": "6df9106a9e608f96e2633363847520b08d721baac239d5932042c12cd013b155"
         }
       ],
       "confidence": "catalog-high"
@@ -144,6 +191,16 @@
             "K2396",
             "K2373"
           ]
+        },
+        {
+          "source": "HeroBloks complete figure list census",
+          "source_date": "2026-09-25",
+          "brand_slug": "kdl",
+          "prefix_observation": {
+            "prefix": "K",
+            "count": 395
+          },
+          "snapshot_sha256": "6df9106a9e608f96e2633363847520b08d721baac239d5932042c12cd013b155"
         }
       ],
       "confidence": "catalog-high"
@@ -174,6 +231,16 @@
             "PG2334",
             "PG2343"
           ]
+        },
+        {
+          "source": "HeroBloks complete figure list census",
+          "source_date": "2026-09-25",
+          "brand_slug": "pogo",
+          "prefix_observation": {
+            "prefix": "PG",
+            "count": 2240
+          },
+          "snapshot_sha256": "6df9106a9e608f96e2633363847520b08d721baac239d5932042c12cd013b155"
         }
       ],
       "confidence": "catalog-high"
@@ -193,6 +260,16 @@
             "TV1185",
             "TV6221"
           ]
+        },
+        {
+          "source": "HeroBloks complete figure list census",
+          "source_date": "2026-09-25",
+          "brand_slug": "tv",
+          "prefix_observation": {
+            "prefix": "TV",
+            "count": 789
+          },
+          "snapshot_sha256": "6df9106a9e608f96e2633363847520b08d721baac239d5932042c12cd013b155"
         }
       ],
       "confidence": "community-corroborated"
@@ -200,21 +277,155 @@
     {
       "brand": "TP",
       "aliases": [],
-      "observed_product_prefixes": [],
+      "observed_product_prefixes": [
+        "TP"
+      ],
       "evidence": [
         {
           "source": "Down The Blocks 2026 Daredevil coverage",
           "source_date": "2026-06-05"
+        },
+        {
+          "source": "HeroBloks complete figure list census",
+          "source_date": "2026-09-25",
+          "brand_slug": "tp",
+          "prefix_observation": {
+            "prefix": "TP",
+            "count": 527
+          },
+          "snapshot_sha256": "6df9106a9e608f96e2633363847520b08d721baac239d5932042c12cd013b155"
         }
       ],
-      "confidence": "unverified",
-      "notes": "Brand is observed, but do not infer a stable code prefix until product-level evidence is ingested."
+      "confidence": "catalog-high",
+      "notes": "HeroBloks 2026-09-25 full-list census resolves TP as a stable observed product prefix within the TP brand facet (527 records in current snapshot)."
+    },
+    {
+      "brand": "Kopf",
+      "aliases": [],
+      "observed_product_prefixes": [
+        "KF"
+      ],
+      "evidence": [
+        {
+          "source": "HeroBloks complete figure list census",
+          "source_date": "2026-09-25",
+          "brand_slug": "kopf",
+          "prefix_observation": {
+            "prefix": "KF",
+            "count": 1788
+          },
+          "snapshot_sha256": "6df9106a9e608f96e2633363847520b08d721baac239d5932042c12cd013b155"
+        }
+      ],
+      "confidence": "catalog-high"
+    },
+    {
+      "brand": "Sheng Yuan",
+      "aliases": [],
+      "observed_product_prefixes": [
+        "SY"
+      ],
+      "evidence": [
+        {
+          "source": "HeroBloks complete figure list census",
+          "source_date": "2026-09-25",
+          "brand_slug": "sheng-yuan",
+          "prefix_observation": {
+            "prefix": "SY",
+            "count": 1449
+          },
+          "snapshot_sha256": "6df9106a9e608f96e2633363847520b08d721baac239d5932042c12cd013b155"
+        }
+      ],
+      "confidence": "catalog-high"
+    },
+    {
+      "brand": "Lele",
+      "aliases": [],
+      "observed_product_prefixes": [],
+      "evidence": [
+        {
+          "source": "HeroBloks complete figure list census",
+          "source_date": "2026-09-25",
+          "brand_slug": "lele",
+          "prefix_observations": [
+            {
+              "prefix": "D",
+              "count": 101
+            },
+            {
+              "prefix": "A",
+              "count": 72
+            },
+            {
+              "prefix": "C",
+              "count": 55
+            },
+            {
+              "prefix": "L",
+              "count": 34
+            },
+            {
+              "prefix": "B",
+              "count": 30
+            },
+            {
+              "prefix": "F",
+              "count": 26
+            },
+            {
+              "prefix": "XL",
+              "count": 18
+            }
+          ],
+          "note": "No single stable dominant prefix is inferred from this snapshot."
+        }
+      ],
+      "confidence": "catalog-observed-mixed-prefixes"
+    },
+    {
+      "brand": "Decool",
+      "aliases": [],
+      "observed_product_prefixes": [],
+      "evidence": [
+        {
+          "source": "HeroBloks complete figure list census",
+          "source_date": "2026-09-25",
+          "brand_slug": "decool",
+          "figure_records": 671,
+          "note": "Current HeroBloks snapshot exposes the brand facet but no reliable serial prefix under the URL-derived parser."
+        }
+      ],
+      "confidence": "brand-catalog-high-prefix-unresolved"
+    },
+    {
+      "brand": "Bela",
+      "aliases": [],
+      "observed_product_prefixes": [],
+      "evidence": [
+        {
+          "source": "HeroBloks complete figure list census",
+          "source_date": "2026-09-25",
+          "brand_slug": "bela",
+          "figure_records": 372,
+          "note": "Current HeroBloks snapshot exposes the brand facet but no reliable serial prefix under the URL-derived parser."
+        }
+      ],
+      "confidence": "brand-catalog-high-prefix-unresolved"
     }
   ],
   "rules": [
     "A code prefix can be reused, changed or sold under a reseller alias.",
     "Set/wave code and individual figure code are separate fields.",
     "One marketplace page is insufficient to infer maker relationships.",
-    "Keep code evidence dated so brand transitions can be represented over time."
-  ]
+    "Keep code evidence dated so brand transitions can be represented over time.",
+    "HeroBloks full-list brand facets and serial prefixes are strong catalog evidence for code usage but not proof of ownership, factory identity, collaboration, or chronology."
+  ],
+  "hero_bloks_snapshot": {
+    "date": "2026-09-25",
+    "source_sha256": "6df9106a9e608f96e2633363847520b08d721baac239d5932042c12cd013b155",
+    "total_figure_records": 59745,
+    "brand_slug_count": 1350,
+    "caution": "Serial-prefix candidates come from HeroBloks URL/serial structure and are catalog observations, not manufacturer/factory identity proof."
+  }
 }
