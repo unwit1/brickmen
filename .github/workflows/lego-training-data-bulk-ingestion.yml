@@ -653,6 +653,40 @@ jobs:
           PY
           exit 0
 
+      - name: Build HeroBloks compact brand review queues
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          src="$OUT/sources/herobloks"
+          python tools/knowledge/build_herobloks_brand_review_queues.py \
+            --analysis "$src/brand-gap-analysis.json" \
+            --stable-output "$src/stable-unmodeled-brands.jsonl" \
+            --top-output "$src/top-unmodeled-brands.jsonl" \
+            --summary "$src/brand-review-summary.json"
+          rc=$?
+          RC="$rc" SRC="$src" python - <<'PY'
+          import json,os,shutil
+          from datetime import datetime,timezone
+          from pathlib import Path
+          src=Path(os.environ["SRC"]);rc=int(os.environ["RC"]);summary={}
+          p=src/"brand-review-summary.json"
+          if p.exists():
+              try: summary=json.loads(p.read_text())
+              except Exception: pass
+          status={"source_id":"herobloks_brand_review_queues","status":"complete" if rc==0 else "failed",
+                  "exit_code":rc,"created_at":datetime.now(timezone.utc).isoformat(),**summary}
+          Path(os.environ["OUT"],"status/herobloks_brand_review_queues.json").write_text(json.dumps(status,indent=2))
+          if rc==0:
+              dest=Path(os.environ["DEST"])
+              shutil.copy2(src/"brand-review-summary.json",dest/"herobloks-brand-review-summary-latest.json")
+              for name in ("stable-unmodeled-brands.jsonl","top-unmodeled-brands.jsonl"):
+                  q=src/name
+                  if q.exists() and q.stat().st_size < 8_000_000:
+                      shutil.copy2(q,dest/("herobloks-"+name))
+          PY
+          exit 0
+
       - name: Snapshot HeroBloks full catalog index
         continue-on-error: true
         shell: bash
