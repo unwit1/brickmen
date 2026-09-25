@@ -141,6 +141,39 @@ jobs:
           PY
           exit 0
 
+      - name: Build quantitative theme and era profiles
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          src="$OUT/sources/theme_era_profiles"; mkdir -p "$src"
+          python tools/knowledge/build_theme_era_profiles.py \
+            --samples "$OUT/sources/rebrickable/output/physical_samples.jsonl" \
+            --components "$OUT/sources/rebrickable/output/component_samples.jsonl" \
+            --output "$src/profiles.jsonl" \
+            --summary "$src/summary.json"
+          rc=$?
+          RC="$rc" SRC="$src" python - <<'PY'
+          import json,os,shutil
+          from datetime import datetime,timezone
+          from pathlib import Path
+          src=Path(os.environ["SRC"]);rc=int(os.environ["RC"]);summary={}
+          p=src/"summary.json"
+          if p.exists():
+              try: summary=json.loads(p.read_text())
+              except Exception: pass
+          status={"source_id":"theme_era_profiles","status":"complete" if rc==0 else "failed",
+                  "exit_code":rc,"created_at":datetime.now(timezone.utc).isoformat(),**summary}
+          Path(os.environ["OUT"],"status/theme_era_profiles.json").write_text(json.dumps(status,indent=2))
+          if rc==0:
+              dest=Path(os.environ["DEST"])
+              shutil.copy2(src/"summary.json",dest/"theme-era-profile-summary-latest.json")
+              profiles=src/"profiles.jsonl"
+              if profiles.exists() and profiles.stat().st_size < 8_000_000:
+                  shutil.copy2(profiles,dest/"theme-era-profiles-latest.jsonl")
+          PY
+          exit 0
+
       - name: Official LDraw minifigure-pattern census
         continue-on-error: true
         shell: bash
@@ -217,7 +250,7 @@ jobs:
           from pathlib import Path
           d=Path(os.environ["DIR"])
           x=json.loads((d/"summary.json").read_text())
-          print(json.dumps({"bundle_id":os.environ["ID"],"status":"complete",**x}))
+          print(json.dumps({"bundle_id":os.environ["ID"],**x,"index_status":x.get("status"),"status":"complete"}))
           PY
             else
               all_ok=0
@@ -449,6 +482,37 @@ jobs:
               candidates=src/"candidates.jsonl"
               if candidates.exists() and candidates.stat().st_size < 8_000_000:
                   shutil.copy2(candidates,dest/"flat-art-catalog-crosswalk-candidates-latest.jsonl")
+          PY
+          exit 0
+
+      - name: Snapshot HeroBloks full catalog index
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          src="$OUT/sources/herobloks"; mkdir -p "$src"
+          python tools/knowledge/snapshot_herobloks_catalog.py \
+            --output "$src/catalog.jsonl" \
+            --summary "$src/summary.json"
+          rc=$?
+          RC="$rc" SRC="$src" python - <<'PY'
+          import json,os,shutil
+          from datetime import datetime,timezone
+          from pathlib import Path
+          src=Path(os.environ["SRC"]);rc=int(os.environ["RC"]);summary={}
+          p=src/"summary.json"
+          if p.exists():
+              try: summary=json.loads(p.read_text())
+              except Exception: pass
+          status={"source_id":"herobloks_catalog","status":"complete" if rc==0 else "failed",
+                  "exit_code":rc,"created_at":datetime.now(timezone.utc).isoformat(),**summary}
+          Path(os.environ["OUT"],"status/herobloks_catalog.json").write_text(json.dumps(status,indent=2))
+          if rc==0:
+              dest=Path(os.environ["DEST"])
+              shutil.copy2(src/"summary.json",dest/"herobloks-catalog-summary-latest.json")
+              catalog=src/"catalog.jsonl"
+              if catalog.exists() and catalog.stat().st_size < 8_000_000:
+                  shutil.copy2(catalog,dest/"herobloks-catalog-latest.jsonl")
           PY
           exit 0
 
