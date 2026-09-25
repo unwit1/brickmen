@@ -1,6 +1,6 @@
 {
   "snapshot_id": "customizer-landscape-2026-09-24",
-  "researched_at": "2026-09-24",
+  "researched_at": "2026-09-25",
   "policy": "This is a source-routing registry, not a quality ranking. active_current requires recent direct/primary evidence; catalog_observed requires later primary verification.",
   "groups": {
     "premium_or_specialist_current_primary": [
@@ -189,23 +189,40 @@
         ],
         "verification": "secondary_current",
         "notes": "2026 releases corroborated by CustomMinifig.co.uk and active reseller listings; direct primary storefront not yet canonicalized."
+      },
+      {
+        "name": "KO Custom Minifigs",
+        "specialties": [
+          "pad-printed figures",
+          "custom injection-molded parts",
+          "limited collector runs"
+        ],
+        "verification": "primary_current"
+      },
+      {
+        "name": "SFXminifigures",
+        "specialties": [
+          "pad-printed pop-culture figures",
+          "pad-printed parts"
+        ],
+        "verification": "primary_current_via_a2zminifigures"
       }
     ],
     "historically_important_or_needs_primary_refresh": [
       {
         "name": "Phoenix Customs",
-        "verification": "historical_secondary",
-        "notes": "Well-documented creator history/interview; current operating status requires fresh primary verification."
+        "verification": "historical_primary_and_secondary_current_reseller_primary_unresolved",
+        "notes": "Founder/process history verified from 2015/2017 interviews and reviews; release archive extends through at least 2020; current reseller collection exists, but maker-owned current primary channel remains unresolved."
       },
       {
         "name": "Christo7108",
-        "verification": "historical_secondary",
-        "notes": "Large historical custom-print catalog; current primary presence requires verification."
+        "verification": "catalog_current_2026_primary_unresolved",
+        "notes": "HeroBloks records a 2026 limited Christo7108 release; current reseller collection exists. A maker-owned current canonical primary channel still needs verification."
       },
       {
         "name": "MRM Prints / Muddy River Minifigs",
-        "verification": "recent_secondary",
-        "notes": "Pad-printed releases documented through 2024; refresh current primary status."
+        "verification": "recent_secondary_continuity_verified",
+        "notes": "2023 catalog coverage explicitly states MRM Prints was formerly Muddy River Minifigs; MRM Subject numbering and Bronze/Silver/Gold edition tiers are documented."
       },
       {
         "name": "BrothersFigure",
@@ -219,11 +236,13 @@
       },
       {
         "name": "KO Custom Minifigs",
-        "verification": "historical_secondary"
+        "verification": "primary_current",
+        "notes": "Current primary storefront and maker portfolio verified; established 2015, pad printing and custom injection-molded parts documented."
       },
       {
         "name": "SFX Minifigures",
-        "verification": "historical_secondary"
+        "verification": "primary_current_via_a2zminifigures",
+        "notes": "A2Zminifigures currently identifies itself as home of SFXminifigures and lists current pad-printed SFX releases."
       },
       {
         "name": "Penzora legacy catalog",
@@ -232,6 +251,24 @@
       {
         "name": "Calypso legacy/release archive",
         "verification": "primary_current"
+      },
+      {
+        "name": "CrossCheck (XC)",
+        "verification": "reseller_current_primary_unresolved"
+      },
+      {
+        "name": "Jaka Brick",
+        "verification": "reseller_current_primary_unresolved"
+      },
+      {
+        "name": "KTown Bricks",
+        "verification": "reseller_current_primary_unresolved",
+        "notes": "Current reseller describes medieval focus with pad and UV printing."
+      },
+      {
+        "name": "miniBigs",
+        "verification": "reseller_current_primary_unresolved",
+        "notes": "Current reseller describes Detroit-based pad-printed figures/accessories."
       }
     ],
     "accessory_specialists": [
@@ -486,5 +523,6 @@
     "Retain defunct/historical makers because their figures remain in collections and aftermarket listings.",
     "Treat collaboration labels as many-to-many relationships rather than manufacturers.",
     "Never infer factory ownership or brand equivalence from shared mold style, code prefix, packaging or reseller category alone."
-  ]
+  ],
+  "updated_at": "2026-09-25"
 }
