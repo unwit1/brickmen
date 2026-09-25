@@ -1,6 +1,6 @@
 {
   "snapshot_id": "minifigure-research-source-coverage-2026-09-24",
-  "researched_at": "2026-09-24",
+  "researched_at": "2026-09-25",
   "purpose": "Define what has been covered and what still prevents a claim of literal exhaustive ingestion.",
   "coverage": [
     {
@@ -63,11 +63,13 @@
         "Engineerio",
         "Penzora",
         "Calypso",
-        "CrazyFigs"
+        "CrazyFigs",
+        "KO Custom Minifigs",
+        "SFXminifigures"
       ],
       "remaining": [
         "long-tail maker primary verification",
-        "dead/retired maker archive backfill"
+        "retired release enumeration and collaboration graph"
       ]
     },
     {
@@ -205,7 +207,7 @@
     },
     {
       "domain": "historical_customizer_archives",
-      "status": "partial",
+      "status": "substantial_verification_pass_complete_primary_resolution_remaining",
       "sources": [
         "CustomMinifig.co.uk",
         "Eurobricks",
@@ -214,11 +216,24 @@
         "Down The Blocks"
       ],
       "remaining": [
-        "Phoenix Customs",
-        "Christo7108",
-        "MRM/SFX/KO Custom Minifigs and defunct maker catalogs",
-        "archived social posts/sites"
-      ]
+        "maker-owned primary channels for Christo7108, Phoenix Customs, MRM Prints and newly discovered long-tail makers",
+        "retired gallery/catalog enumeration into FigureRelease records",
+        "archived social posts/sites and collaboration graph"
+      ],
+      "completed_2026_09_25": {
+        "ko_custom_minifigs": "primary_current",
+        "sfxminifigures": "primary_current_via_a2zminifigures",
+        "mrm_muddy_river": "continuity_verified",
+        "christo7108": "2026_catalog_current_primary_unresolved",
+        "phoenix_customs": "historical_high_current_primary_unresolved",
+        "new_long_tail_candidates": [
+          "CrossCheck (XC)",
+          "Jaka Brick",
+          "KTown Bricks",
+          "miniBigs"
+        ],
+        "structured_evidence_file": "data/historical-customizer-verification-2026-09-25.json"
+      }
     },
     {
       "domain": "social_release_feeds",
