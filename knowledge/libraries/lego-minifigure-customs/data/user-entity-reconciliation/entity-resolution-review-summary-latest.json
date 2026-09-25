@@ -1,0 +1,1384 @@
+{
+  "schema": "entity-resolution-review-summary/v1",
+  "processor_version": "user-tracker-reconciliation/v1",
+  "records": 1039,
+  "high_priority_records": 60,
+  "reason_counts": {
+    "cross_source": 952,
+    "multiple_identities": 212,
+    "multiple_universes": 27,
+    "many_variants": 83
+  },
+  "top_records": [
+    {
+      "name": "batman",
+      "score": 95,
+      "records": 134,
+      "sources": 4,
+      "reasons": [
+        "cross_source",
+        "multiple_identities",
+        "multiple_universes",
+        "many_variants"
+      ],
+      "identities": 12,
+      "variants": 102,
+      "universes": 8
+    },
+    {
+      "name": "iron man",
+      "score": 95,
+      "records": 103,
+      "sources": 2,
+      "reasons": [
+        "cross_source",
+        "multiple_identities",
+        "multiple_universes",
+        "many_variants"
+      ],
+      "identities": 2,
+      "variants": 101,
+      "universes": 3
+    },
+    {
+      "name": "superman",
+      "score": 93,
+      "records": 91,
+      "sources": 4,
+      "reasons": [
+        "cross_source",
+        "multiple_identities",
+        "multiple_universes",
+        "many_variants"
+      ],
+      "identities": 9,
+      "variants": 69,
+      "universes": 20
+    },
+    {
+      "name": "flash",
+      "score": 88,
+      "records": 65,
+      "sources": 3,
+      "reasons": [
+        "cross_source",
+        "multiple_identities",
+        "multiple_universes",
+        "many_variants"
+      ],
+      "identities": 8,
+      "variants": 39,
+      "universes": 8
+    },
+    {
+      "name": "supergirl",
+      "score": 86,
+      "records": 57,
+      "sources": 4,
+      "reasons": [
+        "cross_source",
+        "multiple_identities",
+        "multiple_universes",
+        "many_variants"
+      ],
+      "identities": 18,
+      "variants": 35,
+      "universes": 13
+    },
+    {
+      "name": "robin",
+      "score": 85,
+      "records": 53,
+      "sources": 3,
+      "reasons": [
+        "cross_source",
+        "multiple_identities",
+        "multiple_universes",
+        "many_variants"
+      ],
+      "identities": 11,
+      "variants": 38,
+      "universes": 6
+    },
+    {
+      "name": "spider man",
+      "score": 85,
+      "records": 52,
+      "sources": 4,
+      "reasons": [
+        "cross_source",
+        "multiple_identities",
+        "multiple_universes",
+        "many_variants"
+      ],
+      "identities": 4,
+      "variants": 49,
+      "universes": 5
+    },
+    {
+      "name": "catwoman",
+      "score": 84,
+      "records": 48,
+      "sources": 3,
+      "reasons": [
+        "cross_source",
+        "multiple_identities",
+        "multiple_universes",
+        "many_variants"
+      ],
+      "identities": 3,
+      "variants": 34,
+      "universes": 3
+    },
+    {
+      "name": "wonder woman",
+      "score": 84,
+      "records": 46,
+      "sources": 3,
+      "reasons": [
+        "cross_source",
+        "multiple_identities",
+        "multiple_universes",
+        "many_variants"
+      ],
+      "identities": 10,
+      "variants": 21,
+      "universes": 11
+    },
+    {
+      "name": "joker",
+      "score": 83,
+      "records": 41,
+      "sources": 3,
+      "reasons": [
+        "cross_source",
+        "multiple_identities",
+        "multiple_universes",
+        "many_variants"
+      ],
+      "identities": 3,
+      "variants": 20,
+      "universes": 2
+    },
+    {
+      "name": "superboy",
+      "score": 81,
+      "records": 32,
+      "sources": 4,
+      "reasons": [
+        "cross_source",
+        "multiple_identities",
+        "multiple_universes",
+        "many_variants"
+      ],
+      "identities": 9,
+      "variants": 14,
+      "universes": 4
+    },
+    {
+      "name": "green lantern",
+      "score": 80,
+      "records": 27,
+      "sources": 3,
+      "reasons": [
+        "cross_source",
+        "multiple_identities",
+        "multiple_universes",
+        "many_variants"
+      ],
+      "identities": 4,
+      "variants": 22,
+      "universes": 3
+    },
+    {
+      "name": "power girl",
+      "score": 79,
+      "records": 21,
+      "sources": 3,
+      "reasons": [
+        "cross_source",
+        "multiple_identities",
+        "multiple_universes",
+        "many_variants"
+      ],
+      "identities": 4,
+      "variants": 11,
+      "universes": 2
+    },
+    {
+      "name": "black canary",
+      "score": 78,
+      "records": 15,
+      "sources": 3,
+      "reasons": [
+        "cross_source",
+        "multiple_identities",
+        "multiple_universes",
+        "many_variants"
+      ],
+      "identities": 2,
+      "variants": 10,
+      "universes": 3
+    },
+    {
+      "name": "carnage",
+      "score": 77,
+      "records": 14,
+      "sources": 2,
+      "reasons": [
+        "cross_source",
+        "multiple_identities",
+        "multiple_universes",
+        "many_variants"
+      ],
+      "identities": 2,
+      "variants": 13,
+      "universes": 2
+    },
+    {
+      "name": "superwoman",
+      "score": 65,
+      "records": 25,
+      "sources": 4,
+      "reasons": [
+        "cross_source",
+        "multiple_identities",
+        "multiple_universes"
+      ],
+      "identities": 10,
+      "variants": 6,
+      "universes": 6
+    },
+    {
+      "name": "rogue",
+      "score": 62,
+      "records": 13,
+      "sources": 2,
+      "reasons": [
+        "cross_source",
+        "multiple_identities",
+        "multiple_universes"
+      ],
+      "identities": 2,
+      "variants": 8,
+      "universes": 2
+    },
+    {
+      "name": "silk",
+      "score": 61,
+      "records": 5,
+      "sources": 2,
+      "reasons": [
+        "cross_source",
+        "multiple_identities",
+        "multiple_universes"
+      ],
+      "identities": 2,
+      "variants": 3,
+      "universes": 2
+    },
+    {
+      "name": "captain spider",
+      "score": 60,
+      "records": 3,
+      "sources": 2,
+      "reasons": [
+        "cross_source",
+        "multiple_identities",
+        "multiple_universes"
+      ],
+      "identities": 2,
+      "variants": 1,
+      "universes": 2
+    },
+    {
+      "name": "nightwing",
+      "score": 58,
+      "records": 44,
+      "sources": 2,
+      "reasons": [
+        "cross_source",
+        "multiple_identities",
+        "many_variants"
+      ],
+      "identities": 3,
+      "variants": 36,
+      "universes": 0
+    },
+    {
+      "name": "red hood",
+      "score": 58,
+      "records": 41,
+      "sources": 3,
+      "reasons": [
+        "cross_source",
+        "multiple_identities",
+        "many_variants"
+      ],
+      "identities": 2,
+      "variants": 28,
+      "universes": 0
+    },
+    {
+      "name": "wolverine",
+      "score": 58,
+      "records": 41,
+      "sources": 3,
+      "reasons": [
+        "cross_source",
+        "multiple_identities",
+        "many_variants"
+      ],
+      "identities": 7,
+      "variants": 33,
+      "universes": 1
+    },
+    {
+      "name": "batgirl",
+      "score": 57,
+      "records": 35,
+      "sources": 2,
+      "reasons": [
+        "cross_source",
+        "multiple_identities",
+        "many_variants"
+      ],
+      "identities": 6,
+      "variants": 25,
+      "universes": 0
+    },
+    {
+      "name": "moon knight",
+      "score": 57,
+      "records": 38,
+      "sources": 2,
+      "reasons": [
+        "cross_source",
+        "multiple_identities",
+        "many_variants"
+      ],
+      "identities": 12,
+      "variants": 32,
+      "universes": 1
+    },
+    {
+      "name": "captain america",
+      "score": 56,
+      "records": 31,
+      "sources": 5,
+      "reasons": [
+        "cross_source",
+        "multiple_identities",
+        "many_variants"
+      ],
+      "identities": 3,
+      "variants": 26,
+      "universes": 0
+    },
+    {
+      "name": "cyclops",
+      "score": 55,
+      "records": 26,
+      "sources": 3,
+      "reasons": [
+        "cross_source",
+        "multiple_identities",
+        "many_variants"
+      ],
+      "identities": 2,
+      "variants": 23,
+      "universes": 1
+    },
+    {
+      "name": "green arrow",
+      "score": 55,
+      "records": 25,
+      "sources": 3,
+      "reasons": [
+        "cross_source",
+        "multiple_identities",
+        "many_variants"
+      ],
+      "identities": 2,
+      "variants": 17,
+      "universes": 0
+    },
+    {
+      "name": "psylocke",
+      "score": 55,
+      "records": 29,
+      "sources": 3,
+      "reasons": [
+        "cross_source",
+        "multiple_identities",
+        "many_variants"
+      ],
+      "identities": 5,
+      "variants": 23,
+      "universes": 1
+    },
+    {
+      "name": "scarlet witch",
+      "score": 55,
+      "records": 25,
+      "sources": 3,
+      "reasons": [
+        "cross_source",
+        "multiple_universes",
+        "many_variants"
+      ],
+      "identities": 1,
+      "variants": 17,
+      "universes": 2
+    },
+    {
+      "name": "wonder girl",
+      "score": 55,
+      "records": 27,
+      "sources": 2,
+      "reasons": [
+        "cross_source",
+        "multiple_identities",
+        "many_variants"
+      ],
+      "identities": 5,
+      "variants": 18,
+      "universes": 0
+    },
+    {
+      "name": "iron fist",
+      "score": 54,
+      "records": 23,
+      "sources": 2,
+      "reasons": [
+        "cross_source",
+        "multiple_identities",
+        "many_variants"
+      ],
+      "identities": 11,
+      "variants": 22,
+      "universes": 0
+    },
+    {
+      "name": "lex luthor",
+      "score": 54,
+      "records": 22,
+      "sources": 4,
+      "reasons": [
+        "cross_source",
+        "multiple_identities",
+        "many_variants"
+      ],
+      "identities": 4,
+      "variants": 13,
+      "universes": 1
+    },
+    {
+      "name": "storm",
+      "score": 54,
+      "records": 21,
+      "sources": 3,
+      "reasons": [
+        "cross_source",
+        "multiple_identities",
+        "many_variants"
+      ],
+      "identities": 2,
+      "variants": 14,
+      "universes": 1
+    },
+    {
+      "name": "thor",
+      "score": 54,
+      "records": 24,
+      "sources": 3,
+      "reasons": [
+        "cross_source",
+        "multiple_identities",
+        "many_variants"
+      ],
+      "identities": 3,
+      "variants": 22,
+      "universes": 0
+    },
+    {
+      "name": "batwoman",
+      "score": 53,
+      "records": 17,
+      "sources": 3,
+      "reasons": [
+        "cross_source",
+        "multiple_identities",
+        "many_variants"
+      ],
+      "identities": 8,
+      "variants": 9,
+      "universes": 0
+    },
+    {
+      "name": "cannonball",
+      "score": 53,
+      "records": 15,
+      "sources": 3,
+      "reasons": [
+        "cross_source",
+        "multiple_identities",
+        "many_variants"
+      ],
+      "identities": 3,
+      "variants": 10,
+      "universes": 1
+    },
+    {
+      "name": "deathstroke",
+      "score": 53,
+      "records": 16,
+      "sources": 3,
+      "reasons": [
+        "cross_source",
+        "multiple_identities",
+        "many_variants"
+      ],
+      "identities": 3,
+      "variants": 10,
+      "universes": 0
+    },
+    {
+      "name": "hawkeye",
+      "score": 53,
+      "records": 17,
+      "sources": 2,
+      "reasons": [
+        "cross_source",
+        "multiple_identities",
+        "many_variants"
+      ],
+      "identities": 2,
+      "variants": 14,
+      "universes": 1
+    },
+    {
+      "name": "huntress",
+      "score": 53,
+      "records": 18,
+      "sources": 3,
+      "reasons": [
+        "cross_source",
+        "multiple_identities",
+        "many_variants"
+      ],
+      "identities": 2,
+      "variants": 9,
+      "universes": 0
+    },
+    {
+      "name": "iceman",
+      "score": 53,
+      "records": 15,
+      "sources": 2,
+      "reasons": [
+        "cross_source",
+        "multiple_identities",
+        "many_variants"
+      ],
+      "identities": 2,
+      "variants": 11,
+      "universes": 1
+    },
+    {
+      "name": "nightcrawler",
+      "score": 53,
+      "records": 16,
+      "sources": 3,
+      "reasons": [
+        "cross_source",
+        "multiple_identities",
+        "many_variants"
+      ],
+      "identities": 3,
+      "variants": 11,
+      "universes": 1
+    },
+    {
+      "name": "nova",
+      "score": 53,
+      "records": 15,
+      "sources": 2,
+      "reasons": [
+        "cross_source",
+        "multiple_identities",
+        "many_variants"
+      ],
+      "identities": 3,
+      "variants": 11,
+      "universes": 0
+    },
+    {
+      "name": "she hulk",
+      "score": 53,
+      "records": 18,
+      "sources": 3,
+      "reasons": [
+        "cross_source",
+        "multiple_identities",
+        "many_variants"
+      ],
+      "identities": 2,
+      "variants": 15,
+      "universes": 1
+    },
+    {
+      "name": "superboy prime",
+      "score": 53,
+      "records": 15,
+      "sources": 3,
+      "reasons": [
+        "cross_source",
+        "multiple_identities",
+        "many_variants"
+      ],
+      "identities": 2,
+      "variants": 10,
+      "universes": 1
+    },
+    {
+      "name": "black panther",
+      "score": 52,
+      "records": 14,
+      "sources": 2,
+      "reasons": [
+        "cross_source",
+        "multiple_identities",
+        "many_variants"
+      ],
+      "identities": 2,
+      "variants": 13,
+      "universes": 0
+    },
+    {
+      "name": "black widow",
+      "score": 52,
+      "records": 13,
+      "sources": 3,
+      "reasons": [
+        "cross_source",
+        "multiple_identities",
+        "many_variants"
+      ],
+      "identities": 3,
+      "variants": 12,
+      "universes": 1
+    },
+    {
+      "name": "cable",
+      "score": 52,
+      "records": 14,
+      "sources": 2,
+      "reasons": [
+        "cross_source",
+        "multiple_identities",
+        "many_variants"
+      ],
+      "identities": 2,
+      "variants": 9,
+      "universes": 1
+    },
+    {
+      "name": "captain britain",
+      "score": 52,
+      "records": 13,
+      "sources": 2,
+      "reasons": [
+        "cross_source",
+        "multiple_identities",
+        "many_variants"
+      ],
+      "identities": 2,
+      "variants": 11,
+      "universes": 0
+    },
+    {
+      "name": "falcon",
+      "score": 52,
+      "records": 14,
+      "sources": 4,
+      "reasons": [
+        "cross_source",
+        "multiple_identities",
+        "many_variants"
+      ],
+      "identities": 2,
+      "variants": 12,
+      "universes": 0
+    },
+    {
+      "name": "juggernaut",
+      "score": 52,
+      "records": 14,
+      "sources": 3,
+      "reasons": [
+        "cross_source",
+        "multiple_identities",
+        "many_variants"
+      ],
+      "identities": 2,
+      "variants": 10,
+      "universes": 0
+    },
+    {
+      "name": "magik",
+      "score": 52,
+      "records": 12,
+      "sources": 2,
+      "reasons": [
+        "cross_source",
+        "multiple_identities",
+        "many_variants"
+      ],
+      "identities": 2,
+      "variants": 10,
+      "universes": 1
+    },
+    {
+      "name": "magneto",
+      "score": 52,
+      "records": 12,
+      "sources": 2,
+      "reasons": [
+        "cross_source",
+        "multiple_identities",
+        "many_variants"
+      ],
+      "identities": 3,
+      "variants": 11,
+      "universes": 1
+    },
+    {
+      "name": "spider man ii",
+      "score": 52,
+      "records": 11,
+      "sources": 2,
+      "reasons": [
+        "cross_source",
+        "multiple_identities",
+        "many_variants"
+      ],
+      "identities": 2,
+      "variants": 9,
+      "universes": 0
+    },
+    {
+      "name": "star lord",
+      "score": 52,
+      "records": 12,
+      "sources": 3,
+      "reasons": [
+        "cross_source",
+        "multiple_identities",
+        "many_variants"
+      ],
+      "identities": 2,
+      "variants": 12,
+      "universes": 0
+    },
+    {
+      "name": "the flash",
+      "score": 51,
+      "records": 5,
+      "sources": 1,
+      "reasons": [
+        "multiple_identities",
+        "multiple_universes"
+      ],
+      "identities": 3,
+      "variants": 1,
+      "universes": 2
+    },
+    {
+      "name": "spider kid",
+      "score": 50,
+      "records": 2,
+      "sources": 1,
+      "reasons": [
+        "multiple_identities",
+        "multiple_universes"
+      ],
+      "identities": 2,
+      "variants": 1,
+      "universes": 2
+    },
+    {
+      "name": "spinnerette",
+      "score": 50,
+      "records": 2,
+      "sources": 1,
+      "reasons": [
+        "multiple_identities",
+        "multiple_universes"
+      ],
+      "identities": 2,
+      "variants": 2,
+      "universes": 2
+    },
+    {
+      "name": "boom boom",
+      "score": 42,
+      "records": 13,
+      "sources": 1,
+      "reasons": [
+        "multiple_identities",
+        "many_variants"
+      ],
+      "identities": 2,
+      "variants": 9,
+      "universes": 1
+    },
+    {
+      "name": "scarlet spider",
+      "score": 42,
+      "records": 14,
+      "sources": 1,
+      "reasons": [
+        "multiple_identities",
+        "many_variants"
+      ],
+      "identities": 4,
+      "variants": 9,
+      "universes": 0
+    },
+    {
+      "name": "white queen",
+      "score": 42,
+      "records": 11,
+      "sources": 1,
+      "reasons": [
+        "multiple_identities",
+        "many_variants"
+      ],
+      "identities": 2,
+      "variants": 11,
+      "universes": 1
+    },
+    {
+      "name": "cheetah",
+      "score": 37,
+      "records": 10,
+      "sources": 3,
+      "reasons": [
+        "cross_source",
+        "multiple_identities"
+      ],
+      "identities": 4,
+      "variants": 1,
+      "universes": 1
+    },
+    {
+      "name": "cyborg superman",
+      "score": 37,
+      "records": 11,
+      "sources": 4,
+      "reasons": [
+        "cross_source",
+        "multiple_identities"
+      ],
+      "identities": 3,
+      "variants": 6,
+      "universes": 0
+    },
+    {
+      "name": "kid flash",
+      "score": 37,
+      "records": 14,
+      "sources": 3,
+      "reasons": [
+        "cross_source",
+        "multiple_identities"
+      ],
+      "identities": 5,
+      "variants": 6,
+      "universes": 1
+    },
+    {
+      "name": "mirage",
+      "score": 37,
+      "records": 10,
+      "sources": 4,
+      "reasons": [
+        "cross_source",
+        "multiple_identities"
+      ],
+      "identities": 4,
+      "variants": 6,
+      "universes": 1
+    },
+    {
+      "name": "reverse flash",
+      "score": 37,
+      "records": 13,
+      "sources": 3,
+      "reasons": [
+        "cross_source",
+        "multiple_identities"
+      ],
+      "identities": 2,
+      "variants": 3,
+      "universes": 1
+    },
+    {
+      "name": "sabretooth",
+      "score": 37,
+      "records": 14,
+      "sources": 2,
+      "reasons": [
+        "cross_source",
+        "multiple_identities"
+      ],
+      "identities": 2,
+      "variants": 8,
+      "universes": 0
+    },
+    {
+      "name": "talon",
+      "score": 37,
+      "records": 11,
+      "sources": 4,
+      "reasons": [
+        "cross_source",
+        "multiple_identities"
+      ],
+      "identities": 3,
+      "variants": 2,
+      "universes": 0
+    },
+    {
+      "name": "atomic skull",
+      "score": 36,
+      "records": 5,
+      "sources": 3,
+      "reasons": [
+        "cross_source",
+        "multiple_identities"
+      ],
+      "identities": 4,
+      "variants": 0,
+      "universes": 0
+    },
+    {
+      "name": "bizarro",
+      "score": 36,
+      "records": 8,
+      "sources": 4,
+      "reasons": [
+        "cross_source",
+        "multiple_identities"
+      ],
+      "identities": 2,
+      "variants": 1,
+      "universes": 0
+    },
+    {
+      "name": "blockbuster",
+      "score": 36,
+      "records": 5,
+      "sources": 2,
+      "reasons": [
+        "cross_source",
+        "multiple_identities"
+      ],
+      "identities": 2,
+      "variants": 1,
+      "universes": 0
+    },
+    {
+      "name": "bloodsport",
+      "score": 36,
+      "records": 5,
+      "sources": 4,
+      "reasons": [
+        "cross_source",
+        "multiple_identities"
+      ],
+      "identities": 3,
+      "variants": 0,
+      "universes": 0
+    },
+    {
+      "name": "bullseye",
+      "score": 36,
+      "records": 5,
+      "sources": 2,
+      "reasons": [
+        "cross_source",
+        "multiple_universes"
+      ],
+      "identities": 1,
+      "variants": 4,
+      "universes": 2
+    },
+    {
+      "name": "captain marvel",
+      "score": 36,
+      "records": 7,
+      "sources": 2,
+      "reasons": [
+        "cross_source",
+        "multiple_identities"
+      ],
+      "identities": 3,
+      "variants": 5,
+      "universes": 0
+    },
+    {
+      "name": "clayface",
+      "score": 36,
+      "records": 5,
+      "sources": 3,
+      "reasons": [
+        "cross_source",
+        "multiple_identities"
+      ],
+      "identities": 2,
+      "variants": 1,
+      "universes": 0
+    },
+    {
+      "name": "dagger",
+      "score": 36,
+      "records": 6,
+      "sources": 3,
+      "reasons": [
+        "cross_source",
+        "multiple_identities"
+      ],
+      "identities": 2,
+      "variants": 3,
+      "universes": 0
+    },
+    {
+      "name": "destroyer",
+      "score": 36,
+      "records": 5,
+      "sources": 3,
+      "reasons": [
+        "cross_source",
+        "multiple_identities"
+      ],
+      "identities": 3,
+      "variants": 1,
+      "universes": 0
+    },
+    {
+      "name": "doctor fate",
+      "score": 36,
+      "records": 6,
+      "sources": 3,
+      "reasons": [
+        "cross_source",
+        "multiple_identities"
+      ],
+      "identities": 2,
+      "variants": 0,
+      "universes": 1
+    },
+    {
+      "name": "eradicator",
+      "score": 36,
+      "records": 7,
+      "sources": 4,
+      "reasons": [
+        "cross_source",
+        "multiple_identities"
+      ],
+      "identities": 2,
+      "variants": 0,
+      "universes": 0
+    },
+    {
+      "name": "firestar",
+      "score": 36,
+      "records": 7,
+      "sources": 3,
+      "reasons": [
+        "cross_source",
+        "multiple_identities"
+      ],
+      "identities": 2,
+      "variants": 4,
+      "universes": 0
+    },
+    {
+      "name": "gambit",
+      "score": 36,
+      "records": 8,
+      "sources": 2,
+      "reasons": [
+        "cross_source",
+        "multiple_identities"
+      ],
+      "identities": 2,
+      "variants": 7,
+      "universes": 1
+    },
+    {
+      "name": "gamora",
+      "score": 36,
+      "records": 8,
+      "sources": 2,
+      "reasons": [
+        "cross_source",
+        "multiple_universes"
+      ],
+      "identities": 1,
+      "variants": 6,
+      "universes": 2
+    },
+    {
+      "name": "gorgon",
+      "score": 36,
+      "records": 7,
+      "sources": 3,
+      "reasons": [
+        "cross_source",
+        "multiple_identities"
+      ],
+      "identities": 2,
+      "variants": 5,
+      "universes": 0
+    },
+    {
+      "name": "human torch",
+      "score": 36,
+      "records": 5,
+      "sources": 4,
+      "reasons": [
+        "cross_source",
+        "multiple_identities"
+      ],
+      "identities": 2,
+      "variants": 1,
+      "universes": 0
+    },
+    {
+      "name": "hush",
+      "score": 36,
+      "records": 6,
+      "sources": 3,
+      "reasons": [
+        "cross_source",
+        "multiple_identities"
+      ],
+      "identities": 2,
+      "variants": 1,
+      "universes": 0
+    },
+    {
+      "name": "lightning",
+      "score": 36,
+      "records": 5,
+      "sources": 2,
+      "reasons": [
+        "cross_source",
+        "multiple_identities"
+      ],
+      "identities": 2,
+      "variants": 4,
+      "universes": 0
+    },
+    {
+      "name": "lois lane",
+      "score": 36,
+      "records": 5,
+      "sources": 3,
+      "reasons": [
+        "cross_source",
+        "multiple_universes"
+      ],
+      "identities": 1,
+      "variants": 3,
+      "universes": 3
+    },
+    {
+      "name": "magma",
+      "score": 36,
+      "records": 7,
+      "sources": 2,
+      "reasons": [
+        "cross_source",
+        "multiple_identities"
+      ],
+      "identities": 2,
+      "variants": 5,
+      "universes": 1
+    },
+    {
+      "name": "mister terrific",
+      "score": 36,
+      "records": 8,
+      "sources": 3,
+      "reasons": [
+        "cross_source",
+        "multiple_identities"
+      ],
+      "identities": 2,
+      "variants": 0,
+      "universes": 0
+    },
+    {
+      "name": "mystique",
+      "score": 36,
+      "records": 7,
+      "sources": 2,
+      "reasons": [
+        "cross_source",
+        "multiple_identities"
+      ],
+      "identities": 2,
+      "variants": 5,
+      "universes": 0
+    },
+    {
+      "name": "nick fury",
+      "score": 36,
+      "records": 9,
+      "sources": 2,
+      "reasons": [
+        "cross_source",
+        "multiple_identities"
+      ],
+      "identities": 2,
+      "variants": 4,
+      "universes": 1
+    },
+    {
+      "name": "parasite",
+      "score": 36,
+      "records": 6,
+      "sources": 3,
+      "reasons": [
+        "cross_source",
+        "multiple_identities"
+      ],
+      "identities": 3,
+      "variants": 1,
+      "universes": 0
+    },
+    {
+      "name": "phoenix",
+      "score": 36,
+      "records": 8,
+      "sources": 3,
+      "reasons": [
+        "cross_source",
+        "multiple_identities"
+      ],
+      "identities": 4,
+      "variants": 3,
+      "universes": 1
+    },
+    {
+      "name": "reaper",
+      "score": 36,
+      "records": 5,
+      "sources": 3,
+      "reasons": [
+        "cross_source",
+        "multiple_identities"
+      ],
+      "identities": 2,
+      "variants": 0,
+      "universes": 0
+    },
+    {
+      "name": "red arrow",
+      "score": 36,
+      "records": 6,
+      "sources": 2,
+      "reasons": [
+        "cross_source",
+        "multiple_identities"
+      ],
+      "identities": 3,
+      "variants": 3,
+      "universes": 1
+    },
+    {
+      "name": "red robin",
+      "score": 36,
+      "records": 6,
+      "sources": 3,
+      "reasons": [
+        "cross_source",
+        "multiple_identities"
+      ],
+      "identities": 2,
+      "variants": 3,
+      "universes": 0
+    },
+    {
+      "name": "sandman",
+      "score": 36,
+      "records": 6,
+      "sources": 3,
+      "reasons": [
+        "cross_source",
+        "multiple_identities"
+      ],
+      "identities": 2,
+      "variants": 0,
+      "universes": 1
+    },
+    {
+      "name": "sentry",
+      "score": 36,
+      "records": 8,
+      "sources": 2,
+      "reasons": [
+        "cross_source",
+        "multiple_identities"
+      ],
+      "identities": 3,
+      "variants": 6,
+      "universes": 1
+    },
+    {
+      "name": "shadowcat",
+      "score": 36,
+      "records": 5,
+      "sources": 2,
+      "reasons": [
+        "cross_source",
+        "multiple_identities"
+      ],
+      "identities": 2,
+      "variants": 3,
+      "universes": 0
+    },
+    {
+      "name": "shang chi",
+      "score": 36,
+      "records": 6,
+      "sources": 3,
+      "reasons": [
+        "cross_source",
+        "multiple_identities"
+      ],
+      "identities": 2,
+      "variants": 3,
+      "universes": 1
+    },
+    {
+      "name": "spider gwen",
+      "score": 36,
+      "records": 6,
+      "sources": 2,
+      "reasons": [
+        "cross_source",
+        "multiple_identities"
+      ],
+      "identities": 2,
+      "variants": 4,
+      "universes": 1
+    }
+  ],
+  "status": "entity_resolution_review_queue_ready"
+}
