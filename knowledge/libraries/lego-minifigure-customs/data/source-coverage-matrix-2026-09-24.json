@@ -25,7 +25,9 @@
         "component_records": 82411,
         "printed_component_records": 30375,
         "ldraw_indexed_records": 4352,
-        "physical_exception_queue": "data/physical-census-exceptions-latest.json"
+        "physical_exception_queue": "data/physical-census-exceptions-latest.json",
+        "quantitative_theme_profiles": 123,
+        "quantitative_era_profiles": 6
       }
     },
     {
@@ -94,7 +96,7 @@
     },
     {
       "domain": "mass_market_compatible",
-      "status": "strong_seed",
+      "status": "heroBloks_full_catalog_census_complete_code_normalization_in_progress",
       "sources": [
         "HeroBloks",
         "Brixtoy",
@@ -103,11 +105,27 @@
         "community sources"
       ],
       "remaining": [
-        "all HeroBloks brand facets",
-        "all code families/waves",
-        "factory/alias claims with evidence",
-        "historical discontinued releases"
-      ]
+        "persist complete 1,350-brand census and derive stable-prefix candidates",
+        "resolve mixed/no-prefix brands such as Lele, Decool and Bela",
+        "factory/alias claims with independent evidence",
+        "historical discontinued release chronology and collaboration graph"
+      ],
+      "completed_2026_09_25": {
+        "herobloks_figure_records": 59745,
+        "herobloks_brand_slugs": 1350,
+        "herobloks_source_sha256": "6df9106a9e608f96e2633363847520b08d721baac239d5932042c12cd013b155",
+        "code_crosswalk_updates": [
+          "Kopf -> KF",
+          "World Minifigures -> WM",
+          "Koruit -> XP",
+          "KDL -> K",
+          "POGO -> PG",
+          "Sheng Yuan -> SY",
+          "TV -> TV",
+          "TP -> TP",
+          "G (2) -> GH/G catalog observations"
+        ]
+      }
     },
     {
       "domain": "accessories",
@@ -157,7 +175,7 @@
     },
     {
       "domain": "themes_and_source_appearance",
-      "status": "schema_complete_fortnite_identity_pairing_complete_other_themes_pending",
+      "status": "fortnite_pairing_complete_theme_quantitative_baselines_ready_other_source_appearances_pending",
       "sources": [
         "maker catalogs",
         "HeroBloks themes",
@@ -172,7 +190,11 @@
         "fortnite_pairs": 2494,
         "fortnite_unmatched": 0,
         "pairs_with_both_images": 2480,
-        "semantic_annotation_queue_shards": 10
+        "semantic_annotation_queue_shards": 10,
+        "quantitative_theme_profiles": 123,
+        "quantitative_era_profiles": 6,
+        "quantitative_profile_records": 129,
+        "physical_samples_profiled": 17226
       }
     },
     {
@@ -232,7 +254,9 @@
           "KTown Bricks",
           "miniBigs"
         ],
-        "structured_evidence_file": "data/historical-customizer-verification-2026-09-25.json"
+        "structured_evidence_file": "data/historical-customizer-verification-2026-09-25.json",
+        "herobloks_catalog_records": 59745,
+        "herobloks_brand_slugs": 1350
       }
     },
     {
@@ -265,5 +289,23 @@
   ],
   "exhaustive_definition": "A domain becomes exhausted only after primary/authoritative sources and significant secondary discovery sources are indexed, identities/codes are normalized, contradictions are retained or resolved, time-sensitive facts are dated, and remaining unknowns are explicit.",
   "caveat": "The open web and custom-minifigure market are continuously changing; literal permanent exhaustion is impossible. This matrix makes current coverage and remaining work auditable.",
-  "updated_at": "2026-09-25"
+  "updated_at": "2026-09-25",
+  "digital_media_progress_2026_09_25": {
+    "official_lego_zip_bundles": 12,
+    "official_lego_zip_failures": 0,
+    "skywalker_profile_assets": 377,
+    "skywalker_unique_variant_keys": 374,
+    "minifigure_40th_bundle_assets": 5,
+    "lego_games_25_year_bundle_assets": 15,
+    "next": "candidate physical crosswalk and digital-only classification"
+  },
+  "training_supervision_progress_2026_09_25": {
+    "rioforce_face_svg_records": 38,
+    "face_svg_records_with_geometry": 33,
+    "face_primitive_candidates": 145,
+    "fortnite_control_pairs": 6382,
+    "fortnite_positive_controls": 2494,
+    "fortnite_global_wrong_identity_negatives": 2494,
+    "fortnite_hard_group_negatives": 1394
+  }
 }
