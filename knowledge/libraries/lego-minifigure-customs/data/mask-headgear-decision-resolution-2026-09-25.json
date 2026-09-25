@@ -1,0 +1,216 @@
+{
+  "schema_version": "0.1",
+  "researched_at": "2026-09-25",
+  "purpose": "Resolve the initial mask/headgear routing queue with release-specific component evidence. These records extend the 2026-09-24 seed without deleting the original audit trail.",
+  "evidence_policy": {
+    "primary_preferred": true,
+    "secondary_catalog_allowed": "BrickLink inventory records are accepted as structured secondary component evidence and retain their source limitation.",
+    "no_visual_guessing": true
+  },
+  "resolved_records": [
+    {
+      "character": "Spider-Man",
+      "representative_release": "sh1134 (2026)",
+      "route": "head_print_only",
+      "evidence_url": "https://www.bricklink.com/catalogItemInv.asp?M=sh1134",
+      "evidence": [
+        "standard decorated minifigure head 3626pb4198",
+        "no headgear in the minifigure inventory"
+      ],
+      "confidence": 0.98,
+      "training_note": "A tight fabric full-face mask can be represented entirely as head decoration when silhouette does not require extra geometry."
+    },
+    {
+      "character": "Wolverine",
+      "representative_release": "colmar24, Marvel Studios Series 2",
+      "route": "head_print_plus_mask_headgear",
+      "evidence_url": "https://www.bricklink.com/catalogItemInv.asp?M=colmar24",
+      "evidence": [
+        "dual-sided standard head 3626pb3465",
+        "separate Wolverine mask headgear 17018pb01"
+      ],
+      "confidence": 1,
+      "training_note": "The pointed cowl silhouette is carried by separate geometry while facial state remains on the underlying head."
+    },
+    {
+      "character": "Moon Knight",
+      "representative_release": "colmar14, Marvel Studios Series 2",
+      "route": "head_print_plus_hood",
+      "evidence_url": "https://www.bricklink.com/catalogItemInv.asp?M=colmar14",
+      "evidence": [
+        "dual-sided wrapped/masked standard head 3626pb3457",
+        "separate thick-bandage hood/headgear 3756pb01"
+      ],
+      "confidence": 1,
+      "training_note": "Layered wrapping identity is split between printed facial coverage and a separate hood silhouette."
+    },
+    {
+      "character": "Mr. Knight",
+      "representative_release": "colmar15, Marvel Studios Series 2",
+      "route": "head_print_only",
+      "evidence_url": "https://www.bricklink.com/catalogItemInv.asp?M=colmar15",
+      "evidence": [
+        "decorated white standard head 3626pb3455",
+        "inventory contains no separate headgear"
+      ],
+      "confidence": 1,
+      "training_note": "A fitted full-face textile mask can remain entirely in the cylindrical head print when no silhouette change is needed."
+    },
+    {
+      "character": "Mysterio",
+      "representative_release": "sh0580",
+      "route": "head_plus_transparent_dome",
+      "evidence_url": "https://www.bricklink.com/catalogItemInv.asp?M=sh0580",
+      "evidence": [
+        "plain flat-silver standard head 3626",
+        "separate transparent round fishbowl helmet 51283"
+      ],
+      "confidence": 1,
+      "training_note": "Transparent enclosure geometry is a distinct identity channel and should not be flattened into face art."
+    },
+    {
+      "character": "Chewbacca",
+      "representative_release": "sw0532",
+      "route": "full_modified_head",
+      "evidence_url": "https://www.bricklink.com/catalogItemInv.asp?M=sw0532",
+      "evidence": [
+        "modified Wookiee head 15307pb01",
+        "no separate standard cylindrical head under the Wookiee form"
+      ],
+      "confidence": 1,
+      "training_note": "Nonhuman cranial/facial volume is carried by a replacement modified head rather than headgear over a human head."
+    },
+    {
+      "character": "Dragonborn Paladin",
+      "representative_release": "coldnd04, Dungeons & Dragons",
+      "route": "full_modified_head_plus_horn_accessories",
+      "evidence_url": "https://www.bricklink.com/catalogItemInv.asp?M=coldnd04",
+      "evidence": [
+        "modified dragon head 77194pb04",
+        "two separate horn/claw elements 53451",
+        "separate armor bodywear 5687pb01"
+      ],
+      "confidence": 1,
+      "training_note": "Creature identity can use a dedicated modified head with modular secondary silhouette pieces."
+    },
+    {
+      "character": "Mind Flayer",
+      "representative_release": "coldnd07, Dungeons & Dragons",
+      "route": "full_modified_head",
+      "evidence_url": "https://www.bricklink.com/catalogItemInv.asp?M=coldnd07",
+      "evidence": [
+        "modified elongated alien head 5706pb01 with four mouth tentacles"
+      ],
+      "confidence": 1,
+      "training_note": "Tentacles and elongated cranial volume require dedicated head geometry rather than flat decoration."
+    },
+    {
+      "character": "Alien Beetlezoid",
+      "representative_release": "col446, Series 26",
+      "route": "full_modified_head",
+      "evidence_url": "https://www.bricklink.com/catalogItemInv.asp?S=col26-10",
+      "evidence": [
+        "modified elongated alien head 5469pb01 with mandibles",
+        "separate insect wings 69948pb02"
+      ],
+      "confidence": 1,
+      "training_note": "Mandibles and alien cranial form are encoded in a modified head; body silhouette extensions remain separate."
+    },
+    {
+      "character": "Pterodactyl Costume Fan",
+      "representative_release": "col454, Series 27",
+      "route": "costume_headgear_over_human_head",
+      "evidence_url": "https://www.bricklink.com/catalogItemInv.asp?M=col454",
+      "evidence": [
+        "human dual-sided head 3626pb3769",
+        "separate pterodactyl costume head cover 6648pb01"
+      ],
+      "confidence": 1,
+      "training_note": "Costume identity is removable headgear over a fully modeled human face."
+    },
+    {
+      "character": "Hamster Costume Fan",
+      "representative_release": "col449, Series 27",
+      "route": "costume_headgear_over_human_head",
+      "evidence_url": "https://www.bricklink.com/catalogItemInv.asp?M=col449",
+      "evidence": [
+        "human dual-sided child head 3626pb3765",
+        "separate hamster costume head cover 109769pb01"
+      ],
+      "confidence": 1,
+      "training_note": "Animal costume heads should be distinguished from true nonhuman modified heads."
+    },
+    {
+      "character": "Bogeyman",
+      "representative_release": "col456, Series 27",
+      "route": "full_modified_head_plus_horns",
+      "evidence_url": "https://www.bricklink.com/catalogItemInv.asp?M=col456",
+      "evidence": [
+        "modified Bogeyman head 6846pb01 with pin holes",
+        "two separate short horn elements 64847"
+      ],
+      "confidence": 1,
+      "training_note": "Creature head geometry can expose attachment points for modular horns rather than embedding every silhouette feature in one mould."
+    },
+    {
+      "character": "Black Panther",
+      "representative_releases": [
+        "sh0466 (2018)",
+        "sh0728 (2021)",
+        "sh0839 (2022)",
+        "sh1019 (2025)"
+      ],
+      "route": "head_print_plus_ear_headgear",
+      "evidence_urls": [
+        "https://www.bricklink.com/catalogItemInv.asp?M=sh0466",
+        "https://www.bricklink.com/catalogItemInv.asp?M=sh0728",
+        "https://www.bricklink.com/catalogItemInv.asp?M=sh0839",
+        "https://www.bricklink.com/catalogItemInv.asp?M=sh1019"
+      ],
+      "evidence": [
+        "decorated masked standard head",
+        "separate head-top/ears element 25264 repeated across sampled releases"
+      ],
+      "confidence": 0.99,
+      "training_note": "Across multiple modern releases, graphics carry mask detail while a minimal ear topper supplies silhouette."
+    },
+    {
+      "character": "Deadpool",
+      "representative_release": "sh0032",
+      "route": "head_print_only",
+      "evidence_url": "https://www.bricklink.com/catalogItemInv.asp?M=sh0032",
+      "evidence": [
+        "decorated red masked standard head 3626pb0703",
+        "no mask headgear",
+        "separate scabbard is bodywear rather than mask geometry"
+      ],
+      "confidence": 1,
+      "training_note": "A close-fitting fabric mask with no required silhouette change is head decoration only."
+    },
+    {
+      "character": "Venom",
+      "representative_release": "sh0542",
+      "route": "head_print_only_standard_minifigure",
+      "evidence_url": "https://www.bricklink.com/catalogItemInv.asp?M=sh0542",
+      "evidence": [
+        "decorated black standard head 3626pb2346",
+        "no headgear in standard minifigure inventory"
+      ],
+      "confidence": 1,
+      "training_note": "Standard-minifigure Venom uses printed cylindrical-head identity; larger creature/mech/brick-built Venom forms must remain separate figure-form records rather than being mixed into this route."
+    }
+  ],
+  "queue_status": {
+    "initial_unresolved_count": 15,
+    "resolved_in_this_batch": 15,
+    "remaining_from_initial_queue": 0,
+    "next_expansion": [
+      "broader Star Wars helmet families",
+      "superhero masks/cowls across eras",
+      "CMF costume-headgear vs creature-head contrasts",
+      "transparent domes and visors",
+      "hair/headgear substitutions",
+      "new-mould vs reused-mould paired examples"
+    ]
+  }
+}
