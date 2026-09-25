@@ -107,9 +107,8 @@
     {
       "priority": "broad_coverage",
       "gap": "catalog_market_and_history",
-      "status": "partially_ingested",
+      "status": "rebrickable_physical_census_complete_crosswalk_and_history_still_partial",
       "store_next": [
-        "run complete Rebrickable bulk minifigure census and integrity checks",
         "full BrickLink/Rebrickable/LEGO/LDraw identifier crosswalk",
         "historical/retired maker archives",
         "long-tail compatible-brand code families and aliases",
@@ -117,7 +116,19 @@
         "time-series price observations",
         "social release feed observations where supported",
         "user collection reconciliation against canonical release/component IDs"
-      ]
+      ],
+      "completed_now": {
+        "rebrickable_snapshot_created_at": "2026-09-25T19:24:38.011715+00:00",
+        "physical_samples": 17226,
+        "figure_reference_assets": 17226,
+        "component_records": 82411,
+        "component_reference_assets": 82273,
+        "printed_component_records": 30375,
+        "set_occurrence_links": 25826,
+        "figures_without_catalog_image": 0,
+        "figures_without_set_occurrence": 318,
+        "figures_without_component_inventory": 1
+      }
     },
     {
       "priority": "broad_coverage",
@@ -141,5 +152,7 @@
     "local/network materialization of high-volume binary corpora",
     "some primary-source verification for historical/dead customizer catalogs"
   ],
-  "durable_storage_rule": "Git stores schemas, manifests, normalized facts, crosswalks, derived features, decisions, hashes and provenance. High-volume raw imagery/video/game assets remain in approved local research storage and are referenced by stable IDs/hashes."
+  "durable_storage_rule": "Git stores schemas, manifests, normalized facts, crosswalks, derived features, decisions, hashes and provenance. High-volume raw imagery/video/game assets remain in approved local research storage and are referenced by stable IDs/hashes.",
+  "latest_physical_census": "data/physical-census-latest.json",
+  "updated_at": "2026-09-25"
 }
