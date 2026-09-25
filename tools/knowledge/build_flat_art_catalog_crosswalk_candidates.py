@@ -23,7 +23,7 @@ STOP = {
     "lego","minifig","minifigure","with","and","the","a","an","pattern","printed",
     "print","logo","classic","figure","fig","face","head","torso","hips","hip","leg",
     "legs","arm","arms","helmet","hair","cowl","front","back","left","right","male",
-    "female","guy","girl","man","woman",
+    "female","guy","girl","man","woman","outfit",
     "black","white","red","blue","green","yellow","gray","grey","brown","tan",
     "orange","purple","pink","gold","silver",
 }
@@ -85,11 +85,27 @@ def figure_match_score(subject_tokens, sample_tokens):
         return min(1.0, 0.72 + 0.07 * len(s)), overlap
     ratio=len(overlap)/len(s)
     if len(overlap) >= 2:
-        return min(0.9, 0.45 + 0.12 * len(overlap) + 0.15 * ratio), overlap
+        # Reward coverage of the source identity rather than raw overlap count.
+        # This prevents a generic shared phrase from tying a variant-specific name.
+        return min(0.88, 0.30 + 0.45 * ratio + 0.05 * len(overlap)), overlap
     only=overlap[0]
     if len(only) >= 7:
         return 0.42, overlap
     return 0.0, overlap
+
+
+def years_in(value: str):
+    return {
+        int(y) for y in re.findall(r"\b(?:19|20)\d{2}\b", str(value or ""))
+        if 1970 <= int(y) <= 2035
+    }
+
+
+def sample_years(sample):
+    return {
+        int(x.get("year")) for x in (sample.get("set_occurrences") or [])
+        if x.get("year")
+    }
 
 
 def ldraw_id(record):
@@ -140,17 +156,31 @@ def main():
         role=infer_role(stem)
         subject=subject_text(stem)
         subject_tokens=tok(subject)
+        subject_years=years_in(subject)
+        subject_identity_tokens=[t for t in subject_tokens if not t.isdigit()]
         fig_candidates=[]
         for fig_num, stoks in sample_tokens.items():
-            score, overlap=figure_match_score(subject_tokens, stoks)
+            sample=physical_by_fig[fig_num]
+            sample_identity_tokens=[t for t in stoks if not t.isdigit()]
+            score, overlap=figure_match_score(subject_identity_tokens, sample_identity_tokens)
             if not score:
                 continue
-            sample=physical_by_fig[fig_num]
+            sy=sample_years(sample)
+            year_match=None
+            if subject_years:
+                year_match=bool(subject_years & sy)
+                score += 0.10 if year_match else -0.10
+                score=max(0.0,min(1.0,score))
+            if not score:
+                continue
             fig_candidates.append({
                 "fig_num":fig_num,
                 "name":sample.get("name"),
                 "score":round(score,4),
                 "overlap_tokens":overlap,
+                "subject_years":sorted(subject_years),
+                "catalog_years":sorted(sy),
+                "year_match":year_match,
                 "catalog_image_url":sample.get("catalog_image_url"),
                 "bricklink_catalog_url":sample.get("bricklink_catalog_url"),
             })
@@ -255,6 +285,7 @@ def main():
             },
             "subject_text":subject,
             "subject_tokens":subject_tokens,
+            "subject_years":sorted(subject_years),
             "inferred_component_role":role,
             "figure_candidates":fig_candidates,
             "component_candidates":part_candidates,
