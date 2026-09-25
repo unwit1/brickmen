@@ -1,0 +1,64 @@
+{
+  "schema_version": "0.1",
+  "researched_at": "2026-09-24",
+  "candidates": [
+    {
+      "id": "grounding_dino",
+      "role": "open_vocabulary_detection",
+      "source": "https://github.com/IDEA-Research/GroundingDINO",
+      "strengths": [
+        "text-conditioned object detection",
+        "Grounded SAM integration",
+        "bootstrap rare object classes"
+      ],
+      "intended_use": [
+        "detect minifigures in set photos",
+        "detect multiple figures in film/game frames",
+        "seed segmentation"
+      ],
+      "status": "benchmark_before_standardizing"
+    },
+    {
+      "id": "sam2",
+      "role": "segmentation_and_video_tracking",
+      "source": "https://github.com/facebookresearch/sam2",
+      "strengths": [
+        "promptable image segmentation",
+        "multi-object video tracking",
+        "training/fine-tuning available"
+      ],
+      "license_note": "Repository states SAM 2 model checkpoints/demo/training code are Apache 2.0; pin exact model/code and review all bundled component licenses.",
+      "intended_use": [
+        "figure masks",
+        "film/game tracking",
+        "occlusion-aware crops"
+      ],
+      "status": "strong_candidate"
+    },
+    {
+      "id": "yoloe",
+      "role": "fast_open_vocabulary_detection_segmentation",
+      "source": "https://github.com/ultralytics/ultralytics",
+      "strengths": [
+        "text/visual prompts",
+        "real-time detection/segmentation"
+      ],
+      "intended_use": [
+        "possible fast corpus preprocessing after benchmarking"
+      ],
+      "status": "candidate_license_and_accuracy_review_required"
+    }
+  ],
+  "benchmark_dataset_required": true,
+  "benchmark_metrics": [
+    "figure detection precision/recall",
+    "mask IoU",
+    "component crop accuracy",
+    "false-positive rate on non-character LEGO pieces",
+    "video track identity switches",
+    "processing time",
+    "VRAM/RAM",
+    "license/deployment compatibility"
+  ],
+  "decision_rule": "Prefer the cheapest deterministic/open model stack that meets measured accuracy. Keep stronger/general models for uncertain cases and human review."
+}

@@ -1,0 +1,640 @@
+{
+  "schema_version": "0.1",
+  "researched_at": "2026-09-24",
+  "purpose": "Exhaustive registry of additional supervision/training-data sources for official-style minifigure generation. Visibility/downloadability does not imply training or redistribution rights.",
+  "usage_classes": {
+    "official_primary_local_reference": "Primary/rights-holder material; retain provenance and local research copies according to applicable terms. Highest style/identity authority.",
+    "structured_secondary": "Structured catalog/reconstruction source useful for IDs, geometry or measured features; never relabel as LEGO-authored.",
+    "open_derived_or_community": "License permits at least some reuse; honor attribution/share-alike/noncommercial terms exactly.",
+    "research_only_or_rights_review": "Useful for thesis/retrieval/analysis but do not automatically use in business training or redistribution.",
+    "user_captured_owned_object": "User-created photos/scans of legitimately possessed physical samples; raw capture rights belong to user, underlying decorated design rights remain distinct.",
+    "candidate_unverified": "Potentially useful, but source provenance/license or authenticity must be resolved first."
+  },
+  "sources": [
+    {
+      "id": "lego_pick_a_brick_minifigure_parts",
+      "category": "official_component_images",
+      "authority": "lego_primary",
+      "url": "https://www.lego.com/en-us/pick-and-build/pick-a-brick?category=7&icmp=PAB_Minifigure_Parts",
+      "observed_at": "2026-09-24",
+      "observed_scale": {
+        "minifigure_parts": 778,
+        "standard_lego_system_minifigure_parts": 751,
+        "available_now_overall_filtered": 737
+      },
+      "supervision": [
+        "official current component appearance",
+        "element IDs",
+        "current colors",
+        "current part vocabulary",
+        "purist component-selection baseline"
+      ],
+      "usage_class": "official_primary_local_reference",
+      "priority": "very_high",
+      "notes": "Dynamic current assortment; snapshot counts, URLs and element IDs with timestamps.",
+      "status": "current_snapshot_counts_recorded_full_item_enumeration_pending",
+      "source_evidence": "LEGO Pick a Brick category=7"
+    },
+    {
+      "id": "lego_pick_a_brick_minifigure_accessories",
+      "category": "official_component_images",
+      "authority": "lego_primary",
+      "url": "https://www.lego.com/en-us/pick-and-build/pick-a-brick?category=6&category=7&icmp=PAB_Minifigure_Parts",
+      "observed_at": "2026-09-24",
+      "observed_scale": {
+        "minifigure_accessories": 565,
+        "minifigure_parts_plus_accessories": 1343,
+        "standard_system_combined": 1275
+      },
+      "supervision": [
+        "official accessory/headgear/bodywear silhouettes",
+        "current colors",
+        "element IDs",
+        "existing-part vocabulary"
+      ],
+      "usage_class": "official_primary_local_reference",
+      "priority": "high",
+      "status": "current_snapshot_counts_recorded_full_item_enumeration_pending"
+    },
+    {
+      "id": "lego_brand_catalogs",
+      "category": "official_catalog_media",
+      "authority": "lego_primary",
+      "url": "https://www.lego.com/en-us/themes/brand-catalogue",
+      "supervision": [
+        "historical/current official product presentation",
+        "set context",
+        "release-era imagery"
+      ],
+      "usage_class": "official_primary_local_reference",
+      "priority": "medium",
+      "notes": "Useful historical gap filler; individual catalog availability varies by region/time."
+    },
+    {
+      "id": "lego_building_instructions",
+      "category": "official_catalog_media",
+      "authority": "lego_primary",
+      "url": "https://www.lego.com/en-us/service/building-instructions/",
+      "supervision": [
+        "assembly context",
+        "part selection",
+        "set-specific variants",
+        "occasional alternate figure views"
+      ],
+      "usage_class": "official_primary_local_reference",
+      "priority": "high",
+      "local_tool": "tools/knowledge/discover_lego_instruction_references.py"
+    },
+    {
+      "id": "rebrickable_bulk_catalog",
+      "category": "physical_census",
+      "authority": "structured_catalog",
+      "url": "https://rebrickable.com/api/v3/docs/",
+      "supervision": [
+        "minifig IDs",
+        "part inventories",
+        "image URLs",
+        "set/theme/year relationships",
+        "external IDs"
+      ],
+      "usage_class": "structured_secondary",
+      "priority": "critical",
+      "notes": "Rebrickable explicitly directs whole-catalog users to bulk CSV downloads; minifigs are special Set-like records with a parts endpoint.",
+      "local_tool": "tools/knowledge/ingest_lego_minifigure_references.py"
+    },
+    {
+      "id": "bricklink_api_images_subsets",
+      "category": "physical_census",
+      "authority": "structured_catalog",
+      "url": "https://www.bricklink.com/v3/api.page",
+      "supervision": [
+        "minifig catalog images",
+        "color-specific component images",
+        "subset/component inventories",
+        "alternate items"
+      ],
+      "usage_class": "structured_secondary",
+      "priority": "critical",
+      "local_tool": "tools/knowledge/enrich_bricklink_minifigure_references.py"
+    },
+    {
+      "id": "ldraw_patterned_minifigure_parts",
+      "category": "structured_geometry_and_patterns",
+      "authority": "community_structured",
+      "url": "https://library.ldraw.org/",
+      "observed_at": "2026-09-24",
+      "observed_library_scale": "17,116 unique shapes or patterned parts across the current library, not all minifigure-related",
+      "supervision": [
+        "part geometry",
+        "pattern reconstruction",
+        "multi-view rendering",
+        "theme-coded patterned part identities"
+      ],
+      "usage_class": "structured_secondary",
+      "priority": "critical",
+      "local_tool": "tools/knowledge/index_ldraw_minifig_patterns.py",
+      "notes": "LDraw 'Official' means accepted by LDraw, not LEGO-authored/approved. Preserve contributor licensing."
+    },
+    {
+      "id": "bricklink_studio_decorated_minifig_reference",
+      "category": "template_geometry",
+      "authority": "official_ecosystem_reference",
+      "url": "https://studiohelp.bricklink.com/hc/en-us/articles/5877834417303-Creating-a-decorated-minifig",
+      "supervision": [
+        "head canvas normalization",
+        "face feature reference zone",
+        "PNG decoration workflow"
+      ],
+      "reference_specs": {
+        "head_canvas_px": [
+          416,
+          320
+        ],
+        "face_features_reference_px": [
+          193,
+          142
+        ]
+      },
+      "usage_class": "structured_secondary",
+      "priority": "high",
+      "notes": "BrickLink explicitly calls dimensions a reference, not definitive LEGO design guidelines."
+    },
+    {
+      "id": "bricklink_studio_custom_decorated_parts",
+      "category": "template_geometry",
+      "authority": "official_ecosystem_reference",
+      "url": "https://studiohelp.bricklink.com/hc/en-us/articles/5877861085079-Creating-a-custom-decorated-part",
+      "observed_at": "2026-09-24",
+      "observed_support": "28 supported part types",
+      "supervision": [
+        "decoration-to-part mapping",
+        "template workflow"
+      ],
+      "usage_class": "structured_secondary",
+      "priority": "medium"
+    },
+    {
+      "id": "mecabricks_official_decoration_library",
+      "category": "flat_decoration_maps",
+      "authority": "community_structured",
+      "url": "https://www.mecabricks.com/",
+      "supervision": [
+        "official-part UV layouts",
+        "transparent print-only color maps",
+        "metal/chrome/sticker masks",
+        "flat decorated-part textures",
+        "component assemblies"
+      ],
+      "usage_class": "research_only_or_rights_review",
+      "priority": "very_high",
+      "notes": [
+        "Mecabricks documentation says official decoration references should be perpendicular scans/photos and custom decorations are excluded from its official drop-box.",
+        "Forum guidance documents exporting decorated parts/textures and downloading UV layouts.",
+        "Rights/terms for bulk extraction/training must be reviewed before automation."
+      ]
+    },
+    {
+      "id": "skywalker_saga_profile_icon_encyclopedia",
+      "category": "official_digital_character_crops",
+      "authority": "lego_primary_licensed_game",
+      "url": "https://www.lego.com/en-us/themes/star-wars/games/skywalker-saga",
+      "observed_scale": "hundreds of minifigure profile icons",
+      "supervision": [
+        "clean digital official character crops",
+        "expression/headgear reference",
+        "game-only variants",
+        "character class metadata"
+      ],
+      "usage_class": "official_primary_local_reference",
+      "priority": "critical",
+      "notes": "One of the cleanest large official digital corpora."
+    },
+    {
+      "id": "fortnite_lego_styles",
+      "category": "source_to_lego_translation_pairs",
+      "authority": "epic_and_lego_primary",
+      "url": "https://www.fortnite.com/news/introducing-lego-styles-for-fortnite-outfits",
+      "observed_at": "2026-09-24",
+      "observed_scale": {
+        "initial_outfits_with_lego_style": "over 1,200",
+        "npc_styles_added_v36_30": 882,
+        "npc_styles_added_v37_50": "over 250"
+      },
+      "supervision": [
+        "same-character detailed Fortnite style -> official LEGO Style pair",
+        "costume simplification",
+        "mould selection",
+        "face/mask translation",
+        "color blocking",
+        "detail reduction"
+      ],
+      "usage_class": "official_primary_local_reference",
+      "priority": "highest",
+      "notes": "Potentially the single largest automatically pairable official source->LEGO corpus found. Preserve outfit/style IDs and version because LEGO Styles can receive higher-detail updates."
+    },
+    {
+      "id": "fortnite_uefn_lego_npc_styles",
+      "category": "official_digital_asset_access",
+      "authority": "epic_primary",
+      "url": "https://dev.epicgames.com/documentation/fortnite/lego-asset-inventory-in-fortnite-creative",
+      "observed_scale": "documentation exposes 500+ selectable LEGO Styles in NPC Spawner, with later releases adding hundreds more",
+      "supervision": [
+        "controlled canonical renders",
+        "NPC identity/style selection",
+        "repeatable view capture",
+        "digital minifigure geometry"
+      ],
+      "usage_class": "official_primary_local_reference",
+      "priority": "highest",
+      "notes": "UEFN provides a legitimate controlled rendering environment. Brand rules/creator terms apply."
+    },
+    {
+      "id": "bartneck_emotional_faces_2012_2015",
+      "category": "academic_face_labels",
+      "authority": "peer_research",
+      "url": "https://www.bartneck.de/publications/2015/LEGOPictorialScales/LegoPictorialScalesforAssessingAffectiveResponse.pdf",
+      "supervision": [
+        "emotion labels",
+        "emotion intensity",
+        "historical expression distribution",
+        "context effects"
+      ],
+      "usage_class": "research_only_or_rights_review",
+      "priority": "very_high",
+      "observed_scale": {
+        "expressions_referenced_in_2015_paper": 722,
+        "participants": 264,
+        "dominant_emotion_dimensions": [
+          "anger",
+          "disgust",
+          "fear",
+          "happiness",
+          "sadness",
+          "surprise"
+        ]
+      },
+      "notes": "Earlier paper reports 627 usable faces after one corrupted image and exactly 30 ratings per face. Determine availability/license of underlying images/ratings before ingesting raw data."
+    },
+    {
+      "id": "bartneck_minifigure_catalogs",
+      "category": "licensed_or_authored_reference_books",
+      "authority": "specialist_catalog",
+      "url": "https://www.bartneck.de/publication-list/",
+      "supervision": [
+        "high-resolution head photography",
+        "historical figure identity",
+        "front/reverse head references"
+      ],
+      "usage_class": "research_only_or_rights_review",
+      "priority": "high",
+      "notes": "Purchase/license/local research source; do not scrape or redistribute."
+    },
+    {
+      "id": "dk_minifigure_visual_history_2025",
+      "category": "licensed_reference_book",
+      "authority": "lego_licensed_publisher",
+      "url": "https://www.lego.com/en-us/product/a-visual-history-5010069",
+      "observed_scale": "more than 2,500 minifigures across 304 pages",
+      "supervision": [
+        "era-spanning official visual references",
+        "design evolution",
+        "rare figures"
+      ],
+      "usage_class": "research_only_or_rights_review",
+      "priority": "high",
+      "notes": "Licensed by LEGO; useful as a purchased local audit/reference corpus rather than redistributed training data."
+    },
+    {
+      "id": "dk_star_wars_character_encyclopedia_2025",
+      "category": "licensed_reference_book",
+      "authority": "lego_lucasfilm_licensed_publisher",
+      "url": "https://dk.com/products/9780241712412-lego-star-wars-character-encyclopedia-updated-edition",
+      "observed_scale": "more than 200 LEGO Star Wars minifigures",
+      "supervision": [
+        "character/version identification",
+        "exclusive print/part/accessory notes"
+      ],
+      "usage_class": "research_only_or_rights_review",
+      "priority": "medium"
+    },
+    {
+      "id": "dk_dc_character_encyclopedia_2022",
+      "category": "licensed_reference_book",
+      "authority": "lego_dc_licensed_publisher",
+      "url": "https://dk.com/products/9780241538036-lego-dc-character-encyclopedia-new-edition",
+      "observed_scale": "more than 200 LEGO DC minifigures",
+      "supervision": [
+        "character identity",
+        "rare variants",
+        "theme coverage"
+      ],
+      "usage_class": "research_only_or_rights_review",
+      "priority": "medium"
+    },
+    {
+      "id": "bricksfinder_minifigure_captions",
+      "category": "external_ml_dataset",
+      "authority": "community_derived_from_rebrickable",
+      "url": "https://huggingface.co/datasets/Armaggheddon/lego_minifigure_captions",
+      "observed_at": "2026-09-24",
+      "observed_scale": {
+        "images": 12966,
+        "source_minifigs_csv_rows": 14985,
+        "source_snapshot": "2024-11-27"
+      },
+      "supervision": [
+        "image-caption pairs",
+        "Rebrickable fig_num",
+        "parts lists",
+        "long visual captions generated by Gemini 1.5 Flash"
+      ],
+      "usage_class": "candidate_unverified",
+      "priority": "high",
+      "notes": [
+        "Repository software is MIT, but that does not establish rights to the Rebrickable-derived image dataset.",
+        "Audit Rebrickable image terms and Hugging Face dataset card/license before training or redistribution.",
+        "Strong benchmark/retrieval candidate even if raw-image training use remains restricted."
+      ]
+    },
+    {
+      "id": "rioforce_lego_textures",
+      "category": "scanned_vector_texture_dataset",
+      "authority": "community_scan_reconstruction",
+      "url": "https://github.com/rioforce/LEGO-Textures",
+      "supervision": [
+        "SVG and PNG scans/reconstructions of real decorated LEGO elements",
+        "flat pattern regions",
+        "vector-like linework"
+      ],
+      "license": "CC BY 3.0",
+      "usage_class": "open_derived_or_community",
+      "priority": "very_high",
+      "notes": "Includes Minifigures, LEGO Universe, LOTR, Monster Fighters, Ninjago, Pirates, Racers, Space, Sports, Star Wars, Super Heroes and other folders. Preserve attribution and mark as scanned/community representation rather than official factory artwork."
+    },
+    {
+      "id": "jpgerdeman_minifig_svg_decals",
+      "category": "custom_vector_decal_dataset",
+      "authority": "community_custom",
+      "url": "https://github.com/jpgerdeman/minifig-svg-decals",
+      "supervision": [
+        "completed SVG figure designs",
+        "reusable clothing/torsos/logos/faces",
+        "templates",
+        "palette"
+      ],
+      "license": "CC BY-NC-SA 3.0",
+      "usage_class": "open_derived_or_community",
+      "priority": "high_research_only_for_commercial_pipeline",
+      "notes": "Non-commercial license. Valuable thesis/custom-extension corpus, never official baseline."
+    },
+    {
+      "id": "bobs_customs_free_decals",
+      "category": "custom_decal_archive",
+      "authority": "maker_primary",
+      "url": "https://bobscustoms.co.uk/",
+      "observed_scale": "over 300 decals on linked Flickr collection",
+      "supervision": [
+        "custom character decomposition",
+        "flat decal layout",
+        "Marvel/DC/other costume translations",
+        "historical custom style"
+      ],
+      "usage_class": "research_only_or_rights_review",
+      "priority": "very_high",
+      "notes": "Bob's site explicitly invites people to print the decals or send them to third-party printers. Flickr individual-image rights may still say All Rights Reserved; machine-learning/redistribution permission is not assumed."
+    },
+    {
+      "id": "flickr_custom_lego_minifigs",
+      "category": "historical_custom_visual_archive",
+      "authority": "community_archive",
+      "url": "https://www.flickr.com/groups/customfigs/",
+      "observed_scale": "approximately 66.9K photos",
+      "supervision": [
+        "custom style diversity",
+        "negative examples",
+        "historical makers",
+        "decal/finished-figure pairs"
+      ],
+      "usage_class": "research_only_or_rights_review",
+      "priority": "medium",
+      "notes": "Rights vary per photo. Index metadata/permalinks and license fields; only ingest image bytes when compatible."
+    },
+    {
+      "id": "flickr_minifig_customization_fc",
+      "category": "historical_custom_visual_archive",
+      "authority": "community_archive",
+      "url": "https://www.flickr.com/groups/custom_minifig/",
+      "observed_scale": "approximately 29.9K photos",
+      "supervision": [
+        "historical custom styles",
+        "maker discovery",
+        "decal/figure references"
+      ],
+      "usage_class": "research_only_or_rights_review",
+      "priority": "medium"
+    },
+    {
+      "id": "eurobricks_decal_indexes",
+      "category": "historical_custom_index",
+      "authority": "community_forum",
+      "url": "https://www.eurobricks.com/",
+      "supervision": [
+        "template/decal discovery",
+        "historical tutorials",
+        "theme-specific custom indexes",
+        "provenance leads"
+      ],
+      "usage_class": "research_only_or_rights_review",
+      "priority": "medium",
+      "notes": "Use index/thread metadata to locate original creator/license; do not assume forum posting grants reuse."
+    },
+    {
+      "id": "gts_lego_minifigure_faces_800",
+      "category": "external_ml_dataset",
+      "authority": "commercial_dataset_listing",
+      "url": "https://gts.ai/dataset-download/lego-minifigure-faces-dataset/",
+      "observed_scale": {
+        "images": 800,
+        "train": 700,
+        "validation": 100,
+        "annotation": "Pascal VOC face bounding boxes"
+      },
+      "claimed_license": "CC0 according to dataset schema on publisher page",
+      "usage_class": "candidate_unverified",
+      "priority": "medium",
+      "notes": "Publisher says data is sourced from Kaggle but does not identify original source on the surfaced page. Provenance must be resolved before use despite CC0 claim."
+    },
+    {
+      "id": "roboflow_lego_minifigure_faces_31",
+      "category": "external_ml_dataset",
+      "authority": "community_dataset",
+      "url": "https://universe.roboflow.com/sparrowdhanashree/lego-minifigure-faces/dataset/1",
+      "observed_scale": {
+        "images": 31,
+        "classes": [
+          "Angry",
+          "Happy",
+          "sad"
+        ],
+        "license": "CC BY 4.0"
+      },
+      "supervision": [
+        "face detection",
+        "coarse expression classification"
+      ],
+      "usage_class": "candidate_unverified",
+      "priority": "low",
+      "notes": "Tiny dataset and underlying image provenance still needs audit; useful mostly as annotation-schema precedent."
+    },
+    {
+      "id": "mecabricks_reference_dropbox_methodology",
+      "category": "capture_methodology",
+      "authority": "community_structured",
+      "url": "https://stage.mecabricks.com/en/forum/discussions/63c9d6455ca7e62179f35e36",
+      "supervision": [
+        "how to photograph/scan official printed elements for reconstruction"
+      ],
+      "usage_class": "structured_secondary",
+      "priority": "high",
+      "notes": "Mecabricks recommends perpendicular, sharp, high-resolution scans/photos and combining front/back references for a part."
+    },
+    {
+      "id": "user_controlled_official_figure_photography",
+      "category": "owned_physical_capture",
+      "authority": "user_generated_measurement",
+      "supervision": [
+        "front/rear/left/right/3q/head/mask/component views",
+        "consistent scale",
+        "controlled lighting",
+        "ground-truth multi-view consistency"
+      ],
+      "usage_class": "user_captured_owned_object",
+      "priority": "highest",
+      "notes": "Ideal gap-filler for figures the user physically owns. Raw photos are user-authored; underlying LEGO decoration rights remain separate. Keep local for research/training as appropriate."
+    },
+    {
+      "id": "license_filtered_printable_minifigure_parts",
+      "category": "third_party_3d_geometry",
+      "authority": "community_models",
+      "examples": [
+        "Printables",
+        "Thingiverse",
+        "MakerWorld/Cults only after per-item license review"
+      ],
+      "supervision": [
+        "mask/headgear topology",
+        "connector geometry ideas",
+        "negative/positive examples for new-part generation"
+      ],
+      "usage_class": "research_only_or_rights_review",
+      "priority": "medium",
+      "notes": "Never bulk-assume a platform-wide license. Filter per model; CC0/CC BY are strongest candidates, NC/ND/proprietary models are research/reference-only."
+    },
+    {
+      "id": "purist_custom_minifigure_archives",
+      "category": "negative_and_control_dataset",
+      "authority": "community_archive",
+      "examples": [
+        "Flickr Purist Minifigs group"
+      ],
+      "supervision": [
+        "what can be achieved using only existing official parts",
+        "mould-selection baseline",
+        "negative control against unnecessary custom printing/sculpting"
+      ],
+      "usage_class": "research_only_or_rights_review",
+      "priority": "high"
+    },
+    {
+      "id": "lego_create_a_minifigure",
+      "category": "official_purist_customization_system",
+      "authority": "lego_primary",
+      "url": "https://www.lego.com/en-us/pick-and-build/create-a-minifigure",
+      "observed_at": "2026-09-24",
+      "supervision": [
+        "official combinatorial minifigure part selection",
+        "head/torso/legs/headgear/accessory compatibility",
+        "purist likeness baseline for people and favorite characters",
+        "pre-printed-part-only control condition"
+      ],
+      "observed_behavior": {
+        "source_parts": "hundreds of Pick a Brick pieces",
+        "components": [
+          "head",
+          "torso",
+          "legs",
+          "headgear",
+          "accessories"
+        ],
+        "max_unique_figures_per_order": 30,
+        "max_accessories_per_figure": 2,
+        "distinction": "Create a Minifigure uses pre-printed parts; Minifigure Factory customizes torso graphics."
+      },
+      "usage_class": "official_primary_local_reference",
+      "priority": "very_high",
+      "status": "system_documented_dynamic_option_enumeration_pending"
+    },
+    {
+      "id": "lego_minifigure_factory",
+      "category": "official_custom_print_system",
+      "authority": "lego_primary",
+      "url": "https://www.lego.com/en-us/minifigure-factory",
+      "observed_at": "2026-09-24",
+      "supervision": [
+        "official custom torso-print workflow",
+        "text/symbol/emoji graphic composition",
+        "screen-preview versus physical-print discrepancy",
+        "contrast/readability guidance",
+        "official personalization output examples"
+      ],
+      "observed_behavior": {
+        "selectable_components": [
+          "head",
+          "headwear/hair",
+          "torso",
+          "legs",
+          "accessory"
+        ],
+        "customizable_region": "torso",
+        "customization": [
+          "patterns",
+          "designs",
+          "text",
+          "symbols",
+          "emojis"
+        ],
+        "color_note": "LEGO warns monitor colors may differ from printed result.",
+        "readability_note": "LEGO recommends contrasting colors for text."
+      },
+      "usage_class": "official_primary_local_reference",
+      "priority": "very_high",
+      "status": "system_documented_template_option_enumeration_pending"
+    },
+    {
+      "id": "skywalker_saga_profile_icons",
+      "category": "official_digital_character_crops",
+      "authority": "lego_primary_licensed_game",
+      "url": "https://www.lego.com/en-us/themes/star-wars/games/skywalker-saga",
+      "observed_at": "2026-09-24",
+      "observed_scale": "hundreds of downloadable minifigure profile icons",
+      "supervision": [
+        "clean head/upper-body digital official character crops",
+        "game-only variants",
+        "character-class grouping",
+        "mask/headgear/expression examples"
+      ],
+      "usage_class": "official_primary_local_reference",
+      "priority": "critical",
+      "status": "source_confirmed_bulk_asset_enumeration_pending"
+    }
+  ],
+  "policy": {
+    "official_style_training": "Physical LEGO-primary and official licensed digital samples have highest weight.",
+    "external_datasets": "Dataset-level license is insufficient when underlying image provenance is unclear; audit both.",
+    "custom_vectors": "Never promote custom vectors to official baseline. Use as extension, negative/control or template-layout evidence.",
+    "paid_books": "Use as local licensed/purchased research references; do not mass-extract/redistribute unless license permits.",
+    "community_3d": "Store per-item license and origin; no platform-level blanket assumptions.",
+    "user_capture": "Prefer controlled user photography to fill missing multi-view evidence.",
+    "current_official_customization": "Treat Create a Minifigure as purist/existing-part supervision and Minifigure Factory as official custom torso-print supervision; do not merge the two."
+  }
+}

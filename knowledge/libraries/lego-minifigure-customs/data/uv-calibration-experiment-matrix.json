@@ -1,0 +1,78 @@
+{
+  "schema_version": "0.1",
+  "purpose": "Turn UV setup into reproducible empirical data rather than ad-hoc tuning.",
+  "independent_variables": {
+    "substrate": [
+      "genuine opaque molded part",
+      "transparent molded part",
+      "compatible third-party plastic",
+      "raw photopolymer resin",
+      "primed resin",
+      "painted resin"
+    ],
+    "surface_prep": [
+      "as-received control",
+      "approved clean/degrease procedure"
+    ],
+    "primer": [
+      "none",
+      "printer/vendor-approved primer profile"
+    ],
+    "white_underbase": [
+      "none",
+      "1-pass",
+      "2-pass",
+      "profile-specific multi-pass"
+    ],
+    "white_choke_spread": [
+      "negative/choke ladder",
+      "nominal",
+      "positive/spread ladder"
+    ],
+    "color_mode": [
+      "candidate RIP modes"
+    ],
+    "varnish": [
+      "none",
+      "selective protective",
+      "selective texture/effect"
+    ],
+    "orientation": [
+      "flat/primary",
+      "indexed curved orientations"
+    ],
+    "cure": [
+      "machine/profile-defined"
+    ]
+  },
+  "test_targets": [
+    "registration crosshair",
+    "white halo ladder",
+    "fine positive lines",
+    "fine reversed lines",
+    "microtext",
+    "solid black",
+    "neutral ramp",
+    "skin-tone patches",
+    "saturated color patches",
+    "LEGO-target swatches",
+    "gradient",
+    "small face features",
+    "varnish texture",
+    "adhesion grid"
+  ],
+  "responses": [
+    "visual registration",
+    "spectral/color measurement",
+    "opacity",
+    "edge acuity",
+    "scratch result",
+    "tape/adhesion result",
+    "finger-oil resistance",
+    "articulation interference",
+    "surface feel",
+    "repeatability"
+  ],
+  "design_rule": "Change one primary variable at a time for diagnostic tests; use factorial designs only when interactions are intentionally being studied.",
+  "promotion_rule": "A profile becomes production-approved only after repeatable results on named substrate/mould and fixture revisions."
+}

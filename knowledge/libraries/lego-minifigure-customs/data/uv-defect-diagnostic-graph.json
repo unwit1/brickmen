@@ -1,0 +1,132 @@
+{
+  "schema_version": "0.1",
+  "defects": {
+    "WHITE_HALO": {
+      "inspect": [
+        "white-to-CMYK registration",
+        "underbase spread",
+        "fixture movement",
+        "layer alignment"
+      ],
+      "candidate_actions": [
+        "reduce white spread/choke appropriately",
+        "recalibrate layer registration",
+        "verify jig seating"
+      ]
+    },
+    "WEAK_ADHESION": {
+      "inspect": [
+        "substrate material",
+        "cleaning",
+        "primer",
+        "cure",
+        "surface contamination"
+      ],
+      "candidate_actions": [
+        "run primer matrix",
+        "repeat cleaning-controlled test",
+        "validate ink/substrate compatibility"
+      ]
+    },
+    "COLOR_SHIFT": {
+      "inspect": [
+        "substrate color",
+        "white opacity",
+        "RIP/ICC profile",
+        "ink state",
+        "varnish",
+        "measurement lighting"
+      ],
+      "candidate_actions": [
+        "use substrate-specific profile",
+        "measure target patch",
+        "recalibrate color correction"
+      ]
+    },
+    "BANDING": {
+      "inspect": [
+        "nozzle health",
+        "pass mode",
+        "media/part height",
+        "machine calibration"
+      ],
+      "candidate_actions": [
+        "machine maintenance/calibration per manufacturer",
+        "compare validated pass mode"
+      ]
+    },
+    "EDGE_BLUR": {
+      "inspect": [
+        "Z/head gap",
+        "surface curvature",
+        "overspray",
+        "resolution/pass mode"
+      ],
+      "candidate_actions": [
+        "verify Z datum",
+        "restrict print polygon",
+        "use indexed orientation for curved surface"
+      ]
+    },
+    "JIG_OFFSET": {
+      "inspect": [
+        "cavity ID",
+        "datum seating",
+        "fixture revision",
+        "per-cavity correction"
+      ],
+      "candidate_actions": [
+        "measure fiducials",
+        "update correction only after repeated evidence"
+      ]
+    },
+    "SCRATCH_CHIP": {
+      "inspect": [
+        "adhesion",
+        "ink/varnish thickness",
+        "contact region",
+        "cure"
+      ],
+      "candidate_actions": [
+        "move art out of articulation zone",
+        "test primer/varnish",
+        "repeat durability test"
+      ]
+    },
+    "RAISED_EDGE": {
+      "inspect": [
+        "white layer count",
+        "varnish",
+        "layer boundaries"
+      ],
+      "candidate_actions": [
+        "reduce unnecessary stacked layers",
+        "modify choke/mask"
+      ]
+    },
+    "DUST_STATIC": {
+      "inspect": [
+        "clean zone",
+        "part handling",
+        "static",
+        "fixture cleanliness"
+      ],
+      "candidate_actions": [
+        "improve clean handling and approved static-control workflow"
+      ]
+    },
+    "CURVED_DISTORTION": {
+      "inspect": [
+        "surface angle",
+        "indexed rotation",
+        "artwork projection",
+        "head/arm fixture"
+      ],
+      "candidate_actions": [
+        "reproject to digital twin",
+        "split into indexed print orientations"
+      ]
+    }
+  },
+  "rule": "Diagnostics propose tests; they do not silently rewrite a validated production profile."
+}

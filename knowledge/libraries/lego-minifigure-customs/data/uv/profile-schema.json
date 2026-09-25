@@ -1,0 +1,28 @@
+{
+  "schema_version": "0.1",
+  "title": "UV print profile",
+  "fields": [
+    "printer",
+    "RIP",
+    "ink_set",
+    "substrate",
+    "primer",
+    "white",
+    "color_mode",
+    "varnish",
+    "resolution",
+    "passes",
+    "z_datum",
+    "jig_revision",
+    "validation"
+  ],
+  "provenance": {
+    "created": "2026-09-24",
+    "library": "lego-minifigure-customs"
+  },
+  "rules": [
+    "Preserve exact revisions and source provenance.",
+    "Unknown values remain null/unknown rather than guessed.",
+    "Manufacturing-critical claims require validation appropriate to their evidence class."
+  ]
+}

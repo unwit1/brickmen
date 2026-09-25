@@ -1,0 +1,238 @@
+{
+  "snapshot_id": "minifigure-research-source-coverage-2026-09-24",
+  "researched_at": "2026-09-24",
+  "purpose": "Define what has been covered and what still prevents a claim of literal exhaustive ingestion.",
+  "coverage": [
+    {
+      "domain": "official_catalog_and_parts",
+      "status": "strong",
+      "sources": [
+        "LEGO",
+        "BrickLink",
+        "Rebrickable",
+        "Brickset",
+        "Brickognize",
+        "LDraw"
+      ],
+      "remaining": [
+        "bulk catalog ingestion by theme",
+        "full identifier crosswalk"
+      ]
+    },
+    {
+      "domain": "official_market_prices",
+      "status": "strong_methodology",
+      "sources": [
+        "BrickLink sold/current guide",
+        "BrickEconomy",
+        "Brick Ranker"
+      ],
+      "remaining": [
+        "per-item historical time series",
+        "completed-sale normalization outside BrickLink"
+      ]
+    },
+    {
+      "domain": "premium_western_customizers",
+      "status": "strong_anchor_set",
+      "sources": [
+        "Citizen Brick",
+        "FireStar",
+        "Brickmania",
+        "United Bricks",
+        "The Minifig Co.",
+        "Minifigs4u",
+        "BrickTactical",
+        "BigKidBrix",
+        "AV Figures",
+        "JONAK",
+        "GCC",
+        "CAC",
+        "Orbital",
+        "Minifigures.com",
+        "Minifigs.me",
+        "Engineerio",
+        "Penzora",
+        "Calypso",
+        "CrazyFigs"
+      ],
+      "remaining": [
+        "long-tail maker primary verification",
+        "dead/retired maker archive backfill"
+      ]
+    },
+    {
+      "domain": "premium_asian_customizers",
+      "status": "strong_discovery_layer",
+      "sources": [
+        "LeYiLe Brick",
+        "Manga Brick",
+        "Minifigs.Factory",
+        "UG Minifigures",
+        "CrazyMinifigs",
+        "TracyMinifigs",
+        "Lab9minifigs",
+        "OutsideBrick",
+        "Legend C MOC"
+      ],
+      "remaining": [
+        "canonical primary channel per maker",
+        "maker-vs-reseller product-code resolution",
+        "historical collaboration graph"
+      ]
+    },
+    {
+      "domain": "mass_market_compatible",
+      "status": "strong_seed",
+      "sources": [
+        "HeroBloks",
+        "Brixtoy",
+        "Down The Blocks",
+        "Brick4",
+        "community sources"
+      ],
+      "remaining": [
+        "all HeroBloks brand facets",
+        "all code families/waves",
+        "factory/alias claims with evidence",
+        "historical discontinued releases"
+      ]
+    },
+    {
+      "domain": "accessories",
+      "status": "strong_anchor_set",
+      "sources": [
+        "BrickForge",
+        "BrickWarriors",
+        "BrickArms",
+        "CapeMadness",
+        "Arealight",
+        "Clone Army Customs",
+        "BigKidBrix",
+        "EclipseGRAFX",
+        "LeYiLe/BrickTroops"
+      ],
+      "remaining": [
+        "complete accessory catalogs",
+        "geometry/interface compatibility tests",
+        "material/color crosswalk"
+      ]
+    },
+    {
+      "domain": "decals_and_diy",
+      "status": "strong_methods_partial_catalog",
+      "sources": [
+        "AV Figures",
+        "JONAK",
+        "historic Eurobricks/Flickr communities"
+      ],
+      "remaining": [
+        "current decal-maker landscape",
+        "template licensing/provenance",
+        "sealant/media durability observations"
+      ]
+    },
+    {
+      "domain": "terminology",
+      "status": "strong",
+      "sources": [
+        "maker terminology",
+        "Eurobricks customization community",
+        "official/catalog terminology"
+      ],
+      "remaining": [
+        "maintain aliases as new seller jargon appears"
+      ]
+    },
+    {
+      "domain": "themes_and_source_appearance",
+      "status": "schema_complete_ingestion_pending",
+      "sources": [
+        "maker catalogs",
+        "HeroBloks themes",
+        "existing user franchise trackers"
+      ],
+      "remaining": [
+        "normalize every user-tracked roster",
+        "exact issue/episode/game-skin resolution",
+        "reference asset provenance"
+      ]
+    },
+    {
+      "domain": "quality_and_compatibility",
+      "status": "schema_ready_data_partial",
+      "sources": [
+        "maker specs",
+        "review archives",
+        "community tests"
+      ],
+      "remaining": [
+        "empirical user tests",
+        "batch/year-specific observations",
+        "directional fit matrix"
+      ]
+    },
+    {
+      "domain": "prices",
+      "status": "representative_snapshot_complete_time_series_pending",
+      "sources": [
+        "maker direct sites",
+        "authorized resellers",
+        "compatible resellers",
+        "BrickLink"
+      ],
+      "remaining": [
+        "scheduled snapshots",
+        "currency normalization",
+        "shipping/tax capture",
+        "completed-sale ingestion where supported"
+      ]
+    },
+    {
+      "domain": "historical_customizer_archives",
+      "status": "partial",
+      "sources": [
+        "CustomMinifig.co.uk",
+        "Eurobricks",
+        "Flickr",
+        "HelloBricks",
+        "Down The Blocks"
+      ],
+      "remaining": [
+        "Phoenix Customs",
+        "Christo7108",
+        "MRM/SFX/KO Custom Minifigs and defunct maker catalogs",
+        "archived social posts/sites"
+      ]
+    },
+    {
+      "domain": "social_release_feeds",
+      "status": "not_exhausted",
+      "sources": [
+        "maker social pointers discovered"
+      ],
+      "remaining": [
+        "public Instagram/Facebook/Discord/other feed adapters where supported",
+        "deleted-post provenance",
+        "release timestamps"
+      ]
+    },
+    {
+      "domain": "user_collection_reconciliation",
+      "status": "not_yet_executed_this_pass",
+      "sources": [
+        "Bootlego MASTER",
+        "franchise trackers",
+        "Minifig Variants to Make",
+        "Lego Wishlist"
+      ],
+      "remaining": [
+        "map every row to canonical release/component IDs",
+        "deduplicate aliases",
+        "calculate gaps and upgrade/design candidates"
+      ]
+    }
+  ],
+  "exhaustive_definition": "A domain becomes exhausted only after primary/authoritative sources and significant secondary discovery sources are indexed, identities/codes are normalized, contradictions are retained or resolved, time-sensitive facts are dated, and remaining unknowns are explicit.",
+  "caveat": "The open web and custom-minifigure market are continuously changing; literal permanent exhaustion is impossible. This matrix makes current coverage and remaining work auditable."
+}

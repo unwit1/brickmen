@@ -1,0 +1,97 @@
+{
+  "schema_version": "0.1",
+  "researched_at": "2026-09-24",
+  "purpose": "Primary/reference sources that can form source-appearance -> official LEGO TranslationPairs.",
+  "pair_families": [
+    {
+      "id": "fortnite_outfit_to_lego_style",
+      "scale": "very_large",
+      "source_authorities": [
+        "Epic Games",
+        "LEGO Group"
+      ],
+      "source_urls": [
+        "https://www.fortnite.com/news/introducing-lego-styles-for-fortnite-outfits",
+        "https://dev.epicgames.com/documentation/fortnite/lego-asset-inventory-in-fortnite-creative"
+      ],
+      "exactness": "same cosmetic/outfit identity in Fortnite and LEGO Style",
+      "automation_potential": "very_high",
+      "notes": [
+        "Initial launch announced over 1,200 outfits with LEGO Styles.",
+        "v36.30 added 882 NPC LEGO Styles and v37.50 added over 250 more.",
+        "Some updates explicitly document higher-detail revisions, creating before/after LEGO-style pairs as well."
+      ]
+    },
+    {
+      "id": "star_wars_film_to_lego",
+      "scale": "very_large",
+      "source_authorities": [
+        "Lucasfilm/StarWars.com",
+        "LEGO",
+        "TT Games"
+      ],
+      "source_urls": [
+        "https://www.starwars.com/databank",
+        "https://www.lego.com/en-us/themes/star-wars"
+      ],
+      "exactness": "resolve per costume/scene/era",
+      "automation_potential": "medium",
+      "notes": "LEGO designer interviews explicitly describe use of Lucasfilm stills/production reference. Pair only when exact appearance evidence is known."
+    },
+    {
+      "id": "dc_character_to_lego",
+      "scale": "large",
+      "source_authorities": [
+        "DC",
+        "Warner Bros.",
+        "LEGO"
+      ],
+      "source_urls": [
+        "https://www.dc.com/characters"
+      ],
+      "exactness": "comic/live-action/animation continuity must be resolved",
+      "automation_potential": "medium"
+    },
+    {
+      "id": "official_designer_article_pairs",
+      "scale": "small_high_quality",
+      "source_authorities": [
+        "LEGO"
+      ],
+      "examples": [
+        "Star Wars graphic designer interviews",
+        "Wednesday design article",
+        "Nightmare Before Christmas design article",
+        "BTS Dynamite design article",
+        "Viking Village graphic design article",
+        "Pirates of the Caribbean design article",
+        "KPop Demon Hunters design article"
+      ],
+      "exactness": "high when article shows/identifies reference and final design",
+      "automation_potential": "low",
+      "notes": "Excellent qualitative labels for why a feature was simplified or moved to print/mould."
+    },
+    {
+      "id": "film_frame_to_physical_lego",
+      "scale": "large",
+      "source_authorities": [
+        "film rights holder",
+        "LEGO"
+      ],
+      "exactness": "exact costume and timestamp required",
+      "automation_potential": "medium_high_after_character_resolution",
+      "notes": "Use legally obtained local media for frame extraction; raw frames local."
+    },
+    {
+      "id": "game_skin_to_physical_or_digital_lego",
+      "scale": "large",
+      "source_authorities": [
+        "game publisher/developer",
+        "LEGO"
+      ],
+      "exactness": "skin/outfit ID required",
+      "automation_potential": "high_for_structured_games",
+      "notes": "Especially strong where game exposes both normal and LEGO representations or stable internal IDs."
+    }
+  ]
+}

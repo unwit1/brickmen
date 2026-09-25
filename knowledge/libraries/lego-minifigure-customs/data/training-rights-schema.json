@@ -1,0 +1,53 @@
+{
+  "schema_version": "0.1",
+  "purpose": "Prevent evidence collection from silently becoming training authorization.",
+  "status_enum": [
+    "allowed_open",
+    "allowed_user_captured",
+    "allowed_with_attribution",
+    "allowed_by_specific_permission",
+    "research_only",
+    "metadata_only",
+    "requires_permission",
+    "blocked_by_terms",
+    "unknown"
+  ],
+  "training_rights": {
+    "asset_id": "",
+    "status": "unknown",
+    "basis_type": "license|user_authorship|contract|permission|terms_review|unknown",
+    "license_id": null,
+    "license_url": null,
+    "licensor_or_rightsholder": null,
+    "terms_snapshot_date": null,
+    "attribution_required": false,
+    "attribution_text": null,
+    "share_alike": false,
+    "noncommercial": false,
+    "no_derivatives": false,
+    "geographic_limits": [],
+    "model_training_explicitly_allowed": null,
+    "redistribution_allowed": null,
+    "commercial_use_allowed": null,
+    "source_occurrence_ids": [],
+    "reviewer": "",
+    "reviewed_at": "",
+    "notes": []
+  },
+  "policy": {
+    "default_trainable_statuses": [
+      "allowed_open",
+      "allowed_user_captured",
+      "allowed_with_attribution",
+      "allowed_by_specific_permission"
+    ],
+    "never_auto_promote": [
+      "research_only",
+      "metadata_only",
+      "requires_permission",
+      "blocked_by_terms",
+      "unknown"
+    ],
+    "rule": "Every raw asset requires its own or inherited rights record. Repository/source software licenses do not automatically cover underlying images."
+  }
+}

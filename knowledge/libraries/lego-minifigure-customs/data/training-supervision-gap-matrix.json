@@ -1,0 +1,243 @@
+{
+  "schema_version": "0.1",
+  "created_at": "2026-09-24",
+  "purpose": "Rank missing supervision rather than merely missing sources.",
+  "gaps": [
+    {
+      "id": "exact_flat_official_print_art",
+      "priority": "critical",
+      "status": "strong_secondary_flat_art_official_factory_art_still_partial",
+      "why": "Assembled renders hide curvature and back/side regions; flat maps are strongest supervision for template generation.",
+      "sources": [
+        "LDraw patterns",
+        "Mecabricks official decorations/UV layouts subject to terms",
+        "rioforce LEGO-Textures",
+        "game texture files",
+        "BrickLink Studio reference templates"
+      ],
+      "next_actions": [
+        "crosswalk rioforce/LDraw flat maps to canonical component IDs",
+        "materialize Mecabricks official UV/decoration assets in approved local/network runtime",
+        "extract official game texture files from local installations",
+        "derive flat maps from controlled physical captures where no source texture exists"
+      ],
+      "evidence_completed": [
+        "rioforce tree snapshot: 117 SVG / 122 PNG, 110 paired stems",
+        "minifig-svg-decals tree snapshot: 213 SVGs for extension/control",
+        "LDraw minifigure category census pinned to official-library mirror",
+        "BrickLink Studio minifigure decoration dimensions recorded",
+        "AV Figures/custom flat-art sources classified"
+      ]
+    },
+    {
+      "id": "source_to_lego_translation_pairs",
+      "priority": "critical",
+      "status": "identity_pairing_strong_semantic_visual_differencing_partial",
+      "why": "Directly teaches which source details LEGO preserves/simplifies/omits/moves to mould/accessory.",
+      "sources": [
+        "Fortnite Outfit -> LEGO Style pairs",
+        "Star Wars designer reference material + physical figures",
+        "official film/game/source images paired to licensed LEGO figures",
+        "Wednesday/Nightmare/BTS/Viking/Pirates designer articles"
+      ],
+      "next_actions": [
+        "materialize/source normal Fortnite appearance images for all 2,494 pairs",
+        "compute source-vs-LEGO visual differences and label preserve/simplify/omit/mould/accessory",
+        "expand exact source-frame/panel pair resolution theme-by-theme",
+        "use official asset bundles and local film/game media to pin exact source appearances"
+      ],
+      "evidence_completed": [
+        "2,494 exact Fortnite cosmeticId -> LEGO Style identity pairs committed",
+        "live-action human/character pair registry expanded across Batman 1989, Indiana Jones, Harry Potter, MCU, LOTR, Stranger Things, BTS, sitcoms and others",
+        "official designer methodology registry supplies causal translation labels",
+        "CMF identity census adds exact contemporary figure identities"
+      ]
+    },
+    {
+      "id": "multi_view_physical_ground_truth",
+      "priority": "critical",
+      "status": "blocked_on_physical_capture_and_credentials",
+      "why": "Front catalog renders cannot teach backs, sides, wraps or mask geometry.",
+      "sources": [
+        "user controlled photography",
+        "BrickLink component images",
+        "Mecabricks/LDraw reconstructed views",
+        "licensed catalog books where permitted"
+      ],
+      "next_actions": [
+        "run controlled turntable/macro capture",
+        "prioritize figures missing back/side/wrap evidence",
+        "merge with component catalog/LDraw geometry"
+      ],
+      "evidence_completed": [
+        "controlled physical capture protocol exists",
+        "BrickLink/Rebrickable/LDraw multi-source strategy defined"
+      ],
+      "blockers": [
+        "physical official figures/camera rig",
+        "BrickLink API credentials for full color-specific component enrichment",
+        "local materialization of image corpus"
+      ]
+    },
+    {
+      "id": "facial_expression_landmarks_and_labels",
+      "priority": "very_high",
+      "status": "research_labels_strong_image_landmarks_partial",
+      "why": "Official-looking faces depend on tiny landmark relationships that generic image embeddings do not explain.",
+      "sources": [
+        "Bartneck 627/722 expression research",
+        "physical head catalog",
+        "LDraw/Mecabricks/rioforce head patterns",
+        "DK/Bartneck head photography"
+      ],
+      "next_actions": [
+        "materialize underlying Bartneck/figshare images/ratings in network-enabled runtime",
+        "derive eye/brow/mouth landmarks from official head crops",
+        "build probabilistic expression distributions instead of single hard labels",
+        "stratify expression geometry by era/theme/head substrate"
+      ],
+      "evidence_completed": [
+        "Bartneck 2013: 3,655 photographed figures, 628 unique heads, 627 valid faces, 30 raters per face",
+        "2017 ambiguity study added probabilistic/disagreement supervision",
+        "1989 Pirates expression transition captured from LEGO primary history",
+        "LEGO designer expression-selection rules captured"
+      ]
+    },
+    {
+      "id": "mask_headgear_decision_pairs",
+      "priority": "very_high",
+      "status": "seed_dataset_created_expansion_partial",
+      "why": "Need examples where source design became print, existing headgear, new mould, or hybrid.",
+      "sources": [
+        "Fortnite pairs",
+        "official superhero/Star Wars figures",
+        "game-only digital designs",
+        "license-filtered community geometry as negative/alternative examples"
+      ],
+      "next_actions": [
+        "resolve unresolved candidates through component inventories/official instructions",
+        "expand across Star Wars helmets, superhero cowls/masks, CMF costumes, fantasy/nonhuman heads and transparent domes",
+        "derive silhouette-vs-graphic dependence metrics from canonical views"
+      ],
+      "evidence_completed": [
+        "mask/headgear decision schema committed",
+        "12 high-confidence LEGO-primary route records committed",
+        "15 unresolved route candidates retained instead of guessed"
+      ]
+    },
+    {
+      "id": "official_digital_only_variants",
+      "priority": "very_high",
+      "status": "identity_and_bundle_discovery_strong_raw_asset_materialization_blocked",
+      "sources": [
+        "Skywalker Saga icons/assets",
+        "TT game assets",
+        "LEGO Fortnite/UEFN styles",
+        "LEGO Universe",
+        "legacy web games"
+      ],
+      "next_actions": [
+        "materialize Skywalker bundles",
+        "extract local TT/legacy game assets",
+        "capture UEFN canonical views",
+        "crosswalk physical counterparts"
+      ],
+      "evidence_completed": [
+        "2,494 Fortnite LEGO Style identities committed",
+        "Skywalker Saga ten direct LEGO profile-icon ZIP bundles resolved",
+        "commercial game candidate census and extraction-strategy registry exist",
+        "legacy browser/game preservation adapters exist"
+      ],
+      "blockers": [
+        "binary ZIP materialization unavailable in current runtime",
+        "local game installations required for exhaustive textures/models",
+        "UEFN local capture required for controlled renders"
+      ]
+    },
+    {
+      "id": "custom_style_extensions",
+      "priority": "high_after_official_baseline",
+      "status": "source_census_strong_scoring_and_sample_admission_pending",
+      "sources": [
+        "Bob's Customs",
+        "rioforce scans where applicable",
+        "SVG decal repository",
+        "Flickr/Eurobricks makers",
+        "priority current customizers"
+      ],
+      "next_actions": [
+        "materialize permitted custom images/vectors",
+        "compute deterministic features against nearest official style profile",
+        "admit only novel useful supervision",
+        "retain rejected samples as typed negative controls"
+      ],
+      "evidence_completed": [
+        "15 decal/custom source families classified",
+        "AV Figures ~765-product flat-art source identified",
+        "rioforce and SVG decal repositories individually tree-indexed",
+        "western/asian customizer source registries exist"
+      ]
+    },
+    {
+      "id": "negative_controls",
+      "priority": "high",
+      "status": "schema_concept_ready_asset_population_partial",
+      "sources": [
+        "purist minifigs",
+        "over-detailed customs",
+        "incorrect AI generations",
+        "wrong mask-route generations",
+        "generic non-LEGO toy renders"
+      ],
+      "next_actions": [
+        "ingest failed ChatGPT/local generations with failure labels",
+        "sample over-detailed/realistic customs and purist controls",
+        "construct matched positive/negative pairs by failure type",
+        "reserve negative corpus for critic/preference/evaluation training rather than style imitation"
+      ],
+      "evidence_completed": [
+        "failure taxonomies exist in ChatGPT control protocol and custom evaluation framework"
+      ]
+    },
+    {
+      "id": "production_template_alignment",
+      "priority": "high",
+      "status": "reference_dimensions_and_methods_strong_physical_calibration_pending",
+      "sources": [
+        "BrickLink Studio templates",
+        "Mecabricks UV layouts",
+        "physical measurement",
+        "AV/Bob/custom decal layouts"
+      ],
+      "next_actions": [
+        "normalize templates to common mm/surface coordinates",
+        "validate against measured official parts",
+        "run real print survivability and registration tests",
+        "separate research reconstruction templates from machine-specific production templates"
+      ],
+      "evidence_completed": [
+        "BrickLink Studio head canvas / face reference dimensions recorded",
+        "historical Jared Burks dimensions/linework methodology recorded",
+        "custom flat-layout repositories indexed",
+        "Minifigure Factory production/readability behavior documented"
+      ]
+    },
+    {
+      "id": "copyright_and_license_metadata",
+      "priority": "critical",
+      "status": "provenance_schema_complete_asset_level_population_ongoing",
+      "why": "Long-lived research requires knowing what can be cached, trained on, redistributed or commercialized.",
+      "next_actions": [
+        "attach permission/source occurrence to every materialized asset",
+        "retain terms/license snapshots and user permission evidence",
+        "separate research/personal/LEGO-review scope from public redistribution/commercial deployment scope"
+      ],
+      "evidence_completed": [
+        "research rights assumption recorded",
+        "source tree SHAs and public licenses captured for major repositories",
+        "source authority/usage classes represented in master schema"
+      ]
+    }
+  ],
+  "updated_at": "2026-09-24"
+}
