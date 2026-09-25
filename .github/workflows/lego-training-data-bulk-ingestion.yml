@@ -366,6 +366,39 @@ jobs:
           PY
           exit 0
 
+      - name: Build Fortnite translation control pairs
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          src="$OUT/sources/fortnite"
+          mkdir -p "$src/controls"
+          python tools/knowledge/build_translation_control_pairs.py \
+            --pairs "$src/output/fortnite_lego_translation_pairs.jsonl" \
+            --output "$src/controls/controls.jsonl" \
+            --summary "$src/controls/summary.json"
+          rc=$?
+          RC="$rc" SRC="$src" python - <<'PY'
+          import json,os,shutil
+          from datetime import datetime,timezone
+          from pathlib import Path
+          src=Path(os.environ["SRC"]);rc=int(os.environ["RC"]);summary={}
+          p=src/"controls/summary.json"
+          if p.exists():
+              try: summary=json.loads(p.read_text())
+              except Exception: pass
+          status={"source_id":"fortnite_translation_controls","status":"complete" if rc==0 else "failed",
+                  "exit_code":rc,"created_at":datetime.now(timezone.utc).isoformat(),**summary}
+          Path(os.environ["OUT"],"status/fortnite_translation_controls.json").write_text(json.dumps(status,indent=2))
+          if rc==0:
+              dest=Path(os.environ["DEST"])
+              shutil.copy2(src/"controls/summary.json",dest/"fortnite-translation-control-summary-latest.json")
+              controls=src/"controls/controls.jsonl"
+              if controls.exists() and controls.stat().st_size < 8_000_000:
+                  shutil.copy2(controls,dest/"fortnite-translation-controls-latest.jsonl")
+          PY
+          exit 0
+
       - name: Fortnite deterministic visual-difference features
         continue-on-error: true
         shell: bash
