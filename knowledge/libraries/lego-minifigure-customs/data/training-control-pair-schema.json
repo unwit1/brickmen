@@ -1,0 +1,30 @@
+{
+  "schema_version": "0.1",
+  "id": "minifigure-training-control-pair",
+  "purpose": "Represent positive and negative controls for source-to-LEGO translation evaluation without confusing synthetic mismatches with real design decisions.",
+  "fields": {
+    "control_id": "",
+    "control_type": "positive_identity|negative_wrong_identity_global|negative_wrong_identity_hard_group",
+    "source_pair_id": "",
+    "target_pair_id": "",
+    "source_identity_id": "",
+    "source_identity_name": "",
+    "lego_identity_id": "",
+    "source_image_url": null,
+    "lego_image_url": null,
+    "group_basis": null,
+    "difficulty": "positive|easy_negative|hard_negative",
+    "expected_identity_match": false,
+    "generated_by": "",
+    "generation_seed": null,
+    "provenance": [],
+    "review_status": "deterministic_control"
+  },
+  "policies": [
+    "Synthetic negative controls must never be ingested as observed LEGO design decisions.",
+    "Positive controls preserve the original paired identity.",
+    "Global negatives pair different identities deterministically.",
+    "Hard-group negatives pair different identities sharing a source series/set when possible.",
+    "Controls test identity/source fidelity; they do not independently label style quality."
+  ]
+}
