@@ -11,6 +11,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: lego-training-data-bulk-ingestion-main
+  cancel-in-progress: true
+
 jobs:
   ingest:
     runs-on: ubuntu-latest
@@ -171,6 +175,72 @@ jobs:
               profiles=src/"profiles.jsonl"
               if profiles.exists() and profiles.stat().st_size < 8_000_000:
                   shutil.copy2(profiles,dest/"theme-era-profiles-latest.jsonl")
+          PY
+          exit 0
+
+      - name: Build decorated-head semantic corpus
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          src="$OUT/sources/decorated_head_semantics"; mkdir -p "$src"
+          python tools/knowledge/build_decorated_head_semantic_corpus.py \
+            --samples "$OUT/sources/rebrickable/output/physical_samples.jsonl" \
+            --components "$OUT/sources/rebrickable/output/component_samples.jsonl" \
+            --output "$src/records.jsonl" \
+            --summary "$src/summary.json"
+          rc=$?
+          RC="$rc" SRC="$src" python - <<'PY'
+          import json,os,shutil
+          from datetime import datetime,timezone
+          from pathlib import Path
+          src=Path(os.environ["SRC"]);rc=int(os.environ["RC"]);summary={}
+          p=src/"summary.json"
+          if p.exists():
+              try: summary=json.loads(p.read_text())
+              except Exception: pass
+          status={"source_id":"decorated_head_semantics","status":"complete" if rc==0 else "failed",
+                  "exit_code":rc,"created_at":datetime.now(timezone.utc).isoformat(),**summary}
+          Path(os.environ["OUT"],"status/decorated_head_semantics.json").write_text(json.dumps(status,indent=2))
+          if rc==0:
+              dest=Path(os.environ["DEST"])
+              shutil.copy2(src/"summary.json",dest/"decorated-head-semantic-summary-latest.json")
+              records=src/"records.jsonl"
+              if records.exists() and records.stat().st_size < 8_000_000:
+                  shutil.copy2(records,dest/"decorated-head-semantic-corpus-latest.jsonl")
+          PY
+          exit 0
+
+      - name: Build corpus-wide mask and headgear candidates
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          src="$OUT/sources/mask_headgear_candidates"; mkdir -p "$src"
+          python tools/knowledge/build_mask_headgear_candidate_corpus.py \
+            --samples "$OUT/sources/rebrickable/output/physical_samples.jsonl" \
+            --components "$OUT/sources/rebrickable/output/component_samples.jsonl" \
+            --output "$src/records.jsonl" \
+            --summary "$src/summary.json"
+          rc=$?
+          RC="$rc" SRC="$src" python - <<'PY'
+          import json,os,shutil
+          from datetime import datetime,timezone
+          from pathlib import Path
+          src=Path(os.environ["SRC"]);rc=int(os.environ["RC"]);summary={}
+          p=src/"summary.json"
+          if p.exists():
+              try: summary=json.loads(p.read_text())
+              except Exception: pass
+          status={"source_id":"mask_headgear_candidates","status":"complete" if rc==0 else "failed",
+                  "exit_code":rc,"created_at":datetime.now(timezone.utc).isoformat(),**summary}
+          Path(os.environ["OUT"],"status/mask_headgear_candidates.json").write_text(json.dumps(status,indent=2))
+          if rc==0:
+              dest=Path(os.environ["DEST"])
+              shutil.copy2(src/"summary.json",dest/"mask-headgear-candidate-summary-latest.json")
+              records=src/"records.jsonl"
+              if records.exists() and records.stat().st_size < 8_000_000:
+                  shutil.copy2(records,dest/"mask-headgear-candidates-latest.jsonl")
           PY
           exit 0
 
@@ -449,6 +519,39 @@ jobs:
           PY
           exit 0
 
+      - name: Build leakage-safe face dataset splits
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          src="$OUT/sources/lego_face_vae"
+          mkdir -p "$src/splits"
+          python tools/knowledge/build_lego_face_grouped_splits.py \
+            --records "$src/records.jsonl" \
+            --output "$src/splits/records.jsonl" \
+            --summary "$src/splits/summary.json"
+          rc=$?
+          RC="$rc" SRC="$src" python - <<'PY'
+          import json,os,shutil
+          from datetime import datetime,timezone
+          from pathlib import Path
+          src=Path(os.environ["SRC"]);rc=int(os.environ["RC"]);summary={}
+          p=src/"splits/summary.json"
+          if p.exists():
+              try: summary=json.loads(p.read_text())
+              except Exception: pass
+          status={"source_id":"lego_face_grouped_splits","status":"complete" if rc==0 else "failed",
+                  "exit_code":rc,"created_at":datetime.now(timezone.utc).isoformat(),**summary}
+          Path(os.environ["OUT"],"status/lego_face_grouped_splits.json").write_text(json.dumps(status,indent=2))
+          if rc==0:
+              dest=Path(os.environ["DEST"])
+              shutil.copy2(src/"splits/summary.json",dest/"lego-face-split-summary-latest.json")
+              records=src/"splits/records.jsonl"
+              if records.exists() and records.stat().st_size < 8_000_000:
+                  shutil.copy2(records,dest/"lego-face-splits-latest.jsonl")
+          PY
+          exit 0
+
       - name: Build face landmark review queue
         continue-on-error: true
         shell: bash
@@ -585,6 +688,36 @@ jobs:
           PY
           exit 0
 
+      - name: Analyze HeroBloks registry gaps
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          src="$OUT/sources/herobloks"
+          python tools/knowledge/analyze_herobloks_brand_gaps.py \
+            --brand-census "$src/brands.json" \
+            --landscape knowledge/libraries/lego-minifigure-customs/data/customizer-landscape-2026-09-24.json \
+            --crosswalk knowledge/libraries/lego-minifigure-customs/data/compatible-brand-code-crosswalk-seed.json \
+            --output "$src/brand-gaps.json"
+          rc=$?
+          RC="$rc" SRC="$src" python - <<'PY'
+          import json,os,shutil
+          from datetime import datetime,timezone
+          from pathlib import Path
+          src=Path(os.environ["SRC"]);rc=int(os.environ["RC"]);data={}
+          p=src/"brand-gaps.json"
+          if p.exists():
+              try: data=json.loads(p.read_text())
+              except Exception: pass
+          status={"source_id":"herobloks_brand_gaps","status":"complete" if rc==0 else "failed",
+                  "exit_code":rc,"created_at":datetime.now(timezone.utc).isoformat(),
+                  **{k:data.get(k) for k in ("hero_bloks_brand_records","known_registry_matches","unmodeled_brand_slugs","unmodeled_with_stable_prefix_candidate","status")}}
+          Path(os.environ["OUT"],"status/herobloks_brand_gaps.json").write_text(json.dumps(status,indent=2))
+          if rc==0 and p.exists():
+              shutil.copy2(p,Path(os.environ["DEST"])/"herobloks-brand-gap-analysis-latest.json")
+          PY
+          exit 0
+
       - name: Hugging Face minifigure-caption dataset metadata
         continue-on-error: true
         shell: bash
@@ -618,7 +751,9 @@ jobs:
           src="$OUT/sources/bricksfinder_caption_rows"; mkdir -p "$src"
           python tools/knowledge/ingest_bricksfinder_caption_dataset.py \
             --current-samples "$OUT/sources/rebrickable/output/physical_samples.jsonl" \
-            --output-dir "$src/output"
+            --output-dir "$src/output" \
+            --delay 0.35 \
+            --max-retries 8
           rc=$?
           RC="$rc" SRC="$src" python - <<'PY'
           import json,os,shutil
@@ -781,6 +916,39 @@ jobs:
           PY
           exit 0
 
+      - name: Build ranked Fortnite semantic review queue
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          src="$OUT/sources/fortnite"
+          mkdir -p "$src/semantic-review"
+          python tools/knowledge/build_fortnite_semantic_review_queue.py \
+            --features "$src/visual/features.jsonl" \
+            --output "$src/semantic-review/queue.jsonl" \
+            --summary "$src/semantic-review/summary.json"
+          rc=$?
+          RC="$rc" SRC="$src" python - <<'PY'
+          import json,os,shutil
+          from datetime import datetime,timezone
+          from pathlib import Path
+          src=Path(os.environ["SRC"]);rc=int(os.environ["RC"]);summary={}
+          p=src/"semantic-review/summary.json"
+          if p.exists():
+              try: summary=json.loads(p.read_text())
+              except Exception: pass
+          status={"source_id":"fortnite_semantic_review_queue","status":"complete" if rc==0 else "failed",
+                  "exit_code":rc,"created_at":datetime.now(timezone.utc).isoformat(),**summary}
+          Path(os.environ["OUT"],"status/fortnite_semantic_review_queue.json").write_text(json.dumps(status,indent=2))
+          if rc==0:
+              dest=Path(os.environ["DEST"])
+              shutil.copy2(src/"semantic-review/summary.json",dest/"fortnite-semantic-review-summary-latest.json")
+              q=src/"semantic-review/queue.jsonl"
+              if q.exists() and q.stat().st_size < 8_000_000:
+                  shutil.copy2(q,dest/"fortnite-semantic-review-queue-latest.jsonl")
+          PY
+          exit 0
+
       - name: Explicit web-source profiles
         continue-on-error: true
         shell: bash
@@ -857,15 +1025,26 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add "$DEST"
-          if git diff --cached --quiet; then
-            echo "No ingestion result changes."
-            exit 0
-          fi
-          git commit -m "knowledge: refresh LEGO training data ingestion snapshots"
-          for attempt in 1 2 3; do
-            if git push origin HEAD:main; then exit 0; fi
-            echo "Push conflict; rebasing attempt $attempt"
-            git pull --rebase origin main || { git rebase --abort || true; exit 1; }
+
+          snapshot="$(mktemp -d)"
+          cp -a "$DEST/." "$snapshot/"
+
+          for attempt in 1 2 3 4; do
+            echo "Persist attempt $attempt: overlaying generated snapshots on current main"
+            git fetch origin main
+            git reset --hard origin/main
+            mkdir -p "$DEST"
+            cp -a "$snapshot/." "$DEST/"
+            git add "$DEST"
+            if git diff --cached --quiet; then
+              echo "No ingestion result changes."
+              exit 0
+            fi
+            git commit -m "knowledge: refresh LEGO training data ingestion snapshots"
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            echo "Remote advanced during push; retrying from fresh main."
           done
-          git push origin HEAD:main
+          echo "Unable to persist generated snapshots after 4 fresh-main overlay attempts."
+          exit 1
