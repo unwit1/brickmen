@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.1",
+  "schema_version": "0.2",
   "created_at": "2026-09-24",
   "purpose": "Rank missing supervision rather than merely missing sources.",
   "gaps": [
@@ -46,7 +46,7 @@
     {
       "id": "source_to_lego_translation_pairs",
       "priority": "critical",
-      "status": "identity_pairing_complete_for_current_fortnite_corpus_visual_features_materialized_semantic_review_pending",
+      "status": "fortnite_identity_and_visual_measurement_complete_semantic_review_pending",
       "why": "Directly teaches which source details LEGO preserves/simplifies/omits/moves to mould/accessory.",
       "sources": [
         "Fortnite Outfit -> LEGO Style pairs",
@@ -55,10 +55,10 @@
         "Wednesday/Nightmare/BTS/Viking/Pirates designer articles"
       ],
       "next_actions": [
-        "resolve the 14 pairs missing preferred LEGO imagery",
+        "rerun current visual-feature pass after alias fallback resolution and verify all 14 placeholder-family records",
         "review visual pairs into preserve/simplify/omit/exaggerate/mould/accessory/cloth labels without promoting heuristics as ground truth",
         "expand exact source-frame/panel pair resolution theme-by-theme",
-        "use official asset bundles and local film/game media to pin exact source appearances"
+        "crosswalk Skywalker Saga profile variants to physical Star Wars releases and retain digital-only variants"
       ],
       "evidence_completed": [
         "2,494 exact Fortnite cosmeticId -> LEGO Style identity pairs committed",
@@ -72,7 +72,10 @@
         "2026-09-25 refresh confirms 2,494/2,494 Fortnite LEGO Style identities paired by embedded BR ID with zero unmatched LEGO records",
         "2,480 pairs have both source and LEGO preferred images and deterministic visual-difference features",
         "14 pairs still lack a preferred LEGO image",
-        "semantic annotation queue is sharded across all 2,494 pairs for preserve/simplify/omit/mould/accessory review"
+        "semantic annotation queue is sharded across all 2,494 pairs for preserve/simplify/omit/mould/accessory review",
+        "regional head/torso/lower-body visual measurements were added to the Fortnite feature extractor",
+        "same-name alias fallback logic was added for the 14 Character_* placeholder LEGO records while preserving original pair provenance",
+        "6,382 deterministic control pairs now exist: 2,494 positives, 2,494 global wrong-identity negatives, and 1,394 same-group hard negatives"
       ]
     },
     {
@@ -104,7 +107,7 @@
     {
       "id": "facial_expression_landmarks_and_labels",
       "priority": "very_high",
-      "status": "candidate_face_geometry_corpus_materialized_semantic_review_pending",
+      "status": "candidate_face_geometry_and_review_pipeline_ready_semantic_landmarks_pending",
       "why": "Official-looking faces depend on tiny landmark relationships that generic image embeddings do not explain.",
       "sources": [
         "Bartneck 627/722 expression research",
@@ -113,7 +116,7 @@
         "DK/Bartneck head photography"
       ],
       "next_actions": [
-        "review primitive candidates into eye/brow/mouth/other identity-mark landmarks",
+        "run the new review queue and annotate the highest-priority face SVGs",
         "normalize SVG transforms into common 0-1 face coordinates",
         "crosswalk reviewed faces to Rebrickable/LDraw/BrickLink head IDs",
         "expand beyond rioforce using catalog head images and LDraw head patterns",
@@ -126,7 +129,9 @@
         "LEGO designer expression-selection rules captured",
         "2026-09-25 rioforce face SVG profiler materialized 38 face-like vector assets; 36 have PNG siblings",
         "33/38 face-like SVGs contain extractable primitive geometry candidates; 145 primitive candidates total; zero parse errors",
-        "front/reverse filename hints are retained separately and automatic primitives are explicitly non-semantic until review"
+        "front/reverse filename hints are retained separately and automatic primitives are explicitly non-semantic until review",
+        "face-landmark schema now defines eyes/brows/mouth/facial-hair/eyewear/scar regions, probabilistic emotions, dual-sided relationships, provenance, and review status",
+        "deterministic face-landmark review queue builder now prioritizes explicit-emotion, front/reverse, calibration/CMF, and machine-readable SVG records"
       ]
     },
     {
@@ -156,7 +161,7 @@
     {
       "id": "official_digital_only_variants",
       "priority": "very_high",
-      "status": "identity_and_bundle_discovery_strong_raw_asset_materialization_blocked",
+      "status": "skywalker_official_assets_indexed_identity_crosswalk_pending_other_games_partial",
       "sources": [
         "Skywalker Saga icons/assets",
         "TT game assets",
@@ -165,19 +170,22 @@
         "legacy web games"
       ],
       "next_actions": [
-        "materialize Skywalker bundles",
+        "crosswalk all 374 Skywalker filename-derived variant keys to canonical Character/Incarnation/OutfitDesign and physical releases",
+        "classify unmatched Skywalker profiles as digital-only or unresolved rather than forcing physical equivalence",
         "extract local TT/legacy game assets",
         "capture UEFN canonical views",
-        "crosswalk physical counterparts"
+        "derive comparable face/headgear/style features from indexed official PNG assets"
       ],
       "evidence_completed": [
         "2,494 Fortnite LEGO Style identities committed",
         "Skywalker Saga ten direct LEGO profile-icon ZIP bundles resolved",
         "commercial game candidate census and extraction-strategy registry exist",
-        "legacy browser/game preservation adapters exist"
+        "legacy browser/game preservation adapters exist",
+        "all 10 official Skywalker Saga class ZIP bundles were downloaded and indexed",
+        "377 official profile-icon PNG assets were hashed and indexed across 10 classes",
+        "374 filename-derived character/variant keys were preserved for physical/digital identity resolution"
       ],
       "blockers": [
-        "binary ZIP materialization unavailable in current runtime",
         "local game installations required for exhaustive textures/models",
         "UEFN local capture required for controlled renders"
       ]
@@ -205,13 +213,15 @@
         "rioforce and SVG decal repositories individually tree-indexed",
         "western/asian customizer source registries exist",
         "2026-09-25 automated inventory now records 213 minifig-svg-decals SVGs and 129 rioforce semantic asset groups",
-        "BricksFinder source tree and Hugging Face dataset metadata are now successfully snapshotted"
+        "BricksFinder source tree and Hugging Face dataset metadata are now successfully snapshotted",
+        "HeroBloks complete list census indexed 59,745 figure records across 1,350 brand slugs",
+        "current customizer verification refreshed KO Custom Minifigs and SFXminifigures to primary-current status and documented MRM/Muddy River continuity"
       ]
     },
     {
       "id": "negative_controls",
       "priority": "high",
-      "status": "schema_concept_ready_asset_population_partial",
+      "status": "deterministic_identity_controls_materialized_failure_controls_expansion_pending",
       "sources": [
         "purist minifigs",
         "over-detailed customs",
@@ -220,13 +230,16 @@
         "generic non-LEGO toy renders"
       ],
       "next_actions": [
-        "ingest failed ChatGPT/local generations with failure labels",
+        "ingest failed ChatGPT/local generations with typed failure labels",
+        "add geometry/style/mask-route negatives beyond identity mismatches",
         "sample over-detailed/realistic customs and purist controls",
-        "construct matched positive/negative pairs by failure type",
         "reserve negative corpus for critic/preference/evaluation training rather than style imitation"
       ],
       "evidence_completed": [
-        "failure taxonomies exist in ChatGPT control protocol and custom evaluation framework"
+        "failure taxonomies exist in ChatGPT control protocol and custom evaluation framework",
+        "training-control-pair schema committed",
+        "Fortnite control generator materialized 6,382 deterministic controls from 2,494 identity pairs",
+        "control corpus includes exact positives, global wrong-identity negatives, and same-set/series hard negatives with explicit synthetic-control provenance"
       ]
     },
     {
@@ -255,7 +268,7 @@
     {
       "id": "copyright_and_license_metadata",
       "priority": "critical",
-      "status": "provenance_schema_complete_asset_level_population_ongoing",
+      "status": "provenance_schema_complete_project_permission_overlay_active_asset_population_ongoing",
       "why": "Long-lived research requires knowing what can be cached, trained on, redistributed or commercialized.",
       "next_actions": [
         "attach permission/source occurrence to every materialized asset",
@@ -265,7 +278,8 @@
       "evidence_completed": [
         "research rights assumption recorded",
         "source tree SHAs and public licenses captured for major repositories",
-        "source authority/usage classes represented in master schema"
+        "source authority/usage classes represented in master schema",
+        "2026-09-25 project-wide reviewed-source permission overlay recorded: reviewed Brickmen sources are eligible for research/training by specific permission while public license metadata remains preserved for provenance"
       ]
     }
   ],
