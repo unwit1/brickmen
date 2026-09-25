@@ -92,6 +92,55 @@ jobs:
           PY
           exit 0
 
+      - name: LEGO Pick a Brick full catalog snapshot and Rebrickable crosswalk
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          src="$OUT/sources/pick_a_brick"; mkdir -p "$src/output"
+          python tools/knowledge/snapshot_lego_pick_a_brick.py --output-dir "$src/output"
+          rc=$?
+          if [ "$rc" = 0 ]; then
+            python tools/knowledge/crosswalk_pick_a_brick_rebrickable.py \
+              --pab "$src/output/pick_a_brick_elements.jsonl" \
+              --elements "$OUT/sources/rebrickable/raw/elements.csv.gz" \
+              --parts "$OUT/sources/rebrickable/raw/parts.csv.gz" \
+              --colors "$OUT/sources/rebrickable/raw/colors.csv.gz" \
+              --components "$OUT/sources/rebrickable/output/component_samples.jsonl" \
+              --output "$src/output/rebrickable_crosswalk.jsonl" \
+              --summary "$src/output/crosswalk_summary.json"
+            rc=$?
+          fi
+          RC="$rc" SRC="$src" python - <<'PY'
+          import json,os,shutil
+          from datetime import datetime,timezone
+          from pathlib import Path
+          src=Path(os.environ["SRC"]);rc=int(os.environ["RC"]);summary={};cross={}
+          p=src/"output/summary.json"
+          if p.exists():
+              try: summary=json.loads(p.read_text())
+              except Exception: pass
+          q=src/"output/crosswalk_summary.json"
+          if q.exists():
+              try: cross=json.loads(q.read_text())
+              except Exception: pass
+          status={"source_id":"lego_pick_a_brick_full","status":"complete" if rc==0 else "failed",
+                  "exit_code":rc,"created_at":datetime.now(timezone.utc).isoformat(),
+                  "snapshot":summary,"crosswalk":cross}
+          Path(os.environ["OUT"],"status/lego_pick_a_brick_full.json").write_text(json.dumps(status,indent=2))
+          if rc==0:
+              dest=Path(os.environ["DEST"])
+              shutil.copy2(p,dest/"lego-pick-a-brick-summary-latest.json")
+              shutil.copy2(q,dest/"lego-pick-a-brick-crosswalk-summary-latest.json")
+              for source,name in [
+                  (src/"output/pick_a_brick_elements.jsonl","lego-pick-a-brick-elements-latest.jsonl"),
+                  (src/"output/rebrickable_crosswalk.jsonl","lego-pick-a-brick-crosswalk-latest.jsonl")
+              ]:
+                  if source.exists() and source.stat().st_size < 8_000_000:
+                      shutil.copy2(source,dest/name)
+          PY
+          exit 0
+
       - name: Official LDraw minifigure-pattern census
         continue-on-error: true
         shell: bash
