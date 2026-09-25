@@ -1,0 +1,16 @@
+{
+  "schema": "bricksfinder-reconciliation-summary/v1",
+  "processor_version": "bricksfinder-reconciliation-queue/v1",
+  "input_records": 12966,
+  "queue_records": 264,
+  "relation_counts": {
+    "minor_name_normalization": 80,
+    "extends_or_shortens_name": 111,
+    "moderate_name_drift": 41,
+    "missing_current_catalog_record": 6,
+    "substantial_name_drift": 18,
+    "same": 8
+  },
+  "high_priority_records": 24,
+  "status": "reconciliation_queue_ready"
+}
