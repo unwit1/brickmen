@@ -1,0 +1,199 @@
+{
+  "schema_version": "0.1",
+  "source": "LDraw official-library data via version-controlled mirror",
+  "records": [
+    {
+      "ldraw": "973.dat",
+      "name": "Minifig Torso",
+      "role": "torso",
+      "status": "official",
+      "update": "2009-01",
+      "license": "CC BY 4.0",
+      "dependencies": [
+        "s/973s01.dat",
+        "1-4cyli.dat"
+      ],
+      "print_surface_evidence": {
+        "front_z": -10,
+        "back_z": 10,
+        "front_outline_ldu": [
+          [
+            -12,
+            0
+          ],
+          [
+            12,
+            0
+          ],
+          [
+            14.345,
+            2
+          ],
+          [
+            19,
+            29
+          ],
+          [
+            19,
+            32
+          ],
+          [
+            -19,
+            32
+          ],
+          [
+            -19,
+            29
+          ],
+          [
+            -14.345,
+            2
+          ]
+        ],
+        "note": "Polygon-derived reference only; physical calibration required."
+      }
+    },
+    {
+      "ldraw": "3818.dat",
+      "name": "Minifig Arm Right",
+      "role": "arm_right",
+      "status": "official",
+      "update": "2018-02",
+      "license": "CC BY 4.0",
+      "dependencies": [
+        "s/3818s01.dat",
+        "s/3818s02.dat"
+      ],
+      "assembly_help": {
+        "torso_position_ldu": [
+          -15.552,
+          9,
+          0
+        ],
+        "torso_z_rotation_deg": 9.782
+      }
+    },
+    {
+      "ldraw": "3819.dat",
+      "name": "Minifig Arm Left",
+      "role": "arm_left",
+      "status": "official",
+      "update": "2009-03",
+      "license": "CC BY 4.0",
+      "dependencies": [
+        "3818.dat"
+      ],
+      "assembly_help": {
+        "torso_position_ldu": [
+          15.552,
+          9,
+          0
+        ],
+        "torso_z_rotation_deg": -9.782
+      },
+      "mirrored_from": "3818.dat"
+    },
+    {
+      "ldraw": "3820.dat",
+      "name": "Minifig Hand",
+      "role": "hand",
+      "status": "official",
+      "update": "2019-01",
+      "license": "CC BY 4.0",
+      "assembly_help": {
+        "grip_center_ldu": [
+          0,
+          -0.8229,
+          -9.8948
+        ],
+        "arm_hand_meet_z_ldu": -9.682,
+        "hand_angle_deg": 14.5
+      }
+    },
+    {
+      "ldraw": "3626.dat",
+      "name": "Moved to 3626b",
+      "role": "head_alias",
+      "status": "official_moved",
+      "target": "3626b.dat"
+    },
+    {
+      "ldraw": "3626b.dat",
+      "name": "Minifig Head with Blocked Hollow Stud",
+      "role": "head",
+      "status": "official",
+      "update": "2022-05",
+      "license": "CC BY 4.0",
+      "dependencies": [
+        "s/3626bs02.dat",
+        "4-4cyli.dat",
+        "t04o6250.dat"
+      ],
+      "geometry_reference": {
+        "outer_radius_ldu": 13,
+        "cylindrical_y_range_ldu": [
+          4,
+          17
+        ],
+        "note": "Derived from referenced cylinder transform; validate against physical sample before manufacturing."
+      }
+    },
+    {
+      "ldraw": "3815.dat",
+      "name": "Minifig Hips (Obsolete)",
+      "role": "hips",
+      "status": "official_obsolete",
+      "update": "2022-01",
+      "license": "CC BY 4.0",
+      "warning": "Obsoleted due to bad leg geometry; do not use as manufacturing geometry authority."
+    },
+    {
+      "ldraw": "3816.dat",
+      "name": "Minifig Leg Right (Obsolete)",
+      "role": "leg_right",
+      "status": "official_obsolete",
+      "update": "2022-01",
+      "license": "CC BY 4.0",
+      "superseded_geometry": "3816c.dat"
+    },
+    {
+      "ldraw": "3817.dat",
+      "name": "Minifig Leg Left (Obsolete)",
+      "role": "leg_left",
+      "status": "official_obsolete",
+      "update": "2022-01",
+      "license": "CC BY 4.0",
+      "superseded_geometry": "3817c.dat"
+    },
+    {
+      "ldraw": "3816c.dat",
+      "name": "Minifig Leg Right",
+      "role": "leg_right",
+      "status": "official",
+      "update": "2023-03",
+      "license": "CC BY 4.0",
+      "mirrored_from": "3817c.dat",
+      "assembly_help": {
+        "align_hips_y_offset_ldu": 12,
+        "stud_grid_z_ldu": 1.25
+      }
+    },
+    {
+      "ldraw": "3817c.dat",
+      "name": "Minifig Leg Left",
+      "role": "leg_left",
+      "status": "official",
+      "update": "2023-03",
+      "license": "CC BY 4.0",
+      "assembly_help": {
+        "align_hips_y_offset_ldu": 12,
+        "stud_grid_z_ldu": 1.25
+      },
+      "print_surface_evidence": {
+        "front_z_ldu": -5.75,
+        "foot_front_z_ldu": -11.25,
+        "note": "Explicit polygons in official DAT; reference geometry, not yet physical UV calibration."
+      }
+    }
+  ]
+}

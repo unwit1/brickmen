@@ -1,0 +1,41 @@
+{
+  "schema_version": "0.1",
+  "standard_revision": "2025-04-01",
+  "colour_parameters": [
+    "CODE",
+    "VALUE",
+    "EDGE",
+    "ALPHA",
+    "LUMINANCE"
+  ],
+  "finish_tokens": [
+    "CHROME",
+    "PEARLESCENT",
+    "RUBBER",
+    "MATTE_METALLIC",
+    "METAL",
+    "MATERIAL"
+  ],
+  "material_examples": [
+    "GLITTER",
+    "SPECKLE",
+    "FABRIC"
+  ],
+  "rendering_guidance": {
+    "solid": "dielectric plastic baseline; tune roughness/specular empirically",
+    "transparent": "use VALUE plus ALPHA as catalog reference; physical transmission/IOR requires empirical profile",
+    "chrome": "separate reflective finish class",
+    "pearlescent": "separate molded/finish appearance class",
+    "rubber": "separate rough/flexible material class",
+    "matte_metallic": "separate finish class",
+    "metal": "metallic material class",
+    "glitter": "procedural inclusion/material effect; preserve material parameters when present",
+    "speckle": "multi-component procedural material; preserve secondary material parameters",
+    "fabric": "non-plastic textile class"
+  },
+  "warning": "LDraw rendering semantics are useful reference metadata, not a substitute for measured LEGO material optical properties.",
+  "sources": [
+    "https://www.ldraw.org/article/299",
+    "LDConfig.ldr"
+  ]
+}

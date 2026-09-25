@@ -1,0 +1,41 @@
+{
+  "schema_version": "0.1",
+  "fields": [
+    "product_id",
+    "revision",
+    "assembly_id",
+    "component_id",
+    "component_type",
+    "exact_part_or_custom_geometry_id",
+    "mould_variant",
+    "color_id",
+    "material",
+    "supplier",
+    "supplier_sku",
+    "quantity",
+    "unit_cost",
+    "scrap_allowance",
+    "artwork_revision",
+    "uv_profile",
+    "jig",
+    "resin_profile",
+    "finish",
+    "qc_level",
+    "rights_status"
+  ],
+  "cost_buckets": [
+    "donor_parts",
+    "resin",
+    "UV_ink",
+    "primer",
+    "varnish",
+    "consumables",
+    "fixture_amortization",
+    "machine_time",
+    "labor",
+    "packaging",
+    "scrap/rework",
+    "shipping"
+  ],
+  "rule": "BOM must identify exact production revisions, not only display names."
+}

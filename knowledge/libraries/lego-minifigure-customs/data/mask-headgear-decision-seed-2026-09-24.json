@@ -1,0 +1,384 @@
+{
+  "schema_version": "0.1",
+  "researched_at": "2026-09-24",
+  "purpose": "Seed official mask/headgear routing examples for source-to-LEGO planning.",
+  "records": [
+    {
+      "decision_id": "maskroute-atm-hulk-mask-print",
+      "character": "ATM robber wearing Hulk mask",
+      "appearance": "Spider-Man: Homecoming-inspired ATM robber",
+      "lego_product_or_sample": "76082 ATM Heist Battle",
+      "route": "head_print_only",
+      "source_mask_or_head_type": "fabric/graphic character mask",
+      "identity_silhouette_dependence": "low",
+      "graphic_dependence": "high",
+      "face_visibility": "none",
+      "head_print_required": true,
+      "headgear_or_headpiece_required": false,
+      "moving_or_removable_geometry": false,
+      "accessory_or_cloth_support": [],
+      "evidence_type": "lego_product_text",
+      "evidence_url": "https://www.lego.com/en-us/product/atm-heist-battle-76082",
+      "evidence_summary": "LEGO explicitly says the crook minifigure has face mask decoration of Hulk.",
+      "confidence": 1,
+      "review_status": "seed_reviewed",
+      "training_notes": [
+        "Strong precedent for representing a thin/non-sculptural mask entirely as head decoration."
+      ]
+    },
+    {
+      "decision_id": "maskroute-atm-cap-mask-print",
+      "character": "ATM robber wearing Captain America mask",
+      "appearance": "Spider-Man: Homecoming-inspired ATM robber",
+      "lego_product_or_sample": "76082 ATM Heist Battle",
+      "route": "head_print_only",
+      "source_mask_or_head_type": "fabric/graphic character mask",
+      "identity_silhouette_dependence": "low",
+      "graphic_dependence": "high",
+      "face_visibility": "none",
+      "head_print_required": true,
+      "headgear_or_headpiece_required": false,
+      "moving_or_removable_geometry": false,
+      "accessory_or_cloth_support": [],
+      "evidence_type": "lego_product_text",
+      "evidence_url": "https://www.lego.com/en-us/product/atm-heist-battle-76082",
+      "evidence_summary": "LEGO explicitly says the crook minifigure has face mask decoration of Captain America.",
+      "confidence": 1,
+      "review_status": "seed_reviewed",
+      "training_notes": [
+        "Paired control with Hulk-mask robber: same body form, mask identity carried by graphics."
+      ]
+    },
+    {
+      "decision_id": "maskroute-batman-1966-cowl",
+      "character": "Batman",
+      "appearance": "1966 TV series Batman",
+      "source_work": "Batman (1966 TV series)",
+      "lego_product_or_sample": "76328 Classic TV Series Batmobile / official assembly art",
+      "route": "head_print_plus_cowl",
+      "source_mask_or_head_type": "rigid superhero cowl",
+      "identity_silhouette_dependence": "high",
+      "graphic_dependence": "medium",
+      "face_visibility": "partial",
+      "head_print_required": true,
+      "headgear_or_headpiece_required": true,
+      "moving_or_removable_geometry": true,
+      "accessory_or_cloth_support": [
+        "cape",
+        "Batarang"
+      ],
+      "evidence_type": "lego_instruction_visual",
+      "evidence_url": "https://www.lego.com/cdn/product-assets/product.bi.core.pdf/6559639.pdf",
+      "evidence_summary": "Official assembly visual shows a separate black Batman cowl placed over a flesh-colored head; product page calls out cape and cowl.",
+      "confidence": 1,
+      "review_status": "seed_reviewed",
+      "training_notes": [
+        "Canonical precedent for rigid silhouette identity + visible lower face."
+      ]
+    },
+    {
+      "decision_id": "maskroute-ironman-flip-helmet",
+      "character": "Iron Man",
+      "appearance": "current LEGO Marvel Iron Man",
+      "lego_product_or_sample": "76307 Iron Man Mech vs. Ultron",
+      "route": "head_print_plus_flip_open_helmet",
+      "source_mask_or_head_type": "mechanical armored helmet with open/closed face state",
+      "identity_silhouette_dependence": "high",
+      "graphic_dependence": "high",
+      "face_visibility": "variable",
+      "head_print_required": true,
+      "headgear_or_headpiece_required": true,
+      "moving_or_removable_geometry": true,
+      "accessory_or_cloth_support": [],
+      "evidence_type": "lego_product_text",
+      "evidence_url": "https://www.lego.com/en-us/product/iron-man-mech-vs-ultron-76307",
+      "evidence_summary": "LEGO explicitly describes a flip-open helmet and reversible head with alternative expressions.",
+      "confidence": 1,
+      "review_status": "seed_reviewed",
+      "training_notes": [
+        "Use separate geometry when mask has mechanically meaningful open/closed state; preserve expression beneath."
+      ]
+    },
+    {
+      "decision_id": "maskroute-doom-hood-mask",
+      "character": "Doctor Doom",
+      "appearance": "Avengers: Doomsday",
+      "source_work": "Avengers: Doomsday",
+      "lego_product_or_sample": "76347 Avengers: Doomsday Quinjet",
+      "route": "head_print_plus_hood",
+      "source_mask_or_head_type": "metallic full-face mask beneath fabric hood",
+      "identity_silhouette_dependence": "medium",
+      "graphic_dependence": "high",
+      "face_visibility": "none",
+      "head_print_required": true,
+      "headgear_or_headpiece_required": true,
+      "moving_or_removable_geometry": true,
+      "accessory_or_cloth_support": [
+        "fabric cape"
+      ],
+      "evidence_type": "lego_product_text",
+      "evidence_url": "https://www.lego.com/en-us/product/avengers-doomsday-quinjet-76347",
+      "evidence_summary": "LEGO explicitly describes Doctor Doom minifigure wearing a hood and fabric cape; companion bust page identifies metallic mask/eye details.",
+      "confidence": 0.95,
+      "review_status": "component_crosswalk_pending",
+      "training_notes": [
+        "Separate hood silhouette from metallic mask graphics; mask and garment are distinct identity channels."
+      ]
+    },
+    {
+      "decision_id": "maskroute-killmonger-separate-mask",
+      "character": "Erik Killmonger",
+      "appearance": "Black Panther movie",
+      "source_work": "Black Panther",
+      "lego_product_or_sample": "76100 Royal Talon Fighter Attack",
+      "route": "separate_mask_element",
+      "source_mask_or_head_type": "sculptural Panther-style mask",
+      "identity_silhouette_dependence": "high",
+      "graphic_dependence": "high",
+      "face_visibility": "variable",
+      "head_print_required": null,
+      "headgear_or_headpiece_required": true,
+      "moving_or_removable_geometry": true,
+      "accessory_or_cloth_support": [],
+      "evidence_type": "lego_product_text",
+      "evidence_url": "https://www.lego.com/en-us/product/royal-talon-fighter-attack-76100",
+      "evidence_summary": "LEGO explicitly lists Killmonger's mask element as an included separate element.",
+      "confidence": 1,
+      "review_status": "component_crosswalk_pending",
+      "training_notes": [
+        "Strong precedent for removable mask object rather than flattening onto exposed face."
+      ]
+    },
+    {
+      "decision_id": "maskroute-thing-headpiece",
+      "character": "The Thing",
+      "appearance": "Avengers: Doomsday",
+      "source_work": "Avengers: Doomsday",
+      "lego_product_or_sample": "76347 Avengers: Doomsday Quinjet",
+      "route": "full_headpiece",
+      "source_mask_or_head_type": "nonhuman rocky head/form",
+      "identity_silhouette_dependence": "high",
+      "graphic_dependence": "medium",
+      "face_visibility": "none",
+      "head_print_required": null,
+      "headgear_or_headpiece_required": true,
+      "moving_or_removable_geometry": false,
+      "accessory_or_cloth_support": [
+        "two large fists"
+      ],
+      "evidence_type": "lego_product_text",
+      "evidence_url": "https://www.lego.com/en-us/product/avengers-doomsday-quinjet-76347",
+      "evidence_summary": "LEGO explicitly describes The Thing with a headpiece and two big fists.",
+      "confidence": 1,
+      "review_status": "component_crosswalk_pending",
+      "training_notes": [
+        "Nonhuman cranial volume/silhouette can justify a full headpiece rather than cylindrical-head graphics."
+      ]
+    },
+    {
+      "decision_id": "maskroute-ahsoka-headtails",
+      "character": "Ahsoka Tano",
+      "appearance": "LEGO Star Wars Ahsoka",
+      "lego_product_or_sample": "5010231 Ahsoka Tano Key Light",
+      "route": "head_print_plus_head_tails",
+      "source_mask_or_head_type": "Togruta montrals/lekku plus facial markings",
+      "identity_silhouette_dependence": "high",
+      "graphic_dependence": "high",
+      "face_visibility": "full",
+      "head_print_required": true,
+      "headgear_or_headpiece_required": true,
+      "moving_or_removable_geometry": false,
+      "accessory_or_cloth_support": [],
+      "evidence_type": "lego_product_text",
+      "evidence_url": "https://www.lego.com/en-us/product/ahsoka-tano-key-light-5010231",
+      "evidence_summary": "LEGO explicitly calls out distinctive blue-and-white head tails and facial markings.",
+      "confidence": 1,
+      "review_status": "seed_reviewed",
+      "training_notes": [
+        "Canonical hybrid: volumetric species silhouette in head-tails; facial identity remains print on standard head."
+      ]
+    },
+    {
+      "decision_id": "maskroute-vader-helmet-over-head",
+      "character": "Darth Vader",
+      "appearance": "Revenge of the Sith transformation",
+      "source_work": "Star Wars: Episode III – Revenge of the Sith",
+      "lego_product_or_sample": "75183 Darth Vader Transformation",
+      "route": "helmet_over_head",
+      "source_mask_or_head_type": "large rigid enclosing helmet/mask",
+      "identity_silhouette_dependence": "high",
+      "graphic_dependence": "medium",
+      "face_visibility": "variable",
+      "head_print_required": true,
+      "headgear_or_headpiece_required": true,
+      "moving_or_removable_geometry": true,
+      "accessory_or_cloth_support": [
+        "fabric cape/cloak"
+      ],
+      "evidence_type": "lego_product_text",
+      "evidence_url": "https://www.lego.com/en-us/product/darth-vader-transformation-75183",
+      "evidence_summary": "LEGO's set centers a helmet applicator and explicitly says Vader's iconic helmet slides into position over the transformed figure.",
+      "confidence": 1,
+      "review_status": "component_crosswalk_pending",
+      "training_notes": [
+        "Strong transformation-state precedent: underlying face/head exists separately from enclosing helmet."
+      ]
+    },
+    {
+      "decision_id": "maskroute-ghost-rider-flame-hair",
+      "character": "Ghost Rider",
+      "appearance": "current LEGO Marvel Ghost Rider",
+      "lego_product_or_sample": "76335 Spider-Man vs. Ghost Rider Motorcycle",
+      "route": "flame_or_effect_headgear_plus_head",
+      "source_mask_or_head_type": "flaming skull",
+      "identity_silhouette_dependence": "high",
+      "graphic_dependence": "medium",
+      "face_visibility": "full",
+      "head_print_required": null,
+      "headgear_or_headpiece_required": true,
+      "moving_or_removable_geometry": false,
+      "accessory_or_cloth_support": [
+        "flame hand effects"
+      ],
+      "evidence_type": "lego_product_text",
+      "evidence_url": "https://www.lego.com/en-us/product/spider-man-vs-ghost-rider-motorcycle-76335",
+      "evidence_summary": "LEGO describes Ghost Rider as a skeleton with flames streaming from hands and head / flame-haired skeleton.",
+      "confidence": 0.9,
+      "review_status": "component_crosswalk_pending",
+      "training_notes": [
+        "Effect geometry can carry silhouette identity even when underlying skull/face remains visible."
+      ]
+    },
+    {
+      "decision_id": "maskroute-red-guardian-helmet",
+      "character": "Red Guardian",
+      "appearance": "Avengers: Doomsday",
+      "source_work": "Avengers: Doomsday",
+      "lego_product_or_sample": "76352 New Avengers Tower",
+      "route": "head_print_plus_helmet",
+      "source_mask_or_head_type": "superhero helmet",
+      "identity_silhouette_dependence": "medium",
+      "graphic_dependence": "medium",
+      "face_visibility": "full",
+      "head_print_required": null,
+      "headgear_or_headpiece_required": true,
+      "moving_or_removable_geometry": true,
+      "accessory_or_cloth_support": [
+        "shield"
+      ],
+      "evidence_type": "lego_product_text",
+      "evidence_url": "https://www.lego.com/en-us/product/avengers-doomsday-new-avengers-tower-76352",
+      "evidence_summary": "LEGO explicitly describes Red Guardian with a helmet and shield.",
+      "confidence": 0.9,
+      "review_status": "component_crosswalk_pending",
+      "training_notes": [
+        "Example where headgear is identity-supporting but leaves full face readable."
+      ]
+    },
+    {
+      "decision_id": "maskroute-vampire-knight-winged-helmet",
+      "character": "Vampire Knight",
+      "appearance": "Collectible Minifigures Series 25",
+      "lego_product_or_sample": "71045 Series 25 / LEGO monster retrospective",
+      "route": "head_print_plus_helmet",
+      "source_mask_or_head_type": "winged fantasy helmet",
+      "identity_silhouette_dependence": "high",
+      "graphic_dependence": "medium",
+      "face_visibility": "partial",
+      "head_print_required": true,
+      "headgear_or_headpiece_required": true,
+      "moving_or_removable_geometry": true,
+      "accessory_or_cloth_support": [
+        "bat-wing cape",
+        "shield",
+        "axe"
+      ],
+      "evidence_type": "lego_product_text",
+      "evidence_url": "https://www.lego.com/en-it/adults-welcome/article/minifigure-monsters",
+      "evidence_summary": "LEGO describes the character's red eyes peering from behind an awesome winged helmet and calls out cape/shield/axe.",
+      "confidence": 0.95,
+      "review_status": "component_crosswalk_pending",
+      "training_notes": [
+        "Fantasy identity split across facial print, dramatic helmet silhouette, cloth and props."
+      ]
+    }
+  ],
+  "unresolved_candidate_queue": [
+    {
+      "character": "Spider-Man",
+      "desired_route_question": "printed full-face mask versus any sculptural headgear",
+      "needed_evidence": "component inventory / reviewed official head image"
+    },
+    {
+      "character": "Wolverine",
+      "desired_route_question": "cowl/ears plus exposed face versus hair",
+      "needed_evidence": "component inventory for X-Men '97 release"
+    },
+    {
+      "character": "Moon Knight",
+      "desired_route_question": "hood geometry + wrapped/printed face",
+      "needed_evidence": "CMF component inventory/review"
+    },
+    {
+      "character": "Mr. Knight",
+      "desired_route_question": "flat suited masked head versus new head element",
+      "needed_evidence": "CMF component inventory/review"
+    },
+    {
+      "character": "Mysterio",
+      "desired_route_question": "transparent dome + internal head",
+      "needed_evidence": "component inventory/review"
+    },
+    {
+      "character": "Chewbacca",
+      "desired_route_question": "full Wookiee headpiece versus printed head",
+      "needed_evidence": "component inventory/review"
+    },
+    {
+      "character": "Dragonborn Paladin",
+      "desired_route_question": "full creature head + armor/helmet integration",
+      "needed_evidence": "D&D CMF component inventory/review"
+    },
+    {
+      "character": "Mind Flayer",
+      "desired_route_question": "nonhuman tentacled head element",
+      "needed_evidence": "D&D CMF component inventory/review"
+    },
+    {
+      "character": "Alien Beetlezoid",
+      "desired_route_question": "alien headpiece/mould routing",
+      "needed_evidence": "Series 26 component inventory/review"
+    },
+    {
+      "character": "Pterodactyl Costume Fan",
+      "desired_route_question": "costume headgear over human head",
+      "needed_evidence": "Series 27 component inventory/review"
+    },
+    {
+      "character": "Hamster Costume Fan",
+      "desired_route_question": "costume headgear over human head",
+      "needed_evidence": "Series 27 component inventory/review"
+    },
+    {
+      "character": "Bogeyman",
+      "desired_route_question": "creature head versus headgear/hair",
+      "needed_evidence": "Series 27 component inventory/review"
+    },
+    {
+      "character": "Black Panther",
+      "desired_route_question": "mask/head print versus cowl element across eras",
+      "needed_evidence": "release-specific component comparison"
+    },
+    {
+      "character": "Deadpool",
+      "desired_route_question": "head print only versus accessories",
+      "needed_evidence": "official release component inventory"
+    },
+    {
+      "character": "Venom",
+      "desired_route_question": "printed head versus larger creature form",
+      "needed_evidence": "compare minifigure and bigfig/brick-built forms"
+    }
+  ],
+  "note": "Only explicit/high-confidence route records are accepted as seed supervision. The unresolved queue prevents assumptions based only on character familiarity."
+}

@@ -1,0 +1,18 @@
+{
+  "schema_version": "0.1",
+  "official_rules": [
+    "Patterned parts include both printing on plastic and parts moulded with multiple plastic colours.",
+    "Every patterned part should be based on a plain unpatterned library part even when LEGO never issued the part plain.",
+    "Pattern/sticker geometry may use Direct Colours; ordinary geometry colors must be in LDConfig.",
+    "Printed metallic decoration generally uses LDraw Metallic Colours rather than Chrome/Pearl, subject to exceptions.",
+    "Patterned-part keywords are encouraged to carry external inventory cross-references."
+  ],
+  "agent_os_interpretation": {
+    "surface_print": "decoration candidate; base geometry remains separate",
+    "multi_colour_mould": "geometry may be same but material-region segmentation matters",
+    "dual_mould": "retain manufacturing/material-region semantics separately from surface ink",
+    "texmap": "texture-based representation; preserve source texture/license and fallback geometry state",
+    "sticker": "not equivalent to direct UV print; formed sticker geometry may still teach surface wrapping"
+  },
+  "source": "https://www.ldraw.org/article/512.html"
+}

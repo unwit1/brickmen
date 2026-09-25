@@ -1,0 +1,49 @@
+{
+  "schema_version": "0.1",
+  "source_revision": "Official Library Part Number Specification rev 2 (2024-05-08)",
+  "rules": {
+    "regular_known": "NNNN or NNNNN known LEGO part number",
+    "variant": "base plus alpha suffix; may indicate successive mould/version, runner mini-part, or compatibility legacy",
+    "assembly_shortcut": "base + cNN/XXXX",
+    "assembly_positional_variant": "base + cNN-fN",
+    "stickered_shortcut": "base + dNN/XXXX",
+    "patterned": "base + pCC(C)/XXXX",
+    "patterned_variant": "base variant + pCC(C)/XXXX",
+    "subpart": "s/<base>sNN",
+    "unknown": "uNNNN",
+    "third_party": "tNNNN"
+  },
+  "semantics": [
+    "Design IDs and Element IDs are distinct identifier classes.",
+    "Pattern codes are LDraw-local and must not be replaced with BrickLink/Rebrickable pattern IDs.",
+    "Assembly shortcuts represent combinations of physical parts and should not be counted as unique moulds.",
+    "Legacy library names may violate current conventions for backward compatibility."
+  ],
+  "pattern_theme_hints": {
+    "0": "general/misc/town",
+    "3": "pirates/soldiers/islanders",
+    "4": "castle",
+    "1-2": "town",
+    "5-6": "space",
+    "7-9": "modern town",
+    "a": "action",
+    "b": "superheroes",
+    "c": "control panels or superheroes; cXY also CMF numbered series",
+    "d": "studios; dXY also unnumbered CMF series",
+    "e": "nexo knights",
+    "f": "fabuland/scala or castle minifig",
+    "g": "sports",
+    "h": "harry potter",
+    "j": "indiana jones",
+    "m": "middle earth/elves",
+    "n": "ninja",
+    "q": "pharaohs quest",
+    "r-s": "star wars",
+    "t-v": "textual/trademark",
+    "w": "western/textual",
+    "x": "misc licenses",
+    "y": "racing",
+    "z": "brickheadz"
+  },
+  "source": "https://www.ldraw.org/part-number-spec.html"
+}

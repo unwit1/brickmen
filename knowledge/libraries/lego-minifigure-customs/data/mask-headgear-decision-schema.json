@@ -1,0 +1,53 @@
+{
+  "schema_version": "0.1",
+  "purpose": "Supervision for deciding whether an identity-defining head/mask feature should be represented by print, existing/new headgear, full headpiece, hair/head-tails, dome, accessory, or a hybrid.",
+  "route_enum": [
+    "head_print_only",
+    "head_print_plus_cowl",
+    "head_print_plus_helmet",
+    "head_print_plus_flip_open_helmet",
+    "head_print_plus_hood",
+    "head_print_plus_hair",
+    "head_print_plus_head_tails",
+    "head_print_plus_transparent_dome",
+    "full_headpiece",
+    "separate_mask_element",
+    "helmet_over_head",
+    "flame_or_effect_headgear_plus_head",
+    "creature_headpiece_plus_body",
+    "existing_headgear_plus_headgear_print",
+    "new_mould_plus_head_print",
+    "hybrid_other"
+  ],
+  "record": {
+    "decision_id": "",
+    "character": "",
+    "appearance": "",
+    "source_work": null,
+    "lego_product_or_sample": "",
+    "route": "",
+    "source_mask_or_head_type": "",
+    "identity_silhouette_dependence": "low|medium|high|unknown",
+    "graphic_dependence": "low|medium|high|unknown",
+    "face_visibility": "none|partial|full|variable|unknown",
+    "head_print_required": null,
+    "headgear_or_headpiece_required": null,
+    "moving_or_removable_geometry": null,
+    "accessory_or_cloth_support": [],
+    "evidence_type": "lego_product_text|lego_instruction_visual|lego_designer_commentary|structured_component_inventory|reviewed_image",
+    "evidence_url": "",
+    "evidence_summary": "",
+    "confidence": 0,
+    "review_status": "seed_reviewed|component_crosswalk_pending|candidate",
+    "training_notes": []
+  },
+  "derived_targets": [
+    "print_vs_geometry",
+    "existing_part_vs_new_mould",
+    "face_visibility_requirement",
+    "silhouette_importance",
+    "graphic_importance",
+    "removability_or_transformation",
+    "mask_expression_interaction"
+  ]
+}

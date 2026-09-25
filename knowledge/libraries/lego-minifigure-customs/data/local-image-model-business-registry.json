@@ -1,0 +1,160 @@
+{
+  "schema_version": "0.1",
+  "researched_at": "2026-09-24",
+  "models": [
+    {
+      "id": "stable_diffusion_3_5",
+      "category": "generation_and_control",
+      "deployment": "self_hosted",
+      "reference_methods": [
+        "IP-Adapter",
+        "ControlNet",
+        "LoRA",
+        "DreamBooth",
+        "inpainting"
+      ],
+      "business_license": "Stability AI Community License; free commercial use below USD 1M annual organization revenue, enterprise terms above threshold",
+      "production_recommendation": "preferred_default_for_small_business",
+      "sources": [
+        "https://stability.ai/license",
+        "https://stability.ai/core-models",
+        "https://github.com/Stability-AI/sd3.5"
+      ]
+    },
+    {
+      "id": "qwen_image_edit",
+      "category": "image_editing",
+      "deployment": "self_hosted",
+      "reference_methods": [
+        "input-image appearance control",
+        "semantic edit control",
+        "local editing"
+      ],
+      "business_license": "Apache-2.0 model repository",
+      "production_recommendation": "high_priority_benchmark",
+      "sources": [
+        "https://huggingface.co/Qwen/Qwen-Image-Edit",
+        "https://qwenlm.github.io/blog/qwen-image-edit/"
+      ]
+    },
+    {
+      "id": "hidream_e1_1",
+      "category": "image_editing",
+      "deployment": "self_hosted",
+      "reference_methods": [
+        "instruction editing",
+        "refine_strength"
+      ],
+      "business_license": "HiDream model/code MIT; dependency license stack includes Meta Llama 3.1 in reference implementation",
+      "production_recommendation": "high_priority_benchmark_after_dependency_review",
+      "sources": [
+        "https://github.com/HiDream-ai/HiDream-E1",
+        "https://dev.meta.ai/llama/llama3_1/license"
+      ]
+    },
+    {
+      "id": "hidream_i1",
+      "category": "text_to_image",
+      "deployment": "self_hosted",
+      "reference_methods": [
+        "fine_tuning_possible"
+      ],
+      "business_license": "HiDream model/code MIT; reference implementation uses separately licensed Llama 3.1 text encoder",
+      "production_recommendation": "secondary_generator",
+      "sources": [
+        "https://github.com/HiDream-ai/HiDream-I1"
+      ]
+    },
+    {
+      "id": "qwen_image_2_1",
+      "category": "generation_and_multi_reference_editing",
+      "deployment": "self_hosted",
+      "reference_methods": [
+        "up_to_10_references",
+        "masks",
+        "annotation_circles",
+        "RGBA",
+        "identity_preservation"
+      ],
+      "business_license": "Qwen Research License Agreement; non-commercial unless separately licensed",
+      "production_recommendation": "research_only_without_commercial_license",
+      "sources": [
+        "https://github.com/QwenLM/Qwen-Image-2.1",
+        "https://github.com/QwenLM/Qwen-Image-2.1/blob/main/LICENSE"
+      ]
+    },
+    {
+      "id": "flux_2_dev",
+      "category": "generation_and_multi_reference_editing",
+      "deployment": "self_hosted",
+      "reference_methods": [
+        "single_reference",
+        "multi_reference",
+        "image_editing"
+      ],
+      "business_license": "FLUX dev non-commercial license; commercial model/derivative use requires separate license",
+      "production_recommendation": "research_or_separately_licensed_only",
+      "sources": [
+        "https://huggingface.co/black-forest-labs/FLUX.2-dev",
+        "https://huggingface.co/black-forest-labs/FLUX.2-dev/blob/main/LICENSE.md"
+      ]
+    },
+    {
+      "id": "hunyuan_image_2_1",
+      "category": "text_to_image",
+      "deployment": "self_hosted",
+      "reference_methods": [
+        "LoRA via third-party/current training ecosystem"
+      ],
+      "business_license": "Tencent Hunyuan Community License; custom terms and defined Territory excludes EU, UK and South Korea",
+      "production_recommendation": "conditional_legal_review",
+      "sources": [
+        "https://github.com/Tencent-Hunyuan/HunyuanImage-2.1",
+        "https://huggingface.co/tencent/HunyuanImage-2.1"
+      ]
+    }
+  ],
+  "adapters": [
+    {
+      "id": "ip_adapter",
+      "purpose": "general appearance/reference conditioning",
+      "source": "https://github.com/tencent-ailab/IP-Adapter"
+    },
+    {
+      "id": "controlnet",
+      "purpose": "edge/depth/pose/structure conditioning",
+      "source": "https://huggingface.co/docs/diffusers/using-diffusers/controlnet"
+    },
+    {
+      "id": "instantid",
+      "purpose": "single-image human identity preservation",
+      "source": "https://github.com/instantX-research/InstantID"
+    },
+    {
+      "id": "photomaker_v2",
+      "purpose": "multi-image human identity preservation",
+      "source": "https://github.com/TencentARC/PhotoMaker"
+    },
+    {
+      "id": "pulid",
+      "purpose": "human identity preservation with editability",
+      "source": "https://github.com/ToTheBeginning/PuLID"
+    },
+    {
+      "id": "consistentid",
+      "purpose": "fine-grained portrait identity preservation",
+      "source": "https://github.com/JackAILab/ConsistentID"
+    },
+    {
+      "id": "storymaker",
+      "purpose": "face/clothing/body character consistency",
+      "source": "https://github.com/FireRedTeam/StoryMaker"
+    }
+  ],
+  "orchestration": {
+    "preferred_ui": "ComfyUI",
+    "alternative_api": "Hugging Face Diffusers",
+    "source": "https://github.com/Comfy-Org/ComfyUI"
+  },
+  "selection_rule": "Do not optimize for absence of safeguards. Optimize for local control, reference fidelity, commercial-license compatibility, reproducibility and provenance."
+}
