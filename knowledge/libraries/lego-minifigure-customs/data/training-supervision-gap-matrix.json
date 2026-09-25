@@ -106,7 +106,7 @@
     {
       "id": "mask_headgear_decision_pairs",
       "priority": "very_high",
-      "status": "seed_dataset_created_expansion_partial",
+      "status": "initial_unresolved_queue_resolved_expansion_pending",
       "why": "Need examples where source design became print, existing headgear, new mould, or hybrid.",
       "sources": [
         "Fortnite pairs",
@@ -115,14 +115,16 @@
         "license-filtered community geometry as negative/alternative examples"
       ],
       "next_actions": [
-        "resolve unresolved candidates through component inventories/official instructions",
-        "expand across Star Wars helmets, superhero cowls/masks, CMF costumes, fantasy/nonhuman heads and transparent domes",
-        "derive silhouette-vs-graphic dependence metrics from canonical views"
+        "expand route coverage across Star Wars helmets, superhero cowls/masks, CMF costumes, fantasy/nonhuman heads and transparent domes",
+        "derive silhouette-vs-graphic dependence metrics from canonical views",
+        "add matched source-to-LEGO route decisions and mould-reuse/new-mould labels"
       ],
       "evidence_completed": [
         "mask/headgear decision schema committed",
         "12 high-confidence LEGO-primary route records committed",
-        "15 unresolved route candidates retained instead of guessed"
+        "15 unresolved route candidates retained instead of guessed",
+        "2026-09-25 follow-up resolved all 15 candidates from the original unresolved queue using release-specific component inventories",
+        "route evidence now includes print-only masks, print+headgear, transparent domes, costume head covers, modified creature heads, modular horns, and persistent Black Panther ear-topper usage across sampled releases"
       ]
     },
     {
@@ -239,5 +241,5 @@
       ]
     }
   ],
-  "updated_at": "2026-09-24"
+  "updated_at": "2026-09-25"
 }
