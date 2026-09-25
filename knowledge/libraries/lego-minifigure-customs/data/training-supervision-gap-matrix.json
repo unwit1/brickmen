@@ -49,7 +49,7 @@
     {
       "id": "source_to_lego_translation_pairs",
       "priority": "critical",
-      "status": "fortnite_identity_and_visual_measurement_complete_semantic_review_pending",
+      "status": "fortnite_identity_and_image_measurement_complete_all_2494_semantic_review_pending",
       "why": "Directly teaches which source details LEGO preserves/simplifies/omits/moves to mould/accessory.",
       "sources": [
         "Fortnite Outfit -> LEGO Style pairs",
@@ -58,7 +58,6 @@
         "Wednesday/Nightmare/BTS/Viking/Pirates designer articles"
       ],
       "next_actions": [
-        "rerun current visual-feature pass after alias fallback resolution and verify all 14 placeholder-family records",
         "review visual pairs into preserve/simplify/omit/exaggerate/mould/accessory/cloth labels without promoting heuristics as ground truth",
         "expand exact source-frame/panel pair resolution theme-by-theme",
         "crosswalk Skywalker Saga profile variants to physical Star Wars releases and retain digital-only variants"
@@ -78,7 +77,9 @@
         "semantic annotation queue is sharded across all 2,494 pairs for preserve/simplify/omit/mould/accessory review",
         "regional head/torso/lower-body visual measurements were added to the Fortnite feature extractor",
         "same-name alias fallback logic was added for the 14 Character_* placeholder LEGO records while preserving original pair provenance",
-        "6,382 deterministic control pairs now exist: 2,494 positives, 2,494 global wrong-identity negatives, and 1,394 same-group hard negatives"
+        "6,382 deterministic control pairs now exist: 2,494 positives, 2,494 global wrong-identity negatives, and 1,394 same-group hard negatives",
+        "2026-09-25 alias-aware visual pass completed 2,494/2,494 Fortnite pairs with zero image misses and zero processing errors",
+        "14 former placeholder-family LEGO image gaps are now resolved through explicit same-name alias provenance without rewriting original pair identity"
       ]
     },
     {
@@ -134,7 +135,9 @@
         "33/38 face-like SVGs contain extractable primitive geometry candidates; 145 primitive candidates total; zero parse errors",
         "front/reverse filename hints are retained separately and automatic primitives are explicitly non-semantic until review",
         "face-landmark schema now defines eyes/brows/mouth/facial-hair/eyewear/scar regions, probabilistic emotions, dual-sided relationships, provenance, and review status",
-        "deterministic face-landmark review queue builder now prioritizes explicit-emotion, front/reverse, calibration/CMF, and machine-readable SVG records"
+        "deterministic face-landmark review queue builder now prioritizes explicit-emotion, front/reverse, calibration/CMF, and machine-readable SVG records",
+        "LEGO face-VAE dataset index now contains 2,574 normalized 128x128 images, all matched to head metadata, spanning 1,938 unique head parts",
+        "face-VAE catalog descriptors include 1,529 eyebrow, 852 smile, 425 teeth, 289 angry, 236 glasses, 224 stubble, 208 scared, 171 grin, 157 frown, 105 freckles, 102 wrinkles, 77 scar, 41 eyepatch, 38 sad and 22 surprised tagged images"
       ]
     },
     {
