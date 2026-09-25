@@ -1,6 +1,6 @@
 {
   "schema": "user-tracker-reconciliation-summary/v1",
-  "created_at": "2026-09-25T23:05:34.089485+00:00",
+  "created_at": "2026-09-25T23:10:22.854001+00:00",
   "processor_version": "user-tracker-reconciliation/v1",
   "input_files": [
     "avengers-collection-2026-09-25.jsonl",
@@ -24,30 +24,37 @@
     "one-piece-design-targets-2026-09-25.jsonl",
     "superman-2026-09-25.jsonl"
   ],
-  "input_records_with_names": 9479,
-  "name_groups": 5420,
-  "cross_source_name_groups": 647,
+  "input_records_with_names": 11470,
+  "dc_legacy_raw_rows_normalized": 1991,
+  "name_groups": 6347,
+  "cross_source_name_groups": 952,
   "groups_with_multiple_identities": 212,
   "groups_with_multiple_universes": 27,
   "groups_with_many_variants": 83,
-  "strict_duplicate_candidate_groups": 625,
-  "strict_cross_source_duplicate_candidate_groups": 252,
-  "coded_records": 2486,
-  "single_brand_candidates": 2471,
-  "ambiguous_brand_candidates": 3,
-  "unresolved_code_prefix_records": 12,
+  "strict_duplicate_candidate_groups": 1198,
+  "strict_cross_source_duplicate_candidate_groups": 601,
+  "coded_records": 2953,
+  "single_brand_candidates": 2611,
+  "ambiguous_brand_candidates": 173,
+  "unresolved_code_prefix_records": 169,
   "unresolved_prefix_counts": {
+    "XIHN": 152,
     "LOZ": 6,
     "LE": 3,
     "LEGO": 1,
+    "BATMAN": 1,
+    "NIGHTWING": 1,
+    "BATGIRL": 1,
+    "RED": 1,
+    "X": 1,
     "SH": 1,
     "QD": 1
   },
   "largest_name_groups": [
     {
       "name": "batman",
-      "records": 132,
-      "source_files": 3,
+      "records": 134,
+      "source_files": 4,
       "identities": 12,
       "variants": 102
     },
@@ -60,29 +67,29 @@
     },
     {
       "name": "superman",
-      "records": 87,
-      "source_files": 3,
+      "records": 91,
+      "source_files": 4,
       "identities": 9,
       "variants": 69
     },
     {
       "name": "flash",
-      "records": 63,
-      "source_files": 2,
+      "records": 65,
+      "source_files": 3,
       "identities": 8,
       "variants": 39
     },
     {
       "name": "supergirl",
-      "records": 54,
-      "source_files": 3,
+      "records": 57,
+      "source_files": 4,
       "identities": 18,
       "variants": 35
     },
     {
       "name": "robin",
-      "records": 52,
-      "source_files": 2,
+      "records": 53,
+      "source_files": 3,
       "identities": 11,
       "variants": 38
     },
@@ -95,10 +102,17 @@
     },
     {
       "name": "catwoman",
-      "records": 47,
-      "source_files": 2,
+      "records": 48,
+      "source_files": 3,
       "identities": 3,
       "variants": 34
+    },
+    {
+      "name": "wonder woman",
+      "records": 46,
+      "source_files": 3,
+      "identities": 10,
+      "variants": 21
     },
     {
       "name": "nightwing",
@@ -108,11 +122,18 @@
       "variants": 36
     },
     {
-      "name": "wonder woman",
-      "records": 44,
-      "source_files": 2,
-      "identities": 10,
-      "variants": 21
+      "name": "joker",
+      "records": 41,
+      "source_files": 3,
+      "identities": 3,
+      "variants": 20
+    },
+    {
+      "name": "red hood",
+      "records": 41,
+      "source_files": 3,
+      "identities": 2,
+      "variants": 28
     },
     {
       "name": "wolverine",
@@ -129,13 +150,6 @@
       "variants": 32
     },
     {
-      "name": "joker",
-      "records": 36,
-      "source_files": 2,
-      "identities": 3,
-      "variants": 20
-    },
-    {
       "name": "batgirl",
       "records": 35,
       "source_files": 2,
@@ -143,11 +157,11 @@
       "variants": 25
     },
     {
-      "name": "red hood",
-      "records": 35,
-      "source_files": 2,
-      "identities": 2,
-      "variants": 28
+      "name": "superboy",
+      "records": 32,
+      "source_files": 4,
+      "identities": 9,
+      "variants": 14
     },
     {
       "name": "captain america",
@@ -157,6 +171,13 @@
       "variants": 26
     },
     {
+      "name": "harley quinn",
+      "records": 29,
+      "source_files": 3,
+      "identities": 1,
+      "variants": 11
+    },
+    {
       "name": "psylocke",
       "records": 29,
       "source_files": 3,
@@ -164,18 +185,18 @@
       "variants": 23
     },
     {
-      "name": "superboy",
-      "records": 29,
-      "source_files": 3,
-      "identities": 9,
-      "variants": 14
-    },
-    {
       "name": "deadpool",
       "records": 27,
       "source_files": 3,
       "identities": 1,
       "variants": 23
+    },
+    {
+      "name": "green lantern",
+      "records": 27,
+      "source_files": 3,
+      "identities": 4,
+      "variants": 22
     },
     {
       "name": "wonder girl",
@@ -192,11 +213,11 @@
       "variants": 23
     },
     {
-      "name": "green lantern",
-      "records": 26,
-      "source_files": 2,
-      "identities": 4,
-      "variants": 22
+      "name": "green arrow",
+      "records": 25,
+      "source_files": 3,
+      "identities": 2,
+      "variants": 17
     },
     {
       "name": "scarlet witch",
@@ -206,11 +227,11 @@
       "variants": 17
     },
     {
-      "name": "harley quinn",
-      "records": 24,
-      "source_files": 2,
-      "identities": 1,
-      "variants": 11
+      "name": "superwoman",
+      "records": 25,
+      "source_files": 4,
+      "identities": 10,
+      "variants": 6
     },
     {
       "name": "thor",
@@ -227,13 +248,6 @@
       "variants": 22
     },
     {
-      "name": "superwoman",
-      "records": 23,
-      "source_files": 3,
-      "identities": 10,
-      "variants": 6
-    },
-    {
       "name": "luke skywalker",
       "records": 23,
       "source_files": 1,
@@ -241,18 +255,11 @@
       "variants": 18
     },
     {
-      "name": "spider man 616",
+      "name": "lex luthor",
       "records": 22,
-      "source_files": 1,
-      "identities": 0,
-      "variants": 22
-    },
-    {
-      "name": "colossus",
-      "records": 21,
-      "source_files": 3,
-      "identities": 1,
-      "variants": 17
+      "source_files": 4,
+      "identities": 4,
+      "variants": 13
     }
   ],
   "status": "candidate_reconciliation_layers_ready"
