@@ -401,6 +401,59 @@ def main():
             "processor_version": VERSION,
         })
 
+    # SourceAppearance candidates from explicit first-appearance metadata.
+    appearance_groups = defaultdict(list)
+    for rec in records:
+        raw = str(rec.get("first_appearance") or "").strip()
+        if not raw:
+            continue
+        normalized = " ".join(raw.split())
+        issue_number = None
+        source_work = None
+        parse_status = "raw_only"
+        m = re.match(r"^(.*?)(?:\s+Vol(?:\.|ume)?\s*\d+)?\s*#\s*([0-9]+(?:\.[0-9]+)?)\s*$", normalized, re.I)
+        if m:
+            source_work = m.group(1).strip(" -")
+            issue_number = m.group(2)
+            parse_status = "explicit_hash_issue"
+        appearance_groups[norm(normalized)].append({
+            "raw_first_appearance": raw,
+            "source_work_candidate": source_work,
+            "issue_number_candidate": issue_number,
+            "parse_status": parse_status,
+            "name": rec.get("name"),
+            "identity": rec.get("identity"),
+            "variant": rec.get("variant"),
+            "universe": rec.get("universe"),
+            "year": rec.get("year"),
+            "source_file": rec.get("source_file"),
+            "source_title": rec.get("source_title"),
+            "source_tab": rec.get("source_tab"),
+            "source_row": rec.get("source_row"),
+        })
+    appearance_rows = []
+    for key, items in appearance_groups.items():
+        parsed = [x for x in items if x["parse_status"] == "explicit_hash_issue"]
+        appearance_rows.append({
+            "source_appearance_candidate_id":"user-first-appearance-"+re.sub(r"[^a-z0-9]+","-",key)[:120].strip("-"),
+            "normalized_first_appearance":key,
+            "raw_first_appearance_values":uniq(x["raw_first_appearance"] for x in items),
+            "record_count":len(items),
+            "observed_names":uniq(x["name"] for x in items),
+            "observed_identities":uniq(x["identity"] for x in items),
+            "observed_variants":uniq(x["variant"] for x in items),
+            "observed_universes":uniq(x["universe"] for x in items),
+            "observed_years":uniq(x["year"] for x in items),
+            "source_work_candidate":parsed[0]["source_work_candidate"] if parsed and len({x["source_work_candidate"] for x in parsed}) == 1 else None,
+            "issue_number_candidate":parsed[0]["issue_number_candidate"] if parsed and len({x["issue_number_candidate"] for x in parsed}) == 1 else None,
+            "parse_status":"explicit_hash_issue" if parsed and len(parsed) == len(items) else "mixed_or_raw",
+            "source_records":items[:100],
+            "resolution_status":"candidate_needs_source_verification",
+            "policy":"The tracker string is preserved verbatim. Parsed work/issue fields are only extracted from explicit '#number' syntax and remain candidates until source verification.",
+            "processor_version":VERSION,
+        })
+    appearance_rows.sort(key=lambda x:(x["parse_status"]!="explicit_hash_issue",-x["record_count"],x["normalized_first_appearance"]))
+
     # Prioritized entity-resolution queue.
     entity_review = []
     for g in group_rows:
@@ -546,6 +599,7 @@ def main():
     write_jsonl("external-catalog-id-queue.jsonl", external_catalog_records)
     write_jsonl("entity-resolution-review-queue.jsonl", entity_review)
     write_jsonl("collection-gap-candidates.jsonl", gap_rows)
+    write_jsonl("source-appearance-candidates.jsonl", appearance_rows)
     (args.output_dir / "entity-resolution-review-summary.json").write_text(json.dumps({
         "schema":"entity-resolution-review-summary/v1",
         "processor_version":VERSION,
@@ -578,6 +632,16 @@ def main():
         [x for x in code_rows if x.get("resolution_status") in {"unresolved_prefix","brand_candidate_ambiguous"}]
     )
 
+    (args.output_dir / "source-appearance-summary.json").write_text(json.dumps({
+        "schema":"user-source-appearance-summary/v1",
+        "processor_version":VERSION,
+        "candidate_records":len(appearance_rows),
+        "source_records_with_first_appearance":sum(x["record_count"] for x in appearance_rows),
+        "explicit_hash_issue_candidates":sum(x["parse_status"]=="explicit_hash_issue" for x in appearance_rows),
+        "mixed_or_raw_candidates":sum(x["parse_status"]!="explicit_hash_issue" for x in appearance_rows),
+        "status":"source_appearance_candidate_layer_ready"
+    }, indent=2)+"\n", encoding="utf-8")
+
     unresolved_prefix = Counter(
         x.get("observed_prefix") or "UNKNOWN"
         for x in code_rows if x["resolution_status"] == "unresolved_prefix"
@@ -600,6 +664,9 @@ def main():
         "entity_resolution_high_priority_records": sum(x["review_priority_score"] >= 40 for x in entity_review),
         "collection_gap_candidate_records": len(gap_rows),
         "collection_gap_state_counts": dict(Counter(x["candidate_state"] for x in gap_rows)),
+        "source_appearance_candidate_records": len(appearance_rows),
+        "source_records_with_first_appearance": sum(x["record_count"] for x in appearance_rows),
+        "explicit_hash_issue_source_appearance_candidates": sum(x["parse_status"] == "explicit_hash_issue" for x in appearance_rows),
         "coded_records": len(code_rows),
         "maker_product_code_records": sum(x.get("product_code_namespace") == "maker_product_code" for x in code_rows),
         "external_catalog_id_records_in_named_records": sum(x.get("product_code_namespace") == "bricklink_minifigure_id" for x in code_rows),
