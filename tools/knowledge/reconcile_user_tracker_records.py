@@ -72,7 +72,7 @@ def canonical_source_stub(rec, source_path):
         "product_code": rec.get("product_code") or rec.get("bricklink_minifigure_id"),
         "product_code_namespace": (
             "maker_product_code"
-            if rec.get("product_code") and re.search(r"\d", str(rec.get("product_code")))
+            if rec.get("product_code") and is_maker_code(rec.get("product_code"))
             else "unstructured_source_code_text"
             if rec.get("product_code")
             else "bricklink_minifigure_id"
@@ -161,8 +161,8 @@ def dc_normalized_record(rec):
         # The copied header is stale/misaligned and rows use D/E/F inconsistently for
         # brand, collection and serial. Resolve by value shape while preserving raw cells.
         candidates = [(col, up.get(col)) for col in ("D","E","F") if up.get(col)]
-        serial = next(((col, val) for col, val in candidates if re.search(r"\d", val)), (None, None))
-        brand_text = up.get("D") if up.get("D") and not re.search(r"\d", up.get("D")) else None
+        serial = next(((col, val) for col, val in candidates if is_maker_code(val)), (None, None))
+        brand_text = up.get("D") if up.get("D") and not is_maker_code(up.get("D")) else None
         collection_text = next(
             (val for col, val in candidates if (col, val) != serial and val != brand_text),
             None
