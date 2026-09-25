@@ -6,7 +6,7 @@
     {
       "id": "exact_flat_official_print_art",
       "priority": "critical",
-      "status": "catalog_crosswalk_candidate_layer_materialized_strict_exact_promotion_revalidation_running",
+      "status": "catalog_crosswalk_revalidated_no_strict_exact_links_yet",
       "why": "Assembled renders hide curvature and back/side regions; flat maps are strongest supervision for template generation.",
       "sources": [
         "LDraw patterns",
@@ -38,7 +38,9 @@
         "catalog-backed crosswalk: 88/129 have component candidates from actual candidate figure inventories",
         "30 rioforce records remain without figure candidates; only 6 top figure matches currently meet the high-confidence heuristic",
         "2026-09-25 audit found that the earlier 10 exact part-number joins were only ID-exact inside candidate inventories, not independently verified texture-to-component identity links",
-        "crosswalk logic was tightened so raw ID coincidences remain unverified and strict links require explicit surface role, high-confidence figure identity, and a decorated component print-of relationship"
+        "crosswalk logic was tightened so raw ID coincidences remain unverified and strict links require explicit surface role, high-confidence figure identity, and a decorated component print-of relationship",
+        "2026-09-25 tightened crosswalk rerun retained 10 raw part-number coincidences as unverified discovery evidence and produced zero strict exact texture-to-decorated-part links",
+        "false-positive promotion path is now closed: strict links require explicit component role, high-confidence figure identity and decorated print-of evidence"
       ]
     },
     {
@@ -102,7 +104,7 @@
     {
       "id": "facial_expression_landmarks_and_labels",
       "priority": "very_high",
-      "status": "research_labels_strong_image_landmarks_partial",
+      "status": "candidate_face_geometry_corpus_materialized_semantic_review_pending",
       "why": "Official-looking faces depend on tiny landmark relationships that generic image embeddings do not explain.",
       "sources": [
         "Bartneck 627/722 expression research",
@@ -111,16 +113,20 @@
         "DK/Bartneck head photography"
       ],
       "next_actions": [
-        "materialize underlying Bartneck/figshare images/ratings in network-enabled runtime",
-        "derive eye/brow/mouth landmarks from official head crops",
-        "build probabilistic expression distributions instead of single hard labels",
-        "stratify expression geometry by era/theme/head substrate"
+        "review primitive candidates into eye/brow/mouth/other identity-mark landmarks",
+        "normalize SVG transforms into common 0-1 face coordinates",
+        "crosswalk reviewed faces to Rebrickable/LDraw/BrickLink head IDs",
+        "expand beyond rioforce using catalog head images and LDraw head patterns",
+        "link probabilistic Bartneck ratings if raw stimulus-rating data becomes available"
       ],
       "evidence_completed": [
         "Bartneck 2013: 3,655 photographed figures, 628 unique heads, 627 valid faces, 30 raters per face",
         "2017 ambiguity study added probabilistic/disagreement supervision",
         "1989 Pirates expression transition captured from LEGO primary history",
-        "LEGO designer expression-selection rules captured"
+        "LEGO designer expression-selection rules captured",
+        "2026-09-25 rioforce face SVG profiler materialized 38 face-like vector assets; 36 have PNG siblings",
+        "33/38 face-like SVGs contain extractable primitive geometry candidates; 145 primitive candidates total; zero parse errors",
+        "front/reverse filename hints are retained separately and automatic primitives are explicitly non-semantic until review"
       ]
     },
     {
