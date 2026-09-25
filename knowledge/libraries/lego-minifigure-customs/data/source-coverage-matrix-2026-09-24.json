@@ -5,7 +5,7 @@
   "coverage": [
     {
       "domain": "official_catalog_and_parts",
-      "status": "strong",
+      "status": "strong_bulk_census_complete_crosswalk_partial",
       "sources": [
         "LEGO",
         "BrickLink",
@@ -15,9 +15,18 @@
         "LDraw"
       ],
       "remaining": [
-        "bulk catalog ingestion by theme",
-        "full identifier crosswalk"
-      ]
+        "full BrickLink/Rebrickable/LEGO/LDraw identifier crosswalk",
+        "reconcile 318 records with no observed set occurrence",
+        "confirm one zero-part Minifigure Factory catalog exception",
+        "materialize selected visual references and component-level ground truth"
+      ],
+      "completed_2026_09_25": {
+        "rebrickable_physical_samples": 17226,
+        "component_records": 82411,
+        "printed_component_records": 30375,
+        "ldraw_indexed_records": 4352,
+        "physical_exception_queue": "data/physical-census-exceptions-latest.json"
+      }
     },
     {
       "domain": "official_market_prices",
@@ -146,7 +155,7 @@
     },
     {
       "domain": "themes_and_source_appearance",
-      "status": "schema_complete_ingestion_pending",
+      "status": "schema_complete_fortnite_identity_pairing_complete_other_themes_pending",
       "sources": [
         "maker catalogs",
         "HeroBloks themes",
@@ -156,7 +165,13 @@
         "normalize every user-tracked roster",
         "exact issue/episode/game-skin resolution",
         "reference asset provenance"
-      ]
+      ],
+      "completed_2026_09_25": {
+        "fortnite_pairs": 2494,
+        "fortnite_unmatched": 0,
+        "pairs_with_both_images": 2480,
+        "semantic_annotation_queue_shards": 10
+      }
     },
     {
       "domain": "quality_and_compatibility",
@@ -234,5 +249,6 @@
     }
   ],
   "exhaustive_definition": "A domain becomes exhausted only after primary/authoritative sources and significant secondary discovery sources are indexed, identities/codes are normalized, contradictions are retained or resolved, time-sensitive facts are dated, and remaining unknowns are explicit.",
-  "caveat": "The open web and custom-minifigure market are continuously changing; literal permanent exhaustion is impossible. This matrix makes current coverage and remaining work auditable."
+  "caveat": "The open web and custom-minifigure market are continuously changing; literal permanent exhaustion is impossible. This matrix makes current coverage and remaining work auditable.",
+  "updated_at": "2026-09-25"
 }
