@@ -107,7 +107,7 @@
     {
       "priority": "broad_coverage",
       "gap": "catalog_market_and_history",
-      "status": "rebrickable_physical_census_complete_crosswalk_and_history_still_partial",
+      "status": "physical_rebrickable_census_complete_other_catalog_market_history_partial",
       "store_next": [
         "full BrickLink/Rebrickable/LEGO/LDraw identifier crosswalk",
         "historical/retired maker archives",
@@ -117,18 +117,16 @@
         "social release feed observations where supported",
         "user collection reconciliation against canonical release/component IDs"
       ],
-      "completed_now": {
-        "rebrickable_snapshot_created_at": "2026-09-25T19:24:38.011715+00:00",
-        "physical_samples": 17226,
-        "figure_reference_assets": 17226,
-        "component_records": 82411,
-        "component_reference_assets": 82273,
-        "printed_component_records": 30375,
-        "set_occurrence_links": 25826,
-        "figures_without_catalog_image": 0,
-        "figures_without_set_occurrence": 318,
-        "figures_without_component_inventory": 1
-      }
+      "completed_now": [
+        "Rebrickable daily bulk census refreshed 2026-09-25",
+        "17,226 physical samples",
+        "82,411 component records",
+        "82,273 component image references",
+        "30,375 printed component records",
+        "25,826 set-occurrence links",
+        "all 17,226 figures have catalog image references",
+        "only 1 figure lacks resolved component inventory"
+      ]
     },
     {
       "priority": "broad_coverage",
@@ -154,5 +152,19 @@
   ],
   "durable_storage_rule": "Git stores schemas, manifests, normalized facts, crosswalks, derived features, decisions, hashes and provenance. High-volume raw imagery/video/game assets remain in approved local research storage and are referenced by stable IDs/hashes.",
   "latest_physical_census": "data/physical-census-latest.json",
-  "updated_at": "2026-09-25"
+  "updated_at": "2026-09-25",
+  "latest_progress": {
+    "at": "2026-09-25T20:25:03.429009+00:00",
+    "physical_census_commit": "4ffbebd8c15f8be306860cd35be7c1cc90d42e68",
+    "census_counts": {
+      "physical_samples": 17226,
+      "component_records": 82411,
+      "component_reference_assets": 82273,
+      "printed_component_records": 30375,
+      "figures_without_catalog_image": 0,
+      "figures_without_set_occurrence": 318,
+      "figures_without_component_inventory": 1
+    },
+    "note": "Fresh daily source hashes were recorded; counts remained stable relative to the prior same-day bulk run."
+  }
 }
