@@ -1,0 +1,71 @@
+{
+  "manifest_version": "1.0",
+  "id": "brickmen-gap-ingestion-2026-09-25-002",
+  "created_at": "2026-09-25",
+  "objective": "Execute the physical census, LDraw/rioforce flat-art crosswalk, and Fortnite source-to-LEGO supervision refresh identified as the highest-return Brickmen gap-fill sequence.",
+  "trigger_commits": {
+    "physical_census": "968d96bf02b49de4d1fcf44cca891785b12475f5",
+    "bulk_ingestion": "5417f4b776569cc8da65a54b8ad7ff7574aeb640"
+  },
+  "generated_commits": {
+    "physical_census_snapshot": "4ffbebd8c15f8be306860cd35be7c1cc90d42e68",
+    "bulk_ingestion_snapshot": "b116824b"
+  },
+  "manual_followup_commits": [
+    "83f1968e891553ba7f7c645ddddf9045624f5725",
+    "627de5f9fd4d316342fbaf7aef712ded9558701e",
+    "0ff4486b42864843d514a2e1f4a12d4b86a0a830",
+    "a12e55d1f0815a17b56b5bffb9ec1469a1d693b2",
+    "e17c06fb7ceddc90ed966db06c4d080ee125a569",
+    "26423344d2cf5860586a7fc7be928785c585f91e"
+  ],
+  "results": {
+    "physical_census": {
+      "physical_samples": 17226,
+      "component_records": 82411,
+      "component_reference_assets": 82273,
+      "printed_component_records": 30375,
+      "figures_without_catalog_image": 0,
+      "figures_without_set_occurrence": 318,
+      "raw_figures_without_component_inventory": 1,
+      "unresolved_fixed_inventory_failures_after_exception_review": 0
+    },
+    "ldraw": {
+      "patterned_or_printed_minifigure_records": 4352,
+      "cc_by_4_records": 4132,
+      "cc_by_2_and_4_records": 220
+    },
+    "rioforce_catalog_crosswalk": {
+      "rioforce_records": 129,
+      "with_figure_candidates": 99,
+      "with_component_candidates": 88,
+      "high_confidence_top_figure_candidates": 6,
+      "exact_rebrickable_part_to_ldraw_links": 10,
+      "without_figure_candidates": 30,
+      "promotion_status": "candidate_review_required"
+    },
+    "fortnite_translation": {
+      "lego_records": 2494,
+      "identity_pairs": 2494,
+      "unmatched_lego": 0,
+      "pairs_with_both_preferred_images": 2480,
+      "missing_preferred_lego_images": 14,
+      "deterministic_visual_feature_records": 2480,
+      "semantic_annotation_queue_records": 2494
+    }
+  },
+  "newly_resolved_findings": [
+    "fig-011590 Minifigure Factory Figure is a configurable product/program rather than a stable fixed-inventory figure; the zero-component result is classified as an expected modeling edge case, not an importer failure.",
+    "The 318 no-set-occurrence records split into 70 records with 1-8 parts and 248 records with more than 8 parts; this is retained only as a triage heuristic, not a canonical form classification.",
+    "Fresh Rebrickable source hashes changed while census counts remained stable, preserving evidence that the daily source export was refreshed.",
+    "Catalog-backed flat-art matching now supplies actual candidate figure inventories and 10 exact part-ID joins instead of relying only on filename similarity.",
+    "Fortnite identity pairing is complete for the current 2,494 LEGO Style records; the remaining high-value work is semantic translation annotation rather than identity matching."
+  ],
+  "remaining_high_value_work": [
+    "independently verify/promote the 10 exact flat-art links and improve alias resolution for the remaining rioforce records",
+    "resolve 14 Fortnite records without preferred LEGO imagery",
+    "populate semantic preserve/simplify/omit/exaggerate/mould/accessory/cloth labels across the Fortnite queue",
+    "continue official digital-game asset materialization and physical multi-view ground truth when local assets/hardware are available",
+    "build expression-landmark supervision and typed negative/control corpora"
+  ]
+}
