@@ -558,7 +558,8 @@ jobs:
           src="$OUT/sources/herobloks"; mkdir -p "$src"
           python tools/knowledge/snapshot_herobloks_catalog.py \
             --output "$src/catalog.jsonl" \
-            --summary "$src/summary.json"
+            --summary "$src/summary.json" \
+            --brand-output "$src/brands.json"
           rc=$?
           RC="$rc" SRC="$src" python - <<'PY'
           import json,os,shutil
@@ -575,6 +576,9 @@ jobs:
           if rc==0:
               dest=Path(os.environ["DEST"])
               shutil.copy2(src/"summary.json",dest/"herobloks-catalog-summary-latest.json")
+              brands=src/"brands.json"
+              if brands.exists() and brands.stat().st_size < 8_000_000:
+                  shutil.copy2(brands,dest/"herobloks-brand-census-latest.json")
               catalog=src/"catalog.jsonl"
               if catalog.exists() and catalog.stat().st_size < 8_000_000:
                   shutil.copy2(catalog,dest/"herobloks-catalog-latest.jsonl")
