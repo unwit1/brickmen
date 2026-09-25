@@ -20,7 +20,7 @@ from pathlib import Path
 
 from PIL import Image, ImageFilter, ImageStat
 
-VERSION = "fortnite-translation-visual-features/v1"
+VERSION = "fortnite-translation-visual-features/v2"
 USER_AGENT = "BrickmenResearch/1.0"
 
 
@@ -101,6 +101,44 @@ def foreground_bbox(im: Image.Image):
     return [round(x0 / w, 4), round(y0 / h, 4), round(x1 / w, 4), round(y1 / h, 4)], round(occupancy, 4)
 
 
+def region_features(rgb: Image.Image):
+    """Measure coarse vertical regions after foreground-bbox normalization."""
+    rgba = rgb.convert("RGBA")
+    bbox_norm, _ = foreground_bbox(rgba.resize((256, 256), Image.Resampling.LANCZOS))
+    if bbox_norm:
+        w, h = rgb.size
+        x0 = max(0, min(w - 1, int(bbox_norm[0] * w)))
+        y0 = max(0, min(h - 1, int(bbox_norm[1] * h)))
+        x1 = max(x0 + 1, min(w, int(bbox_norm[2] * w)))
+        y1 = max(y0 + 1, min(h, int(bbox_norm[3] * h)))
+        crop = rgb.crop((x0, y0, x1, y1))
+    else:
+        crop = rgb
+    crop = crop.resize((128, 192), Image.Resampling.LANCZOS).convert("RGB")
+    bands = {
+        "head_upper": (0, 0, 128, 68),
+        "torso_middle": (0, 68, 128, 132),
+        "legs_lower": (0, 132, 128, 192),
+    }
+    out = {}
+    for name, box in bands.items():
+        band = crop.crop(box)
+        gray = band.convert("L")
+        edges = gray.filter(ImageFilter.FIND_EDGES)
+        vals = list(edges.getdata())
+        edge_density = sum(1 for v in vals if v >= 32) / max(1, len(vals))
+        stats = ImageStat.Stat(band)
+        palette = quantized_palette(band, 4)
+        out[name] = {
+            "mean_rgb": [round(x, 2) for x in stats.mean[:3]],
+            "stddev_rgb": [round(x, 2) for x in stats.stddev[:3]],
+            "edge_density": round(edge_density, 5),
+            "palette_4": palette,
+            "palette_effective_colors": sum(1 for x in palette if x["fraction"] >= 0.05),
+        }
+    return out
+
+
 def visual_features(im: Image.Image):
     w, h = im.size
     rgb = im.convert("RGB")
@@ -123,6 +161,7 @@ def visual_features(im: Image.Image):
         "foreground_bbox_occupancy": occupancy,
         "palette_8": palette,
         "palette_effective_colors": sum(1 for x in palette if x["fraction"] >= 0.025),
+        "foreground_normalized_regions": region_features(rgb),
     }
 
 
@@ -133,12 +172,28 @@ def delta(src: dict, lego: dict):
     lego_palette = lego.get("palette_effective_colors") or 0
     src_occ = src.get("foreground_bbox_occupancy") or 0
     lego_occ = lego.get("foreground_bbox_occupancy") or 0
+    regional = {}
+    for name in ("head_upper", "torso_middle", "legs_lower"):
+        sr = (src.get("foreground_normalized_regions") or {}).get(name) or {}
+        lr = (lego.get("foreground_normalized_regions") or {}).get(name) or {}
+        se = sr.get("edge_density") or 0
+        le = lr.get("edge_density") or 0
+        regional[name] = {
+            "edge_density_delta_lego_minus_source": round(le - se, 5),
+            "edge_density_ratio_lego_to_source": round(le / se, 4) if se else None,
+            "effective_palette_delta_lego_minus_source": (lr.get("palette_effective_colors") or 0) - (sr.get("palette_effective_colors") or 0),
+            "mean_rgb_delta_lego_minus_source": [
+                round((lr.get("mean_rgb") or [0,0,0])[i] - (sr.get("mean_rgb") or [0,0,0])[i], 2)
+                for i in range(3)
+            ],
+        }
     return {
         "edge_density_delta_lego_minus_source": round(lego_edges - src_edges, 5),
         "edge_density_ratio_lego_to_source": round(lego_edges / src_edges, 4) if src_edges else None,
         "effective_palette_delta_lego_minus_source": lego_palette - src_palette,
         "foreground_occupancy_delta": round(lego_occ - src_occ, 4),
         "aspect_ratio_delta": round((lego.get("aspect_ratio") or 0) - (src.get("aspect_ratio") or 0), 4),
+        "regional_differences": regional,
         "heuristic_signals": {
             "lower_edge_density_in_lego": bool(src_edges and lego_edges < src_edges * 0.85),
             "smaller_effective_palette_in_lego": lego_palette < src_palette,
@@ -203,7 +258,7 @@ def main():
         "large_silhouette_bbox_change": sum(bool(r["difference"]["heuristic_signals"]["large_silhouette_bbox_change"]) for r in complete),
     }
     summary = {
-        "schema": "fortnite-translation-visual-feature-summary/v1",
+        "schema": "fortnite-translation-visual-feature-summary/v2",
         "created_at": now_iso(),
         "processor_version": VERSION,
         "pair_records_requested": len(pairs),
