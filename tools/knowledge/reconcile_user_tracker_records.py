@@ -528,6 +528,33 @@ def main():
     write_jsonl("figure-release-candidates.jsonl", release_rows)
     write_jsonl("entity-resolution-review-queue.jsonl", entity_review)
     write_jsonl("collection-gap-candidates.jsonl", gap_rows)
+    (args.output_dir / "entity-resolution-review-summary.json").write_text(json.dumps({
+        "schema":"entity-resolution-review-summary/v1",
+        "processor_version":VERSION,
+        "records":len(entity_review),
+        "high_priority_records":sum(x["review_priority_score"] >= 40 for x in entity_review),
+        "reason_counts":dict(Counter(r for x in entity_review for r in x["review_reasons"])),
+        "top_records":[{
+            "name":x["normalized_name"],
+            "score":x["review_priority_score"],
+            "records":x["record_count"],
+            "sources":x["source_file_count"],
+            "reasons":x["review_reasons"],
+            "identities":len(x["identities"]),
+            "variants":len(x["variants"]),
+            "universes":len(x["universes"])
+        } for x in entity_review[:100]],
+        "status":"entity_resolution_review_queue_ready"
+    }, indent=2)+"\n", encoding="utf-8")
+    (args.output_dir / "collection-gap-summary.json").write_text(json.dumps({
+        "schema":"collection-gap-summary/v1",
+        "processor_version":VERSION,
+        "records":len(gap_rows),
+        "state_counts":dict(Counter(x["candidate_state"] for x in gap_rows)),
+        "actionable_records":sum(x["candidate_state"] in {"wishlist_gap_candidate","explicit_missing_design_target"} for x in gap_rows),
+        "review_required_records":sum(x["candidate_state"] in {"maybe_gap_candidate","unknown_target_state"} for x in gap_rows),
+        "status":"collection_gap_queue_ready"
+    }, indent=2)+"\n", encoding="utf-8")
     write_jsonl(
         "unresolved-code-prefixes.jsonl",
         [x for x in code_rows if x.get("resolution_status") in {"unresolved_prefix","brand_candidate_ambiguous"}]
