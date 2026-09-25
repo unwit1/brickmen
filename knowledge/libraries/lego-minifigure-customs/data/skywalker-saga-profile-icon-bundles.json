@@ -1,6 +1,6 @@
 {
   "schema_version": "0.1",
-  "researched_at": "2026-09-24",
+  "researched_at": "2026-09-25",
   "source_page": "https://www.lego.com/en-us/themes/star-wars/games/skywalker-saga",
   "authority": "lego_primary",
   "game": "LEGO Star Wars: The Skywalker Saga",
@@ -62,7 +62,25 @@
       "url": "https://www.lego.com/cdn/cs/catalog/assets/bltdf5a538c4d3523d9/Extras.zip"
     }
   ],
-  "ingestion_status": "direct_bundle_urls_resolved_download_blocked_in_current_runtime",
-  "blocker": "Current web/container tooling can resolve the ZIP URLs but cannot materialize application/zip bytes in this session.",
-  "next_stage": "Download bundles in a network-enabled/local runtime; hash ZIPs; enumerate contained image files; map filenames to characters; deduplicate against game assets/physical releases."
+  "ingestion_status": "official_bundle_assets_downloaded_hashed_and_indexed",
+  "next_stage": "Crosswalk all 374 filename-derived variant keys to canonical Character/Incarnation/OutfitDesign and physical releases; retain unmatched records as digital-only variants; derive face/headgear/style features from the official PNG assets.",
+  "indexed_2026_09_25": {
+    "bundle_count": 10,
+    "profile_icon_assets": 377,
+    "unique_filename_variant_keys": 374,
+    "class_counts": {
+      "Jedi": 43,
+      "Dark Side": 28,
+      "Hero": 89,
+      "Villain": 57,
+      "Scavenger": 12,
+      "Scoundrel": 24,
+      "Bounty Hunter": 18,
+      "Astromech Droid": 20,
+      "Protocol Droid": 13,
+      "Extra": 73
+    },
+    "asset_manifest": "data/bulk-ingestion/official-lego-zip-bundle-assets-latest.jsonl",
+    "variant_census": "data/skywalker-saga-profile-icon-census-2026-09-25.json"
+  }
 }
