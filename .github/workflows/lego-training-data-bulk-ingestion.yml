@@ -416,6 +416,38 @@ jobs:
           PY
           exit 0
 
+      - name: Build face landmark review queue
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          src="$OUT/sources/rioforce_face_svg"
+          python tools/knowledge/build_face_landmark_review_queue.py \
+            --profiles "$src/records.jsonl" \
+            --output "$src/review-queue.jsonl" \
+            --summary "$src/review-summary.json"
+          rc=$?
+          RC="$rc" SRC="$src" python - <<'PY'
+          import json,os,shutil
+          from datetime import datetime,timezone
+          from pathlib import Path
+          src=Path(os.environ["SRC"]);rc=int(os.environ["RC"]);summary={}
+          p=src/"review-summary.json"
+          if p.exists():
+              try: summary=json.loads(p.read_text())
+              except Exception: pass
+          status={"source_id":"rioforce_face_review_queue","status":"complete" if rc==0 else "failed",
+                  "exit_code":rc,"created_at":datetime.now(timezone.utc).isoformat(),**summary}
+          Path(os.environ["OUT"],"status/rioforce_face_review_queue.json").write_text(json.dumps(status,indent=2))
+          if rc==0:
+              dest=Path(os.environ["DEST"])
+              shutil.copy2(src/"review-summary.json",dest/"face-landmark-review-summary-latest.json")
+              q=src/"review-queue.jsonl"
+              if q.exists() and q.stat().st_size < 8_000_000:
+                  shutil.copy2(q,dest/"face-landmark-review-queue-latest.jsonl")
+          PY
+          exit 0
+
       - name: Build flat-art crosswalk candidates
         continue-on-error: true
         shell: bash
