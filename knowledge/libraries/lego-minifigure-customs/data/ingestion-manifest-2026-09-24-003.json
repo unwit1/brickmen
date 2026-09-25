@@ -1,0 +1,35 @@
+{
+  "batch": "2026-09-24-003",
+  "status": "committed",
+  "focus": [
+    "identifier semantics",
+    "pattern semantics",
+    "render provenance",
+    "physical validation",
+    "category semantics",
+    "RAG context contracts"
+  ],
+  "new_artifacts": 6,
+  "important_findings": [
+    "LDraw explicitly distinguishes known part numbers from Element IDs and defines variant, assembly, patterned, stickered, unknown and third-party numbering classes.",
+    "Patterned parts encompass printing and multi-colour moulding, so pattern records cannot be assumed to mean surface ink.",
+    "LDraw defines a standard preview convention that can be retained as a reproducible catalog view while orthographic manufacturing cameras remain separate.",
+    "Physical validation queue now blocks inferred geometry from becoming manufacturing truth.",
+    "Generation retrieval is split by task so models receive precise relevant context instead of repository-wide prompt dumps."
+  ],
+  "next": [
+    "ingest larger canonical body/head family inventory",
+    "ingest hair/headwear/accessory families",
+    "expand complete LDConfig color/effect table",
+    "build crosswalk records from Rebrickable bulk exports",
+    "create dependency parser/indexer specification",
+    "create UV calibration datasets and experiment matrices"
+  ],
+  "sources": [
+    "https://www.ldraw.org/part-number-spec.html",
+    "https://www.ldraw.org/article/512.html",
+    "https://www.ldraw.org/article/398.html",
+    "https://www.ldraw.org/article/340.html",
+    "https://forums.ldraw.org/thread-29557-post-60799.html"
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "manifest_version": "1.0",
+  "id": "lego-minifigure-official-style-2026-09-24-007",
+  "created_at": "2026-09-24",
+  "scope": [
+    "official physical minifigure visual grammar",
+    "official digital/game minifigure grammar",
+    "facial expression and eyebrow rules",
+    "reference-to-LEGO translation workflow",
+    "official catalog census design",
+    "custom-style gating and evaluation"
+  ],
+  "created_files": [
+    "official-minifigure-visual-style.md",
+    "official-character-corpus-ingestion.md",
+    "custom-style-evaluation-framework.md",
+    "data/official-style-schema.json",
+    "data/official-visual-source-registry.json",
+    "data/official-style-calibration-anchors.json"
+  ],
+  "authoritative_findings": [
+    "Official designers begin from reference gathering and large simple shapes, then refine selected details.",
+    "Tiny-scale readability and iconic-feature selection take priority over literal micro-detail.",
+    "The Complete Minifigure Guidelines are extensive; public discussion confirms dedicated eyebrow/expression guidance.",
+    "Digital minifigures should preserve toy palette, graphic style, dimensions and scale; animation exceptions remain separate.",
+    "Official style varies by era/theme; a single undifferentiated style average is invalid."
+  ],
+  "current_census_observations": {
+    "bricklink_records": 19250,
+    "brickset_records": 19240,
+    "rebrickable_bulk_status": "source identified; bulk compressed files not materialized in this session",
+    "unique_character_count": "unresolved; catalog records include variants/assemblies"
+  },
+  "blockers_before_custom_scoring": [
+    "materialize and validate full official bulk catalog",
+    "derive feature distributions from physical visual samples",
+    "resolve enough era/theme baselines to calibrate official-likeness scoring",
+    "separate digital-only designs from physical-print evidence"
+  ],
+  "next_ingestion": [
+    "full Rebrickable/BrickLink/Brickset crosswalk",
+    "official head/torso/leg decorated-part feature extraction",
+    "theme-specific style distributions",
+    "game-to-physical correspondence maps",
+    "Bob's Customs and other custom sources only after matching official profile is established"
+  ]
+}

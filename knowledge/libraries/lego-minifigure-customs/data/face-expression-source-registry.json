@@ -1,0 +1,168 @@
+{
+  "schema_version": "0.1",
+  "researched_at": "2026-09-24",
+  "sources": [
+    {
+      "id": "bartneck_agents_with_faces",
+      "authority": "peer_reviewed_research",
+      "year": 2013,
+      "url": "https://bartneck.de/publications/2013/agentsWithFaces/bartneckLEGOAgent.pdf",
+      "sample": {
+        "initially_shown_heads": 628,
+        "valid_analyzed_faces": 627,
+        "participants": 264,
+        "different_raters_per_face": 30,
+        "photographed_official_minifigures": 3655,
+        "unique_heads": 628
+      },
+      "label_space": {
+        "emotions": [
+          "anger",
+          "disgust",
+          "fear",
+          "happiness",
+          "sadness",
+          "surprise"
+        ],
+        "intensity": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "findings": [
+        "Many faces are ambiguous rather than mapping to one emotion only.",
+        "Dominant emotion used rating frequency, with mean intensity as tie-break.",
+        "Expression variety increased dramatically beginning around the 1989 Pirates era.",
+        "Context significantly influenced perceived anger, disgust, sadness and surprise.",
+        "Skin-color variation did not significantly change perceived emotional expression.",
+        "Cluster analysis identified disdain, confidence, concern, fear, happiness and anger."
+      ],
+      "raw_stimulus_status": "not located as a separately licensed dataset in current search",
+      "figshare_doi": "10.6084/m9.figshare.5154778"
+    },
+    {
+      "id": "bartneck_lego_pictorial_scales",
+      "authority": "peer_reviewed_research",
+      "year": 2015,
+      "url": "https://www.bartneck.de/publications/2015/LEGOPictorialScales/LegoPictorialScalesforAssessingAffectiveResponse.pdf",
+      "sample": {
+        "face_pool": 722
+      },
+      "supervision": [
+        "emotion/intensity lineage",
+        "selected canonical affective faces",
+        "vectorized stylized LEGO face scale"
+      ],
+      "notes": "Paper states stylized faces were created as vectors and are scalable; those scale graphics are research instruments, not a blanket license to the original LEGO face corpus."
+    },
+    {
+      "id": "bartneck_mturk_validation",
+      "authority": "peer_reviewed_open_access",
+      "year": 2015,
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4397064/",
+      "sample": {
+        "subset_faces": 94
+      },
+      "supervision": [
+        "cross-method validation of expression ratings"
+      ],
+      "notes": "PLOS article is CC BY; underlying LEGO stimulus rights remain separate."
+    },
+    {
+      "id": "bricklink_head_semantic_names",
+      "authority": "structured_catalog",
+      "source_artifact": "iechevarria/lego-face-VAE dataset_scripts/minifig-heads.csv",
+      "supervision": [
+        "head part number",
+        "semantic descriptors such as grin, eyebrows, freckles, moustache, glasses, scars, headset, hairline"
+      ],
+      "scale": "large historical BrickLink head catalog snapshot",
+      "use": "weak semantic labels / search vocabulary, not emotional ground truth"
+    },
+    {
+      "id": "official_physical_head_corpus",
+      "authority": "official_and_structured_catalog",
+      "sources": [
+        "LEGO/Pick a Brick",
+        "BrickLink",
+        "Rebrickable",
+        "LDraw patterned heads",
+        "controlled user photography"
+      ],
+      "supervision": [
+        "exact face graphics",
+        "dual-sided head relationship",
+        "era/theme",
+        "part color",
+        "physical release"
+      ],
+      "use": "primary geometry/style corpus"
+    },
+    {
+      "id": "lego_pirates_1989_expression_transition",
+      "authority": "lego_primary_history",
+      "year": 1989,
+      "url": "https://www.lego.com/en-us/history/articles/g-lego-pirates",
+      "supervision": [
+        "historical expression-design transition",
+        "character credibility as reason for face change",
+        "eyepatch/beard/moustache/lipstick differentiation",
+        "hook/peg-leg geometry as identity cues"
+      ],
+      "explicit_design_evidence": "Designer Jens Nygaard Knudsen says altering the minifigure expression was necessary to develop credible pirates.",
+      "use": "causal label linking expression variety and distinctive mould/accessory cues to character storytelling"
+    },
+    {
+      "id": "moltchanova_bartneck_2017",
+      "authority": "peer_reviewed_research",
+      "year": 2017,
+      "url": "https://ir.canterbury.ac.nz/bitstream/handle/10092/16684/moltchanovaBartneckInterationStudies2017.pdf?sequence=2",
+      "doi": "10.1075/is.18.2.01mol",
+      "sample": {
+        "faces": 94,
+        "source_pool": 722,
+        "participants": 60,
+        "responses_expected": 5640,
+        "missing_responses": 2
+      },
+      "labels": [
+        "anger",
+        "disgust",
+        "fear",
+        "sadness",
+        "happiness",
+        "surprise",
+        "1-5 intensity"
+      ],
+      "findings": [
+        "Individual differences in observers were more important than emotional category for parts of perception.",
+        "44 of 92 analyzed figures received all six emotion labels at least once; another 31 received five of six.",
+        "Perceived expression labels are therefore probabilistic/distributed rather than objectively singular."
+      ],
+      "use": "train/evaluate probabilistic expression distributions and reviewer-variance-aware scoring"
+    }
+  ],
+  "proposed_annotation_layers": [
+    "catalog_semantic_descriptor",
+    "human_perceived_emotion_distribution",
+    "geometry_landmarks",
+    "expression_family",
+    "facial_hair",
+    "eyewear",
+    "scars_freckles_wrinkles",
+    "dual_sided_pair",
+    "era_theme",
+    "head_base_color",
+    "emotion_probability_distribution",
+    "rater_disagreement",
+    "context_conditioned_expression"
+  ],
+  "missing_data": [
+    "machine-readable Bartneck raw 627/722 stimulus-to-rating table",
+    "exact crosswalk from Bartneck stimuli to BrickLink/LDraw head IDs",
+    "reviewed eye/brow/mouth landmarks for a statistically useful official head sample"
+  ]
+}

@@ -1,0 +1,295 @@
+{
+  "schema_version": "0.1",
+  "researched_at": "2026-09-24",
+  "purpose": "Map LEGO game generations to the best currently known local reference-asset extraction strategy. Tools are community projects unless explicitly marked otherwise; use only with legally obtained local game data and preserve exact versions/hashes.",
+  "families": [
+    {
+      "id": "lego_island_1997",
+      "titles": [
+        "LEGO Island"
+      ],
+      "engine_family": "Mindscape/LEGO Island",
+      "status": "specialized_tooling_available",
+      "primary_formats": [
+        "SI streaming asset packs",
+        "WORLD.WDB"
+      ],
+      "tools": [
+        {
+          "name": "SIEdit / libweaver",
+          "url": "https://github.com/isledecomp/SIEdit",
+          "capabilities": [
+            "view/extract SI textures",
+            "sounds",
+            "animations",
+            "FMVs",
+            "metadata"
+          ]
+        },
+        {
+          "name": "isledecomp/isle",
+          "url": "https://github.com/isledecomp/isle",
+          "capabilities": [
+            "decompilation/reference for exact game versions",
+            "asset behavior/context"
+          ]
+        },
+        {
+          "name": "WDB reverse-engineering ecosystem",
+          "url": "https://www.legoisland.org/wiki/WORLD.WDB",
+          "capabilities": [
+            "WORLD.WDB model/texture extraction research"
+          ]
+        }
+      ],
+      "minifigure_reference_value": [
+        "character textures",
+        "3D models",
+        "animations",
+        "phoneme/expression assets"
+      ],
+      "notes": "WORLD.WDB is documented as containing most 3D models and many textures; SI files contain additional streamed media/assets."
+    },
+    {
+      "id": "lego_racers_1999",
+      "titles": [
+        "LEGO Racers"
+      ],
+      "engine_family": "High Voltage / LEGO Racers",
+      "status": "specialized_tooling_available",
+      "primary_formats": [
+        "LEGO.JAM",
+        "GDB models"
+      ],
+      "tools": [
+        {
+          "name": "Lego-Racers-Mod",
+          "url": "https://github.com/Laupetin/Lego-Racers-Mod",
+          "capabilities": [
+            "dump/rebuild JAM filesystem",
+            "convert supported assets",
+            "GDB to OBJ conversion"
+          ]
+        }
+      ],
+      "minifigure_reference_value": [
+        "driver/head/torso textures",
+        "character models",
+        "customized racer parts"
+      ],
+      "notes": "JAM is a filesystem-like game asset container; GDB models can be converted to OBJ by the project's AssetConverter."
+    },
+    {
+      "id": "rock_raiders_1999",
+      "titles": [
+        "LEGO Rock Raiders"
+      ],
+      "engine_family": "Data Design Interactive / Direct3D Retained Mode",
+      "status": "specialized_tooling_and_texture_map_available",
+      "primary_formats": [
+        "LWO models",
+        "LWS animation",
+        "8-bit textures",
+        "UV sidecars/config"
+      ],
+      "tools": [
+        {
+          "name": "LWO-to-OBJ",
+          "url": "https://github.com/Terrev/LWO-to-OBJ",
+          "capabilities": [
+            "convert vanilla LWO model data",
+            "handle game-specific orientation details"
+          ]
+        },
+        {
+          "name": "Rock Raiders Toolkit",
+          "url": "https://github.com/Terrev/Rock-Raiders-Toolkit",
+          "capabilities": [
+            "LWO/UV workflow",
+            "model/material understanding"
+          ]
+        },
+        {
+          "name": "Rock Raiders United texture documentation",
+          "url": "https://kb.rockraidersunited.com/Tutorial:Texture_modification",
+          "capabilities": [
+            "documents minifigure surface texture filenames"
+          ]
+        }
+      ],
+      "known_minifigure_texture_roles": {
+        "Pbodytop": "arms and side of legs",
+        "Pbody": "torso front",
+        "Pback": "torso back",
+        "Pside": "torso side",
+        "PlegBACKRUpper": "top back of legs",
+        "Pface": "face",
+        "Headside": "head side",
+        "PlegBackRLower": "bottom back of legs",
+        "Pslb": "bottom of foot",
+        "PlegRLower": "bottom front of legs",
+        "PlegRUpper": "top front of legs"
+      },
+      "minifigure_reference_value": [
+        "near-flat original face/body/leg texture maps",
+        "3D models",
+        "animation scaling"
+      ],
+      "notes": "This is unusually valuable because the game exposes separate texture roles corresponding directly to minifigure print surfaces."
+    },
+    {
+      "id": "ttgames_classic_to_modern",
+      "titles_scope": "Traveller's Tales LEGO games beginning with LEGO Star Wars: The Video Game and continuing through modern TT releases",
+      "engine_family": "TT Games LEGO engines",
+      "status": "broad_archive_support_available",
+      "primary_formats": [
+        "DAT",
+        "FPK",
+        "PAC",
+        "PAK",
+        "DDS",
+        "TEX",
+        "NXG_TEXTURES",
+        "TSH",
+        "GHG",
+        "GSC",
+        "CMO",
+        "text/config formats"
+      ],
+      "tools": [
+        {
+          "name": "BrickVault",
+          "url": "https://github.com/connorh315/BrickVault",
+          "capabilities": [
+            "archive extraction across TT LEGO games"
+          ],
+          "notes": "Project states it has been extensively tested from original LEGO Star Wars I through the latest LEGO Harry Potter Collection; Skywalker Saga requires the game's own Oodle DLL on Windows and HP Collection has special LZHAM/path handling."
+        },
+        {
+          "name": "TTGames Explorer Rebirth",
+          "url": "https://github.com/AcK77/TTGames-Explorer-Rebirth",
+          "capabilities": [
+            "archive browsing/extraction",
+            "DDS/TEX/NXG texture extraction",
+            "GHG/GSC 3D viewing",
+            "text/config viewing"
+          ]
+        },
+        {
+          "name": "TT Games QuickBMS scripts",
+          "url": "https://github.com/linterniGamer/Tt-Games-quickbms-scripts",
+          "capabilities": [
+            "game-specific archive extraction",
+            "Skywalker Saga texture conversion",
+            "handheld FIB extraction"
+          ]
+        },
+        {
+          "name": "BacTSH",
+          "url": "https://github.com/AlubJ/BacTSH",
+          "capabilities": [
+            "DX11 texture-sheet extraction for supported TT titles"
+          ]
+        }
+      ],
+      "minifigure_reference_value": [
+        "original texture sheets",
+        "character models",
+        "configuration/name mappings",
+        "digital-only costume variants",
+        "mask/headgear geometry"
+      ],
+      "notes": "Prefer archive/model/texture assets over gameplay screenshots whenever decoding is reliable."
+    },
+    {
+      "id": "lego_dimensions",
+      "titles": [
+        "LEGO Dimensions"
+      ],
+      "engine_family": "TT Games console/PC-adjacent asset family",
+      "status": "local_dump_ecosystem_available",
+      "tools": [
+        {
+          "name": "BrickVault / TT tooling",
+          "url": "https://github.com/connorh315/BrickVault",
+          "capabilities": [
+            "TT archive handling"
+          ]
+        },
+        {
+          "name": "DimensionsRecomp",
+          "url": "https://github.com/NeverCookFirst/DimensionsRecomp",
+          "capabilities": [
+            "bring-your-own Xbox 360 dump research/recompilation ecosystem"
+          ],
+          "notes": "Does not include game data; verifies user-provided dumps."
+        }
+      ],
+      "minifigure_reference_value": [
+        "cross-franchise digital characters",
+        "physical-to-digital counterpart mapping",
+        "DLC character variants"
+      ],
+      "notes": "Treat console dump/version provenance carefully."
+    },
+    {
+      "id": "lego_universe_2010",
+      "titles": [
+        "LEGO Universe"
+      ],
+      "engine_family": "NetDevil LEGO Universe",
+      "status": "extensive_reverse_engineered_asset_pipeline",
+      "primary_formats": [
+        "NIF",
+        "HKX",
+        "PK",
+        "FDB",
+        "LUZ/LVL",
+        "DDS",
+        "LXFML",
+        "PSB",
+        "GFX"
+      ],
+      "tools": [
+        {
+          "name": "LU-Rebuilt / lu-assets",
+          "url": "https://github.com/LU-Rebuilt",
+          "capabilities": [
+            "parsers for original client formats",
+            "open asset pipeline",
+            "model tools"
+          ]
+        },
+        {
+          "name": "LEGO Universe Toolbox",
+          "url": "https://github.com/Squareville/lu-toolbox",
+          "capabilities": [
+            "Blender-oriented model workflow",
+            "client asset preparation/reference"
+          ]
+        }
+      ],
+      "minifigure_reference_value": [
+        "avatar parts",
+        "NPC minifigure models",
+        "textures",
+        "equipment/costume geometry"
+      ],
+      "notes": "High-value corpus because it contains large numbers of modular avatar/minifigure components."
+    }
+  ],
+  "unresolved_families": [
+    "LEGO Fun to Build / SEGA Pico",
+    "LEGO Loco",
+    "LEGO Chess",
+    "LEGO Creator series",
+    "LEGO Friends 1999",
+    "LEGO Island 2 / Island Xtreme Stunts",
+    "Drome Racers",
+    "Football Mania",
+    "LEGO Minifigures Online",
+    "mobile/browser titles not preserved in current official storefronts",
+    "non-TT partner-developed titles from the 200+ game catalog"
+  ],
+  "selection_rule": "For each title prefer original texture/model/config extraction from a legally obtained local copy; fall back to official screenshots/renders, then clean captured frames. Record tool/version and game build hashes."
+}

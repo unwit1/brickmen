@@ -1,0 +1,32 @@
+{
+  "batch": "2026-09-24-002",
+  "status": "committed",
+  "records_added": {
+    "category_census": 1,
+    "crosswalk_schema": 1,
+    "material_model": 1,
+    "pattern_examples": 6
+  },
+  "findings": [
+    "LDraw's current Minifig category query returns 4,340 records, confirming that full ingestion must distinguish patterns/assemblies from unique physical moulds.",
+    "A June 2026 LDraw census estimated 960 torso records, 398 leg records, 144 hip records, 78 arm records, 5 hand records, roughly 792 heads, and large headwear/accessory families.",
+    "LDraw's approved category vocabulary now includes granular Minifig Head/Upper/Lower/Leg/Hips/Arm/Hand/Torso/Body/Assembly/Accessory categories.",
+    "Rebrickable documents direct LDraw/BrickLink/BrickOwl color mappings plus external part IDs and part relationships, making it a key reconciliation source.",
+    "LDraw !COLOUR explicitly models alpha, luminance and multiple finishes/materials; AI rendering must preserve these semantics rather than flattening all colors to hex."
+  ],
+  "next_batch": [
+    "enumerate unpatterned canonical body/head geometry",
+    "enumerate headwear/hair/neckwear/armor",
+    "enumerate accessories by functional subtype",
+    "complete color/material table",
+    "populate Rebrickable crosswalk from bulk datasets",
+    "derive dependency graph and render queue"
+  ],
+  "sources": [
+    "https://library.ldraw.org/parts/list?tableFilters%5Bcategory%5D%5Bvalues%5D%5B0%5D=Minifig",
+    "https://forums.ldraw.org/thread-29557.html",
+    "https://www.ldraw.org/article/340.html",
+    "https://www.ldraw.org/article/299",
+    "https://rebrickable.com/api/docs/"
+  ]
+}

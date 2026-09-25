@@ -1,0 +1,81 @@
+{
+  "manifest_version": "1.0",
+  "id": "lego-minifigure-customs-market-research-2026-09-24-005",
+  "created_at": "2026-09-24",
+  "scope": [
+    "collector and customizer ecosystem",
+    "official and third-party catalog sources",
+    "terminology normalization",
+    "figure/component provenance",
+    "themes and source-appearance modeling",
+    "accessory ecosystem",
+    "price observation semantics",
+    "quality and compatibility observations",
+    "release/drop/edition tracking"
+  ],
+  "added_files": [
+    "terminology-and-classification.md",
+    "collector-market-and-customizer-ecosystem.md",
+    "theme-and-reference-taxonomy.md",
+    "data/minifigure-market-schema.json",
+    "data/customizer-source-registry.json",
+    "data/market-price-snapshot-2026-09-24.json",
+    "data/compatible-brand-code-crosswalk-seed.json",
+    "data/customizer-landscape-2026-09-24.json",
+    "data/source-coverage-matrix-2026-09-24.json"
+  ],
+  "updated_files": [
+    "README.md",
+    "knowledge-ontology.md",
+    "data-model.json",
+    "sourcing-and-catalogs.md",
+    "research-backlog.md"
+  ],
+  "anchor_sources": [
+    "LEGO",
+    "BrickLink",
+    "Rebrickable",
+    "Brickset",
+    "Brickognize",
+    "HeroBloks",
+    "BrickEconomy",
+    "Brick4",
+    "Citizen Brick",
+    "FireStar Toys",
+    "Brickmania",
+    "United Bricks",
+    "JONAK Toys",
+    "Grandpa Clone Customs",
+    "Clone Army Customs",
+    "BrickForge",
+    "CustomMinifig.co.uk",
+    "Down The Blocks",
+    "BrickScan",
+    "Minifigures.com",
+    "Arealight Custom Works",
+    "Engineerio",
+    "Penzora",
+    "Calypso Customs",
+    "CrazyMinifigs",
+    "ChipChipCustom",
+    "LeYiLe Brick",
+    "Manga Brick",
+    "Minifigs.Factory",
+    "Lab9minifigs",
+    "TracyMinifigs",
+    "OutsideBrick",
+    "Legend C MOC"
+  ],
+  "unresolved": [
+    "Programmatic long-tail extraction of every HeroBloks brand and product-code family",
+    "Historical backfill of discontinued compatible-brand catalogs and DownTheBlocks-like archives",
+    "Systematic public social-media release feed capture for makers whose primary announcements are social",
+    "Per-release collection reconciliation against Bootlego MASTER and franchise trackers",
+    "Time-series pricing ingestion for user-priority figures and accessories",
+    "Physical compatibility/QC testing for high-priority compatible brands"
+  ],
+  "notes": [
+    "Expanded after initial commit with market price snapshot, compatible-brand code seed and customizer landscape.",
+    "Living maker status requires dated evidence; reseller-only identities remain candidates until primary corroboration."
+  ]
+}

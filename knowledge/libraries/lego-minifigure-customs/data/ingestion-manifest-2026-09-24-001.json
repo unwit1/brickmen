@@ -1,0 +1,46 @@
+{
+  "dataset": "lego-minifigure-customs",
+  "ingestion_batch": "2026-09-24-ldraw-seed-001",
+  "status": "validated_seed",
+  "sources": [
+    {
+      "name": "LDraw official library",
+      "release": "2026-08",
+      "reported_unique_shapes_or_patterns": 17116
+    },
+    {
+      "name": "LDConfig.ldr mirror snapshot",
+      "header_update": "2024-04-05",
+      "license_context": "LDraw library"
+    },
+    {
+      "name": "Rebrickable",
+      "use": "future bulk crosswalk via Downloads CSV; API docs confirm color mappings, external part IDs and relationships"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "data/ldraw-colors-seed.csv",
+      "records": 61,
+      "scope": "solid colors visible in fetched LDConfig segment"
+    },
+    {
+      "path": "data/minifigure-core-parts-seed.json",
+      "records": 11,
+      "scope": "core body geometry/aliases/obsolete replacements"
+    }
+  ],
+  "caveats": [
+    "This is the first structured batch, not a complete catalog.",
+    "Physical manufacturing dimensions remain unvalidated until measured.",
+    "Rebrickable bulk CSV has not yet been imported; docs indicate bulk Downloads should be used for full catalogs."
+  ],
+  "next": [
+    "complete LDConfig ingestion including transparent/material colors",
+    "bulk Rebrickable color crosswalk",
+    "enumerate LDraw minifigure-category parts",
+    "dependency graph",
+    "pattern/base-part relationships",
+    "render-ready geometry manifests"
+  ]
+}
