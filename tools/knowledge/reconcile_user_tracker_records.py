@@ -158,11 +158,36 @@ def dc_normalized_record(rec):
         field.update(ownership_status=up.get("A") or None, best_representation=up.get("B") or None,
                      name=up.get("C") or None, collection=up.get("F") or None)
     elif tab == "Copy of DC 1":
-        # The copied header is stale/misaligned; observed data consistently uses C for the
-        # character/design name and E for collection. Preserve this as an explicit derived rule.
-        field.update(ownership_status=up.get("A") or None, name=up.get("C") or None,
-                     product_code=up.get("D") or None, collection=up.get("E") or None,
-                     schema_warning="stale_or_misaligned_header_observed")
+        # The copied header is stale/misaligned and rows use D/E/F inconsistently for
+        # brand, collection and serial. Resolve by value shape while preserving raw cells.
+        candidates = [(col, up.get(col)) for col in ("D","E","F") if up.get(col)]
+        serial = next(((col, val) for col, val in candidates if re.search(r"\d", val)), (None, None))
+        brand_text = up.get("D") if up.get("D") and not re.search(r"\d", up.get("D")) else None
+        collection_text = next(
+            (val for col, val in candidates if (col, val) != serial and val != brand_text),
+            None
+        )
+        raw_code = serial[1]
+        normalized_code = raw_code
+        correction = None
+        if raw_code == "X1880" and "catwoman" in norm(up.get("C")):
+            normalized_code = "XH1880"
+            correction = {
+                "raw": "X1880",
+                "normalized": "XH1880",
+                "reason": "adjacent Xinh XH1879/XH1881 wave plus independent catalog confirmation for Catwoman/Selina Kyle XH1880",
+                "evidence_sources": ["HeroBloks","Brixtoy","DownTheBlocks"]
+            }
+        field.update(
+            ownership_status=up.get("A") or None,
+            name=up.get("C") or None,
+            brand_explicit=brand_text,
+            product_code=normalized_code,
+            collection=collection_text,
+            source_product_code_raw=raw_code if correction else None,
+            product_code_correction=correction,
+            schema_warning="stale_or_misaligned_header_observed"
+        )
     else:
         return None
 
@@ -187,7 +212,10 @@ def load_crosswalk(path: Path):
             prefix_map[str(prefix).upper()].append(entry)
         for alias in [brand, *(fam.get("aliases") or [])]:
             if alias:
-                name_alias_map[norm(alias)].append(entry)
+                key = norm(alias)
+                existing = name_alias_map[key]
+                if not any(x.get("brand") == brand for x in existing):
+                    existing.append(entry)
     return data, prefix_map, name_alias_map
 
 def code_prefix(code):
