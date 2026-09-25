@@ -239,6 +239,7 @@ def main():
 
     input_files = []
     records = []
+    external_catalog_records = []
     dc_normalized = []
     for root in (args.collection_dir, args.design_dir):
         for path in sorted(root.glob("*.jsonl")):
@@ -246,6 +247,22 @@ def main():
                 continue
             input_files.append(path)
             for rec in load_jsonl(path):
+                if rec.get("bricklink_minifigure_id"):
+                    external_catalog_records.append({
+                        "catalog_namespace":"bricklink_minifigure_id",
+                        "catalog_id":str(rec.get("bricklink_minifigure_id")).lower(),
+                        "source_file":path.name,
+                        "source_title":rec.get("source_title"),
+                        "source_tab":rec.get("source_tab"),
+                        "source_row":rec.get("source_row"),
+                        "record_class":classify_record(rec,path),
+                        "name_or_note":source_name(rec),
+                        "catalog_url":rec.get("bricklink_catalog_url"),
+                        "raw_values":rec.get("raw_values"),
+                        "resolution_status":"catalog_id_observed_needs_official_crosswalk",
+                        "policy":"External catalog identity is preserved even when the tracker row has no human-readable name. Cross-namespace mapping requires verified evidence.",
+                        "processor_version":VERSION,
+                    })
                 if path.name == "dc-legacy-workbook-raw-2026-09-25.jsonl":
                     derived = dc_normalized_record(rec)
                     if derived:
@@ -526,6 +543,7 @@ def main():
     write_jsonl("product-code-brand-candidates.jsonl", code_rows)
     write_jsonl("dc-legacy-normalized.jsonl", dc_normalized)
     write_jsonl("figure-release-candidates.jsonl", release_rows)
+    write_jsonl("external-catalog-id-queue.jsonl", external_catalog_records)
     write_jsonl("entity-resolution-review-queue.jsonl", entity_review)
     write_jsonl("collection-gap-candidates.jsonl", gap_rows)
     (args.output_dir / "entity-resolution-review-summary.json").write_text(json.dumps({
@@ -584,7 +602,9 @@ def main():
         "collection_gap_state_counts": dict(Counter(x["candidate_state"] for x in gap_rows)),
         "coded_records": len(code_rows),
         "maker_product_code_records": sum(x.get("product_code_namespace") == "maker_product_code" for x in code_rows),
-        "external_catalog_id_records": sum(x.get("product_code_namespace") == "bricklink_minifigure_id" for x in code_rows),
+        "external_catalog_id_records_in_named_records": sum(x.get("product_code_namespace") == "bricklink_minifigure_id" for x in code_rows),
+        "external_catalog_id_records_total": len(external_catalog_records),
+        "external_catalog_id_unique_ids": len({x["catalog_id"] for x in external_catalog_records}),
         "unstructured_source_code_text_records": sum(x.get("product_code_namespace") == "unstructured_source_code_text" for x in code_rows),
         "figure_release_candidate_records": len(release_rows),
         "figure_release_candidates_with_identity_conflicts": sum(bool(x.get("identity_conflict_flags")) for x in release_rows),
