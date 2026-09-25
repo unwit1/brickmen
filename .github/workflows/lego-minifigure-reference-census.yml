@@ -114,8 +114,43 @@ jobs:
                   for k, v in report["source_files"].items()
               },
           }
-          out = Path(os.environ["RUNNER_TEMP"]) / "lego-census-report" / "census_snapshot.json"
+          report_dir = Path(os.environ["RUNNER_TEMP"]) / "lego-census-report"
+          out = report_dir / "census_snapshot.json"
           out.write_text(json.dumps(snapshot, indent=2))
+
+          exceptions = {
+              "schema": "lego-minifigure-reference-census-exceptions/v1",
+              "created_at": report["created_at"],
+              "processor_version": report["processor_version"],
+              "no_set_occurrence": [],
+              "no_component_inventory": [],
+          }
+          samples = Path(os.environ["RUNNER_TEMP"]) / "lego-census" / "physical_samples.jsonl"
+          with samples.open(encoding="utf-8") as handle:
+              for line in handle:
+                  if not line.strip():
+                      continue
+                  row = json.loads(line)
+                  compact = {
+                      "fig_num": row.get("fig_num"),
+                      "name": row.get("name"),
+                      "num_parts": row.get("num_parts"),
+                      "catalog_image_url": row.get("catalog_image_url"),
+                      "bricklink_catalog_url": row.get("bricklink_catalog_url"),
+                      "component_inventory_ids": row.get("component_inventory_ids", []),
+                      "component_count_resolved": row.get("component_count_resolved", 0),
+                  }
+                  if not row.get("set_occurrences"):
+                      exceptions["no_set_occurrence"].append(compact)
+                  if not row.get("component_count_resolved"):
+                      exceptions["no_component_inventory"].append(compact)
+          exceptions["counts"] = {
+              "no_set_occurrence": len(exceptions["no_set_occurrence"]),
+              "no_component_inventory": len(exceptions["no_component_inventory"]),
+          }
+          (report_dir / "census_exceptions.json").write_text(
+              json.dumps(exceptions, indent=2) + "\n"
+          )
           PY
 
       - name: Upload compact census report
@@ -134,13 +169,19 @@ jobs:
           dest="knowledge/libraries/lego-minifigure-customs/data"
           mkdir -p "$dest"
           cp "$RUNNER_TEMP/lego-census-report/census_snapshot.json" "$dest/physical-census-latest.json"
+          cp "$RUNNER_TEMP/lego-census-report/census_exceptions.json" "$dest/physical-census-exceptions-latest.json"
           cp "$RUNNER_TEMP/rebrickable/source_hashes.sha256" "$dest/physical-census-source-hashes.sha256"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add "$dest/physical-census-latest.json" "$dest/physical-census-source-hashes.sha256"
+          git add "$dest/physical-census-latest.json" "$dest/physical-census-exceptions-latest.json" "$dest/physical-census-source-hashes.sha256"
           if git diff --cached --quiet; then
             echo "No census changes to commit."
           else
             git commit -m "knowledge: refresh physical minifigure census snapshot"
-            git push
+            for attempt in 1 2 3; do
+              if git push origin HEAD:main; then exit 0; fi
+              echo "Push conflict; rebasing attempt $attempt"
+              git pull --rebase origin main || { git rebase --abort || true; exit 1; }
+            done
+            git push origin HEAD:main
           fi
