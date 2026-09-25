@@ -48,6 +48,7 @@ jobs:
           cp "$out/name-group-candidates.jsonl" "$dest/name-group-candidates-latest.jsonl"
           cp "$out/strict-duplicate-candidates.jsonl" "$dest/strict-duplicate-candidates-latest.jsonl"
           cp "$out/product-code-brand-candidates.jsonl" "$dest/product-code-brand-candidates-latest.jsonl"
+          cp "$out/dc-legacy-normalized.jsonl" "$dest/dc-legacy-normalized-latest.jsonl"
           cp "$out/summary.json" "$dest/reconciliation-summary-latest.json"
 
       - name: Commit reconciliation snapshots
