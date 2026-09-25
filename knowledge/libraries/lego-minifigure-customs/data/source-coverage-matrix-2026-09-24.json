@@ -96,7 +96,7 @@
     },
     {
       "domain": "mass_market_compatible",
-      "status": "heroBloks_full_catalog_census_complete_code_normalization_in_progress",
+      "status": "herobloks_full_catalog_census_complete_ranked_brand_code_candidate_layer_ready",
       "sources": [
         "HeroBloks",
         "Brixtoy",
@@ -105,7 +105,7 @@
         "community sources"
       ],
       "remaining": [
-        "persist complete 1,350-brand census and derive stable-prefix candidates",
+        "independently verify the 68 newly surfaced stable-prefix brand candidates",
         "resolve mixed/no-prefix brands such as Lele, Decool and Bela",
         "factory/alias claims with independent evidence",
         "historical discontinued release chronology and collaboration graph"
@@ -124,7 +124,13 @@
           "TV -> TV",
           "TP -> TP",
           "G (2) -> GH/G catalog observations"
-        ]
+        ],
+        "herobloks_unmodeled_brand_slugs": 1296,
+        "herobloks_stable_prefix_unmodeled": 65,
+        "catalog_backed_stable_prefix_candidates": 76,
+        "new_brand_candidates": 68,
+        "known_registry_prefix_updates": 8,
+        "compact_priority_review_queue": 500
       }
     },
     {
@@ -175,16 +181,17 @@
     },
     {
       "domain": "themes_and_source_appearance",
-      "status": "fortnite_pairing_complete_theme_quantitative_baselines_ready_other_source_appearances_pending",
+      "status": "fortnite_pairing_and_user_tracker_intake_strong_semantic_resolution_in_progress",
       "sources": [
         "maker catalogs",
         "HeroBloks themes",
         "existing user franchise trackers"
       ],
       "remaining": [
-        "normalize every user-tracked roster",
-        "exact issue/episode/game-skin resolution",
-        "reference asset provenance"
+        "review character/identity/variant ambiguity groups instead of auto-merging them",
+        "resolve exact issue/episode/game-skin/source-appearance IDs",
+        "promote verified source appearances into Character/Incarnation/SourceAppearance graph",
+        "reference asset provenance for non-Fortnite source appearances"
       ],
       "completed_2026_09_25": {
         "fortnite_pairs": 2494,
@@ -194,7 +201,15 @@
         "quantitative_theme_profiles": 123,
         "quantitative_era_profiles": 6,
         "quantitative_profile_records": 129,
-        "physical_samples_profiled": 17226
+        "physical_samples_profiled": 17226,
+        "user_tracker_named_records": 11470,
+        "user_tracker_name_groups": 6347,
+        "cross_source_name_groups": 952,
+        "strict_duplicate_candidate_groups": 1198,
+        "strict_cross_source_duplicate_candidates": 601,
+        "skywalker_profile_assets": 377,
+        "skywalker_character_groups": 247,
+        "skywalker_multi_variant_groups": 36
       }
     },
     {
@@ -256,7 +271,9 @@
         ],
         "structured_evidence_file": "data/historical-customizer-verification-2026-09-25.json",
         "herobloks_catalog_records": 59745,
-        "herobloks_brand_slugs": 1350
+        "herobloks_brand_slugs": 1350,
+        "herobloks_ranked_unmodeled_brand_queue": 500,
+        "stable_prefix_new_brand_candidates": 68
       }
     },
     {
@@ -273,34 +290,45 @@
     },
     {
       "domain": "user_collection_reconciliation",
-      "status": "source_intake_complete_for_major_trackers_canonical_reconciliation_pending",
+      "status": "major_source_intake_and_candidate_reconciliation_complete_canonical_resolution_in_progress",
       "sources": [
         "Bootlego MASTER",
         "Minifig Variants to Make",
         "Lego Wishlist",
         "MARVEL Avengers tracker",
-        "DRAGON BALL - Collection Tracker"
+        "DRAGON BALL - Collection Tracker",
+        "standalone DC workbook",
+        "MISC - Anime Figs Collection",
+        "Star Wars tracker",
+        "One Piece Minifgs"
       ],
       "remaining": [
-        "deduplicate overlapping characters/variants across trackers",
-        "map product codes to canonical maker/release IDs with evidence",
-        "map explicit BrickLink wishlist IDs to official physical records",
-        "resolve character/identity/variant/source-appearance entities",
+        "review and promote strict duplicate candidates into canonical Character/Incarnation/OutfitDesign links",
+        "resolve ambiguous name groups with multiple identities/universes/variants",
+        "map verified maker product codes to canonical FigureRelease records",
+        "map explicit BrickLink wishlist IDs to official physical records using a verified crosswalk",
         "calculate owned/missing/preferred/custom-design gaps",
         "promote verified missing variants into custom-design backlog"
       ],
       "completed_2026_09_25": {
         "bootlego_structured_records": 705,
         "bootlego_legacy_records": 1575,
-        "bootlego_total_records": 2280,
+        "standalone_dc_raw_rows": 2027,
+        "standalone_dc_normalized_rows": 1991,
         "minifig_variants_core_design_targets": 6649,
-        "additional_design_targets": 312,
-        "total_design_targets": 6961,
+        "additional_design_targets_before_one_piece": 312,
+        "one_piece_design_targets": 19,
         "dragon_ball_collection_records": 141,
         "avengers_collection_records": 113,
+        "misc_anime_collection_records": 98,
+        "star_wars_collection_records": 9,
         "official_wishlist_records": 67,
-        "total_collection_and_wishlist_records": 2601,
-        "total_user_sourced_records_before_deduplication": 9562
+        "reconciliation_named_records": 11470,
+        "normalized_name_groups": 6347,
+        "cross_source_name_groups": 952,
+        "strict_duplicate_candidate_groups": 1198,
+        "strict_cross_source_duplicate_candidate_groups": 601,
+        "current_code_records_before_serial_cleanup": 2953
       }
     }
   ],
@@ -314,7 +342,11 @@
     "skywalker_unique_variant_keys": 374,
     "minifigure_40th_bundle_assets": 5,
     "lego_games_25_year_bundle_assets": 15,
-    "next": "candidate physical crosswalk and digital-only classification"
+    "next": "review strong/review physical-crosswalk candidates and classify unresolved digital-only variants",
+    "official_lego_raster_assets_profiled": 397,
+    "official_raster_profile_errors": 0,
+    "skywalker_character_groups": 247,
+    "skywalker_multi_variant_groups": 36
   },
   "training_supervision_progress_2026_09_25": {
     "rioforce_face_svg_records": 38,
@@ -323,6 +355,13 @@
     "fortnite_control_pairs": 6382,
     "fortnite_positive_controls": 2494,
     "fortnite_global_wrong_identity_negatives": 2494,
-    "fortnite_hard_group_negatives": 1394
+    "fortnite_hard_group_negatives": 1394,
+    "bricksfinder_caption_records": 12966,
+    "bricksfinder_reconciliation_queue": 264,
+    "bricksfinder_high_priority_reconciliation": 24,
+    "face_semantic_distribution_records": 313,
+    "face_semantic_theme_groups": 307,
+    "face_semantic_era_groups": 6,
+    "compatible_brand_catalog_candidates": 76
   }
 }
