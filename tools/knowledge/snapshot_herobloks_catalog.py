@@ -65,6 +65,7 @@ def main():
     ap=argparse.ArgumentParser()
     ap.add_argument("--output",type=Path,required=True)
     ap.add_argument("--summary",type=Path,required=True)
+    ap.add_argument("--brand-output",type=Path)
     ap.add_argument("--source-url",default=LIST_URL)
     args=ap.parse_args()
     raw=fetch(args.source_url)
@@ -87,6 +88,32 @@ def main():
     args.output.parent.mkdir(parents=True,exist_ok=True)
     with args.output.open("w",encoding="utf-8") as f:
         for r in rows:f.write(json.dumps(r,ensure_ascii=False)+"\n")
+    brand_rows=[]
+    for b,count in sorted(brand.items(),key=lambda kv:(-kv[1],kv[0])):
+        pref=brand_prefix.get(b,Counter())
+        top=pref.most_common()
+        top_count=top[0][1] if top else 0
+        dominance=round(top_count/count,4) if count else 0
+        brand_rows.append({
+          "brand_slug":b,
+          "figure_count":count,
+          "serial_prefix_candidates":[{"prefix":k,"count":v,"fraction":round(v/count,4)} for k,v in top[:50]],
+          "dominant_prefix":top[0][0] if top else None,
+          "dominant_prefix_count":top_count,
+          "dominant_prefix_fraction":dominance,
+          "stable_prefix_candidate":bool(top and top_count>=10 and dominance>=0.80),
+          "policy":"Catalog-derived brand/prefix observation only; never infer ownership or factory identity from this record."
+        })
+    if args.brand_output:
+        args.brand_output.parent.mkdir(parents=True,exist_ok=True)
+        args.brand_output.write_text(json.dumps({
+          "schema":"herobloks-brand-census/v1",
+          "created_at":now_iso(),
+          "source_url":args.source_url,
+          "source_sha256":hashlib.sha256(raw).hexdigest(),
+          "brand_records":brand_rows
+        },indent=2)+"\n",encoding="utf-8")
+
     summary={
       "schema":"herobloks-catalog-census-summary/v1",
       "created_at":now_iso(),"processor_version":VERSION,
