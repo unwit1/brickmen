@@ -298,6 +298,52 @@ jobs:
           PY
           exit 0
 
+      - name: Fortnite deterministic visual-difference features
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          src="$OUT/sources/fortnite"
+          mkdir -p "$src/visual"
+          python tools/knowledge/compute_fortnite_translation_visual_features.py \
+            --pairs "$src/output/fortnite_lego_translation_pairs.jsonl" \
+            --output "$src/visual/features.jsonl" \
+            --summary "$src/visual/summary.json" \
+            --workers 8
+          rc=$?
+          RC="$rc" SRC="$src" python - <<'PY'
+          import json,os
+          from datetime import datetime,timezone
+          from pathlib import Path
+          src=Path(os.environ["SRC"]);rc=int(os.environ["RC"]);summary={}
+          p=src/"visual/summary.json"
+          if p.exists():
+              try: summary=json.loads(p.read_text())
+              except Exception: pass
+          status={"source_id":"fortnite_visual_differences","status":"complete" if rc==0 else "failed",
+                  "exit_code":rc,"created_at":datetime.now(timezone.utc).isoformat(),**summary}
+          out=Path(os.environ["OUT"]);dest=Path(os.environ["DEST"])
+          (out/"status/fortnite_visual_differences.json").write_text(json.dumps(status,indent=2))
+          if rc==0:
+              (dest/"fortnite-visual-difference-summary-latest.json").write_text(json.dumps(status,indent=2)+"\n")
+              rows=[line for line in (src/"visual/features.jsonl").read_text(encoding="utf-8").splitlines() if line.strip()]
+              for old in dest.glob("fortnite-visual-difference-features-part-*.jsonl"):
+                  old.unlink()
+              shard_size=400
+              names=[]
+              for start in range(0,len(rows),shard_size):
+                  idx=start//shard_size+1
+                  name=f"fortnite-visual-difference-features-part-{idx:02d}.jsonl"
+                  (dest/name).write_text("\n".join(rows[start:start+shard_size])+"\n",encoding="utf-8")
+                  names.append(name)
+              manifest={"schema":"fortnite-visual-difference-feature-manifest/v1",
+                        "records":len(rows),"shard_size":shard_size,"shard_count":len(names),
+                        "shards":names,"processor_version":summary.get("processor_version")}
+              (dest/"fortnite-visual-difference-features-manifest-latest.json").write_text(
+                  json.dumps(manifest,indent=2)+"\n",encoding="utf-8")
+          PY
+          exit 0
+
       - name: Explicit web-source profiles
         continue-on-error: true
         shell: bash
