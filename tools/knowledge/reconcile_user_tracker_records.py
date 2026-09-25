@@ -526,6 +526,8 @@ def main():
     write_jsonl("product-code-brand-candidates.jsonl", code_rows)
     write_jsonl("dc-legacy-normalized.jsonl", dc_normalized)
     write_jsonl("figure-release-candidates.jsonl", release_rows)
+    write_jsonl("entity-resolution-review-queue.jsonl", entity_review)
+    write_jsonl("collection-gap-candidates.jsonl", gap_rows)
     write_jsonl(
         "unresolved-code-prefixes.jsonl",
         [x for x in code_rows if x.get("resolution_status") in {"unresolved_prefix","brand_candidate_ambiguous"}]
