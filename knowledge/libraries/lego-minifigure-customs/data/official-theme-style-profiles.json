@@ -1,6 +1,6 @@
 {
-  "schema_version": "0.1",
-  "researched_at": "2026-09-24",
+  "schema_version": "0.2",
+  "researched_at": "2026-09-25",
   "profiles": [
     {
       "id": "town_city",
@@ -11,7 +11,11 @@
         "restrained ordinary-workwear detail",
         "headwear/accessory identity"
       ],
-      "corpus_status": "pending_full_extraction"
+      "corpus_status": "measured_catalog_baseline_available",
+      "quantitative_profile_refs": [
+        "top_level_theme:City",
+        "top_level_theme:Town"
+      ]
     },
     {
       "id": "classic_space",
@@ -22,7 +26,10 @@
         "large flat regions",
         "helmet/tank silhouette"
       ],
-      "corpus_status": "pending_full_extraction"
+      "corpus_status": "measured_catalog_baseline_available",
+      "quantitative_profile_refs": [
+        "top_level_theme:Space"
+      ]
     },
     {
       "id": "castle_fantasy",
@@ -34,7 +41,10 @@
         "facial hair",
         "bodywear"
       ],
-      "corpus_status": "pending_full_extraction"
+      "corpus_status": "measured_catalog_baseline_available",
+      "quantitative_profile_refs": [
+        "top_level_theme:Castle"
+      ]
     },
     {
       "id": "pirates",
@@ -50,7 +60,10 @@
       "sources": [
         "https://www.lego.com/en-us/history/articles/g-lego-pirates"
       ],
-      "corpus_status": "ready_for_extraction"
+      "corpus_status": "measured_catalog_baseline_available",
+      "quantitative_profile_refs": [
+        "top_level_theme:Pirates"
+      ]
     },
     {
       "id": "cmf",
@@ -62,7 +75,10 @@
         "expression exaggeration",
         "novel techniques"
       ],
-      "corpus_status": "pending_full_extraction"
+      "corpus_status": "measured_catalog_baseline_available",
+      "quantitative_profile_refs": [
+        "top_level_theme:Collectible Minifigures"
+      ]
     },
     {
       "id": "star_wars",
@@ -78,7 +94,10 @@
         "https://www.lego.com/cdn/product-assets/product.bi.core.pdf/6218782.pdf",
         "https://www.lego.com/cdn/product-assets/product.bi.core.pdf/6218779.pdf"
       ],
-      "corpus_status": "ready_for_extraction"
+      "corpus_status": "measured_catalog_baseline_available",
+      "quantitative_profile_refs": [
+        "top_level_theme:Star Wars"
+      ]
     },
     {
       "id": "marvel",
@@ -91,7 +110,10 @@
         "boots/gloves",
         "digital_physical_crosswalk"
       ],
-      "corpus_status": "pending_full_extraction"
+      "corpus_status": "measured_catalog_baseline_available",
+      "quantitative_profile_refs": [
+        "top_level_theme:Super Heroes Marvel"
+      ]
     },
     {
       "id": "dc_batman",
@@ -104,7 +126,10 @@
         "cape",
         "cross-media suit versions"
       ],
-      "corpus_status": "pending_full_extraction"
+      "corpus_status": "measured_catalog_baseline_available",
+      "quantitative_profile_refs": [
+        "top_level_theme:Super Heroes DC"
+      ]
     },
     {
       "id": "harry_potter",
@@ -116,7 +141,10 @@
         "age progression",
         "alternate identity/face logic"
       ],
-      "corpus_status": "pending_full_extraction"
+      "corpus_status": "measured_catalog_baseline_available",
+      "quantitative_profile_refs": [
+        "top_level_theme:Harry Potter"
+      ]
     },
     {
       "id": "middle_earth",
@@ -132,7 +160,10 @@
       "sources": [
         "https://www.lego.com/en-ca/discover/insiders-articles/visual-design-for-lego-lord-of-the-rings"
       ],
-      "corpus_status": "ready_for_extraction"
+      "corpus_status": "measured_catalog_baseline_available",
+      "quantitative_profile_refs": [
+        "top_level_theme:The Hobbit and Lord of the Rings"
+      ]
     },
     {
       "id": "disney_pixar",
@@ -142,7 +173,10 @@
         "unique mould role",
         "form separation"
       ],
-      "corpus_status": "pending_full_extraction"
+      "corpus_status": "measured_catalog_baseline_available",
+      "quantitative_profile_refs": [
+        "top_level_theme:Disney"
+      ]
     },
     {
       "id": "ninjago",
@@ -154,7 +188,10 @@
         "robe/armor layers",
         "identity persistence"
       ],
-      "corpus_status": "pending_full_extraction"
+      "corpus_status": "measured_catalog_baseline_available",
+      "quantitative_profile_refs": [
+        "top_level_theme:Ninjago"
+      ]
     },
     {
       "id": "lego_native_named",
@@ -177,7 +214,10 @@
         "action expressions",
         "game variants"
       ],
-      "corpus_status": "pending_full_extraction"
+      "corpus_status": "measured_catalog_baseline_available",
+      "quantitative_profile_refs": [
+        "top_level_theme:Jurassic World"
+      ]
     },
     {
       "id": "fortnite_game_native",
@@ -188,7 +228,10 @@
         "accessory cue",
         "physical_digital_crosswalk"
       ],
-      "corpus_status": "pending_full_extraction"
+      "corpus_status": "measured_catalog_baseline_available",
+      "quantitative_profile_refs": [
+        "top_level_theme:Fortnite"
+      ]
     },
     {
       "id": "historical_realistic",
@@ -206,5 +249,15 @@
       "corpus_status": "ready_for_extraction"
     }
   ],
-  "rule": "Profiles describe retrieval strata; numerical constraints must come from corpus measurements rather than prose assumptions."
+  "rule": "Profiles describe retrieval strata; numerical constraints must come from corpus measurements rather than prose assumptions.",
+  "quantitative_profile_source": {
+    "file": "data/bulk-ingestion/theme-era-profiles-latest.jsonl",
+    "summary": "data/bulk-ingestion/theme-era-profile-summary-latest.json",
+    "processor_version": "minifigure-theme-era-profile/v1",
+    "basis": "Rebrickable 17,226-figure / 82,411-component census",
+    "interpretation_policy": "Measured catalog/component distributions ground retrieval and comparisons; they do not replace design-history evidence or imply subjective style quality."
+  },
+  "rules": [
+    "When a quantitative_profile_ref exists, retrieve that record for measured component-role, printed-component, color, accessory/headgear, part-count, and observed-year distributions."
+  ]
 }
