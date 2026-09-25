@@ -213,6 +213,41 @@ jobs:
           PY
           exit 0
 
+      - name: Build catalog-backed flat-art crosswalk candidates
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          src="$OUT/sources/flat_art_catalog_crosswalk"; mkdir -p "$src"
+          python tools/knowledge/build_flat_art_catalog_crosswalk_candidates.py \
+            --rioforce-index "$OUT/sources/rioforce_lego_textures/output/rioforce_semantic_index.jsonl" \
+            --physical-samples "$OUT/sources/rebrickable/output/physical_samples.jsonl" \
+            --component-samples "$OUT/sources/rebrickable/output/component_samples.jsonl" \
+            --ldraw-index "$OUT/sources/ldraw/output/ldraw_minifig_patterns.jsonl" \
+            --output "$src/candidates.jsonl" \
+            --summary "$src/summary.json"
+          rc=$?
+          RC="$rc" SRC="$src" python - <<'PY'
+          import json,os,shutil
+          from datetime import datetime,timezone
+          from pathlib import Path
+          src=Path(os.environ["SRC"]);rc=int(os.environ["RC"]);summary={}
+          p=src/"summary.json"
+          if p.exists():
+              try: summary=json.loads(p.read_text())
+              except Exception: pass
+          status={"source_id":"flat_art_catalog_crosswalk","status":"complete" if rc==0 else "failed",
+                  "exit_code":rc,"created_at":datetime.now(timezone.utc).isoformat(),**summary}
+          Path(os.environ["OUT"],"status/flat_art_catalog_crosswalk.json").write_text(json.dumps(status,indent=2))
+          if rc==0:
+              dest=Path(os.environ["DEST"])
+              shutil.copy2(src/"summary.json",dest/"flat-art-catalog-crosswalk-summary-latest.json")
+              candidates=src/"candidates.jsonl"
+              if candidates.exists() and candidates.stat().st_size < 8_000_000:
+                  shutil.copy2(candidates,dest/"flat-art-catalog-crosswalk-candidates-latest.jsonl")
+          PY
+          exit 0
+
       - name: Hugging Face minifigure-caption dataset metadata
         continue-on-error: true
         shell: bash
