@@ -1,0 +1,146 @@
+name: LEGO Minifigure Reference Census
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/lego-minifigure-reference-census.yml'
+      - '.github/lego-census-trigger'
+
+permissions:
+  contents: write
+
+jobs:
+  census:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Check out Agent OS
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Download current Rebrickable bulk catalog
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/rebrickable"
+          cd "$RUNNER_TEMP/rebrickable"
+          base="https://cdn.rebrickable.com/media/downloads"
+          files=(
+            themes.csv.gz
+            colors.csv.gz
+            parts.csv.gz
+            part_relationships.csv.gz
+            elements.csv.gz
+            sets.csv.gz
+            minifigs.csv.gz
+            inventories.csv.gz
+            inventory_parts.csv.gz
+            inventory_minifigs.csv.gz
+          )
+          for file in "${files[@]}"; do
+            echo "Downloading $file"
+            curl --fail --location --retry 4 --retry-delay 2               --user-agent "PersonalAgentOS-LEGOReferenceResearch/1.0"               --output "$file" "$base/$file"
+          done
+          sha256sum *.csv.gz | sort > source_hashes.sha256
+          ls -lh
+
+      - name: Run physical minifigure census
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tools/knowledge/ingest_lego_minifigure_references.py             --rebrickable-dir "$RUNNER_TEMP/rebrickable"             --output-dir "$RUNNER_TEMP/lego-census"
+
+      - name: Validate census and write job summary
+        shell: python
+        run: |
+          import json
+          import os
+          from pathlib import Path
+
+          report_path = Path(os.environ["RUNNER_TEMP"]) / "lego-census" / "import_report.json"
+          report = json.loads(report_path.read_text())
+          c = report["counts"]
+
+          # Broad sanity thresholds, not claims about exact current totals.
+          if c["physical_samples"] < 15000:
+              raise SystemExit(f"Unexpectedly low physical sample count: {c['physical_samples']}")
+          if c["component_records"] < 50000:
+              raise SystemExit(f"Unexpectedly low component count: {c['component_records']}")
+          if c["figure_reference_assets"] < 10000:
+              raise SystemExit(f"Unexpectedly low figure image-reference count: {c['figure_reference_assets']}")
+
+          summary = Path(os.environ["GITHUB_STEP_SUMMARY"])
+          with summary.open("a", encoding="utf-8") as f:
+              f.write("# LEGO minifigure reference census\n\n")
+              f.write(f"- Physical minifigure catalog records: **{c['physical_samples']:,}**\n")
+              f.write(f"- Figure image references: **{c['figure_reference_assets']:,}**\n")
+              f.write(f"- Component records resolved: **{c['component_records']:,}**\n")
+              f.write(f"- Component image references: **{c['component_reference_assets']:,}**\n")
+              f.write(f"- Printed component records: **{c['printed_component_records']:,}**\n")
+              f.write(f"- Set occurrence links: **{c['set_occurrence_links']:,}**\n")
+              f.write(f"- Figures without catalog image: **{c['figures_without_catalog_image']:,}**\n")
+              f.write(f"- Figures without set occurrence: **{c['figures_without_set_occurrence']:,}**\n")
+              f.write(f"- Figures without resolved component inventory: **{c['figures_without_component_inventory']:,}**\n\n")
+              f.write("Counts are Rebrickable catalog/inventory records, not unique characters or outfits.\n")
+
+      - name: Package compact census report
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/lego-census-report"
+          cp "$RUNNER_TEMP/lego-census/import_report.json" "$RUNNER_TEMP/lego-census-report/"
+          cp "$RUNNER_TEMP/rebrickable/source_hashes.sha256" "$RUNNER_TEMP/lego-census-report/"
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          src = Path(os.environ["RUNNER_TEMP"]) / "lego-census" / "import_report.json"
+          report = json.loads(src.read_text())
+          snapshot = {
+              "schema": "lego-minifigure-reference-census-snapshot/v1",
+              "generated_by": "GitHub Actions",
+              "created_at": report["created_at"],
+              "processor_version": report["processor_version"],
+              "optional_tables_present": report.get("optional_tables_present", []),
+              "counts": report["counts"],
+              "source_files": {
+                  k: {"sha256": v["sha256"]}
+                  for k, v in report["source_files"].items()
+              },
+          }
+          out = Path(os.environ["RUNNER_TEMP"]) / "lego-census-report" / "census_snapshot.json"
+          out.write_text(json.dumps(snapshot, indent=2))
+          PY
+
+      - name: Upload compact census report
+        uses: actions/upload-artifact@v4
+        with:
+          name: lego-minifigure-reference-census
+          path: ${{ runner.temp }}/lego-census-report/
+          retention-days: 7
+          if-no-files-found: error
+
+
+      - name: Commit compact census snapshot
+        shell: bash
+        run: |
+          set -euo pipefail
+          dest="knowledge/libraries/lego-minifigure-customs/data"
+          mkdir -p "$dest"
+          cp "$RUNNER_TEMP/lego-census-report/census_snapshot.json" "$dest/physical-census-latest.json"
+          cp "$RUNNER_TEMP/rebrickable/source_hashes.sha256" "$dest/physical-census-source-hashes.sha256"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$dest/physical-census-latest.json" "$dest/physical-census-source-hashes.sha256"
+          if git diff --cached --quiet; then
+            echo "No census changes to commit."
+          else
+            git commit -m "knowledge: refresh physical minifigure census snapshot"
+            git push
+          fi

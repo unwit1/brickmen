@@ -1,0 +1,329 @@
+name: LEGO Training Data Bulk Ingestion
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/lego-training-data-bulk-ingestion.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      OUT: /tmp/lego-training-ingestion
+      DEST: knowledge/libraries/lego-minifigure-customs/data/bulk-ingestion
+
+    steps:
+      - name: Check out Agent OS
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install lightweight analysis dependencies
+        run: python -m pip install --disable-pip-version-check pillow
+
+      - name: Initialize output
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$OUT/status" "$OUT/sources" "$DEST"
+          python - <<'PY'
+          import json, os, platform
+          from datetime import datetime, timezone
+          from pathlib import Path
+          out=Path(os.environ["OUT"])
+          (out/"run.json").write_text(json.dumps({
+            "schema":"lego-training-bulk-ingestion-run/v1",
+            "created_at":datetime.now(timezone.utc).isoformat(),
+            "runner":platform.platform(),
+            "python":platform.python_version()
+          },indent=2))
+          PY
+
+      - name: Rebrickable physical census
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          src="$OUT/sources/rebrickable"; mkdir -p "$src/raw" "$src/output"
+          base="https://cdn.rebrickable.com/media/downloads"
+          files=(themes.csv.gz colors.csv.gz parts.csv.gz part_relationships.csv.gz elements.csv.gz sets.csv.gz minifigs.csv.gz inventories.csv.gz inventory_parts.csv.gz inventory_minifigs.csv.gz)
+          ok=1
+          for file in "${files[@]}"; do
+            curl --fail --location --retry 4 --retry-delay 2 --connect-timeout 30               --user-agent "PersonalAgentOS-LEGOReferenceResearch/1.0"               --output "$src/raw/$file" "$base/$file" || ok=0
+          done
+          if [ "$ok" = 1 ]; then
+            (cd "$src/raw" && sha256sum *.csv.gz | sort > source_hashes.sha256)
+            python tools/knowledge/ingest_lego_minifigure_references.py               --rebrickable-dir "$src/raw" --output-dir "$src/output"
+            rc=$?
+          else rc=2; fi
+          RC="$rc" SRC="$src" python - <<'PY'
+          import json,os
+          from datetime import datetime,timezone
+          from pathlib import Path
+          src=Path(os.environ["SRC"]);rc=int(os.environ["RC"])
+          report={}
+          p=src/"output/import_report.json"
+          if p.exists():
+              try: report=json.loads(p.read_text())
+              except Exception: pass
+          status={"source_id":"rebrickable_bulk","status":"complete" if rc==0 else "failed",
+                  "exit_code":rc,"created_at":datetime.now(timezone.utc).isoformat(),
+                  "counts":report.get("counts"),"processor_version":report.get("processor_version"),
+                  "source_files":{k:{"sha256":v.get("sha256")} for k,v in (report.get("source_files") or {}).items()}}
+          Path(os.environ["OUT"],"status/rebrickable.json").write_text(json.dumps(status,indent=2))
+          if report:
+              compact={"schema":"physical-census-snapshot/v1","created_at":report.get("created_at"),
+                       "processor_version":report.get("processor_version"),"counts":report.get("counts"),
+                       "optional_tables_present":report.get("optional_tables_present",[]),
+                       "source_files":status["source_files"]}
+              Path(os.environ["DEST"],"physical-census-latest.json").write_text(json.dumps(compact,indent=2))
+          PY
+          exit 0
+
+      - name: Official LDraw minifigure-pattern census
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          src="$OUT/sources/ldraw";mkdir -p "$src"
+          url="https://library.ldraw.org/library/updates/complete.zip"
+          curl --fail --location --retry 4 --retry-delay 2 --connect-timeout 30             -o "$src/complete.zip" "$url"
+          rc=$?
+          if [ "$rc" = 0 ]; then
+            sha256sum "$src/complete.zip" > "$src/source_hash.sha256"
+            unzip -q "$src/complete.zip" -d "$src/unpacked"
+            root="$src/unpacked/ldraw"; [ -d "$root/parts" ] || root="$src/unpacked"
+            python tools/knowledge/index_ldraw_minifig_patterns.py               --ldraw-root "$root" --output-dir "$src/output"
+            rc=$?
+          fi
+          RC="$rc" SRC="$src" python - <<'PY'
+          import json,os
+          from datetime import datetime,timezone
+          from pathlib import Path
+          src=Path(os.environ["SRC"]);rc=int(os.environ["RC"]);report={}
+          p=src/"output/import_report.json"
+          if p.exists():
+              try: report=json.loads(p.read_text())
+              except Exception: pass
+          status={"source_id":"ldraw_official_library","status":"complete" if rc==0 else "failed",
+                  "exit_code":rc,"created_at":datetime.now(timezone.utc).isoformat(),
+                  "parts_indexed":report.get("parts_indexed"),"previews_rendered":report.get("previews_rendered"),
+                  "license_counts":report.get("license_counts")}
+          Path(os.environ["OUT"],"status/ldraw.json").write_text(json.dumps(status,indent=2))
+          if report:
+              Path(os.environ["DEST"],"ldraw-minifig-pattern-summary-latest.json").write_text(json.dumps(status,indent=2))
+          PY
+          exit 0
+
+      - name: Vector and decal repository inventories
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          declare -A repos
+          repos[rioforce_lego_textures]="https://github.com/rioforce/LEGO-Textures.git"
+          repos[minifig_svg_decals]="https://github.com/jpgerdeman/minifig-svg-decals.git"
+          repos[bricksfinder]="https://github.com/Armaggheddon/BricksFinder.git"
+          all_ok=1
+          for id in "${!repos[@]}"; do
+            src="$OUT/sources/$id";mkdir -p "$src"
+            git clone --depth 1 "${repos[$id]}" "$src/repo"
+            rc=$?
+            if [ "$rc" = 0 ]; then
+              python tools/knowledge/inventory_training_source_tree.py --source-id "$id" --source-url "${repos[$id]}" --root "$src/repo" --output-dir "$src/output"
+              rc=$?
+              if [ "$rc" = 0 ] && [ "$id" = "rioforce_lego_textures" ]; then
+                python tools/knowledge/index_rioforce_lego_textures.py --root "$src/repo" --output "$src/output/rioforce_semantic_index.jsonl"
+                rc=$?
+              fi
+              if [ "$rc" = 0 ] && [ "$id" = "minifig_svg_decals" ]; then
+                python tools/knowledge/index_minifig_svg_decals.py --root "$src/repo" --output "$src/output/decal_semantic_index.jsonl"
+                rc=$?
+              fi
+            fi
+            ID="$id" RC="$rc" SRC="$src" python - <<'PY'
+          import json,os
+          from datetime import datetime,timezone
+          from pathlib import Path
+          src=Path(os.environ["SRC"]);id=os.environ["ID"];rc=int(os.environ["RC"]);summary={}
+          p=src/"output/source_inventory_summary.json"
+          if p.exists():
+              try:summary=json.loads(p.read_text())
+              except Exception:pass
+          status={"source_id":id,"status":"complete" if rc==0 else "failed","exit_code":rc,
+                  "created_at":datetime.now(timezone.utc).isoformat(),
+                  "git_commit":summary.get("git_commit"),"files":summary.get("files"),
+                  "total_bytes":summary.get("total_bytes"),"asset_classes":summary.get("asset_classes"),
+                  "extensions":summary.get("extensions"),"top_level_counts":summary.get("top_level_counts"),
+                  "svg_files_profiled":summary.get("svg_files_profiled"),
+                  "raster_files_profiled":summary.get("raster_files_profiled")}
+          semantic = src/"output"/("rioforce_semantic_index.jsonl" if id=="rioforce_lego_textures" else "decal_semantic_index.jsonl")
+          if semantic.exists():
+              status["semantic_index_records"]=sum(1 for line in semantic.open(encoding="utf-8") if line.strip())
+          Path(os.environ["OUT"],f"status/{id}.json").write_text(json.dumps(status,indent=2))
+          Path(os.environ["DEST"],f"{id}-inventory-latest.json").write_text(json.dumps(status,indent=2))
+          PY
+            [ "$rc" = 0 ] || all_ok=0
+          done
+          exit 0
+
+      - name: Hugging Face minifigure-caption dataset metadata
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          src="$OUT/sources/bricksfinder_hf";mkdir -p "$src"
+          python tools/knowledge/snapshot_huggingface_dataset.py             --dataset Armaggheddon/lego_minifigure_captions             --output "$src/metadata.json"
+          rc=$?
+          RC="$rc" SRC="$src" python - <<'PY'
+          import json,os
+          from datetime import datetime,timezone
+          from pathlib import Path
+          src=Path(os.environ["SRC"]);rc=int(os.environ["RC"]);data={}
+          if (src/"metadata.json").exists():
+              try:data=json.loads((src/"metadata.json").read_text())
+              except Exception:pass
+          status={"source_id":"bricksfinder_hf","status":"complete" if rc==0 else "failed","exit_code":rc,
+                  "created_at":datetime.now(timezone.utc).isoformat(),"dataset_sha":data.get("sha"),
+                  "file_count":data.get("file_count"),"downloads":data.get("downloads"),"tags":data.get("tags"),
+                  "files":data.get("files")}
+          Path(os.environ["OUT"],"status/bricksfinder_hf.json").write_text(json.dumps(status,indent=2))
+          Path(os.environ["DEST"],"bricksfinder-hf-metadata-latest.json").write_text(json.dumps(status,indent=2))
+          PY
+          exit 0
+
+      - name: Fortnite LEGO Style TranslationPair census
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          src="$OUT/sources/fortnite";mkdir -p "$src"
+          git clone --depth 1 https://github.com/Fortnite-Datamining/Fortnite-Datamining.git "$src/repo"
+          rc=$?
+          if [ "$rc" = 0 ]; then
+            br="$src/repo/data/cosmetics/br.json"
+            lego="$src/repo/data/cosmetics/lego.json"
+            python tools/knowledge/build_fortnite_lego_translation_pairs.py               --br "$br" --lego "$lego" --output-dir "$src/output"
+            rc=$?
+          fi
+          RC="$rc" SRC="$src" python - <<'PY'
+          import json,os,subprocess,shutil
+          from datetime import datetime,timezone
+          from pathlib import Path
+          src=Path(os.environ["SRC"]);rc=int(os.environ["RC"]);summary={};commit=None
+          if (src/"repo/.git").exists():
+              try:commit=subprocess.check_output(["git","-C",str(src/"repo"),"rev-parse","HEAD"],text=True).strip()
+              except Exception:pass
+          p=src/"output/summary.json"
+          if p.exists():
+              try:summary=json.loads(p.read_text())
+              except Exception:pass
+          status={"source_id":"fortnite_lego_styles","status":"complete" if rc==0 else "failed","exit_code":rc,
+                  "created_at":datetime.now(timezone.utc).isoformat(),"source_commit":commit,**summary}
+          Path(os.environ["OUT"],"status/fortnite.json").write_text(json.dumps(status,indent=2))
+          Path(os.environ["DEST"],"fortnite-lego-translation-summary-latest.json").write_text(json.dumps(status,indent=2))
+          pair=src/"output/fortnite_lego_translation_pairs.jsonl"
+          if pair.exists() and pair.stat().st_size < 8_000_000:
+              shutil.copy2(pair,Path(os.environ["DEST"])/"fortnite-lego-translation-pairs-latest.jsonl")
+          PY
+          exit 0
+
+      - name: Explicit web-source profiles
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          profile () {
+            id="$1"; url="$2"; outfile="$OUT/sources/web-$id.json"
+            python tools/knowledge/profile_training_source_webpage.py               --source-id "$id" --url "$url" --output "$outfile"
+            cp "$outfile" "$DEST/web-profile-$id-latest.json" 2>/dev/null || true
+            cp "$outfile" "$OUT/status/web-$id.json" 2>/dev/null || true
+          }
+          profile bobs_customs "https://bobscustoms.co.uk/"
+          profile ldraw_updates "https://library.ldraw.org/updates"
+          profile lego_pick_a_brick_minifig "https://www.lego.com/en-us/pick-and-build/pick-a-brick?category=7"
+          profile bricklink_studio_minifig "https://studiohelp.bricklink.com/hc/en-us/articles/5877834417303-Creating-a-decorated-minifig"
+          profile mecabricks "https://www.mecabricks.com/"
+          profile fortnite_lego_styles "https://www.fortnite.com/news/introducing-lego-styles-for-fortnite-outfits"
+          exit 0
+
+      - name: Record local-only and interactive blockers
+        shell: python
+        run: |
+          import json,os
+          from datetime import datetime,timezone
+          from pathlib import Path
+          blockers=[
+            ("bricklink_api_enrichment","needs_user_BrickLink_API_credentials_and_registered_endpoint_IP"),
+            ("controlled_physical_photography","needs_physical_figures_and_capture_rig"),
+            ("licensed_reference_books","needs_local_purchased_or_scanned_book_files"),
+            ("tt_games_assets","needs_legally_obtained_local_game_installations"),
+            ("legacy_game_assets","needs_local_game_files_or_preserved_archives"),
+            ("film_frame_corpus","needs_legally_obtained_local_video_files"),
+            ("uefn_canonical_renders","needs_local_UEFN_installation_and_controlled_capture"),
+            ("mecabricks_bulk_assets","needs_export/API_or_approved_bulk_acquisition_path"),
+            ("flickr_bobs_full_decals","needs_Flickr_enumeration_export_or_API_for_reliable_full_collection"),
+            ("human_evaluation","needs_reviewer_sessions"),
+            ("manufacturing_validation","needs_printed_physical_samples_and_measurements")
+          ]
+          now=datetime.now(timezone.utc).isoformat();out=Path(os.environ["OUT"],"status")
+          for sid,reason in blockers:
+              (out/f"{sid}.json").write_text(json.dumps({"source_id":sid,"status":"blocked_local_or_interactive",
+                  "reason":reason,"created_at":now},indent=2))
+
+      - name: Aggregate source statuses
+        shell: python
+        run: |
+          import json,os
+          from collections import Counter
+          from datetime import datetime,timezone
+          from pathlib import Path
+          out=Path(os.environ["OUT"]);dest=Path(os.environ["DEST"]);rows=[]
+          for p in sorted((out/"status").glob("*.json")):
+              try:
+                  r=json.loads(p.read_text());r["_status_file"]=p.name;rows.append(r)
+              except Exception as exc:
+                  rows.append({"source_id":p.stem,"status":"status_parse_error","error":str(exc)})
+          counts=Counter(r.get("status","unknown") for r in rows)
+          agg={"schema":"lego-training-bulk-ingestion-status/v1","created_at":datetime.now(timezone.utc).isoformat(),
+               "status_counts":dict(counts),"source_count":len(rows),"sources":rows}
+          (dest/"bulk-ingestion-status-latest.json").write_text(json.dumps(agg,indent=2))
+          print(json.dumps({"source_count":len(rows),"status_counts":dict(counts)},indent=2))
+
+      - name: Upload complete metadata/manifests artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: lego-training-data-bulk-ingestion
+          path: /tmp/lego-training-ingestion/
+          retention-days: 14
+          if-no-files-found: error
+
+      - name: Persist compact ingestion results
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$DEST"
+          if git diff --cached --quiet; then
+            echo "No ingestion result changes."
+            exit 0
+          fi
+          git commit -m "knowledge: refresh LEGO training data ingestion snapshots"
+          for attempt in 1 2 3; do
+            if git push origin HEAD:main; then exit 0; fi
+            echo "Push conflict; rebasing attempt $attempt"
+            git pull --rebase origin main || { git rebase --abort || true; exit 1; }
+          done
+          git push origin HEAD:main
