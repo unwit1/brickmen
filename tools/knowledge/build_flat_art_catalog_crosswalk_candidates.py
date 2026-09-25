@@ -109,6 +109,7 @@ def main():
     ap.add_argument("--output", type=Path, required=True)
     ap.add_argument("--summary", type=Path, required=True)
     ap.add_argument("--top-figures", type=int, default=8)
+    ap.add_argument("--min-figure-score-for-exact", type=float, default=0.9)
     args=ap.parse_args()
 
     physical=list(load_jsonl(args.physical_samples))
@@ -155,6 +156,7 @@ def main():
         fig_candidates=fig_candidates[:args.top_figures]
 
         part_candidates=[]
+        id_exact_links_unverified=[]
         exact_links=[]
         for fig in fig_candidates:
             for comp in components.get(fig["fig_num"],[]):
@@ -176,7 +178,7 @@ def main():
                 part_candidates.append(item)
                 pid=str(comp.get("part_num") or "").casefold()
                 for ld in ldraw_exact.get(pid,[]):
-                    exact_links.append({
+                    raw_link={
                         **item,
                         "ldraw_reference_asset_id":ld.get("reference_asset_id"),
                         "ldraw_part_id":pid,
@@ -184,7 +186,29 @@ def main():
                         "ldraw_source_path":ld.get("source_path"),
                         "ldraw_license":ld.get("license"),
                         "join_method":"exact_rebrickable_part_num_equals_ldraw_part_id",
-                    })
+                    }
+                    id_exact_links_unverified.append(raw_link)
+                    # An exact part-number join only proves that the candidate figure
+                    # contains a part also present in LDraw. It does NOT prove that a
+                    # rioforce texture depicts that part. Only retain a strict link
+                    # when the texture has an explicit component role, the figure
+                    # identity match is high-confidence, and the component is a
+                    # decorated/printed variant with a known print-of relationship.
+                    if (
+                        role
+                        and fig["score"] >= args.min_figure_score_for_exact
+                        and comp.get("component_role") == role
+                        and comp.get("print_of")
+                    ):
+                        exact_links.append({
+                            **raw_link,
+                            "join_method":"strict_catalog_role_print_exact_ldraw_join",
+                            "strictness":{
+                                "explicit_component_role":role,
+                                "minimum_figure_match_score":args.min_figure_score_for_exact,
+                                "decorated_component_required":True,
+                            },
+                        })
 
         # Deduplicate components reached through multiple figure candidates.
         unique_parts={}
@@ -198,6 +222,12 @@ def main():
             key=lambda x:(-x["figure_match_score"],x.get("part_num") or "")
         )[:30]
 
+        unique_raw_exact={}
+        for item in id_exact_links_unverified:
+            key=(item.get("component_id"),item.get("ldraw_reference_asset_id"))
+            unique_raw_exact[key]=item
+        id_exact_links_unverified=list(unique_raw_exact.values())
+
         unique_exact={}
         for item in exact_links:
             key=(item.get("component_id"),item.get("ldraw_reference_asset_id"))
@@ -207,6 +237,7 @@ def main():
         if fig_candidates: counts["with_figure_candidates"]+=1
         else: counts["without_figure_candidates"]+=1
         if part_candidates: counts["with_component_candidates"]+=1
+        if id_exact_links_unverified: counts["with_id_exact_links_unverified"]+=1
         if exact_links: counts["with_exact_ldraw_links"]+=1
         if fig_candidates and fig_candidates[0]["score"] >= 0.9: counts["top_figure_high_confidence"]+=1
 
@@ -225,9 +256,10 @@ def main():
             "inferred_component_role":role,
             "figure_candidates":fig_candidates,
             "component_candidates":part_candidates,
+            "id_exact_links_unverified":id_exact_links_unverified,
             "exact_ldraw_links":exact_links,
             "review_status":"candidate_review_required",
-            "promotion_policy":"Independent confirmation required; exact ID joins improve evidence but do not prove rioforce asset identity.",
+            "promotion_policy":"Raw part-number joins are discovery evidence only. Strict exact links additionally require explicit component role, high-confidence figure match, and a decorated component print-of relationship; independent confirmation is still required before canonical promotion.",
             "processor_version":VERSION,
         })
 
@@ -244,6 +276,7 @@ def main():
         "physical_samples_indexed":len(physical),
         "component_records_indexed":sum(len(v) for v in components.values()),
         "ldraw_exact_ids_indexed":len(ldraw_exact),
+        "min_figure_score_for_exact":args.min_figure_score_for_exact,
         **dict(counts),
         "status":"candidate_only_requires_independent_confirmation",
     }
