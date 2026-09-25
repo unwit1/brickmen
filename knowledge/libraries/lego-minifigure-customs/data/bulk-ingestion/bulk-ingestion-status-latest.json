@@ -1,77 +1,146 @@
 {
   "schema": "lego-training-bulk-ingestion-status/v1",
-  "created_at": "2026-09-25T15:21:20.173394+00:00",
+  "created_at": "2026-09-25T19:24:54.847019+00:00",
   "status_counts": {
     "blocked_local_or_interactive": 11,
-    "failed": 6,
-    "complete": 1
+    "complete": 7,
+    "ok": 5,
+    "error": 1
   },
-  "source_count": 18,
+  "source_count": 24,
   "sources": [
     {
       "source_id": "bricklink_api_enrichment",
       "status": "blocked_local_or_interactive",
       "reason": "needs_user_BrickLink_API_credentials_and_registered_endpoint_IP",
-      "created_at": "2026-09-25T15:21:20.138797+00:00",
+      "created_at": "2026-09-25T19:24:54.812333+00:00",
       "_status_file": "bricklink_api_enrichment.json"
     },
     {
       "source_id": "bricksfinder",
-      "status": "failed",
-      "exit_code": 2,
-      "created_at": "2026-09-25T15:21:16.246222+00:00",
-      "git_commit": null,
-      "files": null,
-      "total_bytes": null,
-      "asset_classes": null,
-      "extensions": null,
-      "top_level_counts": null,
-      "svg_files_profiled": null,
-      "raster_files_profiled": null,
+      "status": "complete",
+      "exit_code": 0,
+      "created_at": "2026-09-25T19:24:46.322862+00:00",
+      "git_commit": "68139a2bb1d356f0a37d8edcc8df16de74b9f70d",
+      "files": 69,
+      "total_bytes": 57949136,
+      "asset_classes": {
+        "code": 10,
+        "no_extension": 14,
+        "other": 25,
+        "raster_image": 10,
+        "structured_or_text_data": 10
+      },
+      "extensions": {
+        ".env": 3,
+        ".ipynb": 5,
+        ".md": 9,
+        ".parquet": 8,
+        ".png": 7,
+        ".py": 10,
+        ".txt": 4,
+        ".webp": 3,
+        ".yaml": 3,
+        ".yml": 3,
+        "<none>": 14
+      },
+      "top_level_counts": {
+        ".github": 3,
+        ".gitignore": 1,
+        "LICENSE": 1,
+        "bricks_finder": 11,
+        "datasets": 31,
+        "live_demo": 1,
+        "model_finetuning": 21
+      },
+      "svg_files_profiled": 0,
+      "raster_files_profiled": 10,
       "_status_file": "bricksfinder.json"
     },
     {
       "source_id": "bricksfinder_hf",
-      "status": "failed",
-      "exit_code": 2,
-      "created_at": "2026-09-25T15:21:17.937238+00:00",
-      "dataset_sha": null,
-      "file_count": null,
-      "downloads": null,
-      "tags": null,
-      "files": null,
+      "status": "complete",
+      "exit_code": 0,
+      "created_at": "2026-09-25T19:24:47.547176+00:00",
+      "dataset_sha": "1e320360dca012382e091f5e8106a4e758586652",
+      "file_count": 5,
+      "downloads": 132,
+      "tags": [
+        "task_categories:image-to-text",
+        "task_categories:text-to-image",
+        "language:en",
+        "license:mit",
+        "size_categories:10K<n<100K",
+        "format:parquet",
+        "modality:image",
+        "modality:text",
+        "library:datasets",
+        "library:dask",
+        "library:mlcroissant",
+        "library:polars",
+        "region:us",
+        "lego",
+        "minifigures"
+      ],
+      "files": [
+        {
+          "rfilename": ".gitattributes",
+          "size": null,
+          "blobId": null
+        },
+        {
+          "rfilename": "README.md",
+          "size": null,
+          "blobId": null
+        },
+        {
+          "rfilename": "data/train-00000-of-00003.parquet",
+          "size": null,
+          "blobId": null
+        },
+        {
+          "rfilename": "data/train-00001-of-00003.parquet",
+          "size": null,
+          "blobId": null
+        },
+        {
+          "rfilename": "data/train-00002-of-00003.parquet",
+          "size": null,
+          "blobId": null
+        }
+      ],
       "_status_file": "bricksfinder_hf.json"
     },
     {
       "source_id": "controlled_physical_photography",
       "status": "blocked_local_or_interactive",
       "reason": "needs_physical_figures_and_capture_rig",
-      "created_at": "2026-09-25T15:21:20.138797+00:00",
+      "created_at": "2026-09-25T19:24:54.812333+00:00",
       "_status_file": "controlled_physical_photography.json"
     },
     {
       "source_id": "film_frame_corpus",
       "status": "blocked_local_or_interactive",
       "reason": "needs_legally_obtained_local_video_files",
-      "created_at": "2026-09-25T15:21:20.138797+00:00",
+      "created_at": "2026-09-25T19:24:54.812333+00:00",
       "_status_file": "film_frame_corpus.json"
     },
     {
       "source_id": "flickr_bobs_full_decals",
       "status": "blocked_local_or_interactive",
       "reason": "needs_Flickr_enumeration_export_or_API_for_reliable_full_collection",
-      "created_at": "2026-09-25T15:21:20.138797+00:00",
+      "created_at": "2026-09-25T19:24:54.812333+00:00",
       "_status_file": "flickr_bobs_full_decals.json"
     },
     {
       "source_id": "fortnite_lego_styles",
       "status": "complete",
       "exit_code": 0,
-      "created_at": "2026-09-25T15:21:19.926396+00:00",
-      "source_commit": "b8acd92bc04226d88a7f17e2eed65462be4bfd6c",
+      "created_at": "2026-09-25T19:24:49.419188+00:00",
+      "source_commit": "dd9e68007de23610f1643cb59153ebe8054dbec9",
       "schema": "fortnite-lego-translation-pair-summary/v1",
       "processor_version": "fortnite-lego-translation-pairs/v1",
-      "br_records": 16405,
+      "br_records": 16414,
       "lego_records": 2494,
       "candidate_pairs": 2494,
       "unmatched_lego": 0,
@@ -111,100 +180,448 @@
       "source_id": "human_evaluation",
       "status": "blocked_local_or_interactive",
       "reason": "needs_reviewer_sessions",
-      "created_at": "2026-09-25T15:21:20.138797+00:00",
+      "created_at": "2026-09-25T19:24:54.812333+00:00",
       "_status_file": "human_evaluation.json"
     },
     {
       "source_id": "ldraw_official_library",
-      "status": "failed",
-      "exit_code": 2,
-      "created_at": "2026-09-25T15:21:11.329054+00:00",
-      "parts_indexed": null,
-      "previews_rendered": null,
-      "license_counts": null,
+      "status": "complete",
+      "exit_code": 0,
+      "created_at": "2026-09-25T19:24:41.971117+00:00",
+      "parts_indexed": 4352,
+      "previews_rendered": 0,
+      "license_counts": {
+        "!LICENSE Licensed under CC BY 4.0 : see CAreadme.txt": 4132,
+        "!LICENSE Licensed under CC BY 2.0 and CC BY 4.0 : see CAreadme.txt": 220
+      },
       "_status_file": "ldraw.json"
     },
     {
       "source_id": "legacy_game_assets",
       "status": "blocked_local_or_interactive",
       "reason": "needs_local_game_files_or_preserved_archives",
-      "created_at": "2026-09-25T15:21:20.138797+00:00",
+      "created_at": "2026-09-25T19:24:54.812333+00:00",
       "_status_file": "legacy_game_assets.json"
     },
     {
       "source_id": "licensed_reference_books",
       "status": "blocked_local_or_interactive",
       "reason": "needs_local_purchased_or_scanned_book_files",
-      "created_at": "2026-09-25T15:21:20.138797+00:00",
+      "created_at": "2026-09-25T19:24:54.812333+00:00",
       "_status_file": "licensed_reference_books.json"
     },
     {
       "source_id": "manufacturing_validation",
       "status": "blocked_local_or_interactive",
       "reason": "needs_printed_physical_samples_and_measurements",
-      "created_at": "2026-09-25T15:21:20.138797+00:00",
+      "created_at": "2026-09-25T19:24:54.812333+00:00",
       "_status_file": "manufacturing_validation.json"
     },
     {
       "source_id": "mecabricks_bulk_assets",
       "status": "blocked_local_or_interactive",
       "reason": "needs_export/API_or_approved_bulk_acquisition_path",
-      "created_at": "2026-09-25T15:21:20.138797+00:00",
+      "created_at": "2026-09-25T19:24:54.812333+00:00",
       "_status_file": "mecabricks_bulk_assets.json"
     },
     {
       "source_id": "minifig_svg_decals",
-      "status": "failed",
-      "exit_code": 2,
-      "created_at": "2026-09-25T15:21:17.877443+00:00",
-      "git_commit": null,
-      "files": null,
-      "total_bytes": null,
-      "asset_classes": null,
-      "extensions": null,
-      "top_level_counts": null,
-      "svg_files_profiled": null,
-      "raster_files_profiled": null,
+      "status": "complete",
+      "exit_code": 0,
+      "created_at": "2026-09-25T19:24:47.245455+00:00",
+      "git_commit": "5c4d6b27aafb2c1e777de358b8a49ea1efe327ba",
+      "files": 221,
+      "total_bytes": 21120940,
+      "asset_classes": {
+        "no_extension": 2,
+        "other": 4,
+        "raster_image": 1,
+        "vector_art": 213,
+        "vector_or_document": 1
+      },
+      "extensions": {
+        ".ai": 1,
+        ".ase": 2,
+        ".gpl": 1,
+        ".md": 1,
+        ".png": 1,
+        ".svg": 213,
+        "<none>": 2
+      },
+      "top_level_counts": {
+        ".gitattributes": 1,
+        ".gitignore": 1,
+        "README.md": 1,
+        "elements": 5,
+        "faces": 5,
+        "figures": 120,
+        "library": 60,
+        "resources": 28
+      },
+      "svg_files_profiled": 213,
+      "raster_files_profiled": 1,
+      "semantic_index_records": 213,
       "_status_file": "minifig_svg_decals.json"
     },
     {
       "source_id": "rebrickable_bulk",
-      "status": "failed",
-      "exit_code": 2,
-      "created_at": "2026-09-25T15:21:03.681660+00:00",
-      "counts": null,
-      "processor_version": null,
-      "source_files": {},
+      "status": "complete",
+      "exit_code": 0,
+      "created_at": "2026-09-25T19:24:32.675583+00:00",
+      "counts": {
+        "physical_samples": 17226,
+        "figure_reference_assets": 17226,
+        "component_records": 82411,
+        "component_reference_assets": 82273,
+        "set_occurrence_links": 25826,
+        "figures_without_catalog_image": 0,
+        "figures_without_set_occurrence": 318,
+        "figures_without_component_inventory": 1,
+        "printed_component_records": 30375
+      },
+      "processor_version": "lego-reference-manifest/v2",
+      "source_files": {
+        "minifigs": {
+          "sha256": "ac178d32f92d0206483794b2b31334587f766fa5bc65499a427242a337bc79c6"
+        },
+        "inventories": {
+          "sha256": "d308fc68a512291daa48b599f86b6a26dde053c62ee8bedb933e329b39ca6a8c"
+        },
+        "inventory_minifigs": {
+          "sha256": "f8b3834bb3eca1ae901a26c0af6a2d1dc4f4d0612fdc8c29388f2300c22fd9b6"
+        },
+        "sets": {
+          "sha256": "e4a9e97c3842be461ccde3d009f5ed29db3d8191aec9a3d92f11f92038ba98dc"
+        },
+        "themes": {
+          "sha256": "3a292aa7586ac3e49e574b5ee20c91889116395965a3c199a006250bf7a04ab1"
+        },
+        "inventory_parts": {
+          "sha256": "b8d475761964e603133e399e46f975d20776652f7289210835ba72c7f83ec333"
+        },
+        "parts": {
+          "sha256": "4d2bc1bc362405a1459051e2b1e7a149807cdd42e337b9aae94994f63eed6dc5"
+        },
+        "colors": {
+          "sha256": "d83dcdc8beb799015e8b8fe3698be7d2b0a926f9fc081d13765b1b57226fcaad"
+        },
+        "part_relationships": {
+          "sha256": "5185da08f97500dfc8c686ac35ac64c3cef455f0169edcde2360d249e4923b5d"
+        },
+        "elements": {
+          "sha256": "640cc0f54827435ca9ec5d8cc59c7af44d181e3c26001c94cf25954b42f8041e"
+        }
+      },
       "_status_file": "rebrickable.json"
     },
     {
       "source_id": "rioforce_lego_textures",
-      "status": "failed",
-      "exit_code": 2,
-      "created_at": "2026-09-25T15:21:12.364308+00:00",
-      "git_commit": null,
-      "files": null,
-      "total_bytes": null,
-      "asset_classes": null,
-      "extensions": null,
-      "top_level_counts": null,
-      "svg_files_profiled": null,
-      "raster_files_profiled": null,
+      "status": "complete",
+      "exit_code": 0,
+      "created_at": "2026-09-25T19:24:42.830656+00:00",
+      "git_commit": "7f602f70a160499138693d8e163be2d338e23049",
+      "files": 245,
+      "total_bytes": 16744055,
+      "asset_classes": {
+        "no_extension": 2,
+        "other": 4,
+        "raster_image": 122,
+        "vector_art": 117
+      },
+      "extensions": {
+        ".md": 4,
+        ".png": 122,
+        ".svg": 117,
+        "<none>": 2
+      },
+      "top_level_counts": {
+        ".gitattributes": 1,
+        ".gitignore": 1,
+        "Adventurers": 14,
+        "Alpha Team": 2,
+        "Animals": 2,
+        "Bricks": 12,
+        "Castle": 4,
+        "City": 22,
+        "Classics": 12,
+        "Indiana Jones": 4,
+        "LEGO 1x1 Refrence Image.png": 1,
+        "LEGO Bump Map.png": 1,
+        "LEGO Friends": 7,
+        "LEGO Island": 8,
+        "LEGO Minifigures": 52,
+        "LEGO Stud Image.png": 1,
+        "LEGO Universe": 5,
+        "Lord of the Rings": 6,
+        "Monster Fighters": 12,
+        "Ninjago": 18,
+        "Pirates": 8,
+        "README.md": 1,
+        "Racers": 3,
+        "Space": 2,
+        "Sports": 6,
+        "Star Wars": 8,
+        "Super Heroes": 20,
+        "Time Cruisers": 11,
+        "header.png": 1
+      },
+      "svg_files_profiled": 117,
+      "raster_files_profiled": 122,
+      "semantic_index_records": 129,
       "_status_file": "rioforce_lego_textures.json"
     },
     {
       "source_id": "tt_games_assets",
       "status": "blocked_local_or_interactive",
       "reason": "needs_legally_obtained_local_game_installations",
-      "created_at": "2026-09-25T15:21:20.138797+00:00",
+      "created_at": "2026-09-25T19:24:54.812333+00:00",
       "_status_file": "tt_games_assets.json"
     },
     {
       "source_id": "uefn_canonical_renders",
       "status": "blocked_local_or_interactive",
       "reason": "needs_local_UEFN_installation_and_controlled_capture",
-      "created_at": "2026-09-25T15:21:20.138797+00:00",
+      "created_at": "2026-09-25T19:24:54.812333+00:00",
       "_status_file": "uefn_canonical_renders.json"
+    },
+    {
+      "schema": "training-source-web-profile/v1",
+      "processor_version": "training-source-web-profile/v1",
+      "source_id": "bobs_customs",
+      "requested_url": "https://bobscustoms.co.uk/",
+      "created_at": "2026-09-25T19:24:49.586352+00:00",
+      "status": "ok",
+      "final_url": "https://bobscustoms.co.uk/password",
+      "content_type": "text/html; charset=utf-8",
+      "content_bytes": 215821,
+      "content_sha256": "6e81d60abbbab37ca6edc95806b454bfebe725ef8ac3eeeff4a4e063dff59a55",
+      "image_count": 1,
+      "link_count": 5,
+      "image_urls": [
+        "https://bobscustoms.co.uk/cdn/shop/files/Logo_-_Trimmed.png?v=1737109423&width=500"
+      ],
+      "outbound_hosts": {
+        "bobscustoms.co.uk": 3,
+        "www.instagram.com": 1,
+        "www.shopify.com": 1
+      },
+      "media_candidate_count": 1,
+      "_status_file": "web-bobs_customs.json"
+    },
+    {
+      "schema": "training-source-web-profile/v1",
+      "processor_version": "training-source-web-profile/v1",
+      "source_id": "bricklink_studio_minifig",
+      "requested_url": "https://studiohelp.bricklink.com/hc/en-us/articles/5877834417303-Creating-a-decorated-minifig",
+      "created_at": "2026-09-25T19:24:53.529910+00:00",
+      "status": "ok",
+      "final_url": "https://studiohelp.bricklink.com/hc/en-us/articles/5877834417303-Creating-a-decorated-minifig",
+      "content_type": "text/html; charset=utf-8",
+      "content_bytes": 19322,
+      "content_sha256": "ce9a2573ab135acf82fdc750e8ad0ec2d0b4a1747ca5318ae2a03c3ff65ed1d5",
+      "image_count": 11,
+      "link_count": 23,
+      "image_urls": [
+        "https://studiohelp.bricklink.com/hc/article_attachments/5877772505111/mceclip0.png",
+        "https://studiohelp.bricklink.com/hc/article_attachments/5877825302039/mceclip1.png",
+        "https://studiohelp.bricklink.com/hc/theming_assets/01HZPG2G9FA3MAB9Q2Y93CEGR5",
+        "https://studiohelp.bricklink.com/hc/theming_assets/01HZPG2GPCW787F4P9JCFRXMW5",
+        "https://studiohelp.bricklink.com/hc/theming_assets/01HZPG2GSHV9S06HGY2S4KGMRH",
+        "https://studiohelp.bricklink.com/hc/theming_assets/01HZPG2GXDNJ35N9XE6QBDGTPQ",
+        "https://studiohelp.bricklink.com/hc/theming_assets/01HZPG2H1VCFPAN2P3706B8HP2",
+        "https://studiohelp.bricklink.com/hc/theming_assets/01HZPG2KKJYEXPGN5DWB2AJF78",
+        "https://studiohelp.bricklink.com/hc/theming_assets/01HZPG2KRG4B06HATQTDZRNY1Q",
+        "https://studiohelp.bricklink.com/hc/theming_assets/01HZPG2NHZ91ZRBE3Z08S7QM6J"
+      ],
+      "outbound_hosts": {
+        "studiohelp.bricklink.com": 15,
+        "www.bricklink.com": 5,
+        "forum.bricklink.com": 3
+      },
+      "media_candidate_count": 10,
+      "_status_file": "web-bricklink_studio_minifig.json"
+    },
+    {
+      "schema": "training-source-web-profile/v1",
+      "processor_version": "training-source-web-profile/v1",
+      "source_id": "fortnite_lego_styles",
+      "requested_url": "https://www.fortnite.com/news/introducing-lego-styles-for-fortnite-outfits",
+      "created_at": "2026-09-25T19:24:54.660668+00:00",
+      "status": "error",
+      "error": "HTTP Error 403: Forbidden",
+      "_status_file": "web-fortnite_lego_styles.json"
+    },
+    {
+      "schema": "training-source-web-profile/v1",
+      "processor_version": "training-source-web-profile/v1",
+      "source_id": "ldraw_updates",
+      "requested_url": "https://library.ldraw.org/updates",
+      "created_at": "2026-09-25T19:24:50.541384+00:00",
+      "status": "ok",
+      "final_url": "https://library.ldraw.org/updates",
+      "content_type": "text/html; charset=utf-8",
+      "content_bytes": 248840,
+      "content_sha256": "37332ca6b4117bf0602068d0c1d4829e01059d7dd979622adc4d8f00d449b2c6",
+      "image_count": 112,
+      "link_count": 308,
+      "image_urls": [
+        "https://library.ldraw.org/images/banners/tracker.png",
+        "https://library.ldraw.org/images/updates/0801.png",
+        "https://library.ldraw.org/images/updates/0901.png",
+        "https://library.ldraw.org/images/updates/0902.png",
+        "https://library.ldraw.org/images/updates/0903.png",
+        "https://library.ldraw.org/images/updates/1002.png",
+        "https://library.ldraw.org/images/updates/1101.png",
+        "https://library.ldraw.org/images/updates/1202.png",
+        "https://library.ldraw.org/images/updates/1402.png",
+        "https://library.ldraw.org/images/updates/1901.png",
+        "https://library.ldraw.org/images/updates/1902.png",
+        "https://library.ldraw.org/images/updates/1903.png",
+        "https://library.ldraw.org/images/updates/2001.png",
+        "https://library.ldraw.org/images/updates/2002.png",
+        "https://library.ldraw.org/images/updates/2003.png",
+        "https://library.ldraw.org/images/updates/default.png"
+      ],
+      "outbound_hosts": {
+        "library.ldraw.org": 305,
+        "www.ldraw.org": 2,
+        "www.lego.com": 1
+      },
+      "media_candidate_count": 16,
+      "_status_file": "web-ldraw_updates.json"
+    },
+    {
+      "schema": "training-source-web-profile/v1",
+      "processor_version": "training-source-web-profile/v1",
+      "source_id": "lego_pick_a_brick_minifig",
+      "requested_url": "https://www.lego.com/en-us/pick-and-build/pick-a-brick?category=7",
+      "created_at": "2026-09-25T19:24:52.603417+00:00",
+      "status": "ok",
+      "final_url": "https://www.lego.com/en-us/pick-and-build/pick-a-brick?category=7",
+      "content_type": "text/html; charset=utf-8",
+      "content_bytes": 775684,
+      "content_sha256": "c90f43fb67af839b24c8be1ea25ed4bfda3171309a30732620087db993e4a098",
+      "image_count": 63,
+      "link_count": 527,
+      "image_urls": [
+        "https://assets.lego.com/logos/v4.10.0/brand-lego.svg",
+        "https://assets.lego.com/logos/v4.5.0/brand-lego.svg",
+        "https://assets.lego.com/logos/v8.6.0/brand-lego.svg",
+        "https://assets.lego.com/logos/v8.6.0/theme-duplo.svg",
+        "https://www.lego.com/_next/static/images/safety-na-2f4a95f9c1127cb2..svg",
+        "https://www.lego.com/cdn/cs/set/assets/blt5bfdc202890c29ca/add_to_bag_modal_icon_desktop.png?format=webply&fit=crop&quality=75&width=200&dpr=1",
+        "https://www.lego.com/cdn/cs/set/assets/blt5bfdc202890c29ca/add_to_bag_modal_icon_desktop.png?format=webply&fit=crop&quality=75&width=600&dpr=1",
+        "https://www.lego.com/cdn/cs/set/assets/bltb041953bc9793f26/pab_title_banner_test_1800.png?format=webply&fit=crop&quality=75&width=580&height=87&dpr=1",
+        "https://www.lego.com/cdn/cs/set/assets/bltb041953bc9793f26/pab_title_banner_test_1800.png?format=webply&fit=crop&quality=75&width=800&height=120&dpr=1",
+        "https://www.lego.com/cdn/cs/set/assets/bltb041953bc9793f26/pab_title_banner_test_1800.png?format=webply&fit=crop&quality=75&width=900&height=135&dpr=1",
+        "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6404018.jpg",
+        "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6404026.jpg",
+        "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6404027.jpg",
+        "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6404028.jpg",
+        "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6407746.jpg",
+        "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6411924.jpg",
+        "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6414976.jpg",
+        "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6415632.jpg",
+        "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6415691.jpg",
+        "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6416452.jpg",
+        "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6416487.jpg",
+        "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6416490.jpg",
+        "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6416546.jpg",
+        "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6416551.jpg",
+        "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6416619.jpg",
+        "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6416639.jpg",
+        "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6416663.jpg",
+        "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6416668.jpg",
+        "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6417491.jpg",
+        "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6417494.jpg",
+        "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6417496.jpg",
+        "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6417498.jpg",
+        "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6417772.jpg",
+        "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6417776.jpg",
+        "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6417951.jpg",
+        "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6419092.jpg",
+        "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6419094.jpg",
+        "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6419095.jpg",
+        "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6419110.jpg",
+        "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6419144.jpg",
+        "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6420281.jpg",
+        "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6420283.jpg",
+        "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6420286.jpg",
+        "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6420288.jpg",
+        "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6420291.jpg",
+        "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6429739.jpg",
+        "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6434190.jpg",
+        "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6434212.jpg",
+        "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6434761.jpg",
+        "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6434805.jpg",
+        "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6434831.jpg",
+        "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6434845.jpg",
+        "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6435090.jpg",
+        "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6438262.jpg",
+        "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6442943.jpg",
+        "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6491580.jpg",
+        "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6527907.jpg",
+        "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6530009.jpg",
+        "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6588855.jpg",
+        "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6657250.jpg"
+      ],
+      "outbound_hosts": {
+        "www.lego.com": 509,
+        "": 3,
+        "education.lego.com": 2,
+        "ideas.lego.com": 2,
+        "learningthroughplay.com": 2,
+        "connect.studentbeans.com": 2,
+        "www.legobraillebricks.com": 2,
+        "kids.lego.com": 1,
+        "www.facebook.com": 1,
+        "www.instagram.com": 1,
+        "m.youtube.com": 1,
+        "www.tiktok.com": 1
+      },
+      "media_candidate_count": 60,
+      "_status_file": "web-lego_pick_a_brick_minifig.json"
+    },
+    {
+      "schema": "training-source-web-profile/v1",
+      "processor_version": "training-source-web-profile/v1",
+      "source_id": "mecabricks",
+      "requested_url": "https://www.mecabricks.com/",
+      "created_at": "2026-09-25T19:24:53.989040+00:00",
+      "status": "ok",
+      "final_url": "https://www.mecabricks.com/",
+      "content_type": "text/html; charset=UTF-8",
+      "content_bytes": 24450,
+      "content_sha256": "1abfcec794fd09272826a64567e255639f7defecbeb58487ee372d7d9cccd8d0",
+      "image_count": 12,
+      "link_count": 70,
+      "image_urls": [
+        "https://d1xez26aurxsp6.cloudfront.net/models/79a8N73Xj8w/thumbnails/6ab06dc21c11b.png",
+        "https://d1xez26aurxsp6.cloudfront.net/models/PkaJ0RqgjxM/thumbnails/6ab31de633155.png",
+        "https://d1xez26aurxsp6.cloudfront.net/models/mLvzbOzBvAw/thumbnails/6aac115496da8.png",
+        "https://d1xez26aurxsp6.cloudfront.net/models/mLvzbw94vAw/thumbnails/6aaeb25aa4750.png",
+        "https://d1xez26aurxsp6.cloudfront.net/models/oK2w1Zo0v9k/thumbnails/6ab69bd360a67.png",
+        "https://d1xez26aurxsp6.cloudfront.net/models/oK2w1xG9v9k/thumbnails/6ab0d5b663c35.png",
+        "https://d1xez26aurxsp6.cloudfront.net/renderings/D590YD/6ab5bf4088ca1.jpg",
+        "https://d1xez26aurxsp6.cloudfront.net/renderings/DqadWD/6ab68a2a5cfa2.jpg",
+        "https://d1xez26aurxsp6.cloudfront.net/renderings/VBX9xD/6ab5ea3475c8c.jpg",
+        "https://d1xez26aurxsp6.cloudfront.net/renderings/jMrLND/6ab556cebf904.jpg",
+        "https://d1xez26aurxsp6.cloudfront.net/renderings/jgPwWD/6ab6acc779ad9.jpg",
+        "https://d1xez26aurxsp6.cloudfront.net/renderings/jyAgKj/6ab6829226bfa.jpg"
+      ],
+      "outbound_hosts": {
+        "mecabricks.com": 48,
+        "www.mecabricks.com": 13,
+        "twitter.com": 2,
+        "www.facebook.com": 2,
+        "www.patreon.com": 1,
+        "": 1,
+        "www.flickr.com": 1,
+        "www.instagram.com": 1,
+        "www.youtube.com": 1
+      },
+      "media_candidate_count": 12,
+      "_status_file": "web-mecabricks.json"
     }
   ]
 }
