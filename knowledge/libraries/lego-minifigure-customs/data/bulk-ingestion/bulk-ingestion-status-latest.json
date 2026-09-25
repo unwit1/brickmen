@@ -1,30 +1,32 @@
 {
   "schema": "lego-training-bulk-ingestion-status/v1",
-  "created_at": "2026-09-25T20:47:36.161976+00:00",
+  "created_at": "2026-09-25T20:56:37.677649+00:00",
   "status_counts": {
     "blocked_local_or_interactive": 11,
-    "complete": 9,
+    "complete": 10,
+    "failed": 1,
     "candidate_only_requires_independent_confirmation": 2,
     "deterministic_controls_ready": 1,
+    "catalog_index_snapshot_complete": 1,
     "training_face_corpus_indexed": 1,
-    "partial": 1,
     "candidate_geometry_requires_semantic_review": 1,
+    "aggregate_profiles_ready": 1,
     "ok": 6
   },
-  "source_count": 32,
+  "source_count": 35,
   "sources": [
     {
       "source_id": "bricklink_api_enrichment",
       "status": "blocked_local_or_interactive",
       "reason": "needs_user_BrickLink_API_credentials_and_registered_endpoint_IP",
-      "created_at": "2026-09-25T20:47:36.132354+00:00",
+      "created_at": "2026-09-25T20:56:37.648470+00:00",
       "_status_file": "bricklink_api_enrichment.json"
     },
     {
       "source_id": "bricksfinder",
       "status": "complete",
       "exit_code": 0,
-      "created_at": "2026-09-25T20:46:07.827667+00:00",
+      "created_at": "2026-09-25T20:51:16.836815+00:00",
       "git_commit": "68139a2bb1d356f0a37d8edcc8df16de74b9f70d",
       "files": 69,
       "total_bytes": 57949136,
@@ -62,10 +64,17 @@
       "_status_file": "bricksfinder.json"
     },
     {
+      "source_id": "bricksfinder_caption_rows",
+      "status": "failed",
+      "exit_code": 1,
+      "created_at": "2026-09-25T20:52:03.868673+00:00",
+      "_status_file": "bricksfinder_caption_rows.json"
+    },
+    {
       "source_id": "bricksfinder_hf",
       "status": "complete",
       "exit_code": 0,
-      "created_at": "2026-09-25T20:46:18.008174+00:00",
+      "created_at": "2026-09-25T20:51:33.023131+00:00",
       "dataset_sha": "1e320360dca012382e091f5e8106a4e758586652",
       "file_count": 5,
       "downloads": 132,
@@ -119,21 +128,21 @@
       "source_id": "controlled_physical_photography",
       "status": "blocked_local_or_interactive",
       "reason": "needs_physical_figures_and_capture_rig",
-      "created_at": "2026-09-25T20:47:36.132354+00:00",
+      "created_at": "2026-09-25T20:56:37.648470+00:00",
       "_status_file": "controlled_physical_photography.json"
     },
     {
       "source_id": "film_frame_corpus",
       "status": "blocked_local_or_interactive",
       "reason": "needs_legally_obtained_local_video_files",
-      "created_at": "2026-09-25T20:47:36.132354+00:00",
+      "created_at": "2026-09-25T20:56:37.648470+00:00",
       "_status_file": "film_frame_corpus.json"
     },
     {
       "source_id": "flat_art_catalog_crosswalk",
       "status": "candidate_only_requires_independent_confirmation",
       "exit_code": 0,
-      "created_at": "2026-09-25T20:46:17.690279+00:00",
+      "created_at": "2026-09-25T20:51:27.374762+00:00",
       "schema": "flat-art-catalog-crosswalk-candidate-summary/v1",
       "processor_version": "flat-art-catalog-crosswalk-candidates/v1",
       "rioforce_records": 129,
@@ -152,7 +161,7 @@
       "source_id": "flat_art_crosswalk",
       "status": "candidate_only_requires_independent_confirmation",
       "exit_code": 0,
-      "created_at": "2026-09-25T20:46:15.476377+00:00",
+      "created_at": "2026-09-25T20:51:25.161634+00:00",
       "schema": "flat-art-crosswalk-candidate-summary/v1",
       "processor_version": "flat-art-crosswalk-candidates/v1",
       "rioforce_records": 129,
@@ -177,14 +186,14 @@
       "source_id": "flickr_bobs_full_decals",
       "status": "blocked_local_or_interactive",
       "reason": "needs_Flickr_enumeration_export_or_API_for_reliable_full_collection",
-      "created_at": "2026-09-25T20:47:36.132354+00:00",
+      "created_at": "2026-09-25T20:56:37.648470+00:00",
       "_status_file": "flickr_bobs_full_decals.json"
     },
     {
       "source_id": "fortnite_lego_styles",
       "status": "complete",
       "exit_code": 0,
-      "created_at": "2026-09-25T20:46:20.916315+00:00",
+      "created_at": "2026-09-25T20:52:06.439009+00:00",
       "source_commit": "dd9e68007de23610f1643cb59153ebe8054dbec9",
       "schema": "fortnite-lego-translation-pair-summary/v2",
       "processor_version": "fortnite-lego-translation-pairs/v2",
@@ -238,25 +247,25 @@
       "source_id": "fortnite_translation_controls",
       "status": "deterministic_controls_ready",
       "exit_code": 0,
-      "created_at": "2026-09-25T20:46:21.140484+00:00",
+      "created_at": "2026-09-25T20:52:06.735417+00:00",
       "schema": "translation-control-pair-summary/v1",
       "processor_version": "translation-control-pairs/v1",
       "input_pairs": 2494,
-      "usable_pairs": 0,
-      "positive_controls": 0,
-      "global_wrong_identity_negatives": 0,
-      "hard_group_wrong_identity_negatives": 0,
-      "total_controls": 0,
-      "group_count": 0,
+      "usable_pairs": 2494,
+      "positive_controls": 2494,
+      "global_wrong_identity_negatives": 2494,
+      "hard_group_wrong_identity_negatives": 1394,
+      "total_controls": 6382,
+      "group_count": 1318,
       "_status_file": "fortnite_translation_controls.json"
     },
     {
       "source_id": "fortnite_visual_differences",
       "status": "complete",
       "exit_code": 0,
-      "created_at": "2026-09-25T20:47:28.586791+00:00",
-      "schema": "fortnite-translation-visual-feature-summary/v1",
-      "processor_version": "fortnite-translation-visual-features/v1",
+      "created_at": "2026-09-25T20:56:30.409646+00:00",
+      "schema": "fortnite-translation-visual-feature-summary/v2",
+      "processor_version": "fortnite-translation-visual-features/v2",
       "pair_records_requested": 2494,
       "complete": 2480,
       "errors": 0,
@@ -270,17 +279,6934 @@
       "_status_file": "fortnite_visual_differences.json"
     },
     {
+      "source_id": "herobloks_catalog",
+      "status": "catalog_index_snapshot_complete",
+      "exit_code": 0,
+      "created_at": "2026-09-25T20:51:32.748930+00:00",
+      "schema": "herobloks-catalog-census-summary/v1",
+      "processor_version": "herobloks-catalog-census/v1",
+      "source_url": "https://www.herobloks.com/list",
+      "source_sha256": "6df9106a9e608f96e2633363847520b08d721baac239d5932042c12cd013b155",
+      "source_bytes": 11685322,
+      "figure_records": 59745,
+      "brand_slug_count": 1350,
+      "serial_prefix_candidate_count": 6702,
+      "top_brand_slugs": [
+        {
+          "brand_slug": "lego",
+          "count": 12151
+        },
+        {
+          "brand_slug": "pogo",
+          "count": 2241
+        },
+        {
+          "brand_slug": "engineerio",
+          "count": 1999
+        },
+        {
+          "brand_slug": "kopf",
+          "count": 1788
+        },
+        {
+          "brand_slug": "xinh",
+          "count": 1776
+        },
+        {
+          "brand_slug": "world-minifigures",
+          "count": 1754
+        },
+        {
+          "brand_slug": "sheng-yuan",
+          "count": 1619
+        },
+        {
+          "brand_slug": "unknown",
+          "count": 1172
+        },
+        {
+          "brand_slug": "calypso-customs",
+          "count": 1117
+        },
+        {
+          "brand_slug": "lele",
+          "count": 1077
+        },
+        {
+          "brand_slug": "leyilebrick",
+          "count": 1001
+        },
+        {
+          "brand_slug": "bigkidbrix",
+          "count": 906
+        },
+        {
+          "brand_slug": "tv",
+          "count": 789
+        },
+        {
+          "brand_slug": "g-(2)",
+          "count": 788
+        },
+        {
+          "brand_slug": "poppunkmunky",
+          "count": 784
+        },
+        {
+          "brand_slug": "minifigs.me",
+          "count": 774
+        },
+        {
+          "brand_slug": "decool",
+          "count": 671
+        },
+        {
+          "brand_slug": "koruit",
+          "count": 653
+        },
+        {
+          "brand_slug": "onlinesailin",
+          "count": 553
+        },
+        {
+          "brand_slug": "tp",
+          "count": 527
+        },
+        {
+          "brand_slug": "firestar-toys",
+          "count": 506
+        },
+        {
+          "brand_slug": "penzora",
+          "count": 499
+        },
+        {
+          "brand_slug": "atomic-brick-toys",
+          "count": 435
+        },
+        {
+          "brand_slug": "dlp",
+          "count": 426
+        },
+        {
+          "brand_slug": "kdl",
+          "count": 404
+        },
+        {
+          "brand_slug": "christo7108",
+          "count": 403
+        },
+        {
+          "brand_slug": "sfxminifigures",
+          "count": 395
+        },
+        {
+          "brand_slug": "bela",
+          "count": 372
+        },
+        {
+          "brand_slug": "jin-custom",
+          "count": 364
+        },
+        {
+          "brand_slug": "unknown-custom",
+          "count": 362
+        },
+        {
+          "brand_slug": "jlb",
+          "count": 321
+        },
+        {
+          "brand_slug": "dy_minifigs",
+          "count": 313
+        },
+        {
+          "brand_slug": "earthly-brick",
+          "count": 280
+        },
+        {
+          "brand_slug": "minifigfx",
+          "count": 270
+        },
+        {
+          "brand_slug": "guangdong-ruizhida",
+          "count": 266
+        },
+        {
+          "brand_slug": "dargo",
+          "count": 263
+        },
+        {
+          "brand_slug": "abnormal",
+          "count": 242
+        },
+        {
+          "brand_slug": "life-brick",
+          "count": 241
+        },
+        {
+          "brand_slug": "mr.j-brick",
+          "count": 235
+        },
+        {
+          "brand_slug": "mega-bloks",
+          "count": 234
+        },
+        {
+          "brand_slug": "mrm-prints",
+          "count": 223
+        },
+        {
+          "brand_slug": "lepin",
+          "count": 219
+        },
+        {
+          "brand_slug": "hobby-brick",
+          "count": 215
+        },
+        {
+          "brand_slug": "elephant",
+          "count": 202
+        },
+        {
+          "brand_slug": "character-building",
+          "count": 199
+        },
+        {
+          "brand_slug": "paul-janowski",
+          "count": 184
+        },
+        {
+          "brand_slug": "minifigs-area",
+          "count": 182
+        },
+        {
+          "brand_slug": "bozhi",
+          "count": 175
+        },
+        {
+          "brand_slug": "citizen-brick",
+          "count": 172
+        },
+        {
+          "brand_slug": "minifig-madness",
+          "count": 164
+        },
+        {
+          "brand_slug": "feelings",
+          "count": 164
+        },
+        {
+          "brand_slug": "forbidden-bricks",
+          "count": 157
+        },
+        {
+          "brand_slug": "jinrun",
+          "count": 154
+        },
+        {
+          "brand_slug": "mg",
+          "count": 153
+        },
+        {
+          "brand_slug": "minibigs",
+          "count": 149
+        },
+        {
+          "brand_slug": "chengyi",
+          "count": 148
+        },
+        {
+          "brand_slug": "lebq",
+          "count": 136
+        },
+        {
+          "brand_slug": "outside-brick",
+          "count": 136
+        },
+        {
+          "brand_slug": "dragonbrick",
+          "count": 136
+        },
+        {
+          "brand_slug": "sl-toys",
+          "count": 133
+        },
+        {
+          "brand_slug": "kazi",
+          "count": 131
+        },
+        {
+          "brand_slug": "qx-brick",
+          "count": 130
+        },
+        {
+          "brand_slug": "clone-army-customs",
+          "count": 128
+        },
+        {
+          "brand_slug": "jaka-brick",
+          "count": 126
+        },
+        {
+          "brand_slug": "brick-rebellion-customs",
+          "count": 123
+        },
+        {
+          "brand_slug": "prck",
+          "count": 120
+        },
+        {
+          "brand_slug": "jonak-toys",
+          "count": 120
+        },
+        {
+          "brand_slug": "lg-blocks",
+          "count": 114
+        },
+        {
+          "brand_slug": "minifigures.com",
+          "count": 113
+        },
+        {
+          "brand_slug": "small-green-pea",
+          "count": 110
+        },
+        {
+          "brand_slug": "brick-sanity",
+          "count": 109
+        },
+        {
+          "brand_slug": "dazzle-brick",
+          "count": 109
+        },
+        {
+          "brand_slug": "rt",
+          "count": 105
+        },
+        {
+          "brand_slug": "venom-custom-brick-works",
+          "count": 105
+        },
+        {
+          "brand_slug": "hell-yeah-shop",
+          "count": 105
+        },
+        {
+          "brand_slug": "m",
+          "count": 103
+        },
+        {
+          "brand_slug": "bob's-customs",
+          "count": 102
+        },
+        {
+          "brand_slug": "omega-brick-customs",
+          "count": 99
+        },
+        {
+          "brand_slug": "yg",
+          "count": 98
+        },
+        {
+          "brand_slug": "ug-minifigures",
+          "count": 96
+        },
+        {
+          "brand_slug": "itoys",
+          "count": 96
+        },
+        {
+          "brand_slug": "dergs-customs",
+          "count": 95
+        },
+        {
+          "brand_slug": "minifigs4u",
+          "count": 94
+        },
+        {
+          "brand_slug": "minifig-haven",
+          "count": 94
+        },
+        {
+          "brand_slug": "eclipsegrafx",
+          "count": 92
+        },
+        {
+          "brand_slug": "w",
+          "count": 89
+        },
+        {
+          "brand_slug": "phoenix-customs",
+          "count": 87
+        },
+        {
+          "brand_slug": "minifigs-factory",
+          "count": 86
+        },
+        {
+          "brand_slug": "hades-dc-brick",
+          "count": 85
+        },
+        {
+          "brand_slug": "ksz",
+          "count": 84
+        },
+        {
+          "brand_slug": "kl",
+          "count": 83
+        },
+        {
+          "brand_slug": "km-(2)",
+          "count": 83
+        },
+        {
+          "brand_slug": "j's-little-things",
+          "count": 81
+        },
+        {
+          "brand_slug": "brothersfigure",
+          "count": 80
+        },
+        {
+          "brand_slug": "hera-brick-x-boss-toys",
+          "count": 79
+        },
+        {
+          "brand_slug": "ym-brick",
+          "count": 78
+        },
+        {
+          "brand_slug": "funny-brick",
+          "count": 77
+        },
+        {
+          "brand_slug": "ml",
+          "count": 76
+        },
+        {
+          "brand_slug": "panlos",
+          "count": 76
+        },
+        {
+          "brand_slug": "mb",
+          "count": 76
+        }
+      ],
+      "top_serial_prefix_candidates": [
+        {
+          "prefix": "PG",
+          "count": 2248
+        },
+        {
+          "prefix": "CTY",
+          "count": 2048
+        },
+        {
+          "prefix": "KF",
+          "count": 1788
+        },
+        {
+          "prefix": "WM",
+          "count": 1730
+        },
+        {
+          "prefix": "SY",
+          "count": 1449
+        },
+        {
+          "prefix": "SH",
+          "count": 1215
+        },
+        {
+          "prefix": "SW",
+          "count": 1103
+        },
+        {
+          "prefix": "FRND",
+          "count": 923
+        },
+        {
+          "prefix": "TV",
+          "count": 789
+        },
+        {
+          "prefix": "GH",
+          "count": 690
+        },
+        {
+          "prefix": "HP",
+          "count": 652
+        },
+        {
+          "prefix": "XP",
+          "count": 646
+        },
+        {
+          "prefix": "A",
+          "count": 619
+        },
+        {
+          "prefix": "TWN",
+          "count": 567
+        },
+        {
+          "prefix": "TP",
+          "count": 527
+        },
+        {
+          "prefix": "SPIDERMAN",
+          "count": 502
+        },
+        {
+          "prefix": "COL",
+          "count": 487
+        },
+        {
+          "prefix": "NJO",
+          "count": 463
+        },
+        {
+          "prefix": "IRONMANMK",
+          "count": 456
+        },
+        {
+          "prefix": "HOL",
+          "count": 430
+        },
+        {
+          "prefix": "XH",
+          "count": 422
+        },
+        {
+          "prefix": "K",
+          "count": 419
+        },
+        {
+          "prefix": "DLP",
+          "count": 409
+        },
+        {
+          "prefix": "BATMAN",
+          "count": 355
+        },
+        {
+          "prefix": "IDEA",
+          "count": 281
+        },
+        {
+          "prefix": "MIN",
+          "count": 278
+        },
+        {
+          "prefix": "N",
+          "count": 262
+        },
+        {
+          "prefix": "DY",
+          "count": 260
+        },
+        {
+          "prefix": "DP",
+          "count": 257
+        },
+        {
+          "prefix": "DIS",
+          "count": 209
+        },
+        {
+          "prefix": "TLM",
+          "count": 201
+        },
+        {
+          "prefix": "FSMF",
+          "count": 200
+        },
+        {
+          "prefix": "MG",
+          "count": 199
+        },
+        {
+          "prefix": "JX",
+          "count": 197
+        },
+        {
+          "prefix": "LYLMV",
+          "count": 184
+        },
+        {
+          "prefix": "LYLDC",
+          "count": 184
+        },
+        {
+          "prefix": "FST",
+          "count": 177
+        },
+        {
+          "prefix": "THEJOKER",
+          "count": 174
+        },
+        {
+          "prefix": "CAPTAINAMERICA",
+          "count": 168
+        },
+        {
+          "prefix": "DEADPOOL",
+          "count": 158
+        },
+        {
+          "prefix": "D",
+          "count": 158
+        },
+        {
+          "prefix": "GREENLANTERN",
+          "count": 157
+        },
+        {
+          "prefix": "SUPERMAN",
+          "count": 155
+        },
+        {
+          "prefix": "JW",
+          "count": 154
+        },
+        {
+          "prefix": "MC",
+          "count": 151
+        },
+        {
+          "prefix": "SC",
+          "count": 151
+        },
+        {
+          "prefix": "CY",
+          "count": 147
+        },
+        {
+          "prefix": "DAREDEVIL",
+          "count": 146
+        },
+        {
+          "prefix": "M",
+          "count": 145
+        },
+        {
+          "prefix": "LOR",
+          "count": 137
+        },
+        {
+          "prefix": "KM",
+          "count": 137
+        },
+        {
+          "prefix": "KL",
+          "count": 129
+        },
+        {
+          "prefix": "AS",
+          "count": 126
+        },
+        {
+          "prefix": "LG",
+          "count": 124
+        },
+        {
+          "prefix": "SL",
+          "count": 123
+        },
+        {
+          "prefix": "KY",
+          "count": 123
+        },
+        {
+          "prefix": "LOC",
+          "count": 119
+        },
+        {
+          "prefix": "DRM",
+          "count": 118
+        },
+        {
+          "prefix": "H",
+          "count": 105
+        },
+        {
+          "prefix": "WOLVERINE",
+          "count": 103
+        },
+        {
+          "prefix": "G",
+          "count": 103
+        },
+        {
+          "prefix": "R",
+          "count": 102
+        },
+        {
+          "prefix": "MF",
+          "count": 101
+        },
+        {
+          "prefix": "FLASH",
+          "count": 98
+        },
+        {
+          "prefix": "W",
+          "count": 98
+        },
+        {
+          "prefix": "MB",
+          "count": 97
+        },
+        {
+          "prefix": "JR",
+          "count": 96
+        },
+        {
+          "prefix": "PUNISHER",
+          "count": 89
+        },
+        {
+          "prefix": "NO",
+          "count": 88
+        },
+        {
+          "prefix": "BLACKPANTHER",
+          "count": 87
+        },
+        {
+          "prefix": "BDP",
+          "count": 86
+        },
+        {
+          "prefix": "FAB",
+          "count": 85
+        },
+        {
+          "prefix": "VENOM",
+          "count": 84
+        },
+        {
+          "prefix": "C",
+          "count": 82
+        },
+        {
+          "prefix": "NIGHTWING",
+          "count": 77
+        },
+        {
+          "prefix": "ROBIN",
+          "count": 77
+        },
+        {
+          "prefix": "JOKER",
+          "count": 77
+        },
+        {
+          "prefix": "MK",
+          "count": 77
+        },
+        {
+          "prefix": "CLAYFACE",
+          "count": 76
+        },
+        {
+          "prefix": "DT",
+          "count": 75
+        },
+        {
+          "prefix": "HS",
+          "count": 74
+        },
+        {
+          "prefix": "CRS",
+          "count": 73
+        },
+        {
+          "prefix": "THOR",
+          "count": 72
+        },
+        {
+          "prefix": "MA",
+          "count": 71
+        },
+        {
+          "prefix": "RT",
+          "count": 70
+        },
+        {
+          "prefix": "B",
+          "count": 69
+        },
+        {
+          "prefix": "MY",
+          "count": 69
+        },
+        {
+          "prefix": "OK",
+          "count": 68
+        },
+        {
+          "prefix": "SILVERSURFER",
+          "count": 63
+        },
+        {
+          "prefix": "CYCLOPS",
+          "count": 62
+        },
+        {
+          "prefix": "HUMANTORCH",
+          "count": 61
+        },
+        {
+          "prefix": "SP",
+          "count": 58
+        },
+        {
+          "prefix": "BATMANBEYOND",
+          "count": 57
+        },
+        {
+          "prefix": "SPARTAN",
+          "count": 56
+        },
+        {
+          "prefix": "ZB",
+          "count": 56
+        },
+        {
+          "prefix": "INVISIBLEWOMAN",
+          "count": 55
+        },
+        {
+          "prefix": "IAJ",
+          "count": 55
+        },
+        {
+          "prefix": "TNT",
+          "count": 55
+        },
+        {
+          "prefix": "DEATHSTROKE",
+          "count": 54
+        },
+        {
+          "prefix": "F",
+          "count": 54
+        }
+      ],
+      "brand_prefix_candidates": {
+        "lego": [
+          {
+            "prefix": "CTY",
+            "count": 2048
+          },
+          {
+            "prefix": "SH",
+            "count": 1176
+          },
+          {
+            "prefix": "SW",
+            "count": 1092
+          },
+          {
+            "prefix": "FRND",
+            "count": 923
+          },
+          {
+            "prefix": "HP",
+            "count": 648
+          },
+          {
+            "prefix": "TWN",
+            "count": 567
+          },
+          {
+            "prefix": "COL",
+            "count": 486
+          },
+          {
+            "prefix": "NJO",
+            "count": 463
+          },
+          {
+            "prefix": "HOL",
+            "count": 430
+          },
+          {
+            "prefix": "IDEA",
+            "count": 281
+          },
+          {
+            "prefix": "MIN",
+            "count": 278
+          },
+          {
+            "prefix": "DP",
+            "count": 257
+          },
+          {
+            "prefix": "DIS",
+            "count": 209
+          },
+          {
+            "prefix": "TLM",
+            "count": 201
+          },
+          {
+            "prefix": "JW",
+            "count": 154
+          },
+          {
+            "prefix": "SC",
+            "count": 151
+          },
+          {
+            "prefix": "LOR",
+            "count": 137
+          },
+          {
+            "prefix": "LOC",
+            "count": 119
+          },
+          {
+            "prefix": "DRM",
+            "count": 118
+          },
+          {
+            "prefix": "BDP",
+            "count": 86
+          }
+        ],
+        "pogo": [
+          {
+            "prefix": "PG",
+            "count": 2240
+          },
+          {
+            "prefix": "SW",
+            "count": 1
+          }
+        ],
+        "engineerio": [
+          {
+            "prefix": "CYCLOPS",
+            "count": 13
+          },
+          {
+            "prefix": "SPIDERMAN",
+            "count": 11
+          },
+          {
+            "prefix": "SPACEMARINE",
+            "count": 11
+          },
+          {
+            "prefix": "WOLVERINE",
+            "count": 10
+          },
+          {
+            "prefix": "IRONMANMK",
+            "count": 9
+          },
+          {
+            "prefix": "MAGIK",
+            "count": 9
+          },
+          {
+            "prefix": "NIGHTCRAWLER",
+            "count": 8
+          },
+          {
+            "prefix": "ANGEL",
+            "count": 8
+          },
+          {
+            "prefix": "ROGUE",
+            "count": 8
+          },
+          {
+            "prefix": "BEAST",
+            "count": 8
+          },
+          {
+            "prefix": "CANNONBALL",
+            "count": 8
+          },
+          {
+            "prefix": "POLARIS",
+            "count": 8
+          },
+          {
+            "prefix": "HAVOK",
+            "count": 7
+          },
+          {
+            "prefix": "CAPTAINREX",
+            "count": 7
+          },
+          {
+            "prefix": "PREDATOR",
+            "count": 7
+          },
+          {
+            "prefix": "JEANGREY",
+            "count": 7
+          },
+          {
+            "prefix": "DEADPOOL",
+            "count": 6
+          },
+          {
+            "prefix": "MYSTIQUE",
+            "count": 6
+          },
+          {
+            "prefix": "CABLE",
+            "count": 6
+          },
+          {
+            "prefix": "SUNSPOT",
+            "count": 6
+          }
+        ],
+        "kopf": [
+          {
+            "prefix": "KF",
+            "count": 1788
+          }
+        ],
+        "world-minifigures": [
+          {
+            "prefix": "WM",
+            "count": 1729
+          },
+          {
+            "prefix": "SW",
+            "count": 8
+          },
+          {
+            "prefix": "MG",
+            "count": 4
+          },
+          {
+            "prefix": "WMG",
+            "count": 1
+          }
+        ],
+        "sheng-yuan": [
+          {
+            "prefix": "SY",
+            "count": 1449
+          },
+          {
+            "prefix": "SH",
+            "count": 13
+          },
+          {
+            "prefix": "MK",
+            "count": 8
+          },
+          {
+            "prefix": "SW",
+            "count": 1
+          },
+          {
+            "prefix": "SPIDERMAN",
+            "count": 1
+          },
+          {
+            "prefix": "CAPTAINCHINA",
+            "count": 1
+          }
+        ],
+        "unknown": [
+          {
+            "prefix": "NO",
+            "count": 60
+          },
+          {
+            "prefix": "KL",
+            "count": 46
+          },
+          {
+            "prefix": "M",
+            "count": 38
+          },
+          {
+            "prefix": "IRONMANMK",
+            "count": 33
+          },
+          {
+            "prefix": "R",
+            "count": 28
+          },
+          {
+            "prefix": "T",
+            "count": 27
+          },
+          {
+            "prefix": "S",
+            "count": 21
+          },
+          {
+            "prefix": "GG",
+            "count": 19
+          },
+          {
+            "prefix": "MT",
+            "count": 16
+          },
+          {
+            "prefix": "G",
+            "count": 16
+          },
+          {
+            "prefix": "KK",
+            "count": 15
+          },
+          {
+            "prefix": "GUNDAM",
+            "count": 14
+          },
+          {
+            "prefix": "K",
+            "count": 13
+          },
+          {
+            "prefix": "GP",
+            "count": 12
+          },
+          {
+            "prefix": "QQ",
+            "count": 12
+          },
+          {
+            "prefix": "MK",
+            "count": 12
+          },
+          {
+            "prefix": "D",
+            "count": 11
+          },
+          {
+            "prefix": "C",
+            "count": 10
+          },
+          {
+            "prefix": "H",
+            "count": 10
+          },
+          {
+            "prefix": "THANOS",
+            "count": 9
+          }
+        ],
+        "leyilebrick": [
+          {
+            "prefix": "LYLMV",
+            "count": 184
+          },
+          {
+            "prefix": "LYLDC",
+            "count": 184
+          },
+          {
+            "prefix": "DC",
+            "count": 16
+          },
+          {
+            "prefix": "MW",
+            "count": 14
+          },
+          {
+            "prefix": "LYLTV",
+            "count": 11
+          },
+          {
+            "prefix": "JOKER",
+            "count": 10
+          },
+          {
+            "prefix": "QT",
+            "count": 9
+          },
+          {
+            "prefix": "TONYSTARK",
+            "count": 7
+          },
+          {
+            "prefix": "MICHAELJACKSON",
+            "count": 7
+          },
+          {
+            "prefix": "SPIDERMAN",
+            "count": 5
+          },
+          {
+            "prefix": "BATMAN",
+            "count": 5
+          },
+          {
+            "prefix": "WORLDCUPANGEL",
+            "count": 5
+          },
+          {
+            "prefix": "LYLST",
+            "count": 5
+          },
+          {
+            "prefix": "LYLD",
+            "count": 5
+          },
+          {
+            "prefix": "DARUMADOLL",
+            "count": 5
+          },
+          {
+            "prefix": "CALENDARGIRL",
+            "count": 4
+          },
+          {
+            "prefix": "VALENTINE",
+            "count": 4
+          },
+          {
+            "prefix": "BLACKWIDOW",
+            "count": 3
+          },
+          {
+            "prefix": "LYLGM",
+            "count": 3
+          },
+          {
+            "prefix": "HANAMICHISAKURAGI",
+            "count": 3
+          }
+        ],
+        "calypso-customs": [
+          {
+            "prefix": "DAREDEVIL",
+            "count": 10
+          },
+          {
+            "prefix": "SPIDERMAN",
+            "count": 9
+          },
+          {
+            "prefix": "SUPERMAN",
+            "count": 7
+          },
+          {
+            "prefix": "BLACKLANTERN",
+            "count": 7
+          },
+          {
+            "prefix": "SPARTAN",
+            "count": 7
+          },
+          {
+            "prefix": "WHITELANTERN",
+            "count": 7
+          },
+          {
+            "prefix": "BATMAN",
+            "count": 6
+          },
+          {
+            "prefix": "SWIMSUITMODEL",
+            "count": 5
+          },
+          {
+            "prefix": "GHOSTSOFHOGWARTS",
+            "count": 4
+          },
+          {
+            "prefix": "JOKER",
+            "count": 4
+          },
+          {
+            "prefix": "DRMANHATTAN",
+            "count": 4
+          },
+          {
+            "prefix": "GREENGOBLIN",
+            "count": 4
+          },
+          {
+            "prefix": "GREENLANTERN",
+            "count": 4
+          },
+          {
+            "prefix": "ANAKINSKYWALKER",
+            "count": 4
+          },
+          {
+            "prefix": "JUGGERNAUT",
+            "count": 4
+          },
+          {
+            "prefix": "THING",
+            "count": 4
+          },
+          {
+            "prefix": "BLACKCAT",
+            "count": 3
+          },
+          {
+            "prefix": "DEADPOOL",
+            "count": 3
+          },
+          {
+            "prefix": "SILVERSURFER",
+            "count": 3
+          },
+          {
+            "prefix": "HEMAN",
+            "count": 3
+          }
+        ],
+        "tv": [
+          {
+            "prefix": "TV",
+            "count": 789
+          }
+        ],
+        "poppunkmunky": [
+          {
+            "prefix": "A",
+            "count": 513
+          },
+          {
+            "prefix": "MC",
+            "count": 151
+          },
+          {
+            "prefix": "MA",
+            "count": 62
+          },
+          {
+            "prefix": "MB",
+            "count": 21
+          },
+          {
+            "prefix": "ME",
+            "count": 10
+          },
+          {
+            "prefix": "B",
+            "count": 4
+          },
+          {
+            "prefix": "BATMAN",
+            "count": 2
+          },
+          {
+            "prefix": "CAPTAINKIRK",
+            "count": 2
+          },
+          {
+            "prefix": "D",
+            "count": 1
+          },
+          {
+            "prefix": "GREENLANTERN",
+            "count": 1
+          },
+          {
+            "prefix": "PUNISHER",
+            "count": 1
+          },
+          {
+            "prefix": "CABLE",
+            "count": 1
+          },
+          {
+            "prefix": "CAPTAINMARVELJR",
+            "count": 1
+          },
+          {
+            "prefix": "FIRESTORM",
+            "count": 1
+          },
+          {
+            "prefix": "BLUELANTERN",
+            "count": 1
+          },
+          {
+            "prefix": "LADYBAT",
+            "count": 1
+          },
+          {
+            "prefix": "VIBE",
+            "count": 1
+          },
+          {
+            "prefix": "TALON",
+            "count": 1
+          },
+          {
+            "prefix": "MORBIUS",
+            "count": 1
+          },
+          {
+            "prefix": "REVERSEFLASH",
+            "count": 1
+          }
+        ],
+        "g-(2)": [
+          {
+            "prefix": "GH",
+            "count": 689
+          },
+          {
+            "prefix": "G",
+            "count": 83
+          }
+        ],
+        "bigkidbrix": [
+          {
+            "prefix": "IRONMANMK",
+            "count": 11
+          },
+          {
+            "prefix": "DEADPOOL",
+            "count": 11
+          },
+          {
+            "prefix": "SPIDERMAN",
+            "count": 9
+          },
+          {
+            "prefix": "BATMAN",
+            "count": 7
+          },
+          {
+            "prefix": "STARKILLER",
+            "count": 6
+          },
+          {
+            "prefix": "WOLVERINE",
+            "count": 5
+          },
+          {
+            "prefix": "PUNISHER",
+            "count": 5
+          },
+          {
+            "prefix": "FLASH",
+            "count": 5
+          },
+          {
+            "prefix": "DAREDEVIL",
+            "count": 5
+          },
+          {
+            "prefix": "GREENLANTERN",
+            "count": 4
+          },
+          {
+            "prefix": "SILVERSURFER",
+            "count": 4
+          },
+          {
+            "prefix": "DOCTORSTRANGE",
+            "count": 4
+          },
+          {
+            "prefix": "CAPTAINAMERICA",
+            "count": 4
+          },
+          {
+            "prefix": "CYCLOPS",
+            "count": 4
+          },
+          {
+            "prefix": "STANLEE",
+            "count": 4
+          },
+          {
+            "prefix": "ELITEPRAETORIANGUARD",
+            "count": 4
+          },
+          {
+            "prefix": "B",
+            "count": 4
+          },
+          {
+            "prefix": "REVERSEFLASH",
+            "count": 3
+          },
+          {
+            "prefix": "DARTHMARR",
+            "count": 3
+          },
+          {
+            "prefix": "DARTHSTRYFE",
+            "count": 3
+          }
+        ],
+        "minifigs.me": [
+          {
+            "prefix": "KATEMIDDLETON",
+            "count": 4
+          },
+          {
+            "prefix": "ELEVEN",
+            "count": 4
+          },
+          {
+            "prefix": "PRINCEWILLIAM",
+            "count": 3
+          },
+          {
+            "prefix": "GEORGEHARRISON",
+            "count": 3
+          },
+          {
+            "prefix": "RINGOSTARR",
+            "count": 3
+          },
+          {
+            "prefix": "PAULMCCARTNEY",
+            "count": 3
+          },
+          {
+            "prefix": "JOHNLENNON",
+            "count": 3
+          },
+          {
+            "prefix": "WILLBYERS",
+            "count": 3
+          },
+          {
+            "prefix": "LUCASSINCLAIR",
+            "count": 3
+          },
+          {
+            "prefix": "DUSTINHENDERSON",
+            "count": 3
+          },
+          {
+            "prefix": "MIKEWHEELER",
+            "count": 3
+          },
+          {
+            "prefix": "STEVEHARRINGTON",
+            "count": 3
+          },
+          {
+            "prefix": "DAENERYSTARGARYEN",
+            "count": 2
+          },
+          {
+            "prefix": "V",
+            "count": 2
+          },
+          {
+            "prefix": "THEBRIDE",
+            "count": 2
+          },
+          {
+            "prefix": "DEADPOOL",
+            "count": 2
+          },
+          {
+            "prefix": "JOHNWATSON",
+            "count": 2
+          },
+          {
+            "prefix": "SHERLOCKHOLMES",
+            "count": 2
+          },
+          {
+            "prefix": "LUKESKYWALKER",
+            "count": 2
+          },
+          {
+            "prefix": "RIPLEY",
+            "count": 2
+          }
+        ],
+        "koruit": [
+          {
+            "prefix": "XP",
+            "count": 646
+          },
+          {
+            "prefix": "L",
+            "count": 5
+          },
+          {
+            "prefix": "CHIAOTZU",
+            "count": 1
+          },
+          {
+            "prefix": "SNOWGIE",
+            "count": 1
+          }
+        ],
+        "onlinesailin": [
+          {
+            "prefix": "BATMAN",
+            "count": 16
+          },
+          {
+            "prefix": "THEJOKER",
+            "count": 12
+          },
+          {
+            "prefix": "JOKER",
+            "count": 12
+          },
+          {
+            "prefix": "DEATHSTROKE",
+            "count": 9
+          },
+          {
+            "prefix": "THERIDDLER",
+            "count": 8
+          },
+          {
+            "prefix": "TWOFACE",
+            "count": 7
+          },
+          {
+            "prefix": "SUPERMAN",
+            "count": 7
+          },
+          {
+            "prefix": "JOKERHENCHMAN",
+            "count": 7
+          },
+          {
+            "prefix": "SPIDERMAN",
+            "count": 6
+          },
+          {
+            "prefix": "SNAKEEYES",
+            "count": 6
+          },
+          {
+            "prefix": "HOBGOBLIN",
+            "count": 5
+          },
+          {
+            "prefix": "NAMORTHESUBMARINER",
+            "count": 5
+          },
+          {
+            "prefix": "SCARECROW",
+            "count": 4
+          },
+          {
+            "prefix": "DAREDEVIL",
+            "count": 4
+          },
+          {
+            "prefix": "DEADSHOT",
+            "count": 4
+          },
+          {
+            "prefix": "HARLEYQUINN",
+            "count": 4
+          },
+          {
+            "prefix": "MARTIANMANHUNTER",
+            "count": 4
+          },
+          {
+            "prefix": "POISONIVY",
+            "count": 4
+          },
+          {
+            "prefix": "SINESTRO",
+            "count": 4
+          },
+          {
+            "prefix": "YODA",
+            "count": 4
+          }
+        ],
+        "tp": [
+          {
+            "prefix": "TP",
+            "count": 527
+          }
+        ],
+        "firestar-toys": [
+          {
+            "prefix": "FSMF",
+            "count": 200
+          },
+          {
+            "prefix": "FST",
+            "count": 175
+          },
+          {
+            "prefix": "PADF",
+            "count": 39
+          },
+          {
+            "prefix": "CCMF",
+            "count": 10
+          },
+          {
+            "prefix": "LEMF",
+            "count": 8
+          },
+          {
+            "prefix": "SEMF",
+            "count": 6
+          },
+          {
+            "prefix": "SPIDERMAN",
+            "count": 5
+          },
+          {
+            "prefix": "KINGPIN",
+            "count": 3
+          },
+          {
+            "prefix": "CDTV",
+            "count": 2
+          },
+          {
+            "prefix": "MFMF",
+            "count": 2
+          },
+          {
+            "prefix": "LYMF",
+            "count": 2
+          },
+          {
+            "prefix": "CDSW",
+            "count": 1
+          },
+          {
+            "prefix": "CDM",
+            "count": 1
+          },
+          {
+            "prefix": "CDHAL",
+            "count": 1
+          },
+          {
+            "prefix": "AUSTINPOWERS",
+            "count": 1
+          },
+          {
+            "prefix": "THEBOYWHODIEDHARRYROTTER",
+            "count": 1
+          },
+          {
+            "prefix": "ZOMBIEKITTY",
+            "count": 1
+          },
+          {
+            "prefix": "LEONIDAS",
+            "count": 1
+          },
+          {
+            "prefix": "JOHNMCCLANE",
+            "count": 1
+          },
+          {
+            "prefix": "JAMESBOND",
+            "count": 1
+          }
+        ],
+        "xinh": [
+          {
+            "prefix": "XH",
+            "count": 422
+          },
+          {
+            "prefix": "X",
+            "count": 16
+          },
+          {
+            "prefix": "ZY",
+            "count": 1
+          }
+        ],
+        "atomic-brick-toys": [
+          {
+            "prefix": "TWI",
+            "count": 11
+          },
+          {
+            "prefix": "RYLOTH",
+            "count": 8
+          },
+          {
+            "prefix": "BATMAN",
+            "count": 6
+          },
+          {
+            "prefix": "SPIDERMAN",
+            "count": 5
+          },
+          {
+            "prefix": "GELLA",
+            "count": 5
+          },
+          {
+            "prefix": "FLASH",
+            "count": 4
+          },
+          {
+            "prefix": "DEATHSTROKE",
+            "count": 4
+          },
+          {
+            "prefix": "DAREDEVIL",
+            "count": 4
+          },
+          {
+            "prefix": "DARTHVADER",
+            "count": 4
+          },
+          {
+            "prefix": "GREENLANTERN",
+            "count": 4
+          },
+          {
+            "prefix": "CYBORG",
+            "count": 4
+          },
+          {
+            "prefix": "SCARECROW",
+            "count": 3
+          },
+          {
+            "prefix": "CAPTAINAMERICA",
+            "count": 3
+          },
+          {
+            "prefix": "REVERSEFLASH",
+            "count": 3
+          },
+          {
+            "prefix": "SCARLETSPIDER",
+            "count": 3
+          },
+          {
+            "prefix": "HAWKMAN",
+            "count": 3
+          },
+          {
+            "prefix": "HUMANTORCH",
+            "count": 3
+          },
+          {
+            "prefix": "BLACKMANTA",
+            "count": 3
+          },
+          {
+            "prefix": "AMAZO",
+            "count": 3
+          },
+          {
+            "prefix": "THEJOKER",
+            "count": 2
+          }
+        ],
+        "dlp": [
+          {
+            "prefix": "DLP",
+            "count": 408
+          },
+          {
+            "prefix": "IRONMANMK",
+            "count": 8
+          }
+        ],
+        "kdl": [
+          {
+            "prefix": "K",
+            "count": 395
+          },
+          {
+            "prefix": "KDL",
+            "count": 9
+          }
+        ],
+        "christo7108": [
+          {
+            "prefix": "THEJOKER",
+            "count": 22
+          },
+          {
+            "prefix": "IRONMANMK",
+            "count": 15
+          },
+          {
+            "prefix": "SPIDERMAN",
+            "count": 14
+          },
+          {
+            "prefix": "FLASH",
+            "count": 10
+          },
+          {
+            "prefix": "BLACKPANTHER",
+            "count": 9
+          },
+          {
+            "prefix": "BATMAN",
+            "count": 8
+          },
+          {
+            "prefix": "SUPERMAN",
+            "count": 8
+          },
+          {
+            "prefix": "KIADIMUNDI",
+            "count": 8
+          },
+          {
+            "prefix": "GREENLANTERN",
+            "count": 7
+          },
+          {
+            "prefix": "BLACKWIDOW",
+            "count": 6
+          },
+          {
+            "prefix": "PADMENABERRIE",
+            "count": 6
+          },
+          {
+            "prefix": "REVERSEFLASH",
+            "count": 5
+          },
+          {
+            "prefix": "CATWOMAN",
+            "count": 5
+          },
+          {
+            "prefix": "PRINCESSLEIA",
+            "count": 5
+          },
+          {
+            "prefix": "REBELTROOPER",
+            "count": 5
+          },
+          {
+            "prefix": "CLAYFACE",
+            "count": 4
+          },
+          {
+            "prefix": "COLEMANTREBOR",
+            "count": 4
+          },
+          {
+            "prefix": "DARTHVADER",
+            "count": 4
+          },
+          {
+            "prefix": "ASTRONAUT",
+            "count": 4
+          },
+          {
+            "prefix": "CAPTAINAMERICA",
+            "count": 3
+          }
+        ],
+        "sfxminifigures": [
+          {
+            "prefix": "ANARKY",
+            "count": 12
+          },
+          {
+            "prefix": "GHOSTRIDER",
+            "count": 10
+          },
+          {
+            "prefix": "CAPTAINATOM",
+            "count": 8
+          },
+          {
+            "prefix": "AZRAEL",
+            "count": 8
+          },
+          {
+            "prefix": "PURPLEMAN",
+            "count": 7
+          },
+          {
+            "prefix": "WINTERSOLDIER",
+            "count": 7
+          },
+          {
+            "prefix": "SHININGKNIGHT",
+            "count": 6
+          },
+          {
+            "prefix": "BLACKPANTHER",
+            "count": 6
+          },
+          {
+            "prefix": "TRAPSTER",
+            "count": 6
+          },
+          {
+            "prefix": "LEXLUTHOR",
+            "count": 6
+          },
+          {
+            "prefix": "HOWARDTHEDUCK",
+            "count": 6
+          },
+          {
+            "prefix": "LUKECAGE",
+            "count": 5
+          },
+          {
+            "prefix": "VIGILANTE",
+            "count": 5
+          },
+          {
+            "prefix": "REDROBIN",
+            "count": 5
+          },
+          {
+            "prefix": "SPOILER",
+            "count": 5
+          },
+          {
+            "prefix": "GREENLANTERN",
+            "count": 4
+          },
+          {
+            "prefix": "PUNISHER",
+            "count": 4
+          },
+          {
+            "prefix": "BLAZINGSKULL",
+            "count": 4
+          },
+          {
+            "prefix": "NIGHTMARE",
+            "count": 4
+          },
+          {
+            "prefix": "DORMAMMU",
+            "count": 4
+          }
+        ],
+        "jin-custom": [
+          {
+            "prefix": "SPIDERMAN",
+            "count": 44
+          },
+          {
+            "prefix": "JN",
+            "count": 19
+          },
+          {
+            "prefix": "IRONMANMK",
+            "count": 15
+          },
+          {
+            "prefix": "VENOM",
+            "count": 12
+          },
+          {
+            "prefix": "CAPTAINAMERICA",
+            "count": 12
+          },
+          {
+            "prefix": "KINGPIN",
+            "count": 12
+          },
+          {
+            "prefix": "HULK",
+            "count": 8
+          },
+          {
+            "prefix": "BATMAN",
+            "count": 7
+          },
+          {
+            "prefix": "RHINO",
+            "count": 7
+          },
+          {
+            "prefix": "SYMBIOTESPIDERMAN",
+            "count": 6
+          },
+          {
+            "prefix": "ASTROBOY",
+            "count": 6
+          },
+          {
+            "prefix": "JUGGERNAUT",
+            "count": 5
+          },
+          {
+            "prefix": "SUPERMAN",
+            "count": 5
+          },
+          {
+            "prefix": "CARNAGE",
+            "count": 4
+          },
+          {
+            "prefix": "DAREDEVIL",
+            "count": 4
+          },
+          {
+            "prefix": "HAWKEYE",
+            "count": 4
+          },
+          {
+            "prefix": "KK",
+            "count": 4
+          },
+          {
+            "prefix": "DOOMSDAY",
+            "count": 4
+          },
+          {
+            "prefix": "IRONSPIDER",
+            "count": 3
+          },
+          {
+            "prefix": "WOLVERINE",
+            "count": 3
+          }
+        ],
+        "unknown-custom": [
+          {
+            "prefix": "IRONMANMK",
+            "count": 14
+          },
+          {
+            "prefix": "SPIDERMAN",
+            "count": 10
+          },
+          {
+            "prefix": "R",
+            "count": 6
+          },
+          {
+            "prefix": "S",
+            "count": 6
+          },
+          {
+            "prefix": "BATMAN",
+            "count": 4
+          },
+          {
+            "prefix": "DAVIDBECKHAM",
+            "count": 4
+          },
+          {
+            "prefix": "SUPERMAN",
+            "count": 4
+          },
+          {
+            "prefix": "THOR",
+            "count": 4
+          },
+          {
+            "prefix": "HUMANTORCH",
+            "count": 4
+          },
+          {
+            "prefix": "DAREDEVIL",
+            "count": 4
+          },
+          {
+            "prefix": "CAPTAINAMERICA",
+            "count": 4
+          },
+          {
+            "prefix": "GREENLANTERN",
+            "count": 4
+          },
+          {
+            "prefix": "STARSAPPHIRE",
+            "count": 4
+          },
+          {
+            "prefix": "VENOM",
+            "count": 4
+          },
+          {
+            "prefix": "BOBAFETT",
+            "count": 3
+          },
+          {
+            "prefix": "C",
+            "count": 3
+          },
+          {
+            "prefix": "LEBRONJAMES",
+            "count": 3
+          },
+          {
+            "prefix": "MRFANTASTIC",
+            "count": 3
+          },
+          {
+            "prefix": "THANOS",
+            "count": 3
+          },
+          {
+            "prefix": "BLUEMARVEL",
+            "count": 3
+          }
+        ],
+        "lele": [
+          {
+            "prefix": "D",
+            "count": 101
+          },
+          {
+            "prefix": "A",
+            "count": 72
+          },
+          {
+            "prefix": "C",
+            "count": 55
+          },
+          {
+            "prefix": "L",
+            "count": 34
+          },
+          {
+            "prefix": "B",
+            "count": 30
+          },
+          {
+            "prefix": "F",
+            "count": 26
+          },
+          {
+            "prefix": "XL",
+            "count": 18
+          },
+          {
+            "prefix": "GA",
+            "count": 8
+          },
+          {
+            "prefix": "LIBRARIANVILLAGER",
+            "count": 1
+          },
+          {
+            "prefix": "BYTAR",
+            "count": 1
+          },
+          {
+            "prefix": "SLITHRAA",
+            "count": 1
+          }
+        ],
+        "dy_minifigs": [
+          {
+            "prefix": "DY",
+            "count": 259
+          },
+          {
+            "prefix": "DXMH",
+            "count": 40
+          },
+          {
+            "prefix": "P",
+            "count": 14
+          }
+        ],
+        "earthly-brick": [
+          {
+            "prefix": "SPIDERMAN",
+            "count": 12
+          },
+          {
+            "prefix": "TONYSTARK",
+            "count": 7
+          },
+          {
+            "prefix": "CYCLOPS",
+            "count": 7
+          },
+          {
+            "prefix": "HAWKEYE",
+            "count": 5
+          },
+          {
+            "prefix": "ANTMAN",
+            "count": 5
+          },
+          {
+            "prefix": "WOLVERINE",
+            "count": 4
+          },
+          {
+            "prefix": "GAMBIT",
+            "count": 4
+          },
+          {
+            "prefix": "GWENSTACY",
+            "count": 4
+          },
+          {
+            "prefix": "LOKI",
+            "count": 4
+          },
+          {
+            "prefix": "PETERPARKER",
+            "count": 4
+          },
+          {
+            "prefix": "BLACKPANTHER",
+            "count": 3
+          },
+          {
+            "prefix": "SILVERSAMURAI",
+            "count": 3
+          },
+          {
+            "prefix": "CABLE",
+            "count": 3
+          },
+          {
+            "prefix": "ANGEL",
+            "count": 3
+          },
+          {
+            "prefix": "SUNSPOT",
+            "count": 3
+          },
+          {
+            "prefix": "EMMAFROST",
+            "count": 3
+          },
+          {
+            "prefix": "PSYLOCKE",
+            "count": 3
+          },
+          {
+            "prefix": "WASP",
+            "count": 3
+          },
+          {
+            "prefix": "THANOS",
+            "count": 3
+          },
+          {
+            "prefix": "MAGNETO",
+            "count": 3
+          }
+        ],
+        "guangdong-ruizhida": [
+          {
+            "prefix": "N",
+            "count": 262
+          },
+          {
+            "prefix": "JR",
+            "count": 4
+          }
+        ],
+        "abnormal": [
+          {
+            "prefix": "BATMAN",
+            "count": 22
+          },
+          {
+            "prefix": "THEJOKER",
+            "count": 11
+          },
+          {
+            "prefix": "SPIDERMAN",
+            "count": 9
+          },
+          {
+            "prefix": "SUPERMAN",
+            "count": 8
+          },
+          {
+            "prefix": "DARTHVADER",
+            "count": 8
+          },
+          {
+            "prefix": "H",
+            "count": 7
+          },
+          {
+            "prefix": "VENOM",
+            "count": 7
+          },
+          {
+            "prefix": "AQUAMAN",
+            "count": 7
+          },
+          {
+            "prefix": "KINGPIN",
+            "count": 5
+          },
+          {
+            "prefix": "JOKERHENCHMAN",
+            "count": 5
+          },
+          {
+            "prefix": "MRFANTASTIC",
+            "count": 4
+          },
+          {
+            "prefix": "INVISIBLEWOMAN",
+            "count": 4
+          },
+          {
+            "prefix": "THING",
+            "count": 4
+          },
+          {
+            "prefix": "DRDOOM",
+            "count": 4
+          },
+          {
+            "prefix": "BRUCEWAYNE",
+            "count": 4
+          },
+          {
+            "prefix": "TWOFACE",
+            "count": 4
+          },
+          {
+            "prefix": "HARLEYQUINN",
+            "count": 4
+          },
+          {
+            "prefix": "ARMOREDBATMAN",
+            "count": 4
+          },
+          {
+            "prefix": "SPIDERMANNOIR",
+            "count": 3
+          },
+          {
+            "prefix": "HUMANTORCH",
+            "count": 3
+          }
+        ],
+        "life-brick": [
+          {
+            "prefix": "SPIDERMAN",
+            "count": 20
+          },
+          {
+            "prefix": "CAPTAINAMERICA",
+            "count": 10
+          },
+          {
+            "prefix": "DAREDEVIL",
+            "count": 7
+          },
+          {
+            "prefix": "BLACKPANTHER",
+            "count": 7
+          },
+          {
+            "prefix": "DEADPOOL",
+            "count": 7
+          },
+          {
+            "prefix": "WOLVERINE",
+            "count": 5
+          },
+          {
+            "prefix": "IRONSPIDER",
+            "count": 5
+          },
+          {
+            "prefix": "REDSKULL",
+            "count": 4
+          },
+          {
+            "prefix": "SUPERMAN",
+            "count": 4
+          },
+          {
+            "prefix": "MRFANTASTIC",
+            "count": 4
+          },
+          {
+            "prefix": "INVISIBLEWOMAN",
+            "count": 4
+          },
+          {
+            "prefix": "THING",
+            "count": 4
+          },
+          {
+            "prefix": "AMAZINGSPIDERMAN",
+            "count": 4
+          },
+          {
+            "prefix": "IRONMANMK",
+            "count": 3
+          },
+          {
+            "prefix": "LOKI",
+            "count": 3
+          },
+          {
+            "prefix": "SCARLETSPIDER",
+            "count": 3
+          },
+          {
+            "prefix": "JOHNNYSTORM",
+            "count": 3
+          },
+          {
+            "prefix": "KINGPIN",
+            "count": 3
+          },
+          {
+            "prefix": "LB",
+            "count": 3
+          },
+          {
+            "prefix": "SCARLETWITCH",
+            "count": 3
+          }
+        ],
+        "mr.j-brick": [
+          {
+            "prefix": "BATMAN",
+            "count": 13
+          },
+          {
+            "prefix": "YELLOWLANTERN",
+            "count": 9
+          },
+          {
+            "prefix": "GREENLANTERN",
+            "count": 6
+          },
+          {
+            "prefix": "SPIDERMAN",
+            "count": 5
+          },
+          {
+            "prefix": "REDLANTERN",
+            "count": 5
+          },
+          {
+            "prefix": "PSYLOCKE",
+            "count": 4
+          },
+          {
+            "prefix": "MAGNETO",
+            "count": 4
+          },
+          {
+            "prefix": "HARLEYQUINN",
+            "count": 4
+          },
+          {
+            "prefix": "STARSAPPHIRE",
+            "count": 3
+          },
+          {
+            "prefix": "BLACKPANTHER",
+            "count": 3
+          },
+          {
+            "prefix": "SCARLETWITCH",
+            "count": 3
+          },
+          {
+            "prefix": "MYSTIQUE",
+            "count": 3
+          },
+          {
+            "prefix": "DAREDEVIL",
+            "count": 3
+          },
+          {
+            "prefix": "ORANGELANTERN",
+            "count": 3
+          },
+          {
+            "prefix": "WHITELANTERN",
+            "count": 3
+          },
+          {
+            "prefix": "POISONIVY",
+            "count": 2
+          },
+          {
+            "prefix": "SUPERMAN",
+            "count": 2
+          },
+          {
+            "prefix": "JUGGERNAUT",
+            "count": 2
+          },
+          {
+            "prefix": "EMMAFROST",
+            "count": 2
+          },
+          {
+            "prefix": "DRDOOM",
+            "count": 2
+          }
+        ],
+        "minifigfx": [
+          {
+            "prefix": "GREENLANTERN",
+            "count": 10
+          },
+          {
+            "prefix": "SUPERMAN",
+            "count": 5
+          },
+          {
+            "prefix": "SPIDERMAN",
+            "count": 5
+          },
+          {
+            "prefix": "DAREDEVIL",
+            "count": 3
+          },
+          {
+            "prefix": "DEADPOOL",
+            "count": 3
+          },
+          {
+            "prefix": "SPIDERWOMAN",
+            "count": 3
+          },
+          {
+            "prefix": "WALTERWHITE",
+            "count": 3
+          },
+          {
+            "prefix": "JEWEL",
+            "count": 2
+          },
+          {
+            "prefix": "MICHAELJORDAN",
+            "count": 2
+          },
+          {
+            "prefix": "BEAST",
+            "count": 2
+          },
+          {
+            "prefix": "COLOSSUS",
+            "count": 2
+          },
+          {
+            "prefix": "SILVERSURFER",
+            "count": 2
+          },
+          {
+            "prefix": "THEJOKER",
+            "count": 2
+          },
+          {
+            "prefix": "JUBILEE",
+            "count": 2
+          },
+          {
+            "prefix": "MYSTIQUE",
+            "count": 2
+          },
+          {
+            "prefix": "PUNISHER",
+            "count": 2
+          },
+          {
+            "prefix": "LEBRONJAMES",
+            "count": 2
+          },
+          {
+            "prefix": "BLACKBOLT",
+            "count": 2
+          },
+          {
+            "prefix": "ADAMWARLOCK",
+            "count": 2
+          },
+          {
+            "prefix": "STARSAPPHIRE",
+            "count": 2
+          }
+        ],
+        "hobby-brick": [
+          {
+            "prefix": "HMBAT",
+            "count": 27
+          },
+          {
+            "prefix": "HMINF",
+            "count": 17
+          },
+          {
+            "prefix": "HMJUS",
+            "count": 16
+          },
+          {
+            "prefix": "HMCIV",
+            "count": 14
+          },
+          {
+            "prefix": "HEHAL",
+            "count": 13
+          },
+          {
+            "prefix": "HMSPI",
+            "count": 10
+          },
+          {
+            "prefix": "HMSUI",
+            "count": 10
+          },
+          {
+            "prefix": "HMHEL",
+            "count": 9
+          },
+          {
+            "prefix": "HMXME",
+            "count": 9
+          },
+          {
+            "prefix": "HOSKO",
+            "count": 8
+          },
+          {
+            "prefix": "HMIRO",
+            "count": 7
+          },
+          {
+            "prefix": "HEGRE",
+            "count": 6
+          },
+          {
+            "prefix": "HSWWE",
+            "count": 5
+          },
+          {
+            "prefix": "HAYUL",
+            "count": 5
+          },
+          {
+            "prefix": "HADEA",
+            "count": 4
+          },
+          {
+            "prefix": "HMHAL",
+            "count": 4
+          },
+          {
+            "prefix": "HMWWE",
+            "count": 3
+          },
+          {
+            "prefix": "HMALI",
+            "count": 3
+          },
+          {
+            "prefix": "HGOVE",
+            "count": 3
+          },
+          {
+            "prefix": "HMDEA",
+            "count": 3
+          }
+        ],
+        "elephant": [
+          {
+            "prefix": "JX",
+            "count": 197
+          },
+          {
+            "prefix": "JR",
+            "count": 1
+          }
+        ],
+        "paul-janowski": [
+          {
+            "prefix": "SPARTAN",
+            "count": 17
+          },
+          {
+            "prefix": "STITCH",
+            "count": 3
+          },
+          {
+            "prefix": "CORTANA",
+            "count": 3
+          },
+          {
+            "prefix": "SWIMSUITMODEL",
+            "count": 3
+          },
+          {
+            "prefix": "UKSWIMSUITMODEL",
+            "count": 3
+          },
+          {
+            "prefix": "SPOOKYSPACEKOOK",
+            "count": 2
+          },
+          {
+            "prefix": "JASONVOORHEES",
+            "count": 2
+          },
+          {
+            "prefix": "ELASTIGIRL",
+            "count": 2
+          },
+          {
+            "prefix": "HALLEBERRY",
+            "count": 2
+          },
+          {
+            "prefix": "BATMAN",
+            "count": 2
+          },
+          {
+            "prefix": "MICKEYMOUSE",
+            "count": 2
+          },
+          {
+            "prefix": "REDSKULL",
+            "count": 2
+          },
+          {
+            "prefix": "ZOMBIE",
+            "count": 2
+          },
+          {
+            "prefix": "SNAGGLETOOTH",
+            "count": 2
+          },
+          {
+            "prefix": "BESPINGUARD",
+            "count": 2
+          },
+          {
+            "prefix": "KIDSFESTSTOREEMPLOYEE",
+            "count": 2
+          },
+          {
+            "prefix": "DONALDTRUMP",
+            "count": 1
+          },
+          {
+            "prefix": "HILLARYCLINTON",
+            "count": 1
+          },
+          {
+            "prefix": "KILLERCROC",
+            "count": 1
+          },
+          {
+            "prefix": "REDDARTHVADER",
+            "count": 1
+          }
+        ],
+        "character-building": [
+          {
+            "prefix": "AMYPOND",
+            "count": 8
+          },
+          {
+            "prefix": "THEELEVENTHDOCTOR",
+            "count": 6
+          },
+          {
+            "prefix": "RIVERSONG",
+            "count": 4
+          },
+          {
+            "prefix": "RORYWILLIAMS",
+            "count": 3
+          },
+          {
+            "prefix": "THETENTHDOCTOR",
+            "count": 3
+          },
+          {
+            "prefix": "ROYALMARINESCOMMANDO",
+            "count": 3
+          },
+          {
+            "prefix": "SILENT",
+            "count": 2
+          },
+          {
+            "prefix": "VAMPIRE",
+            "count": 2
+          },
+          {
+            "prefix": "ZOMBIESKELETON",
+            "count": 2
+          },
+          {
+            "prefix": "ZOMBIE",
+            "count": 2
+          },
+          {
+            "prefix": "CYBERMAN",
+            "count": 2
+          },
+          {
+            "prefix": "WEEPINGANGEL",
+            "count": 2
+          },
+          {
+            "prefix": "THE",
+            "count": 2
+          },
+          {
+            "prefix": "THESECONDDOCTOR",
+            "count": 2
+          },
+          {
+            "prefix": "THETHIRDDOCTOR",
+            "count": 2
+          },
+          {
+            "prefix": "THEFIFTHDOCTOR",
+            "count": 2
+          },
+          {
+            "prefix": "CLARAOSWALD",
+            "count": 2
+          },
+          {
+            "prefix": "CAPTAINJACKHARKNESS",
+            "count": 2
+          },
+          {
+            "prefix": "RAFREGIMENTGUNNER",
+            "count": 2
+          },
+          {
+            "prefix": "RAFHELICOPTERPILOT",
+            "count": 2
+          }
+        ],
+        "citizen-brick": [
+          {
+            "prefix": "CLOWNBABY",
+            "count": 14
+          },
+          {
+            "prefix": "BABY",
+            "count": 5
+          },
+          {
+            "prefix": "PIRATEBABY",
+            "count": 4
+          },
+          {
+            "prefix": "JOEEXOTIC",
+            "count": 3
+          },
+          {
+            "prefix": "TWOHEADEDBABY",
+            "count": 3
+          },
+          {
+            "prefix": "JESUSBABY",
+            "count": 3
+          },
+          {
+            "prefix": "ASSCLOWN",
+            "count": 3
+          },
+          {
+            "prefix": "WALTERWHITE",
+            "count": 2
+          },
+          {
+            "prefix": "JESSEPINKMAN",
+            "count": 2
+          },
+          {
+            "prefix": "ZOMBIEBABY",
+            "count": 2
+          },
+          {
+            "prefix": "MIKEDITKA",
+            "count": 2
+          },
+          {
+            "prefix": "BORAT",
+            "count": 2
+          },
+          {
+            "prefix": "THEVISIBLEMAN",
+            "count": 2
+          },
+          {
+            "prefix": "NINJABABY",
+            "count": 2
+          },
+          {
+            "prefix": "MAXROCKATANSKY",
+            "count": 1
+          },
+          {
+            "prefix": "IMPERATORFURIOSA",
+            "count": 1
+          },
+          {
+            "prefix": "NUX",
+            "count": 1
+          },
+          {
+            "prefix": "SPECIALAGENTDALECOOPER",
+            "count": 1
+          },
+          {
+            "prefix": "LAURAPALMER",
+            "count": 1
+          },
+          {
+            "prefix": "AUDREYHORNE",
+            "count": 1
+          }
+        ],
+        "mega-bloks": [
+          {
+            "prefix": "AS",
+            "count": 125
+          },
+          {
+            "prefix": "POUPEEZ",
+            "count": 10
+          },
+          {
+            "prefix": "MR",
+            "count": 3
+          },
+          {
+            "prefix": "REDDINORANGER",
+            "count": 3
+          },
+          {
+            "prefix": "BLUEDINORANGER",
+            "count": 3
+          },
+          {
+            "prefix": "ULTRAMANNEXUS",
+            "count": 2
+          },
+          {
+            "prefix": "OP",
+            "count": 2
+          },
+          {
+            "prefix": "KAMENRIDERIBUKI",
+            "count": 1
+          },
+          {
+            "prefix": "SHOCKERSENTOUIN",
+            "count": 1
+          },
+          {
+            "prefix": "PTERAZORD",
+            "count": 1
+          },
+          {
+            "prefix": "TRICERAZORD",
+            "count": 1
+          },
+          {
+            "prefix": "TYRANNOZORD",
+            "count": 1
+          },
+          {
+            "prefix": "AM",
+            "count": 1
+          },
+          {
+            "prefix": "REDOVERDRIVERANGER",
+            "count": 1
+          },
+          {
+            "prefix": "BLACKOVERDRIVERANGER",
+            "count": 1
+          },
+          {
+            "prefix": "BLUEOVERDRIVERANGER",
+            "count": 1
+          },
+          {
+            "prefix": "YELLOWOVERDRIVERANGER",
+            "count": 1
+          },
+          {
+            "prefix": "PINKOVERDRIVERANGER",
+            "count": 1
+          },
+          {
+            "prefix": "REDSAMURAIRANGER",
+            "count": 1
+          },
+          {
+            "prefix": "REDMYSTICRANGER",
+            "count": 1
+          }
+        ],
+        "feelings": [
+          {
+            "prefix": "IRONMANMK",
+            "count": 8
+          },
+          {
+            "prefix": "CAPTAINAMERICA",
+            "count": 5
+          },
+          {
+            "prefix": "GOKU",
+            "count": 4
+          },
+          {
+            "prefix": "ANTMAN",
+            "count": 3
+          },
+          {
+            "prefix": "GOTENKS",
+            "count": 3
+          },
+          {
+            "prefix": "NARUTOUZUMAKI",
+            "count": 3
+          },
+          {
+            "prefix": "ANDROID",
+            "count": 3
+          },
+          {
+            "prefix": "FL",
+            "count": 2
+          },
+          {
+            "prefix": "LOKI",
+            "count": 2
+          },
+          {
+            "prefix": "BLACKWIDOW",
+            "count": 2
+          },
+          {
+            "prefix": "TONYTONYCHOPPER",
+            "count": 2
+          },
+          {
+            "prefix": "ABSOLUTEBATMAN",
+            "count": 2
+          },
+          {
+            "prefix": "VEGETA",
+            "count": 2
+          },
+          {
+            "prefix": "MR",
+            "count": 2
+          },
+          {
+            "prefix": "BULMA",
+            "count": 2
+          },
+          {
+            "prefix": "DAZBONEZ",
+            "count": 2
+          },
+          {
+            "prefix": "CRISTIANORONALDO",
+            "count": 2
+          },
+          {
+            "prefix": "LIONELMESSI",
+            "count": 2
+          },
+          {
+            "prefix": "LAUNCH",
+            "count": 2
+          },
+          {
+            "prefix": "SAINTFIGARLANDGARLING",
+            "count": 2
+          }
+        ],
+        "minifig-madness": [
+          {
+            "prefix": "SPIDERMAN",
+            "count": 8
+          },
+          {
+            "prefix": "BATMAN",
+            "count": 5
+          },
+          {
+            "prefix": "FLASH",
+            "count": 3
+          },
+          {
+            "prefix": "THEJOKER",
+            "count": 3
+          },
+          {
+            "prefix": "DAREDEVIL",
+            "count": 3
+          },
+          {
+            "prefix": "DEADMAN",
+            "count": 2
+          },
+          {
+            "prefix": "PUNISHER",
+            "count": 2
+          },
+          {
+            "prefix": "SUPERMAN",
+            "count": 2
+          },
+          {
+            "prefix": "REVERSEFLASH",
+            "count": 2
+          },
+          {
+            "prefix": "BLACKLIGHTNING",
+            "count": 2
+          },
+          {
+            "prefix": "SWAMPTHING",
+            "count": 2
+          },
+          {
+            "prefix": "GREENLANTERN",
+            "count": 2
+          },
+          {
+            "prefix": "THEMANDALORIAN",
+            "count": 2
+          },
+          {
+            "prefix": "PURPLECREWMATE",
+            "count": 2
+          },
+          {
+            "prefix": "DRFATE",
+            "count": 2
+          },
+          {
+            "prefix": "AHSOKATANO",
+            "count": 2
+          },
+          {
+            "prefix": "FROZONE",
+            "count": 1
+          },
+          {
+            "prefix": "BOOSTERGOLD",
+            "count": 1
+          },
+          {
+            "prefix": "NAPOLEONDYNAMITE",
+            "count": 1
+          },
+          {
+            "prefix": "LOGAN",
+            "count": 1
+          }
+        ],
+        "forbidden-bricks": [
+          {
+            "prefix": "BATTLEDROID",
+            "count": 11
+          },
+          {
+            "prefix": "ROBIN",
+            "count": 8
+          },
+          {
+            "prefix": "GREENLANTERN",
+            "count": 8
+          },
+          {
+            "prefix": "KILLERCROC",
+            "count": 7
+          },
+          {
+            "prefix": "JOKER",
+            "count": 6
+          },
+          {
+            "prefix": "BATMAN",
+            "count": 5
+          },
+          {
+            "prefix": "SUPERMAN",
+            "count": 4
+          },
+          {
+            "prefix": "REDHOOD",
+            "count": 4
+          },
+          {
+            "prefix": "BIZARRO",
+            "count": 3
+          },
+          {
+            "prefix": "THEJOKER",
+            "count": 3
+          },
+          {
+            "prefix": "HULK",
+            "count": 3
+          },
+          {
+            "prefix": "SPIDERMAN",
+            "count": 3
+          },
+          {
+            "prefix": "THERIDDLER",
+            "count": 2
+          },
+          {
+            "prefix": "HECTORHAMMOND",
+            "count": 2
+          },
+          {
+            "prefix": "SPEEDY",
+            "count": 2
+          },
+          {
+            "prefix": "COMMISSIONERGORDON",
+            "count": 2
+          },
+          {
+            "prefix": "DEADMAN",
+            "count": 2
+          },
+          {
+            "prefix": "MOTHGOON",
+            "count": 2
+          },
+          {
+            "prefix": "CLARKKENT",
+            "count": 2
+          },
+          {
+            "prefix": "CLAYFACE",
+            "count": 2
+          }
+        ],
+        "minibigs": [
+          {
+            "prefix": "THEJOKER",
+            "count": 34
+          },
+          {
+            "prefix": "SPACEMAN",
+            "count": 33
+          },
+          {
+            "prefix": "SPIDERMAN",
+            "count": 28
+          },
+          {
+            "prefix": "MOLEMAN",
+            "count": 6
+          },
+          {
+            "prefix": "WOUNDEDALIEN",
+            "count": 5
+          },
+          {
+            "prefix": "RONBURGUNDY",
+            "count": 3
+          },
+          {
+            "prefix": "MANSPIDER",
+            "count": 3
+          },
+          {
+            "prefix": "POKEMONGOTRAINER",
+            "count": 2
+          },
+          {
+            "prefix": "DAREDEVIL",
+            "count": 2
+          },
+          {
+            "prefix": "ALTHEZOMBIE",
+            "count": 1
+          },
+          {
+            "prefix": "TYRIONLANNISTER",
+            "count": 1
+          },
+          {
+            "prefix": "JONSNOW",
+            "count": 1
+          },
+          {
+            "prefix": "NEDSTARK",
+            "count": 1
+          },
+          {
+            "prefix": "DAENERYSTARGARYEN",
+            "count": 1
+          },
+          {
+            "prefix": "ARYASTARK",
+            "count": 1
+          },
+          {
+            "prefix": "THEGOVERNOR",
+            "count": 1
+          },
+          {
+            "prefix": "DEXTERMORGAN",
+            "count": 1
+          },
+          {
+            "prefix": "GHOST",
+            "count": 1
+          },
+          {
+            "prefix": "GLENNRHEE",
+            "count": 1
+          },
+          {
+            "prefix": "RICKGRIMES",
+            "count": 1
+          }
+        ],
+        "chengyi": [
+          {
+            "prefix": "CY",
+            "count": 147
+          },
+          {
+            "prefix": "SNOWGIE",
+            "count": 1
+          }
+        ],
+        "mg": [
+          {
+            "prefix": "MG",
+            "count": 147
+          },
+          {
+            "prefix": "IRONMANMK",
+            "count": 1
+          }
+        ],
+        "dragonbrick": [
+          {
+            "prefix": "IRONMANMK",
+            "count": 31
+          },
+          {
+            "prefix": "CAPTAINAMERICA",
+            "count": 8
+          },
+          {
+            "prefix": "BATMAN",
+            "count": 5
+          },
+          {
+            "prefix": "DGB",
+            "count": 5
+          },
+          {
+            "prefix": "DEADPOOL",
+            "count": 4
+          },
+          {
+            "prefix": "THEJOKER",
+            "count": 4
+          },
+          {
+            "prefix": "IRONMANMODEL",
+            "count": 4
+          },
+          {
+            "prefix": "POISONIVY",
+            "count": 3
+          },
+          {
+            "prefix": "X",
+            "count": 2
+          },
+          {
+            "prefix": "TONYSTARK",
+            "count": 2
+          },
+          {
+            "prefix": "DEATHSTROKE",
+            "count": 2
+          },
+          {
+            "prefix": "WOLVERINE",
+            "count": 2
+          },
+          {
+            "prefix": "DESTROYER",
+            "count": 2
+          },
+          {
+            "prefix": "IRONSPIDER",
+            "count": 1
+          },
+          {
+            "prefix": "DEADPOOLCAPTAINAMERICA",
+            "count": 1
+          },
+          {
+            "prefix": "STEVEROGERS",
+            "count": 1
+          },
+          {
+            "prefix": "KNIGHTMAREBATMAN",
+            "count": 1
+          },
+          {
+            "prefix": "SANTADEADPOOL",
+            "count": 1
+          },
+          {
+            "prefix": "COWPRINTBATMAN",
+            "count": 1
+          },
+          {
+            "prefix": "LEOPARDPRINTBATMAN",
+            "count": 1
+          }
+        ],
+        "outside-brick": [
+          {
+            "prefix": "UNKNOWN",
+            "count": 6
+          },
+          {
+            "prefix": "CHRISTMASALIEN",
+            "count": 4
+          },
+          {
+            "prefix": "JOTAROKUJO",
+            "count": 3
+          },
+          {
+            "prefix": "MRBEAN",
+            "count": 2
+          },
+          {
+            "prefix": "HENTAIKAMEN",
+            "count": 2
+          },
+          {
+            "prefix": "SANJI",
+            "count": 2
+          },
+          {
+            "prefix": "GUANYU",
+            "count": 2
+          },
+          {
+            "prefix": "ZHANGFEI",
+            "count": 2
+          },
+          {
+            "prefix": "ZHUGELIANG",
+            "count": 2
+          },
+          {
+            "prefix": "SKELETON",
+            "count": 2
+          },
+          {
+            "prefix": "KRATOS",
+            "count": 2
+          },
+          {
+            "prefix": "IRONMANMK",
+            "count": 2
+          },
+          {
+            "prefix": "LOKI",
+            "count": 2
+          },
+          {
+            "prefix": "CNYSPIDERMAN",
+            "count": 1
+          },
+          {
+            "prefix": "MASTERKAU",
+            "count": 1
+          },
+          {
+            "prefix": "JOHNWICK",
+            "count": 1
+          },
+          {
+            "prefix": "CAESAR",
+            "count": 1
+          },
+          {
+            "prefix": "HAKU",
+            "count": 1
+          },
+          {
+            "prefix": "KINNIKUMAN",
+            "count": 1
+          },
+          {
+            "prefix": "CHIHIROOGINO",
+            "count": 1
+          }
+        ],
+        "qx-brick": [
+          {
+            "prefix": "WOLVERINE",
+            "count": 3
+          },
+          {
+            "prefix": "NIGHTCRAWLER",
+            "count": 2
+          },
+          {
+            "prefix": "MISTYKNIGHT",
+            "count": 2
+          },
+          {
+            "prefix": "SHADOWCAT",
+            "count": 2
+          },
+          {
+            "prefix": "DEATHLOK",
+            "count": 2
+          },
+          {
+            "prefix": "POLARIS",
+            "count": 2
+          },
+          {
+            "prefix": "RADIOACTIVESPIDERMAN",
+            "count": 2
+          },
+          {
+            "prefix": "SPIDERMAN",
+            "count": 2
+          },
+          {
+            "prefix": "X",
+            "count": 2
+          },
+          {
+            "prefix": "MRFANTASTIC",
+            "count": 2
+          },
+          {
+            "prefix": "ANGEL",
+            "count": 2
+          },
+          {
+            "prefix": "NAMORTHESUBMARINER",
+            "count": 1
+          },
+          {
+            "prefix": "VULCAN",
+            "count": 1
+          },
+          {
+            "prefix": "WONG",
+            "count": 1
+          },
+          {
+            "prefix": "ELSABLOODSTONE",
+            "count": 1
+          },
+          {
+            "prefix": "LEGION",
+            "count": 1
+          },
+          {
+            "prefix": "SWORDMASTER",
+            "count": 1
+          },
+          {
+            "prefix": "THUNDESTRIKE",
+            "count": 1
+          },
+          {
+            "prefix": "COLLEENWING",
+            "count": 1
+          },
+          {
+            "prefix": "MOLTENMAN",
+            "count": 1
+          }
+        ],
+        "penzora": [
+          {
+            "prefix": "LUIGI",
+            "count": 2
+          },
+          {
+            "prefix": "STARGIRL",
+            "count": 2
+          },
+          {
+            "prefix": "VAMPIRELLA",
+            "count": 2
+          },
+          {
+            "prefix": "SCARLETWITCH",
+            "count": 2
+          },
+          {
+            "prefix": "MADAMEMASQUE",
+            "count": 2
+          },
+          {
+            "prefix": "ENCHANTRESS",
+            "count": 2
+          },
+          {
+            "prefix": "MRFREEZE",
+            "count": 2
+          },
+          {
+            "prefix": "SCOTTISHWEDDINGGROOM",
+            "count": 2
+          },
+          {
+            "prefix": "WEDDINGBRIDE",
+            "count": 2
+          },
+          {
+            "prefix": "DOCTOR",
+            "count": 2
+          },
+          {
+            "prefix": "FIRESTAR",
+            "count": 1
+          },
+          {
+            "prefix": "CROSSBONES",
+            "count": 1
+          },
+          {
+            "prefix": "MRFANTASTIC",
+            "count": 1
+          },
+          {
+            "prefix": "MICHAELJACKSON",
+            "count": 1
+          },
+          {
+            "prefix": "HYDRAAGENT",
+            "count": 1
+          },
+          {
+            "prefix": "INBETWEENER",
+            "count": 1
+          },
+          {
+            "prefix": "MISSMARTIAN",
+            "count": 1
+          },
+          {
+            "prefix": "BRONZETIGER",
+            "count": 1
+          },
+          {
+            "prefix": "BLACKWIDOW",
+            "count": 1
+          },
+          {
+            "prefix": "MARIONETTE",
+            "count": 1
+          }
+        ],
+        "sl-toys": [
+          {
+            "prefix": "SL",
+            "count": 117
+          },
+          {
+            "prefix": "TOAD",
+            "count": 2
+          },
+          {
+            "prefix": "WARIO",
+            "count": 1
+          },
+          {
+            "prefix": "TOADSWORTH",
+            "count": 1
+          },
+          {
+            "prefix": "WALUIGI",
+            "count": 1
+          },
+          {
+            "prefix": "LUIGI",
+            "count": 1
+          },
+          {
+            "prefix": "FIREMARIO",
+            "count": 1
+          },
+          {
+            "prefix": "BUILDERMARIO",
+            "count": 1
+          },
+          {
+            "prefix": "COOKMINION",
+            "count": 1
+          },
+          {
+            "prefix": "THIEFMINION",
+            "count": 1
+          }
+        ],
+        "jaka-brick": [
+          {
+            "prefix": "DAREDEVIL",
+            "count": 8
+          },
+          {
+            "prefix": "THOR",
+            "count": 8
+          },
+          {
+            "prefix": "HAWKEYE",
+            "count": 4
+          },
+          {
+            "prefix": "SPIDERGWEN",
+            "count": 4
+          },
+          {
+            "prefix": "IRONMANMK",
+            "count": 4
+          },
+          {
+            "prefix": "MANDALORIAN",
+            "count": 4
+          },
+          {
+            "prefix": "FLASH",
+            "count": 4
+          },
+          {
+            "prefix": "PUNISHER",
+            "count": 3
+          },
+          {
+            "prefix": "SCARLETWITCH",
+            "count": 3
+          },
+          {
+            "prefix": "INVINCIBLE",
+            "count": 3
+          },
+          {
+            "prefix": "HOMELANDER",
+            "count": 2
+          },
+          {
+            "prefix": "MANTIS",
+            "count": 2
+          },
+          {
+            "prefix": "STARLORD",
+            "count": 2
+          },
+          {
+            "prefix": "COSMOTHESPACEDOG",
+            "count": 2
+          },
+          {
+            "prefix": "KRAGLINOBFONTERI",
+            "count": 2
+          },
+          {
+            "prefix": "DRAX",
+            "count": 2
+          },
+          {
+            "prefix": "NEBULA",
+            "count": 2
+          },
+          {
+            "prefix": "BLACKWIDOW",
+            "count": 2
+          },
+          {
+            "prefix": "SPIDERPUNK",
+            "count": 2
+          },
+          {
+            "prefix": "CAPTAINAMERICA",
+            "count": 2
+          }
+        ],
+        "clone-army-customs": [
+          {
+            "prefix": "SPARTAN",
+            "count": 16
+          },
+          {
+            "prefix": "COMMANDERFOX",
+            "count": 5
+          },
+          {
+            "prefix": "ARCTROOPER",
+            "count": 4
+          },
+          {
+            "prefix": "PHASE",
+            "count": 4
+          },
+          {
+            "prefix": "WAXER",
+            "count": 3
+          },
+          {
+            "prefix": "ECHO",
+            "count": 3
+          },
+          {
+            "prefix": "GALACTICMARINE",
+            "count": 2
+          },
+          {
+            "prefix": "IMPERIALSHOCKTROOPER",
+            "count": 2
+          },
+          {
+            "prefix": "CLONEASSASSIN",
+            "count": 2
+          },
+          {
+            "prefix": "CLONECAPTAIN",
+            "count": 2
+          },
+          {
+            "prefix": "CLONETROOPER",
+            "count": 2
+          },
+          {
+            "prefix": "FIVES",
+            "count": 2
+          },
+          {
+            "prefix": "CAPTAINREX",
+            "count": 2
+          },
+          {
+            "prefix": "WARTHOG",
+            "count": 2
+          },
+          {
+            "prefix": "CLONESHADOWTROOPER",
+            "count": 2
+          },
+          {
+            "prefix": "CLONECOMMANDO",
+            "count": 2
+          },
+          {
+            "prefix": "COMMANDERGREE",
+            "count": 2
+          },
+          {
+            "prefix": "WOLFFE",
+            "count": 2
+          },
+          {
+            "prefix": "BOOST",
+            "count": 1
+          },
+          {
+            "prefix": "CLONEPILOT",
+            "count": 1
+          }
+        ],
+        "jonak-toys": [
+          {
+            "prefix": "KILLERCROC",
+            "count": 13
+          },
+          {
+            "prefix": "BATMAN",
+            "count": 13
+          },
+          {
+            "prefix": "BATMANBEYOND",
+            "count": 13
+          },
+          {
+            "prefix": "NIGHTWING",
+            "count": 10
+          },
+          {
+            "prefix": "TWOFACE",
+            "count": 8
+          },
+          {
+            "prefix": "THEJOKER",
+            "count": 6
+          },
+          {
+            "prefix": "DEADPOOL",
+            "count": 6
+          },
+          {
+            "prefix": "SPIDERMAN",
+            "count": 6
+          },
+          {
+            "prefix": "ROBIN",
+            "count": 5
+          },
+          {
+            "prefix": "HARLEYQUINN",
+            "count": 2
+          },
+          {
+            "prefix": "PENGUINHENCHMAN",
+            "count": 2
+          },
+          {
+            "prefix": "THEPENGUIN",
+            "count": 2
+          },
+          {
+            "prefix": "JAY",
+            "count": 2
+          },
+          {
+            "prefix": "SUPERMAN",
+            "count": 2
+          },
+          {
+            "prefix": "LUMINARAUNDULI",
+            "count": 2
+          },
+          {
+            "prefix": "SHAAKTI",
+            "count": 2
+          },
+          {
+            "prefix": "CAPTAINARGYUS",
+            "count": 1
+          },
+          {
+            "prefix": "DOMINOSQUAD",
+            "count": 1
+          },
+          {
+            "prefix": "CINDRALLIG",
+            "count": 1
+          },
+          {
+            "prefix": "SCARECROW",
+            "count": 1
+          }
+        ],
+        "brick-rebellion-customs": [
+          {
+            "prefix": "BATMAN",
+            "count": 13
+          },
+          {
+            "prefix": "OBIWANKENOBI",
+            "count": 6
+          },
+          {
+            "prefix": "ROBIN",
+            "count": 5
+          },
+          {
+            "prefix": "ANAKINSKYWALKER",
+            "count": 5
+          },
+          {
+            "prefix": "NIGHTWING",
+            "count": 4
+          },
+          {
+            "prefix": "THEJOKER",
+            "count": 3
+          },
+          {
+            "prefix": "JOKER",
+            "count": 3
+          },
+          {
+            "prefix": "YODA",
+            "count": 3
+          },
+          {
+            "prefix": "KIADIMUNDI",
+            "count": 3
+          },
+          {
+            "prefix": "THERIDDLER",
+            "count": 2
+          },
+          {
+            "prefix": "THEPENGUIN",
+            "count": 2
+          },
+          {
+            "prefix": "MRFREEZE",
+            "count": 2
+          },
+          {
+            "prefix": "TWOFACE",
+            "count": 2
+          },
+          {
+            "prefix": "AZRAEL",
+            "count": 2
+          },
+          {
+            "prefix": "AAYLASECURA",
+            "count": 2
+          },
+          {
+            "prefix": "SALLAH",
+            "count": 2
+          },
+          {
+            "prefix": "SHAAKTI",
+            "count": 2
+          },
+          {
+            "prefix": "QUIGONJINN",
+            "count": 2
+          },
+          {
+            "prefix": "MACEWINDU",
+            "count": 2
+          },
+          {
+            "prefix": "BATMANBEYOND",
+            "count": 2
+          }
+        ],
+        "lg-blocks": [
+          {
+            "prefix": "LG",
+            "count": 114
+          }
+        ],
+        "minifigures.com": [
+          {
+            "prefix": "MF",
+            "count": 93
+          },
+          {
+            "prefix": "RUPAUL",
+            "count": 2
+          },
+          {
+            "prefix": "VITOCORLEONE",
+            "count": 1
+          },
+          {
+            "prefix": "ALMURRAYTHEPUBLANDLORD",
+            "count": 1
+          },
+          {
+            "prefix": "JIMMYCARR",
+            "count": 1
+          },
+          {
+            "prefix": "NICKCLEGG",
+            "count": 1
+          },
+          {
+            "prefix": "NATALIEBENNETT",
+            "count": 1
+          },
+          {
+            "prefix": "EDMILIBAND",
+            "count": 1
+          },
+          {
+            "prefix": "DAVIDCAMERON",
+            "count": 1
+          },
+          {
+            "prefix": "RIPLEY",
+            "count": 1
+          },
+          {
+            "prefix": "SHOTAROKANEDA",
+            "count": 1
+          },
+          {
+            "prefix": "SHAUN",
+            "count": 1
+          },
+          {
+            "prefix": "SALLYSHOCK",
+            "count": 1
+          },
+          {
+            "prefix": "WORKSHOPSANTA",
+            "count": 1
+          },
+          {
+            "prefix": "CHESTER",
+            "count": 1
+          },
+          {
+            "prefix": "SHARKBAIT",
+            "count": 1
+          },
+          {
+            "prefix": "SANDYCORPSE",
+            "count": 1
+          },
+          {
+            "prefix": "BORISJOHNSON",
+            "count": 1
+          },
+          {
+            "prefix": "TERMINATORT",
+            "count": 1
+          }
+        ],
+        "kazi": [
+          {
+            "prefix": "KY",
+            "count": 111
+          }
+        ],
+        "brick-sanity": [
+          {
+            "prefix": "GRAFITTIBATMAN",
+            "count": 3
+          },
+          {
+            "prefix": "DEADPOOL",
+            "count": 2
+          },
+          {
+            "prefix": "THERIDDLER",
+            "count": 2
+          },
+          {
+            "prefix": "PENNYWISE",
+            "count": 2
+          },
+          {
+            "prefix": "CONTESTANT",
+            "count": 2
+          },
+          {
+            "prefix": "KIMIKO",
+            "count": 2
+          },
+          {
+            "prefix": "TRANSLUCENT",
+            "count": 2
+          },
+          {
+            "prefix": "HEATWAVE",
+            "count": 1
+          },
+          {
+            "prefix": "STANLEE",
+            "count": 1
+          },
+          {
+            "prefix": "GHOSTBATMAN",
+            "count": 1
+          },
+          {
+            "prefix": "CLOCKKING",
+            "count": 1
+          },
+          {
+            "prefix": "BEAST",
+            "count": 1
+          },
+          {
+            "prefix": "BELLE",
+            "count": 1
+          },
+          {
+            "prefix": "THOMASWAYNE",
+            "count": 1
+          },
+          {
+            "prefix": "MARTHAWAYNE",
+            "count": 1
+          },
+          {
+            "prefix": "BRUCEWAYNE",
+            "count": 1
+          },
+          {
+            "prefix": "BATANATOMY",
+            "count": 1
+          },
+          {
+            "prefix": "HULKHOGAN",
+            "count": 1
+          },
+          {
+            "prefix": "COLLEENMCKENZIE",
+            "count": 1
+          },
+          {
+            "prefix": "CAPTAINBRITAIN",
+            "count": 1
+          }
+        ],
+        "dazzle-brick": [
+          {
+            "prefix": "BATGIRL",
+            "count": 10
+          },
+          {
+            "prefix": "ATOM",
+            "count": 8
+          },
+          {
+            "prefix": "ROBIN",
+            "count": 6
+          },
+          {
+            "prefix": "HUMANTORCH",
+            "count": 5
+          },
+          {
+            "prefix": "BATMAN",
+            "count": 5
+          },
+          {
+            "prefix": "SLUSHH",
+            "count": 5
+          },
+          {
+            "prefix": "GREENLANTERN",
+            "count": 5
+          },
+          {
+            "prefix": "DAREDEVIL",
+            "count": 4
+          },
+          {
+            "prefix": "SHADE",
+            "count": 4
+          },
+          {
+            "prefix": "GIGANTA",
+            "count": 3
+          },
+          {
+            "prefix": "YELLOWLANTERN",
+            "count": 3
+          },
+          {
+            "prefix": "EMMAFROST",
+            "count": 2
+          },
+          {
+            "prefix": "AGENTVENOM",
+            "count": 2
+          },
+          {
+            "prefix": "ATOMICA",
+            "count": 2
+          },
+          {
+            "prefix": "WHITELANTERN",
+            "count": 2
+          },
+          {
+            "prefix": "THEJOKER",
+            "count": 2
+          },
+          {
+            "prefix": "CATWOMAN",
+            "count": 2
+          },
+          {
+            "prefix": "SPIDERMAN",
+            "count": 2
+          },
+          {
+            "prefix": "BLACKLANTERN",
+            "count": 2
+          },
+          {
+            "prefix": "BLACKFIRE",
+            "count": 2
+          }
+        ],
+        "small-green-pea": [
+          {
+            "prefix": "SGP",
+            "count": 16
+          },
+          {
+            "prefix": "DEATHSTROKE",
+            "count": 3
+          },
+          {
+            "prefix": "GREENLANTERN",
+            "count": 2
+          },
+          {
+            "prefix": "CLAYFACE",
+            "count": 2
+          },
+          {
+            "prefix": "WITCHKINGOFANGMAR",
+            "count": 2
+          },
+          {
+            "prefix": "NEYMARDASILVASANTOSJ",
+            "count": 2
+          },
+          {
+            "prefix": "UNKNOWN",
+            "count": 2
+          },
+          {
+            "prefix": "INVISIBLEWOMAN",
+            "count": 1
+          },
+          {
+            "prefix": "BULLSEYE",
+            "count": 1
+          },
+          {
+            "prefix": "OLDMANLOGAN",
+            "count": 1
+          },
+          {
+            "prefix": "LARACROFT",
+            "count": 1
+          },
+          {
+            "prefix": "PETERPETTIGREW",
+            "count": 1
+          },
+          {
+            "prefix": "BLACKLIGHTNING",
+            "count": 1
+          },
+          {
+            "prefix": "SOKKA",
+            "count": 1
+          },
+          {
+            "prefix": "KILLERMOTH",
+            "count": 1
+          },
+          {
+            "prefix": "DARTHREVAN",
+            "count": 1
+          },
+          {
+            "prefix": "ASHKETCHUM",
+            "count": 1
+          },
+          {
+            "prefix": "HARLEYQUINN",
+            "count": 1
+          },
+          {
+            "prefix": "DOOMSDAY",
+            "count": 1
+          },
+          {
+            "prefix": "GREENARROW",
+            "count": 1
+          }
+        ],
+        "hell-yeah-shop": [
+          {
+            "prefix": "YETI",
+            "count": 5
+          },
+          {
+            "prefix": "WHITEMARTIAN",
+            "count": 4
+          },
+          {
+            "prefix": "BANE",
+            "count": 4
+          },
+          {
+            "prefix": "KITEMAN",
+            "count": 4
+          },
+          {
+            "prefix": "SPOILER",
+            "count": 3
+          },
+          {
+            "prefix": "DICKGRAYSON",
+            "count": 3
+          },
+          {
+            "prefix": "PITDROID",
+            "count": 3
+          },
+          {
+            "prefix": "LUKESKYWALKER",
+            "count": 3
+          },
+          {
+            "prefix": "MARSHALLCOLLEGENPC",
+            "count": 3
+          },
+          {
+            "prefix": "CLOUDCITYNPC",
+            "count": 3
+          },
+          {
+            "prefix": "KAOKAN",
+            "count": 3
+          },
+          {
+            "prefix": "MYSTIQUE",
+            "count": 2
+          },
+          {
+            "prefix": "POISONIVY",
+            "count": 2
+          },
+          {
+            "prefix": "BATGIRL",
+            "count": 2
+          },
+          {
+            "prefix": "MOONKNIGHT",
+            "count": 2
+          },
+          {
+            "prefix": "REDHOODHENCHMAN",
+            "count": 2
+          },
+          {
+            "prefix": "SHANGHAIHOODLUM",
+            "count": 2
+          },
+          {
+            "prefix": "GERMANMECHANIC",
+            "count": 2
+          },
+          {
+            "prefix": "WHITELANTERN",
+            "count": 2
+          },
+          {
+            "prefix": "WILLROWHOOD",
+            "count": 2
+          }
+        ],
+        "rt": [
+          {
+            "prefix": "RT",
+            "count": 70
+          },
+          {
+            "prefix": "H",
+            "count": 35
+          }
+        ],
+        "venom-custom-brick-works": [
+          {
+            "prefix": "CLAYFACE",
+            "count": 15
+          },
+          {
+            "prefix": "JOKER",
+            "count": 11
+          },
+          {
+            "prefix": "POISONIVY",
+            "count": 6
+          },
+          {
+            "prefix": "KILLERMOTH",
+            "count": 6
+          },
+          {
+            "prefix": "THERIDDLER",
+            "count": 4
+          },
+          {
+            "prefix": "BATGIRL",
+            "count": 4
+          },
+          {
+            "prefix": "BATMAN",
+            "count": 3
+          },
+          {
+            "prefix": "NURSEJOKER",
+            "count": 3
+          },
+          {
+            "prefix": "DEATHSTROKE",
+            "count": 2
+          },
+          {
+            "prefix": "REDROBIN",
+            "count": 2
+          },
+          {
+            "prefix": "VAMPIREBATMAN",
+            "count": 2
+          },
+          {
+            "prefix": "TWOFACE",
+            "count": 2
+          },
+          {
+            "prefix": "BIOHAZARDSCIENTIST",
+            "count": 2
+          },
+          {
+            "prefix": "MANBAT",
+            "count": 2
+          },
+          {
+            "prefix": "KILLERCROC",
+            "count": 2
+          },
+          {
+            "prefix": "BATMANBEYOND",
+            "count": 2
+          },
+          {
+            "prefix": "HUSH",
+            "count": 1
+          },
+          {
+            "prefix": "COMMISSIONERGORDON",
+            "count": 1
+          },
+          {
+            "prefix": "YETI",
+            "count": 1
+          },
+          {
+            "prefix": "SYMBIOTESPIDERMAN",
+            "count": 1
+          }
+        ],
+        "m": [
+          {
+            "prefix": "M",
+            "count": 91
+          },
+          {
+            "prefix": "KAMENRIDERNIGO",
+            "count": 1
+          },
+          {
+            "prefix": "KAMENRIDERX",
+            "count": 1
+          },
+          {
+            "prefix": "RIDERMAN",
+            "count": 1
+          },
+          {
+            "prefix": "KAMENRIDERV",
+            "count": 1
+          },
+          {
+            "prefix": "SUPERMAN",
+            "count": 1
+          },
+          {
+            "prefix": "THOR",
+            "count": 1
+          },
+          {
+            "prefix": "SPIDERMAN",
+            "count": 1
+          },
+          {
+            "prefix": "TONYSTARK",
+            "count": 1
+          },
+          {
+            "prefix": "DOCTORSTRANGE",
+            "count": 1
+          },
+          {
+            "prefix": "BLACKWIDOW",
+            "count": 1
+          },
+          {
+            "prefix": "CAPTAINAMERICA",
+            "count": 1
+          },
+          {
+            "prefix": "HULK",
+            "count": 1
+          }
+        ],
+        "omega-brick-customs": [
+          {
+            "prefix": "BATMAN",
+            "count": 12
+          },
+          {
+            "prefix": "ROBIN",
+            "count": 6
+          },
+          {
+            "prefix": "POISONIVY",
+            "count": 4
+          },
+          {
+            "prefix": "SILVERSURFER",
+            "count": 4
+          },
+          {
+            "prefix": "ICEMAN",
+            "count": 4
+          },
+          {
+            "prefix": "DEATHSTROKE",
+            "count": 2
+          },
+          {
+            "prefix": "TWOFACE",
+            "count": 2
+          },
+          {
+            "prefix": "THEJOKER",
+            "count": 2
+          },
+          {
+            "prefix": "CATWOMAN",
+            "count": 2
+          },
+          {
+            "prefix": "SUPERMAN",
+            "count": 2
+          },
+          {
+            "prefix": "METALLO",
+            "count": 2
+          },
+          {
+            "prefix": "GHOSTRIDER",
+            "count": 2
+          },
+          {
+            "prefix": "DAREDEVIL",
+            "count": 2
+          },
+          {
+            "prefix": "FLASHPOINTBATMAN",
+            "count": 1
+          },
+          {
+            "prefix": "ABSOLUTEBATMAN",
+            "count": 1
+          },
+          {
+            "prefix": "KILLERCROC",
+            "count": 1
+          },
+          {
+            "prefix": "BANE",
+            "count": 1
+          },
+          {
+            "prefix": "NIGHTWING",
+            "count": 1
+          },
+          {
+            "prefix": "HARLEYQUINN",
+            "count": 1
+          },
+          {
+            "prefix": "THERIDDLER",
+            "count": 1
+          }
+        ],
+        "jinrun": [
+          {
+            "prefix": "JR",
+            "count": 91
+          },
+          {
+            "prefix": "SENATECOMMANDO",
+            "count": 1
+          },
+          {
+            "prefix": "ROYALGUARD",
+            "count": 1
+          },
+          {
+            "prefix": "SCOUTTROOPER",
+            "count": 1
+          },
+          {
+            "prefix": "SHADOWGUARD",
+            "count": 1
+          },
+          {
+            "prefix": "WOLFPACKCLONETROOPER",
+            "count": 1
+          }
+        ],
+        "ug-minifigures": [
+          {
+            "prefix": "IRONMANMK",
+            "count": 16
+          },
+          {
+            "prefix": "BATMAN",
+            "count": 8
+          },
+          {
+            "prefix": "IRONMANMODEL",
+            "count": 6
+          },
+          {
+            "prefix": "DRFATE",
+            "count": 6
+          },
+          {
+            "prefix": "DEADPOOL",
+            "count": 5
+          },
+          {
+            "prefix": "UG",
+            "count": 4
+          },
+          {
+            "prefix": "BROTHERHOODBATMAN",
+            "count": 4
+          },
+          {
+            "prefix": "VAMPIREBATMAN",
+            "count": 3
+          },
+          {
+            "prefix": "REDDEATH",
+            "count": 3
+          },
+          {
+            "prefix": "THANOS",
+            "count": 3
+          },
+          {
+            "prefix": "BLACKPANTHER",
+            "count": 3
+          },
+          {
+            "prefix": "WINTERSOLDIER",
+            "count": 2
+          },
+          {
+            "prefix": "SANTAWONDERWOMAN",
+            "count": 2
+          },
+          {
+            "prefix": "SAMURAIBATMAN",
+            "count": 2
+          },
+          {
+            "prefix": "DAREDEVIL",
+            "count": 1
+          },
+          {
+            "prefix": "HELLBOY",
+            "count": 1
+          },
+          {
+            "prefix": "REDSONBATMAN",
+            "count": 1
+          },
+          {
+            "prefix": "TWOFACEBATMAN",
+            "count": 1
+          },
+          {
+            "prefix": "PHOENIX",
+            "count": 1
+          },
+          {
+            "prefix": "WHITEPHOENIXOFTHECROWN",
+            "count": 1
+          }
+        ],
+        "dergs-customs": [
+          {
+            "prefix": "BATMAN",
+            "count": 7
+          },
+          {
+            "prefix": "NIGHTWING",
+            "count": 6
+          },
+          {
+            "prefix": "POISONIVY",
+            "count": 5
+          },
+          {
+            "prefix": "THEJOKER",
+            "count": 4
+          },
+          {
+            "prefix": "TWOFACE",
+            "count": 3
+          },
+          {
+            "prefix": "BATGIRL",
+            "count": 3
+          },
+          {
+            "prefix": "KILLERCROC",
+            "count": 3
+          },
+          {
+            "prefix": "SUPERMAN",
+            "count": 3
+          },
+          {
+            "prefix": "KILLERMOTH",
+            "count": 2
+          },
+          {
+            "prefix": "JOKER",
+            "count": 2
+          },
+          {
+            "prefix": "ROBIN",
+            "count": 2
+          },
+          {
+            "prefix": "GREENLANTERN",
+            "count": 2
+          },
+          {
+            "prefix": "BRAINIAC",
+            "count": 2
+          },
+          {
+            "prefix": "FLASH",
+            "count": 2
+          },
+          {
+            "prefix": "DEADPOOL",
+            "count": 2
+          },
+          {
+            "prefix": "SPIDERMAN",
+            "count": 1
+          },
+          {
+            "prefix": "RA",
+            "count": 1
+          },
+          {
+            "prefix": "THERIDDLER",
+            "count": 1
+          },
+          {
+            "prefix": "COMMISSIONERGORDON",
+            "count": 1
+          },
+          {
+            "prefix": "CLOCKKING",
+            "count": 1
+          }
+        ],
+        "minifig-haven": [
+          {
+            "prefix": "CLAYFACE",
+            "count": 7
+          },
+          {
+            "prefix": "THEJOKER",
+            "count": 4
+          },
+          {
+            "prefix": "SPAWN",
+            "count": 3
+          },
+          {
+            "prefix": "PENGUINHENCHMAN",
+            "count": 3
+          },
+          {
+            "prefix": "JOKER",
+            "count": 3
+          },
+          {
+            "prefix": "DRHUGOSTRANGE",
+            "count": 3
+          },
+          {
+            "prefix": "POISONIVY",
+            "count": 3
+          },
+          {
+            "prefix": "SOLOMONGRUNDY",
+            "count": 2
+          },
+          {
+            "prefix": "BANE",
+            "count": 2
+          },
+          {
+            "prefix": "C",
+            "count": 2
+          },
+          {
+            "prefix": "REDHOOD",
+            "count": 2
+          },
+          {
+            "prefix": "FIREFLY",
+            "count": 2
+          },
+          {
+            "prefix": "KILLERMOTH",
+            "count": 2
+          },
+          {
+            "prefix": "FREEZEGIRL",
+            "count": 2
+          },
+          {
+            "prefix": "GREENLANTERN",
+            "count": 1
+          },
+          {
+            "prefix": "SCIENTIST",
+            "count": 1
+          },
+          {
+            "prefix": "BLOODSPORT",
+            "count": 1
+          },
+          {
+            "prefix": "TWOFACE",
+            "count": 1
+          },
+          {
+            "prefix": "TALIAALGHUL",
+            "count": 1
+          },
+          {
+            "prefix": "SELINAKYLE",
+            "count": 1
+          }
+        ],
+        "eclipsegrafx": [
+          {
+            "prefix": "HILLARYCLINTON",
+            "count": 4
+          },
+          {
+            "prefix": "STANLEE",
+            "count": 4
+          },
+          {
+            "prefix": "PUNISHER",
+            "count": 3
+          },
+          {
+            "prefix": "TRON",
+            "count": 3
+          },
+          {
+            "prefix": "SUPERBOY",
+            "count": 2
+          },
+          {
+            "prefix": "MARTIANMANHUNTER",
+            "count": 2
+          },
+          {
+            "prefix": "SOLESURVIVOR",
+            "count": 2
+          },
+          {
+            "prefix": "ROGUE",
+            "count": 2
+          },
+          {
+            "prefix": "GHOST",
+            "count": 2
+          },
+          {
+            "prefix": "BRICKANDSORTYTIN",
+            "count": 2
+          },
+          {
+            "prefix": "TAYLORSWIFT",
+            "count": 2
+          },
+          {
+            "prefix": "FREDDYKRUEGER",
+            "count": 1
+          },
+          {
+            "prefix": "JASONVOORHEES",
+            "count": 1
+          },
+          {
+            "prefix": "AQUALAD",
+            "count": 1
+          },
+          {
+            "prefix": "MISSMARTIAN",
+            "count": 1
+          },
+          {
+            "prefix": "UNSCNAVALOFFICER",
+            "count": 1
+          },
+          {
+            "prefix": "TRACER",
+            "count": 1
+          },
+          {
+            "prefix": "MICHAELMYERS",
+            "count": 1
+          },
+          {
+            "prefix": "DONALDTRUMP",
+            "count": 1
+          },
+          {
+            "prefix": "SOLDIER",
+            "count": 1
+          }
+        ],
+        "minifigs4u": [
+          {
+            "prefix": "CLONETROOPER",
+            "count": 4
+          },
+          {
+            "prefix": "IRONMANMK",
+            "count": 4
+          },
+          {
+            "prefix": "GREGOR",
+            "count": 3
+          },
+          {
+            "prefix": "COMMANDERCODY",
+            "count": 3
+          },
+          {
+            "prefix": "COLT",
+            "count": 2
+          },
+          {
+            "prefix": "NEYO",
+            "count": 2
+          },
+          {
+            "prefix": "FLASH",
+            "count": 2
+          },
+          {
+            "prefix": "ARCCOMMANDERBLITZ",
+            "count": 2
+          },
+          {
+            "prefix": "BOIL",
+            "count": 2
+          },
+          {
+            "prefix": "BACARA",
+            "count": 2
+          },
+          {
+            "prefix": "ECHO",
+            "count": 2
+          },
+          {
+            "prefix": "SPARTAN",
+            "count": 2
+          },
+          {
+            "prefix": "DEADPOOL",
+            "count": 1
+          },
+          {
+            "prefix": "DARKSEID",
+            "count": 1
+          },
+          {
+            "prefix": "GREENARROW",
+            "count": 1
+          },
+          {
+            "prefix": "GREENLANTERN",
+            "count": 1
+          },
+          {
+            "prefix": "ARCTROOPER",
+            "count": 1
+          },
+          {
+            "prefix": "HAWK",
+            "count": 1
+          },
+          {
+            "prefix": "PHASE",
+            "count": 1
+          },
+          {
+            "prefix": "TUP",
+            "count": 1
+          }
+        ],
+        "minifigs-area": [
+          {
+            "prefix": "THEJOKER",
+            "count": 5
+          },
+          {
+            "prefix": "CAPTAINAMERICA",
+            "count": 4
+          },
+          {
+            "prefix": "SPIDERMAN",
+            "count": 3
+          },
+          {
+            "prefix": "BATMAN",
+            "count": 2
+          },
+          {
+            "prefix": "MRFREEZE",
+            "count": 2
+          },
+          {
+            "prefix": "GREENLANTERN",
+            "count": 2
+          },
+          {
+            "prefix": "HEATWAVE",
+            "count": 2
+          },
+          {
+            "prefix": "MYSTIQUE",
+            "count": 2
+          },
+          {
+            "prefix": "POISONIVY",
+            "count": 2
+          },
+          {
+            "prefix": "ROBIN",
+            "count": 2
+          },
+          {
+            "prefix": "JAMESBOND",
+            "count": 1
+          },
+          {
+            "prefix": "ALFREDPENNYWORTH",
+            "count": 1
+          },
+          {
+            "prefix": "AQUAMAN",
+            "count": 1
+          },
+          {
+            "prefix": "ARSENAL",
+            "count": 1
+          },
+          {
+            "prefix": "ATOM",
+            "count": 1
+          },
+          {
+            "prefix": "BANE",
+            "count": 1
+          },
+          {
+            "prefix": "BATGIRL",
+            "count": 1
+          },
+          {
+            "prefix": "BIZARRO",
+            "count": 1
+          },
+          {
+            "prefix": "BLACKWIDOW",
+            "count": 1
+          },
+          {
+            "prefix": "BLUEBEETLE",
+            "count": 1
+          }
+        ],
+        "w": [
+          {
+            "prefix": "W",
+            "count": 89
+          }
+        ],
+        "phoenix-customs": [
+          {
+            "prefix": "SPIDERMAN",
+            "count": 13
+          },
+          {
+            "prefix": "CAPTAINAMERICA",
+            "count": 6
+          },
+          {
+            "prefix": "IRONMANMK",
+            "count": 5
+          },
+          {
+            "prefix": "AMAZINGSPIDERMAN",
+            "count": 4
+          },
+          {
+            "prefix": "LUKESKYWALKER",
+            "count": 4
+          },
+          {
+            "prefix": "DEADPOOL",
+            "count": 3
+          },
+          {
+            "prefix": "IRONSPIDER",
+            "count": 3
+          },
+          {
+            "prefix": "THOR",
+            "count": 3
+          },
+          {
+            "prefix": "PC",
+            "count": 3
+          },
+          {
+            "prefix": "REY",
+            "count": 2
+          },
+          {
+            "prefix": "TONYSTARK",
+            "count": 2
+          },
+          {
+            "prefix": "REDROBIN",
+            "count": 1
+          },
+          {
+            "prefix": "GAMBIT",
+            "count": 1
+          },
+          {
+            "prefix": "EDWARDKENWAY",
+            "count": 1
+          },
+          {
+            "prefix": "THECOLLECTOR",
+            "count": 1
+          },
+          {
+            "prefix": "SCARLETSPIDER",
+            "count": 1
+          },
+          {
+            "prefix": "WINTERSOLDIER",
+            "count": 1
+          },
+          {
+            "prefix": "MYSTIQUE",
+            "count": 1
+          },
+          {
+            "prefix": "DAREDEVIL",
+            "count": 1
+          },
+          {
+            "prefix": "SPIDERGWEN",
+            "count": 1
+          }
+        ],
+        "minifigs-factory": [
+          {
+            "prefix": "MF",
+            "count": 8
+          },
+          {
+            "prefix": "BATMAN",
+            "count": 5
+          },
+          {
+            "prefix": "CUSTODIAN",
+            "count": 3
+          },
+          {
+            "prefix": "IRONMAN",
+            "count": 3
+          },
+          {
+            "prefix": "MONSTERHUNTER",
+            "count": 3
+          },
+          {
+            "prefix": "IRONMANMK",
+            "count": 2
+          },
+          {
+            "prefix": "GREYKNIGHT",
+            "count": 2
+          },
+          {
+            "prefix": "FROSTWYRMS",
+            "count": 2
+          },
+          {
+            "prefix": "BEARGRYLLS",
+            "count": 1
+          },
+          {
+            "prefix": "QUEENMOTHEROFXUAN",
+            "count": 1
+          },
+          {
+            "prefix": "QINGLONG",
+            "count": 1
+          },
+          {
+            "prefix": "CAPTAINMARVEL",
+            "count": 1
+          },
+          {
+            "prefix": "SYLVANASWINDRUNNER",
+            "count": 1
+          },
+          {
+            "prefix": "EDWARDELRIC",
+            "count": 1
+          },
+          {
+            "prefix": "GUL",
+            "count": 1
+          },
+          {
+            "prefix": "GROMMASHHELLSCREAM",
+            "count": 1
+          },
+          {
+            "prefix": "TYRAEL",
+            "count": 1
+          },
+          {
+            "prefix": "ILLIDANSTORMRAGE",
+            "count": 1
+          },
+          {
+            "prefix": "TOSHINORIYAGI",
+            "count": 1
+          },
+          {
+            "prefix": "OPTIMUSPRIME",
+            "count": 1
+          }
+        ],
+        "hades-dc-brick": [
+          {
+            "prefix": "BATMAN",
+            "count": 8
+          },
+          {
+            "prefix": "CALENDARGIRL",
+            "count": 4
+          },
+          {
+            "prefix": "FLASH",
+            "count": 4
+          },
+          {
+            "prefix": "MANBAT",
+            "count": 3
+          },
+          {
+            "prefix": "TWOFACE",
+            "count": 3
+          },
+          {
+            "prefix": "RA",
+            "count": 3
+          },
+          {
+            "prefix": "GREENLANTERN",
+            "count": 3
+          },
+          {
+            "prefix": "SUPERGIRL",
+            "count": 3
+          },
+          {
+            "prefix": "HARLEYQUINN",
+            "count": 2
+          },
+          {
+            "prefix": "WHITELANTERNFLASH",
+            "count": 2
+          },
+          {
+            "prefix": "JOKER",
+            "count": 2
+          },
+          {
+            "prefix": "NORAFRIES",
+            "count": 2
+          },
+          {
+            "prefix": "PHANTASM",
+            "count": 2
+          },
+          {
+            "prefix": "CLAYFACE",
+            "count": 2
+          },
+          {
+            "prefix": "SCARFACE",
+            "count": 2
+          },
+          {
+            "prefix": "BATJOKER",
+            "count": 1
+          },
+          {
+            "prefix": "METALEVILSUPERMAN",
+            "count": 1
+          },
+          {
+            "prefix": "AQUAMAN",
+            "count": 1
+          },
+          {
+            "prefix": "FLASHPOINTBATMAN",
+            "count": 1
+          },
+          {
+            "prefix": "FLASHPOINTJOKER",
+            "count": 1
+          }
+        ],
+        "bob's-customs": [
+          {
+            "prefix": "BLACKKNIGHT",
+            "count": 5
+          },
+          {
+            "prefix": "BLACKWIDOW",
+            "count": 4
+          },
+          {
+            "prefix": "SPIDERWOMAN",
+            "count": 3
+          },
+          {
+            "prefix": "CAPTAINBRITAIN",
+            "count": 2
+          },
+          {
+            "prefix": "REDGUARDIAN",
+            "count": 2
+          },
+          {
+            "prefix": "SPIDERMAN",
+            "count": 2
+          },
+          {
+            "prefix": "IRONMAN",
+            "count": 2
+          },
+          {
+            "prefix": "SPIDERGIRL",
+            "count": 2
+          },
+          {
+            "prefix": "GAMORA",
+            "count": 2
+          },
+          {
+            "prefix": "MIEK",
+            "count": 1
+          },
+          {
+            "prefix": "PROTECTOR",
+            "count": 1
+          },
+          {
+            "prefix": "SILK",
+            "count": 1
+          },
+          {
+            "prefix": "LIGHTSPEED",
+            "count": 1
+          },
+          {
+            "prefix": "MASSMASTER",
+            "count": 1
+          },
+          {
+            "prefix": "ENERGIZER",
+            "count": 1
+          },
+          {
+            "prefix": "GEE",
+            "count": 1
+          },
+          {
+            "prefix": "BLACKLIGHTNING",
+            "count": 1
+          },
+          {
+            "prefix": "GWENSTACY",
+            "count": 1
+          },
+          {
+            "prefix": "SHANGCHI",
+            "count": 1
+          },
+          {
+            "prefix": "WARMACHINE",
+            "count": 1
+          }
+        ],
+        "kl": [
+          {
+            "prefix": "KL",
+            "count": 83
+          }
+        ],
+        "km-(2)": [
+          {
+            "prefix": "KM",
+            "count": 83
+          }
+        ],
+        "mrm-prints": [
+          {
+            "prefix": "CLAYFACE",
+            "count": 31
+          },
+          {
+            "prefix": "GUY",
+            "count": 8
+          },
+          {
+            "prefix": "SPIDERMAN",
+            "count": 6
+          },
+          {
+            "prefix": "BLACKPANTHER",
+            "count": 5
+          },
+          {
+            "prefix": "DAREDEVIL",
+            "count": 4
+          },
+          {
+            "prefix": "BRUCEBANNER",
+            "count": 3
+          },
+          {
+            "prefix": "HULK",
+            "count": 3
+          },
+          {
+            "prefix": "MSMARVEL",
+            "count": 2
+          },
+          {
+            "prefix": "BLACKCAT",
+            "count": 2
+          },
+          {
+            "prefix": "COSMICSPIDERMAN",
+            "count": 2
+          },
+          {
+            "prefix": "INVINCIBLEIRONMAN",
+            "count": 2
+          },
+          {
+            "prefix": "CAPTAINAMERICA",
+            "count": 2
+          },
+          {
+            "prefix": "JOHNNYSTORM",
+            "count": 1
+          },
+          {
+            "prefix": "MRFANTASTIC",
+            "count": 1
+          },
+          {
+            "prefix": "INVISIBLEWOMAN",
+            "count": 1
+          },
+          {
+            "prefix": "BULLSEYE",
+            "count": 1
+          },
+          {
+            "prefix": "DARKPHOENIX",
+            "count": 1
+          },
+          {
+            "prefix": "CARNAGE",
+            "count": 1
+          },
+          {
+            "prefix": "GHOSTRIDER",
+            "count": 1
+          },
+          {
+            "prefix": "SUPERIORSPIDERMAN",
+            "count": 1
+          }
+        ],
+        "brothersfigure": [
+          {
+            "prefix": "SH",
+            "count": 21
+          },
+          {
+            "prefix": "BF",
+            "count": 16
+          },
+          {
+            "prefix": "BFR",
+            "count": 5
+          },
+          {
+            "prefix": "BFL",
+            "count": 5
+          },
+          {
+            "prefix": "BFLITEWAVEII",
+            "count": 5
+          },
+          {
+            "prefix": "BFV",
+            "count": 3
+          },
+          {
+            "prefix": "BM",
+            "count": 2
+          },
+          {
+            "prefix": "BFM",
+            "count": 2
+          },
+          {
+            "prefix": "THOR",
+            "count": 2
+          },
+          {
+            "prefix": "IRONMANMK",
+            "count": 2
+          },
+          {
+            "prefix": "LOKI",
+            "count": 2
+          },
+          {
+            "prefix": "BFG",
+            "count": 1
+          },
+          {
+            "prefix": "ROBINS",
+            "count": 1
+          },
+          {
+            "prefix": "CAPTAINMARVEL",
+            "count": 1
+          },
+          {
+            "prefix": "BFY",
+            "count": 1
+          },
+          {
+            "prefix": "STANLEE",
+            "count": 1
+          },
+          {
+            "prefix": "CATWOMAN",
+            "count": 1
+          },
+          {
+            "prefix": "SWAMPTHING",
+            "count": 1
+          },
+          {
+            "prefix": "LORDTHOR",
+            "count": 1
+          },
+          {
+            "prefix": "CAPTAINAMERICA",
+            "count": 1
+          }
+        ],
+        "hera-brick-x-boss-toys": [
+          {
+            "prefix": "WOLVERINE",
+            "count": 7
+          },
+          {
+            "prefix": "REDSKULL",
+            "count": 5
+          },
+          {
+            "prefix": "WHIPLASHMKII",
+            "count": 4
+          },
+          {
+            "prefix": "YELLOWJACKET",
+            "count": 4
+          },
+          {
+            "prefix": "APOCALYPSE",
+            "count": 4
+          },
+          {
+            "prefix": "BLACKMANTA",
+            "count": 4
+          },
+          {
+            "prefix": "LIZARD",
+            "count": 3
+          },
+          {
+            "prefix": "EMMAFROST",
+            "count": 3
+          },
+          {
+            "prefix": "CASSANDRANOVA",
+            "count": 3
+          },
+          {
+            "prefix": "ERIKKILLMONGER",
+            "count": 3
+          },
+          {
+            "prefix": "MYSTIQUE",
+            "count": 3
+          },
+          {
+            "prefix": "PSYLOCKE",
+            "count": 3
+          },
+          {
+            "prefix": "RIPTIDE",
+            "count": 3
+          },
+          {
+            "prefix": "VENOM",
+            "count": 3
+          },
+          {
+            "prefix": "CURTCONNERS",
+            "count": 3
+          },
+          {
+            "prefix": "HELA",
+            "count": 3
+          },
+          {
+            "prefix": "BUCKYBARNES",
+            "count": 2
+          },
+          {
+            "prefix": "MAGNETO",
+            "count": 2
+          },
+          {
+            "prefix": "SEBASTIANSHAW",
+            "count": 2
+          },
+          {
+            "prefix": "COLOSSUS",
+            "count": 2
+          }
+        ],
+        "j's-little-things": [
+          {
+            "prefix": "JSLT",
+            "count": 39
+          },
+          {
+            "prefix": "BOIL",
+            "count": 2
+          },
+          {
+            "prefix": "WAXER",
+            "count": 2
+          },
+          {
+            "prefix": "CAPTAINREX",
+            "count": 2
+          },
+          {
+            "prefix": "COMMANDERBLY",
+            "count": 2
+          },
+          {
+            "prefix": "IMPERIALSOLDIER",
+            "count": 2
+          },
+          {
+            "prefix": "FORDO",
+            "count": 1
+          },
+          {
+            "prefix": "FIVES",
+            "count": 1
+          },
+          {
+            "prefix": "ARCTROOPER",
+            "count": 1
+          },
+          {
+            "prefix": "HAVOCSQUADTROOPER",
+            "count": 1
+          },
+          {
+            "prefix": "JACEMALCOM",
+            "count": 1
+          },
+          {
+            "prefix": "SATELESHAN",
+            "count": 1
+          },
+          {
+            "prefix": "COMMANDERCODY",
+            "count": 1
+          },
+          {
+            "prefix": "CLONECOLDASSAULTTROOPER",
+            "count": 1
+          },
+          {
+            "prefix": "THIRE",
+            "count": 1
+          },
+          {
+            "prefix": "THORN",
+            "count": 1
+          },
+          {
+            "prefix": "COMMANDERFOX",
+            "count": 1
+          },
+          {
+            "prefix": "COMMANDERSTONE",
+            "count": 1
+          },
+          {
+            "prefix": "CORUSCANTGUARDRIOTTROOPER",
+            "count": 1
+          },
+          {
+            "prefix": "CAPTAINJAYFON",
+            "count": 1
+          }
+        ],
+        "ym-brick": [
+          {
+            "prefix": "STEPFORDCUCKOO",
+            "count": 6
+          },
+          {
+            "prefix": "DOOP",
+            "count": 4
+          },
+          {
+            "prefix": "ROCKSLIDE",
+            "count": 3
+          },
+          {
+            "prefix": "ETERNITY",
+            "count": 3
+          },
+          {
+            "prefix": "OBLIVION",
+            "count": 3
+          },
+          {
+            "prefix": "A",
+            "count": 3
+          },
+          {
+            "prefix": "QUASAR",
+            "count": 2
+          },
+          {
+            "prefix": "KANG",
+            "count": 2
+          },
+          {
+            "prefix": "VIV",
+            "count": 2
+          },
+          {
+            "prefix": "ARMOR",
+            "count": 2
+          },
+          {
+            "prefix": "MAGMA",
+            "count": 2
+          },
+          {
+            "prefix": "RUBBERMAID",
+            "count": 1
+          },
+          {
+            "prefix": "ANOLE",
+            "count": 1
+          },
+          {
+            "prefix": "RAINBOY",
+            "count": 1
+          },
+          {
+            "prefix": "INDRA",
+            "count": 1
+          },
+          {
+            "prefix": "NETWORK",
+            "count": 1
+          },
+          {
+            "prefix": "INFINITY",
+            "count": 1
+          },
+          {
+            "prefix": "PHYLAVELL",
+            "count": 1
+          },
+          {
+            "prefix": "READER",
+            "count": 1
+          },
+          {
+            "prefix": "OMEGARED",
+            "count": 1
+          }
+        ],
+        "funny-brick": [
+          {
+            "prefix": "IRONMANMODEL",
+            "count": 8
+          },
+          {
+            "prefix": "IRONFIST",
+            "count": 7
+          },
+          {
+            "prefix": "IRONMANMK",
+            "count": 6
+          },
+          {
+            "prefix": "SPIDERMAN",
+            "count": 3
+          },
+          {
+            "prefix": "INVINCIBLEIRONMAN",
+            "count": 2
+          },
+          {
+            "prefix": "BATMAN",
+            "count": 2
+          },
+          {
+            "prefix": "COSMICGHOSTRIDER",
+            "count": 2
+          },
+          {
+            "prefix": "THEJOKER",
+            "count": 2
+          },
+          {
+            "prefix": "SUPERIORIRONMAN",
+            "count": 2
+          },
+          {
+            "prefix": "RONIN",
+            "count": 2
+          },
+          {
+            "prefix": "INVINCIBLEIRONMANMODEL",
+            "count": 2
+          },
+          {
+            "prefix": "BLACKPANTHER",
+            "count": 1
+          },
+          {
+            "prefix": "STARMAN",
+            "count": 1
+          },
+          {
+            "prefix": "ELECTRO",
+            "count": 1
+          },
+          {
+            "prefix": "ARES",
+            "count": 1
+          },
+          {
+            "prefix": "STARGIRL",
+            "count": 1
+          },
+          {
+            "prefix": "BOOSTERGOLD",
+            "count": 1
+          },
+          {
+            "prefix": "BLUEBEETLE",
+            "count": 1
+          },
+          {
+            "prefix": "KIDFLASH",
+            "count": 1
+          },
+          {
+            "prefix": "IRONMANRESCUESUIT",
+            "count": 1
+          }
+        ],
+        "mb": [
+          {
+            "prefix": "MB",
+            "count": 76
+          }
+        ],
+        "zkj.-brick": [
+          {
+            "prefix": "GREENLANTERN",
+            "count": 14
+          },
+          {
+            "prefix": "REDLANTERN",
+            "count": 9
+          },
+          {
+            "prefix": "YELLOWLANTERN",
+            "count": 8
+          },
+          {
+            "prefix": "ORANGELANTERN",
+            "count": 4
+          },
+          {
+            "prefix": "WHITELANTERN",
+            "count": 3
+          },
+          {
+            "prefix": "DOCTORBEDLAM",
+            "count": 2
+          },
+          {
+            "prefix": "STARSAPPHIRE",
+            "count": 2
+          },
+          {
+            "prefix": "EVILSTAR",
+            "count": 2
+          },
+          {
+            "prefix": "STARMAN",
+            "count": 2
+          },
+          {
+            "prefix": "VIGILANTE",
+            "count": 1
+          },
+          {
+            "prefix": "REDLANTERNRAZER",
+            "count": 1
+          },
+          {
+            "prefix": "GRAFTOREN",
+            "count": 1
+          },
+          {
+            "prefix": "KIRRTKALLAK",
+            "count": 1
+          },
+          {
+            "prefix": "JAVELIN",
+            "count": 1
+          },
+          {
+            "prefix": "SOJOURNERMULLEIN",
+            "count": 1
+          },
+          {
+            "prefix": "REDLANTERNATROCITUS",
+            "count": 1
+          },
+          {
+            "prefix": "DOCTORSIVANA",
+            "count": 1
+          },
+          {
+            "prefix": "MANTIS",
+            "count": 1
+          },
+          {
+            "prefix": "ZJK",
+            "count": 1
+          },
+          {
+            "prefix": "YELLOWLANTERNSUPERMAN",
+            "count": 1
+          }
+        ],
+        "dt": [
+          {
+            "prefix": "DT",
+            "count": 75
+          }
+        ],
+        "prck": [
+          {
+            "prefix": "GD",
+            "count": 50
+          },
+          {
+            "prefix": "GA",
+            "count": 16
+          },
+          {
+            "prefix": "GXL",
+            "count": 8
+          },
+          {
+            "prefix": "GL",
+            "count": 1
+          }
+        ],
+        "custombricks": [
+          {
+            "prefix": "GREENLANTERN",
+            "count": 5
+          },
+          {
+            "prefix": "KATNISSEVERDEEN",
+            "count": 3
+          },
+          {
+            "prefix": "HUMANTORCH",
+            "count": 2
+          },
+          {
+            "prefix": "CAPTAINKIRK",
+            "count": 2
+          },
+          {
+            "prefix": "DREGONSPENGLER",
+            "count": 2
+          },
+          {
+            "prefix": "DRRAYMONDSTANZ",
+            "count": 2
+          },
+          {
+            "prefix": "DRPETERVENKMAN",
+            "count": 2
+          },
+          {
+            "prefix": "WINSTONZEDDMORE",
+            "count": 2
+          },
+          {
+            "prefix": "SILVERSURFER",
+            "count": 2
+          },
+          {
+            "prefix": "JESUS",
+            "count": 2
+          },
+          {
+            "prefix": "PEETAMELLARK",
+            "count": 2
+          },
+          {
+            "prefix": "SPOCK",
+            "count": 2
+          },
+          {
+            "prefix": "SINESTROCYBORGSUPERMAN",
+            "count": 1
+          },
+          {
+            "prefix": "STEEL",
+            "count": 1
+          },
+          {
+            "prefix": "YELLOWLANTERNBATMAN",
+            "count": 1
+          },
+          {
+            "prefix": "VICTORIANBATMAN",
+            "count": 1
+          },
+          {
+            "prefix": "JASONVOORHEES",
+            "count": 1
+          },
+          {
+            "prefix": "FREDDYKRUEGER",
+            "count": 1
+          },
+          {
+            "prefix": "ABRAHAMLINCOLN",
+            "count": 1
+          },
+          {
+            "prefix": "V",
+            "count": 1
+          }
+        ],
+        "top-mountain-brick": [
+          {
+            "prefix": "IRONMANMK",
+            "count": 43
+          },
+          {
+            "prefix": "WARMACHINEMK",
+            "count": 5
+          },
+          {
+            "prefix": "WHIPLASHMKII",
+            "count": 2
+          },
+          {
+            "prefix": "SAKAARIANIRONMAN",
+            "count": 2
+          },
+          {
+            "prefix": "TONYSTARK",
+            "count": 2
+          },
+          {
+            "prefix": "RONIN",
+            "count": 2
+          },
+          {
+            "prefix": "SUNWUKONG",
+            "count": 1
+          },
+          {
+            "prefix": "CAPTAINMARVEL",
+            "count": 1
+          },
+          {
+            "prefix": "JOKER",
+            "count": 1
+          },
+          {
+            "prefix": "IRONPATRIOT",
+            "count": 1
+          },
+          {
+            "prefix": "THEMANDALORIAN",
+            "count": 1
+          },
+          {
+            "prefix": "LOKI",
+            "count": 1
+          },
+          {
+            "prefix": "IRONPATRIOTMK",
+            "count": 1
+          },
+          {
+            "prefix": "LUNASNOW",
+            "count": 1
+          },
+          {
+            "prefix": "IRONMONGER",
+            "count": 1
+          },
+          {
+            "prefix": "INVINCIBLEIRONMAN",
+            "count": 1
+          },
+          {
+            "prefix": "ULTIMATEULTRON",
+            "count": 1
+          },
+          {
+            "prefix": "CAPTAINAMERICA",
+            "count": 1
+          },
+          {
+            "prefix": "THOR",
+            "count": 1
+          },
+          {
+            "prefix": "TMB",
+            "count": 1
+          }
+        ],
+        "d-made": [
+          {
+            "prefix": "TERMINATORT",
+            "count": 3
+          },
+          {
+            "prefix": "THRANDUIL",
+            "count": 3
+          },
+          {
+            "prefix": "JAIMELANNISTER",
+            "count": 3
+          },
+          {
+            "prefix": "JONSNOW",
+            "count": 2
+          },
+          {
+            "prefix": "DIREWOLF",
+            "count": 2
+          },
+          {
+            "prefix": "JASONBOURNE",
+            "count": 2
+          },
+          {
+            "prefix": "BAELORTARGARYEN",
+            "count": 2
+          },
+          {
+            "prefix": "DUNCANTHETALL",
+            "count": 2
+          },
+          {
+            "prefix": "SAMWELLTARLY",
+            "count": 2
+          },
+          {
+            "prefix": "MAHAKALA",
+            "count": 2
+          },
+          {
+            "prefix": "WHITEWALKER",
+            "count": 2
+          },
+          {
+            "prefix": "PYRO",
+            "count": 1
+          },
+          {
+            "prefix": "DEMOGORGON",
+            "count": 1
+          },
+          {
+            "prefix": "GENERALGRIEVOUS",
+            "count": 1
+          },
+          {
+            "prefix": "GUYVER",
+            "count": 1
+          },
+          {
+            "prefix": "NEDSTARK",
+            "count": 1
+          },
+          {
+            "prefix": "ROBBSTARK",
+            "count": 1
+          },
+          {
+            "prefix": "DARTHVADER",
+            "count": 1
+          },
+          {
+            "prefix": "BRITNEYSPEARS",
+            "count": 1
+          },
+          {
+            "prefix": "THEJOKER",
+            "count": 1
+          }
+        ],
+        "bunka-bricks": [
+          {
+            "prefix": "SHOCKERRIDERNO",
+            "count": 6
+          },
+          {
+            "prefix": "SHOCKERSENTOUIN",
+            "count": 3
+          },
+          {
+            "prefix": "KAMENRIDERBLACKRX",
+            "count": 3
+          },
+          {
+            "prefix": "ULTRAMAN",
+            "count": 2
+          },
+          {
+            "prefix": "KAIJU",
+            "count": 2
+          },
+          {
+            "prefix": "SHINKAMENRIDER",
+            "count": 2
+          },
+          {
+            "prefix": "BATMANTEDDYBEAR",
+            "count": 1
+          },
+          {
+            "prefix": "FLASHTEDDYBEAR",
+            "count": 1
+          },
+          {
+            "prefix": "KAMENRIDERICHIGOU",
+            "count": 1
+          },
+          {
+            "prefix": "KAMENRIDERNIGO",
+            "count": 1
+          },
+          {
+            "prefix": "GODZILLA",
+            "count": 1
+          },
+          {
+            "prefix": "KAMENRIDERV",
+            "count": 1
+          },
+          {
+            "prefix": "MEGAMAN",
+            "count": 1
+          },
+          {
+            "prefix": "VOLTRON",
+            "count": 1
+          },
+          {
+            "prefix": "BALTANSEIJIN",
+            "count": 1
+          },
+          {
+            "prefix": "KAMENRIDERAMAZON",
+            "count": 1
+          },
+          {
+            "prefix": "RIDERMAN",
+            "count": 1
+          },
+          {
+            "prefix": "KAMENRIDERX",
+            "count": 1
+          },
+          {
+            "prefix": "KAMENRIDERSTRONGER",
+            "count": 1
+          },
+          {
+            "prefix": "ELECTROWAVEHUMANTACKLE",
+            "count": 1
+          }
+        ],
+        "my": [
+          {
+            "prefix": "MY",
+            "count": 69
+          }
+        ],
+        "ok": [
+          {
+            "prefix": "OK",
+            "count": 68
+          },
+          {
+            "prefix": "WINTERSOLDIER",
+            "count": 1
+          }
+        ],
+        "excelsior-custom": [
+          {
+            "prefix": "QUESTION",
+            "count": 5
+          },
+          {
+            "prefix": "BLUELANTERN",
+            "count": 4
+          },
+          {
+            "prefix": "BLACKADAM",
+            "count": 4
+          },
+          {
+            "prefix": "PARALLAX",
+            "count": 4
+          },
+          {
+            "prefix": "GREENLANTERN",
+            "count": 3
+          },
+          {
+            "prefix": "DEADMAN",
+            "count": 3
+          },
+          {
+            "prefix": "SHAZAM",
+            "count": 3
+          },
+          {
+            "prefix": "VIXEN",
+            "count": 3
+          },
+          {
+            "prefix": "ANIMALMAN",
+            "count": 2
+          },
+          {
+            "prefix": "ATOMSMASHER",
+            "count": 2
+          },
+          {
+            "prefix": "ZOOM",
+            "count": 2
+          },
+          {
+            "prefix": "BLACKLIGHTNING",
+            "count": 2
+          },
+          {
+            "prefix": "KYLERAYNER",
+            "count": 2
+          },
+          {
+            "prefix": "ORION",
+            "count": 2
+          },
+          {
+            "prefix": "SUPERBOY",
+            "count": 2
+          },
+          {
+            "prefix": "ERADICATOR",
+            "count": 2
+          },
+          {
+            "prefix": "WHITERABBIT",
+            "count": 2
+          },
+          {
+            "prefix": "HUGOSTRANGE",
+            "count": 2
+          },
+          {
+            "prefix": "BLACKBEETLE",
+            "count": 2
+          },
+          {
+            "prefix": "REDTORNADO",
+            "count": 1
+          }
+        ],
+        "yang-yang": [
+          {
+            "prefix": "BLUEMARVEL",
+            "count": 4
+          },
+          {
+            "prefix": "QUICKSILVER",
+            "count": 3
+          },
+          {
+            "prefix": "POLARIS",
+            "count": 2
+          },
+          {
+            "prefix": "MULTIPLEMAN",
+            "count": 2
+          },
+          {
+            "prefix": "CASSANDRALANG",
+            "count": 2
+          },
+          {
+            "prefix": "WOLVERINE",
+            "count": 2
+          },
+          {
+            "prefix": "MOONKNIGHT",
+            "count": 2
+          },
+          {
+            "prefix": "WASP",
+            "count": 2
+          },
+          {
+            "prefix": "SANDMAN",
+            "count": 2
+          },
+          {
+            "prefix": "ELSABLOODSTONE",
+            "count": 1
+          },
+          {
+            "prefix": "DOCTORDRUID",
+            "count": 1
+          },
+          {
+            "prefix": "TAEWON",
+            "count": 1
+          },
+          {
+            "prefix": "EMMAFROST",
+            "count": 1
+          },
+          {
+            "prefix": "QUASAR",
+            "count": 1
+          },
+          {
+            "prefix": "RICTOR",
+            "count": 1
+          },
+          {
+            "prefix": "SILVERSABLE",
+            "count": 1
+          },
+          {
+            "prefix": "CITIZENV",
+            "count": 1
+          },
+          {
+            "prefix": "ENCHANTRESS",
+            "count": 1
+          },
+          {
+            "prefix": "NOVA",
+            "count": 1
+          },
+          {
+            "prefix": "ATLAS",
+            "count": 1
+          }
+        ],
+        "leqo-leqo": [
+          {
+            "prefix": "SPIDERMAN",
+            "count": 7
+          },
+          {
+            "prefix": "JIANGSHI",
+            "count": 3
+          },
+          {
+            "prefix": "IRONSPIDER",
+            "count": 3
+          },
+          {
+            "prefix": "ROBOCOP",
+            "count": 3
+          },
+          {
+            "prefix": "VALENTINOROSSI",
+            "count": 2
+          },
+          {
+            "prefix": "HANAMICHISAKURAGI",
+            "count": 2
+          },
+          {
+            "prefix": "GOLDLIGHTAN",
+            "count": 2
+          },
+          {
+            "prefix": "THEJOKER",
+            "count": 2
+          },
+          {
+            "prefix": "IRONMANMODEL",
+            "count": 2
+          },
+          {
+            "prefix": "IRONMANMK",
+            "count": 2
+          },
+          {
+            "prefix": "KAMENRIDERBLACKRX",
+            "count": 1
+          },
+          {
+            "prefix": "NARUTOUZUMAKI",
+            "count": 1
+          },
+          {
+            "prefix": "MICHAELJACKSON",
+            "count": 1
+          },
+          {
+            "prefix": "BATMANARKHAMKNIGHT",
+            "count": 1
+          },
+          {
+            "prefix": "SUPPAMAN",
+            "count": 1
+          },
+          {
+            "prefix": "STEPHENCURRY",
+            "count": 1
+          },
+          {
+            "prefix": "LEBRONJAMES",
+            "count": 1
+          },
+          {
+            "prefix": "MICHAELJORDAN",
+            "count": 1
+          },
+          {
+            "prefix": "SCOTTIEPIPPEN",
+            "count": 1
+          },
+          {
+            "prefix": "DENNISRODMAN",
+            "count": 1
+          }
+        ],
+        "fig-fablabs": [
+          {
+            "prefix": "SPIDERMAN",
+            "count": 3
+          },
+          {
+            "prefix": "DAREDEVIL",
+            "count": 2
+          },
+          {
+            "prefix": "FLYINGDUTCHMANCREWMAN",
+            "count": 2
+          },
+          {
+            "prefix": "PADMENABERRIE",
+            "count": 2
+          },
+          {
+            "prefix": "MACEWINDU",
+            "count": 2
+          },
+          {
+            "prefix": "ANAKINSKYWALKER",
+            "count": 2
+          },
+          {
+            "prefix": "SAULGOODMAN",
+            "count": 1
+          },
+          {
+            "prefix": "SILVERSURFER",
+            "count": 1
+          },
+          {
+            "prefix": "MAGNETO",
+            "count": 1
+          },
+          {
+            "prefix": "ELIZABETH",
+            "count": 1
+          },
+          {
+            "prefix": "JAMESDOAKES",
+            "count": 1
+          },
+          {
+            "prefix": "SQUIDWARD",
+            "count": 1
+          },
+          {
+            "prefix": "GRAILKNIGHT",
+            "count": 1
+          },
+          {
+            "prefix": "SYMBIOTESCIENTIST",
+            "count": 1
+          },
+          {
+            "prefix": "GEORGEMCHALE",
+            "count": 1
+          },
+          {
+            "prefix": "PINTEL",
+            "count": 1
+          },
+          {
+            "prefix": "GLENNQUAGMIRE",
+            "count": 1
+          },
+          {
+            "prefix": "ASAJJVENTRESS",
+            "count": 1
+          },
+          {
+            "prefix": "CAPTAINSAOFENG",
+            "count": 1
+          },
+          {
+            "prefix": "JEDITEMPLEGUARD",
+            "count": 1
+          }
+        ]
+      },
+      "_status_file": "herobloks_catalog.json"
+    },
+    {
       "source_id": "human_evaluation",
       "status": "blocked_local_or_interactive",
       "reason": "needs_reviewer_sessions",
-      "created_at": "2026-09-25T20:47:36.132354+00:00",
+      "created_at": "2026-09-25T20:56:37.648470+00:00",
       "_status_file": "human_evaluation.json"
     },
     {
       "source_id": "ldraw_official_library",
       "status": "complete",
       "exit_code": 0,
-      "created_at": "2026-09-25T20:45:37.325775+00:00",
+      "created_at": "2026-09-25T20:50:43.738416+00:00",
       "parts_indexed": 4352,
       "previews_rendered": 0,
       "license_counts": {
@@ -293,14 +7219,14 @@
       "source_id": "legacy_game_assets",
       "status": "blocked_local_or_interactive",
       "reason": "needs_local_game_files_or_preserved_archives",
-      "created_at": "2026-09-25T20:47:36.132354+00:00",
+      "created_at": "2026-09-25T20:56:37.648470+00:00",
       "_status_file": "legacy_game_assets.json"
     },
     {
       "source_id": "lego_face_vae",
       "status": "training_face_corpus_indexed",
       "exit_code": 0,
-      "created_at": "2026-09-25T20:46:14.903962+00:00",
+      "created_at": "2026-09-25T20:51:24.594105+00:00",
       "source_commit": "01c55ce88d57d8bb5674f14a8afcc9121d9b4877",
       "schema": "lego-face-vae-dataset-index-summary/v1",
       "processor_version": "lego-face-vae-dataset-index/v1",
@@ -354,11 +7280,11 @@
       "source_id": "lego_pick_a_brick_full",
       "status": "complete",
       "exit_code": 0,
-      "created_at": "2026-09-25T20:45:28.828346+00:00",
+      "created_at": "2026-09-25T20:50:34.907020+00:00",
       "snapshot": {
         "schema": "lego-pick-a-brick-snapshot/v1",
         "processor_version": "lego-pick-a-brick-snapshot/v1",
-        "created_at": "2026-09-25T20:45:27.419815+00:00",
+        "created_at": "2026-09-25T20:50:33.492764+00:00",
         "locale": "en-US",
         "query": "",
         "endpoint": "https://www.lego.com/api/graphql/PickABrickQuery",
@@ -397,7 +7323,7 @@
       },
       "crosswalk": {
         "schema": "pab-rebrickable-crosswalk-summary/v1",
-        "created_at": "2026-09-25T20:45:28.674026+00:00",
+        "created_at": "2026-09-25T20:50:34.752923+00:00",
         "processor_version": "pab-rebrickable-crosswalk/v1",
         "pab_elements": 17241,
         "exact_rebrickable_element_matches": 17235,
@@ -424,28 +7350,28 @@
       "source_id": "licensed_reference_books",
       "status": "blocked_local_or_interactive",
       "reason": "needs_local_purchased_or_scanned_book_files",
-      "created_at": "2026-09-25T20:47:36.132354+00:00",
+      "created_at": "2026-09-25T20:56:37.648470+00:00",
       "_status_file": "licensed_reference_books.json"
     },
     {
       "source_id": "manufacturing_validation",
       "status": "blocked_local_or_interactive",
       "reason": "needs_printed_physical_samples_and_measurements",
-      "created_at": "2026-09-25T20:47:36.132354+00:00",
+      "created_at": "2026-09-25T20:56:37.648470+00:00",
       "_status_file": "manufacturing_validation.json"
     },
     {
       "source_id": "mecabricks_bulk_assets",
       "status": "blocked_local_or_interactive",
       "reason": "needs_export/API_or_approved_bulk_acquisition_path",
-      "created_at": "2026-09-25T20:47:36.132354+00:00",
+      "created_at": "2026-09-25T20:56:37.648470+00:00",
       "_status_file": "mecabricks_bulk_assets.json"
     },
     {
       "source_id": "minifig_svg_decals",
       "status": "complete",
       "exit_code": 0,
-      "created_at": "2026-09-25T20:46:09.972479+00:00",
+      "created_at": "2026-09-25T20:51:19.539919+00:00",
       "git_commit": "5c4d6b27aafb2c1e777de358b8a49ea1efe327ba",
       "files": 221,
       "total_bytes": 21120940,
@@ -482,16 +7408,15 @@
     },
     {
       "source_id": "official_lego_zip_bundles",
-      "created_at": "2026-09-25T20:46:01.548511+00:00",
+      "created_at": "2026-09-25T20:50:55.260334+00:00",
       "bundle_count": 12,
-      "complete": 0,
-      "failed": 12,
+      "complete": 12,
+      "failed": 0,
       "bundles": [
         {
           "bundle_id": "minifigure_40th",
-          "status": "bundle_index_complete",
           "schema": "zip-bundle-index-summary/v1",
-          "created_at": "2026-09-25T20:45:38.985441+00:00",
+          "created_at": "2026-09-25T20:50:44.094529+00:00",
           "processor_version": "zip-bundle-index/v1",
           "source_url": "https://www.lego.com/cdn/cs/aboutus/assets/bltc241695af5a4e401/assets.zip",
           "zip_sha256": "f5158696ebfe21ab0f459a5db228f5e3277e6a7307d446cae0b426c6d42a65b3",
@@ -507,13 +7432,14 @@
             ".png": 1
           },
           "hashed_entries": 5,
-          "unhashed_large_entries": 0
+          "unhashed_large_entries": 0,
+          "status": "complete",
+          "index_status": "bundle_index_complete"
         },
         {
           "bundle_id": "lego_games_25_year",
-          "status": "bundle_index_complete",
           "schema": "zip-bundle-index-summary/v1",
-          "created_at": "2026-09-25T20:45:40.900909+00:00",
+          "created_at": "2026-09-25T20:50:44.615732+00:00",
           "processor_version": "zip-bundle-index/v1",
           "source_url": "https://www.lego.com/cdn/cs/aboutus/assets/bltfd3ccb605641c314/LEGO_Games_Asset_Bundle.zip",
           "zip_sha256": "137ba183956c49df19ae28c7c57fe86dfd9b8bc23744f58b768976b4738ddaa8",
@@ -530,13 +7456,14 @@
             ".tif": 3
           },
           "hashed_entries": 15,
-          "unhashed_large_entries": 0
+          "unhashed_large_entries": 0,
+          "status": "complete",
+          "index_status": "bundle_index_complete"
         },
         {
           "bundle_id": "skywalker_jedi",
-          "status": "bundle_index_complete",
           "schema": "zip-bundle-index-summary/v1",
-          "created_at": "2026-09-25T20:45:43.419941+00:00",
+          "created_at": "2026-09-25T20:50:45.916280+00:00",
           "processor_version": "zip-bundle-index/v1",
           "source_url": "https://www.lego.com/cdn/cs/catalog/assets/blt814631c7161a8fbe/Jedi.zip",
           "zip_sha256": "d5ee35b51e81b2122a34e67cf9b3e9688f0c1f0d0a14a41e3c98d7d84754816a",
@@ -551,13 +7478,14 @@
             ".png": 43
           },
           "hashed_entries": 43,
-          "unhashed_large_entries": 0
+          "unhashed_large_entries": 0,
+          "status": "complete",
+          "index_status": "bundle_index_complete"
         },
         {
           "bundle_id": "skywalker_dark_side",
-          "status": "bundle_index_complete",
           "schema": "zip-bundle-index-summary/v1",
-          "created_at": "2026-09-25T20:45:45.410295+00:00",
+          "created_at": "2026-09-25T20:50:46.723062+00:00",
           "processor_version": "zip-bundle-index/v1",
           "source_url": "https://www.lego.com/cdn/cs/catalog/assets/bltd21c93a75bb1fc88/Dark_Side.zip",
           "zip_sha256": "928955af090dd80780cfd44403c40965cd97d9c586d831e1d73ef8acc033061a",
@@ -572,13 +7500,14 @@
             ".png": 28
           },
           "hashed_entries": 28,
-          "unhashed_large_entries": 0
+          "unhashed_large_entries": 0,
+          "status": "complete",
+          "index_status": "bundle_index_complete"
         },
         {
           "bundle_id": "skywalker_hero",
-          "status": "bundle_index_complete",
           "schema": "zip-bundle-index-summary/v1",
-          "created_at": "2026-09-25T20:45:49.670384+00:00",
+          "created_at": "2026-09-25T20:50:48.899949+00:00",
           "processor_version": "zip-bundle-index/v1",
           "source_url": "https://www.lego.com/cdn/cs/catalog/assets/blt248569e8450ae5f3/Hero.zip",
           "zip_sha256": "8d67f5b8be26565835addc1a784ceee0759c744e124c0cb82c72ef856a565068",
@@ -593,13 +7522,14 @@
             ".png": 89
           },
           "hashed_entries": 89,
-          "unhashed_large_entries": 0
+          "unhashed_large_entries": 0,
+          "status": "complete",
+          "index_status": "bundle_index_complete"
         },
         {
           "bundle_id": "skywalker_villain",
-          "status": "bundle_index_complete",
           "schema": "zip-bundle-index-summary/v1",
-          "created_at": "2026-09-25T20:45:53.189653+00:00",
+          "created_at": "2026-09-25T20:50:50.586568+00:00",
           "processor_version": "zip-bundle-index/v1",
           "source_url": "https://www.lego.com/cdn/cs/catalog/assets/blt9a5602e35e69be8f/Villain.zip",
           "zip_sha256": "107a71a64dadfb394cf1132f4fd6feca0fde93686f122cea3ded430c5472f5e5",
@@ -614,13 +7544,14 @@
             ".png": 57
           },
           "hashed_entries": 57,
-          "unhashed_large_entries": 0
+          "unhashed_large_entries": 0,
+          "status": "complete",
+          "index_status": "bundle_index_complete"
         },
         {
           "bundle_id": "skywalker_scavenger",
-          "status": "bundle_index_complete",
           "schema": "zip-bundle-index-summary/v1",
-          "created_at": "2026-09-25T20:45:54.172795+00:00",
+          "created_at": "2026-09-25T20:50:51.161772+00:00",
           "processor_version": "zip-bundle-index/v1",
           "source_url": "https://www.lego.com/cdn/cs/catalog/assets/blt2eefd607fc52ab6c/Scavenger.zip",
           "zip_sha256": "af46ff27501daafba1c23d8f9415c4882220c56127bfdb7a523b3bc7cfba0e5f",
@@ -635,13 +7566,14 @@
             ".png": 12
           },
           "hashed_entries": 12,
-          "unhashed_large_entries": 0
+          "unhashed_large_entries": 0,
+          "status": "complete",
+          "index_status": "bundle_index_complete"
         },
         {
           "bundle_id": "skywalker_scoundrel",
-          "status": "bundle_index_complete",
           "schema": "zip-bundle-index-summary/v1",
-          "created_at": "2026-09-25T20:45:55.708799+00:00",
+          "created_at": "2026-09-25T20:50:51.802471+00:00",
           "processor_version": "zip-bundle-index/v1",
           "source_url": "https://www.lego.com/cdn/cs/catalog/assets/blt626c99f2400b9da9/Scoundrel.zip",
           "zip_sha256": "eb4b75930110acc8b90fa8ae7dc66d1473db3389f839b9d8df81b0b3af50db5c",
@@ -656,13 +7588,14 @@
             ".png": 24
           },
           "hashed_entries": 24,
-          "unhashed_large_entries": 0
+          "unhashed_large_entries": 0,
+          "status": "complete",
+          "index_status": "bundle_index_complete"
         },
         {
           "bundle_id": "skywalker_bounty_hunter",
-          "status": "bundle_index_complete",
           "schema": "zip-bundle-index-summary/v1",
-          "created_at": "2026-09-25T20:45:56.958978+00:00",
+          "created_at": "2026-09-25T20:50:52.383140+00:00",
           "processor_version": "zip-bundle-index/v1",
           "source_url": "https://www.lego.com/cdn/cs/catalog/assets/bltf2b858555922801e/Bounty_Hunter.zip",
           "zip_sha256": "329b32d52ece15c2a7d7f448dcb6d325eb3347a96c594fe3b0a66fc2dcd369b9",
@@ -677,13 +7610,14 @@
             ".png": 18
           },
           "hashed_entries": 18,
-          "unhashed_large_entries": 0
+          "unhashed_large_entries": 0,
+          "status": "complete",
+          "index_status": "bundle_index_complete"
         },
         {
           "bundle_id": "skywalker_astromech",
-          "status": "bundle_index_complete",
           "schema": "zip-bundle-index-summary/v1",
-          "created_at": "2026-09-25T20:45:57.663853+00:00",
+          "created_at": "2026-09-25T20:50:52.838686+00:00",
           "processor_version": "zip-bundle-index/v1",
           "source_url": "https://www.lego.com/cdn/cs/catalog/assets/blt9f0021b547d9d9f5/Astromech.zip",
           "zip_sha256": "e9a405115faa75b674722798435065377d77335894828ab3718f5ad0b6bbfd8e",
@@ -698,13 +7632,14 @@
             ".png": 20
           },
           "hashed_entries": 20,
-          "unhashed_large_entries": 0
+          "unhashed_large_entries": 0,
+          "status": "complete",
+          "index_status": "bundle_index_complete"
         },
         {
           "bundle_id": "skywalker_protocol",
-          "status": "bundle_index_complete",
           "schema": "zip-bundle-index-summary/v1",
-          "created_at": "2026-09-25T20:45:59.561122+00:00",
+          "created_at": "2026-09-25T20:50:53.335519+00:00",
           "processor_version": "zip-bundle-index/v1",
           "source_url": "https://www.lego.com/cdn/cs/catalog/assets/bltaefd80825ac1b1b8/Protocol.zip",
           "zip_sha256": "0a2997fd66fbcb0fb5322c29b4234feaa35ae059c8200b1597cd48d2d83037f2",
@@ -719,13 +7654,14 @@
             ".png": 13
           },
           "hashed_entries": 13,
-          "unhashed_large_entries": 0
+          "unhashed_large_entries": 0,
+          "status": "complete",
+          "index_status": "bundle_index_complete"
         },
         {
           "bundle_id": "skywalker_extra",
-          "status": "bundle_index_complete",
           "schema": "zip-bundle-index-summary/v1",
-          "created_at": "2026-09-25T20:46:01.373066+00:00",
+          "created_at": "2026-09-25T20:50:55.086264+00:00",
           "processor_version": "zip-bundle-index/v1",
           "source_url": "https://www.lego.com/cdn/cs/catalog/assets/bltdf5a538c4d3523d9/Extras.zip",
           "zip_sha256": "a6c21f97f37707f5d57cf18c18a48301a679bc2864797bc99f4a552966034bf9",
@@ -740,17 +7676,19 @@
             ".png": 73
           },
           "hashed_entries": 73,
-          "unhashed_large_entries": 0
+          "unhashed_large_entries": 0,
+          "status": "complete",
+          "index_status": "bundle_index_complete"
         }
       ],
-      "status": "partial",
+      "status": "complete",
       "_status_file": "official_lego_zip_bundles.json"
     },
     {
       "source_id": "rebrickable_bulk",
       "status": "complete",
       "exit_code": 0,
-      "created_at": "2026-09-25T20:45:12.758027+00:00",
+      "created_at": "2026-09-25T20:50:19.531663+00:00",
       "counts": {
         "physical_samples": 17226,
         "figure_reference_assets": 17226,
@@ -801,7 +7739,7 @@
       "source_id": "rioforce_face_svg",
       "status": "candidate_geometry_requires_semantic_review",
       "exit_code": 0,
-      "created_at": "2026-09-25T20:46:10.077198+00:00",
+      "created_at": "2026-09-25T20:51:19.905558+00:00",
       "schema": "rioforce-face-svg-profile-summary/v1",
       "processor_version": "rioforce-face-svg-profile/v1",
       "face_like_svg_records": 38,
@@ -821,7 +7759,7 @@
       "source_id": "rioforce_lego_textures",
       "status": "complete",
       "exit_code": 0,
-      "created_at": "2026-09-25T20:46:03.408446+00:00",
+      "created_at": "2026-09-25T20:50:56.941562+00:00",
       "git_commit": "7f602f70a160499138693d8e163be2d338e23049",
       "files": 245,
       "total_bytes": 16744055,
@@ -874,17 +7812,112 @@
       "_status_file": "rioforce_lego_textures.json"
     },
     {
+      "source_id": "theme_era_profiles",
+      "status": "aggregate_profiles_ready",
+      "exit_code": 0,
+      "created_at": "2026-09-25T20:50:35.875112+00:00",
+      "schema": "minifigure-theme-era-profile-summary/v1",
+      "processor_version": "minifigure-theme-era-profile/v1",
+      "physical_samples": 17226,
+      "top_level_theme_profiles": 123,
+      "era_profiles": 6,
+      "profile_records": 129,
+      "largest_theme_profiles": [
+        {
+          "name": "City",
+          "figure_count": 1974
+        },
+        {
+          "name": "Star Wars",
+          "figure_count": 1479
+        },
+        {
+          "name": "Ninjago",
+          "figure_count": 1046
+        },
+        {
+          "name": "Collectible Minifigures",
+          "figure_count": 899
+        },
+        {
+          "name": "Friends",
+          "figure_count": 878
+        },
+        {
+          "name": "Town",
+          "figure_count": 758
+        },
+        {
+          "name": "Super Heroes Marvel",
+          "figure_count": 741
+        },
+        {
+          "name": "Seasonal",
+          "figure_count": 683
+        },
+        {
+          "name": "Harry Potter",
+          "figure_count": 599
+        },
+        {
+          "name": "Disney",
+          "figure_count": 509
+        },
+        {
+          "name": "Castle",
+          "figure_count": 475
+        },
+        {
+          "name": "Super Heroes DC",
+          "figure_count": 438
+        },
+        {
+          "name": "Educational and Dacta",
+          "figure_count": 392
+        },
+        {
+          "name": "Books",
+          "figure_count": 381
+        },
+        {
+          "name": "BrickLink Designer Program",
+          "figure_count": 363
+        },
+        {
+          "name": "unknown",
+          "figure_count": 318
+        },
+        {
+          "name": "Minecraft",
+          "figure_count": 281
+        },
+        {
+          "name": "LEGO Ideas and CUUSOO",
+          "figure_count": 274
+        },
+        {
+          "name": "Sports",
+          "figure_count": 253
+        },
+        {
+          "name": "Gear",
+          "figure_count": 249
+        }
+      ],
+      "_status_file": "theme_era_profiles.json"
+    },
+    {
       "source_id": "tt_games_assets",
       "status": "blocked_local_or_interactive",
       "reason": "needs_legally_obtained_local_game_installations",
-      "created_at": "2026-09-25T20:47:36.132354+00:00",
+      "created_at": "2026-09-25T20:56:37.648470+00:00",
       "_status_file": "tt_games_assets.json"
     },
     {
       "source_id": "uefn_canonical_renders",
       "status": "blocked_local_or_interactive",
       "reason": "needs_local_UEFN_installation_and_controlled_capture",
-      "created_at": "2026-09-25T20:47:36.132354+00:00",
+      "created_at": "2026-09-25T20:56:37.648470+00:00",
       "_status_file": "uefn_canonical_renders.json"
     },
     {
@@ -892,12 +7925,12 @@
       "processor_version": "training-source-web-profile/v1",
       "source_id": "bobs_customs",
       "requested_url": "https://bobscustoms.co.uk/",
-      "created_at": "2026-09-25T20:47:28.739731+00:00",
+      "created_at": "2026-09-25T20:56:30.596423+00:00",
       "status": "ok",
       "final_url": "https://bobscustoms.co.uk/password",
       "content_type": "text/html; charset=utf-8",
       "content_bytes": 215857,
-      "content_sha256": "abee98bf6b0ca1d91586c4738de6b2a198892801f8daeaa37fe6ac3b05b4c2d8",
+      "content_sha256": "6810b84eeab368c27a9de84276e19c04448f64f0ee06f08888d0f06a7e03f90d",
       "image_count": 1,
       "link_count": 5,
       "image_urls": [
@@ -916,7 +7949,7 @@
       "processor_version": "training-source-web-profile/v1",
       "source_id": "bricklink_studio_minifig",
       "requested_url": "https://studiohelp.bricklink.com/hc/en-us/articles/5877834417303-Creating-a-decorated-minifig",
-      "created_at": "2026-09-25T20:47:34.114662+00:00",
+      "created_at": "2026-09-25T20:56:35.300126+00:00",
       "status": "ok",
       "final_url": "https://studiohelp.bricklink.com/hc/en-us/articles/5877834417303-Creating-a-decorated-minifig",
       "content_type": "text/html; charset=utf-8",
@@ -949,12 +7982,12 @@
       "processor_version": "training-source-web-profile/v1",
       "source_id": "fortnite_lego_styles",
       "requested_url": "https://dev.epicgames.com/documentation/fortnite/lego-asset-inventory-in-fortnite-creative",
-      "created_at": "2026-09-25T20:47:35.189884+00:00",
+      "created_at": "2026-09-25T20:56:36.740320+00:00",
       "status": "ok",
       "final_url": "https://dev.epicgames.com/documentation/fortnite/lego-asset-inventory-in-fortnite-creative",
       "content_type": "text/html; charset=utf-8",
-      "content_bytes": 403372,
-      "content_sha256": "5f55e28dd18b887b181f2f823a7de8be6a143a24d4325ed30204d7a4a8d5b18f",
+      "content_bytes": 403360,
+      "content_sha256": "67e0071ee1ac3544380005afea39cc9eb5e3fb9825b54d6b696d522b887d3717",
       "image_count": 182,
       "link_count": 152,
       "image_urls": [
@@ -1153,12 +8186,12 @@
       "processor_version": "training-source-web-profile/v1",
       "source_id": "ldraw_updates",
       "requested_url": "https://library.ldraw.org/updates",
-      "created_at": "2026-09-25T20:47:29.821415+00:00",
+      "created_at": "2026-09-25T20:56:31.803721+00:00",
       "status": "ok",
       "final_url": "https://library.ldraw.org/updates",
       "content_type": "text/html; charset=utf-8",
       "content_bytes": 248840,
-      "content_sha256": "bba0e6f6f36e44b0a715d1905bb3227750ba4f318914d1c334970edb026959ba",
+      "content_sha256": "96517964b0f9c65f6121a157363c583a68231477b92a75c33ccd29abf7401716",
       "image_count": 112,
       "link_count": 308,
       "image_urls": [
@@ -1192,12 +8225,12 @@
       "processor_version": "training-source-web-profile/v1",
       "source_id": "lego_pick_a_brick_minifig",
       "requested_url": "https://www.lego.com/en-us/pick-and-build/pick-a-brick?category=7",
-      "created_at": "2026-09-25T20:47:32.182616+00:00",
+      "created_at": "2026-09-25T20:56:34.340836+00:00",
       "status": "ok",
       "final_url": "https://www.lego.com/en-us/pick-and-build/pick-a-brick?category=7",
       "content_type": "text/html; charset=utf-8",
       "content_bytes": 775684,
-      "content_sha256": "d1b5a2aed43e8ee2a1246798f60e66c9dae06eeb71e82bb34bd165ee04f53582",
+      "content_sha256": "d7243ef5c577f5f5176decccb30b03f9962c9b8cf400e2606da325dde8d052a1",
       "image_count": 63,
       "link_count": 527,
       "image_urls": [
@@ -1284,12 +8317,12 @@
       "processor_version": "training-source-web-profile/v1",
       "source_id": "mecabricks",
       "requested_url": "https://www.mecabricks.com/",
-      "created_at": "2026-09-25T20:47:34.328357+00:00",
+      "created_at": "2026-09-25T20:56:35.757008+00:00",
       "status": "ok",
       "final_url": "https://www.mecabricks.com/",
       "content_type": "text/html; charset=UTF-8",
-      "content_bytes": 24644,
-      "content_sha256": "99771ee0732833ebc294500bc04022f2e11f367326faaa877fc17b79a0ecd5a6",
+      "content_bytes": 24452,
+      "content_sha256": "b109570db4e0ca9c4f0b78a9715ebb7e1622442dfa16731ce93c3319fc92e999",
       "image_count": 12,
       "link_count": 70,
       "image_urls": [
@@ -1307,7 +8340,8 @@
         "https://d1xez26aurxsp6.cloudfront.net/renderings/jyAgKj/6ab6829226bfa.jpg"
       ],
       "outbound_hosts": {
-        "www.mecabricks.com": 61,
+        "mecabricks.com": 48,
+        "www.mecabricks.com": 13,
         "twitter.com": 2,
         "www.facebook.com": 2,
         "www.patreon.com": 1,
