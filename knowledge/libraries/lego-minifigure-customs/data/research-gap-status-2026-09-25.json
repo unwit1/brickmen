@@ -1,0 +1,145 @@
+{
+  "snapshot_id": "brickmen-research-gap-status-2026-09-25",
+  "created_at": "2026-09-25",
+  "purpose": "Consolidate the highest-value remaining corpus and supervision gaps after migration and the first post-migration audit.",
+  "priority_order": [
+    {
+      "priority": "critical",
+      "gap": "exact_flat_official_print_art",
+      "status": "partial",
+      "store_next": [
+        "canonical component-ID crosswalks for rioforce/LDraw flat maps",
+        "approved/local Mecabricks UV and official-decoration assets",
+        "official game texture extracts from legally obtained local installations",
+        "reconstructed flat maps derived from controlled captures where no texture source exists"
+      ]
+    },
+    {
+      "priority": "critical",
+      "gap": "source_to_lego_translation_pairs",
+      "status": "identity_pairing_strong_semantic_labels_partial",
+      "store_next": [
+        "normal-source appearance references for all 2494 Fortnite LEGO Style identity pairs",
+        "preserve/simplify/omit/exaggerate/mould/accessory semantic differences",
+        "exact film episode frame comic panel game skin and promo-art appearance IDs",
+        "pair confidence and competing source hypotheses"
+      ]
+    },
+    {
+      "priority": "critical",
+      "gap": "multi_view_physical_ground_truth",
+      "status": "blocked_on_capture_and_local_materialization",
+      "store_next": [
+        "front rear side top/bottom turntable views where useful",
+        "macro head torso arm hip leg headgear/accessory crops",
+        "calibrated color and scale metadata",
+        "component-level hashes and provenance"
+      ]
+    },
+    {
+      "priority": "critical",
+      "gap": "asset_level_rights_and_provenance",
+      "status": "schema_ready_population_ongoing",
+      "store_next": [
+        "permission basis per materialized asset",
+        "source occurrence and snapshot",
+        "hash",
+        "allowed use scope",
+        "redistribution/commercial-use distinction"
+      ]
+    },
+    {
+      "priority": "very_high",
+      "gap": "facial_expression_landmarks",
+      "status": "labels_strong_landmarks_partial",
+      "store_next": [
+        "eye brow mouth landmark coordinates",
+        "probabilistic expression labels",
+        "era/theme/head-substrate stratification",
+        "reverse-face pair relationships"
+      ]
+    },
+    {
+      "priority": "very_high",
+      "gap": "official_digital_only_variants",
+      "status": "discovery_strong_raw_assets_partial",
+      "store_next": [
+        "Skywalker Saga bundle assets",
+        "TT/legacy game models and textures",
+        "UEFN controlled views",
+        "physical counterpart crosswalks",
+        "full official game-title reconciliation"
+      ]
+    },
+    {
+      "priority": "very_high",
+      "gap": "mask_headgear_decision_pairs",
+      "status": "initial_unresolved_queue_resolved",
+      "store_next": [
+        "larger balanced route set across themes and eras",
+        "matched source-to-LEGO decision pairs",
+        "silhouette-vs-graphic dependence metrics",
+        "mould reuse vs new-mould labels"
+      ]
+    },
+    {
+      "priority": "high",
+      "gap": "custom_style_extensions_and_negative_controls",
+      "status": "source_census_strong_sample_admission_partial",
+      "store_next": [
+        "permitted custom samples with deterministic features",
+        "nearest official-style comparison",
+        "typed rejection reasons",
+        "failed AI generations and matched positive/negative controls"
+      ]
+    },
+    {
+      "priority": "high",
+      "gap": "production_template_alignment",
+      "status": "dimensions_known_physical_calibration_pending",
+      "store_next": [
+        "normalized mm/surface coordinate templates",
+        "measured-part validation",
+        "real print registration and survivability results",
+        "machine-specific production templates separated from research reconstructions"
+      ]
+    },
+    {
+      "priority": "broad_coverage",
+      "gap": "catalog_market_and_history",
+      "status": "partially_ingested",
+      "store_next": [
+        "run complete Rebrickable bulk minifigure census and integrity checks",
+        "full BrickLink/Rebrickable/LEGO/LDraw identifier crosswalk",
+        "historical/retired maker archives",
+        "long-tail compatible-brand code families and aliases",
+        "complete accessory catalogs",
+        "time-series price observations",
+        "social release feed observations where supported",
+        "user collection reconciliation against canonical release/component IDs"
+      ]
+    },
+    {
+      "priority": "broad_coverage",
+      "gap": "film_game_and_reference_materialization",
+      "status": "pipelines_ready_execution_partial",
+      "store_next": [
+        "verified direct-to-video film registry",
+        "local film frame extraction and state clustering",
+        "automatic character/component crops",
+        "view classification",
+        "quality scoring",
+        "embedding clusters",
+        "current LDraw pattern index run"
+      ]
+    }
+  ],
+  "blockers": [
+    "physical official figures and calibrated camera/turntable workflow for ground truth",
+    "local copies of game/video assets for exhaustive extraction",
+    "BrickLink API credentials for some automated enrichment",
+    "local/network materialization of high-volume binary corpora",
+    "some primary-source verification for historical/dead customizer catalogs"
+  ],
+  "durable_storage_rule": "Git stores schemas, manifests, normalized facts, crosswalks, derived features, decisions, hashes and provenance. High-volume raw imagery/video/game assets remain in approved local research storage and are referenced by stable IDs/hashes."
+}
