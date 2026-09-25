@@ -357,7 +357,9 @@ def main() -> None:
                 "set_occurrences": occurrences,
                 "component_inventory_ids": figure_inventory_ids,
                 "component_count_resolved": len(component_rows),
-                "bricklink_catalog_url": f"https://www.bricklink.com/v2/catalog/catalogitem.page?M={fig_num}",
+                "bricklink_minifigure_id": None,
+                "bricklink_catalog_url": None,
+                "bricklink_crosswalk_status": "unresolved_do_not_infer_from_rebrickable_fig_num",
                 "processor_version": PROCESSOR_VERSION,
             }
             sf.write(json.dumps(sample, ensure_ascii=False) + "\n")
