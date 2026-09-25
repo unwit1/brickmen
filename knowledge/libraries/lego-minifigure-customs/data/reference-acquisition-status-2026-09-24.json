@@ -36,11 +36,28 @@
       "source_snapshot": "data/physical-census-latest.json"
     },
     "next_needed": [
-      "resolve the 318 figures with no observed set occurrence",
-      "investigate the single figure without resolved component inventory",
+      "reconcile the 318 figures with no observed set occurrence against secondary/primary catalogs",
+      "externally confirm the fig-011590 Minifigure Factory Figure zero-part catalog exception",
       "crosswalk Rebrickable component IDs to BrickLink/LEGO/LDraw identifiers",
       "materialize selected visual references into local content-addressed storage"
-    ]
+    ],
+    "exception_queue": {
+      "source": "data/physical-census-exceptions-latest.json",
+      "no_set_occurrence_count": 318,
+      "no_component_inventory_count": 1,
+      "no_component_inventory_records": [
+        {
+          "fig_num": "fig-011590",
+          "name": "Minifigure Factory Figure",
+          "rebrickable_num_parts": 0,
+          "component_inventory_ids": [
+            "106762"
+          ],
+          "disposition": "retain_as_explicit_catalog_exception_pending_external_confirmation",
+          "note": "The current Rebrickable row reports zero parts; do not fabricate a component inventory."
+        }
+      ]
+    }
   },
   "games": {
     "status": "discovery_and_local_index_pipeline_ready_full_title_census_incomplete",
