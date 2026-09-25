@@ -477,6 +477,38 @@ jobs:
           PY
           exit 0
 
+      - name: Ingest BricksFinder caption supervision
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          src="$OUT/sources/bricksfinder_caption_rows"; mkdir -p "$src"
+          python tools/knowledge/ingest_bricksfinder_caption_dataset.py \
+            --current-samples "$OUT/sources/rebrickable/output/physical_samples.jsonl" \
+            --output-dir "$src/output"
+          rc=$?
+          RC="$rc" SRC="$src" python - <<'PY'
+          import json,os,shutil
+          from datetime import datetime,timezone
+          from pathlib import Path
+          src=Path(os.environ["SRC"]);rc=int(os.environ["RC"]);manifest={}
+          p=src/"output/manifest.json"
+          if p.exists():
+              try: manifest=json.loads(p.read_text())
+              except Exception: pass
+          status={"source_id":"bricksfinder_caption_rows","status":"complete" if rc==0 else "failed",
+                  "exit_code":rc,"created_at":datetime.now(timezone.utc).isoformat(),**manifest}
+          Path(os.environ["OUT"],"status/bricksfinder_caption_rows.json").write_text(json.dumps(status,indent=2))
+          if rc==0:
+              dest=Path(os.environ["DEST"])
+              shutil.copy2(p,dest/"bricksfinder-caption-manifest-latest.json")
+              for old in dest.glob("bricksfinder-caption-records-part-*.jsonl"):
+                  old.unlink()
+              for shard in sorted((src/"output").glob("records-part-*.jsonl")):
+                  shutil.copy2(shard,dest/("bricksfinder-caption-"+shard.name))
+          PY
+          exit 0
+
       - name: Fortnite LEGO Style TranslationPair census
         continue-on-error: true
         shell: bash
