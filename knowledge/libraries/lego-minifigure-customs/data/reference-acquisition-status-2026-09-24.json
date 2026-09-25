@@ -3,10 +3,16 @@
   "created_at": "2026-09-24",
   "objective": "Acquire and resolve every practical official standard-minifigure visual design across physical sets, games and films.",
   "physical": {
-    "status": "current_rebrickable_bulk_census_complete",
+    "status": "bulk_census_completed_refresh_running",
     "known_catalog_scale": {
       "bricklink_records": 19250,
-      "brickset_records": 19240
+      "brickset_records": 19240,
+      "rebrickable_physical_samples": 17226,
+      "rebrickable_component_records": 82411,
+      "rebrickable_printed_component_records": 30375,
+      "rebrickable_component_reference_assets": 82273,
+      "rebrickable_figures_without_component_inventory": 1,
+      "rebrickable_figures_without_set_occurrence": 318
     },
     "sources_ready": [
       "Rebrickable bulk CSV",
@@ -19,9 +25,7 @@
     "improvements": [
       "v2 resolves minifigure component inventories and component image references when Rebrickable bulk part tables are present"
     ],
-    "blockers": [
-      "Raw reference URLs have not yet been bulk-downloaded"
-    ],
+    "blockers": [],
     "completed_snapshot": {
       "created_at": "2026-09-25T19:24:38.011715+00:00",
       "physical_samples": 17226,
@@ -57,7 +61,14 @@
           "note": "The current Rebrickable row reports zero parts; do not fabricate a component inventory."
         }
       ]
-    }
+    },
+    "last_completed_bulk_snapshot": "2026-09-25T19:33:23.932286+00:00",
+    "remaining": [
+      "resolve the single figure without component inventory",
+      "investigate 318 figures without set-occurrence links",
+      "crosswalk catalog records to canonical character/incarnation/outfit identities",
+      "materialize high-value reference images locally where permitted"
+    ]
   },
   "games": {
     "status": "discovery_and_local_index_pipeline_ready_full_title_census_incomplete",
@@ -101,14 +112,21 @@
     ]
   },
   "structured_patterns": {
-    "status": "ldraw_indexer_ready_not_run_in_this_session",
+    "status": "ldraw_index_completed_crosswalk_expansion_running",
     "indexer": "tools/knowledge/index_ldraw_minifig_patterns.py",
-    "purpose": "Pattern/geometry evidence for heads, torsos, hips, legs, arms and headgear; community reconstruction, not LEGO authorship."
+    "purpose": "Pattern/geometry evidence for heads, torsos, hips, legs, arms and headgear; community reconstruction, not LEGO authorship.",
+    "last_completed_parts_indexed": 4352
   },
   "translation_pairs": {
-    "status": "schema_ready_pair_population_pending",
+    "status": "fortnite_identity_pair_population_complete_semantic_annotation_pending",
     "schema": "data/translation-pair-schema.json",
-    "purpose": "Pair exact external source appearance with official LEGO interpretation to learn what LEGO preserves, simplifies, omits, or moves into new moulds/accessories."
+    "purpose": "Pair exact external source appearance with official LEGO interpretation to learn what LEGO preserves, simplifies, omits, or moves into new moulds/accessories.",
+    "fortnite": {
+      "exact_identity_pairs": 2494,
+      "pairs_with_both_images": 2480,
+      "missing_lego_preferred_image": 14,
+      "deterministic_visual_features_complete": 2480
+    }
   },
   "completion_rule": "Do not claim complete training coverage until every physical catalog record, every in-scope official game title/character design and every in-scope film visual design is enumerated, source-linked, deduplicated and either resolved or explicitly listed as unresolved.",
   "updated_at": "2026-09-25"
