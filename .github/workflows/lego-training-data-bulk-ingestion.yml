@@ -237,6 +237,9 @@ jobs:
           pair=src/"output/fortnite_lego_translation_pairs.jsonl"
           if pair.exists() and pair.stat().st_size < 8_000_000:
               shutil.copy2(pair,Path(os.environ["DEST"])/"fortnite-lego-translation-pairs-latest.jsonl")
+          queue=src/"output/fortnite_lego_semantic_annotation_queue.jsonl"
+          if queue.exists() and queue.stat().st_size < 8_000_000:
+              shutil.copy2(queue,Path(os.environ["DEST"])/"fortnite-lego-semantic-annotation-queue-latest.jsonl")
           PY
           exit 0
 
@@ -256,7 +259,7 @@ jobs:
           profile lego_pick_a_brick_minifig "https://www.lego.com/en-us/pick-and-build/pick-a-brick?category=7"
           profile bricklink_studio_minifig "https://studiohelp.bricklink.com/hc/en-us/articles/5877834417303-Creating-a-decorated-minifig"
           profile mecabricks "https://www.mecabricks.com/"
-          profile fortnite_lego_styles "https://www.fortnite.com/news/introducing-lego-styles-for-fortnite-outfits"
+          profile fortnite_lego_styles "https://dev.epicgames.com/documentation/fortnite/lego-asset-inventory-in-fortnite-creative"
           exit 0
 
       - name: Record local-only and interactive blockers
