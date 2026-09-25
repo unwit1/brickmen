@@ -1,0 +1,220 @@
+{
+  "schema_version": "0.1",
+  "researched_at": "2026-09-24",
+  "purpose": "Seed evidence for compatible-brand code families. Prefixes are observations, not proof of common factories, ownership or permanent brand identity.",
+  "families": [
+    {
+      "brand": "World Minifigures",
+      "aliases": [
+        "WM"
+      ],
+      "observed_product_prefixes": [
+        "WM"
+      ],
+      "evidence": [
+        {
+          "source": "Down The Blocks WM/MG database",
+          "source_date": "2022-08-24",
+          "examples": [
+            "WM116",
+            "WM127",
+            "WM200"
+          ]
+        }
+      ],
+      "confidence": "catalog-high"
+    },
+    {
+      "brand": "XINH",
+      "aliases": [
+        "Xinh"
+      ],
+      "observed_product_prefixes": [
+        "XH"
+      ],
+      "evidence": [
+        {
+          "source": "Down The Blocks XINH database",
+          "source_date": "2023-04-18",
+          "examples": [
+            "XH001",
+            "XH019",
+            "XH2029"
+          ]
+        },
+        {
+          "source": "Brixtoy",
+          "source_date": "2026-09-24",
+          "examples": [
+            "XH1825",
+            "XH1226",
+            "XH742"
+          ]
+        }
+      ],
+      "confidence": "catalog-high"
+    },
+    {
+      "brand": "XINH / G-family relationship candidate",
+      "aliases": [
+        "G",
+        "GH-brand"
+      ],
+      "observed_product_prefixes": [
+        "G"
+      ],
+      "evidence": [
+        {
+          "source": "Down The Blocks XINH & GH-Brand database",
+          "source_date": "2023-04-18",
+          "examples": [
+            "G0001",
+            "G0016"
+          ]
+        },
+        {
+          "source": "Down The Blocks 2026 release coverage",
+          "source_date": "2026-06-26",
+          "examples": [
+            "G0199"
+          ]
+        }
+      ],
+      "confidence": "community-corroborated",
+      "notes": "Treat relationship as a candidate/alias history, not a proven ownership/factory identity."
+    },
+    {
+      "brand": "Koruit",
+      "aliases": [
+        "KORUIT"
+      ],
+      "observed_product_prefixes": [
+        "XP"
+      ],
+      "wave_or_set_codes": [
+        "KT"
+      ],
+      "evidence": [
+        {
+          "source": "Down The Blocks Koruit/KDL database",
+          "source_date": "2022-08-22",
+          "examples": [
+            "XP001",
+            "XP451",
+            "XP1016"
+          ]
+        },
+        {
+          "source": "Down The Blocks release preview",
+          "source_date": "2022",
+          "examples": [
+            "KT1059"
+          ]
+        },
+        {
+          "source": "Brixtoy",
+          "source_date": "2026-09-24",
+          "examples": [
+            "XP590",
+            "XP715"
+          ]
+        }
+      ],
+      "confidence": "catalog-high"
+    },
+    {
+      "brand": "KDL",
+      "aliases": [],
+      "observed_product_prefixes": [
+        "K"
+      ],
+      "evidence": [
+        {
+          "source": "Down The Blocks Koruit/KDL database",
+          "source_date": "2022-08-22",
+          "examples": [
+            "K2001",
+            "K2014"
+          ]
+        },
+        {
+          "source": "Brixtoy",
+          "source_date": "2026-09-24",
+          "examples": [
+            "K2396",
+            "K2373"
+          ]
+        }
+      ],
+      "confidence": "catalog-high"
+    },
+    {
+      "brand": "POGO",
+      "aliases": [
+        "Pogo"
+      ],
+      "observed_product_prefixes": [
+        "PG"
+      ],
+      "wave_or_set_codes": [
+        "PG8xxx"
+      ],
+      "evidence": [
+        {
+          "source": "Down The Blocks POGO database",
+          "source_date": "2022-07-18",
+          "examples": [
+            "PG001",
+            "PG040"
+          ]
+        },
+        {
+          "source": "Down The Blocks 2026/2025 previews",
+          "examples": [
+            "PG2334",
+            "PG2343"
+          ]
+        }
+      ],
+      "confidence": "catalog-high"
+    },
+    {
+      "brand": "TV",
+      "aliases": [],
+      "observed_product_prefixes": [
+        "TV"
+      ],
+      "evidence": [
+        {
+          "source": "Down The Blocks 2026 Daredevil coverage",
+          "source_date": "2026-06-05",
+          "examples": [
+            "TV1173",
+            "TV1185",
+            "TV6221"
+          ]
+        }
+      ],
+      "confidence": "community-corroborated"
+    },
+    {
+      "brand": "TP",
+      "aliases": [],
+      "observed_product_prefixes": [],
+      "evidence": [
+        {
+          "source": "Down The Blocks 2026 Daredevil coverage",
+          "source_date": "2026-06-05"
+        }
+      ],
+      "confidence": "unverified",
+      "notes": "Brand is observed, but do not infer a stable code prefix until product-level evidence is ingested."
+    }
+  ],
+  "rules": [
+    "A code prefix can be reused, changed or sold under a reseller alias.",
+    "Set/wave code and individual figure code are separate fields.",
+    "One marketplace page is insufficient to infer maker relationships.",
+    "Keep code evidence dated so brand transitions can be represented over time."
+  ]
+}

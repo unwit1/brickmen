@@ -1,0 +1,638 @@
+{
+  "schema_version": "0.1",
+  "researched_at": "2026-09-24",
+  "note": "Anchor sources only. HeroBloks brand facets and reseller catalogs should expand this into a long-tail maker registry. Trust describes use, not an endorsement.",
+  "sources": [
+    {
+      "id": "lego",
+      "name": "LEGO",
+      "class": "primary_manufacturer",
+      "roles": [
+        "official_elements",
+        "themes",
+        "legal"
+      ],
+      "trust": "A",
+      "url": "https://www.lego.com/"
+    },
+    {
+      "id": "bricklink",
+      "name": "BrickLink",
+      "class": "structured_catalog_marketplace",
+      "roles": [
+        "official_catalog",
+        "identifiers",
+        "inventories",
+        "sold_price_guide",
+        "current_listings"
+      ],
+      "trust": "A/C",
+      "url": "https://www.bricklink.com/"
+    },
+    {
+      "id": "rebrickable",
+      "name": "Rebrickable",
+      "class": "structured_catalog",
+      "roles": [
+        "official_catalog",
+        "bulk_downloads",
+        "external_ids",
+        "user_collection"
+      ],
+      "trust": "C",
+      "url": "https://rebrickable.com/"
+    },
+    {
+      "id": "brickset",
+      "name": "Brickset",
+      "class": "structured_catalog",
+      "roles": [
+        "minifig_browse",
+        "theme_year_character_tags"
+      ],
+      "trust": "C",
+      "url": "https://brickset.com/minifigs"
+    },
+    {
+      "id": "brickognize",
+      "name": "Brickognize",
+      "class": "identification_service",
+      "roles": [
+        "photo_candidate_identification"
+      ],
+      "trust": "C",
+      "url": "https://brickognize.com/"
+    },
+    {
+      "id": "herobloks",
+      "name": "HeroBloks",
+      "class": "community_structured_catalog",
+      "roles": [
+        "custom_catalog",
+        "compatible_brand_catalog",
+        "historical_archive",
+        "brand_discovery",
+        "aliases"
+      ],
+      "trust": "C/E",
+      "url": "https://www.herobloks.com/"
+    },
+    {
+      "id": "brickeconomy",
+      "name": "BrickEconomy",
+      "class": "market_model_catalog",
+      "roles": [
+        "market_estimates",
+        "release_discovery"
+      ],
+      "trust": "C",
+      "url": "https://www.brickeconomy.com/"
+    },
+    {
+      "id": "brick4",
+      "name": "Brick4",
+      "class": "compatible_brand_catalog",
+      "roles": [
+        "brand_set_cross_reference",
+        "chinese_market_discovery"
+      ],
+      "trust": "C/E",
+      "url": "https://www.brick4.com/"
+    },
+    {
+      "id": "brixtoy",
+      "name": "Brixtoy",
+      "class": "reseller_catalog",
+      "roles": [
+        "compatible_release_discovery",
+        "current_price_observation",
+        "seller_aliases"
+      ],
+      "trust": "D",
+      "url": "https://brixtoy.com/"
+    },
+    {
+      "id": "customminifiguk",
+      "name": "CustomMinifig.co.uk",
+      "class": "review_release_archive",
+      "roles": [
+        "premium_custom_release_monitor",
+        "historical_reviews"
+      ],
+      "trust": "D/E",
+      "url": "https://www.customminifig.co.uk/"
+    },
+    {
+      "id": "citizenbrick",
+      "name": "Citizen Brick",
+      "class": "maker_primary",
+      "roles": [
+        "premium_customs",
+        "direct_price",
+        "release_history"
+      ],
+      "trust": "A",
+      "url": "https://citizenbrick.com/"
+    },
+    {
+      "id": "brickmania",
+      "name": "Brickmania",
+      "class": "maker_primary",
+      "roles": [
+        "historical_military_customs",
+        "accessories",
+        "direct_price"
+      ],
+      "trust": "A",
+      "url": "https://www.brickmania.com/"
+    },
+    {
+      "id": "unitedbricks",
+      "name": "United Bricks",
+      "class": "maker_primary",
+      "roles": [
+        "historical_military_customs",
+        "direct_price",
+        "parts"
+      ],
+      "trust": "A",
+      "url": "https://www.united-bricks.com/"
+    },
+    {
+      "id": "firestar",
+      "name": "FireStar Toys",
+      "class": "maker_reseller_primary",
+      "roles": [
+        "custom_prints",
+        "genuine_part_claims",
+        "direct_price",
+        "compatible_accessories"
+      ],
+      "trust": "A",
+      "url": "https://www.firestartoys.com/"
+    },
+    {
+      "id": "theminifigco",
+      "name": "The Minifig Co.",
+      "class": "maker_primary",
+      "roles": [
+        "custom_figures",
+        "printed_parts",
+        "accessories",
+        "direct_price"
+      ],
+      "trust": "A",
+      "url": "https://theminifigco.com/"
+    },
+    {
+      "id": "bricktactical",
+      "name": "BrickTactical",
+      "class": "maker_primary",
+      "roles": [
+        "custom_figures",
+        "injection_molded_accessories",
+        "printing"
+      ],
+      "trust": "A",
+      "url": "https://bricktactical.com/"
+    },
+    {
+      "id": "bigkidbrix",
+      "name": "BigKidBrix",
+      "class": "maker_primary",
+      "roles": [
+        "custom_figures",
+        "molded_accessories",
+        "cloth"
+      ],
+      "trust": "A",
+      "url": "https://bigkidbrix.com/"
+    },
+    {
+      "id": "avfigures",
+      "name": "AV Figures",
+      "class": "maker_primary",
+      "roles": [
+        "custom_figures",
+        "decals",
+        "clone_trooper_accessories"
+      ],
+      "trust": "A",
+      "url": "https://avfigures.com/"
+    },
+    {
+      "id": "jonak",
+      "name": "JONAK Toys",
+      "class": "maker_reseller_primary",
+      "roles": [
+        "uv_custom_figures",
+        "decals",
+        "accessories",
+        "direct_price"
+      ],
+      "trust": "A",
+      "url": "https://jonaktoys.com/"
+    },
+    {
+      "id": "gcc",
+      "name": "Grandpa Clone Customs",
+      "class": "maker_primary",
+      "roles": [
+        "pad_printed_figures",
+        "replica_and_official_helmet_variants",
+        "accessories",
+        "direct_price"
+      ],
+      "trust": "A",
+      "url": "https://grandpaclonecustom.com/"
+    },
+    {
+      "id": "cac",
+      "name": "Clone Army Customs",
+      "class": "maker_primary",
+      "roles": [
+        "clone_figures",
+        "helmets",
+        "weapons",
+        "build_a_fig"
+      ],
+      "trust": "A",
+      "url": "https://clonearmycustoms.com/"
+    },
+    {
+      "id": "brickforge",
+      "name": "BrickForge",
+      "class": "accessory_maker_primary",
+      "roles": [
+        "molded_accessories",
+        "modular_figure_parts",
+        "direct_price"
+      ],
+      "trust": "A",
+      "url": "https://brickforge.com/"
+    },
+    {
+      "id": "brickwarriors",
+      "name": "BrickWarriors",
+      "class": "accessory_maker_primary",
+      "roles": [
+        "weapons",
+        "armor",
+        "headgear",
+        "accessory_packs"
+      ],
+      "trust": "A",
+      "url": "https://www.brickwarriors.com/"
+    },
+    {
+      "id": "brickarms",
+      "name": "BrickArms",
+      "class": "accessory_maker_primary",
+      "roles": [
+        "weapons",
+        "military_accessories"
+      ],
+      "trust": "A",
+      "url": "https://www.brickarms.com/"
+    },
+    {
+      "id": "capemadness",
+      "name": "CapeMadness",
+      "class": "accessory_maker_primary",
+      "roles": [
+        "cloth",
+        "capes",
+        "flags",
+        "custom_runs"
+      ],
+      "trust": "A",
+      "url": "https://capemadness.com/"
+    },
+    {
+      "id": "eurobricks",
+      "name": "Eurobricks",
+      "class": "community_forum",
+      "roles": [
+        "terminology",
+        "historical_discussion",
+        "customizing_methods"
+      ],
+      "trust": "E/F",
+      "url": "https://www.eurobricks.com/"
+    },
+    {
+      "id": "reddit_lepin",
+      "name": "Reddit r/lepin",
+      "class": "community_forum",
+      "roles": [
+        "compatible_brand_aliases",
+        "quality_observations",
+        "release_discovery"
+      ],
+      "trust": "E/F",
+      "url": "https://www.reddit.com/r/lepin/"
+    },
+    {
+      "id": "downtheblocks",
+      "name": "Down The Blocks",
+      "class": "review_compatible_archive",
+      "roles": [
+        "compatible_brand_databases",
+        "product_code_history",
+        "release_previews",
+        "comparative_reviews"
+      ],
+      "trust": "D/E",
+      "url": "https://downtheblocks.com/"
+    },
+    {
+      "id": "brickscan",
+      "name": "BrickScan",
+      "class": "identification_service",
+      "roles": [
+        "photo_identification",
+        "collection_workflow",
+        "official_id_export"
+      ],
+      "trust": "C",
+      "url": "https://brickscan.com/"
+    },
+    {
+      "id": "minifigures_com",
+      "name": "Minifigures.com",
+      "class": "maker_primary",
+      "roles": [
+        "custom_figures",
+        "personalized_figures",
+        "film_tv_gaming_music_horror_catalog"
+      ],
+      "trust": "A",
+      "url": "https://minifigures.com/"
+    },
+    {
+      "id": "arealight",
+      "name": "Arealight Custom Works",
+      "class": "accessory_maker_primary",
+      "roles": [
+        "injection_molded_accessories",
+        "pad_printed_accessories",
+        "soft_plastic_parts"
+      ],
+      "trust": "A",
+      "url": "https://www.arealightcustoms.com/"
+    },
+    {
+      "id": "flickr_customfigs",
+      "name": "Flickr Custom LEGO Minifigs group",
+      "class": "historical_community_archive",
+      "roles": [
+        "customizer_history",
+        "decals",
+        "finished_figures",
+        "visual_provenance_leads"
+      ],
+      "trust": "E/F",
+      "url": "https://www.flickr.com/groups/customfigs/"
+    },
+    {
+      "id": "flickr_customization_fc",
+      "name": "Flickr LEGO Minifig Customization (FC)",
+      "class": "historical_community_archive",
+      "roles": [
+        "customizer_history",
+        "visual_provenance_leads"
+      ],
+      "trust": "E/F",
+      "url": "https://www.flickr.com/groups/custom_minifig/"
+    },
+    {
+      "id": "leyilebrick",
+      "name": "LeYiLe Brick",
+      "class": "maker_primary",
+      "roles": [
+        "premium_custom_figures",
+        "custom_parts",
+        "Manga_Brick",
+        "BrickTroops",
+        "full_custom_bodies"
+      ],
+      "trust": "A",
+      "url": "https://leyilebrick.com/"
+    },
+    {
+      "id": "lab9",
+      "name": "Lab9minifigs",
+      "class": "authorized_reseller_catalog",
+      "roles": [
+        "premium_customs",
+        "Leyile_authorized_reseller",
+        "UV_and_pad_printed_figures",
+        "material_provenance_claims"
+      ],
+      "trust": "D",
+      "url": "https://www.lab9minifigs.com/"
+    },
+    {
+      "id": "tracyminifigs",
+      "name": "TracyMinifigs",
+      "class": "reseller_catalog",
+      "roles": [
+        "asian_premium_customs",
+        "preorders",
+        "collaborations",
+        "maker_discovery"
+      ],
+      "trust": "D",
+      "url": "https://www.tracyminifigs.com/"
+    },
+    {
+      "id": "outsidebrick",
+      "name": "OutsideBrick",
+      "class": "reseller_catalog",
+      "roles": [
+        "asian_premium_customs",
+        "maker_index",
+        "historical_availability",
+        "price_observations"
+      ],
+      "trust": "D",
+      "url": "https://www.outsidebrick.com/"
+    },
+    {
+      "id": "legendcmoc",
+      "name": "Legend C MOC",
+      "class": "reseller_catalog",
+      "roles": [
+        "limited_premium_customs",
+        "maker_discovery",
+        "price_observations",
+        "social_channel_pointers"
+      ],
+      "trust": "D",
+      "url": "https://www.legendcmoc.com/"
+    },
+    {
+      "id": "engineerio",
+      "name": "Engineerio",
+      "class": "maker_primary",
+      "roles": [
+        "UV_custom_figures",
+        "small_batches",
+        "restocks"
+      ],
+      "trust": "A",
+      "url": "https://www.engineerio.com/"
+    },
+    {
+      "id": "penzora",
+      "name": "Penzora",
+      "class": "maker_primary",
+      "roles": [
+        "machine_printed_customs",
+        "genuine_LEGO_parts",
+        "bespoke_printing"
+      ],
+      "trust": "A",
+      "url": "https://penzora.co.uk/"
+    },
+    {
+      "id": "calypsocustoms",
+      "name": "Calypso Customs",
+      "class": "maker_primary",
+      "roles": [
+        "UV_custom_figures",
+        "PCC_series",
+        "molded_accessories"
+      ],
+      "trust": "A",
+      "url": "https://calypsocustoms.com/"
+    },
+    {
+      "id": "crazyfigs",
+      "name": "CrazyFigs",
+      "class": "maker_primary",
+      "roles": [
+        "adult_collectible_customs",
+        "genuine_LEGO_bases",
+        "injection_molded_accessories"
+      ],
+      "trust": "A",
+      "url": "https://crazyfigs.com/"
+    },
+    {
+      "id": "crazyminifigs",
+      "name": "CrazyMinifigs",
+      "class": "maker_reseller_hub",
+      "roles": [
+        "premium_customs",
+        "collaborations",
+        "UG_Minifigures",
+        "Asian_maker_discovery"
+      ],
+      "trust": "D",
+      "url": "https://crazyminifigs.com/"
+    },
+    {
+      "id": "brickranker",
+      "name": "Brick Ranker",
+      "class": "market_catalog",
+      "roles": [
+        "official_minifigure_price_discovery",
+        "theme_catalog"
+      ],
+      "trust": "C",
+      "url": "https://brickranker.com/"
+    }
+  ],
+  "maker_candidates_to_seed_from_herobloks": [
+    "Abnormal",
+    "Atomic Brick Toys",
+    "AV Figures",
+    "BigKidBrix",
+    "Brick Rebellion Customs",
+    "Brick Sanity",
+    "Brickmania",
+    "BrothersFigure",
+    "Calypso Customs",
+    "ChipChipCustom",
+    "Christo7108",
+    "Citizen Brick",
+    "CLC Minifigures",
+    "Clone Army Customs",
+    "Crazy Minifigs",
+    "Dargo",
+    "Decool",
+    "DLP",
+    "DY_Minifigs",
+    "Eagle",
+    "eclipseGRAFX",
+    "Engineerio",
+    "Evri House",
+    "Firestar Toys",
+    "G (2)",
+    "Grandpa Clone Customs"
+  ],
+  "compatible_brand_alias_candidates": [
+    "WM",
+    "XINH",
+    "Koruit",
+    "KDL",
+    "Kopf",
+    "POGO",
+    "G",
+    "Decool",
+    "Bela",
+    "Sheng Yuan",
+    "SY",
+    "Lele",
+    "World Minifigures",
+    "TV",
+    "TP",
+    "G (2)",
+    "GH-brand"
+  ],
+  "ingestion_policy": {
+    "primary_sources": "Prefer maker/manufacturer pages for product name, code, claimed materials/process, release and retail price.",
+    "catalogs": "Use for crosswalk/discovery; retain catalog-specific IDs and do not overwrite primary naming.",
+    "resellers": "Use for availability, seller aliases and price observations; maker attribution requires corroboration.",
+    "community": "Use for sightings, compatibility and quality observations with explicit confidence; never silently canonicalize anecdotes.",
+    "social": "Capture announcement permalink, timestamp and snapshot/hash because posts can disappear."
+  },
+  "maker_candidates_asian_premium": [
+    "LeYiLe Brick",
+    "Manga Brick",
+    "Minifigs.Factory",
+    "UG Minifigures",
+    "Dragon Brick",
+    "Outside Brick",
+    "ACE BURNING BRICK",
+    "Lab 9",
+    "Liberty",
+    "Top Mountain",
+    "Rainbow Brick",
+    "Saturday Brick",
+    "Baggles Studio",
+    "Nova-Figures",
+    "MAFgiure",
+    "SXBH Brick",
+    "CrazyFire",
+    "Soul Ghost Rose",
+    "Ripley",
+    "Feelings",
+    "Color Silk Road",
+    "Leaf",
+    "Dazzle Brick",
+    "80s Toyshop",
+    "Krakoan Brick",
+    "LatoFigs",
+    "MH",
+    "Mr J Brick",
+    "Earthly Brick",
+    "Day Dreams",
+    "Excelsior custom minifigures",
+    "Black Star",
+    "Toycat",
+    "Lifebrick",
+    "Richbrick"
+  ]
+}

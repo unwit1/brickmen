@@ -1,0 +1,54 @@
+{
+  "schema_version": "0.1",
+  "researched_at": "2026-09-24",
+  "sources": [
+    {
+      "id": "fortnite_lego_styles",
+      "authority": "epic_primary_official_lego_collaboration",
+      "value": "exceptional same-identity source->LEGO pair discovery",
+      "web_sources": [
+        "https://www.fortnite.com/news/introducing-lego-styles-for-fortnite-outfits",
+        "https://dev.epicgames.com/documentation/fortnite/lego-asset-inventory-in-fortnite-creative"
+      ],
+      "observed_scale": {
+        "initial_outfits_over": 1200,
+        "uefn_npc_styles_over": 500
+      },
+      "usage_status": "pair_metadata_and_official_web_reference; training rights require separate review",
+      "restrictions": [
+        "LEGO Brand Rules prohibit redistributing/extractable standalone LEGO assets.",
+        "Use official web presentations and metadata to identify transformations; do not assume UEFN asset extraction is permitted.",
+        "Brand/IP program assets can have additional restrictions."
+      ]
+    },
+    {
+      "id": "unity_lego_microgame",
+      "authority": "unity_lego_official_collaboration",
+      "value": [
+        "official digital minifigure prefab precedent",
+        "canonical digital geometry context",
+        "Astronaut/Adventurer/Pirate/Pizza Boy examples"
+      ],
+      "public_source": "https://learn.unity.com/",
+      "usage_status": "research_context_only_without_specific_authorization",
+      "restriction": "Current Unity Terms prohibit using Offering-derived data for ML/AI training, validation or development without prior authorization.",
+      "terms": "https://unity.com/legal/terms-of-service"
+    },
+    {
+      "id": "lego_minifigure_factory",
+      "authority": "lego_primary",
+      "url": "https://www.lego.com/en-us/minifigure-factory",
+      "value": [
+        "official custom torso composition vocabulary",
+        "official examples of user-selectable faces/headwear/legs/accessories",
+        "official personalized torso printing boundary"
+      ],
+      "usage_status": "official web reference; do not automate extraction beyond source-policy review",
+      "notes": [
+        "LEGO says Minifigure Factory allows patterns, designs and text on torso.",
+        "Create a Minifigure differs by using pre-printed PAB parts rather than custom torso art.",
+        "Factory terms require the submitting user to own/create uploaded design material."
+      ]
+    }
+  ]
+}

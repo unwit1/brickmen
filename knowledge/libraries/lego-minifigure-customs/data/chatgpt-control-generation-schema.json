@@ -1,0 +1,120 @@
+{
+  "schema_version": "0.1",
+  "protocol_id": "chatgpt-image-control-group",
+  "control_generation_packet": {
+    "experiment_id": "",
+    "run_id": "",
+    "provider": "chatgpt",
+    "provider_surface": "chat_image_generation",
+    "generated_at": "",
+    "prompt_schema_version": "0.1",
+    "compiler_version": "0.1",
+    "references": [
+      {
+        "reference_id": "",
+        "semantic_role": "identity_primary|identity_secondary|costume_front|costume_back|side_reference|face_closeup|mask_headgear|color_material|official_style_analogue|geometry_template|production_template",
+        "provenance_id": null,
+        "priority": 0,
+        "notes": []
+      }
+    ],
+    "target_identity": {
+      "subject": "",
+      "incarnation_version": "",
+      "source_appearance": "",
+      "outfit": "",
+      "expression": "",
+      "mask_headgear_state": "",
+      "accessories": []
+    },
+    "critical_features": [
+      {
+        "feature": "",
+        "priority": "P0|P1|P2",
+        "source_reference_ids": [],
+        "notes": []
+      }
+    ],
+    "transformation": {
+      "target": "",
+      "change_only": [],
+      "preserve_by_default": true
+    },
+    "structural_locks": {
+      "geometry_profile": "",
+      "canonical_parts": [],
+      "mould_choices": [],
+      "pose": "",
+      "camera_view": "",
+      "template_boundaries": []
+    },
+    "official_style": {
+      "profile": "",
+      "era": null,
+      "theme": null,
+      "analog_sample_ids": [],
+      "detail_density_target": null,
+      "facial_grammar": "",
+      "line_hierarchy": "",
+      "negative_space_strategy": "",
+      "mould_vs_print": []
+    },
+    "mask_translation": {
+      "route": "head_print|existing_headgear_plus_print|new_3d_part_plus_print|hybrid|not_applicable",
+      "rationale": "",
+      "existing_part_candidates": [],
+      "required_surface_prints": []
+    },
+    "allowed_changes": [],
+    "forbidden_changes": [],
+    "rendering": {
+      "view": "",
+      "projection": "",
+      "lighting": "",
+      "background": "",
+      "framing": "",
+      "transparent_background": false
+    },
+    "output": {
+      "target_type": "concept_render|catalog_render|flat_head_art|torso_front|torso_back|arm_art|leg_art|helmet_art|full_decal_sheet|new_part_concept|multi_view_sheet",
+      "production_process": null,
+      "dimensions_or_aspect": null
+    },
+    "evaluation": {
+      "source_fidelity_target": null,
+      "official_lego_likeness_target": null,
+      "production_feasibility_target": null,
+      "critical_feature_accuracy_target": null
+    }
+  },
+  "run_result": {
+    "run_id": "",
+    "provider_model_version": "unavailable_if_not_exposed",
+    "output_asset_ids": [],
+    "output_hashes": [],
+    "scores": {
+      "source_reference_fidelity": null,
+      "official_lego_likeness": null,
+      "production_feasibility": null,
+      "critical_feature_accuracy": null,
+      "edit_locality": null
+    },
+    "failures": [
+      {
+        "category": "identity_drift|wrong_version|missing_feature|invented_feature|color_error|mask_error|geometry_error|expression_error|style_error|production_error|other",
+        "severity": "critical|major|minor",
+        "description": ""
+      }
+    ],
+    "reviewer_notes": [],
+    "next_revision_hypothesis": null
+  },
+  "revision_record": {
+    "from_prompt_schema_version": "",
+    "to_prompt_schema_version": "",
+    "changed_fields": [],
+    "change_summary": "",
+    "hypothesis": "",
+    "expected_effect": ""
+  }
+}
