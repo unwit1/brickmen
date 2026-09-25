@@ -51,7 +51,9 @@ jobs:
           cp "$out/dc-legacy-normalized.jsonl" "$dest/dc-legacy-normalized-latest.jsonl"
           cp "$out/figure-release-candidates.jsonl" "$dest/figure-release-candidates-latest.jsonl"
           cp "$out/entity-resolution-review-queue.jsonl" "$dest/entity-resolution-review-queue-latest.jsonl"
+          cp "$out/entity-resolution-review-summary.json" "$dest/entity-resolution-review-summary-latest.json"
           cp "$out/collection-gap-candidates.jsonl" "$dest/collection-gap-candidates-latest.jsonl"
+          cp "$out/collection-gap-summary.json" "$dest/collection-gap-summary-latest.json"
           cp "$out/unresolved-code-prefixes.jsonl" "$dest/unresolved-code-prefixes-latest.jsonl"
           cp "$out/summary.json" "$dest/reconciliation-summary-latest.json"
 
