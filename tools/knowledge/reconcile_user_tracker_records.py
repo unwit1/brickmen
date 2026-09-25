@@ -77,6 +77,92 @@ def canonical_source_stub(rec, source_path):
         "bootleg": rec.get("bootleg"),
     }
 
+
+def raw_cell_map(rec):
+    return {str(x.get("column")): x.get("value") for x in (rec.get("nonempty_cells") or []) if x.get("column")}
+
+def dc_normalized_record(rec):
+    """Normalize one row from the lossless standalone DC workbook archive.
+
+    Rules are tab-specific and intentionally conservative. The raw archive remains canonical
+    source evidence; this derived layer exists for reconciliation/search only.
+    """
+    tab = rec.get("source_tab")
+    c = raw_cell_map(rec)
+    up = {k: str(v or "").strip() for k, v in c.items()}
+    header_tokens = {"HAVE","HAVE?","BEST","NAME","COLLECTION","ERA","YEAR","NUMBER","BRAND","IN COLLECTION?","LEGO ID","CLONE S/N"}
+    if rec.get("row_class") == "header_or_schema_hint":
+        return None
+    if sum(str(v).strip().upper() in header_tokens for v in up.values()) >= 2:
+        return None
+
+    field = {
+        "source_system": "user_google_sheet",
+        "source_title": "DC",
+        "source_tab": tab,
+        "source_row": rec.get("source_row"),
+        "source_last_modified": rec.get("source_last_modified"),
+        "record_class": "collection_target",
+        "canonical_resolution_status": "pending",
+        "derived_from": "dc-legacy-workbook-raw-2026-09-25.jsonl",
+        "ingestion_date": "2026-09-25",
+    }
+
+    # Stable observed schemas.
+    if tab == "Justice League":
+        field.update(ownership_status=up.get("A") or None, best_representation=up.get("B") or None,
+                     name=up.get("C") or None, era=up.get("D") or None, year=up.get("E") or None,
+                     collection=up.get("F") or None)
+    elif tab in {"Silver Age Misc", "Doom Patrol", "Suicide Squad", "Copy of Titans Collection", "Copy of DC Villains"}:
+        field.update(ownership_status=up.get("A") or None, best_representation=up.get("B") or None,
+                     name=up.get("C") or None, era=up.get("E") or None,
+                     year=up.get("F") or None if tab == "Silver Age Misc" else None,
+                     collection=(up.get("G") or up.get("F")) or None)
+    elif tab == "Copy of Justice Society":
+        field.update(best_representation=up.get("A") or None, ownership_status=up.get("B") or None,
+                     name=up.get("C") or None, identity=up.get("D") or None, era=up.get("E") or None,
+                     collection=up.get("G") or None, product_code=up.get("H") or None,
+                     parts_needed=up.get("J") or None)
+    elif tab == "Copy of Copy of DC - AQUAMAN":
+        field.update(name=up.get("C") or None, collection=up.get("G") or None)
+    elif tab == "Copy of New 52-Rebirth":
+        field.update(ownership_status=up.get("A") or None, name=up.get("B") or None,
+                     collection=up.get("E") or None)
+    elif tab in {"Copy of Post-Crisis-Flashpoint", "Copy of Justice League"}:
+        field.update(name=up.get("A") or None, collection=up.get("D") or None)
+    elif tab == "Copy of Justice Society 1":
+        field.update(collection=up.get("A") or None, name=up.get("B") or None,
+                     reference_image=up.get("C") or None, best_representation=up.get("D") or None,
+                     ownership_status=up.get("E") or None, era=up.get("F") or None,
+                     parts_needed=up.get("G") or None)
+    elif tab in {"Copy of Superman Collection", "Copy of Green Arrow Collection"}:
+        field.update(ownership_status=up.get("A") or None, best_representation=up.get("B") or None,
+                     name=up.get("C") or None, collection=up.get("D") or None)
+    elif tab == "Copy of DC - BATMAN":
+        field.update(section_context=up.get("A") or None, ownership_status=up.get("B") or None,
+                     best_representation=up.get("C") or None, name=up.get("D") or None,
+                     era=up.get("E") or None, lego_id=up.get("F") or None,
+                     product_code=up.get("G") or None)
+    elif tab == "Copy of DC - Nightwing":
+        field.update(name=up.get("C") or None)
+    elif tab == "Copy of Titans 1":
+        field.update(ownership_status=up.get("A") or None, best_representation=up.get("B") or None,
+                     name=up.get("C") or None, collection=up.get("F") or None)
+    elif tab == "Copy of DC 1":
+        # The copied header is stale/misaligned; observed data consistently uses C for the
+        # character/design name and E for collection. Preserve this as an explicit derived rule.
+        field.update(ownership_status=up.get("A") or None, name=up.get("C") or None,
+                     product_code=up.get("D") or None, collection=up.get("E") or None,
+                     schema_warning="stale_or_misaligned_header_observed")
+    else:
+        return None
+
+    if not field.get("name"):
+        return None
+    field["raw_cells"] = rec.get("nonempty_cells") or []
+    field["normalization_policy"] = "Tab-specific extraction from lossless raw archive; ambiguous semantics remain raw fields or warnings."
+    return field
+
 def load_crosswalk(path: Path):
     data = json.loads(path.read_text(encoding="utf-8"))
     prefix_map = defaultdict(list)
@@ -112,12 +198,25 @@ def main():
 
     input_files = []
     records = []
+    dc_normalized = []
     for root in (args.collection_dir, args.design_dir):
         for path in sorted(root.glob("*.jsonl")):
             if path.name in GENERATED_COLLECTION_FILES:
                 continue
             input_files.append(path)
             for rec in load_jsonl(path):
+                if path.name == "dc-legacy-workbook-raw-2026-09-25.jsonl":
+                    derived = dc_normalized_record(rec)
+                    if derived:
+                        dc_normalized.append(derived)
+                        name = source_name(derived)
+                        key = norm(name)
+                        if key:
+                            records.append({
+                                "normalized_name": key,
+                                **canonical_source_stub(derived, path),
+                            })
+                    continue
                 name = source_name(rec)
                 if not name:
                     continue
@@ -241,6 +340,7 @@ def main():
     write_jsonl("name-group-candidates.jsonl", group_rows)
     write_jsonl("strict-duplicate-candidates.jsonl", strict_rows)
     write_jsonl("product-code-brand-candidates.jsonl", code_rows)
+    write_jsonl("dc-legacy-normalized.jsonl", dc_normalized)
 
     unresolved_prefix = Counter(
         x.get("observed_prefix") or "UNKNOWN"
@@ -252,6 +352,7 @@ def main():
         "processor_version": VERSION,
         "input_files": [p.name for p in input_files],
         "input_records_with_names": len(records),
+        "dc_legacy_raw_rows_normalized": len(dc_normalized),
         "name_groups": len(group_rows),
         "cross_source_name_groups": sum(x["cross_source_candidate"] for x in group_rows),
         "groups_with_multiple_identities": sum("multiple_identities" in x["ambiguity_flags"] for x in group_rows),
