@@ -6,7 +6,7 @@
     {
       "id": "exact_flat_official_print_art",
       "priority": "critical",
-      "status": "catalog_crosswalk_running_candidate_layer_materialized_exact_links_partial",
+      "status": "catalog_crosswalk_candidate_layer_materialized_strict_exact_promotion_revalidation_running",
       "why": "Assembled renders hide curvature and back/side regions; flat maps are strongest supervision for template generation.",
       "sources": [
         "LDraw patterns",
@@ -16,9 +16,9 @@
         "BrickLink Studio reference templates"
       ],
       "next_actions": [
-        "review and promote the 10 exact part-ID links where rioforce identity is independently confirmed",
-        "resolve the 30 rioforce records without catalog figure candidates using theme/character aliases and direct part evidence",
-        "improve figure-name normalization for the 82 non-high-confidence figure candidate groups",
+        "rerun the tightened catalog-backed flat-art crosswalk and inspect any surviving strict links",
+        "independently verify surviving texture-to-component identities before canonical promotion",
+        "resolve rioforce records without catalog figure candidates using aliases/theme context/direct component evidence",
         "materialize Mecabricks official UV/decoration assets in approved local/network runtime",
         "extract official game texture files from local installations",
         "derive flat maps from controlled physical captures where no source texture exists"
@@ -36,8 +36,9 @@
         "2026-09-25 rioforce index: 129 semantic asset groups",
         "catalog-backed crosswalk: 99/129 rioforce records have Rebrickable figure candidates",
         "catalog-backed crosswalk: 88/129 have component candidates from actual candidate figure inventories",
-        "10 rioforce records currently have exact Rebrickable part-number = LDraw part-ID links",
-        "30 rioforce records remain without figure candidates; only 6 top figure matches currently meet the high-confidence heuristic"
+        "30 rioforce records remain without figure candidates; only 6 top figure matches currently meet the high-confidence heuristic",
+        "2026-09-25 audit found that the earlier 10 exact part-number joins were only ID-exact inside candidate inventories, not independently verified texture-to-component identity links",
+        "crosswalk logic was tightened so raw ID coincidences remain unverified and strict links require explicit surface role, high-confidence figure identity, and a decorated component print-of relationship"
       ]
     },
     {
