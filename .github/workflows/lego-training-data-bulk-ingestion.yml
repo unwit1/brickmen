@@ -337,6 +337,52 @@ jobs:
           PY
           exit 0
 
+      - name: Index LEGO face VAE training corpus
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          src="$OUT/sources/lego_face_vae"; mkdir -p "$src"
+          git clone --depth 1 https://github.com/iechevarria/lego-face-VAE.git "$src/repo"
+          rc=$?
+          if [ "$rc" = 0 ]; then
+            mkdir -p "$src/dataset"
+            unzip -q "$src/repo/dataset.zip" -d "$src/dataset"
+            rc=$?
+          fi
+          if [ "$rc" = 0 ]; then
+            python tools/knowledge/index_lego_face_vae_dataset.py \
+              --root "$src/dataset" \
+              --heads-csv "$src/repo/dataset_scripts/minifig-heads.csv" \
+              --output "$src/records.jsonl" \
+              --summary "$src/summary.json"
+            rc=$?
+          fi
+          RC="$rc" SRC="$src" python - <<'PY'
+          import json,os,shutil,subprocess
+          from datetime import datetime,timezone
+          from pathlib import Path
+          src=Path(os.environ["SRC"]);rc=int(os.environ["RC"]);summary={};commit=None
+          p=src/"summary.json"
+          if p.exists():
+              try: summary=json.loads(p.read_text())
+              except Exception: pass
+          if (src/"repo/.git").exists():
+              try: commit=subprocess.check_output(["git","-C",str(src/"repo"),"rev-parse","HEAD"],text=True).strip()
+              except Exception: pass
+          status={"source_id":"lego_face_vae","status":"complete" if rc==0 else "failed",
+                  "exit_code":rc,"created_at":datetime.now(timezone.utc).isoformat(),
+                  "source_commit":commit,**summary}
+          Path(os.environ["OUT"],"status/lego_face_vae.json").write_text(json.dumps(status,indent=2))
+          if rc==0:
+              dest=Path(os.environ["DEST"])
+              shutil.copy2(src/"summary.json",dest/"lego-face-vae-summary-latest.json")
+              records=src/"records.jsonl"
+              if records.exists() and records.stat().st_size < 8_000_000:
+                  shutil.copy2(records,dest/"lego-face-vae-records-latest.jsonl")
+          PY
+          exit 0
+
       - name: Build flat-art crosswalk candidates
         continue-on-error: true
         shell: bash
