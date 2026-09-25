@@ -389,6 +389,38 @@ jobs:
           PY
           exit 0
 
+      - name: Profile official LEGO ZIP raster assets
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          src="$OUT/sources/official_zip_rasters"; mkdir -p "$src"
+          python tools/knowledge/profile_official_zip_rasters.py \
+            --root "$OUT/sources/official_zip_bundles" \
+            --output "$src/records.jsonl" \
+            --summary "$src/summary.json"
+          rc=$?
+          RC="$rc" SRC="$src" python - <<'PY'
+          import json,os,shutil
+          from datetime import datetime,timezone
+          from pathlib import Path
+          src=Path(os.environ["SRC"]);rc=int(os.environ["RC"]);summary={}
+          p=src/"summary.json"
+          if p.exists():
+              try: summary=json.loads(p.read_text())
+              except Exception: pass
+          status={"source_id":"official_zip_raster_features","status":"complete" if rc==0 else "failed",
+                  "exit_code":rc,"created_at":datetime.now(timezone.utc).isoformat(),**summary}
+          Path(os.environ["OUT"],"status/official_zip_raster_features.json").write_text(json.dumps(status,indent=2))
+          if rc==0:
+              dest=Path(os.environ["DEST"])
+              shutil.copy2(p,dest/"official-lego-raster-feature-summary-latest.json")
+              q=src/"records.jsonl"
+              if q.exists() and q.stat().st_size < 8_000_000:
+                  shutil.copy2(q,dest/"official-lego-raster-features-latest.jsonl")
+          PY
+          exit 0
+
       - name: Build Skywalker digital-to-physical crosswalk candidates
         continue-on-error: true
         shell: bash
@@ -756,40 +788,6 @@ jobs:
           PY
           exit 0
 
-      - name: Build HeroBloks compact brand review queues
-        continue-on-error: true
-        shell: bash
-        run: |
-          set +e
-          src="$OUT/sources/herobloks"
-          python tools/knowledge/build_herobloks_brand_review_queues.py \
-            --analysis "$src/brand-gap-analysis.json" \
-            --stable-output "$src/stable-unmodeled-brands.jsonl" \
-            --top-output "$src/top-unmodeled-brands.jsonl" \
-            --summary "$src/brand-review-summary.json"
-          rc=$?
-          RC="$rc" SRC="$src" python - <<'PY'
-          import json,os,shutil
-          from datetime import datetime,timezone
-          from pathlib import Path
-          src=Path(os.environ["SRC"]);rc=int(os.environ["RC"]);summary={}
-          p=src/"brand-review-summary.json"
-          if p.exists():
-              try: summary=json.loads(p.read_text())
-              except Exception: pass
-          status={"source_id":"herobloks_brand_review_queues","status":"complete" if rc==0 else "failed",
-                  "exit_code":rc,"created_at":datetime.now(timezone.utc).isoformat(),**summary}
-          Path(os.environ["OUT"],"status/herobloks_brand_review_queues.json").write_text(json.dumps(status,indent=2))
-          if rc==0:
-              dest=Path(os.environ["DEST"])
-              shutil.copy2(src/"brand-review-summary.json",dest/"herobloks-brand-review-summary-latest.json")
-              for name in ("stable-unmodeled-brands.jsonl","top-unmodeled-brands.jsonl"):
-                  q=src/name
-                  if q.exists() and q.stat().st_size < 8_000_000:
-                      shutil.copy2(q,dest/("herobloks-"+name))
-          PY
-          exit 0
-
       - name: Snapshot HeroBloks full catalog index
         continue-on-error: true
         shell: bash
@@ -852,6 +850,73 @@ jobs:
           Path(os.environ["OUT"],"status/herobloks_brand_gaps.json").write_text(json.dumps(status,indent=2))
           if rc==0 and p.exists():
               shutil.copy2(p,Path(os.environ["DEST"])/"herobloks-brand-gap-analysis-latest.json")
+          PY
+          exit 0
+
+      - name: Build HeroBloks compact brand review queues
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          src="$OUT/sources/herobloks"
+          python tools/knowledge/build_herobloks_brand_review_queues.py \
+            --analysis "$src/brand-gaps.json" \
+            --stable-output "$src/stable-unmodeled-brands.jsonl" \
+            --top-output "$src/top-unmodeled-brands.jsonl" \
+            --summary "$src/brand-review-summary.json"
+          rc=$?
+          RC="$rc" SRC="$src" python - <<'PY'
+          import json,os,shutil
+          from datetime import datetime,timezone
+          from pathlib import Path
+          src=Path(os.environ["SRC"]);rc=int(os.environ["RC"]);summary={}
+          p=src/"brand-review-summary.json"
+          if p.exists():
+              try: summary=json.loads(p.read_text())
+              except Exception: pass
+          status={"source_id":"herobloks_brand_review_queues","status":"complete" if rc==0 else "failed",
+                  "exit_code":rc,"created_at":datetime.now(timezone.utc).isoformat(),**summary}
+          Path(os.environ["OUT"],"status/herobloks_brand_review_queues.json").write_text(json.dumps(status,indent=2))
+          if rc==0:
+              dest=Path(os.environ["DEST"])
+              shutil.copy2(src/"brand-review-summary.json",dest/"herobloks-brand-review-summary-latest.json")
+              for name in ("stable-unmodeled-brands.jsonl","top-unmodeled-brands.jsonl"):
+                  q=src/name
+                  if q.exists() and q.stat().st_size < 8_000_000:
+                      shutil.copy2(q,dest/("herobloks-"+name))
+          PY
+          exit 0
+
+      - name: Build catalog-backed compatible-brand candidates
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          src="$OUT/sources/herobloks"
+          python tools/knowledge/build_compatible_brand_catalog_candidates.py \
+            --brand-census "$src/brands.json" \
+            --crosswalk knowledge/libraries/lego-minifigure-customs/data/compatible-brand-code-crosswalk-seed.json \
+            --output "$src/compatible-brand-candidates.jsonl" \
+            --summary "$src/compatible-brand-candidate-summary.json"
+          rc=$?
+          RC="$rc" SRC="$src" python - <<'PY'
+          import json,os,shutil
+          from datetime import datetime,timezone
+          from pathlib import Path
+          src=Path(os.environ["SRC"]);rc=int(os.environ["RC"]);summary={}
+          p=src/"compatible-brand-candidate-summary.json"
+          if p.exists():
+              try: summary=json.loads(p.read_text())
+              except Exception: pass
+          status={"source_id":"compatible_brand_catalog_candidates","status":"complete" if rc==0 else "failed",
+                  "exit_code":rc,"created_at":datetime.now(timezone.utc).isoformat(),**summary}
+          Path(os.environ["OUT"],"status/compatible_brand_catalog_candidates.json").write_text(json.dumps(status,indent=2))
+          if rc==0:
+              dest=Path(os.environ["DEST"])
+              shutil.copy2(p,dest/"compatible-brand-catalog-candidate-summary-latest.json")
+              q=src/"compatible-brand-candidates.jsonl"
+              if q.exists() and q.stat().st_size < 8_000_000:
+                  shutil.copy2(q,dest/"compatible-brand-catalog-candidates-latest.jsonl")
           PY
           exit 0
 
