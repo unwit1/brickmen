@@ -1,0 +1,150 @@
+{
+  "schema_version": "0.3",
+  "generation_request": {
+    "target_type": [
+      "concept_render",
+      "catalog_render",
+      "print_art_front",
+      "print_art_back",
+      "head_wrap",
+      "arm_art",
+      "leg_art",
+      "full_decal_sheet",
+      "resin_part_concept",
+      "resin_part_render"
+    ],
+    "source_appearance_id": "",
+    "source_reference_assets": [],
+    "source_reference_features": {},
+    "identity_critical_features": [],
+    "canonical_parts": [],
+    "colors": [],
+    "pose": {},
+    "camera": {},
+    "lighting": {},
+    "character_spec": {},
+    "official_style_profile": "",
+    "official_analog_sample_ids": [],
+    "target_era": null,
+    "target_theme": null,
+    "expression_family": null,
+    "geometry_constraints": [],
+    "print_surface_constraints": [],
+    "creative_freedom": [],
+    "forbidden_alterations": [],
+    "production_process": "uv",
+    "output_layers": [
+      "rgb",
+      "white_underbase",
+      "primer",
+      "varnish",
+      "mask",
+      "depth",
+      "normal",
+      "part_id"
+    ],
+    "optimization_axes": [
+      "reference_fidelity",
+      "official_lego_likeness",
+      "production_feasibility"
+    ],
+    "control_group": {
+      "enabled": true,
+      "protocol": "chatgpt-image-control-group",
+      "prompt_schema_version": "0.1",
+      "experiment_id": null,
+      "run_id": null,
+      "reference_roles": [],
+      "p0_features": [],
+      "p1_features": [],
+      "allowed_changes": [],
+      "forbidden_changes": [],
+      "mask_translation_route": null,
+      "record_evaluation": true
+    }
+  },
+  "character_translation": {
+    "source_decomposition": {
+      "silhouette": "",
+      "hair_headgear": "",
+      "garment_armor_layers": [],
+      "major_color_regions": [],
+      "symbols_emblems": [],
+      "gloves_boots": [],
+      "props_accessories": [],
+      "face_identity": [],
+      "expression": "",
+      "materials": [],
+      "surface_specific_features": {
+        "front": [],
+        "back": [],
+        "left": [],
+        "right": []
+      }
+    },
+    "lego_abstraction": {
+      "mould_choices": [],
+      "print_regions": [],
+      "omitted_low_value_details": [],
+      "large_shape_plan": [],
+      "iconic_feature_plan": [],
+      "base_plastic_roles": [],
+      "color_role_mapping": [],
+      "expression_translation": {}
+    }
+  },
+  "style_evaluation": {
+    "reference_fidelity_0_100": null,
+    "official_lego_likeness_0_100": null,
+    "production_quality_0_100": null,
+    "profile": "",
+    "control_samples": [],
+    "critical_failures": [],
+    "reviewer_notes": [],
+    "failure_labels": [],
+    "prompt_revision_hypothesis": null
+  },
+  "digital_twin": {
+    "part_id": "",
+    "external_ids": {},
+    "coordinate_system": "",
+    "mesh_sources": [],
+    "physical_measurements": [],
+    "connectors": [],
+    "print_surfaces": [],
+    "keep_out_regions": [],
+    "uv_maps": [],
+    "render_presets": [],
+    "jigs": []
+  },
+  "uv_profile": {
+    "printer": "",
+    "rip": "",
+    "resolution": "",
+    "pass_mode": "",
+    "ink_set": "",
+    "substrate": "",
+    "cleaning": "",
+    "primer": {},
+    "white": {},
+    "cmyk": {},
+    "varnish": {},
+    "icc_profile": "",
+    "z_height": "",
+    "jig_revision": "",
+    "adhesion_result": "",
+    "color_corrections": {}
+  },
+  "resin_profile": {
+    "printer": "",
+    "resin": "",
+    "layer_height": "",
+    "exposure": {},
+    "orientation": {},
+    "wash": {},
+    "cure": {},
+    "dimensional_compensation": {},
+    "fit_coupon_revision": "",
+    "measured_results": []
+  }
+}
