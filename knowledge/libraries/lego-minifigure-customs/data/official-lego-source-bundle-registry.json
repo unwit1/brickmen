@@ -1,6 +1,6 @@
 {
   "schema_version": "0.1",
-  "researched_at": "2026-09-24",
+  "researched_at": "2026-09-25",
   "purpose": "Official LEGO newsroom/download bundles with high value for minifigure visual style, human likeness, licensed source-to-LEGO pairs, design process, or digital-history supervision.",
   "bundles": [
     {
@@ -17,7 +17,10 @@
       ],
       "notes": [
         "LEGO page says 650+ unique faces by 2018 and 8,000+ minifigures over four decades."
-      ]
+      ],
+      "ingestion_status": "downloaded_hashed_indexed",
+      "indexed_assets": 5,
+      "zip_sha256": "f5158696ebfe21ab0f459a5db228f5e3277e6a7307d446cae0b426c6d42a65b3"
     },
     {
       "id": "kpop_demon_hunters_derpy_assets",
@@ -44,7 +47,10 @@
         "legacy_digital_reference",
         "timeline",
         "digital_style_evolution"
-      ]
+      ],
+      "ingestion_status": "downloaded_hashed_indexed",
+      "indexed_assets": 15,
+      "zip_sha256": "137ba183956c49df19ae28c7c57fe86dfd9b8bc23744f58b768976b4738ddaa8"
     },
     {
       "id": "play_unstoppable_football_assets",
@@ -185,13 +191,18 @@
       ]
     }
   ],
-  "ingestion_status": "bundle_urls_resolved_metadata_ingested_raw_zip_materialization_blocked_in_current_runtime",
+  "ingestion_status": "priority_small_bundles_indexed_other_resolved_bundles_pending",
   "blocker": "Current runtime can resolve official application/zip URLs but cannot download ZIP bytes.",
   "next_stage": [
-    "Download each bundle in a network-enabled runtime.",
-    "SHA-256 each ZIP and each extracted file.",
-    "Classify images into source/reference/product/people/design-process roles.",
-    "Resolve minifigure/character IDs and source appearances.",
-    "Deduplicate against storefront/BrickLink/Rebrickable/reference assets."
-  ]
+    "Classify indexed design-history and game-history media by role.",
+    "Crosswalk Skywalker profile filenames to canonical character, incarnation and physical-release identities.",
+    "Index the remaining resolved official media bundles in separate staged ingestion jobs."
+  ],
+  "completed_2026_09_25": {
+    "minifigure_40th_anniversary_assets": 5,
+    "lego_games_25_year_assets": 15,
+    "skywalker_saga_profile_icons": 377,
+    "total_indexed_assets": 397,
+    "manifest": "data/bulk-ingestion/official-lego-zip-bundle-assets-latest.jsonl"
+  }
 }
