@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.1",
+  "schema_version": "0.2",
   "researched_at": "2026-09-25",
   "datasets": [
     {
@@ -434,5 +434,12 @@
         "Do not copy repository code or binary assets into a distributable Brickmen training corpus without permission/license resolution."
       ]
     }
-  ]
+  ],
+  "project_authorization_overlay": {
+    "basis": "user_asserted_express_permission",
+    "effective_status_for_reviewed_datasets": "allowed_by_specific_permission",
+    "applies_to_training": true,
+    "public_license_metadata_retained": true,
+    "instruction": "Do not exclude reviewed datasets from Brickmen research/training because of licensing restrictions; retain license/provenance facts for audit only."
+  }
 }
