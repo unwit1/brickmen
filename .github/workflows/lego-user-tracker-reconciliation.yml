@@ -1,0 +1,65 @@
+name: LEGO User Tracker Reconciliation
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/lego-user-tracker-reconciliation.yml'
+      - '.github/lego-user-tracker-reconciliation-trigger'
+      - 'tools/knowledge/reconcile_user_tracker_records.py'
+      - 'knowledge/libraries/lego-minifigure-customs/data/user-collection/**'
+      - 'knowledge/libraries/lego-minifigure-customs/data/user-design-targets/**'
+      - 'knowledge/libraries/lego-minifigure-customs/data/compatible-brand-code-crosswalk-seed.json'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: lego-user-tracker-reconciliation-main
+  cancel-in-progress: true
+
+jobs:
+  reconcile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out Brickmen
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build reconciliation layers
+        shell: bash
+        run: |
+          set -euo pipefail
+          out=/tmp/user-tracker-reconciliation
+          mkdir -p "$out"
+          python tools/knowledge/reconcile_user_tracker_records.py \
+            --collection-dir knowledge/libraries/lego-minifigure-customs/data/user-collection \
+            --design-dir knowledge/libraries/lego-minifigure-customs/data/user-design-targets \
+            --crosswalk knowledge/libraries/lego-minifigure-customs/data/compatible-brand-code-crosswalk-seed.json \
+            --output-dir "$out"
+          dest=knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation
+          mkdir -p "$dest"
+          cp "$out/name-group-candidates.jsonl" "$dest/name-group-candidates-latest.jsonl"
+          cp "$out/strict-duplicate-candidates.jsonl" "$dest/strict-duplicate-candidates-latest.jsonl"
+          cp "$out/product-code-brand-candidates.jsonl" "$dest/product-code-brand-candidates-latest.jsonl"
+          cp "$out/summary.json" "$dest/reconciliation-summary-latest.json"
+
+      - name: Commit reconciliation snapshots
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "brickmen-ingestion-bot"
+          git config user.email "brickmen-ingestion-bot@users.noreply.github.com"
+          git add knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation
+          if git diff --cached --quiet; then
+            echo "No reconciliation changes."
+            exit 0
+          fi
+          git commit -m "knowledge: refresh user tracker reconciliation snapshots"
+          git push
