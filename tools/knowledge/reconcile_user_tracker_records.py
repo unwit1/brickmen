@@ -37,6 +37,10 @@ def norm(value) -> str:
     s = re.sub(r"[^a-z0-9]+", " ", s)
     return " ".join(s.split())
 
+def is_maker_code(value):
+    s = str(value or "").strip()
+    return bool(re.match(r"^[A-Za-z]{1,10}(?:[-_]?\d+)[A-Za-z0-9_-]*$", s))
+
 def uniq(values):
     return sorted({str(v).strip() for v in values if v is not None and str(v).strip()})
 
