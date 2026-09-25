@@ -67,3 +67,12 @@ The following verified duplicates were removed from `unwit1/personal-agent-os` a
 - `tests/test_ingest_rebrickable_minifig_corpus.py`
 
 The paired Rebrickable test and implementation were removed together so Agent OS would not retain a failing test that referenced a migrated script.
+
+
+Additional completed migration/cleanup:
+- `tools/knowledge/build_fortnite_lego_translation_pairs.py` removed from Agent OS after verification.
+- `tools/knowledge/profile_training_source_webpage.py` migrated into Brickmen, then removed from Agent OS.
+- `tools/knowledge/snapshot_huggingface_dataset.py` migrated into Brickmen, then removed from Agent OS.
+- `.github/lego-census-trigger` removed from Agent OS after verifying the identical Brickmen copy.
+
+The two generically named training-source tools were classified as Brickmen-owned because their implementation is explicitly LEGO-research scoped and no non-LEGO Agent OS references were found.
