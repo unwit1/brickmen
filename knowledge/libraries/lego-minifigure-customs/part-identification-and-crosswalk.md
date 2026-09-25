@@ -39,3 +39,16 @@ When sources disagree, store both assertions with provenance. Create a reconcili
 
 ## AI consequence
 Generation prompts should use canonical local IDs plus the exact source geometry revision. Human-readable names are descriptive only.
+
+
+## Namespace safety
+Catalog identifiers are source-scoped. A matching-looking string is not a crosswalk.
+
+- Rebrickable `fig_num` is **not** a BrickLink minifigure ID.
+- Rebrickable part numbers and BrickLink part IDs may overlap for some parts, but equality must be supported by an explicit external-ID/catalog mapping before it is stored as a canonical crosswalk.
+- LEGO Design IDs and Element IDs remain separate.
+- LDraw IDs describe the LDraw library namespace and may represent aliases, moved-to files, patterns, or community-maintained geometry.
+- HeroBloks IDs/serials, maker product codes, and reseller SKUs are separate observations until independently linked.
+- Never construct a URL for another catalog by interpolating an ID from the current catalog unless that ID mapping has been verified.
+
+Every cross-namespace edge should record the two namespaces, both source IDs, evidence source, observation date, confidence, and any conflicts.
