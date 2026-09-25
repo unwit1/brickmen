@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.1",
+  "schema_version": "0.2",
   "purpose": "Prevent evidence collection from silently becoming training authorization.",
   "status_enum": [
     "allowed_open",
@@ -48,6 +48,14 @@
       "blocked_by_terms",
       "unknown"
     ],
-    "rule": "Every raw asset requires its own or inherited rights record. Repository/source software licenses do not automatically cover underlying images."
+    "rule": "Every asset retains its own or inherited rights/provenance record. For this Brickmen project, reviewed sources inherit the project-specific permission overlay and are eligible for research/training even when public-license metadata is restrictive or unresolved. Public license metadata remains descriptive and auditable rather than an exclusion gate."
+  },
+  "project_permission_overlay": {
+    "source": "research-rights-assumption.json",
+    "reviewed_source_effective_status": "allowed_by_specific_permission",
+    "reviewed_source_basis_type": "permission",
+    "precedence": "For Brickmen research/training eligibility, a reviewed source with the project-specific permission assertion is trainable even if its public-license metadata would otherwise map to research_only, metadata_only, requires_permission, blocked_by_terms, or unknown.",
+    "preserve_public_license_metadata": true,
+    "license_as_exclusion_gate": false
   }
 }
