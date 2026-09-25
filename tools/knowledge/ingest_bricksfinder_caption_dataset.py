@@ -5,7 +5,7 @@ Uses the public HF datasets-server row API so caption/ID/part supervision can be
 materialized without downloading the embedded ~558 MB image payload.
 """
 from __future__ import annotations
-import argparse,json,time,urllib.parse,urllib.request
+import argparse,json,time,urllib.error,urllib.parse,urllib.request
 from datetime import datetime,timezone
 from pathlib import Path
 
@@ -19,9 +19,23 @@ def load_jsonl(path):
   for line in f:
    line=line.strip()
    if line:yield json.loads(line)
-def fetch_json(url,timeout=60):
+def fetch_json(url,timeout=60,max_retries=8):
  req=urllib.request.Request(url,headers={"User-Agent":UA,"Accept":"application/json"})
- with urllib.request.urlopen(req,timeout=timeout) as r:return json.loads(r.read().decode("utf-8"))
+ for attempt in range(max_retries+1):
+  try:
+   with urllib.request.urlopen(req,timeout=timeout) as r:
+    return json.loads(r.read().decode("utf-8"))
+  except urllib.error.HTTPError as exc:
+   if exc.code not in {429,500,502,503,504} or attempt>=max_retries:
+    raise
+   retry_after=exc.headers.get("Retry-After")
+   try: wait=float(retry_after) if retry_after else min(60.0,2.0*(2**attempt))
+   except ValueError: wait=min(60.0,2.0*(2**attempt))
+   time.sleep(wait)
+  except (urllib.error.URLError,TimeoutError):
+   if attempt>=max_retries: raise
+   time.sleep(min(30.0,1.5*(2**attempt)))
+ raise RuntimeError("unreachable")
 def main():
  ap=argparse.ArgumentParser()
  ap.add_argument("--dataset",default="Armaggheddon/lego_minifigure_captions")
@@ -31,14 +45,15 @@ def main():
  ap.add_argument("--output-dir",type=Path,required=True)
  ap.add_argument("--page-size",type=int,default=100)
  ap.add_argument("--shard-size",type=int,default=1000)
- ap.add_argument("--delay",type=float,default=0.05)
+ ap.add_argument("--delay",type=float,default=0.35)
+ ap.add_argument("--max-retries",type=int,default=8)
  args=ap.parse_args()
  current={r.get("fig_num"):r for r in load_jsonl(args.current_samples) if r.get("fig_num")}
  out=args.output_dir.resolve();out.mkdir(parents=True,exist_ok=True)
  rows=[];offset=0;reported=None;pages=0
  while True:
   qs=urllib.parse.urlencode({"dataset":args.dataset,"config":args.config,"split":args.split,"offset":offset,"length":args.page_size})
-  data=fetch_json(API+"?"+qs);pages+=1
+  data=fetch_json(API+"?"+qs,max_retries=args.max_retries);pages+=1
   if reported is None:reported=data.get("num_rows_total")
   batch=data.get("rows") or []
   if not batch:break
@@ -83,7 +98,7 @@ def main():
  manifest={
   "schema":"bricksfinder-caption-ingest-manifest/v1","created_at":now_iso(),
   "processor_version":VERSION,"dataset":args.dataset,"config":args.config,"split":args.split,
-  "reported_rows":reported,"records":len(rows),"pages":pages,
+  "reported_rows":reported,"records":len(rows),"pages":pages,"request_delay_seconds":args.delay,"max_retries":args.max_retries,
   "current_rebrickable_matches":sum(r["current_rebrickable_match"] for r in rows),
   "current_rebrickable_missing":sum(not r["current_rebrickable_match"] for r in rows),
   "short_caption_matches_current_name":sum(r["short_caption_matches_current_name"] for r in rows),
