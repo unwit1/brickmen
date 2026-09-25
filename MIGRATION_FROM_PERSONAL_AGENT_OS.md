@@ -55,3 +55,15 @@ During cleanup, prefer replacing Agent OS's old LEGO library with a thin integra
 - Audit internal references in Personal Agent OS and retarget them to Brickmen or remove obsolete references.
 - Remove verified duplicate source files in logical batches.
 - Leave a stable Agent OS routing/integration document after cleanup.
+
+
+## Source cleanup completed — 2026-09-25
+
+The following verified duplicates were removed from `unwit1/personal-agent-os` after reference checks:
+
+- `tools/knowledge/index_rioforce_lego_textures.py`
+- `tools/knowledge/render_ldraw_pattern_training_views.py`
+- `tools/knowledge/ingest_rebrickable_minifig_corpus.py`
+- `tests/test_ingest_rebrickable_minifig_corpus.py`
+
+The paired Rebrickable test and implementation were removed together so Agent OS would not retain a failing test that referenced a migrated script.
