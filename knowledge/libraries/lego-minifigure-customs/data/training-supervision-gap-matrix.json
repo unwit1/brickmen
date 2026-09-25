@@ -49,7 +49,7 @@
     {
       "id": "source_to_lego_translation_pairs",
       "priority": "critical",
-      "status": "fortnite_identity_and_image_measurement_complete_all_2494_semantic_review_pending",
+      "status": "fortnite_identity_image_and_measurement_coverage_complete_ranked_semantic_review_pending",
       "why": "Directly teaches which source details LEGO preserves/simplifies/omits/moves to mould/accessory.",
       "sources": [
         "Fortnite Outfit -> LEGO Style pairs",
@@ -58,9 +58,10 @@
         "Wednesday/Nightmare/BTS/Viking/Pirates designer articles"
       ],
       "next_actions": [
-        "review visual pairs into preserve/simplify/omit/exaggerate/mould/accessory/cloth labels without promoting heuristics as ground truth",
-        "expand exact source-frame/panel pair resolution theme-by-theme",
-        "crosswalk Skywalker Saga profile variants to physical Star Wars releases and retain digital-only variants"
+        "review the 741 highest-priority Fortnite pairs first for preserve/simplify/omit/exaggerate/mould/accessory/cloth semantics",
+        "audit the 14 alias-fallback records as a separate placeholder-family cohort",
+        "crosswalk Skywalker Saga strong/review candidates and retain unresolved/digital-only variants",
+        "expand exact source-frame/panel pair resolution theme-by-theme"
       ],
       "evidence_completed": [
         "2,494 exact Fortnite cosmeticId -> LEGO Style identity pairs committed",
@@ -79,7 +80,9 @@
         "same-name alias fallback logic was added for the 14 Character_* placeholder LEGO records while preserving original pair provenance",
         "6,382 deterministic control pairs now exist: 2,494 positives, 2,494 global wrong-identity negatives, and 1,394 same-group hard negatives",
         "2026-09-25 alias-aware visual pass completed 2,494/2,494 Fortnite pairs with zero image misses and zero processing errors",
-        "14 former placeholder-family LEGO image gaps are now resolved through explicit same-name alias provenance without rewriting original pair identity"
+        "14 former placeholder-family LEGO image gaps are now resolved through explicit same-name alias provenance without rewriting original pair identity",
+        "2026-09-25 latest visual pass resolves all 2,494 pairs with zero missing preferred images using 2,480 direct LEGO images plus 14 provenance-preserving alias fallbacks",
+        "2,492/2,494 pairs expose at least one measurement signal and 741 are ranked high-priority for semantic review"
       ]
     },
     {
@@ -111,7 +114,7 @@
     {
       "id": "facial_expression_landmarks_and_labels",
       "priority": "very_high",
-      "status": "candidate_face_geometry_and_review_pipeline_ready_semantic_landmarks_pending",
+      "status": "large_weak_semantic_face_corpus_and_leakage_safe_splits_ready_landmark_review_pending",
       "why": "Official-looking faces depend on tiny landmark relationships that generic image embeddings do not explain.",
       "sources": [
         "Bartneck 627/722 expression research",
@@ -120,10 +123,10 @@
         "DK/Bartneck head photography"
       ],
       "next_actions": [
-        "run the new review queue and annotate the highest-priority face SVGs",
+        "review high-priority SVG landmarks and map reviewed vectors to the larger decorated-head/image corpus",
         "normalize SVG transforms into common 0-1 face coordinates",
+        "build era/theme distributions of semantic descriptors and expression candidates",
         "crosswalk reviewed faces to Rebrickable/LDraw/BrickLink head IDs",
-        "expand beyond rioforce using catalog head images and LDraw head patterns",
         "link probabilistic Bartneck ratings if raw stimulus-rating data becomes available"
       ],
       "evidence_completed": [
@@ -137,13 +140,16 @@
         "face-landmark schema now defines eyes/brows/mouth/facial-hair/eyewear/scar regions, probabilistic emotions, dual-sided relationships, provenance, and review status",
         "deterministic face-landmark review queue builder now prioritizes explicit-emotion, front/reverse, calibration/CMF, and machine-readable SVG records",
         "LEGO face-VAE dataset index now contains 2,574 normalized 128x128 images, all matched to head metadata, spanning 1,938 unique head parts",
-        "face-VAE catalog descriptors include 1,529 eyebrow, 852 smile, 425 teeth, 289 angry, 236 glasses, 224 stubble, 208 scared, 171 grin, 157 frown, 105 freckles, 102 wrinkles, 77 scar, 41 eyepatch, 38 sad and 22 surprised tagged images"
+        "face-VAE catalog descriptors include 1,529 eyebrow, 852 smile, 425 teeth, 289 angry, 236 glasses, 224 stubble, 208 scared, 171 grin, 157 frown, 105 freckles, 102 wrinkles, 77 scar, 41 eyepatch, 38 sad and 22 surprised tagged images",
+        "4,309 unique decorated head parts indexed from Rebrickable metadata; 3,549 have semantic feature tags and 2,029 have weak expression candidates",
+        "743 decorated-head records are alternate-expression or dual-sided candidates",
+        "2,574 indexed face-image records are split train/validation/test by head-part identity with zero head-part leakage (2,051 / 252 / 271)"
       ]
     },
     {
       "id": "mask_headgear_decision_pairs",
       "priority": "very_high",
-      "status": "initial_unresolved_queue_resolved_expansion_pending",
+      "status": "hand_reviewed_seed_complete_corpus_wide_route_candidates_ready_review_and_source_pairing_pending",
       "why": "Need examples where source design became print, existing headgear, new mould, or hybrid.",
       "sources": [
         "Fortnite pairs",
@@ -152,22 +158,25 @@
         "license-filtered community geometry as negative/alternative examples"
       ],
       "next_actions": [
-        "expand route coverage across Star Wars helmets, superhero cowls/masks, CMF costumes, fantasy/nonhuman heads and transparent domes",
+        "rank route candidates by deterministic component evidence and ambiguity",
+        "crosslink reviewed route candidates to source appearances",
         "derive silhouette-vs-graphic dependence metrics from canonical views",
-        "add matched source-to-LEGO route decisions and mould-reuse/new-mould labels"
+        "separate standard protective headgear from identity-defining mask/headgear routes"
       ],
       "evidence_completed": [
         "mask/headgear decision schema committed",
         "12 high-confidence LEGO-primary route records committed",
         "15 unresolved route candidates retained instead of guessed",
         "2026-09-25 follow-up resolved all 15 candidates from the original unresolved queue using release-specific component inventories",
-        "route evidence now includes print-only masks, print+headgear, transparent domes, costume head covers, modified creature heads, modular horns, and persistent Black Panther ear-topper usage across sampled releases"
+        "route evidence now includes print-only masks, print+headgear, transparent domes, costume head covers, modified creature heads, modular horns, and persistent Black Panther ear-topper usage across sampled releases",
+        "corpus-wide candidate builder scanned all 17,226 physical figures and emitted 14,475 figures with mask/headgear/nonhuman-head route evidence",
+        "candidate counts include 3,620 helmet+head, 1,099 separate-mask, 693 hood, 480 cowl, 345 modified/nonhuman head, 341 head-print+headgear, 83 costume cover, 65 head-only mask/decorated-head, and 36 transparent-dome candidates"
       ]
     },
     {
       "id": "official_digital_only_variants",
       "priority": "very_high",
-      "status": "skywalker_official_assets_indexed_identity_crosswalk_pending_other_games_partial",
+      "status": "skywalker_assets_indexed_candidate_physical_crosswalk_ready",
       "sources": [
         "Skywalker Saga icons/assets",
         "TT game assets",
@@ -176,11 +185,11 @@
         "legacy web games"
       ],
       "next_actions": [
-        "crosswalk all 374 Skywalker filename-derived variant keys to canonical Character/Incarnation/OutfitDesign and physical releases",
-        "classify unmatched Skywalker profiles as digital-only or unresolved rather than forcing physical equivalence",
-        "extract local TT/legacy game assets",
-        "capture UEFN canonical views",
-        "derive comparable face/headgear/style features from indexed official PNG assets"
+        "review 58 strong Skywalker candidates and promote only version-confirmed physical equivalences",
+        "review 31 medium candidates",
+        "classify unresolved records into likely digital-only, insufficient-name-context, and missing-physical-catalog classes",
+        "derive comparable face/headgear/style features from indexed official PNG assets",
+        "continue other TT/legacy game asset ingestion"
       ],
       "evidence_completed": [
         "2,494 Fortnite LEGO Style identities committed",
@@ -189,7 +198,9 @@
         "legacy browser/game preservation adapters exist",
         "all 10 official Skywalker Saga class ZIP bundles were downloaded and indexed",
         "377 official profile-icon PNG assets were hashed and indexed across 10 classes",
-        "374 filename-derived character/variant keys were preserved for physical/digital identity resolution"
+        "374 filename-derived character/variant keys were preserved for physical/digital identity resolution",
+        "Skywalker physical crosswalk candidate pass compares all 377 official digital profile assets against 1,549 Star Wars physical catalog candidates",
+        "58 digital profiles are strong physical candidates, 31 are review candidates, and 288 remain unresolved/digital-only candidates"
       ],
       "blockers": [
         "local game installations required for exhaustive textures/models",
@@ -221,13 +232,14 @@
         "2026-09-25 automated inventory now records 213 minifig-svg-decals SVGs and 129 rioforce semantic asset groups",
         "BricksFinder source tree and Hugging Face dataset metadata are now successfully snapshotted",
         "HeroBloks complete list census indexed 59,745 figure records across 1,350 brand slugs",
-        "current customizer verification refreshed KO Custom Minifigs and SFXminifigures to primary-current status and documented MRM/Muddy River continuity"
+        "current customizer verification refreshed KO Custom Minifigs and SFXminifigures to primary-current status and documented MRM/Muddy River continuity",
+        "BricksFinder structured caption corpus ingested all 12,966 dataset rows; 12,960 still match current Rebrickable figures, with 258 name-drift records and 6 current-catalog misses retained for review"
       ]
     },
     {
       "id": "negative_controls",
       "priority": "high",
-      "status": "deterministic_identity_controls_materialized_failure_controls_expansion_pending",
+      "status": "deterministic_identity_controls_materialized_leakage_safe_face_splits_ready_failure_mode_controls_expansion_pending",
       "sources": [
         "purist minifigs",
         "over-detailed customs",
@@ -245,7 +257,8 @@
         "failure taxonomies exist in ChatGPT control protocol and custom evaluation framework",
         "training-control-pair schema committed",
         "Fortnite control generator materialized 6,382 deterministic controls from 2,494 identity pairs",
-        "control corpus includes exact positives, global wrong-identity negatives, and same-set/series hard negatives with explicit synthetic-control provenance"
+        "control corpus includes exact positives, global wrong-identity negatives, and same-set/series hard negatives with explicit synthetic-control provenance",
+        "face-image corpus now has leakage-safe train/validation/test splits grouped by head-part identity with zero cross-split head-part leakage"
       ]
     },
     {
