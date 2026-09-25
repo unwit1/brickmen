@@ -1,0 +1,151 @@
+{
+  "schema_version": "0.1",
+  "created_at": "2026-09-25",
+  "purpose": "Reviewed rioforce flat-art to catalog component crosswalks. These are promoted only where character/version/surface evidence independently identifies the decorated component.",
+  "policy": [
+    "Verified records may be used as exact flat-art supervision for the stated component/version.",
+    "Catalog aliases are preserved rather than forced into one identifier namespace.",
+    "Do not generalize one verified asset to later recolors/redraws unless separately crosswalked.",
+    "Unreviewed fuzzy candidates remain candidate-only."
+  ],
+  "records": [
+    {
+      "crosswalk_id": "flatart-verified-dr-charles-lightning-face",
+      "rioforce_asset_group_id": "rioforce-5af2295d852e43b065dd9320",
+      "relative_stem": "Adventurers/Dr Charles Lightning/Dr Lightning Face",
+      "svg_sha256": "fc3f68724b0976f1083294eb20b9b5132d19de37c42489bf102d2f6f01147946",
+      "png_sha256": "e58206317973d3d5a0841766588576113941f212717c6be06650853e28430c02",
+      "subject": "Dr. Charles Lightning",
+      "surface": "head",
+      "verification_status": "verified_high",
+      "evidence": {
+        "rebrickable_figures": [
+          "fig-000631",
+          "fig-002224"
+        ],
+        "rebrickable_component": "3626bpr0047",
+        "component_name": "Minifig Head Dr Charles Lightning / Dr Kilroy, Round Glasses, Gray Lines Beard and Moustache Print",
+        "print_of": "3626b",
+        "basis": [
+          "exact character-name match",
+          "exact head surface role",
+          "decorated component name explicitly identifies Dr Charles Lightning"
+        ]
+      }
+    },
+    {
+      "crosswalk_id": "flatart-verified-dr-charles-lightning-torso",
+      "rioforce_asset_group_id": "rioforce-a6d8336919f14ccdf98877ca",
+      "relative_stem": "Adventurers/Dr Charles Lightning/Dr Lightning Torso",
+      "svg_sha256": "146dc5adcd149c8a0e71a80c4c72a3f4b99743c74a1571e5b0be57d57b1378b5",
+      "png_sha256": "bc7e26fb0914eed430bc404b7ae6864ed77f6f1df8ee3f3e1ba2912ee7c38b91",
+      "subject": "Dr. Charles Lightning",
+      "surface": "torso",
+      "verification_status": "verified_high",
+      "evidence": {
+        "rebrickable_figures": [
+          "fig-000631",
+          "fig-002224"
+        ],
+        "rebrickable_component": "973c27h01pr0001",
+        "component_name": "Torso Shirt with Suspenders and Red Bow Tie Print, White Arms, Yellow Hands",
+        "print_of": "973c27h01",
+        "basis": [
+          "exact character-name match",
+          "exact torso surface role",
+          "same decorated torso appears in both exact Dr Charles Lightning catalog figures"
+        ]
+      }
+    },
+    {
+      "crosswalk_id": "flatart-verified-leia-slave-2003-torso",
+      "rioforce_asset_group_id": "rioforce-3f31fe8f758579949463a062",
+      "relative_stem": "Star Wars/Princess Leia - Slave Outfit (2003)/Prince Leia Slave Torso",
+      "svg_sha256": "ce277da3726127110217c269e0525a8f70e2b628190edde0fcdf875c01c93244",
+      "png_sha256": "e43b6b15133340e7cbc61d16d5b6afddc959748be0e7d8a69a55100e6e62a2d0",
+      "subject": "Princess Leia - Slave Outfit",
+      "version_year": 2003,
+      "surface": "torso",
+      "verification_status": "verified_catalog_exact",
+      "evidence": {
+        "rebrickable_figure": "fig-003522",
+        "rebrickable_component": "973c01h01pr0087",
+        "bricklink_figure": "sw0070",
+        "bricklink_component": "973pb0087c01",
+        "bricklink_component_name": "Torso SW Princess Leia Slave, Copper and Gold Bikini Bra Pattern / Yellow Arms / Yellow Hands",
+        "bricklink_year_released": 2003,
+        "source_urls": [
+          "https://www.bricklink.com/catalogItemInv.asp?M=sw0070&viewCodes=Y",
+          "https://www.bricklink.com/v2/catalog/catalogitem.page?P=973pb0087c01"
+        ],
+        "basis": [
+          "rioforce directory explicitly identifies Slave Outfit (2003)",
+          "BrickLink lists sw0070 as the 2003 yellow-skin Slave Leia",
+          "torso catalog entry is explicitly released in 2003",
+          "Rebrickable candidate component is the matching yellow-arms decorated torso"
+        ]
+      }
+    },
+    {
+      "crosswalk_id": "flatart-verified-leia-slave-2003-face",
+      "rioforce_asset_group_id": "rioforce-87d2585cdca09fff9bc8055e",
+      "relative_stem": "Star Wars/Princess Leia - Slave Outfit (2003)/Princess Leia Slave Face",
+      "svg_sha256": "6f51351a7648f0855adc56591bfde76ba20c91dceda88702ca34b9bfa52f11b9",
+      "png_sha256": "d8c24860449b8c1c3d44fb222988d3f8f198b93eb84ae478661f28482da264b5",
+      "subject": "Princess Leia - Slave Outfit",
+      "version_year": 2003,
+      "surface": "head",
+      "verification_status": "verified_catalog_exact",
+      "evidence": {
+        "rebrickable_figure": "fig-003522",
+        "rebrickable_component": "3626bpr0378",
+        "bricklink_figure": "sw0070",
+        "bricklink_component": "3626px83",
+        "bricklink_component_name": "Yellow Minifigure, Head Female Black Thin Eyebrows, Eyelashes, Small Eyes, Red Lips Pattern",
+        "source_url": "https://www.bricklink.com/catalogItemInv.asp?M=sw0070&viewCodes=Y",
+        "basis": [
+          "rioforce directory explicitly identifies Slave Outfit (2003)",
+          "BrickLink sw0070 inventory identifies the head used by the 2003 yellow-skin Slave Leia",
+          "Rebrickable candidate resolves the same figure to its printed head record"
+        ]
+      }
+    },
+    {
+      "crosswalk_id": "flatart-verified-leia-slave-2003-legs",
+      "rioforce_asset_group_id": "rioforce-3290c35a6b1680d248319361",
+      "relative_stem": "Star Wars/Princess Leia - Slave Outfit (2003)/Princess Leia Slave Outfit Legs",
+      "svg_sha256": "b53640865ac7f0e03361767acdaefa222a256342df5bb0efc377939bc595a8d1",
+      "png_sha256": "3d8226042e5252d3a40b9116b4a16014991eb98b46fbf2a1a4b534bda05bd3e9",
+      "subject": "Princess Leia - Slave Outfit",
+      "version_year": 2003,
+      "surface": "hips_and_legs",
+      "verification_status": "verified_catalog_exact_bricklink_rebrickable_alias_pending",
+      "evidence": {
+        "rebrickable_figure": "fig-003522",
+        "rebrickable_component": null,
+        "bricklink_figure": "sw0070",
+        "bricklink_component": "970c03pb03",
+        "bricklink_component_name": "Hips and Yellow Legs with SW Leia Slave Pattern",
+        "bricklink_year_released": 2003,
+        "source_urls": [
+          "https://www.bricklink.com/catalogItemInv.asp?M=sw0070&viewCodes=Y",
+          "https://www.bricklink.com/catalogList.asp?catID=1098&catType=P&catXrefLevel=0&dispColor=115&dispView=F&itemYear=2003&pg=1&v=2"
+        ],
+        "basis": [
+          "rioforce directory explicitly identifies Slave Outfit (2003)",
+          "BrickLink 2003 catalog and sw0070 inventory identify the decorated yellow legs",
+          "Rebrickable component alias still needs explicit resolution"
+        ]
+      }
+    }
+  ],
+  "summary": {
+    "verified_asset_groups": 5,
+    "exact_rebrickable_component_links": 4,
+    "exact_bricklink_component_links": 3,
+    "records_with_year_specific_verification": 3,
+    "unresolved_aliases": [
+      "Rebrickable component alias for 2003 Princess Leia Slave decorated legs"
+    ]
+  }
+}
