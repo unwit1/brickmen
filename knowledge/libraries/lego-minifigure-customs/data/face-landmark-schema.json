@@ -1,0 +1,108 @@
+{
+  "schema_version": "0.1",
+  "id": "minifigure-face-landmark-record",
+  "purpose": "Normalize reviewed and candidate facial-geometry supervision for official-style minifigure heads without collapsing ambiguous expressions into one hard label.",
+  "identity": {
+    "face_record_id": "",
+    "source_asset_id": "",
+    "source_path_or_url": "",
+    "authority": "",
+    "component_id": null,
+    "head_part_id": null,
+    "figure_ids": [],
+    "era": null,
+    "theme": null,
+    "head_base_color": null,
+    "side": "front|reverse|unknown",
+    "provenance_id": null
+  },
+  "canvas": {
+    "width": null,
+    "height": null,
+    "view_box": null,
+    "coordinate_system": "source|normalized_0_1",
+    "cylindrical_wrap_reference": null
+  },
+  "landmarks": {
+    "left_eye": {
+      "center": null,
+      "bounds": null,
+      "pupil_center": null,
+      "confidence": null
+    },
+    "right_eye": {
+      "center": null,
+      "bounds": null,
+      "pupil_center": null,
+      "confidence": null
+    },
+    "left_brow": {
+      "points": [],
+      "bounds": null,
+      "confidence": null
+    },
+    "right_brow": {
+      "points": [],
+      "bounds": null,
+      "confidence": null
+    },
+    "mouth": {
+      "points": [],
+      "bounds": null,
+      "center": null,
+      "confidence": null
+    },
+    "nose_mark": {
+      "points": [],
+      "bounds": null,
+      "confidence": null
+    },
+    "facial_hair_regions": [],
+    "eyewear_regions": [],
+    "scar_freckle_wrinkle_regions": [],
+    "other_identity_mark_regions": []
+  },
+  "geometry_features": {
+    "face_feature_bbox": null,
+    "eye_center_distance": null,
+    "eye_center_distance_normalized": null,
+    "eye_size_ratio": null,
+    "brow_eye_offsets": null,
+    "mouth_width": null,
+    "mouth_height": null,
+    "mouth_eye_vertical_offset": null,
+    "bilateral_symmetry_score": null,
+    "black_or_dark_region_ratio": null,
+    "feature_count": null
+  },
+  "expression": {
+    "catalog_descriptors": [],
+    "perceived_emotion_distribution": {
+      "anger": null,
+      "disgust": null,
+      "fear": null,
+      "happiness": null,
+      "sadness": null,
+      "surprise": null
+    },
+    "intensity_distribution": null,
+    "rater_count": null,
+    "rater_disagreement": null,
+    "expression_family": null,
+    "context_conditioned": false
+  },
+  "extraction": {
+    "method": "manual_review|svg_geometry_candidate|raster_model_candidate|physical_measurement",
+    "processor_version": null,
+    "automatic_candidates": [],
+    "review_status": "candidate|reviewed|rejected",
+    "reviewer_notes": [],
+    "confidence": null
+  },
+  "policy": [
+    "Automatic geometry candidates are not semantic landmarks until reviewed or otherwise independently validated.",
+    "Perceived emotion should be stored as a distribution when ratings support it, not forced to one label.",
+    "Head color and web-render RGB are separate from physical color measurements.",
+    "Dual-sided heads retain explicit front/reverse relationship and must not be treated as independent identities."
+  ]
+}
