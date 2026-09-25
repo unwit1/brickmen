@@ -586,6 +586,39 @@ jobs:
           PY
           exit 0
 
+      - name: Rank mask and headgear route candidates
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          src="$OUT/sources/mask_headgear_candidates"
+          mkdir -p "$src/ranked"
+          python tools/knowledge/rank_mask_headgear_candidates.py \
+            --candidates "$src/candidates.jsonl" \
+            --output "$src/ranked/records.jsonl" \
+            --summary "$src/ranked/summary.json"
+          rc=$?
+          RC="$rc" SRC="$src" python - <<'PY'
+          import json,os,shutil
+          from datetime import datetime,timezone
+          from pathlib import Path
+          src=Path(os.environ["SRC"]);rc=int(os.environ["RC"]);summary={}
+          p=src/"ranked/summary.json"
+          if p.exists():
+              try: summary=json.loads(p.read_text())
+              except Exception: pass
+          status={"source_id":"mask_headgear_ranked","status":"complete" if rc==0 else "failed",
+                  "exit_code":rc,"created_at":datetime.now(timezone.utc).isoformat(),**summary}
+          Path(os.environ["OUT"],"status/mask_headgear_ranked.json").write_text(json.dumps(status,indent=2))
+          if rc==0:
+              dest=Path(os.environ["DEST"])
+              shutil.copy2(p,dest/"mask-headgear-ranked-summary-latest.json")
+              q=src/"ranked/records.jsonl"
+              if q.exists() and q.stat().st_size < 8_000_000:
+                  shutil.copy2(q,dest/"mask-headgear-ranked-candidates-latest.jsonl")
+          PY
+          exit 0
+
       - name: Build face landmark review queue
         continue-on-error: true
         shell: bash
