@@ -24,6 +24,8 @@ STOP = {
     "print","logo","classic","figure","fig","face","head","torso","hips","hip","leg",
     "legs","arm","arms","helmet","hair","cowl","front","back","left","right","male",
     "female","guy","girl","man","woman",
+    "black","white","red","blue","green","yellow","gray","grey","brown","tan",
+    "orange","purple","pink","gold","silver",
 }
 
 ROLE_HINTS = (
