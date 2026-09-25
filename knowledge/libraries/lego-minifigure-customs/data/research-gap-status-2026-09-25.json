@@ -165,6 +165,19 @@
       "figures_without_set_occurrence": 318,
       "figures_without_component_inventory": 1
     },
-    "note": "Fresh daily source hashes were recorded; counts remained stable relative to the prior same-day bulk run."
+    "note": "Fresh daily source hashes were recorded; counts remained stable relative to the prior same-day bulk run.",
+    "fixed_inventory_exception_resolution": {
+      "raw_figures_without_component_inventory": 1,
+      "configurable_product_exceptions": 1,
+      "unresolved_fixed_inventory_failures": 0,
+      "exception_record": "physical-census-exception-resolutions-2026-09-25.json"
+    },
+    "no_set_occurrence_triage": {
+      "total": 318,
+      "simple_1_to_8_parts": 70,
+      "extended_over_8_parts": 248,
+      "triage_record": "physical-census-no-set-occurrence-triage-2026-09-25.json",
+      "policy": "heuristic triage only; not canonical form classification"
+    }
   }
 }
