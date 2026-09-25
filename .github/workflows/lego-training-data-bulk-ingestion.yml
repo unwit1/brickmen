@@ -285,6 +285,39 @@ jobs:
           PY
           exit 0
 
+      - name: Build Skywalker digital-to-physical crosswalk candidates
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          src="$OUT/sources/skywalker_crosswalk"; mkdir -p "$src"
+          python tools/knowledge/build_skywalker_physical_crosswalk_candidates.py \
+            --skywalker-census knowledge/libraries/lego-minifigure-customs/data/skywalker-saga-profile-icon-census-2026-09-25.json \
+            --physical-samples "$OUT/sources/rebrickable/output/physical_samples.jsonl" \
+            --output "$src/candidates.jsonl" \
+            --summary "$src/summary.json"
+          rc=$?
+          RC="$rc" SRC="$src" python - <<'PY'
+          import json,os,shutil
+          from datetime import datetime,timezone
+          from pathlib import Path
+          src=Path(os.environ["SRC"]);rc=int(os.environ["RC"]);summary={}
+          p=src/"summary.json"
+          if p.exists():
+              try: summary=json.loads(p.read_text())
+              except Exception: pass
+          status={"source_id":"skywalker_physical_crosswalk","status":"complete" if rc==0 else "failed",
+                  "exit_code":rc,"created_at":datetime.now(timezone.utc).isoformat(),**summary}
+          Path(os.environ["OUT"],"status/skywalker_physical_crosswalk.json").write_text(json.dumps(status,indent=2))
+          if rc==0:
+              dest=Path(os.environ["DEST"])
+              shutil.copy2(src/"summary.json",dest/"skywalker-physical-crosswalk-summary-latest.json")
+              candidates=src/"candidates.jsonl"
+              if candidates.exists() and candidates.stat().st_size < 8_000_000:
+                  shutil.copy2(candidates,dest/"skywalker-physical-crosswalk-candidates-latest.jsonl")
+          PY
+          exit 0
+
       - name: Vector and decal repository inventories
         continue-on-error: true
         shell: bash
