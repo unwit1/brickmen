@@ -6,23 +6,36 @@
     {
       "priority": "critical",
       "gap": "exact_flat_official_print_art",
-      "status": "partial",
+      "status": "first_verified_crosswalks_promoted_broad_coverage_pending",
       "store_next": [
         "canonical component-ID crosswalks for rioforce/LDraw flat maps",
         "approved/local Mecabricks UV and official-decoration assets",
         "official game texture extracts from legally obtained local installations",
         "reconstructed flat maps derived from controlled captures where no texture source exists"
+      ],
+      "completed_now": [
+        "5 rioforce flat-art groups promoted through reviewed component/version evidence",
+        "Dr Charles Lightning face and torso verified to Rebrickable decorated components",
+        "2003 Princess Leia Slave face/torso/legs verified with year-specific BrickLink/Rebrickable evidence",
+        "fuzzy matcher corrected to use version/year specificity and avoid generic outfit ties"
       ]
     },
     {
       "priority": "critical",
       "gap": "source_to_lego_translation_pairs",
-      "status": "identity_pairing_strong_semantic_labels_partial",
+      "status": "fortnite_identity_image_and_measurement_complete_semantic_review_pending",
       "store_next": [
         "normal-source appearance references for all 2494 Fortnite LEGO Style identity pairs",
         "preserve/simplify/omit/exaggerate/mould/accessory semantic differences",
         "exact film episode frame comic panel game skin and promo-art appearance IDs",
         "pair confidence and competing source hypotheses"
+      ],
+      "completed_now": [
+        "2,494/2,494 Fortnite LEGO Style identities paired",
+        "2,494/2,494 now have analyzable LEGO imagery after 14 provenance-preserving alias fallbacks",
+        "2,492 records expose measurement signals",
+        "741 high-priority semantic review records",
+        "6,382 deterministic positive/negative controls"
       ]
     },
     {
@@ -51,46 +64,70 @@
     {
       "priority": "very_high",
       "gap": "facial_expression_landmarks",
-      "status": "labels_strong_landmarks_partial",
+      "status": "large_weak_semantic_corpus_and_review_pipeline_ready",
       "store_next": [
         "eye brow mouth landmark coordinates",
         "probabilistic expression labels",
         "era/theme/head-substrate stratification",
         "reverse-face pair relationships"
+      ],
+      "completed_now": [
+        "4,309 unique decorated head parts indexed",
+        "3,549 decorated heads with semantic catalog tags",
+        "2,029 weak expression candidates",
+        "743 alternate-expression/dual-side candidates",
+        "38 rioforce face SVG records with 145 primitive candidates",
+        "2,574 face-image records split by head identity with zero train/validation/test leakage"
       ]
     },
     {
       "priority": "very_high",
       "gap": "official_digital_only_variants",
-      "status": "discovery_strong_raw_assets_partial",
+      "status": "skywalker_official_assets_indexed_candidate_crosswalk_ready",
       "store_next": [
         "Skywalker Saga bundle assets",
         "TT/legacy game models and textures",
         "UEFN controlled views",
         "physical counterpart crosswalks",
         "full official game-title reconciliation"
+      ],
+      "completed_now": [
+        "12 official LEGO ZIP bundles indexed successfully",
+        "377 Skywalker official profile assets / 374 filename-derived variant keys",
+        "377 physical-crosswalk candidate records against 1,549 Star Wars physical candidates",
+        "58 strong candidates, 31 review candidates, 288 unresolved/digital-only candidates"
       ]
     },
     {
       "priority": "very_high",
       "gap": "mask_headgear_decision_pairs",
-      "status": "initial_unresolved_queue_resolved",
+      "status": "hand_reviewed_seed_plus_corpus_wide_candidate_layer_ready",
       "store_next": [
         "larger balanced route set across themes and eras",
         "matched source-to-LEGO decision pairs",
         "silhouette-vs-graphic dependence metrics",
         "mould reuse vs new-mould labels"
+      ],
+      "completed_now": [
+        "14,475 physical figures with candidate mask/headgear/nonhuman-head route evidence"
       ]
     },
     {
       "priority": "high",
       "gap": "custom_style_extensions_and_negative_controls",
-      "status": "source_census_strong_sample_admission_partial",
+      "status": "structured_custom_caption_and_control_corpora_ready_expansion_pending",
       "store_next": [
         "permitted custom samples with deterministic features",
         "nearest official-style comparison",
         "typed rejection reasons",
         "failed AI generations and matched positive/negative controls"
+      ],
+      "completed_now": [
+        "12,966 BricksFinder caption records ingested",
+        "12,960 still map to current Rebrickable figures",
+        "258 historical/current name-drift records identified",
+        "6 missing-current-catalog records identified",
+        "6,382 deterministic Fortnite controls"
       ]
     },
     {
@@ -125,13 +162,17 @@
         "30,375 printed component records",
         "25,826 set-occurrence links",
         "all 17,226 figures have catalog image references",
-        "only 1 figure lacks resolved component inventory"
+        "only 1 figure lacks resolved component inventory",
+        "HeroBloks complete list census: 59,745 figures / 1,350 brand slugs",
+        "1,296 HeroBloks brand slugs not yet represented in Brickmen registries",
+        "65 unmodeled brands have stable catalog prefix candidates",
+        "identifier namespace policy corrected so Rebrickable fig_num is never inferred as BrickLink minifigure ID"
       ]
     },
     {
       "priority": "broad_coverage",
       "gap": "film_game_and_reference_materialization",
-      "status": "pipelines_ready_execution_partial",
+      "status": "official_lego_zip_materialization_complete_other_media_partial",
       "store_next": [
         "verified direct-to-video film registry",
         "local film frame extraction and state clustering",
@@ -140,6 +181,12 @@
         "quality scoring",
         "embedding clusters",
         "current LDraw pattern index run"
+      ],
+      "completed_now": [
+        "12 official LEGO ZIP bundles downloaded, hashed and indexed",
+        "377 Skywalker profile PNGs indexed",
+        "5 Minifigure 40th bundle assets indexed",
+        "15 LEGO Games 25 Years bundle assets indexed"
       ]
     }
   ],
@@ -154,7 +201,7 @@
   "latest_physical_census": "data/physical-census-latest.json",
   "updated_at": "2026-09-25",
   "latest_progress": {
-    "at": "2026-09-25T20:25:03.429009+00:00",
+    "at": "2026-09-25T22:45:00-04:00",
     "physical_census_commit": "4ffbebd8c15f8be306860cd35be7c1cc90d42e68",
     "census_counts": {
       "physical_samples": 17226,
@@ -178,6 +225,17 @@
       "extended_over_8_parts": 248,
       "triage_record": "physical-census-no-set-occurrence-triage-2026-09-25.json",
       "policy": "heuristic triage only; not canonical form classification"
+    },
+    "latest_successful_bulk_snapshot_commit": "37f1155d",
+    "current_high_value_queues": {
+      "fortnite_semantic_review_high_priority": 741,
+      "skywalker_strong_candidates": 58,
+      "skywalker_review_candidates": 31,
+      "hero_bloks_unmodeled_brands": 1296,
+      "hero_bloks_stable_prefix_unmodeled": 65,
+      "bricksfinder_reconciliation_records": 264,
+      "decorated_head_weak_expression_candidates": 2029,
+      "mask_headgear_candidate_figures": 14475
     }
   }
 }
