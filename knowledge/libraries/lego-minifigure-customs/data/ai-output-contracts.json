@@ -1,0 +1,71 @@
+{
+  "schema_version": "0.1",
+  "outputs": {
+    "concept_render": {
+      "required": [
+        "canonical_assembly_id",
+        "geometry_revision",
+        "camera_id",
+        "character_spec",
+        "reference_provenance",
+        "generation_provenance"
+      ],
+      "forbidden": [
+        "untracked geometry substitution"
+      ]
+    },
+    "print_art": {
+      "required": [
+        "target_surface_id",
+        "template_revision",
+        "vector_master",
+        "safe_area_check",
+        "minimum_feature_check",
+        "rights_status"
+      ],
+      "deliverables": [
+        "CMYK_or_color",
+        "WHITE",
+        "PRIMER_if_used",
+        "VARNISH_if_used",
+        "proof",
+        "keepout_check"
+      ]
+    },
+    "resin_concept": {
+      "required": [
+        "mating_part_ids",
+        "clearance_envelope",
+        "concept_mesh",
+        "reference_views"
+      ],
+      "warning": "concept mesh is nonfunctional until connector engineering/validation"
+    },
+    "production_package": {
+      "required": [
+        "frozen_art_revision",
+        "geometry_revision",
+        "BOM",
+        "jig_revision",
+        "UV_profile",
+        "QC_standard",
+        "rights_record",
+        "proof_render"
+      ]
+    }
+  },
+  "automatic_reject_conditions": [
+    "art outside keep-out constraints",
+    "unknown geometry revision",
+    "unvalidated connector used as production connector",
+    "missing source provenance",
+    "template scale unknown",
+    "manufacturing layer missing when required"
+  ],
+  "human_review": [
+    "final visual acceptance",
+    "rights clearance where needed",
+    "first physical prototype",
+    "production-master approval"
+  ]
+}

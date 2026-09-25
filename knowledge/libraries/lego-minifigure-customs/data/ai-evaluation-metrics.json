@@ -1,0 +1,51 @@
+{
+  "schema_version": "0.1",
+  "geometry_metrics": [
+    {
+      "name": "silhouette_iou",
+      "purpose": "detect outline drift from canonical geometry"
+    },
+    {
+      "name": "landmark_error",
+      "units": "normalized or pixels",
+      "purpose": "head/torso/limb landmark displacement"
+    },
+    {
+      "name": "part_mask_consistency",
+      "purpose": "detect merged/missing body parts"
+    },
+    {
+      "name": "pose_transform_error",
+      "purpose": "compare expected and generated articulation"
+    }
+  ],
+  "art_metrics": [
+    {
+      "name": "print_zone_containment",
+      "purpose": "percentage of required art inside printable/safe zone"
+    },
+    {
+      "name": "symmetry_error",
+      "purpose": "when design specifies bilateral symmetry"
+    },
+    {
+      "name": "cross_surface_continuity",
+      "purpose": "belt/coat/armor continuation"
+    },
+    {
+      "name": "minimum_feature_violations",
+      "purpose": "features below validated UV capability"
+    },
+    {
+      "name": "color_target_delta",
+      "purpose": "measured only under defined color conditions"
+    }
+  ],
+  "multiview": [
+    "feature correspondence",
+    "color-role consistency",
+    "accessory persistence",
+    "left/right identity consistency"
+  ],
+  "policy": "Metrics rank technical conformance, not artistic quality. Physical proof remains final manufacturing validation."
+}
