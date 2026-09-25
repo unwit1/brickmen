@@ -1,6 +1,6 @@
 {
   "schema_version": "0.1",
-  "researched_at": "2026-09-24",
+  "researched_at": "2026-09-25",
   "datasets": [
     {
       "id": "armaggheddon_lego_minifigure_captions",
@@ -85,14 +85,24 @@
         "surprise",
         "1-5 intensity"
       ],
-      "raw_data_location": "not found in web search during this pass",
+      "raw_data_location": "not present in the audited Figshare DOI or University of Canterbury item; further author/archive search still needed",
       "training_status": "metadata_and_method_ready_raw_data_request_needed",
       "best_use": [
         "expression ground truth",
         "emotion ambiguity distributions",
         "face evaluation"
       ],
-      "next_action": "contact/search author institutional data/archive; preserve exact IDs if raw stimuli/ratings become available"
+      "next_action": "contact/search author institutional data/archive; preserve exact IDs if raw stimuli/ratings become available",
+      "figshare_doi": "10.6084/m9.figshare.5154778",
+      "figshare_audit_2026_09_25": {
+        "status": "paper_only_no_raw_table_surfaced",
+        "item_type": "journal contribution",
+        "surfaced_file_count": 1,
+        "surfaced_file": "bartneckLEGOAgent.pdf",
+        "surfaced_file_size": "1.7 MB",
+        "item_license": "CC BY 4.0",
+        "note": "The Figshare DOI currently exposes the paper, not the machine-readable 627/722 stimulus-to-rating table. Keep raw-data acquisition as an unresolved gap."
+      }
     },
     {
       "id": "gts_lego_minifigure_faces_800",
@@ -390,6 +400,39 @@
         "helmet/hair/legs/heads/torso category detection"
       ],
       "warning": "Category labels are broad and mixed; not official minifigure identity/style labels."
+    },
+    {
+      "id": "jeffreyyijiwang_generative_lego_figure_pipeline",
+      "url": "https://github.com/JeffreyYijiWang/Generative-Lego-Figure-Pipeline",
+      "snapshot_commit": "c6c1fa05116096639c1263efa1cce5138633050c",
+      "contents": [
+        "MLCad.ini-derived minifigure part vocabulary",
+        "3171-row minifigs.csv with section, part file, transform matrix and offset metadata",
+        "random minifigure assembly scripts",
+        "LDR -> LeoCAD -> DAE -> Blender pipeline",
+        "Blender Freestyle edge/silhouette extraction",
+        "raster edge detection -> SVG conversion",
+        "vpype/Shapely SVG layout and optimization examples"
+      ],
+      "source_lineage": [
+        "MLCad.ini / LDraw part vocabulary",
+        "LeoCAD",
+        "Blender Freestyle",
+        "vpype/Shapely"
+      ],
+      "repository_license": "no LICENSE file present in audited snapshot",
+      "training_status": "methodology_only_until_license_or_permission_resolved",
+      "best_use": [
+        "canonical render-pipeline design precedent",
+        "part-transform/offset vocabulary cross-check",
+        "automatic LDraw/LeoCAD/Blender view generation precedent",
+        "geometry-edge and vectorization experiments"
+      ],
+      "warnings": [
+        "Public GitHub availability is not a reuse license.",
+        "The README describes an official-database/MLCad/LDraw-derived workflow, but provenance and licenses must be preserved per upstream source.",
+        "Do not copy repository code or binary assets into a distributable Brickmen training corpus without permission/license resolution."
+      ]
     }
   ]
 }
