@@ -179,6 +179,39 @@ jobs:
           done
           exit 0
 
+      - name: Profile rioforce face SVG geometry candidates
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          src="$OUT/sources/rioforce_face_svg"; mkdir -p "$src"
+          root="$OUT/sources/rioforce_lego_textures/repo"
+          python tools/knowledge/profile_rioforce_face_svgs.py \
+            --root "$root" \
+            --output "$src/records.jsonl" \
+            --summary "$src/summary.json"
+          rc=$?
+          RC="$rc" SRC="$src" python - <<'PY'
+          import json,os,shutil
+          from datetime import datetime,timezone
+          from pathlib import Path
+          src=Path(os.environ["SRC"]);rc=int(os.environ["RC"]);summary={}
+          p=src/"summary.json"
+          if p.exists():
+              try: summary=json.loads(p.read_text())
+              except Exception: pass
+          status={"source_id":"rioforce_face_svg","status":"complete" if rc==0 else "failed",
+                  "exit_code":rc,"created_at":datetime.now(timezone.utc).isoformat(),**summary}
+          Path(os.environ["OUT"],"status/rioforce_face_svg.json").write_text(json.dumps(status,indent=2))
+          if rc==0:
+              dest=Path(os.environ["DEST"])
+              shutil.copy2(src/"summary.json",dest/"rioforce-face-svg-summary-latest.json")
+              records=src/"records.jsonl"
+              if records.exists() and records.stat().st_size < 8_000_000:
+                  shutil.copy2(records,dest/"rioforce-face-svg-records-latest.jsonl")
+          PY
+          exit 0
+
       - name: Build flat-art crosswalk candidates
         continue-on-error: true
         shell: bash
