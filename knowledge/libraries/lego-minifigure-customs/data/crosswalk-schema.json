@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.2",
+  "schema_version": "0.3",
   "part_crosswalk": {
     "canonical_id": "",
     "ldraw_ids": [],
@@ -75,5 +75,37 @@
   },
   "sources": [
     "https://rebrickable.com/api/docs/"
-  ]
+  ],
+  "identifier_namespace_policy": {
+    "rule": "Never derive an identifier in one catalog namespace by string substitution or prefix reuse from another namespace. Every cross-namespace mapping requires explicit source-backed evidence.",
+    "namespaces": [
+      "brickmen_canonical",
+      "lego_design_id",
+      "lego_element_id",
+      "ldraw_id",
+      "rebrickable_part_id",
+      "rebrickable_fig_num",
+      "bricklink_part_id",
+      "bricklink_minifigure_id",
+      "studio_id",
+      "herobloks_id",
+      "maker_code",
+      "reseller_sku"
+    ],
+    "prohibited_inferences": [
+      "Rebrickable fig_num -> BrickLink minifigure ID",
+      "Rebrickable part_num -> BrickLink part ID unless an external-ID source explicitly maps them",
+      "HeroBloks serial -> maker code unless independently verified",
+      "shared numeric value -> same identifier namespace"
+    ],
+    "required_crosswalk_fields": [
+      "from_namespace",
+      "from_id",
+      "to_namespace",
+      "to_id",
+      "source",
+      "confidence",
+      "observed_at"
+    ]
+  }
 }
