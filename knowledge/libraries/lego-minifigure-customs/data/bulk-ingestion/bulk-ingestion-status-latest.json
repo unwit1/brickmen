@@ -1,6 +1,6 @@
 {
   "schema": "lego-training-bulk-ingestion-status/v1",
-  "created_at": "2026-09-25T20:26:49.519303+00:00",
+  "created_at": "2026-09-25T20:34:12.374677+00:00",
   "status_counts": {
     "blocked_local_or_interactive": 11,
     "complete": 8,
@@ -13,14 +13,14 @@
       "source_id": "bricklink_api_enrichment",
       "status": "blocked_local_or_interactive",
       "reason": "needs_user_BrickLink_API_credentials_and_registered_endpoint_IP",
-      "created_at": "2026-09-25T20:26:49.486188+00:00",
+      "created_at": "2026-09-25T20:34:12.354356+00:00",
       "_status_file": "bricklink_api_enrichment.json"
     },
     {
       "source_id": "bricksfinder",
       "status": "complete",
       "exit_code": 0,
-      "created_at": "2026-09-25T20:25:21.591489+00:00",
+      "created_at": "2026-09-25T20:31:47.053421+00:00",
       "git_commit": "68139a2bb1d356f0a37d8edcc8df16de74b9f70d",
       "files": 69,
       "total_bytes": 57949136,
@@ -61,7 +61,7 @@
       "source_id": "bricksfinder_hf",
       "status": "complete",
       "exit_code": 0,
-      "created_at": "2026-09-25T20:25:26.563463+00:00",
+      "created_at": "2026-09-25T20:31:51.803621+00:00",
       "dataset_sha": "1e320360dca012382e091f5e8106a4e758586652",
       "file_count": 5,
       "downloads": 132,
@@ -115,31 +115,32 @@
       "source_id": "controlled_physical_photography",
       "status": "blocked_local_or_interactive",
       "reason": "needs_physical_figures_and_capture_rig",
-      "created_at": "2026-09-25T20:26:49.486188+00:00",
+      "created_at": "2026-09-25T20:34:12.354356+00:00",
       "_status_file": "controlled_physical_photography.json"
     },
     {
       "source_id": "film_frame_corpus",
       "status": "blocked_local_or_interactive",
       "reason": "needs_legally_obtained_local_video_files",
-      "created_at": "2026-09-25T20:26:49.486188+00:00",
+      "created_at": "2026-09-25T20:34:12.354356+00:00",
       "_status_file": "film_frame_corpus.json"
     },
     {
       "source_id": "flat_art_catalog_crosswalk",
       "status": "candidate_only_requires_independent_confirmation",
       "exit_code": 0,
-      "created_at": "2026-09-25T20:25:26.145047+00:00",
+      "created_at": "2026-09-25T20:31:51.495461+00:00",
       "schema": "flat-art-catalog-crosswalk-candidate-summary/v1",
       "processor_version": "flat-art-catalog-crosswalk-candidates/v1",
       "rioforce_records": 129,
       "physical_samples_indexed": 17226,
       "component_records_indexed": 82411,
       "ldraw_exact_ids_indexed": 4348,
+      "min_figure_score_for_exact": 0.9,
       "with_figure_candidates": 99,
       "with_component_candidates": 88,
       "top_figure_high_confidence": 6,
-      "with_exact_ldraw_links": 10,
+      "with_id_exact_links_unverified": 10,
       "without_figure_candidates": 30,
       "_status_file": "flat_art_catalog_crosswalk.json"
     },
@@ -147,7 +148,7 @@
       "source_id": "flat_art_crosswalk",
       "status": "candidate_only_requires_independent_confirmation",
       "exit_code": 0,
-      "created_at": "2026-09-25T20:25:23.333738+00:00",
+      "created_at": "2026-09-25T20:31:49.912083+00:00",
       "schema": "flat-art-crosswalk-candidate-summary/v1",
       "processor_version": "flat-art-crosswalk-candidates/v1",
       "rioforce_records": 129,
@@ -172,14 +173,14 @@
       "source_id": "flickr_bobs_full_decals",
       "status": "blocked_local_or_interactive",
       "reason": "needs_Flickr_enumeration_export_or_API_for_reliable_full_collection",
-      "created_at": "2026-09-25T20:26:49.486188+00:00",
+      "created_at": "2026-09-25T20:34:12.354356+00:00",
       "_status_file": "flickr_bobs_full_decals.json"
     },
     {
       "source_id": "fortnite_lego_styles",
       "status": "complete",
       "exit_code": 0,
-      "created_at": "2026-09-25T20:25:28.865903+00:00",
+      "created_at": "2026-09-25T20:31:53.907225+00:00",
       "source_commit": "dd9e68007de23610f1643cb59153ebe8054dbec9",
       "schema": "fortnite-lego-translation-pair-summary/v2",
       "processor_version": "fortnite-lego-translation-pairs/v2",
@@ -233,7 +234,7 @@
       "source_id": "fortnite_visual_differences",
       "status": "complete",
       "exit_code": 0,
-      "created_at": "2026-09-25T20:26:41.279261+00:00",
+      "created_at": "2026-09-25T20:34:05.295602+00:00",
       "schema": "fortnite-translation-visual-feature-summary/v1",
       "processor_version": "fortnite-translation-visual-features/v1",
       "pair_records_requested": 2494,
@@ -241,9 +242,9 @@
       "errors": 0,
       "missing_preferred_image": 14,
       "heuristic_signal_counts": {
-        "lower_edge_density_in_lego": 234,
-        "smaller_effective_palette_in_lego": 354,
-        "large_silhouette_bbox_change": 2370
+        "lower_edge_density_in_lego": 231,
+        "smaller_effective_palette_in_lego": 347,
+        "large_silhouette_bbox_change": 2372
       },
       "semantic_policy": "derived visual measurements support review; they do not auto-assert preserve/simplify/omit/mould/accessory labels",
       "_status_file": "fortnite_visual_differences.json"
@@ -252,14 +253,14 @@
       "source_id": "human_evaluation",
       "status": "blocked_local_or_interactive",
       "reason": "needs_reviewer_sessions",
-      "created_at": "2026-09-25T20:26:49.486188+00:00",
+      "created_at": "2026-09-25T20:34:12.354356+00:00",
       "_status_file": "human_evaluation.json"
     },
     {
       "source_id": "ldraw_official_library",
       "status": "complete",
       "exit_code": 0,
-      "created_at": "2026-09-25T20:25:16.348113+00:00",
+      "created_at": "2026-09-25T20:31:41.833275+00:00",
       "parts_indexed": 4352,
       "previews_rendered": 0,
       "license_counts": {
@@ -272,35 +273,35 @@
       "source_id": "legacy_game_assets",
       "status": "blocked_local_or_interactive",
       "reason": "needs_local_game_files_or_preserved_archives",
-      "created_at": "2026-09-25T20:26:49.486188+00:00",
+      "created_at": "2026-09-25T20:34:12.354356+00:00",
       "_status_file": "legacy_game_assets.json"
     },
     {
       "source_id": "licensed_reference_books",
       "status": "blocked_local_or_interactive",
       "reason": "needs_local_purchased_or_scanned_book_files",
-      "created_at": "2026-09-25T20:26:49.486188+00:00",
+      "created_at": "2026-09-25T20:34:12.354356+00:00",
       "_status_file": "licensed_reference_books.json"
     },
     {
       "source_id": "manufacturing_validation",
       "status": "blocked_local_or_interactive",
       "reason": "needs_printed_physical_samples_and_measurements",
-      "created_at": "2026-09-25T20:26:49.486188+00:00",
+      "created_at": "2026-09-25T20:34:12.354356+00:00",
       "_status_file": "manufacturing_validation.json"
     },
     {
       "source_id": "mecabricks_bulk_assets",
       "status": "blocked_local_or_interactive",
       "reason": "needs_export/API_or_approved_bulk_acquisition_path",
-      "created_at": "2026-09-25T20:26:49.486188+00:00",
+      "created_at": "2026-09-25T20:34:12.354356+00:00",
       "_status_file": "mecabricks_bulk_assets.json"
     },
     {
       "source_id": "minifig_svg_decals",
       "status": "complete",
       "exit_code": 0,
-      "created_at": "2026-09-25T20:25:22.662404+00:00",
+      "created_at": "2026-09-25T20:31:49.537367+00:00",
       "git_commit": "5c4d6b27aafb2c1e777de358b8a49ea1efe327ba",
       "files": 221,
       "total_bytes": 21120940,
@@ -339,7 +340,7 @@
       "source_id": "rebrickable_bulk",
       "status": "complete",
       "exit_code": 0,
-      "created_at": "2026-09-25T20:25:07.290499+00:00",
+      "created_at": "2026-09-25T20:31:34.814162+00:00",
       "counts": {
         "physical_samples": 17226,
         "figure_reference_assets": 17226,
@@ -363,7 +364,7 @@
           "sha256": "f8b3834bb3eca1ae901a26c0af6a2d1dc4f4d0612fdc8c29388f2300c22fd9b6"
         },
         "sets": {
-          "sha256": "e4a9e97c3842be461ccde3d009f5ed29db3d8191aec9a3d92f11f92038ba98dc"
+          "sha256": "73e8e8610a2230ebd6bfb3192e142d3b7e0648426240dd3a33713bb9a6bec267"
         },
         "themes": {
           "sha256": "3a292aa7586ac3e49e574b5ee20c91889116395965a3c199a006250bf7a04ab1"
@@ -378,7 +379,7 @@
           "sha256": "d83dcdc8beb799015e8b8fe3698be7d2b0a926f9fc081d13765b1b57226fcaad"
         },
         "part_relationships": {
-          "sha256": "5185da08f97500dfc8c686ac35ac64c3cef455f0169edcde2360d249e4923b5d"
+          "sha256": "e055bf08d776ab93ab4404f84f5abdc975646e80661d724ec9e43156d5793b56"
         },
         "elements": {
           "sha256": "640cc0f54827435ca9ec5d8cc59c7af44d181e3c26001c94cf25954b42f8041e"
@@ -390,7 +391,7 @@
       "source_id": "rioforce_lego_textures",
       "status": "complete",
       "exit_code": 0,
-      "created_at": "2026-09-25T20:25:17.232091+00:00",
+      "created_at": "2026-09-25T20:31:43.265757+00:00",
       "git_commit": "7f602f70a160499138693d8e163be2d338e23049",
       "files": 245,
       "total_bytes": 16744055,
@@ -446,14 +447,14 @@
       "source_id": "tt_games_assets",
       "status": "blocked_local_or_interactive",
       "reason": "needs_legally_obtained_local_game_installations",
-      "created_at": "2026-09-25T20:26:49.486188+00:00",
+      "created_at": "2026-09-25T20:34:12.354356+00:00",
       "_status_file": "tt_games_assets.json"
     },
     {
       "source_id": "uefn_canonical_renders",
       "status": "blocked_local_or_interactive",
       "reason": "needs_local_UEFN_installation_and_controlled_capture",
-      "created_at": "2026-09-25T20:26:49.486188+00:00",
+      "created_at": "2026-09-25T20:34:12.354356+00:00",
       "_status_file": "uefn_canonical_renders.json"
     },
     {
@@ -461,12 +462,12 @@
       "processor_version": "training-source-web-profile/v1",
       "source_id": "bobs_customs",
       "requested_url": "https://bobscustoms.co.uk/",
-      "created_at": "2026-09-25T20:26:41.456529+00:00",
+      "created_at": "2026-09-25T20:34:05.422436+00:00",
       "status": "ok",
       "final_url": "https://bobscustoms.co.uk/password",
       "content_type": "text/html; charset=utf-8",
       "content_bytes": 215821,
-      "content_sha256": "41bf261ea3a42173bbf4cf9ae5f38092b672c10c28700aa866a28069f385a523",
+      "content_sha256": "462cd3c6dbfb3549bee99763b2c2f9c7b11f0e719a37b5cefd79eefccbfc1fec",
       "image_count": 1,
       "link_count": 5,
       "image_urls": [
@@ -485,7 +486,7 @@
       "processor_version": "training-source-web-profile/v1",
       "source_id": "bricklink_studio_minifig",
       "requested_url": "https://studiohelp.bricklink.com/hc/en-us/articles/5877834417303-Creating-a-decorated-minifig",
-      "created_at": "2026-09-25T20:26:46.090689+00:00",
+      "created_at": "2026-09-25T20:34:09.642564+00:00",
       "status": "ok",
       "final_url": "https://studiohelp.bricklink.com/hc/en-us/articles/5877834417303-Creating-a-decorated-minifig",
       "content_type": "text/html; charset=utf-8",
@@ -518,12 +519,12 @@
       "processor_version": "training-source-web-profile/v1",
       "source_id": "fortnite_lego_styles",
       "requested_url": "https://dev.epicgames.com/documentation/fortnite/lego-asset-inventory-in-fortnite-creative",
-      "created_at": "2026-09-25T20:26:47.111954+00:00",
+      "created_at": "2026-09-25T20:34:10.709018+00:00",
       "status": "ok",
       "final_url": "https://dev.epicgames.com/documentation/fortnite/lego-asset-inventory-in-fortnite-creative",
       "content_type": "text/html; charset=utf-8",
-      "content_bytes": 403372,
-      "content_sha256": "fcfb866aeda0861c3ada1dfe440fbe7465f8bbc58b72d854997e109854acc96e",
+      "content_bytes": 403371,
+      "content_sha256": "821f7d460d3d2e74b47f3d4f48f3f9c892cfedbc5283aa06ca3cd939360b8b7a",
       "image_count": 182,
       "link_count": 152,
       "image_urls": [
@@ -722,12 +723,12 @@
       "processor_version": "training-source-web-profile/v1",
       "source_id": "ldraw_updates",
       "requested_url": "https://library.ldraw.org/updates",
-      "created_at": "2026-09-25T20:26:42.252552+00:00",
+      "created_at": "2026-09-25T20:34:06.411154+00:00",
       "status": "ok",
       "final_url": "https://library.ldraw.org/updates",
       "content_type": "text/html; charset=utf-8",
       "content_bytes": 248840,
-      "content_sha256": "36f938aed7c38781d3cdb61af14788d002857bb1c130e90e40953a04e8ab2c72",
+      "content_sha256": "95d43cf7d3da1d3cd1baed79f7f832950fdd2cea979b527e2c62523876094efc",
       "image_count": 112,
       "link_count": 308,
       "image_urls": [
@@ -761,12 +762,12 @@
       "processor_version": "training-source-web-profile/v1",
       "source_id": "lego_pick_a_brick_minifig",
       "requested_url": "https://www.lego.com/en-us/pick-and-build/pick-a-brick?category=7",
-      "created_at": "2026-09-25T20:26:44.599590+00:00",
+      "created_at": "2026-09-25T20:34:08.731294+00:00",
       "status": "ok",
       "final_url": "https://www.lego.com/en-us/pick-and-build/pick-a-brick?category=7",
       "content_type": "text/html; charset=utf-8",
       "content_bytes": 775684,
-      "content_sha256": "0ecb9cef3f1c7c30a87fbda364a24d3590f4d7342553ff3cc90ce536a70dff8d",
+      "content_sha256": "59af678348665703728773211106c2ea69eb7a71eae4440801205a39c36eed97",
       "image_count": 63,
       "link_count": 527,
       "image_urls": [
@@ -853,12 +854,12 @@
       "processor_version": "training-source-web-profile/v1",
       "source_id": "mecabricks",
       "requested_url": "https://www.mecabricks.com/",
-      "created_at": "2026-09-25T20:26:46.438511+00:00",
+      "created_at": "2026-09-25T20:34:10.000366+00:00",
       "status": "ok",
       "final_url": "https://www.mecabricks.com/",
       "content_type": "text/html; charset=UTF-8",
-      "content_bytes": 24452,
-      "content_sha256": "0c1301a82edc7217e85028074bdb203cbd54339993485c73bc46816fa27524e1",
+      "content_bytes": 24644,
+      "content_sha256": "f954d6fb2d049cb012ada5e8cb1f85093b205ad49471dabf116b24d26c117aad",
       "image_count": 12,
       "link_count": 70,
       "image_urls": [
@@ -876,8 +877,7 @@
         "https://d1xez26aurxsp6.cloudfront.net/renderings/jyAgKj/6ab6829226bfa.jpg"
       ],
       "outbound_hosts": {
-        "mecabricks.com": 48,
-        "www.mecabricks.com": 13,
+        "www.mecabricks.com": 61,
         "twitter.com": 2,
         "www.facebook.com": 2,
         "www.patreon.com": 1,
