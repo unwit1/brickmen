@@ -1,13 +1,29 @@
 {
-  "schema_version": "0.1",
+  "schema_version": "0.2",
   "project": "LEGO minifigure image-generation research",
-  "user_assertion_date": "2026-09-24",
-  "assumption": "For ingestion planning, assume the user has already obtained permission from relevant dataset compilers and representatives for personal/research use and presentation to LEGO.",
+  "user_assertion_date": "2026-09-25",
+  "assumption": "For this Brickmen research project, the user states that every source/data asset reviewed for inclusion has express permission for use as research/training data. Treat reviewed sources as permission-cleared for project research/training even when their public license would otherwise be restrictive or unclear.",
   "handling": [
-    "Do not exclude a potentially useful research source solely because its public license would normally require additional review.",
-    "Still preserve original public license/terms and the asserted permission record as separate provenance fields.",
-    "Do not automatically infer public redistribution or unrelated commercial deployment rights from research/personal permission.",
-    "Prioritize informational completeness while keeping provenance auditable."
+    "Do not exclude, down-rank, or block a reviewed source from Brickmen research/training use solely because of its public license, terms, noncommercial language, missing public license, or otherwise restrictive licensing metadata.",
+    "For reviewed sources, use allowed_by_specific_permission as the effective project training-rights status unless a narrower user instruction is recorded for that source.",
+    "Still preserve the original public license, terms, attribution requirements, source URL, hashes, and provenance as factual metadata.",
+    "Keep public-license metadata separate from the project-specific permission basis so downstream agents can distinguish public rights from the user's express permission.",
+    "Do not infer unrelated public redistribution, resale, or third-party commercial rights from this project-specific training permission unless separately documented.",
+    "Prioritize informational completeness and exhaustive ingestion while retaining an auditable permission/provenance trail."
   ],
-  "default_permission_status": "rights_cleared_research"
+  "default_permission_status": "allowed_by_specific_permission",
+  "scope": {
+    "project": "Brickmen / LEGO minifigure image-generation research",
+    "applies_to": "all data sources/assets that have been reviewed for this project",
+    "permitted_use": [
+      "research",
+      "model_training",
+      "evaluation",
+      "retrieval",
+      "analysis",
+      "derived_features",
+      "research presentation"
+    ],
+    "license_as_exclusion_gate": false
+  }
 }
