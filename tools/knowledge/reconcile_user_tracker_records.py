@@ -70,6 +70,11 @@ def canonical_source_stub(rec, source_path):
         "subcategory": rec.get("subcategory"),
         "collection": rec.get("collection") or rec.get("group"),
         "product_code": rec.get("product_code") or rec.get("bricklink_minifigure_id"),
+        "product_code_namespace": (
+            "maker_product_code" if rec.get("product_code")
+            else "bricklink_minifigure_id" if rec.get("bricklink_minifigure_id")
+            else None
+        ),
         "have": rec.get("have"),
         "ownership_status": rec.get("ownership_status"),
         "preferred": rec.get("preferred") or rec.get("best_representation"),
@@ -304,12 +309,16 @@ def main():
         code = rec.get("product_code")
         if not code:
             continue
+        namespace = rec.get("product_code_namespace") or "maker_product_code"
         prefix = code_prefix(code)
-        candidates = list(prefix_map.get(prefix or "", []))
-        method = "observed_product_prefix" if candidates else None
-        if not candidates and prefix:
-            candidates = list(alias_map.get(norm(prefix), []))
-            method = "exact_brand_or_alias_token" if candidates else None
+        candidates = []
+        method = None
+        if namespace == "maker_product_code":
+            candidates = list(prefix_map.get(prefix or "", []))
+            method = "observed_product_prefix" if candidates else None
+            if not candidates and prefix:
+                candidates = list(alias_map.get(norm(prefix), []))
+                method = "exact_brand_or_alias_token" if candidates else None
         code_rows.append({
             "source_record": {
                 "source_file": rec.get("source_file"),
@@ -318,19 +327,61 @@ def main():
                 "source_row": rec.get("source_row"),
             },
             "product_code": code,
+            "product_code_namespace": namespace,
             "observed_prefix": prefix,
             "name": rec.get("name"),
             "variant": rec.get("variant"),
             "brand_candidates": candidates,
             "candidate_method": method,
             "resolution_status": (
-                "brand_candidate_single" if len(candidates) == 1
+                "external_catalog_id_observed" if namespace != "maker_product_code"
+                else "brand_candidate_single" if len(candidates) == 1
                 else "brand_candidate_ambiguous" if len(candidates) > 1
                 else "unresolved_prefix"
             ),
             "policy": "Prefix or exact brand-token evidence proposes a brand only; release identity, ownership/factory relationships and chronology require independent evidence.",
             "processor_version": VERSION,
         })
+
+    # FigureRelease candidates: group maker product codes without collapsing name/variant conflicts.
+    release_groups = defaultdict(list)
+    for row in code_rows:
+        if row.get("product_code_namespace") != "maker_product_code":
+            continue
+        release_groups[str(row.get("product_code") or "").upper()].append(row)
+    release_rows = []
+    for code, items in release_groups.items():
+        brands = []
+        for item in items:
+            for cand in item.get("brand_candidates") or []:
+                key = (cand.get("brand"), cand.get("confidence"), cand.get("relationship_note"))
+                if key not in [(x.get("brand"), x.get("confidence"), x.get("relationship_note")) for x in brands]:
+                    brands.append(cand)
+        names = uniq(x.get("name") for x in items)
+        variants = uniq(x.get("variant") for x in items)
+        source_records = [x.get("source_record") for x in items]
+        release_rows.append({
+            "figure_release_candidate_id": "user-release-" + re.sub(r"[^a-z0-9]+", "-", code.casefold()).strip("-"),
+            "maker_product_code": code,
+            "maker_candidates": brands,
+            "observed_names": names,
+            "observed_variants": variants,
+            "source_record_count": len(items),
+            "source_records": source_records,
+            "identity_conflict_flags": [
+                *([] if len(names) <= 1 else ["multiple_names_for_same_code"]),
+                *([] if len(variants) <= 1 else ["multiple_variants_for_same_code"]),
+                *([] if len(brands) <= 1 else ["multiple_brand_candidates"]),
+            ],
+            "release_resolution_status": (
+                "candidate_ready_for_identity_resolution"
+                if len(brands) == 1
+                else "brand_or_identity_review_required"
+            ),
+            "policy": "User tracker product-code grouping creates FigureRelease candidates only. Canonical maker/release identity requires corroborating catalog or primary-source evidence.",
+            "processor_version": VERSION,
+        })
+    release_rows.sort(key=lambda x: (x["release_resolution_status"] != "brand_or_identity_review_required", x["maker_product_code"]))
 
     def write_jsonl(name, rows):
         with (args.output_dir / name).open("w", encoding="utf-8") as handle:
@@ -341,6 +392,7 @@ def main():
     write_jsonl("strict-duplicate-candidates.jsonl", strict_rows)
     write_jsonl("product-code-brand-candidates.jsonl", code_rows)
     write_jsonl("dc-legacy-normalized.jsonl", dc_normalized)
+    write_jsonl("figure-release-candidates.jsonl", release_rows)
 
     unresolved_prefix = Counter(
         x.get("observed_prefix") or "UNKNOWN"
@@ -361,9 +413,14 @@ def main():
         "strict_duplicate_candidate_groups": len(strict_rows),
         "strict_cross_source_duplicate_candidate_groups": sum(x["cross_source_duplicate_candidate"] for x in strict_rows),
         "coded_records": len(code_rows),
+        "maker_product_code_records": sum(x.get("product_code_namespace") == "maker_product_code" for x in code_rows),
+        "external_catalog_id_records": sum(x.get("product_code_namespace") != "maker_product_code" for x in code_rows),
+        "figure_release_candidate_records": len(release_rows),
+        "figure_release_candidates_with_identity_conflicts": sum(bool(x.get("identity_conflict_flags")) for x in release_rows),
         "single_brand_candidates": sum(x["resolution_status"] == "brand_candidate_single" for x in code_rows),
         "ambiguous_brand_candidates": sum(x["resolution_status"] == "brand_candidate_ambiguous" for x in code_rows),
         "unresolved_code_prefix_records": sum(x["resolution_status"] == "unresolved_prefix" for x in code_rows),
+        "external_catalog_ids_observed": sum(x["resolution_status"] == "external_catalog_id_observed" for x in code_rows),
         "unresolved_prefix_counts": dict(unresolved_prefix.most_common()),
         "largest_name_groups": [
             {
