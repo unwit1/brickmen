@@ -1,0 +1,64 @@
+name: LEGO User Release Catalog Crosswalk
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/lego-user-release-crosswalk.yml'
+      - 'tools/knowledge/crosswalk_user_releases_herobloks.py'
+      - 'tools/knowledge/snapshot_herobloks_catalog.py'
+      - 'knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/figure-release-candidates-latest.jsonl'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: lego-user-release-crosswalk-main
+  cancel-in-progress: true
+
+jobs:
+  crosswalk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out Brickmen
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Snapshot HeroBloks and exact-crosswalk releases
+        shell: bash
+        run: |
+          set -euo pipefail
+          work=/tmp/user-release-crosswalk
+          mkdir -p "$work"
+          python tools/knowledge/snapshot_herobloks_catalog.py \
+            --output "$work/herobloks.jsonl" \
+            --summary "$work/herobloks-summary.json" \
+            --brand-output "$work/herobloks-brands.json"
+          python tools/knowledge/crosswalk_user_releases_herobloks.py \
+            --release-candidates knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/figure-release-candidates-latest.jsonl \
+            --herobloks-catalog "$work/herobloks.jsonl" \
+            --output "$work/crosswalk.jsonl" \
+            --summary "$work/summary.json"
+          dest=knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation
+          cp "$work/summary.json" "$dest/heroBloks-release-crosswalk-summary-latest.json"
+          cp "$work/crosswalk.jsonl" "$dest/heroBloks-release-crosswalk-latest.jsonl"
+
+      - name: Commit exact catalog crosswalk
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "brickmen-ingestion-bot"
+          git config user.email "brickmen-ingestion-bot@users.noreply.github.com"
+          git add knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/heroBloks-release-crosswalk-*
+          if git diff --cached --quiet; then
+            echo "No release crosswalk changes."
+            exit 0
+          fi
+          git commit -m "knowledge: refresh exact HeroBloks release crosswalk"
+          git push
