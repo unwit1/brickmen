@@ -1,0 +1,210 @@
+{
+  "schema": "lego-training-bulk-ingestion-status/v1",
+  "created_at": "2026-09-25T15:21:20.173394+00:00",
+  "status_counts": {
+    "blocked_local_or_interactive": 11,
+    "failed": 6,
+    "complete": 1
+  },
+  "source_count": 18,
+  "sources": [
+    {
+      "source_id": "bricklink_api_enrichment",
+      "status": "blocked_local_or_interactive",
+      "reason": "needs_user_BrickLink_API_credentials_and_registered_endpoint_IP",
+      "created_at": "2026-09-25T15:21:20.138797+00:00",
+      "_status_file": "bricklink_api_enrichment.json"
+    },
+    {
+      "source_id": "bricksfinder",
+      "status": "failed",
+      "exit_code": 2,
+      "created_at": "2026-09-25T15:21:16.246222+00:00",
+      "git_commit": null,
+      "files": null,
+      "total_bytes": null,
+      "asset_classes": null,
+      "extensions": null,
+      "top_level_counts": null,
+      "svg_files_profiled": null,
+      "raster_files_profiled": null,
+      "_status_file": "bricksfinder.json"
+    },
+    {
+      "source_id": "bricksfinder_hf",
+      "status": "failed",
+      "exit_code": 2,
+      "created_at": "2026-09-25T15:21:17.937238+00:00",
+      "dataset_sha": null,
+      "file_count": null,
+      "downloads": null,
+      "tags": null,
+      "files": null,
+      "_status_file": "bricksfinder_hf.json"
+    },
+    {
+      "source_id": "controlled_physical_photography",
+      "status": "blocked_local_or_interactive",
+      "reason": "needs_physical_figures_and_capture_rig",
+      "created_at": "2026-09-25T15:21:20.138797+00:00",
+      "_status_file": "controlled_physical_photography.json"
+    },
+    {
+      "source_id": "film_frame_corpus",
+      "status": "blocked_local_or_interactive",
+      "reason": "needs_legally_obtained_local_video_files",
+      "created_at": "2026-09-25T15:21:20.138797+00:00",
+      "_status_file": "film_frame_corpus.json"
+    },
+    {
+      "source_id": "flickr_bobs_full_decals",
+      "status": "blocked_local_or_interactive",
+      "reason": "needs_Flickr_enumeration_export_or_API_for_reliable_full_collection",
+      "created_at": "2026-09-25T15:21:20.138797+00:00",
+      "_status_file": "flickr_bobs_full_decals.json"
+    },
+    {
+      "source_id": "fortnite_lego_styles",
+      "status": "complete",
+      "exit_code": 0,
+      "created_at": "2026-09-25T15:21:19.926396+00:00",
+      "source_commit": "b8acd92bc04226d88a7f17e2eed65462be4bfd6c",
+      "schema": "fortnite-lego-translation-pair-summary/v1",
+      "processor_version": "fortnite-lego-translation-pairs/v1",
+      "br_records": 16405,
+      "lego_records": 2494,
+      "candidate_pairs": 2494,
+      "unmatched_lego": 0,
+      "pair_methods": {
+        "embedded_br_id": 2494
+      },
+      "lego_top_level_fields": [
+        "added",
+        "cosmeticId",
+        "id",
+        "images",
+        "soundLibraryTags"
+      ],
+      "br_top_level_fields": [
+        "added",
+        "builtInEmoteIds",
+        "customExclusiveCallout",
+        "description",
+        "dynamicPakId",
+        "id",
+        "images",
+        "introduction",
+        "metaTags",
+        "name",
+        "rarity",
+        "searchTags",
+        "series",
+        "set",
+        "showcaseVideo",
+        "type",
+        "unlockRequirements",
+        "variants"
+      ],
+      "_status_file": "fortnite.json"
+    },
+    {
+      "source_id": "human_evaluation",
+      "status": "blocked_local_or_interactive",
+      "reason": "needs_reviewer_sessions",
+      "created_at": "2026-09-25T15:21:20.138797+00:00",
+      "_status_file": "human_evaluation.json"
+    },
+    {
+      "source_id": "ldraw_official_library",
+      "status": "failed",
+      "exit_code": 2,
+      "created_at": "2026-09-25T15:21:11.329054+00:00",
+      "parts_indexed": null,
+      "previews_rendered": null,
+      "license_counts": null,
+      "_status_file": "ldraw.json"
+    },
+    {
+      "source_id": "legacy_game_assets",
+      "status": "blocked_local_or_interactive",
+      "reason": "needs_local_game_files_or_preserved_archives",
+      "created_at": "2026-09-25T15:21:20.138797+00:00",
+      "_status_file": "legacy_game_assets.json"
+    },
+    {
+      "source_id": "licensed_reference_books",
+      "status": "blocked_local_or_interactive",
+      "reason": "needs_local_purchased_or_scanned_book_files",
+      "created_at": "2026-09-25T15:21:20.138797+00:00",
+      "_status_file": "licensed_reference_books.json"
+    },
+    {
+      "source_id": "manufacturing_validation",
+      "status": "blocked_local_or_interactive",
+      "reason": "needs_printed_physical_samples_and_measurements",
+      "created_at": "2026-09-25T15:21:20.138797+00:00",
+      "_status_file": "manufacturing_validation.json"
+    },
+    {
+      "source_id": "mecabricks_bulk_assets",
+      "status": "blocked_local_or_interactive",
+      "reason": "needs_export/API_or_approved_bulk_acquisition_path",
+      "created_at": "2026-09-25T15:21:20.138797+00:00",
+      "_status_file": "mecabricks_bulk_assets.json"
+    },
+    {
+      "source_id": "minifig_svg_decals",
+      "status": "failed",
+      "exit_code": 2,
+      "created_at": "2026-09-25T15:21:17.877443+00:00",
+      "git_commit": null,
+      "files": null,
+      "total_bytes": null,
+      "asset_classes": null,
+      "extensions": null,
+      "top_level_counts": null,
+      "svg_files_profiled": null,
+      "raster_files_profiled": null,
+      "_status_file": "minifig_svg_decals.json"
+    },
+    {
+      "source_id": "rebrickable_bulk",
+      "status": "failed",
+      "exit_code": 2,
+      "created_at": "2026-09-25T15:21:03.681660+00:00",
+      "counts": null,
+      "processor_version": null,
+      "source_files": {},
+      "_status_file": "rebrickable.json"
+    },
+    {
+      "source_id": "rioforce_lego_textures",
+      "status": "failed",
+      "exit_code": 2,
+      "created_at": "2026-09-25T15:21:12.364308+00:00",
+      "git_commit": null,
+      "files": null,
+      "total_bytes": null,
+      "asset_classes": null,
+      "extensions": null,
+      "top_level_counts": null,
+      "svg_files_profiled": null,
+      "raster_files_profiled": null,
+      "_status_file": "rioforce_lego_textures.json"
+    },
+    {
+      "source_id": "tt_games_assets",
+      "status": "blocked_local_or_interactive",
+      "reason": "needs_legally_obtained_local_game_installations",
+      "created_at": "2026-09-25T15:21:20.138797+00:00",
+      "_status_file": "tt_games_assets.json"
+    },
+    {
+      "source_id": "uefn_canonical_renders",
+      "status": "blocked_local_or_interactive",
+      "reason": "needs_local_UEFN_installation_and_controlled_capture",
+      "created_at": "2026-09-25T15:21:20.138797+00:00",
+      "_status_file": "uefn_canonical_renders.json"
+    }
+  ]
+}
