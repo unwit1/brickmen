@@ -1,0 +1,54 @@
+{
+  "schema_version": "0.1",
+  "bundles": {
+    "concept_render": [
+      "character_spec",
+      "canonical_assembly",
+      "part_geometry_refs",
+      "color/material refs",
+      "pose",
+      "camera",
+      "style_grammar",
+      "negative_geometry_constraints"
+    ],
+    "uv_artwork": [
+      "target_print_surface",
+      "physical_template_revision",
+      "artwork_grammar",
+      "uv_profile",
+      "white_underbase_rules",
+      "keep_out_mask",
+      "minimum_feature_rules",
+      "color_profile"
+    ],
+    "resin_part": [
+      "mating_geometry",
+      "validated_connector",
+      "clearance_envelope",
+      "resin_profile",
+      "fit_coupon_results",
+      "support_keep_outs",
+      "articulation_envelope"
+    ],
+    "production": [
+      "artwork_revision",
+      "part/mould revision",
+      "jig revision",
+      "uv profile",
+      "substrate profile",
+      "color corrections",
+      "QC standard",
+      "rights status"
+    ],
+    "troubleshooting": [
+      "batch record",
+      "defect codes",
+      "photos",
+      "machine/profile",
+      "jig",
+      "prior experiments",
+      "maintenance state"
+    ]
+  },
+  "rule": "Retrieve the smallest sufficient bundle; never feed the whole knowledge repository to a model."
+}

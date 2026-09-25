@@ -1,0 +1,52 @@
+{
+  "schema_version": "0.1",
+  "connector_families": [
+    "headwear/head interface",
+    "neck opening",
+    "hand-held rod",
+    "arm-hand interface reference",
+    "clip",
+    "stud/tube when project-relevant",
+    "back/neck accessory interface",
+    "custom keyed connector"
+  ],
+  "coupon_sweep": {
+    "offset_units": "mm",
+    "offsets": "project-defined around measured nominal; never assume universal clearance"
+  },
+  "record_fields": [
+    "connector_id",
+    "cad_revision",
+    "mating_part_exact_id",
+    "mating_mould_variant",
+    "printer",
+    "resin",
+    "resin_lot",
+    "layer_height",
+    "exposure_profile",
+    "orientation",
+    "supports",
+    "wash",
+    "cure",
+    "nominal_dimensions",
+    "compensation_offsets",
+    "post_cure_dimensions",
+    "fit_class",
+    "insertion_cycles",
+    "damage",
+    "retention",
+    "photos",
+    "operator",
+    "date"
+  ],
+  "fit_classes": [
+    "free",
+    "close",
+    "removable_friction",
+    "firm_friction",
+    "excessive",
+    "damaging",
+    "failure"
+  ],
+  "validation_rule": "Approval is scoped to exact printer/resin/process/mating-family combination and must be revalidated after process changes."
+}

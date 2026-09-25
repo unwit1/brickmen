@@ -1,0 +1,79 @@
+{
+  "snapshot_id": "official-reference-acquisition-status-2026-09-24",
+  "created_at": "2026-09-24",
+  "objective": "Acquire and resolve every practical official standard-minifigure visual design across physical sets, games and films.",
+  "physical": {
+    "status": "pipeline_ready_bulk_not_run_in_this_session",
+    "known_catalog_scale": {
+      "bricklink_records": 19250,
+      "brickset_records": 19240
+    },
+    "sources_ready": [
+      "Rebrickable bulk CSV",
+      "BrickLink catalog",
+      "Brickset facets",
+      "LDraw Parts Library",
+      "LEGO product/instruction media"
+    ],
+    "importer": "tools/knowledge/ingest_lego_minifigure_references.py",
+    "improvements": [
+      "v2 resolves minifigure component inventories and component image references when Rebrickable bulk part tables are present"
+    ],
+    "blockers": [
+      "Current Rebrickable bulk files are not materialized in this execution environment",
+      "Raw reference URLs have not yet been bulk-downloaded"
+    ]
+  },
+  "games": {
+    "status": "discovery_and_local_index_pipeline_ready_full_title_census_incomplete",
+    "lego_official_global_count_statement": "over 200 game titles since 1995",
+    "sources_ready": [
+      "LEGO Games",
+      "LEGO 30-year games retrospective",
+      "TT Games catalog",
+      "official theme game pages",
+      "secondary historical discovery lists"
+    ],
+    "local_indexer": "tools/knowledge/index_ttgames_minifigure_assets.py",
+    "priority_first_complete_game": "LEGO Star Wars: The Skywalker Saga",
+    "reason": "Official LEGO states >300 playable characters and hosts hundreds of profile icons; local game assets can add models/textures/variants.",
+    "blockers": [
+      "Need complete official title reconciliation",
+      "Need legally obtained local game installations for exhaustive asset extraction",
+      "Format-specific decoders differ by game generation"
+    ]
+  },
+  "films": {
+    "status": "theatrical_seed_verified_direct_to_video_candidate_queue_created",
+    "theatrical_verified_count": 5,
+    "frame_extractor": "tools/knowledge/extract_lego_film_reference_frames.py",
+    "blockers": [
+      "Need primary verification for every direct-to-video candidate",
+      "Need legally obtained local video copies for exhaustive frame extraction",
+      "Need second-stage character detection/cropping/dedupe"
+    ]
+  },
+  "images": {
+    "status": "materialization_and_exact_near_dedupe_tools_ready",
+    "materializer": "tools/knowledge/materialize_lego_reference_images.py",
+    "exact_dedupe": "SHA-256 content-addressed storage",
+    "near_dedupe": "tools/knowledge/dedupe_lego_reference_images.py (dHash)",
+    "next_needed": [
+      "visual embedding clustering",
+      "automatic part/character crops",
+      "view classification",
+      "quality scoring"
+    ]
+  },
+  "structured_patterns": {
+    "status": "ldraw_indexer_ready_not_run_in_this_session",
+    "indexer": "tools/knowledge/index_ldraw_minifig_patterns.py",
+    "purpose": "Pattern/geometry evidence for heads, torsos, hips, legs, arms and headgear; community reconstruction, not LEGO authorship."
+  },
+  "translation_pairs": {
+    "status": "schema_ready_pair_population_pending",
+    "schema": "data/translation-pair-schema.json",
+    "purpose": "Pair exact external source appearance with official LEGO interpretation to learn what LEGO preserves, simplifies, omits, or moves into new moulds/accessories."
+  },
+  "completion_rule": "Do not claim complete training coverage until every physical catalog record, every in-scope official game title/character design and every in-scope film visual design is enumerated, source-linked, deduplicated and either resolved or explicitly listed as unresolved."
+}

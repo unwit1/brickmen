@@ -1,0 +1,55 @@
+{
+  "schema_version": "0.1",
+  "asset_fields": [
+    "asset_id",
+    "canonical_part_id",
+    "geometry_source",
+    "geometry_revision",
+    "geometry_hash",
+    "dependency_hashes",
+    "license",
+    "color_profile",
+    "material_profile",
+    "pose_id",
+    "camera_id",
+    "lighting_id",
+    "renderer",
+    "renderer_version",
+    "scene_hash",
+    "output_type",
+    "width",
+    "height",
+    "bit_depth",
+    "created_at"
+  ],
+  "camera_fields": [
+    "projection",
+    "position",
+    "target",
+    "rotation",
+    "focal_length_mm",
+    "ortho_scale",
+    "sensor_width_mm",
+    "near_clip",
+    "far_clip"
+  ],
+  "passes": [
+    "beauty",
+    "clay",
+    "albedo",
+    "depth",
+    "normal_camera",
+    "normal_world",
+    "silhouette",
+    "edge",
+    "part_id",
+    "material_id",
+    "uv_reference",
+    "position"
+  ],
+  "ldraw_preview_reference": {
+    "default_camera": "bounding box centered; camera 30 latitude / 45 longitude looking at origin",
+    "note": "Use as catalog-reference view; manufacturing views use explicit orthographic camera presets."
+  },
+  "source": "https://www.ldraw.org/article/398.html"
+}
