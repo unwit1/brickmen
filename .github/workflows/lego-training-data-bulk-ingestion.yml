@@ -211,6 +211,40 @@ jobs:
           PY
           exit 0
 
+      - name: Build weak face semantic distributions
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          src="$OUT/sources/decorated_head_semantics"
+          mkdir -p "$src/distributions"
+          python tools/knowledge/build_face_semantic_distributions.py \
+            --heads "$src/records.jsonl" \
+            --output "$src/distributions/records.jsonl" \
+            --summary "$src/distributions/summary.json"
+          rc=$?
+          RC="$rc" SRC="$src" python - <<'PY'
+          import json,os,shutil
+          from datetime import datetime,timezone
+          from pathlib import Path
+          src=Path(os.environ["SRC"]);rc=int(os.environ["RC"]);summary={}
+          p=src/"distributions/summary.json"
+          if p.exists():
+              try: summary=json.loads(p.read_text())
+              except Exception: pass
+          status={"source_id":"face_semantic_distributions","status":"complete" if rc==0 else "failed",
+                  "exit_code":rc,"created_at":datetime.now(timezone.utc).isoformat(),**summary}
+          Path(os.environ["OUT"],"status/face_semantic_distributions.json").write_text(json.dumps(status,indent=2))
+          if rc==0:
+              dest=Path(os.environ["DEST"])
+              shutil.copy2(p,dest/"face-semantic-distribution-summary-latest.json")
+              q=src/"distributions/records.jsonl"
+              if q.exists() and q.stat().st_size < 8_000_000:
+                  shutil.copy2(q,dest/"face-semantic-distributions-latest.jsonl")
+          PY
+          exit 0
+
+
       - name: Build corpus-wide mask and headgear candidates
         continue-on-error: true
         shell: bash
