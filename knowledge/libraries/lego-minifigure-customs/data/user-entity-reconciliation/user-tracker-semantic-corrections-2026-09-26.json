@@ -1,8 +1,218 @@
 {
-  "schema": "user-tracker-semantic-corrections/v1",
+  "schema": "user-tracker-semantic-corrections/v2",
   "created_at": "2026-09-26",
   "source_policy": "Non-destructive semantic overlay. Original Google Sheet and raw ingested JSONL remain canonical provenance; corrected fields are used only in derived reconciliation layers and each derived record carries the correction metadata plus original field values.",
   "records": [
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 13,
+      "expected_name": "Adversary",
+      "corrected_fields": {
+        "year": "2000"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 42,
+      "expected_name": "Answer",
+      "corrected_fields": {
+        "year": "1998"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 51,
+      "expected_name": "Arclight",
+      "corrected_fields": {
+        "year": "1995"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 255,
+      "expected_name": "Batman of China",
+      "corrected_fields": {
+        "year": "2016"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 256,
+      "expected_name": "Batman of Japan",
+      "corrected_fields": {
+        "year": "2011"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 313,
+      "expected_name": "Black Flash",
+      "corrected_fields": {
+        "year": "1998"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 323,
+      "expected_name": "Blacksmith",
+      "corrected_fields": {
+        "year": "2001"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 343,
+      "expected_name": "Brainiac 13",
+      "corrected_fields": {
+        "year": "2000"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 353,
+      "expected_name": "Brother Grimm",
+      "corrected_fields": {
+        "year": "2000"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 356,
+      "expected_name": "Brutale",
+      "corrected_fields": {
+        "year": "1998"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
     {
       "source_title": "Minifig Variants to Make",
       "source_tab": "DC",
@@ -70,6 +280,699 @@
     {
       "source_title": "Minifig Variants to Make",
       "source_tab": "DC",
+      "source_row": 448,
+      "expected_name": "Cheetah",
+      "corrected_fields": {
+        "year": "2001"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 458,
+      "expected_name": "Cicada",
+      "corrected_fields": {
+        "year": "2001"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 469,
+      "expected_name": "Clayface VI",
+      "corrected_fields": {
+        "year": "1998"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 474,
+      "expected_name": "Clownhunter",
+      "corrected_fields": {
+        "year": "2020"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 476,
+      "expected_name": "Cobalt Blue",
+      "corrected_fields": {
+        "year": "1997"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 510,
+      "expected_name": "Cyborgirl",
+      "corrected_fields": {
+        "year": "2002"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 517,
+      "expected_name": "Dark Angel",
+      "corrected_fields": {
+        "year": "1998"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 527,
+      "expected_name": "David Cain",
+      "corrected_fields": {
+        "year": "1999"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 535,
+      "expected_name": "Death Rattle",
+      "corrected_fields": {
+        "year": "2003"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 557,
+      "expected_name": "Devastation",
+      "corrected_fields": {
+        "year": "1999"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 591,
+      "expected_name": "Dominus",
+      "corrected_fields": {
+        "year": "1998"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 593,
+      "expected_name": "Doodlebug",
+      "corrected_fields": {
+        "year": "2003"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 597,
+      "expected_name": "Double Dare",
+      "corrected_fields": {
+        "year": "1999"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 598,
+      "expected_name": "Double Down",
+      "corrected_fields": {
+        "year": "2001"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 605,
+      "expected_name": "Dragoncat",
+      "corrected_fields": {
+        "year": "1995"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 616,
+      "expected_name": "El Gaucho",
+      "corrected_fields": {
+        "year": "1955"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 623,
+      "expected_name": "Emperor Joker",
+      "corrected_fields": {
+        "year": "2000"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 641,
+      "expected_name": "Fallout",
+      "corrected_fields": {
+        "year": "2001"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 644,
+      "expected_name": "Fatality",
+      "corrected_fields": {
+        "year": "1997"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 720,
+      "expected_name": "Folded Man",
+      "corrected_fields": {
+        "year": "1999"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 733,
+      "expected_name": "Gearhead",
+      "corrected_fields": {
+        "year": "1997"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 742,
+      "expected_name": "Girder",
+      "corrected_fields": {
+        "year": "2001"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 746,
+      "expected_name": "Gog",
+      "corrected_fields": {
+        "year": "1998"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 762,
+      "expected_name": "Gray Wolf",
+      "corrected_fields": {
+        "year": "2022"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 763,
+      "expected_name": "Grayven",
+      "corrected_fields": {
+        "year": "1996"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 764,
+      "expected_name": "Great White Shark",
+      "corrected_fields": {
+        "year": "2003"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 904,
+      "expected_name": "Hiro Okamura",
+      "corrected_fields": {
+        "year": "2002"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 905,
+      "expected_name": "Holiday",
+      "corrected_fields": {
+        "year": "1996"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 907,
+      "expected_name": "Hope",
+      "corrected_fields": {
+        "year": "1999"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 936,
+      "expected_name": "Ignition",
+      "corrected_fields": {
+        "year": "2000"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 938,
+      "expected_name": "Imperiex",
+      "corrected_fields": {
+        "year": "2000"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 942,
+      "expected_name": "Inertia",
+      "corrected_fields": {
+        "year": "1999"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 957,
+      "expected_name": "Jane Doe",
+      "corrected_fields": {
+        "year": "2003"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
       "source_row": 989,
       "expected_name": "Joker",
       "corrected_fields": {
@@ -87,6 +990,741 @@
         "spreadsheet_id": "1iE-xqnwC-aUtNQjXZci1X_wnpALqUajEMndHid8t6kg",
         "verified_at": "2026-09-26",
         "policy": "The original spreadsheet remains unchanged. Corrections apply only to the derived Brickmen semantic/reconciliation layer."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 1010,
+      "expected_name": "Junkyard Dog",
+      "corrected_fields": {
+        "year": "2003"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 1071,
+      "expected_name": "Lady Vic",
+      "corrected_fields": {
+        "year": "1997"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 1124,
+      "expected_name": "Luminous",
+      "corrected_fields": {
+        "year": "1997"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 1136,
+      "expected_name": "Magog",
+      "corrected_fields": {
+        "year": "1996"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 1148,
+      "expected_name": "Manchester Black",
+      "corrected_fields": {
+        "year": "2001"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 1155,
+      "expected_name": "Mario Falcone",
+      "corrected_fields": {
+        "year": "1999"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 1163,
+      "expected_name": "Match",
+      "corrected_fields": {
+        "year": "1997"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 1182,
+      "expected_name": "Mercy Graves",
+      "corrected_fields": {
+        "year": "1999"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 1215,
+      "expected_name": "Mongal",
+      "corrected_fields": {
+        "year": "1995"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 1221,
+      "expected_name": "Mortalla",
+      "corrected_fields": {
+        "year": "2000"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 1222,
+      "expected_name": "Mortician",
+      "corrected_fields": {
+        "year": "2002"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 1234,
+      "expected_name": "Murmur",
+      "corrected_fields": {
+        "year": "1999"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 1235,
+      "expected_name": "Murmur",
+      "corrected_fields": {
+        "year": "2001"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 1247,
+      "expected_name": "Nero",
+      "corrected_fields": {
+        "year": "2001"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 1248,
+      "expected_name": "Neron",
+      "corrected_fields": {
+        "year": "1995"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 1250,
+      "expected_name": "Nicholas Scratch",
+      "corrected_fields": {
+        "year": "1998"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 1252,
+      "expected_name": "Nicodemus",
+      "corrected_fields": {
+        "year": "2002"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 1254,
+      "expected_name": "Nightrunner",
+      "corrected_fields": {
+        "year": "2011"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 1295,
+      "expected_name": "Nite-Wing",
+      "corrected_fields": {
+        "year": "1997"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 1304,
+      "expected_name": "Oblivion",
+      "corrected_fields": {
+        "year": "1999"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 1305,
+      "expected_name": "Obsession",
+      "corrected_fields": {
+        "year": "1996"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 1317,
+      "expected_name": "Orca",
+      "corrected_fields": {
+        "year": "2000"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 1326,
+      "expected_name": "Owlman",
+      "corrected_fields": {
+        "year": "2000"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 1344,
+      "expected_name": "Peek-a-Boo",
+      "corrected_fields": {
+        "year": "2002"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 1363,
+      "expected_name": "Plunder",
+      "corrected_fields": {
+        "year": "2000"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 1402,
+      "expected_name": "Purgatory",
+      "corrected_fields": {
+        "year": "1995"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 1410,
+      "expected_name": "Queen of Fables",
+      "corrected_fields": {
+        "year": "2000"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 1422,
+      "expected_name": "Rama Khan",
+      "corrected_fields": {
+        "year": "2002"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 1587,
+      "expected_name": "Savitar",
+      "corrected_fields": {
+        "year": "1995"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 1590,
+      "expected_name": "Scorch",
+      "corrected_fields": {
+        "year": "2000"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 1605,
+      "expected_name": "Shrike",
+      "corrected_fields": {
+        "year": "1999"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 1645,
+      "expected_name": "Solaris",
+      "corrected_fields": {
+        "year": "1998"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 1646,
+      "expected_name": "Solaris the Tyrant Sun",
+      "corrected_fields": {
+        "year": "1998"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 1673,
+      "expected_name": "Stallion",
+      "corrected_fields": {
+        "year": "1996"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 1674,
+      "expected_name": "Stallion",
+      "corrected_fields": {
+        "year": "1997"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
       }
     },
     {
@@ -276,6 +1914,195 @@
         "spreadsheet_id": "1iE-xqnwC-aUtNQjXZci1X_wnpALqUajEMndHid8t6kg",
         "verified_at": "2026-09-26",
         "policy": "The original spreadsheet remains unchanged. Corrections apply only to the derived Brickmen semantic/reconciliation layer."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 1905,
+      "expected_name": "Sylph",
+      "corrected_fields": {
+        "year": "2000"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 1919,
+      "expected_name": "Tar Pit",
+      "corrected_fields": {
+        "year": "2001"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 1920,
+      "expected_name": "Tarantula",
+      "corrected_fields": {
+        "year": "2002"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 1967,
+      "expected_name": "Torque",
+      "corrected_fields": {
+        "year": "1996"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 1970,
+      "expected_name": "Traitor",
+      "corrected_fields": {
+        "year": "1999"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 1972,
+      "expected_name": "Trickster II",
+      "corrected_fields": {
+        "year": "2002"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 2004,
+      "expected_name": "Volcana",
+      "corrected_fields": {
+        "year": "1998"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 2112,
+      "expected_name": "Zeiss",
+      "corrected_fields": {
+        "year": "2000"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 2116,
+      "expected_name": "Zoom",
+      "corrected_fields": {
+        "year": "2001"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
       }
     },
     {
@@ -470,6 +2297,174 @@
     },
     {
       "source_title": "Minifig Variants to Make",
+      "source_tab": "Superman",
+      "source_row": 17,
+      "expected_name": "Bizarro",
+      "corrected_fields": {
+        "year": "1959"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "superman-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "Superman",
+      "source_row": 23,
+      "expected_name": "Darkseid",
+      "corrected_fields": {
+        "year": "1970"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "superman-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "Superman",
+      "source_row": 24,
+      "expected_name": "Doomsday",
+      "corrected_fields": {
+        "year": "1992"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "superman-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "Superman",
+      "source_row": 25,
+      "expected_name": "Eradicator",
+      "corrected_fields": {
+        "year": "1989"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "superman-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "Superman",
+      "source_row": 27,
+      "expected_name": "Jax Ur",
+      "corrected_fields": {
+        "year": "1961"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "superman-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "Superman",
+      "source_row": 29,
+      "expected_name": "Livewire",
+      "corrected_fields": {
+        "year": "1997"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "superman-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "Superman",
+      "source_row": 30,
+      "expected_name": "Lobo",
+      "corrected_fields": {
+        "year": "1983"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "superman-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "Superman",
+      "source_row": 32,
+      "expected_name": "Mercy Graves",
+      "corrected_fields": {
+        "year": "1996"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "A four-digit year is physically stored in the Identity field while the Year field is blank. Move only that numeric year into Year and leave person identity unresolved rather than guessing.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "superman-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
       "source_tab": "X-Men",
       "source_row": 431,
       "expected_name": "Rogue",
@@ -510,5 +2505,10 @@
         "policy": "The original spreadsheet remains unchanged. Corrections apply only to the derived Brickmen semantic/reconciliation layer."
       }
     }
-  ]
+  ],
+  "updated_at": "2026-09-26",
+  "automation_notes": {
+    "deterministic_year_identity_repairs_added": 95,
+    "rule": "When Identity is exactly a four-digit 18xx/19xx/20xx year and Year is blank, move the year into Year and clear Identity. Never infer a replacement person identity."
+  }
 }
