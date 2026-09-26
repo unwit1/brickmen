@@ -670,8 +670,7 @@ def main():
             "episode_candidate":parsed[0]["episode_candidate"] if parsed and len({x["episode_candidate"] for x in parsed}) == 1 else None,
             "year_hints":uniq(x["year_hint"] for x in items),
             "parse_status": (
-                "comic_issue_explicit" if kinds == {"comic_issue_explicit"}
-                else "episode_explicit" if kinds == {"episode_explicit"}
+                next(iter(kinds)) if len(kinds) == 1
                 else "mixed_or_raw"
             ),
             "source_records":items[:100],
