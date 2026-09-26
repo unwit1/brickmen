@@ -285,7 +285,14 @@
         "incarnation_candidates": 7420,
         "outfit_design_candidates": 9482,
         "raw_spelling_variants_collapsed": 57,
-        "typed_non_issue_episode_source_records": 153
+        "typed_non_issue_episode_source_records": 153,
+        "character_candidates_current": 6347,
+        "incarnation_candidates_current": 7355,
+        "outfit_design_candidates_current": 9451,
+        "entity_resolution_review_records_current": 1034,
+        "entity_resolution_high_priority_records_current": 51,
+        "semantic_correction_records_applied": 147,
+        "verified_identity_alias_groups": 14
       }
     },
     {
@@ -379,10 +386,10 @@
         "One Piece Minifgs"
       ],
       "remaining": [
-        "resolve 60 highest-priority identity/universe ambiguity groups",
+        "review 51 high-priority identity/universe/variant groups; the semantic-noise pass is complete and the remaining queue is predominantly legitimate shared-mantle or multi-incarnation structure",
         "resolve QD015 Donkey Kong from a primary/new exact-code source; secondary web research on 2026-09-26 was exhausted without a verified match",
         "promote verified Character/Incarnation/OutfitDesign/SourceAppearance candidates into canonical records",
-        "review 1,475 unknown-state targets without assuming they are missing"
+        "review 1,463 unknown-state targets without assuming they are missing"
       ],
       "completed_2026_09_25": {
         "bootlego_structured_records": 705,
@@ -454,7 +461,23 @@
         "shared_serial_collisions_true_unresolved": 0,
         "external_catalog_physical_reference_links": 71,
         "external_catalog_physical_reference_links_wishlist": 65,
-        "external_catalog_physical_reference_links_gaming_design_targets": 6
+        "external_catalog_physical_reference_links_gaming_design_targets": 6,
+        "semantic_correction_records_applied": 147,
+        "verified_identity_alias_groups": 14,
+        "verified_identity_alias_entries": 36,
+        "tracker_identity_field_records_scanned": 9480,
+        "tracker_identity_field_initial_review_records": 125,
+        "tracker_identity_field_remaining_review_records": 1,
+        "entity_resolution_review_records_current": 1034,
+        "entity_resolution_high_priority_records_current": 51,
+        "groups_with_multiple_identities_current": 191,
+        "groups_with_multiple_universes_current": 25,
+        "character_candidates_current": 6347,
+        "incarnation_candidates_current": 7355,
+        "outfit_design_candidates_current": 9451,
+        "collection_gap_candidates_current": 6412,
+        "explicit_missing_design_targets_current": 4934,
+        "unknown_state_targets_current": 1463
       }
     }
   ],
@@ -553,11 +576,12 @@
     },
     "user_knowledge_graph": {
       "character_candidates": 6347,
-      "incarnation_candidates": 7420,
-      "outfit_design_candidates": 9482,
+      "incarnation_candidates": 7355,
+      "outfit_design_candidates": 9451,
       "source_appearance_candidates": 3404,
       "structured_source_appearances": 3251,
-      "entity_review_queue": 1039
+      "entity_review_queue": 1034,
+      "high_priority_entity_review": 51
     },
     "supervision": {
       "mask_headgear_ranked": 14289,
@@ -609,6 +633,22 @@
       "base_substrate_ldraw_links": 8,
       "strict_exact_ldraw_print_art_records": 0,
       "note": "Former exact-ID candidates were plain substrate part joins and are no longer counted as decoration-art evidence."
+    },
+    "user_tracker_semantic_cleanup": {
+      "source_sheet_mutated": false,
+      "named_records": 11470,
+      "semantic_corrections_applied": 147,
+      "verified_identity_alias_groups": 14,
+      "alias_entries": 36,
+      "records_using_aliases": 72,
+      "tracker_identity_field_records_scanned": 9480,
+      "field_review_initial": 125,
+      "field_review_remaining": 1,
+      "multiple_identity_groups_before": 212,
+      "multiple_identity_groups_current": 191,
+      "entity_high_priority_before": 60,
+      "entity_high_priority_current": 51,
+      "policy": "Non-destructive derived overlay; raw source values and source-sheet provenance are retained."
     }
   }
 }
