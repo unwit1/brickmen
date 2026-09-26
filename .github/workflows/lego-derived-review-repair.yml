@@ -120,6 +120,51 @@ jobs:
           set -euo pipefail
           git config user.name "brickmen-ingestion-bot"
           git config user.email "brickmen-ingestion-bot@users.noreply.github.com"
+
+          # Long rebuilds can overlap with small review-decision commits. Before
+          # publishing, move onto the newest main if the generator inputs are
+          # unchanged. If generator code changed, do not publish stale outputs;
+          # that source change will trigger a newer repair run.
+          started_at="$(git rev-parse HEAD)"
+          git fetch origin main
+          latest_main="$(git rev-parse origin/main)"
+          relevant_inputs=(
+            ".github/workflows/lego-derived-review-repair.yml"
+            "tools/knowledge/build_skywalker_physical_crosswalk_candidates.py"
+            "tools/knowledge/build_skywalker_crosswalk_review.py"
+            "tools/knowledge/skywalker_identity_keys.py"
+            "tools/knowledge/build_mask_headgear_candidate_corpus.py"
+            "tools/knowledge/rank_mask_headgear_candidates.py"
+            "knowledge/libraries/lego-minifigure-customs/data/skywalker-saga-profile-icon-census-2026-09-25.json"
+          )
+          if [[ "$started_at" != "$latest_main" ]] && \
+             ! git diff --quiet "$started_at" "$latest_main" -- "${relevant_inputs[@]}"; then
+            echo "Relevant generator inputs changed while this run was active; skipping stale publication."
+            exit 0
+          fi
+
+          if [[ "$started_at" != "$latest_main" ]]; then
+            git reset --hard "$latest_main"
+            # Restore this run's deterministic generated outputs onto current main.
+            cp "$WORK/skywalker/candidates.jsonl" "$DEST/skywalker-physical-crosswalk-candidates-latest.jsonl"
+            cp "$WORK/skywalker/candidate-summary.json" "$DEST/skywalker-physical-crosswalk-summary-latest.json"
+            cp "$WORK/skywalker/summary.json" "$DEST/skywalker-crosswalk-review-summary-latest.json"
+            cp "$WORK/skywalker/records.jsonl" "$DEST/skywalker-crosswalk-review-queue-latest.jsonl"
+            cp "$WORK/skywalker/groups.jsonl" "$DEST/skywalker-crosswalk-review-groups-latest.jsonl"
+            cp "$WORK/mask/ranked-summary.json" "$DEST/mask-headgear-ranked-summary-latest.json"
+            python - <<'PY'
+          import json, os
+          from pathlib import Path
+          src=Path(os.environ["WORK"])/"mask/ranked.jsonl"
+          dest=Path(os.environ["DEST"])/"mask-headgear-ranked-review-top1000-latest.jsonl"
+          with src.open(encoding="utf-8") as inp, dest.open("w",encoding="utf-8") as out:
+              for i,line in enumerate(inp):
+                  if i>=1000: break
+                  if line.strip():
+                      out.write(json.dumps(json.loads(line),ensure_ascii=False)+"\n")
+          PY
+          fi
+
           git add "$DEST/skywalker-physical-crosswalk-candidates-latest.jsonl" \
                   "$DEST/skywalker-physical-crosswalk-summary-latest.json" \
                   "$DEST/skywalker-crosswalk-review-summary-latest.json" \
@@ -132,8 +177,4 @@ jobs:
             exit 0
           fi
           git commit -m "knowledge: repair derived mask and Skywalker review queues"
-          for attempt in 1 2 3 4 5; do
-            git pull --rebase origin main && git push && exit 0
-            sleep $((attempt * 2))
-          done
-          exit 1
+          git push origin HEAD:main
