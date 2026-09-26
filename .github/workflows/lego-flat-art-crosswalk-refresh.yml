@@ -1,0 +1,117 @@
+name: LEGO Flat Art Crosswalk Refresh
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/lego-flat-art-crosswalk-refresh.yml'
+      - 'tools/knowledge/build_flat_art_catalog_crosswalk_candidates.py'
+      - 'tools/knowledge/index_rioforce_lego_textures.py'
+      - 'tools/knowledge/ingest_lego_minifigure_references.py'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: lego-flat-art-crosswalk-refresh-main
+  cancel-in-progress: true
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      WORK: /tmp/flat-art-crosswalk-refresh
+      DEST: knowledge/libraries/lego-minifigure-customs/data/bulk-ingestion
+
+    steps:
+      - name: Check out Brickmen
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build current Rebrickable minifigure census
+        shell: bash
+        run: |
+          set -euo pipefail
+          raw="$WORK/rebrickable/raw"
+          out="$WORK/rebrickable/output"
+          mkdir -p "$raw" "$out"
+          base="https://cdn.rebrickable.com/media/downloads"
+          files=(themes.csv.gz colors.csv.gz parts.csv.gz part_relationships.csv.gz elements.csv.gz sets.csv.gz minifigs.csv.gz inventories.csv.gz inventory_parts.csv.gz inventory_minifigs.csv.gz)
+          for file in "${files[@]}"; do
+            curl --fail --location --retry 4 --retry-delay 2 --connect-timeout 30 \
+              --user-agent "BrickmenResearch/1.0" \
+              --output "$raw/$file" "$base/$file"
+          done
+          python tools/knowledge/ingest_lego_minifigure_references.py \
+            --rebrickable-dir "$raw" --output-dir "$out"
+
+      - name: Build current LDraw minifigure-pattern index
+        shell: bash
+        run: |
+          set -euo pipefail
+          src="$WORK/ldraw"
+          mkdir -p "$src"
+          curl --fail --location --retry 4 --retry-delay 2 --connect-timeout 30 \
+            -o "$src/complete.zip" "https://library.ldraw.org/library/updates/complete.zip"
+          unzip -q "$src/complete.zip" -d "$src/unpacked"
+          root="$src/unpacked/ldraw"
+          [ -d "$root/parts" ] || root="$src/unpacked"
+          python tools/knowledge/index_ldraw_minifig_patterns.py \
+            --ldraw-root "$root" --output-dir "$src/output"
+
+      - name: Index current rioforce texture corpus
+        shell: bash
+        run: |
+          set -euo pipefail
+          src="$WORK/rioforce"
+          git clone --depth 1 https://github.com/rioforce/LEGO-Textures.git "$src/repo"
+          mkdir -p "$src/output"
+          python tools/knowledge/index_rioforce_lego_textures.py \
+            --root "$src/repo" --output "$src/output/rioforce-index.jsonl"
+
+      - name: Rebuild catalog-backed flat-art candidates
+        shell: bash
+        run: |
+          set -euo pipefail
+          out="$WORK/crosswalk"
+          mkdir -p "$out"
+          python tools/knowledge/build_flat_art_catalog_crosswalk_candidates.py \
+            --rioforce-index "$WORK/rioforce/output/rioforce-index.jsonl" \
+            --physical-samples "$WORK/rebrickable/output/physical_samples.jsonl" \
+            --component-samples "$WORK/rebrickable/output/component_samples.jsonl" \
+            --ldraw-index "$WORK/ldraw/output/ldraw_minifig_patterns.jsonl" \
+            --output "$out/candidates.jsonl" \
+            --summary "$out/summary.json"
+
+      - name: Commit refreshed flat-art candidate layer
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "brickmen-ingestion-bot"
+          git config user.email "brickmen-ingestion-bot@users.noreply.github.com"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git reset --hard origin/main
+            cp "$WORK/crosswalk/summary.json" "$DEST/flat-art-catalog-crosswalk-summary-latest.json"
+            cp "$WORK/crosswalk/candidates.jsonl" "$DEST/flat-art-catalog-crosswalk-candidates-latest.jsonl"
+            git add "$DEST/flat-art-catalog-crosswalk-summary-latest.json" \
+                    "$DEST/flat-art-catalog-crosswalk-candidates-latest.jsonl"
+            if git diff --cached --quiet; then
+              echo "No flat-art crosswalk changes."
+              exit 0
+            fi
+            git commit -m "knowledge: refresh flat-art catalog crosswalk candidates"
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            sleep $((attempt * 2))
+          done
+          exit 1
