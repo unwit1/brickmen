@@ -1,0 +1,68 @@
+name: LEGO BrickLink Wishlist Metadata
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/lego-bricklink-wishlist-metadata.yml'
+      - 'tools/knowledge/resolve_bricklink_public_minifigure_metadata.py'
+      - 'knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/external-catalog-id-queue-latest.jsonl'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: lego-bricklink-wishlist-metadata-main
+  cancel-in-progress: true
+
+jobs:
+  resolve:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      DEST: knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation
+      WORK: /tmp/bricklink-wishlist-metadata
+
+    steps:
+      - name: Check out Brickmen
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Resolve public BrickLink metadata
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$WORK"
+          python tools/knowledge/resolve_bricklink_public_minifigure_metadata.py \
+            --queue "$DEST/external-catalog-id-queue-latest.jsonl" \
+            --output "$WORK/records.jsonl" \
+            --summary "$WORK/summary.json" \
+            --delay-seconds 0.45
+          cp "$WORK/records.jsonl" "$DEST/official-wishlist-bricklink-metadata-latest.jsonl"
+          cp "$WORK/summary.json" "$DEST/official-wishlist-bricklink-metadata-summary-latest.json"
+
+      - name: Commit BrickLink metadata resolution
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "brickmen-ingestion-bot"
+          git config user.email "brickmen-ingestion-bot@users.noreply.github.com"
+          git add "$DEST/official-wishlist-bricklink-metadata-latest.jsonl" \
+                  "$DEST/official-wishlist-bricklink-metadata-summary-latest.json"
+          if git diff --cached --quiet; then
+            echo "No BrickLink metadata changes."
+            exit 0
+          fi
+          git commit -m "knowledge: refresh BrickLink wishlist metadata"
+          for attempt in 1 2 3 4 5; do
+            git pull --rebase origin main && git push && exit 0
+            sleep $((attempt * 2))
+          done
+          exit 1
