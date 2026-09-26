@@ -17,7 +17,7 @@ from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 
-VERSION = "flat-art-catalog-crosswalk-candidates/v1"
+VERSION = "flat-art-catalog-crosswalk-candidates/v2"
 
 STOP = {
     "lego","minifig","minifigure","with","and","the","a","an","pattern","printed",
