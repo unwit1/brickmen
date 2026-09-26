@@ -2,11 +2,11 @@
   "schema": "entity-resolution-review-summary/v1",
   "processor_version": "user-tracker-reconciliation/v2",
   "records": 1038,
-  "high_priority_records": 60,
+  "high_priority_records": 59,
   "reason_counts": {
     "cross_source": 952,
-    "multiple_identities": 209,
-    "multiple_universes": 27,
+    "multiple_identities": 208,
+    "multiple_universes": 25,
     "many_variants": 83
   },
   "top_records": [
@@ -81,7 +81,7 @@
         "multiple_universes",
         "many_variants"
       ],
-      "identities": 18,
+      "identities": 10,
       "variants": 35,
       "universes": 13
     },
@@ -116,21 +116,6 @@
       "universes": 5
     },
     {
-      "name": "catwoman",
-      "score": 84,
-      "records": 48,
-      "sources": 3,
-      "reasons": [
-        "cross_source",
-        "multiple_identities",
-        "multiple_universes",
-        "many_variants"
-      ],
-      "identities": 3,
-      "variants": 34,
-      "universes": 3
-    },
-    {
       "name": "wonder woman",
       "score": 84,
       "records": 46,
@@ -144,21 +129,6 @@
       "identities": 10,
       "variants": 21,
       "universes": 11
-    },
-    {
-      "name": "joker",
-      "score": 83,
-      "records": 41,
-      "sources": 3,
-      "reasons": [
-        "cross_source",
-        "multiple_identities",
-        "multiple_universes",
-        "many_variants"
-      ],
-      "identities": 3,
-      "variants": 20,
-      "universes": 2
     },
     {
       "name": "superboy",
@@ -245,23 +215,9 @@
         "multiple_identities",
         "multiple_universes"
       ],
-      "identities": 10,
+      "identities": 9,
       "variants": 6,
       "universes": 6
-    },
-    {
-      "name": "rogue",
-      "score": 62,
-      "records": 13,
-      "sources": 2,
-      "reasons": [
-        "cross_source",
-        "multiple_identities",
-        "multiple_universes"
-      ],
-      "identities": 2,
-      "variants": 8,
-      "universes": 2
     },
     {
       "name": "silk",
@@ -290,6 +246,34 @@
       "identities": 2,
       "variants": 1,
       "universes": 2
+    },
+    {
+      "name": "catwoman",
+      "score": 59,
+      "records": 48,
+      "sources": 3,
+      "reasons": [
+        "cross_source",
+        "multiple_universes",
+        "many_variants"
+      ],
+      "identities": 1,
+      "variants": 34,
+      "universes": 2
+    },
+    {
+      "name": "joker",
+      "score": 58,
+      "records": 41,
+      "sources": 3,
+      "reasons": [
+        "cross_source",
+        "multiple_identities",
+        "many_variants"
+      ],
+      "identities": 2,
+      "variants": 20,
+      "universes": 1
     },
     {
       "name": "nightwing",
@@ -415,7 +399,7 @@
       ],
       "identities": 5,
       "variants": 23,
-      "universes": 1
+      "universes": 0
     },
     {
       "name": "scarlet witch",
@@ -555,7 +539,7 @@
       ],
       "identities": 2,
       "variants": 14,
-      "universes": 1
+      "universes": 0
     },
     {
       "name": "huntress",
@@ -922,6 +906,19 @@
       ],
       "identities": 2,
       "variants": 3,
+      "universes": 1
+    },
+    {
+      "name": "rogue",
+      "score": 37,
+      "records": 13,
+      "sources": 2,
+      "reasons": [
+        "cross_source",
+        "multiple_identities"
+      ],
+      "identities": 2,
+      "variants": 8,
       "universes": 1
     },
     {
