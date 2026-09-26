@@ -186,6 +186,41 @@ def parse_source_appearance_reference(value):
             "canonical_issue_key":None,
         }
 
+    # If a trailing year/date was peeled above, retain the remaining title as a dated work.
+    if year_hint and core and not re.fullmatch(r"(?:19|20)\d{2}", core):
+        return {
+            "kind":"dated_work",
+            "raw":raw,
+            "source_work":core,
+            "source_work_normalized":norm(core),
+            "year_hint":year_hint,
+            "qualifiers":qualifiers,
+            "canonical_issue_key":None,
+        }
+
+    # A bare year is useful chronology metadata but not a SourceAppearance identity.
+    if re.fullmatch(r"(?:19|20)\d{2}", core):
+        return {
+            "kind":"year_only",
+            "raw":raw,
+            "year_hint":int(core),
+            "canonical_issue_key":None,
+        }
+
+    # Quoted title-like values are often episode/chapter/work titles; preserve as title candidates.
+    stripped_raw=raw.strip()
+    if len(stripped_raw)>=2 and stripped_raw[0] in {'"',"'" } and stripped_raw[-1]==stripped_raw[0]:
+        title=stripped_raw[1:-1].strip()
+        if title:
+            return {
+                "kind":"quoted_title_candidate",
+                "raw":raw,
+                "source_work":title,
+                "source_work_normalized":norm(title),
+                "year_hint":year_hint,
+                "canonical_issue_key":None,
+            }
+
     return {
         "kind":"raw_only",
         "raw":raw,
@@ -668,6 +703,22 @@ def main():
             appearance_kind="issue_like_unparsed"
             reasons.append("hash_issue_syntax_unparsed")
             score+=55
+        elif row.get("parse_status")=="dated_work":
+            appearance_kind="dated_work"
+            reasons.append("work_title_and_year")
+            score+=45
+        elif row.get("parse_status")=="year_only":
+            appearance_kind="year_only"
+            reasons.append("year_only")
+            score+=15
+        elif row.get("parse_status")=="quoted_title_candidate":
+            appearance_kind="quoted_title_candidate"
+            reasons.append("quoted_title")
+            score+=35
+        elif row.get("parse_status")=="episode_number_without_work":
+            appearance_kind="episode_number_without_work"
+            reasons.append("episode_number_without_work")
+            score+=30
         elif re.search(r"\b(?:19|20)\d{2}\b",raw_text):
             appearance_kind="dated_raw"
             reasons.append("contains_year")
