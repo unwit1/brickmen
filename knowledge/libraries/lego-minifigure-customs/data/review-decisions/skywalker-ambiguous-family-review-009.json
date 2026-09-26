@@ -1,0 +1,243 @@
+{
+  "schema": "skywalker-ambiguous-family-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-ambiguous-family-review-009",
+  "policy": "Preserve distinct source assets even when they share a semantic key. Explicit novelty and sibling-state keys provide negative constraints for base identities, but unsuffixed named characters with multiple ordinary pre-game construction, costume, or print generations remain visual/component pending unless stronger source evidence selects one.",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-9a17a319d76299269f39e2ff",
+      "character_variant_key": "IG-88",
+      "decision": "character_identity_verified_multiple_pre_game_head_and_back_attachment_build_generations_visual_pending",
+      "canonical_subject": "IG-88",
+      "plausible_pre_game_physical_candidates": [
+        {
+          "fig_num": "fig-003556",
+          "catalog_name": "IG-88, Round Plate Head",
+          "year": 2006,
+          "set_num": "6209-1"
+        },
+        {
+          "fig_num": "fig-003946",
+          "catalog_name": "IG-88, Printed Head",
+          "year": 2011,
+          "set_num": "10221-1"
+        },
+        {
+          "fig_num": "fig-004244",
+          "catalog_name": "IG-88, Printed Head, Tile with Clip and 1x1 Round Plate on Back",
+          "first_year": 2017,
+          "sets": [
+            "75167-1",
+            "75222-1",
+            "911947-1"
+          ]
+        },
+        {
+          "fig_num": "fig-005104",
+          "catalog_name": "IG-88, Printed Head, Tile with Clip on Back",
+          "year": 2018,
+          "set_num": "75213-1"
+        }
+      ],
+      "reason": "All supported IG-88 implementations predate the game and describe the same droid identity with different head and rear-attachment construction generations. The unsuffixed key does not select among those build states, so exact physical implementation remains component/visual pending.",
+      "evidence_urls": [
+        "https://brickset.com/minifigs?query=ig-88"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-5aaabea5dec836d365c16ae3",
+      "character_variant_key": "DarthMaul",
+      "decision": "character_identity_verified_multiple_pre_game_narrative_and_leg_states_visual_pending_santa_variant_rejected",
+      "canonical_subject": "Darth Maul",
+      "plausible_pre_game_physical_candidates": [
+        {
+          "fig_num": "fig-003516",
+          "catalog_name": "Darth Maul, Black Hood and Cape",
+          "first_year": 1999,
+          "sets": [
+            "7101-1",
+            "7151-1",
+            "3340-1",
+            "7663-1",
+            "852086-1",
+            "852551-1"
+          ],
+          "state": "hooded/caped Episode I-era"
+        },
+        {
+          "fig_num": "fig-003772",
+          "catalog_name": "Darth Maul, Horns, Plain Legs",
+          "year": 2011,
+          "set_num": "7961-1",
+          "state": "horned standard legs"
+        },
+        {
+          "fig_num": "fig-003999",
+          "catalog_name": "Darth Maul, Horns, Mechanical Legs",
+          "year": 2013,
+          "set_num": "75022-1",
+          "state": "post-revival mechanical legs"
+        },
+        {
+          "fig_num": "fig-001912",
+          "catalog_name": "Darth Maul, Horns, Printed Legs",
+          "first_year": 2017,
+          "sets": [
+            "75169-1",
+            "75224-1"
+          ],
+          "state": "horned printed-leg generation"
+        }
+      ],
+      "rejected_novelty_candidate": {
+        "fig_num": "fig-000270",
+        "catalog_name": "Darth Maul in Santa Outfit",
+        "year": 2012,
+        "set_num": "9509-1"
+      },
+      "reason": "The base key proves Darth Maul but spans several materially different pre-game narrative/physical states, including hooded Episode I styling and later horned/mechanical-leg forms. Santa Maul is explicitly novelty-only. Without an era/state suffix or direct image comparison, exact physical release remains unresolved.",
+      "evidence_urls": [
+        "https://brickset.com/minifigs?query=darth+maul"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-6dbce2a7ccf105c5583f3e42",
+      "character_variant_key": "DarthMaul",
+      "decision": "character_identity_verified_multiple_pre_game_narrative_and_leg_states_visual_pending_santa_variant_rejected",
+      "canonical_subject": "Darth Maul",
+      "duplicate_semantic_key_note": "Distinct source asset ID sharing the DarthMaul key; preserve independently for provenance and future visual comparison.",
+      "plausible_pre_game_physical_candidates": [
+        {
+          "fig_num": "fig-003516",
+          "catalog_name": "Darth Maul, Black Hood and Cape",
+          "first_year": 1999,
+          "sets": [
+            "7101-1",
+            "7151-1",
+            "3340-1",
+            "7663-1",
+            "852086-1",
+            "852551-1"
+          ]
+        },
+        {
+          "fig_num": "fig-003772",
+          "catalog_name": "Darth Maul, Horns, Plain Legs",
+          "year": 2011,
+          "set_num": "7961-1"
+        },
+        {
+          "fig_num": "fig-003999",
+          "catalog_name": "Darth Maul, Horns, Mechanical Legs",
+          "year": 2013,
+          "set_num": "75022-1"
+        },
+        {
+          "fig_num": "fig-001912",
+          "catalog_name": "Darth Maul, Horns, Printed Legs",
+          "first_year": 2017,
+          "sets": [
+            "75169-1",
+            "75224-1"
+          ]
+        }
+      ],
+      "rejected_novelty_candidate": {
+        "fig_num": "fig-000270",
+        "catalog_name": "Darth Maul in Santa Outfit",
+        "year": 2012,
+        "set_num": "9509-1"
+      },
+      "reason": "This second DarthMaul source asset must not be silently merged with the first. It carries the same unresolved family of pre-game Maul states and requires its own visual comparison before physical equivalence can be established.",
+      "evidence_urls": [
+        "https://brickset.com/minifigs?query=darth+maul"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-c1635c39ca2a17a61c962888",
+      "character_variant_key": "TemminWexley",
+      "decision": "character_identity_verified_two_pre_game_resistance_pilot_face_print_generations_visual_pending",
+      "canonical_subject": "Temmin 'Snap' Wexley",
+      "plausible_pre_game_physical_candidates": [
+        {
+          "fig_num": "fig-001496",
+          "catalog_name": "Temmin 'Snap' Wexley / Resistance Pilot",
+          "year": 2016,
+          "set_num": "75125-1"
+        },
+        {
+          "fig_num": "fig-004449",
+          "catalog_name": "Temmin 'Snap' Wexley / Resistance Pilot, Lines under Eyes",
+          "year": 2019,
+          "set_num": "75248-1"
+        }
+      ],
+      "reason": "Both supported Temmin Wexley physical figures predate the game and represent the same Resistance pilot identity with a face-print age/detail revision. The unsuffixed key does not identify which facial-print generation the digital profile uses.",
+      "evidence_urls": [
+        "https://brickset.com/minifigs?query=temmin+wexley"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-a4f55cb50ca4ce42b4455d9e",
+      "character_variant_key": "R2D2",
+      "decision": "base_r2d2_identity_verified_holiday_candidates_excluded_by_sibling_key_standard_candidate_set_incomplete_exact_generation_unresolved",
+      "canonical_subject": "R2-D2",
+      "sibling_digital_variant_key": "R2D2WinterHoliday",
+      "ordinary_supported_candidate": {
+        "fig_num": "fig-003508",
+        "catalog_name": "Astromech Droid, R2-D2, White Dome, 30361a Body",
+        "first_year": 1999,
+        "sets": [
+          "7140-1",
+          "7141-1",
+          "7171-1",
+          "7190-1",
+          "7191-1",
+          "7106-1",
+          "7142-1",
+          "4475-1",
+          "4502-1"
+        ]
+      },
+      "separated_holiday_candidates": [
+        {
+          "fig_num": "fig-005758",
+          "catalog_name": "Astromech Droid, R2-D2, Snowman",
+          "year": 2012,
+          "set_num": "9509-1"
+        },
+        {
+          "fig_num": "fig-010464",
+          "catalog_name": "Astromech Droid, R2-D2, Reindeer",
+          "year": 2015,
+          "set_num": "75097-1"
+        },
+        {
+          "fig_num": "fig-013050",
+          "catalog_name": "Astromech Droid, R2-D2, Red Holiday Sweater",
+          "year": 2022,
+          "set_num": "75340-1"
+        }
+      ],
+      "reason": "The separate R2D2WinterHoliday source key is strong evidence that holiday-themed physical R2-D2 forms should not be used to resolve the ordinary R2D2 asset. The current candidate set exposes only one ordinary legacy R2-D2 implementation, which is insufficient to assume that exact early body/dome generation is the source artwork; preserve the base identity and flag ordinary candidate coverage as incomplete.",
+      "systemic_pattern": "sibling_novelty_key_excludes_novelty_candidates_from_base_identity",
+      "evidence_urls": [
+        "https://brickset.com/minifigs?query=r2-d2"
+      ]
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "distinct_variant_keys": 4,
+    "duplicate_semantic_key_assets_preserved": 1,
+    "sibling_variant_constraint_used": 1,
+    "candidate_set_incomplete_for_base_identity": 1,
+    "automatic_exact_artwork_equivalence_promotions": 0
+  },
+  "remaining_ambiguous_family_records_after_batch": 26,
+  "systemic_findings": [
+    "Sibling novelty keys such as R2D2WinterHoliday can safely exclude holiday-form candidates from an unsuffixed base identity.",
+    "When a candidate set becomes sparse after excluding explicit novelty forms, mark candidate coverage incomplete instead of treating the remaining old release as uniquely proven.",
+    "Multiple source assets sharing one semantic identity must remain independent review/provenance records until visual equivalence is established."
+  ]
+}
