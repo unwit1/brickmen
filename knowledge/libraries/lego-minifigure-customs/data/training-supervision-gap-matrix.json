@@ -6,7 +6,7 @@
     {
       "id": "exact_flat_official_print_art",
       "priority": "critical",
-      "status": "first_verified_component_crosswalks_promoted_broad_coverage_still_pending",
+      "status": "49_verified_rioforce_surface_maps_promoted_ranked_review_continues",
       "why": "Assembled renders hide curvature and back/side regions; flat maps are strongest supervision for template generation.",
       "sources": [
         "LDraw patterns",
@@ -16,12 +16,11 @@
         "BrickLink Studio reference templates"
       ],
       "next_actions": [
-        "continue manual/automated review of high-confidence character+surface matches",
-        "resolve the Rebrickable alias for 2003 Leia Slave decorated legs",
-        "improve version/year token scoring so Hoth/Endor variants cannot tie Slave Outfit records",
-        "resolve rioforce records without catalog figure candidates using aliases/theme context/direct component evidence",
+        "continue verifying ranked release-specific rioforce surface maps while rejecting generic-name false positives",
+        "resolve remaining rioforce records without catalog figure candidates using aliases/theme context/direct component evidence",
         "materialize Mecabricks official UV/decoration assets and official game texture files",
-        "derive flat maps from controlled physical captures where no source texture exists"
+        "derive flat maps from controlled physical captures where no source texture exists",
+        "separately normalize BrickLink/Rebrickable aliases where verified surface identity exists but part namespace crosswalk is still incomplete"
       ],
       "evidence_completed": [
         "rioforce tree snapshot: 117 SVG / 122 PNG, 110 paired stems",
@@ -43,7 +42,11 @@
         "false-positive promotion path is now closed: strict links require explicit component role, high-confidence figure identity and decorated print-of evidence",
         "2026-09-25 reviewed crosswalk promoted five rioforce asset groups: Dr. Charles Lightning face/torso and 2003 Princess Leia Slave face/torso/legs",
         "four promoted records have exact Rebrickable decorated-component links; three Leia records also have year-specific BrickLink component verification",
-        "Princess Leia 2003 decorated legs are verified to BrickLink 970c03pb03; Rebrickable alias resolution remains pending"
+        "Princess Leia 2003 decorated legs are verified to BrickLink 970c03pb03; Rebrickable alias resolution remains pending",
+        "2026-09-26 canonical verified flat-art crosswalk expanded to 49 rioforce asset groups",
+        "verified batches now include Adventurers, Star Wars, CMF, Monster Fighters, Ninjago, Classic Space, Shell/Town, Spider-Man ambulance, Superman and Wonder Woman surface maps",
+        "flat-art promotion review workflow excludes canonical verified groups and ranks remaining candidates by identity score, margin, year match, surface-role match and decorated-component specificity",
+        "review layer exposed and retained false positives instead of promoting them, including Mr. Gold->Mr. Cunningham, Series 1 Magician->Friends Mia, Tim->Tim Murphy and Indiana Jones Motorcycle Guy->CMF Motorcycle Mechanic"
       ]
     },
     {
@@ -85,7 +88,9 @@
         "2,492/2,494 pairs expose at least one measurement signal and 741 are ranked high-priority for semantic review",
         "2026-09-25 latest Fortnite pass completed 2,494/2,494 pairs with zero image misses or processing errors",
         "2,493/2,494 pairs expose at least one deterministic measurement signal",
-        "748 pairs are ranked high-priority for semantic review"
+        "748 pairs are ranked high-priority for semantic review",
+        "user tracker reconciliation now contributes 3,428 SourceAppearance candidates covering 4,607 source records; 3,192 parse as explicit comic issue references",
+        "ranked SourceAppearance review queue contains 3,193 high-priority records and preserves raw appearance strings"
       ]
     },
     {
@@ -315,5 +320,5 @@
       ]
     }
   ],
-  "updated_at": "2026-09-25"
+  "updated_at": "2026-09-26"
 }
