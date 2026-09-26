@@ -2,12 +2,12 @@
   "schema": "skywalker-manual-review-coverage-summary/v1",
   "processor_version": "skywalker-manual-review-coverage/v2",
   "identity_records": 377,
-  "review_files_found": 31,
-  "review_files_parsed": 31,
+  "review_files_found": 32,
+  "review_files_parsed": 32,
   "malformed_review_files": [],
-  "reviewed_asset_ids": 146,
-  "reviewed_variant_keys": 145,
-  "manual_decision_records": 148,
+  "reviewed_asset_ids": 151,
+  "reviewed_variant_keys": 150,
+  "manual_decision_records": 153,
   "manual_decision_counts": {
     "same_character_verified_physical_equivalence_not_promoted": 1,
     "same_character_verified_physical_counterpart_plausible_version_visual_pending": 20,
@@ -64,7 +64,10 @@
     "reject_physical_candidate_route_game_only": 1,
     "reject_physical_candidate_route_non_minifigure_creature": 1,
     "reject_candidate_match_requires_hoth_variant_resolution": 1,
-    "reject_candidate_match_requires_jedi_knight_variant_resolution": 1
+    "reject_candidate_match_requires_jedi_knight_variant_resolution": 1,
+    "digital_stormtrooper_variant_family_verified_game_local_selector_unresolved": 2,
+    "digital_game_variant_verified_no_catalog_named_physical_variant": 2,
+    "digital_story_state_verified_physical_version_unresolved": 1
   },
   "duplicate_reviewed_asset_ids": 2,
   "duplicate_reviewed_variant_keys": 3,
@@ -123,17 +126,17 @@
   },
   "conflicting_duplicate_asset_ids": 0,
   "conflicting_duplicate_assets": {},
-  "unreviewed_records": 231,
-  "unreviewed_suffix_records": 69,
+  "unreviewed_records": 226,
+  "unreviewed_suffix_records": 64,
   "unreviewed_direct_suffix_match_records": 0,
   "unreviewed_unique_physical_release_candidates": 0,
   "unreviewed_release_status_counts": {
     "physical_release_ambiguous_within_character_family": 71,
-    "variant_constrained_physical_release_unresolved": 69,
+    "variant_constrained_physical_release_unresolved": 64,
     "no_supported_physical_release_candidate": 91
   },
   "unreviewed_suffix_constraint_counts": {
-    "suffix_not_resolved_in_supported_candidates": 68,
+    "suffix_not_resolved_in_supported_candidates": 63,
     "negative_feature_unresolved_no_explicit_contradiction": 1
   },
   "status": "manual_review_coverage_compiled"
