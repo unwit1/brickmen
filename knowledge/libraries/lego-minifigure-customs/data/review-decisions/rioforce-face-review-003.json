@@ -1,0 +1,119 @@
+{
+  "schema": "face-landmark-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "rioforce-face-review-003",
+  "records": [
+    {
+      "face_asset_id": "rioforce-face-0b760da6614e0fb8055df5a7",
+      "relative_path": "City/Male Face 2.svg",
+      "decision": "geometry_family_reviewed_identity_unresolved",
+      "orientation": "front",
+      "subject": "generic male face reference 2",
+      "confidence": "high_for_orientation_medium_for_semantics",
+      "observed_structure": {
+        "bilateral_eye_shapes": true,
+        "bilateral_highlights": true,
+        "brow_shapes": true,
+        "mouth_shape": "broad_open_smile_with_light_interior",
+        "brown_brow_or_hair_coloring": true,
+        "simple_landmark_geometry": true
+      },
+      "identity_policy": "Generic numbered City face reference; keep as design supervision without assigning a physical figure.",
+      "remaining_tasks": [
+        "derive transformed landmark coordinates",
+        "catalog identity only if independently resolved"
+      ]
+    },
+    {
+      "face_asset_id": "rioforce-face-dc485d888c457b898caa9bc0",
+      "relative_path": "LEGO Minifigures/Series 1/Cowboy Face.svg",
+      "decision": "subject_catalog_identity_verified_geometry_pending",
+      "orientation": "front",
+      "subject": "Cowboy, Collectible Minifigures Series 1",
+      "version_year": 2010,
+      "confidence": "high",
+      "catalog_identity": {
+        "bricklink_figure": "col016",
+        "bricklink_head": "3626pb0425",
+        "bricklink_head_description": "Yellow Minifigure, Head Male Stubble, Brown Eyebrows and Sideburns, White Pupils Pattern",
+        "rebrickable_candidate_head": "3626bpr0218",
+        "alias_status": "bricklink identity verified; cross-catalog part alias still needs explicit element-level join"
+      },
+      "observed_structure": {
+        "machine_readable_geometry": true,
+        "simple_landmark_candidates": true
+      },
+      "evidence_urls": [
+        "https://www.bricklink.com/catalogItemInv.asp?M=col016",
+        "https://www.bricklink.com/catalogItemIn.asp?P=3626pb0425&catID=746&colorID=3&in=A&ov=Y"
+      ],
+      "remaining_tasks": [
+        "derive transformed landmark coordinates",
+        "confirm BrickLink/Rebrickable head alias"
+      ]
+    },
+    {
+      "face_asset_id": "rioforce-face-3cea161af6731327c643e347",
+      "relative_path": "LEGO Minifigures/Series 1/Indian Face.svg",
+      "decision": "source_label_normalized_subject_verified_geometry_pending",
+      "orientation": "front",
+      "source_subject_label": "Indian",
+      "canonical_subject": "Tribal Hunter, Collectible Minifigures Series 1",
+      "version_year": 2010,
+      "confidence": "high_for_identity",
+      "catalog_identity": {
+        "bricklink_figure": "col001",
+        "bricklink_head": "3626pb0440",
+        "bricklink_head_description": "Yellow Minifigure, Head Black Eyes and Eyebrows, Two-Color Cheek Paint Pattern",
+        "lego_element_id": "4565276"
+      },
+      "label_policy": "Preserve the historical/source-local filename exactly in provenance, but use the catalog identity 'Tribal Hunter' in normalized metadata.",
+      "evidence_urls": [
+        "https://www.bricklink.com/v2/catalog/catalogitem.page?id=93033",
+        "https://www.bricklink.com/catalogItemInv.asp?M=col001&viewCodes=Y"
+      ],
+      "remaining_tasks": [
+        "derive transformed landmark coordinates",
+        "map the BrickLink head to the Rebrickable alias if present"
+      ]
+    },
+    {
+      "face_asset_id": "rioforce-face-cd63a898d6cf94de8e87b58a",
+      "relative_path": "LEGO Minifigures/Series 1/Magician/Magician Face.svg",
+      "decision": "subject_catalog_identity_verified_geometry_partially_reviewed",
+      "orientation": "front",
+      "subject": "Magician, Collectible Minifigures Series 1",
+      "version_year": 2010,
+      "confidence": "high",
+      "catalog_identity": {
+        "bricklink_figure": "col009",
+        "bricklink_head": "3626pb0432",
+        "bricklink_head_description": "Yellow Minifigure, Head Thin Crooked Eyebrows, Curly Moustache, Goatee, and White Pupils Pattern",
+        "rebrickable_candidate_head": "3626bpr0229",
+        "alias_status": "bricklink identity verified; cross-catalog part alias still needs explicit element-level join"
+      },
+      "observed_structure": {
+        "bilateral_eye_shapes": true,
+        "bilateral_highlights": true,
+        "eyebrow_shapes": true,
+        "moustache_or_goatee_geometry": true,
+        "mouth_geometry": true,
+        "simple_landmark_geometry": true
+      },
+      "evidence_urls": [
+        "https://www.bricklink.com/catalogItemInv.asp?M=col009",
+        "https://www.bricklink.com/catalogItemIn.asp?P=3626pb0432&in=M"
+      ],
+      "remaining_tasks": [
+        "derive transformed landmark coordinates",
+        "confirm BrickLink/Rebrickable head alias"
+      ]
+    }
+  ],
+  "result": {
+    "reviewed": 4,
+    "generic_identity_unresolved": 1,
+    "catalog_identity_verified": 3
+  },
+  "next_offset": 12
+}
