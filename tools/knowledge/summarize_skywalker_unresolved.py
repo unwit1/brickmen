@@ -5,7 +5,7 @@ import argparse,json,re
 from collections import Counter,defaultdict
 from pathlib import Path
 
-VERSION="skywalker-unresolved-diagnostic/v2"
+VERSION="skywalker-unresolved-diagnostic/v3"
 
 def load_jsonl(path):
     with Path(path).open("r",encoding="utf-8") as f:
@@ -25,13 +25,15 @@ def suffix_family(tokens):
     return "other_suffix"
 
 SEMANTIC_PATTERNS={
-    "episode_or_timeline":r"(?:^|_)(?:ep\d+|episode\d+|flashback|old|young|boy|padawan|jediknight|jedimaster|phase\d+)(?:_|$)",
+    "episode_or_timeline":r"(?:ep\d+|episode\d+|flashback|old|young|boy|padawan|jediknight|jedimaster|phase\d+)",
     "location_or_scene":r"(?:tatooine|hoth|endor|crait|kijimi|ahchto|cloudcity|bespin|geonosis|kashyyyk|jabbaspalace|theed|coruscant|utapau|swamp|starkiller|cantina|skiff)",
-    "outfit_or_accessory":r"(?:hood|helmet|cape|nocape|nohelmet|coat|jacket|vest|robe|shirt|dress|uniform|casual|hat|whiteshirt|hoodedcape|reforgedhelmet|silverleg|redarm|redeyes|yelloweyes|darkturquoise|white|black|grey|silver|orange)",
+    "outfit_or_accessory":r"(?:hood|helmet|cape|nocape|nohelmet|coat|jacket|vest|robe|shirt|dress|uniform|casual|disguise|hat|whiteshirt|hoodedcape|reforgedhelmet|silverleg|redarm|redeyes|yelloweyes|darkturquoise|white|black|grey|silver|orange|red)",
     "rank_or_role":r"(?:commander|cmd|captain|cpt|sergeant|sgt|lieutenant|lt|general|princess|pilot|firstorder|fso|security|heavy|scout|stormtrooper|handmaiden|royalguard|clone)",
     "physical_state":r"(?:burnt|bandaged|rusted|topless|noshell|bacta|pregnant|scar)",
     "story_or_prop_state":r"(?:carbonite|ceremony|training|waiter|bin|yodaonback|friend)",
     "identity_selector":r"(?:fn2187|cardo|kuruk|ushar|vicrul|trudgen|aplek|skywalker)",
+    "identity_form":r"^(?:alien|human)$",
+    "game_local_selector":r"^(?:first|seventh)$",
 }
 
 def semantic_routes(tokens):
