@@ -1,0 +1,101 @@
+{
+  "schema": "skywalker-unresolved-suffix-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-unresolved-suffix-review-013",
+  "policy": "Final unresolved suffix records are resolved at the narrowest defensible digital identity/state. Internal NPC selectors and story-state labels are preserved as provenance; generic physical role families do not establish an exact game variant or release.",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-fe774853d3198354e12112c3",
+      "character_variant_key": "Palpatine_Sheev_Episode2",
+      "decision": "source_local_episode2_sheev_state_identity_verified_no_exact_physical_counterpart",
+      "canonical_character": "Sheev Palpatine",
+      "source_local_timeline": "Episode II",
+      "physical_character_family_supported": true,
+      "exact_episode2_physical_variant_supported": false,
+      "reason": "The source key clearly identifies Sheev Palpatine in an Episode II state, but the supported physical candidates are Emperor/Clone-Wars/Chancellor variants whose catalog identities do not independently establish this Episode II public-persona state. Preserve the timeline-qualified digital identity without forcing a physical release."
+    },
+    {
+      "asset_id": "skywalker-profile-95699c3017bf1b041f04b266",
+      "character_variant_key": "DarthSidious_Ep9_Reborn",
+      "decision": "episode9_reborn_story_state_verified_no_supported_pre_game_physical_counterpart",
+      "canonical_character": "Darth Sidious / Emperor Palpatine",
+      "canonical_timeline": "Episode IX",
+      "source_local_state": "Reborn",
+      "physical_character_family_supported": true,
+      "exact_pre_game_physical_variant_supported": false,
+      "reason": "The source key identifies Sidious in an Episode IX reborn state. The current candidate list contains unrelated Darth identities rather than a supported Sidious/Palpatine Episode IX physical figure, so this remains a digital story-state instead of being mapped to an older Emperor release."
+    },
+    {
+      "asset_id": "skywalker-profile-292a54d0b519a50df2d579fa",
+      "character_variant_key": "Goon_Ofc_FsOfficer_A",
+      "decision": "source_local_first_order_officer_npc_family_verified_selector_unresolved",
+      "canonical_game_role": "First Order Officer",
+      "source_local_tokens": {
+        "Goon": "generic NPC family",
+        "Ofc": "officer",
+        "FsOfficer": "First Order officer scope",
+        "A": "opaque local selector"
+      },
+      "physical_role_family": [
+        {
+          "brickset_minifig": "sw0665",
+          "catalog_name": "First Order Officer (Lieutenant / Captain) - Female",
+          "year": 2015
+        },
+        {
+          "brickset_minifig": "sw0670",
+          "catalog_name": "First Order Officer (Lieutenant / Captain) - Male",
+          "year": 2015
+        },
+        {
+          "brickset_minifig": "sw0832",
+          "catalog_name": "First Order Officer (Colonel Erich S. Datoo)",
+          "year": 2017
+        },
+        {
+          "brickset_minifig": "sw0870",
+          "catalog_name": "First Order Officer (Lieutenant / Captain)",
+          "year": 2017
+        }
+      ],
+      "reason": "The source-local abbreviations identify a generic First Order officer NPC, while A is an opaque internal selector. Public game data confirms First Order Officer as a playable role, and physical catalogs contain multiple officer releases; there is no evidence that selector A chooses one exact physical figure.",
+      "evidence_urls": [
+        "https://gamefaqs.gamespot.com/ps4/265996-lego-star-wars-the-skywalker-saga/faqs/79882/villains-and-dark-siders",
+        "https://brickset.com/minifigs/category-Star-Wars/name-First-Order-Officer"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-83d55c00b4540b772cab0cba",
+      "character_variant_key": "Goon_Ofc_FsO_Kijimi_A",
+      "decision": "source_local_kijimi_first_order_officer_role_verified_selector_unresolved_no_exact_physical_match",
+      "canonical_game_role": "First Order Officer (Kijimi)",
+      "source_local_tokens": {
+        "Goon": "generic NPC family",
+        "Ofc": "officer",
+        "FsO": "First Order",
+        "Kijimi": "cold-weather Kijimi variant",
+        "A": "opaque local selector"
+      },
+      "physical_role_family_supported": true,
+      "exact_kijimi_physical_variant_supported": false,
+      "reason": "First Order Officer (Kijimi) is an explicit Skywalker Saga role described as a warmer cold-weather officer variation. Brickset lists generic First Order Officer physical releases but no Kijimi-named physical minifigure; preserve the Kijimi game role and opaque A selector without collapsing it onto a generic officer release.",
+      "evidence_urls": [
+        "https://gamefaqs.gamespot.com/ps4/265996-lego-star-wars-the-skywalker-saga/faqs/79882/villains-and-dark-siders",
+        "https://brickset.com/minifigs/category-Star-Wars/name-First-Order-Officer"
+      ]
+    }
+  ],
+  "result": {
+    "reviewed": 4,
+    "digital_story_or_timeline_states_no_exact_physical_counterpart": 2,
+    "generic_role_families_verified_exact_release_or_selector_unresolved": 2,
+    "automatic_exact_equivalence_promotions": 0
+  },
+  "remaining_unreviewed_suffix_records_after_batch": 0,
+  "cohort_complete": true,
+  "systemic_findings": [
+    "Generic source-local NPC keys require role normalization before physical matching; opaque A/B selectors must not be interpreted as release identifiers.",
+    "A public game variant such as First Order Officer (Kijimi) can be real even when no correspondingly named physical minifigure exists.",
+    "Story-state qualifiers such as Episode II or Reborn may be canonical digital state evidence without any exact physical counterpart."
+  ]
+}
