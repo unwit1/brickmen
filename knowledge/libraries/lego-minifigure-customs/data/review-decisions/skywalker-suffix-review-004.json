@@ -1,0 +1,75 @@
+{
+  "schema": "skywalker-suffix-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-suffix-review-004",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-55c85e86352f89f54f2a9562",
+      "character_variant_key": "GunganWarrior_A",
+      "decision": "character_family_verified_suffix_semantics_unresolved",
+      "physical_candidates": [
+        {
+          "fig_num": "fig-003615",
+          "catalog_name": "Gungan Warrior, Green Legs",
+          "year": 2000,
+          "set_num": "7115-1"
+        },
+        {
+          "fig_num": "fig-000874",
+          "catalog_name": "Gungan Warrior, Dark Tan Legs, Nougat Hands",
+          "first_year": 2011
+        },
+        {
+          "fig_num": "fig-004113",
+          "catalog_name": "Gungan Warrior, Dark Tan Legs, Dark Brown Hands",
+          "year": 2015,
+          "set_num": "75086-1"
+        }
+      ],
+      "reason": "The source suffix 'A' has no catalog-visible semantic meaning. It must not be converted into the highest-ranked Gungan Warrior release; preserve it as an asset-local variant identifier until image/component evidence resolves it."
+    },
+    {
+      "asset_id": "skywalker-profile-c1022edf1faab2604c189258",
+      "character_variant_key": "Leia_Princess",
+      "decision": "identity_title_supported_not_physical_variant_resolved",
+      "reason": "Princess is Leia's title/identity label, not enough by itself to select one physical Leia outfit. The highest lexical candidate is a 2024 Young Leia release, which postdates the 2022 game, while several pre-game Princess Leia figures also exist. Treat the suffix as identity context, not a release selector."
+    },
+    {
+      "asset_id": "skywalker-profile-e39e0e90502d631cb282e9ca",
+      "character_variant_key": "Leia_BoushhDisguise",
+      "decision": "variant_identity_verified_visual_pending",
+      "physical_candidate": "fig-003934",
+      "physical_release": {
+        "catalog_name": "Boushh / Princess Leia in Disguise",
+        "year": 2012,
+        "set_num": "9516-1"
+      },
+      "reason": "The BoushhDisguise suffix is highly specific and agrees directly with the supported 2012 physical Boushh/Leia disguise identity. Exact print/component reuse remains visual pending."
+    },
+    {
+      "asset_id": "skywalker-profile-b1773f58b46de935fe526459",
+      "character_variant_key": "QuiGonJinn_Tatooine",
+      "decision": "character_identity_verified_tatooine_variant_unresolved",
+      "reason": "Qui-Gon Jinn is well supported physically, but the Tatooine suffix does not uniquely map to one pre-game catalog release in the current candidate set. The 2025 generic Qui-Gon hit is later than the game and cannot be source-equivalent; older standard-robes and later poncho designs must remain separate until the digital asset is visually compared."
+    },
+    {
+      "asset_id": "skywalker-profile-f8b7d48e0def494cc5bee625",
+      "character_variant_key": "HanSolo_Endor",
+      "decision": "variant_family_verified_exact_release_visual_pending",
+      "physical_candidate": "fig-004140",
+      "physical_release": {
+        "catalog_name": "Han Solo, Endor Outfit, Long Jacket",
+        "year": 2015,
+        "set_num": "75094-1"
+      },
+      "reason": "The Endor suffix agrees with the supported 2015 physical Endor outfit and excludes unrelated Old/Medal/Smuggler variants. Treat the Endor family as verified while retaining exact print/component equivalence for visual confirmation."
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "variant_identity_or_family_verified": 2,
+    "identity_or_character_family_verified_variant_unresolved": 3,
+    "automatic_exact_equivalence_promotions": 0
+  },
+  "original_suffix_queue_records_remaining_after_batch": 3
+}
