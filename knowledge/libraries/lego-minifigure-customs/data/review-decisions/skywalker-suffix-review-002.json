@@ -1,0 +1,108 @@
+{
+  "schema": "skywalker-suffix-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-suffix-review-002",
+  "policy": "Meaningful suffixes may verify a variant family when they agree with catalog text, but generic suffixes such as Jacket or Cape do not necessarily resolve one exact physical release. Exact artwork equivalence is never inferred automatically.",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-f687f41fbefaab8c72824898",
+      "character_variant_key": "KnightOfRen_Ushar",
+      "decision": "variant_identity_verified_visual_pending",
+      "physical_candidate": "fig-004456",
+      "physical_release": {
+        "brickset_minifig": "sw1064",
+        "catalog_name": "Knight of Ren (Ushar)",
+        "year": 2019,
+        "set_num": "75256-1"
+      },
+      "reason": "The Ushar suffix uniquely selects Ushar from the Knight of Ren family and agrees with the physical catalog identity."
+    },
+    {
+      "asset_id": "skywalker-profile-9541004a2786321190f33ad7",
+      "character_variant_key": "KnightOfRen_Vicrul",
+      "decision": "variant_identity_verified_visual_pending",
+      "physical_candidate": "fig-004490",
+      "physical_release": {
+        "brickset_minifig": "sw1089",
+        "catalog_name": "Knight of Ren (Vicrul)",
+        "year": 2020,
+        "set_num": "75273-1"
+      },
+      "reason": "The Vicrul suffix uniquely selects Vicrul from the Knight of Ren family and agrees with the physical catalog identity."
+    },
+    {
+      "asset_id": "skywalker-profile-fc71c986f045fe37295cce39",
+      "character_variant_key": "KnightOfRen_Trudgen",
+      "decision": "variant_identity_verified_visual_pending",
+      "physical_candidate": "fig-004487",
+      "physical_release": {
+        "brickset_minifig": "sw1087",
+        "catalog_name": "Knight of Ren (Trudgen)",
+        "year": 2020,
+        "set_num": "75272-1"
+      },
+      "reason": "The Trudgen suffix uniquely selects Trudgen from the Knight of Ren family and agrees with the physical catalog identity."
+    },
+    {
+      "asset_id": "skywalker-profile-b7ab2caeebfbdc4bc6da45d9",
+      "character_variant_key": "PoeDameron_Jacket",
+      "decision": "variant_family_verified_exact_release_unresolved",
+      "physical_candidates": [
+        {
+          "fig_num": "fig-004295",
+          "catalog_name": "Poe Dameron, Black Jacket",
+          "year": 2017,
+          "set_num": "75189-1"
+        },
+        {
+          "fig_num": "fig-004236",
+          "catalog_name": "Poe Dameron, Open Medium Nougat Jacket",
+          "year": 2016,
+          "set_num": "75149-1"
+        },
+        {
+          "fig_num": "fig-004519",
+          "catalog_name": "Poe Dameron, Black Jacket, Hair with Headset",
+          "year": 2018,
+          "set_num": "75202-1"
+        },
+        {
+          "fig_num": "fig-011123",
+          "catalog_name": "Poe Dameron, Open Medium Nougat Jacket, Helmet",
+          "year": 2021,
+          "set_num": "75297-1"
+        }
+      ],
+      "reason": "The suffix Jacket confirms a jacket-wearing Poe variant family, but it is too generic to distinguish black jacket, medium-nougat jacket, headset, or helmet versions. Do not select the highest lexical candidate as the exact release."
+    },
+    {
+      "asset_id": "skywalker-profile-82918f03f86a2193411d065d",
+      "character_variant_key": "MaceWindu_Cape",
+      "decision": "variant_family_verified_exact_release_unresolved",
+      "physical_candidates": [
+        {
+          "fig_num": "fig-003664",
+          "catalog_name": "Mace Windu, Tan Legs, Cape",
+          "year": 2006,
+          "set_num": "7261-2",
+          "brickset_minifig": "sw0148"
+        },
+        {
+          "fig_num": "fig-003916",
+          "catalog_name": "Mace Windu, Dark Tan Plain Legs, Cape",
+          "year": 2012,
+          "set_num": "9526-1",
+          "brickset_minifig": "sw0417"
+        }
+      ],
+      "reason": "The Cape suffix verifies a caped Mace Windu family, but at least two pre-game physical cape releases are supported. The suffix alone cannot distinguish 2006 tan-legs from 2012 dark-tan-legs Mace."
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "variant_identity_verified_visual_pending": 3,
+    "variant_family_verified_exact_release_unresolved": 2,
+    "automatic_exact_equivalence_promotions": 0
+  },
+  "remaining_suffix_review_records": 13
+}
