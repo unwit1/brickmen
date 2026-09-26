@@ -1,0 +1,84 @@
+{
+  "schema": "skywalker-crosswalk-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-unique-release-review-004",
+  "cohort": "unique_physical_release_candidate",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-9178a4f9ec92c4127fc6c740",
+      "character_variant_key": "R2Q5",
+      "decision": "same_character_unique_physical_counterpart_visual_pending",
+      "physical_candidate": "fig-003799",
+      "physical_release": {
+        "brickset_minifig": "sw0213",
+        "catalog_name": "Astromech Droid, R2-Q5",
+        "first_year": 2008,
+        "sets": [
+          "10188-1",
+          "7958-1"
+        ]
+      },
+      "reason": "Normalized R2Q5/R2-Q5 identity maps to one supported physical droid family. Exact texture/model equivalence still requires visual confirmation."
+    },
+    {
+      "asset_id": "skywalker-profile-003af5a8f60bc9e4a23a52eb",
+      "character_variant_key": "Teebo",
+      "decision": "same_character_unique_physical_counterpart_visual_pending",
+      "physical_candidate": "fig-003942",
+      "physical_release": {
+        "brickset_minifig": "sw0510",
+        "catalog_name": "Teebo (Ewok)",
+        "year": 2013,
+        "set_num": "10236-1"
+      },
+      "reason": "Exact Teebo identity with one supported physical release; exact model decoration remains visual pending."
+    },
+    {
+      "asset_id": "skywalker-profile-fe0ca2fabfa513281e755522",
+      "character_variant_key": "Poggle",
+      "decision": "same_character_unique_physical_counterpart_visual_pending",
+      "physical_candidate": "fig-004022",
+      "physical_release": {
+        "brickset_minifig": "sw0474",
+        "catalog_name": "Poggle the Lesser",
+        "year": 2013,
+        "set_num": "75017-1"
+      },
+      "reason": "The abbreviated digital label 'Poggle' maps to the unique supported Poggle the Lesser physical release. This establishes character identity but not exact digital texture equivalence."
+    },
+    {
+      "asset_id": "skywalker-profile-054488cf8581dc211f1a06f1",
+      "character_variant_key": "Dedra",
+      "decision": "same_character_verified_physical_equivalence_not_promoted_temporal_mismatch",
+      "physical_candidate": "fig-016243",
+      "physical_release": {
+        "brickset_minifig": "sw1411",
+        "catalog_name": "Dedra Meero",
+        "year": 2025,
+        "set_num": "75399-1"
+      },
+      "reason": "The digital Dedra identity maps to Dedra Meero, but the first supported physical release is from 2025, after the 2022 game. It can be linked at character level but not treated as a source-equivalent physical design."
+    },
+    {
+      "asset_id": "skywalker-profile-7e5ee44cb58cb8cbd860f5d7",
+      "character_variant_key": "Finn_FirstOrder",
+      "decision": "same_character_variant_identity_verified_visual_pending",
+      "physical_candidate": "fig-004316",
+      "physical_release": {
+        "bricklink_minifig": "sw0900",
+        "catalog_name": "Finn - First Order Officer Disguise",
+        "year": 2018,
+        "set_num": "75201-1"
+      },
+      "reason": "The digital suffix FirstOrder and the unique supported physical candidate both identify Finn's First Order officer disguise. This is stronger than an unsuffixed name match and verifies the outfit/version identity, but exact print/texture reuse remains visual pending."
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "unique_physical_counterpart_candidates": 3,
+    "temporal_non_equivalence_or_later_physical_release": 1,
+    "variant_identity_verified_visual_pending": 1,
+    "automatic_exact_equivalence_promotions": 0
+  },
+  "remaining_unique_release_candidates_after_this_batch": 14
+}
