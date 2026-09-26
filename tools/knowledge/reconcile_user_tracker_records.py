@@ -754,6 +754,94 @@ def main():
         })
     appearance_review.sort(key=lambda x:(-x["review_priority_score"],x.get("normalized_first_appearance") or ""))
 
+    # Candidate Character -> Incarnation -> OutfitDesign hierarchy from user tracker facts.
+    # This is structural normalization only; it never merges different identities/universes automatically.
+    character_groups = defaultdict(list)
+    for rec in records:
+        character_groups[rec["normalized_name"]].append(rec)
+
+    character_entities = []
+    incarnation_entities = []
+    outfit_entities = []
+    for char_key, items in character_groups.items():
+        identities = defaultdict(list)
+        for rec in items:
+            identity_key = norm(rec.get("identity")) or "__identity_unresolved__"
+            identities[identity_key].append(rec)
+
+        character_id = "character-user-" + re.sub(r"[^a-z0-9]+","-",char_key)[:120].strip("-")
+        character_entities.append({
+            "character_candidate_id":character_id,
+            "normalized_character_name":char_key,
+            "observed_names":uniq(x.get("name") for x in items),
+            "record_count":len(items),
+            "source_files":uniq(x.get("source_file") for x in items),
+            "identity_candidate_count":len(identities),
+            "resolved_identity_candidate_count":sum(k!="__identity_unresolved__" for k in identities),
+            "has_unresolved_identity_records":"__identity_unresolved__" in identities,
+            "policy":"Character-name grouping is a parent candidate only. Distinct identity/person records remain separate children.",
+            "processor_version":VERSION,
+        })
+
+        for identity_key, identity_items in identities.items():
+            observed_identity=uniq(x.get("identity") for x in identity_items)
+            identity_slug=identity_key if identity_key!="__identity_unresolved__" else "identity-unresolved"
+            identity_id=character_id+"--"+re.sub(r"[^a-z0-9]+","-",identity_slug)[:100].strip("-")
+            universes=defaultdict(list)
+            for rec in identity_items:
+                universe_key=norm(rec.get("universe")) or "__universe_unresolved__"
+                universes[universe_key].append(rec)
+
+            for universe_key, universe_items in universes.items():
+                universe_values=uniq(x.get("universe") for x in universe_items)
+                universe_slug=universe_key if universe_key!="__universe_unresolved__" else "universe-unresolved"
+                incarnation_id=identity_id+"--"+re.sub(r"[^a-z0-9]+","-",universe_slug)[:100].strip("-")
+                variants=defaultdict(list)
+                for rec in universe_items:
+                    variant_key=norm(rec.get("variant")) or "__variant_unresolved__"
+                    variants[variant_key].append(rec)
+
+                incarnation_entities.append({
+                    "incarnation_candidate_id":incarnation_id,
+                    "character_candidate_id":character_id,
+                    "identity_candidate_key":identity_key,
+                    "observed_identities":observed_identity,
+                    "universe_candidate_key":universe_key,
+                    "observed_universes":universe_values,
+                    "record_count":len(universe_items),
+                    "source_files":uniq(x.get("source_file") for x in universe_items),
+                    "variant_candidate_count":len(variants),
+                    "has_unresolved_variant_records":"__variant_unresolved__" in variants,
+                    "first_appearances":uniq(x.get("first_appearance") for x in universe_items),
+                    "years":uniq(x.get("year") for x in universe_items),
+                    "policy":"Incarnation candidates are scoped by exact normalized identity/person + universe. Missing identity/universe remains explicitly unresolved.",
+                    "processor_version":VERSION,
+                })
+
+                for variant_key, variant_items in variants.items():
+                    variant_values=uniq(x.get("variant") for x in variant_items)
+                    variant_slug=variant_key if variant_key!="__variant_unresolved__" else "variant-unresolved"
+                    outfit_id=incarnation_id+"--"+re.sub(r"[^a-z0-9]+","-",variant_slug)[:120].strip("-")
+                    outfit_entities.append({
+                        "outfit_design_candidate_id":outfit_id,
+                        "incarnation_candidate_id":incarnation_id,
+                        "variant_candidate_key":variant_key,
+                        "observed_variants":variant_values,
+                        "record_count":len(variant_items),
+                        "source_files":uniq(x.get("source_file") for x in variant_items),
+                        "first_appearances":uniq(x.get("first_appearance") for x in variant_items),
+                        "years":uniq(x.get("year") for x in variant_items),
+                        "preferred_references":uniq(x.get("preferred") for x in variant_items),
+                        "product_codes":uniq(x.get("product_code") for x in variant_items),
+                        "record_classes":uniq(x.get("record_class") for x in variant_items),
+                        "policy":"OutfitDesign candidates preserve exact normalized variant labels under one identity/universe incarnation; unresolved variant labels remain explicit.",
+                        "processor_version":VERSION,
+                    })
+
+    character_entities.sort(key=lambda x:(-x["record_count"],x["normalized_character_name"]))
+    incarnation_entities.sort(key=lambda x:(-x["record_count"],x["incarnation_candidate_id"]))
+    outfit_entities.sort(key=lambda x:(-x["record_count"],x["outfit_design_candidate_id"]))
+
     # Prioritized entity-resolution queue.
     entity_review = []
     for g in group_rows:
@@ -897,6 +985,9 @@ def main():
     write_jsonl("dc-legacy-normalized.jsonl", dc_normalized)
     write_jsonl("figure-release-candidates.jsonl", release_rows)
     write_jsonl("external-catalog-id-queue.jsonl", external_catalog_records)
+    write_jsonl("character-candidates.jsonl", character_entities)
+    write_jsonl("incarnation-candidates.jsonl", incarnation_entities)
+    write_jsonl("outfit-design-candidates.jsonl", outfit_entities)
     write_jsonl("entity-resolution-review-queue.jsonl", entity_review)
     write_jsonl("collection-gap-candidates.jsonl", gap_rows)
     write_jsonl("source-appearance-candidates.jsonl", appearance_rows)
@@ -990,6 +1081,11 @@ def main():
         "groups_with_many_variants": sum("many_variants" in x["ambiguity_flags"] for x in group_rows),
         "strict_duplicate_candidate_groups": len(strict_rows),
         "strict_cross_source_duplicate_candidate_groups": sum(x["cross_source_duplicate_candidate"] for x in strict_rows),
+        "character_candidate_records": len(character_entities),
+        "incarnation_candidate_records": len(incarnation_entities),
+        "outfit_design_candidate_records": len(outfit_entities),
+        "character_candidates_with_unresolved_identity": sum(x["has_unresolved_identity_records"] for x in character_entities),
+        "incarnation_candidates_with_unresolved_variant": sum(x["has_unresolved_variant_records"] for x in incarnation_entities),
         "entity_resolution_review_records": len(entity_review),
         "entity_resolution_high_priority_records": sum(x["review_priority_score"] >= 40 for x in entity_review),
         "collection_gap_candidate_records": len(gap_rows),
