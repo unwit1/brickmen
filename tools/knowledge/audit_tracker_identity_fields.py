@@ -6,7 +6,7 @@ import argparse, json, re, unicodedata
 from collections import Counter
 from pathlib import Path
 
-VERSION="tracker-identity-field-audit/v3"
+VERSION="tracker-identity-field-audit/v4"
 COLORS={"black","white","gold","green","yellow","red","blue","silver","gray","grey","purple","orange","pink","brown","tan","azure","teal"}
 MEDIA_OR_STYLE={"mvc","mcu","dcau","dceu","arrowverse","classic","modern","animated"}
 ROLE_OR_ERA={"atlantean","phoenix","pirate queen","wild west"}
@@ -69,8 +69,8 @@ def signals(rec):
         out.append("identity_media_or_style_descriptor")
     if ni in ROLE_OR_ERA:
         out.append("identity_role_or_era_descriptor")
-    if re.search(r"\\$|\)$",identity):
-        out.append("identity_trailing_punctuation")
+    if identity.endswith("\\") or identity.count(")") > identity.count("("):
+        out.append("identity_trailing_unmatched_punctuation")
     if re.search(r"\d",identity) and not re.search(r"[A-Za-z].*\d|\d.*[A-Za-z]",identity):
         out.append("identity_numeric_only")
     return sorted(set(out))
@@ -137,7 +137,7 @@ def main():
         for row in rows:
             f.write(json.dumps(row,ensure_ascii=False)+"\n")
     summary={
-        "schema":"tracker-identity-field-audit-summary/v3",
+        "schema":"tracker-identity-field-audit-summary/v4",
         "processor_version":VERSION,
         "named_source_records_scanned":source_records,
         "review_records":len(rows),
