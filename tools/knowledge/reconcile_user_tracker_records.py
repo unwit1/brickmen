@@ -44,6 +44,14 @@ def is_maker_code(value):
 def uniq(values):
     return sorted({str(v).strip() for v in values if v is not None and str(v).strip()})
 
+def external_catalog_id(rec):
+    direct = str(rec.get("bricklink_minifigure_id") or "").strip()
+    if direct:
+        return direct.casefold()
+    url = str(rec.get("bricklink_catalog_url") or "")
+    m = re.search(r"[?&]M=([^&#]+)", url, re.I)
+    return m.group(1).strip().casefold() if m else None
+
 def source_name(rec):
     return (
         rec.get("name")
@@ -73,14 +81,14 @@ def canonical_source_stub(rec, source_path):
         "category": rec.get("category") or rec.get("category_or_franchise"),
         "subcategory": rec.get("subcategory"),
         "collection": rec.get("collection") or rec.get("group"),
-        "product_code": rec.get("product_code") or rec.get("bricklink_minifigure_id"),
+        "product_code": rec.get("product_code") or external_catalog_id(rec),
         "product_code_namespace": (
             "maker_product_code"
             if rec.get("product_code") and is_maker_code(rec.get("product_code"))
             else "unstructured_source_code_text"
             if rec.get("product_code")
             else "bricklink_minifigure_id"
-            if rec.get("bricklink_minifigure_id")
+            if external_catalog_id(rec)
             else None
         ),
         "have": rec.get("have"),
@@ -255,10 +263,11 @@ def main():
                 continue
             input_files.append(path)
             for rec in load_jsonl(path):
-                if rec.get("bricklink_minifigure_id"):
+                recovered_external_id = external_catalog_id(rec)
+                if recovered_external_id:
                     external_catalog_records.append({
                         "catalog_namespace":"bricklink_minifigure_id",
-                        "catalog_id":str(rec.get("bricklink_minifigure_id")).lower(),
+                        "catalog_id":recovered_external_id,
                         "source_file":path.name,
                         "source_title":rec.get("source_title"),
                         "source_tab":rec.get("source_tab"),
