@@ -1,0 +1,81 @@
+{
+  "schema_version": "0.1",
+  "created_at": "2026-09-26",
+  "purpose": "Manually verified work-level classifications for repeated/freeform user SourceAppearance references that cannot safely be normalized as comic issue numbers.",
+  "policy": [
+    "Work-level verification does not imply exact episode, scene, costume, skin, or outfit equivalence.",
+    "Raw tracker text remains preserved in the reconciliation corpus.",
+    "A work-level reference may be promoted to canonical SourceAppearance only at the work granularity unless more specific evidence is separately verified.",
+    "Ambiguous titles such as The Batman are not promoted without disambiguating year/medium/context."
+  ],
+  "records": [
+    {
+      "raw_reference": "Gotham Knights (2022)",
+      "normalized_reference": "gotham knights 2022",
+      "canonical_work": "Gotham Knights",
+      "work_type": "video_game",
+      "year": 2022,
+      "publisher": "DC",
+      "verification_status": "primary_verified_work_level",
+      "source_url": "https://www.dc.com/games/gotham-knights-2022",
+      "note": "DC identifies Gotham Knights (2022) as an open-world action RPG."
+    },
+    {
+      "raw_reference": "Gotham Knights",
+      "normalized_reference": "gotham knights",
+      "canonical_work": "Gotham Knights",
+      "work_type": "video_game",
+      "year": 2022,
+      "publisher": "DC",
+      "verification_status": "contextually_verified_work_level",
+      "source_url": "https://www.dc.com/games/gotham-knights-2022",
+      "note": "Tracker rows using this label are tied to 2022 game-specific character variants/year context; classification is contextual, not title-only."
+    },
+    {
+      "raw_reference": "Batman Ninja",
+      "normalized_reference": "batman ninja",
+      "canonical_work": "Batman Ninja",
+      "work_type": "animated_film",
+      "year": 2018,
+      "publisher": "DC",
+      "verification_status": "primary_verified_work_level",
+      "source_url": "https://www.dc.com/movies/batman-ninja-2018",
+      "note": "DC lists Batman Ninja as a 2018 movie."
+    },
+    {
+      "raw_reference": "Batman: The Animated Series",
+      "normalized_reference": "batman the animated series",
+      "canonical_work": "Batman: The Animated Series",
+      "work_type": "animated_tv_series",
+      "year_start": 1992,
+      "year_end": 1995,
+      "publisher": "DC",
+      "verification_status": "primary_verified_work_level",
+      "source_url": "https://www.dc.com/tv/batman-the-animated-series-1992-1995",
+      "note": "Series-level classification only; exact episode remains unresolved unless separately identified."
+    },
+    {
+      "raw_reference": "Marvel Future Fight",
+      "normalized_reference": "marvel future fight",
+      "canonical_work": "MARVEL Future Fight",
+      "work_type": "video_game",
+      "publisher": "Marvel",
+      "verification_status": "primary_verified_work_level",
+      "source_url": "https://www.marvel.com/articles/games/house-of-x-powers-of-x-marvel-future-fight-update",
+      "note": "Marvel describes MARVEL Future Fight as a game and documents character/uniform content."
+    },
+    {
+      "raw_reference": "The Flash: Iron Heights",
+      "normalized_reference": "the flash iron heights",
+      "canonical_work": "The Flash: Iron Heights #1",
+      "work_type": "comic_one_shot",
+      "publisher": "DC",
+      "verification_status": "primary_verified_work_level",
+      "source_urls": [
+        "https://www.dc.com/graphic-novels/the-flash-by-geoff-johns-2015/the-flash-by-geoff-johns-book-one",
+        "https://www.dc.com/blog/2020/10/30/counting-kills-the-five-deadliest-serial-killers-in-the-dc-universe"
+      ],
+      "note": "DC explicitly lists THE FLASH: IRON HEIGHTS #1 in collected contents and identifies Murmur's first appearance as The Flash: Iron Heights (2001)."
+    }
+  ]
+}
