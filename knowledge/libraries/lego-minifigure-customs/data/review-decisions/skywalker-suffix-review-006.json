@@ -1,0 +1,99 @@
+{
+  "schema": "skywalker-suffix-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-suffix-review-006",
+  "cohort": "remaining_direct_catalog_text_suffix_matches",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-013e5894ef14f652e108a5fd",
+      "character_variant_key": "Stormtrooper_FirstOrder",
+      "decision": "variant_family_verified_exact_release_unresolved",
+      "supported_physical_candidates": [
+        "Stormtrooper, First Order / Stormtrooper Executioner",
+        "Stormtrooper, First Order - Pointed Mouth",
+        "Stormtrooper, First Order - Rounded Mouth",
+        "Stormtrooper Officer, First Order, Dark Red Pauldron",
+        "Stormtrooper Squad Leader, First Order, White Pauldron"
+      ],
+      "reason": "FirstOrder correctly constrains the digital asset to the First Order stormtrooper family, but it does not encode rank, mouth-print generation, pauldron, or executioner details. Do not select one exact physical release from the suffix alone."
+    },
+    {
+      "asset_id": "skywalker-profile-ca304fb478f02a5ebf416ae2",
+      "character_variant_key": "HanSolo_Old",
+      "decision": "variant_family_verified_exact_release_unresolved",
+      "supported_physical_candidates": [
+        {
+          "fig_num": "fig-002546",
+          "name": "Han Solo, Old, Smile",
+          "year": 2015
+        },
+        {
+          "fig_num": "fig-002551",
+          "name": "Han Solo, Old, Angry",
+          "first_year": 2017
+        }
+      ],
+      "reason": "Old verifies sequel-era Han Solo as the intended family, but the digital key does not distinguish the smile and angry physical releases."
+    },
+    {
+      "asset_id": "skywalker-profile-237904390c820ff0396517a0",
+      "character_variant_key": "AnakinSkywalker_YellowEyes",
+      "decision": "variant_family_verified_exact_release_unresolved",
+      "supported_physical_candidates": [
+        {
+          "fig_num": "fig-004491",
+          "name": "Anakin Skywalker, Transformation, Yellow Eyes, Black Legs",
+          "year": 2020
+        },
+        {
+          "fig_num": "fig-003890",
+          "name": "Anakin Skywalker, Transformation, Yellow Eyes, Dark Brown Legs",
+          "year": 2012
+        }
+      ],
+      "reason": "YellowEyes clearly identifies the dark-side/transformation Anakin family, but at least two pre-game physical leg/version variants remain. Exact release requires visual/component comparison."
+    },
+    {
+      "asset_id": "skywalker-profile-b3af413f236b65a6664fcbeb",
+      "character_variant_key": "Stormtrooper_FirstOrder_Heavy",
+      "decision": "variant_family_verified_exact_release_unresolved",
+      "supported_physical_candidates": [
+        {
+          "fig_num": "fig-004276",
+          "name": "Stormtrooper, First Order / Heavy Assault Stormtrooper, Neck Bracket",
+          "year": 2017
+        },
+        {
+          "fig_num": "fig-004197",
+          "name": "Stormtrooper, First Order / Heavy Assault Stormtrooper, No Neck Bracket",
+          "year": 2016
+        }
+      ],
+      "reason": "FirstOrder + Heavy correctly resolves the Heavy Assault Stormtrooper family, but the key does not distinguish the neck-bracket and no-bracket physical variants."
+    },
+    {
+      "asset_id": "skywalker-profile-937633447974c6e4aa7ab1ae",
+      "character_variant_key": "LukeSkywalker_Endor",
+      "decision": "variant_family_verified_exact_release_unresolved",
+      "physical_family_examples": [
+        {
+          "fig_num": "fig-003610",
+          "name": "Luke Skywalker, Endor Outfit, Yellow Skin",
+          "year": 1999
+        },
+        {
+          "fig_num": "fig-013747",
+          "name": "Luke Skywalker, Dark Tan Endor Outfit, Helmet",
+          "year": 2023
+        }
+      ],
+      "reason": "Endor is valid outfit-family evidence. The 2023 candidate postdates the game and cannot be its source design, while the 1999 release demonstrates a pre-game physical Endor family. Exact digital-to-physical version remains unresolved."
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "variant_family_verified_exact_release_unresolved": 5,
+    "automatic_exact_equivalence_promotions": 0
+  },
+  "remaining_direct_catalog_text_suffix_matches_after_batch": 16
+}
