@@ -1,0 +1,61 @@
+{
+  "schema": "flat-art-independent-review-decisions/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "rioforce-flat-art-review-002",
+  "records": [
+    {
+      "candidate_id": "rioforce-56ac1efd199d9d65ca077a40",
+      "relative_stem": "Indiana Jones/Motorcycle Guy/LIJ Motorcycles Guy Torso (Yellow)",
+      "decision": "reject_candidate_match",
+      "candidate_figure": "fig-000958",
+      "candidate_component": "973c01h01pr2319",
+      "reason": "Indiana Jones source context conflicts with the unrelated 2013 Motorcycle Mechanic lexical match."
+    },
+    {
+      "candidate_id": "rioforce-a46a594c984e184ba67a100c",
+      "relative_stem": "Indiana Jones/Motorcycle Guy/LIJ Motorcycles Guy Torso - (YELLOW)",
+      "decision": "reject_candidate_match",
+      "candidate_figure": "fig-000958",
+      "candidate_component": "973c01h01pr2319",
+      "reason": "Duplicate color variant of the same Indiana Jones asset family; the proposed 2013 Motorcycle Mechanic match is contextually wrong."
+    },
+    {
+      "candidate_id": "rioforce-0906e97228bc66565ca077a40",
+      "relative_stem": "LEGO Friends/Olivia/Olivia Face",
+      "decision": "hold_unverified",
+      "candidate_figure": "fig-000188",
+      "candidate_component": "92198pr0003",
+      "reason": "Olivia is a recurring character with multiple versions. The path lacks year/outfit information, and the candidate ties other Olivia releases; exact version identity is not independently resolved."
+    },
+    {
+      "candidate_id": "rioforce-474283267bbb65bcc51bbfce",
+      "relative_stem": "LEGO Friends/Olivia/Olivia Torso",
+      "decision": "hold_unverified",
+      "candidate_figure": "fig-000188",
+      "candidate_component": "92456c01pr0100",
+      "reason": "Olivia has multiple torso/outfit versions. The generic path does not uniquely identify the 2016 Magenta Top release."
+    },
+    {
+      "candidate_id": "rioforce-4aebf64bf5f7bc1bddb8a2b9",
+      "relative_stem": "LEGO Minifigures/Series 1/Blue Cheerleader Torso",
+      "decision": "reject_candidate_match",
+      "candidate_figure": "fig-001064",
+      "candidate_component": "973c01h01pr2118",
+      "reason": "Independent catalog evidence identifies Series 1 (2010) as the blue Cheerleader, while the proposed component is explicitly the red 'A' torso from the 2012 Red Cheerleader. The automated top candidate is a color/version collision.",
+      "independent_evidence": [
+        {
+          "source": "Bricker col002",
+          "url": "https://bricker.info/minifigs/col002/",
+          "fact": "Series 1 Cheerleader is a 2010 figure with a blue torso and white M pattern."
+        }
+      ]
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "promoted": 0,
+    "held_unverified": 2,
+    "rejected_candidate_match": 3
+  },
+  "next_offset": 10
+}
