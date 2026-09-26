@@ -1,0 +1,119 @@
+{
+  "schema": "skywalker-unresolved-suffix-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-unresolved-suffix-review-001",
+  "policy": "For unresolved game-profile suffixes, confirm the digital variant meaning from the official profile key / public game roster first, then map only to the narrowest physical family actually supported. Opaque internal selectors remain unresolved and do not force an exact physical release.",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-5121cdfc30d888322f6f514b",
+      "character_variant_key": "HanSolo_Stormtrooper_B",
+      "decision": "digital_stormtrooper_variant_family_verified_game_local_selector_unresolved",
+      "canonical_game_variant_family": "Han Solo (Stormtrooper)",
+      "game_local_selector": "B",
+      "physical_family_candidates": [
+        {
+          "fig_num": "fig-003956",
+          "name": "Han Solo, Stormtrooper Disguise, Black Eyes",
+          "first_year": 2008
+        },
+        {
+          "fig_num": "fig-002528",
+          "name": "Han Solo, Stormtrooper Disguise, White Pupils",
+          "first_year": 2016
+        },
+        {
+          "fig_num": "fig-012567",
+          "name": "Han Solo, Stormtrooper Disguise",
+          "first_year": 2022
+        }
+      ],
+      "reason": "The game publicly exposes Han Solo (Stormtrooper) and a separate no-helmet variant. The internal suffix B is not a documented physical-release selector, so it may distinguish a game-local asset/state and must not select one catalog release by score alone.",
+      "evidence_urls": [
+        "https://www.gamespot.com/articles/all-characters-in-lego-star-wars-the-skywalker-saga/1100-6502264/",
+        "https://gamefaqs.gamespot.com/ps4/265996-lego-star-wars-the-skywalker-saga/faqs/79882/villains-and-dark-siders"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-2071d75716d6957011bd23de",
+      "character_variant_key": "JangoFett_Clone",
+      "decision": "digital_game_variant_verified_no_catalog_named_physical_variant",
+      "canonical_game_variant": "Jango Fett (Clone)",
+      "physical_character_family_supported": true,
+      "exact_physical_variant_supported": false,
+      "reason": "Jango Fett (Clone) is an explicit Skywalker Saga game variant, but none of the supported physical Jango Fett catalog names identify a Clone variant. Preserve it as a digital appearance/state variant rather than choosing Black Head, Santa, or gray-torso physical releases.",
+      "evidence_urls": [
+        "https://www.gamespot.com/articles/all-characters-in-lego-star-wars-the-skywalker-saga/1100-6502264/"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-13028e92e1e1583abe8b887e",
+      "character_variant_key": "JangoFett_Casual",
+      "decision": "digital_game_variant_verified_no_catalog_named_physical_variant",
+      "canonical_game_variant": "Jango Fett (Casual)",
+      "physical_character_family_supported": true,
+      "exact_physical_variant_supported": false,
+      "reason": "Jango Fett (Casual) is an explicit Skywalker Saga variant. The current physical catalog candidates do not contain a Casual Jango identity, so lexical ranking across normal/Santa/torso variants cannot establish an exact physical counterpart.",
+      "evidence_urls": [
+        "https://www.gamespot.com/articles/all-characters-in-lego-star-wars-the-skywalker-saga/1100-6502264/"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-06d7d8b6087c67398264c716",
+      "character_variant_key": "Leia_General_Bandaged",
+      "decision": "digital_story_state_verified_physical_version_unresolved",
+      "canonical_game_identity_family": "Leia Organa / General Leia",
+      "digital_state_tokens": [
+        "General",
+        "Bandaged"
+      ],
+      "physical_family_candidates": [
+        {
+          "fig_num": "fig-004174",
+          "name": "Princess Leia / General Leia, Plain Undershirt",
+          "year": 2016
+        },
+        {
+          "fig_num": "fig-004406",
+          "name": "Princess Leia / General Leia, Dark Tan Turtle-neck",
+          "year": 2019
+        }
+      ],
+      "reason": "The game roster contains General Leia and a Bandaged Leia state, but the current catalog candidates only establish the General Leia family and do not independently identify a bandaged physical release. Keep the bandaged story-state separate from exact physical version resolution.",
+      "evidence_urls": [
+        "https://www.brickfanatics.com/lego-star-wars-the-skywalker-saga"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-f5098010744c2666d2d7e370",
+      "character_variant_key": "Luke_Stormtrooper_B",
+      "decision": "digital_stormtrooper_variant_family_verified_game_local_selector_unresolved",
+      "canonical_game_variant_family": "Luke Skywalker (Stormtrooper)",
+      "game_local_selector": "B",
+      "physical_family_candidates": [
+        {
+          "fig_num": "fig-003960",
+          "name": "Luke Skywalker, Stormtrooper Disguise, Plain Legs",
+          "first_year": 2008
+        },
+        {
+          "fig_num": "fig-002529",
+          "name": "Luke Skywalker, Stormtrooper Disguise, Printed Legs",
+          "first_year": 2016
+        }
+      ],
+      "reason": "The game publicly exposes Luke Skywalker (Stormtrooper) and a distinct no-helmet state. The internal B selector is not a physical catalog version label, so exact release selection remains unresolved.",
+      "evidence_urls": [
+        "https://gamefaqs.gamespot.com/ps4/265996-lego-star-wars-the-skywalker-saga/faqs/79882/villains-and-dark-siders",
+        "https://lego-star-wars-the-skywalker-saga.fandom.com/wiki/A_New_Hope"
+      ]
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "digital_game_variant_verified_no_catalog_named_physical_variant": 2,
+    "digital_stormtrooper_variant_family_verified_game_local_selector_unresolved": 2,
+    "digital_story_state_verified_physical_version_unresolved": 1,
+    "automatic_exact_equivalence_promotions": 0
+  },
+  "remaining_unreviewed_suffix_records_after_batch": 64
+}
