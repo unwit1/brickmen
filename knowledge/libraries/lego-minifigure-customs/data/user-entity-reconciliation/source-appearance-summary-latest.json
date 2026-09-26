@@ -1,17 +1,85 @@
 {
   "schema": "user-source-appearance-summary/v2",
   "processor_version": "user-tracker-reconciliation/v1",
-  "candidate_records": 3432,
+  "candidate_records": 3404,
   "source_records_with_first_appearance": 4607,
-  "explicit_comic_issue_candidates": 3228,
+  "explicit_comic_issue_candidates": 3245,
   "explicit_episode_candidates": 6,
-  "structured_reference_candidates": 3234,
-  "mixed_or_raw_candidates": 198,
-  "canonical_groups_with_multiple_raw_spellings": 29,
-  "raw_spelling_variants_collapsed": 29,
+  "structured_reference_candidates": 3251,
+  "mixed_or_raw_candidates": 153,
+  "canonical_groups_with_multiple_raw_spellings": 55,
+  "raw_spelling_variants_collapsed": 57,
   "top_alias_groups": [
     {
-      "canonical_reference_key": "kingdom come|v?|i1",
+      "canonical_reference_key": "uncanny x men|v3|regular|i1",
+      "raw_values": [
+        "Uncanny X-Men (Vol. 3) #1",
+        "Uncanny X-Men v3\n #1",
+        "Uncanny X-Men v3 #1"
+      ],
+      "records": 11,
+      "source_work": "Uncanny X-Men",
+      "volume": 3,
+      "issue": "1"
+    },
+    {
+      "canonical_reference_key": "uncanny x men|v?|regular|i193",
+      "raw_values": [
+        "Uncanny X-MEn #193",
+        "Uncanny X-Men #193",
+        "Uncanny X-Men #193 (May 1985)[1]"
+      ],
+      "records": 4,
+      "source_work": null,
+      "volume": null,
+      "issue": "193"
+    },
+    {
+      "canonical_reference_key": "x factor|v3|regular|i1",
+      "raw_values": [
+        "X-Factor (Vol. 3) #1",
+        "X-Factor v3 #1"
+      ],
+      "records": 13,
+      "source_work": "X-Factor",
+      "volume": 3,
+      "issue": "1"
+    },
+    {
+      "canonical_reference_key": "new warriors|v4|regular|i3",
+      "raw_values": [
+        "New Warriors (Vol. 4) #3",
+        "New Warriors v4 #3"
+      ],
+      "records": 10,
+      "source_work": "New Warriors",
+      "volume": 4,
+      "issue": "3"
+    },
+    {
+      "canonical_reference_key": "x men|v2|regular|i1",
+      "raw_values": [
+        "X-Men (Vol. 2) #1",
+        "X-Men v2 #1"
+      ],
+      "records": 10,
+      "source_work": "X-Men",
+      "volume": 2,
+      "issue": "1"
+    },
+    {
+      "canonical_reference_key": "uncanny x men|v?|regular|i513",
+      "raw_values": [
+        "Uncanny X-Men #513",
+        "Uncanny X-Men #513 (July 2009)[1][42]"
+      ],
+      "records": 9,
+      "source_work": "Uncanny X-Men",
+      "volume": null,
+      "issue": "513"
+    },
+    {
+      "canonical_reference_key": "kingdom come|v?|regular|i1",
       "raw_values": [
         "Kingdom Come  #1",
         "Kingdom Come #1"
@@ -22,7 +90,7 @@
       "issue": "1"
     },
     {
-      "canonical_reference_key": "batman|v?|i676",
+      "canonical_reference_key": "batman|v?|regular|i676",
       "raw_values": [
         "Batman  #676",
         "Batman #676"
@@ -33,7 +101,18 @@
       "issue": "676"
     },
     {
-      "canonical_reference_key": "dark nights death metal|v?|i1",
+      "canonical_reference_key": "avengers|v5|regular|i1",
+      "raw_values": [
+        "Avengers (Vol. 5) #1",
+        "Avengers v5 #1"
+      ],
+      "records": 5,
+      "source_work": "Avengers",
+      "volume": 5,
+      "issue": "1"
+    },
+    {
+      "canonical_reference_key": "dark nights death metal|v?|regular|i1",
       "raw_values": [
         "Dark Nights: Death Metal  #1",
         "Dark Nights: Death Metal #1"
@@ -44,7 +123,7 @@
       "issue": "1"
     },
     {
-      "canonical_reference_key": "justice society of america|v3|i1",
+      "canonical_reference_key": "justice society of america|v3|regular|i1",
       "raw_values": [
         "Justice Society of America Vol 3  #1",
         "Justice Society of America Vol 3 # 1"
@@ -55,7 +134,18 @@
       "issue": "1"
     },
     {
-      "canonical_reference_key": "absolute power|v?|i1",
+      "canonical_reference_key": "action comics|v2|regular|i1",
+      "raw_values": [
+        "Action Comics (Volume 2) #1",
+        "Action Comics Vol 2  #1"
+      ],
+      "records": 4,
+      "source_work": "Action Comics",
+      "volume": 2,
+      "issue": "1"
+    },
+    {
+      "canonical_reference_key": "absolute power|v?|regular|i1",
       "raw_values": [
         "Absolute Power # 1",
         "Absolute Power #1"
@@ -66,7 +156,7 @@
       "issue": "1"
     },
     {
-      "canonical_reference_key": "batman|v?|i1",
+      "canonical_reference_key": "batman|v?|regular|i1",
       "raw_values": [
         "Batman  #1",
         "Batman #1"
@@ -77,7 +167,7 @@
       "issue": "1"
     },
     {
-      "canonical_reference_key": "batman|v?|i617",
+      "canonical_reference_key": "batman|v?|regular|i617",
       "raw_values": [
         "Batman  #617",
         "Batman # 617"
@@ -88,7 +178,7 @@
       "issue": "617"
     },
     {
-      "canonical_reference_key": "batman the long halloween|v?|i1",
+      "canonical_reference_key": "batman the long halloween|v?|regular|i1",
       "raw_values": [
         "Batman: The Long Halloween  #1",
         "Batman: The Long Halloween # 1"
@@ -99,7 +189,7 @@
       "issue": "1"
     },
     {
-      "canonical_reference_key": "the flash|v?|i106",
+      "canonical_reference_key": "the flash|v?|regular|i106",
       "raw_values": [
         "The Flash  #106",
         "The Flash #106"
@@ -110,29 +200,40 @@
       "issue": "106"
     },
     {
-      "canonical_reference_key": "uncanny x men|v?|i193",
+      "canonical_reference_key": "uncanny x men|v?|regular|i381",
       "raw_values": [
-        "Uncanny X-MEn #193",
-        "Uncanny X-Men #193"
-      ],
-      "records": 3,
-      "source_work": null,
-      "volume": null,
-      "issue": "193"
-    },
-    {
-      "canonical_reference_key": "uncanny x men|v3|i1",
-      "raw_values": [
-        "Uncanny X-Men v3\n #1",
-        "Uncanny X-Men v3 #1"
+        "Uncanny X-Men #381",
+        "Uncanny X-Men #381 (June 2000)[16][17]"
       ],
       "records": 3,
       "source_work": "Uncanny X-Men",
-      "volume": 3,
-      "issue": "1"
+      "volume": null,
+      "issue": "381"
     },
     {
-      "canonical_reference_key": "action comics|v?|i1",
+      "canonical_reference_key": "x force|v?|regular|i44",
+      "raw_values": [
+        "X-Force #44",
+        "X-Force #44 (July 1995)[1]"
+      ],
+      "records": 3,
+      "source_work": "X-Force",
+      "volume": null,
+      "issue": "44"
+    },
+    {
+      "canonical_reference_key": "young justice|v3|regular|i8",
+      "raw_values": [
+        "Young Justice (Volume 3) #8",
+        "Young Justice Vol 3  #8"
+      ],
+      "records": 3,
+      "source_work": "Young Justice",
+      "volume": 3,
+      "issue": "8"
+    },
+    {
+      "canonical_reference_key": "action comics|v?|regular|i1",
       "raw_values": [
         "Action Comics  #1",
         "Action Comics # 1"
@@ -143,7 +244,7 @@
       "issue": "1"
     },
     {
-      "canonical_reference_key": "batman|v?|i609",
+      "canonical_reference_key": "batman|v?|regular|i609",
       "raw_values": [
         "Batman  #609",
         "Batman # 609"
@@ -154,7 +255,7 @@
       "issue": "609"
     },
     {
-      "canonical_reference_key": "batman and robin|v?|i12",
+      "canonical_reference_key": "batman and robin|v?|regular|i12",
       "raw_values": [
         "Batman and Robin  #12",
         "Batman and Robin # 12"
@@ -165,7 +266,7 @@
       "issue": "12"
     },
     {
-      "canonical_reference_key": "batman battle for the cowl|v?|i1",
+      "canonical_reference_key": "batman battle for the cowl|v?|regular|i1",
       "raw_values": [
         "Batman: Battle for the Cowl # 1",
         "Batman: Battle for the Cowl #1"
@@ -176,7 +277,7 @@
       "issue": "1"
     },
     {
-      "canonical_reference_key": "batman shadow of the bat|v?|i27",
+      "canonical_reference_key": "batman shadow of the bat|v?|regular|i27",
       "raw_values": [
         "Batman: Shadow of the Bat  #27",
         "Batman: Shadow of the Bat #27"
@@ -187,7 +288,7 @@
       "issue": "27"
     },
     {
-      "canonical_reference_key": "batman|v2|i1",
+      "canonical_reference_key": "batman|v2|regular|i1",
       "raw_values": [
         "Batman Vol 2  #1",
         "Batman Vol 2 # 1"
@@ -198,7 +299,7 @@
       "issue": "1"
     },
     {
-      "canonical_reference_key": "batman|v3|i100",
+      "canonical_reference_key": "batman|v3|regular|i100",
       "raw_values": [
         "Batman Vol 3  #100",
         "Batman Vol 3 # 100"
@@ -209,7 +310,7 @@
       "issue": "100"
     },
     {
-      "canonical_reference_key": "batman|v3|i147",
+      "canonical_reference_key": "batman|v3|regular|i147",
       "raw_values": [
         "Batman Vol 3  #147",
         "Batman Vol 3 # 147"
@@ -220,7 +321,29 @@
       "issue": "147"
     },
     {
-      "canonical_reference_key": "catwoman|v4|i1",
+      "canonical_reference_key": "batman|v2|regular|i2",
+      "raw_values": [
+        "Batman (Volume 2) #2",
+        "Batman Vol 2  #2"
+      ],
+      "records": 2,
+      "source_work": "Batman",
+      "volume": 2,
+      "issue": "2"
+    },
+    {
+      "canonical_reference_key": "captain america|v6|regular|i11",
+      "raw_values": [
+        "Captain America (6th series) #11",
+        "Captain America (Vol. 6) #11"
+      ],
+      "records": 2,
+      "source_work": "Captain America",
+      "volume": 6,
+      "issue": "11"
+    },
+    {
+      "canonical_reference_key": "catwoman|v4|regular|i1",
       "raw_values": [
         "Catwoman Vol 4  #1",
         "Catwoman Vol 4 # 1"
@@ -231,7 +354,29 @@
       "issue": "1"
     },
     {
-      "canonical_reference_key": "dc all in special|v?|i1",
+      "canonical_reference_key": "daredevil|v5|regular|i1",
+      "raw_values": [
+        "Daredevil (5th series) #1",
+        "Daredevil (Vol. 5) #1"
+      ],
+      "records": 2,
+      "source_work": "Daredevil",
+      "volume": 5,
+      "issue": "1"
+    },
+    {
+      "canonical_reference_key": "daredevil|v4|regular|i14",
+      "raw_values": [
+        "Daredevil (Vol. 4) #14",
+        "Daredevil v4 #14"
+      ],
+      "records": 2,
+      "source_work": "Daredevil",
+      "volume": 4,
+      "issue": "14"
+    },
+    {
+      "canonical_reference_key": "dc all in special|v?|regular|i1",
       "raw_values": [
         "DC All In Special  #1",
         "DC All In Special #1"
@@ -242,7 +387,7 @@
       "issue": "1"
     },
     {
-      "canonical_reference_key": "dc mech|v?|i1",
+      "canonical_reference_key": "dc mech|v?|regular|i1",
       "raw_values": [
         "DC: Mech # 1",
         "DC: Mech #1"
@@ -253,7 +398,7 @@
       "issue": "1"
     },
     {
-      "canonical_reference_key": "detective comics|v?|i275",
+      "canonical_reference_key": "detective comics|v?|regular|i275",
       "raw_values": [
         "Detective Comics  #275",
         "Detective Comics # 275"
@@ -264,7 +409,7 @@
       "issue": "275"
     },
     {
-      "canonical_reference_key": "detective comics|v?|i38",
+      "canonical_reference_key": "detective comics|v?|regular|i38",
       "raw_values": [
         "Detective Comics  #38",
         "Detective Comics #38"
@@ -275,7 +420,7 @@
       "issue": "38"
     },
     {
-      "canonical_reference_key": "excalibur|v?|i71",
+      "canonical_reference_key": "excalibur|v?|regular|i71",
       "raw_values": [
         "Excalibur # 71",
         "Excalibur #71"
@@ -286,7 +431,40 @@
       "issue": "71"
     },
     {
-      "canonical_reference_key": "nightwing rebirth|v?|i1",
+      "canonical_reference_key": "excalibur|v4|regular|i1",
+      "raw_values": [
+        "Excalibur (Vol. 4) #1",
+        "Excalibur v4 #1"
+      ],
+      "records": 2,
+      "source_work": "Excalibur",
+      "volume": 4,
+      "issue": "1"
+    },
+    {
+      "canonical_reference_key": "fantastic four|v6|regular|i22",
+      "raw_values": [
+        "Fantastic Four (Vol. 6) #22",
+        "Fantastic Four v6 #22"
+      ],
+      "records": 2,
+      "source_work": "Fantastic Four",
+      "volume": 6,
+      "issue": "22"
+    },
+    {
+      "canonical_reference_key": "justice league|v2|regular|i1",
+      "raw_values": [
+        "Justice League (Volume 2) #1",
+        "Justice League Vol 2 # 1"
+      ],
+      "records": 2,
+      "source_work": "Justice League",
+      "volume": 2,
+      "issue": "1"
+    },
+    {
+      "canonical_reference_key": "nightwing rebirth|v?|regular|i1",
       "raw_values": [
         "Nightwing: Rebirth  #1",
         "Nightwing: Rebirth #1"
@@ -297,7 +475,7 @@
       "issue": "1"
     },
     {
-      "canonical_reference_key": "red hood and the outlaws|v?|i1",
+      "canonical_reference_key": "red hood and the outlaws|v?|regular|i1",
       "raw_values": [
         "Red Hood and the Outlaws  #1",
         "Red Hood and the Outlaws #1"
@@ -308,7 +486,7 @@
       "issue": "1"
     },
     {
-      "canonical_reference_key": "superman red son|v?|i1",
+      "canonical_reference_key": "superman red son|v?|regular|i1",
       "raw_values": [
         "Superman: Red Son  #1",
         "Superman: Red Son # 1"
@@ -319,7 +497,84 @@
       "issue": "1"
     },
     {
-      "canonical_reference_key": "wolverine and the x men|v?|i1",
+      "canonical_reference_key": "the flash rebirth|v2|regular|i1",
+      "raw_values": [
+        "The Flash: Rebirth (Volume 2) #1",
+        "The Flash: Rebirth Vol 2  #1"
+      ],
+      "records": 2,
+      "source_work": "The Flash: Rebirth",
+      "volume": 2,
+      "issue": "1"
+    },
+    {
+      "canonical_reference_key": "uncanny x men|v?|regular|i213",
+      "raw_values": [
+        "Uncanny X-Men #213",
+        "Uncanny X-Men #213 (January 1987)[1]"
+      ],
+      "records": 2,
+      "source_work": "Uncanny X-Men",
+      "volume": null,
+      "issue": "213"
+    },
+    {
+      "canonical_reference_key": "uncanny x men|v?|regular|i214",
+      "raw_values": [
+        "Uncanny X-Men #214",
+        "Uncanny X-Men #214 (February 1987)[1]"
+      ],
+      "records": 2,
+      "source_work": "Uncanny X-Men",
+      "volume": null,
+      "issue": "214"
+    },
+    {
+      "canonical_reference_key": "uncanny x men|v?|regular|i255",
+      "raw_values": [
+        "Uncanny X-Men #255",
+        "Uncanny X-Men #255 (December 1989)[14]"
+      ],
+      "records": 2,
+      "source_work": "Uncanny X-Men",
+      "volume": null,
+      "issue": "255"
+    },
+    {
+      "canonical_reference_key": "uncanny x men|v?|regular|i258",
+      "raw_values": [
+        "Uncanny X-Men #258",
+        "Uncanny X-Men #258 (February 1990)[1]"
+      ],
+      "records": 2,
+      "source_work": "Uncanny X-Men",
+      "volume": null,
+      "issue": "258"
+    },
+    {
+      "canonical_reference_key": "uncanny x men|v?|regular|i423",
+      "raw_values": [
+        "Uncanny X-Men #423",
+        "Uncanny X-Men #423 (May 2003)[1][24]"
+      ],
+      "records": 2,
+      "source_work": "Uncanny X-Men",
+      "volume": null,
+      "issue": "423"
+    },
+    {
+      "canonical_reference_key": "west coast avengers|v2|regular|i12",
+      "raw_values": [
+        "West Coast Avengers (2nd series) #12",
+        "West Coast Avengers (Vol. 2) #12"
+      ],
+      "records": 2,
+      "source_work": "West Coast Avengers",
+      "volume": 2,
+      "issue": "12"
+    },
+    {
+      "canonical_reference_key": "wolverine and the x men|v?|regular|i1",
       "raw_values": [
         "Wolverine & the X-Men #1",
         "Wolverine and the X-Men #1"
@@ -327,6 +582,39 @@
       "records": 2,
       "source_work": null,
       "volume": null,
+      "issue": "1"
+    },
+    {
+      "canonical_reference_key": "x men legacy|v?|regular|i226",
+      "raw_values": [
+        "X-Men: Legacy #226",
+        "X-Men: Legacy #226 (July 2009)[1][43]"
+      ],
+      "records": 2,
+      "source_work": "X-Men: Legacy",
+      "volume": null,
+      "issue": "226"
+    },
+    {
+      "canonical_reference_key": "x men|v2|regular|i21",
+      "raw_values": [
+        "X-Men (Vol. 2) #21",
+        "X-Men, vol. 2 #21 (June 1993)[1]"
+      ],
+      "records": 2,
+      "source_work": null,
+      "volume": 2,
+      "issue": "21"
+    },
+    {
+      "canonical_reference_key": "x men|v6|regular|i1",
+      "raw_values": [
+        "X-Men (Vol. 6) #1",
+        "X-Men v6 #1"
+      ],
+      "records": 2,
+      "source_work": "X-Men",
+      "volume": 6,
       "issue": "1"
     }
   ],
