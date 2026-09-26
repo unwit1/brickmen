@@ -28,7 +28,17 @@ def main():
         x=dict(row)
         evidence=rel.get(x.get("custom_design_candidate_id"))
         status=(evidence or {}).get("representation_status")
-        if status=="likely_existing_representation":
+        if x.get("gap_mode")=="existing_representation_compare_or_acquire":
+            x["refined_gap_mode"]="existing_representation_compare_or_acquire"
+            x["refinement_reason"]="source_tracker_already_records_existing_representation"
+            if evidence:
+                x["existing_release_evidence"]=evidence
+            review.append(x)
+        elif x.get("gap_mode")=="acquisition_wishlist":
+            x["refined_gap_mode"]="acquisition_wishlist"
+            x["refinement_reason"]="explicit_wishlist_acquisition"
+            actionable.append(x)
+        elif status=="likely_existing_representation":
             x["refined_gap_mode"]="existing_representation_compare_or_acquire"
             x["refinement_reason"]="variant_supported_existing_release_candidate"
             x["existing_release_evidence"]=evidence
