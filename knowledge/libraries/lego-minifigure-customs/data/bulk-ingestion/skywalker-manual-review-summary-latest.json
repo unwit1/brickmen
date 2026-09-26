@@ -2,12 +2,12 @@
   "schema": "skywalker-manual-review-coverage-summary/v1",
   "processor_version": "skywalker-manual-review-coverage/v2",
   "identity_records": 377,
-  "review_files_found": 33,
-  "review_files_parsed": 33,
+  "review_files_found": 34,
+  "review_files_parsed": 34,
   "malformed_review_files": [],
-  "reviewed_asset_ids": 156,
-  "reviewed_variant_keys": 155,
-  "manual_decision_records": 158,
+  "reviewed_asset_ids": 161,
+  "reviewed_variant_keys": 160,
+  "manual_decision_records": 163,
   "manual_decision_counts": {
     "same_character_verified_physical_equivalence_not_promoted": 1,
     "same_character_verified_physical_counterpart_plausible_version_visual_pending": 20,
@@ -72,7 +72,12 @@
     "digital_game_outfit_verified_no_named_physical_counterpart": 1,
     "digital_episode2_robe_variant_verified_physical_release_unresolved": 1,
     "digital_episode2_family_verified_physical_headset_state_unresolved": 1,
-    "digital_variant_verified_semantic_physical_family_alias_required": 1
+    "digital_variant_verified_semantic_physical_family_alias_required": 1,
+    "scene_variant_family_verified_physical_candidate_visual_pending": 1,
+    "scene_variant_identity_verified_visual_pending": 1,
+    "scene_family_verified_exact_physical_release_unresolved": 1,
+    "digital_scene_variant_verified_physical_episode8_family_unresolved": 1,
+    "digital_timeline_variant_verified_no_supported_episode9_physical_counterpart": 1
   },
   "duplicate_reviewed_asset_ids": 2,
   "duplicate_reviewed_variant_keys": 3,
@@ -131,17 +136,17 @@
   },
   "conflicting_duplicate_asset_ids": 0,
   "conflicting_duplicate_assets": {},
-  "unreviewed_records": 221,
-  "unreviewed_suffix_records": 59,
+  "unreviewed_records": 216,
+  "unreviewed_suffix_records": 54,
   "unreviewed_direct_suffix_match_records": 0,
   "unreviewed_unique_physical_release_candidates": 0,
   "unreviewed_release_status_counts": {
-    "physical_release_ambiguous_within_character_family": 71,
-    "variant_constrained_physical_release_unresolved": 59,
-    "no_supported_physical_release_candidate": 91
+    "physical_release_ambiguous_within_character_family": 70,
+    "variant_constrained_physical_release_unresolved": 54,
+    "no_supported_physical_release_candidate": 92
   },
   "unreviewed_suffix_constraint_counts": {
-    "suffix_not_resolved_in_supported_candidates": 58,
+    "suffix_not_resolved_in_supported_candidates": 53,
     "negative_feature_unresolved_no_explicit_contradiction": 1
   },
   "status": "manual_review_coverage_compiled"
