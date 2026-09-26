@@ -10,6 +10,7 @@ on:
       - 'knowledge/libraries/lego-minifigure-customs/data/user-collection/**'
       - 'knowledge/libraries/lego-minifigure-customs/data/user-design-targets/**'
       - 'knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/user-tracker-semantic-corrections-2026-09-26.json'
+      - 'knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-decisions-2026-09-26.json'
 
 permissions:
   contents: write
@@ -37,6 +38,7 @@ jobs:
             --collection-dir knowledge/libraries/lego-minifigure-customs/data/user-collection \
             --design-dir knowledge/libraries/lego-minifigure-customs/data/user-design-targets \
             --semantic-corrections knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/user-tracker-semantic-corrections-2026-09-26.json \
+            --review-decisions knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-decisions-2026-09-26.json \
             --output "$out/records.jsonl" \
             --summary "$out/summary.json"
           dest=knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation
