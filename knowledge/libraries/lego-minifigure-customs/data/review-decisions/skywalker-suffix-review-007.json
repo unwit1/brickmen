@@ -1,0 +1,110 @@
+{
+  "schema": "skywalker-suffix-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-suffix-review-007",
+  "cohort": "remaining_direct_catalog_text_suffix_matches",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-ce684fbbecc2f9a0a96dd6fc",
+      "character_variant_key": "PoeDameron_Pilot",
+      "decision": "variant_family_verified_exact_release_unresolved",
+      "supported_physical_candidates": [
+        {
+          "fig_num": "fig-004431",
+          "name": "Poe Dameron, White and Orange Pilot Outfit",
+          "year": 2019
+        },
+        {
+          "fig_num": "fig-002149",
+          "name": "Poe Dameron, Dark Orange Pilot Outfit, Hair",
+          "first_year": 2020
+        },
+        {
+          "fig_num": "fig-004156",
+          "name": "Poe Dameron, Dark Orange Pilot Outfit, Helmet with Visor",
+          "year": 2015
+        }
+      ],
+      "reason": "Pilot correctly narrows Poe to his pilot-outfit family, but does not identify white/orange versus dark-orange clothing or hair-versus-helmet variants."
+    },
+    {
+      "asset_id": "skywalker-profile-57bf1267f7162b36b09fd331",
+      "character_variant_key": "C3PO_RedArm",
+      "decision": "variant_identity_verified_visual_pending",
+      "physical_candidate": "fig-001780",
+      "physical_release": {
+        "catalog_name": "C-3PO, Pearl Gold, Colorful Wires, Printed Legs, Dark Red Left Arm",
+        "year": 2015,
+        "set_num": "5002948-1"
+      },
+      "reason": "RedArm is a distinctive physical-version cue and the supported pre-game candidate explicitly has the dark red left arm. Variant identity is strongly supported; exact printed details remain visual/component pending."
+    },
+    {
+      "asset_id": "skywalker-profile-93a864418f7bbb12195904fb",
+      "character_variant_key": "ObiWan_Padawan",
+      "decision": "variant_family_verified_exact_release_unresolved",
+      "supported_physical_candidates": [
+        "Obi-Wan Kenobi, Padawan, Printed Legs",
+        "Obi-Wan Kenobi, Padawan, Printed Legs, Cape",
+        "Obi-Wan Kenobi, Padawan, Plain Legs (3626b/3626c Head)",
+        "Obi-Wan Kenobi, Padawan, Yellow Skin, Brown Hood and Cape"
+      ],
+      "reason": "Padawan is strong era/version-family evidence, but several physical Padawan Obi-Wan releases remain across skin tone, leg print, cape, hood and head variants."
+    },
+    {
+      "asset_id": "skywalker-profile-b585ebd197423c781095ee92",
+      "character_variant_key": "Luke_Black",
+      "decision": "variant_family_verified_exact_release_unresolved",
+      "pregame_physical_examples": [
+        {
+          "fig_num": "fig-003552",
+          "name": "Luke Skywalker, Black Robes, Black Eyes",
+          "first_year": 2006
+        },
+        {
+          "fig_num": "fig-003619",
+          "name": "Luke Skywalker, Black Robes, Yellow Skin",
+          "year": 2000
+        },
+        {
+          "fig_num": "fig-003949",
+          "name": "Luke Skywalker, Black Robes, White Pupils",
+          "first_year": 2010
+        }
+      ],
+      "later_release_examples": [
+        {
+          "fig_num": "fig-016915",
+          "name": "Luke Skywalker, Black Outfit",
+          "year": 2025
+        },
+        {
+          "fig_num": "fig-017457",
+          "name": "Luke Skywalker, Black Robes (SMART Play)",
+          "year": 2026
+        }
+      ],
+      "reason": "Black verifies a black-outfit/robes Luke family but not one physical generation. Later 2025/2026 releases are excluded as source-equivalent to the 2022 game."
+    },
+    {
+      "asset_id": "skywalker-profile-7f610775fc62a6b789f555ac",
+      "character_variant_key": "HanSolo_Hoth",
+      "decision": "variant_family_verified_exact_release_unresolved",
+      "supported_physical_examples": [
+        "Han Solo, Hoth Outfit, Dark Brown Hood",
+        "Han Solo, Hoth Outfit, Dark Blue Jacket, Tan Legs",
+        "Han Solo, Hoth Outfit, Dark Blue Hood, Black Eyes",
+        "Han Solo, Hoth Outfit, Dark Blue Hood, White Pupils",
+        "Han Solo, Hoth Outfit, Dark Brown Jacket with Tan Neckerchief"
+      ],
+      "reason": "Hoth is strong outfit-family evidence but spans multiple pre-game Han Solo physical releases. Exact jacket/hood/head-print generation remains unresolved."
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "variant_identity_verified_visual_pending": 1,
+    "variant_family_verified_exact_release_unresolved": 4,
+    "automatic_exact_equivalence_promotions": 0
+  },
+  "remaining_direct_catalog_text_suffix_matches_after_batch": 11
+}
