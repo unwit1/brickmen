@@ -1,0 +1,74 @@
+{
+  "schema": "skywalker-unresolved-suffix-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-unresolved-suffix-review-005",
+  "policy": "Before treating an underscore token as a variant, verify whether the game uses the combined string as a character identity. Identity continuations are parser fixes, not outfit mappings.",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-2f0187db4cf72d4ca92c4f73",
+      "character_variant_key": "Luke_Training",
+      "decision": "digital_training_variant_verified_physical_state_unresolved",
+      "canonical_game_variant": "Luke Skywalker (Training)",
+      "physical_character_family_supported": true,
+      "exact_physical_training_variant_supported": false,
+      "reason": "The game exposes a distinct Luke Skywalker (Training) state, but the current physical candidates do not identify that training state and include unrelated Tatooine/Stormtrooper/old-Ahch-To figures. Keep the game training state independent until direct visual or component evidence maps it."
+    },
+    {
+      "asset_id": "skywalker-profile-ef4433187579138bdab9b71c",
+      "character_variant_key": "Rey_Skywalker",
+      "decision": "full_character_identity_detected_not_variant_suffix",
+      "canonical_subject": "Rey Skywalker",
+      "physical_character_family": "Rey",
+      "reason": "Rey Skywalker is the game's explicit post-story character identity, not a 'Skywalker' outfit suffix. The parser should preserve it as a full identity while physical matching may still use the broader Rey character family.",
+      "evidence_urls": [
+        "https://gamefaqs.gamespot.com/ps4/265996-lego-star-wars-the-skywalker-saga/faqs/79882/episode-ix-the-rise-of-skywalker",
+        "https://lego-star-wars-the-skywalker-saga.fandom.com/wiki/The_Rise_Of_Skywalker"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-143751421da26dea936049b9",
+      "character_variant_key": "GNK_Sith",
+      "decision": "digital_game_local_gonk_state_no_supported_physical_variant",
+      "canonical_character_family": "GNK / Gonk Droid",
+      "digital_state": "Sith",
+      "physical_family_candidate": {
+        "fig_num": "fig-010483",
+        "name": "GNK Power Droid (Gonk) - Festive Version",
+        "year": 2019
+      },
+      "reason": "The Sith suffix describes a game-local novelty/state and is not supported by the available physical GNK catalog candidate, which is explicitly festive. Preserve Sith GNK as a digital state rather than mapping it to the festive physical droid."
+    },
+    {
+      "asset_id": "skywalker-profile-3858aa5cbcc1d4454a0803ee",
+      "character_variant_key": "Leia_Silver",
+      "decision": "digital_general_leia_silver_grey_variant_verified_no_exact_physical_match",
+      "canonical_game_variant": "General Leia Organa (Silver/Grey Robes)",
+      "physical_general_leia_family_supported": true,
+      "exact_silver_grey_physical_variant_supported": false,
+      "reason": "Silver/Grey Robes is an explicit game appearance. Current physical candidates are white-robed/Boushh or normal General Leia records and do not independently identify the silver-grey game outfit.",
+      "evidence_urls": [
+        "https://gamefaqs.gamespot.com/ps4/265996-lego-star-wars-the-skywalker-saga/faqs/79882/jedi-and-heroes"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-b77ed24bef5fa66198440020",
+      "character_variant_key": "Rebel_Friend",
+      "decision": "full_character_identity_detected_not_variant_suffix",
+      "canonical_subject": "Rebel Friend",
+      "physical_counterpart_status": "no_specific_supported_physical_minifigure_identity",
+      "reason": "Rebel Friend is a named Skywalker Saga character identity, not a generic Rebel with a 'Friend' variant suffix. The current Rebel Pilot candidates are wrong entity substitutions and should not be treated as counterparts.",
+      "evidence_urls": [
+        "https://legogames.fandom.com/wiki/Purchasable_Character/LSWSS",
+        "https://starwars.fandom.com/wiki/Rebel_Friend"
+      ]
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "full_character_identity_parser_errors": 2,
+    "digital_game_states_no_exact_physical_match": 3,
+    "automatic_exact_equivalence_promotions": 0
+  },
+  "remaining_unreviewed_suffix_records_after_batch": 44,
+  "systemic_finding": "Rey_Skywalker and Rebel_Friend demonstrate that underscore-delimited source keys may contain canonical identity continuations, not only variants; those identities must be resolved before suffix classification."
+}
