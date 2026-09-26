@@ -1,0 +1,96 @@
+{
+  "schema": "skywalker-semantic-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-selector-opaque-review-001",
+  "review_routes": [
+    "identity_selector",
+    "opaque_source_code",
+    "other_unclassified"
+  ],
+  "records": [
+    {
+      "asset_id": "skywalker-profile-398e75bf175fa973f04282fd",
+      "character_variant_key": "KnightOfRen_Aplek",
+      "decision": "identity_selector_verified_visual_pending",
+      "physical_release": {
+        "brickset_minifig": "sw1063",
+        "catalog_name": "Knight of Ren (Ap'lek)",
+        "year": 2019,
+        "set_num": "75256-1"
+      },
+      "evidence_url": "https://brickset.com/minifigs/category-Star-Wars/name-Ap-lek",
+      "reason": "Aplek and Ap'lek are the same named Knight of Ren; the former matcher missed this because apostrophe normalization split the catalog name. Identity is verified; exact game/physical artwork equivalence remains visual pending."
+    },
+    {
+      "asset_id": "skywalker-profile-adc109ca3451f53ede072e55",
+      "character_variant_key": "Ugnaught_A",
+      "decision": "character_family_verified_opaque_suffix_unresolved",
+      "physical_family": [
+        {
+          "brickset_minifig": "sw0710",
+          "name": "Ugnaught - Dark Blue Overalls and Short Legs",
+          "year": 2016
+        },
+        {
+          "brickset_minifig": "sw0970",
+          "name": "Ugnaught - Light Bluish Gray Shirt, Black Short Legs",
+          "year": 2018
+        }
+      ],
+      "evidence_url": "https://brickset.com/minifigs/name-Ugnaught/category-Star-Wars",
+      "reason": "The base Ugnaught identity has multiple physical releases. The suffix A is source-local and carries no documented outfit/version semantics, so no physical release is selected."
+    },
+    {
+      "asset_id": "skywalker-profile-e4145a8062e5bd14704be045",
+      "character_variant_key": "Palpatine_red",
+      "decision": "color_outfit_family_verified_exact_release_unresolved",
+      "pregame_physical_family": [
+        {
+          "brickset_minifig": "sw0243",
+          "name": "Chancellor Palpatine - Red Outfit, Dark Red Pauldrons, Large Eyes",
+          "year": 2009
+        },
+        {
+          "brickset_minifig": "sw0418",
+          "name": "Chancellor Palpatine - Dark Red Outfit, Legs, Tan Hair",
+          "year": 2012
+        }
+      ],
+      "later_release_excluded_as_source": {
+        "brickset_minifig": "sw1306",
+        "name": "Chancellor Palpatine - Dark Red Outfit, Skirt, Tan Hair",
+        "year": 2023
+      },
+      "evidence_url": "https://brickset.com/minifigs/category-Star-Wars/1000%28Servo%29%28Servo%29%28Other%29%28Lola%29%C3%8Emwe/name-Palpatine",
+      "reason": "The suffix red is legitimate outfit-color evidence and has multiple pre-game physical analogs. The digital key does not distinguish Clone Wars red/pouldron styling from Episode III dark-red styling."
+    },
+    {
+      "asset_id": "skywalker-profile-6eae28be3d5e6d859cf58c3a",
+      "character_variant_key": "LukeSkywalker_OldFlashback",
+      "decision": "timeline_story_state_family_verified_exact_release_unresolved",
+      "physical_family_context": "older Luke Skywalker / sequel-era Luke",
+      "pregame_examples": [
+        {
+          "brickset_minifig": "sw1039",
+          "name": "Luke Skywalker, Old (Dark Brown Robe)",
+          "year": 2019
+        },
+        {
+          "brickset_minifig": "sw0887",
+          "name": "Luke Skywalker, Old",
+          "era": "pre-game sequel-era physical family"
+        }
+      ],
+      "reason": "OldFlashback combines age and story-state context. Older Luke physical families exist before the game, but 'Flashback' is not a catalog release identifier and cannot choose a robe/hair/head generation without visual evidence."
+    }
+  ],
+  "result": {
+    "reviewed": 4,
+    "identity_selector_verified": 1,
+    "opaque_suffix_unresolved": 1,
+    "outfit_family_exact_release_unresolved": 1,
+    "timeline_story_state_exact_release_unresolved": 1,
+    "automatic_exact_equivalence_promotions": 0
+  },
+  "systemic_finding": "Apostrophe normalization must occur before identity matching; opaque source codes remain non-semantic; color and flashback labels can constrain families without uniquely selecting releases."
+}
