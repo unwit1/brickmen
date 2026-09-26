@@ -12,7 +12,7 @@ from difflib import SequenceMatcher
 from pathlib import Path
 from skywalker_identity_keys import parse_identity_key
 
-VERSION="skywalker-physical-crosswalk-candidates/v4"
+VERSION="skywalker-physical-crosswalk-candidates/v5"
 STOP={
     "lego","star","wars","minifig","minifigure","figure","with","and","the","a","an",
     "episode","ep","new","version","variant","character","profile","icons","icon",
@@ -179,6 +179,8 @@ def main():
     ap.add_argument("--output",type=Path,required=True)
     ap.add_argument("--summary",type=Path,required=True)
     ap.add_argument("--components",type=Path)
+    ap.add_argument("--reference-year",type=int,default=2022,
+                    help="Reference year for source-plausibility ranking; later releases are retained but receive a bounded penalty.")
     ap.add_argument("--top-k",type=int,default=5)
     args=ap.parse_args()
 
@@ -201,7 +203,13 @@ def main():
                 and float(base_why.get("core_token_hit") or 0)>=0.50
             )
             context_bonus=0.12 if context and character_gate else 0.0
-            adjusted=round(min(1.0,sc+context_bonus),4)
+            years=sorted({
+                int(o.get("year")) for o in (p.get("set_occurrences") or [])
+                if o.get("year") not in (None,"")
+            })
+            first_year=years[0] if years else None
+            temporal_source_penalty=0.08 if first_year and first_year>args.reference_year else 0.0
+            adjusted=round(max(0.0,min(1.0,sc+context_bonus-temporal_source_penalty)),4)
             if adjusted<=0:continue
             why=dict(why)
             why.update({
@@ -211,6 +219,10 @@ def main():
                 "scene_context_matches":context,
                 "scene_context_character_gate":character_gate,
                 "scene_context_bonus":context_bonus,
+                "physical_release_years":years,
+                "first_physical_release_year":first_year,
+                "temporal_source_reference_year":args.reference_year,
+                "temporal_source_penalty":temporal_source_penalty,
             })
             candidates.append({
                 "fig_num":p.get("fig_num"),
@@ -242,7 +254,7 @@ def main():
             "top_margin":margin,
             "confidence_band":band,
             "resolution_status":"candidate_only",
-            "policy":"Do not collapse a digital profile to a physical release without independent identity/version confirmation; unmatched records may be digital-only. Candidate scoring normalizes audited semantic equivalents such as Phase II/Phase2, First Order, common rank abbreviations, and Geonosis/Geonosian. Audited scene/location suffixes may receive a bounded set-occurrence-name bonus only when the physical candidate already passes a character-identity gate.",
+            "policy":"Do not collapse a digital profile to a physical release without independent identity/version confirmation; unmatched records may be digital-only. Candidate scoring normalizes audited semantic equivalents such as Phase II/Phase2, First Order, common rank abbreviations, and Geonosis/Geonosian. Audited scene/location suffixes may receive a bounded set-occurrence-name bonus only when the physical candidate already passes a character-identity gate. Physical releases whose first known set occurrence is later than the source reference year remain candidates but receive a bounded source-plausibility penalty.",
             "processor_version":VERSION,
         })
 
@@ -258,6 +270,8 @@ def main():
         "confidence_bands":dict(bands),
         "top_k":args.top_k,
         "component_inventory_summaries_loaded":len(component_summaries),
+        "source_plausibility_reference_year":args.reference_year,
+        "later_release_candidate_penalty":0.08,
         "status":"candidate_crosswalk_requires_independent_confirmation"
     }
     args.summary.write_text(json.dumps(summary,indent=2)+"\n",encoding="utf-8")
