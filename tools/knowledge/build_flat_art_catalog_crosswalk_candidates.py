@@ -17,7 +17,7 @@ from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 
-VERSION = "flat-art-catalog-crosswalk-candidates/v2"
+VERSION = "flat-art-catalog-crosswalk-candidates/v3"
 
 STOP = {
     "lego","minifig","minifigure","with","and","the","a","an","pattern","printed",
@@ -170,13 +170,17 @@ def main():
     counts=Counter()
     for rio in load_jsonl(args.rioforce_index):
         stem=rio.get("relative_stem") or ""
-        role=infer_role(stem)
+        asset_class=rio.get("asset_class") or "legacy_unclassified"
+        role=rio.get("surface_role_hint") or infer_role(stem)
         subject=subject_text(stem)
         subject_tokens=tok(subject)
         subject_years=years_in(subject)
         subject_identity_tokens=[t for t in subject_tokens if not t.isdigit()]
+        eligible_for_component_crosswalk = asset_class in {"minifigure_surface_map","legacy_unclassified"}
         fig_candidates=[]
         for fig_num, stoks in sample_tokens.items():
+            if not eligible_for_component_crosswalk:
+                break
             sample=physical_by_fig[fig_num]
             sample_identity_tokens=[t for t in stoks if not t.isdigit()]
             score, overlap=figure_match_score(subject_identity_tokens, sample_identity_tokens)
@@ -283,6 +287,8 @@ def main():
             unique_exact[key]=item
         exact_links=list(unique_exact.values())
 
+        counts[f"asset_class_{asset_class}"]+=1
+        if not eligible_for_component_crosswalk: counts["excluded_from_component_crosswalk"]+=1
         if fig_candidates: counts["with_figure_candidates"]+=1
         else: counts["without_figure_candidates"]+=1
         if part_candidates: counts["with_component_candidates"]+=1
@@ -300,6 +306,8 @@ def main():
                 "authority":rio.get("authority"),
                 "license":rio.get("license"),
             },
+            "asset_class":asset_class,
+            "eligible_for_component_crosswalk":eligible_for_component_crosswalk,
             "subject_text":subject,
             "subject_tokens":subject_tokens,
             "subject_years":sorted(subject_years),
@@ -308,8 +316,16 @@ def main():
             "component_candidates":part_candidates,
             "id_exact_links_unverified":id_exact_links_unverified,
             "exact_ldraw_links":exact_links,
-            "review_status":"candidate_review_required",
-            "promotion_policy":"Raw part-number joins are discovery evidence only. Strict exact links additionally require explicit component role, high-confidence figure match, and a decorated component print-of relationship; independent confirmation is still required before canonical promotion.",
+            "review_status":(
+                "candidate_review_required"
+                if eligible_for_component_crosswalk
+                else "non_component_supervision_classified"
+            ),
+            "promotion_policy":(
+                "Raw part-number joins are discovery evidence only. Strict exact links additionally require explicit component role, high-confidence figure match, and a decorated component print-of relationship; independent confirmation is still required before canonical promotion."
+                if eligible_for_component_crosswalk
+                else "Motif, non-minifigure, and unscoped design assets remain usable supervision but must not be promoted as exact minifigure component maps without independent evidence."
+            ),
             "processor_version":VERSION,
         })
 
