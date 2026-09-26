@@ -224,6 +224,7 @@ def main():
 
         part_candidates=[]
         id_exact_links_unverified=[]
+        base_part_ldraw_links=[]
         exact_links=[]
         for fig in fig_candidates:
             for comp in components.get(fig["fig_num"],[]):
@@ -254,13 +255,16 @@ def main():
                         "ldraw_license":ld.get("license"),
                         "join_method":"exact_rebrickable_part_num_equals_ldraw_part_id",
                     }
-                    id_exact_links_unverified.append(raw_link)
-                    # An exact part-number join only proves that the candidate figure
-                    # contains a part also present in LDraw. It does NOT prove that a
-                    # rioforce texture depicts that part. Only retain a strict link
-                    # when the texture has an explicit component role, the figure
-                    # identity match is high-confidence, and the component is a
-                    # decorated/printed variant with a known print-of relationship.
+                    # Plain substrate matches do not identify decoration artwork.
+                    if comp.get("print_of"):
+                        id_exact_links_unverified.append(raw_link)
+                    else:
+                        base_part_ldraw_links.append({
+                            **raw_link,
+                            "join_method":"base_substrate_exact_ldraw_join_not_print_art",
+                        })
+                    # Strict links require a decorated variant plus high-confidence
+                    # figure and role evidence.
                     if (
                         role
                         and fig["score"] >= args.min_figure_score_for_exact
@@ -295,6 +299,12 @@ def main():
             unique_raw_exact[key]=item
         id_exact_links_unverified=list(unique_raw_exact.values())
 
+        unique_base_exact={}
+        for item in base_part_ldraw_links:
+            key=(item.get("component_id"),item.get("ldraw_reference_asset_id"))
+            unique_base_exact[key]=item
+        base_part_ldraw_links=list(unique_base_exact.values())
+
         unique_exact={}
         for item in exact_links:
             key=(item.get("component_id"),item.get("ldraw_reference_asset_id"))
@@ -307,6 +317,7 @@ def main():
         else: counts["without_figure_candidates"]+=1
         if part_candidates: counts["with_component_candidates"]+=1
         if id_exact_links_unverified: counts["with_id_exact_links_unverified"]+=1
+        if base_part_ldraw_links: counts["with_base_part_ldraw_links"]+=1
         if exact_links: counts["with_exact_ldraw_links"]+=1
         if fig_candidates and fig_candidates[0]["score"] >= 0.9: counts["top_figure_high_confidence"]+=1
 
@@ -330,6 +341,7 @@ def main():
             "figure_candidates":fig_candidates,
             "component_candidates":part_candidates,
             "id_exact_links_unverified":id_exact_links_unverified,
+            "base_part_ldraw_links":base_part_ldraw_links,
             "exact_ldraw_links":exact_links,
             "review_status":(
                 "candidate_review_required"
@@ -337,7 +349,7 @@ def main():
                 else "non_component_supervision_classified"
             ),
             "promotion_policy":(
-                "Raw part-number joins are discovery evidence only. Strict exact links additionally require explicit component role, high-confidence figure match, and a decorated component print-of relationship; independent confirmation is still required before canonical promotion."
+                "Plain substrate LDraw joins are tracked separately and are never treated as print-art evidence. Decorated part-number joins remain discovery evidence only; strict exact links additionally require explicit component role, high-confidence figure match, and a decorated component print-of relationship. Independent confirmation is still required before canonical promotion."
                 if eligible_for_component_crosswalk
                 else "Motif, non-minifigure, and unscoped design assets remain usable supervision but must not be promoted as exact minifigure component maps without independent evidence."
             ),
