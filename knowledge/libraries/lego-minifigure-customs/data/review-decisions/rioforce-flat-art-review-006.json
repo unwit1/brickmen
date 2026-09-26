@@ -1,0 +1,63 @@
+{
+  "schema": "flat-art-independent-review-decisions/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "rioforce-flat-art-review-006",
+  "records": [
+    {
+      "candidate_id": "rioforce-652f85e9be145569ecdd9dde",
+      "relative_stem": "City/Basic Happy Face (With Eyebrows)",
+      "decision": "hold_unverified",
+      "candidate_figure": "fig-002156",
+      "candidate_component": "3626cpr1325",
+      "reason": "The source label is a generic facial expression rather than a character/version identity. Multiple Emmet and non-Emmet heads can satisfy the lexical description; no independent release evidence uniquely resolves it."
+    },
+    {
+      "candidate_id": "rioforce-3c9b451dd3c29b7ba4520069",
+      "relative_stem": "Pirates/Imperials Princess/Imperials Princess Torso Dress",
+      "decision": "reject_candidate_match",
+      "candidate_figure": "fig-005876",
+      "candidate_component": "973c27h01pr0020",
+      "reason": "The source path fixes the asset to Pirates/Imperials Princess, while the proposed figure is a 2014 generic princess. The theme/context conflict outweighs the generic 'princess dress' token overlap."
+    },
+    {
+      "candidate_id": "rioforce-c2f6b2904930bafb15ddcb8d",
+      "relative_stem": "Adventurers/Johnny Thunder/Johnny Thunder Torso (Mt Everest)",
+      "decision": "reject_candidate_match_with_corrected_identity_hint",
+      "candidate_figure": "fig-000359",
+      "candidate_component": "973c26h01pr0391",
+      "reason": "Temple of Mount Everest (7417, 2003) contains Johnny Thunder adv037. BrickLink identifies adv037's torso as brown jacket 973px183c01; the proposed Desert torso is not the Mt Everest variant.",
+      "corrected_identity_hint": {
+        "bricklink_figure": "adv037",
+        "bricklink_component": "973px183c01"
+      },
+      "evidence_urls": [
+        "https://brickset.com/sets?query=7417",
+        "https://www.bricklink.com/catalogItemInv.asp?M=adv037"
+      ]
+    },
+    {
+      "candidate_id": "rioforce-322b7014ed7e49166c9e8385",
+      "relative_stem": "Pirates/Imperials Princess/Imperials Princess Torso Back",
+      "decision": "reject_candidate_match",
+      "candidate_figure": "fig-002522",
+      "candidate_component": "973c27h02pr3523",
+      "reason": "The source asset belongs to Pirates/Imperials Princess; the proposed component is Princess Leia from Star Wars and is a cross-theme 'princess' collision."
+    },
+    {
+      "candidate_id": "rioforce-bc25ea4d66bf014dcb4ddfd2",
+      "relative_stem": "Pirates/Imperials Princess/Imperials Princess Torso Front",
+      "decision": "reject_candidate_match",
+      "candidate_figure": "fig-002522",
+      "candidate_component": "973c27h02pr3523",
+      "reason": "The source asset belongs to Pirates/Imperials Princess; the proposed component is Princess Leia from Star Wars and is a cross-theme 'princess' collision."
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "promoted": 0,
+    "held_unverified": 1,
+    "rejected_candidate_match": 3,
+    "rejected_with_corrected_hint": 1
+  },
+  "next_offset": 30
+}
