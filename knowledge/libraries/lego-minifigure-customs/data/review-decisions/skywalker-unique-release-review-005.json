@@ -1,0 +1,81 @@
+{
+  "schema": "skywalker-crosswalk-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-unique-release-review-005",
+  "cohort": "unique_physical_release_candidate",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-36a442d18e421d7b0d15daab",
+      "character_variant_key": "Rose_FirstOrder",
+      "decision": "same_character_variant_identity_verified_visual_pending",
+      "physical_candidate": "fig-004315",
+      "physical_release": {
+        "brickset_minifig": "sw0901",
+        "catalog_name": "Rose Tico - Dark Blue First Order Officer Disguise, Hat with Hair",
+        "year": 2018,
+        "set_num": "75201-1"
+      },
+      "reason": "The digital suffix FirstOrder and the unique physical candidate independently identify Rose's First Order officer disguise. Outfit/version identity is verified; exact print/texture equivalence remains visual pending."
+    },
+    {
+      "asset_id": "skywalker-profile-0bbaa0afaea37b36f8b6d59d",
+      "character_variant_key": "ZamWesell_Alien",
+      "decision": "same_character_unique_physical_family_variant_mapping_unresolved",
+      "physical_candidate": "fig-003632",
+      "physical_release": {
+        "brickset_minifig": "sw0059",
+        "catalog_name": "Zam Wesell",
+        "year": 2002,
+        "set_num": "7133-1"
+      },
+      "reason": "The only supported physical Zam Wesell release confirms the character family, but the catalog identity does not independently distinguish the digital Alien appearance. Do not collapse the Alien and Human digital variants onto the same exact physical-state label without component/visual evidence."
+    },
+    {
+      "asset_id": "skywalker-profile-465a518dff867f8ed7a740d0",
+      "character_variant_key": "ZamWesell_Human",
+      "decision": "same_character_unique_physical_family_variant_mapping_unresolved",
+      "physical_candidate": "fig-003632",
+      "physical_release": {
+        "brickset_minifig": "sw0059",
+        "catalog_name": "Zam Wesell",
+        "year": 2002,
+        "set_num": "7133-1"
+      },
+      "reason": "The sole physical Zam Wesell confirms character identity, but the physical catalog entry alone does not independently establish that this digital Human state maps to a distinct physical decoration/state. Preserve Alien/Human as separate digital variants."
+    },
+    {
+      "asset_id": "skywalker-profile-4f4b6a8d8994b52177d445a0",
+      "character_variant_key": "TheronNett",
+      "decision": "same_character_unique_physical_counterpart_visual_pending",
+      "physical_candidate": "fig-001552",
+      "physical_release": {
+        "brickset_minifig": "sw0544",
+        "catalog_name": "Rebel Pilot X-wing (Theron Nett)",
+        "year": 2014,
+        "set_num": "75032-1"
+      },
+      "reason": "The digital Theron Nett identity maps to the unique supported 2014 X-wing pilot release; exact helmet/head/torso artwork equivalence remains visual pending."
+    },
+    {
+      "asset_id": "skywalker-profile-276bba9c7f222c74e7308d17",
+      "character_variant_key": "TallieLintra",
+      "decision": "same_character_unique_physical_counterpart_visual_pending",
+      "physical_candidate": "fig-004285",
+      "physical_release": {
+        "brickset_minifig": "sw0884",
+        "catalog_name": "Resistance Pilot A-wing (Tallissan 'Tallie' Lintra)",
+        "year": 2018,
+        "set_num": "75196-1"
+      },
+      "reason": "Tallie is a nickname/short form of the catalog's Tallissan Lintra identity and there is one supported physical release. Exact flight-suit/helmet artwork equivalence remains visual pending."
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "variant_identity_verified_visual_pending": 1,
+    "unique_physical_family_variant_mapping_unresolved": 2,
+    "unique_physical_counterpart_candidates": 2,
+    "automatic_exact_equivalence_promotions": 0
+  },
+  "remaining_unique_release_candidates_after_this_batch": 9
+}
