@@ -16,7 +16,7 @@ def load_jsonl(path):
 def compact(r):
     return {
       "fig_num":r.get("fig_num"),
-      "name":r.get("name"),
+      "name":r.get("figure_name") or r.get("name"),
       "score":r.get("route_review_priority_score"),
       "band":r.get("component_route_confidence_band"),
       "candidate_routes":r.get("candidate_routes"),
