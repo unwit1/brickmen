@@ -41,6 +41,7 @@ def main():
     ap.add_argument("--summary",type=Path,required=True)
     ap.add_argument("--unresolved-output",type=Path)
     ap.add_argument("--collision-output",type=Path)
+    ap.add_argument("--manual-verifications",type=Path)
     args=ap.parse_args()
 
     hb=defaultdict(list)
@@ -69,7 +70,15 @@ def main():
             if key:index[key].append(r)
         historical_by_catalog[catalog_id]=index
 
-    rows=[];bands=Counter();historical_bands=Counter();fallback_catalog_hit_counts=Counter()
+    manual_index=defaultdict(list)
+    if args.manual_verifications and args.manual_verifications.exists():
+        manual_payload=json.loads(args.manual_verifications.read_text(encoding="utf-8"))
+        for rec in manual_payload.get("records") or []:
+            key=code_norm(rec.get("serial"))
+            if key:
+                manual_index[key].append(rec)
+
+    rows=[];bands=Counter();historical_bands=Counter();fallback_catalog_hit_counts=Counter();manual_status_counts=Counter()
     for rel in load_jsonl(args.release_candidates):
         code=rel.get("maker_product_code")
         key=code_norm(code)
@@ -134,9 +143,19 @@ def main():
             historical_status="no_historical_exact_serial_match"
         historical_bands[historical_status]+=1
 
+        manual_matches=manual_index.get(key,[]) if band=="no_exact_serial_match" and historical_status=="no_historical_exact_serial_match" else []
+        if len(manual_matches)==1:
+            manual_status="manual_exact_verified"
+        elif len(manual_matches)>1:
+            manual_status="manual_exact_collision"
+        else:
+            manual_status="no_manual_exact_verification"
+        manual_status_counts[manual_status]+=1
+
         effective_status=(
           band if band!="no_exact_serial_match"
           else historical_status if historical_status!="no_historical_exact_serial_match"
+          else manual_status if manual_status!="no_manual_exact_verification"
           else "no_exact_serial_match_any_catalog"
         )
         rows.append({
@@ -151,6 +170,8 @@ def main():
           "historical_xinh_matches":historical_compact,
           "fallback_catalog_statuses":historical_catalog_status,
           "fallback_catalog_matches":historical_compact,
+          "manual_verification_status":manual_status,
+          "manual_verification_matches":manual_matches,
           "effective_catalog_match_status":effective_status,
           "catalog_identity_consistency":(
             "name_supportive" if compact and max(x["name_token_overlap_max"] for x in compact)>=0.35
@@ -179,6 +200,8 @@ def main():
       "historical_fallback_unique_matches":sum(
         r.get("historical_xinh_match_status")=="historical_exact_unique_serial_match" for r in rows
       ),
+      "manual_verification_status_counts":dict(manual_status_counts),
+      "manual_exact_verifications":sum(r.get("manual_verification_status")=="manual_exact_verified" for r in rows),
       "no_exact_match_any_catalog":sum(
         r.get("effective_catalog_match_status")=="no_exact_serial_match_any_catalog" for r in rows
       ),
