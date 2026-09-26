@@ -1,0 +1,119 @@
+{
+  "schema": "skywalker-semantic-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-rank-role-review-001",
+  "review_route": "rank_or_role",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-e30f2dd7cd4fadce2f795227",
+      "character_variant_key": "Stormtrooper_FirstOrder_Cmd",
+      "decision": "role_family_verified_exact_physical_role_unresolved",
+      "supported_family": "First Order stormtrooper command/leadership role",
+      "plausible_physical_role_examples": [
+        "Stormtrooper Officer, First Order, Dark Red Pauldron",
+        "Stormtrooper Squad Leader, First Order, White Pauldron"
+      ],
+      "reason": "FirstOrder is reliable faction/family evidence and Cmd indicates a command role, but LEGO catalog terminology uses Officer and Squad Leader rather than a generic Commander. Do not equate Cmd to one of those physical ranks without visual/source evidence."
+    },
+    {
+      "asset_id": "skywalker-profile-ae1cf0462038616450e5dc38",
+      "character_variant_key": "Snowtrooper_FsO_Ep9",
+      "decision": "faction_timeline_family_verified_exact_release_unresolved",
+      "supported_family": "First Order Snowtrooper, Episode IX-era digital variant",
+      "pregame_physical_examples": [
+        {
+          "name": "Snowtrooper, First Order, Cape",
+          "year": 2019
+        },
+        {
+          "name": "Snowtrooper, First Order, Neck Bracket",
+          "year": 2016
+        },
+        {
+          "name": "Snowtrooper, First Order, No Neck Bracket",
+          "year": 2017
+        },
+        {
+          "name": "Snowtrooper, First Order, Kama, Neck Bracket",
+          "first_year": 2015
+        }
+      ],
+      "reason": "FsO normalizes to First Order and Ep9 is a timeline cue. The key does not encode cape/kama/bracket details, so it supports the faction/timeline family but not one exact physical Snowtrooper."
+    },
+    {
+      "asset_id": "skywalker-profile-9a217867e36e36d73d0f6265",
+      "character_variant_key": "Stormtrooper_Cmd",
+      "decision": "digital_role_supported_no_specific_physical_counterpart",
+      "supported_family": "generic Stormtrooper command role",
+      "reason": "Cmd is meaningful in the digital source, but the current physical candidate set contains no directly corresponding generic Stormtrooper Commander identity. Artillery or Chrome Stormtroopers are not commander equivalents, so the digital role remains unresolved physically."
+    },
+    {
+      "asset_id": "skywalker-profile-3fbf6260000cf8185e280ace",
+      "character_variant_key": "PraetorianGuard_First",
+      "decision": "game_local_ordinal_variant_physical_family_only",
+      "physical_family": "Elite Praetorian Guard",
+      "pregame_examples": [
+        {
+          "name": "Elite Praetorian Guard, Pointed Helmet, Skirt",
+          "year": 2018
+        },
+        {
+          "name": "Elite Praetorian Guard, Flat Helmet",
+          "year": 2019
+        },
+        {
+          "name": "Elite Praetorian Guard, Pointed Helmet",
+          "first_year": 2019
+        }
+      ],
+      "later_release_excluded": {
+        "name": "Imperial Praetorian Guard",
+        "first_year": 2024
+      },
+      "reason": "First behaves as a game-local ordinal selector, not a physical catalog variant label. Preserve it as digital identity metadata and link only to the broader pre-game Praetorian family until visual evidence resolves helmet/body details."
+    },
+    {
+      "asset_id": "skywalker-profile-ed626e7bc33ca3d511c30a33",
+      "character_variant_key": "PraetorianGuard_Seventh",
+      "decision": "game_local_ordinal_variant_physical_family_only",
+      "physical_family": "Elite Praetorian Guard",
+      "pregame_examples": [
+        {
+          "name": "Elite Praetorian Guard, Pointed Helmet, Skirt",
+          "year": 2018
+        },
+        {
+          "name": "Elite Praetorian Guard, Flat Helmet",
+          "year": 2019
+        },
+        {
+          "name": "Elite Praetorian Guard, Pointed Helmet",
+          "first_year": 2019
+        }
+      ],
+      "later_release_excluded": {
+        "name": "Imperial Praetorian Guard",
+        "first_year": 2024
+      },
+      "reason": "Seventh is likewise a game-local ordinal selector. It should not be mapped to a later Imperial Praetorian Guard or an arbitrary physical helmet variant."
+    },
+    {
+      "asset_id": "skywalker-profile-138b4a53b0ed9e7459c3cc41",
+      "character_variant_key": "Stormtrooper_FirstOrder_Ep9_Jet_Trooper",
+      "decision": "specialized_role_identity_verified_visual_pending",
+      "physical_candidate": "fig-004443",
+      "physical_release": {
+        "catalog_name": "First Order Jet Trooper"
+      },
+      "reason": "The suffix explicitly says FirstOrder + Jet + Trooper and the top physical candidate is First Order Jet Trooper. This is a specialized-role case where the physical catalog name legitimately omits the generic base word Stormtrooper. Variant identity is supported; exact print/component equivalence remains visual pending."
+    }
+  ],
+  "result": {
+    "reviewed": 6,
+    "role_or_family_supported_exact_release_unresolved": 3,
+    "game_local_ordinal_variants": 2,
+    "specialized_role_identity_verified_visual_pending": 1,
+    "automatic_exact_equivalence_promotions": 0
+  },
+  "systemic_finding": "A specialized role encoded in suffix tokens may replace the generic base noun in the physical catalog name (for example Stormtrooper + FirstOrder + Jet + Trooper -> First Order Jet Trooper). Base-token containment must not be mandatory in that narrow case."
+}
