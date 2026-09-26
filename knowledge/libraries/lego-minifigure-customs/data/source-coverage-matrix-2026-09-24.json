@@ -96,7 +96,7 @@
     },
     {
       "domain": "mass_market_compatible",
-      "status": "current_and_historical_serial_crosswalk_near_exhausted_relationships_and_long_tail_pending",
+      "status": "user_release_serial_crosswalk_near_exhaustive_brand_factory_history_partial",
       "sources": [
         "HeroBloks",
         "Brixtoy",
@@ -105,13 +105,10 @@
         "community sources"
       ],
       "remaining": [
-        "keep QD015 Donkey Kong explicitly unresolved until exact source evidence appears",
-        "review current exact-serial matches whose catalog names still need semantic/alias reconciliation",
-        "review exact serial collisions rather than forcing one release",
-        "independently verify newly surfaced stable-prefix brand candidates",
-        "resolve mixed/no-prefix brands such as Lele, Decool and Bela",
-        "factory/alias claims with independent evidence",
-        "historical discontinued chronology/collaboration evidence beyond serial-level catalog presence"
+        "resolve QD015 Donkey Kong exact release evidence",
+        "review 23 serial collisions/shared-code packages",
+        "independently verify factory/alias/ownership claims rather than inferring them from catalog facets",
+        "historical discontinued chronology and collaboration graph"
       ],
       "completed_2026_09_25": {
         "herobloks_figure_records": 59745,
@@ -359,7 +356,7 @@
     },
     {
       "domain": "user_collection_reconciliation",
-      "status": "major_intake_entity_hierarchy_release_reconciliation_and_refined_design_backlog_ready",
+      "status": "structured_entity_release_and_gap_layers_ready_manual_canonical_promotion_in_progress",
       "sources": [
         "Bootlego MASTER",
         "Minifig Variants to Make",
@@ -372,11 +369,12 @@
         "One Piece Minifgs"
       ],
       "remaining": [
-        "resolve high-priority identity/universe ambiguity groups",
-        "verify SourceAppearance candidates and attach them to outfit/incarnation records",
-        "resolve acquisition gaps against catalog/market evidence",
-        "review 1,554 representation candidates before any duplicate design work",
-        "promote verified 3,389 custom-design candidates into execution backlog by priority"
+        "resolve 60 highest-priority identity/universe ambiguity groups",
+        "review 23 shared/colliding maker serials at component/release granularity",
+        "resolve QD015 Donkey Kong from a primary or additional catalog source",
+        "crosswalk 71 external catalog IDs to official physical records",
+        "promote verified Character/Incarnation/OutfitDesign/SourceAppearance candidates into canonical records",
+        "calculate collection coverage only after acquisition-vs-custom-design distinctions are preserved"
       ],
       "completed_2026_09_25": {
         "bootlego_structured_records": 705,
@@ -529,5 +527,28 @@
     "no_supported_physical_release_candidate": 106,
     "digital_variant_suffix_records": 166,
     "next": "version/outfit resolution and digital-only classification"
+  },
+  "progress_2026_09_26": {
+    "release_catalog_resolution": {
+      "candidates": 2401,
+      "exact_current_catalog_unique": 1823,
+      "exact_historical_fallback_unique": 553,
+      "manual_exact": 1,
+      "no_exact_any_catalog": 1,
+      "collisions": 23,
+      "note": "Catalog association coverage is effectively complete for current user maker-code corpus; ownership/factory chronology remains a separate evidence problem."
+    },
+    "user_knowledge_graph": {
+      "character_candidates": 6347,
+      "incarnation_candidates": 7420,
+      "outfit_design_candidates": 9482,
+      "source_appearance_candidates": 3404,
+      "structured_source_appearances": 3251,
+      "entity_review_queue": 1039
+    },
+    "supervision": {
+      "mask_headgear_ranked": 14289,
+      "mask_headgear_high_confidence": 894
+    }
   }
 }
