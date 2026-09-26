@@ -15,6 +15,12 @@ SPECIALIZED_ROLE_MATCH_OVERRIDES = {
 }
 
 IDENTITY_KEY_OVERRIDES = {
+    "LC24_FireDroid": {
+        "base_character_key": "LC24_FireDroid",
+        "canonical_identity_label": "LC-24 fire droid",
+        "variant_suffix_tokens": [],
+        "reason": "Fire droid is LC-24's canonical model/class identity, not an appearance variant suffix.",
+    },
     "SpecialForcesFighterPilot_FsO": {
         "base_character_key": "SpecialForcesFighterPilot_FsO",
         "canonical_identity_label": "First Order Special Forces Fighter Pilot",
