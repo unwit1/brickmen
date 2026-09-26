@@ -11,7 +11,7 @@ import argparse,json,re,unicodedata
 from collections import Counter
 from pathlib import Path
 
-VERSION="skywalker-counterpart-classification/v1"
+VERSION="skywalker-counterpart-classification/v2"
 
 STOP={"lego","star","wars","minifig","minifigure","figure","character","profile","icon","icons"}
 
@@ -48,15 +48,33 @@ def same_character(base_key, physical_name):
     # Require every base-character token to occur in the physical catalog name.
     return all(t in pt for t in base_tokens)
 
+def physical_years(candidate):
+    years=set()
+    if not candidate:return []
+    for occ in candidate.get("set_occurrences") or []:
+        try: years.add(int(occ.get("year")))
+        except (TypeError,ValueError): pass
+    return sorted(years)
+
+def temporal_relation(candidate,game_launch_year):
+    years=physical_years(candidate)
+    if not years:return "unknown"
+    first=years[0]
+    if first<game_launch_year:return "physical_predates_game"
+    if first>game_launch_year:return "physical_postdates_game"
+    return "same_calendar_year_timing_unresolved"
+
 def main():
     ap=argparse.ArgumentParser()
     ap.add_argument("--candidates",type=Path,required=True)
     ap.add_argument("--output",type=Path,required=True)
     ap.add_argument("--summary",type=Path,required=True)
     ap.add_argument("--unresolved-output",type=Path)
+    ap.add_argument("--game-launch-year",type=int,default=2022,
+                    help="Reference year for conservative temporal triage; default is The Skywalker Saga launch year.")
     args=ap.parse_args()
 
-    rows=[];counts=Counter()
+    rows=[];counts=Counter();temporal_counts=Counter();source_equivalence_counts=Counter()
     for r in load_jsonl(args.candidates):
         key=r.get("character_variant_key")
         base,suffix=key_parts(key)
@@ -67,6 +85,8 @@ def main():
         margin=float(r.get("top_margin") or 0)
 
         has_variant_suffix=bool(suffix)
+        temporal=temporal_relation(first,args.game_launch_year)
+        years=physical_years(first)
         if same and top_score>=0.86 and margin>=0.10:
             counterpart="strong_character_counterpart"
         elif same and top_score>=0.76 and margin>=0.05:
@@ -82,8 +102,18 @@ def main():
         else:
             exact="unresolved"
 
+        if counterpart in {"strong_character_counterpart","review_character_counterpart"}:
+            if temporal=="physical_postdates_game":
+                source_equivalence="same_character_later_physical_release_not_source_equivalent"
+            else:
+                source_equivalence="physical_counterpart_candidate_version_visual_pending"
+        else:
+            source_equivalence="unresolved"
+
         counts[counterpart]+=1
         counts[exact]+=1
+        temporal_counts[temporal]+=1
+        source_equivalence_counts[source_equivalence]+=1
         rows.append({
           "asset_id":r.get("asset_id"),
           "character_variant_key":key,
@@ -96,8 +126,11 @@ def main():
           "top_margin":margin,
           "character_counterpart_status":counterpart,
           "exact_version_status":exact,
+          "physical_release_years":years,
+          "temporal_relation_to_game_launch":temporal,
+          "source_equivalence_status":source_equivalence,
           "all_top_candidates":top,
-          "policy":"Character-level counterpart evidence may support identity alignment. Exact physical outfit/version equivalence is never inferred from name similarity alone; variant suffixes remain separate until independently resolved.",
+          "policy":"Character-level counterpart evidence may support identity alignment. Exact physical outfit/version equivalence is never inferred from name similarity alone; variant suffixes remain separate until independently resolved. Physical releases later than the game are explicitly prevented from being treated as source-equivalent designs.",
           "processor_version":VERSION
         })
 
@@ -121,6 +154,10 @@ def main():
       "variant_suffix_records":sum(bool(x["variant_suffix_tokens"]) for x in rows),
       "character_match_only_version_unresolved":sum(x["exact_version_status"]=="character_match_only_version_unresolved" for x in rows),
       "variant_suffix_requires_version_resolution":sum(x["exact_version_status"]=="variant_suffix_requires_version_resolution" for x in rows),
+      "temporal_relation_counts":dict(temporal_counts),
+      "source_equivalence_status_counts":dict(source_equivalence_counts),
+      "game_launch_reference_year":args.game_launch_year,
+      "automatic_exact_physical_equivalence_promotions":0,
       "status":"character_counterpart_layer_ready"
     }
     if args.unresolved_output:
