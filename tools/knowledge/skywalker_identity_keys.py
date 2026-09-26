@@ -27,6 +27,18 @@ IDENTITY_KEY_OVERRIDES = {
         "variant_suffix_tokens": [],
         "reason": "The source key splits Savage Opress' full name and misspells Opress as Oppress; treat it as identity, not a variant.",
     },
+    "Rey_Skywalker": {
+        "base_character_key": "Rey",
+        "canonical_identity_label": "Rey Skywalker",
+        "variant_suffix_tokens": [],
+        "reason": "Skywalker is part of Rey's final canonical game identity, not an outfit or appearance suffix. Keep the broader Rey base for physical-family matching.",
+    },
+    "Rebel_Friend": {
+        "base_character_key": "Rebel_Friend",
+        "canonical_identity_label": "Rebel Friend",
+        "variant_suffix_tokens": [],
+        "reason": "Rebel Friend is a named playable character identity in The Skywalker Saga, not a generic Rebel role with a Friend variant.",
+    },
 }
 
 def parse_identity_key(key):
