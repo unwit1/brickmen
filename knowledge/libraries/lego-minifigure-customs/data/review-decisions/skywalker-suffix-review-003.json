@@ -1,0 +1,112 @@
+{
+  "schema": "skywalker-suffix-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-suffix-review-003",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-30c7c7bfd427c12b1ce116cb",
+      "character_variant_key": "AstromechDroid_DarkTurquoise",
+      "decision": "variant_family_supported_named_identity_unresolved",
+      "physical_candidate": "fig-004362",
+      "physical_release": {
+        "catalog_name": "Astromech Droid, K3-R1, Dark Turquoise",
+        "year": 2019,
+        "set_num": "75249-1"
+      },
+      "reason": "The DarkTurquoise suffix agrees with the physical candidate's color descriptor, but the digital base is generic AstromechDroid and does not independently identify K3-R1. Preserve the color-family correspondence without promoting the named droid identity."
+    },
+    {
+      "asset_id": "skywalker-profile-0a1e1edc44d4e02b0ef7956d",
+      "character_variant_key": "DarthMaul_Hood",
+      "decision": "variant_family_verified_exact_release_unresolved",
+      "physical_candidates": [
+        {
+          "brickset_minifig": "sw0003",
+          "catalog_name": "Darth Maul - Hood and Cape, Sash without Pouch",
+          "year": 1999
+        },
+        {
+          "brickset_minifig": "sw0394",
+          "catalog_name": "Darth Maul - Hood and Cape, Silver Neck Clasp",
+          "year": null
+        },
+        {
+          "brickset_minifig": "sw0686",
+          "catalog_name": "Darth Maul - Hood and Cape, Sash with Pouch",
+          "year": null
+        }
+      ],
+      "reason": "Hood is a real Darth Maul variant cue, but multiple physical hood-and-cape designs exist. The 1999 sw0003 candidate is plausible, not uniquely established by the suffix."
+    },
+    {
+      "asset_id": "skywalker-profile-177d0567633bddf146e64ba6",
+      "character_variant_key": "BattleDroid_Commander",
+      "decision": "variant_family_verified_exact_release_unresolved",
+      "physical_candidates": [
+        {
+          "brickset_minifig": "sw0048",
+          "catalog_name": "Battle Droid Commander - Tan with Line, Angled Arms",
+          "year": 2000
+        },
+        {
+          "brickset_minifig": "sw0184",
+          "catalog_name": "Battle Droid Commander - Yellow Torso, Angled Arm and Straight Arm",
+          "year": 2008
+        },
+        {
+          "brickset_minifig": "sw0415",
+          "catalog_name": "Battle Droid Commander - Tan with Dot, Angled Arm and Straight Arm",
+          "year": 2012
+        },
+        {
+          "brickset_minifig": "sw0482",
+          "catalog_name": "Battle Droid Commander - Dark Orange with Dot, Angled Arm and Straight Arm",
+          "year": 2013
+        }
+      ],
+      "reason": "Commander verifies the Battle Droid Commander family, but several pre-game physical commander variants exist. The current 2000 top hit is not uniquely determined by the suffix."
+    },
+    {
+      "asset_id": "skywalker-profile-8912300d3418232d787471fe",
+      "character_variant_key": "HanSolo_Hoth_Hood",
+      "decision": "variant_identity_verified_visual_pending",
+      "physical_candidate": "fig-004180",
+      "physical_release": {
+        "brickset_minifig": "sw0709",
+        "catalog_name": "Han Solo - Parka, Dark Brown Coat (Hoth)",
+        "year": 2016,
+        "set_num": "75138-1"
+      },
+      "reason": "The combined Hoth + Hood digital qualifiers agree with the 2016 hooded Hoth/Parka Han Solo candidate. Variant identity is strongly supported; exact digital texture/component reuse remains visual pending."
+    },
+    {
+      "asset_id": "skywalker-profile-a6eb899947e886a8279decaf",
+      "character_variant_key": "Biggs_Darklighter",
+      "decision": "full_character_name_detected_not_variant_suffix",
+      "canonical_subject": "Biggs Darklighter",
+      "physical_family_examples": [
+        {
+          "brickset_minifig": "sw0009",
+          "catalog_name": "Biggs Darklighter - Yellow Head",
+          "year": 1999
+        },
+        {
+          "brickset_minifig": "sw0944",
+          "catalog_name": "Biggs Darklighter - Light Nougat Head, Dual Molded Helmet",
+          "year": 2018
+        }
+      ],
+      "reason": "Darklighter is Biggs' surname, not an outfit/version suffix. The parser must reconstruct the full character name before physical version resolution; the current suffix classifier is semantically wrong for this record."
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "variant_identity_verified_visual_pending": 1,
+    "variant_family_verified_exact_release_unresolved": 2,
+    "variant_family_supported_named_identity_unresolved": 1,
+    "full_character_name_parser_error": 1,
+    "automatic_exact_equivalence_promotions": 0
+  },
+  "remaining_suffix_review_records": 8,
+  "systemic_finding": "Underscore-separated tokens are not always variant suffixes. Some are continuations of the canonical character name and must be resolved before variant parsing."
+}
