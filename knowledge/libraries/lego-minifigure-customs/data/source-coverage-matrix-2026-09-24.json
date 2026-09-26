@@ -34,7 +34,14 @@
         "flat_art_review_records": 48,
         "flat_art_decorated_top_surface_candidates": 26,
         "flat_art_exact_id_print_links_unverified": 0,
-        "flat_art_base_substrate_ldraw_records": 3
+        "flat_art_base_substrate_ldraw_records": 3,
+        "flat_art_figure_candidate_records": 88,
+        "flat_art_component_candidate_records": 85,
+        "flat_art_medium_review_records": 8,
+        "flat_art_low_review_records": 25,
+        "flat_art_no_figure_candidate_records": 15,
+        "flat_art_tied_top_identity_records": 33,
+        "flat_art_strong_unverified_records": 0
       }
     },
     {
@@ -622,17 +629,22 @@
       "rioforce_records": 129,
       "verified_asset_groups": 57,
       "unverified_surface_review_records": 48,
-      "strong_review_records": 22,
-      "decorated_top_surface_candidate_records": 26,
-      "figure_candidate_records": 91,
-      "component_candidate_records": 88,
+      "verify_first_records": 0,
+      "strong_review_records": 0,
+      "medium_review_records": 8,
+      "low_review_records": 25,
+      "no_figure_candidate_records": 15,
+      "decorated_top_surface_candidate_records": 30,
+      "figure_candidate_records": 88,
+      "component_candidate_records": 85,
+      "tied_top_figure_candidate_records": 33,
+      "four_or_more_tied_top_candidate_records": 26,
+      "high_confidence_top_figure_candidate_records": 8,
       "ldraw_exact_ids_indexed": 4348,
       "decorated_exact_id_unverified_records": 0,
       "decorated_exact_id_unverified_links": 0,
-      "base_substrate_ldraw_records": 3,
-      "base_substrate_ldraw_links": 8,
       "strict_exact_ldraw_print_art_records": 0,
-      "note": "Former exact-ID candidates were plain substrate part joins and are no longer counted as decoration-art evidence."
+      "note": "Path parsing now preserves meaningful subject/version qualifiers and ambiguity-aware ranking penalizes tied top figure identities; no unverified records currently qualify as strong review."
     },
     "user_tracker_semantic_cleanup": {
       "source_sheet_mutated": false,
