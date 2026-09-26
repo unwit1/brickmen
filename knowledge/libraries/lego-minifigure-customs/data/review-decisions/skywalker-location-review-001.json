@@ -1,0 +1,54 @@
+{
+  "schema": "skywalker-semantic-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-location-review-001",
+  "review_route": "location_or_scene",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-9e4b7939c58c79d6d1891f24",
+      "character_variant_key": "HanSolo_Cantina",
+      "decision": "character_verified_scene_variant_requires_set_context",
+      "scene_context": "Cantina / Mos Eisley Cantina",
+      "rejected_top_candidate": {
+        "name": "Han Solo, Medal",
+        "year": 2023
+      },
+      "reason": "Cantina is a scene/context cue, not a normal minifigure-name qualifier. The current name-only ranking misses scene evidence and surfaces a later Medal Han. Resolve against Han Solo physical releases occurring in Cantina-context sets before choosing a physical version."
+    },
+    {
+      "asset_id": "skywalker-profile-355fd3c83b37facfd76769df",
+      "character_variant_key": "HanSolo_Skiff",
+      "decision": "character_verified_scene_variant_requires_set_context",
+      "scene_context": "Skiff / Desert Skiff / Jabba-era scene",
+      "rejected_top_candidate": {
+        "name": "Han Solo, Medal",
+        "year": 2023
+      },
+      "reason": "Skiff describes scene/use context rather than a catalog minifigure name. Current name-only ranking is not sufficient; physical Han releases from skiff/Jabba-era sets should be preferred before version comparison."
+    },
+    {
+      "asset_id": "skywalker-profile-4f50360670167e4066b2370b",
+      "character_variant_key": "R2D2_Swamp",
+      "decision": "character_verified_scene_or_state_variant_requires_context",
+      "scene_context": "Swamp / Dagobah-like scene state",
+      "rejected_top_candidate": {
+        "name": "Astromech Droid, R2-D2, Snowman",
+        "year": 2012
+      },
+      "reason": "Snowman is a lexical false positive and unrelated to the digital Swamp state. The suffix may describe scene placement and/or a dirty/muddy visual state, so it requires set-context plus visual evidence rather than ordinary name similarity."
+    },
+    {
+      "asset_id": "skywalker-profile-12e70e322b52ea3b0f6acb40",
+      "character_variant_key": "BobaFett_Skiff",
+      "decision": "character_verified_scene_variant_requires_set_context",
+      "scene_context": "Skiff / Jabba-era scene",
+      "reason": "Skiff is scene context and does not distinguish Boba Fett print generations by itself. The current top candidates are not scene-aware; resolve against Boba Fett releases in skiff/Jabba-context sets, then compare decoration visually."
+    }
+  ],
+  "result": {
+    "reviewed": 4,
+    "scene_context_requires_set_occurrence_matching": 4,
+    "automatic_exact_equivalence_promotions": 0
+  },
+  "systemic_finding": "Location/scene suffixes need a character-gated set-occurrence signal. Figure-name similarity alone systematically underuses scene evidence and can rank unrelated later variants."
+}
