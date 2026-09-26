@@ -1,5 +1,5 @@
 {
-  "schema": "user-tracker-semantic-corrections/v2",
+  "schema": "user-tracker-semantic-corrections/v3",
   "created_at": "2026-09-26",
   "source_policy": "Non-destructive semantic overlay. Original Google Sheet and raw ingested JSONL remain canonical provenance; corrected fields are used only in derived reconciliation layers and each derived record carries the correction metadata plus original field values.",
   "records": [
@@ -22,6 +22,25 @@
         "source_file": "minifig-variants-dc-2026-09-25.jsonl",
         "verified_at": "2026-09-26",
         "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 19,
+      "expected_name": "Alexandra Allston",
+      "corrected_fields": {
+        "identity": "Parasite"
+      },
+      "clear_fields": [],
+      "confidence": "high",
+      "rationale": "Strip unmatched trailing punctuation from Identity: \"Parasite)\" -> \"Parasite\". Balanced parenthetical identity notes are not changed.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive presentation correction in the derived semantic layer."
       }
     },
     {
@@ -64,6 +83,44 @@
         "source_file": "minifig-variants-dc-2026-09-25.jsonl",
         "verified_at": "2026-09-26",
         "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 75,
+      "expected_name": "Atomic Skull",
+      "corrected_fields": {
+        "identity": "Albert Michaels"
+      },
+      "clear_fields": [],
+      "confidence": "high",
+      "rationale": "Strip unmatched trailing punctuation from Identity: \"Albert Michaels)\" -> \"Albert Michaels\". Balanced parenthetical identity notes are not changed.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive presentation correction in the derived semantic layer."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 76,
+      "expected_name": "Atomic Skull",
+      "corrected_fields": {
+        "identity": "Joseph Martin"
+      },
+      "clear_fields": [],
+      "confidence": "high",
+      "rationale": "Strip unmatched trailing punctuation from Identity: \"Joseph Martin)\" -> \"Joseph Martin\". Balanced parenthetical identity notes are not changed.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive presentation correction in the derived semantic layer."
       }
     },
     {
@@ -148,6 +205,63 @@
         "source_file": "minifig-variants-dc-2026-09-25.jsonl",
         "verified_at": "2026-09-26",
         "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 330,
+      "expected_name": "Blockbuster",
+      "corrected_fields": {
+        "identity": "Roland Desmond"
+      },
+      "clear_fields": [],
+      "confidence": "high",
+      "rationale": "Strip unmatched trailing punctuation from Identity: \"Roland Desmond)\" -> \"Roland Desmond\". Balanced parenthetical identity notes are not changed.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive presentation correction in the derived semantic layer."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 331,
+      "expected_name": "Bloodsport",
+      "corrected_fields": {
+        "identity": "Robert DuBois"
+      },
+      "clear_fields": [],
+      "confidence": "high",
+      "rationale": "Strip unmatched trailing punctuation from Identity: \"Robert DuBois)\" -> \"Robert DuBois\". Balanced parenthetical identity notes are not changed.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive presentation correction in the derived semantic layer."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 332,
+      "expected_name": "Bloodsport",
+      "corrected_fields": {
+        "identity": "Alexander Trent"
+      },
+      "clear_fields": [],
+      "confidence": "high",
+      "rationale": "Strip unmatched trailing punctuation from Identity: \"Alexander Trent)\" -> \"Alexander Trent\". Balanced parenthetical identity notes are not changed.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive presentation correction in the derived semantic layer."
       }
     },
     {
@@ -385,6 +499,25 @@
     {
       "source_title": "Minifig Variants to Make",
       "source_tab": "DC",
+      "source_row": 504,
+      "expected_name": "Cyborg Superman",
+      "corrected_fields": {
+        "identity": "Hank Henshaw"
+      },
+      "clear_fields": [],
+      "confidence": "high",
+      "rationale": "Strip unmatched trailing punctuation from Identity: \"Hank Henshaw)\" -> \"Hank Henshaw\". Balanced parenthetical identity notes are not changed.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive presentation correction in the derived semantic layer."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
       "source_row": 510,
       "expected_name": "Cyborgirl",
       "corrected_fields": {
@@ -469,6 +602,25 @@
     {
       "source_title": "Minifig Variants to Make",
       "source_tab": "DC",
+      "source_row": 536,
+      "expected_name": "Deathstroke",
+      "corrected_fields": {
+        "identity": "Slade Wilson"
+      },
+      "clear_fields": [],
+      "confidence": "high",
+      "rationale": "Strip unmatched trailing punctuation from Identity: \"Slade Wilson)\" -> \"Slade Wilson\". Balanced parenthetical identity notes are not changed.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive presentation correction in the derived semantic layer."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
       "source_row": 557,
       "expected_name": "Devastation",
       "corrected_fields": {
@@ -485,6 +637,25 @@
         "source_file": "minifig-variants-dc-2026-09-25.jsonl",
         "verified_at": "2026-09-26",
         "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 569,
+      "expected_name": "Doctor Fate (Pre-Zero Hour)",
+      "corrected_fields": {
+        "identity": "Sofie"
+      },
+      "clear_fields": [],
+      "confidence": "high",
+      "rationale": "Strip unmatched trailing punctuation from Identity: \"Sofie\\\\\" -> \"Sofie\". Balanced parenthetical identity notes are not changed.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive presentation correction in the derived semantic layer."
       }
     },
     {
@@ -821,6 +992,25 @@
         "source_file": "minifig-variants-dc-2026-09-25.jsonl",
         "verified_at": "2026-09-26",
         "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 862,
+      "expected_name": "Green Lantern Dark",
+      "corrected_fields": {
+        "identity": "Rina Mori"
+      },
+      "clear_fields": [],
+      "confidence": "high",
+      "rationale": "Strip unmatched trailing punctuation from Identity: \"Rina Mori\\\\\" -> \"Rina Mori\". Balanced parenthetical identity notes are not changed.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive presentation correction in the derived semantic layer."
       }
     },
     {
@@ -1184,6 +1374,25 @@
     {
       "source_title": "Minifig Variants to Make",
       "source_tab": "DC",
+      "source_row": 1217,
+      "expected_name": "Mongul MDCCXCII",
+      "corrected_fields": {
+        "identity": "The Mongul-Who-Is"
+      },
+      "clear_fields": [],
+      "confidence": "high",
+      "rationale": "Strip unmatched trailing punctuation from Identity: \"The Mongul-Who-Is)\" -> \"The Mongul-Who-Is\". Balanced parenthetical identity notes are not changed.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive presentation correction in the derived semantic layer."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
       "source_row": 1221,
       "expected_name": "Mortalla",
       "corrected_fields": {
@@ -1478,6 +1687,44 @@
     {
       "source_title": "Minifig Variants to Make",
       "source_tab": "DC",
+      "source_row": 1335,
+      "expected_name": "Parasite",
+      "corrected_fields": {
+        "identity": "Raymond Maxwell Jensen"
+      },
+      "clear_fields": [],
+      "confidence": "high",
+      "rationale": "Strip unmatched trailing punctuation from Identity: \"Raymond Maxwell Jensen)\" -> \"Raymond Maxwell Jensen\". Balanced parenthetical identity notes are not changed.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive presentation correction in the derived semantic layer."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 1336,
+      "expected_name": "Parasite",
+      "corrected_fields": {
+        "identity": "Rudy Jones"
+      },
+      "clear_fields": [],
+      "confidence": "high",
+      "rationale": "Strip unmatched trailing punctuation from Identity: \"Rudy Jones)\" -> \"Rudy Jones\". Balanced parenthetical identity notes are not changed.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive presentation correction in the derived semantic layer."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
       "source_row": 1344,
       "expected_name": "Peek-a-Boo",
       "corrected_fields": {
@@ -1578,6 +1825,25 @@
         "source_file": "minifig-variants-dc-2026-09-25.jsonl",
         "verified_at": "2026-09-26",
         "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 1441,
+      "expected_name": "Red Cloud",
+      "corrected_fields": {
+        "identity": "Robinson Goode"
+      },
+      "clear_fields": [],
+      "confidence": "high",
+      "rationale": "Strip unmatched trailing punctuation from Identity: \"Robinson Goode)\" -> \"Robinson Goode\". Balanced parenthetical identity notes are not changed.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive presentation correction in the derived semantic layer."
       }
     },
     {
@@ -1919,6 +2185,25 @@
     {
       "source_title": "Minifig Variants to Make",
       "source_tab": "DC",
+      "source_row": 1889,
+      "expected_name": "Superwoman",
+      "corrected_fields": {
+        "identity": "Lucy Lane"
+      },
+      "clear_fields": [],
+      "confidence": "high",
+      "rationale": "Strip unmatched trailing punctuation from Identity: \"Lucy Lane)\" -> \"Lucy Lane\". Balanced parenthetical identity notes are not changed.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive presentation correction in the derived semantic layer."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
       "source_row": 1905,
       "expected_name": "Sylph",
       "corrected_fields": {
@@ -1977,6 +2262,25 @@
         "source_file": "minifig-variants-dc-2026-09-25.jsonl",
         "verified_at": "2026-09-26",
         "policy": "The original source remains unchanged. This is a non-destructive derived semantic correction."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 1945,
+      "expected_name": "The General",
+      "corrected_fields": {
+        "identity": "Ulysses Hadrian Armstrong"
+      },
+      "clear_fields": [],
+      "confidence": "high",
+      "rationale": "Strip unmatched trailing punctuation from Identity: \"Ulysses Hadrian Armstrong)\" -> \"Ulysses Hadrian Armstrong\". Balanced parenthetical identity notes are not changed.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "audit_record_source": "knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/tracker-identity-field-review-latest.jsonl",
+        "source_file": "minifig-variants-dc-2026-09-25.jsonl",
+        "verified_at": "2026-09-26",
+        "policy": "The original source remains unchanged. This is a non-destructive presentation correction in the derived semantic layer."
       }
     },
     {
@@ -2509,6 +2813,7 @@
   "updated_at": "2026-09-26",
   "automation_notes": {
     "deterministic_year_identity_repairs_added": 95,
-    "rule": "When Identity is exactly a four-digit 18xx/19xx/20xx year and Year is blank, move the year into Year and clear Identity. Never infer a replacement person identity."
+    "rule": "When Identity is exactly a four-digit 18xx/19xx/20xx year and Year is blank, move the year into Year and clear Identity. Never infer a replacement person identity.",
+    "deterministic_unmatched_punctuation_repairs_added": 16
   }
 }
