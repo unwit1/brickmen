@@ -775,6 +775,10 @@ def main():
     write_jsonl("collection-gap-candidates.jsonl", gap_rows)
     write_jsonl("source-appearance-candidates.jsonl", appearance_rows)
     write_jsonl("source-appearance-review-queue.jsonl", appearance_review)
+    write_jsonl(
+        "source-appearance-unresolved.jsonl",
+        [x for x in appearance_review if x.get("appearance_kind_candidate") not in {"comic_issue_explicit","episode_explicit"}]
+    )
     (args.output_dir / "entity-resolution-review-summary.json").write_text(json.dumps({
         "schema":"entity-resolution-review-summary/v1",
         "processor_version":VERSION,
