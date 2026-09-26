@@ -1,6 +1,6 @@
 {
   "schema": "user-release-multicatalog-crosswalk-summary/v2",
-  "processor_version": "user-release-multicatalog-crosswalk/v2",
+  "processor_version": "user-release-multicatalog-crosswalk/v3",
   "release_candidates": 2401,
   "match_status_counts": {
     "exact_unique_serial_match": 1823,
@@ -10,6 +10,12 @@
   "historical_fallback_status_counts": {
     "no_historical_exact_serial_match": 1905,
     "historical_exact_unique_serial_match": 496
+  },
+  "fallback_catalogs_loaded": [
+    "downtheblocks_xinh_g"
+  ],
+  "fallback_catalog_unique_hit_counts": {
+    "downtheblocks_xinh_g": 496
   },
   "historical_fallback_unique_matches": 496,
   "no_exact_match_any_catalog": 59,
