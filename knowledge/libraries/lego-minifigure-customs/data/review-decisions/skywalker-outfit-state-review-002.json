@@ -1,0 +1,60 @@
+{
+  "schema": "skywalker-semantic-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-outfit-state-review-002",
+  "review_route": "outfit_or_accessory / physical_state",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-d3d23f4514099252ea3a9fee",
+      "character_variant_key": "C3PO_NoShell",
+      "decision": "digital_appearance_state_no_supported_physical_match",
+      "reason": "NoShell describes an exposed/incomplete C-3PO state. None of the supported physical catalog names independently documents that state, and ordinary C-3PO releases must not be promoted merely because their names omit 'shell'. Preserve as digital appearance supervision unless component or visual evidence establishes a physical analog."
+    },
+    {
+      "asset_id": "skywalker-profile-e043f30b3936ecee597708a8",
+      "character_variant_key": "C3PO_SilverLeg",
+      "decision": "variant_concept_supported_same_year_physical_timing_visual_pending",
+      "physical_candidate": "fig-012591",
+      "physical_release": {
+        "catalog_name": "C-3PO - Dual Molded Leg",
+        "first_year": 2022
+      },
+      "reason": "SilverLeg is semantically consistent with the physical dual-molded-leg C-3PO concept. Because the physical release and game are both 2022, source direction and exact decoration cannot be inferred from year alone; keep variant concept support separate from exact equivalence."
+    },
+    {
+      "asset_id": "skywalker-profile-bfb7fdc499afcf1267862ecf",
+      "character_variant_key": "C3PO_KijimiCoat",
+      "decision": "digital_scene_outfit_no_supported_physical_match",
+      "scene_context": "Kijimi",
+      "outfit_context": "coat",
+      "reason": "The current physical C-3PO catalog candidates do not document a Kijimi coat version. Treat this as a digital/movie-scene outfit state rather than forcing it onto generic C-3PO releases."
+    },
+    {
+      "asset_id": "skywalker-profile-829f1c82458f3d0f4ff977e2",
+      "character_variant_key": "PoeDameron_KijimiCoat",
+      "decision": "digital_scene_outfit_no_supported_physical_match",
+      "scene_context": "Kijimi",
+      "outfit_context": "coat",
+      "reason": "None of the supported physical Poe candidates explicitly identifies the Kijimi coat. Black Jacket, White Shirt, Dark Orange Outfit and other physical versions are not interchangeable with this scene-specific digital state."
+    },
+    {
+      "asset_id": "skywalker-profile-738cb37aa5e47365ab77d63b",
+      "character_variant_key": "Rose_FirstOrder_NoHat",
+      "decision": "outfit_family_verified_accessory_state_component_review_required",
+      "physical_candidate": "fig-004315",
+      "physical_release": {
+        "catalog_name": "Rose Tico in First Order Officer Disguise",
+        "year": 2018
+      },
+      "reason": "FirstOrder verifies Rose's officer-disguise family. NoHat is an accessory-removal state: figure-name text cannot prove whether the hat is absent even when the outfit body matches. Resolve the hat state using component inventory or visual evidence."
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "digital_only_scene_or_appearance_states": 3,
+    "physical_variant_concept_supported_timing_visual_pending": 1,
+    "outfit_family_verified_component_state_pending": 1,
+    "automatic_exact_equivalence_promotions": 0
+  },
+  "systemic_finding": "Accessory-presence suffixes such as NoHat/NoHelmet/NoCape/NoShell belong to a component-state layer. Figure identity can verify the underlying outfit family, but accessory removal needs inventory or visual evidence."
+}
