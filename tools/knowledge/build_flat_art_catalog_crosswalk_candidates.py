@@ -17,15 +17,12 @@ from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 
-VERSION = "flat-art-catalog-crosswalk-candidates/v6"
+VERSION = "flat-art-catalog-crosswalk-candidates/v7"
 
 STOP = {
     "lego","minifig","minifigure","with","and","the","a","an","pattern","printed",
-    "print","logo","classic","figure","fig","face","head","torso","hips","hip","leg",
-    "legs","arm","arms","helmet","hair","cowl","front","back","left","right","male",
-    "female","guy","girl","man","woman","outfit",
-    "black","white","red","blue","green","yellow","gray","grey","brown","tan",
-    "orange","purple","pink","gold","silver",
+    "print","logo","figure","fig","face","head","torso","hips","hip","leg",
+    "legs","arm","arms","helmet","hair","cowl","front","back","left","right","outfit",
 }
 
 ROLE_PATTERNS = (
@@ -43,7 +40,12 @@ ROLE_PATTERNS = (
 SUBJECT_ALIASES = {
     "viking lady": "viking woman",
     "slithra": "slithraa",
+    # Source-local/historical labels that otherwise create avoidable identity drift.
+    "cave girl": "cave woman",
+    "lex luther": "lex luthor",
 }
+
+GENERIC_SAMPLE_TOKENS = {"cmf"}
 
 ROLE_COMPATIBILITY = {
     "leg": {"leg", "hips"},
@@ -130,6 +132,17 @@ def figure_match_score(subject_tokens, sample_tokens):
     if not overlap:
         return 0.0, []
     if s <= t:
+        # A one-token subject must not become a high-confidence identity merely
+        # because that generic word appears somewhere in a longer figure name
+        # (e.g. Magician -> Mia ... Magician, Tim -> Tim Murphy).  Preserve high
+        # confidence only when the catalog name is effectively the same identity
+        # plus a harmless catalog marker such as "(CMF)".
+        if len(s) == 1:
+            extra=t-s
+            if extra <= GENERIC_SAMPLE_TOKENS:
+                return 0.79, overlap
+            only=next(iter(s))
+            return (0.42, overlap) if len(only) >= 7 else (0.0, [])
         return min(1.0, 0.72 + 0.07 * len(s)), overlap
     ratio=len(overlap)/len(s)
     if len(overlap) >= 2:
