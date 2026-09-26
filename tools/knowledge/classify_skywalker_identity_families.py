@@ -12,7 +12,7 @@ import argparse,json,re,unicodedata
 from collections import Counter,defaultdict
 from pathlib import Path
 
-VERSION="skywalker-identity-family/v1"
+VERSION="skywalker-identity-family/v2"
 GENERIC={"goon","friend","alien","human","officer","trooper","droid","guard","clone"}
 
 def load_jsonl(path):
@@ -62,19 +62,60 @@ def alias_label(base):
     n=norm(base)
     return ALIASES.get(n,n)
 
+def compact(v):
+    return re.sub(r"[^a-z0-9]+","",norm(v))
+
+def looks_like_compact_identifier(v):
+    s=compact(v)
+    return bool(re.search(r"[a-z]",s) and re.search(r"[0-9]",s) and len(s)<=10)
+
+def meaningful_suffix_tokens(key):
+    raw=str(key or "").split("_",1)
+    if len(raw)<2:return []
+    tokens=[t for t in norm(raw[1]).split() if t and not t.isdigit()]
+    return tokens
+
 def physical_support(base,candidates):
     label=alias_label(base)
     lt=[t for t in label.split() if t]
     if not lt:return []
     supported=[]
+    code_like=looks_like_compact_identifier(base)
+    compact_label=compact(label)
     for c in candidates or []:
-        name=norm(c.get("name"))
-        nt=set(name.split())
+        raw_name=str(c.get("name") or "")
+        name=norm(raw_name)
+        ordered=name.split()
+        nt=set(ordered)
+        if code_like:
+            # Avoid droid/code collisions such as 8D8 -> R5-D8. The complete
+            # compact identifier must occur in the physical catalog name.
+            if compact_label and compact_label in compact(raw_name):
+                supported.append(c)
+            continue
+        if len(lt)==1:
+            # One-word identities may have harmless titles/species wrappers
+            # (Snoke -> Supreme Leader Snoke, Teebo -> Teebo Ewok), but a token
+            # buried inside another entity label (Rancor Battalion) is unsafe.
+            if ordered and lt[0] in {ordered[0],ordered[-1]}:
+                supported.append(c)
+            continue
         if all(t in nt for t in lt):
             supported.append(c)
-        elif len(lt)==1 and lt[0] in nt:
-            supported.append(c)
     return supported
+
+def constrain_by_suffix(key,supported):
+    tokens=meaningful_suffix_tokens(key)
+    if not tokens:
+        return supported,"no_semantic_suffix"
+    constrained=[]
+    for c in supported:
+        nt=set(norm(c.get("name")).split())
+        if all(t in nt for t in tokens):
+            constrained.append(c)
+    if constrained:
+        return constrained,"suffix_catalog_text_match"
+    return supported,"suffix_not_resolved_in_supported_candidates"
 
 def main():
     ap=argparse.ArgumentParser()
@@ -90,6 +131,7 @@ def main():
         suffix=str(key or "").split("_")[1:]
         top=r.get("top_candidates") or []
         supported=physical_support(base,top)
+        variant_supported,suffix_constraint_status=constrain_by_suffix(key,supported)
         label=alias_label(base)
         generic=label in GENERIC or any(t in GENERIC for t in label.split())
 
@@ -100,14 +142,20 @@ def main():
         else:
             character_status="digital_identity_only_no_physical_name_support"
 
-        if len(supported)==1 and float(r.get("top_margin") or 0)>=0.10:
+        semantic_suffix=bool(meaningful_suffix_tokens(key))
+        release_pool=variant_supported if (semantic_suffix and suffix_constraint_status=="suffix_catalog_text_match") else supported
+        if semantic_suffix and suffix_constraint_status=="suffix_not_resolved_in_supported_candidates":
+            release_status="variant_constrained_physical_release_unresolved"
+        elif len(release_pool)==1 and float(r.get("top_margin") or 0)>=0.10:
             release_status="unique_physical_release_candidate"
-        elif len(supported)>=1:
+        elif len(release_pool)>=1:
             release_status="physical_release_ambiguous_within_character_family"
         else:
             release_status="no_supported_physical_release_candidate"
 
-        if suffix:
+        if suffix and suffix_constraint_status=="suffix_catalog_text_match":
+            version_status="digital_variant_suffix_matches_catalog_text_requires_visual_confirmation"
+        elif suffix:
             version_status="digital_variant_label_present_requires_version_mapping"
         elif release_status=="unique_physical_release_candidate":
             version_status="unsuffixed_identity_unique_release_candidate_version_still_unverified"
@@ -126,16 +174,19 @@ def main():
           "base_character_key":base,
           "digital_identity_label":label,
           "variant_suffix_tokens":suffix,
+          "meaningful_variant_suffix_tokens":meaningful_suffix_tokens(key),
+          "suffix_constraint_status":suffix_constraint_status,
           "digital_identity_source":"official_Skywalker_Saga_profile_filename",
           "character_family_status":character_status,
           "physical_release_status":release_status,
           "version_status":version_status,
           "physical_family_support_count":len(supported),
-          "supported_physical_candidates":supported,
+          "supported_physical_candidates":release_pool,
+          "base_character_physical_candidates":supported,
           "all_top_candidates":top,
           "top_score":r.get("top_score"),
           "top_margin":r.get("top_margin"),
-          "policy":"An official filename-derived identity label is valid digital identity evidence. Character-family support does not establish exact outfit/version equivalence. Generic role labels remain role families rather than canonical named characters.",
+          "policy":"An official filename-derived identity label is valid digital identity evidence. Character-family support does not establish exact outfit/version equivalence. Compact identifiers require full-code agreement, meaningful digital suffixes constrain physical variants, and generic role labels remain role families rather than canonical named characters.",
           "processor_version":VERSION,
         })
 
@@ -158,6 +209,7 @@ def main():
       "physical_release_status_counts":dict(Counter(r["physical_release_status"] for r in rows)),
       "version_status_counts":dict(Counter(r["version_status"] for r in rows)),
       "digital_variant_suffix_records":sum(bool(r["variant_suffix_tokens"]) for r in rows),
+      "suffix_constraint_status_counts":dict(Counter(r["suffix_constraint_status"] for r in rows)),
       "base_identity_count":len(base_counts),
       "top_base_identities":[{"base":k,"records":v} for k,v in base_counts.most_common(100)],
       "status":"digital_identity_and_physical_family_layer_ready"
