@@ -23,7 +23,7 @@
     {
       "priority": "critical",
       "gap": "source_to_lego_translation_pairs",
-      "status": "fortnite_identity_visual_measurement_and_ranked_review_ready",
+      "status": "fortnite_visual_pairing_complete_semantic_review_ready",
       "store_next": [
         "normal-source appearance references for all 2494 Fortnite LEGO Style identity pairs",
         "preserve/simplify/omit/exaggerate/mould/accessory semantic differences",
@@ -41,7 +41,11 @@
         "6,382 deterministic positive/negative control records",
         "2,494/2,494 Fortnite pairs complete with zero image misses or processing errors",
         "2,493/2,494 pairs expose at least one deterministic measurement signal in the latest pass",
-        "748 high-priority semantic review records in the latest pass"
+        "748 high-priority semantic review records in the latest pass",
+        "all 2,494 Fortnite pairs now have preferred image coverage, including 14 alias fallbacks",
+        "2,492 pairs expose deterministic measurement signals",
+        "744 high-priority semantic review records in latest run",
+        "6,382 deterministic positive/negative controls"
       ]
     },
     {
@@ -118,7 +122,7 @@
     {
       "priority": "very_high",
       "gap": "mask_headgear_decision_pairs",
-      "status": "corpus_wide_ranked_review_queue_ready_source_pairing_pending",
+      "status": "corpus_wide_ranked_review_queue_ready",
       "store_next": [
         "larger balanced route set across themes and eras",
         "matched source-to-LEGO decision pairs",
@@ -133,7 +137,17 @@
         "1,280 high-component-route candidates",
         "1,266 medium-component-route candidates",
         "11,929 low-or-generic headgear candidates",
-        "top 1,000 review queue persisted for practical manual/source-pairing work"
+        "top 1,000 review queue persisted for practical manual/source-pairing work",
+        "14,475 route candidates ranked",
+        "1,280 high-component-route candidates",
+        "1,266 medium-component-route candidates",
+        "11,929 low/generic headgear candidates",
+        "initial 15-example unresolved seed remains fully resolved"
+      ],
+      "next_actions": [
+        "review high-confidence route candidates for semantic route labels",
+        "stratify superhero masks/cowls, Star Wars helmets, CMF costume heads, nonhuman heads and transparent domes",
+        "join reviewed routes to source-to-LEGO pairs and mould reuse/new-mould evidence"
       ]
     },
     {
@@ -209,7 +223,11 @@
         "1,822 FigureRelease candidates have a unique exact HeroBloks serial match",
         "608 exact HeroBloks serial matches also have supportive name overlap",
         "only one maker-code prefix remains unresolved: DH0213",
-        "59 ID-only official wishlist entries are preserved as external catalog IDs for direct catalog resolution"
+        "59 ID-only official wishlist entries are preserved as external catalog IDs for direct catalog resolution",
+        "3,428 SourceAppearance candidates extracted from 4,607 tracker records",
+        "3,192 SourceAppearance candidates have explicit #issue syntax",
+        "65 of 67 official wishlist source records resolved from public BrickLink metadata",
+        "2 name-only wishlist targets remain intentionally ambiguous: Aquaman and Classic Bane"
       ]
     },
     {
@@ -245,9 +263,9 @@
   ],
   "durable_storage_rule": "Git stores schemas, manifests, normalized facts, crosswalks, derived features, decisions, hashes and provenance. High-volume raw imagery/video/game assets remain in approved local research storage and are referenced by stable IDs/hashes.",
   "latest_physical_census": "data/physical-census-latest.json",
-  "updated_at": "2026-09-25",
+  "updated_at": "2026-09-26",
   "latest_progress": {
-    "at": "2026-09-25T21:35:00-04:00",
+    "at": "2026-09-26T01:50:00Z",
     "physical_census_commit": "4ffbebd8c15f8be306860cd35be7c1cc90d42e68",
     "census_counts": {
       "physical_samples": 17226,
@@ -335,6 +353,37 @@
       "exact_unique_match_rate": 0.7585,
       "exact_matches_with_supportive_name_overlap": 608,
       "exact_matches_name_review_needed": 1214
+    },
+    "mask_headgear": {
+      "records": 14475,
+      "high": 1280,
+      "medium": 1266,
+      "low": 11929,
+      "status": "ranked_route_candidates_ready"
+    },
+    "source_appearance": {
+      "candidates": 3428,
+      "source_records": 4607,
+      "explicit_hash_issue": 3192,
+      "mixed_or_raw": 236
+    },
+    "official_wishlist": {
+      "source_records": 67,
+      "id_backed_resolved": 65,
+      "name_only_unresolved": 2
+    },
+    "user_reconciliation": {
+      "named_records": 11470,
+      "figure_release_candidates": 2401,
+      "unresolved_code_prefix_records": 1,
+      "unresolved_prefix": "DH"
+    },
+    "heroBloks_release_crosswalk": {
+      "release_candidates": 2402,
+      "exact_unique": 1822,
+      "collisions": 23,
+      "no_exact_match": 557,
+      "unique_exact_match_rate": 0.7585
     }
   }
 }
