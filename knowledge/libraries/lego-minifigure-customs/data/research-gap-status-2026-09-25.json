@@ -291,7 +291,9 @@
         "only QD015 remains without any exact indexed catalog match",
         "23 exact serial collisions isolated for component/release-level review",
         "all 71 official wishlist BrickLink IDs resolved from public catalog metadata with zero failures",
-        "23 serial collisions structurally classified; only 3 remain true/unresolved catalog collisions"
+        "23 serial collisions structurally classified; only 3 remain true/unresolved catalog collisions",
+        "all 23 shared-serial release collision records structurally retained; the 3 previously true/unresolved collisions now have source-backed resolutions, leaving 0 true/unresolved shared-serial collisions",
+        "71 resolved public BrickLink catalog records promoted into provenance-bearing physical-reference links (65 wishlist records and 6 gaming design-target records)"
       ]
     },
     {
@@ -529,6 +531,21 @@
       "unique_physical_release_candidate": 59,
       "physical_release_ambiguous_within_character_family": 212,
       "digital_variant_suffix_records": 166
+    },
+    "release_collision_resolution": {
+      "records": 23,
+      "source_backed_resolutions": 3,
+      "true_or_unresolved_catalog_collisions": 0,
+      "evidence_file": "data/user-entity-reconciliation/release-collision-source-evidence-2026-09-26.json",
+      "classification_summary": "data/user-entity-reconciliation/release-collision-classification-summary-latest.json"
+    },
+    "external_catalog_physical_reference_links": {
+      "records": 71,
+      "resolved": 71,
+      "unresolved": 0,
+      "wishlist_records": 65,
+      "gaming_design_target_records": 6,
+      "output": "data/user-entity-reconciliation/external-catalog-physical-reference-links-latest.jsonl"
     }
   },
   "latest_progress_2026_09_26": {
