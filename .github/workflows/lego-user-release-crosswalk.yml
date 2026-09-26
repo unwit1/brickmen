@@ -49,13 +49,17 @@ jobs:
             --herobloks-catalog "$work/herobloks.jsonl" \
             --historical-xinh-catalog "$work/downtheblocks-xinh.jsonl" \
             --output "$work/crosswalk.jsonl" \
-            --summary "$work/summary.json"
+            --summary "$work/summary.json" \
+            --unresolved-output "$work/unresolved.jsonl" \
+            --collision-output "$work/collisions.jsonl"
           dest=knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation
           bulk=knowledge/libraries/lego-minifigure-customs/data/bulk-ingestion
           cp "$work/summary.json" "$dest/heroBloks-release-crosswalk-summary-latest.json"
           cp "$work/summary.json" "$dest/release-catalog-crosswalk-summary-latest.json"
           cp "$work/crosswalk.jsonl" "$dest/heroBloks-release-crosswalk-latest.jsonl"
           cp "$work/crosswalk.jsonl" "$dest/release-catalog-crosswalk-latest.jsonl"
+          cp "$work/unresolved.jsonl" "$dest/release-catalog-unresolved-latest.jsonl"
+          cp "$work/collisions.jsonl" "$dest/release-catalog-collisions-latest.jsonl"
           cp "$work/downtheblocks-xinh-summary.json" "$bulk/downtheblocks-xinh-catalog-summary-latest.json"
           cp "$work/downtheblocks-xinh.jsonl" "$bulk/downtheblocks-xinh-catalog-latest.jsonl"
 
@@ -69,6 +73,8 @@ jobs:
             git fetch origin main
             git reset --mixed origin/main
             git add knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/*release-crosswalk-* \
+                    knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/release-catalog-unresolved-latest.jsonl \
+                    knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/release-catalog-collisions-latest.jsonl \
                     knowledge/libraries/lego-minifigure-customs/data/bulk-ingestion/downtheblocks-xinh-catalog-*
             if git diff --cached --quiet; then
               echo "No release crosswalk changes."
