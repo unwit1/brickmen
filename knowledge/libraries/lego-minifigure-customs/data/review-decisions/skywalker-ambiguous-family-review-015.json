@@ -1,0 +1,85 @@
+{
+  "schema": "skywalker-ambiguous-family-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-ambiguous-family-review-015",
+  "policy": "When automated candidates are semantically wrong despite a valid digital role identity, reject the false-positive family and use independent catalog evidence only to establish the correct broader physical family. Do not fabricate an exact release mapping from external evidence when the source asset has not been visually/component matched.",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-1fc8dd2d43be007469ba21ca",
+      "character_variant_key": "SnowTrooper",
+      "decision": "imperial_snowtrooper_role_verified_automated_candidate_set_false_positive_correct_physical_family_externally_supported_exact_release_unresolved",
+      "canonical_game_role": "Imperial Snowtrooper",
+      "rejected_automated_candidates": [
+        {
+          "fig_num": "fig-004529",
+          "catalog_name": "Corporal Rostok / Rebel Trooper with Beard and White Snow Goggles",
+          "year": 2017,
+          "reason": "Rebel trooper; 'snow' token from goggles is not Snowtrooper identity"
+        },
+        {
+          "fig_num": "fig-004193",
+          "catalog_name": "Rebel Trooper, Dark Tan Helmet and White Snow Goggles",
+          "year": 2016,
+          "reason": "Rebel trooper; snow-goggle lexical overlap is a false positive"
+        },
+        {
+          "fig_num": "fig-004530",
+          "catalog_name": "Private Kappehl / Rebel Trooper with Black Beard and White Snow Goggles",
+          "year": 2017,
+          "reason": "Rebel trooper; snow-goggle lexical overlap is a false positive"
+        }
+      ],
+      "independently_supported_physical_family_examples": [
+        {
+          "brickset_minifig": "sw0080",
+          "catalog_name": "Snowtrooper, Light Bluish Gray Hips, Black Hands (Falcon blue box)",
+          "year": 2004
+        },
+        {
+          "brickset_minifig": "sw0115",
+          "catalog_name": "Snowtrooper, Light Bluish Gray Hips, White Hands (Hoth Stormtrooper)",
+          "first_year": 2004
+        },
+        {
+          "brickset_minifig": "sw0463",
+          "catalog_name": "Snowtrooper, Light Bluish Gray Hips, Light Bluish Gray Hands, Printed Head, Torso Back Printing",
+          "year": 2013
+        }
+      ],
+      "separated_rank_family": [
+        {
+          "brickset_minifig": "sw0580",
+          "catalog_name": "Snowtrooper Commander",
+          "year": 2014
+        },
+        {
+          "brickset_minifig": "sw1177",
+          "catalog_name": "Snowtrooper Commander, Printed Legs, Dark Tan Hands",
+          "year": 2021
+        }
+      ],
+      "reason": "Every automated candidate is actually a Rebel Hoth trooper whose name contains 'Snow Goggles'; this is a lexical false-positive family, not Imperial Snowtrooper support. Independent Brickset catalog entries confirm several ordinary Imperial Snowtrooper physical generations well before the game, but the source key alone does not identify one exact print generation. Preserve the digital role, replace the false-positive family at review level, and require visual/component comparison for exact physical mapping.",
+      "systemic_pattern": "modifier_token_false_positive_snow_goggles_not_snowtrooper_identity",
+      "evidence_urls": [
+        "https://brickset.com/minifigs/category-Star-Wars/year-2004?query=snowtrooper",
+        "https://brickset.com/minifigs/in-10178-1/name-Snowtrooper",
+        "https://brickset.com/minifigs/in-75014-1/name-Snowtrooper",
+        "https://brickset.com/minifigs/category-Star-Wars/name-Snowtrooper-Commander"
+      ]
+    }
+  ],
+  "result": {
+    "reviewed": 1,
+    "false_positive_candidate_families_rejected": 1,
+    "correct_physical_family_independently_supported": 1,
+    "exact_release_visual_pending": 1,
+    "automatic_exact_artwork_equivalence_promotions": 0
+  },
+  "remaining_ambiguous_family_records_after_batch": 0,
+  "cohort_complete": true,
+  "systemic_findings": [
+    "Candidate retrieval must distinguish a role noun such as Snowtrooper from incidental modifier phrases such as 'snow goggles'.",
+    "Character/role gating should reject faction-conflicting candidates before lexical similarity scoring can make them look plausible.",
+    "External catalog evidence may repair family-level support, but exact source-to-release equivalence still requires direct source evidence."
+  ]
+}
