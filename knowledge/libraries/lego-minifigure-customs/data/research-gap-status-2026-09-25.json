@@ -60,7 +60,10 @@
         "all 2,494 Fortnite pairs now have preferred image coverage, including 14 alias fallbacks",
         "744 high-priority semantic review records in latest run",
         "Skywalker counterpart layer separates character-level identity evidence from exact outfit/version equivalence",
-        "58 strong and 31 review character counterparts are preserved without auto-promoting digital outfit/version identity"
+        "58 strong and 31 review character counterparts are preserved without auto-promoting digital outfit/version identity",
+        "6,347 Character, 7,420 Incarnation and 9,482 OutfitDesign candidates derived from user trackers",
+        "3,404 SourceAppearance candidates covering 4,607 tracker records",
+        "3,251 structured SourceAppearance references, including 3,245 explicit comic issues"
       ]
     },
     {
@@ -153,7 +156,7 @@
     {
       "priority": "very_high",
       "gap": "mask_headgear_decision_pairs",
-      "status": "corpus_wide_ranked_review_queue_ready",
+      "status": "ranked_corpus_ready_high_confidence_review_available",
       "store_next": [
         "larger balanced route set across themes and eras",
         "matched source-to-LEGO decision pairs",
@@ -173,7 +176,10 @@
         "1,280 high-component-route candidates",
         "1,266 medium-component-route candidates",
         "11,929 low/generic headgear candidates",
-        "initial 15-example unresolved seed remains fully resolved"
+        "initial 15-example unresolved seed remains fully resolved",
+        "14,289 ranked route candidates",
+        "894 high-confidence component-route candidates",
+        "1,081 medium-confidence route candidates"
       ],
       "next_actions": [
         "review high-confidence route candidates for semantic route labels",
@@ -217,7 +223,7 @@
     {
       "priority": "broad_coverage",
       "gap": "catalog_market_and_history",
-      "status": "catalog_census_release_crosswalk_and_collection_reconciliation_strong_market_history_partial",
+      "status": "release_catalog_crosswalk_near_exhaustive_market_history_partial",
       "store_next": [
         "full BrickLink/Rebrickable/LEGO/LDraw identifier crosswalk",
         "historical/retired maker archives",
@@ -274,7 +280,13 @@
         "1,475 unknown-state design targets are kept review-only",
         "user tracker hierarchy now materializes 6,347 Character candidates, 7,420 Incarnation candidates, and 9,482 OutfitDesign candidates",
         "3,251 SourceAppearance references are structurally parsed; remaining 153 are explicitly typed instead of one generic unresolved pool",
-        "refined design backlog: 3,389 true custom-design candidates, 15 acquisition wishlist items, and 1,554 representation-review records"
+        "refined design backlog: 3,389 true custom-design candidates, 15 acquisition wishlist items, and 1,554 representation-review records",
+        "2,401 FigureRelease candidates in current user corpus",
+        "1,823 unique exact current HeroBloks serial matches",
+        "553 historical exact matches from DownTheBlocks fallback catalogs",
+        "1 manual exact verification",
+        "only QD015 remains without any exact indexed catalog match",
+        "23 exact serial collisions isolated for component/release-level review"
       ]
     },
     {
@@ -513,5 +525,46 @@
       "physical_release_ambiguous_within_character_family": 212,
       "digital_variant_suffix_records": 166
     }
+  },
+  "latest_progress_2026_09_26": {
+    "at": "2026-09-26T12:38:00-04:00",
+    "user_entity_graph": {
+      "character_candidates": 6347,
+      "incarnation_candidates": 7420,
+      "outfit_design_candidates": 9482,
+      "entity_resolution_review": 1039,
+      "high_priority_entity_review": 60
+    },
+    "source_appearance": {
+      "candidates": 3404,
+      "source_records": 4607,
+      "structured": 3251,
+      "comic_issue_explicit": 3245,
+      "episode_explicit": 6,
+      "canonical_alias_groups_with_multiple_spellings": 55
+    },
+    "release_catalog": {
+      "candidates": 2401,
+      "current_herobloks_unique": 1823,
+      "historical_fallback_unique": 553,
+      "manual_exact_verified": 1,
+      "no_exact_match_any_catalog": 1,
+      "serial_collisions": 23,
+      "only_unmatched_code": "QD015"
+    },
+    "mask_headgear": {
+      "ranked_candidates": 14289,
+      "high_component_route": 894,
+      "medium_component_route": 1081,
+      "low_or_generic": 12314
+    },
+    "custom_design_existing_release": {
+      "checked": 4909,
+      "likely_existing": 54,
+      "existing_name_level": 234,
+      "name_match_variant_unresolved": 1232,
+      "no_exact_name_release_candidate": 3389
+    },
+    "provenance_note": "Generated snapshots are now computed after syncing to latest main to prevent stale-output merge conflicts."
   }
 }
