@@ -122,7 +122,8 @@ def main():
             if catalog_name:resolved+=1
             else:failed+=1
             user_name=str(q.get("name_or_note") or "").strip()
-            if user_name and catalog_name:
+            user_name_is_code = bool(re.match(r"^[A-Za-z]{2,16}\d{1,8}$", user_name)) or user_name.casefold() == item_id.casefold()
+            if user_name and catalog_name and not user_name_is_code:
                 a=set(re.findall(r"[a-z0-9]+",user_name.casefold()))
                 b=set(re.findall(r"[a-z0-9]+",catalog_name.casefold()))
                 overlap=len(a&b)/len(a|b) if a and b else 0
