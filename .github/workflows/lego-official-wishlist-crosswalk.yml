@@ -1,0 +1,72 @@
+name: LEGO Official Wishlist Crosswalk
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/lego-official-wishlist-crosswalk.yml'
+      - 'tools/knowledge/resolve_external_catalog_ids_rebrickable.py'
+      - 'knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/external-catalog-id-queue-latest.jsonl'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: lego-official-wishlist-crosswalk-main
+  cancel-in-progress: true
+
+jobs:
+  crosswalk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      DEST: knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation
+      WORK: /tmp/official-wishlist-crosswalk
+
+    steps:
+      - name: Check out Brickmen
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Resolve wishlist catalog IDs
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$WORK"
+          curl --fail --location --retry 4 --retry-delay 2 --connect-timeout 30 \
+            --user-agent "BrickmenResearch/1.0" \
+            --output "$WORK/minifigs.csv.gz" \
+            "https://cdn.rebrickable.com/media/downloads/minifigs.csv.gz"
+          python tools/knowledge/resolve_external_catalog_ids_rebrickable.py \
+            --queue "$DEST/external-catalog-id-queue-latest.jsonl" \
+            --rebrickable-minifigs "$WORK/minifigs.csv.gz" \
+            --output "$WORK/crosswalk.jsonl" \
+            --summary "$WORK/summary.json"
+          cp "$WORK/crosswalk.jsonl" "$DEST/official-wishlist-rebrickable-crosswalk-latest.jsonl"
+          cp "$WORK/summary.json" "$DEST/official-wishlist-rebrickable-crosswalk-summary-latest.json"
+
+      - name: Commit wishlist crosswalk
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "brickmen-ingestion-bot"
+          git config user.email "brickmen-ingestion-bot@users.noreply.github.com"
+          git add "$DEST/official-wishlist-rebrickable-crosswalk-latest.jsonl" \
+                  "$DEST/official-wishlist-rebrickable-crosswalk-summary-latest.json"
+          if git diff --cached --quiet; then
+            echo "No wishlist crosswalk changes."
+            exit 0
+          fi
+          git commit -m "knowledge: refresh official wishlist crosswalk"
+          for attempt in 1 2 3 4 5; do
+            git pull --rebase origin main && git push && exit 0
+            sleep $((attempt * 2))
+          done
+          exit 1
