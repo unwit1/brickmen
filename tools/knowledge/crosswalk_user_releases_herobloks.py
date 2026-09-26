@@ -38,6 +38,8 @@ def main():
     ap.add_argument("--historical-xinh-catalog",type=Path)
     ap.add_argument("--output",type=Path,required=True)
     ap.add_argument("--summary",type=Path,required=True)
+    ap.add_argument("--unresolved-output",type=Path)
+    ap.add_argument("--collision-output",type=Path)
     args=ap.parse_args()
 
     hb=defaultdict(list)
@@ -159,6 +161,10 @@ def main():
         (re.match(r"^[A-Za-z]+", str(r.get("maker_product_code") or "")) or ["" ])[0].upper()
         for r in rows if r["herobloks_match_status"]=="no_exact_serial_match"
       )),
+      "effective_unmatched_prefix_counts":dict(Counter(
+        (re.match(r"^[A-Za-z]+", str(r.get("maker_product_code") or "")) or ["" ])[0].upper()
+        for r in rows if r.get("effective_catalog_match_status")=="no_exact_serial_match_any_catalog"
+      )),
       "unmatched_sample":[{
         "maker_product_code":r.get("maker_product_code"),
         "observed_names":r.get("observed_names"),
@@ -172,6 +178,18 @@ def main():
       "status":"current_and_historical_exact_catalog_crosswalk_ready"
     }
     args.summary.write_text(json.dumps(summary,indent=2)+"\n",encoding="utf-8")
+    if args.unresolved_output:
+        args.unresolved_output.parent.mkdir(parents=True,exist_ok=True)
+        with args.unresolved_output.open("w",encoding="utf-8") as f:
+            for r in rows:
+                if r.get("effective_catalog_match_status")=="no_exact_serial_match_any_catalog":
+                    f.write(json.dumps(r,ensure_ascii=False)+"\n")
+    if args.collision_output:
+        args.collision_output.parent.mkdir(parents=True,exist_ok=True)
+        with args.collision_output.open("w",encoding="utf-8") as f:
+            for r in rows:
+                if r.get("herobloks_match_status")=="exact_serial_collision" or r.get("historical_xinh_match_status")=="historical_exact_serial_collision":
+                    f.write(json.dumps(r,ensure_ascii=False)+"\n")
     print(json.dumps(summary,indent=2))
 
 if __name__=="__main__":main()
