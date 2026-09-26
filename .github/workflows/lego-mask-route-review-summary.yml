@@ -1,0 +1,61 @@
+name: LEGO Mask Route Review Summary
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/lego-mask-route-review-summary.yml'
+      - 'tools/knowledge/summarize_mask_route_review.py'
+      - 'knowledge/libraries/lego-minifigure-customs/data/bulk-ingestion/mask-headgear-ranked-review-top1000-latest.jsonl'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: lego-mask-route-review-summary-main
+  cancel-in-progress: true
+
+jobs:
+  summarize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out Brickmen
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build compact mask-route review
+        shell: bash
+        run: |
+          set -euo pipefail
+          src=knowledge/libraries/lego-minifigure-customs/data/bulk-ingestion/mask-headgear-ranked-review-top1000-latest.jsonl
+          dest=knowledge/libraries/lego-minifigure-customs/data/bulk-ingestion
+          python tools/knowledge/summarize_mask_route_review.py \
+            --ranked "$src" \
+            --summary "$dest/mask-route-review-summary-latest.json" \
+            --review-output "$dest/mask-route-review-compact-latest.jsonl" \
+            --per-route 20
+
+      - name: Commit compact review outputs
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "brickmen-ingestion-bot"
+          git config user.email "brickmen-ingestion-bot@users.noreply.github.com"
+          git add knowledge/libraries/lego-minifigure-customs/data/bulk-ingestion/mask-route-review-*
+          if git diff --cached --quiet; then
+            echo "No mask-route review changes."
+            exit 0
+          fi
+          git commit -m "knowledge: refresh compact mask route review"
+          for attempt in 1 2 3 4; do
+            if git push; then exit 0; fi
+            git fetch origin main
+            git rebase origin/main
+          done
+          exit 1
