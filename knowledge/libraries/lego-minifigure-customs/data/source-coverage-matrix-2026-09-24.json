@@ -328,9 +328,9 @@
         "promote reviewed strict duplicate/entity candidates into canonical Character/Incarnation/OutfitDesign links",
         "review 60 highest-priority ambiguous entity groups first",
         "promote exact HeroBloks-backed FigureRelease candidates after name/version checks",
-        "resolve 59 explicit BrickLink wishlist IDs through public catalog metadata/cross-namespace mapping",
         "review and promote 230 actionable collection/design gaps",
         "keep 124 unknown-state targets non-actionable until clarified",
+        "resolve Aquaman and Bane (Classic) official-wishlist targets only when intended official variant is corroborated",
         "resolve DH0213 only with corroborating maker/catalog evidence"
       ],
       "completed_2026_09_25": {
@@ -365,7 +365,15 @@
         "figure_release_identity_conflicts": 120,
         "unresolved_maker_code_prefix_records": 1,
         "external_catalog_id_records_total": 59,
-        "hero_bloks_exact_unique_serial_matches": 1822
+        "hero_bloks_exact_unique_serial_matches": 1822,
+        "official_wishlist_source_records": 67,
+        "official_wishlist_id_backed_resolved": 65,
+        "official_wishlist_name_only_ambiguous": 2,
+        "official_wishlist_public_catalog_failures": 0,
+        "official_wishlist_ambiguous_targets": [
+          "Aquaman",
+          "Bane (Classic)"
+        ]
       }
     }
   ],
@@ -411,5 +419,27 @@
     "mask_headgear_low_or_generic": 11929,
     "fortnite_latest_records_with_measurement_signals": 2493,
     "fortnite_latest_high_priority_semantic_review": 748
+  },
+  "official_wishlist_progress_2026_09_25": {
+    "source_records": 67,
+    "id_backed_targets_resolved": 65,
+    "public_catalog_metadata_failures": 0,
+    "unresolved_name_only_targets": [
+      {
+        "target": "Aquaman",
+        "status": "ambiguous_multiple_official_variants",
+        "policy": "do_not_force_without_variant_or_era_evidence"
+      },
+      {
+        "target": "Bane (Classic)",
+        "status": "ambiguous_multiple_official_variants",
+        "policy": "bat021_and_sh0009_are_leading_classic_candidates_but_not_canonical_without_more_evidence"
+      }
+    ],
+    "sam_wilson_resolution": {
+      "user_target": "All-New Captain America / Sam Wilson / Comics",
+      "bricklink_id": "sh0208",
+      "status": "resolved"
+    }
   }
 }
