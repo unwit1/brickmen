@@ -1,0 +1,100 @@
+{
+  "schema": "skywalker-semantic-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-mixed-review-001",
+  "review_route": "mixed_semantics",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-761eae462e396b6382a81285",
+      "character_variant_key": "ObiWanKenobi_Old_Tatooine",
+      "decision": "timeline_scene_family_verified_exact_release_unresolved",
+      "family": "Older Obi-Wan Kenobi / Tatooine-era appearance",
+      "reason": "Old + Tatooine jointly identify the older/Tatooine Obi-Wan family, but multiple pre-game robe/head generations fit. Scene and age context are strong; exact physical release still requires visual/component comparison."
+    },
+    {
+      "asset_id": "skywalker-profile-acec2acd0e4ddd616ebf3e2c",
+      "character_variant_key": "ObiWan_Padawan_NoCape",
+      "decision": "timeline_family_verified_negative_component_state_pending",
+      "family": "Obi-Wan Kenobi, Padawan",
+      "state_constraint": "NoCape",
+      "reason": "Padawan verifies the character-era family. NoCape is a component-state constraint: physical candidates whose resolved inventory explicitly contains a cape should be rejected as exact configured matches, while absence of a cape in text alone is not proof."
+    },
+    {
+      "asset_id": "skywalker-profile-d147f4b76440f568c4b112fd",
+      "character_variant_key": "QuiGonJinn_Tatooine_NoCape",
+      "decision": "scene_family_verified_negative_component_state_pending",
+      "family": "Qui-Gon Jinn, Tatooine-era scene",
+      "state_constraint": "NoCape",
+      "reason": "Tatooine supplies scene context and NoCape constrains the configured state. A no-cape Qui-Gon physical family exists, but the current catalog evidence does not establish that the supported no-cape release is specifically the same Tatooine appearance. Keep scene identity and cape state separate."
+    },
+    {
+      "asset_id": "skywalker-profile-3697f6323a36a95403b82cb2",
+      "character_variant_key": "Leia_Endor_Hat",
+      "decision": "scene_family_verified_headgear_component_state_pending",
+      "family": "Princess Leia, Endor outfit",
+      "state_constraint": "Hat/headgear present",
+      "reason": "Endor reliably identifies the physical outfit family. Hat is a component/accessory state and must be resolved from headgear inventory or visual evidence rather than inferred from figure naming alone."
+    },
+    {
+      "asset_id": "skywalker-profile-03900028c015e487eec37b36",
+      "character_variant_key": "CloneTrooper_Phase2_Coruscant_Cutscene",
+      "decision": "armor_scene_family_verified_cutscene_state_exact_release_unresolved",
+      "family": "Coruscant Guard / Shock Trooper, Phase II",
+      "pregame_physical_evidence": [
+        {
+          "brickset_minifig": "sw0531",
+          "name": "Clone Shock Trooper, Coruscant Guard (Phase 2) - Large Eyes",
+          "year": 2014,
+          "set_num": "75046-1"
+        }
+      ],
+      "later_release_excluded_as_source": [
+        {
+          "brickset_minifig": "sw1305",
+          "name": "Clone Shock Trooper, Coruscant Guard (Phase 2)",
+          "year": 2023
+        }
+      ],
+      "evidence_urls": [
+        "https://brickset.com/minifigs/sw0531/clone-shock-trooper-coruscant-guard-(phase-2)-large-eyes"
+      ],
+      "reason": "Phase2 + Coruscant identifies the Coruscant Guard/Shock Trooper Phase II family. Cutscene is source-local digital context, not a physical catalog variant. The 2014 physical family predates the game; later 2023+ remakes are not source-equivalent."
+    },
+    {
+      "asset_id": "skywalker-profile-7c2369195820443032dc931f",
+      "character_variant_key": "CloneTrooper_Phase2_Utapau",
+      "decision": "armor_scene_family_verified_exact_release_unresolved",
+      "family": "212th Attack Battalion Clone Trooper, Phase II / Utapau",
+      "pregame_physical_evidence": [
+        {
+          "brickset_minifig": "sw0522",
+          "name": "212th Attack Battalion Clone Trooper, Phase 2",
+          "year": 2014,
+          "set_num": "75036-1"
+        },
+        {
+          "brickset_minifig": "sw0523",
+          "name": "212th Airborne Clone Trooper",
+          "year": 2014,
+          "set_num": "75036-1"
+        }
+      ],
+      "evidence_urls": [
+        "https://brickset.com/sets/75036-1/Utapau-Troopers",
+        "https://brickset.com/minifigs/in-75036-1"
+      ],
+      "reason": "Phase2 + Utapau strongly identifies the 212th/Utapau clone family. Multiple 212th Phase II physical generations and troop types exist, so exact release remains unresolved until the digital profile is compared visually."
+    }
+  ],
+  "result": {
+    "reviewed": 6,
+    "mixed_family_verified_exact_release_unresolved": 4,
+    "component_state_pending": 2,
+    "automatic_exact_equivalence_promotions": 0
+  },
+  "systemic_findings": [
+    "Mixed suffixes should preserve independent semantic dimensions rather than flattening them into one variant token.",
+    "Cutscene is digital provenance/context and should not be treated as a physical-version label.",
+    "Accessory state and scene/era identity can be independently supported."
+  ]
+}
