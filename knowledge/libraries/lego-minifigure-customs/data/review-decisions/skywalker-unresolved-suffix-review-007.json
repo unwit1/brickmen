@@ -1,0 +1,93 @@
+{
+  "schema": "skywalker-unresolved-suffix-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-unresolved-suffix-review-007",
+  "policy": "Map public game appearance labels to physical releases only when independent catalog evidence supports the same appearance. When a game state has no physical counterpart, retain it as a digital-only state instead of selecting the nearest same-character figure.",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-52d3f63d7a0bde62c71fddc1",
+      "character_variant_key": "Luke_Crait",
+      "decision": "digital_old_crait_variant_verified_no_exact_physical_match",
+      "canonical_game_variant": "Luke Skywalker (Old - Crait)",
+      "physical_old_luke_family_example": {
+        "brickset_minifig": "sw0887",
+        "catalog_name": "Luke Skywalker, Old",
+        "year": 2018,
+        "set_num": "75200-1",
+        "set_name": "Ahch-To Island Training"
+      },
+      "reason": "Old - Crait is an explicit game appearance. The supported old-Luke physical record is the Ahch-To version, while the current candidates contain unrelated later releases; no exact Crait physical identity is independently supported, so preserve Crait as a digital story-state.",
+      "evidence_urls": [
+        "https://www.gamespot.com/articles/all-characters-in-lego-star-wars-the-skywalker-saga/1100-6502264/",
+        "https://brickset.com/minifigs/in-75200-1/name-Luke-Skywalker"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-46978c83417f73818db2d8da",
+      "character_variant_key": "Padme_Pregnant",
+      "decision": "digital_pregnant_variant_verified_no_supported_physical_counterpart",
+      "canonical_game_variant": "Padmé (Pregnant)",
+      "physical_character_family_supported": true,
+      "exact_physical_variant_supported": false,
+      "reason": "Pregnant is an explicit game variant. The supported physical Padmé catalog records represent Episode I/II outfits and do not independently identify a pregnant Episode III release; retain this appearance as digital-only until contrary catalog evidence appears.",
+      "evidence_urls": [
+        "https://www.gamespot.com/articles/all-characters-in-lego-star-wars-the-skywalker-saga/1100-6502264/"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-ccd66aa734672826b28374ea",
+      "character_variant_key": "Rey_Jedi_Grey",
+      "decision": "digital_grey_jedi_wrap_variant_verified_physical_grey_robe_family_visual_pending",
+      "canonical_game_variant": "Rey (Grey Jedi Wrap)",
+      "physical_family_candidate": {
+        "brickset_minifig": "sw0866",
+        "catalog_name": "Rey - Light Bluish Gray Tied Robe",
+        "year": 2017
+      },
+      "reason": "The game explicitly names a Grey Jedi Wrap appearance, and Brickset has a pre-game light-bluish-gray tied-robe Rey. The color/outfit family is strongly related, but exact wrap/robe artwork equivalence still requires direct visual/component confirmation.",
+      "evidence_urls": [
+        "https://www.gamespot.com/articles/all-characters-in-lego-star-wars-the-skywalker-saga/1100-6502264/",
+        "https://brickset.com/minifigs/sw0866"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-1c5fd9f857955cef5bd76710",
+      "character_variant_key": "Finn_Bacta_Tape",
+      "decision": "bacta_variant_identity_verified_visual_pending",
+      "canonical_game_variant": "Finn (Bacta Suit)",
+      "physical_candidate": {
+        "brickset_minifig": "sw1033",
+        "catalog_name": "Finn - Bacta Suit",
+        "year": 2019
+      },
+      "reason": "The source-local key Bacta_Tape corresponds to the public game Bacta Suit identity. Brickset independently catalogs sw1033 as Finn - Bacta Suit from The Last Jedi. Variant identity is verified; exact digital texture reuse remains visual pending.",
+      "evidence_urls": [
+        "https://www.gamespot.com/articles/all-characters-in-lego-star-wars-the-skywalker-saga/1100-6502264/",
+        "https://brickset.com/minifigs/subcategory-Star-Wars-Episode-8/name-Finn"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-468dae265016b7ce412753d3",
+      "character_variant_key": "Rey_KijimiCoat",
+      "decision": "digital_kijimi_coat_variant_verified_no_named_physical_counterpart",
+      "canonical_game_variant": "Rey (Kijimi Coat)",
+      "physical_episode9_family_example": {
+        "brickset_minifig": "sw1054",
+        "catalog_name": "Rey - White Tied Robe",
+        "year": 2019
+      },
+      "reason": "Kijimi Coat is an explicit game appearance, but the supported physical Episode IX Rey is cataloged as White Tied Robe and does not independently establish the Kijimi coat state. Preserve the game outfit separately from the general Episode IX physical Rey family.",
+      "evidence_urls": [
+        "https://www.gamespot.com/articles/all-characters-in-lego-star-wars-the-skywalker-saga/1100-6502264/",
+        "https://brickset.com/minifigs/category-Star-Wars/name-Rey/subcategory-Star-Wars-Episode-9"
+      ]
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "digital_variants_no_exact_physical_counterpart": 3,
+    "physical_variant_or_family_supported_visual_pending": 2,
+    "automatic_exact_equivalence_promotions": 0
+  },
+  "remaining_unreviewed_suffix_records_after_batch": 34
+}
