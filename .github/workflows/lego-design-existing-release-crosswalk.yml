@@ -1,0 +1,65 @@
+name: LEGO Design Existing-Release Crosswalk
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/lego-design-existing-release-crosswalk.yml'
+      - 'tools/knowledge/crosswalk_custom_design_existing_releases.py'
+      - 'knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/custom-design-backlog-latest.jsonl'
+      - 'knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/figure-release-candidates-latest.jsonl'
+      - 'knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/heroBloks-release-crosswalk-latest.jsonl'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: lego-design-existing-release-crosswalk-main
+  cancel-in-progress: true
+
+jobs:
+  crosswalk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out Brickmen
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Crosswalk design targets against releases
+        shell: bash
+        run: |
+          set -euo pipefail
+          work=/tmp/design-existing-release
+          mkdir -p "$work"
+          python tools/knowledge/crosswalk_custom_design_existing_releases.py \
+            --backlog knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/custom-design-backlog-latest.jsonl \
+            --releases knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/figure-release-candidates-latest.jsonl \
+            --crosswalk knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/heroBloks-release-crosswalk-latest.jsonl \
+            --output "$work/records.jsonl" \
+            --summary "$work/summary.json"
+
+      - name: Commit crosswalk snapshots race-safely
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "brickmen-ingestion-bot"
+          git config user.email "brickmen-ingestion-bot@users.noreply.github.com"
+          git fetch origin main
+          git reset --hard origin/main
+          work=/tmp/design-existing-release
+          dest=knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation
+          cp "$work/records.jsonl" "$dest/custom-design-existing-release-crosswalk-latest.jsonl"
+          cp "$work/summary.json" "$dest/custom-design-existing-release-crosswalk-summary-latest.json"
+          git add "$dest/custom-design-existing-release-crosswalk-latest.jsonl" "$dest/custom-design-existing-release-crosswalk-summary-latest.json"
+          if git diff --cached --quiet; then
+            echo "No design-release crosswalk changes."
+            exit 0
+          fi
+          git commit -m "knowledge: refresh design-to-release crosswalk"
+          git push origin main
