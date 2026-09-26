@@ -5,7 +5,7 @@ import argparse,json,re
 from collections import defaultdict,Counter
 from pathlib import Path
 
-VERSION="mask-headgear-candidate-corpus/v1"
+VERSION="mask-headgear-candidate-corpus/v2"
 
 MASK_WORDS=("mask","masked","balaclava","visor","goggles","face cover","breathing apparatus")
 HEADGEAR_WORDS=("helmet","cowl","hood","mask","hat","headgear","headdress","dome","fishbowl","costume","hair")
@@ -23,6 +23,44 @@ def contains(name,words):
     low=str(name or "").casefold()
     return [w for w in words if w in low]
 
+def is_head_component(component):
+    name=str(component.get("part_name") or "").casefold().strip()
+    if name.startswith("headwear") or name.startswith("costume / mask"):
+        return False
+    return (
+        component.get("component_role")=="head"
+        or name.startswith("minifig head")
+        or name.startswith("minidoll head")
+        or name.startswith("head modified")
+    )
+
+def is_body_component(component):
+    name=str(component.get("part_name") or "").casefold().strip()
+    return (
+        component.get("component_role") in {"torso","legs","hips_and_legs","bodywear","weapon_or_tool"}
+        or name.startswith("torso ")
+        or name.startswith("hips ")
+        or name.startswith("legs ")
+        or name.startswith("hips and ")
+    )
+
+def is_headgear_component(component):
+    if is_head_component(component) or is_body_component(component):
+        return False
+    name=str(component.get("part_name") or "").casefold()
+    return (
+        component.get("component_role")=="headgear"
+        or any(w in name for w in ("helmet","cowl","hood","headwear","headdress","hat","costume / mask","hair "))
+    )
+
+def is_transparent_dome_geometry(component):
+    name=str(component.get("part_name") or "").casefold()
+    return (
+        "fishbowl" in name
+        or "dome" in name
+        or ("bubble" in name and any(k in name for k in ("helmet","headwear","dome")))
+    )
+
 def main():
     ap=argparse.ArgumentParser()
     ap.add_argument("--samples",type=Path,required=True)
@@ -37,8 +75,8 @@ def main():
     rows=[]; routes=Counter()
     for fig_num,s in samples.items():
         cc=comps.get(fig_num,[])
-        heads=[x for x in cc if x.get("component_role")=="head"]
-        headgear=[x for x in cc if x.get("component_role")=="headgear"]
+        heads=[x for x in cc if is_head_component(x)]
+        headgear=[x for x in cc if is_headgear_component(x)]
         head_mask=[(x,contains(x.get("part_name"),MASK_WORDS)) for x in heads]
         head_mask=[(x,w) for x,w in head_mask if w]
         hg_special=[]
@@ -56,7 +94,7 @@ def main():
             candidate_routes.append("head_print_plus_headgear")
         if hg_special:
             names=" ".join(str(x.get("part_name") or "") for x,_ in hg_special).casefold()
-            if any(w in names for w in TRANSPARENT_WORDS):
+            if any(is_transparent_dome_geometry(x) for x,_ in hg_special):
                 candidate_routes.append("transparent_dome_or_bubble_headgear")
             if any(w in names for w in COSTUME_WORDS):
                 candidate_routes.append("costume_head_cover")
@@ -80,7 +118,7 @@ def main():
           "headgear_components":[{"part_num":x.get("part_num"),"part_name":x.get("part_name"),"print_of":x.get("print_of"),"image_url":x.get("image_url")} for x in headgear],
           "evidence":evidence,
           "review_status":"candidate",
-          "policy":"Keyword/component routing is candidate evidence only; source-design-to-LEGO route labels require reviewed identity/version context.",
+          "policy":"Component routing uses defensive part-name/type checks so decorated heads and torso/leg text cannot masquerade as headgear. Routes remain candidate physical evidence only; source-design-to-LEGO route labels require reviewed identity/version context.",
           "processor_version":VERSION
         })
     rows.sort(key=lambda x:(-len(x["candidate_routes"]),x["fig_num"]))
