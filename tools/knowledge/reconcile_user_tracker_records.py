@@ -14,7 +14,7 @@ from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 
-VERSION = "user-tracker-reconciliation/v1"
+VERSION = "user-tracker-reconciliation/v2"
 
 GENERATED_COLLECTION_FILES = {
     "product-code-brand-candidates-2026-09-25.jsonl",
@@ -29,6 +29,53 @@ def load_jsonl(path: Path):
             line = line.strip()
             if line:
                 yield json.loads(line)
+
+def load_semantic_corrections(path: Path | None):
+    if not path:
+        return {}
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    out = {}
+    for row in payload.get("records") or []:
+        key = (
+            str(row.get("source_title") or ""),
+            str(row.get("source_tab") or ""),
+            int(row.get("source_row") or 0),
+        )
+        out[key] = row
+    return out
+
+def apply_semantic_correction(rec, corrections):
+    key = (
+        str(rec.get("source_title") or ""),
+        str(rec.get("source_tab") or ""),
+        int(rec.get("source_row") or 0),
+    )
+    correction = corrections.get(key)
+    if not correction:
+        return rec
+    expected = str(correction.get("expected_name") or "").strip()
+    observed = str(source_name(rec) or "").strip()
+    if expected and observed and norm(expected) != norm(observed):
+        return rec
+    out = dict(rec)
+    touched = set((correction.get("corrected_fields") or {}).keys()) | set(correction.get("clear_fields") or [])
+    original = {field: rec.get(field) for field in sorted(touched)}
+    for field, value in (correction.get("corrected_fields") or {}).items():
+        out[field] = value
+    for field in correction.get("clear_fields") or []:
+        out[field] = None
+    out["_semantic_correction"] = {
+        "source_title": correction.get("source_title"),
+        "source_tab": correction.get("source_tab"),
+        "source_row": correction.get("source_row"),
+        "original_fields": original,
+        "corrected_fields": correction.get("corrected_fields") or {},
+        "clear_fields": correction.get("clear_fields") or [],
+        "confidence": correction.get("confidence"),
+        "rationale": correction.get("rationale"),
+        "policy": "Derived semantic overlay only; original source row remains unchanged.",
+    }
+    return out
 
 def norm(value) -> str:
     s = unicodedata.normalize("NFKD", str(value or ""))
@@ -276,6 +323,7 @@ def canonical_source_stub(rec, source_path):
         "preferred": rec.get("preferred") or rec.get("best_representation"),
         "official": rec.get("official"),
         "bootleg": rec.get("bootleg"),
+        "semantic_correction": rec.get("_semantic_correction"),
     }
 
 
@@ -433,11 +481,13 @@ def main():
     ap.add_argument("--collection-dir", type=Path, required=True)
     ap.add_argument("--design-dir", type=Path, required=True)
     ap.add_argument("--crosswalk", type=Path, required=True)
+    ap.add_argument("--semantic-corrections", type=Path)
     ap.add_argument("--output-dir", type=Path, required=True)
     args = ap.parse_args()
 
     args.output_dir.mkdir(parents=True, exist_ok=True)
     _, prefix_map, alias_map = load_crosswalk(args.crosswalk)
+    semantic_corrections = load_semantic_corrections(args.semantic_corrections)
 
     input_files = []
     records = []
@@ -449,6 +499,7 @@ def main():
                 continue
             input_files.append(path)
             for rec in load_jsonl(path):
+                rec = apply_semantic_correction(rec, semantic_corrections)
                 recovered_external_id = external_catalog_id(rec)
                 if recovered_external_id:
                     external_catalog_records.append({
@@ -500,12 +551,15 @@ def main():
         identities = uniq(x.get("identity") for x in items)
         variants = uniq(x.get("variant") for x in items)
         universes = uniq(x.get("universe") for x in items)
+        identity_semantic_keys = {norm(x) for x in identities if norm(x)}
+        universe_semantic_keys = {norm(x) for x in universes if norm(x)}
+        variant_semantic_keys = {norm(x) for x in variants if norm(x)}
         ambiguity = []
-        if len(identities) > 1:
+        if len(identity_semantic_keys) > 1:
             ambiguity.append("multiple_identities")
-        if len(universes) > 1:
+        if len(universe_semantic_keys) > 1:
             ambiguity.append("multiple_universes")
-        if len(variants) > 8:
+        if len(variant_semantic_keys) > 8:
             ambiguity.append("many_variants")
         group_rows.append({
             "character_group_candidate_id": "user-name-" + re.sub(r"\s+", "-", key)[:100],
@@ -516,8 +570,11 @@ def main():
             "source_files": sources,
             "record_classes": uniq(x.get("record_class") for x in items),
             "identities": identities,
+            "identity_semantic_key_count": len(identity_semantic_keys),
             "variants": variants,
+            "variant_semantic_key_count": len(variant_semantic_keys),
             "universes": universes,
+            "universe_semantic_key_count": len(universe_semantic_keys),
             "product_codes": uniq(x.get("product_code") for x in items),
             "first_appearances": uniq(x.get("first_appearance") for x in items),
             "years": uniq(x.get("year") for x in items),
@@ -1070,6 +1127,8 @@ def main():
         "input_files": [p.name for p in input_files],
         "input_records_with_names": len(records),
         "dc_legacy_raw_rows_normalized": len(dc_normalized),
+        "semantic_correction_records_configured": len(semantic_corrections),
+        "semantic_corrections_applied": sum(bool(x.get("semantic_correction")) for x in records),
         "name_groups": len(group_rows),
         "cross_source_name_groups": sum(x["cross_source_candidate"] for x in group_rows),
         "groups_with_multiple_identities": sum("multiple_identities" in x["ambiguity_flags"] for x in group_rows),
