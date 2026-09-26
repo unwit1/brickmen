@@ -206,7 +206,10 @@
         "12,966 BricksFinder caption rows ingested",
         "264 BricksFinder historical/current reconciliation records isolated",
         "24 BricksFinder reconciliation records flagged high priority",
-        "6,382 deterministic Fortnite controls"
+        "6,382 deterministic Fortnite controls",
+        "4,909 custom-design candidates crosschecked against known release candidates",
+        "57 likely-existing variant representations and 259 name-level existing representations isolated from unnecessary design work",
+        "1,277 same-name/identity variant-unresolved cases retained for review; 3,316 have no exact known release candidate"
       ]
     },
     {
@@ -286,7 +289,9 @@
         "553 historical exact matches from DownTheBlocks fallback catalogs",
         "1 manual exact verification",
         "only QD015 remains without any exact indexed catalog match",
-        "23 exact serial collisions isolated for component/release-level review"
+        "23 exact serial collisions isolated for component/release-level review",
+        "all 71 official wishlist BrickLink IDs resolved from public catalog metadata with zero failures",
+        "23 serial collisions structurally classified; only 3 remain true/unresolved catalog collisions"
       ]
     },
     {
@@ -565,6 +570,23 @@
       "name_match_variant_unresolved": 1232,
       "no_exact_name_release_candidate": 3389
     },
-    "provenance_note": "Generated snapshots are now computed after syncing to latest main to prevent stale-output merge conflicts."
+    "provenance_note": "Generated snapshots are now computed after syncing to latest main to prevent stale-output merge conflicts.",
+    "official_wishlist_metadata": {
+      "records": 71,
+      "resolved": 71,
+      "failed": 0
+    },
+    "release_collision_classification": {
+      "records": 23,
+      "structurally_explained_or_targeted": 20,
+      "true_or_unresolved": 3
+    },
+    "custom_design_release_check_v2": {
+      "checked": 4909,
+      "likely_existing": 57,
+      "existing_name_level": 259,
+      "name_match_variant_unresolved": 1277,
+      "no_exact_name_or_identity_candidate": 3316
+    }
   }
 }
