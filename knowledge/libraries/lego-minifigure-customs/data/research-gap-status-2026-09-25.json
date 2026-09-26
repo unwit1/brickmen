@@ -112,7 +112,7 @@
     {
       "priority": "very_high",
       "gap": "official_digital_only_variants",
-      "status": "skywalker_character_counterpart_layer_ready_exact_version_resolution_pending",
+      "status": "skywalker_digital_identity_and_physical_character_family_layer_ready_version_resolution_pending",
       "store_next": [
         "Skywalker Saga bundle assets",
         "TT/legacy game models and textures",
@@ -136,14 +136,18 @@
         "58 strong character counterparts, 31 review counterparts, 288 unresolved",
         "166 digital records carry variant suffixes",
         "49 strong character matches still have physical version/outfit unresolved",
-        "23 variant-suffix records require explicit version resolution"
+        "23 variant-suffix records require explicit version resolution",
+        "245/377 Skywalker digital assets have physical named-character family support",
+        "26/377 map to generic physical role families",
+        "106/377 retain digital identity labels without physical name support",
+        "59 have unique physical release candidates by name evidence; 212 are ambiguous within a physical character family",
+        "166 carry digital variant suffixes that remain explicit version/outfit evidence"
       ],
       "next_actions": [
-        "review 58 strong character counterparts for physical release/version evidence",
-        "review 31 medium counterparts",
-        "resolve 23 variant-suffix character matches without collapsing digital-only outfits",
-        "classify 288 unresolved records into digital-only, insufficient-name-context, or missing physical catalog",
-        "derive comparable visual features from official game assets"
+        "resolve 166 digital variant suffix records against exact physical releases or preserve as digital-only variants",
+        "review 212 ambiguous-within-character-family physical mappings without collapsing versions",
+        "classify 106 no-physical-name-support identities as digital-only, missing-catalog, alias, or generic role",
+        "derive comparable visual features from official game assets and match them to physical reference captures where available"
       ]
     },
     {
@@ -267,7 +271,10 @@
         "4,909 explicit actionable custom-design candidates remain after separating acquisition/comparison cases",
         "34 missing targets already have an official/bootleg representation to compare or acquire first",
         "15 wishlist acquisition gaps remain explicit",
-        "1,475 unknown-state design targets are kept review-only"
+        "1,475 unknown-state design targets are kept review-only",
+        "user tracker hierarchy now materializes 6,347 Character candidates, 7,420 Incarnation candidates, and 9,482 OutfitDesign candidates",
+        "3,251 SourceAppearance references are structurally parsed; remaining 153 are explicitly typed instead of one generic unresolved pool",
+        "refined design backlog: 3,389 true custom-design candidates, 15 acquisition wishlist items, and 1,554 representation-review records"
       ]
     },
     {
@@ -402,13 +409,14 @@
       "status": "ranked_route_candidates_ready"
     },
     "source_appearance": {
-      "candidate_records": 3432,
+      "candidate_records": 3404,
       "source_records": 4607,
-      "structured_references": 3234,
-      "comic_issue_candidates": 3228,
+      "structured_references": 3251,
+      "comic_issue_candidates": 3245,
       "explicit_episode_candidates": 6,
-      "alias_groups_collapsed": 29,
-      "mixed_or_raw": 198
+      "non_issue_episode_records": 153,
+      "alias_groups_collapsed": 55,
+      "raw_spelling_variants_collapsed": 57
     },
     "official_wishlist": {
       "source_records": 67,
@@ -480,6 +488,30 @@
       "variant_suffix_records": 166,
       "character_match_only_version_unresolved": 49,
       "variant_suffix_requires_version_resolution": 23
+    },
+    "user_entity_hierarchy": {
+      "character_candidates": 6347,
+      "incarnation_candidates": 7420,
+      "outfit_design_candidates": 9482,
+      "characters_with_unresolved_identity_records": 5040,
+      "incarnations_with_unresolved_variant_records": 5908
+    },
+    "refined_design_backlog": {
+      "true_custom_design_candidates": 3389,
+      "acquisition_wishlist": 15,
+      "representation_review_records": 1554,
+      "representation_variant_review": 1232,
+      "existing_name_level_representation_review": 234,
+      "existing_representation_compare_or_acquire": 88
+    },
+    "skywalker_identity_family": {
+      "records": 377,
+      "physical_named_character_family_supported": 245,
+      "generic_role_family_supported": 26,
+      "digital_identity_only_no_physical_name_support": 106,
+      "unique_physical_release_candidate": 59,
+      "physical_release_ambiguous_within_character_family": 212,
+      "digital_variant_suffix_records": 166
     }
   }
 }
