@@ -1,20 +1,20 @@
 {
   "schema": "skywalker-unresolved-diagnostic-summary/v1",
   "processor_version": "skywalker-unresolved-diagnostic/v1",
-  "records": 360,
+  "records": 359,
   "counterpart_status_counts": {
     "strong_character_counterpart": 58,
-    "review_character_counterpart": 14,
+    "review_character_counterpart": 13,
     "unresolved_character_counterpart": 288
   },
   "exact_version_status_counts": {
     "character_match_only_version_unresolved": 49,
-    "variant_suffix_requires_version_resolution": 23,
+    "variant_suffix_requires_version_resolution": 22,
     "unresolved": 288
   },
   "suffix_family_counts": {
-    "no_suffix": 194,
-    "other_suffix": 121,
+    "no_suffix": 195,
+    "other_suffix": 119,
     "descriptive_variant_suffix": 30,
     "episode_or_mission_suffix": 14,
     "numeric_suffix": 1
@@ -198,10 +198,6 @@
     },
     {
       "token": "Commander",
-      "count": 1
-    },
-    {
-      "token": "Darklighter",
       "count": 1
     },
     {
@@ -418,6 +414,10 @@
     },
     {
       "token": "Friend",
+      "count": 1
+    },
+    {
+      "token": "Training",
       "count": 1
     }
   ],
@@ -759,10 +759,6 @@
       "count": 1
     },
     {
-      "base_character_key": "Biggs",
-      "count": 1
-    },
-    {
       "base_character_key": "GunganWarrior",
       "count": 1
     },
@@ -821,11 +817,15 @@
     {
       "base_character_key": "NuteGunray",
       "count": 1
+    },
+    {
+      "base_character_key": "R5D4",
+      "count": 1
     }
   ],
   "score_bands": {
     "0.90+": 58,
-    "0.80-0.899": 34,
+    "0.80-0.899": 33,
     "0.70-0.799": 69,
     "0.50-0.699": 81,
     "<0.50": 118
@@ -1647,18 +1647,6 @@
       "top_physical": "Chewbacca, Brown"
     },
     {
-      "key": "Biggs_Darklighter",
-      "base": "Biggs",
-      "suffix": [
-        "Darklighter"
-      ],
-      "score": 0.8228,
-      "margin": 0.0761,
-      "counterpart": "review_character_counterpart",
-      "version": "variant_suffix_requires_version_resolution",
-      "top_physical": "Biggs Darklighter, Yellow Skin"
-    },
-    {
       "key": "Stormtrooper_FirstOrder_Heavy",
       "base": "Stormtrooper",
       "suffix": [
@@ -1892,6 +1880,16 @@
       "counterpart": "review_character_counterpart",
       "version": "variant_suffix_requires_version_resolution",
       "top_physical": "Finn, First Order Officer Uniform Disguise"
+    },
+    {
+      "key": "PloKoon",
+      "base": "PloKoon",
+      "suffix": [],
+      "score": 0.7853,
+      "margin": 0.0133,
+      "counterpart": "unresolved_character_counterpart",
+      "version": "unresolved",
+      "top_physical": "Plo Koon, Printed Legs"
     }
   ],
   "status": "unresolved_diagnostic_ready"
