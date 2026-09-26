@@ -9,6 +9,8 @@ on:
       - 'tools/knowledge/rank_mask_headgear_candidates.py'
       - 'tools/knowledge/build_mask_headgear_candidate_corpus.py'
       - 'tools/knowledge/build_skywalker_crosswalk_review.py'
+      - 'tools/knowledge/build_skywalker_physical_crosswalk_candidates.py'
+      - 'tools/knowledge/skywalker_identity_keys.py'
       - 'knowledge/libraries/lego-minifigure-customs/data/bulk-ingestion/skywalker-physical-crosswalk-candidates-latest.jsonl'
 
 permissions:
@@ -37,20 +39,6 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Rebuild Skywalker grouped review queues
-        shell: bash
-        run: |
-          set -euo pipefail
-          mkdir -p "$WORK/skywalker"
-          python tools/knowledge/build_skywalker_crosswalk_review.py \
-            --candidates "$DEST/skywalker-physical-crosswalk-candidates-latest.jsonl" \
-            --output "$WORK/skywalker/records.jsonl" \
-            --groups-output "$WORK/skywalker/groups.jsonl" \
-            --summary "$WORK/skywalker/summary.json"
-          cp "$WORK/skywalker/summary.json" "$DEST/skywalker-crosswalk-review-summary-latest.json"
-          cp "$WORK/skywalker/records.jsonl" "$DEST/skywalker-crosswalk-review-queue-latest.jsonl"
-          cp "$WORK/skywalker/groups.jsonl" "$DEST/skywalker-crosswalk-review-groups-latest.jsonl"
-
       - name: Build minimal Rebrickable physical census
         shell: bash
         run: |
@@ -67,6 +55,33 @@ jobs:
           done
           python tools/knowledge/ingest_lego_minifigure_references.py \
             --rebrickable-dir "$raw" --output-dir "$out"
+
+
+      - name: Rebuild Skywalker physical counterpart candidates
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$WORK/skywalker"
+          python tools/knowledge/build_skywalker_physical_crosswalk_candidates.py \
+            --skywalker-census knowledge/libraries/lego-minifigure-customs/data/skywalker-saga-profile-icon-census-2026-09-25.json \
+            --physical-samples "$WORK/rebrickable/output/physical_samples.jsonl" \
+            --output "$WORK/skywalker/candidates.jsonl" \
+            --summary "$WORK/skywalker/candidate-summary.json"
+          cp "$WORK/skywalker/candidates.jsonl" "$DEST/skywalker-physical-crosswalk-candidates-latest.jsonl"
+          cp "$WORK/skywalker/candidate-summary.json" "$DEST/skywalker-physical-crosswalk-summary-latest.json"
+
+      - name: Rebuild Skywalker grouped review queues
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tools/knowledge/build_skywalker_crosswalk_review.py \
+            --candidates "$WORK/skywalker/candidates.jsonl" \
+            --output "$WORK/skywalker/records.jsonl" \
+            --groups-output "$WORK/skywalker/groups.jsonl" \
+            --summary "$WORK/skywalker/summary.json"
+          cp "$WORK/skywalker/summary.json" "$DEST/skywalker-crosswalk-review-summary-latest.json"
+          cp "$WORK/skywalker/records.jsonl" "$DEST/skywalker-crosswalk-review-queue-latest.jsonl"
+          cp "$WORK/skywalker/groups.jsonl" "$DEST/skywalker-crosswalk-review-groups-latest.jsonl"
 
       - name: Rebuild ranked mask and headgear review queue
         shell: bash
@@ -104,7 +119,9 @@ jobs:
           set -euo pipefail
           git config user.name "brickmen-ingestion-bot"
           git config user.email "brickmen-ingestion-bot@users.noreply.github.com"
-          git add "$DEST/skywalker-crosswalk-review-summary-latest.json" \
+          git add "$DEST/skywalker-physical-crosswalk-candidates-latest.jsonl" \
+                  "$DEST/skywalker-physical-crosswalk-summary-latest.json" \
+                  "$DEST/skywalker-crosswalk-review-summary-latest.json" \
                   "$DEST/skywalker-crosswalk-review-queue-latest.jsonl" \
                   "$DEST/skywalker-crosswalk-review-groups-latest.jsonl" \
                   "$DEST/mask-headgear-ranked-summary-latest.json" \
