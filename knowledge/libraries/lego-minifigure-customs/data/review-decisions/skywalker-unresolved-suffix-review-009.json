@@ -1,0 +1,89 @@
+{
+  "schema": "skywalker-unresolved-suffix-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-unresolved-suffix-review-009",
+  "policy": "Source-local selectors may be more granular than public game labels. Preserve the public game identity, retain opaque scene/state tokens as provenance, and only select a physical release when independent catalog evidence agrees with the distinguishing variant.",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-6404ce22ebc2feead2e04fcf",
+      "character_variant_key": "Padme_Handmaiden_Theed",
+      "decision": "handmaiden_family_verified_theed_selector_unresolved_no_exact_physical_match",
+      "canonical_game_family": "Padmé (Handmaiden - Orange)",
+      "source_local_selector": "Theed",
+      "exact_physical_variant_supported": false,
+      "reason": "The public game roster exposes Padmé's Handmaiden - Orange appearance, but not a distinct Theed-named physical variant. Treat Theed as a source-local scene selector inside the handmaiden family and do not substitute Queen Amidala or generic Padmé catalog figures.",
+      "evidence_urls": [
+        "https://gamefaqs.gamespot.com/ps4/265996-lego-star-wars-the-skywalker-saga/faqs/79882/jedi-and-heroes"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-eb5f10ec9d806e3037892f13",
+      "character_variant_key": "Anakin_Boy_Starfighter",
+      "decision": "episode1_child_starfighter_family_verified_visual_pending",
+      "canonical_game_family": "Anakin Skywalker (Episode I)",
+      "source_local_state": "Boy - Starfighter",
+      "physical_candidate": {
+        "brickset_minifig": "sw0640",
+        "catalog_name": "Anakin Skywalker - Short Legs, Short Tousled Hair, Belt with Pouches on Back",
+        "year": 2015,
+        "sets": [
+          "75092-1",
+          "75096-1"
+        ]
+      },
+      "reason": "The source key is a child-Anakin state with an explicit Starfighter cue. sw0640 is an Episode I child Anakin and appears in 75092 Naboo Starfighter, making it a strong physical family candidate; exact texture/headgear state remains visual pending.",
+      "evidence_urls": [
+        "https://brickset.com/minifigs/in-75092-1/year-2015",
+        "https://brickset.com/sets?query=75092"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-f16f02af43aa6ecd3a2312f2",
+      "character_variant_key": "Finn_FN2187",
+      "decision": "variant_identity_verified_visual_pending",
+      "canonical_game_variant": "Finn (FN-2187)",
+      "physical_candidate": {
+        "brickset_minifig": "sw0716",
+        "catalog_name": "Finn - First Order Stormtrooper (FN-2187)",
+        "year": 2016,
+        "set_num": "30605-1"
+      },
+      "reason": "FN-2187 is a character/state identifier rather than a loose appearance cue, and Brickset independently catalogs sw0716 with the same FN-2187 identity. Variant identity is verified; exact game texture equivalence remains visual pending.",
+      "evidence_urls": [
+        "https://brickset.com/minifigs/in-30605-1",
+        "https://brickset.com/sets/theme-STAR-WARS/year-2016/ratings/filter-HasImage"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-28244d279622960b43850469",
+      "character_variant_key": "Leia_JumpSuit",
+      "decision": "source_local_outfit_state_physical_version_unresolved",
+      "canonical_character": "Leia Organa",
+      "source_local_state": "JumpSuit",
+      "physical_character_family_supported": true,
+      "exact_physical_variant_supported": false,
+      "reason": "JumpSuit is not surfaced as a distinct public roster label in the verified game list and the current physical candidates span Endor, white-robe, Boushh and Cloud City outfits. Preserve the source-local outfit state without guessing which Leia release it represents."
+    },
+    {
+      "asset_id": "skywalker-profile-7ec194c93893dac9253728a7",
+      "character_variant_key": "Leia_Ep9_Flashback",
+      "decision": "training_flashback_game_variant_verified_no_exact_physical_match",
+      "canonical_game_variant": "Leia (Training Flashback)",
+      "source_local_timeline_hint": "Ep9",
+      "physical_character_family_supported": true,
+      "exact_physical_variant_supported": false,
+      "reason": "The public game roster contains Leia (Training Flashback); the source-local Ep9 token records the story framing of that flashback. Current pre-game physical candidates are ordinary Hoth/Endor/white-robed Leia releases, not a training-flashback minifigure, so preserve this as a digital story-state.",
+      "evidence_urls": [
+        "https://www.gamespot.com/articles/all-characters-in-lego-star-wars-the-skywalker-saga/1100-6502264/",
+        "https://www.youtube.com/watch?v=zhHuRyHEYnc"
+      ]
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "physical_variant_identity_or_family_supported_visual_pending": 2,
+    "digital_or_source_local_states_no_exact_physical_match": 3,
+    "automatic_exact_equivalence_promotions": 0
+  },
+  "remaining_unreviewed_suffix_records_after_batch": 24
+}
