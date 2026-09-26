@@ -1,18 +1,22 @@
 {
-  "schema": "user-release-herobloks-crosswalk-summary/v1",
-  "processor_version": "user-release-herobloks-crosswalk/v1",
+  "schema": "user-release-multicatalog-crosswalk-summary/v2",
+  "processor_version": "user-release-multicatalog-crosswalk/v2",
   "release_candidates": 2401,
   "match_status_counts": {
-    "no_exact_serial_match": 556,
-    "exact_unique_serial_match": 1822,
+    "exact_unique_serial_match": 1823,
+    "no_exact_serial_match": 555,
     "exact_serial_collision": 23
   },
-  "unique_exact_match_rate": 0.7589,
+  "historical_fallback_status_counts": {
+    "no_historical_exact_serial_match": 2401
+  },
+  "historical_fallback_unique_matches": 0,
+  "no_exact_match_any_catalog": 555,
+  "unique_exact_match_rate": 0.7593,
   "unique_exact_matches_with_name_support": 608,
-  "unique_exact_matches_name_needs_review": 1214,
+  "unique_exact_matches_name_needs_review": 1215,
   "unmatched_prefix_counts": {
     "DA": 1,
-    "DH": 1,
     "GH": 8,
     "K": 8,
     "KF": 33,
@@ -35,13 +39,6 @@
           "relationship_note": "DA is a stable HeroBloks brand-facet/prefix observation. Manufacturer/factory identity is not inferred."
         }
       ]
-    },
-    {
-      "maker_product_code": "DH0213",
-      "observed_names": [
-        "Batman (New 52)"
-      ],
-      "prefix_maker_candidates": []
     },
     {
       "maker_product_code": "GH0041",
@@ -1328,6 +1325,20 @@
           "relationship_note": null
         }
       ]
+    },
+    {
+      "maker_product_code": "XH1018",
+      "observed_names": [
+        "Riddler",
+        "Riddler (Arkham)"
+      ],
+      "prefix_maker_candidates": [
+        {
+          "brand": "XINH",
+          "confidence": "catalog-high",
+          "relationship_note": null
+        }
+      ]
     }
   ],
   "collision_sample": [
@@ -2020,5 +2031,5 @@
       ]
     }
   ],
-  "status": "exact_catalog_crosswalk_ready"
+  "status": "current_and_historical_exact_catalog_crosswalk_ready"
 }
