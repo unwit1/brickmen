@@ -1,0 +1,107 @@
+{
+  "schema": "skywalker-unresolved-suffix-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-unresolved-suffix-review-012",
+  "policy": "Use public game names plus independent physical catalog costume, timeline, set-context, and component evidence. Source-local internal tokens may suggest a semantic alias but remain provisional when the public game identity is not directly encoded.",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-f9676c7e7de30ab0ce402f30",
+      "character_variant_key": "Palpatine_Grey",
+      "decision": "chancellor_grey_variant_identity_verified_visual_pending",
+      "canonical_game_variant": "Palpatine (Chancellor - Grey)",
+      "physical_candidate": {
+        "brickset_minifig": "sw0540",
+        "catalog_name": "Chancellor Palpatine - Dark Bluish Gray Outfit, White Combed Hair",
+        "year": 2014,
+        "set_num": "75044-1"
+      },
+      "reason": "The public game variant and physical catalog independently agree on Chancellor Palpatine in a grey/dark-bluish-gray outfit. Variant identity is strongly supported; exact digital print reuse remains visual pending.",
+      "evidence_urls": [
+        "https://legogames.fandom.com/wiki/Palpatine_(Chancellor_-_Grey)",
+        "https://brickset.com/minifigs/sw0540/chancellor-palpatine-dark-bluish-gray-outfit-white-combed-hair"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-60077859adb6d77d3c993bf4",
+      "character_variant_key": "Sithtrooper_Rocket",
+      "decision": "source_local_rocket_role_probable_sith_jet_trooper_family_visual_confirmation_required",
+      "source_local_state": "Rocket",
+      "probable_public_game_identity": "Sith Jet Trooper",
+      "physical_family_candidate": {
+        "brickset_minifig": "sw1075",
+        "catalog_name": "Sith Jet Trooper",
+        "year": 2020,
+        "set_num": "75266-1"
+      },
+      "confidence": "medium_high_semantic_not_exact",
+      "reason": "The public game distinguishes Sith Trooper and Sith Jet Trooper, and the physical catalog has sw1075 Sith Jet Trooper. The internal Rocket token plausibly refers to the jet/rocket-equipped role, but without direct asset visual evidence it should not silently rewrite the identity to Sith Jet Trooper.",
+      "evidence_urls": [
+        "https://gamefaqs.gamespot.com/ps4/265996-lego-star-wars-the-skywalker-saga/faqs/79882/villains-and-dark-siders",
+        "https://brickset.com/minifigs/sw1075/sith-jet-trooper"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-e8589eeb72496af74f6075f1",
+      "character_variant_key": "KaydelConnix_Ep9",
+      "decision": "episode9_variant_identity_verified_visual_pending",
+      "canonical_game_variant": "Kaydel Connix (Episode IX)",
+      "physical_candidate": {
+        "brickset_minifig": "sw1048",
+        "catalog_name": "Lieutenant Connix",
+        "character_name": "Lieutenant Kaydel Ko Connix",
+        "year": 2019,
+        "set_num": "75248-1"
+      },
+      "reason": "The game explicitly distinguishes Kaydel Connix (Episode IX), and sw1048 is independently cataloged as Lieutenant Kaydel Ko Connix in a 2019 Episode IX set. Timeline/identity is verified; exact artwork equivalence remains visual pending.",
+      "evidence_urls": [
+        "https://www.gamespot.com/articles/all-characters-in-lego-star-wars-the-skywalker-saga/1100-6502264/",
+        "https://brickset.com/minifigs/category-Star-Wars/year-2019/name-Lieutenant-Kaydel-Ko-Connix"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-7a1173946893ef8c53b7be2e",
+      "character_variant_key": "Leia_EwokVillage",
+      "decision": "ewok_village_scene_variant_identity_verified_visual_pending",
+      "canonical_game_variant": "Leia (Ewok Village)",
+      "physical_candidate": {
+        "brickset_minifig": "sw0504",
+        "catalog_name": "Princess Leia - Endor Outfit, Dark Tan Robe and Skirt, Loose Hair",
+        "year": 2013,
+        "set_num": "10236-1",
+        "set_name": "Ewok Village"
+      },
+      "reason": "The game explicitly names Leia (Ewok Village), and sw0504 is the Leia minifigure physically included in 10236 Ewok Village. Scene context and character identity strongly agree; exact digital decoration equivalence remains visual pending.",
+      "evidence_urls": [
+        "https://www.gamespot.com/articles/all-characters-in-lego-star-wars-the-skywalker-saga/1100-6502264/",
+        "https://brickset.com/minifigs/in-10236-1/name-Princess-Leia"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-753a4a8af2be68114ff5ee1c",
+      "character_variant_key": "Palpatine_Young_Scarred",
+      "decision": "scarred_chancellor_family_verified_source_local_young_selector_visual_pending",
+      "canonical_game_variant": "Palpatine (Scarred)",
+      "source_local_state": "Young",
+      "physical_candidate": {
+        "bricklink_minifig": "sw0418",
+        "catalog_name": "Chancellor Palpatine - Dark Red Outfit, Legs, Tan Hair",
+        "year": 2012,
+        "set_num": "9526-1",
+        "head_component": "3626pb0808",
+        "head_description": "Dual-sided head with wrinkles/sunken yellow eyes and normal black-eye side"
+      },
+      "reason": "The game has a Palpatine (Scarred) state. sw0418 is a pre-game Chancellor-era Palpatine with tan hair and a dual-sided head explicitly including a wrinkled, sunken-yellow-eye face, making it a strong scarred-Chancellor family candidate. The source-local Young selector and exact chosen face side still require visual confirmation.",
+      "evidence_urls": [
+        "https://www.gamespot.com/articles/all-characters-in-lego-star-wars-the-skywalker-saga/1100-6502264/",
+        "https://www.bricklink.com/catalogItemInv.asp?M=sw0418"
+      ]
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "variant_or_scene_identity_verified_visual_pending": 4,
+    "provisional_semantic_role_mapping_visual_required": 1,
+    "automatic_exact_equivalence_promotions": 0
+  },
+  "remaining_unreviewed_suffix_records_after_batch": 5
+}
