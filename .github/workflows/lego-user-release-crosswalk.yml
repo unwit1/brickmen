@@ -51,7 +51,7 @@ jobs:
             --output "$work/downtheblocks-koruit-kdl.jsonl" --summary "$work/downtheblocks-koruit-kdl-summary.json"
           python tools/knowledge/snapshot_downtheblocks_serial_catalog.py \
             --source-url "https://downtheblocks.com/kopf-minifigure-set-list-database/" \
-            --catalog-id "downtheblocks_kopf_chengyi" --brand-label "Kopf / Chengyi" --prefix-regex "KF|CY" \
+            --catalog-id "downtheblocks_kopf_chengyi" --brand-label "Kopf / Chengyi / DA" --prefix-regex "KF|CY|DA" \
             --output "$work/downtheblocks-kopf.jsonl" --summary "$work/downtheblocks-kopf-summary.json"
           python tools/knowledge/snapshot_downtheblocks_serial_catalog.py \
             --source-url "https://downtheblocks.com/pogo-minifigure-set-list-database/" \
