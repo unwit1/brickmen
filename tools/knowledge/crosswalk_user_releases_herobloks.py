@@ -9,7 +9,7 @@ import argparse,json,re,unicodedata
 from collections import Counter,defaultdict
 from pathlib import Path
 
-VERSION="user-release-multicatalog-crosswalk/v2"
+VERSION="user-release-multicatalog-crosswalk/v3"
 
 def load_jsonl(path):
     with Path(path).open("r",encoding="utf-8") as f:
@@ -36,6 +36,7 @@ def main():
     ap.add_argument("--release-candidates",type=Path,required=True)
     ap.add_argument("--herobloks-catalog",type=Path,required=True)
     ap.add_argument("--historical-xinh-catalog",type=Path)
+    ap.add_argument("--fallback-catalog",action="append",default=[],help="catalog_id=path; may be repeated")
     ap.add_argument("--output",type=Path,required=True)
     ap.add_argument("--summary",type=Path,required=True)
     ap.add_argument("--unresolved-output",type=Path)
@@ -49,14 +50,26 @@ def main():
         if key:
             hb[key].append(r)
 
-    historical=defaultdict(list)
+    fallback_catalogs={}
     if args.historical_xinh_catalog and args.historical_xinh_catalog.exists():
-        for r in load_jsonl(args.historical_xinh_catalog):
-            key=code_norm(r.get("serial"))
-            if key:
-                historical[key].append(r)
+        fallback_catalogs["downtheblocks_xinh_g"]=args.historical_xinh_catalog
+    for spec in args.fallback_catalog:
+        if "=" not in spec:
+            raise SystemExit(f"--fallback-catalog requires catalog_id=path, got {spec!r}")
+        catalog_id,path_text=spec.split("=",1)
+        path=Path(path_text)
+        if path.exists():
+            fallback_catalogs[catalog_id]=path
 
-    rows=[];bands=Counter();historical_bands=Counter()
+    historical_by_catalog={}
+    for catalog_id,path in fallback_catalogs.items():
+        index=defaultdict(list)
+        for r in load_jsonl(path):
+            key=code_norm(r.get("serial"))
+            if key:index[key].append(r)
+        historical_by_catalog[catalog_id]=index
+
+    rows=[];bands=Counter();historical_bands=Counter();fallback_catalog_hit_counts=Counter()
     for rel in load_jsonl(args.release_candidates):
         code=rel.get("maker_product_code")
         key=code_norm(code)
@@ -83,23 +96,40 @@ def main():
             band="no_exact_serial_match"
         bands[band]+=1
 
-        historical_matches=historical.get(key,[]) if band=="no_exact_serial_match" else []
         historical_compact=[]
-        for m in historical_matches:
-            hname=m.get("historical_name")
-            overlap=max([token_overlap(n,hname) for n in observed_names] or [0.0]) if hname else 0.0
-            historical_compact.append({
-              "serial":m.get("serial"),
-              "historical_name":hname,
-              "name_status":m.get("name_status"),
-              "source_url":m.get("source_url"),
-              "source_updated_label":m.get("source_updated_label"),
-              "name_token_overlap_max":overlap
-            })
-        if len(historical_matches)==1:
-            historical_status="historical_exact_unique_serial_match"
-        elif len(historical_matches)>1:
+        historical_total=0
+        historical_catalog_status={}
+        if band=="no_exact_serial_match":
+            for catalog_id,index in historical_by_catalog.items():
+                cat_matches=index.get(key,[])
+                historical_total+=len(cat_matches)
+                if len(cat_matches)==1:
+                    cat_status="exact_unique_serial_match"
+                    fallback_catalog_hit_counts[catalog_id]+=1
+                elif len(cat_matches)>1:
+                    cat_status="exact_serial_collision"
+                else:
+                    cat_status="no_exact_serial_match"
+                historical_catalog_status[catalog_id]=cat_status
+                for m in cat_matches:
+                    hname=m.get("historical_name")
+                    overlap=max([token_overlap(n,hname) for n in observed_names] or [0.0]) if hname else 0.0
+                    historical_compact.append({
+                      "catalog_id":catalog_id,
+                      "serial":m.get("serial"),
+                      "historical_name":hname,
+                      "historical_names":m.get("historical_names"),
+                      "name_status":m.get("name_status"),
+                      "source_url":m.get("source_url"),
+                      "source_updated_label":m.get("source_updated_label"),
+                      "name_token_overlap_max":overlap
+                    })
+        unique_catalog_matches=[cid for cid,status in historical_catalog_status.items() if status=="exact_unique_serial_match"]
+        collision_catalog_matches=[cid for cid,status in historical_catalog_status.items() if status=="exact_serial_collision"]
+        if collision_catalog_matches:
             historical_status="historical_exact_serial_collision"
+        elif unique_catalog_matches:
+            historical_status="historical_exact_unique_serial_match"
         else:
             historical_status="no_historical_exact_serial_match"
         historical_bands[historical_status]+=1
@@ -119,6 +149,8 @@ def main():
           "herobloks_matches":compact,
           "historical_xinh_match_status":historical_status,
           "historical_xinh_matches":historical_compact,
+          "fallback_catalog_statuses":historical_catalog_status,
+          "fallback_catalog_matches":historical_compact,
           "effective_catalog_match_status":effective_status,
           "catalog_identity_consistency":(
             "name_supportive" if compact and max(x["name_token_overlap_max"] for x in compact)>=0.35
@@ -142,6 +174,8 @@ def main():
       "release_candidates":len(rows),
       "match_status_counts":dict(bands),
       "historical_fallback_status_counts":dict(historical_bands),
+      "fallback_catalogs_loaded":sorted(fallback_catalogs),
+      "fallback_catalog_unique_hit_counts":dict(fallback_catalog_hit_counts),
       "historical_fallback_unique_matches":sum(
         r.get("historical_xinh_match_status")=="historical_exact_unique_serial_match" for r in rows
       ),
