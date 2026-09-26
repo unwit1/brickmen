@@ -12,7 +12,7 @@ from difflib import SequenceMatcher
 from pathlib import Path
 from skywalker_identity_keys import parse_identity_key
 
-VERSION="skywalker-physical-crosswalk-candidates/v3"
+VERSION="skywalker-physical-crosswalk-candidates/v4"
 STOP={
     "lego","star","wars","minifig","minifigure","figure","with","and","the","a","an",
     "episode","ep","new","version","variant","character","profile","icons","icon",
@@ -142,18 +142,50 @@ def score(key,name):
         "core_token_hit":round(core_hit,4),
     }
 
+def load_component_summaries(path):
+    if not path:return {}
+    by_fig={}
+    for row in load_jsonl(path):
+        fig=str(row.get("fig_num") or "")
+        if not fig:continue
+        bucket=by_fig.setdefault(fig,{
+            "resolved_component_count":0,
+            "role_counts":{},
+            "accessory_components":[],
+        })
+        bucket["resolved_component_count"]+=1
+        role=str(row.get("component_role") or "other")
+        bucket["role_counts"][role]=bucket["role_counts"].get(role,0)+1
+        if role in {"headgear","bodywear"}:
+            bucket["accessory_components"].append({
+                "part_num":row.get("part_num"),
+                "part_name":row.get("part_name"),
+                "color_name":row.get("color_name"),
+                "quantity":row.get("quantity"),
+                "is_spare":row.get("is_spare"),
+                "component_role":role,
+            })
+    for bucket in by_fig.values():
+        bucket["accessory_components"]=sorted(
+            bucket["accessory_components"],
+            key=lambda x:(x.get("component_role") or "",x.get("part_name") or "",x.get("part_num") or "")
+        )
+    return by_fig
+
 def main():
     ap=argparse.ArgumentParser()
     ap.add_argument("--skywalker-census",type=Path,required=True)
     ap.add_argument("--physical-samples",type=Path,required=True)
     ap.add_argument("--output",type=Path,required=True)
     ap.add_argument("--summary",type=Path,required=True)
+    ap.add_argument("--components",type=Path)
     ap.add_argument("--top-k",type=int,default=5)
     args=ap.parse_args()
 
     census=json.loads(args.skywalker_census.read_text(encoding="utf-8"))
     digital=census.get("records") or []
     physical=[x for x in load_jsonl(args.physical_samples) if is_star_wars(x)]
+    component_summaries=load_component_summaries(args.components)
     rows=[];bands=Counter()
     for d in digital:
         key=d.get("character_variant_key") or d.get("filename")
@@ -187,6 +219,7 @@ def main():
                 "raw_name_score":sc,
                 "catalog_image_url":p.get("catalog_image_url"),
                 "set_occurrences":p.get("set_occurrences"),
+                "component_inventory_summary":component_summaries.get(str(p.get("fig_num") or "")),
                 "evidence":why,
             })
         candidates.sort(key=lambda x:(-x["score"],x["fig_num"] or ""))
@@ -224,6 +257,7 @@ def main():
         "records_written":len(rows),
         "confidence_bands":dict(bands),
         "top_k":args.top_k,
+        "component_inventory_summaries_loaded":len(component_summaries),
         "status":"candidate_crosswalk_requires_independent_confirmation"
     }
     args.summary.write_text(json.dumps(summary,indent=2)+"\n",encoding="utf-8")
