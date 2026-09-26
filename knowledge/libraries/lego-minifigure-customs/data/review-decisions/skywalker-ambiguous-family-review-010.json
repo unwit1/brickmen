@@ -1,0 +1,190 @@
+{
+  "schema": "skywalker-ambiguous-family-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-ambiguous-family-review-010",
+  "policy": "Use release timing and narrative-era labels to exclude physical redesigns that postdate the game, while keeping multiple pre-game component/print generations visual-pending. Treat catalog entries from the same set and same character that differ only by mold revision as one physical release family rather than distinct narrative variants.",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-bb72660808eb6e32afc52208",
+      "character_variant_key": "FifthBrother",
+      "decision": "character_identity_verified_pre_game_rebels_physical_family_post_game_live_action_release_rejected",
+      "canonical_subject": "Fifth Brother",
+      "physical_candidate": {
+        "fig_num": "fig-004205",
+        "catalog_name": "Imperial Inquisitor Fifth Brother - Dark Bluish Grey",
+        "year": 2016,
+        "set_num": "75157-1",
+        "era_context": "Rebels"
+      },
+      "rejected_post_game_candidate": {
+        "fig_num": "fig-012938",
+        "catalog_name": "Imperial Inquisitor Fifth Brother - Black",
+        "year": 2022,
+        "set_num": "75336-1",
+        "launch_date": "2022-08-01",
+        "era_context": "Obi-Wan Kenobi live-action"
+      },
+      "reason": "The 2016 Rebels Fifth Brother is the only supported physical release that predates the April 2022 game. The live-action black-uniform Fifth Brother in 75336 launched on 1 August 2022, so it cannot establish source equivalence for the game asset. The pre-game Rebels family is verified; exact artwork reuse remains visual pending.",
+      "evidence_urls": [
+        "https://brickset.com/sets/75336-1/Inquisitor-Transport-Scythe",
+        "https://www.lego.com/en-us/aboutus/news/2022/april/lego-star-wars-the-skywalker-saga"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-b1719872d6ea372f4d6f66be",
+      "character_variant_key": "R4P17",
+      "decision": "character_identity_verified_pre_game_rectangle_color_generations_visual_pending_post_launch_2022_revision_rejected",
+      "canonical_subject": "R4-P17",
+      "plausible_pre_game_physical_candidates": [
+        {
+          "fig_num": "fig-003828",
+          "catalog_name": "Astromech Droid, R4-P17, Blue Rectangles",
+          "year": 2013,
+          "set_num": "75006-1"
+        },
+        {
+          "fig_num": "fig-004184",
+          "catalog_name": "Astromech Droid, R4-P17, Yellow/Orange Rectangles",
+          "first_year": 2016,
+          "sets": [
+            "75135-1",
+            "75191-1"
+          ]
+        }
+      ],
+      "rejected_post_launch_candidate": {
+        "fig_num": "fig-012921",
+        "catalog_name": "Astromech Droid, R4-P17, Light Blue Rectangles",
+        "year": 2022,
+        "set_num": "75333-1",
+        "launch_date": "2022-08-01"
+      },
+      "reason": "The 2013 blue-rectangle and 2016/2017 yellow-orange-rectangle R4-P17 versions both predate the game. The light-blue-rectangle revision in 75333 launched in August 2022, four months after the game. Exact pre-game rectangle/printing generation remains visual pending.",
+      "evidence_urls": [
+        "https://brickset.com/sets/75333-1/Obi-Wan-Kenobi-s-Jedi-Starfighter",
+        "https://www.lego.com/en-us/aboutus/news/2022/april/lego-star-wars-the-skywalker-saga"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-0974e515747f768265f80f2d",
+      "character_variant_key": "JarJar",
+      "decision": "standard_jar_jar_identity_verified_two_pre_game_torso_head_generations_visual_pending_darth_novelty_rejected",
+      "canonical_subject": "Jar Jar Binks",
+      "plausible_pre_game_physical_candidates": [
+        {
+          "fig_num": "fig-003613",
+          "catalog_name": "Jar Jar Binks, Plain Head, Tan Torso",
+          "first_year": 1999,
+          "sets": [
+            "7121-1",
+            "7161-1",
+            "7171-1",
+            "7115-1",
+            "7159-1"
+          ]
+        },
+        {
+          "fig_num": "fig-003793",
+          "catalog_name": "Jar Jar Binks, Dark Tan Torso",
+          "first_year": 2011,
+          "sets": [
+            "7929-1",
+            "853414-1",
+            "9499-1",
+            "75080-1"
+          ]
+        }
+      ],
+      "rejected_post_game_novelty_candidate": {
+        "fig_num": "fig-015337",
+        "catalog_name": "Darth Jar Jar",
+        "year": 2024,
+        "set_num": "75389-1"
+      },
+      "reason": "The source key is ordinary Jar Jar, not the later Darth Jar Jar novelty/alternate-universe figure. Two ordinary physical design generations predate the game, differing in head/torso treatment, and require visual comparison for exact mapping.",
+      "evidence_urls": [
+        "https://brickset.com/minifigs?query=jar+jar"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-4dd2f0c7b299048ad7ef47b6",
+      "character_variant_key": "QueenAmidala",
+      "decision": "physical_release_family_verified_catalog_head_mold_revision_duplicate_exact_artwork_visual_pending",
+      "canonical_subject": "Padmé Amidala / Queen Amidala",
+      "physical_release_family": {
+        "year": 2012,
+        "set_num": "9499-1",
+        "catalog_records": [
+          {
+            "fig_num": "fig-003877",
+            "catalog_name": "Padme Amidala / Queen Amidala (3626c Head)",
+            "head_mold": "3626c"
+          },
+          {
+            "fig_num": "fig-015283",
+            "catalog_name": "Padme Amidala / Queen Amidala (3626b Head)",
+            "head_mold": "3626b"
+          }
+        ]
+      },
+      "reason": "Both supported candidates are catalog records for Queen Amidala in the same 2012 set 9499-1 and differ only by the underlying head mold revision identifier. Treat them as one physical release family rather than two narrative/outfit variants. The release family is verified, while exact source-art/component revision remains visual/catalog-provenance pending.",
+      "systemic_pattern": "same_set_mold_revision_records_are_one_release_family",
+      "evidence_urls": [
+        "https://brickset.com/minifigs?query=queen+amidala"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-ec93955616427b590633ff8c",
+      "character_variant_key": "TuskenRaider",
+      "decision": "generic_tusken_raider_identity_verified_multiple_pre_game_belt_and_head_generations_visual_pending",
+      "canonical_subject": "Tusken Raider",
+      "plausible_pre_game_physical_candidates": [
+        {
+          "fig_num": "fig-003616",
+          "catalog_name": "Tusken Raider, Crossed Shoulder Belts (3626b Head)",
+          "year": 2002,
+          "set_num": "7113-1"
+        },
+        {
+          "fig_num": "fig-004093",
+          "catalog_name": "Tusken Raider, Head Spikes, Crossed Shoulder Belts",
+          "first_year": 2015,
+          "sets": [
+            "75081-1",
+            "75173-1",
+            "75198-1"
+          ]
+        },
+        {
+          "fig_num": "fig-003501",
+          "catalog_name": "Tusken Raider, Head Spikes, Shoulder Belt",
+          "first_year": 2020,
+          "sets": [
+            "75265-1",
+            "75270-1",
+            "75299-1",
+            "75307-1",
+            "912283-1"
+          ]
+        }
+      ],
+      "reason": "TuskenRaider is a generic role/species identity rather than a named individual. Multiple ordinary physical implementations predate the game and differ in head construction and shoulder-belt printing. The source key does not distinguish those component generations, so exact physical implementation remains visual pending.",
+      "evidence_urls": [
+        "https://brickset.com/minifigs?query=tusken+raider"
+      ]
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "character_or_role_families_verified": 5,
+    "physical_release_family_collapsed_from_catalog_mold_revisions": 1,
+    "post_game_or_post_launch_candidates_rejected": 3,
+    "automatic_exact_artwork_equivalence_promotions": 0
+  },
+  "remaining_ambiguous_family_records_after_batch": 21,
+  "systemic_findings": [
+    "Catalog records from the same set and same character that differ only by head-mold revision should be grouped as one physical release family.",
+    "A physical figure released after the game cannot be used as source-equivalence evidence even when it shares the game's release year.",
+    "Generic species/role identities remain component-generation ambiguous unless the source carries a distinguishing visual or semantic state."
+  ]
+}
