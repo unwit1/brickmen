@@ -8,6 +8,7 @@ on:
       - '.github/workflows/lego-release-collision-classification.yml'
       - 'tools/knowledge/classify_release_catalog_collisions.py'
       - 'knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/release-catalog-collisions-latest.jsonl'
+      - 'knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/release-collision-source-evidence-2026-09-26.json'
 
 permissions:
   contents: write
@@ -30,6 +31,7 @@ jobs:
           mkdir -p "$out"
           python tools/knowledge/classify_release_catalog_collisions.py \
             --input knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/release-catalog-collisions-latest.jsonl \
+            --evidence knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/release-collision-source-evidence-2026-09-26.json \
             --output "$out/records.jsonl" --summary "$out/summary.json"
           dest=knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation
           cp "$out/records.jsonl" "$dest/release-collision-classification-latest.jsonl"
