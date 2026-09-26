@@ -84,7 +84,10 @@ def canonical_source_stub(rec, source_path):
         "product_code": rec.get("product_code") or external_catalog_id(rec),
         "product_code_namespace": (
             "maker_product_code"
-            if rec.get("product_code") and is_maker_code(rec.get("product_code"))
+            if rec.get("product_code") and (
+                is_maker_code(rec.get("product_code"))
+                or (str(rec.get("product_code")).strip().isdigit() and rec.get("brand_explicit"))
+            )
             else "unstructured_source_code_text"
             if rec.get("product_code")
             else "bricklink_minifigure_id"
@@ -196,6 +199,16 @@ def dc_normalized_record(rec):
                 "raw": "X1881",
                 "normalized": "XH1881",
                 "reason": "independent HeroBloks catalog confirmation for Xinh XH1881 Batman (Tim Burton/Michael Keaton)",
+                "evidence_sources": ["HeroBloks"]
+            }
+        elif raw_code == "DH0213" and "batman new 52" in norm(up.get("C")):
+            normalized_code = "0213"
+            brand_text = "Decool"
+            correction = {
+                "raw": "DH0213",
+                "normalized": "0213",
+                "normalized_brand": "Decool",
+                "reason": "HeroBloks independently catalogs Batman (New 52) as Decool 0213; raw tracker value appears to contain an erroneous DH prefix.",
                 "evidence_sources": ["HeroBloks"]
             }
         field.update(
@@ -381,11 +394,16 @@ def main():
             continue
         namespace = rec.get("product_code_namespace") or "maker_product_code"
         prefix = code_prefix(code)
+        explicit_brand = rec.get("brand_explicit")
         candidates = []
         method = None
         if namespace == "maker_product_code":
-            candidates = list(prefix_map.get(prefix or "", []))
-            method = "observed_product_prefix" if candidates else None
+            if explicit_brand:
+                candidates = list(alias_map.get(norm(explicit_brand), []))
+                method = "explicit_brand_name_or_alias" if candidates else None
+            if not candidates:
+                candidates = list(prefix_map.get(prefix or "", []))
+                method = "observed_product_prefix" if candidates else None
             if not candidates and prefix:
                 candidates = list(alias_map.get(norm(prefix), []))
                 method = "exact_brand_or_alias_token" if candidates else None
@@ -398,6 +416,7 @@ def main():
             },
             "product_code": code,
             "product_code_namespace": namespace,
+            "explicit_brand": explicit_brand,
             "observed_prefix": prefix,
             "name": rec.get("name"),
             "variant": rec.get("variant"),
