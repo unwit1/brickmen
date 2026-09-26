@@ -2,10 +2,10 @@
   "schema": "entity-resolution-review-summary/v1",
   "processor_version": "user-tracker-reconciliation/v3",
   "records": 1038,
-  "high_priority_records": 59,
+  "high_priority_records": 53,
   "reason_counts": {
     "cross_source": 952,
-    "multiple_identities": 208,
+    "multiple_identities": 202,
     "multiple_universes": 25,
     "many_variants": 83
   },
@@ -360,20 +360,6 @@
       "universes": 0
     },
     {
-      "name": "cyclops",
-      "score": 55,
-      "records": 26,
-      "sources": 3,
-      "reasons": [
-        "cross_source",
-        "multiple_identities",
-        "many_variants"
-      ],
-      "identities": 2,
-      "variants": 23,
-      "universes": 1
-    },
-    {
       "name": "green arrow",
       "score": 55,
       "records": 25,
@@ -458,20 +444,6 @@
       "universes": 1
     },
     {
-      "name": "storm",
-      "score": 54,
-      "records": 21,
-      "sources": 3,
-      "reasons": [
-        "cross_source",
-        "multiple_identities",
-        "many_variants"
-      ],
-      "identities": 2,
-      "variants": 14,
-      "universes": 1
-    },
-    {
       "name": "thor",
       "score": 54,
       "records": 24,
@@ -498,20 +470,6 @@
       "identities": 8,
       "variants": 9,
       "universes": 0
-    },
-    {
-      "name": "cannonball",
-      "score": 53,
-      "records": 15,
-      "sources": 3,
-      "reasons": [
-        "cross_source",
-        "multiple_identities",
-        "many_variants"
-      ],
-      "identities": 3,
-      "variants": 10,
-      "universes": 1
     },
     {
       "name": "deathstroke",
@@ -710,20 +668,6 @@
       "universes": 0
     },
     {
-      "name": "magik",
-      "score": 52,
-      "records": 12,
-      "sources": 2,
-      "reasons": [
-        "cross_source",
-        "multiple_identities",
-        "many_variants"
-      ],
-      "identities": 2,
-      "variants": 10,
-      "universes": 1
-    },
-    {
       "name": "magneto",
       "score": 52,
       "records": 12,
@@ -805,19 +749,6 @@
       "universes": 2
     },
     {
-      "name": "boom boom",
-      "score": 42,
-      "records": 13,
-      "sources": 1,
-      "reasons": [
-        "multiple_identities",
-        "many_variants"
-      ],
-      "identities": 2,
-      "variants": 9,
-      "universes": 1
-    },
-    {
       "name": "scarlet spider",
       "score": 42,
       "records": 14,
@@ -829,19 +760,6 @@
       "identities": 4,
       "variants": 9,
       "universes": 0
-    },
-    {
-      "name": "white queen",
-      "score": 42,
-      "records": 11,
-      "sources": 1,
-      "reasons": [
-        "multiple_identities",
-        "many_variants"
-      ],
-      "identities": 2,
-      "variants": 11,
-      "universes": 1
     },
     {
       "name": "cheetah",
@@ -1375,6 +1293,84 @@
       "identities": 2,
       "variants": 1,
       "universes": 1
+    },
+    {
+      "name": "venom",
+      "score": 36,
+      "records": 9,
+      "sources": 4,
+      "reasons": [
+        "cross_source",
+        "multiple_identities"
+      ],
+      "identities": 2,
+      "variants": 6,
+      "universes": 1
+    },
+    {
+      "name": "wolfsbane",
+      "score": 36,
+      "records": 6,
+      "sources": 2,
+      "reasons": [
+        "cross_source",
+        "multiple_identities"
+      ],
+      "identities": 2,
+      "variants": 5,
+      "universes": 0
+    },
+    {
+      "name": "x 23",
+      "score": 36,
+      "records": 5,
+      "sources": 2,
+      "reasons": [
+        "cross_source",
+        "multiple_identities"
+      ],
+      "identities": 2,
+      "variants": 5,
+      "universes": 0
+    },
+    {
+      "name": "aero",
+      "score": 35,
+      "records": 2,
+      "sources": 2,
+      "reasons": [
+        "cross_source",
+        "multiple_identities"
+      ],
+      "identities": 2,
+      "variants": 1,
+      "universes": 0
+    },
+    {
+      "name": "anarky",
+      "score": 35,
+      "records": 4,
+      "sources": 2,
+      "reasons": [
+        "cross_source",
+        "multiple_identities"
+      ],
+      "identities": 2,
+      "variants": 1,
+      "universes": 0
+    },
+    {
+      "name": "arana",
+      "score": 35,
+      "records": 3,
+      "sources": 2,
+      "reasons": [
+        "cross_source",
+        "multiple_identities"
+      ],
+      "identities": 2,
+      "variants": 2,
+      "universes": 0
     }
   ],
   "status": "entity_resolution_review_queue_ready"
