@@ -4,8 +4,9 @@ from __future__ import annotations
 import argparse,json,re
 from collections import Counter,defaultdict
 from pathlib import Path
+from skywalker_identity_keys import parse_identity_key
 
-VERSION="skywalker-crosswalk-review/v2"
+VERSION="skywalker-crosswalk-review/v3"
 
 def load_jsonl(path):
     with Path(path).open("r",encoding="utf-8") as f:
@@ -14,10 +15,9 @@ def load_jsonl(path):
             if line:yield json.loads(line)
 
 def base_key(key):
-    s=str(key or "")
-    # Filename census has already removed LSW_ProfileIcons prefixes.
-    first=s.split("_",1)[0]
-    return re.sub(r"[^A-Za-z0-9]+","",first) or s
+    parsed=parse_identity_key(key)
+    base=parsed["base_character_key"]
+    return re.sub(r"[^A-Za-z0-9]+","",base) or str(key or "")
 
 def exact_character_identity(row):
     candidates=row.get("top_candidates") or []
