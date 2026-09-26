@@ -1,0 +1,71 @@
+{
+  "schema": "skywalker-semantic-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-outfit-state-review-001",
+  "review_route": "outfit_or_accessory / physical_state",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-bc144f6e6c776793cbe6f8be",
+      "character_variant_key": "KyloRen_NoHelmet",
+      "decision": "digital_negative_feature_verified_physical_version_unresolved",
+      "excluded_candidate_families": [
+        "Kylo Ren, Helmet with Red Cracks",
+        "Kylo Ren, Helmet with Red Cracks, Cape"
+      ],
+      "remaining_family_examples": [
+        "Kylo Ren, Black Head",
+        "Kylo Ren, Black Hands",
+        "Kylo Ren, Light Nougat Hands"
+      ],
+      "reason": "NoHelmet is explicit digital-state evidence and contradicts catalog variants explicitly labeled with a helmet. The remaining physical names do not by themselves prove which unhelmeted head/hair/outfit state is represented."
+    },
+    {
+      "asset_id": "skywalker-profile-5e33e46ca29363ac7d4d76f5",
+      "character_variant_key": "KyloRen_ReforgedHelmet",
+      "decision": "variant_family_verified_exact_release_unresolved",
+      "supported_physical_candidates": [
+        {
+          "fig_num": "fig-004455",
+          "name": "Kylo Ren, Helmet with Red Cracks, Cape",
+          "year": 2019
+        },
+        {
+          "fig_num": "fig-002104",
+          "name": "Kylo Ren, Helmet with Red Cracks",
+          "year": 2020
+        }
+      ],
+      "reason": "ReforgedHelmet corresponds semantically to Kylo Ren's red-cracked helmet family. The source key does not distinguish the cape and non-cape physical releases."
+    },
+    {
+      "asset_id": "skywalker-profile-0ddafe90bfec7b63f21dcb25",
+      "character_variant_key": "KyloRen_Topless",
+      "decision": "digital_appearance_state_no_supported_physical_match",
+      "reason": "Topless is a clear digital appearance state, but none of the supported physical candidate names independently document a topless Kylo Ren release. Preserve it as a digital-only appearance unless visual/component evidence proves otherwise."
+    },
+    {
+      "asset_id": "skywalker-profile-e01a11420ef5571d19af758a",
+      "character_variant_key": "KyloRen_NoHelmet_Scar",
+      "decision": "digital_negative_feature_and_state_verified_physical_version_unresolved",
+      "excluded_candidate_families": [
+        "Kylo Ren, Helmet with Red Cracks",
+        "Kylo Ren, Helmet with Red Cracks, Cape"
+      ],
+      "reason": "NoHelmet explicitly excludes helmet-labeled candidates and Scar adds a facial-state cue. The current physical catalog names do not uniquely encode that combined state, so exact physical equivalence remains unresolved."
+    },
+    {
+      "asset_id": "skywalker-profile-a90032070260988253d7daa2",
+      "character_variant_key": "DarthVader_NoHelmet",
+      "decision": "digital_negative_feature_verified_physical_version_unresolved",
+      "reason": "NoHelmet is explicit digital-state evidence, but current figure-level catalog names do not reliably encode whether Darth Vader's helmet accessory is removed. Candidate names such as 'No Cape', 'Damaged', or transformation variants must not be treated as proof of the no-helmet state without component/visual evidence."
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "digital_state_physical_version_unresolved": 3,
+    "variant_family_verified_exact_release_unresolved": 1,
+    "digital_only_no_supported_physical_match": 1,
+    "automatic_exact_equivalence_promotions": 0
+  },
+  "systemic_finding": "Negative accessory suffixes should reject explicit catalog contradictions (for example NoHelmet versus a catalog name containing Helmet) but must never treat silence about the accessory as positive proof."
+}
