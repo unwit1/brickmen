@@ -11,8 +11,9 @@ from __future__ import annotations
 import argparse,json,re,unicodedata
 from collections import Counter,defaultdict
 from pathlib import Path
+from skywalker_identity_keys import parse_identity_key
 
-VERSION="skywalker-identity-family/v2"
+VERSION="skywalker-identity-family/v3"
 GENERIC={"goon","friend","alien","human","officer","trooper","droid","guard","clone"}
 
 def load_jsonl(path):
@@ -53,6 +54,7 @@ ALIASES={
     "r2d2":"r2 d2",
     "c3po":"c 3po",
     "chewbacca":"chewbacca",
+    "savage oppress":"savage opress",
 }
 
 def base_key(key):
@@ -70,9 +72,9 @@ def looks_like_compact_identifier(v):
     return bool(re.search(r"[a-z]",s) and re.search(r"[0-9]",s) and len(s)<=10)
 
 def meaningful_suffix_tokens(key):
-    raw=str(key or "").split("_",1)
-    if len(raw)<2:return []
-    tokens=[t for t in norm(raw[1]).split() if t and not t.isdigit()]
+    parsed=parse_identity_key(key)
+    raw=" ".join(parsed["variant_suffix_tokens"])
+    tokens=[t for t in norm(raw).split() if t and not t.isdigit()]
     return tokens
 
 def physical_support(base,candidates):
@@ -127,12 +129,13 @@ def main():
     rows=[];levels=Counter();base_counts=Counter()
     for r in load_jsonl(args.candidates):
         key=r.get("character_variant_key")
-        base=base_key(key)
-        suffix=str(key or "").split("_")[1:]
+        parsed_key=parse_identity_key(key)
+        base=parsed_key["base_character_key"]
+        suffix=parsed_key["variant_suffix_tokens"]
         top=r.get("top_candidates") or []
         supported=physical_support(base,top)
         variant_supported,suffix_constraint_status=constrain_by_suffix(key,supported)
-        label=alias_label(base)
+        label=norm(parsed_key.get("canonical_identity_label") or alias_label(base))
         generic=label in GENERIC or any(t in GENERIC for t in label.split())
 
         if supported and not generic:
@@ -173,6 +176,8 @@ def main():
           "character_variant_key":key,
           "base_character_key":base,
           "digital_identity_label":label,
+          "identity_key_parse_mode":parsed_key["parse_mode"],
+          "identity_key_parse_reason":parsed_key.get("reason"),
           "variant_suffix_tokens":suffix,
           "meaningful_variant_suffix_tokens":meaningful_suffix_tokens(key),
           "suffix_constraint_status":suffix_constraint_status,
@@ -186,7 +191,7 @@ def main():
           "all_top_candidates":top,
           "top_score":r.get("top_score"),
           "top_margin":r.get("top_margin"),
-          "policy":"An official filename-derived identity label is valid digital identity evidence. Character-family support does not establish exact outfit/version equivalence. Compact identifiers require full-code agreement, meaningful digital suffixes constrain physical variants, and generic role labels remain role families rather than canonical named characters.",
+          "policy":"An official filename-derived identity label is valid digital identity evidence. Full-name identity tokens are resolved before variant parsing. Character-family support does not establish exact outfit/version equivalence. Compact identifiers require full-code agreement, meaningful digital suffixes constrain physical variants, and generic role labels remain role families rather than canonical named characters.",
           "processor_version":VERSION,
         })
 
