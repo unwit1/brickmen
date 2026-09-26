@@ -6,7 +6,7 @@
     {
       "priority": "critical",
       "gap": "exact_flat_official_print_art",
-      "status": "57_verified_surface_maps_promoted_remaining_queue_ranked_exact_id_false_positives_removed",
+      "status": "57_verified_surface_maps_remaining_queue_ambiguity_ranked_no_strong_unverified_candidates",
       "store_next": [
         "continue reviewed promotion from the ranked rioforce surface queue",
         "materialize Mecabricks UV/decoration assets",
@@ -27,11 +27,16 @@
         "48 unverified surface records remain in the ranked promotion queue; 26 expose a decorated top-surface component candidate",
         "the 3 former exact-ID review records were reclassified as 8 plain base-substrate LDraw joins (3626b/3626c/6260), not print-art evidence",
         "0 decorated exact-ID links and 0 strict exact-LDraw print-art links remain after substrate false-positive removal",
-        "6 records currently have a >=0.90 top figure candidate, still requiring independent art/version confirmation"
+        "6 records currently have a >=0.90 top figure candidate, still requiring independent art/version confirmation",
+        "flat-art subject parser now retains meaningful version qualifiers and no longer mislabels Theme/Series N/Asset paths as the subject 'Series N'",
+        "promotion ranking now penalizes tied top figure identities and weak single-token identity evidence instead of boosting an arbitrary first-sorted tie",
+        "current 48-record unverified surface queue: 8 medium, 25 low, 15 no-figure-candidate, 0 strong/verify-first",
+        "33/48 unverified surface records have tied top figure candidates and 26/48 have four or more tied top candidates; those ambiguity signals are stored explicitly",
+        "current crosswalk refresh: 88 records with figure candidates, 85 with role-aware component candidates, 8 with >=0.90 top figure score, and 30 review records with a decorated top-surface component candidate"
       ],
       "next_actions": [
-        "independently verify the 26 remaining decorated top-surface component candidates, prioritizing the 22 strong-review records",
-        "review the other 22 ranked surface records without inferring identity from weak or generic name overlap",
+        "independently verify the 8 medium-review surface records first; do not promote tied identity candidates from fuzzy evidence alone",
+        "use theme/series/version context or image-level structural matching to disambiguate the 33 tied-identity surface records",
         "materialize permitted Mecabricks/game texture sources locally",
         "derive flat maps from controlled physical captures",
         "store verified decorated-part/component crosswalks with rights/provenance"
@@ -473,24 +478,23 @@
     },
     "flat_art": {
       "rioforce_records": 129,
-      "ldraw_records": 4352,
       "ldraw_exact_ids_indexed": 4348,
-      "figure_candidate_records": 91,
-      "component_candidate_records": 88,
+      "figure_candidate_records": 88,
+      "component_candidate_records": 85,
       "verified_asset_groups": 57,
       "promotion_review_records": 48,
-      "strong_review_records": 22,
-      "medium_review_records": 4,
-      "low_review_records": 10,
-      "no_figure_candidate_records": 12,
-      "decorated_top_surface_candidate_records": 26,
+      "verify_first_records": 0,
+      "strong_review_records": 0,
+      "medium_review_records": 8,
+      "low_review_records": 25,
+      "no_figure_candidate_records": 15,
+      "decorated_top_surface_candidate_records": 30,
+      "tied_top_figure_candidate_records": 33,
+      "four_or_more_tied_top_candidate_records": 26,
+      "high_confidence_top_figure_candidate_records": 8,
       "decorated_exact_id_unverified_records": 0,
-      "decorated_exact_id_unverified_links": 0,
-      "base_substrate_ldraw_records": 3,
-      "base_substrate_ldraw_links": 8,
       "strict_exact_ldraw_print_art_records": 0,
-      "high_confidence_top_figure_candidate_records": 6,
-      "status": "ranked_manual_verification_queue_ready_exact_id_substrate_false_positives_removed"
+      "status": "ambiguity_aware_manual_verification_queue_ready"
     },
     "flat_art_verified_asset_groups": 57,
     "release_catalog_resolution": {
