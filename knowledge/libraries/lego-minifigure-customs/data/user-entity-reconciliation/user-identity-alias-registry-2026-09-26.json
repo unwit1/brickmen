@@ -1,25 +1,8 @@
 {
-  "schema": "user-identity-alias-registry/v1",
+  "schema": "user-identity-alias-registry/v2",
   "created_at": "2026-09-26",
   "policy": "Character-scoped semantic aliasing only. Raw tracker identity labels remain preserved in provenance. Aliases are used to avoid false duplicate Incarnation/identity candidates; distinct mantle holders, alternate people, universes, and titles are not collapsed unless evidence establishes they identify the same person.",
   "records": [
-    {
-      "character": "storm",
-      "canonical_identity": "Ororo Munroe",
-      "aliases": [
-        "Ororo Munroe",
-        "Ororo Monroe"
-      ],
-      "confidence": "high",
-      "reason": "Official Marvel identifies Storm as Ororo Munroe; the Monroe spelling is treated as a tracker spelling variant.",
-      "evidence": [
-        {
-          "url": "https://www.marvel.com/characters/storm/",
-          "authority": "Marvel",
-          "retrieved_at": "2026-09-26"
-        }
-      ]
-    },
     {
       "character": "batgirl",
       "canonical_identity": "Barbara Gordon",
@@ -38,18 +21,82 @@
       ]
     },
     {
-      "character": "wonder girl",
-      "canonical_identity": "Cassie Sandsmark",
+      "character": "black widow",
+      "canonical_identity": "Natasha Romanoff",
       "aliases": [
-        "Cassie Sandsmark",
-        "Cassie Sandsmarck"
+        "Natasha Romanoff",
+        "Natasha Romanov",
+        "Natasha Romanova"
       ],
       "confidence": "high",
-      "reason": "Official DC identifies Wonder Girl as Cassie Sandsmark; Sandsmarck is a tracker spelling error.",
+      "reason": "Official Marvel uses Natasha Romanoff and Natalia/Natasha Romanova for the same Black Widow; an official Marvel collection also uses Natasha Romanov.",
       "evidence": [
         {
-          "url": "https://www.dc.com/characters/wonder-girl",
-          "authority": "DC",
+          "url": "https://www.marvel.com/characters/black-widow-natasha-romanova/in-comics",
+          "authority": "Marvel",
+          "retrieved_at": "2026-09-26"
+        },
+        {
+          "url": "https://www.marvel.com/comics/issue/55915/",
+          "authority": "Marvel",
+          "retrieved_at": "2026-09-26"
+        }
+      ]
+    },
+    {
+      "character": "boom boom",
+      "canonical_identity": "Tabitha Smith",
+      "aliases": [
+        "Tabitha Smith",
+        "Tabitha"
+      ],
+      "confidence": "high",
+      "reason": "Official Marvel identifies Boom-Boom as Tabitha Smith.",
+      "evidence": [
+        {
+          "url": "https://www.marvel.com/teams-and-groups/x-force",
+          "authority": "Marvel",
+          "retrieved_at": "2026-09-26"
+        }
+      ]
+    },
+    {
+      "character": "cable",
+      "canonical_identity": "Nathan Summers",
+      "aliases": [
+        "Nathan Summers",
+        "Nathan Christopher Charles Summers",
+        "Nathan Christopher Summers"
+      ],
+      "confidence": "high",
+      "reason": "Official Marvel identifies Cable as Nathan Summers; Marvel's Cyclops profile identifies Cable as Nathan Christopher Summers. The longer tracker form is treated as the same person within Cable.",
+      "evidence": [
+        {
+          "url": "https://www.marvel.com/characters/cable-nathan-summers/in-comics",
+          "authority": "Marvel",
+          "retrieved_at": "2026-09-26"
+        },
+        {
+          "url": "https://www.marvel.com/characters/cyclops-scott-summers",
+          "authority": "Marvel",
+          "retrieved_at": "2026-09-26"
+        }
+      ]
+    },
+    {
+      "character": "cannonball",
+      "canonical_identity": "Sam Guthrie",
+      "aliases": [
+        "Sam Guthrie",
+        "Samuel Guthrie",
+        "Samuel \"Sam\" Zachary Guthrie"
+      ],
+      "confidence": "high",
+      "reason": "Official Marvel identifies Cannonball as Sam Guthrie; longer tracker forms are treated as the same person.",
+      "evidence": [
+        {
+          "url": "https://www.marvel.com/articles/comics/new-mutants-explained",
+          "authority": "Marvel",
           "retrieved_at": "2026-09-26"
         }
       ]
@@ -66,6 +113,121 @@
       "evidence": [
         {
           "url": "https://www.marvel.com/characters/cyclops-scott-summers",
+          "authority": "Marvel",
+          "retrieved_at": "2026-09-26"
+        }
+      ]
+    },
+    {
+      "character": "magik",
+      "canonical_identity": "Illyana Rasputin",
+      "aliases": [
+        "Illyana Rasputin",
+        "Illyana Nikolievna Rasputina"
+      ],
+      "confidence": "high",
+      "reason": "Official Marvel identifies Magik as Illyana Rasputin; the patronymic/feminized tracker form is treated as the same person.",
+      "evidence": [
+        {
+          "url": "https://www.marvel.com/articles/comics/new-mutants-explained",
+          "authority": "Marvel",
+          "retrieved_at": "2026-09-26"
+        },
+        {
+          "url": "https://www.marvel.com/teams-and-groups/x-men/in-comics",
+          "authority": "Marvel",
+          "retrieved_at": "2026-09-26"
+        }
+      ]
+    },
+    {
+      "character": "magneto",
+      "canonical_identity": "Max Eisenhardt",
+      "aliases": [
+        "Max Eisenhardt",
+        "Max Eisenhardt / Erik Magnus Lehnsherr[12]",
+        "Max Lensherr",
+        "Erik Lehnsherr",
+        "Erik Lensherr"
+      ],
+      "confidence": "high",
+      "reason": "Official Marvel describes Max Eisenhardt as the man who later uses the Erik Lehnsherr/Lensherr identity; tracker composite and misspelled forms are grouped as one person.",
+      "evidence": [
+        {
+          "url": "https://www.marvel.com/teams-and-groups/x-men/in-comics",
+          "authority": "Marvel",
+          "retrieved_at": "2026-09-26"
+        },
+        {
+          "url": "https://www.marvel.com/comics/discover/1038/magneto",
+          "authority": "Marvel",
+          "retrieved_at": "2026-09-26"
+        }
+      ]
+    },
+    {
+      "character": "psylocke",
+      "canonical_identity": "Elizabeth \"Betsy\" Braddock",
+      "aliases": [
+        "Elizabeth \"Betsy\" Braddock",
+        "Betsy Braddock"
+      ],
+      "confidence": "high",
+      "reason": "Official Marvel identifies Betsy Braddock as Elizabeth “Betsy” Braddock and describes Psylocke as one of her identities.",
+      "evidence": [
+        {
+          "url": "https://www.marvel.com/characters/psylocke",
+          "authority": "Marvel",
+          "retrieved_at": "2026-09-26"
+        }
+      ]
+    },
+    {
+      "character": "storm",
+      "canonical_identity": "Ororo Munroe",
+      "aliases": [
+        "Ororo Munroe",
+        "Ororo Monroe"
+      ],
+      "confidence": "high",
+      "reason": "Official Marvel identifies Storm as Ororo Munroe; the Monroe spelling is treated as a tracker spelling variant.",
+      "evidence": [
+        {
+          "url": "https://www.marvel.com/characters/storm/",
+          "authority": "Marvel",
+          "retrieved_at": "2026-09-26"
+        }
+      ]
+    },
+    {
+      "character": "supergirl",
+      "canonical_identity": "Cir-El",
+      "aliases": [
+        "Cir-El",
+        "Cir0El"
+      ],
+      "confidence": "high",
+      "reason": "DC spells the character Cir-El; the tracker zero-character form is a transcription error.",
+      "evidence": [
+        {
+          "url": "https://www.dc.com/blog/2026-07-09/not-the-last-the-dc-universe-s-other-supergirls",
+          "authority": "DC",
+          "retrieved_at": "2026-09-26"
+        }
+      ]
+    },
+    {
+      "character": "white queen",
+      "canonical_identity": "Emma Grace Frost",
+      "aliases": [
+        "Emma Grace Frost",
+        "Emma Frost"
+      ],
+      "confidence": "high",
+      "reason": "Official Marvel gives Emma Frost's full name as Emma Grace Frost and identifies White Queen as one of her aliases/roles.",
+      "evidence": [
+        {
+          "url": "https://www.marvel.com/characters/emma-frost",
           "authority": "Marvel",
           "retrieved_at": "2026-09-26"
         }
@@ -96,95 +258,22 @@
       ]
     },
     {
-      "character": "psylocke",
-      "canonical_identity": "Elizabeth \"Betsy\" Braddock",
+      "character": "wonder girl",
+      "canonical_identity": "Cassie Sandsmark",
       "aliases": [
-        "Elizabeth \"Betsy\" Braddock",
-        "Betsy Braddock"
+        "Cassie Sandsmark",
+        "Cassie Sandsmarck"
       ],
       "confidence": "high",
-      "reason": "Official Marvel identifies Betsy Braddock as Elizabeth “Betsy” Braddock and describes Psylocke as one of her identities.",
+      "reason": "Official DC identifies Wonder Girl as Cassie Sandsmark; Sandsmarck is a tracker spelling error.",
       "evidence": [
         {
-          "url": "https://www.marvel.com/characters/psylocke",
-          "authority": "Marvel",
-          "retrieved_at": "2026-09-26"
-        }
-      ]
-    },
-    {
-      "character": "cannonball",
-      "canonical_identity": "Sam Guthrie",
-      "aliases": [
-        "Sam Guthrie",
-        "Samuel Guthrie",
-        "Samuel \"Sam\" Zachary Guthrie"
-      ],
-      "confidence": "high",
-      "reason": "Official Marvel identifies Cannonball as Sam Guthrie; longer tracker forms are treated as the same person.",
-      "evidence": [
-        {
-          "url": "https://www.marvel.com/articles/comics/new-mutants-explained",
-          "authority": "Marvel",
-          "retrieved_at": "2026-09-26"
-        }
-      ]
-    },
-    {
-      "character": "boom boom",
-      "canonical_identity": "Tabitha Smith",
-      "aliases": [
-        "Tabitha Smith",
-        "Tabitha"
-      ],
-      "confidence": "high",
-      "reason": "Official Marvel identifies Boom-Boom as Tabitha Smith.",
-      "evidence": [
-        {
-          "url": "https://www.marvel.com/teams-and-groups/x-force",
-          "authority": "Marvel",
-          "retrieved_at": "2026-09-26"
-        }
-      ]
-    },
-    {
-      "character": "magik",
-      "canonical_identity": "Illyana Rasputin",
-      "aliases": [
-        "Illyana Rasputin",
-        "Illyana Nikolievna Rasputina"
-      ],
-      "confidence": "high",
-      "reason": "Official Marvel identifies Magik as Illyana Rasputin; the patronymic/feminized tracker form is treated as the same person.",
-      "evidence": [
-        {
-          "url": "https://www.marvel.com/articles/comics/new-mutants-explained",
-          "authority": "Marvel",
-          "retrieved_at": "2026-09-26"
-        },
-        {
-          "url": "https://www.marvel.com/teams-and-groups/x-men/in-comics",
-          "authority": "Marvel",
-          "retrieved_at": "2026-09-26"
-        }
-      ]
-    },
-    {
-      "character": "white queen",
-      "canonical_identity": "Emma Grace Frost",
-      "aliases": [
-        "Emma Grace Frost",
-        "Emma Frost"
-      ],
-      "confidence": "high",
-      "reason": "Official Marvel gives Emma Frost's full name as Emma Grace Frost and identifies White Queen as one of her aliases/roles.",
-      "evidence": [
-        {
-          "url": "https://www.marvel.com/characters/emma-frost",
-          "authority": "Marvel",
+          "url": "https://www.dc.com/characters/wonder-girl",
+          "authority": "DC",
           "retrieved_at": "2026-09-26"
         }
       ]
     }
-  ]
+  ],
+  "updated_at": "2026-09-26"
 }
