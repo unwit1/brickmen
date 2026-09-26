@@ -57,43 +57,92 @@ def parse_source_appearance_reference(value):
     if not raw:
         return {"kind":"empty","raw":raw}
 
-    # Comic issue syntax. Accept '#1', '1', 'Vol. 3 #1', 'v3 #1', and decimal issues such as #0.1.
-    # A trailing year in parentheses is retained as a hint but never used as identity on its own.
+    # Remove wrapping quotes and trailing citation markers while preserving the original raw value.
+    core = raw.strip().strip('"').strip("'").strip()
+    core = re.sub(r"(?:\[[^\]]+\])+\s*$", "", core).strip()
+
+    qualifiers = []
     year_hint = None
-    ym = re.search(r"\((19|20)\d{2}\)\s*$", raw)
-    if ym:
-        year_hint = int(ym.group(0).strip("()"))
-        raw_core = raw[:ym.start()].strip()
-    else:
-        raw_core = raw
+
+    # Peel trailing parenthetical qualifiers/dates from right to left.
+    while True:
+        pm = re.search(r"\(([^()]*)\)\s*$", core)
+        if not pm:
+            break
+        token = pm.group(1).strip()
+        low = token.casefold()
+        if re.fullmatch(r"(?:19|20)\d{2}", token):
+            year_hint = int(token)
+            core = core[:pm.start()].strip()
+            continue
+        dm = re.search(r"\b((?:19|20)\d{2})\b", token)
+        if dm and re.search(r"jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec", low):
+            year_hint = int(dm.group(1))
+            qualifiers.append(token)
+            core = core[:pm.start()].strip()
+            continue
+        if low in {"digital","web","online","one-shot","one shot"}:
+            qualifiers.append(token)
+            core = core[:pm.start()].strip()
+            continue
+        # Parenthesized volume stays in the main parser.
+        if re.fullmatch(r"(?:vol(?:\.|ume)?|v)\s*\d+", token, re.I):
+            break
+        break
+
+    # Normalize harmless terminal punctuation without changing issue designators.
+    core = core.rstrip(" .;,]")
+
+    issue_token = r"-?\d+(?:\.\d+)?(?:\.[A-Za-z]+)?(?:[A-Za-z])?(?:\s*[–—-]\s*-?\d+(?:\.\d+)?)?"
+    volume_token = r"(?:Vol(?:\.|ume)?|v)\s*(?P<volume>\d+)"
 
     patterns = [
-        r"^(?P<title>.+?)\s+(?:Vol(?:\.|ume)?|v)\s*(?P<volume>\d+)\s*#?\s*(?P<issue>\d+(?:\.\d+)?[A-Za-z]?)$",
-        r"^(?P<title>.+?)\s*#\s*(?P<issue>\d+(?:\.\d+)?[A-Za-z]?)$",
+        # Title (Volume 2) Annual #4 / Title (Vol. 5) #24.NOW / #23.1: subtitle
+        rf"^(?P<title>.+?)\s*\((?:Vol(?:\.|ume)?|v)\s*(?P<volume>\d+)\)\s*(?P<annual>Annual\s+)?#\s*(?P<issue>{issue_token})(?:\s*:\s*(?P<subtitle>.+))?$",
+        # Title Vol 3 #1 / Title v3 1
+        rf"^(?P<title>.+?)\s+{volume_token}\s*(?P<annual>Annual\s+)?#?\s*(?P<issue>{issue_token})(?:\s*:\s*(?P<subtitle>.+))?$",
+        # Title (3rd series) #8-13
+        rf"^(?P<title>.+?)\s*\((?P<ordinal>\d+)(?:st|nd|rd|th)\s+series\)\s*(?P<annual>Annual\s+)?#\s*(?P<issue>{issue_token})(?:\s*:\s*(?P<subtitle>.+))?$",
+        # Title #1 / #1.NOW / #-1 / #4-5 / #23.1: subtitle
+        rf"^(?P<title>.+?)\s*(?P<annual>Annual\s+)?#\s*(?P<issue>{issue_token})(?:\s*:\s*(?P<subtitle>.+))?$",
     ]
-    for pattern in patterns:
-        m = re.match(pattern, raw_core, re.I)
-        if m:
-            title = m.group("title").strip(" -")
-            volume = m.groupdict().get("volume")
-            issue = m.group("issue")
-            return {
-                "kind":"comic_issue_explicit",
-                "raw":raw,
-                "source_work":title,
-                "source_work_normalized":norm(title),
-                "volume":int(volume) if volume else None,
-                "issue":issue,
-                "year_hint":year_hint,
-                "canonical_issue_key":"|".join([
-                    norm(title),
-                    f"v{int(volume)}" if volume else "v?",
-                    f"i{issue.casefold()}",
-                ]),
-            }
 
-    # Episode-like references remain candidates; no show-title inference beyond explicit syntax.
-    em = re.match(r"^(?P<title>.+?)\s+(?:S(?P<season>\d{1,2})E(?P<episode>\d{1,3})|Season\s+(?P<season2>\d+)\s+Episode\s+(?P<episode2>\d+)|Episode\s+(?P<episode3>\d+))$", raw_core, re.I)
+    for pattern in patterns:
+        m = re.match(pattern, core, re.I)
+        if not m:
+            continue
+        title = m.group("title").strip(" -")
+        gd = m.groupdict()
+        volume = gd.get("volume") or gd.get("ordinal")
+        issue = re.sub(r"\s+", "", gd.get("issue") or "")
+        annual = bool(gd.get("annual"))
+        subtitle = (gd.get("subtitle") or "").strip() or None
+        issue_key = issue.casefold().replace("–","-").replace("—","-")
+        return {
+            "kind":"comic_issue_explicit",
+            "raw":raw,
+            "source_work":title,
+            "source_work_normalized":norm(title),
+            "volume":int(volume) if volume else None,
+            "issue":issue,
+            "annual":annual,
+            "subtitle":subtitle,
+            "qualifiers":qualifiers,
+            "year_hint":year_hint,
+            "canonical_issue_key":"|".join([
+                norm(title),
+                f"v{int(volume)}" if volume else "v?",
+                "annual" if annual else "regular",
+                f"i{issue_key}",
+            ]),
+        }
+
+    # Explicit episode syntax with a named work.
+    em = re.match(
+        r"^(?P<title>.+?)\s+(?:S(?P<season>\d{1,2})E(?P<episode>\d{1,3})|Season\s+(?P<season2>\d+)\s+Episode\s+(?P<episode2>\d+)|Episode\s+(?P<episode3>\d+))$",
+        core,
+        re.I,
+    )
     if em:
         season = em.group("season") or em.group("season2")
         episode = em.group("episode") or em.group("episode2") or em.group("episode3")
@@ -105,15 +154,42 @@ def parse_source_appearance_reference(value):
             "source_work_normalized":norm(title),
             "season":int(season) if season else None,
             "episode":int(episode),
+            "qualifiers":qualifiers,
             "year_hint":year_hint,
             "canonical_issue_key":"|".join([
                 "episode",norm(title),f"s{int(season)}" if season else "s?",f"e{int(episode)}"
             ]),
         }
 
+    # A bare episode number has useful structure but lacks a source work.
+    bem = re.fullmatch(r"Episode\s+(\d+)", core, re.I)
+    if bem:
+        return {
+            "kind":"episode_number_without_work",
+            "raw":raw,
+            "episode":int(bem.group(1)),
+            "qualifiers":qualifiers,
+            "year_hint":year_hint,
+            "canonical_issue_key":None,
+        }
+
+    # Title + year is useful for games/films/series but not enough to infer an episode/issue.
+    dwork = re.fullmatch(r"(.+?)\s*\(((?:19|20)\d{2})\)", raw.strip().strip('"').strip("'"))
+    if dwork:
+        title=dwork.group(1).strip()
+        return {
+            "kind":"dated_work",
+            "raw":raw,
+            "source_work":title,
+            "source_work_normalized":norm(title),
+            "year_hint":int(dwork.group(2)),
+            "canonical_issue_key":None,
+        }
+
     return {
         "kind":"raw_only",
         "raw":raw,
+        "qualifiers":qualifiers,
         "year_hint":year_hint,
         "canonical_issue_key":None,
     }
