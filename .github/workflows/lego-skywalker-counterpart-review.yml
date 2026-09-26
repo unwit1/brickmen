@@ -9,6 +9,7 @@ on:
       - 'tools/knowledge/classify_skywalker_counterparts.py'
       - 'tools/knowledge/classify_skywalker_identity_families.py'
       - 'tools/knowledge/summarize_skywalker_unresolved.py'
+      - 'tools/knowledge/summarize_skywalker_manual_reviews.py'
       - 'tools/knowledge/skywalker_identity_keys.py'
       - 'knowledge/libraries/lego-minifigure-customs/data/bulk-ingestion/skywalker-physical-crosswalk-candidates-latest.jsonl'
 
@@ -64,6 +65,17 @@ jobs:
             --summary "$work/unresolved-summary.json" \
             --top-output "$work/unresolved-top.jsonl"
 
+      - name: Compile manual review coverage
+        shell: bash
+        run: |
+          set -euo pipefail
+          work=/tmp/skywalker-counterparts
+          python tools/knowledge/summarize_skywalker_manual_reviews.py \
+            --review-dir knowledge/libraries/lego-minifigure-customs/data/review-decisions \
+            --identity-families "$work/identity-families.jsonl" \
+            --output "$work/manual-unreviewed.jsonl" \
+            --summary "$work/manual-review-summary.json"
+
       - name: Commit review snapshots race-safely
         shell: bash
         run: |
@@ -81,7 +93,9 @@ jobs:
           cp "$work/identity-families.jsonl" "$dest/skywalker-identity-families-latest.jsonl"
           cp "$work/identity-family-summary.json" "$dest/skywalker-identity-family-summary-latest.json"
           cp "$work/unresolved-top.jsonl" "$dest/skywalker-counterpart-unresolved-top-latest.jsonl"
-          git add "$dest/skywalker-counterpart-classification-latest.jsonl" "$dest/skywalker-counterpart-unresolved-latest.jsonl" "$dest/skywalker-counterpart-classification-summary-latest.json" "$dest/skywalker-counterpart-unresolved-summary-latest.json" "$dest/skywalker-counterpart-unresolved-top-latest.jsonl" "$dest/skywalker-identity-families-latest.jsonl" "$dest/skywalker-identity-family-summary-latest.json"
+          cp "$work/manual-unreviewed.jsonl" "$dest/skywalker-manual-review-unreviewed-latest.jsonl"
+          cp "$work/manual-review-summary.json" "$dest/skywalker-manual-review-summary-latest.json"
+          git add "$dest/skywalker-counterpart-classification-latest.jsonl" "$dest/skywalker-counterpart-unresolved-latest.jsonl" "$dest/skywalker-counterpart-classification-summary-latest.json" "$dest/skywalker-counterpart-unresolved-summary-latest.json" "$dest/skywalker-counterpart-unresolved-top-latest.jsonl" "$dest/skywalker-identity-families-latest.jsonl" "$dest/skywalker-identity-family-summary-latest.json" "$dest/skywalker-manual-review-unreviewed-latest.jsonl" "$dest/skywalker-manual-review-summary-latest.json"
           if git diff --cached --quiet; then
             echo "No Skywalker counterpart changes."
             exit 0
