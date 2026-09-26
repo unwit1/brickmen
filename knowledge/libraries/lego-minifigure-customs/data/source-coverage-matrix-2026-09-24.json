@@ -370,11 +370,11 @@
       ],
       "remaining": [
         "resolve 60 highest-priority identity/universe ambiguity groups",
-        "review 23 shared/colliding maker serials at component/release granularity",
+        "manually resolve the 3 genuinely unresolved shared-serial catalog collisions",
         "resolve QD015 Donkey Kong from a primary or additional catalog source",
-        "crosswalk 71 external catalog IDs to official physical records",
+        "promote 71 resolved BrickLink wishlist metadata records into official physical-reference links",
         "promote verified Character/Incarnation/OutfitDesign/SourceAppearance candidates into canonical records",
-        "calculate collection coverage only after acquisition-vs-custom-design distinctions are preserved"
+        "review 1,475 unknown-state targets without assuming they are missing"
       ],
       "completed_2026_09_25": {
         "bootlego_structured_records": 705,
@@ -549,6 +549,27 @@
     "supervision": {
       "mask_headgear_ranked": 14289,
       "mask_headgear_high_confidence": 894
+    },
+    "official_wishlist": {
+      "bricklink_ids": 71,
+      "public_catalog_names_resolved": 71,
+      "failures": 0
+    },
+    "release_collision_review": {
+      "records": 23,
+      "shared_scale_or_component": 1,
+      "shared_package_multiple_figures": 2,
+      "one_matching_entry_other_collision": 16,
+      "multiple_entries_support_label": 1,
+      "true_or_unresolved": 3
+    },
+    "custom_design_backlog": {
+      "true_custom_design_candidates": 4909,
+      "acquisition_wishlist": 15,
+      "existing_representation_compare_or_acquire": 34,
+      "review_only_unknown": 1475,
+      "release_crosswalk_likely_existing_before_alias_refresh": 54,
+      "release_crosswalk_existing_name_level_before_alias_refresh": 234
     }
   }
 }
