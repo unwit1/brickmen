@@ -1,0 +1,26 @@
+{
+  "schema": "entity-resolution-data-quality-audit-summary/v1",
+  "processor_version": "entity-resolution-data-quality-audit/v1",
+  "records": 1039,
+  "top_60_records": 60,
+  "records_with_structural_anomalies": 153,
+  "records_with_identity_alias_groups": 14,
+  "records_with_universe_alias_groups": 1,
+  "records_with_variant_alias_groups": 4,
+  "alias_group_counts_by_field": {
+    "identity": 15,
+    "universe": 1,
+    "variant": 4
+  },
+  "anomaly_reason_counts": {
+    "identity_presentation_aliases": 14,
+    "universe_contains_bare_numeric_values": 102,
+    "universe_presentation_aliases": 1,
+    "identity_contains_year_like_values": 39,
+    "universe_duplicates_identity_label": 5,
+    "variant_presentation_aliases": 4,
+    "universe_contains_year_like_values": 11
+  },
+  "top_60_with_structural_anomalies": 30,
+  "status": "entity_resolution_data_quality_audit_ready"
+}
