@@ -1,0 +1,48 @@
+{
+  "schema": "flat-art-independent-review-decisions/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "rioforce-flat-art-review-009",
+  "records": [
+    {
+      "candidate_id": "rioforce-e25bec16cb8712c69442c810",
+      "relative_stem": "LEGO Minifigures/Series 2/Artisian Face 2",
+      "decision": "needs_source_label_audit",
+      "reason": "No catalog candidate exists, and 'Artisian' does not correspond to an official Series 2 role in the known 2010 lineup. Treat as a likely source naming/typo/custom-label issue until the underlying asset is visually or historically identified."
+    },
+    {
+      "candidate_id": "rioforce-f2c6af22f39b78aeb3c07348",
+      "relative_stem": "LEGO Minifigures/Series 2/Artisian Head",
+      "decision": "needs_source_label_audit",
+      "reason": "No catalog candidate exists, and the source label conflicts with the documented Series 2 character lineup. Do not invent an identity from the spelling alone."
+    },
+    {
+      "candidate_id": "rioforce-382ee091727009807c003843",
+      "relative_stem": "LEGO Universe/Hael Storm/Hael Storm Torso",
+      "decision": "route_to_game_asset_corpus",
+      "reason": "Hael Storm is a LEGO Universe faction leader/game character. The asset should be preserved as game/reference supervision rather than requiring a physical minifigure catalog match.",
+      "evidence_urls": [
+        "https://legouniverse.fandom.com/wiki/Hael_Storm",
+        "https://thelegouniverse.com/media/LegoUniverseOfficialGameGuidePC.pdf"
+      ]
+    },
+    {
+      "candidate_id": "rioforce-3d423c20118854d6825dc711",
+      "relative_stem": "Ninjago/Jay KX/Jay KX Torso",
+      "decision": "needs_source_label_audit",
+      "reason": "The current physical catalog matcher produced no candidate and 'KX' is not sufficiently resolved here to a canonical physical release identifier. Preserve the source label and route for Ninjago-specific version research rather than guessing."
+    },
+    {
+      "candidate_id": "rioforce-105fa77273c60af8bcc2b70d",
+      "relative_stem": "Sports/Cool Kid Face",
+      "decision": "unresolved_no_candidate",
+      "reason": "The source label is generic and no catalog candidate exists; visual/component evidence is required before any identity promotion."
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "needs_source_label_audit": 3,
+    "routed_to_game_asset_corpus": 1,
+    "unresolved_no_candidate": 1
+  },
+  "next_offset": 45
+}
