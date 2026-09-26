@@ -1,0 +1,514 @@
+{
+  "schema": "user-tracker-semantic-corrections/v1",
+  "created_at": "2026-09-26",
+  "source_policy": "Non-destructive semantic overlay. Original Google Sheet and raw ingested JSONL remain canonical provenance; corrected fields are used only in derived reconciliation layers and each derived record carries the correction metadata plus original field values.",
+  "records": [
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 406,
+      "expected_name": "Catwoman",
+      "corrected_fields": {
+        "identity": "Selina Kyle",
+        "year": "1997"
+      },
+      "clear_fields": [],
+      "confidence": "high",
+      "rationale": "1997 is physically stored in the Identity column while Year is blank; adjacent Catwoman rows establish Selina Kyle as the person identity. Move the year into Year and restore the repeated person identity.",
+      "evidence": {
+        "source_type": "live_google_sheet_read",
+        "spreadsheet_title": "Minifig Variants to Make",
+        "spreadsheet_id": "1iE-xqnwC-aUtNQjXZci1X_wnpALqUajEMndHid8t6kg",
+        "verified_at": "2026-09-26",
+        "policy": "The original spreadsheet remains unchanged. Corrections apply only to the derived Brickmen semantic/reconciliation layer."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 407,
+      "expected_name": "Catwoman",
+      "corrected_fields": {
+        "identity": "Selina Kyle",
+        "year": "2002"
+      },
+      "clear_fields": [
+        "universe"
+      ],
+      "confidence": "high",
+      "rationale": "2002 is physically stored in Identity and Selina Kyle in Universe while Year is blank. The row's semantics indicate those two values are in the wrong fields.",
+      "evidence": {
+        "source_type": "live_google_sheet_read",
+        "spreadsheet_title": "Minifig Variants to Make",
+        "spreadsheet_id": "1iE-xqnwC-aUtNQjXZci1X_wnpALqUajEMndHid8t6kg",
+        "verified_at": "2026-09-26",
+        "policy": "The original spreadsheet remains unchanged. Corrections apply only to the derived Brickmen semantic/reconciliation layer."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 408,
+      "expected_name": "Catwoman",
+      "corrected_fields": {
+        "identity": "Selina Kyle",
+        "year": "2002"
+      },
+      "clear_fields": [
+        "universe"
+      ],
+      "confidence": "high",
+      "rationale": "2002 is physically stored in Identity and Selina Kyle in Universe while Year is blank. Preserve the issue-labelled Variant but repair person/year field placement.",
+      "evidence": {
+        "source_type": "live_google_sheet_read",
+        "spreadsheet_title": "Minifig Variants to Make",
+        "spreadsheet_id": "1iE-xqnwC-aUtNQjXZci1X_wnpALqUajEMndHid8t6kg",
+        "verified_at": "2026-09-26",
+        "policy": "The original spreadsheet remains unchanged. Corrections apply only to the derived Brickmen semantic/reconciliation layer."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 989,
+      "expected_name": "Joker",
+      "corrected_fields": {
+        "identity": "Jack Napier",
+        "year": "2000"
+      },
+      "clear_fields": [
+        "universe"
+      ],
+      "confidence": "high",
+      "rationale": "2000 is physically stored in Identity and Jack Napier in Universe while Year is blank. Repair the duplicate-person/year field placement without changing the Batman Beyond variant/source appearance.",
+      "evidence": {
+        "source_type": "live_google_sheet_read",
+        "spreadsheet_title": "Minifig Variants to Make",
+        "spreadsheet_id": "1iE-xqnwC-aUtNQjXZci1X_wnpALqUajEMndHid8t6kg",
+        "verified_at": "2026-09-26",
+        "policy": "The original spreadsheet remains unchanged. Corrections apply only to the derived Brickmen semantic/reconciliation layer."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 1764,
+      "expected_name": "Supergirl",
+      "corrected_fields": {
+        "year": "1958"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "1958 is physically stored in the Identity column with the Year column blank. Move only the numeric year; do not infer a person identity because some variants represent Kara Zor-El, Matrix, Linda Danvers, or other incarnations.",
+      "evidence": {
+        "source_type": "live_google_sheet_read",
+        "spreadsheet_title": "Minifig Variants to Make",
+        "spreadsheet_id": "1iE-xqnwC-aUtNQjXZci1X_wnpALqUajEMndHid8t6kg",
+        "verified_at": "2026-09-26",
+        "policy": "The original spreadsheet remains unchanged. Corrections apply only to the derived Brickmen semantic/reconciliation layer."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 1765,
+      "expected_name": "Supergirl",
+      "corrected_fields": {
+        "year": "1959"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "1959 is physically stored in the Identity column with the Year column blank. Move only the numeric year; do not infer a person identity because some variants represent Kara Zor-El, Matrix, Linda Danvers, or other incarnations.",
+      "evidence": {
+        "source_type": "live_google_sheet_read",
+        "spreadsheet_title": "Minifig Variants to Make",
+        "spreadsheet_id": "1iE-xqnwC-aUtNQjXZci1X_wnpALqUajEMndHid8t6kg",
+        "verified_at": "2026-09-26",
+        "policy": "The original spreadsheet remains unchanged. Corrections apply only to the derived Brickmen semantic/reconciliation layer."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 1766,
+      "expected_name": "Supergirl",
+      "corrected_fields": {
+        "year": "1972"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "1972 is physically stored in the Identity column with the Year column blank. Move only the numeric year; do not infer a person identity because some variants represent Kara Zor-El, Matrix, Linda Danvers, or other incarnations.",
+      "evidence": {
+        "source_type": "live_google_sheet_read",
+        "spreadsheet_title": "Minifig Variants to Make",
+        "spreadsheet_id": "1iE-xqnwC-aUtNQjXZci1X_wnpALqUajEMndHid8t6kg",
+        "verified_at": "2026-09-26",
+        "policy": "The original spreadsheet remains unchanged. Corrections apply only to the derived Brickmen semantic/reconciliation layer."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 1767,
+      "expected_name": "Supergirl",
+      "corrected_fields": {
+        "year": "1983"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "1983 is physically stored in the Identity column with the Year column blank. Move only the numeric year; do not infer a person identity because some variants represent Kara Zor-El, Matrix, Linda Danvers, or other incarnations.",
+      "evidence": {
+        "source_type": "live_google_sheet_read",
+        "spreadsheet_title": "Minifig Variants to Make",
+        "spreadsheet_id": "1iE-xqnwC-aUtNQjXZci1X_wnpALqUajEMndHid8t6kg",
+        "verified_at": "2026-09-26",
+        "policy": "The original spreadsheet remains unchanged. Corrections apply only to the derived Brickmen semantic/reconciliation layer."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 1768,
+      "expected_name": "Supergirl",
+      "corrected_fields": {
+        "year": "1988"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "1988 is physically stored in the Identity column with the Year column blank. Move only the numeric year; do not infer a person identity because some variants represent Kara Zor-El, Matrix, Linda Danvers, or other incarnations.",
+      "evidence": {
+        "source_type": "live_google_sheet_read",
+        "spreadsheet_title": "Minifig Variants to Make",
+        "spreadsheet_id": "1iE-xqnwC-aUtNQjXZci1X_wnpALqUajEMndHid8t6kg",
+        "verified_at": "2026-09-26",
+        "policy": "The original spreadsheet remains unchanged. Corrections apply only to the derived Brickmen semantic/reconciliation layer."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 1769,
+      "expected_name": "Supergirl",
+      "corrected_fields": {
+        "year": "1998"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "1998 is physically stored in the Identity column with the Year column blank. Move only the numeric year; do not infer a person identity because some variants represent Kara Zor-El, Matrix, Linda Danvers, or other incarnations.",
+      "evidence": {
+        "source_type": "live_google_sheet_read",
+        "spreadsheet_title": "Minifig Variants to Make",
+        "spreadsheet_id": "1iE-xqnwC-aUtNQjXZci1X_wnpALqUajEMndHid8t6kg",
+        "verified_at": "2026-09-26",
+        "policy": "The original spreadsheet remains unchanged. Corrections apply only to the derived Brickmen semantic/reconciliation layer."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 1771,
+      "expected_name": "Supergirl",
+      "corrected_fields": {
+        "year": "2011"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "2011 is physically stored in the Identity column with the Year column blank. Move only the numeric year; do not infer a person identity because some variants represent Kara Zor-El, Matrix, Linda Danvers, or other incarnations.",
+      "evidence": {
+        "source_type": "live_google_sheet_read",
+        "spreadsheet_title": "Minifig Variants to Make",
+        "spreadsheet_id": "1iE-xqnwC-aUtNQjXZci1X_wnpALqUajEMndHid8t6kg",
+        "verified_at": "2026-09-26",
+        "policy": "The original spreadsheet remains unchanged. Corrections apply only to the derived Brickmen semantic/reconciliation layer."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 1772,
+      "expected_name": "Supergirl",
+      "corrected_fields": {
+        "year": "2016"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "2016 is physically stored in the Identity column with the Year column blank. Move only the numeric year; do not infer a person identity because some variants represent Kara Zor-El, Matrix, Linda Danvers, or other incarnations.",
+      "evidence": {
+        "source_type": "live_google_sheet_read",
+        "spreadsheet_title": "Minifig Variants to Make",
+        "spreadsheet_id": "1iE-xqnwC-aUtNQjXZci1X_wnpALqUajEMndHid8t6kg",
+        "verified_at": "2026-09-26",
+        "policy": "The original spreadsheet remains unchanged. Corrections apply only to the derived Brickmen semantic/reconciliation layer."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "DC",
+      "source_row": 1885,
+      "expected_name": "Superwoman",
+      "corrected_fields": {
+        "year": "1996"
+      },
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "1996 is physically stored in the Identity column while Year is blank. Move the year and leave person identity unresolved rather than guessing which Superwoman incarnation the source intended.",
+      "evidence": {
+        "source_type": "live_google_sheet_read",
+        "spreadsheet_title": "Minifig Variants to Make",
+        "spreadsheet_id": "1iE-xqnwC-aUtNQjXZci1X_wnpALqUajEMndHid8t6kg",
+        "verified_at": "2026-09-26",
+        "policy": "The original spreadsheet remains unchanged. Corrections apply only to the derived Brickmen semantic/reconciliation layer."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "MARVEL",
+      "source_row": 965,
+      "expected_name": "Hawkeye",
+      "corrected_fields": {
+        "identity": "Kate Bishop"
+      },
+      "clear_fields": [],
+      "confidence": "high",
+      "rationale": "Remove a stray trailing backslash from the person identity; this is a presentation correction only.",
+      "evidence": {
+        "source_type": "live_google_sheet_read",
+        "spreadsheet_title": "Minifig Variants to Make",
+        "spreadsheet_id": "1iE-xqnwC-aUtNQjXZci1X_wnpALqUajEMndHid8t6kg",
+        "verified_at": "2026-09-26",
+        "policy": "The original spreadsheet remains unchanged. Corrections apply only to the derived Brickmen semantic/reconciliation layer."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "MARVEL",
+      "source_row": 966,
+      "expected_name": "Hawkeye",
+      "corrected_fields": {},
+      "clear_fields": [
+        "universe"
+      ],
+      "confidence": "high",
+      "rationale": "The live source repeats Clint Barton in both Identity and Universe. Clear the duplicate person-name value from Universe while preserving Identity, variant, appearance, and year.",
+      "evidence": {
+        "source_type": "live_google_sheet_read",
+        "spreadsheet_title": "Minifig Variants to Make",
+        "spreadsheet_id": "1iE-xqnwC-aUtNQjXZci1X_wnpALqUajEMndHid8t6kg",
+        "verified_at": "2026-09-26",
+        "policy": "The original spreadsheet remains unchanged. Corrections apply only to the derived Brickmen semantic/reconciliation layer."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "MARVEL",
+      "source_row": 967,
+      "expected_name": "Hawkeye",
+      "corrected_fields": {},
+      "clear_fields": [
+        "universe"
+      ],
+      "confidence": "high",
+      "rationale": "The live source repeats Clint Barton in both Identity and Universe. Clear the duplicate person-name value from Universe while preserving Identity, variant, appearance, and year.",
+      "evidence": {
+        "source_type": "live_google_sheet_read",
+        "spreadsheet_title": "Minifig Variants to Make",
+        "spreadsheet_id": "1iE-xqnwC-aUtNQjXZci1X_wnpALqUajEMndHid8t6kg",
+        "verified_at": "2026-09-26",
+        "policy": "The original spreadsheet remains unchanged. Corrections apply only to the derived Brickmen semantic/reconciliation layer."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "MARVEL",
+      "source_row": 968,
+      "expected_name": "Hawkeye",
+      "corrected_fields": {},
+      "clear_fields": [
+        "universe"
+      ],
+      "confidence": "high",
+      "rationale": "The live source repeats Clint Barton in both Identity and Universe. Clear the duplicate person-name value from Universe while preserving Identity, variant, appearance, and year.",
+      "evidence": {
+        "source_type": "live_google_sheet_read",
+        "spreadsheet_title": "Minifig Variants to Make",
+        "spreadsheet_id": "1iE-xqnwC-aUtNQjXZci1X_wnpALqUajEMndHid8t6kg",
+        "verified_at": "2026-09-26",
+        "policy": "The original spreadsheet remains unchanged. Corrections apply only to the derived Brickmen semantic/reconciliation layer."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "MARVEL",
+      "source_row": 969,
+      "expected_name": "Hawkeye",
+      "corrected_fields": {},
+      "clear_fields": [
+        "universe"
+      ],
+      "confidence": "high",
+      "rationale": "The live source repeats Clint Barton in both Identity and Universe. Clear the duplicate person-name value from Universe while preserving Identity, variant, appearance, and year.",
+      "evidence": {
+        "source_type": "live_google_sheet_read",
+        "spreadsheet_title": "Minifig Variants to Make",
+        "spreadsheet_id": "1iE-xqnwC-aUtNQjXZci1X_wnpALqUajEMndHid8t6kg",
+        "verified_at": "2026-09-26",
+        "policy": "The original spreadsheet remains unchanged. Corrections apply only to the derived Brickmen semantic/reconciliation layer."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "MARVEL",
+      "source_row": 970,
+      "expected_name": "Hawkeye",
+      "corrected_fields": {},
+      "clear_fields": [
+        "universe"
+      ],
+      "confidence": "high",
+      "rationale": "The live source repeats Clint Barton in both Identity and Universe. Clear the duplicate person-name value from Universe while preserving Identity, variant, appearance, and year.",
+      "evidence": {
+        "source_type": "live_google_sheet_read",
+        "spreadsheet_title": "Minifig Variants to Make",
+        "spreadsheet_id": "1iE-xqnwC-aUtNQjXZci1X_wnpALqUajEMndHid8t6kg",
+        "verified_at": "2026-09-26",
+        "policy": "The original spreadsheet remains unchanged. Corrections apply only to the derived Brickmen semantic/reconciliation layer."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "MARVEL",
+      "source_row": 972,
+      "expected_name": "Hawkeye",
+      "corrected_fields": {},
+      "clear_fields": [
+        "universe"
+      ],
+      "confidence": "high",
+      "rationale": "The live source repeats Clint Barton in both Identity and Universe. Clear the duplicate person-name value from Universe while preserving Identity, variant, appearance, and year.",
+      "evidence": {
+        "source_type": "live_google_sheet_read",
+        "spreadsheet_title": "Minifig Variants to Make",
+        "spreadsheet_id": "1iE-xqnwC-aUtNQjXZci1X_wnpALqUajEMndHid8t6kg",
+        "verified_at": "2026-09-26",
+        "policy": "The original spreadsheet remains unchanged. Corrections apply only to the derived Brickmen semantic/reconciliation layer."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "MARVEL",
+      "source_row": 973,
+      "expected_name": "Hawkeye",
+      "corrected_fields": {},
+      "clear_fields": [
+        "universe"
+      ],
+      "confidence": "high",
+      "rationale": "The live source repeats Clint Barton in both Identity and Universe. Clear the duplicate person-name value from Universe while preserving Identity, variant, appearance, and year.",
+      "evidence": {
+        "source_type": "live_google_sheet_read",
+        "spreadsheet_title": "Minifig Variants to Make",
+        "spreadsheet_id": "1iE-xqnwC-aUtNQjXZci1X_wnpALqUajEMndHid8t6kg",
+        "verified_at": "2026-09-26",
+        "policy": "The original spreadsheet remains unchanged. Corrections apply only to the derived Brickmen semantic/reconciliation layer."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "MARVEL",
+      "source_row": 975,
+      "expected_name": "Hawkeye",
+      "corrected_fields": {},
+      "clear_fields": [
+        "universe"
+      ],
+      "confidence": "high",
+      "rationale": "The live source repeats Clint Barton in both Identity and Universe. Clear the duplicate person-name value from Universe while preserving Identity, variant, appearance, and year.",
+      "evidence": {
+        "source_type": "live_google_sheet_read",
+        "spreadsheet_title": "Minifig Variants to Make",
+        "spreadsheet_id": "1iE-xqnwC-aUtNQjXZci1X_wnpALqUajEMndHid8t6kg",
+        "verified_at": "2026-09-26",
+        "policy": "The original spreadsheet remains unchanged. Corrections apply only to the derived Brickmen semantic/reconciliation layer."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "MARVEL",
+      "source_row": 977,
+      "expected_name": "Hawkeye",
+      "corrected_fields": {},
+      "clear_fields": [
+        "universe"
+      ],
+      "confidence": "high",
+      "rationale": "The live source repeats Clint Barton in both Identity and Universe. Clear the duplicate person-name value from Universe while preserving Identity, variant, appearance, and year.",
+      "evidence": {
+        "source_type": "live_google_sheet_read",
+        "spreadsheet_title": "Minifig Variants to Make",
+        "spreadsheet_id": "1iE-xqnwC-aUtNQjXZci1X_wnpALqUajEMndHid8t6kg",
+        "verified_at": "2026-09-26",
+        "policy": "The original spreadsheet remains unchanged. Corrections apply only to the derived Brickmen semantic/reconciliation layer."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "X-Men",
+      "source_row": 431,
+      "expected_name": "Rogue",
+      "corrected_fields": {
+        "year": "1983"
+      },
+      "clear_fields": [
+        "universe"
+      ],
+      "confidence": "high",
+      "rationale": "1983 is physically stored in Universe while Year is blank. Move the year; do not replace it with an inferred universe.",
+      "evidence": {
+        "source_type": "live_google_sheet_read",
+        "spreadsheet_title": "Minifig Variants to Make",
+        "spreadsheet_id": "1iE-xqnwC-aUtNQjXZci1X_wnpALqUajEMndHid8t6kg",
+        "verified_at": "2026-09-26",
+        "policy": "The original spreadsheet remains unchanged. Corrections apply only to the derived Brickmen semantic/reconciliation layer."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "X-Men",
+      "source_row": 451,
+      "expected_name": "Psylocke",
+      "corrected_fields": {
+        "year": "1987"
+      },
+      "clear_fields": [
+        "universe"
+      ],
+      "confidence": "high",
+      "rationale": "1987 is physically stored in Universe while Year is blank and is also present in the source-appearance text. Move the year; do not infer a universe.",
+      "evidence": {
+        "source_type": "live_google_sheet_read",
+        "spreadsheet_title": "Minifig Variants to Make",
+        "spreadsheet_id": "1iE-xqnwC-aUtNQjXZci1X_wnpALqUajEMndHid8t6kg",
+        "verified_at": "2026-09-26",
+        "policy": "The original spreadsheet remains unchanged. Corrections apply only to the derived Brickmen semantic/reconciliation layer."
+      }
+    }
+  ]
+}
