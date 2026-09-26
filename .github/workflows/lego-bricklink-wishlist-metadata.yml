@@ -47,6 +47,13 @@ jobs:
             --delay-seconds 0.45
           cp "$WORK/records.jsonl" "$DEST/official-wishlist-bricklink-metadata-latest.jsonl"
           cp "$WORK/summary.json" "$DEST/official-wishlist-bricklink-metadata-summary-latest.json"
+          python tools/knowledge/build_official_wishlist_resolution.py \
+            --wishlist knowledge/libraries/lego-minifigure-customs/data/user-collection/official-wishlist-2026-09-25.jsonl \
+            --bricklink-metadata "$WORK/records.jsonl" \
+            --output "$WORK/resolved-wishlist.jsonl" \
+            --summary "$WORK/resolved-wishlist-summary.json"
+          cp "$WORK/resolved-wishlist.jsonl" "$DEST/official-wishlist-resolved-latest.jsonl"
+          cp "$WORK/resolved-wishlist-summary.json" "$DEST/official-wishlist-resolution-summary-latest.json"
 
       - name: Commit BrickLink metadata resolution
         shell: bash
@@ -55,7 +62,9 @@ jobs:
           git config user.name "brickmen-ingestion-bot"
           git config user.email "brickmen-ingestion-bot@users.noreply.github.com"
           git add "$DEST/official-wishlist-bricklink-metadata-latest.jsonl" \
-                  "$DEST/official-wishlist-bricklink-metadata-summary-latest.json"
+                  "$DEST/official-wishlist-bricklink-metadata-summary-latest.json" \
+                  "$DEST/official-wishlist-resolved-latest.jsonl" \
+                  "$DEST/official-wishlist-resolution-summary-latest.json"
           if git diff --cached --quiet; then
             echo "No BrickLink metadata changes."
             exit 0
