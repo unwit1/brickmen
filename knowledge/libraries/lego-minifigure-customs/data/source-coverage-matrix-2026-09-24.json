@@ -223,7 +223,7 @@
     },
     {
       "domain": "themes_and_source_appearance",
-      "status": "structured_source_appearance_layer_ready_targeted_verification_pending",
+      "status": "structured_source_appearance_and_entity_hierarchy_ready_targeted_verification_pending",
       "sources": [
         "maker catalogs",
         "HeroBloks themes",
@@ -231,9 +231,10 @@
       ],
       "remaining": [
         "verify structured issue/episode candidates against primary or authoritative source catalogs",
-        "resolve 198 mixed/freeform source references",
-        "link verified SourceAppearance records to Character/Incarnation/OutfitDesign",
-        "retain competing hypotheses where tracker text is ambiguous"
+        "resolve typed non-issue/episode references where enough context exists",
+        "link verified SourceAppearance records to Character/Incarnation/OutfitDesign candidates",
+        "resolve character identity blanks and universe/incarnation ambiguity",
+        "retain competing hypotheses when tracker context conflicts"
       ],
       "completed_2026_09_25": {
         "fortnite_pairs": 2494,
@@ -260,7 +261,7 @@
         "entity_resolution_high_priority_records": 60
       },
       "completed_2026_09_26": {
-        "source_appearance_candidates": 3432,
+        "source_appearance_candidates": 3404,
         "source_records_with_first_appearance": 4607,
         "high_priority_review_records": 3193,
         "comic_issue_explicit": 3192,
@@ -268,11 +269,16 @@
         "episode_like_raw": 7,
         "dated_raw": 13,
         "freeform_or_title_only": 167,
-        "structured_source_appearance_candidates": 3234,
-        "explicit_comic_issue_candidates": 3228,
+        "structured_source_appearance_candidates": 3251,
+        "explicit_comic_issue_candidates": 3245,
         "explicit_episode_candidates": 6,
-        "canonical_alias_groups_with_multiple_raw_spellings": 29,
-        "mixed_or_raw_source_appearance_candidates": 198
+        "canonical_alias_groups_with_multiple_raw_spellings": 55,
+        "mixed_or_raw_source_appearance_candidates": 198,
+        "character_candidates": 6347,
+        "incarnation_candidates": 7420,
+        "outfit_design_candidates": 9482,
+        "raw_spelling_variants_collapsed": 57,
+        "typed_non_issue_episode_source_records": 153
       }
     },
     {
@@ -353,7 +359,7 @@
     },
     {
       "domain": "user_collection_reconciliation",
-      "status": "major_intake_reconciliation_and_ranked_design_backlog_ready",
+      "status": "major_intake_entity_hierarchy_release_reconciliation_and_refined_design_backlog_ready",
       "sources": [
         "Bootlego MASTER",
         "Minifig Variants to Make",
@@ -366,11 +372,11 @@
         "One Piece Minifgs"
       ],
       "remaining": [
-        "canonicalize high-priority entity ambiguity groups",
-        "verify source-appearance candidates",
+        "resolve high-priority identity/universe ambiguity groups",
+        "verify SourceAppearance candidates and attach them to outfit/incarnation records",
         "resolve acquisition gaps against catalog/market evidence",
-        "promote verified custom-design targets into production/design backlog",
-        "review unknown-state targets before any automatic promotion"
+        "review 1,554 representation candidates before any duplicate design work",
+        "promote verified 3,389 custom-design candidates into execution backlog by priority"
       ],
       "completed_2026_09_25": {
         "bootlego_structured_records": 705,
@@ -426,10 +432,18 @@
         "source_appearance_high_priority": 3193,
         "external_catalog_id_unique_records": 71,
         "actionable_custom_design_candidates": 4909,
-        "existing_representation_compare_or_acquire": 34,
+        "existing_representation_compare_or_acquire": 88,
         "wishlist_acquisition_gaps": 15,
         "review_only_unknown_state_targets": 1475,
-        "structured_source_appearance_candidates": 3234
+        "structured_source_appearance_candidates": 3234,
+        "character_candidates": 6347,
+        "incarnation_candidates": 7420,
+        "outfit_design_candidates": 9482,
+        "refined_true_custom_design_candidates": 3389,
+        "acquisition_wishlist_items": 15,
+        "representation_review_records": 1554,
+        "representation_variant_review": 1232,
+        "existing_name_level_representation_review": 234
       }
     }
   ],
@@ -504,5 +518,16 @@
     "mask_headgear_high_priority": 1280,
     "source_appearance_review_records": 3428,
     "source_appearance_high_priority": 3193
+  },
+  "digital_media_progress_2026_09_26": {
+    "skywalker_assets": 377,
+    "physical_named_character_family_supported": 245,
+    "generic_role_family_supported": 26,
+    "digital_identity_only_no_physical_name_support": 106,
+    "unique_physical_release_candidate": 59,
+    "physical_release_ambiguous_within_character_family": 212,
+    "no_supported_physical_release_candidate": 106,
+    "digital_variant_suffix_records": 166,
+    "next": "version/outfit resolution and digital-only classification"
   }
 }
