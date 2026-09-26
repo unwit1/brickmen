@@ -1,0 +1,121 @@
+name: LEGO Derived Review Repair
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/lego-derived-review-repair.yml'
+      - 'tools/knowledge/rank_mask_headgear_candidates.py'
+      - 'tools/knowledge/build_mask_headgear_candidate_corpus.py'
+      - 'tools/knowledge/build_skywalker_crosswalk_review.py'
+      - 'knowledge/libraries/lego-minifigure-customs/data/bulk-ingestion/skywalker-physical-crosswalk-candidates-latest.jsonl'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: lego-derived-review-repair-main
+  cancel-in-progress: true
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      DEST: knowledge/libraries/lego-minifigure-customs/data/bulk-ingestion
+      WORK: /tmp/lego-derived-review-repair
+
+    steps:
+      - name: Check out Brickmen
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Rebuild Skywalker grouped review queues
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$WORK/skywalker"
+          python tools/knowledge/build_skywalker_crosswalk_review.py \
+            --candidates "$DEST/skywalker-physical-crosswalk-candidates-latest.jsonl" \
+            --output "$WORK/skywalker/records.jsonl" \
+            --groups-output "$WORK/skywalker/groups.jsonl" \
+            --summary "$WORK/skywalker/summary.json"
+          cp "$WORK/skywalker/summary.json" "$DEST/skywalker-crosswalk-review-summary-latest.json"
+          cp "$WORK/skywalker/records.jsonl" "$DEST/skywalker-crosswalk-review-queue-latest.jsonl"
+          cp "$WORK/skywalker/groups.jsonl" "$DEST/skywalker-crosswalk-review-groups-latest.jsonl"
+
+      - name: Build minimal Rebrickable physical census
+        shell: bash
+        run: |
+          set -euo pipefail
+          raw="$WORK/rebrickable/raw"
+          out="$WORK/rebrickable/output"
+          mkdir -p "$raw" "$out"
+          base="https://cdn.rebrickable.com/media/downloads"
+          files=(themes.csv.gz colors.csv.gz parts.csv.gz part_relationships.csv.gz elements.csv.gz sets.csv.gz minifigs.csv.gz inventories.csv.gz inventory_parts.csv.gz inventory_minifigs.csv.gz)
+          for file in "${files[@]}"; do
+            curl --fail --location --retry 4 --retry-delay 2 --connect-timeout 30 \
+              --user-agent "BrickmenResearch/1.0" \
+              --output "$raw/$file" "$base/$file"
+          done
+          python tools/knowledge/ingest_lego_minifigure_references.py \
+            --rebrickable-dir "$raw" --output-dir "$out"
+
+      - name: Rebuild ranked mask and headgear review queue
+        shell: bash
+        run: |
+          set -euo pipefail
+          src="$WORK/mask"
+          mkdir -p "$src"
+          python tools/knowledge/build_mask_headgear_candidate_corpus.py \
+            --samples "$WORK/rebrickable/output/physical_samples.jsonl" \
+            --components "$WORK/rebrickable/output/component_samples.jsonl" \
+            --output "$src/candidates.jsonl" \
+            --summary "$src/candidate-summary.json"
+          python tools/knowledge/rank_mask_headgear_candidates.py \
+            --candidates "$src/candidates.jsonl" \
+            --output "$src/ranked.jsonl" \
+            --summary "$src/ranked-summary.json"
+          cp "$src/ranked-summary.json" "$DEST/mask-headgear-ranked-summary-latest.json"
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          src=Path(os.environ["WORK"])/"mask/ranked.jsonl"
+          dest=Path(os.environ["DEST"])/"mask-headgear-ranked-review-top1000-latest.jsonl"
+          rows=[]
+          with src.open(encoding="utf-8") as f:
+              for i,line in enumerate(f):
+                  if i>=1000: break
+                  if line.strip(): rows.append(json.loads(line))
+          with dest.open("w",encoding="utf-8") as f:
+              for row in rows:f.write(json.dumps(row,ensure_ascii=False)+"\n")
+          PY
+
+      - name: Commit repaired derived review outputs
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "brickmen-ingestion-bot"
+          git config user.email "brickmen-ingestion-bot@users.noreply.github.com"
+          git add "$DEST/skywalker-crosswalk-review-summary-latest.json" \
+                  "$DEST/skywalker-crosswalk-review-queue-latest.jsonl" \
+                  "$DEST/skywalker-crosswalk-review-groups-latest.jsonl" \
+                  "$DEST/mask-headgear-ranked-summary-latest.json" \
+                  "$DEST/mask-headgear-ranked-review-top1000-latest.jsonl"
+          if git diff --cached --quiet; then
+            echo "No derived review changes."
+            exit 0
+          fi
+          git commit -m "knowledge: repair derived mask and Skywalker review queues"
+          for attempt in 1 2 3 4 5; do
+            git pull --rebase origin main && git push && exit 0
+            sleep $((attempt * 2))
+          done
+          exit 1
