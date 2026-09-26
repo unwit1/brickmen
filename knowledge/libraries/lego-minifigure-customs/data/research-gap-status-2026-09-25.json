@@ -293,7 +293,8 @@
         "all 71 official wishlist BrickLink IDs resolved from public catalog metadata with zero failures",
         "23 serial collisions structurally classified; only 3 remain true/unresolved catalog collisions",
         "all 23 shared-serial release collision records structurally retained; the 3 previously true/unresolved collisions now have source-backed resolutions, leaving 0 true/unresolved shared-serial collisions",
-        "71 resolved public BrickLink catalog records promoted into provenance-bearing physical-reference links (65 wishlist records and 6 gaming design-target records)"
+        "71 resolved public BrickLink catalog records promoted into provenance-bearing physical-reference links (65 wishlist records and 6 gaming design-target records)",
+        "QD015 Donkey Kong received a dedicated secondary-source/web search pass; no relevant exact-code source was found, so it remains explicitly unresolved rather than inferred"
       ]
     },
     {
@@ -325,7 +326,8 @@
     "local copies of game/video assets for exhaustive extraction",
     "BrickLink API credentials for some automated enrichment",
     "local/network materialization of high-volume binary corpora",
-    "some primary-source verification for historical/dead customizer catalogs"
+    "some primary-source verification for historical/dead customizer catalogs",
+    "QD015 Donkey Kong still lacks a verifiable exact-code primary or independent catalog source after the 2026-09-26 secondary search pass."
   ],
   "durable_storage_rule": "Git stores schemas, manifests, normalized facts, crosswalks, derived features, decisions, hashes and provenance. High-volume raw imagery/video/game assets remain in approved local research storage and are referenced by stable IDs/hashes.",
   "latest_physical_census": "data/physical-census-latest.json",
@@ -546,6 +548,14 @@
       "wishlist_records": 65,
       "gaming_design_target_records": 6,
       "output": "data/user-entity-reconciliation/external-catalog-physical-reference-links-latest.jsonl"
+    },
+    "qd015_unresolved_research": {
+      "maker_product_code": "QD015",
+      "observed_name": "Donkey Kong",
+      "status": "unresolved_after_secondary_web_search",
+      "researched_at": "2026-09-26",
+      "research_file": "data/user-entity-reconciliation/release-catalog-unresolved-research-qd015-2026-09-26.json",
+      "exact_public_code_source_found": false
     }
   },
   "latest_progress_2026_09_26": {
