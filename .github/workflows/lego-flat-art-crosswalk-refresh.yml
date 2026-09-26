@@ -77,6 +77,17 @@ jobs:
           python tools/knowledge/index_rioforce_lego_textures.py \
             --root "$src/repo" --output "$src/output/rioforce-index.jsonl"
 
+      - name: Build classified rioforce supervision corpus
+        shell: bash
+        run: |
+          set -euo pipefail
+          out="$WORK/rioforce-supervision"
+          mkdir -p "$out"
+          python tools/knowledge/build_rioforce_design_supervision_corpus.py \
+            --index "$WORK/rioforce/output/rioforce-index.jsonl" \
+            --output "$out/records.jsonl" \
+            --summary "$out/summary.json"
+
       - name: Rebuild catalog-backed flat-art candidates
         shell: bash
         run: |
@@ -102,8 +113,12 @@ jobs:
             git reset --hard origin/main
             cp "$WORK/crosswalk/summary.json" "$DEST/flat-art-catalog-crosswalk-summary-latest.json"
             cp "$WORK/crosswalk/candidates.jsonl" "$DEST/flat-art-catalog-crosswalk-candidates-latest.jsonl"
+            cp "$WORK/rioforce-supervision/summary.json" "$DEST/rioforce-design-supervision-summary-latest.json"
+            cp "$WORK/rioforce-supervision/records.jsonl" "$DEST/rioforce-design-supervision-latest.jsonl"
             git add "$DEST/flat-art-catalog-crosswalk-summary-latest.json" \
-                    "$DEST/flat-art-catalog-crosswalk-candidates-latest.jsonl"
+                    "$DEST/flat-art-catalog-crosswalk-candidates-latest.jsonl" \
+                    "$DEST/rioforce-design-supervision-summary-latest.json" \
+                    "$DEST/rioforce-design-supervision-latest.jsonl"
             if git diff --cached --quiet; then
               echo "No flat-art crosswalk changes."
               exit 0
