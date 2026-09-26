@@ -1,0 +1,44 @@
+name: LEGO Release Collision Classification
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/lego-release-collision-classification.yml'
+      - 'tools/knowledge/classify_release_catalog_collisions.py'
+      - 'knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/release-catalog-collisions-latest.jsonl'
+
+permissions:
+  contents: write
+concurrency:
+  group: lego-release-collision-classification-main
+  cancel-in-progress: true
+jobs:
+  classify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: |
+          git fetch origin main
+          git reset --hard origin/main
+      - run: |
+          set -euo pipefail
+          out=/tmp/release-collisions
+          mkdir -p "$out"
+          python tools/knowledge/classify_release_catalog_collisions.py \
+            --input knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/release-catalog-collisions-latest.jsonl \
+            --output "$out/records.jsonl" --summary "$out/summary.json"
+          dest=knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation
+          cp "$out/records.jsonl" "$dest/release-collision-classification-latest.jsonl"
+          cp "$out/summary.json" "$dest/release-collision-classification-summary-latest.json"
+      - run: |
+          set -euo pipefail
+          git config user.name "brickmen-ingestion-bot"
+          git config user.email "brickmen-ingestion-bot@users.noreply.github.com"
+          git add knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/release-collision-classification-*
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "knowledge: classify shared release serial collisions"
+          git push origin HEAD:main
