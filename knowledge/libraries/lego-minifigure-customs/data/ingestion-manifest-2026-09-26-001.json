@@ -1,0 +1,206 @@
+{
+  "manifest_version": "1.0",
+  "id": "brickmen-gap-ingestion-2026-09-26-001",
+  "created_at": "2026-09-26",
+  "objective": "Refresh the full public and catalog-based ingestion snapshot, reconcile current data, record actionable blockers, and capture source counts.",
+  "trigger_commits": {
+    "bulk_ingestion": "36f7df2881ce90389b62d78dfe72bedc47376dc3",
+    "flat_art_crosswalk_refresh": "0bb5c7cb95de49385052dd604fccda5d8a6dfdd1"
+  },
+  "generated_commits": {
+    "bulk_ingestion_snapshot": "a1df1f134356dab10fe1280676bf02bae8df6ff2",
+    "flat_art_crosswalk_snapshot": "0bb5c7cb95de49385052dd604fccda5d8a6dfdd1"
+  },
+  "workflow_run": {
+    "id": 36264683827,
+    "name": "LEGO Training Data Bulk Ingestion",
+    "conclusion": "success",
+    "steps_completed": 40,
+    "processing_status_sources": 49,
+    "status_counts": {
+      "blocked_local_or_interactive": 11,
+      "complete": 10,
+      "all_other_nonfailed_stages": 28
+    },
+    "failed_processing_stages": 0,
+    "artifact_id": 10914306651,
+    "artifact_bytes": 1510685519,
+    "artifact_expires_at": "2026-10-10T19:19:48Z"
+  },
+  "results": {
+    "physical_census": {
+      "physical_samples": 17229,
+      "figure_reference_assets": 17229,
+      "component_records": 82411,
+      "component_reference_assets": 82273,
+      "set_occurrence_links": 25826,
+      "printed_component_records": 30375,
+      "figures_without_catalog_image": 0,
+      "figures_without_set_occurrence": 321,
+      "figures_without_component_inventory": 4
+    },
+    "pick_a_brick": {
+      "total_reported_products": 4442,
+      "unique_element_variants": 17242,
+      "pages": 12,
+      "availability": {
+        "AVAILABLE": 16621,
+        "OUT_OF_STOCK": 621
+      }
+    },
+    "ldraw": {
+      "patterned_or_printed_records": 4352,
+      "cc_by_4": 4132,
+      "cc_by_2_and_4": 220
+    },
+    "bricksfinder": {
+      "caption_rows": 12966,
+      "current_rebrickable_matches": 12960,
+      "current_rebrickable_missing": 6,
+      "reconciliation_queue": 264,
+      "high_priority_reconciliation": 24
+    },
+    "fortnite": {
+      "source_outfits": 16414,
+      "lego_style_records": 2494,
+      "identity_pairs": 2494,
+      "unmatched_lego": 0,
+      "visual_feature_records_complete": 2494,
+      "visual_feature_errors": 0,
+      "semantic_review_records": 2494,
+      "semantic_review_high_priority": 739,
+      "direct_images": 2480,
+      "alias_fallback_images": 14,
+      "missing_images": 0,
+      "measurement_signals": 2492,
+      "deterministic_control_pairs": 6382,
+      "hard_group_wrong_identity_negatives": 1394
+    },
+    "flat_art": {
+      "rioforce_records": 129,
+      "classified_minifigure_surface_maps": 102,
+      "with_figure_candidates": 88,
+      "with_component_candidates": 85,
+      "base_part_ldraw_links": 4,
+      "previously_verified_groups_excluded": 57,
+      "manual_unverified_records": 48,
+      "review_bands": {
+        "strong_review": 25,
+        "medium_review": 5,
+        "low_review": 3,
+        "no_figure_candidate": 15
+      },
+      "verify_first_records": 0
+    },
+    "face_and_head": {
+      "decorated_head_parts": 4198,
+      "parts_with_semantic_tags": 3463,
+      "weak_expression_candidates": 2009,
+      "alternate_expression_candidates": 743,
+      "face_image_records": 2574,
+      "unmatched_face_images": 0,
+      "head_part_split_leakage": 0,
+      "rioforce_face_review_records": 38,
+      "face_records_with_machine_readable_geometry": 33
+    },
+    "skywalker": {
+      "candidate_assets": 377,
+      "independent_crosswalk_review_records": 377,
+      "base_character_groups": 247,
+      "multi_variant_groups": 36
+    },
+    "herobloks": {
+      "figure_records": 59745,
+      "brand_records": 1350,
+      "unmodeled_brand_slugs": 1292,
+      "unmodeled_with_stable_prefix_candidate": 61,
+      "compatible_brand_candidates": 76
+    },
+    "official_assets": {
+      "zip_bundles": 12,
+      "zip_bundles_complete": 12,
+      "raster_assets_profiled": 397,
+      "raster_feature_errors": 0,
+      "rioforce_texture_files": 245,
+      "svg_decals": 221
+    }
+  },
+  "blockers": [
+    {
+      "source_id": "bricklink_api_enrichment",
+      "needs": "Four BrickLink API credentials (consumer key/secret and token/token secret) plus a registered endpoint IP. Store credentials in a secure local environment or repository secret; never paste them into chat."
+    },
+    {
+      "source_id": "flickr_bobs_full_decals",
+      "needs": "Flickr export or API access for reliable full-collection enumeration."
+    },
+    {
+      "source_id": "mecabricks_bulk_assets",
+      "needs": "Mecabricks export/API access or an approved bulk acquisition path."
+    },
+    {
+      "source_id": "licensed_reference_books",
+      "needs": "Local purchased/scanned book files."
+    },
+    {
+      "source_id": "tt_games_assets",
+      "needs": "Legally obtained local TT Games installations."
+    },
+    {
+      "source_id": "legacy_game_assets",
+      "needs": "Local game files or preserved archives."
+    },
+    {
+      "source_id": "film_frame_corpus",
+      "needs": "Local video files for the selected film sources."
+    },
+    {
+      "source_id": "uefn_canonical_renders",
+      "needs": "Local UEFN installation and controlled capture access."
+    },
+    {
+      "source_id": "controlled_physical_photography",
+      "needs": "Physical figures and a capture rig."
+    },
+    {
+      "source_id": "manufacturing_validation",
+      "needs": "Printed physical samples and measurements."
+    },
+    {
+      "source_id": "human_evaluation",
+      "needs": "Reviewer sessions for visual matching and semantic labels."
+    }
+  ],
+  "review_queues_remaining": {
+    "fortnite_semantic_review": 2494,
+    "rioforce_flat_art_manual_review": 48,
+    "rioforce_face_landmarks": 38,
+    "skywalker_crosswalk": 377,
+    "bricksfinder_name_drift": 264,
+    "herobloks_brand_registry": 1292
+  },
+  "rights_basis": {
+    "user_reaffirmed_express_permission_for_machine_learning_references": true,
+    "applies_to_research_training_use": true,
+    "copyright_or_public_license_as_exclusion_gate": false,
+    "preserve_original_license_and_source_provenance": true
+  },
+  "validation": {
+    "workflow_conclusion": "success",
+    "failed_processing_stages": 0,
+    "source_status_aggregation_completed": true,
+    "data_quality_checks": [
+      "Fortnite: all 2,494 pairs had visual features; zero errors and zero missing images.",
+      "Face data: 2,574 matched image records; zero unmatched images and zero head-part leakage across grouped splits.",
+      "Skywalker: 377 review candidates retained as candidates; no unverified matches promoted.",
+      "Flat-art: remaining 48 records remain explicitly unverified; no verify-first records were promoted."
+    ]
+  },
+  "next_backlog": [
+    "Review the 48 RioForce flat-art candidate records, prioritizing the 25 strong and 5 medium bands while resolving ambiguity before promotion.",
+    "Annotate high-priority Fortnite semantic records, then continue the 2,494-record queue.",
+    "Supply BrickLink credentials and endpoint registration, plus the requested local/exported media and game sources.",
+    "Complete visual review for 38 face-landmark and 377 Skywalker crosswalk candidates.",
+    "After obtaining inputs, materialize selected physical/catalog images into durable local content-addressed storage and preserve per-occurrence source provenance."
+  ]
+}
