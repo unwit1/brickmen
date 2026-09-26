@@ -807,8 +807,11 @@ def main():
         [x for x in code_rows if x.get("resolution_status") in {"unresolved_prefix","brand_candidate_ambiguous"}]
     )
 
+    appearance_alias_groups = [
+        x for x in appearance_rows if len(x.get("raw_first_appearance_values") or []) > 1
+    ]
     (args.output_dir / "source-appearance-summary.json").write_text(json.dumps({
-        "schema":"user-source-appearance-summary/v1",
+        "schema":"user-source-appearance-summary/v2",
         "processor_version":VERSION,
         "candidate_records":len(appearance_rows),
         "source_records_with_first_appearance":sum(x["record_count"] for x in appearance_rows),
@@ -816,6 +819,16 @@ def main():
         "explicit_episode_candidates":sum(x["parse_status"]=="episode_explicit" for x in appearance_rows),
         "structured_reference_candidates":sum(x["parse_status"] in {"comic_issue_explicit","episode_explicit"} for x in appearance_rows),
         "mixed_or_raw_candidates":sum(x["parse_status"] not in {"comic_issue_explicit","episode_explicit"} for x in appearance_rows),
+        "canonical_groups_with_multiple_raw_spellings":len(appearance_alias_groups),
+        "raw_spelling_variants_collapsed":sum(len(x.get("raw_first_appearance_values") or [])-1 for x in appearance_alias_groups),
+        "top_alias_groups":[{
+            "canonical_reference_key":x.get("canonical_reference_key"),
+            "raw_values":x.get("raw_first_appearance_values"),
+            "records":x.get("record_count"),
+            "source_work":x.get("source_work_candidate"),
+            "volume":x.get("volume_candidate"),
+            "issue":x.get("issue_number_candidate")
+        } for x in sorted(appearance_alias_groups,key=lambda x:(-len(x.get("raw_first_appearance_values") or []),-int(x.get("record_count") or 0)))[:100]],
         "status":"source_appearance_candidate_layer_ready"
     }, indent=2)+"\n", encoding="utf-8")
 
