@@ -6,7 +6,7 @@ import argparse, json, re, unicodedata
 from collections import Counter
 from pathlib import Path
 
-VERSION="tracker-identity-field-audit/v2"
+VERSION="tracker-identity-field-audit/v3"
 COLORS={"black","white","gold","green","yellow","red","blue","silver","gray","grey","purple","orange","pink","brown","tan","azure","teal"}
 MEDIA_OR_STYLE={"mvc","mcu","dcau","dceu","arrowverse","classic","modern","animated"}
 ROLE_OR_ERA={"atlantean","phoenix","pirate queen","wild west"}
@@ -110,7 +110,7 @@ def main():
                 score+=25 if "identity_media_or_style_descriptor" in ss else 0
                 score+=20 if "identity_role_or_era_descriptor" in ss else 0
                 score+=15 if "identity_duplicates_variant" in ss else 0
-                score+=10 if "identity_trailing_punctuation" in ss else 0
+                score+=10 if "identity_trailing_unmatched_punctuation" in ss else 0
                 rows.append({
                     "source_file":path.name,
                     "source_title":raw.get("source_title"),
@@ -137,7 +137,7 @@ def main():
         for row in rows:
             f.write(json.dumps(row,ensure_ascii=False)+"\n")
     summary={
-        "schema":"tracker-identity-field-audit-summary/v2",
+        "schema":"tracker-identity-field-audit-summary/v3",
         "processor_version":VERSION,
         "named_source_records_scanned":source_records,
         "review_records":len(rows),
