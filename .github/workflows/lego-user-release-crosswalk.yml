@@ -9,6 +9,7 @@ on:
       - 'tools/knowledge/crosswalk_user_releases_herobloks.py'
       - 'tools/knowledge/snapshot_herobloks_catalog.py'
       - 'tools/knowledge/snapshot_downtheblocks_xinh_catalog.py'
+      - 'tools/knowledge/snapshot_downtheblocks_serial_catalog.py'
       - 'knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/figure-release-candidates-latest.jsonl'
 
 permissions:
@@ -44,10 +45,30 @@ jobs:
           python tools/knowledge/snapshot_downtheblocks_xinh_catalog.py \
             --output "$work/downtheblocks-xinh.jsonl" \
             --summary "$work/downtheblocks-xinh-summary.json"
+          python tools/knowledge/snapshot_downtheblocks_serial_catalog.py \
+            --source-url "https://downtheblocks.com/koruit-minifigure-set-list-database/" \
+            --catalog-id "downtheblocks_koruit_kdl" --brand-label "Koruit / KDL" --prefix-regex "XP|K" \
+            --output "$work/downtheblocks-koruit-kdl.jsonl" --summary "$work/downtheblocks-koruit-kdl-summary.json"
+          python tools/knowledge/snapshot_downtheblocks_serial_catalog.py \
+            --source-url "https://downtheblocks.com/kopf-minifigure-set-list-database/" \
+            --catalog-id "downtheblocks_kopf_chengyi" --brand-label "Kopf / Chengyi" --prefix-regex "KF|CY" \
+            --output "$work/downtheblocks-kopf.jsonl" --summary "$work/downtheblocks-kopf-summary.json"
+          python tools/knowledge/snapshot_downtheblocks_serial_catalog.py \
+            --source-url "https://downtheblocks.com/pogo-minifigure-set-list-database/" \
+            --catalog-id "downtheblocks_pogo" --brand-label "POGO" --prefix-regex "PG" \
+            --output "$work/downtheblocks-pogo.jsonl" --summary "$work/downtheblocks-pogo-summary.json"
+          python tools/knowledge/snapshot_downtheblocks_serial_catalog.py \
+            --source-url "https://downtheblocks.com/wm-minifigure-set-list-database/" \
+            --catalog-id "downtheblocks_wm_mg" --brand-label "World Minifigures / MG" --prefix-regex "WM|MG" \
+            --output "$work/downtheblocks-wm.jsonl" --summary "$work/downtheblocks-wm-summary.json"
           python tools/knowledge/crosswalk_user_releases_herobloks.py \
             --release-candidates knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/figure-release-candidates-latest.jsonl \
             --herobloks-catalog "$work/herobloks.jsonl" \
             --historical-xinh-catalog "$work/downtheblocks-xinh.jsonl" \
+            --fallback-catalog "downtheblocks_koruit_kdl=$work/downtheblocks-koruit-kdl.jsonl" \
+            --fallback-catalog "downtheblocks_kopf_chengyi=$work/downtheblocks-kopf.jsonl" \
+            --fallback-catalog "downtheblocks_pogo=$work/downtheblocks-pogo.jsonl" \
+            --fallback-catalog "downtheblocks_wm_mg=$work/downtheblocks-wm.jsonl" \
             --output "$work/crosswalk.jsonl" \
             --summary "$work/summary.json" \
             --unresolved-output "$work/unresolved.jsonl" \
@@ -62,6 +83,10 @@ jobs:
           cp "$work/collisions.jsonl" "$dest/release-catalog-collisions-latest.jsonl"
           cp "$work/downtheblocks-xinh-summary.json" "$bulk/downtheblocks-xinh-catalog-summary-latest.json"
           cp "$work/downtheblocks-xinh.jsonl" "$bulk/downtheblocks-xinh-catalog-latest.jsonl"
+          for id in koruit-kdl kopf pogo wm; do
+            cp "$work/downtheblocks-$id-summary.json" "$bulk/downtheblocks-$id-catalog-summary-latest.json"
+            cp "$work/downtheblocks-$id.jsonl" "$bulk/downtheblocks-$id-catalog-latest.jsonl"
+          done
 
       - name: Commit exact catalog crosswalk
         shell: bash
@@ -75,7 +100,7 @@ jobs:
             git add knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/*release-crosswalk-* \
                     knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/release-catalog-unresolved-latest.jsonl \
                     knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/release-catalog-collisions-latest.jsonl \
-                    knowledge/libraries/lego-minifigure-customs/data/bulk-ingestion/downtheblocks-xinh-catalog-*
+                    knowledge/libraries/lego-minifigure-customs/data/bulk-ingestion/downtheblocks-*-catalog-*
             if git diff --cached --quiet; then
               echo "No release crosswalk changes."
               exit 0
