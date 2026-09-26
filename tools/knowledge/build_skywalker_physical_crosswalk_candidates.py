@@ -10,8 +10,9 @@ import argparse, json, re, unicodedata
 from collections import Counter
 from difflib import SequenceMatcher
 from pathlib import Path
+from skywalker_identity_keys import parse_identity_key
 
-VERSION="skywalker-physical-crosswalk-candidates/v2"
+VERSION="skywalker-physical-crosswalk-candidates/v3"
 STOP={
     "lego","star","wars","minifig","minifigure","figure","with","and","the","a","an",
     "episode","ep","new","version","variant","character","profile","icons","icon",
@@ -55,6 +56,61 @@ def semantic_tokens(value):
 def norm(value):
     toks=semantic_tokens(value)
     return " ".join(toks),toks
+
+SCENE_CONTEXT_ALIASES={
+    "cantina":[["cantina"],["mos","eisley"]],
+    "skiff":[["skiff"]],
+    "swamp":[["swamp"],["dagobah"],["yoda","hut"]],
+    "tatooine":[["tatooine"],["mos","eisley"],["mos","espa"]],
+    "hoth":[["hoth"]],
+    "endor":[["endor"]],
+    "cloudcity":[["cloud","city"]],
+    "bespin":[["bespin"],["cloud","city"]],
+    "geonosis":[["geonosis"],["geonosian"]],
+    "kashyyyk":[["kashyyyk"]],
+    "crait":[["crait"]],
+    "kijimi":[["kijimi"]],
+    "ahchto":[["ahch","to"],["ahchto"]],
+    "jabbaspalace":[["jabba","palace"]],
+    "theed":[["theed"]],
+    "coruscant":[["coruscant"]],
+    "utapau":[["utapau"]],
+    "starkiller":[["starkiller"]],
+}
+
+def scene_context_terms(key):
+    parsed=parse_identity_key(key)
+    suffix_compact="".join(semantic_tokens(" ".join(parsed.get("variant_suffix_tokens") or [])))
+    found=[]
+    for cue,aliases in SCENE_CONTEXT_ALIASES.items():
+        if cue in suffix_compact:
+            found.append((cue,aliases))
+    return found
+
+def set_context_matches(key,occurrences):
+    cues=scene_context_terms(key)
+    if not cues:return []
+    matches=[]
+    for occ in occurrences or []:
+        set_name=str(occ.get("set_name") or "")
+        st=set(semantic_tokens(set_name))
+        for cue,aliases in cues:
+            for alias in aliases:
+                if set(alias).issubset(st):
+                    matches.append({
+                        "cue":cue,
+                        "alias":" ".join(alias),
+                        "set_num":occ.get("set_num"),
+                        "set_name":set_name,
+                        "year":occ.get("year"),
+                    })
+                    break
+    out=[];seen=set()
+    for m in matches:
+        sig=(m["cue"],m["set_num"],m["alias"])
+        if sig not in seen:
+            seen.add(sig);out.append(m)
+    return out
 
 def is_star_wars(sample):
     for occ in sample.get("set_occurrences") or []:
