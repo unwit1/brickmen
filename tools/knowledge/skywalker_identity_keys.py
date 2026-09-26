@@ -15,6 +15,12 @@ SPECIALIZED_ROLE_MATCH_OVERRIDES = {
 }
 
 IDENTITY_KEY_OVERRIDES = {
+    "Emperors_RoyalGuard": {
+        "base_character_key": "Emperors_RoyalGuard",
+        "canonical_identity_label": "Emperor's Royal Guard",
+        "variant_suffix_tokens": [],
+        "reason": "Emperor's Royal Guard is the full named game character/role identity; RoyalGuard is not an outfit suffix.",
+    },
     "Biggs_Darklighter": {
         "base_character_key": "Biggs_Darklighter",
         "canonical_identity_label": "Biggs Darklighter",
