@@ -8,6 +8,7 @@ on:
       - '.github/workflows/lego-bricklink-wishlist-metadata.yml'
       - 'tools/knowledge/resolve_bricklink_public_minifigure_metadata.py'
       - 'knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/external-catalog-id-queue-latest.jsonl'
+      - 'knowledge/libraries/lego-minifigure-customs/data/user-collection/official-wishlist-2026-09-25.jsonl'
 
 permissions:
   contents: write
@@ -41,7 +42,7 @@ jobs:
           set -euo pipefail
           mkdir -p "$WORK"
           python tools/knowledge/resolve_bricklink_public_minifigure_metadata.py \
-            --queue "$DEST/external-catalog-id-queue-latest.jsonl" \
+            --queue knowledge/libraries/lego-minifigure-customs/data/user-collection/official-wishlist-2026-09-25.jsonl \
             --output "$WORK/records.jsonl" \
             --summary "$WORK/summary.json" \
             --delay-seconds 0.45
