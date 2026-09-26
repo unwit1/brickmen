@@ -12,7 +12,7 @@ from difflib import SequenceMatcher
 from pathlib import Path
 from skywalker_identity_keys import parse_identity_key
 
-VERSION="skywalker-physical-crosswalk-candidates/v6"
+VERSION="skywalker-physical-crosswalk-candidates/v7"
 STOP={
     "lego","star","wars","minifig","minifigure","figure","with","and","the","a","an",
     "episode","ep","new","version","variant","character","profile","icons","icon",
@@ -72,7 +72,10 @@ SCENE_CONTEXT_ALIASES={
     "crait":[["crait"]],
     "kijimi":[["kijimi"]],
     "ahchto":[["ahch","to"],["ahchto"]],
-    "jabbaspalace":[["jabba","palace"]],
+    # Game-facing "Jabba's Palace" variants are frequently cataloged through
+    # adjacent Return of the Jedi set/costume language such as Sail Barge or
+    # Skiff Guard rather than the literal location string.
+    "jabbaspalace":[["jabba","palace"],["jabba"],["sail","barge"],["skiff"]],
     "theed":[["theed"]],
     "coruscant":[["coruscant"]],
     "utapau":[["utapau"]],
