@@ -12,7 +12,7 @@ from difflib import SequenceMatcher
 from pathlib import Path
 from skywalker_identity_keys import parse_identity_key
 
-VERSION="skywalker-physical-crosswalk-candidates/v5"
+VERSION="skywalker-physical-crosswalk-candidates/v6"
 STOP={
     "lego","star","wars","minifig","minifigure","figure","with","and","the","a","an",
     "episode","ep","new","version","variant","character","profile","icons","icon",
@@ -32,6 +32,7 @@ def camel(value):
 
 def semantic_tokens(value):
     value=camel(unicodedata.normalize("NFKD",str(value or "")))
+    value=value.replace("\'","").replace("’","")
     value="".join(ch if ch.isalnum() else " " for ch in value.casefold())
     raw=[t for t in value.split() if t and t not in STOP]
     out=[];i=0
