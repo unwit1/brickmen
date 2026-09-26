@@ -1,0 +1,50 @@
+{
+  "schema": "skywalker-suffix-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-suffix-review-010",
+  "cohort": "remaining_direct_catalog_text_suffix_matches",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-c9888260ff764136c5d3036d",
+      "character_variant_key": "CloneTrooper_Phase2",
+      "decision": "variant_family_verified_exact_release_unresolved",
+      "pregame_physical_candidates": [
+        {
+          "fig_num": "fig-004018",
+          "name": "Clone Trooper, Special Forces, Phase II Blue Armor",
+          "year": 2013
+        },
+        {
+          "fig_num": "fig-003667",
+          "name": "Clone Trooper, Phase II Armor, Plain Black Head, Black Mouth",
+          "first_year": 2005
+        },
+        {
+          "fig_num": "fig-003666",
+          "name": "Clone Trooper, Phase II Armor, Plain Black Head, Neck Bracket",
+          "first_year": 2005
+        },
+        {
+          "fig_num": "fig-003835",
+          "name": "Clone Trooper, Phase II Armor, Plain Black Head, Dotted Mouth",
+          "year": 2010
+        }
+      ],
+      "later_release_examples": [
+        {
+          "fig_num": "fig-014662",
+          "name": "Clone Trooper, Phase II Armor, Nougat Head",
+          "year": 2024
+        }
+      ],
+      "reason": "After semantic normalization, Phase2 correctly maps to catalog Phase II rather than Phase I. Multiple pre-game Phase II physical releases remain, so the suffix verifies the armor-generation family but not one exact figure. The 2024 generic Phase II release is excluded as source-equivalent to the 2022 game."
+    }
+  ],
+  "result": {
+    "reviewed": 1,
+    "variant_family_verified_exact_release_unresolved": 1,
+    "automatic_exact_equivalence_promotions": 0
+  },
+  "direct_catalog_text_suffix_match_cohort_complete": true,
+  "matcher_regression_closed": "Phase2 no longer admits Phase I candidates"
+}
