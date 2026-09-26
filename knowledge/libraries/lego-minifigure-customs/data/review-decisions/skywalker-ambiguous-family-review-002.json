@@ -1,0 +1,150 @@
+{
+  "schema": "skywalker-ambiguous-family-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-ambiguous-family-review-002",
+  "policy": "Unqualified game identities are resolved against physical catalogs by separating standard forms from explicitly named costume/accessory variants and wrong associated entities. Multiple plausible pre-game print states remain visual-pending.",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-a23c6546a04b23f357600f84",
+      "character_variant_key": "K-3PO",
+      "decision": "character_identity_verified_leg_print_variant_unresolved",
+      "canonical_subject": "K-3PO",
+      "plausible_pre_game_physical_candidates": [
+        {
+          "fig_num": "fig-003676",
+          "brickset_minifig": "sw0165",
+          "catalog_name": "K-3PO",
+          "year": 2007,
+          "set_num": "7666-1",
+          "leg_state": "plain"
+        },
+        {
+          "fig_num": "fig-004124",
+          "brickset_minifig": "sw0725",
+          "catalog_name": "K-3PO - Printed Legs, Bright Light Yellow Eyes",
+          "year": 2016,
+          "set_num": "75098-1",
+          "leg_state": "printed"
+        }
+      ],
+      "reason": "Both supported K-3PO physical releases predate the game and differ in explicit leg/eye decoration. The unqualified digital key establishes the character but not which physical print generation was used; exact release requires visual/component comparison.",
+      "evidence_urls": [
+        "https://brickset.com/minifigs/year-2007/name-K-3PO",
+        "https://brickset.com/minifigs/name-K-3PO/year-2016"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-710d53d37aed6025f3e4bb63",
+      "character_variant_key": "KitFisto",
+      "decision": "character_identity_verified_cape_state_unresolved",
+      "canonical_subject": "Kit Fisto",
+      "plausible_pre_game_physical_candidates": [
+        {
+          "fig_num": "fig-003690",
+          "brickset_minifig": "sw0163",
+          "catalog_name": "Kit Fisto",
+          "first_year": 2007,
+          "cape_present": false
+        },
+        {
+          "fig_num": "fig-003913",
+          "brickset_minifig": "sw0422",
+          "catalog_name": "Kit Fisto - Reddish Brown Cape",
+          "year": 2012,
+          "cape_present": true
+        }
+      ],
+      "reason": "Both supported Kit Fisto releases predate the game. The unqualified key does not establish cape state, so exact physical release remains a direct visual/component question.",
+      "evidence_urls": [
+        "https://brickset.com/minifigs/name-Kit-Fisto/year-2007",
+        "https://brickset.com/minifigs/year-2012/name-Kit-Fisto"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-638e8d62c4b76c66c49dcd99",
+      "character_variant_key": "RoseTico",
+      "decision": "standard_character_variant_identity_verified_visual_pending",
+      "canonical_game_identity": "Rose Tico",
+      "physical_candidate": {
+        "fig_num": "fig-004245",
+        "brickset_minifig": "sw0857",
+        "catalog_name": "Rose Tico - Dark Tan Outfit, Hair",
+        "first_year": 2017,
+        "sets": [
+          "75176-1",
+          "75213-1"
+        ]
+      },
+      "rejected_candidate": {
+        "fig_num": "fig-004315",
+        "brickset_minifig": "sw0901",
+        "catalog_name": "Rose Tico - Dark Blue First Order Officer Disguise, Hat with Hair",
+        "year": 2018,
+        "reason": "First Order disguise is a separately named game variant and should not make the unqualified Rose identity ambiguous"
+      },
+      "reason": "The game distinguishes normal Rose Tico from Rose Tico (First Order). That semantic separation makes the standard dark-tan physical Rose family the appropriate counterpart for the unqualified profile; exact artwork reuse remains visual pending.",
+      "evidence_urls": [
+        "https://brickset.com/minifigs/name-Rose-Tico"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-e061db9ca6f0b0559c0e8656",
+      "character_variant_key": "Sebulba",
+      "decision": "exact_character_physical_release_verified_companion_false_positive_rejected",
+      "canonical_subject": "Sebulba",
+      "physical_candidate": {
+        "fig_num": "fig-003769",
+        "catalog_name": "Sebulba",
+        "first_year": 2011,
+        "sets": [
+          "7962-1",
+          "9675-1"
+        ]
+      },
+      "rejected_candidate": {
+        "fig_num": "fig-010433",
+        "catalog_name": "Pit Droid - Brown and White (Sebulba)",
+        "reason": "Sebulba's pit droid is a separate associated entity, not Sebulba"
+      },
+      "reason": "The exact-name physical Sebulba is the character counterpart. The competing candidate is explicitly a Pit Droid associated with Sebulba, repeating the same possessive/association false-positive pattern found for Gasgano.",
+      "systemic_pattern": "association_name_is_not_character_identity"
+    },
+    {
+      "asset_id": "skywalker-profile-23c072c16c7bccdee7112a5f",
+      "character_variant_key": "TheGrandInquisitor",
+      "decision": "character_identity_verified_rebels_physical_family_visual_pending",
+      "canonical_subject": "The Grand Inquisitor",
+      "physical_candidate": {
+        "fig_num": "fig-004091",
+        "brickset_minifig": "sw0622",
+        "catalog_name": "The Grand Inquisitor - Dark Bluish Gray Uniform",
+        "year": 2015,
+        "set_num": "75082-1"
+      },
+      "later_catalog_note": {
+        "brickset_minifig": "sw1222",
+        "catalog_name": "The Grand Inquisitor - Black Uniform",
+        "year": 2022,
+        "status": "separate 2022 release; do not assume source-equivalence without release-date/visual confirmation"
+      },
+      "reason": "The current supported crosswalk contains the 2015 Rebels Grand Inquisitor as the pre-game physical family. A separate 2022 black-uniform release exists, so exact uniform mapping remains visual/timing pending rather than being inferred from the unsuffixed identity.",
+      "evidence_urls": [
+        "https://brickset.com/minifigs/name-Grand-Inquisitor/year-2015",
+        "https://brickset.com/minifigs/sw1222/the-grand-inquisitor-black-uniform"
+      ]
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "standard_or_exact_character_counterpart_resolved": 2,
+    "multiple_pre_game_or_same_year_variant_states_visual_pending": 3,
+    "associated_entity_false_positive_rejected": 1,
+    "automatic_exact_artwork_equivalence_promotions": 0
+  },
+  "remaining_ambiguous_family_records_after_batch": 61,
+  "systemic_findings": [
+    "Associated/possessive catalog entries such as 'Pit Droid (Sebulba)' must be excluded from identity-family support for the named owner.",
+    "When the game exposes a disguise as a separate variant, that can safely disambiguate the unqualified base profile away from the disguise physical release.",
+    "Unqualified identities still need component-state review when physical releases differ only by cape, print generation, or other decoration."
+  ]
+}
