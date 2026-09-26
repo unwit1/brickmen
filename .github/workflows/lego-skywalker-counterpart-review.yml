@@ -41,6 +41,16 @@ jobs:
             --unresolved-output "$work/unresolved.jsonl" \
             --summary "$work/summary.json"
 
+      - name: Classify digital identity families
+        shell: bash
+        run: |
+          set -euo pipefail
+          work=/tmp/skywalker-counterparts
+          python tools/knowledge/classify_skywalker_identity_families.py \
+            --candidates knowledge/libraries/lego-minifigure-customs/data/bulk-ingestion/skywalker-physical-crosswalk-candidates-latest.jsonl \
+            --output "$work/identity-families.jsonl" \
+            --summary "$work/identity-family-summary.json"
+
       - name: Summarize unresolved cohorts
         shell: bash
         run: |
@@ -65,8 +75,10 @@ jobs:
           cp "$work/unresolved.jsonl" "$dest/skywalker-counterpart-unresolved-latest.jsonl"
           cp "$work/summary.json" "$dest/skywalker-counterpart-classification-summary-latest.json"
           cp "$work/unresolved-summary.json" "$dest/skywalker-counterpart-unresolved-summary-latest.json"
+          cp "$work/identity-families.jsonl" "$dest/skywalker-identity-families-latest.jsonl"
+          cp "$work/identity-family-summary.json" "$dest/skywalker-identity-family-summary-latest.json"
           cp "$work/unresolved-top.jsonl" "$dest/skywalker-counterpart-unresolved-top-latest.jsonl"
-          git add "$dest/skywalker-counterpart-classification-latest.jsonl" "$dest/skywalker-counterpart-unresolved-latest.jsonl" "$dest/skywalker-counterpart-classification-summary-latest.json" "$dest/skywalker-counterpart-unresolved-summary-latest.json" "$dest/skywalker-counterpart-unresolved-top-latest.jsonl"
+          git add "$dest/skywalker-counterpart-classification-latest.jsonl" "$dest/skywalker-counterpart-unresolved-latest.jsonl" "$dest/skywalker-counterpart-classification-summary-latest.json" "$dest/skywalker-counterpart-unresolved-summary-latest.json" "$dest/skywalker-counterpart-unresolved-top-latest.jsonl" "$dest/skywalker-identity-families-latest.jsonl" "$dest/skywalker-identity-family-summary-latest.json"
           if git diff --cached --quiet; then
             echo "No Skywalker counterpart changes."
             exit 0
