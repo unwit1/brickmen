@@ -13,7 +13,7 @@ from collections import Counter,defaultdict
 from pathlib import Path
 from skywalker_identity_keys import parse_identity_key, specialized_role_match
 
-VERSION="skywalker-identity-family/v6"
+VERSION="skywalker-identity-family/v7"
 GENERIC={"goon","friend","alien","human","officer","trooper","droid","guard","clone"}
 
 def load_jsonl(path):
@@ -135,6 +135,48 @@ NEGATIVE_SUFFIX_FEATURES={
     "noshell":"shell",
 }
 
+COMPONENT_FEATURE_TERMS={
+    "helmet":("helmet",),
+    "hat":("hat"," cap","cap "),
+    "cape":("cape",),
+    "shell":("shell",),
+}
+
+def candidate_feature_evidence(candidate,feature):
+    terms=COMPONENT_FEATURE_TERMS.get(feature,(feature,))
+    name=str(candidate.get("name") or "").casefold()
+    name_matches=[term.strip() for term in terms if term.strip() and term.strip() in name]
+    summary=candidate.get("component_inventory_summary") or {}
+    component_matches=[]
+    for comp in summary.get("accessory_components") or []:
+        part_name=str(comp.get("part_name") or "").casefold()
+        if any(term.strip() in part_name for term in terms if term.strip()):
+            component_matches.append({
+                "part_num":comp.get("part_num"),
+                "part_name":comp.get("part_name"),
+                "color_name":comp.get("color_name"),
+                "component_role":comp.get("component_role"),
+            })
+    return {
+        "feature":feature,
+        "figure_name_matches":name_matches,
+        "component_matches":component_matches,
+        "component_inventory_resolved":bool(summary.get("resolved_component_count")),
+        "explicitly_present":bool(name_matches or component_matches),
+    }
+
+def negative_feature_evidence(candidates,features):
+    out=[]
+    for candidate in candidates or []:
+        evidence=[candidate_feature_evidence(candidate,f) for f in features]
+        out.append({
+            "fig_num":candidate.get("fig_num"),
+            "name":candidate.get("name"),
+            "features":evidence,
+            "explicit_conflict":any(x["explicitly_present"] for x in evidence),
+        })
+    return out
+
 def negative_suffix_features(key):
     parsed=parse_identity_key(key)
     compact_suffix="".join(str(x) for x in parsed.get("variant_suffix_tokens") or []).casefold()
@@ -148,8 +190,8 @@ def constrain_by_suffix(key,supported):
     if negative:
         filtered=[]
         for candidate in supported:
-            nt=set(semantic_variant_tokens(candidate.get("name")))
-            if not any(feature in nt for feature in negative):
+            evidence=[candidate_feature_evidence(candidate,feature) for feature in negative]
+            if not any(x["explicitly_present"] for x in evidence):
                 filtered.append(candidate)
         remaining=[t for t in tokens if t not in {"no",*negative}]
         if remaining:
@@ -255,6 +297,7 @@ def main():
           "variant_suffix_tokens":suffix,
           "meaningful_variant_suffix_tokens":meaningful_suffix_tokens(key),
           "negative_variant_features":negative_suffix_features(key),
+          "negative_feature_candidate_evidence":negative_feature_evidence(base_supported,negative_suffix_features(key)),
           "suffix_constraint_status":suffix_constraint_status,
           "digital_identity_source":"official_Skywalker_Saga_profile_filename",
           "character_family_status":character_status,
@@ -267,7 +310,7 @@ def main():
           "all_top_candidates":top,
           "top_score":r.get("top_score"),
           "top_margin":r.get("top_margin"),
-          "policy":"An official filename-derived identity label is valid digital identity evidence. Full-name identity tokens are resolved before variant parsing. Character-family support does not establish exact outfit/version equivalence. Compact identifiers require full-code agreement; variant matching normalizes audited semantic equivalents such as Phase II/Phase2, First Order, common rank abbreviations, and Geonosis/Geonosian; meaningful digital suffixes constrain physical variants; audited specialized-role mappings may replace a generic base noun; generic role labels remain role families rather than canonical named characters.",
+          "policy":"An official filename-derived identity label is valid digital identity evidence. Full-name identity tokens are resolved before variant parsing. Character-family support does not establish exact outfit/version equivalence. Compact identifiers require full-code agreement; variant matching normalizes audited semantic equivalents such as Phase II/Phase2, First Order, common rank abbreviations, and Geonosis/Geonosian; meaningful digital suffixes constrain physical variants; audited specialized-role mappings may replace a generic base noun; negative accessory states may reject candidates only from explicit figure-name or resolved component-inventory conflicts and never from silence alone; generic role labels remain role families rather than canonical named characters.",
           "processor_version":VERSION,
         })
 
