@@ -812,8 +812,10 @@ def main():
         "processor_version":VERSION,
         "candidate_records":len(appearance_rows),
         "source_records_with_first_appearance":sum(x["record_count"] for x in appearance_rows),
-        "explicit_hash_issue_candidates":sum(x["parse_status"]=="explicit_hash_issue" for x in appearance_rows),
-        "mixed_or_raw_candidates":sum(x["parse_status"]!="explicit_hash_issue" for x in appearance_rows),
+        "explicit_comic_issue_candidates":sum(x["parse_status"]=="comic_issue_explicit" for x in appearance_rows),
+        "explicit_episode_candidates":sum(x["parse_status"]=="episode_explicit" for x in appearance_rows),
+        "structured_reference_candidates":sum(x["parse_status"] in {"comic_issue_explicit","episode_explicit"} for x in appearance_rows),
+        "mixed_or_raw_candidates":sum(x["parse_status"] not in {"comic_issue_explicit","episode_explicit"} for x in appearance_rows),
         "status":"source_appearance_candidate_layer_ready"
     }, indent=2)+"\n", encoding="utf-8")
 
@@ -851,7 +853,9 @@ def main():
         "collection_gap_state_counts": dict(Counter(x["candidate_state"] for x in gap_rows)),
         "source_appearance_candidate_records": len(appearance_rows),
         "source_records_with_first_appearance": sum(x["record_count"] for x in appearance_rows),
-        "explicit_hash_issue_source_appearance_candidates": sum(x["parse_status"] == "explicit_hash_issue" for x in appearance_rows),
+        "explicit_comic_issue_source_appearance_candidates": sum(x["parse_status"] == "comic_issue_explicit" for x in appearance_rows),
+        "explicit_episode_source_appearance_candidates": sum(x["parse_status"] == "episode_explicit" for x in appearance_rows),
+        "structured_source_appearance_candidates": sum(x["parse_status"] in {"comic_issue_explicit","episode_explicit"} for x in appearance_rows),
         "source_appearance_review_records": len(appearance_review),
         "source_appearance_high_priority_records": sum(x["review_priority_score"] >= 80 for x in appearance_review),
         "coded_records": len(code_rows),
