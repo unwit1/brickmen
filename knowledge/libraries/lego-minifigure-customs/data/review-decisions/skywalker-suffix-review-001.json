@@ -1,0 +1,83 @@
+{
+  "schema": "skywalker-suffix-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-suffix-review-001",
+  "policy": "A meaningful digital suffix can verify an outfit/variant identity when it independently agrees with catalog text. Exact print/texture equivalence still requires visual/component confirmation; later physical releases cannot be source-equivalent.",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-e6488a33bf8e45116547c540",
+      "character_variant_key": "BattleDroid_Kashyyyk",
+      "decision": "variant_identity_verified_visual_pending",
+      "physical_candidate": "fig-004168",
+      "physical_release": {
+        "brickset_minifig": "sw0996",
+        "catalog_name": "Kashyyyk Battle Droid",
+        "first_year": 2019,
+        "sets": [
+          "75233-1",
+          "75234-1",
+          "75283-1"
+        ]
+      },
+      "reason": "The suffix Kashyyyk and physical catalog identity independently agree exactly. Variant identity is verified; exact model/print reuse remains visual pending."
+    },
+    {
+      "asset_id": "skywalker-profile-4623825e553c4af8f222d774",
+      "character_variant_key": "C3PO_RedEyes",
+      "decision": "variant_identity_supported_later_physical_not_source_equivalent",
+      "physical_candidate": "fig-016758",
+      "physical_release": {
+        "brickset_minifig": "sw1440",
+        "catalog_name": "C-3PO - Printed Legs, Toes and Arms, Red Eyes",
+        "year": 2025,
+        "set_num": "75418-1"
+      },
+      "reason": "The RedEyes suffix exactly agrees with a physical catalog variant, but that physical release is from 2025, after the 2022 game. This is useful same-variant evidence, not evidence that the physical figure sourced the digital design."
+    },
+    {
+      "asset_id": "skywalker-profile-144b5649e7f6e202498b5844",
+      "character_variant_key": "PoeDameron_BlackJacket",
+      "decision": "variant_identity_verified_visual_pending",
+      "physical_candidate": "fig-004295",
+      "physical_release": {
+        "catalog_name": "Poe Dameron, Black Jacket",
+        "year": 2017,
+        "set_num": "75189-1"
+      },
+      "reason": "The BlackJacket suffix exactly describes Poe's black-jacket appearance documented for 75189. Variant identity is supported; exact torso/head print reuse remains visual pending."
+    },
+    {
+      "asset_id": "skywalker-profile-9e0bc985c5a0073a6e77ec67",
+      "character_variant_key": "KnightOfRen_Cardo",
+      "decision": "variant_identity_verified_visual_pending",
+      "physical_candidate": "fig-010296",
+      "physical_release": {
+        "brickset_minifig": "sw1099",
+        "catalog_name": "Knight of Ren (Cardo)",
+        "year": 2020,
+        "set_num": "75284-1"
+      },
+      "reason": "The suffix Cardo directly resolves which Knight of Ren is represented and exactly agrees with the sole supported physical Cardo release."
+    },
+    {
+      "asset_id": "skywalker-profile-e10f38d91362d25d89580398",
+      "character_variant_key": "KnightOfRen_Kuruk",
+      "decision": "variant_identity_verified_visual_pending",
+      "physical_candidate": "fig-010297",
+      "physical_release": {
+        "brickset_minifig": "sw1098",
+        "catalog_name": "Knight of Ren (Kuruk)",
+        "year": 2020,
+        "set_num": "75284-1"
+      },
+      "reason": "The suffix Kuruk directly resolves the Knight of Ren identity and matches the supported physical Kuruk release."
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "variant_identity_verified_visual_pending": 4,
+    "variant_identity_supported_later_physical_not_source_equivalent": 1,
+    "automatic_exact_equivalence_promotions": 0
+  },
+  "remaining_suffix_review_records": 18
+}
