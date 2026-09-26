@@ -1,0 +1,60 @@
+{
+  "schema": "face-landmark-independent-review-summary/v1",
+  "created_at": "2026-09-26",
+  "source_queue": "knowledge/libraries/lego-minifigure-customs/data/bulk-ingestion/face-landmark-review-queue-latest.jsonl",
+  "source_queue_records": 38,
+  "review_batches": 9,
+  "status": "complete",
+  "outcome_counts": {
+    "catalog_or_subject_identity_verified": 20,
+    "generic_or_classic_design_identity_unresolved": 9,
+    "semantic_or_orientation_verified_geometry_pending_or_partial": 5,
+    "source_label_or_folder_conflicts_needing_special_handling": 3,
+    "game_reference_nonphysical": 1
+  },
+  "notable_verified_identities": [
+    "Cowboy (Series 1, 2010)",
+    "Tribal Hunter (source label 'Indian', Series 1, 2010)",
+    "Magician (Series 1, 2010)",
+    "Jungle Boy (Series 7, 2012)",
+    "Super Wrestler (Series 1, 2010)",
+    "Mermaid (Series 9, 2013)",
+    "Superman (classic DC Super Heroes head family)",
+    "Wonder Woman (2012)",
+    "Timmy (Time Cruisers)",
+    "Anakin Skywalker Padawan (2002)",
+    "Princess Leia Jabba Slave Outfit (2003)",
+    "Dr. Charles Lightning / Dr. Kilroy",
+    "Johnny Thunder Orient Expedition",
+    "Johnny Thunder Desert",
+    "Princess Storm",
+    "Dr. Cyber",
+    "Ogel"
+  ],
+  "unresolved_or_intentionally_noncanonical": [
+    "numbered City Girl/Male faces",
+    "Classic Bob, Skeleton, Ghost and Sunglasses references",
+    "Series 2 source label 'Artisian'",
+    "generic Olivia face version",
+    "Sam Sinister exact Desert vs Orient head variant",
+    "Sports/Cool Kid",
+    "exact dual-side expression assignment for Superman/Wonder Woman where filename is insufficient"
+  ],
+  "systemic_findings": [
+    "Folder paths are useful evidence but are not canonical identity. Embedded SVG document/export names can reveal source-history conflicts.",
+    "Two Ninjago assets under Ninjago/Slithra are internally named Skales and match Skales' distinct 98143pb01 head rather than Slithraa's 98143pb02 head.",
+    "Historical/source-local labels must remain in provenance while canonical catalog names are stored separately (for example Indian -> Tribal Hunter, Tim -> Timmy, Lex Luther -> Lex Luthor).",
+    "Generic numbered/calibration faces are useful style supervision but must not be forced to a physical release.",
+    "Game-only characters such as Dr. Clickitt should route to game-reference supervision rather than physical catalog matching.",
+    "Subject identity, expression semantics, landmark geometry, dual-side assignment and exact cross-catalog part aliasing are separate confidence dimensions and should not be collapsed into one verification flag."
+  ],
+  "recommended_pipeline_changes": [
+    "Parse and retain SVG sodipodi:docname and inkscape:export-filename as structured provenance fields.",
+    "Compare embedded names against repository path identity and emit source_identity_conflict when they disagree materially.",
+    "Support source_label, canonical_subject, canonical_catalog_id and original_path as separate fields.",
+    "Add an explicit nonphysical/game-reference route before physical figure matching.",
+    "Keep generic design/calibration assets eligible for style and geometry supervision while suppressing physical identity promotion.",
+    "Represent landmark review as layered states: semantic/orientation reviewed, geometry partially/fully reviewed, catalog identity verified, exact part alias verified."
+  ],
+  "next_queue_recommendation": "Proceed to the Skywalker crosswalk review queue, while applying the provenance-conflict rules above to future RioForce ingestion."
+}
