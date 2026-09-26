@@ -1,0 +1,68 @@
+{
+  "schema": "skywalker-semantic-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-timeline-review-001",
+  "review_route": "episode_or_timeline",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-b0d16d17a1e713224362acec",
+      "character_variant_key": "CloneTrooper_Phase2_501st",
+      "decision": "variant_family_verified_exact_release_unresolved",
+      "family": "501st Legion Clone Trooper, Phase II",
+      "reason": "Phase2 + 501st jointly provide strong armor-generation and unit evidence, but several physical 501st Phase II releases differ in arms, leg printing, helmets and generation. Preserve family support without selecting the top 2013 figure as exact."
+    },
+    {
+      "asset_id": "skywalker-profile-26040f0c793eeabf9612f5c3",
+      "character_variant_key": "HanSolo_Episode5",
+      "decision": "timeline_family_verified_outfit_unresolved",
+      "timeline": "Episode V / The Empire Strikes Back",
+      "reason": "Episode5 constrains chronology but spans multiple Han appearances such as Hoth/parka and Bespin-era clothing. The current later Medal candidate is unrelated. Episode alone cannot choose one physical outfit."
+    },
+    {
+      "asset_id": "skywalker-profile-973b0d6de0aace9d27fb814f",
+      "character_variant_key": "PoeDameron_Ep9",
+      "decision": "timeline_family_verified_outfit_unresolved",
+      "timeline": "Episode IX / The Rise of Skywalker",
+      "reason": "Ep9 establishes the film-era version family, but physical Poe releases around that era include different shirts, jackets and pilot configurations. The Festive candidate is not equivalent merely because of lexical score."
+    },
+    {
+      "asset_id": "skywalker-profile-5129cfc61a2dd2460af8368b",
+      "character_variant_key": "Rey_Dark_Ep9",
+      "decision": "digital_story_state_later_physical_analog_not_source_equivalent",
+      "timeline": "Episode IX",
+      "state": "Dark Rey",
+      "later_physical_analog": {
+        "bricklink_minifig": "sw1364",
+        "name": "Rey - Black Dress, Hood and Cape (Darth Rey)",
+        "theme_context": "Rebuild the Galaxy"
+      },
+      "evidence_url": "https://www.bricklink.com/catalogList.asp?catID=65&catLike=W&pg=59&v=1",
+      "reason": "Dark + Ep9 identifies the game's Dark Rey story state. A physical Darth Rey now exists, but it is a later Rebuild the Galaxy release and cannot be treated as the source-equivalent design for the 2022 game."
+    },
+    {
+      "asset_id": "skywalker-profile-f019e2b2a51c584a906a8241",
+      "character_variant_key": "BobaFett_Young",
+      "decision": "variant_family_verified_exact_release_unresolved",
+      "family": "Boba Fett, child/young",
+      "pregame_examples": [
+        {
+          "fig_num": "fig-000332",
+          "name": "Boba Fett, Child, Dark Azure Outfit",
+          "year": 2013
+        },
+        {
+          "fig_num": "fig-004288",
+          "name": "Boba Fett, Child, Medium Blue Outfit",
+          "year": 2017
+        }
+      ],
+      "reason": "Young excludes adult-armored Boba and selects the child identity family, but at least two pre-game child outfit/color variants remain."
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "family_or_timeline_verified_exact_outfit_unresolved": 4,
+    "later_physical_analog_not_source_equivalent": 1,
+    "automatic_exact_equivalence_promotions": 0
+  }
+}
