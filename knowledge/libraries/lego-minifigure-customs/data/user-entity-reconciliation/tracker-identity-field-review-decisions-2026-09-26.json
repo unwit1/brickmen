@@ -1,0 +1,26 @@
+{
+  "schema": "tracker-identity-field-review-decisions/v1",
+  "created_at": "2026-09-26",
+  "policy": "Review decisions resolve audit findings without mutating the source. reviewed_no_change means the source value is retained because a deterministic correction would risk changing user intent.",
+  "records": [
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "X-Men",
+      "source_row": 1052,
+      "expected_name": "Wolverine",
+      "observed_identity": "Logan Howlett",
+      "observed_variant": "Logan Howlett",
+      "decision": "reviewed_no_change",
+      "resolution_status": "accepted_contextual_identity_variant_duplicate",
+      "confidence": "medium_high",
+      "rationale": "The live sheet places this row immediately before Wolverine design variants Classic, Fang, Brown, Patch, and X-Men Training Uniform. Repeating Logan Howlett in Variant plausibly identifies a civilian/identity-form design target; no safe semantic correction is warranted.",
+      "evidence": {
+        "source_type": "live_google_sheet_context_review",
+        "spreadsheet_id": "1iE-xqnwC-aUtNQjXZci1X_wnpALqUajEMndHid8t6kg",
+        "sheet": "X-Men",
+        "reviewed_range": "A1047:N1057",
+        "verified_at": "2026-09-26"
+      }
+    }
+  ]
+}
