@@ -1,0 +1,55 @@
+{
+  "schema": "flat-art-independent-review-decisions/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "rioforce-flat-art-review-007",
+  "records": [
+    {
+      "candidate_id": "rioforce-88070146bd4d2504712ae99e",
+      "relative_stem": "Classics/Classic Ghost/Ghost Face",
+      "decision": "hold_unverified",
+      "candidate_figure": "fig-000368",
+      "reason": "The source denotes a generic/classic ghost face, while the top candidate is a 2015 Ninjago ghost ninja. With no decorated component candidate and no version/year evidence, the identity remains unresolved."
+    },
+    {
+      "candidate_id": "rioforce-ccc6874fdeda3c1a678a5c43",
+      "relative_stem": "Classics/Classic Skeleton/Classic Skeleton Face",
+      "decision": "hold_unverified",
+      "candidate_figure": "fig-001464",
+      "reason": "The source denotes a generic classic skeleton face. The top candidate is 2015 Skeleton Guy while the second candidate spans classic skeleton usage; no exact component candidate is present, so this should remain unresolved rather than selecting the lexical top hit."
+    },
+    {
+      "candidate_id": "rioforce-c70b6f69494bfe71356c2bbb",
+      "relative_stem": "LEGO Minifigures/Series 5/Cave Girl/Cave Girl Torso (Front+Back)",
+      "decision": "reject_candidate_match_with_corrected_identity_hint",
+      "candidate_figure": "fig-000889",
+      "reason": "The proposed figure is the 2010 Cave Man. Series 5 independently identifies Cave Woman (col069, 2011), whose torso is 973pb0933c01.",
+      "corrected_identity_hint": {
+        "bricklink_figure": "col069",
+        "bricklink_component": "973pb0933c01"
+      },
+      "evidence_urls": [
+        "https://www.bricklink.com/catalogItemInv.asp?M=col069&viewCodes=Y"
+      ]
+    },
+    {
+      "candidate_id": "rioforce-2a8faf58754773fcb01da88e",
+      "relative_stem": "City/Female Buisness Suit Torso",
+      "decision": "unresolved_no_candidate",
+      "reason": "No catalog figure candidate was generated and the label is too generic to identify a release safely without visual/component evidence."
+    },
+    {
+      "candidate_id": "rioforce-86e21ea9ffd809d457a0dc8a",
+      "relative_stem": "City/Girl Face 1",
+      "decision": "unresolved_no_candidate",
+      "reason": "No catalog candidate exists and the generic numbered label does not provide character/version identity."
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "promoted": 0,
+    "held_unverified": 2,
+    "rejected_with_corrected_hint": 1,
+    "unresolved_no_candidate": 2
+  },
+  "next_offset": 35
+}
