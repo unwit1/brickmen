@@ -1,0 +1,104 @@
+{
+  "schema": "skywalker-unresolved-suffix-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-unresolved-suffix-review-011",
+  "policy": "Public game appearance labels define the digital state. Physical catalog records can establish a same-character or same-era family, but conflicting costume/component descriptions block exact equivalence and multiple matching physical releases remain unresolved until visual/component comparison.",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-a64a04cef2c24b8c38d01e16",
+      "character_variant_key": "Finn_WhiteShirt",
+      "decision": "digital_jacket_white_shirt_variant_verified_physical_episode8_analog_conflicts_on_shirt_color",
+      "canonical_game_variant": "Finn (Jacket - White Shirt)",
+      "physical_analog": {
+        "bricklink_minifig": "sw0858",
+        "catalog_name": "Finn - Medium Nougat Worn Jacket, Pearl Dark Gray Legs with Holster",
+        "year": 2017,
+        "set_num": "75176-1",
+        "torso_component": "973pb2830c01",
+        "torso_description": "Medium Nougat jacket with Tan undershirt"
+      },
+      "exact_physical_variant_supported": false,
+      "reason": "The game explicitly unlocks Finn (Jacket - White Shirt) during Episode VIII. sw0858 is the relevant physical worn-jacket Finn, but its cataloged torso explicitly prints a tan undershirt rather than white. Treat it as an Episode VIII physical analog, not an exact variant match.",
+      "evidence_urls": [
+        "https://gamefaqs.gamespot.com/ps4/265996-lego-star-wars-the-skywalker-saga/faqs/79882/episode-viii-the-last-jedi",
+        "https://www.bricklink.com/catalogItemInv.asp?M=sw0858"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-55180e8c88bfafb43cffb50e",
+      "character_variant_key": "Lando_HanSolo",
+      "decision": "digital_han_solo_clothes_variant_verified_no_supported_physical_counterpart",
+      "canonical_game_variant": "Lando Calrissian (Han Solo's Clothes)",
+      "physical_character_family_supported": true,
+      "exact_physical_variant_supported": false,
+      "reason": "Han Solo's Clothes is an explicit Skywalker Saga Lando appearance. The supported physical Lando catalog consists of Cloud City, General, Skiff Guard, young, and old variants; none independently identifies Lando wearing Han Solo's clothes. Preserve this as a digital-only costume state.",
+      "evidence_urls": [
+        "https://www.gamespot.com/articles/all-characters-in-lego-star-wars-the-skywalker-saga/1100-6502264/",
+        "https://brickset.com/minifigs/category-Star-Wars/name-Lando-Calrissian"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-73621089a74671f4aba3cdcc",
+      "character_variant_key": "Padme_Pilot",
+      "decision": "digital_pilot_variant_verified_no_supported_physical_counterpart",
+      "canonical_game_variant": "Padmé (Pilot)",
+      "physical_character_family_supported": true,
+      "exact_physical_variant_supported": false,
+      "reason": "Padmé (Pilot) is an explicit playable game appearance, unlocked at the start of Episode II. The current physical crosswalk contains no Padmé candidate whose catalog identity independently encodes the pilot state, so the digital outfit remains unresolved physically.",
+      "evidence_urls": [
+        "https://gamefaqs.gamespot.com/ps4/265996-lego-star-wars-the-skywalker-saga/faqs/79882/jedi-and-heroes"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-ab9ba17019105a5380a46495",
+      "character_variant_key": "Lando_General",
+      "decision": "episode6_general_family_verified_exact_physical_release_unresolved",
+      "canonical_game_variant": "Lando Calrissian (Episode VI - General)",
+      "physical_candidates": [
+        {
+          "brickset_minifig": "sw0251",
+          "catalog_name": "Lando Calrissian - General Insignia (Sand Blue Legs)",
+          "year": 2009,
+          "set_num": "7754-1"
+        },
+        {
+          "brickset_minifig": "sw0818",
+          "catalog_name": "Lando Calrissian - General Insignia (Light Bluish Gray Legs)",
+          "year": 2017,
+          "set_num": "75175-1"
+        }
+      ],
+      "reason": "The game explicitly identifies Episode VI - General Lando. Two pre-game physical Lando General Insignia releases independently support that family, but the source key lacks the leg/component details needed to choose between the 2009 and 2017 releases.",
+      "evidence_urls": [
+        "https://gamefaqs.gamespot.com/ps4/265996-lego-star-wars-the-skywalker-saga/faqs/79882/episode-vi-return-of-the-jedi",
+        "https://brickset.com/minifigs/category-Star-Wars/name-Lando-Calrissian"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-3928a31d20af89d012a09180",
+      "character_variant_key": "DJ_FirstOrder",
+      "decision": "digital_first_order_disguise_variant_verified_no_supported_physical_counterpart",
+      "canonical_game_variant": "DJ (First Order)",
+      "physical_base_candidate": {
+        "brickset_minifig": "sw0903",
+        "catalog_name": "DJ Code Breaker",
+        "year": 2018,
+        "set_num": "40298-1"
+      },
+      "exact_physical_variant_supported": false,
+      "reason": "DJ (First Order) is an explicit game disguise used during the Supremacy infiltration. The only supported physical DJ catalog release is the normal Code Breaker figure and does not identify the First Order officer disguise; retain the disguise as a digital-only state.",
+      "evidence_urls": [
+        "https://gamefaqs.gamespot.com/ps4/265996-lego-star-wars-the-skywalker-saga/faqs/79882/villains-and-dark-siders",
+        "https://brickset.com/minifigs/name-DJ"
+      ]
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "digital_variants_no_exact_physical_counterpart": 4,
+    "physical_variant_family_verified_exact_release_unresolved": 1,
+    "automatic_exact_equivalence_promotions": 0
+  },
+  "remaining_unreviewed_suffix_records_after_batch": 10,
+  "systemic_finding": "A same-era physical analog can still contradict the game variant at component-description level; explicit component conflicts such as Finn's tan physical undershirt versus the game's White Shirt state must block exact equivalence."
+}
