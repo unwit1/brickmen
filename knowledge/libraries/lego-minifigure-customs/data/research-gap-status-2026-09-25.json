@@ -6,7 +6,7 @@
     {
       "priority": "critical",
       "gap": "exact_flat_official_print_art",
-      "status": "first_verified_crosswalks_promoted_broad_coverage_pending",
+      "status": "candidate_crosswalk_broadened_authoritative_verification_still_critical",
       "store_next": [
         "canonical component-ID crosswalks for rioforce/LDraw flat maps",
         "approved/local Mecabricks UV and official-decoration assets",
@@ -17,7 +17,19 @@
         "5 rioforce flat-art groups promoted through reviewed component/version evidence",
         "Dr Charles Lightning face and torso verified to Rebrickable decorated components",
         "2003 Princess Leia Slave face/torso/legs verified with year-specific BrickLink/Rebrickable evidence",
-        "fuzzy matcher corrected to use version/year specificity and avoid generic outfit ties"
+        "fuzzy matcher corrected to use version/year specificity and avoid generic outfit ties",
+        "129 rioforce flat-art records indexed",
+        "4,352 LDraw pattern records indexed",
+        "98/129 rioforce records have figure candidates",
+        "95/129 have component candidates in role-aware v2 crosswalk",
+        "10 exact-ID links identified but still unverified",
+        "7 figure links meet current high-confidence candidate threshold"
+      ],
+      "next_actions": [
+        "independently verify exact-ID and high-confidence candidate links",
+        "materialize permitted Mecabricks/game texture sources locally",
+        "derive flat maps from controlled physical captures",
+        "store verified decorated-part/component crosswalks with rights/provenance"
       ]
     },
     {
@@ -384,6 +396,15 @@
       "collisions": 23,
       "no_exact_match": 557,
       "unique_exact_match_rate": 0.7585
+    },
+    "flat_art": {
+      "rioforce_records": 129,
+      "ldraw_records": 4352,
+      "figure_candidates": 98,
+      "component_candidates": 95,
+      "exact_id_unverified": 10,
+      "high_confidence_figure_candidates": 7,
+      "status": "candidate_only_requires_independent_confirmation"
     }
   }
 }
