@@ -11,9 +11,9 @@ from __future__ import annotations
 import argparse,json,re,unicodedata
 from collections import Counter,defaultdict
 from pathlib import Path
-from skywalker_identity_keys import parse_identity_key
+from skywalker_identity_keys import parse_identity_key, specialized_role_match
 
-VERSION="skywalker-identity-family/v4"
+VERSION="skywalker-identity-family/v5"
 GENERIC={"goon","friend","alien","human","officer","trooper","droid","guard","clone"}
 
 def load_jsonl(path):
@@ -155,8 +155,22 @@ def main():
         base=parsed_key["base_character_key"]
         suffix=parsed_key["variant_suffix_tokens"]
         top=r.get("top_candidates") or []
-        supported=physical_support(base,top)
-        variant_supported,suffix_constraint_status=constrain_by_suffix(key,supported)
+        base_supported=physical_support(base,top)
+        supported=base_supported
+        specialized=specialized_role_match(key)
+        specialized_supported=[]
+        if specialized:
+            required=set(specialized.get("required_catalog_semantic_tokens") or [])
+            for candidate in top:
+                catalog_tokens=set(semantic_variant_tokens(candidate.get("name")))
+                if required and required.issubset(catalog_tokens):
+                    specialized_supported.append(candidate)
+        if specialized_supported:
+            supported=list(specialized_supported)
+            variant_supported=list(specialized_supported)
+            suffix_constraint_status="specialized_role_catalog_match"
+        else:
+            variant_supported,suffix_constraint_status=constrain_by_suffix(key,supported)
         label=norm(parsed_key.get("canonical_identity_label") or alias_label(base))
         generic=label in GENERIC or any(t in GENERIC for t in label.split())
 
@@ -168,7 +182,8 @@ def main():
             character_status="digital_identity_only_no_physical_name_support"
 
         semantic_suffix=bool(meaningful_suffix_tokens(key))
-        release_pool=variant_supported if (semantic_suffix and suffix_constraint_status=="suffix_catalog_text_match") else supported
+        suffix_resolved=suffix_constraint_status in {"suffix_catalog_text_match","specialized_role_catalog_match"}
+        release_pool=variant_supported if (semantic_suffix and suffix_resolved) else supported
         if semantic_suffix and suffix_constraint_status=="suffix_not_resolved_in_supported_candidates":
             release_status="variant_constrained_physical_release_unresolved"
         elif len(release_pool)==1 and float(r.get("top_margin") or 0)>=0.10:
@@ -178,7 +193,9 @@ def main():
         else:
             release_status="no_supported_physical_release_candidate"
 
-        if suffix and suffix_constraint_status=="suffix_catalog_text_match":
+        if suffix and suffix_constraint_status=="specialized_role_catalog_match":
+            version_status="digital_specialized_role_matches_catalog_requires_visual_confirmation"
+        elif suffix and suffix_constraint_status=="suffix_catalog_text_match":
             version_status="digital_variant_suffix_matches_catalog_text_requires_visual_confirmation"
         elif suffix:
             version_status="digital_variant_label_present_requires_version_mapping"
@@ -209,11 +226,12 @@ def main():
           "version_status":version_status,
           "physical_family_support_count":len(supported),
           "supported_physical_candidates":release_pool,
-          "base_character_physical_candidates":supported,
+          "base_character_physical_candidates":base_supported,
+          "specialized_role_match":specialized,
           "all_top_candidates":top,
           "top_score":r.get("top_score"),
           "top_margin":r.get("top_margin"),
-          "policy":"An official filename-derived identity label is valid digital identity evidence. Full-name identity tokens are resolved before variant parsing. Character-family support does not establish exact outfit/version equivalence. Compact identifiers require full-code agreement; variant matching normalizes audited semantic equivalents such as Phase II/Phase2, First Order, common rank abbreviations, and Geonosis/Geonosian; meaningful digital suffixes constrain physical variants; generic role labels remain role families rather than canonical named characters.",
+          "policy":"An official filename-derived identity label is valid digital identity evidence. Full-name identity tokens are resolved before variant parsing. Character-family support does not establish exact outfit/version equivalence. Compact identifiers require full-code agreement; variant matching normalizes audited semantic equivalents such as Phase II/Phase2, First Order, common rank abbreviations, and Geonosis/Geonosian; meaningful digital suffixes constrain physical variants; audited specialized-role mappings may replace a generic base noun; generic role labels remain role families rather than canonical named characters.",
           "processor_version":VERSION,
         })
 
