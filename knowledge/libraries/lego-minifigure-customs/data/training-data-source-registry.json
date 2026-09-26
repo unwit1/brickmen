@@ -1,6 +1,6 @@
 {
   "schema_version": "0.2",
-  "researched_at": "2026-09-25",
+  "researched_at": "2026-09-26",
   "purpose": "Exhaustive registry of additional supervision/training-data sources for official-style minifigure generation. Visibility/downloadability does not imply training or redistribution rights.",
   "usage_classes": {
     "official_primary_local_reference": "Primary/rights-holder material; retain provenance and local research copies according to applicable terms. Highest style/identity authority.",
@@ -626,6 +626,38 @@
       "usage_class": "official_primary_local_reference",
       "priority": "critical",
       "status": "source_confirmed_bulk_asset_enumeration_pending"
+    },
+    {
+      "id": "downtheblocks_xinh_gh_catalog",
+      "category": "historical_compatible_brand_catalog",
+      "authority": "secondary_specialist_catalog",
+      "url": "https://downtheblocks.com/xinh-minifigure-set-list-database/",
+      "observed_at": "2026-09-26",
+      "catalog_scope": "XINH/XH and G/GH compatible-brand minifigure code-to-name history",
+      "observed_metadata": {
+        "page_updated": "2023-04-18",
+        "code_examples": [
+          "XH001 Captain America",
+          "XH1020 Joker (Joaquin Phoenix)",
+          "XH2014 Commander Ganch",
+          "GH0041 Amanda Waller with Starro"
+        ],
+        "includes_blank_or_unknown_code_slots": true
+      },
+      "supervision": [
+        "historical XINH product-code resolution",
+        "XH/G/GH release name crosswalk",
+        "HeroBloks gap reconciliation",
+        "legacy tracker code validation"
+      ],
+      "usage_class": "secondary_catalog_metadata_only",
+      "priority": "high",
+      "status": "source_confirmed_structured_ingestion_pending",
+      "caveats": [
+        "secondary source, not manufacturer-primary",
+        "code/name entries should be retained with source provenance and not used alone to infer factory ownership",
+        "blank entries and catalog mistakes must remain unresolved rather than guessed"
+      ]
     }
   ],
   "policy": {
