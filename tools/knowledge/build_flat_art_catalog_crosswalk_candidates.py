@@ -17,7 +17,7 @@ from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 
-VERSION = "flat-art-catalog-crosswalk-candidates/v3"
+VERSION = "flat-art-catalog-crosswalk-candidates/v4"
 
 STOP = {
     "lego","minifig","minifigure","with","and","the","a","an","pattern","printed",
@@ -34,10 +34,16 @@ ROLE_PATTERNS = (
     (r"\btorso\b", "torso"),
     (r"\bhips?\b", "hips"),
     (r"\blegs?\b", "leg"),
+    (r"\b(?:dress|skirt|robe)\b", "leg"),
     (r"\barms?\b", "arm"),
     (r"\b(?:helmet|cowl|hair|hood|mask|hat|cap|headgear)\b", "headgear"),
     (r"\bshield\b", "weapon_or_tool"),
 )
+
+SUBJECT_ALIASES = {
+    "viking lady": "viking woman",
+    "slithra": "slithraa",
+}
 
 ROLE_COMPATIBILITY = {
     "leg": {"leg", "hips"},
@@ -91,6 +97,10 @@ def subject_text(stem: str):
     )
     return re.sub(r"\s+", " ", cleaned).strip()
 
+
+def normalize_subject_alias(value: str):
+    key=re.sub(r"\s+"," ",str(value or "").strip().casefold())
+    return SUBJECT_ALIASES.get(key, value)
 
 def figure_match_score(subject_tokens, sample_tokens):
     if not subject_tokens or not sample_tokens:
@@ -173,10 +183,14 @@ def main():
         asset_class=rio.get("asset_class") or "legacy_unclassified"
         role=rio.get("surface_role_hint") or infer_role(stem)
         subject=subject_text(stem)
-        subject_tokens=tok(subject)
+        subject_alias=normalize_subject_alias(subject)
+        subject_tokens=tok(subject_alias)
         subject_years=years_in(subject)
         subject_identity_tokens=[t for t in subject_tokens if not t.isdigit()]
-        eligible_for_component_crosswalk = asset_class in {"minifigure_surface_map","legacy_unclassified"}
+        eligible_for_component_crosswalk = (
+            asset_class in {"minifigure_surface_map","legacy_unclassified"}
+            or role in {"head","torso","leg","hips","arm","headgear"}
+        )
         fig_candidates=[]
         for fig_num, stoks in sample_tokens.items():
             if not eligible_for_component_crosswalk:
@@ -309,6 +323,7 @@ def main():
             "asset_class":asset_class,
             "eligible_for_component_crosswalk":eligible_for_component_crosswalk,
             "subject_text":subject,
+            "subject_alias_applied":subject_alias if subject_alias != subject else None,
             "subject_tokens":subject_tokens,
             "subject_years":sorted(subject_years),
             "inferred_component_role":role,
