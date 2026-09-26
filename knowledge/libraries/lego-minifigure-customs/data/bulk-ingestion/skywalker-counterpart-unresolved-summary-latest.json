@@ -1,52 +1,48 @@
 {
   "schema": "skywalker-unresolved-diagnostic-summary/v1",
-  "processor_version": "skywalker-unresolved-diagnostic/v3",
-  "records": 361,
+  "processor_version": "skywalker-unresolved-diagnostic/v2",
+  "records": 359,
   "counterpart_status_counts": {
     "strong_character_counterpart": 62,
-    "review_character_counterpart": 14,
-    "unresolved_character_counterpart": 285
+    "review_character_counterpart": 11,
+    "unresolved_character_counterpart": 286
   },
   "exact_version_status_counts": {
-    "character_match_only_version_unresolved": 49,
-    "variant_suffix_requires_version_resolution": 27,
-    "unresolved": 285
+    "character_match_only_version_unresolved": 50,
+    "variant_suffix_requires_version_resolution": 23,
+    "unresolved": 286
   },
   "suffix_family_counts": {
-    "no_suffix": 197,
+    "no_suffix": 195,
     "other_suffix": 119,
     "descriptive_variant_suffix": 30,
     "episode_or_mission_suffix": 14,
     "numeric_suffix": 1
   },
   "suffix_semantic_label_counts": {
-    "no_suffix": 197,
+    "no_suffix": 195,
     "location_or_scene": 36,
+    "outfit_or_accessory": 42,
     "rank_or_role": 37,
-    "outfit_or_accessory": 46,
     "identity_selector": 9,
     "opaque_source_code": 3,
-    "episode_or_timeline": 34,
-    "identity_form": 2,
+    "other_unclassified": 15,
+    "episode_or_timeline": 33,
     "story_or_prop_state": 7,
-    "physical_state": 9,
-    "game_local_selector": 2,
-    "other_unclassified": 7
+    "physical_state": 9
   },
   "review_route_counts": {
-    "no_suffix": 197,
+    "no_suffix": 195,
     "location_or_scene": 24,
+    "outfit_or_accessory": 24,
     "rank_or_role": 29,
-    "outfit_or_accessory": 27,
     "identity_selector": 8,
     "mixed_semantics": 27,
     "opaque_source_code": 3,
-    "episode_or_timeline": 22,
-    "identity_form": 2,
+    "other_unclassified": 15,
+    "episode_or_timeline": 21,
     "story_or_prop_state": 7,
-    "physical_state": 6,
-    "game_local_selector": 2,
-    "other_unclassified": 7
+    "physical_state": 6
   },
   "top_suffix_tokens": [
     {
@@ -78,11 +74,11 @@
       "count": 4
     },
     {
-      "token": "Pilot",
+      "token": "Phase2",
       "count": 4
     },
     {
-      "token": "Phase2",
+      "token": "Pilot",
       "count": 4
     },
     {
@@ -130,6 +126,10 @@
       "count": 2
     },
     {
+      "token": "Heavy",
+      "count": 2
+    },
+    {
       "token": "Stormtrooper",
       "count": 2
     },
@@ -138,7 +138,7 @@
       "count": 2
     },
     {
-      "token": "Heavy",
+      "token": "Black",
       "count": 2
     },
     {
@@ -146,15 +146,11 @@
       "count": 2
     },
     {
-      "token": "Black",
+      "token": "White",
       "count": 2
     },
     {
       "token": "Skiff",
-      "count": 2
-    },
-    {
-      "token": "White",
       "count": 2
     },
     {
@@ -178,11 +174,11 @@
       "count": 2
     },
     {
-      "token": "FN2187",
+      "token": "Flashback",
       "count": 2
     },
     {
-      "token": "Flashback",
+      "token": "FN2187",
       "count": 2
     },
     {
@@ -194,15 +190,15 @@
       "count": 1
     },
     {
+      "token": "RedEyes",
+      "count": 1
+    },
+    {
       "token": "Sgt",
       "count": 1
     },
     {
       "token": "BlackJacket",
-      "count": 1
-    },
-    {
-      "token": "Aplek",
       "count": 1
     },
     {
@@ -226,15 +222,7 @@
       "count": 1
     },
     {
-      "token": "RedEyes",
-      "count": 1
-    },
-    {
       "token": "Jacket",
-      "count": 1
-    },
-    {
-      "token": "CloudCity",
       "count": 1
     },
     {
@@ -246,15 +234,23 @@
       "count": 1
     },
     {
+      "token": "Princess",
+      "count": 1
+    },
+    {
       "token": "BoushhDisguise",
       "count": 1
     },
     {
-      "token": "RedArm",
+      "token": "CloudCity",
       "count": 1
     },
     {
       "token": "YellowEyes",
+      "count": 1
+    },
+    {
+      "token": "RedArm",
       "count": 1
     },
     {
@@ -278,11 +274,15 @@
       "count": 1
     },
     {
-      "token": "Princess",
+      "token": "Aplek",
       "count": 1
     },
     {
       "token": "Bin",
+      "count": 1
+    },
+    {
+      "token": "Rusted",
       "count": 1
     },
     {
@@ -298,11 +298,11 @@
       "count": 1
     },
     {
-      "token": "Rusted",
+      "token": "Utapau",
       "count": 1
     },
     {
-      "token": "Hat",
+      "token": "Episode5",
       "count": 1
     },
     {
@@ -310,23 +310,23 @@
       "count": 1
     },
     {
+      "token": "Ceremony",
+      "count": 1
+    },
+    {
+      "token": "First",
+      "count": 1
+    },
+    {
       "token": "Cantina",
       "count": 1
     },
     {
-      "token": "Swamp",
+      "token": "Seventh",
       "count": 1
     },
     {
-      "token": "Coruscant",
-      "count": 1
-    },
-    {
-      "token": "Cutscene",
-      "count": 1
-    },
-    {
-      "token": "Utapau",
+      "token": "Carbonite",
       "count": 1
     },
     {
@@ -346,7 +346,7 @@
       "count": 1
     },
     {
-      "token": "Carbonite",
+      "token": "Swamp",
       "count": 1
     },
     {
@@ -358,14 +358,6 @@
       "count": 1
     },
     {
-      "token": "Ceremony",
-      "count": 1
-    },
-    {
-      "token": "Episode5",
-      "count": 1
-    },
-    {
       "token": "Topless",
       "count": 1
     },
@@ -374,15 +366,19 @@
       "count": 1
     },
     {
-      "token": "Seventh",
+      "token": "Coruscant",
       "count": 1
     },
     {
-      "token": "First",
+      "token": "Cutscene",
       "count": 1
     },
     {
       "token": "NoShell",
+      "count": 1
+    },
+    {
+      "token": "Hat",
       "count": 1
     },
     {
@@ -398,6 +394,10 @@
       "count": 1
     },
     {
+      "token": "Robe",
+      "count": 1
+    },
+    {
       "token": "Jet",
       "count": 1
     },
@@ -406,7 +406,11 @@
       "count": 1
     },
     {
-      "token": "Robe",
+      "token": "Green",
+      "count": 1
+    },
+    {
+      "token": "HanSolo",
       "count": 1
     },
     {
@@ -418,15 +422,11 @@
       "count": 1
     },
     {
-      "token": "Green",
-      "count": 1
-    },
-    {
       "token": "NoHat",
       "count": 1
     },
     {
-      "token": "Starkiller",
+      "token": "Ep5",
       "count": 1
     },
     {
@@ -438,15 +438,11 @@
       "count": 1
     },
     {
-      "token": "HanSolo",
-      "count": 1
-    },
-    {
-      "token": "Ep5",
-      "count": 1
-    },
-    {
       "token": "HoodedCape",
+      "count": 1
+    },
+    {
+      "token": "Friend",
       "count": 1
     }
   ],
@@ -484,11 +480,11 @@
       "count": 6
     },
     {
-      "base_character_key": "KnightOfRen",
+      "base_character_key": "C3PO",
       "count": 6
     },
     {
-      "base_character_key": "C3PO",
+      "base_character_key": "KnightOfRen",
       "count": 6
     },
     {
@@ -556,7 +552,7 @@
       "count": 2
     },
     {
-      "base_character_key": "ScoutTrooper",
+      "base_character_key": "BB8",
       "count": 2
     },
     {
@@ -616,6 +612,10 @@
       "count": 1
     },
     {
+      "base_character_key": "CadBane",
+      "count": 1
+    },
+    {
       "base_character_key": "CaptainPanaka",
       "count": 1
     },
@@ -624,7 +624,19 @@
       "count": 1
     },
     {
+      "base_character_key": "CaptainRex",
+      "count": 1
+    },
+    {
       "base_character_key": "CaptainTarpals",
+      "count": 1
+    },
+    {
+      "base_character_key": "CobbVanth",
+      "count": 1
+    },
+    {
+      "base_character_key": "Droideka",
       "count": 1
     },
     {
@@ -637,6 +649,10 @@
     },
     {
       "base_character_key": "GarSaxon",
+      "count": 1
+    },
+    {
+      "base_character_key": "GarvenDreis",
       "count": 1
     },
     {
@@ -664,6 +680,10 @@
       "count": 1
     },
     {
+      "base_character_key": "LamaSu",
+      "count": 1
+    },
+    {
       "base_character_key": "LuthenRael",
       "count": 1
     },
@@ -681,6 +701,10 @@
     },
     {
       "base_character_key": "MonMothma",
+      "count": 1
+    },
+    {
+      "base_character_key": "NienNunb",
       "count": 1
     },
     {
@@ -744,30 +768,6 @@
       "count": 1
     },
     {
-      "base_character_key": "CadBane",
-      "count": 1
-    },
-    {
-      "base_character_key": "CobbVanth",
-      "count": 1
-    },
-    {
-      "base_character_key": "Droideka",
-      "count": 1
-    },
-    {
-      "base_character_key": "GarvenDreis",
-      "count": 1
-    },
-    {
-      "base_character_key": "LamaSu",
-      "count": 1
-    },
-    {
-      "base_character_key": "NienNunb",
-      "count": 1
-    },
-    {
       "base_character_key": "AdmiralHoldo",
       "count": 1
     },
@@ -792,11 +792,15 @@
       "count": 1
     },
     {
+      "base_character_key": "HeraSyndulla",
+      "count": 1
+    },
+    {
       "base_character_key": "TheGrandInquisitor",
       "count": 1
     },
     {
-      "base_character_key": "CaptainRex",
+      "base_character_key": "SabineWren",
       "count": 1
     },
     {
@@ -824,7 +828,11 @@
       "count": 1
     },
     {
-      "base_character_key": "SabineWren",
+      "base_character_key": "GonkDroid",
+      "count": 1
+    },
+    {
+      "base_character_key": "PloKoon",
       "count": 1
     },
     {
@@ -836,67 +844,41 @@
       "count": 1
     },
     {
-      "base_character_key": "PloKoon",
-      "count": 1
-    },
-    {
       "base_character_key": "R5D4",
-      "count": 1
-    },
-    {
-      "base_character_key": "IG-88",
-      "count": 1
-    },
-    {
-      "base_character_key": "TemminWexley",
       "count": 1
     }
   ],
   "score_bands": {
-    "0.90+": 62,
-    "0.80-0.899": 38,
-    "0.70-0.799": 59,
-    "0.50-0.699": 87,
-    "<0.50": 115
+    "0.90+": 61,
+    "0.80-0.899": 34,
+    "0.70-0.799": 65,
+    "0.50-0.699": 82,
+    "<0.50": 117
   },
   "top_high_score_records": [
+    {
+      "key": "LamaSu",
+      "base": "LamaSu",
+      "suffix": [],
+      "score": 1.0,
+      "margin": 0.9059,
+      "counterpart": "strong_character_counterpart",
+      "version": "character_match_only_version_unresolved",
+      "top_physical": "Lama Su",
+      "suffix_semantic_labels": [
+        "no_suffix"
+      ],
+      "review_route": "no_suffix"
+    },
     {
       "key": "Zuckuss",
       "base": "Zuckuss",
       "suffix": [],
       "score": 1.0,
-      "margin": 0.925,
+      "margin": 0.9059,
       "counterpart": "strong_character_counterpart",
       "version": "character_match_only_version_unresolved",
       "top_physical": "Zuckuss",
-      "suffix_semantic_labels": [
-        "no_suffix"
-      ],
-      "review_route": "no_suffix"
-    },
-    {
-      "key": "Jannah",
-      "base": "Jannah",
-      "suffix": [],
-      "score": 1.0,
-      "margin": 0.9,
-      "counterpart": "strong_character_counterpart",
-      "version": "character_match_only_version_unresolved",
-      "top_physical": "Jannah",
-      "suffix_semantic_labels": [
-        "no_suffix"
-      ],
-      "review_route": "no_suffix"
-    },
-    {
-      "key": "Malakili",
-      "base": "Malakili",
-      "suffix": [],
-      "score": 1.0,
-      "margin": 0.9,
-      "counterpart": "strong_character_counterpart",
-      "version": "character_match_only_version_unresolved",
-      "top_physical": "Malakili",
       "suffix_semantic_labels": [
         "no_suffix"
       ],
@@ -917,34 +899,6 @@
       "review_route": "no_suffix"
     },
     {
-      "key": "PeliMotto",
-      "base": "PeliMotto",
-      "suffix": [],
-      "score": 1.0,
-      "margin": 0.9,
-      "counterpart": "strong_character_counterpart",
-      "version": "character_match_only_version_unresolved",
-      "top_physical": "Peli Motto",
-      "suffix_semantic_labels": [
-        "no_suffix"
-      ],
-      "review_route": "no_suffix"
-    },
-    {
-      "key": "ReeYees",
-      "base": "ReeYees",
-      "suffix": [],
-      "score": 1.0,
-      "margin": 0.9,
-      "counterpart": "strong_character_counterpart",
-      "version": "character_match_only_version_unresolved",
-      "top_physical": "Ree-Yees",
-      "suffix_semantic_labels": [
-        "no_suffix"
-      ],
-      "review_route": "no_suffix"
-    },
-    {
       "key": "SyrilKarn",
       "base": "SyrilKarn",
       "suffix": [],
@@ -959,14 +913,42 @@
       "review_route": "no_suffix"
     },
     {
-      "key": "AurraSing",
-      "base": "AurraSing",
+      "key": "PeliMotto",
+      "base": "PeliMotto",
       "suffix": [],
       "score": 1.0,
-      "margin": 0.8933,
+      "margin": 0.8957,
       "counterpart": "strong_character_counterpart",
       "version": "character_match_only_version_unresolved",
-      "top_physical": "Aurra Sing",
+      "top_physical": "Peli Motto",
+      "suffix_semantic_labels": [
+        "no_suffix"
+      ],
+      "review_route": "no_suffix"
+    },
+    {
+      "key": "ReeYees",
+      "base": "ReeYees",
+      "suffix": [],
+      "score": 1.0,
+      "margin": 0.8957,
+      "counterpart": "strong_character_counterpart",
+      "version": "character_match_only_version_unresolved",
+      "top_physical": "Ree-Yees",
+      "suffix_semantic_labels": [
+        "no_suffix"
+      ],
+      "review_route": "no_suffix"
+    },
+    {
+      "key": "Malakili",
+      "base": "Malakili",
+      "suffix": [],
+      "score": 1.0,
+      "margin": 0.8947,
+      "counterpart": "strong_character_counterpart",
+      "version": "character_match_only_version_unresolved",
+      "top_physical": "Malakili",
       "suffix_semantic_labels": [
         "no_suffix"
       ],
@@ -1001,6 +983,34 @@
       "review_route": "no_suffix"
     },
     {
+      "key": "AurraSing",
+      "base": "AurraSing",
+      "suffix": [],
+      "score": 1.0,
+      "margin": 0.8857,
+      "counterpart": "strong_character_counterpart",
+      "version": "character_match_only_version_unresolved",
+      "top_physical": "Aurra Sing",
+      "suffix_semantic_labels": [
+        "no_suffix"
+      ],
+      "review_route": "no_suffix"
+    },
+    {
+      "key": "NienNunb",
+      "base": "NienNunb",
+      "suffix": [],
+      "score": 1.0,
+      "margin": 0.8857,
+      "counterpart": "strong_character_counterpart",
+      "version": "character_match_only_version_unresolved",
+      "top_physical": "Nien Nunb",
+      "suffix_semantic_labels": [
+        "no_suffix"
+      ],
+      "review_route": "no_suffix"
+    },
+    {
       "key": "PondaBaba",
       "base": "PondaBaba",
       "suffix": [],
@@ -1009,6 +1019,20 @@
       "counterpart": "strong_character_counterpart",
       "version": "character_match_only_version_unresolved",
       "top_physical": "Ponda Baba",
+      "suffix_semantic_labels": [
+        "no_suffix"
+      ],
+      "review_route": "no_suffix"
+    },
+    {
+      "key": "CobbVanth",
+      "base": "CobbVanth",
+      "suffix": [],
+      "score": 1.0,
+      "margin": 0.8833,
+      "counterpart": "strong_character_counterpart",
+      "version": "character_match_only_version_unresolved",
+      "top_physical": "Cobb Vanth",
       "suffix_semantic_labels": [
         "no_suffix"
       ],
@@ -1037,6 +1061,20 @@
       "counterpart": "strong_character_counterpart",
       "version": "character_match_only_version_unresolved",
       "top_physical": "Boolio",
+      "suffix_semantic_labels": [
+        "no_suffix"
+      ],
+      "review_route": "no_suffix"
+    },
+    {
+      "key": "Jannah",
+      "base": "Jannah",
+      "suffix": [],
+      "score": 1.0,
+      "margin": 0.88,
+      "counterpart": "strong_character_counterpart",
+      "version": "character_match_only_version_unresolved",
+      "top_physical": "Jannah",
       "suffix_semantic_labels": [
         "no_suffix"
       ],
@@ -1099,6 +1137,20 @@
       "review_route": "no_suffix"
     },
     {
+      "key": "GarvenDreis",
+      "base": "GarvenDreis",
+      "suffix": [],
+      "score": 1.0,
+      "margin": 0.8727,
+      "counterpart": "strong_character_counterpart",
+      "version": "character_match_only_version_unresolved",
+      "top_physical": "Garven Dreis",
+      "suffix_semantic_labels": [
+        "no_suffix"
+      ],
+      "review_route": "no_suffix"
+    },
+    {
       "key": "MaxRebo",
       "base": "MaxRebo",
       "suffix": [],
@@ -1113,25 +1165,11 @@
       "review_route": "no_suffix"
     },
     {
-      "key": "UnkarPlutt",
-      "base": "UnkarPlutt",
-      "suffix": [],
-      "score": 1.0,
-      "margin": 0.8727,
-      "counterpart": "strong_character_counterpart",
-      "version": "character_match_only_version_unresolved",
-      "top_physical": "Unkar Plutt",
-      "suffix_semantic_labels": [
-        "no_suffix"
-      ],
-      "review_route": "no_suffix"
-    },
-    {
       "key": "BailOrgana",
       "base": "BailOrgana",
       "suffix": [],
       "score": 1.0,
-      "margin": 0.698,
+      "margin": 0.618,
       "counterpart": "strong_character_counterpart",
       "version": "character_match_only_version_unresolved",
       "top_physical": "Bail Organa",
@@ -1197,11 +1235,25 @@
       "review_route": "no_suffix"
     },
     {
+      "key": "UnkarPlutt",
+      "base": "UnkarPlutt",
+      "suffix": [],
+      "score": 1.0,
+      "margin": 0.5408,
+      "counterpart": "strong_character_counterpart",
+      "version": "character_match_only_version_unresolved",
+      "top_physical": "Unkar Plutt",
+      "suffix_semantic_labels": [
+        "no_suffix"
+      ],
+      "review_route": "no_suffix"
+    },
+    {
       "key": "CaptainTarpals",
       "base": "CaptainTarpals",
       "suffix": [],
       "score": 1.0,
-      "margin": 0.5037,
+      "margin": 0.5032,
       "counterpart": "strong_character_counterpart",
       "version": "character_match_only_version_unresolved",
       "top_physical": "Captain Tarpals",
@@ -1323,6 +1375,22 @@
       "review_route": "no_suffix"
     },
     {
+      "key": "BattleDroid_Geonosis",
+      "base": "BattleDroid",
+      "suffix": [
+        "Geonosis"
+      ],
+      "score": 1.0,
+      "margin": 0.3083,
+      "counterpart": "strong_character_counterpart",
+      "version": "variant_suffix_requires_version_resolution",
+      "top_physical": "Battle Droid, Geonosian",
+      "suffix_semantic_labels": [
+        "location_or_scene"
+      ],
+      "review_route": "location_or_scene"
+    },
+    {
       "key": "BattleDroid_Kashyyyk",
       "base": "BattleDroid",
       "suffix": [
@@ -1385,30 +1453,28 @@
       "review_route": "rank_or_role"
     },
     {
-      "key": "BattleDroid_Geonosis",
-      "base": "BattleDroid",
-      "suffix": [
-        "Geonosis"
-      ],
-      "score": 1.0,
-      "margin": 0.261,
-      "counterpart": "strong_character_counterpart",
-      "version": "variant_suffix_requires_version_resolution",
-      "top_physical": "Battle Droid, Geonosian",
-      "suffix_semantic_labels": [
-        "location_or_scene"
-      ],
-      "review_route": "location_or_scene"
-    },
-    {
-      "key": "PitDroid",
-      "base": "PitDroid",
+      "key": "Droideka",
+      "base": "Droideka",
       "suffix": [],
       "score": 1.0,
-      "margin": 0.2249,
+      "margin": 0.2667,
       "counterpart": "strong_character_counterpart",
       "version": "character_match_only_version_unresolved",
-      "top_physical": "Pit Droid",
+      "top_physical": "Droideka",
+      "suffix_semantic_labels": [
+        "no_suffix"
+      ],
+      "review_route": "no_suffix"
+    },
+    {
+      "key": "CadBane",
+      "base": "CadBane",
+      "suffix": [],
+      "score": 1.0,
+      "margin": 0.25,
+      "counterpart": "strong_character_counterpart",
+      "version": "character_match_only_version_unresolved",
+      "top_physical": "Cad Bane",
       "suffix_semantic_labels": [
         "no_suffix"
       ],
@@ -1443,18 +1509,34 @@
       "review_route": "no_suffix"
     },
     {
-      "key": "EzraBridger",
-      "base": "EzraBridger",
+      "key": "PitDroid",
+      "base": "PitDroid",
       "suffix": [],
       "score": 1.0,
-      "margin": 0.1285,
+      "margin": 0.1449,
       "counterpart": "strong_character_counterpart",
       "version": "character_match_only_version_unresolved",
-      "top_physical": "Ezra Bridger",
+      "top_physical": "Pit Droid",
       "suffix_semantic_labels": [
         "no_suffix"
       ],
       "review_route": "no_suffix"
+    },
+    {
+      "key": "C3PO_RedEyes",
+      "base": "C3PO",
+      "suffix": [
+        "RedEyes"
+      ],
+      "score": 1.0,
+      "margin": 0.1351,
+      "counterpart": "strong_character_counterpart",
+      "version": "variant_suffix_requires_version_resolution",
+      "top_physical": "C-3PO, Red Eyes",
+      "suffix_semantic_labels": [
+        "outfit_or_accessory"
+      ],
+      "review_route": "outfit_or_accessory"
     },
     {
       "key": "KitFisto",
@@ -1487,6 +1569,62 @@
       "review_route": "outfit_or_accessory"
     },
     {
+      "key": "EzraBridger",
+      "base": "EzraBridger",
+      "suffix": [],
+      "score": 1.0,
+      "margin": 0.1233,
+      "counterpart": "strong_character_counterpart",
+      "version": "character_match_only_version_unresolved",
+      "top_physical": "Ezra Bridger",
+      "suffix_semantic_labels": [
+        "no_suffix"
+      ],
+      "review_route": "no_suffix"
+    },
+    {
+      "key": "CaptainRex",
+      "base": "CaptainRex",
+      "suffix": [],
+      "score": 1.0,
+      "margin": 0.1141,
+      "counterpart": "strong_character_counterpart",
+      "version": "character_match_only_version_unresolved",
+      "top_physical": "Captain Rex",
+      "suffix_semantic_labels": [
+        "no_suffix"
+      ],
+      "review_route": "no_suffix"
+    },
+    {
+      "key": "BB8",
+      "base": "BB8",
+      "suffix": [],
+      "score": 1.0,
+      "margin": 0.0,
+      "counterpart": "unresolved_character_counterpart",
+      "version": "unresolved",
+      "top_physical": "BB-8",
+      "suffix_semantic_labels": [
+        "no_suffix"
+      ],
+      "review_route": "no_suffix"
+    },
+    {
+      "key": "HeraSyndulla",
+      "base": "HeraSyndulla",
+      "suffix": [],
+      "score": 1.0,
+      "margin": 0.0,
+      "counterpart": "unresolved_character_counterpart",
+      "version": "unresolved",
+      "top_physical": "Hera Syndulla",
+      "suffix_semantic_labels": [
+        "no_suffix"
+      ],
+      "review_route": "no_suffix"
+    },
+    {
       "key": "TheGrandInquisitor",
       "base": "TheGrandInquisitor",
       "suffix": [],
@@ -1499,40 +1637,6 @@
         "no_suffix"
       ],
       "review_route": "no_suffix"
-    },
-    {
-      "key": "HanSolo_Hoth_Hood",
-      "base": "HanSolo",
-      "suffix": [
-        "Hoth",
-        "Hood"
-      ],
-      "score": 0.9462,
-      "margin": 0.056,
-      "counterpart": "review_character_counterpart",
-      "version": "variant_suffix_requires_version_resolution",
-      "top_physical": "Han Solo, Hoth Outfit, Dark Brown Hood",
-      "suffix_semantic_labels": [
-        "location_or_scene",
-        "outfit_or_accessory"
-      ],
-      "review_route": "mixed_semantics"
-    },
-    {
-      "key": "KnightOfRen_Aplek",
-      "base": "KnightOfRen",
-      "suffix": [
-        "Aplek"
-      ],
-      "score": 0.9368,
-      "margin": 0.1875,
-      "counterpart": "strong_character_counterpart",
-      "version": "variant_suffix_requires_version_resolution",
-      "top_physical": "Ap'lek / Knight of Ren",
-      "suffix_semantic_labels": [
-        "identity_selector"
-      ],
-      "review_route": "identity_selector"
     },
     {
       "key": "KnightOfRen_Cardo",
@@ -1615,136 +1719,6 @@
       "review_route": "identity_selector"
     },
     {
-      "key": "LamaSu",
-      "base": "LamaSu",
-      "suffix": [],
-      "score": 0.92,
-      "margin": 0.8259,
-      "counterpart": "strong_character_counterpart",
-      "version": "character_match_only_version_unresolved",
-      "top_physical": "Lama Su",
-      "suffix_semantic_labels": [
-        "no_suffix"
-      ],
-      "review_route": "no_suffix"
-    },
-    {
-      "key": "GarvenDreis",
-      "base": "GarvenDreis",
-      "suffix": [],
-      "score": 0.92,
-      "margin": 0.82,
-      "counterpart": "strong_character_counterpart",
-      "version": "character_match_only_version_unresolved",
-      "top_physical": "Garven Dreis",
-      "suffix_semantic_labels": [
-        "no_suffix"
-      ],
-      "review_route": "no_suffix"
-    },
-    {
-      "key": "NienNunb",
-      "base": "NienNunb",
-      "suffix": [],
-      "score": 0.92,
-      "margin": 0.8057,
-      "counterpart": "strong_character_counterpart",
-      "version": "character_match_only_version_unresolved",
-      "top_physical": "Nien Nunb",
-      "suffix_semantic_labels": [
-        "no_suffix"
-      ],
-      "review_route": "no_suffix"
-    },
-    {
-      "key": "CobbVanth",
-      "base": "CobbVanth",
-      "suffix": [],
-      "score": 0.92,
-      "margin": 0.8033,
-      "counterpart": "strong_character_counterpart",
-      "version": "character_match_only_version_unresolved",
-      "top_physical": "Cobb Vanth",
-      "suffix_semantic_labels": [
-        "no_suffix"
-      ],
-      "review_route": "no_suffix"
-    },
-    {
-      "key": "Droideka",
-      "base": "Droideka",
-      "suffix": [],
-      "score": 0.92,
-      "margin": 0.2473,
-      "counterpart": "strong_character_counterpart",
-      "version": "character_match_only_version_unresolved",
-      "top_physical": "Droideka",
-      "suffix_semantic_labels": [
-        "no_suffix"
-      ],
-      "review_route": "no_suffix"
-    },
-    {
-      "key": "CadBane",
-      "base": "CadBane",
-      "suffix": [],
-      "score": 0.92,
-      "margin": 0.17,
-      "counterpart": "strong_character_counterpart",
-      "version": "character_match_only_version_unresolved",
-      "top_physical": "Cad Bane",
-      "suffix_semantic_labels": [
-        "no_suffix"
-      ],
-      "review_route": "no_suffix"
-    },
-    {
-      "key": "C3PO_RedEyes",
-      "base": "C3PO",
-      "suffix": [
-        "RedEyes"
-      ],
-      "score": 0.92,
-      "margin": 0.1351,
-      "counterpart": "strong_character_counterpart",
-      "version": "variant_suffix_requires_version_resolution",
-      "top_physical": "C-3PO, Red Eyes",
-      "suffix_semantic_labels": [
-        "outfit_or_accessory"
-      ],
-      "review_route": "outfit_or_accessory"
-    },
-    {
-      "key": "CaptainRex",
-      "base": "CaptainRex",
-      "suffix": [],
-      "score": 0.92,
-      "margin": 0.0341,
-      "counterpart": "unresolved_character_counterpart",
-      "version": "unresolved",
-      "top_physical": "Captain Rex",
-      "suffix_semantic_labels": [
-        "no_suffix"
-      ],
-      "review_route": "no_suffix"
-    },
-    {
-      "key": "Leia_CloudCity",
-      "base": "Leia",
-      "suffix": [
-        "CloudCity"
-      ],
-      "score": 0.9104,
-      "margin": 0.0865,
-      "counterpart": "review_character_counterpart",
-      "version": "variant_suffix_requires_version_resolution",
-      "top_physical": "Princess Leia, Cloud City Outfit, Skirt",
-      "suffix_semantic_labels": [
-        "location_or_scene"
-      ],
-      "review_route": "location_or_scene"
-    },
-    {
       "key": "PoeDameron_Jacket",
       "base": "PoeDameron",
       "suffix": [
@@ -1781,7 +1755,7 @@
       "base": "AdmiralHoldo",
       "suffix": [],
       "score": 0.8844,
-      "margin": 0.3927,
+      "margin": 0.3876,
       "counterpart": "strong_character_counterpart",
       "version": "character_match_only_version_unresolved",
       "top_physical": "Vice Admiral Holdo",
@@ -1789,22 +1763,6 @@
         "no_suffix"
       ],
       "review_route": "no_suffix"
-    },
-    {
-      "key": "HanSolo_Hoth",
-      "base": "HanSolo",
-      "suffix": [
-        "Hoth"
-      ],
-      "score": 0.8833,
-      "margin": 0.0447,
-      "counterpart": "unresolved_character_counterpart",
-      "version": "unresolved",
-      "top_physical": "Han Solo, Hoth Outfit, Dark Brown Hood",
-      "suffix_semantic_labels": [
-        "location_or_scene"
-      ],
-      "review_route": "location_or_scene"
     },
     {
       "key": "ThirdSister",
@@ -1849,6 +1807,20 @@
       "review_route": "no_suffix"
     },
     {
+      "key": "SabineWren",
+      "base": "SabineWren",
+      "suffix": [],
+      "score": 0.8796,
+      "margin": 0.0112,
+      "counterpart": "unresolved_character_counterpart",
+      "version": "unresolved",
+      "top_physical": "Sabine Wren, Hair",
+      "suffix_semantic_labels": [
+        "no_suffix"
+      ],
+      "review_route": "no_suffix"
+    },
+    {
       "key": "CloneTrooper",
       "base": "CloneTrooper",
       "suffix": [],
@@ -1867,7 +1839,7 @@
       "base": "DarthVader",
       "suffix": [],
       "score": 0.8633,
-      "margin": 0.0464,
+      "margin": 0.0172,
       "counterpart": "unresolved_character_counterpart",
       "version": "unresolved",
       "top_physical": "Darth Vader, Damaged",
@@ -1881,7 +1853,7 @@
       "base": "DarthVader",
       "suffix": [],
       "score": 0.8633,
-      "margin": 0.0464,
+      "margin": 0.0172,
       "counterpart": "unresolved_character_counterpart",
       "version": "unresolved",
       "top_physical": "Darth Vader, Damaged",
@@ -1937,56 +1909,6 @@
       "review_route": "outfit_or_accessory"
     },
     {
-      "key": "CloneTrooper_Kashyyyk",
-      "base": "CloneTrooper",
-      "suffix": [
-        "Kashyyyk"
-      ],
-      "score": 0.851,
-      "margin": 0.0012,
-      "counterpart": "unresolved_character_counterpart",
-      "version": "unresolved",
-      "top_physical": "Clone Trooper, 41st Elite Corps Ranger Platoon Armor (Kashyyyk)",
-      "suffix_semantic_labels": [
-        "location_or_scene"
-      ],
-      "review_route": "location_or_scene"
-    },
-    {
-      "key": "ObiWanKenobi_Old_Tatooine",
-      "base": "ObiWanKenobi",
-      "suffix": [
-        "Old",
-        "Tatooine"
-      ],
-      "score": 0.8505,
-      "margin": 0.0333,
-      "counterpart": "unresolved_character_counterpart",
-      "version": "unresolved",
-      "top_physical": "Obi-Wan Kenobi, Old, Long Dark Brown Robe",
-      "suffix_semantic_labels": [
-        "episode_or_timeline",
-        "location_or_scene"
-      ],
-      "review_route": "mixed_semantics"
-    },
-    {
-      "key": "QuiGonJinn_Tatooine",
-      "base": "QuiGonJinn",
-      "suffix": [
-        "Tatooine"
-      ],
-      "score": 0.8497,
-      "margin": 0.1342,
-      "counterpart": "review_character_counterpart",
-      "version": "variant_suffix_requires_version_resolution",
-      "top_physical": "Qui-Gon Jinn, Yellow Skin",
-      "suffix_semantic_labels": [
-        "location_or_scene"
-      ],
-      "review_route": "location_or_scene"
-    },
-    {
       "key": "DarthMaul_Hood",
       "base": "DarthMaul",
       "suffix": [
@@ -2023,7 +1945,7 @@
       "base": "ObiWanKenobi",
       "suffix": [],
       "score": 0.84,
-      "margin": 0.0406,
+      "margin": 0.0348,
       "counterpart": "unresolved_character_counterpart",
       "version": "unresolved",
       "top_physical": "Obi-Wan Kenobi, Yellow Skin",
@@ -2045,38 +1967,6 @@
         "no_suffix"
       ],
       "review_route": "no_suffix"
-    },
-    {
-      "key": "ScoutTrooper_Kashyyyk",
-      "base": "ScoutTrooper",
-      "suffix": [
-        "Kashyyyk"
-      ],
-      "score": 0.8355,
-      "margin": 0.1518,
-      "counterpart": "review_character_counterpart",
-      "version": "variant_suffix_requires_version_resolution",
-      "top_physical": "Clone Trooper, 41st Elite Corps Scout Battalion Armor (Kashyyyk)",
-      "suffix_semantic_labels": [
-        "location_or_scene"
-      ],
-      "review_route": "location_or_scene"
-    },
-    {
-      "key": "Luke_Hoth",
-      "base": "Luke",
-      "suffix": [
-        "Hoth"
-      ],
-      "score": 0.8333,
-      "margin": 0.0588,
-      "counterpart": "review_character_counterpart",
-      "version": "variant_suffix_requires_version_resolution",
-      "top_physical": "Luke Skywalker, Hoth Outfit, White Hat",
-      "suffix_semantic_labels": [
-        "location_or_scene"
-      ],
-      "review_route": "location_or_scene"
     },
     {
       "key": "AnakinSkywalker_YellowEyes",
@@ -2111,6 +2001,24 @@
       "review_route": "rank_or_role"
     },
     {
+      "key": "HanSolo_Hoth_Hood",
+      "base": "HanSolo",
+      "suffix": [
+        "Hoth",
+        "Hood"
+      ],
+      "score": 0.8262,
+      "margin": 0.0526,
+      "counterpart": "review_character_counterpart",
+      "version": "variant_suffix_requires_version_resolution",
+      "top_physical": "Han Solo, Hoth Outfit, Dark Brown Hood",
+      "suffix_semantic_labels": [
+        "location_or_scene",
+        "outfit_or_accessory"
+      ],
+      "review_route": "mixed_semantics"
+    },
+    {
       "key": "chewbacca",
       "base": "chewbacca",
       "suffix": [],
@@ -2123,38 +2031,6 @@
         "no_suffix"
       ],
       "review_route": "no_suffix"
-    },
-    {
-      "key": "LukeSkywalker_Endor",
-      "base": "LukeSkywalker",
-      "suffix": [
-        "Endor"
-      ],
-      "score": 0.8241,
-      "margin": 0.0135,
-      "counterpart": "unresolved_character_counterpart",
-      "version": "unresolved",
-      "top_physical": "Luke Skywalker, Dark Tan Endor Outfit, Helmet",
-      "suffix_semantic_labels": [
-        "location_or_scene"
-      ],
-      "review_route": "location_or_scene"
-    },
-    {
-      "key": "Leia_Endor",
-      "base": "Leia",
-      "suffix": [
-        "Endor"
-      ],
-      "score": 0.8199,
-      "margin": 0.0369,
-      "counterpart": "unresolved_character_counterpart",
-      "version": "unresolved",
-      "top_physical": "Princess Leia, Endor Outfit, Sand Green Top",
-      "suffix_semantic_labels": [
-        "location_or_scene"
-      ],
-      "review_route": "location_or_scene"
     },
     {
       "key": "GunganWarrior_A",
@@ -2173,11 +2049,27 @@
       "review_route": "opaque_source_code"
     },
     {
+      "key": "Leia_Princess",
+      "base": "Leia",
+      "suffix": [
+        "Princess"
+      ],
+      "score": 0.8167,
+      "margin": 0.0575,
+      "counterpart": "review_character_counterpart",
+      "version": "variant_suffix_requires_version_resolution",
+      "top_physical": "Princess Leia, Young",
+      "suffix_semantic_labels": [
+        "rank_or_role"
+      ],
+      "review_route": "rank_or_role"
+    },
+    {
       "key": "Stormtrooper",
       "base": "Stormtrooper",
       "suffix": [],
       "score": 0.8162,
-      "margin": 0.0457,
+      "margin": 0.0329,
       "counterpart": "unresolved_character_counterpart",
       "version": "unresolved",
       "top_physical": "Stormtrooper, Artillery",
@@ -2193,28 +2085,30 @@
         "BoushhDisguise"
       ],
       "score": 0.8154,
-      "margin": 0.4938,
+      "margin": 0.4634,
       "counterpart": "review_character_counterpart",
       "version": "variant_suffix_requires_version_resolution",
       "top_physical": "Boushh / Princess Leia in Disguise",
       "suffix_semantic_labels": [
-        "outfit_or_accessory"
+        "other_unclassified"
       ],
-      "review_route": "outfit_or_accessory"
+      "review_route": "other_unclassified"
     },
     {
-      "key": "ScoutTrooper",
-      "base": "ScoutTrooper",
-      "suffix": [],
-      "score": 0.8118,
-      "margin": 0.0266,
+      "key": "CloneTrooper_Phase2",
+      "base": "CloneTrooper",
+      "suffix": [
+        "Phase2"
+      ],
+      "score": 0.8129,
+      "margin": 0.0345,
       "counterpart": "unresolved_character_counterpart",
       "version": "unresolved",
-      "top_physical": "Scout Trooper - Nougat Head",
+      "top_physical": "Clone Trooper, Phase II Armor, Nougat Head",
       "suffix_semantic_labels": [
-        "no_suffix"
+        "episode_or_timeline"
       ],
-      "review_route": "no_suffix"
+      "review_route": "episode_or_timeline"
     },
     {
       "key": "AdmiralAckbar",
@@ -2243,6 +2137,22 @@
         "no_suffix"
       ],
       "review_route": "no_suffix"
+    },
+    {
+      "key": "LukeSkywalker_Endor",
+      "base": "LukeSkywalker",
+      "suffix": [
+        "Endor"
+      ],
+      "score": 0.8106,
+      "margin": 0.0265,
+      "counterpart": "unresolved_character_counterpart",
+      "version": "unresolved",
+      "top_physical": "Luke Skywalker, Endor Outfit, Yellow Skin",
+      "suffix_semantic_labels": [
+        "location_or_scene"
+      ],
+      "review_route": "location_or_scene"
     },
     {
       "key": "CountDooku",
@@ -2332,6 +2242,84 @@
         "no_suffix"
       ],
       "review_route": "no_suffix"
+    },
+    {
+      "key": "C3PO_RedArm",
+      "base": "C3PO",
+      "suffix": [
+        "RedArm"
+      ],
+      "score": 0.7984,
+      "margin": 0.0184,
+      "counterpart": "unresolved_character_counterpart",
+      "version": "unresolved",
+      "top_physical": "C-3PO, Red Eyes",
+      "suffix_semantic_labels": [
+        "outfit_or_accessory"
+      ],
+      "review_route": "outfit_or_accessory"
+    },
+    {
+      "key": "QuiGonJinn_Tatooine",
+      "base": "QuiGonJinn",
+      "suffix": [
+        "Tatooine"
+      ],
+      "score": 0.7955,
+      "margin": 0.0658,
+      "counterpart": "review_character_counterpart",
+      "version": "variant_suffix_requires_version_resolution",
+      "top_physical": "Qui-Gon Jinn",
+      "suffix_semantic_labels": [
+        "location_or_scene"
+      ],
+      "review_route": "location_or_scene"
+    },
+    {
+      "key": "GonkDroid",
+      "base": "GonkDroid",
+      "suffix": [],
+      "score": 0.795,
+      "margin": 0.0421,
+      "counterpart": "unresolved_character_counterpart",
+      "version": "unresolved",
+      "top_physical": "GNK Power Droid (Gonk)",
+      "suffix_semantic_labels": [
+        "no_suffix"
+      ],
+      "review_route": "no_suffix"
+    },
+    {
+      "key": "ObiWan_Padawan",
+      "base": "ObiWan",
+      "suffix": [
+        "Padawan"
+      ],
+      "score": 0.795,
+      "margin": 0.0288,
+      "counterpart": "unresolved_character_counterpart",
+      "version": "unresolved",
+      "top_physical": "Obi-Wan Kenobi, Padawan, Printed Legs",
+      "suffix_semantic_labels": [
+        "episode_or_timeline"
+      ],
+      "review_route": "episode_or_timeline"
+    },
+    {
+      "key": "HanSolo_Endor",
+      "base": "HanSolo",
+      "suffix": [
+        "Endor"
+      ],
+      "score": 0.7941,
+      "margin": 0.0786,
+      "counterpart": "review_character_counterpart",
+      "version": "variant_suffix_requires_version_resolution",
+      "top_physical": "Han Solo, Endor Outfit, Long Jacket",
+      "suffix_semantic_labels": [
+        "location_or_scene"
+      ],
+      "review_route": "location_or_scene"
     }
   ],
   "status": "unresolved_diagnostic_ready"
