@@ -1,0 +1,104 @@
+{
+  "schema": "skywalker-unresolved-suffix-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-unresolved-suffix-review-010",
+  "policy": "Resolve public game identities first, then use physical figure names, set names, and resolved component inventories as separate evidence. Negative accessory states may be confirmed from explicit component absence/presence within an otherwise identity-matched physical candidate, but do not imply exact artwork equivalence.",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-bb8c0e5619d05b180e90e425",
+      "character_variant_key": "Lando_HermitUnmasked",
+      "decision": "digital_hermit_variant_verified_physical_episode9_family_visual_pending",
+      "canonical_game_variant": "Lando Calrissian (Hermit)",
+      "source_local_state": "Unmasked",
+      "physical_family_candidate": {
+        "brickset_minifig": "sw1067",
+        "catalog_name": "Lando Calrissian, Old (Cape with Collar)",
+        "year": 2019,
+        "set_num": "75257-1"
+      },
+      "reason": "Hermit is an explicit Skywalker Saga Lando identity, while Unmasked is a source-local state selector. The 2019 old-Lando Episode IX release is the appropriate physical age/timeline family, but the catalog does not independently identify the Hermit/Unmasked game state; exact equivalence remains visual pending.",
+      "evidence_urls": [
+        "https://brickset.com/minifigs/sw1067/lando-calrissian-old-%28cape-with-collar%29"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-da07dd0b48335897724a577c",
+      "character_variant_key": "Rey_ScavengerGreyVest",
+      "decision": "digital_scavenger_grey_vest_variant_verified_physical_episode7_family_visual_pending",
+      "canonical_game_variant": "Rey (Scavenger Grey Vest)",
+      "cross_reference": {
+        "review_file": "skywalker-unresolved-suffix-review-006.json",
+        "related_key": "Rey_Vest"
+      },
+      "physical_episode7_family_candidate": {
+        "fig_num": "fig-002057",
+        "catalog_name": "Rey, Dark Tan Robe",
+        "first_year": 2015
+      },
+      "reason": "Scavenger Grey Vest is an explicit game appearance and is the more descriptive form of the previously reviewed Rey_Vest asset. The 2015 Episode VII Rey family is relevant, but physical catalog terminology does not independently encode the grey-vest state; preserve the game appearance while exact equivalence remains visual pending."
+    },
+    {
+      "asset_id": "skywalker-profile-85f1e690d5aec67879511078",
+      "character_variant_key": "Finn_FN2187_NoHelmet",
+      "decision": "fn2187_identity_and_negative_helmet_state_verified_visual_pending",
+      "canonical_game_variant": "Finn (FN-2187 - No Helmet)",
+      "physical_candidate": {
+        "fig_num": "fig-000272",
+        "brickset_minifig": "sw0716",
+        "catalog_name": "Finn - First Order Stormtrooper (FN-2187)",
+        "year": 2016,
+        "set_num": "30605-1",
+        "component_state": {
+          "helmet_present": false,
+          "hair_present": true,
+          "resolved_headgear_part": "21778 Hair Coiled Texture [Plain]"
+        }
+      },
+      "reason": "The game explicitly distinguishes FN-2187 - No Helmet. The physical sw0716 identity independently matches FN-2187, and the repo's resolved component inventory for the corresponding physical candidate contains Finn hair rather than a stormtrooper helmet. This verifies the identity plus negative helmet state; exact digital texture reuse remains visual pending.",
+      "evidence_urls": [
+        "https://brickset.com/minifigs/sw0716/finn-first-order-stormtrooper-%28fn-2187%29",
+        "https://brickset.com/sets/30605-1/Finn-(FN-2187)"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-17358d81e7dcc84958e96837",
+      "character_variant_key": "BattleDroid_Heavy",
+      "decision": "digital_heavy_assault_role_verified_no_exact_physical_counterpart",
+      "canonical_game_variant": "B1 Battle Droid (Heavy Assault)",
+      "rejected_nearby_physical_families": [
+        "Battle Droid, Kashyyyk",
+        "Battle Droid, Geonosian",
+        "Battle Droid / Rocket Battle Droid",
+        "Battle Droid, Two Bent Arms"
+      ],
+      "reason": "Heavy Assault is an explicit Skywalker Saga B1 Battle Droid role. None of the currently supported physical candidate names or component summaries independently identify Heavy Assault; Kashyyyk, Geonosian, Rocket and generic bent-arm battle droids are different variants. Preserve the game role rather than choosing the highest same-family score.",
+      "evidence_urls": [
+        "https://gamefaqs.gamespot.com/ps4/265996-lego-star-wars-the-skywalker-saga/faqs/79882/villains-and-dark-siders"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-5676021526d0a3b2e0461357",
+      "character_variant_key": "Padme_Pilot_Helmet",
+      "decision": "digital_pilot_helmet_variant_verified_no_supported_physical_counterpart",
+      "canonical_game_variant": "Padmé (Pilot - Helmet)",
+      "physical_character_family_supported": true,
+      "exact_physical_variant_supported": false,
+      "reason": "Pilot - Helmet is an explicit Skywalker Saga Padmé variant, but the current crosswalk has no Padmé physical candidate satisfying both character identity and pilot/helmet state. The top lexical hits are unrelated pilots, so no physical identity should be inferred.",
+      "evidence_urls": [
+        "https://brickipedia.fandom.com/wiki/LEGO_Star_Wars:_The_Skywalker_Saga"
+      ]
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "physical_identity_or_family_supported_visual_pending": 3,
+    "digital_role_or_outfit_no_exact_physical_counterpart": 2,
+    "automatic_exact_equivalence_promotions": 0
+  },
+  "remaining_unreviewed_suffix_records_after_batch": 18,
+  "systemic_findings": [
+    "Set names can carry variant identifiers absent from Rebrickable figure names (for example set 30605 identifies FN-2187).",
+    "Resolved component inventories can validate negative accessory states such as NoHelmet when the candidate identity is independently established.",
+    "Game role variants such as Heavy Assault must not collapse onto nearby physical family members without role-specific evidence."
+  ]
+}
