@@ -16,6 +16,13 @@ UA="BrickmenResearch/1.0 metadata-only"
 def now_iso():
     return datetime.now(timezone.utc).isoformat()
 
+def catalog_id_from_record(rec):
+    direct=str(rec.get("catalog_id") or rec.get("bricklink_minifigure_id") or "").strip()
+    if direct:return direct.casefold()
+    url=str(rec.get("catalog_url") or rec.get("bricklink_catalog_url") or "")
+    m=re.search(r"[?&]M=([^&#]+)",url,re.I)
+    return m.group(1).strip().casefold() if m else None
+
 def load_jsonl(path):
     with Path(path).open("r",encoding="utf-8") as f:
         for line in f:
@@ -79,9 +86,18 @@ def main():
 
     rows=[];resolved=0;failed=0;name_support=0;name_conflict=0
     for q in load_jsonl(args.queue):
-        item_id=str(q.get("catalog_id") or "").strip()
+        item_id=catalog_id_from_record(q)
+        if not item_id:
+            continue
         url=f"https://www.bricklink.com/v2/catalog/catalogitem.page?M={item_id}"
-        rec={**q,"bricklink_public_catalog_url":url,"processor_version":VERSION}
+        rec={
+          **q,
+          "catalog_namespace":q.get("catalog_namespace") or "bricklink_minifigure_id",
+          "catalog_id":item_id,
+          "name_or_note":q.get("name_or_note") or q.get("name"),
+          "bricklink_public_catalog_url":url,
+          "processor_version":VERSION
+        }
         try:
             raw,status=fetch(url)
             text=raw.decode("utf-8","replace")
