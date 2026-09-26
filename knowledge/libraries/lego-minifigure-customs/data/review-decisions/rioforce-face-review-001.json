@@ -1,0 +1,92 @@
+{
+  "schema": "face-landmark-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "rioforce-face-review-001",
+  "records": [
+    {
+      "face_asset_id": "rioforce-face-1ee1c5cae7f57efe78b5b8f0",
+      "relative_path": "City/Basic Happy Face (With Eyebrows).svg",
+      "decision": "semantic_verified_geometry_partially_reviewed",
+      "orientation": "front",
+      "expression_family": "happiness",
+      "confidence": "high",
+      "observed_structure": {
+        "bilateral_eye_shapes": true,
+        "bilateral_highlights": true,
+        "brow_shapes": true,
+        "mouth_shape": "closed_smile",
+        "simple_landmark_geometry": true
+      },
+      "provenance_note": "Embedded Inkscape export path points to 'Classics/Basic Happy (With Eyebrows).png' while the current repository path is under City/. Preserve this as source-history evidence rather than overwriting either location.",
+      "remaining_tasks": [
+        "derive exact transformed eye centers/bounds",
+        "derive brow bounds",
+        "derive mouth bounds",
+        "resolve physical/catalog identity only if independent evidence exists"
+      ]
+    },
+    {
+      "face_asset_id": "rioforce-face-d471748848106940f9690a96",
+      "relative_path": "City/Scared Face.svg",
+      "decision": "semantic_verified_geometry_partially_reviewed",
+      "orientation": "front",
+      "expression_family": "fear",
+      "confidence": "high",
+      "observed_structure": {
+        "bilateral_eye_shapes": true,
+        "bilateral_highlights": true,
+        "brow_or_upper_eye_accent_shapes": true,
+        "mouth_shape": "large_open_mouth_with_light_interior",
+        "simple_landmark_geometry": true
+      },
+      "provenance_note": "The SVG's internal document name is generic ('New document 1'), so the repository path and content hash remain the meaningful source identity.",
+      "remaining_tasks": [
+        "derive exact transformed eye centers/bounds",
+        "derive brow/accent bounds",
+        "derive mouth bounds",
+        "resolve physical/catalog identity only if independent evidence exists"
+      ]
+    },
+    {
+      "face_asset_id": "rioforce-face-11667846cd61f7edb90bb2b6",
+      "relative_path": "LEGO Minifigures/Series 7/Viking Lady/Viking Lady Face Front.svg",
+      "decision": "orientation_and_subject_verified_geometry_pending",
+      "orientation": "front",
+      "subject": "Viking Woman / Viking Lady, Series 7",
+      "confidence": "high_for_orientation_subject",
+      "observed_structure": {
+        "complex_path_geometry": true,
+        "simple_primitive_landmarks": false
+      },
+      "remaining_tasks": [
+        "visual/geometry pass for exact eyes/brows/mouth",
+        "expression classification",
+        "catalog head/component crosswalk"
+      ]
+    },
+    {
+      "face_asset_id": "rioforce-face-93c13c231a51af0cbae7d7f3",
+      "relative_path": "Monster Fighters/Ann Lee/Ann Lee Face Back.svg",
+      "decision": "orientation_and_subject_verified_geometry_pending",
+      "orientation": "reverse",
+      "subject": "Ann Lee, Monster Fighters",
+      "confidence": "high_for_orientation_subject",
+      "observed_structure": {
+        "complex_path_geometry": true,
+        "simple_primitive_landmarks": false
+      },
+      "remaining_tasks": [
+        "visual/geometry pass for exact eyes/brows/mouth",
+        "expression classification",
+        "front/reverse pairing verification",
+        "catalog head/component crosswalk"
+      ]
+    }
+  ],
+  "result": {
+    "reviewed": 4,
+    "semantic_verified_geometry_partially_reviewed": 2,
+    "orientation_and_subject_verified_geometry_pending": 2
+  },
+  "next_offset": 4
+}
