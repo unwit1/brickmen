@@ -1,0 +1,39 @@
+{
+  "schema": "flat-art-independent-review-decisions/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "rioforce-flat-art-review-010",
+  "records": [
+    {
+      "candidate_id": "rioforce-90441ee666c11e0ff6451f9a",
+      "relative_stem": "Super Heroes/Lex Luther/Lex Luther Face",
+      "decision": "unresolved_specific_subject_ambiguous_version",
+      "reason": "The source clearly intends Lex Luthor (misspelled Luther), but multiple distinct 2012 physical Lex Luthor variants exist with different heads. With no year/outfit qualifier or generated candidate, exact identity is ambiguous.",
+      "evidence_urls": [
+        "https://www.bricklink.com/catalogItemInv.asp?M=sh0012",
+        "https://www.bricklink.com/catalogItemInv.asp?M=sh0039"
+      ]
+    },
+    {
+      "candidate_id": "rioforce-436190a4da9afa9aaa253584",
+      "relative_stem": "Super Heroes/Lex Luther/Lex Luther Torso",
+      "decision": "unresolved_specific_subject_ambiguous_version",
+      "reason": "Multiple physical Lex Luthor versions exist, including 2012 black-suit and battle-armor torsos. The source label does not distinguish the version, so no exact torso should be promoted.",
+      "evidence_urls": [
+        "https://www.bricklink.com/catalogItemInv.asp?M=sh0012",
+        "https://www.bricklink.com/catalogItemInv.asp?M=sh0039"
+      ]
+    },
+    {
+      "candidate_id": "rioforce-fa9e4d245cdb48d754d48093",
+      "relative_stem": "Super Heroes/Lex Luther/Lex Luther Torso Back",
+      "decision": "unresolved_specific_subject_ambiguous_version",
+      "reason": "The back-surface asset is specifically Lex Luthor but not version-qualified. Because the black-suit and battle-armor releases use different torsos, retain it for visual/version resolution."
+    }
+  ],
+  "result": {
+    "reviewed": 3,
+    "unresolved_specific_subject_ambiguous_version": 3
+  },
+  "next_offset": 48,
+  "queue_complete": true
+}
