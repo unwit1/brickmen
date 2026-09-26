@@ -1,0 +1,123 @@
+{
+  "schema": "skywalker-suffix-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-suffix-review-008",
+  "cohort": "remaining_direct_catalog_text_suffix_matches",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-2a2af1f7ef69c1fe86481610",
+      "character_variant_key": "Anakin_Padawan",
+      "decision": "variant_family_verified_exact_release_unresolved",
+      "supported_physical_candidates": [
+        {
+          "fig_num": "fig-003633",
+          "name": "Anakin Skywalker, Padawan, Yellow Skin",
+          "year": 2002,
+          "set_num": "7133-1"
+        },
+        {
+          "fig_num": "fig-003617",
+          "name": "Anakin Skywalker, Padawan, Yellow Skin, Cape",
+          "year": 2002,
+          "set_num": "7113-1"
+        },
+        {
+          "fig_num": "fig-004003",
+          "name": "Anakin Skywalker, Padawan, Medium Nougat Hair",
+          "first_year": 2013
+        }
+      ],
+      "reason": "Padawan is strong era/version-family evidence, but multiple physical Padawan Anakin releases differ in skin tone, cape and hair. Exact release remains visual/component dependent."
+    },
+    {
+      "asset_id": "skywalker-profile-2c429435a570d3ea366c6568",
+      "character_variant_key": "ObiWan_Old_Hood",
+      "decision": "variant_identity_supported_visual_pending",
+      "physical_candidate": "fig-002685",
+      "physical_release": {
+        "name": "Obi-Wan Kenobi, Old, Tan Robes, Dark Brown Hood and Cape",
+        "first_year": 2019
+      },
+      "reason": "The combined Old + Hood qualifiers strongly narrow the physical family to old Obi-Wan in a dark-brown hood/cape. Exact digital texture/component reuse remains visual pending."
+    },
+    {
+      "asset_id": "skywalker-profile-27e33ba6c5468c5836f7dad1",
+      "character_variant_key": "Leia_Endor",
+      "decision": "variant_family_verified_exact_release_unresolved",
+      "supported_physical_examples": [
+        {
+          "fig_num": "fig-003814",
+          "name": "Princess Leia, Endor Outfit, Sand Green Top",
+          "year": 2009
+        },
+        {
+          "fig_num": "fig-003936",
+          "name": "Princess Leia, Endor Outfit, Skirt",
+          "year": 2013
+        },
+        {
+          "fig_num": "fig-004141",
+          "name": "Princess Leia, Endor Outfit, Poncho",
+          "year": 2015
+        }
+      ],
+      "later_release_examples": [
+        {
+          "fig_num": "fig-014266",
+          "name": "Princess Leia, Endor Outfit, Hair",
+          "year": 2023
+        },
+        {
+          "fig_num": "fig-013743",
+          "name": "Princess Leia, Endor Outfit, Helmet",
+          "year": 2023
+        }
+      ],
+      "reason": "Endor is reliable outfit-family evidence, but several pre-game physical Endor Leia releases exist. 2023 variants are later than the game and excluded as source-equivalent designs."
+    },
+    {
+      "asset_id": "skywalker-profile-528913cccd5ca8dc4e337b81",
+      "character_variant_key": "Leia_General",
+      "decision": "variant_family_verified_exact_release_unresolved",
+      "supported_physical_candidates": [
+        {
+          "fig_num": "fig-004174",
+          "name": "Princess Leia / General Leia, Plain Undershirt",
+          "year": 2016
+        },
+        {
+          "fig_num": "fig-004406",
+          "name": "Princess Leia / General Leia, Dark Tan Turtle-neck",
+          "year": 2019
+        }
+      ],
+      "reason": "General correctly identifies sequel-era General Leia, but at least two pre-game physical outfit variants remain."
+    },
+    {
+      "asset_id": "skywalker-profile-92df994e98c2ea17dd6f17d7",
+      "character_variant_key": "Leia_General",
+      "decision": "variant_family_verified_exact_release_unresolved",
+      "supported_physical_candidates": [
+        {
+          "fig_num": "fig-004174",
+          "name": "Princess Leia / General Leia, Plain Undershirt",
+          "year": 2016
+        },
+        {
+          "fig_num": "fig-004406",
+          "name": "Princess Leia / General Leia, Dark Tan Turtle-neck",
+          "year": 2019
+        }
+      ],
+      "reason": "A second digital asset shares the Leia_General key and the same physical-family ambiguity. Preserve it as a distinct digital asset while reusing the same reviewed family decision."
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "variant_identity_supported_visual_pending": 1,
+    "variant_family_verified_exact_release_unresolved": 4,
+    "duplicate_character_variant_key_assets_reviewed": 1,
+    "automatic_exact_equivalence_promotions": 0
+  },
+  "remaining_direct_catalog_text_suffix_records_after_batch": 6
+}
