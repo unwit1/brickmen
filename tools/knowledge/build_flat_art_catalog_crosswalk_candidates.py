@@ -28,11 +28,21 @@ STOP = {
     "orange","purple","pink","gold","silver",
 }
 
-ROLE_HINTS = (
-    ("face", "head"), ("head", "head"), ("torso", "torso"), ("hips", "hips"),
-    ("hip", "hips"), ("legs", "leg"), ("leg", "leg"), ("arm", "arm"),
-    ("helmet", "headgear"), ("cowl", "headgear"), ("hair", "headgear"),
+ROLE_PATTERNS = (
+    (r"\bface\b", "head"),
+    (r"\bhead\b", "head"),
+    (r"\btorso\b", "torso"),
+    (r"\bhips?\b", "hips"),
+    (r"\blegs?\b", "leg"),
+    (r"\barms?\b", "arm"),
+    (r"\b(?:helmet|cowl|hair|hood|mask|hat|cap|headgear)\b", "headgear"),
+    (r"\bshield\b", "weapon_or_tool"),
 )
+
+ROLE_COMPATIBILITY = {
+    "leg": {"leg", "hips"},
+    "hips": {"hips", "leg"},
+}
 
 
 def now_iso():
@@ -56,10 +66,17 @@ def tok(value: str):
 
 def infer_role(stem: str):
     low=stem.casefold()
-    for needle,role in ROLE_HINTS:
-        if needle in low:
+    for pattern,role in ROLE_PATTERNS:
+        if re.search(pattern, low):
             return role
     return None
+
+
+def role_matches(texture_role: str | None, component_role: str | None) -> bool:
+    if not texture_role:
+        return True
+    allowed = ROLE_COMPATIBILITY.get(texture_role, {texture_role})
+    return component_role in allowed
 
 
 def subject_text(stem: str):
@@ -192,7 +209,7 @@ def main():
         exact_links=[]
         for fig in fig_candidates:
             for comp in components.get(fig["fig_num"],[]):
-                if role and comp.get("component_role") != role:
+                if not role_matches(role, comp.get("component_role")):
                     continue
                 item={
                     "fig_num":fig["fig_num"],
@@ -229,7 +246,7 @@ def main():
                     if (
                         role
                         and fig["score"] >= args.min_figure_score_for_exact
-                        and comp.get("component_role") == role
+                        and role_matches(role, comp.get("component_role"))
                         and comp.get("print_of")
                     ):
                         exact_links.append({
