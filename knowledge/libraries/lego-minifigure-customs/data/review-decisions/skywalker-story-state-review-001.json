@@ -1,0 +1,91 @@
+{
+  "schema": "skywalker-semantic-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-story-state-review-001",
+  "review_route": "story_or_prop_state / physical_state",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-ad5dda3a6e176facee6a1ba3",
+      "character_variant_key": "C3PO_Rusted",
+      "decision": "digital_appearance_state_physical_version_unresolved",
+      "reason": "Rusted is a specific visual/material state. The current physical candidate set does not independently identify a rusted C-3PO release, so ordinary gold/red-eye variants are not promoted. Keep the state as digital supervision pending color/component or visual evidence."
+    },
+    {
+      "asset_id": "skywalker-profile-862399c8ae43ab69bed4b235",
+      "character_variant_key": "BB8_Bin",
+      "decision": "digital_prop_or_scene_state_no_supported_physical_match",
+      "reason": "Bin is a prop/scene state rather than a normal BB-8 physical-version label. Generic BB-8 releases confirm the character only; the bin state remains digital-specific absent independent component/set evidence."
+    },
+    {
+      "asset_id": "skywalker-profile-0272ee9b2da6b76361c09b5b",
+      "character_variant_key": "LukeSkywalker_Ceremony",
+      "decision": "variant_family_verified_exact_release_visual_pending",
+      "pregame_physical_family": [
+        {
+          "brickset_minifig": "sw0257",
+          "name": "Luke Skywalker - Celebration, Yellow Jacket",
+          "year": 2009
+        },
+        {
+          "brickset_minifig": "sw0257a",
+          "name": "Luke Skywalker - Celebration, Yellow Jacket, White Pupils",
+          "cataloged_year": 2010
+        }
+      ],
+      "later_release_excluded_as_source": {
+        "brickset_minifig": "sw1283",
+        "name": "Luke Skywalker - Celebration, Bright Light Yellow Jacket",
+        "year": 2023
+      },
+      "evidence_urls": [
+        "https://brickset.com/minifigs/sw0257/luke-skywalker-celebration-yellow-jacket",
+        "https://brickset.com/minifigs/category-Star-Wars/name-Luke-Skywalker?query=ce"
+      ],
+      "reason": "Ceremony/Celebration is a real pre-game physical Luke family. The current top candidate favored the 2023 remake, but the 2009/2010 Celebration versions prove the appearance family predates the 2022 game. Exact digital-to-physical generation remains visual pending."
+    },
+    {
+      "asset_id": "skywalker-profile-0f80cebb0c477c98bd594870",
+      "character_variant_key": "HanSolo_Carbonite",
+      "decision": "story_state_verified_physical_prop_and_face_evidence",
+      "physical_prop_evidence": [
+        {
+          "bricklink_part": "87561pb01",
+          "name": "Carbonite Block with Han Solo Pattern",
+          "years": "2010-2019"
+        },
+        {
+          "bricklink_part": "2454ps5",
+          "name": "Brick 1 x 2 x 5 with Han Solo in Carbonite Pattern",
+          "status": "physical prop/decorated brick"
+        }
+      ],
+      "physical_face_evidence": {
+        "bricklink_part": "3626pb1247",
+        "name": "Han Solo dual-sided head with carbonite closed-eyes expression",
+        "years": "2015-2018"
+      },
+      "evidence_urls": [
+        "https://www.bricklink.com/v2/catalog/catalogitem.page?P=87561pb01",
+        "https://www.bricklink.com/v2/catalog/catalogitem.page?P=3626pb1247"
+      ],
+      "reason": "Carbonite is a story/prop state with strong pre-game physical analogs, but the carbonite block is cataloged as a decorated part/utensil rather than a normal minifigure identity. Keep prop-state and minifigure identity layers separate."
+    },
+    {
+      "asset_id": "skywalker-profile-e06b45aa25ff320d59173878",
+      "character_variant_key": "R2D2_Waiter",
+      "decision": "digital_role_or_prop_state_no_supported_physical_match",
+      "reason": "Waiter is a digital role/prop presentation. Current physical R2-D2 candidates do not independently document a waiter configuration; holiday variants and generic R2-D2 releases are unrelated."
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "physical_variant_family_verified": 1,
+    "physical_prop_story_state_verified": 1,
+    "digital_only_or_physical_version_unresolved": 3,
+    "automatic_exact_equivalence_promotions": 0
+  },
+  "systemic_findings": [
+    "Story-state keys may map to props/components rather than minifigure releases.",
+    "Later remakes must not hide older physical analogs; temporal review should search the full character family rather than only the top lexical candidate."
+  ]
+}
