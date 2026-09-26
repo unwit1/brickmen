@@ -430,6 +430,7 @@ jobs:
           python tools/knowledge/build_skywalker_physical_crosswalk_candidates.py \
             --skywalker-census knowledge/libraries/lego-minifigure-customs/data/skywalker-saga-profile-icon-census-2026-09-25.json \
             --physical-samples "$OUT/sources/rebrickable/output/physical_samples.jsonl" \
+            --components "$OUT/sources/rebrickable/output/component_samples.jsonl" \
             --output "$src/candidates.jsonl" \
             --summary "$src/summary.json"
           rc=$?
