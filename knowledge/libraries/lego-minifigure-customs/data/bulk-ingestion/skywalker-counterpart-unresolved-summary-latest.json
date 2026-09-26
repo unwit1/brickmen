@@ -3,14 +3,14 @@
   "processor_version": "skywalker-unresolved-diagnostic/v3",
   "records": 361,
   "counterpart_status_counts": {
-    "strong_character_counterpart": 61,
+    "strong_character_counterpart": 62,
     "review_character_counterpart": 14,
-    "unresolved_character_counterpart": 286
+    "unresolved_character_counterpart": 285
   },
   "exact_version_status_counts": {
     "character_match_only_version_unresolved": 49,
-    "variant_suffix_requires_version_resolution": 26,
-    "unresolved": 286
+    "variant_suffix_requires_version_resolution": 27,
+    "unresolved": 285
   },
   "suffix_family_counts": {
     "no_suffix": 197,
@@ -202,6 +202,10 @@
       "count": 1
     },
     {
+      "token": "Aplek",
+      "count": 1
+    },
+    {
       "token": "Cardo",
       "count": 1
     },
@@ -274,10 +278,6 @@
       "count": 1
     },
     {
-      "token": "Aplek",
-      "count": 1
-    },
-    {
       "token": "Princess",
       "count": 1
     },
@@ -298,10 +298,6 @@
       "count": 1
     },
     {
-      "token": "Swamp",
-      "count": 1
-    },
-    {
       "token": "Rusted",
       "count": 1
     },
@@ -315,6 +311,10 @@
     },
     {
       "token": "Cantina",
+      "count": 1
+    },
+    {
+      "token": "Swamp",
       "count": 1
     },
     {
@@ -853,10 +853,10 @@
     }
   ],
   "score_bands": {
-    "0.90+": 61,
+    "0.90+": 62,
     "0.80-0.899": 38,
-    "0.70-0.799": 61,
-    "0.50-0.699": 86,
+    "0.70-0.799": 59,
+    "0.50-0.699": 87,
     "<0.50": 115
   },
   "top_high_score_records": [
@@ -1113,6 +1113,20 @@
       "review_route": "no_suffix"
     },
     {
+      "key": "UnkarPlutt",
+      "base": "UnkarPlutt",
+      "suffix": [],
+      "score": 1.0,
+      "margin": 0.8727,
+      "counterpart": "strong_character_counterpart",
+      "version": "character_match_only_version_unresolved",
+      "top_physical": "Unkar Plutt",
+      "suffix_semantic_labels": [
+        "no_suffix"
+      ],
+      "review_route": "no_suffix"
+    },
+    {
       "key": "BailOrgana",
       "base": "BailOrgana",
       "suffix": [],
@@ -1177,20 +1191,6 @@
       "counterpart": "strong_character_counterpart",
       "version": "character_match_only_version_unresolved",
       "top_physical": "Mon Mothma",
-      "suffix_semantic_labels": [
-        "no_suffix"
-      ],
-      "review_route": "no_suffix"
-    },
-    {
-      "key": "UnkarPlutt",
-      "base": "UnkarPlutt",
-      "suffix": [],
-      "score": 1.0,
-      "margin": 0.5408,
-      "counterpart": "strong_character_counterpart",
-      "version": "character_match_only_version_unresolved",
-      "top_physical": "Unkar Plutt",
       "suffix_semantic_labels": [
         "no_suffix"
       ],
@@ -1517,6 +1517,22 @@
         "outfit_or_accessory"
       ],
       "review_route": "mixed_semantics"
+    },
+    {
+      "key": "KnightOfRen_Aplek",
+      "base": "KnightOfRen",
+      "suffix": [
+        "Aplek"
+      ],
+      "score": 0.9368,
+      "margin": 0.1875,
+      "counterpart": "strong_character_counterpart",
+      "version": "variant_suffix_requires_version_resolution",
+      "top_physical": "Ap'lek / Knight of Ren",
+      "suffix_semantic_labels": [
+        "identity_selector"
+      ],
+      "review_route": "identity_selector"
     },
     {
       "key": "KnightOfRen_Cardo",
@@ -2312,20 +2328,6 @@
       "counterpart": "unresolved_character_counterpart",
       "version": "unresolved",
       "top_physical": "Bib Fortuna, Closed Mouth",
-      "suffix_semantic_labels": [
-        "no_suffix"
-      ],
-      "review_route": "no_suffix"
-    },
-    {
-      "key": "SabineWren",
-      "base": "SabineWren",
-      "suffix": [],
-      "score": 0.7996,
-      "margin": 0.0112,
-      "counterpart": "unresolved_character_counterpart",
-      "version": "unresolved",
-      "top_physical": "Sabine Wren, Hair",
       "suffix_semantic_labels": [
         "no_suffix"
       ],

@@ -1,0 +1,127 @@
+{
+  "schema": "skywalker-manual-review-coverage-summary/v1",
+  "processor_version": "skywalker-manual-review-coverage/v1",
+  "identity_records": 377,
+  "review_files_found": 30,
+  "review_files_parsed": 30,
+  "malformed_review_files": [],
+  "reviewed_asset_ids": 140,
+  "reviewed_variant_keys": 139,
+  "manual_decision_records": 142,
+  "manual_decision_counts": {
+    "same_character_verified_physical_equivalence_not_promoted": 1,
+    "same_character_verified_physical_counterpart_plausible_version_visual_pending": 20,
+    "same_character_verified_physical_equivalence_not_promoted_temporal_mismatch": 4,
+    "same_character_verified_same_year_timing_and_version_pending": 1,
+    "character_verified_scene_variant_requires_set_context": 3,
+    "character_verified_scene_or_state_variant_requires_context": 1,
+    "digital_negative_feature_verified_physical_version_unresolved": 2,
+    "variant_family_verified_exact_release_unresolved": 27,
+    "digital_appearance_state_no_supported_physical_match": 2,
+    "digital_negative_feature_and_state_verified_physical_version_unresolved": 1,
+    "variant_concept_supported_same_year_physical_timing_visual_pending": 1,
+    "digital_scene_outfit_no_supported_physical_match": 2,
+    "outfit_family_verified_accessory_state_component_review_required": 1,
+    "role_family_verified_exact_physical_role_unresolved": 1,
+    "faction_timeline_family_verified_exact_release_unresolved": 1,
+    "digital_role_supported_no_specific_physical_counterpart": 1,
+    "game_local_ordinal_variant_physical_family_only": 2,
+    "specialized_role_identity_verified_visual_pending": 1,
+    "identity_selector_verified_visual_pending": 1,
+    "character_family_verified_opaque_suffix_unresolved": 1,
+    "color_outfit_family_verified_exact_release_unresolved": 1,
+    "timeline_story_state_family_verified_exact_release_unresolved": 1,
+    "digital_appearance_state_physical_version_unresolved": 1,
+    "digital_prop_or_scene_state_no_supported_physical_match": 1,
+    "variant_family_verified_exact_release_visual_pending": 2,
+    "story_state_verified_physical_prop_and_face_evidence": 1,
+    "digital_role_or_prop_state_no_supported_physical_match": 1,
+    "variant_identity_verified_visual_pending": 11,
+    "variant_identity_supported_later_physical_not_source_equivalent": 1,
+    "variant_family_supported_named_identity_unresolved": 1,
+    "full_character_name_detected_not_variant_suffix": 1,
+    "character_family_verified_suffix_semantics_unresolved": 1,
+    "identity_title_supported_not_physical_variant_resolved": 1,
+    "character_identity_verified_tatooine_variant_unresolved": 1,
+    "reviewed_elsewhere_variant_identity_verified_visual_pending": 2,
+    "variant_identity_supported_visual_pending": 1,
+    "rank_variant_identity_verified_visual_pending": 2,
+    "rank_family_verified_exact_identity_unresolved": 1,
+    "rank_family_verified_named_identity_unresolved": 1,
+    "timeline_family_verified_outfit_unresolved": 2,
+    "digital_story_state_later_physical_analog_not_source_equivalent": 1,
+    "same_character_unique_physical_counterpart_visual_pending": 22,
+    "same_character_variant_identity_verified_visual_pending": 3,
+    "same_character_unique_physical_family_variant_mapping_unresolved": 2,
+    "same_character_unique_candidate_suffix_semantics_unresolved": 1,
+    "same_character_unique_physical_family_numeric_suffix_unresolved": 1,
+    "reject_physical_candidate_route_game_only": 1,
+    "reject_physical_candidate_route_non_minifigure_creature": 1,
+    "reject_candidate_match_requires_hoth_variant_resolution": 1,
+    "reject_candidate_match_requires_jedi_knight_variant_resolution": 1
+  },
+  "duplicate_reviewed_asset_ids": 2,
+  "duplicate_reviewed_variant_keys": 3,
+  "conflicting_duplicate_asset_ids": 2,
+  "conflicting_duplicate_assets": {
+    "skywalker-profile-7e5ee44cb58cb8cbd860f5d7": {
+      "decisions": [
+        "reviewed_elsewhere_variant_identity_verified_visual_pending",
+        "same_character_variant_identity_verified_visual_pending"
+      ],
+      "entries": [
+        {
+          "source_file": "knowledge/libraries/lego-minifigure-customs/data/review-decisions/skywalker-suffix-review-005.json",
+          "batch_id": "skywalker-suffix-review-005",
+          "asset_id": "skywalker-profile-7e5ee44cb58cb8cbd860f5d7",
+          "character_variant_key": "Finn_FirstOrder",
+          "decision": "reviewed_elsewhere_variant_identity_verified_visual_pending"
+        },
+        {
+          "source_file": "knowledge/libraries/lego-minifigure-customs/data/review-decisions/skywalker-unique-release-review-004.json",
+          "batch_id": "skywalker-unique-release-review-004",
+          "asset_id": "skywalker-profile-7e5ee44cb58cb8cbd860f5d7",
+          "character_variant_key": "Finn_FirstOrder",
+          "decision": "same_character_variant_identity_verified_visual_pending"
+        }
+      ]
+    },
+    "skywalker-profile-36a442d18e421d7b0d15daab": {
+      "decisions": [
+        "reviewed_elsewhere_variant_identity_verified_visual_pending",
+        "same_character_variant_identity_verified_visual_pending"
+      ],
+      "entries": [
+        {
+          "source_file": "knowledge/libraries/lego-minifigure-customs/data/review-decisions/skywalker-suffix-review-005.json",
+          "batch_id": "skywalker-suffix-review-005",
+          "asset_id": "skywalker-profile-36a442d18e421d7b0d15daab",
+          "character_variant_key": "Rose_FirstOrder",
+          "decision": "reviewed_elsewhere_variant_identity_verified_visual_pending"
+        },
+        {
+          "source_file": "knowledge/libraries/lego-minifigure-customs/data/review-decisions/skywalker-unique-release-review-005.json",
+          "batch_id": "skywalker-unique-release-review-005",
+          "asset_id": "skywalker-profile-36a442d18e421d7b0d15daab",
+          "character_variant_key": "Rose_FirstOrder",
+          "decision": "same_character_variant_identity_verified_visual_pending"
+        }
+      ]
+    }
+  },
+  "unreviewed_records": 237,
+  "unreviewed_suffix_records": 75,
+  "unreviewed_direct_suffix_match_records": 0,
+  "unreviewed_unique_physical_release_candidates": 0,
+  "unreviewed_release_status_counts": {
+    "physical_release_ambiguous_within_character_family": 71,
+    "variant_constrained_physical_release_unresolved": 75,
+    "no_supported_physical_release_candidate": 91
+  },
+  "unreviewed_suffix_constraint_counts": {
+    "suffix_not_resolved_in_supported_candidates": 72,
+    "negative_feature_explicit_contradictions_filtered": 2,
+    "negative_feature_unresolved_no_explicit_contradiction": 1
+  },
+  "status": "manual_review_coverage_compiled"
+}
