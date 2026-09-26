@@ -223,18 +223,17 @@
     },
     {
       "domain": "themes_and_source_appearance",
-      "status": "ranked_source_appearance_layer_ready_canonical_verification_pending",
+      "status": "structured_source_appearance_layer_ready_targeted_verification_pending",
       "sources": [
         "maker catalogs",
         "HeroBloks themes",
         "existing user franchise trackers"
       ],
       "remaining": [
-        "verify high-priority parsed comic issue candidates against primary/authoritative references",
-        "resolve 49 issue-like unparsed strings and 7 episode-like references",
-        "review freeform/title-only appearances without inventing issue identities",
-        "promote verified source appearances into Character/Incarnation/SourceAppearance graph",
-        "attach reference assets/provenance for promoted source appearances"
+        "verify structured issue/episode candidates against primary or authoritative source catalogs",
+        "resolve 198 mixed/freeform source references",
+        "link verified SourceAppearance records to Character/Incarnation/OutfitDesign",
+        "retain competing hypotheses where tracker text is ambiguous"
       ],
       "completed_2026_09_25": {
         "fortnite_pairs": 2494,
@@ -261,14 +260,19 @@
         "entity_resolution_high_priority_records": 60
       },
       "completed_2026_09_26": {
-        "source_appearance_candidates": 3428,
+        "source_appearance_candidates": 3432,
         "source_records_with_first_appearance": 4607,
         "high_priority_review_records": 3193,
         "comic_issue_explicit": 3192,
         "issue_like_unparsed": 49,
         "episode_like_raw": 7,
         "dated_raw": 13,
-        "freeform_or_title_only": 167
+        "freeform_or_title_only": 167,
+        "structured_source_appearance_candidates": 3234,
+        "explicit_comic_issue_candidates": 3228,
+        "explicit_episode_candidates": 6,
+        "canonical_alias_groups_with_multiple_raw_spellings": 29,
+        "mixed_or_raw_source_appearance_candidates": 198
       }
     },
     {
@@ -349,7 +353,7 @@
     },
     {
       "domain": "user_collection_reconciliation",
-      "status": "intake_entity_release_and_gap_layers_ready_canonical_promotion_in_progress",
+      "status": "major_intake_reconciliation_and_ranked_design_backlog_ready",
       "sources": [
         "Bootlego MASTER",
         "Minifig Variants to Make",
@@ -362,12 +366,11 @@
         "One Piece Minifgs"
       ],
       "remaining": [
-        "review 60 highest-priority ambiguous entity groups",
-        "promote source-backed FigureRelease candidates after name/version reconciliation where needed",
-        "work through 4,958 actionable collection/design gaps without treating 1,475 unknown states as missing",
-        "reconcile 65 ID-backed official wishlist entries against owned/current physical records before double-counting",
-        "verify high-priority SourceAppearance candidates",
-        "retain QD015 as an unresolved design-reference code unless exact catalog evidence appears"
+        "canonicalize high-priority entity ambiguity groups",
+        "verify source-appearance candidates",
+        "resolve acquisition gaps against catalog/market evidence",
+        "promote verified custom-design targets into production/design backlog",
+        "review unknown-state targets before any automatic promotion"
       ],
       "completed_2026_09_25": {
         "bootlego_structured_records": 705,
@@ -419,9 +422,14 @@
         "unknown_state_targets": 1475,
         "figure_release_candidates": 2401,
         "source_backed_release_candidates": 2400,
-        "source_appearance_candidates": 3428,
+        "source_appearance_candidates": 3432,
         "source_appearance_high_priority": 3193,
-        "external_catalog_id_unique_records": 71
+        "external_catalog_id_unique_records": 71,
+        "actionable_custom_design_candidates": 4909,
+        "existing_representation_compare_or_acquire": 34,
+        "wishlist_acquisition_gaps": 15,
+        "review_only_unknown_state_targets": 1475,
+        "structured_source_appearance_candidates": 3234
       }
     }
   ],
