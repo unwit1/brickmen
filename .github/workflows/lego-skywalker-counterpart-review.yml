@@ -1,0 +1,61 @@
+name: LEGO Skywalker Counterpart Review
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/lego-skywalker-counterpart-review.yml'
+      - 'tools/knowledge/classify_skywalker_counterparts.py'
+      - 'knowledge/libraries/lego-minifigure-customs/data/bulk-ingestion/skywalker-physical-crosswalk-candidates-latest.jsonl'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: lego-skywalker-counterpart-review-main
+  cancel-in-progress: true
+
+jobs:
+  classify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out Brickmen
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Classify counterpart evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          work=/tmp/skywalker-counterparts
+          mkdir -p "$work"
+          python tools/knowledge/classify_skywalker_counterparts.py \
+            --candidates knowledge/libraries/lego-minifigure-customs/data/bulk-ingestion/skywalker-physical-crosswalk-candidates-latest.jsonl \
+            --output "$work/records.jsonl" \
+            --summary "$work/summary.json"
+
+      - name: Commit review snapshots race-safely
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "brickmen-ingestion-bot"
+          git config user.email "brickmen-ingestion-bot@users.noreply.github.com"
+          git fetch origin main
+          git reset --hard origin/main
+          work=/tmp/skywalker-counterparts
+          dest=knowledge/libraries/lego-minifigure-customs/data/bulk-ingestion
+          cp "$work/records.jsonl" "$dest/skywalker-counterpart-classification-latest.jsonl"
+          cp "$work/summary.json" "$dest/skywalker-counterpart-classification-summary-latest.json"
+          git add "$dest/skywalker-counterpart-classification-latest.jsonl" "$dest/skywalker-counterpart-classification-summary-latest.json"
+          if git diff --cached --quiet; then
+            echo "No Skywalker counterpart changes."
+            exit 0
+          fi
+          git commit -m "knowledge: refresh Skywalker counterpart classification"
+          git push origin main
