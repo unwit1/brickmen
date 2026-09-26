@@ -1,0 +1,130 @@
+{
+  "schema": "skywalker-suffix-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-suffix-review-009",
+  "cohort": "remaining_direct_catalog_text_suffix_matches",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-f18803a74eb437aaef5d7ee1",
+      "character_variant_key": "Luke_Hoth",
+      "decision": "variant_family_verified_exact_release_unresolved",
+      "supported_physical_candidates": [
+        {
+          "fig_num": "fig-004126",
+          "name": "Luke Skywalker, Hoth Outfit, White Hat",
+          "year": 2016
+        },
+        {
+          "fig_num": "fig-003837",
+          "name": "Luke Skywalker, Hoth Outfit, Tan Hat, Light Bluish Gray Legs",
+          "year": 2010
+        },
+        {
+          "fig_num": "fig-011124",
+          "name": "Luke Skywalker, Hoth Outfit, Tan Hat, Printed Light Bluish Gray Legs",
+          "first_year": 2021
+        }
+      ],
+      "reason": "Hoth strongly identifies Luke's Hoth outfit family, but several pre-game physical versions differ in hat and leg printing."
+    },
+    {
+      "asset_id": "skywalker-profile-0912f48435b44f5c38a3990c",
+      "character_variant_key": "Luke_Pilot",
+      "decision": "variant_family_verified_exact_release_unresolved",
+      "pregame_physical_examples": [
+        {
+          "fig_num": "fig-003526",
+          "name": "Luke Skywalker, Orange Rebel Pilot Outfit, Yellow Skin, Dark Gray Hips",
+          "first_year": 1999
+        },
+        {
+          "fig_num": "fig-003538",
+          "name": "Luke Skywalker, Orange Rebel Pilot Outfit, Dark Bluish Gray Hips, Black Eyes",
+          "first_year": 2006
+        },
+        {
+          "fig_num": "fig-003869",
+          "name": "Luke Skywalker, Orange Rebel Pilot Outfit, Dark Bluish Gray Hips, White Pupils",
+          "first_year": 2010
+        }
+      ],
+      "later_release_examples": [
+        {
+          "fig_num": "fig-013748",
+          "name": "Luke Skywalker, Orange Rebel Pilot Outfit, Arm Print",
+          "year": 2023
+        },
+        {
+          "fig_num": "fig-017470",
+          "name": "Luke Skywalker, Orange Rebel Pilot Outfit (SMART Play)",
+          "year": 2026
+        }
+      ],
+      "reason": "Pilot reliably identifies the Rebel pilot family. Later 2023/2026 variants cannot source the 2022 game, and multiple earlier physical generations remain."
+    },
+    {
+      "asset_id": "skywalker-profile-da4134ae79ebea84641b02af",
+      "character_variant_key": "CloneTrooper_Kashyyyk",
+      "decision": "variant_family_verified_exact_release_unresolved",
+      "supported_physical_candidates": [
+        "Clone Trooper, 41st Elite Corps Ranger Platoon Armor (Kashyyyk)",
+        "Clone Trooper, 41st Elite Corps Scout Battalion Armor (Kashyyyk)",
+        "Clone Trooper, 41st Elite Corps Scout Battalion Armor, Dark Tan Thighs (Kashyyyk)",
+        "Clone Trooper, 41st Elite Corps Scout Battalion Armor, Dark Bluish Gray (Kashyyyk)"
+      ],
+      "reason": "Kashyyyk correctly narrows the family but still leaves Ranger-vs-Scout and print/color-generation ambiguity."
+    },
+    {
+      "asset_id": "skywalker-profile-bb919e1a18f9a0e5ce9b5a6a",
+      "character_variant_key": "BattleDroid_Security",
+      "decision": "variant_family_verified_exact_release_unresolved",
+      "supported_physical_candidates": [
+        {
+          "fig_num": "fig-003654",
+          "name": "Battle Droid Security, Dark Red Torso with Tan Print, Two Bent Arms",
+          "year": 2002
+        },
+        {
+          "fig_num": "fig-003688",
+          "name": "Battle Droid Security, Dark Red Torso, One Bent Arm, One Straight Arm",
+          "first_year": 2007
+        },
+        {
+          "fig_num": "fig-004041",
+          "name": "Battle Droid Security, Dark Red Torso with Tan Print, One Bent Arm, One Straight Arm",
+          "year": 2014
+        }
+      ],
+      "reason": "Security verifies the security-droid subtype, but arm configuration and torso-print generation remain unresolved."
+    },
+    {
+      "asset_id": "skywalker-profile-5f80bdb10b81b070baa1dfb0",
+      "character_variant_key": "ScoutTrooper_Kashyyyk",
+      "decision": "variant_family_verified_exact_release_unresolved",
+      "supported_physical_candidates": [
+        {
+          "fig_num": "fig-004024",
+          "name": "Clone Trooper, 41st Elite Corps Scout Battalion Armor (Kashyyyk)",
+          "first_year": 2014
+        },
+        {
+          "fig_num": "fig-004416",
+          "name": "Clone Trooper, 41st Elite Corps Scout Battalion Armor, Dark Tan Thighs (Kashyyyk)",
+          "year": 2019
+        },
+        {
+          "fig_num": "fig-003665",
+          "name": "Clone Trooper, 41st Elite Corps Scout Battalion Armor, Dark Bluish Gray (Kashyyyk)",
+          "first_year": 2005
+        }
+      ],
+      "reason": "ScoutTrooper + Kashyyyk strongly identifies the Kashyyyk scout-clone family, but multiple print/color generations remain."
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "variant_family_verified_exact_release_unresolved": 5,
+    "automatic_exact_equivalence_promotions": 0
+  },
+  "remaining_direct_catalog_text_suffix_records_after_batch": 1
+}
