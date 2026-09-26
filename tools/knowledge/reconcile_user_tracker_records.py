@@ -531,11 +531,11 @@ def main():
     missing_like = {"NO","FALSE","MISSING"}
     maybe_like = {"MAYBE"}
     gap_rows = []
-    for item in strict_rows:
-        recs = item.get("records") or []
+    for strict_key, recs in strict.items():
         target = any(r.get("record_class") in {"design_target","wishlist"} for r in recs)
         if not target:
             continue
+        source_files = uniq(r.get("source_file") for r in recs)
         statuses = []
         any_owned = False
         any_missing = False
@@ -570,10 +570,10 @@ def main():
         if state == "target_covered_or_in_pipeline":
             continue
         gap_rows.append({
-            "strict_group_key": item.get("strict_group_key"),
+            "strict_group_key": strict_key,
             "candidate_state": state,
-            "record_count": item.get("record_count"),
-            "source_files": item.get("source_files"),
+            "record_count": len(recs),
+            "source_files": source_files,
             "observed_statuses": sorted(set(statuses)),
             "records": recs,
             "promotion_policy": "Only explicit missing/wishlist states are actionable gap candidates. Unknown/maybe states require review before backlog promotion.",
