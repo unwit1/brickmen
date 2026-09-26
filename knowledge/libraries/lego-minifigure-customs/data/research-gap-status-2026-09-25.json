@@ -6,12 +6,12 @@
     {
       "priority": "critical",
       "gap": "exact_flat_official_print_art",
-      "status": "candidate_crosswalk_broadened_authoritative_verification_still_critical",
+      "status": "49_verified_surface_maps_promoted_broad_coverage_and_external_sources_pending",
       "store_next": [
-        "canonical component-ID crosswalks for rioforce/LDraw flat maps",
-        "approved/local Mecabricks UV and official-decoration assets",
-        "official game texture extracts from legally obtained local installations",
-        "reconstructed flat maps derived from controlled captures where no texture source exists"
+        "continue reviewed promotion from the ranked rioforce surface queue",
+        "materialize Mecabricks UV/decoration assets",
+        "extract official game textures",
+        "derive capture-based flat maps for missing surfaces"
       ],
       "completed_now": [
         "5 rioforce flat-art groups promoted through reviewed component/version evidence",
@@ -23,7 +23,10 @@
         "98/129 rioforce records have figure candidates",
         "95/129 have component candidates in role-aware v2 crosswalk",
         "10 exact-ID links identified but still unverified",
-        "7 figure links meet current high-confidence candidate threshold"
+        "7 figure links meet current high-confidence candidate threshold",
+        "49 rioforce asset groups are now canonical verified flat-art supervision",
+        "ranked promotion-review workflow automatically excludes verified assets and prioritizes remaining release-specific maps",
+        "three reviewed promotion batches added 30 verified asset groups on 2026-09-26"
       ],
       "next_actions": [
         "independently verify exact-ID and high-confidence candidate links",
@@ -198,7 +201,7 @@
     {
       "priority": "broad_coverage",
       "gap": "catalog_market_and_history",
-      "status": "catalog_user_release_and_collection_reconciliation_layers_ready_market_history_partial",
+      "status": "catalog_census_release_crosswalk_and_collection_reconciliation_strong_market_history_partial",
       "store_next": [
         "full BrickLink/Rebrickable/LEGO/LDraw identifier crosswalk",
         "historical/retired maker archives",
@@ -239,7 +242,13 @@
         "3,428 SourceAppearance candidates extracted from 4,607 tracker records",
         "3,192 SourceAppearance candidates have explicit #issue syntax",
         "65 of 67 official wishlist source records resolved from public BrickLink metadata",
-        "2 name-only wishlist targets remain intentionally ambiguous: Aquaman and Classic Bane"
+        "2 name-only wishlist targets remain intentionally ambiguous: Aquaman and Classic Bane",
+        "2,401 user FigureRelease candidates evaluated across current HeroBloks plus five historical DownTheBlocks catalogs and source-backed manual verification",
+        "1,823 unique exact current HeroBloks serial matches",
+        "553 exact historical fallback matches",
+        "1 manual exact historical verification (DA036 Green Arrow)",
+        "only QD015 Donkey Kong remains without exact catalog support and is preserved as an unverified design-reference code",
+        "historical catalogs persisted for XINH/G, KDL/Koruit, Kopf, POGO and World Minifigures"
       ]
     },
     {
@@ -277,7 +286,7 @@
   "latest_physical_census": "data/physical-census-latest.json",
   "updated_at": "2026-09-26",
   "latest_progress": {
-    "at": "2026-09-26T01:50:00Z",
+    "at": "2026-09-26",
     "physical_census_commit": "4ffbebd8c15f8be306860cd35be7c1cc90d42e68",
     "census_counts": {
       "physical_samples": 17226,
@@ -405,6 +414,35 @@
       "exact_id_unverified": 10,
       "high_confidence_figure_candidates": 7,
       "status": "candidate_only_requires_independent_confirmation"
+    },
+    "flat_art_verified_asset_groups": 49,
+    "release_catalog_resolution": {
+      "figure_release_candidates": 2401,
+      "current_exact_unique": 1823,
+      "historical_exact_unique": 553,
+      "manual_exact_verified": 1,
+      "exact_unresolved": 1,
+      "sole_unresolved": {
+        "code": "QD015",
+        "name": "Donkey Kong",
+        "status": "source_specific_design_reference_unverified_externally"
+      }
+    },
+    "collection_gap": {
+      "records": 6433,
+      "actionable": 4958,
+      "explicit_missing_design_targets": 4943,
+      "wishlist_gap_candidates": 15,
+      "unknown_review_required": 1475
+    },
+    "source_appearance_review": {
+      "records": 3428,
+      "high_priority": 3193,
+      "comic_issue_explicit": 3192,
+      "issue_like_unparsed": 49,
+      "episode_like_raw": 7,
+      "dated_raw": 13,
+      "freeform_or_title_only": 167
     }
   }
 }
