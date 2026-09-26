@@ -1,0 +1,104 @@
+{
+  "schema": "face-landmark-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "rioforce-face-review-004",
+  "records": [
+    {
+      "face_asset_id": "rioforce-face-32962f7d6d832afba6c0a78a",
+      "relative_path": "LEGO Minifigures/Series 2/Artisian Head.svg",
+      "decision": "source_label_audit_geometry_reviewed",
+      "orientation": "front",
+      "source_subject_label": "Artisian",
+      "confidence": "high_for_orientation_low_for_identity",
+      "label_findings": {
+        "official_series2_match_found": false,
+        "note": "The 2010 Series 2 catalog contains no figure named Artisan/Artisian. Preserve the filename exactly and do not coerce it into an official Series 2 identity."
+      },
+      "observed_structure": {
+        "bilateral_eye_shapes": true,
+        "bilateral_highlights": true,
+        "large_complex_mouth_or_lower_face_path": true,
+        "simple_eye_landmark_geometry": true
+      },
+      "remaining_tasks": [
+        "identify source-local intended character from visual/reference evidence",
+        "derive exact landmark coordinates",
+        "reclassify if the source folder is historically mislabeled"
+      ]
+    },
+    {
+      "face_asset_id": "rioforce-face-af0abe1670b1822862522917",
+      "relative_path": "LEGO Minifigures/Series 7/Jungle Boy/Jungle Boy Face.svg",
+      "decision": "subject_catalog_identity_verified_geometry_complex",
+      "orientation": "front",
+      "subject": "Jungle Boy, Collectible Minifigures Series 7",
+      "version_year": 2012,
+      "confidence": "high",
+      "catalog_identity": {
+        "bricklink_figure": "col106",
+        "bricklink_head": "3626pb0696",
+        "bricklink_head_description": "Yellow Minifigure, Head Reddish Brown Eyebrows with Scar, Medium Nougat Cheek Lines and Chin Dimple, Open Mouth Smile with Teeth Pattern",
+        "lego_element_id": "6000288"
+      },
+      "observed_structure": {
+        "complex_path_geometry": true,
+        "scar_or_cheek_detail_present": true,
+        "open_mouth_smile": true,
+        "simple_primitive_landmark_extraction_insufficient": true
+      },
+      "evidence_urls": [
+        "https://www.bricklink.com/catalogItemInv.asp?M=col106&viewCodes=Y"
+      ],
+      "remaining_tasks": [
+        "precise eye/brow/mouth geometry extraction",
+        "explicit scar/cheek-line bounds"
+      ]
+    },
+    {
+      "face_asset_id": "rioforce-face-e72d832bcff7dcc4e7d71fab",
+      "relative_path": "Classics/Classic Bob Face.svg",
+      "decision": "classic_design_reference_verified_identity_unresolved",
+      "orientation": "front",
+      "subject": "classic smile-face reference ('Classic Bob')",
+      "confidence": "high_for_geometry_family",
+      "observed_structure": {
+        "bilateral_circular_eye_shapes": true,
+        "mouth_shape": "simple_classic_smile",
+        "no_eye_highlights": true,
+        "very_low_feature_complexity": true
+      },
+      "identity_policy": "Treat as canonical-style reference supervision, not as a unique physical figure identity; many classic figures share simple face geometry.",
+      "remaining_tasks": [
+        "derive exact transformed eye centers/radii",
+        "derive mouth bounds",
+        "preserve source-local 'Bob' label without mapping to Biker Bob or another catalog Bob"
+      ]
+    },
+    {
+      "face_asset_id": "rioforce-face-ddf80d8354b324c448684e79",
+      "relative_path": "Classics/Classic Skeleton/Classic Skeleton Face.svg",
+      "decision": "classic_design_reference_verified_identity_unresolved",
+      "orientation": "front",
+      "subject": "classic skeleton face reference",
+      "confidence": "high_for_geometry_family",
+      "observed_structure": {
+        "bilateral_circular_eye_socket_shapes": true,
+        "nose_shape": "triangular_or_teardrop_nasal_cavity",
+        "jaw_or_teeth_geometry": true,
+        "monochrome_black_print": true
+      },
+      "identity_policy": "Use as classic skeleton design supervision without selecting one physical skeleton release because the motif spans many sets/years.",
+      "remaining_tasks": [
+        "derive exact eye-socket/nose/jaw bounds",
+        "link to physical component only if a specific head mold/print version is independently established"
+      ]
+    }
+  ],
+  "result": {
+    "reviewed": 4,
+    "catalog_identity_verified": 1,
+    "source_label_audit": 1,
+    "classic_design_reference_identity_unresolved": 2
+  },
+  "next_offset": 16
+}
