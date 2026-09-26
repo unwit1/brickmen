@@ -1,13 +1,13 @@
 {
   "schema": "skywalker-manual-review-coverage-summary/v1",
-  "processor_version": "skywalker-manual-review-coverage/v1",
+  "processor_version": "skywalker-manual-review-coverage/v2",
   "identity_records": 377,
-  "review_files_found": 30,
-  "review_files_parsed": 30,
+  "review_files_found": 31,
+  "review_files_parsed": 31,
   "malformed_review_files": [],
-  "reviewed_asset_ids": 140,
-  "reviewed_variant_keys": 139,
-  "manual_decision_records": 142,
+  "reviewed_asset_ids": 146,
+  "reviewed_variant_keys": 145,
+  "manual_decision_records": 148,
   "manual_decision_counts": {
     "same_character_verified_physical_equivalence_not_promoted": 1,
     "same_character_verified_physical_counterpart_plausible_version_visual_pending": 20,
@@ -15,6 +15,12 @@
     "same_character_verified_same_year_timing_and_version_pending": 1,
     "character_verified_scene_variant_requires_set_context": 3,
     "character_verified_scene_or_state_variant_requires_context": 1,
+    "timeline_scene_family_verified_exact_release_unresolved": 1,
+    "timeline_family_verified_negative_component_state_pending": 1,
+    "scene_family_verified_negative_component_state_pending": 1,
+    "scene_family_verified_headgear_component_state_pending": 1,
+    "armor_scene_family_verified_cutscene_state_exact_release_unresolved": 1,
+    "armor_scene_family_verified_exact_release_unresolved": 1,
     "digital_negative_feature_verified_physical_version_unresolved": 2,
     "variant_family_verified_exact_release_unresolved": 27,
     "digital_appearance_state_no_supported_physical_match": 2,
@@ -62,11 +68,14 @@
   },
   "duplicate_reviewed_asset_ids": 2,
   "duplicate_reviewed_variant_keys": 3,
-  "conflicting_duplicate_asset_ids": 2,
-  "conflicting_duplicate_assets": {
+  "intentional_cross_reference_asset_ids": 2,
+  "intentional_cross_references": {
     "skywalker-profile-7e5ee44cb58cb8cbd860f5d7": {
       "decisions": [
         "reviewed_elsewhere_variant_identity_verified_visual_pending",
+        "same_character_variant_identity_verified_visual_pending"
+      ],
+      "substantive_decisions": [
         "same_character_variant_identity_verified_visual_pending"
       ],
       "entries": [
@@ -91,6 +100,9 @@
         "reviewed_elsewhere_variant_identity_verified_visual_pending",
         "same_character_variant_identity_verified_visual_pending"
       ],
+      "substantive_decisions": [
+        "same_character_variant_identity_verified_visual_pending"
+      ],
       "entries": [
         {
           "source_file": "knowledge/libraries/lego-minifigure-customs/data/review-decisions/skywalker-suffix-review-005.json",
@@ -109,18 +121,19 @@
       ]
     }
   },
-  "unreviewed_records": 237,
-  "unreviewed_suffix_records": 75,
+  "conflicting_duplicate_asset_ids": 0,
+  "conflicting_duplicate_assets": {},
+  "unreviewed_records": 231,
+  "unreviewed_suffix_records": 69,
   "unreviewed_direct_suffix_match_records": 0,
   "unreviewed_unique_physical_release_candidates": 0,
   "unreviewed_release_status_counts": {
     "physical_release_ambiguous_within_character_family": 71,
-    "variant_constrained_physical_release_unresolved": 75,
+    "variant_constrained_physical_release_unresolved": 69,
     "no_supported_physical_release_candidate": 91
   },
   "unreviewed_suffix_constraint_counts": {
-    "suffix_not_resolved_in_supported_candidates": 72,
-    "negative_feature_explicit_contradictions_filtered": 2,
+    "suffix_not_resolved_in_supported_candidates": 68,
     "negative_feature_unresolved_no_explicit_contradiction": 1
   },
   "status": "manual_review_coverage_compiled"
