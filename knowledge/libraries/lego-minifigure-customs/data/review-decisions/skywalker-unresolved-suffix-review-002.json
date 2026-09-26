@@ -1,0 +1,128 @@
+{
+  "schema": "skywalker-unresolved-suffix-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-unresolved-suffix-review-002",
+  "policy": "Resolve game-facing variant semantics first; only then map to physical catalog families. Story/era labels may require semantic aliases because physical catalogs often describe the same appearance by costume role rather than game location.",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-601b5543fa576e1c2e9de64f",
+      "character_variant_key": "ObiWan_JediMaster_Cape",
+      "decision": "digital_episode3_cape_family_verified_physical_candidate_visual_pending",
+      "canonical_game_variant": "Obi-Wan Kenobi (Episode III - Cape)",
+      "physical_candidate": {
+        "fig_num": "fig-003651",
+        "name": "Obi-Wan Kenobi, Dark Orange Legs, Cape",
+        "year": 2005,
+        "set_num": "7255-1"
+      },
+      "rejected_family_noise": [
+        "Padawan cape variants"
+      ],
+      "reason": "Public Skywalker Saga rosters identify an Episode III - Cape Obi-Wan. The internal JediMaster_Cape key is consistent with that era/state, and the 2005 Episode III Obi-Wan candidate is the relevant physical family; Padawan cape records are era-incompatible. Exact digital/physical print equivalence remains visual pending.",
+      "evidence_urls": [
+        "https://www.gamespot.com/articles/all-characters-in-lego-star-wars-the-skywalker-saga/1100-6502264/",
+        "https://brickset.com/minifigs/category-Star-Wars/name-Obi-Wan-Kenobi"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-b531bf9a15e413455d2c58e7",
+      "character_variant_key": "Luke_Old_Raincoat",
+      "decision": "digital_game_outfit_verified_no_named_physical_counterpart",
+      "canonical_game_variant": "Luke Skywalker (Old - Raincoat)",
+      "physical_character_family_supported": true,
+      "exact_physical_variant_supported": false,
+      "reason": "Old - Raincoat is an explicit game variant. Current physical Luke candidates cover old white/dark-brown robes and unrelated poncho appearances, but none independently identify the raincoat state; do not coerce the game outfit into one of those physical releases.",
+      "evidence_urls": [
+        "https://gamefaqs.gamespot.com/ps4/265996-lego-star-wars-the-skywalker-saga/faqs/79882/extra-characters",
+        "https://www.gamespot.com/articles/all-characters-in-lego-star-wars-the-skywalker-saga/1100-6502264/"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-62e3d7f1d8aa64815bfe0b17",
+      "character_variant_key": "ObiWan_JediKnight_Robe",
+      "decision": "digital_episode2_robe_variant_verified_physical_release_unresolved",
+      "canonical_game_variant": "Obi-Wan Kenobi (Episode II - Robe)",
+      "physical_episode2_family_examples": [
+        {
+          "brickset_minifig": "sw0055",
+          "catalog_name": "Obi-Wan Kenobi, Young with Dark Orange Hair and Headset",
+          "year": 2002,
+          "set_num": "7143-1"
+        },
+        {
+          "brickset_minifig": "sw0055a",
+          "catalog_name": "Obi-Wan Kenobi, Young with Dark Orange Hair, without Headset",
+          "year": 2002,
+          "set_num": "7133-1"
+        }
+      ],
+      "reason": "The game's Episode II - Robe appearance is explicit, but the current physical candidate list is polluted by old-Ben and modern robe records because physical catalog names do not encode the same game-state terminology. Keep the Episode II robe identity verified while exact physical mapping remains unresolved.",
+      "evidence_urls": [
+        "https://gamefaqs.gamespot.com/ps4/265996-lego-star-wars-the-skywalker-saga/faqs/79882/episode-ii-attack-of-the-clones",
+        "https://brickset.com/minifigs/name-Obi-Wan-Kenobi/year-2002"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-805d20dde04355b04383851a",
+      "character_variant_key": "ObiWan_JediKnight",
+      "decision": "digital_episode2_family_verified_physical_headset_state_unresolved",
+      "canonical_game_variant": "Obi-Wan Kenobi (Episode II)",
+      "physical_episode2_candidates": [
+        {
+          "brickset_minifig": "sw0055",
+          "catalog_name": "Obi-Wan Kenobi, Young with Dark Orange Hair and Headset",
+          "year": 2002,
+          "set_num": "7143-1"
+        },
+        {
+          "brickset_minifig": "sw0055a",
+          "catalog_name": "Obi-Wan Kenobi, Young with Dark Orange Hair, without Headset",
+          "year": 2002,
+          "set_num": "7133-1"
+        }
+      ],
+      "reason": "JediKnight is an internal era/rank label corresponding to Episode II Obi-Wan. Two original Episode II physical variants differ by headset state, so the game key alone does not choose one exact release.",
+      "evidence_urls": [
+        "https://gamefaqs.gamespot.com/ps4/265996-lego-star-wars-the-skywalker-saga/faqs/79882/episode-ii-attack-of-the-clones",
+        "https://brickset.com/minifigs/in-7143-1",
+        "https://brickset.com/minifigs/in-7133-1"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-ce647d1b1cd932058835fb2d",
+      "character_variant_key": "LandoCalrissian_JabbasPalace",
+      "decision": "digital_variant_verified_semantic_physical_family_alias_required",
+      "canonical_game_variant": "Lando Calrissian (Jabba's Palace)",
+      "physical_family": "Lando Calrissian - Skiff Guard",
+      "physical_candidates": [
+        {
+          "brickset_minifig": "sw0086",
+          "year": 2006,
+          "set_num": "6210-1",
+          "variant": "Reddish Brown Hips"
+        },
+        {
+          "brickset_minifig": "sw0398",
+          "year": 2012,
+          "set_num": "9496-1",
+          "variant": "Tan Hips"
+        }
+      ],
+      "reason": "The game names the appearance by story location (Jabba's Palace), while physical catalogs describe the same Return of the Jedi disguise as Skiff Guard. This is a semantic alias, not a lexical match; at least two physical Skiff Guard releases remain, so exact release still requires visual/part evidence.",
+      "evidence_urls": [
+        "https://gamefaqs.gamespot.com/ps4/265996-lego-star-wars-the-skywalker-saga/faqs/79882/scavengers-scoundrels-and-bounty-hunters",
+        "https://brickset.com/minifigs/name-Lando-Calrissian/year-2006",
+        "https://brickset.com/minifigs/year-2012/name-Lando-Calrissian"
+      ]
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "digital_variant_family_verified_physical_visual_or_release_pending": 3,
+    "digital_game_outfit_verified_no_named_physical_counterpart": 1,
+    "semantic_physical_family_alias_required": 1,
+    "automatic_exact_equivalence_promotions": 0
+  },
+  "remaining_unreviewed_suffix_records_after_batch": 59,
+  "systemic_finding": "Game-facing story/era labels can describe the same appearance differently from physical catalogs. Semantic aliases should be explicit and narrow (for example Lando Jabba's Palace -> Skiff Guard), never inferred from loose token similarity."
+}
