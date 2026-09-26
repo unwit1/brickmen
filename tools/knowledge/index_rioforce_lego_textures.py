@@ -11,7 +11,7 @@ from collections import defaultdict
 from datetime import datetime,timezone
 from pathlib import Path
 
-VERSION="rioforce-lego-textures-index/v2"
+VERSION="rioforce-lego-textures-index/v3"
 ALLOWED={".svg",".png"}
 
 def now_iso():return datetime.now(timezone.utc).isoformat()
@@ -50,6 +50,52 @@ def sha256(p):
   for c in iter(lambda:f.read(1024*1024),b""):h.update(c)
  return h.hexdigest()
 
+IDENTITY_NOISE={
+ "face","head","torso","front","back","eyes","eye","legs","leg","hips","hip",
+ "arm","arms","svg","png","lego","minifig","minifigure","dr","new","document",
+}
+
+def embedded_svg_provenance(path: Path):
+ """Extract source-history hints without treating them as canonical truth."""
+ try:
+  text=path.read_text(encoding="utf-8",errors="replace")[:250000]
+ except OSError:
+  return {}
+ out={}
+ m=re.search(r'sodipodi:docname="([^"]+)"',text,re.I)
+ if m: out["document_name"]=m.group(1)
+ m=re.search(r'inkscape:export-filename="([^"]+)"',text,re.I)
+ if m: out["export_filename"]=m.group(1)
+ return out
+
+def identity_tokens(value: str):
+ if not value:return set()
+ base=re.split(r"[\\/]",str(value))[-1]
+ base=re.sub(r"\.(?:svg|png)$","",base,flags=re.I)
+ return {
+  t for t in re.findall(r"[a-z0-9]+",base.casefold())
+  if len(t)>1 and t not in IDENTITY_NOISE and not t.isdigit()
+ }
+
+def provenance_conflicts(relative_stem: str, embedded: dict):
+ """Return review signals only; never auto-rename from embedded metadata."""
+ source=identity_tokens(Path(relative_stem).name)
+ signals=[]
+ for field in ("document_name","export_filename"):
+  raw=embedded.get(field)
+  tokens=identity_tokens(raw)
+  if not source or not tokens:
+   continue
+  if source.isdisjoint(tokens):
+   signals.append({
+    "type":"embedded_identity_name_mismatch",
+    "field":field,
+    "source_identity_tokens":sorted(source),
+    "embedded_identity_tokens":sorted(tokens),
+    "review_required":True,
+   })
+ return signals
+
 def main():
  ap=argparse.ArgumentParser();ap.add_argument("--root",type=Path,required=True);ap.add_argument("--output",type=Path,required=True);args=ap.parse_args()
  root=args.root.resolve();groups=defaultdict(dict)
@@ -61,6 +107,8 @@ def main():
  with args.output.open("w",encoding="utf-8") as f:
   for key,forms in sorted(groups.items()):
    asset_class,surface_role=classify_asset(key)
+   svg_prov=embedded_svg_provenance(forms[".svg"]) if ".svg" in forms else {}
+   prov_conflicts=provenance_conflicts(key,svg_prov)
    record={
     "asset_group_id":"rioforce-"+hashlib.sha256(key.encode()).hexdigest()[:24],
     "relative_stem":key,
@@ -68,6 +116,9 @@ def main():
     "asset_class":asset_class,
     "surface_role_hint":surface_role,
     "files":{ext:{"path":str(p),"sha256":sha256(p)} for ext,p in forms.items()},
+    "embedded_svg_provenance":svg_prov or None,
+    "provenance_review_signals":prov_conflicts,
+    "source_identity_conflict":bool(prov_conflicts),
     "authority":"community_scan_reconstruction",
     "license":"CC BY 3.0",
     "attribution":"LEGO Textures by rioforce",
