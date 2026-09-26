@@ -1,11 +1,11 @@
 {
   "schema": "entity-resolution-review-summary/v1",
   "processor_version": "user-tracker-reconciliation/v3",
-  "records": 1038,
+  "records": 1034,
   "high_priority_records": 51,
   "reason_counts": {
     "cross_source": 952,
-    "multiple_identities": 200,
+    "multiple_identities": 191,
     "multiple_universes": 25,
     "many_variants": 83
   },
@@ -215,7 +215,7 @@
         "multiple_identities",
         "multiple_universes"
       ],
-      "identities": 9,
+      "identities": 8,
       "variants": 6,
       "universes": 6
     },
@@ -425,7 +425,7 @@
         "multiple_identities",
         "many_variants"
       ],
-      "identities": 11,
+      "identities": 7,
       "variants": 22,
       "universes": 0
     },
@@ -481,7 +481,7 @@
         "multiple_identities",
         "many_variants"
       ],
-      "identities": 3,
+      "identities": 2,
       "variants": 10,
       "universes": 0
     },
@@ -742,7 +742,7 @@
         "cross_source",
         "multiple_identities"
       ],
-      "identities": 4,
+      "identities": 3,
       "variants": 1,
       "universes": 1
     },
@@ -755,7 +755,7 @@
         "cross_source",
         "multiple_identities"
       ],
-      "identities": 3,
+      "identities": 2,
       "variants": 6,
       "universes": 0
     },
@@ -846,21 +846,8 @@
         "cross_source",
         "multiple_identities"
       ],
-      "identities": 4,
-      "variants": 0,
-      "universes": 0
-    },
-    {
-      "name": "bizarro",
-      "score": 36,
-      "records": 8,
-      "sources": 4,
-      "reasons": [
-        "cross_source",
-        "multiple_identities"
-      ],
       "identities": 2,
-      "variants": 1,
+      "variants": 0,
       "universes": 0
     },
     {
@@ -966,19 +953,6 @@
       "identities": 2,
       "variants": 0,
       "universes": 1
-    },
-    {
-      "name": "eradicator",
-      "score": 36,
-      "records": 7,
-      "sources": 4,
-      "reasons": [
-        "cross_source",
-        "multiple_identities"
-      ],
-      "identities": 2,
-      "variants": 0,
-      "universes": 0
     },
     {
       "name": "firestar",
@@ -1132,7 +1106,7 @@
         "cross_source",
         "multiple_identities"
       ],
-      "identities": 3,
+      "identities": 2,
       "variants": 1,
       "universes": 0
     },
@@ -1254,19 +1228,6 @@
       "universes": 1
     },
     {
-      "name": "tarantula",
-      "score": 36,
-      "records": 5,
-      "sources": 5,
-      "reasons": [
-        "cross_source",
-        "multiple_identities"
-      ],
-      "identities": 2,
-      "variants": 1,
-      "universes": 1
-    },
-    {
       "name": "venom",
       "score": 36,
       "records": 9,
@@ -1368,6 +1329,45 @@
       ],
       "identities": 2,
       "variants": 1,
+      "universes": 1
+    },
+    {
+      "name": "big man",
+      "score": 35,
+      "records": 2,
+      "sources": 2,
+      "reasons": [
+        "cross_source",
+        "multiple_identities"
+      ],
+      "identities": 2,
+      "variants": 0,
+      "universes": 0
+    },
+    {
+      "name": "black marvel",
+      "score": 35,
+      "records": 2,
+      "sources": 2,
+      "reasons": [
+        "cross_source",
+        "multiple_identities"
+      ],
+      "identities": 2,
+      "variants": 0,
+      "universes": 0
+    },
+    {
+      "name": "bluebird",
+      "score": 35,
+      "records": 4,
+      "sources": 4,
+      "reasons": [
+        "cross_source",
+        "multiple_identities"
+      ],
+      "identities": 2,
+      "variants": 2,
       "universes": 1
     }
   ],
