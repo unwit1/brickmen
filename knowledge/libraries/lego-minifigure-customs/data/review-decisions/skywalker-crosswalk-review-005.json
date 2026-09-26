@@ -1,0 +1,97 @@
+{
+  "schema": "skywalker-crosswalk-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-crosswalk-review-005",
+  "policy": "Use independent catalog evidence to establish character counterparts. Later physical releases are not treated as source-equivalent; same-year cases remain timing/version unresolved.",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-7a02bfe29c946874b07274ca",
+      "character_variant_key": "GarvenDreis",
+      "decision": "same_character_verified_physical_equivalence_not_promoted_temporal_mismatch",
+      "physical_candidate": "fig-014207",
+      "physical_release": {
+        "bricklink_minifig": "sw1281",
+        "set_num": "75365-1",
+        "year": 2023,
+        "variant_note": "Rebel Pilot / Red Leader"
+      },
+      "evidence_urls": [
+        "https://brickset.com/minifigs/category-Star-Wars/name-Garven-Dreis"
+      ],
+      "reason": "Exact Garven Dreis identity, but the physical minifigure is a 2023 release after the game's 2022 launch; retain the character link without source-equivalence."
+    },
+    {
+      "asset_id": "skywalker-profile-18c6c159eaa388a90a985b1d",
+      "character_variant_key": "MaxRebo",
+      "decision": "same_character_verified_physical_counterpart_plausible_version_visual_pending",
+      "physical_candidate": "fig-004008",
+      "physical_release": {
+        "bricklink_minifig": "sw0486",
+        "first_set_num": "75020-1",
+        "first_year": 2013,
+        "reused_set_num": "75397-1",
+        "reused_year": 2024
+      },
+      "evidence_urls": [
+        "https://brickset.com/minifigs/category-Star-Wars/name-Max-Rebo"
+      ],
+      "reason": "Exact Max Rebo identity and a physical design dating to 2013, later reused in 2024; exact digital-model equivalence remains a visual/component question."
+    },
+    {
+      "asset_id": "skywalker-profile-fd6f3ba36f018e544b694c09",
+      "character_variant_key": "ThirdSister",
+      "decision": "same_character_verified_same_year_timing_and_version_pending",
+      "physical_candidate": "fig-012939",
+      "physical_release": {
+        "bricklink_minifig": "sw1237",
+        "set_num": "75336-1",
+        "year": 2022,
+        "catalog_name": "Reva (Third Sister), Inquisitor"
+      },
+      "evidence_urls": [
+        "https://brickset.com/minifigs/year-2022/name-Third-Sister"
+      ],
+      "reason": "The digital title 'Third Sister' maps cleanly to Reva (Third Sister). The physical figure is also from 2022, but the current evidence does not establish relative asset timing or exact design equivalence."
+    },
+    {
+      "asset_id": "skywalker-profile-95e2d8a9c51916405f1e97c3",
+      "character_variant_key": "BailOrgana",
+      "decision": "same_character_verified_physical_counterpart_plausible_version_visual_pending",
+      "physical_candidate": "fig-004419",
+      "physical_release": {
+        "bricklink_minifig": "sw1037",
+        "set_num": "75244-1",
+        "year": 2019,
+        "variant_note": "Olive Green Cloak"
+      },
+      "evidence_urls": [
+        "https://brickset.com/minifigs/year-2019/name-Bail-Organa"
+      ],
+      "reason": "Exact Bail Organa identity and a 2019 physical release; the physical catalog's outfit qualifier must be visually reconciled with the unqualified digital profile before exact equivalence."
+    },
+    {
+      "asset_id": "skywalker-profile-681a370fde863324f2b5592d",
+      "character_variant_key": "JekPorkins",
+      "decision": "same_character_verified_physical_counterpart_plausible_version_visual_pending",
+      "physical_candidate": "fig-003894",
+      "physical_release": {
+        "bricklink_minifig": "sw0372",
+        "set_num": "9493-1",
+        "year": 2012
+      },
+      "evidence_urls": [
+        "https://brickset.com/minifigs/category-Star-Wars/name-Jek-Porkins"
+      ],
+      "reason": "Exact Jek Porkins identity to the 2012 physical pilot; exact helmet/head decoration reuse still requires visual confirmation."
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "same_character_verified": 5,
+    "physical_equivalence_promoted": 0,
+    "temporal_non_equivalence_or_later_physical_release": 1,
+    "same_year_timing_unresolved": 1,
+    "physical_counterpart_plausible_visual_pending": 3
+  },
+  "next_group_offset": 25
+}
