@@ -1,0 +1,126 @@
+{
+  "schema": "face-landmark-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "rioforce-face-review-007",
+  "records": [
+    {
+      "face_asset_id": "rioforce-face-738964ca22621bcb54a378b4",
+      "relative_path": "Star Wars/Anakin Skywalker (2002)/Anakin Skywalker - Face.svg",
+      "decision": "subject_catalog_identity_verified_geometry_reviewed",
+      "orientation": "front",
+      "subject": "Anakin Skywalker (Padawan), Episode II",
+      "version_year": 2002,
+      "confidence": "high",
+      "catalog_identity": {
+        "bricklink_figures": [
+          "sw0099",
+          "sw0100"
+        ],
+        "bricklink_head": "3626px104",
+        "rebrickable_component": "3626bpr0283",
+        "head_description": "Yellow head with brown eyebrows and slight smile",
+        "alias_status": "already independently verified in canonical flat-art crosswalk"
+      },
+      "observed_structure": {
+        "bilateral_circular_eye_shapes": true,
+        "eyebrow_or_upper_face_coloring": true,
+        "mouth_shape": "slight_closed_smile",
+        "simple_landmark_geometry": true
+      },
+      "provenance_note": "SVG internal document name explicitly says 'Anakin Skywalker - Padawan Face', reinforcing the 2002 Episode II identity.",
+      "evidence_urls": [
+        "https://www.bricklink.com/v2/catalog/catalogitem.page?P=3626px104"
+      ],
+      "remaining_tasks": [
+        "derive transformed eye/mouth/brow bounds"
+      ]
+    },
+    {
+      "face_asset_id": "rioforce-face-6f51351a7648f0855adc5659",
+      "relative_path": "Star Wars/Princess Leia - Slave Outfit (2003)/Princess Leia Slave Face.svg",
+      "decision": "subject_catalog_identity_verified_geometry_reviewed",
+      "orientation": "front",
+      "subject": "Princess Leia - Jabba Slave Outfit",
+      "version_year": 2003,
+      "confidence": "high",
+      "catalog_identity": {
+        "bricklink_figure": "sw0070",
+        "bricklink_head": "3626px83",
+        "rebrickable_component": "3626bpr0378",
+        "head_description": "Yellow female head with thin black eyebrows, eyelashes, small eyes, red lips",
+        "alias_status": "already independently verified in canonical flat-art crosswalk"
+      },
+      "observed_structure": {
+        "bilateral_eye_shapes": true,
+        "eyelashes": true,
+        "eyebrow_shapes": true,
+        "mouth_shape": "closed_red_lips",
+        "simple_landmark_geometry": true
+      },
+      "evidence_urls": [
+        "https://www.bricklink.com/catalogItemInv.asp?M=sw0070&viewCodes=Y"
+      ],
+      "remaining_tasks": [
+        "derive transformed eye/brow/lash/lip bounds"
+      ]
+    },
+    {
+      "face_asset_id": "rioforce-face-817f934c15bd0d93aabf44c7",
+      "relative_path": "Ninjago/Slithra/Slithra Eyes.svg",
+      "decision": "source_folder_conflict_reclassified_to_skales",
+      "orientation": "head_surface_eye_art",
+      "source_folder_label": "Slithra",
+      "canonical_subject": "Skales",
+      "version_year": 2012,
+      "confidence": "high",
+      "catalog_identity": {
+        "bricklink_figure": "njo0040",
+        "bricklink_head": "98143pb01",
+        "head_description": "Dark Blue modified snake head with fangs, red eyes and yellow scales"
+      },
+      "provenance_note": "The SVG internal document name is 'Skales Eyes.png', which conflicts with the current Slithra folder. BrickLink distinguishes Skales (98143pb01) from Slithraa (98143pb02). Preserve the folder name as provenance but reclassify this asset as Skales unless contradictory source evidence emerges.",
+      "evidence_urls": [
+        "https://www.bricklink.com/catalogItemInv.asp?M=njo0040&viewCodes=Y",
+        "https://www.bricklink.com/catalogItemInv.asp?M=njo0045&viewCodes=Y"
+      ],
+      "remaining_tasks": [
+        "extract exact eye-art bounds from complex path",
+        "audit sibling Slithra-folder assets for the same Skales misrouting"
+      ]
+    },
+    {
+      "face_asset_id": "rioforce-face-70c8f0988194c480221bec57",
+      "relative_path": "Ninjago/Slithra/Slithra Head.svg",
+      "decision": "source_folder_conflict_reclassified_to_skales",
+      "orientation": "full_head_surface_map",
+      "source_folder_label": "Slithra",
+      "canonical_subject": "Skales",
+      "version_year": 2012,
+      "confidence": "high",
+      "catalog_identity": {
+        "bricklink_figure": "njo0040",
+        "bricklink_head": "98143pb01",
+        "lego_element_ids": [
+          "4648081",
+          "6018962"
+        ]
+      },
+      "provenance_note": "The SVG internal document name and original export path both identify 'Skales Head'. The current folder path says Slithra; BrickLink shows Slithraa uses a distinct head print 98143pb02. Treat this as a source-routing error, not an alias.",
+      "evidence_urls": [
+        "https://www.bricklink.com/catalogItemInv.asp?M=njo0040&viewCodes=Y",
+        "https://www.bricklink.com/catalogItemInv.asp?M=njo0045&viewCodes=Y"
+      ],
+      "remaining_tasks": [
+        "extract head-surface regions",
+        "audit and correct related index metadata while preserving original path provenance"
+      ]
+    }
+  ],
+  "result": {
+    "reviewed": 4,
+    "catalog_identity_verified": 2,
+    "source_folder_conflict_reclassified": 2
+  },
+  "next_offset": 28,
+  "systemic_finding": "At least two assets stored under Ninjago/Slithra are internally labeled Skales and correspond to Skales' distinct catalog head. Folder path cannot be treated as canonical identity without checking embedded source metadata."
+}
