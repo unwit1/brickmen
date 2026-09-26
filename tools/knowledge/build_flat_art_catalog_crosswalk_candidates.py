@@ -17,7 +17,7 @@ from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 
-VERSION = "flat-art-catalog-crosswalk-candidates/v7"
+VERSION = "flat-art-catalog-crosswalk-candidates/v8"
 
 STOP = {
     "lego","minifig","minifigure","with","and","the","a","an","pattern","printed",
@@ -46,6 +46,8 @@ SUBJECT_ALIASES = {
 }
 
 GENERIC_SAMPLE_TOKENS = {"cmf"}
+GENERIC_IDENTITY_ONLY = {"girl","boy","male","female","man","woman","person","kid"}
+GENERIC_SOURCE_NAMESPACES = {"classics"}
 
 ROLE_COMPATIBILITY = {
     "leg": {"leg", "hips"},
@@ -221,6 +223,9 @@ def main():
         subject_tokens=tok(subject_alias)
         subject_years=years_in(subject)
         subject_identity_tokens=[t for t in subject_tokens if not t.isdigit()]
+        path_parts=[p.casefold() for p in Path(stem).parts]
+        generic_identity_only=(len(subject_identity_tokens)==1 and subject_identity_tokens[0] in GENERIC_IDENTITY_ONLY)
+        generic_source_namespace=(bool(path_parts) and path_parts[0] in GENERIC_SOURCE_NAMESPACES)
         eligible_for_component_crosswalk = (
             asset_class in {"minifigure_surface_map","legacy_unclassified"}
             or role in {"head","torso","leg","hips","arm","headgear"}
@@ -231,6 +236,11 @@ def main():
                 break
             sample=physical_by_fig[fig_num]
             sample_identity_tokens=[t for t in stoks if not t.isdigit()]
+            if generic_identity_only or generic_source_namespace:
+                # Numbered generic faces and the repo's Classics reference sheets are
+                # design/calibration assets, not sufficiently specific figure identities.
+                # Keep them usable as supervision, but do not fabricate a physical release.
+                continue
             score, overlap=figure_match_score(subject_identity_tokens, sample_identity_tokens)
             if not score:
                 continue
