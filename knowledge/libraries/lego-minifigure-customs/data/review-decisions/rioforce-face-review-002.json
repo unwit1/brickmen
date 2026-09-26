@@ -1,0 +1,105 @@
+{
+  "schema": "face-landmark-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "rioforce-face-review-002",
+  "records": [
+    {
+      "face_asset_id": "rioforce-face-356dac1c0c2a8ca9bfbae230",
+      "relative_path": "City/Girl Face 3.svg",
+      "decision": "geometry_family_reviewed_identity_unresolved",
+      "orientation": "front",
+      "subject": "generic female face reference 3",
+      "confidence": "high_for_orientation_medium_for_semantics",
+      "observed_structure": {
+        "bilateral_eye_shapes": true,
+        "bilateral_highlights": true,
+        "prominent_upper_lash_or_eye_accent_shapes": true,
+        "brow_shapes": true,
+        "mouth_shape": "closed_or_slight_smile",
+        "lip_color_family": "dark_orange_brown",
+        "small_facial_marks_present": true,
+        "simple_landmark_geometry": true
+      },
+      "identity_policy": "Do not map numbered generic City face references to a physical figure without independent catalog or visual evidence.",
+      "remaining_tasks": [
+        "derive transformed landmark coordinates",
+        "classify small facial marks precisely",
+        "catalog identity only if independently resolved"
+      ]
+    },
+    {
+      "face_asset_id": "rioforce-face-4e4322ddbb4fc09bdd74473a",
+      "relative_path": "LEGO Minifigures/Series 10/Mr. Gold/Mr Gold Face.svg",
+      "decision": "subject_orientation_verified_complex_geometry_pending",
+      "orientation": "front",
+      "subject": "Mr. Gold, Collectible Minifigures Series 10",
+      "version_year": 2013,
+      "confidence": "high_for_subject_orientation",
+      "observed_structure": {
+        "complex_path_geometry": true,
+        "face_specific_coloring": true,
+        "simple_primitive_landmarks": false
+      },
+      "catalog_hint": {
+        "rebrickable_figure": "fig-000825",
+        "rebrickable_head_candidate": "3626cpr9848",
+        "status": "candidate_only_until_independent_component_confirmation"
+      },
+      "remaining_tasks": [
+        "precise eye/brow/mouth geometry extraction",
+        "facial-hair/eyewear feature labeling if present",
+        "independent BrickLink/Rebrickable head alias confirmation"
+      ]
+    },
+    {
+      "face_asset_id": "rioforce-face-6c13b193360d1431e8dbb00b",
+      "relative_path": "City/Girl Face 1.svg",
+      "decision": "geometry_family_reviewed_identity_unresolved",
+      "orientation": "front",
+      "subject": "generic female face reference 1",
+      "confidence": "high_for_orientation_medium_for_semantics",
+      "observed_structure": {
+        "bilateral_eye_shapes": true,
+        "bilateral_highlights": true,
+        "brow_or_upper_eye_accent_shapes": true,
+        "mouth_shape": "broad_smile_with_light_interior",
+        "colored_lip_or_mouth_accents": true,
+        "simple_landmark_geometry": true
+      },
+      "identity_policy": "Generic numbered reference; preserve as design supervision without selecting a physical figure.",
+      "remaining_tasks": [
+        "derive transformed landmark coordinates",
+        "separate lip/mouth/teeth regions",
+        "catalog identity only if independently resolved"
+      ]
+    },
+    {
+      "face_asset_id": "rioforce-face-4e1d14a390cfe1d95eb05c8b",
+      "relative_path": "City/Girl Face 2.svg",
+      "decision": "geometry_family_reviewed_identity_unresolved",
+      "orientation": "front",
+      "subject": "generic female face reference 2",
+      "confidence": "high_for_orientation_medium_for_semantics",
+      "observed_structure": {
+        "bilateral_eye_shapes": true,
+        "bilateral_highlights": true,
+        "brow_or_upper_eye_accent_shapes": true,
+        "mouth_shape": "smile_with_colored_lips",
+        "simple_landmark_geometry": true
+      },
+      "provenance_note": "Internal SVG document name is generic ('New document 1'); repository path plus content hash remain the stable source identity.",
+      "identity_policy": "Generic numbered reference; preserve as design supervision without selecting a physical figure.",
+      "remaining_tasks": [
+        "derive transformed landmark coordinates",
+        "precise mouth/lip boundary extraction",
+        "catalog identity only if independently resolved"
+      ]
+    }
+  ],
+  "result": {
+    "reviewed": 4,
+    "geometry_family_reviewed_identity_unresolved": 3,
+    "subject_orientation_verified_complex_geometry_pending": 1
+  },
+  "next_offset": 8
+}
