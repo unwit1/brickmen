@@ -1,0 +1,107 @@
+{
+  "schema": "skywalker-unresolved-suffix-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-unresolved-suffix-review-006",
+  "policy": "Timeline and appearance labels from the game may map to physical catalog releases even when catalog wording differs. Promote only the narrow variant/family identity supported by independent evidence; exact digital-to-physical artwork remains visual/component pending.",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-81c6e0c79681ae6f36c2134c",
+      "character_variant_key": "Rey_Vest",
+      "decision": "digital_scavenger_grey_vest_variant_verified_physical_episode7_family_visual_pending",
+      "canonical_game_variant": "Rey (Scavenger Grey Vest)",
+      "physical_family_candidate": {
+        "brickset_minifig": "sw0677",
+        "catalog_name": "Rey - Dark Tan Tied Robe",
+        "year": 2015
+      },
+      "reason": "The public game roster identifies Scavenger Grey Vest as a distinct Rey appearance. The 2015 Episode VII physical Rey family is the relevant pre-game counterpart family, but Brickset names the outfit by robe color rather than vest state, so exact variant equivalence still requires direct visual/component comparison.",
+      "evidence_urls": [
+        "https://www.gamespot.com/articles/all-characters-in-lego-star-wars-the-skywalker-saga/1100-6502264/",
+        "https://brickset.com/minifigs/category-Star-Wars/year-2015/name-Rey"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-a80635231e9d6001b4f5e50c",
+      "character_variant_key": "Finn_Ep9",
+      "decision": "timeline_variant_identity_verified_visual_pending",
+      "canonical_game_variant": "Finn (Episode IX)",
+      "physical_candidate": {
+        "brickset_minifig": "sw1066",
+        "catalog_name": "Finn - Medium Nougat Jacket, Dark Blue Legs with Holster",
+        "year": 2019,
+        "sets": [
+          "75257-1",
+          "75272-1"
+        ]
+      },
+      "reason": "The game suffix Ep9 explicitly identifies Finn's Episode IX appearance, and Brickset classifies sw1066 as the 2019 Episode IX Finn. Timeline identity is therefore verified; exact texture/component reuse remains visual pending.",
+      "evidence_urls": [
+        "https://www.gamespot.com/articles/all-characters-in-lego-star-wars-the-skywalker-saga/1100-6502264/",
+        "https://brickset.com/minifigs/name-Finn/year-2019"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-204e7286a36ea9bfa3fc431e",
+      "character_variant_key": "Anakin_Boy",
+      "decision": "episode1_child_family_verified_exact_physical_release_unresolved",
+      "canonical_game_variant": "Anakin Skywalker (Episode I)",
+      "physical_family_examples": [
+        {
+          "brickset_minifig": "sw1001",
+          "catalog_name": "Anakin Skywalker - Short Legs, Reddish Brown Aviator Cap",
+          "year": 2019,
+          "sets": [
+            "75223-1",
+            "75258-1"
+          ]
+        }
+      ],
+      "reason": "The internal Boy state corresponds to the game's explicit Episode I child Anakin identity. A physical child-Anakin family exists, including sw1001, but 'Boy' does not uniquely identify one physical release or headgear state, so exact mapping remains unresolved.",
+      "evidence_urls": [
+        "https://www.gamespot.com/articles/all-characters-in-lego-star-wars-the-skywalker-saga/1100-6502264/",
+        "https://brickset.com/minifigs/year-2019/name-Anakin-Skywalker"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-51e3073a5f236960b170993f",
+      "character_variant_key": "Anakin_Burnt",
+      "decision": "charred_story_state_verified_physical_transformation_analog_visual_pending",
+      "canonical_game_variant": "Anakin Skywalker (Charred)",
+      "physical_analog": {
+        "brickset_minifig": "sw0829",
+        "catalog_name": "Anakin Skywalker - Transformation Process",
+        "year": 2017,
+        "set_num": "75183-1"
+      },
+      "reason": "The public game roster names the state Charred. LEGO has a pre-game physical transformation-process Anakin/Vader figure representing the post-Mustafar transformation context, but the catalog does not call it Charred; treat it as a physical analog requiring direct visual/component confirmation rather than exact equivalence.",
+      "evidence_urls": [
+        "https://www.gamespot.com/articles/all-characters-in-lego-star-wars-the-skywalker-saga/1100-6502264/",
+        "https://brickset.com/minifigs/sw0829/anakin-skywalker-transformation-process"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-a3ef6eaffb1a7fb368df2875",
+      "character_variant_key": "Lando_Ep9",
+      "decision": "timeline_variant_identity_verified_visual_pending",
+      "canonical_game_variant": "Lando Calrissian (Episode IX)",
+      "physical_candidate": {
+        "brickset_minifig": "sw1067",
+        "catalog_name": "Lando Calrissian, Old (Cape with Collar)",
+        "year": 2019,
+        "set_num": "75257-1"
+      },
+      "reason": "The Ep9 suffix and Brickset's Episode IX classification independently agree on old Lando's 2019 appearance. Variant/timeline identity is verified; exact game-to-physical decoration reuse remains visual pending.",
+      "evidence_urls": [
+        "https://brickset.com/minifigs/subcategory-Star-Wars-Episode-9/name-Lando-Calrissian"
+      ]
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "timeline_variant_identity_verified_visual_pending": 2,
+    "digital_outfit_or_age_family_verified_exact_release_unresolved": 2,
+    "story_state_physical_analog_visual_pending": 1,
+    "automatic_exact_equivalence_promotions": 0
+  },
+  "remaining_unreviewed_suffix_records_after_batch": 39
+}
