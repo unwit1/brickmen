@@ -1,0 +1,39 @@
+{
+  "schema": "flat-art-independent-review-summary/v1",
+  "created_at": "2026-09-26",
+  "review_batches": 10,
+  "queue_records": 48,
+  "status": "complete",
+  "outcomes": {
+    "promoted_exact_component_crosswalk": 4,
+    "rejected_candidate_match": 16,
+    "rejected_candidate_match_with_corrected_identity_hint": 3,
+    "held_unverified": 10,
+    "unresolved_no_candidate": 6,
+    "unresolved_specific_subject_no_candidate": 1,
+    "unresolved_specific_subject_ambiguous_version": 3,
+    "needs_source_label_audit": 3,
+    "routed_to_game_asset_corpus": 2
+  },
+  "promoted_assets": [
+    "rioforce-aa1ac85412c9e08234b1882f",
+    "rioforce-56e142c042cb64130fe20b5f",
+    "rioforce-8f237d0b0d2b3f330d5f06f8",
+    "rioforce-258cf8ec20c1fbbe1eb5f487"
+  ],
+  "systemic_findings": [
+    "Token-only figure ranking overweights generic/shared words and first names.",
+    "Source path theme/subtheme/series context is strong evidence and must participate in candidate ranking or gating.",
+    "Series-qualified assets should reject candidates from incompatible series/year/theme contexts.",
+    "Game-only characters need an explicit non-physical routing path instead of remaining in the physical catalog queue.",
+    "Generic expression/design labels should remain unresolved unless exact visual/component evidence exists.",
+    "Variant-sensitive characters require release/outfit/year disambiguation before component promotion.",
+    "Typos/source-local labels should be preserved and audited rather than normalized into an unsupported identity."
+  ],
+  "next_actions": [
+    "Promote the four independently verified component crosswalks into the canonical verified crosswalk dataset.",
+    "Harden rank_flat_art_promotion_candidates.py with path-context extraction, stopword suppression, tie-risk penalties, and game/nonphysical routing hints.",
+    "Regenerate the flat-art review queue and confirm the reviewed false positives are no longer ranked as promotable.",
+    "Proceed to the next outstanding review queue after regression validation."
+  ]
+}
