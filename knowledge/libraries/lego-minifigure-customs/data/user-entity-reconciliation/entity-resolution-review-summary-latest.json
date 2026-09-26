@@ -1,11 +1,11 @@
 {
   "schema": "entity-resolution-review-summary/v1",
-  "processor_version": "user-tracker-reconciliation/v1",
-  "records": 1039,
+  "processor_version": "user-tracker-reconciliation/v2",
+  "records": 1038,
   "high_priority_records": 60,
   "reason_counts": {
     "cross_source": 952,
-    "multiple_identities": 212,
+    "multiple_identities": 209,
     "multiple_universes": 27,
     "many_variants": 83
   },
@@ -1224,19 +1224,6 @@
       "universes": 0
     },
     {
-      "name": "mystique",
-      "score": 36,
-      "records": 7,
-      "sources": 2,
-      "reasons": [
-        "cross_source",
-        "multiple_identities"
-      ],
-      "identities": 2,
-      "variants": 5,
-      "universes": 0
-    },
-    {
       "name": "nick fury",
       "score": 36,
       "records": 9,
@@ -1354,19 +1341,6 @@
       "universes": 0
     },
     {
-      "name": "shang chi",
-      "score": 36,
-      "records": 6,
-      "sources": 3,
-      "reasons": [
-        "cross_source",
-        "multiple_identities"
-      ],
-      "identities": 2,
-      "variants": 3,
-      "universes": 1
-    },
-    {
       "name": "spider gwen",
       "score": 36,
       "records": 6,
@@ -1377,6 +1351,32 @@
       ],
       "identities": 2,
       "variants": 4,
+      "universes": 1
+    },
+    {
+      "name": "sunspot",
+      "score": 36,
+      "records": 8,
+      "sources": 2,
+      "reasons": [
+        "cross_source",
+        "multiple_identities"
+      ],
+      "identities": 4,
+      "variants": 7,
+      "universes": 1
+    },
+    {
+      "name": "tarantula",
+      "score": 36,
+      "records": 5,
+      "sources": 5,
+      "reasons": [
+        "cross_source",
+        "multiple_identities"
+      ],
+      "identities": 2,
+      "variants": 1,
       "universes": 1
     }
   ],
