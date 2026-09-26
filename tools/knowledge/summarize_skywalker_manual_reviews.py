@@ -12,7 +12,7 @@ import json
 from collections import Counter, defaultdict
 from pathlib import Path
 
-VERSION = "skywalker-manual-review-coverage/v1"
+VERSION = "skywalker-manual-review-coverage/v2"
 
 
 def load_jsonl(path: Path):
@@ -79,11 +79,23 @@ def main() -> None:
         key: entries for key, entries in by_key.items() if len(entries) > 1
     }
     conflicting_assets = {}
+    intentional_cross_references = {}
     for asset, entries in duplicate_assets.items():
         decisions = sorted({str(e.get("decision")) for e in entries if e.get("decision")})
-        if len(decisions) > 1:
-            conflicting_assets[asset] = {
+        substantive = sorted({
+            d for d in decisions
+            if not d.startswith("reviewed_elsewhere_")
+        })
+        if any(d.startswith("reviewed_elsewhere_") for d in decisions) and substantive:
+            intentional_cross_references[asset] = {
                 "decisions": decisions,
+                "substantive_decisions": substantive,
+                "entries": entries,
+            }
+        if len(substantive) > 1:
+            conflicting_assets[asset] = {
+                "decisions": substantive,
+                "all_decisions": decisions,
                 "entries": entries,
             }
 
@@ -114,6 +126,8 @@ def main() -> None:
         "manual_decision_counts": dict(decision_counts),
         "duplicate_reviewed_asset_ids": len(duplicate_assets),
         "duplicate_reviewed_variant_keys": len(duplicate_keys),
+        "intentional_cross_reference_asset_ids": len(intentional_cross_references),
+        "intentional_cross_references": intentional_cross_references,
         "conflicting_duplicate_asset_ids": len(conflicting_assets),
         "conflicting_duplicate_assets": conflicting_assets,
         "unreviewed_records": len(unreviewed),
