@@ -61,10 +61,6 @@ jobs:
             --source-url "https://downtheblocks.com/wm-minifigure-set-list-database/" \
             --catalog-id "downtheblocks_wm_mg" --brand-label "World Minifigures / MG" --prefix-regex "WM|MG" \
             --output "$work/downtheblocks-wm.jsonl" --summary "$work/downtheblocks-wm-summary.json"
-          python tools/knowledge/snapshot_downtheblocks_serial_catalog.py \
-            --source-url "https://downtheblocks.blogspot.com/p/kopf-minifig-set-list-database.html" \
-            --catalog-id "downtheblocks_da_legacy" --brand-label "DA legacy section" --prefix-regex "DA" \
-            --output "$work/downtheblocks-da-legacy.jsonl" --summary "$work/downtheblocks-da-legacy-summary.json"
           python tools/knowledge/crosswalk_user_releases_herobloks.py \
             --release-candidates knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/figure-release-candidates-latest.jsonl \
             --herobloks-catalog "$work/herobloks.jsonl" \
@@ -73,11 +69,11 @@ jobs:
             --fallback-catalog "downtheblocks_kopf_chengyi=$work/downtheblocks-kopf.jsonl" \
             --fallback-catalog "downtheblocks_pogo=$work/downtheblocks-pogo.jsonl" \
             --fallback-catalog "downtheblocks_wm_mg=$work/downtheblocks-wm.jsonl" \
-            --fallback-catalog "downtheblocks_da_legacy=$work/downtheblocks-da-legacy.jsonl" \
             --output "$work/crosswalk.jsonl" \
             --summary "$work/summary.json" \
             --unresolved-output "$work/unresolved.jsonl" \
-            --collision-output "$work/collisions.jsonl"
+            --collision-output "$work/collisions.jsonl" \
+            --manual-verifications knowledge/libraries/lego-minifigure-customs/data/release-catalog-manual-verifications-2026-09-26.json
           dest=knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation
           bulk=knowledge/libraries/lego-minifigure-customs/data/bulk-ingestion
           cp "$work/summary.json" "$dest/heroBloks-release-crosswalk-summary-latest.json"
@@ -88,7 +84,7 @@ jobs:
           cp "$work/collisions.jsonl" "$dest/release-catalog-collisions-latest.jsonl"
           cp "$work/downtheblocks-xinh-summary.json" "$bulk/downtheblocks-xinh-catalog-summary-latest.json"
           cp "$work/downtheblocks-xinh.jsonl" "$bulk/downtheblocks-xinh-catalog-latest.jsonl"
-          for id in koruit-kdl kopf pogo wm da-legacy; do
+          for id in koruit-kdl kopf pogo wm; do
             cp "$work/downtheblocks-$id-summary.json" "$bulk/downtheblocks-$id-catalog-summary-latest.json"
             cp "$work/downtheblocks-$id.jsonl" "$bulk/downtheblocks-$id-catalog-latest.jsonl"
           done
