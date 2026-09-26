@@ -1,0 +1,92 @@
+{
+  "schema": "skywalker-crosswalk-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-crosswalk-review-003",
+  "policy": "Preserve same-character relationships independently from exact digital-to-physical decoration equivalence; later physical releases cannot be treated as source counterparts without separate evidence.",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-2f81dc9fba9e0a4ad6a42e22",
+      "character_variant_key": "NienNunb",
+      "decision": "same_character_verified_physical_equivalence_not_promoted_temporal_mismatch",
+      "physical_candidate": "fig-015309",
+      "physical_release": {
+        "bricklink_minifig": "sw1372",
+        "set_num": "75396-1",
+        "year": 2024
+      },
+      "evidence_urls": [
+        "https://brickset.com/minifigs/name-Nien-Nunb"
+      ],
+      "reason": "Exact character identity, but the physical Nien Nunb release is from 2024, after the game's 2022 launch; retain same-character linkage without treating the later minifigure as the source-equivalent design."
+    },
+    {
+      "asset_id": "skywalker-profile-49c1674f04fcbe1f23cf4ab8",
+      "character_variant_key": "PondaBaba",
+      "decision": "same_character_verified_physical_counterpart_plausible_version_visual_pending",
+      "physical_candidate": "fig-010681",
+      "physical_release": {
+        "bricklink_minifig": "sw1124",
+        "set_num": "75290-1",
+        "year": 2020
+      },
+      "evidence_urls": [
+        "https://brickset.com/minifigs/name-Ponda-Baba"
+      ],
+      "reason": "Exact identity match to the 2020 physical Ponda Baba; the unqualified digital profile still needs visual/component evidence for exact print equivalence."
+    },
+    {
+      "asset_id": "skywalker-profile-4c9eec1af96974f2174e7f2e",
+      "character_variant_key": "CobbVanth",
+      "decision": "same_character_verified_physical_equivalence_not_promoted_temporal_mismatch",
+      "physical_candidate": "fig-017323",
+      "physical_release": {
+        "bricklink_minifig": "sw1489",
+        "set_num": "75437-1",
+        "year": 2026
+      },
+      "evidence_urls": [
+        "https://brickset.com/minifigs/name-Cobb-Vanth"
+      ],
+      "reason": "Exact character identity, but the first cataloged physical Cobb Vanth is a 2026 release; this cannot be assumed to be the source of the earlier digital design."
+    },
+    {
+      "asset_id": "skywalker-profile-4f880277a3cca57d593601f7",
+      "character_variant_key": "TasuLeech",
+      "decision": "same_character_verified_physical_counterpart_plausible_version_visual_pending",
+      "physical_candidate": "fig-002548",
+      "physical_release": {
+        "bricklink_minifig": "sw0674",
+        "set_num": "75105-1",
+        "year": 2015
+      },
+      "evidence_urls": [
+        "https://brickset.com/minifigs/name-Tasu-Leech",
+        "https://www.bricklink.com/catalogItemInv.asp?S=75105-1&bt=0&sortAsc=A&sortBy=0&v=0"
+      ],
+      "reason": "Exact identity match to the 2015 physical Tasu Leech; version/print equivalence is plausible but not proven by the filename alone."
+    },
+    {
+      "asset_id": "skywalker-profile-25126aad20ba07bf5e5aceaa",
+      "character_variant_key": "Boolio",
+      "decision": "same_character_verified_physical_counterpart_plausible_version_visual_pending",
+      "physical_candidate": "fig-004450",
+      "physical_release": {
+        "bricklink_minifig": "sw1068",
+        "set_num": "75257-1",
+        "year": 2019
+      },
+      "evidence_urls": [
+        "https://brickset.com/minifigs/name-Boolio/category-Star-Wars"
+      ],
+      "reason": "Exact identity match to the 2019 physical Boolio; the digital profile remains character-confirmed but exact physical decoration equivalence requires visual comparison."
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "same_character_verified": 5,
+    "physical_equivalence_promoted": 0,
+    "temporal_non_equivalence_or_later_physical_release": 2,
+    "physical_counterpart_plausible_visual_pending": 3
+  },
+  "next_group_offset": 15
+}
