@@ -1,0 +1,55 @@
+name: LEGO Refined Custom Design Backlog
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/lego-refined-custom-design-backlog.yml'
+      - 'tools/knowledge/refine_custom_design_backlog.py'
+      - 'knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/custom-design-backlog-latest.jsonl'
+      - 'knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/custom-design-existing-release-crosswalk-latest.jsonl'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: lego-refined-custom-design-backlog-main
+  cancel-in-progress: true
+
+jobs:
+  refine:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Refine backlog
+        run: |
+          set -euo pipefail
+          work=/tmp/refined-design-backlog
+          mkdir -p "$work"
+          python tools/knowledge/refine_custom_design_backlog.py \
+            --backlog knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/custom-design-backlog-latest.jsonl \
+            --release-crosswalk knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/custom-design-existing-release-crosswalk-latest.jsonl \
+            --output "$work/actionable.jsonl" \
+            --review-output "$work/review.jsonl" \
+            --summary "$work/summary.json"
+      - name: Commit snapshots race-safely
+        run: |
+          set -euo pipefail
+          git config user.name "brickmen-ingestion-bot"
+          git config user.email "brickmen-ingestion-bot@users.noreply.github.com"
+          git fetch origin main
+          git reset --hard origin/main
+          work=/tmp/refined-design-backlog
+          dest=knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation
+          cp "$work/actionable.jsonl" "$dest/custom-design-refined-actionable-latest.jsonl"
+          cp "$work/review.jsonl" "$dest/custom-design-representation-review-latest.jsonl"
+          cp "$work/summary.json" "$dest/custom-design-refined-summary-latest.json"
+          git add "$dest/custom-design-refined-actionable-latest.jsonl" "$dest/custom-design-representation-review-latest.jsonl" "$dest/custom-design-refined-summary-latest.json"
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "knowledge: refresh refined custom design backlog"
+          git push origin main
