@@ -44,7 +44,7 @@ def main():
 
     # Parse serial tokens sequentially so blank slots remain blank rather than
     # absorbing the following serial as a false name. Include legacy G0001-style IDs.
-    serial_pat=re.compile(r"\b((?:XH|GH|G)\s*[-_]?\s*\d{1,5})\b",re.I)
+    serial_pat=re.compile(r"\b((?:XINH|XH|GH|G)\s*[-_]?\s*\d{1,5})\b",re.I)
     matches=list(serial_pat.finditer(text))
     observations={}
     for idx,m in enumerate(matches):
@@ -113,7 +113,8 @@ def main():
       "blank_catalog_slots":sum(r["name_status"]=="blank_catalog_slot" for r in rows),
       "conflicting_name_records":sum(r["name_status"]=="conflicting_names" for r in rows),
       "duplicate_serial_records":sum((r.get("occurrence_count") or 0)>1 for r in rows),
-      "xh_records":sum(r["serial"].startswith("XH") for r in rows),
+      "xinh_literal_records":sum(r["serial"].startswith("XINH") for r in rows),
+      "xh_records":sum(r["serial"].startswith("XH") and not r["serial"].startswith("XINH") for r in rows),
       "gh_records":sum(r["serial"].startswith("GH") for r in rows),
       "g_records":sum(r["serial"].startswith("G") and not r["serial"].startswith("GH") for r in rows),
       "status":"historical_catalog_snapshot_ready"
