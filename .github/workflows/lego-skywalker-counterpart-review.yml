@@ -38,6 +38,7 @@ jobs:
           python tools/knowledge/classify_skywalker_counterparts.py \
             --candidates knowledge/libraries/lego-minifigure-customs/data/bulk-ingestion/skywalker-physical-crosswalk-candidates-latest.jsonl \
             --output "$work/records.jsonl" \
+            --unresolved-output "$work/unresolved.jsonl" \
             --summary "$work/summary.json"
 
       - name: Commit review snapshots race-safely
@@ -51,8 +52,9 @@ jobs:
           work=/tmp/skywalker-counterparts
           dest=knowledge/libraries/lego-minifigure-customs/data/bulk-ingestion
           cp "$work/records.jsonl" "$dest/skywalker-counterpart-classification-latest.jsonl"
+          cp "$work/unresolved.jsonl" "$dest/skywalker-counterpart-unresolved-latest.jsonl"
           cp "$work/summary.json" "$dest/skywalker-counterpart-classification-summary-latest.json"
-          git add "$dest/skywalker-counterpart-classification-latest.jsonl" "$dest/skywalker-counterpart-classification-summary-latest.json"
+          git add "$dest/skywalker-counterpart-classification-latest.jsonl" "$dest/skywalker-counterpart-unresolved-latest.jsonl" "$dest/skywalker-counterpart-classification-summary-latest.json"
           if git diff --cached --quiet; then
             echo "No Skywalker counterpart changes."
             exit 0
