@@ -1,5 +1,5 @@
 {
-  "schema": "user-tracker-semantic-corrections/v3",
+  "schema": "user-tracker-semantic-corrections/v4",
   "created_at": "2026-09-26",
   "source_policy": "Non-destructive semantic overlay. Original Google Sheet and raw ingested JSONL remain canonical provenance; corrected fields are used only in derived reconciliation layers and each derived record carries the correction metadata plus original field values.",
   "records": [
@@ -2601,6 +2601,112 @@
     },
     {
       "source_title": "Minifig Variants to Make",
+      "source_tab": "MARVEL",
+      "source_row": 1072,
+      "expected_name": "Iron Fist",
+      "corrected_fields": {},
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "Color descriptor stored in Identity; preserve Classic as Variant and leave person identity unresolved.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "observed_identity": "Green & Yellow",
+        "verified_at": "2026-09-26",
+        "policy": "Non-destructive derived correction; original source remains unchanged."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "MARVEL",
+      "source_row": 1074,
+      "expected_name": "Iron Fist",
+      "corrected_fields": {},
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "Color descriptor stored in Identity; preserve Weapon of Agamotto as Variant and leave person identity unresolved.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "observed_identity": "White & Gold",
+        "verified_at": "2026-09-26",
+        "policy": "Non-destructive derived correction; original source remains unchanged."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "MARVEL",
+      "source_row": 1078,
+      "expected_name": "Iron Fist",
+      "corrected_fields": {},
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "Media/franchise shorthand stored in Identity; Marvel Vs Capcom is already represented by source context/category, so leave person identity unresolved.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "observed_identity": "MvC",
+        "verified_at": "2026-09-26",
+        "policy": "Non-destructive derived correction; original source remains unchanged."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "MARVEL",
+      "source_row": 1088,
+      "expected_name": "Iron Fist",
+      "corrected_fields": {},
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "Color descriptor stored in Identity; preserve All New All Different as Variant and leave person identity unresolved.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "observed_identity": "Black",
+        "verified_at": "2026-09-26",
+        "policy": "Non-destructive derived correction; original source remains unchanged."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "MARVEL",
+      "source_row": 2353,
+      "expected_name": "Spider-Man 1602",
+      "corrected_fields": {},
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "Identity is 1602 and Universe is also 1602. Treat 1602 as the universe designation and remove the duplicate value from person identity.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "verified_at": "2026-09-26",
+        "policy": "Non-destructive derived correction; original source remains unchanged."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "MARVEL",
+      "source_row": 2654,
+      "expected_name": "Ultimate Black Cat",
+      "corrected_fields": {},
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "Identity is numeric 50 while the row already has Year 2003 and First Appearance Ultimate Spider-Man #50. The value is an issue-number artifact, not a person identity.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "verified_at": "2026-09-26",
+        "policy": "Non-destructive derived correction; original source remains unchanged."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
       "source_tab": "Superman",
       "source_row": 17,
       "expected_name": "Bizarro",
@@ -2814,6 +2920,7 @@
   "automation_notes": {
     "deterministic_year_identity_repairs_added": 95,
     "rule": "When Identity is exactly a four-digit 18xx/19xx/20xx year and Year is blank, move the year into Year and clear Identity. Never infer a replacement person identity.",
-    "deterministic_unmatched_punctuation_repairs_added": 16
+    "deterministic_unmatched_punctuation_repairs_added": 16,
+    "non_person_identity_descriptor_repairs_added": 6
   }
 }
