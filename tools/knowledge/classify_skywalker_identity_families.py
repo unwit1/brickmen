@@ -13,7 +13,7 @@ from collections import Counter,defaultdict
 from pathlib import Path
 from skywalker_identity_keys import parse_identity_key, specialized_role_match
 
-VERSION="skywalker-identity-family/v5"
+VERSION="skywalker-identity-family/v6"
 GENERIC={"goon","friend","alien","human","officer","trooper","droid","guard","clone"}
 
 def load_jsonl(path):
@@ -128,15 +128,45 @@ def physical_support(base,candidates):
             supported.append(c)
     return supported
 
+NEGATIVE_SUFFIX_FEATURES={
+    "nohelmet":"helmet",
+    "nocape":"cape",
+    "nohat":"hat",
+    "noshell":"shell",
+}
+
+def negative_suffix_features(key):
+    parsed=parse_identity_key(key)
+    compact_suffix="".join(str(x) for x in parsed.get("variant_suffix_tokens") or []).casefold()
+    return [feature for marker,feature in NEGATIVE_SUFFIX_FEATURES.items() if marker in compact_suffix]
+
 def constrain_by_suffix(key,supported):
     tokens=meaningful_suffix_tokens(key)
-    if not tokens:
+    negative=negative_suffix_features(key)
+    if not tokens and not negative:
         return supported,"no_semantic_suffix"
+    if negative:
+        filtered=[]
+        for candidate in supported:
+            nt=set(semantic_variant_tokens(candidate.get("name")))
+            if not any(feature in nt for feature in negative):
+                filtered.append(candidate)
+        remaining=[t for t in tokens if t not in {"no",*negative}]
+        if remaining:
+            positive=[
+                candidate for candidate in filtered
+                if all(t in set(semantic_variant_tokens(candidate.get("name"))) for t in remaining)
+            ]
+            if positive:
+                return positive,"negative_feature_filtered_plus_catalog_text_match"
+        if len(filtered)<len(supported):
+            return filtered,"negative_feature_explicit_contradictions_filtered"
+        return supported,"negative_feature_unresolved_no_explicit_contradiction"
     constrained=[]
-    for c in supported:
-        nt=set(semantic_variant_tokens(c.get("name")))
+    for candidate in supported:
+        nt=set(semantic_variant_tokens(candidate.get("name")))
         if all(t in nt for t in tokens):
-            constrained.append(c)
+            constrained.append(candidate)
     if constrained:
         return constrained,"suffix_catalog_text_match"
     return supported,"suffix_not_resolved_in_supported_candidates"
@@ -182,9 +212,10 @@ def main():
             character_status="digital_identity_only_no_physical_name_support"
 
         semantic_suffix=bool(meaningful_suffix_tokens(key))
-        suffix_resolved=suffix_constraint_status in {"suffix_catalog_text_match","specialized_role_catalog_match"}
+        suffix_resolved=suffix_constraint_status in {"suffix_catalog_text_match","specialized_role_catalog_match","negative_feature_filtered_plus_catalog_text_match"}
         release_pool=variant_supported if (semantic_suffix and suffix_resolved) else supported
-        if semantic_suffix and suffix_constraint_status=="suffix_not_resolved_in_supported_candidates":
+        negative_state=suffix_constraint_status.startswith("negative_feature_")
+        if semantic_suffix and (suffix_constraint_status=="suffix_not_resolved_in_supported_candidates" or negative_state):
             release_status="variant_constrained_physical_release_unresolved"
         elif len(release_pool)==1 and float(r.get("top_margin") or 0)>=0.10:
             release_status="unique_physical_release_candidate"
@@ -195,6 +226,10 @@ def main():
 
         if suffix and suffix_constraint_status=="specialized_role_catalog_match":
             version_status="digital_specialized_role_matches_catalog_requires_visual_confirmation"
+        elif suffix and suffix_constraint_status=="negative_feature_filtered_plus_catalog_text_match":
+            version_status="digital_negative_feature_plus_catalog_text_requires_visual_confirmation"
+        elif suffix and suffix_constraint_status.startswith("negative_feature_"):
+            version_status="digital_negative_feature_requires_visual_mapping"
         elif suffix and suffix_constraint_status=="suffix_catalog_text_match":
             version_status="digital_variant_suffix_matches_catalog_text_requires_visual_confirmation"
         elif suffix:
@@ -219,6 +254,7 @@ def main():
           "identity_key_parse_reason":parsed_key.get("reason"),
           "variant_suffix_tokens":suffix,
           "meaningful_variant_suffix_tokens":meaningful_suffix_tokens(key),
+          "negative_variant_features":negative_suffix_features(key),
           "suffix_constraint_status":suffix_constraint_status,
           "digital_identity_source":"official_Skywalker_Saga_profile_filename",
           "character_family_status":character_status,
