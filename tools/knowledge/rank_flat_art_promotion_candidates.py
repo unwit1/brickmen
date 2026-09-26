@@ -8,7 +8,7 @@ import argparse,json
 from collections import Counter
 from pathlib import Path
 
-VERSION="flat-art-promotion-review/v1"
+VERSION="flat-art-promotion-review/v2"
 
 def load_jsonl(path):
     with Path(path).open("r",encoding="utf-8") as f:
@@ -60,6 +60,7 @@ def main():
             top_score=float(top.get("score") or 0)
             second_score=float(second.get("score") or 0) if second else 0
             margin=round(top_score-second_score,4)
+            tie_count=sum(abs(float(x.get("score") or 0)-top_score) < 1e-9 for x in figs)
             top_components=[
                 c for c in (rec.get("component_candidates") or [])
                 if c.get("fig_num")==top.get("fig_num")
@@ -67,7 +68,14 @@ def main():
             ]
             decorated=[c for c in top_components if c.get("print_of") or "print" in str(c.get("part_name") or "").casefold()]
             score=top_score*60 + max(0,margin)*30
-            reasons=[f"top_figure_score:{top_score:.3f}",f"margin:{margin:.3f}"]
+            reasons=[f"top_figure_score:{top_score:.3f}",f"margin:{margin:.3f}",f"top_score_tie_count:{tie_count}"]
+            overlap_count=len(top.get("overlap_tokens") or [])
+            if tie_count >= 4:
+                score-=30;reasons.append("high_top_score_ambiguity")
+            elif tie_count >= 2:
+                score-=15;reasons.append("top_score_ambiguity")
+            if overlap_count <= 1 and top_score < 0.90:
+                score-=10;reasons.append("single_token_identity_evidence")
             if top.get("year_match") is True:
                 score+=20;reasons.append("exact_year_match")
             elif top.get("year_match") is False:
@@ -100,6 +108,13 @@ def main():
             "top_figure_candidate":top,
             "second_figure_candidate":second,
             "top_margin":margin,
+            "top_score_tie_count":tie_count if top else 0,
+            "figure_identity_ambiguity":(
+                "high" if top and tie_count>=4 else
+                "medium" if top and tie_count>=2 else
+                "low" if top else
+                "none"
+            ),
             "top_role_components":top_components,
             "decorated_role_components":decorated,
             "review_priority_score":score,
@@ -121,6 +136,8 @@ def main():
         "review_band_counts":dict(bands),
         "verify_first_records":sum(r["review_band"]=="verify_first" for r in rows),
         "with_decorated_top_surface_component":sum(bool(r["decorated_role_components"]) for r in rows),
+        "records_with_tied_top_figure_candidates":sum((r.get("top_score_tie_count") or 0)>1 for r in rows),
+        "records_with_four_or_more_tied_top_candidates":sum((r.get("top_score_tie_count") or 0)>=4 for r in rows),
         "top_50":[{
             "id":r["crosswalk_candidate_id"],
             "path":r["relative_stem"],
@@ -131,6 +148,8 @@ def main():
             "top_fig":(r["top_figure_candidate"] or {}).get("fig_num"),
             "top_name":(r["top_figure_candidate"] or {}).get("name"),
             "year_match":(r["top_figure_candidate"] or {}).get("year_match"),
+            "tie_count":r.get("top_score_tie_count"),
+            "ambiguity":r.get("figure_identity_ambiguity"),
             "decorated_components":[c.get("part_num") for c in r["decorated_role_components"]]
         } for r in rows[:50]],
         "status":"manual_verification_queue_ready"
