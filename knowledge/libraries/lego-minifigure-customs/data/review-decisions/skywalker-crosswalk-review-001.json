@@ -1,0 +1,121 @@
+{
+  "schema": "skywalker-crosswalk-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-crosswalk-review-001",
+  "policy": "Separate same-character identity from exact physical minifigure equivalence. Exact name/catalog matches may confirm a character counterpart, but physical equivalence requires outfit/version or visual evidence; temporal conflicts are retained explicitly.",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-1bc8edfb465067133d3f3791",
+      "character_variant_key": "LamaSu",
+      "decision": "same_character_verified_physical_equivalence_not_promoted",
+      "physical_candidate": "fig-016669",
+      "physical_catalog_name": "Lama Su",
+      "physical_release": {
+        "set_num": "75433-1",
+        "year": 2025,
+        "bricklink_minifig": "sw1434"
+      },
+      "reasons": [
+        "digital key and physical catalog name are an exact identity match",
+        "the physical Lama Su minifigure is a 2025 release",
+        "The Skywalker Saga launched in 2022, so the current evidence cannot establish the later physical figure as the source-equivalent design",
+        "retain a same-character relationship without collapsing the digital asset into the 2025 physical release"
+      ],
+      "evidence_urls": [
+        "https://www.lego.com/en-us/aboutus/news/2022/april/lego-star-wars-the-skywalker-saga",
+        "https://brickset.com/minifigs/name-Lama-Su/category-Star-Wars",
+        "https://www.bricklink.com/catalogItemInv.asp?S=75433-1&viewItemType=M"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-65ea15473e6b5a8b1bb7dce2",
+      "character_variant_key": "Zuckuss",
+      "decision": "same_character_verified_physical_counterpart_plausible_version_visual_pending",
+      "physical_candidate": "fig-004361",
+      "physical_catalog_name": "Zuckuss",
+      "physical_release": {
+        "set_num": "75243-1",
+        "year": 2019,
+        "bricklink_minifig": "sw1020"
+      },
+      "reasons": [
+        "digital key and physical catalog name are an exact identity match",
+        "the 2019 physical release predates the 2022 game",
+        "the digital filename carries no outfit/version qualifier, so exact design equivalence still requires visual/component comparison"
+      ],
+      "evidence_urls": [
+        "https://brickset.com/minifigs/category-Star-Wars/year-2019/name-Zuckuss"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-4f513eda7c7bb271e5425868",
+      "character_variant_key": "MazKanata",
+      "decision": "same_character_verified_physical_counterpart_plausible_version_visual_pending",
+      "physical_candidate": "fig-004178",
+      "physical_catalog_name": "Maz Kanata",
+      "physical_release": {
+        "set_num": "75139-1",
+        "year": 2016,
+        "bricklink_minifig": "sw0703"
+      },
+      "reasons": [
+        "digital key and physical catalog name are an exact identity match",
+        "the known 2016 physical Maz Kanata predates the game",
+        "the profile filename does not independently prove that the game's modeled decoration is the exact 2016 physical print"
+      ],
+      "evidence_urls": [
+        "https://brickset.com/minifigs/name-Maz-Kanata",
+        "https://brickset.com/minifigs/in-75139-1/name-Maz-Kanata"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-156f36a011c1354157de831d",
+      "character_variant_key": "SyrilKarn",
+      "decision": "same_character_verified_physical_counterpart_plausible_version_visual_pending",
+      "physical_candidate": "fig-012948",
+      "physical_catalog_name": "Syril Karn",
+      "physical_release": {
+        "set_num": "75338-1",
+        "year": 2022,
+        "bricklink_minifig": "sw1232"
+      },
+      "reasons": [
+        "digital key and physical catalog name are an exact identity match",
+        "the physical catalog identifies Syril Karn in the 2022 Ambush on Ferrix set",
+        "the queue does not preserve enough asset timing/outfit detail to prove that the digital villain profile uses the exact physical decoration"
+      ],
+      "evidence_urls": [
+        "https://brickset.com/minifigs/in-75338-1/year-2022"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-e29e77c0f532b865aca51b8f",
+      "character_variant_key": "PeliMotto",
+      "decision": "same_character_verified_physical_counterpart_plausible_version_visual_pending",
+      "physical_candidate": "fig-012675",
+      "physical_catalog_name": "Peli Motto",
+      "physical_release": {
+        "set_num": "75325-1",
+        "year": 2022,
+        "bricklink_minifig": "sw1210"
+      },
+      "reasons": [
+        "digital key and physical catalog name are an exact identity match",
+        "BrickLink independently identifies Peli Motto in set 75325",
+        "the digital Scavenger profile provides no explicit outfit/version identifier, so exact physical equivalence remains pending visual/component comparison"
+      ],
+      "evidence_urls": [
+        "https://www.bricklink.com/catalogItemIn.asp?M=sw1210",
+        "https://www.bricklink.com/catalogItemInv.asp?S=75325-1"
+      ]
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "same_character_verified": 5,
+    "physical_equivalence_promoted": 0,
+    "temporal_non_equivalence_or_later_physical_release": 1,
+    "physical_counterpart_plausible_visual_pending": 4
+  },
+  "next_group_offset": 5
+}
