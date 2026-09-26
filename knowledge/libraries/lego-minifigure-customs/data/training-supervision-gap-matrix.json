@@ -49,7 +49,7 @@
     {
       "id": "source_to_lego_translation_pairs",
       "priority": "critical",
-      "status": "fortnite_identity_image_and_measurement_coverage_complete_ranked_semantic_review_pending",
+      "status": "fortnite_identity_image_measurement_and_ranked_semantic_review_ready",
       "why": "Directly teaches which source details LEGO preserves/simplifies/omits/moves to mould/accessory.",
       "sources": [
         "Fortnite Outfit -> LEGO Style pairs",
@@ -58,9 +58,9 @@
         "Wednesday/Nightmare/BTS/Viking/Pirates designer articles"
       ],
       "next_actions": [
-        "review the 741 highest-priority Fortnite pairs first for preserve/simplify/omit/exaggerate/mould/accessory/cloth semantics",
+        "review the 748 highest-priority Fortnite pairs first for preserve/simplify/omit/exaggerate/mould/accessory/cloth semantics",
         "audit the 14 alias-fallback records as a separate placeholder-family cohort",
-        "crosswalk Skywalker Saga strong/review candidates and retain unresolved/digital-only variants",
+        "review 58 strong and 31 medium Skywalker candidates while retaining 288 unresolved/digital-only records",
         "expand exact source-frame/panel pair resolution theme-by-theme"
       ],
       "evidence_completed": [
@@ -82,7 +82,10 @@
         "2026-09-25 alias-aware visual pass completed 2,494/2,494 Fortnite pairs with zero image misses and zero processing errors",
         "14 former placeholder-family LEGO image gaps are now resolved through explicit same-name alias provenance without rewriting original pair identity",
         "2026-09-25 latest visual pass resolves all 2,494 pairs with zero missing preferred images using 2,480 direct LEGO images plus 14 provenance-preserving alias fallbacks",
-        "2,492/2,494 pairs expose at least one measurement signal and 741 are ranked high-priority for semantic review"
+        "2,492/2,494 pairs expose at least one measurement signal and 741 are ranked high-priority for semantic review",
+        "2026-09-25 latest Fortnite pass completed 2,494/2,494 pairs with zero image misses or processing errors",
+        "2,493/2,494 pairs expose at least one deterministic measurement signal",
+        "748 pairs are ranked high-priority for semantic review"
       ]
     },
     {
@@ -149,7 +152,7 @@
     {
       "id": "mask_headgear_decision_pairs",
       "priority": "very_high",
-      "status": "hand_reviewed_seed_complete_corpus_wide_route_candidates_ready_review_and_source_pairing_pending",
+      "status": "ranked_corpus_wide_route_review_ready_source_pairing_pending",
       "why": "Need examples where source design became print, existing headgear, new mould, or hybrid.",
       "sources": [
         "Fortnite pairs",
@@ -158,10 +161,11 @@
         "license-filtered community geometry as negative/alternative examples"
       ],
       "next_actions": [
-        "rank route candidates by deterministic component evidence and ambiguity",
-        "crosslink reviewed route candidates to source appearances",
+        "review the 1,280 high-component-route candidates first",
+        "crosslink reviewed route candidates to exact source appearances",
         "derive silhouette-vs-graphic dependence metrics from canonical views",
-        "separate standard protective headgear from identity-defining mask/headgear routes"
+        "separate standard protective headgear from identity-defining mask/headgear routes",
+        "promote reviewed mould-reuse vs new-mould decisions"
       ],
       "evidence_completed": [
         "mask/headgear decision schema committed",
@@ -170,13 +174,18 @@
         "2026-09-25 follow-up resolved all 15 candidates from the original unresolved queue using release-specific component inventories",
         "route evidence now includes print-only masks, print+headgear, transparent domes, costume head covers, modified creature heads, modular horns, and persistent Black Panther ear-topper usage across sampled releases",
         "corpus-wide candidate builder scanned all 17,226 physical figures and emitted 14,475 figures with mask/headgear/nonhuman-head route evidence",
-        "candidate counts include 3,620 helmet+head, 1,099 separate-mask, 693 hood, 480 cowl, 345 modified/nonhuman head, 341 head-print+headgear, 83 costume cover, 65 head-only mask/decorated-head, and 36 transparent-dome candidates"
+        "candidate counts include 3,620 helmet+head, 1,099 separate-mask, 693 hood, 480 cowl, 345 modified/nonhuman head, 341 head-print+headgear, 83 costume cover, 65 head-only mask/decorated-head, and 36 transparent-dome candidates",
+        "2026-09-25 ranking repair successfully scored all 14,475 candidate figures",
+        "1,280 high-component-route candidates",
+        "1,266 medium-component-route candidates",
+        "11,929 low-or-generic headgear candidates",
+        "top 1,000 ranked review records persisted as a compact working queue"
       ]
     },
     {
       "id": "official_digital_only_variants",
       "priority": "very_high",
-      "status": "skywalker_assets_indexed_candidate_physical_crosswalk_ready",
+      "status": "skywalker_grouped_review_queue_ready_other_game_sources_pending",
       "sources": [
         "Skywalker Saga icons/assets",
         "TT game assets",
@@ -187,8 +196,8 @@
       "next_actions": [
         "review 58 strong Skywalker candidates and promote only version-confirmed physical equivalences",
         "review 31 medium candidates",
-        "classify unresolved records into likely digital-only, insufficient-name-context, and missing-physical-catalog classes",
-        "derive comparable face/headgear/style features from indexed official PNG assets",
+        "classify 288 unresolved records into digital-only, insufficient-name-context, or missing-physical-catalog classes",
+        "use 247 base-character groups and 36 multi-variant groups to avoid variant collapse",
         "continue other TT/legacy game asset ingestion"
       ],
       "evidence_completed": [
@@ -200,7 +209,11 @@
         "377 official profile-icon PNG assets were hashed and indexed across 10 classes",
         "374 filename-derived character/variant keys were preserved for physical/digital identity resolution",
         "Skywalker physical crosswalk candidate pass compares all 377 official digital profile assets against 1,549 Star Wars physical catalog candidates",
-        "58 digital profiles are strong physical candidates, 31 are review candidates, and 288 remain unresolved/digital-only candidates"
+        "58 digital profiles are strong physical candidates, 31 are review candidates, and 288 remain unresolved/digital-only candidates",
+        "grouped Skywalker review repair completed successfully",
+        "377 digital records grouped into 247 base-character groups",
+        "36 groups contain multiple digital variants",
+        "confidence split remains 58 strong / 31 review / 288 unresolved"
       ],
       "blockers": [
         "local game installations required for exhaustive textures/models",
