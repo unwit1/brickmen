@@ -379,15 +379,11 @@ def dc_normalized_record(rec):
                 "evidence_sources": ["HeroBloks"]
             }
         elif raw_code == "DH0213" and "batman new 52" in norm(up.get("C")):
-            normalized_code = "0213"
-            brand_text = "Decool"
-            correction = {
-                "raw": "DH0213",
-                "normalized": "0213",
-                "normalized_brand": "Decool",
-                "reason": "HeroBloks independently catalogs Batman (New 52) as Decool 0213; raw tracker value appears to contain an erroneous DH prefix.",
-                "evidence_sources": ["HeroBloks"]
-            }
+            # Preserve the observed serial verbatim. HeroBloks has a Decool 0213 listing, but
+            # that is evidence for a possible cross-catalog relationship, not enough to rewrite
+            # the user's DH0213 identifier or assign its manufacturer.
+            normalized_code = "DH0213"
+            correction = None
         field.update(
             ownership_status=up.get("A") or None,
             name=up.get("C") or None,
