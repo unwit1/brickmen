@@ -1,0 +1,203 @@
+{
+  "schema": "skywalker-ambiguous-family-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-ambiguous-family-review-008",
+  "policy": "When an unsuffixed digital identity maps to several pre-game physical print generations, keep the character family verified and preserve color, printing, mold, or component-generation differences for visual comparison. Later post-game redesigns are excluded from source-equivalence, while catalog aliases are retained rather than treated as separate characters.",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-15a8e3f4e4ded0ea56c7a82e",
+      "character_variant_key": "BarrissOffee",
+      "decision": "character_identity_verified_multiple_pre_game_hood_cape_and_skirt_generations_visual_pending",
+      "canonical_subject": "Barriss Offee",
+      "plausible_pre_game_physical_candidates": [
+        {
+          "fig_num": "fig-003834",
+          "catalog_name": "Barriss Offee, Black Hood and Cape",
+          "year": 2010,
+          "sets": [
+            "8091-1",
+            "852947-1"
+          ]
+        },
+        {
+          "fig_num": "fig-003898",
+          "catalog_name": "Barriss Offee, Dark Blue Hood and Cape",
+          "year": 2012,
+          "set_num": "9491-1"
+        },
+        {
+          "fig_num": "fig-004506",
+          "catalog_name": "Barriss Offee, Dark Blue Hood and Cape, Skirt",
+          "year": 2018,
+          "set_num": "75206-1"
+        }
+      ],
+      "reason": "All supported Barriss Offee releases predate the game but differ in hood color and skirt/body treatment. The unsuffixed digital key establishes the character, not which decoration generation was used, so exact physical release remains visual pending.",
+      "evidence_urls": [
+        "https://brickset.com/minifigs?query=barriss+offee"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-e3ef953a63682514731eba45",
+      "character_variant_key": "NuteGunray",
+      "decision": "character_identity_verified_dark_red_vs_dark_orange_robe_generation_visual_pending",
+      "canonical_subject": "Nute Gunray",
+      "plausible_pre_game_physical_candidates": [
+        {
+          "fig_num": "fig-000078",
+          "catalog_name": "Nute Gunray, Dark Red Robe",
+          "first_year": 2009,
+          "sets": [
+            "8036-1",
+            "852844-1",
+            "7958-1"
+          ]
+        },
+        {
+          "fig_num": "fig-003891",
+          "catalog_name": "Nute Gunray, Dark Orange Robe",
+          "year": 2012,
+          "set_num": "9494-1"
+        }
+      ],
+      "reason": "Both supported Nute Gunray releases predate the game and differ principally in robe-color/design generation. The source key has no robe qualifier, so the character family is verified while exact release remains visual pending.",
+      "evidence_urls": [
+        "https://brickset.com/minifigs?query=nute+gunray"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-a9866d5144fad522c2b568f0",
+      "character_variant_key": "PloKoon",
+      "decision": "character_identity_verified_pre_game_undershirt_generations_visual_pending_post_game_printed_leg_release_rejected",
+      "canonical_subject": "Plo Koon",
+      "plausible_pre_game_physical_candidates": [
+        {
+          "fig_num": "fig-003736",
+          "catalog_name": "Plo Koon, White Undershirt",
+          "first_year": 2008,
+          "sets": [
+            "7676-1",
+            "8093-1"
+          ]
+        },
+        {
+          "fig_num": "fig-004036",
+          "catalog_name": "Plo Koon, Dark Tan Undershirt",
+          "year": 2014,
+          "set_num": "75045-1"
+        }
+      ],
+      "rejected_post_game_candidate": {
+        "fig_num": "fig-016445",
+        "catalog_name": "Plo Koon, Printed Legs",
+        "year": 2025,
+        "set_num": "75400-1"
+      },
+      "reason": "The 2008/2010 white-undershirt and 2014 dark-tan-undershirt releases are both valid pre-game Plo Koon generations. The unsuffixed key does not distinguish them, while the 2025 printed-leg redesign postdates the game and cannot establish source equivalence.",
+      "evidence_urls": [
+        "https://brickset.com/minifigs?query=plo+koon"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-80afd83c5d14821107e1c021",
+      "character_variant_key": "CaptainAntilles",
+      "decision": "character_identity_verified_pre_game_undershirt_and_head_generation_visual_pending_post_game_revision_rejected",
+      "canonical_subject": "Captain Antilles",
+      "plausible_pre_game_physical_candidates": [
+        {
+          "fig_num": "fig-002690",
+          "catalog_name": "Captain Antilles, Light Gray Undershirt",
+          "year": 2009,
+          "set_num": "10198-1"
+        },
+        {
+          "fig_num": "fig-004421",
+          "catalog_name": "Captain Antilles, Dark Tan Undershirt, Single Sided Head",
+          "year": 2019,
+          "set_num": "75244-1"
+        }
+      ],
+      "rejected_post_game_candidate": {
+        "fig_num": "fig-014805",
+        "catalog_name": "Captain Antilles, Dark Tan Undershirt, Dual Sided Head",
+        "year": 2024,
+        "set_num": "75387-1"
+      },
+      "reason": "Two materially different Captain Antilles physical generations predate the game: the 2009 light-gray-undershirt figure and the 2019 dark-tan-undershirt single-sided-head revision. The 2024 dual-sided-head revision postdates the corpus. Exact pre-game generation remains visual pending.",
+      "evidence_urls": [
+        "https://brickset.com/minifigs?query=captain+antilles"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-8608aa6dbc7dc3fc940a5f6c",
+      "character_variant_key": "R5D4",
+      "decision": "character_identity_verified_multiple_pre_game_astromech_body_dome_and_stripe_generations_visual_pending_catalog_alias_preserved",
+      "canonical_subject": "R5-D4",
+      "catalog_aliases": [
+        "R5-D4",
+        "R5-D8 / R5-D4"
+      ],
+      "plausible_pre_game_physical_candidates": [
+        {
+          "fig_num": "fig-001595",
+          "catalog_name": "Astromech Droid, R5-D4, Short Stripes, 30361a Body",
+          "first_year": 1999,
+          "sets": [
+            "7150-1",
+            "7180-1"
+          ]
+        },
+        {
+          "fig_num": "fig-003622",
+          "catalog_name": "Astromech Droid, R5-D4, Short Stripes, 30361c Body",
+          "first_year": 2002,
+          "sets": [
+            "7152-1",
+            "10134-1",
+            "7262-1",
+            "7259-1",
+            "7658-1"
+          ]
+        },
+        {
+          "fig_num": "fig-003906",
+          "catalog_name": "Astromech Droid, R5-D4, Plain Dome",
+          "year": 2005,
+          "set_num": "10144-1"
+        },
+        {
+          "fig_num": "fig-010429",
+          "catalog_name": "Astromech Droid, R5-D4, Long Stripes, 30361c Body",
+          "year": 2007,
+          "set_num": "7658-1"
+        },
+        {
+          "fig_num": "fig-003893",
+          "catalog_name": "Astromech Droid, R5-D8 / R5-D4",
+          "first_year": 2012,
+          "sets": [
+            "9493-1",
+            "75059-1"
+          ]
+        }
+      ],
+      "reason": "R5-D4 has several pre-game physical implementations spanning body mold, dome printing, stripe length, and a catalog alias that also names R5-D8. Those are component-generation differences rather than evidence for distinct digital characters in this record. Exact physical implementation requires visual/component comparison.",
+      "evidence_urls": [
+        "https://brickset.com/minifigs?query=r5-d4"
+      ]
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "character_families_verified": 5,
+    "multiple_pre_game_component_or_print_generations_visual_pending": 5,
+    "post_game_candidates_rejected": 2,
+    "automatic_exact_artwork_equivalence_promotions": 0
+  },
+  "remaining_ambiguous_family_records_after_batch": 31,
+  "systemic_findings": [
+    "Catalog aliases such as R5-D8 / R5-D4 should be preserved as alias evidence rather than split into separate source identities without additional proof.",
+    "Mold revisions, undershirt colors, robe colors, hood colors, and stripe/body changes are component-generation evidence and require visual comparison when the source key is unqualified.",
+    "Later redesigns can be excluded by release date without resolving which of several earlier physical generations supplied the game artwork."
+  ]
+}
