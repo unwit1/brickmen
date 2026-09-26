@@ -2,10 +2,10 @@
   "schema": "entity-resolution-review-summary/v1",
   "processor_version": "user-tracker-reconciliation/v3",
   "records": 1038,
-  "high_priority_records": 53,
+  "high_priority_records": 51,
   "reason_counts": {
     "cross_source": 952,
-    "multiple_identities": 202,
+    "multiple_identities": 200,
     "multiple_universes": 25,
     "many_variants": 83
   },
@@ -612,20 +612,6 @@
       "universes": 1
     },
     {
-      "name": "cable",
-      "score": 52,
-      "records": 14,
-      "sources": 2,
-      "reasons": [
-        "cross_source",
-        "multiple_identities",
-        "many_variants"
-      ],
-      "identities": 2,
-      "variants": 9,
-      "universes": 1
-    },
-    {
       "name": "captain britain",
       "score": 52,
       "records": 13,
@@ -666,20 +652,6 @@
       "identities": 2,
       "variants": 10,
       "universes": 0
-    },
-    {
-      "name": "magneto",
-      "score": 52,
-      "records": 12,
-      "sources": 2,
-      "reasons": [
-        "cross_source",
-        "multiple_identities",
-        "many_variants"
-      ],
-      "identities": 3,
-      "variants": 11,
-      "universes": 1
     },
     {
       "name": "spider man ii",
@@ -1371,6 +1343,32 @@
       "identities": 2,
       "variants": 2,
       "universes": 0
+    },
+    {
+      "name": "batwing",
+      "score": 35,
+      "records": 3,
+      "sources": 2,
+      "reasons": [
+        "cross_source",
+        "multiple_identities"
+      ],
+      "identities": 2,
+      "variants": 1,
+      "universes": 0
+    },
+    {
+      "name": "bedlam",
+      "score": 35,
+      "records": 2,
+      "sources": 2,
+      "reasons": [
+        "cross_source",
+        "multiple_identities"
+      ],
+      "identities": 2,
+      "variants": 1,
+      "universes": 1
     }
   ],
   "status": "entity_resolution_review_queue_ready"
