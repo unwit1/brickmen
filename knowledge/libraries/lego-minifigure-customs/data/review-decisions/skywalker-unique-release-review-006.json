@@ -1,0 +1,86 @@
+{
+  "schema": "skywalker-crosswalk-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-unique-release-review-006",
+  "cohort": "unique_physical_release_candidate",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-f8dfef0f40191f27d59c1cd2",
+      "character_variant_key": "Snoke",
+      "decision": "same_character_unique_physical_counterpart_visual_pending",
+      "physical_candidate": "fig-004290",
+      "physical_release": {
+        "brickset_minifig": "sw0856",
+        "catalog_name": "Supreme Leader Snoke",
+        "first_year": 2017,
+        "sets": [
+          "75190-1",
+          "75216-1"
+        ]
+      },
+      "reason": "The unqualified digital Snoke identity maps to the sole supported Supreme Leader Snoke physical design family; the title difference is not a separate character identity."
+    },
+    {
+      "asset_id": "skywalker-profile-468c34657d8d62e028568493",
+      "character_variant_key": "Padme_White",
+      "decision": "same_character_variant_identity_verified_visual_pending",
+      "physical_candidate": "fig-004002",
+      "physical_release": {
+        "bricklink_minifig": "sw0490",
+        "catalog_name": "Padme Amidala / Naberrie, White Geonosis Arena Outfit",
+        "year": 2013,
+        "set_num": "75021-1"
+      },
+      "reason": "The digital suffix 'White' and the unique supported physical candidate independently point to Padme's white Geonosis arena outfit. Outfit identity is supported; exact digital texture/print reuse remains visual pending."
+    },
+    {
+      "asset_id": "skywalker-profile-3f08832368c755bbd67af84f",
+      "character_variant_key": "DJ",
+      "decision": "same_character_unique_physical_counterpart_visual_pending",
+      "physical_candidate": "fig-001735",
+      "physical_release": {
+        "brickset_minifig": "sw0903",
+        "catalog_name": "DJ Code Breaker",
+        "year": 2018,
+        "set_num": "40298-1"
+      },
+      "reason": "The digital DJ label maps cleanly to the sole supported DJ Code Breaker physical release; exact artwork equivalence remains visual pending."
+    },
+    {
+      "asset_id": "skywalker-profile-f648e00a86693493d262e52b",
+      "character_variant_key": "Leia_Black",
+      "decision": "same_character_unique_candidate_suffix_semantics_unresolved",
+      "physical_candidate": "fig-003553",
+      "physical_release": {
+        "catalog_name": "Princess Leia, Slave Outfit, Black Eyes, Neck Bracket",
+        "year": 2006,
+        "set_num": "6210-1"
+      },
+      "reason": "The candidate's catalog name contains 'Black Eyes', which may explain the digital suffix 'Black', but the suffix could encode another asset-local distinction. Preserve this as a plausible version mapping rather than asserting that 'Black' means the 2006 black-eye Slave Leia variant without direct asset evidence."
+    },
+    {
+      "asset_id": "skywalker-profile-863b97e243a1193da8850b18",
+      "character_variant_key": "GeneralRieekan_5_1",
+      "decision": "same_character_unique_physical_family_numeric_suffix_unresolved",
+      "physical_candidate": "fig-000772",
+      "physical_release": {
+        "brickset_minifig": "sw0460",
+        "catalog_name": "General Rieekan",
+        "first_year": 2013,
+        "sets": [
+          "75014-1",
+          "75056-1"
+        ]
+      },
+      "reason": "The base identity resolves to the same unique physical General Rieekan family already reviewed, but the numeric suffix '5_1' has no catalog-visible outfit/version meaning. Treat it as unresolved digital metadata rather than a physical variant identifier."
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "unique_physical_counterpart_candidates": 2,
+    "variant_identity_verified_visual_pending": 1,
+    "suffix_semantics_unresolved": 2,
+    "automatic_exact_equivalence_promotions": 0
+  },
+  "remaining_unique_release_candidates_after_this_batch": 4
+}
