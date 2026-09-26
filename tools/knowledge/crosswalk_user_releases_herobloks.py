@@ -110,6 +110,20 @@ def main():
         r["herobloks_match_status"]=="exact_unique_serial_match" and r["catalog_identity_consistency"]=="serial_match_name_needs_review"
         for r in rows
       ),
+      "unmatched_prefix_counts":dict(Counter(
+        (re.match(r"^[A-Za-z]+", str(r.get("maker_product_code") or "")) or ["" ])[0].upper()
+        for r in rows if r["herobloks_match_status"]=="no_exact_serial_match"
+      )),
+      "unmatched_sample":[{
+        "maker_product_code":r.get("maker_product_code"),
+        "observed_names":r.get("observed_names"),
+        "prefix_maker_candidates":r.get("prefix_maker_candidates")
+      } for r in rows if r["herobloks_match_status"]=="no_exact_serial_match"][:100],
+      "collision_sample":[{
+        "maker_product_code":r.get("maker_product_code"),
+        "observed_names":r.get("observed_names"),
+        "matches":r.get("herobloks_matches")
+      } for r in rows if r["herobloks_match_status"]=="exact_serial_collision"][:100],
       "status":"exact_catalog_crosswalk_ready"
     }
     args.summary.write_text(json.dumps(summary,indent=2)+"\n",encoding="utf-8")
