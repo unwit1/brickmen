@@ -1,0 +1,153 @@
+{
+  "schema": "face-landmark-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "rioforce-face-review-008",
+  "records": [
+    {
+      "face_asset_id": "rioforce-face-fc3f68724b0976f1083294eb",
+      "relative_path": "Adventurers/Dr Charles Lightning/Dr Lightning Face.svg",
+      "decision": "subject_catalog_identity_verified_geometry_reviewed",
+      "orientation": "front",
+      "source_subject_label": "Dr Charles Lightning / Dr Lightning",
+      "canonical_subject": "Dr. Charles Lightning / Dr. Kilroy",
+      "confidence": "high",
+      "catalog_identity": {
+        "bricklink_figure": "adv006",
+        "bricklink_head": "3626pa1",
+        "rebrickable_component": "3626bpr0047",
+        "head_description": "Yellow head with round glasses and gray beard/moustache lines",
+        "alias_status": "subject/component relationship already independently verified in canonical flat-art crosswalk"
+      },
+      "observed_structure": {
+        "round_eyewear_or_glasses_geometry": true,
+        "bilateral_eye_regions": true,
+        "gray_beard_moustache_regions": true,
+        "mouth_region": true,
+        "machine_readable_geometry": true
+      },
+      "provenance_note": "Embedded export filename says 'Dr Kilroy Face.png', providing source-level evidence that the Dr Charles Lightning and Dr Kilroy names refer to this same design identity.",
+      "evidence_urls": [
+        "https://www.bricklink.com/catalogItemInv.asp?M=Adv006&viewID=N"
+      ],
+      "remaining_tasks": [
+        "derive transformed eye/glasses/mouth/facial-hair bounds"
+      ]
+    },
+    {
+      "face_asset_id": "rioforce-face-b3bc8dcaf2de6f9ef8a126f8",
+      "relative_path": "LEGO Friends/Olivia/Olivia Face.svg",
+      "decision": "subject_family_verified_exact_version_unresolved",
+      "orientation": "front",
+      "subject": "Olivia, LEGO Friends",
+      "confidence": "high_for_character_family_medium_for_version",
+      "observed_structure": {
+        "minidoll_face_geometry": true,
+        "bilateral_eye_regions": true,
+        "brown_or_orange_iris_regions": true,
+        "prominent_lash_or_eye_outline": true,
+        "mouth_shape": "closed_smile",
+        "pink_lip_region": true
+      },
+      "provenance_note": "The SVG internal document name is only 'LEGO Friends Face 1.svg'; it does not identify a release year/outfit. Multiple Olivia minidolls reuse or vary closely related face designs.",
+      "identity_policy": "Do not force this generic Olivia face onto the 2016 fig-000188 candidate solely because that candidate ranked first previously.",
+      "remaining_tasks": [
+        "compare against Olivia minidoll head variants by element/image",
+        "derive eye/iris/lash/lip landmarks",
+        "resolve earliest/source release if provenance permits"
+      ]
+    },
+    {
+      "face_asset_id": "rioforce-face-bee5f3218c1c9adea67053b2",
+      "relative_path": "Adventurers/Johnny Thunder/Johnny Thunder Orient Expedition Face.svg",
+      "decision": "subject_catalog_identity_verified_geometry_reviewed",
+      "orientation": "front",
+      "subject": "Johnny Thunder - Orient Expedition",
+      "version_year": 2003,
+      "confidence": "high",
+      "catalog_identity": {
+        "bricklink_figures": [
+          "adv024",
+          "adv051",
+          "adv054"
+        ],
+        "bricklink_head": "3626px129",
+        "rebrickable_component": "3626bpr0247",
+        "shared_element_id": "4185491",
+        "alias_status": "already independently verified in canonical flat-art crosswalk"
+      },
+      "observed_structure": {
+        "bilateral_eye_shapes": true,
+        "moustache_and_sideburn_geometry": true,
+        "cleft_chin_detail": true,
+        "smile_or_mouth_region": true,
+        "machine_readable_geometry": true
+      },
+      "remaining_tasks": [
+        "derive precise eye/moustache/sideburn/chin/mouth landmarks"
+      ]
+    },
+    {
+      "face_asset_id": "rioforce-face-8a5fe84e2e80cbe63a7b016c",
+      "relative_path": "Adventurers/Sam Sinister/Sam Sinister Face.svg",
+      "decision": "subject_verified_variant_unresolved_geometry_reviewed",
+      "orientation": "front",
+      "canonical_subject": "Sam Sinister / Baron von Barron",
+      "confidence": "high_for_subject_medium_for_variant",
+      "candidate_catalog_variants": [
+        {
+          "era": "Desert",
+          "bricklink_figures": [
+            "adv003",
+            "adv004",
+            "adv039"
+          ],
+          "bricklink_head": "3626pa7",
+          "expression": "standard grin",
+          "features": [
+            "moustache",
+            "monocle",
+            "red scar"
+          ]
+        },
+        {
+          "era": "Orient Expedition",
+          "bricklink_figures": [
+            "adv025",
+            "adv036"
+          ],
+          "bricklink_head": "3626px127",
+          "expression": "angry",
+          "features": [
+            "moustache",
+            "goatee",
+            "monocle",
+            "red scar"
+          ]
+        }
+      ],
+      "observed_structure": {
+        "large_monocle_lens_region": true,
+        "moustache_geometry": true,
+        "scar_or_face_accent_geometry": true,
+        "asymmetric_eye_treatment": true,
+        "extensive_lower_face_geometry": true,
+        "machine_readable_geometry": true
+      },
+      "identity_policy": "The folder lacks era/version information and both major Sam Sinister head designs share monocle, moustache and scar motifs. Hold exact head assignment until visual comparison distinguishes grin/goatee/angry details.",
+      "evidence_urls": [
+        "https://www.bricklink.com/catalogItemInv.asp?M=adv003",
+        "https://www.bricklink.com/catalogItemInv.asp?M=adv025&viewID=Y"
+      ],
+      "remaining_tasks": [
+        "visual compare against 3626pa7 and 3626px127",
+        "derive monocle/eye/scar/moustache/mouth landmarks"
+      ]
+    }
+  ],
+  "result": {
+    "reviewed": 4,
+    "catalog_identity_verified": 2,
+    "subject_family_or_variant_unresolved": 2
+  },
+  "next_offset": 32
+}
