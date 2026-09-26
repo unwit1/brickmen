@@ -1,0 +1,64 @@
+{
+  "schema": "skywalker-crosswalk-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-unique-release-review-007",
+  "cohort": "unique_physical_release_candidate",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-5c6d8ee62a6d724f8c446cf9",
+      "character_variant_key": "8D8",
+      "decision": "reject_physical_candidate_route_game_only",
+      "rejected_physical_candidate": "fig-003893",
+      "rejected_catalog_name": "Astromech Droid, R5-D8 / R5-D4",
+      "reason": "8D8 is a distinct droid identity; the R5-D8/R5-D4 candidate is a token/sequence collision. Public LEGO-reference material identifies 8D8 as game-only in The Skywalker Saga with no physical minifigure release.",
+      "route": "digital_game_character_no_supported_physical_minifigure"
+    },
+    {
+      "asset_id": "skywalker-profile-cd5619e230d6e25cd133f8e1",
+      "character_variant_key": "Rancor",
+      "decision": "reject_physical_candidate_route_non_minifigure_creature",
+      "rejected_physical_candidate": "fig-003866",
+      "rejected_catalog_name": "Clone ARF Trooper / Elite Clone Trooper (Rancor Battalion)",
+      "reason": "The digital key denotes the Rancor creature. The candidate matches only the word Rancor in 'Rancor Battalion' and is the wrong entity type. LEGO's 75005 Rancor Pit contains the Rancor as a large creature/bigfig while its minifigure inventory lists Luke, Malakili, a Gamorrean Guard and a skeleton.",
+      "route": "non_minifigure_creature_or_bigfig_reference"
+    },
+    {
+      "asset_id": "skywalker-profile-2d6d203d4136f8a3686206ea",
+      "character_variant_key": "LeiaOrgana_Hoth",
+      "decision": "reject_candidate_match_requires_hoth_variant_resolution",
+      "rejected_physical_candidate": "fig-016894",
+      "rejected_catalog_name": "Princess Leia Organa, Ambassador Outfit",
+      "reason": "The digital suffix explicitly specifies Hoth, while the proposed 2025 Ambassador Outfit is both the wrong outfit and later than the game. Multiple genuine pre-game Hoth Leia physical variants exist, so the matcher must resolve within the Hoth outfit family instead of selecting the ambassador release.",
+      "corrected_family_examples": [
+        "sw0113",
+        "sw0346",
+        "sw0878",
+        "sw0958"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-59a0cb1c256f7b77fc2ba477",
+      "character_variant_key": "Anakin_JediKnight",
+      "decision": "reject_candidate_match_requires_jedi_knight_variant_resolution",
+      "rejected_physical_candidate": "fig-003825",
+      "rejected_catalog_name": "Anakin Skywalker, Dark Blue Hood",
+      "reason": "The candidate comes from 8085 Freeco Speeder and corresponds to Anakin's cold-weather/Parka-era appearance, not a generic Jedi Knight identity. The digital suffix JediKnight is semantically meaningful and must be matched against appropriate Jedi Knight-era Anakin variants rather than a weak name-only candidate.",
+      "route": "character_family_supported_variant_resolution_required"
+    }
+  ],
+  "result": {
+    "reviewed": 4,
+    "rejected_false_physical_candidates": 3,
+    "routed_nonphysical_or_nonminifigure": 2,
+    "variant_family_resolution_required": 2,
+    "automatic_exact_equivalence_promotions": 0
+  },
+  "remaining_unique_release_candidates_after_this_batch": 0,
+  "cohort_complete": true,
+  "systemic_findings": [
+    "A unique top candidate is not evidence of a unique physical counterpart when the entity type is wrong.",
+    "Token overlap can confuse short droid identifiers (8D8 vs R5-D8).",
+    "Theme/role words inside unrelated proper names (Rancor vs Rancor Battalion) require entity-type/context gating.",
+    "Digital variant suffixes such as Hoth and JediKnight must constrain candidate selection rather than merely annotate the result."
+  ]
+}
