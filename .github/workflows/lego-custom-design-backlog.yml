@@ -1,0 +1,63 @@
+name: LEGO Custom Design Backlog
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/lego-custom-design-backlog.yml'
+      - 'tools/knowledge/build_custom_design_backlog.py'
+      - 'knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/collection-gap-candidates-latest.jsonl'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: lego-custom-design-backlog-main
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out Brickmen
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build ranked design backlog
+        shell: bash
+        run: |
+          set -euo pipefail
+          work=/tmp/custom-design-backlog
+          mkdir -p "$work"
+          python tools/knowledge/build_custom_design_backlog.py \
+            --gaps knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/collection-gap-candidates-latest.jsonl \
+            --output "$work/actionable.jsonl" \
+            --review-output "$work/review.jsonl" \
+            --summary "$work/summary.json"
+
+      - name: Commit backlog snapshots race-safely
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "brickmen-ingestion-bot"
+          git config user.email "brickmen-ingestion-bot@users.noreply.github.com"
+          git fetch origin main
+          git reset --hard origin/main
+          work=/tmp/custom-design-backlog
+          dest=knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation
+          cp "$work/actionable.jsonl" "$dest/custom-design-backlog-latest.jsonl"
+          cp "$work/review.jsonl" "$dest/custom-design-review-only-latest.jsonl"
+          cp "$work/summary.json" "$dest/custom-design-backlog-summary-latest.json"
+          git add "$dest/custom-design-backlog-latest.jsonl" "$dest/custom-design-review-only-latest.jsonl" "$dest/custom-design-backlog-summary-latest.json"
+          if git diff --cached --quiet; then
+            echo "No design backlog changes."
+            exit 0
+          fi
+          git commit -m "knowledge: refresh custom design backlog"
+          git push origin main
