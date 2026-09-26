@@ -1,0 +1,225 @@
+{
+  "schema": "skywalker-no-supported-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-no-supported-review-001",
+  "policy": "A below-threshold or unsupported automated match is not treated as absence of a physical counterpart. Independently separate alias/normalization misses, semantically correct below-threshold families, true catalog gaps, and post-game releases. Lookalike astromechs or token-neighbor characters are rejected unless identity evidence matches exactly.",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-ea8d5a45a15dc14719d25d96",
+      "character_variant_key": "Hux",
+      "decision": "alias_short_form_verified_general_hux_physical_family_supported_below_threshold_visual_pending",
+      "canonical_subject": "General Hux",
+      "alias_resolution": {
+        "source_key": "Hux",
+        "canonical_name": "General Hux",
+        "confidence": "high"
+      },
+      "plausible_pre_game_physical_candidates": [
+        {
+          "fig_num": "fig-004147",
+          "catalog_name": "General Hux, Cap",
+          "year": 2015,
+          "set_num": "75104-1"
+        },
+        {
+          "fig_num": "fig-004277",
+          "catalog_name": "General Hux, Hair",
+          "year": 2017,
+          "set_num": "75177-1"
+        }
+      ],
+      "reason": "The unsupported status is a threshold/alias miss rather than a real catalog gap: both leading candidates are exact General Hux identities and predate the game. The short source key omits the rank title, while cap versus hair remains a visual-state question.",
+      "systemic_pattern": "rank_title_omission_can_lower_exact_character_match_below_support_threshold",
+      "evidence_urls": [
+        "https://brickset.com/minifigs?query=general+hux"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-e3763a7d5634bf90410f1186",
+      "character_variant_key": "R2D2WinterHoliday",
+      "decision": "holiday_variant_family_verified_below_threshold_exact_holiday_form_and_timing_unresolved",
+      "canonical_subject": "R2-D2 — Winter Holiday variant",
+      "plausible_holiday_physical_candidates": [
+        {
+          "fig_num": "fig-005758",
+          "catalog_name": "Astromech Droid, R2-D2, Snowman",
+          "year": 2012,
+          "set_num": "9509-1"
+        },
+        {
+          "fig_num": "fig-010464",
+          "catalog_name": "Astromech Droid, R2-D2, Reindeer",
+          "year": 2015,
+          "set_num": "75097-1"
+        },
+        {
+          "fig_num": "fig-013050",
+          "catalog_name": "Astromech Droid, R2-D2, Red Holiday Sweater",
+          "year": 2022,
+          "set_num": "75340-1",
+          "launch_date": "2022-09-01"
+        }
+      ],
+      "separated_base_candidate": {
+        "fig_num": "fig-003508",
+        "catalog_name": "Astromech Droid, R2-D2, White Dome, 30361a Body",
+        "reason": "ordinary R2-D2, not winter-holiday state"
+      },
+      "reason": "The explicit WinterHoliday key makes the three seasonal R2-D2 candidates semantically relevant even though none crossed the support threshold. The red-sweater physical figure launched in September 2022, after the base game's April release, while Snowman and Reindeer forms predate it; exact holiday form therefore remains direct visual/timeline pending rather than inferred from score.",
+      "systemic_pattern": "explicit_variant_tokens_should_be_weighted_more_than_base_identity_similarity",
+      "evidence_urls": [
+        "https://brickset.com/sets/75340-1/LEGO-Star-Wars-Advent-Calendar"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-203a40552fb464f87cda297a",
+      "character_variant_key": "R2A6",
+      "decision": "digital_identity_verified_exact_physical_lego_counterpart_not_located_lookalike_astromech_candidates_rejected",
+      "canonical_subject": "R2-A6",
+      "identity_context": {
+        "model": "R2-series astromech droid",
+        "affiliation": "Royal Naboo Security Forces / Bravo Squadron",
+        "source_appearance": "The Phantom Menace",
+        "skywalker_saga_presence": "documented"
+      },
+      "rejected_top_candidates": [
+        {
+          "fig_num": "fig-013738",
+          "catalog_name": "Astromech Droid, R2-E6",
+          "reason": "different droid identity"
+        },
+        {
+          "fig_num": "fig-004050",
+          "catalog_name": "Astromech Droid, R2-A5",
+          "reason": "different droid identity"
+        },
+        {
+          "fig_num": "fig-003680",
+          "catalog_name": "Astromech Droid, R2-R7",
+          "reason": "different droid identity"
+        },
+        {
+          "fig_num": "fig-004125",
+          "catalog_name": "Astromech Droid, R3-A2",
+          "reason": "different droid identity"
+        },
+        {
+          "fig_num": "fig-004163",
+          "catalog_name": "Astromech Droid, R5-A2",
+          "reason": "different droid identity"
+        }
+      ],
+      "reason": "R2-A6 is a real named Star Wars astromech and is documented in The Skywalker Saga, but the current LEGO catalog search did not surface an exact R2-A6 minifigure. Similar alphanumeric droid names are not aliases and must not be substituted.",
+      "systemic_pattern": "astromech_identifier_edit_distance_must_not_override_exact_unit_number",
+      "evidence_urls": [
+        "https://starwars.fandom.com/wiki/R2-A6"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-c70f5007fad9c7d695a69cdd",
+      "character_variant_key": "R5M2",
+      "decision": "digital_identity_verified_exact_physical_lego_counterpart_not_located_lookalike_astromech_candidates_rejected",
+      "canonical_subject": "R5-M2",
+      "identity_context": {
+        "model": "R5-series astromech droid",
+        "affiliation": "Alliance to Restore the Republic",
+        "source_appearance": "The Empire Strikes Back — Echo Base",
+        "skywalker_saga_presence": "documented"
+      },
+      "rejected_top_candidates": [
+        {
+          "fig_num": "fig-004163",
+          "catalog_name": "Astromech Droid, R5-A2",
+          "reason": "different droid identity"
+        },
+        {
+          "fig_num": "fig-004050",
+          "catalog_name": "Astromech Droid, R2-A5",
+          "reason": "different droid identity"
+        },
+        {
+          "fig_num": "fig-003895",
+          "catalog_name": "Astromech Droid, R5-J2, Imperial",
+          "reason": "different droid identity and affiliation"
+        },
+        {
+          "fig_num": "fig-003541",
+          "catalog_name": "Astromech Droid, R2-D5",
+          "reason": "different droid identity"
+        },
+        {
+          "fig_num": "fig-003799",
+          "catalog_name": "Astromech Droid, R2-Q5",
+          "reason": "different droid identity"
+        }
+      ],
+      "reason": "R5-M2 is a distinct Rebel astromech visible at Echo Base and documented as appearing in The Skywalker Saga. No exact LEGO minifigure counterpart was located in the current catalog search. Neighboring R-series identifiers must remain rejected rather than guessed.",
+      "systemic_pattern": "astromech_identifier_edit_distance_must_not_override_exact_unit_number",
+      "evidence_urls": [
+        "https://starwars.fandom.com/wiki/R5-M2"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-fb38c66a4e14543559015b7c",
+      "character_variant_key": "Andor",
+      "decision": "surname_alias_verified_cassian_andor_pre_game_physical_family_supported_below_threshold_post_launch_series_variant_separated",
+      "canonical_subject": "Cassian Andor",
+      "alias_resolution": {
+        "source_key": "Andor",
+        "canonical_name": "Cassian Andor",
+        "confidence": "high"
+      },
+      "plausible_pre_game_physical_candidates": [
+        {
+          "fig_num": "fig-004215",
+          "catalog_name": "Cassian Andor in Dark Blue Outfit",
+          "year": 2016,
+          "set_num": "75155-1"
+        },
+        {
+          "fig_num": "fig-004258",
+          "catalog_name": "Cassian Andor in Reddish Brown Jacket",
+          "year": 2017,
+          "set_num": "75171-1"
+        }
+      ],
+      "separated_later_candidates": [
+        {
+          "fig_num": "fig-012946",
+          "catalog_name": "Cassian Andor - Dark Brown Outfit",
+          "year": 2022,
+          "set_num": "75338-1",
+          "launch_date": "2022-08-01",
+          "reason": "Andor-series physical release launched after the game"
+        },
+        {
+          "fig_num": "fig-016242",
+          "catalog_name": "Cassian Andor, Warm Tan Head",
+          "year": 2025,
+          "set_num": "75399-1",
+          "reason": "post-game physical revision"
+        }
+      ],
+      "reason": "The source surname maps cleanly to Cassian Andor. Two Rogue One physical figures predate the game; the Andor-series figure in 75338 launched in August 2022 and the warm-tan-head revision in 2025. The unsupported status is an alias/threshold issue, not absence of a physical character family.",
+      "systemic_pattern": "surname_only_character_keys_need_alias_resolution_before_thresholding",
+      "evidence_urls": [
+        "https://brickset.com/sets/75338-1/Ambush-on-Ferrix"
+      ]
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "alias_or_short_form_resolver_misses": 2,
+    "below_threshold_semantic_variant_family_verified": 1,
+    "true_or_current_catalog_gap_identified": 2,
+    "unsafe_lookalike_candidates_rejected": 10,
+    "automatic_exact_artwork_equivalence_promotions": 0
+  },
+  "remaining_no_supported_records_after_batch": 91,
+  "systemic_findings": [
+    "Unsupported-by-threshold must be split into alias misses, variant-weighting misses, and genuine catalog gaps before downstream conclusions are made.",
+    "Astromech unit identifiers are identity-bearing strings; edit-distance similarity between unit numbers is unsafe.",
+    "Surname-only source keys and omitted rank titles should be alias-normalized before candidate scoring.",
+    "Explicit variant terms such as WinterHoliday should carry enough weight to surface lower-scoring seasonal counterparts."
+  ]
+}
