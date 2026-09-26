@@ -1,5 +1,5 @@
 {
-  "schema": "user-tracker-semantic-corrections/v4",
+  "schema": "user-tracker-semantic-corrections/v5",
   "created_at": "2026-09-26",
   "source_policy": "Non-destructive semantic overlay. Original Google Sheet and raw ingested JSONL remain canonical provenance; corrected fields are used only in derived reconciliation layers and each derived record carries the correction metadata plus original field values.",
   "records": [
@@ -2412,6 +2412,23 @@
     {
       "source_title": "Minifig Variants to Make",
       "source_tab": "MARVEL",
+      "source_row": 859,
+      "expected_name": "Ghost Spider (USM TV)",
+      "corrected_fields": {},
+      "clear_fields": [
+        "identity"
+      ],
+      "confidence": "high",
+      "rationale": "The Identity value 19529 is a numeric artifact in a person-identity field. The row already preserves TV variant, Ultimate SM TV universe/context, 2016 year, and the explicit episode source appearance; no replacement person identity is inferred.",
+      "evidence": {
+        "source_type": "deterministic_tracker_field_audit",
+        "verified_at": "2026-09-26",
+        "policy": "Clear only the semantically invalid numeric identity in the derived layer; preserve the raw value in correction provenance."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "MARVEL",
       "source_row": 965,
       "expected_name": "Hawkeye",
       "corrected_fields": {
@@ -2651,6 +2668,114 @@
         "observed_identity": "MvC",
         "verified_at": "2026-09-26",
         "policy": "Non-destructive derived correction; original source remains unchanged."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "MARVEL",
+      "source_row": 1081,
+      "expected_name": "Iron Fist",
+      "corrected_fields": {
+        "identity": "Gale"
+      },
+      "clear_fields": [],
+      "confidence": "medium_high",
+      "rationale": "The row's Atlantean / 1000 AD descriptors correspond to Gale, the Atlantean princess who bore the Iron Fist in the 11th century.",
+      "evidence": {
+        "source_type": "issue_backed_reference",
+        "verified_at": "2026-09-26",
+        "sources": [
+          {
+            "url": "https://marvel.fandom.com/wiki/Gale_(Atlantean)_(Earth-616)",
+            "note": "Identifies Gale as an Atlantean princess operating as Iron Fist in the 11th century and cites Mighty Thor (Vol. 2) #7 / King Thor #4 / Avengers (Vol. 8) #38."
+          },
+          {
+            "url": "https://d1vzi28wh99zvq.cloudfront.net/pdf_previews/535694-sample.pdf",
+            "note": "Avengers reference preview lists the 1,000 A.D. Avengers and identifies Iron Fist as Gale, an Atlantean princess."
+          }
+        ],
+        "policy": "Derived semantic correction only; original descriptor remains preserved in provenance."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "MARVEL",
+      "source_row": 1083,
+      "expected_name": "Iron Fist",
+      "corrected_fields": {
+        "identity": "Wu Ao-Shi"
+      },
+      "clear_fields": [],
+      "confidence": "high",
+      "rationale": "Marvel's official Book of the Iron Fist collection identifies Wu Ao-Shi as the Pirate Queen of Pinghai Bay; independent issue-backed references place her as Iron Fist circa 1545.",
+      "evidence": {
+        "source_type": "official_marvel_catalog_plus_issue_reference",
+        "verified_at": "2026-09-26",
+        "sources": [
+          {
+            "url": "https://www.marvel.com/comics/collection/22413/immortal_iron_fist_vol_3_the_book_of_the_iron_fist_hardcover",
+            "note": "Official Marvel collection identifies Wu Ao-Shi as the Pirate Queen of Pinghai Bay and an Iron Fist."
+          },
+          {
+            "url": "https://marvel.fandom.com/wiki/Wu_Ao-Shi_(Earth-616)",
+            "note": "Issue-backed reference places Wu Ao-Shi as bearer of Iron Fist circa 1545."
+          }
+        ],
+        "policy": "Derived semantic correction only; original Pirate Queen descriptor remains preserved in provenance."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "MARVEL",
+      "source_row": 1084,
+      "expected_name": "Iron Fist",
+      "corrected_fields": {
+        "identity": "Kwai Jun-Fan"
+      },
+      "clear_fields": [],
+      "confidence": "medium_high",
+      "rationale": "Issue-backed references identify Kwai Jun-Fan as the Iron Fist active in the Wild West circa 1878.",
+      "evidence": {
+        "source_type": "issue_backed_reference",
+        "verified_at": "2026-09-26",
+        "sources": [
+          {
+            "url": "https://marvel.fandom.com/wiki/Glossary:Iron_Fist",
+            "note": "Identifies Kwai Jun-Fan as the Iron Fist circa 1878 active in the Wild West."
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/Iron_Fist_(character)",
+            "note": "Secondary synthesis cites the relevant Marvel issue history for Kwai Jun-Fan and the 1878 Wild West period."
+          }
+        ],
+        "policy": "Derived semantic correction only; original Wild West descriptor remains preserved in provenance."
+      }
+    },
+    {
+      "source_title": "Minifig Variants to Make",
+      "source_tab": "MARVEL",
+      "source_row": 1085,
+      "expected_name": "Iron Fist",
+      "corrected_fields": {
+        "identity": "Fongji Wu"
+      },
+      "clear_fields": [],
+      "confidence": "medium_high",
+      "rationale": "Issue-backed references identify Fongji Wu as a sixteenth-century Iron Fist who became a host of the Phoenix Force.",
+      "evidence": {
+        "source_type": "issue_backed_reference",
+        "verified_at": "2026-09-26",
+        "sources": [
+          {
+            "url": "https://marvel.fandom.com/wiki/Fongji_Wu_(Earth-616)",
+            "note": "Identifies Fongji Wu as a sixteenth-century Iron Fist and Phoenix host, referencing New Avengers (Vol. 2) #25 onward."
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/Iron_Fist_(character)",
+            "note": "Secondary synthesis cites New Avengers issues describing Fongji Wu becoming Iron Fist and confronting the Phoenix."
+          }
+        ],
+        "policy": "Derived semantic correction only; original Phoenix/1600s descriptors remain preserved in provenance."
       }
     },
     {
@@ -2921,6 +3046,8 @@
     "deterministic_year_identity_repairs_added": 95,
     "rule": "When Identity is exactly a four-digit 18xx/19xx/20xx year and Year is blank, move the year into Year and clear Identity. Never infer a replacement person identity.",
     "deterministic_unmatched_punctuation_repairs_added": 16,
-    "non_person_identity_descriptor_repairs_added": 6
+    "non_person_identity_descriptor_repairs_added": 6,
+    "historical_iron_fist_identity_resolutions": 4,
+    "numeric_identity_artifact_repairs": 1
   }
 }
