@@ -52,6 +52,72 @@ def external_catalog_id(rec):
     m = re.search(r"[?&]M=([^&#]+)", url, re.I)
     return m.group(1).strip().casefold() if m else None
 
+def parse_source_appearance_reference(value):
+    raw = " ".join(str(value or "").strip().split())
+    if not raw:
+        return {"kind":"empty","raw":raw}
+
+    # Comic issue syntax. Accept '#1', '1', 'Vol. 3 #1', 'v3 #1', and decimal issues such as #0.1.
+    # A trailing year in parentheses is retained as a hint but never used as identity on its own.
+    year_hint = None
+    ym = re.search(r"\((19|20)\d{2}\)\s*$", raw)
+    if ym:
+        year_hint = int(ym.group(0).strip("()"))
+        raw_core = raw[:ym.start()].strip()
+    else:
+        raw_core = raw
+
+    patterns = [
+        r"^(?P<title>.+?)\s+(?:Vol(?:\.|ume)?|v)\s*(?P<volume>\d+)\s*#?\s*(?P<issue>\d+(?:\.\d+)?[A-Za-z]?)$",
+        r"^(?P<title>.+?)\s*#\s*(?P<issue>\d+(?:\.\d+)?[A-Za-z]?)$",
+    ]
+    for pattern in patterns:
+        m = re.match(pattern, raw_core, re.I)
+        if m:
+            title = m.group("title").strip(" -")
+            volume = m.groupdict().get("volume")
+            issue = m.group("issue")
+            return {
+                "kind":"comic_issue_explicit",
+                "raw":raw,
+                "source_work":title,
+                "source_work_normalized":norm(title),
+                "volume":int(volume) if volume else None,
+                "issue":issue,
+                "year_hint":year_hint,
+                "canonical_issue_key":"|".join([
+                    norm(title),
+                    f"v{int(volume)}" if volume else "v?",
+                    f"i{issue.casefold()}",
+                ]),
+            }
+
+    # Episode-like references remain candidates; no show-title inference beyond explicit syntax.
+    em = re.match(r"^(?P<title>.+?)\s+(?:S(?P<season>\d{1,2})E(?P<episode>\d{1,3})|Season\s+(?P<season2>\d+)\s+Episode\s+(?P<episode2>\d+)|Episode\s+(?P<episode3>\d+))$", raw_core, re.I)
+    if em:
+        season = em.group("season") or em.group("season2")
+        episode = em.group("episode") or em.group("episode2") or em.group("episode3")
+        title = em.group("title").strip(" -")
+        return {
+            "kind":"episode_explicit",
+            "raw":raw,
+            "source_work":title,
+            "source_work_normalized":norm(title),
+            "season":int(season) if season else None,
+            "episode":int(episode),
+            "year_hint":year_hint,
+            "canonical_issue_key":"|".join([
+                "episode",norm(title),f"s{int(season)}" if season else "s?",f"e{int(episode)}"
+            ]),
+        }
+
+    return {
+        "kind":"raw_only",
+        "raw":raw,
+        "year_hint":year_hint,
+        "canonical_issue_key":None,
+    }
+
 def source_name(rec):
     return (
         rec.get("name")
@@ -437,26 +503,27 @@ def main():
             "processor_version": VERSION,
         })
 
-    # SourceAppearance candidates from explicit first-appearance metadata.
+    # SourceAppearance candidates from first-appearance metadata.
+    # Explicit issue references are grouped by normalized series + volume + issue so equivalent
+    # spellings such as "X-Factor v3 #1" and "X-Factor Vol. 3 #1" converge.
     appearance_groups = defaultdict(list)
     for rec in records:
         raw = str(rec.get("first_appearance") or "").strip()
         if not raw:
             continue
-        normalized = " ".join(raw.split())
-        issue_number = None
-        source_work = None
-        parse_status = "raw_only"
-        m = re.match(r"^(.*?)(?:\s+Vol(?:\.|ume)?\s*\d+)?\s*#\s*([0-9]+(?:\.[0-9]+)?)\s*$", normalized, re.I)
-        if m:
-            source_work = m.group(1).strip(" -")
-            issue_number = m.group(2)
-            parse_status = "explicit_hash_issue"
-        appearance_groups[norm(normalized)].append({
+        parsed = parse_source_appearance_reference(raw)
+        group_key = parsed.get("canonical_issue_key") or ("raw|" + norm(raw))
+        appearance_groups[group_key].append({
             "raw_first_appearance": raw,
-            "source_work_candidate": source_work,
-            "issue_number_candidate": issue_number,
-            "parse_status": parse_status,
+            "source_work_candidate": parsed.get("source_work"),
+            "source_work_normalized": parsed.get("source_work_normalized"),
+            "volume_candidate": parsed.get("volume"),
+            "issue_number_candidate": parsed.get("issue"),
+            "season_candidate": parsed.get("season"),
+            "episode_candidate": parsed.get("episode"),
+            "year_hint": parsed.get("year_hint"),
+            "parse_status": parsed.get("kind"),
+            "canonical_issue_key": parsed.get("canonical_issue_key"),
             "name": rec.get("name"),
             "identity": rec.get("identity"),
             "variant": rec.get("variant"),
@@ -469,10 +536,14 @@ def main():
         })
     appearance_rows = []
     for key, items in appearance_groups.items():
-        parsed = [x for x in items if x["parse_status"] == "explicit_hash_issue"]
+        kinds = {x["parse_status"] for x in items}
+        parsed_issue = [x for x in items if x["parse_status"] == "comic_issue_explicit"]
+        parsed_episode = [x for x in items if x["parse_status"] == "episode_explicit"]
+        parsed = parsed_issue or parsed_episode
         appearance_rows.append({
-            "source_appearance_candidate_id":"user-first-appearance-"+re.sub(r"[^a-z0-9]+","-",key)[:120].strip("-"),
-            "normalized_first_appearance":key,
+            "source_appearance_candidate_id":"user-source-appearance-"+re.sub(r"[^a-z0-9]+","-",key)[:120].strip("-"),
+            "canonical_reference_key":key if not key.startswith("raw|") else None,
+            "normalized_first_appearance":norm((items[0].get("raw_first_appearance") or "")),
             "raw_first_appearance_values":uniq(x["raw_first_appearance"] for x in items),
             "record_count":len(items),
             "observed_names":uniq(x["name"] for x in items),
@@ -481,11 +552,20 @@ def main():
             "observed_universes":uniq(x["universe"] for x in items),
             "observed_years":uniq(x["year"] for x in items),
             "source_work_candidate":parsed[0]["source_work_candidate"] if parsed and len({x["source_work_candidate"] for x in parsed}) == 1 else None,
+            "source_work_normalized":parsed[0]["source_work_normalized"] if parsed and len({x["source_work_normalized"] for x in parsed}) == 1 else None,
+            "volume_candidate":parsed[0]["volume_candidate"] if parsed and len({x["volume_candidate"] for x in parsed}) == 1 else None,
             "issue_number_candidate":parsed[0]["issue_number_candidate"] if parsed and len({x["issue_number_candidate"] for x in parsed}) == 1 else None,
-            "parse_status":"explicit_hash_issue" if parsed and len(parsed) == len(items) else "mixed_or_raw",
+            "season_candidate":parsed[0]["season_candidate"] if parsed and len({x["season_candidate"] for x in parsed}) == 1 else None,
+            "episode_candidate":parsed[0]["episode_candidate"] if parsed and len({x["episode_candidate"] for x in parsed}) == 1 else None,
+            "year_hints":uniq(x["year_hint"] for x in items),
+            "parse_status": (
+                "comic_issue_explicit" if kinds == {"comic_issue_explicit"}
+                else "episode_explicit" if kinds == {"episode_explicit"}
+                else "mixed_or_raw"
+            ),
             "source_records":items[:100],
             "resolution_status":"candidate_needs_source_verification",
-            "policy":"The tracker string is preserved verbatim. Parsed work/issue fields are only extracted from explicit '#number' syntax and remain candidates until source verification.",
+            "policy":"Every original tracker string is preserved. Structured title/volume/issue or season/episode fields are parser candidates and require source verification before canonical SourceAppearance promotion.",
             "processor_version":VERSION,
         })
     appearance_rows.sort(key=lambda x:(x["parse_status"]!="explicit_hash_issue",-x["record_count"],x["normalized_first_appearance"]))
@@ -496,10 +576,14 @@ def main():
     for row in appearance_rows:
         raw_text=" | ".join(row.get("raw_first_appearance_values") or [])
         reasons=[]; score=0
-        if row.get("parse_status")=="explicit_hash_issue":
+        if row.get("parse_status")=="comic_issue_explicit":
             appearance_kind="comic_issue_explicit"
             reasons.append("explicit_issue_number")
             score+=80
+        elif row.get("parse_status")=="episode_explicit":
+            appearance_kind="episode_explicit"
+            reasons.append("explicit_episode_reference")
+            score+=75
         elif re.search(r"\b(?:s\d{1,2}e\d{1,2}|season\s+\d+.*episode\s+\d+|episode\s+\d+)\b",raw_text,re.I):
             appearance_kind="episode_like_raw"
             reasons.append("episode_pattern")
