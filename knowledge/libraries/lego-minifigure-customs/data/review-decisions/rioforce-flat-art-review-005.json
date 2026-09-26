@@ -1,0 +1,65 @@
+{
+  "schema": "flat-art-independent-review-decisions/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "rioforce-flat-art-review-005",
+  "records": [
+    {
+      "candidate_id": "rioforce-8f237d0b0d2b3f330d5f06f8",
+      "relative_stem": "Lord of the Rings/Gandalf the Gray/Gandalf Torso (Front)",
+      "decision": "promote_exact_component_crosswalk",
+      "candidate_figure": "fig-003415",
+      "candidate_component": "973c12h02pr2053",
+      "bricklink_component": "973pb1142c01",
+      "reason": "The same independent lor001/dim001 inventory evidence identifies the Gandalf the Grey torso as BrickLink 973pb1142c01; Rebrickable element 6003398 resolves the alias. This asset is the front surface of that exact torso.",
+      "evidence_urls": [
+        "https://www.bricklink.com/catalogItemInv.asp?M=lor001&viewCodes=Y",
+        "https://www.bricklink.com/catalogItemInv.asp?M=dim001&viewCodes=Y"
+      ]
+    },
+    {
+      "candidate_id": "rioforce-1adbdb7331642cf9f3768b0c",
+      "relative_stem": "Sports/Soccer Torso 1 Front",
+      "decision": "hold_unverified",
+      "candidate_figure": "fig-000168",
+      "candidate_component": "973c22h01pr0124",
+      "reason": "The source label is generic ('Soccer Torso 1') and lacks team/year/kit identity. Multiple soccer figures tie on the same token, so exact identity is not independently established."
+    },
+    {
+      "candidate_id": "rioforce-1b183cd3573945fc7c592d9b",
+      "relative_stem": "Time Cruisers/Tim/Tim Face",
+      "decision": "reject_candidate_match",
+      "candidate_figure": "fig-006009",
+      "candidate_component": "3626cpr2624",
+      "reason": "The source path explicitly fixes the asset to Time Cruisers. The proposed figure is Tim Murphy from 2018; this is a cross-theme first-name collision and cannot be promoted."
+    },
+    {
+      "candidate_id": "rioforce-cbea756460d51e63cfe1176e",
+      "relative_stem": "Time Cruisers/Tim/Tim Torso",
+      "decision": "reject_candidate_match",
+      "candidate_figure": "fig-006009",
+      "candidate_component": "973c29h02pr4328",
+      "reason": "The source path explicitly fixes the asset to Time Cruisers. The proposed 2018 Tim Murphy torso is a cross-theme first-name collision."
+    },
+    {
+      "candidate_id": "rioforce-258cf8ec20c1fbbe1eb5f487",
+      "relative_stem": "Adventurers/Johnny Thunder/Johnny Thunder Orient Expedition Face",
+      "decision": "promote_exact_component_crosswalk",
+      "candidate_figure": "fig-000748",
+      "candidate_component": "3626bpr0247",
+      "bricklink_component": "3626px129",
+      "reason": "Independent Orient Expedition inventories (adv024, adv051, adv054) use the same Johnny Thunder head 3626px129. BrickLink lists element 4185491 for that head, matching the Rebrickable candidate element URL, establishing the exact alias across the 2003 expedition variants.",
+      "evidence_urls": [
+        "https://www.bricklink.com/catalogItemInv.asp?M=adv024&viewID=Y",
+        "https://www.bricklink.com/catalogItemInv.asp?M=adv051&viewCodes=Y",
+        "https://www.bricklink.com/catalogItemInv.asp?M=adv054"
+      ]
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "promoted": 2,
+    "held_unverified": 1,
+    "rejected_candidate_match": 2
+  },
+  "next_offset": 25
+}
