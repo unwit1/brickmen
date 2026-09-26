@@ -1,6 +1,6 @@
 {
   "schema": "skywalker-unresolved-diagnostic-summary/v1",
-  "processor_version": "skywalker-unresolved-diagnostic/v2",
+  "processor_version": "skywalker-unresolved-diagnostic/v3",
   "records": 361,
   "counterpart_status_counts": {
     "strong_character_counterpart": 61,
@@ -23,26 +23,30 @@
     "no_suffix": 197,
     "location_or_scene": 36,
     "rank_or_role": 37,
-    "outfit_or_accessory": 42,
+    "outfit_or_accessory": 46,
     "identity_selector": 9,
     "opaque_source_code": 3,
-    "other_unclassified": 15,
-    "episode_or_timeline": 33,
+    "episode_or_timeline": 34,
+    "identity_form": 2,
     "story_or_prop_state": 7,
-    "physical_state": 9
+    "physical_state": 9,
+    "game_local_selector": 2,
+    "other_unclassified": 7
   },
   "review_route_counts": {
     "no_suffix": 197,
     "location_or_scene": 24,
     "rank_or_role": 29,
-    "outfit_or_accessory": 24,
+    "outfit_or_accessory": 27,
     "identity_selector": 8,
     "mixed_semantics": 27,
     "opaque_source_code": 3,
-    "other_unclassified": 15,
-    "episode_or_timeline": 21,
+    "episode_or_timeline": 22,
+    "identity_form": 2,
     "story_or_prop_state": 7,
-    "physical_state": 6
+    "physical_state": 6,
+    "game_local_selector": 2,
+    "other_unclassified": 7
   },
   "top_suffix_tokens": [
     {
@@ -2178,9 +2182,9 @@
       "version": "variant_suffix_requires_version_resolution",
       "top_physical": "Boushh / Princess Leia in Disguise",
       "suffix_semantic_labels": [
-        "other_unclassified"
+        "outfit_or_accessory"
       ],
-      "review_route": "other_unclassified"
+      "review_route": "outfit_or_accessory"
     },
     {
       "key": "ScoutTrooper",
