@@ -1,0 +1,68 @@
+{
+  "schema": "flat-art-independent-review-decisions/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "rioforce-flat-art-review-004",
+  "records": [
+    {
+      "candidate_id": "rioforce-9af059ceb1c32cc837a23581",
+      "relative_stem": "LEGO Minifigures/Series 10/Mr. Gold/Mr Gold Face",
+      "decision": "reject_candidate_match",
+      "candidate_figure": "fig-000369",
+      "candidate_component": "3626bpr0064",
+      "reason": "The source path explicitly identifies Series 10 Mr. Gold (2013); the proposed figure is Mr. Cunningham from 2000 and matches only the token 'Mr'."
+    },
+    {
+      "candidate_id": "rioforce-6f551961c75ed02c7e4a7080",
+      "relative_stem": "LEGO Minifigures/Series 10/Mr. Gold/Mr Gold Torso",
+      "decision": "reject_candidate_match",
+      "candidate_figure": "fig-000369",
+      "candidate_component": "973c08h01pr0043",
+      "reason": "The source path explicitly identifies Series 10 Mr. Gold (2013); the proposed torso belongs to Mr. Cunningham and is a false lexical match."
+    },
+    {
+      "candidate_id": "rioforce-aa1ac85412c9e08234b1882f",
+      "relative_stem": "LEGO Minifigures/Series 2/Surfer Torso",
+      "decision": "promote_exact_component_crosswalk",
+      "candidate_figure": "fig-000046",
+      "candidate_component": "973c01h01pr1654",
+      "bricklink_component": "973pb0722c01",
+      "reason": "Series 2 Surfer is independently cataloged as col031 (2010). BrickLink inventory identifies the bare-chest muscle torso and element 4587332; the Rebrickable candidate resolves to the same element 4587332, establishing the alias and exact torso identity.",
+      "evidence_urls": [
+        "https://www.bricklink.com/CatalogItemInv.asp?M=col031",
+        "https://brickset.com/minifigs/col031/surfer-series-2-%28minifigure-only-without-stand-and-accessories%29"
+      ]
+    },
+    {
+      "candidate_id": "rioforce-79760721ad1eb0aa12ebcc1e",
+      "relative_stem": "LEGO Minifigures/Series 5/Cave Girl/Cave Girl Legs",
+      "decision": "reject_candidate_match_with_corrected_identity_hint",
+      "candidate_figure": "fig-000889",
+      "candidate_component": "970c01pr0147",
+      "reason": "The source path is Series 5, while the proposed figure is the 2010 Cave Man. Independent Series 5 inventory identifies Cave Woman (col069, 2011) with decorated legs 970c03pb12; the current candidate must not be promoted.",
+      "corrected_identity_hint": {
+        "bricklink_figure": "col069",
+        "bricklink_component": "970c03pb12"
+      }
+    },
+    {
+      "candidate_id": "rioforce-56e142c042cb64130fe20b5f",
+      "relative_stem": "Lord of the Rings/Gandalf the Gray/Gandalf Torso (Back)",
+      "decision": "promote_exact_component_crosswalk",
+      "candidate_figure": "fig-003415",
+      "candidate_component": "973c12h02pr2053",
+      "bricklink_component": "973pb1142c01",
+      "reason": "BrickLink inventories for both lor001 and Dimensions dim001 identify the same Gandalf the Grey torso. The Rebrickable candidate image is element 6003398, also listed for BrickLink 973pb1142c01, establishing the exact torso alias. This asset is the back surface of that torso.",
+      "evidence_urls": [
+        "https://www.bricklink.com/catalogItemInv.asp?M=lor001&viewCodes=Y",
+        "https://www.bricklink.com/catalogItemInv.asp?M=dim001&viewCodes=Y"
+      ]
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "promoted": 2,
+    "rejected_candidate_match": 2,
+    "rejected_with_corrected_hint": 1
+  },
+  "next_offset": 20
+}
