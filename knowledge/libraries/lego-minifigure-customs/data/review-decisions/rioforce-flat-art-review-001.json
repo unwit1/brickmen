@@ -1,0 +1,55 @@
+{
+  "schema": "flat-art-independent-review-decisions/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "rioforce-flat-art-review-001",
+  "policy": "Independent review of ranked candidates. A lexical/catalog candidate is not promoted unless subject identity/version and exact decorated surface are independently resolved. Ambiguous generic labels remain unverified.",
+  "records": [
+    {
+      "candidate_id": "rioforce-269995a4d5cf08ac60c85110",
+      "relative_stem": "City/Open-tie Torso",
+      "decision": "hold_unverified",
+      "candidate_figure": "fig-000655",
+      "candidate_component": "973c03h01pr0267",
+      "reason": "The source label is generic and the ranking has a zero margin against an unrelated TIE Pilot lexical match. No subject/version/year evidence uniquely identifies fig-000655; component plausibility alone is insufficient."
+    },
+    {
+      "candidate_id": "rioforce-ea34b5ade777b88332b9483e",
+      "relative_stem": "City/Scared Face",
+      "decision": "hold_unverified",
+      "candidate_figure": "fig-000624",
+      "candidate_component": "3626bpr0500",
+      "reason": "The source label identifies only an expression. Multiple catalog heads/figures use scared expressions and the top candidate has zero margin. No independent character/version evidence uniquely resolves this asset."
+    },
+    {
+      "candidate_id": "rioforce-dd354c24121b3460a72af91c",
+      "relative_stem": "Classics/Classic Bob Face",
+      "decision": "hold_unverified",
+      "candidate_figure": "fig-000429",
+      "candidate_component": "3626bpr0107",
+      "reason": "The token Bob is non-unique and the candidate ties other Bob-named figures. The source label does not independently establish Biker Bob or a release year, so exact identity cannot be promoted safely."
+    },
+    {
+      "candidate_id": "rioforce-f55cfc53b71dc6dd919ee2f8",
+      "relative_stem": "Classics/Classic Sunglasses Face",
+      "decision": "hold_unverified",
+      "candidate_figure": "fig-000074",
+      "candidate_component": "3626bpr0006",
+      "reason": "The source label is a generic facial-design description. The component is a plausible classic sunglasses head, but the queue's figure identity is not uniquely established and exact asset-to-component identity still requires visual/catalog provenance."
+    },
+    {
+      "candidate_id": "rioforce-5ae74f2aeab6b81782cf6050",
+      "relative_stem": "Indiana Jones/Motorcycle Guy/LIJ Motorcycles Guy Torso",
+      "decision": "reject_candidate_match",
+      "candidate_figure": "fig-000958",
+      "candidate_component": "973c01h01pr2319",
+      "reason": "The source path explicitly places the asset under Indiana Jones, while fig-000958 is a 2013 Motorcycle Mechanic candidate selected only from the token motorcycle. This does not establish the Indiana Jones Motorcycle Guy identity and must not be promoted."
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "promoted": 0,
+    "held_unverified": 4,
+    "rejected_candidate_match": 1
+  },
+  "next_offset": 5
+}
