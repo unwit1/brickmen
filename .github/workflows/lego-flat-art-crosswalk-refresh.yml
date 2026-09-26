@@ -9,6 +9,8 @@ on:
       - 'tools/knowledge/build_flat_art_catalog_crosswalk_candidates.py'
       - 'tools/knowledge/index_rioforce_lego_textures.py'
       - 'tools/knowledge/ingest_lego_minifigure_references.py'
+      - 'tools/knowledge/rank_flat_art_promotion_candidates.py'
+      - 'knowledge/libraries/lego-minifigure-customs/data/flat-art-verified-crosswalk-2026-09-25.json'
 
 permissions:
   contents: write
@@ -102,6 +104,18 @@ jobs:
             --output "$out/candidates.jsonl" \
             --summary "$out/summary.json"
 
+      - name: Rank unverified flat-art promotion candidates
+        shell: bash
+        run: |
+          set -euo pipefail
+          out="$WORK/promotion-review"
+          mkdir -p "$out"
+          python tools/knowledge/rank_flat_art_promotion_candidates.py \
+            --candidates "$WORK/crosswalk/candidates.jsonl" \
+            --verified knowledge/libraries/lego-minifigure-customs/data/flat-art-verified-crosswalk-2026-09-25.json \
+            --output "$out/review-queue.jsonl" \
+            --summary "$out/summary.json"
+
       - name: Commit refreshed flat-art candidate layer
         shell: bash
         run: |
@@ -115,10 +129,14 @@ jobs:
             cp "$WORK/crosswalk/candidates.jsonl" "$DEST/flat-art-catalog-crosswalk-candidates-latest.jsonl"
             cp "$WORK/rioforce-supervision/summary.json" "$DEST/rioforce-design-supervision-summary-latest.json"
             cp "$WORK/rioforce-supervision/records.jsonl" "$DEST/rioforce-design-supervision-latest.jsonl"
+            cp "$WORK/promotion-review/summary.json" "$DEST/flat-art-promotion-review-summary-latest.json"
+            cp "$WORK/promotion-review/review-queue.jsonl" "$DEST/flat-art-promotion-review-queue-latest.jsonl"
             git add "$DEST/flat-art-catalog-crosswalk-summary-latest.json" \
                     "$DEST/flat-art-catalog-crosswalk-candidates-latest.jsonl" \
                     "$DEST/rioforce-design-supervision-summary-latest.json" \
-                    "$DEST/rioforce-design-supervision-latest.jsonl"
+                    "$DEST/rioforce-design-supervision-latest.jsonl" \
+                    "$DEST/flat-art-promotion-review-summary-latest.json" \
+                    "$DEST/flat-art-promotion-review-queue-latest.jsonl"
             if git diff --cached --quiet; then
               echo "No flat-art crosswalk changes."
               exit 0
