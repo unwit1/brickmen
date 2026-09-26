@@ -1,0 +1,226 @@
+{
+  "schema": "skywalker-ambiguous-family-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-ambiguous-family-review-004",
+  "policy": "Unsuffixed digital identities are resolved only to the narrowest defensible character family. Explicit physical modifiers such as Blind, Padawan, Damaged, Chrome, Santa, print-generation, hair-color, and leg-print states are not collapsed into the base identity without direct visual evidence; duplicate digital assets remain separately auditable even when they share one semantic key.",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-3f364b1d27625c1c491a1430",
+      "character_variant_key": "KananJarrus",
+      "decision": "character_identity_verified_multiple_rebels_state_and_hair_variants_visual_pending",
+      "canonical_subject": "Kanan Jarrus",
+      "plausible_pre_game_physical_candidates": [
+        {
+          "fig_num": "fig-004062",
+          "catalog_name": "Kanan Jarrus, Black Hair",
+          "year": 2014,
+          "set_num": "75053-1"
+        },
+        {
+          "fig_num": "fig-001566",
+          "catalog_name": "Kanan Jarrus, Dark Brown Hair, Dark Brown Eyebrows",
+          "first_year": 2014,
+          "sets": [
+            "75053-1",
+            "FANEXPO001-1",
+            "75084-1",
+            "75141-1",
+            "911719-1"
+          ]
+        },
+        {
+          "fig_num": "fig-004260",
+          "catalog_name": "Kanan Jarrus, Blind",
+          "year": 2017,
+          "set_num": "75170-1"
+        }
+      ],
+      "reason": "The unqualified profile establishes Kanan Jarrus but does not encode whether the digital asset is the early-haired Rebels state or the later blind state, and the early physical releases themselves differ by hair/eyebrow treatment. Exact physical mapping therefore remains visual pending.",
+      "evidence_urls": [
+        "https://brickset.com/minifigs?query=kanan+jarrus"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-80bd8d513a1d5f1a7eace2c4",
+      "character_variant_key": "DarthVader",
+      "decision": "base_character_identity_verified_candidate_set_contains_explicit_special_variants_exact_standard_release_unresolved",
+      "canonical_subject": "Darth Vader",
+      "plausible_standard_family_candidate": {
+        "fig_num": "fig-004057",
+        "catalog_name": "Darth Vader, Tan Skin",
+        "year": 2014,
+        "set_num": "75055-1"
+      },
+      "rejected_or_separate_special_variants": [
+        {
+          "fig_num": "fig-003686",
+          "catalog_name": "Darth Vader, Damaged",
+          "first_year": 2008,
+          "reason": "explicit damaged state"
+        },
+        {
+          "fig_num": "fig-000581",
+          "catalog_name": "Darth Vader, Chrome Black",
+          "first_year": 2008,
+          "reason": "promotional chrome treatment"
+        },
+        {
+          "fig_num": "fig-001106",
+          "catalog_name": "Darth Vader, Santa Outfit",
+          "year": 2014,
+          "reason": "festive novelty state"
+        },
+        {
+          "fig_num": "fig-016875",
+          "catalog_name": "Darth Vader, Gingerbread",
+          "year": 2025,
+          "reason": "post-game novelty state"
+        }
+      ],
+      "reason": "The unsuffixed key verifies standard Darth Vader rather than damaged, chrome, Santa, or gingerbread novelty variants. The current supported candidate set does not provide enough evidence to promote one exact standard physical print; the 2014 tan-skin figure is retained as plausible family support only.",
+      "evidence_urls": [
+        "https://brickset.com/minifigs?query=darth+vader"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-0f5ffc32b86a5954104e3085",
+      "character_variant_key": "DarthVader",
+      "decision": "base_character_identity_verified_candidate_set_contains_explicit_special_variants_exact_standard_release_unresolved",
+      "canonical_subject": "Darth Vader",
+      "duplicate_semantic_key_note": "This is a distinct digital asset ID sharing the DarthVader semantic key; preserve it independently rather than deduplicating the source asset.",
+      "plausible_standard_family_candidate": {
+        "fig_num": "fig-004057",
+        "catalog_name": "Darth Vader, Tan Skin",
+        "year": 2014,
+        "set_num": "75055-1"
+      },
+      "rejected_or_separate_special_variants": [
+        {
+          "fig_num": "fig-003686",
+          "catalog_name": "Darth Vader, Damaged",
+          "first_year": 2008,
+          "reason": "explicit damaged state"
+        },
+        {
+          "fig_num": "fig-000581",
+          "catalog_name": "Darth Vader, Chrome Black",
+          "first_year": 2008,
+          "reason": "promotional chrome treatment"
+        },
+        {
+          "fig_num": "fig-001106",
+          "catalog_name": "Darth Vader, Santa Outfit",
+          "year": 2014,
+          "reason": "festive novelty state"
+        },
+        {
+          "fig_num": "fig-016875",
+          "catalog_name": "Darth Vader, Gingerbread",
+          "year": 2025,
+          "reason": "post-game novelty state"
+        }
+      ],
+      "reason": "This second DarthVader asset is reviewed separately for provenance. Its unsuffixed semantic identity likewise excludes the explicitly damaged, chrome, festive, and post-game novelty candidates, but exact standard physical print remains unresolved without direct visual comparison.",
+      "evidence_urls": [
+        "https://brickset.com/minifigs?query=darth+vader"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-425dcbd8c7b1c51835b3b7c8",
+      "character_variant_key": "ObiWanKenobi",
+      "decision": "character_identity_verified_multiple_era_and_gimmick_physical_variants_exact_timeline_unresolved",
+      "canonical_subject": "Obi-Wan Kenobi",
+      "plausible_pre_game_physical_candidates": [
+        {
+          "fig_num": "fig-003634",
+          "catalog_name": "Obi-Wan Kenobi, Yellow Skin",
+          "year": 2002,
+          "set_num": "7133-1",
+          "state": "early Episode II-era yellow-skin implementation"
+        },
+        {
+          "fig_num": "fig-000773",
+          "catalog_name": "Obi-Wan Kenobi, Yellow Skin, Headset",
+          "year": 2002,
+          "set_num": "7143-1",
+          "state": "headset variant"
+        },
+        {
+          "fig_num": "fig-007680",
+          "catalog_name": "Obi-Wan Kenobi, Light-Up Lightsaber",
+          "year": 2005,
+          "set_num": "7257-1",
+          "state": "light-up gimmick release"
+        },
+        {
+          "fig_num": "fig-002048",
+          "catalog_name": "Obi-Wan Kenobi, White Legs (Clone Wars)",
+          "first_year": 2008,
+          "sets": [
+            "7676-1",
+            "7753-1",
+            "COMCON009-1",
+            "330081-1",
+            "7931-1",
+            "9525-1"
+          ],
+          "state": "Clone Wars"
+        },
+        {
+          "fig_num": "fig-004261",
+          "catalog_name": "Obi-Wan Kenobi, Padawan, Printed Legs",
+          "year": 2017,
+          "set_num": "75169-1",
+          "state": "Padawan"
+        }
+      ],
+      "reason": "Obi-Wan spans multiple ages, media states, accessories, and even a light-up novelty implementation. The unsuffixed profile proves only the character identity; it cannot safely select Padawan, Clone Wars, headset, early yellow-skin, or light-up physical states without source-image/timeline evidence.",
+      "evidence_urls": [
+        "https://brickset.com/minifigs?query=obi-wan+kenobi"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-91eabfa3e83509e8dd57d830",
+      "character_variant_key": "KiAdiMundi",
+      "decision": "character_identity_verified_pre_game_leg_print_generation_unresolved_post_game_reprint_rejected",
+      "canonical_subject": "Ki-Adi-Mundi",
+      "plausible_pre_game_physical_candidates": [
+        {
+          "fig_num": "fig-003776",
+          "catalog_name": "Ki-Adi-Mundi, Plain Legs",
+          "year": 2011,
+          "set_num": "7959-1"
+        },
+        {
+          "fig_num": "fig-004505",
+          "catalog_name": "Ki-Adi-Mundi, Printed Legs",
+          "year": 2018,
+          "set_num": "75206-1"
+        }
+      ],
+      "rejected_post_game_candidate": {
+        "fig_num": "fig-016592",
+        "catalog_name": "Ki-Adi-Mundi, Printed Legs",
+        "year": 2025,
+        "set_num": "75413-1"
+      },
+      "reason": "Both the 2011 plain-leg and 2018 printed-leg Ki-Adi-Mundi releases predate the game and are valid character-family candidates. The unqualified digital key does not distinguish that print-generation detail; the 2025 reprint postdates the game and is not source-equivalent.",
+      "evidence_urls": [
+        "https://brickset.com/minifigs?query=ki-adi-mundi"
+      ]
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "distinct_variant_keys": 4,
+    "duplicate_semantic_key_assets_preserved": 1,
+    "exact_artwork_equivalence_promotions": 0,
+    "post_game_or_explicit_special_variant_candidates_rejected_or_separated": 9
+  },
+  "remaining_ambiguous_family_records_after_batch": 51,
+  "systemic_findings": [
+    "Distinct source assets that share one semantic character key must remain separately auditable; semantic-key deduplication must not erase source provenance.",
+    "Explicit novelty or state modifiers such as Damaged, Chrome, Santa, Blind, Padawan, or Light-Up are not evidence for an unsuffixed base identity.",
+    "Print-generation details such as hair color or leg printing remain visual-pending when the digital key itself is unqualified."
+  ]
+}
