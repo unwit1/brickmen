@@ -6,7 +6,7 @@ import argparse, json, re, unicodedata
 from collections import Counter
 from pathlib import Path
 
-VERSION="tracker-identity-field-audit/v4"
+VERSION="tracker-identity-field-audit/v5"
 COLORS={"black","white","gold","green","yellow","red","blue","silver","gray","grey","purple","orange","pink","brown","tan","azure","teal"}
 MEDIA_OR_STYLE={"mvc","mcu","dcau","dceu","arrowverse","classic","modern","animated"}
 ROLE_OR_ERA={"atlantean","phoenix","pirate queen","wild west"}
@@ -29,6 +29,16 @@ def source_name(rec):
     return rec.get("name") or rec.get("character") or rec.get("character_or_product_name") or rec.get("name_or_note")
 
 def load_corrections(path):
+    if not path:
+        return {}
+    data=json.loads(path.read_text(encoding="utf-8"))
+    out={}
+    for row in data.get("records") or []:
+        key=(str(row.get("source_title") or ""),str(row.get("source_tab") or ""),int(row.get("source_row") or 0))
+        out[key]=row
+    return out
+
+def load_review_decisions(path):
     if not path:
         return {}
     data=json.loads(path.read_text(encoding="utf-8"))
@@ -80,13 +90,16 @@ def main():
     ap.add_argument("--collection-dir",type=Path,required=True)
     ap.add_argument("--design-dir",type=Path,required=True)
     ap.add_argument("--semantic-corrections",type=Path)
+    ap.add_argument("--review-decisions",type=Path)
     ap.add_argument("--output",type=Path,required=True)
     ap.add_argument("--summary",type=Path,required=True)
     args=ap.parse_args()
 
     corrections=load_corrections(args.semantic_corrections)
+    decisions=load_review_decisions(args.review_decisions)
     rows=[]
     source_records=0
+    reviewed_no_change=0
     reason_counts=Counter()
     name_counts=Counter()
     for root in (args.collection_dir,args.design_dir):
@@ -99,6 +112,11 @@ def main():
                 rec,corr=corrected(raw,corrections)
                 ss=signals(rec)
                 if not ss:
+                    continue
+                decision_key=(str(raw.get("source_title") or ""),str(raw.get("source_tab") or ""),int(raw.get("source_row") or 0))
+                decision=decisions.get(decision_key)
+                if decision and decision.get("decision")=="reviewed_no_change":
+                    reviewed_no_change+=1
                     continue
                 for sig in ss:
                     reason_counts[sig]+=1
@@ -137,13 +155,15 @@ def main():
         for row in rows:
             f.write(json.dumps(row,ensure_ascii=False)+"\n")
     summary={
-        "schema":"tracker-identity-field-audit-summary/v4",
+        "schema":"tracker-identity-field-audit-summary/v5",
         "processor_version":VERSION,
         "named_source_records_scanned":source_records,
         "review_records":len(rows),
+        "reviewed_no_change_records":reviewed_no_change,
+        "review_decisions_configured":len(decisions),
         "review_reason_counts":dict(reason_counts),
         "top_character_groups":[{"name":name,"records":count} for name,count in name_counts.most_common(50)],
-        "status":"identity_field_review_queue_ready"
+        "status":"identity_field_review_complete" if not rows else "identity_field_review_queue_ready"
     }
     args.summary.write_text(json.dumps(summary,indent=2)+"\n",encoding="utf-8")
     print(json.dumps(summary,indent=2))
