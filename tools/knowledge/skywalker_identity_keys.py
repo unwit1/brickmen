@@ -15,6 +15,24 @@ SPECIALIZED_ROLE_MATCH_OVERRIDES = {
 }
 
 IDENTITY_KEY_OVERRIDES = {
+    "SpecialForcesFighterPilot_FsO": {
+        "base_character_key": "SpecialForcesFighterPilot_FsO",
+        "canonical_identity_label": "First Order Special Forces Fighter Pilot",
+        "variant_suffix_tokens": [],
+        "reason": "First Order Special Forces Fighter Pilot is the full named playable role; FsO is source-local First Order identity scope rather than a variant.",
+    },
+    "Empire_Cpt": {
+        "base_character_key": "Empire_Cpt",
+        "canonical_identity_label": "Empire Captain",
+        "variant_suffix_tokens": [],
+        "reason": "Empire Captain is the full named playable role; Cpt expands to Captain and is not a physical variant suffix.",
+    },
+    "TIEFighterPilot_FirstOrder": {
+        "base_character_key": "TIEFighterPilot_FirstOrder",
+        "canonical_identity_label": "First Order TIE Fighter Pilot",
+        "variant_suffix_tokens": [],
+        "reason": "First Order TIE Fighter Pilot is the full named playable role; FirstOrder is identity scope, not an appearance suffix.",
+    },
     "Emperors_RoyalGuard": {
         "base_character_key": "Emperors_RoyalGuard",
         "canonical_identity_label": "Emperor's Royal Guard",
