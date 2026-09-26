@@ -10,8 +10,9 @@ from __future__ import annotations
 import argparse,json,re,unicodedata
 from collections import Counter
 from pathlib import Path
+from skywalker_identity_keys import parse_identity_key
 
-VERSION="skywalker-counterpart-classification/v2"
+VERSION="skywalker-counterpart-classification/v3"
 
 STOP={"lego","star","wars","minifig","minifigure","figure","character","profile","icon","icons"}
 
@@ -34,11 +35,9 @@ def norm(v):
     return " ".join(t for t in s.split() if t and t not in STOP)
 
 def key_parts(key):
-    raw=str(key or "")
-    parts=raw.split("_")
-    base=parts[0]
-    suffix=parts[1:] if len(parts)>1 else []
-    return base,suffix
+    parsed=parse_identity_key(key)
+    identity=parsed.get("canonical_identity_label") or parsed["base_character_key"]
+    return identity,parsed["variant_suffix_tokens"],parsed
 
 def same_character(base_key, physical_name):
     base_tokens=norm(base_key).split()
@@ -77,7 +76,7 @@ def main():
     rows=[];counts=Counter();temporal_counts=Counter();source_equivalence_counts=Counter()
     for r in load_jsonl(args.candidates):
         key=r.get("character_variant_key")
-        base,suffix=key_parts(key)
+        base,suffix,parsed_key=key_parts(key)
         top=(r.get("top_candidates") or [])
         first=top[0] if top else None
         same=bool(first and same_character(base,first.get("name")))
@@ -117,7 +116,10 @@ def main():
         rows.append({
           "asset_id":r.get("asset_id"),
           "character_variant_key":key,
-          "base_character_key":base,
+          "base_character_key":parsed_key["base_character_key"],
+          "canonical_identity_label":base,
+          "identity_key_parse_mode":parsed_key["parse_mode"],
+          "identity_key_parse_reason":parsed_key.get("reason"),
           "variant_suffix_tokens":suffix,
           "class":r.get("class"),
           "filename":r.get("filename"),
