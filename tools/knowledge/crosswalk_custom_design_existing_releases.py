@@ -12,7 +12,7 @@ import argparse,json,re,unicodedata
 from collections import Counter,defaultdict
 from pathlib import Path
 
-VERSION="design-existing-release-crosswalk/v1"
+VERSION="design-existing-release-crosswalk/v2"
 
 def load_jsonl(path):
     with Path(path).open("r",encoding="utf-8") as f:
@@ -27,6 +27,15 @@ def norm(v):
     s=s.replace("&"," and ")
     s=re.sub(r"[^a-z0-9]+"," ",s)
     return " ".join(s.split())
+
+def alias_keys(name):
+    n=norm(name)
+    if not n:return []
+    keys={n}
+    # Conservative punctuation/number aliases only; do not infer character identity.
+    keys.add(n.replace(" ii"," 2").replace(" iii"," 3").replace(" iv"," 4"))
+    keys.add(n.replace(" 2"," ii").replace(" 3"," iii").replace(" 4"," iv"))
+    return sorted(k for k in keys if k)
 
 def uniq(xs):
     return sorted({str(x).strip() for x in xs if x is not None and str(x).strip()})
@@ -73,8 +82,7 @@ def main():
     name_index=defaultdict(list)
     for rid,rel in release_by_id.items():
         for name in rel.get("observed_names") or []:
-            n=norm(name)
-            if n:
+            for n in alias_keys(name):
                 name_index[n].append(rid)
 
     rows=[];status_counts=Counter()
@@ -84,7 +92,12 @@ def main():
         target_names=target.get("names") or []
         candidate_ids=[]
         for name in target_names:
-            candidate_ids.extend(name_index.get(norm(name),[]))
+            for key in alias_keys(name):
+                candidate_ids.extend(name_index.get(key,[]))
+        # Explicit identity is additional retrieval evidence, never an automatic match.
+        for identity in target.get("identities") or []:
+            for key in alias_keys(identity):
+                candidate_ids.extend(name_index.get(key,[]))
         candidate_ids=uniq(candidate_ids)
 
         matches=[]
@@ -98,7 +111,15 @@ def main():
                 catalog_names,
             )
             catalog_status=cross.get("effective_catalog_match_status") or cross.get("herobloks_match_status")
-            if vs in {"exact_variant","variant_contains","catalog_name_contains_variant"}:
+            target_name_keys={k for n in target_names for k in alias_keys(n)}
+            release_name_keys={k for n in (rel.get("observed_names") or []) for k in alias_keys(n)}
+            identity_keys={k for n in (target.get("identities") or []) for k in alias_keys(n)}
+            name_relation=(
+                "exact_or_alias_name" if target_name_keys & release_name_keys
+                else "explicit_identity_name" if identity_keys & release_name_keys
+                else "retrieval_only"
+            )
+            if vs in {"exact_variant","variant_contains","catalog_name_contains_variant"} and name_relation!="retrieval_only":
                 status="likely_existing_representation"
             elif vs=="target_has_no_variant" and catalog_status and "match" in str(catalog_status) and "no_exact" not in str(catalog_status):
                 status="existing_name_level_representation"
@@ -114,6 +135,7 @@ def main():
                 "catalog_match_status":catalog_status,
                 "variant_support":vs,
                 "representation_status":status,
+                "name_relation":name_relation,
             })
 
         if not matches:
