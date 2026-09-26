@@ -1,0 +1,220 @@
+{
+  "schema": "skywalker-ambiguous-family-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-ambiguous-family-review-013",
+  "policy": "Collapse same-set mold-revision duplicates into one release family, normalize audited compact character identifiers when the candidate identity is unambiguous, and reject holiday/association-specific candidates from generic base roles. If the supported candidate set contains only specialized ranks or units for a generic role, preserve the base digital identity and mark physical coverage incomplete.",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-4cf061bb5a222be2e294862c",
+      "character_variant_key": "Yoda",
+      "decision": "character_identity_verified_multiple_pre_game_head_color_clone_wars_and_accessory_generations_visual_pending",
+      "canonical_subject": "Yoda",
+      "plausible_pre_game_physical_candidates": [
+        {
+          "fig_num": "fig-003534",
+          "catalog_name": "Yoda, Plain Sand Green Head",
+          "first_year": 2002,
+          "sets": [
+            "7103-1",
+            "4502-1",
+            "4502-2",
+            "7260-1"
+          ]
+        },
+        {
+          "fig_num": "fig-004021",
+          "catalog_name": "Yoda, Olive Green Head, Neck Bracket",
+          "year": 2013,
+          "set_num": "75017-1"
+        },
+        {
+          "fig_num": "fig-003965",
+          "catalog_name": "Yoda, Sand Green Head with White Hair (Clone Wars)",
+          "year": 2013,
+          "set_num": "75002-1"
+        },
+        {
+          "fig_num": "fig-004305",
+          "catalog_name": "Yoda, Olive Green Head, Belt and Flute",
+          "first_year": 2018,
+          "sets": [
+            "75208-1",
+            "75330-1"
+          ]
+        }
+      ],
+      "reason": "All supported Yoda design families were introduced before the game and span head color, Clone Wars styling, neck-bracket construction, and belt/flute accessory treatment. The unsuffixed key does not select an era or component generation, so exact physical mapping remains visual pending.",
+      "evidence_urls": [
+        "https://brickset.com/minifigs?query=yoda"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-3405f2f52b61b638903378b5",
+      "character_variant_key": "Savage_Oppress",
+      "decision": "physical_release_family_verified_same_set_head_mold_revision_exact_artwork_visual_pending",
+      "canonical_subject": "Savage Opress",
+      "physical_release_family": {
+        "year": 2011,
+        "set_num": "7957-1",
+        "catalog_records": [
+          {
+            "fig_num": "fig-003778",
+            "catalog_name": "Savage Opress -3626b Head",
+            "head_mold": "3626b"
+          },
+          {
+            "fig_num": "fig-012423",
+            "catalog_name": "Savage Opress -3626c Head",
+            "head_mold": "3626c"
+          }
+        ]
+      },
+      "reason": "Both candidates are Savage Opress from the same 2011 set and differ only by the cataloged head-mold revision. They should be treated as one physical release family rather than separate character variants; the exact component revision/source artwork remains provenance/visual pending.",
+      "systemic_pattern": "same_set_mold_revision_records_are_one_release_family",
+      "evidence_urls": [
+        "https://brickset.com/minifigs?query=savage+opress"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-76a67a0a095f72db027be2c2",
+      "character_variant_key": "21B",
+      "decision": "compact_identifier_normalized_to_2_1b_character_identity_verified_two_pre_game_body_generations_visual_pending",
+      "canonical_subject": "2-1B Medical Droid",
+      "identifier_normalization": {
+        "source": "21B",
+        "canonical": "2-1B",
+        "confidence": "high"
+      },
+      "plausible_pre_game_physical_candidates": [
+        {
+          "fig_num": "fig-003851",
+          "catalog_name": "2-1B Medical Droid, Pearl Dark Gray",
+          "year": 2010,
+          "set_num": "8096-1"
+        },
+        {
+          "fig_num": "fig-004165",
+          "catalog_name": "2-1B Medical Droid, Tan Torso",
+          "year": 2018,
+          "set_num": "75220-1"
+        }
+      ],
+      "reason": "The compact source key 21B resolves cleanly to 2-1B Medical Droid in the supported candidate family. Both physical implementations predate the game but differ in torso/body treatment, so identity is verified while exact physical generation remains visual pending.",
+      "evidence_urls": [
+        "https://brickset.com/minifigs?query=2-1b"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-c32b1dec06936809bc959b69",
+      "character_variant_key": "PitDroid",
+      "decision": "generic_pit_droid_identity_verified_ordinary_pre_game_candidate_association_and_holiday_variants_separated",
+      "canonical_subject": "Pit Droid",
+      "ordinary_physical_candidate": {
+        "fig_num": "fig-010660",
+        "catalog_name": "Pit Droid",
+        "year": 2020,
+        "set_num": "75279-1"
+      },
+      "separated_association_candidates": [
+        {
+          "fig_num": "fig-010431",
+          "catalog_name": "Pit Droid - Brown and White (Anakin)",
+          "year": 1999,
+          "sets": [
+            "7131-1",
+            "7171-1"
+          ],
+          "reason": "association-specific Anakin pit droid"
+        },
+        {
+          "fig_num": "fig-010432",
+          "catalog_name": "Pit Droid - Brown and White (Gasgano)",
+          "year": 1999,
+          "set_num": "7171-1",
+          "reason": "association-specific Gasgano pit droid"
+        }
+      ],
+      "rejected_post_game_holiday_candidates": [
+        {
+          "fig_num": "fig-014267",
+          "catalog_name": "Pit Droid, Christmas",
+          "year": 2023,
+          "set_num": "75366-1"
+        },
+        {
+          "fig_num": "fig-018126",
+          "catalog_name": "Festive Pit Droid",
+          "year": 2026,
+          "set_num": "75456-1"
+        }
+      ],
+      "reason": "The exact generic physical name Pit Droid from 2020 is the strongest ordinary counterpart for the unqualified digital role. Older named-owner pit droids are association-specific variants, while Christmas/festive figures postdate the game. The ordinary physical family is verified but exact digital artwork equivalence is not automatically promoted.",
+      "systemic_pattern": "association_specific_role_variants_do_not_override_generic_exact_name_candidate",
+      "evidence_urls": [
+        "https://brickset.com/minifigs?query=pit+droid"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-0da8dade6161c9f6bc4425d0",
+      "character_variant_key": "CloneTrooper",
+      "decision": "generic_clone_trooper_role_verified_supported_candidate_set_only_specialized_ranks_units_or_novelty_no_exact_base_release_selected",
+      "canonical_game_role": "Clone Trooper",
+      "separated_supported_candidates": [
+        {
+          "fig_num": "fig-004005",
+          "catalog_name": "Clone Trooper Captain",
+          "year": 2013,
+          "set_num": "75021-1",
+          "reason": "rank-specialized captain"
+        },
+        {
+          "fig_num": "fig-003975",
+          "catalog_name": "Clone Trooper Sergeant",
+          "year": 2013,
+          "set_num": "75000-1",
+          "reason": "rank-specialized sergeant"
+        },
+        {
+          "fig_num": "fig-004038",
+          "catalog_name": "Clone Trooper, Wolfpack",
+          "year": 2014,
+          "set_num": "75045-1",
+          "reason": "unit-specialized Wolfpack trooper"
+        },
+        {
+          "fig_num": "fig-004106",
+          "catalog_name": "Clone Trooper, Geonosis",
+          "year": 2015,
+          "set_num": "75089-1",
+          "reason": "environment/unit-specific Geonosis trooper"
+        },
+        {
+          "fig_num": "fig-001333",
+          "catalog_name": "Clone Trooper, Santa Hat",
+          "year": 2014,
+          "set_num": "75056-1",
+          "reason": "holiday novelty variant"
+        }
+      ],
+      "reason": "The source key is the generic Clone Trooper role, but every supported candidate is a rank-, unit-, environment-, or holiday-specialized physical figure. None should be forced onto the generic base identity. Preserve the digital role and flag standard physical candidate coverage as incomplete.",
+      "systemic_pattern": "specialized_candidates_do_not_substitute_for_missing_base_release",
+      "evidence_urls": [
+        "https://brickset.com/minifigs?query=clone+trooper"
+      ]
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "character_or_role_families_verified": 5,
+    "physical_release_family_collapsed_from_catalog_mold_revisions": 1,
+    "compact_identifier_normalized": 1,
+    "candidate_set_incomplete_for_base_identity": 1,
+    "automatic_exact_artwork_equivalence_promotions": 0
+  },
+  "remaining_ambiguous_family_records_after_batch": 6,
+  "systemic_findings": [
+    "Compact source identifiers can be normalized when the full candidate family independently supports one canonical identity.",
+    "Generic role matching should prefer an exact ordinary role candidate over associated-owner variants, but exact artwork still remains separate.",
+    "A candidate list composed entirely of specialized clone ranks/units is evidence of retrieval coverage weakness, not proof that the generic physical role is absent."
+  ]
+}
