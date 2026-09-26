@@ -1,0 +1,166 @@
+{
+  "schema": "skywalker-ambiguous-family-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-ambiguous-family-review-001",
+  "policy": "For unqualified digital character identities with multiple physical candidates, remove post-game releases, festive/companion/wrong-entity candidates, and explicit accessory-state mismatches first. Preserve multiple plausible pre-game physical variants when the profile image has not yet been visually compared.",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-64f1f2abb3d85a35094c4ec1",
+      "character_variant_key": "BB8",
+      "decision": "character_identity_verified_normal_physical_family_exact_sensor_variant_unresolved",
+      "canonical_subject": "BB-8",
+      "plausible_pre_game_physical_candidates": [
+        {
+          "fig_num": "fig-002544",
+          "brickset_minifig": "sw0661",
+          "catalog_name": "BB-8 (Small Photoreceptor and Small Black Circle)",
+          "first_year": 2015
+        },
+        {
+          "fig_num": "fig-004428",
+          "catalog_name": "BB-8, Large Photoreceptor",
+          "first_year": 2019
+        }
+      ],
+      "rejected_or_separate_candidates": [
+        {
+          "fig_num": "fig-006235",
+          "reason": "Santa-hat festive variant, not the unqualified base identity"
+        },
+        {
+          "fig_num": "fig-017261",
+          "reason": "2026 release postdates the 2022 game and cannot be its source design"
+        },
+        {
+          "fig_num": "fig-016770",
+          "reason": "2025 Snow Man novelty variant postdates the game"
+        }
+      ],
+      "reason": "The unqualified game identity verifies normal BB-8 but does not distinguish the pre-game small- vs large-photoreceptor physical implementations without visual comparison.",
+      "evidence_urls": [
+        "https://brickset.com/minifigs?query=bb-8"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-ade0b13774a4acba433a10d9",
+      "character_variant_key": "CaptainPhasma",
+      "decision": "character_identity_verified_intact_phasma_family_mouth_pattern_unresolved",
+      "canonical_subject": "Captain Phasma",
+      "plausible_pre_game_physical_candidates": [
+        {
+          "fig_num": "fig-004151",
+          "brickset_minifig": "sw0684",
+          "catalog_name": "Captain Phasma (Rounded Mouth Pattern)",
+          "year": 2015,
+          "set_num": "75103-1"
+        },
+        {
+          "fig_num": "fig-010658",
+          "brickset_minifig": "sw0904",
+          "catalog_name": "Captain Phasma (Pointed Mouth Pattern)",
+          "year": 2018,
+          "set_num": "75201-1"
+        }
+      ],
+      "reason": "The game has Captain Phasma as the unqualified intact identity and a separate cracked-helmet state elsewhere. Both supported physical candidates are intact pre-game Phasma figures differing mainly in helmet mouth pattern, so exact physical release remains a visual helmet-print comparison.",
+      "evidence_urls": [
+        "https://brickset.com/minifigs/name-Captain-Phasma/year-2015",
+        "https://brickset.com/minifigs/year-2018/name-Captain-Phasma"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-e88f2c53fe55121376cf1ff1",
+      "character_variant_key": "EzraBridger",
+      "decision": "character_identity_verified_pre_game_rebels_family_helmet_state_unresolved",
+      "canonical_subject": "Ezra Bridger",
+      "plausible_pre_game_physical_candidates": [
+        {
+          "fig_num": "fig-004104",
+          "catalog_name": "Ezra Bridger",
+          "first_year": 2015,
+          "headgear_state": "hair"
+        },
+        {
+          "fig_num": "fig-004079",
+          "brickset_minifig": "sw0574a",
+          "catalog_name": "Ezra Bridger - Dark Tan Vest, Helmet",
+          "year": 2014,
+          "headgear_state": "Imperial Cadet helmet"
+        }
+      ],
+      "rejected_candidate": {
+        "fig_num": "fig-015329",
+        "catalog_name": "Ezra Bridger, Adult",
+        "year": 2024,
+        "reason": "post-game Ahsoka-era adult release"
+      },
+      "reason": "The unqualified profile verifies Ezra Bridger in the pre-game Rebels family, while the candidate set contains both hair and helmet states. The 2024 adult Ezra is temporally impossible as source-equivalence; exact pre-game headgear state remains visual pending.",
+      "evidence_urls": [
+        "https://brickset.com/minifigs/category-Star-Wars/1000(Servo)/name-Ezra-Bridger"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-9cb213c7887a0a3a698bbbbd",
+      "character_variant_key": "Gasgano",
+      "decision": "exact_character_physical_release_verified_companion_false_positive_rejected",
+      "canonical_subject": "Gasgano",
+      "physical_candidate": {
+        "fig_num": "fig-003638",
+        "brickset_minifig": "sw0043",
+        "catalog_name": "Gasgano",
+        "year": 1999,
+        "set_num": "7171-1"
+      },
+      "rejected_candidate": {
+        "fig_num": "fig-010432",
+        "catalog_name": "Pit Droid - Brown and White (Gasgano)",
+        "reason": "This is Gasgano's pit droid, a separate entity related by ownership/association rather than the character Gasgano."
+      },
+      "reason": "Brickset independently catalogs Gasgano as sw0043 in 7171. The competing candidate is explicitly a Pit Droid belonging to Gasgano, so it must not create character-identity ambiguity.",
+      "evidence_urls": [
+        "https://brickset.com/minifigs/in-7171-1/name-Gasgano",
+        "https://brickset.com/minifigs/category-Star-Wars/year-1999?query=pit+droid"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-da16d139bed556de25bb79d6",
+      "character_variant_key": "HeraSyndulla",
+      "decision": "character_identity_verified_pre_game_rebels_release_later_ahsoka_release_rejected",
+      "canonical_subject": "Hera Syndulla",
+      "physical_candidate": {
+        "fig_num": "fig-000504",
+        "brickset_minifig": "sw0576",
+        "catalog_name": "Hera Syndulla - Dark Tan Arms",
+        "first_year": 2014,
+        "sets": [
+          "75053-1",
+          "75127-1"
+        ]
+      },
+      "rejected_candidate": {
+        "fig_num": "fig-014298",
+        "brickset_minifig": "sw1311",
+        "catalog_name": "Hera Syndulla - Dark Brown Arms",
+        "year": 2023,
+        "reason": "Ahsoka-era physical release postdates the 2022 game"
+      },
+      "reason": "The 2014 Rebels Hera is the only supported physical Hera release that predates the game. The 2023 Ahsoka-era figure cannot source the game profile, so the pre-game Rebels family is verified; exact asset-to-print identity remains visual pending.",
+      "evidence_urls": [
+        "https://brickset.com/minifigs/category-Star-Wars/name-Hera-Syndulla"
+      ]
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "exact_physical_release_or_pre_game_family_resolved": 2,
+    "multiple_pre_game_physical_variants_visual_pending": 3,
+    "wrong_entity_or_post_game_candidates_rejected": 6,
+    "automatic_exact_artwork_equivalence_promotions": 0
+  },
+  "remaining_ambiguous_family_records_after_batch": 66,
+  "systemic_findings": [
+    "Possessive/association catalog names such as 'Pit Droid (Gasgano)' must not be treated as the named character itself.",
+    "Post-game physical releases can be excluded from source-equivalence even when their names are exact character matches.",
+    "Unqualified digital identities may still require component-level visual comparison when multiple pre-game print or headgear states exist."
+  ]
+}
