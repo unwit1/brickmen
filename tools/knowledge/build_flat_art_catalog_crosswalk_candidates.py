@@ -17,7 +17,7 @@ from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 
-VERSION = "flat-art-catalog-crosswalk-candidates/v5"
+VERSION = "flat-art-catalog-crosswalk-candidates/v6"
 
 STOP = {
     "lego","minifig","minifigure","with","and","the","a","an","pattern","printed",
@@ -85,17 +85,38 @@ def role_matches(texture_role: str | None, component_role: str | None) -> bool:
     return component_role in allowed
 
 
-def subject_text(stem: str):
-    parts=Path(stem).parts
-    # Nested repositories commonly use Theme / Character / Asset Name.
-    if len(parts) >= 3:
-        return parts[-2]
-    leaf=parts[-1] if parts else stem
+def clean_asset_label(value: str):
     cleaned=re.sub(
         r"\b(face|head|torso|hips?|legs?|arms?|helmet|hair|cowl|front|back)\b",
-        " ", leaf, flags=re.I
+        " ", str(value or ""), flags=re.I
     )
-    return re.sub(r"\s+", " ", cleaned).strip()
+    cleaned=re.sub(r"\([^)]*(?:front|back)[^)]*\)", " ", cleaned, flags=re.I)
+    return re.sub(r"\s+", " ", cleaned).strip(" -_")
+
+def subject_text(stem: str):
+    parts=Path(stem).parts
+    leaf=clean_asset_label(parts[-1] if parts else stem)
+    if len(parts) < 3:
+        return leaf
+
+    parent=str(parts[-2]).strip()
+    # Theme / Series N / Asset paths do not have a character folder. Using the
+    # penultimate folder here previously turned Cowboy, Surfer, etc. into the
+    # subject "Series 1/2" and produced unrelated R-series droid matches.
+    if re.fullmatch(r"series\s*\d+[a-z]?", parent, re.I):
+        return leaf
+
+    # Theme / Character / Asset paths use the parent as the stable identity, but
+    # retain meaningful leaf qualifiers (Orient Expedition, Mt Everest, Winter,
+    # etc.) so different versions are not forced into the same fuzzy tie.
+    base=clean_asset_label(parent)
+    low_leaf=leaf.casefold()
+    low_base=base.casefold()
+    if low_base and low_leaf.startswith(low_base):
+        qualifier=leaf[len(base):].strip(" -_()")
+        if qualifier:
+            return f"{base} {qualifier}".strip()
+    return base or leaf
 
 
 def normalize_subject_alias(value: str):
