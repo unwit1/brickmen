@@ -158,13 +158,33 @@ def main():
     for d in digital:
         key=d.get("character_variant_key") or d.get("filename")
         candidates=[]
+        parsed_key=parse_identity_key(key)
+        identity_label=parsed_key.get("canonical_identity_label") or parsed_key.get("base_character_key") or key
         for p in physical:
             sc,why=score(key,p.get("name"))
-            if sc<=0:continue
+            base_sc,base_why=score(identity_label,p.get("name"))
+            context=set_context_matches(key,p.get("set_occurrences"))
+            character_gate=(
+                float(base_why.get("key_token_coverage") or 0)>=0.80
+                and float(base_why.get("core_token_hit") or 0)>=0.50
+            )
+            context_bonus=0.12 if context and character_gate else 0.0
+            adjusted=round(min(1.0,sc+context_bonus),4)
+            if adjusted<=0:continue
+            why=dict(why)
+            why.update({
+                "base_identity_label":identity_label,
+                "base_identity_score":base_sc,
+                "base_identity_token_coverage":base_why.get("key_token_coverage"),
+                "scene_context_matches":context,
+                "scene_context_character_gate":character_gate,
+                "scene_context_bonus":context_bonus,
+            })
             candidates.append({
                 "fig_num":p.get("fig_num"),
                 "name":p.get("name"),
-                "score":sc,
+                "score":adjusted,
+                "raw_name_score":sc,
                 "catalog_image_url":p.get("catalog_image_url"),
                 "set_occurrences":p.get("set_occurrences"),
                 "evidence":why,
@@ -189,7 +209,7 @@ def main():
             "top_margin":margin,
             "confidence_band":band,
             "resolution_status":"candidate_only",
-            "policy":"Do not collapse a digital profile to a physical release without independent identity/version confirmation; unmatched records may be digital-only. Candidate scoring normalizes audited semantic equivalents such as Phase II/Phase2, First Order, common rank abbreviations, and Geonosis/Geonosian.",
+            "policy":"Do not collapse a digital profile to a physical release without independent identity/version confirmation; unmatched records may be digital-only. Candidate scoring normalizes audited semantic equivalents such as Phase II/Phase2, First Order, common rank abbreviations, and Geonosis/Geonosian. Audited scene/location suffixes may receive a bounded set-occurrence-name bonus only when the physical candidate already passes a character-identity gate.",
             "processor_version":VERSION,
         })
 
