@@ -12,7 +12,7 @@ from collections import Counter
 from pathlib import Path
 from skywalker_identity_keys import parse_identity_key
 
-VERSION="skywalker-counterpart-classification/v3"
+VERSION="skywalker-counterpart-classification/v4"
 
 STOP={"lego","star","wars","minifig","minifigure","figure","character","profile","icon","icons"}
 
@@ -31,6 +31,7 @@ def split_camel(v):
 def norm(v):
     s=unicodedata.normalize("NFKD",split_camel(v))
     s="".join(c for c in s if not unicodedata.combining(c)).casefold()
+    s=s.replace("\'","").replace("’","")
     s=re.sub(r"[^a-z0-9]+"," ",s)
     return " ".join(t for t in s.split() if t and t not in STOP)
 
