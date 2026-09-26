@@ -1,0 +1,113 @@
+{
+  "schema": "skywalker-unresolved-suffix-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-unresolved-suffix-review-003",
+  "policy": "Use game scene/timeline labels as identity evidence, then narrow physical candidates by matching set/story context. If the physical catalog lacks that game-specific state, preserve the digital variant instead of backfilling an approximate release.",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-c57af2f741fd67bfb53e5288",
+      "character_variant_key": "Padme_Tatooine",
+      "decision": "scene_variant_family_verified_physical_candidate_visual_pending",
+      "canonical_game_variant": "Padmé Amidala (Tatooine Disguise)",
+      "physical_candidate": {
+        "fig_num": "fig-003636",
+        "name": "Padme Amidala / Naberrie, Yellow Skin",
+        "year": 1999,
+        "sets": [
+          "7131-1",
+          "7171-1"
+        ]
+      },
+      "reason": "The Tatooine suffix is an explicit game appearance state. The 1999 Padmé candidate occurs in Anakin's Podracer and Mos Espa Podrace, giving independent Tatooine/Mos Espa set context that strongly supports the same appearance family; exact model/print equivalence remains visual pending.",
+      "evidence_urls": [
+        "https://www.gamespot.com/articles/all-characters-in-lego-star-wars-the-skywalker-saga/1100-6502264/"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-74d1cf07052b01e67189865c",
+      "character_variant_key": "Luke_AhchTo",
+      "decision": "scene_variant_identity_verified_visual_pending",
+      "canonical_game_variant": "Luke Skywalker (Old - Ahch-To)",
+      "physical_candidate": {
+        "fig_num": "fig-004281",
+        "name": "Luke Skywalker, Old, White Robes",
+        "year": 2018,
+        "set_num": "75200-1",
+        "set_name": "Ahch-To Island Training"
+      },
+      "reason": "The game explicitly names Old - Ahch-To, and the leading physical candidate is an old Luke released in Ahch-To Island Training. Character, age/state, and scene context agree; exact print/component reuse remains visual pending.",
+      "evidence_urls": [
+        "https://gamefaqs.gamespot.com/ps4/265996-lego-star-wars-the-skywalker-saga/faqs/79882/extra-characters"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-5f8baccb9eca10ced272e135",
+      "character_variant_key": "Lando_Bespin",
+      "decision": "scene_family_verified_exact_physical_release_unresolved",
+      "canonical_game_family": "Lando Calrissian (Episode V / Bespin / Cloud City)",
+      "physical_candidates": [
+        {
+          "fig_num": "fig-003910",
+          "name": "Lando Calrissian, Yellow and Blue Cape",
+          "year": 2003,
+          "set_num": "10123-1",
+          "set_name": "Cloud City"
+        },
+        {
+          "fig_num": "fig-004347",
+          "name": "Lando Calrissian, Sand Blue and Dark Orange Cape",
+          "year": 2018,
+          "set_num": "75222-1",
+          "set_name": "Betrayal at Cloud City"
+        }
+      ],
+      "reason": "Bespin is a story/location cue for Lando's Cloud City appearance. Two pre-game physical Cloud City families are supported, so the scene family is verified while exact release remains a visual/component question."
+    },
+    {
+      "asset_id": "skywalker-profile-b4d6f0cbf1ad6b018d5827c6",
+      "character_variant_key": "Finn_Crait",
+      "decision": "digital_scene_variant_verified_physical_episode8_family_unresolved",
+      "canonical_game_variant": "Finn (Crait)",
+      "physical_episode8_family_examples": [
+        {
+          "brickset_minifig": "sw0858",
+          "name": "Finn - Medium Nougat Worn Jacket, Pearl Dark Gray Legs with Holster",
+          "year": 2017
+        },
+        {
+          "brickset_minifig": "sw0900",
+          "name": "Finn - First Order Officer Disguise",
+          "year": 2018
+        },
+        {
+          "brickset_minifig": "sw1033",
+          "name": "Finn - Bacta Suit",
+          "year": 2019
+        }
+      ],
+      "reason": "Crait is a game-specific Episode VIII scene label, but the physical catalog does not expose a Finn minifigure named for Crait. The available Episode VIII Finn releases represent different states/outfits; exact mapping requires visual comparison rather than choosing the top lexical candidate.",
+      "evidence_urls": [
+        "https://brickset.com/minifigs/category-Star-Wars/name-Finn"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-c43850b2220225ec4a8d5c41",
+      "character_variant_key": "Rose_Ep9",
+      "decision": "digital_timeline_variant_verified_no_supported_episode9_physical_counterpart",
+      "canonical_game_variant": "Rose Tico (Episode IX)",
+      "physical_character_family_supported": true,
+      "exact_episode9_physical_variant_supported": false,
+      "reason": "The Ep9 suffix is a timeline-specific game appearance. Current supported Rose Tico physical records are the 2017/2018 base appearance and First Order disguise, not an Episode IX release; preserve the game variant as digital-only until a matching physical record is independently found.",
+      "evidence_urls": [
+        "https://www.gamespot.com/articles/all-characters-in-lego-star-wars-the-skywalker-saga/1100-6502264/"
+      ]
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "scene_variant_identity_or_family_verified": 3,
+    "digital_scene_or_timeline_variant_physical_unresolved_or_absent": 2,
+    "automatic_exact_equivalence_promotions": 0
+  },
+  "remaining_unreviewed_suffix_records_after_batch": 54
+}
