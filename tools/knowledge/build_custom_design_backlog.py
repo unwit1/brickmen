@@ -66,6 +66,8 @@ def rank(row):
     appearances=uniq(r.get("first_appearance") for r in recs)
     years=uniq(r.get("year") for r in recs)
     preferred=uniq(r.get("preferred") for r in recs)
+    official=uniq(r.get("official") for r in recs)
+    bootleg=uniq(r.get("bootleg") for r in recs)
     universes=uniq(r.get("universe") for r in recs)
 
     if identities: score+=8; reasons.append("identity_specific")
@@ -82,7 +84,9 @@ def rank(row):
 
     return max(0,score),reasons,{
         "names":names,"identities":identities,"variants":variants,
-        "first_appearances":appearances,"years":years,"preferred":preferred,"universes":universes
+        "first_appearances":appearances,"years":years,"preferred":preferred,
+        "official_representations":official,"bootleg_representations":bootleg,
+        "universes":universes
     }
 
 def main():
@@ -99,10 +103,21 @@ def main():
         recs=row.get("records") or []
         family_votes=Counter(source_family(r) for r in recs)
         family=family_votes.most_common(1)[0][0] if family_votes else "Unclassified"
+        has_existing_representation=bool(meta.get("official_representations") or meta.get("bootleg_representations"))
+        if row.get("candidate_state")=="wishlist_gap_candidate":
+            gap_mode="acquisition_wishlist"
+        elif row.get("candidate_state")=="explicit_missing_design_target" and has_existing_representation:
+            gap_mode="existing_representation_compare_or_acquire"
+        elif row.get("candidate_state")=="explicit_missing_design_target":
+            gap_mode="custom_design_candidate"
+        else:
+            gap_mode="review_only_unknown_state"
+
         item={
           "custom_design_candidate_id":"custom-gap-"+re.sub(r"[^a-z0-9]+","-",str(row.get("strict_group_key") or "").casefold()).strip("-")[:180],
           "strict_group_key":row.get("strict_group_key"),
           "candidate_state":row.get("candidate_state"),
+          "gap_mode":gap_mode,
           "priority_score":score,
           "priority_reasons":reasons,
           "franchise_family":family,
@@ -130,18 +145,21 @@ def main():
         with path.open("w",encoding="utf-8") as f:
             for r in rows:f.write(json.dumps(r,ensure_ascii=False)+"\n")
 
+    mode_counts=Counter(x["gap_mode"] for x in actionable+review)
     summary={
       "schema":"custom-design-backlog-summary/v1",
       "processor_version":VERSION,
       "actionable_records":len(actionable),
       "review_only_records":len(review),
       "state_counts":dict(states),
+      "gap_mode_counts":dict(mode_counts),
       "franchise_counts":dict(families.most_common()),
       "top_actionable":[
         {
           "id":x["custom_design_candidate_id"],
           "score":x["priority_score"],
           "state":x["candidate_state"],
+          "mode":x["gap_mode"],
           "family":x["franchise_family"],
           "names":x["names"],
           "identities":x["identities"],
