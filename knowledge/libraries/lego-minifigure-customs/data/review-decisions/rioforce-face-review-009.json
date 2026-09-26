@@ -1,0 +1,176 @@
+{
+  "schema": "face-landmark-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "rioforce-face-review-009",
+  "records": [
+    {
+      "face_asset_id": "rioforce-face-9891a0e88ceea4f78747d72c",
+      "relative_path": "Adventurers/Johnny Thunder/Johnny Thunder Desert Face.svg",
+      "decision": "subject_catalog_identity_verified_geometry_reviewed",
+      "orientation": "front",
+      "subject": "Johnny Thunder (Desert)",
+      "version_year": 1998,
+      "confidence": "high",
+      "catalog_identity": {
+        "bricklink_figures": [
+          "adv010",
+          "adv010a",
+          "adv041"
+        ],
+        "bricklink_head": "3626pa3",
+        "head_description": "Yellow head with thin black eyebrows, curled moustache, hair with bangs/striped sideburns and small lopsided grin"
+      },
+      "observed_structure": {
+        "bilateral_eye_shapes": true,
+        "curled_moustache_and_sideburn_geometry": true,
+        "hair_or_brow_mass": true,
+        "mouth_shape": "small_lopsided_grin",
+        "machine_readable_geometry": true
+      },
+      "provenance_note": "SVG internal document and export names explicitly identify the Desert face.",
+      "evidence_urls": [
+        "https://www.bricklink.com/catalogItemInv.asp?M=Adv010"
+      ],
+      "remaining_tasks": [
+        "derive precise eye/moustache/sideburn/mouth landmarks"
+      ]
+    },
+    {
+      "face_asset_id": "rioforce-face-6f9068b4f6dbdda76442d567",
+      "relative_path": "Castle/Princess Storm Face.svg",
+      "decision": "subject_catalog_identity_verified_geometry_reviewed",
+      "orientation": "front",
+      "subject": "Princess Storm, Knights' Kingdom I",
+      "version_year": 2000,
+      "confidence": "high",
+      "catalog_identity": {
+        "bricklink_figure": "cas034",
+        "bricklink_head": "3626px69",
+        "rebrickable_figure": "fig-007676",
+        "head_description": "Yellow female head with red lips/red hair and angry black eyebrows",
+        "alias_status": "already independently verified in canonical flat-art crosswalk"
+      },
+      "observed_structure": {
+        "bilateral_eye_shapes": true,
+        "strong_angry_eyebrow_shapes": true,
+        "mouth_shape": "red_lips",
+        "red_hair_or_face_frame_regions": true,
+        "machine_readable_geometry": true
+      },
+      "evidence_urls": [
+        "https://www.bricklink.com/catalogItemInv.asp?M=cas034"
+      ],
+      "remaining_tasks": [
+        "derive precise eye/brow/lip/hair bounds"
+      ]
+    },
+    {
+      "face_asset_id": "rioforce-face-9d1659111cdf3d05ceee8b67",
+      "relative_path": "LEGO Island/Dr Clickitt Face.svg",
+      "decision": "game_reference_identity_verified_nonphysical",
+      "orientation": "front",
+      "subject": "Dr. Clickitt, LEGO Island",
+      "confidence": "high_for_source_identity",
+      "physical_catalog_status": "no physical minifigure crosswalk required",
+      "observed_structure": {
+        "bilateral_eye_regions": true,
+        "brow_or_upper_face_geometry": true,
+        "mouth_shape": "broad_smile",
+        "machine_readable_geometry": true
+      },
+      "routing_policy": "Keep in game-reference/style supervision. Do not send through physical BrickLink/Rebrickable identity promotion unless a later physical release is independently documented.",
+      "remaining_tasks": [
+        "derive facial landmarks",
+        "link to LEGO Island game-reference corpus"
+      ]
+    },
+    {
+      "face_asset_id": "rioforce-face-aec5e70c6e7d00c3fe739bec",
+      "relative_path": "Time Cruisers/Dr Cyber/Dr Cyber Face.svg",
+      "decision": "subject_catalog_identity_verified_geometry_reviewed",
+      "orientation": "front",
+      "subject": "Dr. Cyber, Time Cruisers",
+      "version_year": 1996,
+      "confidence": "high",
+      "catalog_identity": {
+        "bricklink_figure": "tim003",
+        "bricklink_head": "3626px55",
+        "head_description": "Yellow head with crossed eyes, black glasses with white lenses, dark gray moustache/goatee and grin"
+      },
+      "observed_structure": {
+        "large_round_glasses_regions": true,
+        "white_lens_regions": true,
+        "crossed_or_off_axis_eye_geometry": true,
+        "moustache_and_goatee_regions": true,
+        "mouth_shape": "grin",
+        "machine_readable_geometry": true
+      },
+      "evidence_urls": [
+        "https://www.bricklink.com/catalogItemInv.asp?M=tim003&viewCodes=Y"
+      ],
+      "remaining_tasks": [
+        "derive glasses/eye/moustache/goatee/mouth landmarks"
+      ]
+    },
+    {
+      "face_asset_id": "rioforce-face-e1f89eb82d2e187f143804e6",
+      "relative_path": "Alpha Team/Ogel Face.svg",
+      "decision": "subject_catalog_identity_verified_geometry_complex",
+      "orientation": "front",
+      "subject": "Ogel, Alpha Team",
+      "version_family": "2001-2002",
+      "confidence": "high",
+      "catalog_identity": {
+        "bricklink_figures": [
+          "alp008",
+          "alp020"
+        ],
+        "bricklink_head": "3626px40",
+        "head_description": "Yellow male head with angry eyebrows and red eye pattern"
+      },
+      "observed_structure": {
+        "asymmetric_eye_or_red_eye_motif": true,
+        "angry_brow_geometry": true,
+        "extensive_face_detail_paths": true,
+        "complex_path_geometry": true
+      },
+      "provenance_note": "SVG internal name 'Ogel Head2.svg' is consistent with the Ogel identity but does not distinguish black-hand vs hook body variants; both catalog variants reuse 3626px40.",
+      "evidence_urls": [
+        "https://www.bricklink.com/catalogItemInv.asp?M=alp008&viewCodes=Y",
+        "https://www.bricklink.com/catalogItemInv.asp?M=alp020&viewID=Y"
+      ],
+      "remaining_tasks": [
+        "extract red-eye and eyebrow bounds",
+        "derive any mouth/face-scar regions"
+      ]
+    },
+    {
+      "face_asset_id": "rioforce-face-f1315539cefbb59b2451b52c",
+      "relative_path": "Sports/Cool Kid Face.svg",
+      "decision": "generic_design_reference_identity_unresolved",
+      "orientation": "front",
+      "source_subject_label": "Cool Kid",
+      "confidence": "high_for_geometry_low_for_catalog_identity",
+      "observed_structure": {
+        "bilateral_eye_shapes": true,
+        "broad_smile": true,
+        "prominent_red_hair_or_head_frame_region": true,
+        "asymmetric_brow_or_face_accent": true,
+        "complex_path_geometry": true
+      },
+      "identity_policy": "The source-local label is generic and generated no catalog candidate. Preserve as sports/design supervision without inventing a physical identity.",
+      "remaining_tasks": [
+        "derive eye/mouth/hair/accent bounds",
+        "identify exact physical head only from direct visual/catalog match"
+      ]
+    }
+  ],
+  "result": {
+    "reviewed": 6,
+    "catalog_identity_verified": 4,
+    "game_reference_nonphysical": 1,
+    "generic_identity_unresolved": 1
+  },
+  "next_offset": 38,
+  "queue_complete": true
+}
