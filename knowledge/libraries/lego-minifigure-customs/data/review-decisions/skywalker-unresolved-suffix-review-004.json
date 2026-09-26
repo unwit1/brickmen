@@ -1,0 +1,101 @@
+{
+  "schema": "skywalker-unresolved-suffix-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-unresolved-suffix-review-004",
+  "policy": "Differentiate public game variants from internal/source-local state labels. Color or scene selectors can narrow a family without proving a physical release; physical equivalence is never inferred solely because a candidate shares the character name.",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-f402927d5bbea7724811ed19",
+      "character_variant_key": "RA7_Green",
+      "decision": "digital_color_state_no_supported_physical_match",
+      "canonical_character": "RA-7",
+      "digital_state": "Green",
+      "supported_physical_family": [
+        {
+          "fig_num": "fig-004164",
+          "name": "RA-7 Protocol Droid, Pearl Dark Gray",
+          "year": 2018
+        },
+        {
+          "fig_num": "fig-004068",
+          "name": "RA-7 Protocol Droid, Dark Bluish Gray",
+          "year": 2014
+        }
+      ],
+      "reason": "The physical catalog supports gray RA-7 variants, not a green RA-7. Treat Green as a digital/source-local color state and do not map it to the nearest gray physical droid."
+    },
+    {
+      "asset_id": "skywalker-profile-44035ea7178ecceaf338b380",
+      "character_variant_key": "Rey_Starkiller",
+      "decision": "digital_scene_variant_verified_physical_episode7_family_visual_pending",
+      "canonical_game_variant": "Rey (Episode VII - Starkiller Base)",
+      "physical_family_candidate": {
+        "fig_num": "fig-002057",
+        "name": "Rey, Dark Tan Robe",
+        "first_year": 2015
+      },
+      "reason": "The game explicitly exposes a Starkiller Base Rey variant. The leading physical family is the 2015 Episode VII dark-tan-robed Rey used across several Force Awakens sets, but the catalog name does not encode the Starkiller scene; retain scene-state verification separately from exact physical equivalence.",
+      "evidence_urls": [
+        "https://www.gamespot.com/articles/all-characters-in-lego-star-wars-the-skywalker-saga/1100-6502264/",
+        "https://gamefaqs.gamespot.com/ps4/265996-lego-star-wars-the-skywalker-saga/faqs/79882/episode-vii-the-force-awakens"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-ebaed1eaa2682442f48ca6a6",
+      "character_variant_key": "Luke_Ep5_White",
+      "decision": "episode5_family_verified_color_selector_semantics_unresolved",
+      "canonical_timeline": "Episode V",
+      "opaque_or_source_local_state": "White",
+      "reason": "Episode V is meaningful timeline evidence, but 'White' is not a public-facing Skywalker Saga Luke variant label and does not uniquely correspond to one physical catalog release. Hoth, Dagobah/training, and Bespin/Jedi appearances all require different context; preserve the color selector without forcing a physical candidate."
+    },
+    {
+      "asset_id": "skywalker-profile-7f3d496c9b34fd3219aa678c",
+      "character_variant_key": "Luke_HoodedCape",
+      "decision": "black_robes_hooded_cape_family_verified_exact_release_unresolved",
+      "physical_candidates": [
+        {
+          "fig_num": "fig-003514",
+          "name": "Luke Skywalker, Black Robes, Yellow Skin, Black Cape and Hood",
+          "year": 2000
+        },
+        {
+          "fig_num": "fig-012331",
+          "name": "Luke Skywalker, Black Robes, Black Hood and Cape",
+          "year": 2022
+        }
+      ],
+      "reason": "HoodedCape is meaningful appearance evidence and selects black-robed hood/cape Luke families, but it lacks episode/story timing. Multiple physical implementations exist, so exact release and source-equivalence remain unresolved."
+    },
+    {
+      "asset_id": "skywalker-profile-37cc52e21831503a4e0950a3",
+      "character_variant_key": "Luke_Tatooine",
+      "decision": "tatooine_scene_family_verified_exact_release_unresolved",
+      "canonical_story_family": "Luke Skywalker - Tatooine / Episode IV",
+      "physical_candidates": [
+        {
+          "fig_num": "fig-001419",
+          "name": "Luke Skywalker, White Robe, Yellow Skin",
+          "first_year": 1999
+        },
+        {
+          "fig_num": "fig-000144",
+          "name": "Luke Skywalker, White Robe, White Legs, Cheek Lines",
+          "year": 2014
+        },
+        {
+          "fig_num": "fig-001939",
+          "name": "Luke Skywalker, White Robe, White Legs, No Cheek Lines",
+          "first_year": 2016
+        }
+      ],
+      "reason": "Tatooine is valid scene/era evidence and narrows Luke to his Episode IV white-robed family, but several physical versions span different years and face-print details. Exact release requires visual/component comparison."
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "digital_color_or_opaque_state_unresolved": 2,
+    "digital_scene_or_outfit_family_verified_exact_release_unresolved": 3,
+    "automatic_exact_equivalence_promotions": 0
+  },
+  "remaining_unreviewed_suffix_records_after_batch": 49
+}
