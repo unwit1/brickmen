@@ -1,0 +1,123 @@
+{
+  "schema": "face-landmark-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "rioforce-face-review-005",
+  "records": [
+    {
+      "face_asset_id": "rioforce-face-c360571d2c05e6eadc6cdbf9",
+      "relative_path": "Classics/Classic Sunglasses Face.svg",
+      "decision": "classic_design_reference_verified_identity_unresolved",
+      "orientation": "front",
+      "subject": "classic sunglasses face reference",
+      "confidence": "high_for_geometry_family",
+      "observed_structure": {
+        "eyewear": "large rectangular sunglasses with bridge",
+        "bilateral_lens_regions": true,
+        "mouth_shape": "simple_smile",
+        "no_visible_eye_landmarks_due_to_eyewear": true
+      },
+      "identity_policy": "Treat as eyewear/style supervision. Do not assign a physical figure identity from generic 'Classic Sunglasses' wording.",
+      "remaining_tasks": [
+        "derive sunglass lens/bridge bounds",
+        "derive mouth bounds",
+        "link to a physical head only if independent exact-art evidence exists"
+      ]
+    },
+    {
+      "face_asset_id": "rioforce-face-c826ca1ad8ac2dae8db8fc85",
+      "relative_path": "LEGO Minifigures/Series 1/Wrestler Face.svg",
+      "decision": "subject_catalog_identity_verified_geometry_complex",
+      "orientation": "front",
+      "subject": "Super Wrestler, Collectible Minifigures Series 1",
+      "version_year": 2010,
+      "confidence": "high",
+      "catalog_identity": {
+        "bricklink_figure": "col010",
+        "bricklink_head": "3626pb0431",
+        "bricklink_head_description": "Medium Blue Minifigure, Head Balaclava with Eye and Mouth Holes, Red Mask and White Pupils Pattern"
+      },
+      "observed_structure": {
+        "mask_or_balaclava_geometry": true,
+        "eye_opening_regions": true,
+        "mouth_opening_region": true,
+        "complex_path_geometry": true
+      },
+      "evidence_urls": [
+        "https://www.bricklink.com/catalogItemInv.asp?M=col010"
+      ],
+      "remaining_tasks": [
+        "precise eye/mouth opening bounds",
+        "mask-color region segmentation"
+      ]
+    },
+    {
+      "face_asset_id": "rioforce-face-b78f845b4cb72a887f7dacef",
+      "relative_path": "LEGO Minifigures/Series 9/Mermaid/Mermaid Face.svg",
+      "decision": "subject_catalog_identity_verified_geometry_complex",
+      "orientation": "front",
+      "subject": "Mermaid, Collectible Minifigures Series 9",
+      "version_year": 2013,
+      "confidence": "high",
+      "catalog_identity": {
+        "bricklink_figure": "col140",
+        "bricklink_head": "3626pb0850",
+        "bricklink_head_description": "Yellow Minifigure, Head Female Medium Nougat Eyebrows and Lips, Black Triple Eyelashes, Open Mouth Smile with Teeth Pattern"
+      },
+      "observed_structure": {
+        "bilateral_eye_regions": true,
+        "triple_eyelash_features": true,
+        "eyebrow_features": true,
+        "mouth_shape": "open_smile_with_teeth",
+        "lip_coloring": true,
+        "complex_path_geometry": true
+      },
+      "evidence_urls": [
+        "https://www.bricklink.com/catalogItemInv.asp?M=col140"
+      ],
+      "remaining_tasks": [
+        "derive precise eye/eyelash/brow/mouth bounds",
+        "cross-catalog part alias confirmation if needed"
+      ]
+    },
+    {
+      "face_asset_id": "rioforce-face-6345dc5c177ab546f2e944da",
+      "relative_path": "Super Heroes/Lex Luther/Lex Luther Face.svg",
+      "decision": "subject_version_inferred_from_face_geometry_catalog_identity_high_confidence",
+      "orientation": "front",
+      "source_subject_label": "Lex Luther",
+      "canonical_subject": "Lex Luthor",
+      "version_year": 2012,
+      "confidence": "high_for_subject_medium_high_for_variant",
+      "catalog_identity": {
+        "likely_bricklink_figure": "sh0012",
+        "likely_bricklink_head": "3626pb0647",
+        "alternative_variant": "sh0039 / 3626pb0737",
+        "basis": "The SVG shows stern closed-mouth geometry without the prominent teeth described for battle-armor head 3626pb0737, matching the black-suit head description more closely."
+      },
+      "observed_structure": {
+        "bilateral_eye_shapes": true,
+        "bilateral_highlights": true,
+        "angular_eyebrows": true,
+        "cheek_or_wrinkle_accent_paths": true,
+        "mouth_shape": "stern_closed_mouth",
+        "teeth_visible": false
+      },
+      "evidence_urls": [
+        "https://www.bricklink.com/catalogItemInv.asp?M=sh0012",
+        "https://www.bricklink.com/catalogItemInv.asp?M=sh0039"
+      ],
+      "remaining_tasks": [
+        "exact visual comparison against sh0012 head image",
+        "derive transformed landmark coordinates",
+        "confirm whether this source asset predates/reuses the battle-armor variant"
+      ]
+    }
+  ],
+  "result": {
+    "reviewed": 4,
+    "catalog_identity_verified": 2,
+    "likely_variant_identified": 1,
+    "classic_design_reference_identity_unresolved": 1
+  },
+  "next_offset": 20
+}
