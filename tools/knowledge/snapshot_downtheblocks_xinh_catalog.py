@@ -93,13 +93,20 @@ def main():
     args.output.parent.mkdir(parents=True,exist_ok=True)
     with args.output.open("w",encoding="utf-8") as f:
         for row in rows:f.write(json.dumps(row,ensure_ascii=False)+"\n")
+    normalized_catalog_sha256=hashlib.sha256(
+        "\n".join(
+            f"{r['serial']}|{r.get('name_status')}|{';'.join(r.get('historical_names') or [])}|{r.get('occurrence_count')}"
+            for r in rows
+        ).encode("utf-8")
+    ).hexdigest()
     summary={
-      "schema":"downtheblocks-xinh-gh-catalog-summary/v1",
+      "schema":"downtheblocks-xinh-gh-catalog-summary/v2",
       "created_at":now_iso(),
       "processor_version":VERSION,
       "source_url":args.source_url,
       "source_updated_label":updated,
       "source_sha256":hashlib.sha256(raw).hexdigest(),
+      "normalized_catalog_sha256":normalized_catalog_sha256,
       "source_bytes":len(raw),
       "catalog_records":len(rows),
       "named_records":sum(r["name_status"]=="named" for r in rows),
