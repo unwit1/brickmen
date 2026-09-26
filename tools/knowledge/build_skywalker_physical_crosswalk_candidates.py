@@ -11,10 +11,10 @@ from collections import Counter
 from difflib import SequenceMatcher
 from pathlib import Path
 
-VERSION="skywalker-physical-crosswalk-candidates/v1"
+VERSION="skywalker-physical-crosswalk-candidates/v2"
 STOP={
     "lego","star","wars","minifig","minifigure","figure","with","and","the","a","an",
-    "episode","ep","old","new","version","variant","character","profile","icons","icon",
+    "episode","ep","new","version","variant","character","profile","icons","icon",
 }
 
 def load_jsonl(path):
@@ -29,10 +29,31 @@ def camel(value):
     value=re.sub(r"([0-9])([A-Za-z])",r"\1 \2",value)
     return value
 
-def norm(value):
+def semantic_tokens(value):
     value=camel(unicodedata.normalize("NFKD",str(value or "")))
     value="".join(ch if ch.isalnum() else " " for ch in value.casefold())
-    toks=[t for t in value.split() if t and t not in STOP]
+    raw=[t for t in value.split() if t and t not in STOP]
+    out=[];i=0
+    while i<len(raw):
+        t=raw[i]
+        nxt=raw[i+1] if i+1<len(raw) else None
+        if t=="phase" and nxt in {"i","1","ii","2"}:
+            out.append("phase1" if nxt in {"i","1"} else "phase2")
+            i+=2;continue
+        if t=="first" and nxt=="order":
+            out.append("firstorder");i+=2;continue
+        if t in {"cmd","cpt","sgt","lt"}:
+            out.append({"cmd":"commander","cpt":"captain","sgt":"sergeant","lt":"lieutenant"}[t])
+            i+=1;continue
+        if t=="fso":
+            out.append("firstorder");i+=1;continue
+        if t=="geonosian":
+            out.append("geonosis");i+=1;continue
+        out.append(t);i+=1
+    return out
+
+def norm(value):
+    toks=semantic_tokens(value)
     return " ".join(toks),toks
 
 def is_star_wars(sample):
@@ -112,7 +133,7 @@ def main():
             "top_margin":margin,
             "confidence_band":band,
             "resolution_status":"candidate_only",
-            "policy":"Do not collapse a digital profile to a physical release without independent identity/version confirmation; unmatched records may be digital-only.",
+            "policy":"Do not collapse a digital profile to a physical release without independent identity/version confirmation; unmatched records may be digital-only. Candidate scoring normalizes audited semantic equivalents such as Phase II/Phase2, First Order, common rank abbreviations, and Geonosis/Geonosian.",
             "processor_version":VERSION,
         })
 
