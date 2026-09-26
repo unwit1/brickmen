@@ -1,0 +1,91 @@
+{
+  "schema": "skywalker-unresolved-suffix-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-unresolved-suffix-review-008",
+  "policy": "Public game labels are authoritative for digital appearance identity. Physical catalog records may support the same scene/accessory family, but exact release equivalence remains separate unless the physical entry independently encodes the same distinguishing state.",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-a2b48e4fd209ba544283115b",
+      "character_variant_key": "Padme_SilverCape",
+      "decision": "digital_silver_cape_variant_verified_no_supported_physical_counterpart",
+      "canonical_game_variant": "Padmé (Silver Cape)",
+      "physical_character_family_supported": true,
+      "exact_physical_variant_supported": false,
+      "reason": "Silver Cape is an explicit Skywalker Saga appearance. Current supported physical Padmé records do not independently identify a silver-cape release, so preserve this game outfit rather than mapping it to generic Padmé/Queen Amidala figures.",
+      "evidence_urls": [
+        "https://www.gamespot.com/articles/all-characters-in-lego-star-wars-the-skywalker-saga/1100-6502264/"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-c2773d74192e8de46a837602",
+      "character_variant_key": "Finn_KijimiCoat",
+      "decision": "digital_kijimi_coat_variant_verified_physical_episode9_family_visual_pending",
+      "canonical_game_variant": "Finn (Kijimi Coat)",
+      "physical_episode9_family": {
+        "brickset_minifig": "sw1066",
+        "catalog_name": "Finn - Medium Nougat Jacket, Dark Blue Legs with Holster",
+        "year": 2019
+      },
+      "reason": "Kijimi Coat is an explicit game variant. Brickset confirms a 2019 Episode IX Finn physical release, but its catalog description does not identify the Kijimi coat state; use sw1066 only as the Episode IX character/outfit family pending visual comparison.",
+      "evidence_urls": [
+        "https://www.gamespot.com/articles/all-characters-in-lego-star-wars-the-skywalker-saga/1100-6502264/",
+        "https://brickset.com/minifigs/name-Finn/year-2019"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-74e032941c07c7eaaa47b6cd",
+      "character_variant_key": "Padme_Handmaiden_Orange",
+      "decision": "digital_handmaiden_orange_variant_verified_no_exact_physical_match",
+      "canonical_game_variant": "Padmé (Handmaiden - Orange)",
+      "physical_character_family_supported": true,
+      "exact_physical_variant_supported": false,
+      "reason": "The game explicitly distinguishes the orange handmaiden appearance. Current physical Padmé candidates do not independently encode that orange handmaiden costume, so do not substitute Queen Amidala or generic Padmé records.",
+      "evidence_urls": [
+        "https://www.gamespot.com/articles/all-characters-in-lego-star-wars-the-skywalker-saga/1100-6502264/"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-f7fcc7932d5c92e94c911db6",
+      "character_variant_key": "Luke_Ep9_Flashback",
+      "decision": "digital_old_flashback_variant_verified_no_exact_physical_match",
+      "canonical_game_variant": "Luke Skywalker (Old - Flashback)",
+      "physical_old_luke_family_supported": true,
+      "exact_flashback_physical_variant_supported": false,
+      "reason": "The public roster identifies Old - Flashback as a distinct Luke state. The current physical candidates are later 2023/2025 Luke releases and cannot source a 2022 game asset; retain the flashback state as digital-specific until a pre-game matching physical release is independently established.",
+      "evidence_urls": [
+        "https://www.gamespot.com/articles/all-characters-in-lego-star-wars-the-skywalker-saga/1100-6502264/"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-d39b4c8bcbd3fc43353840b7",
+      "character_variant_key": "Luke_YodaOnBack",
+      "decision": "yoda_backpack_variant_identity_verified_physical_component_family_visual_pending",
+      "canonical_game_variant": "Luke Skywalker (Yoda Backpack)",
+      "physical_candidate": {
+        "bricklink_minifig": "sw0907",
+        "catalog_name": "Luke Skywalker (Dagobah, Tan Tank Top, Backpack)",
+        "year": 2018,
+        "set_num": "75208-1"
+      },
+      "companion_candidate": {
+        "bricklink_minifig": "sw0906",
+        "catalog_name": "Yoda - Olive Green, Belt",
+        "year": 2018,
+        "set_num": "75208-1"
+      },
+      "reason": "The public game variant is Yoda Backpack. Set 75208 independently supplies Dagobah Luke with a backpack plus Yoda, and Brickset's review explicitly notes that Luke carries Yoda on that backpack. This strongly verifies the physical component/state family while exact digital texture equivalence remains visual pending.",
+      "evidence_urls": [
+        "https://www.gamespot.com/articles/all-characters-in-lego-star-wars-the-skywalker-saga/1100-6502264/",
+        "https://www.bricklink.com/catalogItemInv.asp?S=75208-1&viewCodes=Y",
+        "https://brickset.com/article/35504"
+      ]
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "digital_variants_no_exact_physical_counterpart": 3,
+    "physical_episode_or_component_family_supported_visual_pending": 2,
+    "automatic_exact_equivalence_promotions": 0
+  },
+  "remaining_unreviewed_suffix_records_after_batch": 29
+}
