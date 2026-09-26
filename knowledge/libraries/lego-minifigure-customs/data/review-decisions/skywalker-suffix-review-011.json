@@ -1,0 +1,95 @@
+{
+  "schema": "skywalker-suffix-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-suffix-review-011",
+  "cohort": "semantic-normalization-promoted-direct-matches",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-b370edb4b2aa1b78a87d619c",
+      "character_variant_key": "BattleDroid_Geonosis",
+      "decision": "variant_identity_verified_visual_pending",
+      "physical_candidate": "fig-003506",
+      "physical_release": {
+        "catalog_name": "Battle Droid, Geonosian",
+        "first_year": 2003,
+        "years": [
+          2003,
+          2004
+        ]
+      },
+      "reason": "Geonosis and Geonosian are normalized as the same location/faction cue. The digital suffix now matches the unique supported Geonosian Battle Droid family exactly; exact geometry/decoration reuse remains visual pending."
+    },
+    {
+      "asset_id": "skywalker-profile-0c13480ce5f566dec70b0b7e",
+      "character_variant_key": "CloneTrooper_Cpt",
+      "decision": "rank_variant_identity_verified_visual_pending",
+      "physical_candidate": "fig-004005",
+      "physical_release": {
+        "catalog_name": "Clone Trooper Captain",
+        "year": 2013
+      },
+      "reason": "Cpt is normalized to Captain and produces an exact character/rank match. The rank identity is verified; exact digital-to-physical print equivalence remains visual pending."
+    },
+    {
+      "asset_id": "skywalker-profile-af4791269ca54b61851aaebd",
+      "character_variant_key": "CloneTrooper_Sgt",
+      "decision": "rank_variant_identity_verified_visual_pending",
+      "physical_candidate": "fig-003975",
+      "physical_release": {
+        "catalog_name": "Clone Trooper Sergeant",
+        "year": 2013
+      },
+      "reason": "Sgt is normalized to Sergeant and produces an exact character/rank match. The rank identity is verified; exact physical print equivalence remains visual pending."
+    },
+    {
+      "asset_id": "skywalker-profile-ba87fd62cb5fd2bb17d70311",
+      "character_variant_key": "CloneTrooper_Lt",
+      "decision": "rank_family_verified_exact_identity_unresolved",
+      "supported_physical_candidates": [
+        {
+          "fig_num": "fig-003796",
+          "name": "Clone ARF Trooper / Lightning Squadron (Lieutenant Razor)",
+          "years": [
+            2011,
+            2012
+          ]
+        },
+        {
+          "fig_num": "fig-000056",
+          "name": "Clone Trooper Lieutenant, Dark Azure Markings, Plain Legs",
+          "year": 2013
+        },
+        {
+          "fig_num": "fig-004086",
+          "name": "Clone Trooper Lieutenant, Dark Azure Markings, Printed Legs",
+          "year": 2015
+        }
+      ],
+      "reason": "Lt verifies the lieutenant rank but does not establish that the digital profile is the named Lieutenant Razor rather than one of the generic dark-azure lieutenant releases. Preserve rank-level support and leave exact identity/print unresolved."
+    },
+    {
+      "asset_id": "skywalker-profile-9849746a732a388c73e8f427",
+      "character_variant_key": "CloneTrooper_Cmd",
+      "decision": "rank_family_verified_named_identity_unresolved",
+      "supported_physical_candidates": [
+        {
+          "fig_num": "fig-004032",
+          "name": "Clone BARC Trooper, Dark Red Markings - Clone Commander Neyo",
+          "year": 2014
+        },
+        {
+          "fig_num": "fig-003867",
+          "name": "Clone ARC Trooper / Elite Clone Trooper with Neck Bracket (Commander Hammer)",
+          "year": 2012
+        }
+      ],
+      "reason": "Cmd verifies a commander-role variant, but the source key contains no evidence that it represents Commander Neyo, Commander Hammer, or another named commander. Do not turn role-level evidence into a named physical identity."
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "variant_or_rank_identity_verified_visual_pending": 3,
+    "rank_family_exact_identity_unresolved": 2,
+    "automatic_exact_equivalence_promotions": 0
+  }
+}
