@@ -7,6 +7,13 @@ Those cases must be resolved before outfit/version parsing.
 """
 from __future__ import annotations
 
+SPECIALIZED_ROLE_MATCH_OVERRIDES = {
+    "Stormtrooper_FirstOrder_Ep9_Jet_Trooper": {
+        "required_catalog_semantic_tokens": ["firstorder", "jet", "trooper"],
+        "reason": "The source key specializes generic Stormtrooper into the physical catalog role First Order Jet Trooper; the specialized role legitimately replaces the base noun.",
+    },
+}
+
 IDENTITY_KEY_OVERRIDES = {
     "Biggs_Darklighter": {
         "base_character_key": "Biggs_Darklighter",
@@ -40,3 +47,8 @@ def parse_identity_key(key):
         "parse_mode": "underscore_variant_default",
         "reason": None,
     }
+
+def specialized_role_match(key):
+    """Return audited role-specialization matching metadata, if any."""
+    item = SPECIALIZED_ROLE_MATCH_OVERRIDES.get(str(key or ""))
+    return dict(item) if item else None
