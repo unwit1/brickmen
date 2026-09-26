@@ -96,7 +96,7 @@
     },
     {
       "domain": "mass_market_compatible",
-      "status": "herobloks_full_catalog_census_complete_ranked_brand_code_candidate_layer_ready",
+      "status": "current_and_historical_serial_crosswalk_near_exhausted_relationships_and_long_tail_pending",
       "sources": [
         "HeroBloks",
         "Brixtoy",
@@ -105,14 +105,13 @@
         "community sources"
       ],
       "remaining": [
-        "review 1,214 exact-serial matches whose names need semantic/alias review before canonical promotion",
-        "review 23 exact serial collisions",
-        "research 557 user release candidates absent from current HeroBloks exact-serial census",
-        "resolve the single remaining unmodeled maker-code prefix DH0213 without guessing",
+        "keep QD015 Donkey Kong explicitly unresolved until exact source evidence appears",
+        "review current exact-serial matches whose catalog names still need semantic/alias reconciliation",
+        "review exact serial collisions rather than forcing one release",
         "independently verify newly surfaced stable-prefix brand candidates",
         "resolve mixed/no-prefix brands such as Lele, Decool and Bela",
         "factory/alias claims with independent evidence",
-        "historical discontinued release chronology and collaboration graph"
+        "historical discontinued chronology/collaboration evidence beyond serial-level catalog presence"
       ],
       "completed_2026_09_25": {
         "herobloks_figure_records": 59745,
@@ -146,6 +145,34 @@
           "DA",
           "KL"
         ]
+      },
+      "completed_2026_09_26": {
+        "current_heroBloks_exact_unique_serial_matches": 1823,
+        "historical_exact_serial_matches": 553,
+        "manual_exact_historical_verifications": 1,
+        "exact_release_candidates_unresolved": 1,
+        "exact_unresolved_record": "QD015 Donkey Kong",
+        "historical_catalogs": {
+          "xinh_g": {
+            "records": 2012,
+            "source_updated": "Apr 18, 2023"
+          },
+          "koruit_kdl": {
+            "records": 619,
+            "source_updated": "Aug 22, 2022"
+          },
+          "kopf": {
+            "records": 1815
+          },
+          "pogo": {
+            "records": 2198,
+            "source_updated": "Jul 18, 2022"
+          },
+          "world_minifigures": {
+            "records": 981,
+            "source_updated": "Aug 24, 2022"
+          }
+        }
       }
     },
     {
@@ -196,18 +223,18 @@
     },
     {
       "domain": "themes_and_source_appearance",
-      "status": "user_source_appearance_candidate_layer_ready_canonical_promotion_in_progress",
+      "status": "ranked_source_appearance_layer_ready_canonical_verification_pending",
       "sources": [
         "maker catalogs",
         "HeroBloks themes",
         "existing user franchise trackers"
       ],
       "remaining": [
-        "review high-priority character/identity/variant ambiguity groups instead of auto-merging them",
-        "verify the 3,192 parsed #issue candidates against primary/authoritative source references",
-        "resolve the 236 mixed/raw first-appearance strings",
+        "verify high-priority parsed comic issue candidates against primary/authoritative references",
+        "resolve 49 issue-like unparsed strings and 7 episode-like references",
+        "review freeform/title-only appearances without inventing issue identities",
         "promote verified source appearances into Character/Incarnation/SourceAppearance graph",
-        "attach reference-asset provenance for non-Fortnite source appearances"
+        "attach reference assets/provenance for promoted source appearances"
       ],
       "completed_2026_09_25": {
         "fortnite_pairs": 2494,
@@ -232,6 +259,16 @@
         "source_appearance_mixed_or_raw_candidates": 236,
         "entity_resolution_review_records": 1039,
         "entity_resolution_high_priority_records": 60
+      },
+      "completed_2026_09_26": {
+        "source_appearance_candidates": 3428,
+        "source_records_with_first_appearance": 4607,
+        "high_priority_review_records": 3193,
+        "comic_issue_explicit": 3192,
+        "issue_like_unparsed": 49,
+        "episode_like_raw": 7,
+        "dated_raw": 13,
+        "freeform_or_title_only": 167
       }
     },
     {
@@ -312,7 +349,7 @@
     },
     {
       "domain": "user_collection_reconciliation",
-      "status": "intake_reconciliation_release_crosswalk_and_gap_queues_ready_canonical_promotion_in_progress",
+      "status": "intake_entity_release_and_gap_layers_ready_canonical_promotion_in_progress",
       "sources": [
         "Bootlego MASTER",
         "Minifig Variants to Make",
@@ -325,13 +362,12 @@
         "One Piece Minifgs"
       ],
       "remaining": [
-        "promote reviewed strict duplicate/entity candidates into canonical Character/Incarnation/OutfitDesign links",
-        "review 60 highest-priority ambiguous entity groups first",
-        "promote exact HeroBloks-backed FigureRelease candidates after name/version checks",
-        "review and promote 230 actionable collection/design gaps",
-        "keep 124 unknown-state targets non-actionable until clarified",
-        "resolve Aquaman and Bane (Classic) official-wishlist targets only when intended official variant is corroborated",
-        "resolve DH0213 only with corroborating maker/catalog evidence"
+        "review 60 highest-priority ambiguous entity groups",
+        "promote source-backed FigureRelease candidates after name/version reconciliation where needed",
+        "work through 4,958 actionable collection/design gaps without treating 1,475 unknown states as missing",
+        "reconcile 65 ID-backed official wishlist entries against owned/current physical records before double-counting",
+        "verify high-priority SourceAppearance candidates",
+        "retain QD015 as an unresolved design-reference code unless exact catalog evidence appears"
       ],
       "completed_2026_09_25": {
         "bootlego_structured_records": 705,
@@ -374,12 +410,24 @@
           "Aquaman",
           "Bane (Classic)"
         ]
+      },
+      "completed_2026_09_26": {
+        "collection_gap_candidates": 6433,
+        "actionable_collection_gap_candidates": 4958,
+        "explicit_missing_design_targets": 4943,
+        "wishlist_gap_candidates": 15,
+        "unknown_state_targets": 1475,
+        "figure_release_candidates": 2401,
+        "source_backed_release_candidates": 2400,
+        "source_appearance_candidates": 3428,
+        "source_appearance_high_priority": 3193,
+        "external_catalog_id_unique_records": 71
       }
     }
   ],
   "exhaustive_definition": "A domain becomes exhausted only after primary/authoritative sources and significant secondary discovery sources are indexed, identities/codes are normalized, contradictions are retained or resolved, time-sensitive facts are dated, and remaining unknowns are explicit.",
   "caveat": "The open web and custom-minifigure market are continuously changing; literal permanent exhaustion is impossible. This matrix makes current coverage and remaining work auditable.",
-  "updated_at": "2026-09-25",
+  "updated_at": "2026-09-26",
   "digital_media_progress_2026_09_25": {
     "official_lego_zip_bundles": 12,
     "official_lego_zip_failures": 0,
@@ -441,5 +489,12 @@
       "bricklink_id": "sh0208",
       "status": "resolved"
     }
+  },
+  "training_supervision_progress_2026_09_26": {
+    "flat_art_verified_asset_groups": 49,
+    "mask_headgear_ranked_records": 14475,
+    "mask_headgear_high_priority": 1280,
+    "source_appearance_review_records": 3428,
+    "source_appearance_high_priority": 3193
   }
 }
