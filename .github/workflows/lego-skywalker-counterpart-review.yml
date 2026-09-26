@@ -41,6 +41,16 @@ jobs:
             --unresolved-output "$work/unresolved.jsonl" \
             --summary "$work/summary.json"
 
+      - name: Summarize unresolved cohorts
+        shell: bash
+        run: |
+          set -euo pipefail
+          work=/tmp/skywalker-counterparts
+          python tools/knowledge/summarize_skywalker_unresolved.py \
+            --records "$work/unresolved.jsonl" \
+            --summary "$work/unresolved-summary.json" \
+            --top-output "$work/unresolved-top.jsonl"
+
       - name: Commit review snapshots race-safely
         shell: bash
         run: |
@@ -54,7 +64,9 @@ jobs:
           cp "$work/records.jsonl" "$dest/skywalker-counterpart-classification-latest.jsonl"
           cp "$work/unresolved.jsonl" "$dest/skywalker-counterpart-unresolved-latest.jsonl"
           cp "$work/summary.json" "$dest/skywalker-counterpart-classification-summary-latest.json"
-          git add "$dest/skywalker-counterpart-classification-latest.jsonl" "$dest/skywalker-counterpart-unresolved-latest.jsonl" "$dest/skywalker-counterpart-classification-summary-latest.json"
+          cp "$work/unresolved-summary.json" "$dest/skywalker-counterpart-unresolved-summary-latest.json"
+          cp "$work/unresolved-top.jsonl" "$dest/skywalker-counterpart-unresolved-top-latest.jsonl"
+          git add "$dest/skywalker-counterpart-classification-latest.jsonl" "$dest/skywalker-counterpart-unresolved-latest.jsonl" "$dest/skywalker-counterpart-classification-summary-latest.json" "$dest/skywalker-counterpart-unresolved-summary-latest.json" "$dest/skywalker-counterpart-unresolved-top-latest.jsonl"
           if git diff --cached --quiet; then
             echo "No Skywalker counterpart changes."
             exit 0
