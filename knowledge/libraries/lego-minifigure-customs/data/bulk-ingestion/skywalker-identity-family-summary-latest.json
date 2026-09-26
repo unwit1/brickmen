@@ -1,6 +1,6 @@
 {
   "schema": "skywalker-identity-family-summary/v1",
-  "processor_version": "skywalker-identity-family/v7",
+  "processor_version": "skywalker-identity-family/v8",
   "records": 377,
   "character_family_status_counts": {
     "physical_character_family_supported": 236,
@@ -8,8 +8,8 @@
     "digital_identity_only_no_physical_name_support": 115
   },
   "physical_release_status_counts": {
-    "unique_physical_release_candidate": 64,
-    "physical_release_ambiguous_within_character_family": 105,
+    "unique_physical_release_candidate": 65,
+    "physical_release_ambiguous_within_character_family": 104,
     "variant_constrained_physical_release_unresolved": 114,
     "no_supported_physical_release_candidate": 94
   },
@@ -18,9 +18,8 @@
     "digital_variant_suffix_matches_catalog_text_requires_visual_confirmation": 48,
     "digital_variant_label_present_requires_version_mapping": 107,
     "unsuffixed_identity_multiple_physical_versions": 71,
-    "digital_negative_feature_requires_visual_mapping": 7,
+    "digital_negative_feature_requires_visual_mapping": 8,
     "digital_specialized_role_matches_catalog_requires_visual_confirmation": 1,
-    "digital_negative_feature_plus_catalog_text_requires_visual_confirmation": 1,
     "digital_version_unresolved": 94
   },
   "digital_variant_suffix_records": 164,
@@ -28,10 +27,9 @@
     "no_semantic_suffix": 214,
     "suffix_catalog_text_match": 48,
     "suffix_not_resolved_in_supported_candidates": 106,
-    "negative_feature_explicit_contradictions_filtered": 5,
+    "negative_feature_explicit_contradictions_filtered": 6,
     "negative_feature_unresolved_no_explicit_contradiction": 2,
-    "specialized_role_catalog_match": 1,
-    "negative_feature_filtered_plus_catalog_text_match": 1
+    "specialized_role_catalog_match": 1
   },
   "base_identity_count": 247,
   "top_base_identities": [
