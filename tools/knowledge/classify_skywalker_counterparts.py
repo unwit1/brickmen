@@ -53,6 +53,7 @@ def main():
     ap.add_argument("--candidates",type=Path,required=True)
     ap.add_argument("--output",type=Path,required=True)
     ap.add_argument("--summary",type=Path,required=True)
+    ap.add_argument("--unresolved-output",type=Path)
     args=ap.parse_args()
 
     rows=[];counts=Counter()
@@ -122,6 +123,17 @@ def main():
       "variant_suffix_requires_version_resolution":sum(x["exact_version_status"]=="variant_suffix_requires_version_resolution" for x in rows),
       "status":"character_counterpart_layer_ready"
     }
+    if args.unresolved_output:
+        unresolved=[
+            r for r in rows
+            if r["character_counterpart_status"]=="unresolved_character_counterpart"
+            or r["exact_version_status"] in {"variant_suffix_requires_version_resolution","character_match_only_version_unresolved"}
+        ]
+        args.unresolved_output.parent.mkdir(parents=True,exist_ok=True)
+        with args.unresolved_output.open("w",encoding="utf-8") as f:
+            for r in unresolved:
+                f.write(json.dumps(r,ensure_ascii=False)+"\n")
+        summary["unresolved_or_version_review_records"]=len(unresolved)
     args.summary.write_text(json.dumps(summary,indent=2)+"\n",encoding="utf-8")
     print(json.dumps(summary,indent=2))
 if __name__=="__main__":main()
