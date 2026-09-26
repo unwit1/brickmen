@@ -1,0 +1,137 @@
+{
+  "schema": "face-landmark-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "rioforce-face-review-006",
+  "records": [
+    {
+      "face_asset_id": "rioforce-face-f637482741924c3c2f89eea4",
+      "relative_path": "Super Heroes/Superman/Superman Face 1.svg",
+      "decision": "subject_catalog_identity_verified_side_semantics_pending",
+      "orientation": "front_surface",
+      "subject": "Superman",
+      "version_family": "2011-2012 classic DC Super Heroes",
+      "confidence": "high_for_subject_and_head_identity",
+      "catalog_identity": {
+        "bricklink_figure": "sh0003",
+        "bricklink_head": "3626pb0636",
+        "bricklink_head_description": "Light Nougat dual-sided Superman head with black eyebrows, cheek lines, frown / determined expression",
+        "lego_element_ids": [
+          "4652575",
+          "4668478"
+        ]
+      },
+      "observed_structure": {
+        "bilateral_eye_shapes": true,
+        "bilateral_highlights": true,
+        "eyebrow_shapes": true,
+        "cheek_line_or_face_accent_paths": true,
+        "mouth_shape": "closed_subtle_expression",
+        "simple_landmark_geometry": true
+      },
+      "side_policy": "The filename 'Face 1' does not by itself prove whether this is BrickLink's frown or determined side; preserve that distinction as pending until direct visual-side comparison.",
+      "evidence_urls": [
+        "https://www.bricklink.com/catalogItemInv.asp?M=sh0003&viewCodes=Y"
+      ],
+      "remaining_tasks": [
+        "resolve exact dual-face side",
+        "derive transformed landmark coordinates"
+      ]
+    },
+    {
+      "face_asset_id": "rioforce-face-66776e4ba15ca1115c18cf63",
+      "relative_path": "Super Heroes/Wonder Woman/Wonder Woman Face.svg",
+      "decision": "subject_catalog_identity_verified_geometry_reviewed",
+      "orientation": "front_surface",
+      "subject": "Wonder Woman",
+      "version_year": 2012,
+      "confidence": "high",
+      "catalog_identity": {
+        "bricklink_figure": "sh0004",
+        "bricklink_head": "3626pb0635",
+        "bricklink_head_description": "Light Nougat dual-sided female head with black eyebrows, eyelashes, dark red lips, grin / angry bared teeth",
+        "lego_element_ids": [
+          "4652903",
+          "6003163"
+        ]
+      },
+      "observed_structure": {
+        "bilateral_eye_shapes": true,
+        "bilateral_highlights": true,
+        "dramatic_eyelash_or_eye_accent_paths": true,
+        "eyebrow_shapes": true,
+        "mouth_shape": "broad_smile_or_grin",
+        "red_lip_region": true,
+        "simple_landmark_geometry": true
+      },
+      "side_policy": "The SVG appears to represent the smiling/grinning side rather than the angry bared-teeth reverse, but exact dual-side assignment remains a visual catalog comparison task.",
+      "evidence_urls": [
+        "https://www.bricklink.com/catalogItemInv.asp?M=sh0004&viewCodes=Y"
+      ],
+      "remaining_tasks": [
+        "confirm exact grin-vs-angry side",
+        "derive transformed landmark coordinates"
+      ]
+    },
+    {
+      "face_asset_id": "rioforce-face-5ae47a49861f77c5c8048908",
+      "relative_path": "Time Cruisers/Tim/Tim Face.svg",
+      "decision": "subject_catalog_identity_verified_geometry_reviewed",
+      "orientation": "front",
+      "source_subject_label": "Tim",
+      "canonical_subject": "Timmy, Time Cruisers",
+      "confidence": "high",
+      "catalog_identity": {
+        "bricklink_figures": [
+          "tim004",
+          "tim005",
+          "tim006"
+        ],
+        "bricklink_head": "3626px19",
+        "bricklink_head_description": "Yellow head with black hair, white eyes, nose, red freckles, lopsided grin"
+      },
+      "observed_structure": {
+        "bilateral_large_eye_shapes": true,
+        "white_eye_regions": true,
+        "dark_pupil_regions": true,
+        "hair_or_upper_face_mass": true,
+        "mouth_shape": "lopsided_grin",
+        "red_freckle_or_cheek_marks": true,
+        "machine_readable_geometry": true
+      },
+      "label_policy": "Preserve RioForce folder label 'Tim'; normalize the canonical catalog identity to 'Timmy'.",
+      "evidence_urls": [
+        "https://www.bricklink.com/catalogItemInv.asp?M=tim004",
+        "https://www.bricklink.com/catalogItemInv.asp?M=tim005"
+      ],
+      "remaining_tasks": [
+        "derive transformed eye/mouth/freckle landmarks",
+        "verify whether all Timmy variants share this exact source artwork"
+      ]
+    },
+    {
+      "face_asset_id": "rioforce-face-4488b1d1bd05c34ee6d02e95",
+      "relative_path": "Classics/Classic Ghost/Ghost Face.svg",
+      "decision": "classic_design_reference_verified_identity_unresolved",
+      "orientation": "front",
+      "subject": "classic ghost face reference",
+      "confidence": "high_for_design_family",
+      "observed_structure": {
+        "complex_swept_eye_or_face_void_shapes": true,
+        "large_open_or_wavy_mouth_region": true,
+        "monochrome_black_print": true,
+        "simple_primitive_landmarks": false
+      },
+      "identity_policy": "Keep as classic ghost design supervision. The motif is not sufficiently release-specific to assign one physical ghost minifigure from this source path alone.",
+      "remaining_tasks": [
+        "derive path-level eye/mouth region bounds",
+        "physical component link only if exact artwork/component evidence is obtained"
+      ]
+    }
+  ],
+  "result": {
+    "reviewed": 4,
+    "catalog_identity_verified": 3,
+    "classic_design_reference_identity_unresolved": 1
+  },
+  "next_offset": 24
+}
