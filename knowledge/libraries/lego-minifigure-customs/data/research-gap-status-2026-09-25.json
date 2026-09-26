@@ -58,9 +58,9 @@
         "2,493/2,494 pairs expose at least one deterministic measurement signal in the latest pass",
         "748 high-priority semantic review records in the latest pass",
         "all 2,494 Fortnite pairs now have preferred image coverage, including 14 alias fallbacks",
-        "2,492 pairs expose deterministic measurement signals",
         "744 high-priority semantic review records in latest run",
-        "6,382 deterministic positive/negative controls"
+        "Skywalker counterpart layer separates character-level identity evidence from exact outfit/version equivalence",
+        "58 strong and 31 review character counterparts are preserved without auto-promoting digital outfit/version identity"
       ]
     },
     {
@@ -112,7 +112,7 @@
     {
       "priority": "very_high",
       "gap": "official_digital_only_variants",
-      "status": "skywalker_grouped_review_queue_ready",
+      "status": "skywalker_character_counterpart_layer_ready_exact_version_resolution_pending",
       "store_next": [
         "Skywalker Saga bundle assets",
         "TT/legacy game models and textures",
@@ -131,7 +131,19 @@
         "58 strong physical-crosswalk candidates, 31 review candidates, 288 unresolved",
         "Skywalker grouped review repair completed successfully",
         "377 review records grouped into 247 base-character groups",
-        "36 groups contain multiple digital variants"
+        "36 groups contain multiple digital variants",
+        "377 Skywalker digital assets classified at character-counterpart level",
+        "58 strong character counterparts, 31 review counterparts, 288 unresolved",
+        "166 digital records carry variant suffixes",
+        "49 strong character matches still have physical version/outfit unresolved",
+        "23 variant-suffix records require explicit version resolution"
+      ],
+      "next_actions": [
+        "review 58 strong character counterparts for physical release/version evidence",
+        "review 31 medium counterparts",
+        "resolve 23 variant-suffix character matches without collapsing digital-only outfits",
+        "classify 288 unresolved records into digital-only, insufficient-name-context, or missing physical catalog",
+        "derive comparable visual features from official game assets"
       ]
     },
     {
@@ -248,7 +260,14 @@
         "553 exact historical fallback matches",
         "1 manual exact historical verification (DA036 Green Arrow)",
         "only QD015 Donkey Kong remains without exact catalog support and is preserved as an unverified design-reference code",
-        "historical catalogs persisted for XINH/G, KDL/Koruit, Kopf, POGO and World Minifigures"
+        "historical catalogs persisted for XINH/G, KDL/Koruit, Kopf, POGO and World Minifigures",
+        "3,432 SourceAppearance candidates cover 4,607 tracker records",
+        "3,234 SourceAppearance candidates are structurally parsed (3,228 comic issues + 6 explicit episodes)",
+        "29 raw SourceAppearance spelling variants collapse into canonical reference keys",
+        "4,909 explicit actionable custom-design candidates remain after separating acquisition/comparison cases",
+        "34 missing targets already have an official/bootleg representation to compare or acquire first",
+        "15 wishlist acquisition gaps remain explicit",
+        "1,475 unknown-state design targets are kept review-only"
       ]
     },
     {
@@ -383,10 +402,13 @@
       "status": "ranked_route_candidates_ready"
     },
     "source_appearance": {
-      "candidates": 3428,
+      "candidate_records": 3432,
       "source_records": 4607,
-      "explicit_hash_issue": 3192,
-      "mixed_or_raw": 236
+      "structured_references": 3234,
+      "comic_issue_candidates": 3228,
+      "explicit_episode_candidates": 6,
+      "alias_groups_collapsed": 29,
+      "mixed_or_raw": 198
     },
     "official_wishlist": {
       "source_records": 67,
@@ -443,6 +465,21 @@
       "episode_like_raw": 7,
       "dated_raw": 13,
       "freeform_or_title_only": 167
+    },
+    "custom_design_backlog": {
+      "custom_design_candidates": 4909,
+      "existing_representation_compare_or_acquire": 34,
+      "acquisition_wishlist": 15,
+      "review_only_unknown_state": 1475
+    },
+    "skywalker_counterparts": {
+      "records": 377,
+      "strong_character_counterparts": 58,
+      "review_character_counterparts": 31,
+      "unresolved_character_counterparts": 288,
+      "variant_suffix_records": 166,
+      "character_match_only_version_unresolved": 49,
+      "variant_suffix_requires_version_resolution": 23
     }
   }
 }
