@@ -490,6 +490,60 @@ def main():
         })
     appearance_rows.sort(key=lambda x:(x["parse_status"]!="explicit_hash_issue",-x["record_count"],x["normalized_first_appearance"]))
 
+    # Rank SourceAppearance candidates so exact issue references and parseable screen references
+    # are reviewed before free-form notes.
+    appearance_review=[]
+    for row in appearance_rows:
+        raw_text=" | ".join(row.get("raw_first_appearance_values") or [])
+        reasons=[]; score=0
+        if row.get("parse_status")=="explicit_hash_issue":
+            appearance_kind="comic_issue_explicit"
+            reasons.append("explicit_issue_number")
+            score+=80
+        elif re.search(r"\b(?:s\d{1,2}e\d{1,2}|season\s+\d+.*episode\s+\d+|episode\s+\d+)\b",raw_text,re.I):
+            appearance_kind="episode_like_raw"
+            reasons.append("episode_pattern")
+            score+=60
+        elif "#" in raw_text:
+            appearance_kind="issue_like_unparsed"
+            reasons.append("hash_issue_syntax_unparsed")
+            score+=55
+        elif re.search(r"\b(?:19|20)\d{2}\b",raw_text):
+            appearance_kind="dated_raw"
+            reasons.append("contains_year")
+            score+=35
+        else:
+            appearance_kind="freeform_or_title_only"
+            reasons.append("freeform")
+            score+=15
+        if row.get("source_work_candidate"):
+            reasons.append("source_work_parsed")
+            score+=10
+        if len(row.get("observed_years") or [])==1:
+            reasons.append("single_observed_year")
+            score+=5
+        score+=min(15,max(0,int(row.get("record_count") or 0)-1)*3)
+        appearance_review.append({
+            "source_appearance_candidate_id":row.get("source_appearance_candidate_id"),
+            "normalized_first_appearance":row.get("normalized_first_appearance"),
+            "raw_first_appearance_values":row.get("raw_first_appearance_values"),
+            "appearance_kind_candidate":appearance_kind,
+            "source_work_candidate":row.get("source_work_candidate"),
+            "issue_number_candidate":row.get("issue_number_candidate"),
+            "observed_names":row.get("observed_names"),
+            "observed_identities":row.get("observed_identities"),
+            "observed_variants":row.get("observed_variants"),
+            "observed_universes":row.get("observed_universes"),
+            "observed_years":row.get("observed_years"),
+            "record_count":row.get("record_count"),
+            "review_priority_score":score,
+            "review_reasons":reasons,
+            "review_status":"pending_source_verification",
+            "policy":"Priority and parser class only. Canonical SourceAppearance promotion still requires verification of the cited issue/episode/work and the relevant character/incarnation/variant.",
+            "processor_version":VERSION,
+        })
+    appearance_review.sort(key=lambda x:(-x["review_priority_score"],x.get("normalized_first_appearance") or ""))
+
     # Prioritized entity-resolution queue.
     entity_review = []
     for g in group_rows:
@@ -636,6 +690,7 @@ def main():
     write_jsonl("entity-resolution-review-queue.jsonl", entity_review)
     write_jsonl("collection-gap-candidates.jsonl", gap_rows)
     write_jsonl("source-appearance-candidates.jsonl", appearance_rows)
+    write_jsonl("source-appearance-review-queue.jsonl", appearance_review)
     (args.output_dir / "entity-resolution-review-summary.json").write_text(json.dumps({
         "schema":"entity-resolution-review-summary/v1",
         "processor_version":VERSION,
@@ -678,6 +733,16 @@ def main():
         "status":"source_appearance_candidate_layer_ready"
     }, indent=2)+"\n", encoding="utf-8")
 
+    (args.output_dir / "source-appearance-review-summary.json").write_text(json.dumps({
+        "schema":"source-appearance-review-summary/v1",
+        "processor_version":VERSION,
+        "records":len(appearance_review),
+        "kind_counts":dict(Counter(x["appearance_kind_candidate"] for x in appearance_review)),
+        "high_priority_records":sum(x["review_priority_score"] >= 80 for x in appearance_review),
+        "top_100":[{"appearance":x["normalized_first_appearance"],"score":x["review_priority_score"],"kind":x["appearance_kind_candidate"],"records":x["record_count"]} for x in appearance_review[:100]],
+        "status":"source_appearance_review_queue_ready"
+    }, indent=2)+"\n", encoding="utf-8")
+
     unresolved_prefix = Counter(
         x.get("observed_prefix") or "UNKNOWN"
         for x in code_rows if x["resolution_status"] == "unresolved_prefix"
@@ -703,6 +768,8 @@ def main():
         "source_appearance_candidate_records": len(appearance_rows),
         "source_records_with_first_appearance": sum(x["record_count"] for x in appearance_rows),
         "explicit_hash_issue_source_appearance_candidates": sum(x["parse_status"] == "explicit_hash_issue" for x in appearance_rows),
+        "source_appearance_review_records": len(appearance_review),
+        "source_appearance_high_priority_records": sum(x["review_priority_score"] >= 80 for x in appearance_review),
         "coded_records": len(code_rows),
         "maker_product_code_records": sum(x.get("product_code_namespace") == "maker_product_code" for x in code_rows),
         "external_catalog_id_records_in_named_records": sum(x.get("product_code_namespace") == "bricklink_minifigure_id" for x in code_rows),
