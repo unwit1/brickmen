@@ -296,7 +296,12 @@
         "23 serial collisions structurally classified; only 3 remain true/unresolved catalog collisions",
         "all 23 shared-serial release collision records structurally retained; the 3 previously true/unresolved collisions now have source-backed resolutions, leaving 0 true/unresolved shared-serial collisions",
         "71 resolved public BrickLink catalog records promoted into provenance-bearing physical-reference links (65 wishlist records and 6 gaming design-target records)",
-        "QD015 Donkey Kong received a dedicated secondary-source/web search pass; no relevant exact-code source was found, so it remains explicitly unresolved rather than inferred"
+        "QD015 Donkey Kong received a dedicated secondary-source/web search pass; no relevant exact-code source was found, so it remains explicitly unresolved rather than inferred",
+        "147/147 audited tracker semantic corrections are applied non-destructively in the reconciliation layer; the original Google Sheet remains unchanged",
+        "14 character-scoped verified identity-alias groups / 36 alias entries prevent spelling/name variants from creating fake incarnations while preserving raw labels",
+        "tracker identity-field audit reduced from 125 flagged rows to 1 intentional review row across 9,480 named source records",
+        "user entity hierarchy refreshed to 6,347 Character, 7,355 Incarnation, and 9,451 OutfitDesign candidates after semantic cleanup",
+        "entity-resolution queue now contains 1,034 groups / 51 high-priority groups; remaining high-priority cases are predominantly genuine shared mantles, universes, or variant-rich characters rather than source-column errors"
       ]
     },
     {
@@ -374,25 +379,32 @@
     "latest_user_reconciliation": {
       "named_records": 11470,
       "dc_legacy_rows_normalized": 1991,
+      "semantic_correction_records_configured": 147,
+      "semantic_corrections_applied": 147,
+      "verified_identity_alias_groups": 14,
+      "identity_alias_entries": 36,
+      "records_using_verified_identity_aliases": 72,
       "name_groups": 6347,
       "cross_source_name_groups": 952,
-      "strict_duplicate_candidate_groups": 1198,
-      "strict_cross_source_duplicate_candidate_groups": 601,
-      "entity_resolution_review_records": 1039,
-      "entity_resolution_high_priority_records": 60,
-      "collection_gap_candidate_records": 354,
-      "actionable_collection_gap_records": 230,
-      "source_appearance_candidate_records": 3428,
-      "source_records_with_first_appearance": 4607,
-      "explicit_hash_issue_source_appearance_candidates": 3192,
+      "strict_duplicate_candidate_groups": 1213,
+      "strict_cross_source_duplicate_candidate_groups": 614,
+      "entity_resolution_review_records": 1034,
+      "entity_resolution_high_priority_records": 51,
+      "groups_with_multiple_identities": 191,
+      "groups_with_multiple_universes": 25,
+      "collection_gap_candidate_records": 6412,
+      "explicit_missing_design_targets": 4934,
+      "unknown_state_targets": 1463,
+      "source_appearance_candidate_records": 3404,
+      "structured_source_appearance_candidates": 3251,
       "maker_product_code_records": 2945,
       "figure_release_candidates": 2401,
-      "figure_release_identity_conflicts": 120,
       "unresolved_code_prefix_records": 1,
       "unresolved_code_prefixes": [
         "DH"
       ],
-      "external_catalog_id_records_total": 59
+      "external_catalog_id_records_total": 71,
+      "status": "semantic_cleanup_applied_remaining_high_priority_queue_is_mostly_real_multi_incarnation_structure"
     },
     "latest_catalog_media": {
       "official_raster_assets_profiled": 397,
@@ -526,10 +538,10 @@
     },
     "user_entity_hierarchy": {
       "character_candidates": 6347,
-      "incarnation_candidates": 7420,
-      "outfit_design_candidates": 9482,
-      "characters_with_unresolved_identity_records": 5040,
-      "incarnations_with_unresolved_variant_records": 5908
+      "incarnation_candidates": 7355,
+      "outfit_design_candidates": 9451,
+      "characters_with_unresolved_identity_records": 5103,
+      "incarnations_with_unresolved_variant_records": 5879
     },
     "refined_design_backlog": {
       "true_custom_design_candidates": 3389,
@@ -570,6 +582,18 @@
       "researched_at": "2026-09-26",
       "research_file": "data/user-entity-reconciliation/release-catalog-unresolved-research-qd015-2026-09-26.json",
       "exact_public_code_source_found": false
+    },
+    "tracker_identity_field_audit": {
+      "named_source_records_scanned": 9480,
+      "initial_review_records": 125,
+      "deterministic_year_identity_repairs": 95,
+      "deterministic_unmatched_punctuation_repairs": 16,
+      "deterministic_non_person_descriptor_or_numeric_repairs": 7,
+      "source_backed_historical_iron_fist_identity_resolutions": 4,
+      "remaining_review_records": 1,
+      "remaining_record": "Wolverine / X-Men row 1052: Identity and Variant both 'Logan Howlett'; retained for intentional design-context review",
+      "source_sheet_mutated": false,
+      "policy": "All repairs are non-destructive derived semantic overlays with raw source provenance retained."
     }
   },
   "latest_progress_2026_09_26": {
