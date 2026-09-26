@@ -13,7 +13,7 @@ from collections import Counter,defaultdict
 from pathlib import Path
 from skywalker_identity_keys import parse_identity_key, specialized_role_match
 
-VERSION="skywalker-identity-family/v7"
+VERSION="skywalker-identity-family/v8"
 GENERIC={"goon","friend","alien","human","officer","trooper","droid","guard","clone"}
 
 def load_jsonl(path):
@@ -31,6 +31,7 @@ def split_camel(v):
 def norm(v):
     s=unicodedata.normalize("NFKD",split_camel(v))
     s="".join(c for c in s if not unicodedata.combining(c)).casefold()
+    s=s.replace("\'","").replace("’","")
     s=re.sub(r"[^a-z0-9]+"," ",s)
     return " ".join(s.split())
 
