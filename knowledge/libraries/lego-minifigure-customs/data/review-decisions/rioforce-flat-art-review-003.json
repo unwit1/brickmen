@@ -1,0 +1,68 @@
+{
+  "schema": "flat-art-independent-review-decisions/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "rioforce-flat-art-review-003",
+  "records": [
+    {
+      "candidate_id": "rioforce-b6f69bbf3b26e918c6a8792b",
+      "relative_stem": "LEGO Minifigures/Series 1/Cowboy Face",
+      "decision": "reject_candidate_match",
+      "candidate_figure": "fig-000040",
+      "candidate_component": "3626apr0001",
+      "reason": "Source path fixes the identity to Collectible Minifigures Series 1 (2010); proposed figure is a 1980 generic cowboy with the standard grin. Independent Series 1 catalog evidence identifies the 2010 Cowboy as a distinct figure."
+    },
+    {
+      "candidate_id": "rioforce-8ae316a94cc89570a55998fe",
+      "relative_stem": "LEGO Minifigures/Series 1/Indian Face",
+      "decision": "reject_candidate_match",
+      "candidate_figure": "fig-000438",
+      "candidate_component": "3626bpr9981",
+      "reason": "Source path fixes the asset to Series 1, while the proposed figure is a 1997/2002 Western-theme figure. Shared legacy naming is insufficient and the release context conflicts."
+    },
+    {
+      "candidate_id": "rioforce-01e07b4692cd51c3eff98660",
+      "relative_stem": "LEGO Minifigures/Series 1/Magician/Magician Face",
+      "decision": "reject_candidate_match",
+      "candidate_figure": "fig-000998",
+      "candidate_component": "92198pr0006",
+      "reason": "Independent catalog evidence identifies the Series 1 Magician as col009 from 2010 with a yellow minifigure head; the proposed candidate is a 2013 Mia minidoll and cannot be the source asset."
+    },
+    {
+      "candidate_id": "rioforce-aa4851f2b61dbef7c75f478a",
+      "relative_stem": "LEGO Minifigures/Series 1/Magician/Magician Torso",
+      "decision": "reject_candidate_match",
+      "candidate_figure": "fig-000998",
+      "candidate_component": "92456c01pr0031",
+      "reason": "Independent catalog evidence identifies the Series 1 Magician as a 2010 minifigure with a black formal jacket/white shirt/red bow-tie torso; the proposed component is a 2013 Mia minidoll torso."
+    },
+    {
+      "candidate_id": "rioforce-e8c6279ac8f77660d80c0685",
+      "relative_stem": "LEGO Minifigures/Series 1/Wrestler Face",
+      "decision": "reject_candidate_match",
+      "candidate_figure": "fig-000117",
+      "candidate_component": "3626bpr0729",
+      "reason": "Series 1's wrestler is the 2010 Super Wrestler with a masked blue head. The proposed candidate is the 2011 Sumo Wrestler, a lexical collision on wrestler."
+    }
+  ],
+  "independent_sources": [
+    {
+      "url": "https://www.bricklink.com/catalogItemInv.asp?S=8683-2",
+      "use": "Series 1 release context and Cowboy membership"
+    },
+    {
+      "url": "https://bricker.info/minifigs/col009/",
+      "use": "2010 Series 1 Magician identity and parts"
+    },
+    {
+      "url": "https://bricker.info/minifigs/col010/",
+      "use": "2010 Series 1 Super Wrestler identity and parts"
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "promoted": 0,
+    "held_unverified": 0,
+    "rejected_candidate_match": 5
+  },
+  "next_offset": 15
+}
