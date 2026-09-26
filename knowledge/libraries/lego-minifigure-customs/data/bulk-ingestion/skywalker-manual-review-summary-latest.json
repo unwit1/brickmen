@@ -2,12 +2,12 @@
   "schema": "skywalker-manual-review-coverage-summary/v1",
   "processor_version": "skywalker-manual-review-coverage/v2",
   "identity_records": 377,
-  "review_files_found": 40,
-  "review_files_parsed": 40,
+  "review_files_found": 41,
+  "review_files_parsed": 41,
   "malformed_review_files": [],
-  "reviewed_asset_ids": 191,
-  "reviewed_variant_keys": 190,
-  "manual_decision_records": 193,
+  "reviewed_asset_ids": 196,
+  "reviewed_variant_keys": 195,
+  "manual_decision_records": 198,
   "manual_decision_counts": {
     "same_character_verified_physical_equivalence_not_promoted": 1,
     "same_character_verified_physical_counterpart_plausible_version_visual_pending": 20,
@@ -87,7 +87,7 @@
     "full_character_identity_detected_not_variant_suffix": 2,
     "digital_game_local_gonk_state_no_supported_physical_variant": 1,
     "digital_general_leia_silver_grey_variant_verified_no_exact_physical_match": 1,
-    "digital_scavenger_grey_vest_variant_verified_physical_episode7_family_visual_pending": 1,
+    "digital_scavenger_grey_vest_variant_verified_physical_episode7_family_visual_pending": 2,
     "timeline_variant_identity_verified_visual_pending": 2,
     "episode1_child_family_verified_exact_physical_release_unresolved": 1,
     "charred_story_state_verified_physical_transformation_analog_visual_pending": 1,
@@ -104,7 +104,11 @@
     "handmaiden_family_verified_theed_selector_unresolved_no_exact_physical_match": 1,
     "episode1_child_starfighter_family_verified_visual_pending": 1,
     "source_local_outfit_state_physical_version_unresolved": 1,
-    "training_flashback_game_variant_verified_no_exact_physical_match": 1
+    "training_flashback_game_variant_verified_no_exact_physical_match": 1,
+    "digital_hermit_variant_verified_physical_episode9_family_visual_pending": 1,
+    "fn2187_identity_and_negative_helmet_state_verified_visual_pending": 1,
+    "digital_heavy_assault_role_verified_no_exact_physical_counterpart": 1,
+    "digital_pilot_helmet_variant_verified_no_supported_physical_counterpart": 1
   },
   "duplicate_reviewed_asset_ids": 2,
   "duplicate_reviewed_variant_keys": 3,
@@ -163,18 +167,17 @@
   },
   "conflicting_duplicate_asset_ids": 0,
   "conflicting_duplicate_assets": {},
-  "unreviewed_records": 186,
-  "unreviewed_suffix_records": 23,
+  "unreviewed_records": 181,
+  "unreviewed_suffix_records": 18,
   "unreviewed_direct_suffix_match_records": 0,
   "unreviewed_unique_physical_release_candidates": 0,
   "unreviewed_release_status_counts": {
     "physical_release_ambiguous_within_character_family": 71,
-    "variant_constrained_physical_release_unresolved": 23,
-    "no_supported_physical_release_candidate": 92
+    "no_supported_physical_release_candidate": 92,
+    "variant_constrained_physical_release_unresolved": 18
   },
   "unreviewed_suffix_constraint_counts": {
-    "suffix_not_resolved_in_supported_candidates": 22,
-    "negative_feature_unresolved_no_explicit_contradiction": 1
+    "suffix_not_resolved_in_supported_candidates": 18
   },
   "status": "manual_review_coverage_compiled"
 }
