@@ -13,7 +13,7 @@ from collections import Counter,defaultdict
 from pathlib import Path
 from skywalker_identity_keys import parse_identity_key
 
-VERSION="skywalker-identity-family/v3"
+VERSION="skywalker-identity-family/v4"
 GENERIC={"goon","friend","alien","human","officer","trooper","droid","guard","clone"}
 
 def load_jsonl(path):
@@ -71,11 +71,33 @@ def looks_like_compact_identifier(v):
     s=compact(v)
     return bool(re.search(r"[a-z]",s) and re.search(r"[0-9]",s) and len(s)<=10)
 
+def semantic_variant_tokens(value):
+    raw=norm(value).split()
+    out=[];i=0
+    while i<len(raw):
+        t=raw[i]
+        nxt=raw[i+1] if i+1<len(raw) else None
+        if t=="phase" and nxt in {"i","1","ii","2"}:
+            out.append("phase1" if nxt in {"i","1"} else "phase2")
+            i+=2;continue
+        if t=="first" and nxt=="order":
+            out.append("firstorder");i+=2;continue
+        if t in {"cmd","cpt","sgt","lt"}:
+            out.append({"cmd":"commander","cpt":"captain","sgt":"sergeant","lt":"lieutenant"}[t])
+            i+=1;continue
+        if t=="fso":
+            out.append("firstorder");i+=1;continue
+        if t=="geonosian":
+            out.append("geonosis");i+=1;continue
+        out.append(t);i+=1
+    return out
+
 def meaningful_suffix_tokens(key):
     parsed=parse_identity_key(key)
-    raw=" ".join(parsed["variant_suffix_tokens"])
-    tokens=[t for t in norm(raw).split() if t and not t.isdigit()]
-    return tokens
+    suffix=parsed["variant_suffix_tokens"]
+    if not suffix or all(str(x).isdigit() for x in suffix):
+        return []
+    return semantic_variant_tokens(" ".join(suffix))
 
 def physical_support(base,candidates):
     label=alias_label(base)
@@ -112,7 +134,7 @@ def constrain_by_suffix(key,supported):
         return supported,"no_semantic_suffix"
     constrained=[]
     for c in supported:
-        nt=set(norm(c.get("name")).split())
+        nt=set(semantic_variant_tokens(c.get("name")))
         if all(t in nt for t in tokens):
             constrained.append(c)
     if constrained:
@@ -191,7 +213,7 @@ def main():
           "all_top_candidates":top,
           "top_score":r.get("top_score"),
           "top_margin":r.get("top_margin"),
-          "policy":"An official filename-derived identity label is valid digital identity evidence. Full-name identity tokens are resolved before variant parsing. Character-family support does not establish exact outfit/version equivalence. Compact identifiers require full-code agreement, meaningful digital suffixes constrain physical variants, and generic role labels remain role families rather than canonical named characters.",
+          "policy":"An official filename-derived identity label is valid digital identity evidence. Full-name identity tokens are resolved before variant parsing. Character-family support does not establish exact outfit/version equivalence. Compact identifiers require full-code agreement; variant matching normalizes audited semantic equivalents such as Phase II/Phase2, First Order, common rank abbreviations, and Geonosis/Geonosian; meaningful digital suffixes constrain physical variants; generic role labels remain role families rather than canonical named characters.",
           "processor_version":VERSION,
         })
 
