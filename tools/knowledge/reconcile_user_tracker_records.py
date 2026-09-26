@@ -14,7 +14,7 @@ from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 
-VERSION = "user-tracker-reconciliation/v2"
+VERSION = "user-tracker-reconciliation/v3"
 
 GENERATED_COLLECTION_FILES = {
     "product-code-brand-candidates-2026-09-25.jsonl",
@@ -90,6 +90,32 @@ def is_maker_code(value):
 
 def uniq(values):
     return sorted({str(v).strip() for v in values if v is not None and str(v).strip()})
+
+def load_identity_aliases(path: Path | None):
+    if not path:
+        return {}, {}, 0
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    alias_map = {}
+    canonical_labels = {}
+    records = payload.get("records") or []
+    for row in records:
+        character_key = norm(row.get("character"))
+        canonical_label = str(row.get("canonical_identity") or "").strip()
+        canonical_key = norm(canonical_label)
+        if not character_key or not canonical_key:
+            continue
+        canonical_labels[(character_key, canonical_key)] = canonical_label
+        for alias in [canonical_label, *(row.get("aliases") or [])]:
+            alias_key = norm(alias)
+            if alias_key:
+                alias_map[(character_key, alias_key)] = canonical_key
+    return alias_map, canonical_labels, len(records)
+
+def identity_semantic_key(character, identity, alias_map):
+    raw_key = norm(identity)
+    if not raw_key:
+        return ""
+    return alias_map.get((norm(character), raw_key), raw_key)
 
 def external_catalog_id(rec):
     direct = str(rec.get("bricklink_minifigure_id") or "").strip()
@@ -482,12 +508,14 @@ def main():
     ap.add_argument("--design-dir", type=Path, required=True)
     ap.add_argument("--crosswalk", type=Path, required=True)
     ap.add_argument("--semantic-corrections", type=Path)
+    ap.add_argument("--identity-aliases", type=Path)
     ap.add_argument("--output-dir", type=Path, required=True)
     args = ap.parse_args()
 
     args.output_dir.mkdir(parents=True, exist_ok=True)
     _, prefix_map, alias_map = load_crosswalk(args.crosswalk)
     semantic_corrections = load_semantic_corrections(args.semantic_corrections)
+    identity_alias_map, identity_canonical_labels, identity_alias_group_count = load_identity_aliases(args.identity_aliases)
 
     input_files = []
     records = []
@@ -551,7 +579,24 @@ def main():
         identities = uniq(x.get("identity") for x in items)
         variants = uniq(x.get("variant") for x in items)
         universes = uniq(x.get("universe") for x in items)
-        identity_semantic_keys = {norm(x) for x in identities if norm(x)}
+        identity_semantic_groups = defaultdict(list)
+        for identity_label in identities:
+            semantic_key = identity_semantic_key(key, identity_label, identity_alias_map)
+            if semantic_key:
+                identity_semantic_groups[semantic_key].append(identity_label)
+        identity_semantic_keys = set(identity_semantic_groups)
+        identity_alias_collapses = []
+        for semantic_key, raw_labels in sorted(identity_semantic_groups.items()):
+            raw_keys = {norm(x) for x in raw_labels if norm(x)}
+            if len(raw_keys) > 1 or any(
+                identity_semantic_key(key, x, identity_alias_map) != norm(x)
+                for x in raw_labels if norm(x)
+            ):
+                identity_alias_collapses.append({
+                    "semantic_key": semantic_key,
+                    "canonical_identity": identity_canonical_labels.get((norm(key), semantic_key)),
+                    "raw_labels": sorted(set(raw_labels)),
+                })
         universe_semantic_keys = {norm(x) for x in universes if norm(x)}
         variant_semantic_keys = {norm(x) for x in variants if norm(x)}
         ambiguity = []
@@ -571,6 +616,7 @@ def main():
             "record_classes": uniq(x.get("record_class") for x in items),
             "identities": identities,
             "identity_semantic_key_count": len(identity_semantic_keys),
+            "identity_alias_collapses": identity_alias_collapses,
             "variants": variants,
             "variant_semantic_key_count": len(variant_semantic_keys),
             "universes": universes,
@@ -594,7 +640,7 @@ def main():
     for rec in records:
         strict_key = "|".join([
             rec["normalized_name"],
-            norm(rec.get("identity")),
+            identity_semantic_key(rec["normalized_name"], rec.get("identity"), identity_alias_map),
             norm(rec.get("variant")),
             norm(rec.get("universe")),
         ])
@@ -819,7 +865,7 @@ def main():
     for char_key, items in character_groups.items():
         identities = defaultdict(list)
         for rec in items:
-            identity_key = norm(rec.get("identity")) or "__identity_unresolved__"
+            identity_key = identity_semantic_key(char_key, rec.get("identity"), identity_alias_map) or "__identity_unresolved__"
             identities[identity_key].append(rec)
 
         character_id = "character-user-" + re.sub(r"[^a-z0-9]+","-",char_key)[:120].strip("-")
@@ -1129,6 +1175,14 @@ def main():
         "dc_legacy_raw_rows_normalized": len(dc_normalized),
         "semantic_correction_records_configured": len(semantic_corrections),
         "semantic_corrections_applied": sum(bool(x.get("semantic_correction")) for x in records),
+        "identity_alias_groups_configured": identity_alias_group_count,
+        "identity_alias_entries_configured": len(identity_alias_map),
+        "records_using_identity_aliases": sum(
+            bool(rec.get("identity")) and
+            identity_semantic_key(rec["normalized_name"], rec.get("identity"), identity_alias_map) != norm(rec.get("identity"))
+            for rec in records
+        ),
+        "name_groups_with_identity_alias_collapses": sum(bool(x.get("identity_alias_collapses")) for x in group_rows),
         "name_groups": len(group_rows),
         "cross_source_name_groups": sum(x["cross_source_candidate"] for x in group_rows),
         "groups_with_multiple_identities": sum("multiple_identities" in x["ambiguity_flags"] for x in group_rows),
