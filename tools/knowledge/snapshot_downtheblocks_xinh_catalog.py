@@ -10,7 +10,7 @@ from datetime import datetime,timezone
 from html.parser import HTMLParser
 from pathlib import Path
 
-VERSION="downtheblocks-xinh-gh-catalog/v1"
+VERSION="downtheblocks-xinh-gh-catalog/v2"
 DEFAULT_URL="https://downtheblocks.com/xinh-minifigure-set-list-database/"
 UA="BrickmenResearch/1.0"
 
@@ -42,25 +42,51 @@ def main():
     m=re.search(r"Updated\s+as\s+of\s+([^\n]+)",text,re.I)
     if m: updated=m.group(1).strip()
 
-    # Match XH/GH serials and any same-line descriptive text. Preserve blanks.
-    pat=re.compile(r"\b((?:XH|GH)\s*[-_]?\s*\d{1,5})\s*[–—-]\s*([^\n]*)",re.I)
+    # Parse serial tokens sequentially so blank slots remain blank rather than
+    # absorbing the following serial as a false name. Include legacy G0001-style IDs.
+    serial_pat=re.compile(r"\b((?:XH|GH|G)\s*[-_]?\s*\d{1,5})\b",re.I)
+    matches=list(serial_pat.finditer(text))
+    observations={}
+    for idx,m in enumerate(matches):
+        code=re.sub(r"[^A-Z0-9]+","",m.group(1).upper())
+        end=matches[idx+1].start() if idx+1 < len(matches) else len(text)
+        segment=text[m.end():end]
+        first_line=(segment.splitlines()[0] if segment.splitlines() else "").strip()
+        first_line=re.sub(r"^[\s:–—-]+","",first_line).strip()
+        # Only accept same-entry text. Section headers/page chrome are not names.
+        name=first_line or None
+        if name and len(name)>250:
+            name=name[:250]
+        observations.setdefault(code,[]).append(name)
+
     by_code={}
-    for m in pat.finditer(text):
-        raw_code=m.group(1)
-        code=re.sub(r"[^A-Z0-9]+","",raw_code.upper())
-        name=m.group(2).strip(" \t-–—") or None
-        # Avoid swallowing obvious page chrome that may follow a blank slot.
-        if name and len(name)>250: name=name[:250]
+    digest=hashlib.sha256(raw).hexdigest()
+    for code,obs in observations.items():
+        names=[]
+        for name in obs:
+            if name and name not in names:
+                names.append(name)
+        if not names:
+            status="blank_catalog_slot"
+            canonical_name=None
+        elif len(names)==1:
+            status="named"
+            canonical_name=names[0]
+        else:
+            status="conflicting_names"
+            canonical_name=names[0]
         by_code[code]={
           "serial":code,
-          "brand_family":"XINH/GH historical catalog",
-          "historical_name":name,
-          "name_status":"named" if name else "blank_catalog_slot",
+          "brand_family":"XINH/G/GH historical catalog",
+          "historical_name":canonical_name,
+          "historical_names":names,
+          "name_status":status,
+          "occurrence_count":len(obs),
           "source_url":args.source_url,
           "source_updated_label":updated,
-          "source_sha256":hashlib.sha256(raw).hexdigest(),
+          "source_sha256":digest,
           "processor_version":VERSION,
-          "policy":"Historical catalog observation only. Does not prove factory ownership, chronology beyond source context, or equivalence to current brand relationships."
+          "policy":"Historical catalog observation only. Blank slots are preserved; duplicate serial observations and conflicting names are retained. Does not prove factory ownership, chronology beyond source context, or equivalence to current brand relationships."
         }
 
     rows=[by_code[k] for k in sorted(by_code,key=lambda x:(re.sub(r"\d","",x),int(re.sub(r"\D","",x) or 0)))]
@@ -76,10 +102,13 @@ def main():
       "source_sha256":hashlib.sha256(raw).hexdigest(),
       "source_bytes":len(raw),
       "catalog_records":len(rows),
-      "named_records":sum(r["historical_name"] is not None for r in rows),
-      "blank_catalog_slots":sum(r["historical_name"] is None for r in rows),
+      "named_records":sum(r["name_status"]=="named" for r in rows),
+      "blank_catalog_slots":sum(r["name_status"]=="blank_catalog_slot" for r in rows),
+      "conflicting_name_records":sum(r["name_status"]=="conflicting_names" for r in rows),
+      "duplicate_serial_records":sum((r.get("occurrence_count") or 0)>1 for r in rows),
       "xh_records":sum(r["serial"].startswith("XH") for r in rows),
       "gh_records":sum(r["serial"].startswith("GH") for r in rows),
+      "g_records":sum(r["serial"].startswith("G") and not r["serial"].startswith("GH") for r in rows),
       "status":"historical_catalog_snapshot_ready"
     }
     args.summary.write_text(json.dumps(summary,indent=2)+"\n",encoding="utf-8")
