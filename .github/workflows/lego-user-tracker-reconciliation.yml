@@ -11,6 +11,7 @@ on:
       - 'knowledge/libraries/lego-minifigure-customs/data/user-collection/**'
       - 'knowledge/libraries/lego-minifigure-customs/data/user-design-targets/**'
       - 'knowledge/libraries/lego-minifigure-customs/data/compatible-brand-code-crosswalk-seed.json'
+      - 'knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/user-tracker-semantic-corrections-2026-09-26.json'
 
 permissions:
   contents: write
@@ -49,6 +50,7 @@ jobs:
             --collection-dir knowledge/libraries/lego-minifigure-customs/data/user-collection \
             --design-dir knowledge/libraries/lego-minifigure-customs/data/user-design-targets \
             --crosswalk knowledge/libraries/lego-minifigure-customs/data/compatible-brand-code-crosswalk-seed.json \
+            --semantic-corrections knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation/user-tracker-semantic-corrections-2026-09-26.json \
             --output-dir "$out"
           dest=knowledge/libraries/lego-minifigure-customs/data/user-entity-reconciliation
           mkdir -p "$dest"
