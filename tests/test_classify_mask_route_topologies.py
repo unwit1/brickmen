@@ -162,3 +162,24 @@ def test_printed_mask_plus_actual_cowl_does_not_use_nonmask_headgear_rule() -> N
     }
     result = tool.classify(row)
     assert result["topology_class"] == "head_plus_separate_cowl"
+
+
+def test_printed_visor_with_ordinary_hair_is_printed_face_cover_topology() -> None:
+    tool = load_tool()
+    row = {
+        "fig_num": "fig-test",
+        "candidate_routes": ["head_print_plus_headgear"],
+        "head_components": [
+            {
+                "part_num": "3626cpr1570",
+                "print_of": "3626c",
+                "part_name": "Minifig Head with Blue Visor with Headset and Eyepiece Print",
+            }
+        ],
+        "headgear_components": [
+            {"part_num": "30608", "part_name": "Hair Flat Top, Tall"}
+        ],
+    }
+    result = tool.classify(row)
+    assert result["topology_class"] == "printed_face_cover_head_plus_nonmask_headgear"
+    assert result["topology_confidence"] >= 0.95

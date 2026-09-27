@@ -112,3 +112,18 @@ def test_round_bubble_helmet_is_transparent_head_enclosure() -> None:
     }
 
     assert tool.is_transparent_dome_geometry(component)
+
+
+def test_torso_with_minifig_head_words_is_not_a_head_component() -> None:
+    tool = load_tool()
+    component = {
+        "part_num": "973c05h14pr2554",
+        "part_name": (
+            "Torso Police Jacket with 3 Zippers, Minifig Head Badge, "
+            "Radio and Belt with Pockets Print"
+        ),
+        "component_role": "head",
+    }
+
+    assert not tool.is_head_component(component)
+    assert tool.is_body_component(component)

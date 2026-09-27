@@ -5,7 +5,7 @@ import argparse,json,re
 from collections import defaultdict,Counter
 from pathlib import Path
 
-VERSION="mask-headgear-candidate-corpus/v3"
+VERSION="mask-headgear-candidate-corpus/v4"
 
 MASK_WORDS=("mask","masked","balaclava","visor","goggles","face cover","breathing apparatus")
 HEADGEAR_WORDS=("helmet","cowl","hood","mask","hat","headgear","headdress","dome","fishbowl","costume","hair")
@@ -25,7 +25,19 @@ def contains(name,words):
 
 def is_head_component(component):
     name=str(component.get("part_name") or "").casefold().strip()
-    if name.startswith("headwear") or name.startswith("costume / mask"):
+    if (
+        name.startswith("headwear")
+        or name.startswith("costume / mask")
+        or name.startswith("torso ")
+        or name.startswith("hips ")
+        or name.startswith("legs ")
+        or name.startswith("hips and ")
+        or name.startswith("minifig hipwear")
+        or name.startswith("minidoll hipwear")
+        or name.startswith("neckwear cape")
+        or name.startswith("minifig neckwear cape")
+        or name.startswith("minidoll neckwear cape")
+    ):
         return False
     return (
         component.get("component_role")=="head"
