@@ -11,6 +11,7 @@ on:
       - "knowledge/libraries/lego-minifigure-customs/data/body-generation-provider-registry.json"
       - "tools/geometry/compile_body_generation_provider_job.py"
       - "tools/geometry/compile_body_articulation_sweeps.py"
+      - "tools/geometry/render_body_generation_guides.py"
       - "knowledge/libraries/lego-minifigure-customs/data/skeletons/brickmen-giant-v0.json"
       - "knowledge/libraries/lego-minifigure-customs/data/skeletons/brickmen-broad-v0.json"
       - "knowledge/libraries/lego-minifigure-customs/data/reference-landmarks/lego-giant-ldraw-shoulders-fit.json"
@@ -56,16 +57,23 @@ jobs:
           CONDITIONING="knowledge/libraries/lego-minifigure-customs/data/generation-conditioning/brickmen-giant-official-cad-v0.json"
           REGISTRY="knowledge/libraries/lego-minifigure-customs/data/body-generation-provider-registry.json"
           SWEEPS="knowledge/libraries/lego-minifigure-customs/data/articulation-sweeps"
+          GUIDES="knowledge/libraries/lego-minifigure-customs/data/generation-guides/brickmen-giant-official-cad-v0"
           JOBS="knowledge/libraries/lego-minifigure-customs/data/provider-jobs/brickmen-giant-official-cad-v0"
-          mkdir -p "$SWEEPS" "$JOBS"
+          mkdir -p "$SWEEPS" "$GUIDES" "$JOBS"
 
           python -m tools.geometry.compile_body_articulation_sweeps \
             "$CONDITIONING" \
             -o "$SWEEPS/brickmen-giant-official-cad-v0.json"
 
+          python -m tools.geometry.render_body_generation_guides \
+            "$CONDITIONING" "$GUIDES" \
+            --sweeps "$SWEEPS/brickmen-giant-official-cad-v0.json"
+
           for provider in partcrafter partpacker pact particulate sam_3d_objects; do
             python -m tools.geometry.compile_body_generation_provider_job \
               "$CONDITIONING" "$REGISTRY" "$provider" \
+              --guide-manifest "$GUIDES/manifest.json" \
+              --sweeps "$SWEEPS/brickmen-giant-official-cad-v0.json" \
               -o "$JOBS/$provider.json"
           done
 
@@ -115,10 +123,19 @@ jobs:
           assert shoulder["combined_swept_aabb_normalized_body_height"]["max"][1] > 0
           assert sweep["production_geometry_authority"] is False
 
+          guide_base = Path("knowledge/libraries/lego-minifigure-customs/data/generation-guides/brickmen-giant-official-cad-v0")
+          guide_manifest = json.loads((guide_base / "manifest.json").read_text())
+          assert guide_manifest["source_image_embedded"] is False
+          assert guide_manifest["has_articulation_sweeps"] is True
+          assert (guide_base / "front.svg").exists()
+          assert (guide_base / "side.svg").exists()
+
           job_base = Path("knowledge/libraries/lego-minifigure-customs/data/provider-jobs/brickmen-giant-official-cad-v0")
           partcrafter = json.loads((job_base / "partcrafter.json").read_text())
           assert partcrafter["native_arguments"]["num_parts"] == 7
           assert len(partcrafter["component_slots"]["required"]) == 7
+          assert partcrafter["guide_pack"]["source_image_embedded"] is False
+          assert "shoulder_l" in partcrafter["articulation_sweep_summary"]["joint_ids"]
           assert partcrafter["production_geometry_authority"] is False
           particulate = json.loads((job_base / "particulate.json").read_text())
           assert particulate["provider_role"] == "mesh_to_articulation_inference_critic"
@@ -133,6 +150,7 @@ jobs:
           git add \
             knowledge/libraries/lego-minifigure-customs/data/generation-conditioning \
             knowledge/libraries/lego-minifigure-customs/data/articulation-sweeps \
+            knowledge/libraries/lego-minifigure-customs/data/generation-guides \
             knowledge/libraries/lego-minifigure-customs/data/provider-jobs
           if git diff --cached --quiet; then
             echo "No conditioning example changes."
