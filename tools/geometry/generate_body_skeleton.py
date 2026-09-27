@@ -64,6 +64,14 @@ def validate_spec(spec: Mapping[str, Any]) -> None:
         anchor = rule.get("anchor_node")
         if anchor and anchor not in node_set:
             raise ValueError(f"Rule references unknown anchor node {anchor}")
+        endpoint = rule.get("endpoint_node")
+        if endpoint and endpoint not in node_set:
+            raise ValueError(f"Rule references unknown endpoint node {endpoint}")
+        unknown_descendants = set(rule.get("descendant_nodes", [])) - node_set
+        if unknown_descendants:
+            raise ValueError(
+                f"Rule references unknown descendant nodes: {sorted(unknown_descendants)}"
+            )
 
 
 def resolve_parameters(
@@ -123,6 +131,24 @@ def _apply_rule(
         delta = coefficient * (value - default)
         for node_id in nodes:
             positions[node_id][axis] += delta
+        return
+
+    if mode == "move_endpoint_with_descendants":
+        endpoint_id = rule["endpoint_node"]
+        endpoint = positions[endpoint_id]
+        axes = [AXIS_INDEX[a] for a in rule.get("axes", ["x", "y", "z"])]
+        delta = [0.0, 0.0, 0.0]
+        for axis in axes:
+            delta[axis] = (endpoint[axis] - anchor[axis]) * (value - 1.0)
+
+        targets = [endpoint_id, *rule.get("descendant_nodes", [])]
+        seen = set()
+        for node_id in targets:
+            if node_id in seen:
+                continue
+            seen.add(node_id)
+            for axis in axes:
+                positions[node_id][axis] += delta[axis]
         return
 
     raise ValueError(f"Unsupported parameter rule mode: {mode}")
