@@ -572,7 +572,7 @@ Next:
 Next:
 - [ ] acquire/scan physical Axl 23763/24128 and 24101/24104 components
 - [ ] replace provisional Axl arm-pinhole hypotheses with physical measurements
-- [ ] add fixed/reference-anchor constraints to skeleton fitting
+- [x] add fixed/reference-parameter constraints to skeleton fitting
 - [ ] fit Axl outer envelope without scaling locked standard donor frames
 
 
@@ -591,7 +591,7 @@ Key result:
 Next:
 - [ ] add side/back references and depth observations
 - [ ] add dedicated shoulder-mass and lower-body visual envelope primitives where evidence supports them
-- [ ] add fixed donor/reference-anchor constraints to fitting
+- [x] add fixed donor/reference-parameter constraints to fitting
 - [ ] render skeleton + envelope overlays for manual review
 
 
@@ -622,3 +622,42 @@ Next:
 Next:
 - [ ] add manual-review annotation editing workflow around the overlay
 - [ ] add side/back projection modes when depth references are available
+
+
+### Fine-grained proportions and view-aware envelopes — 2026-09-27
+
+- [x] add downstream-preserving segment scaling rule
+- [x] add independent lower-torso and upper-torso length controls
+- [x] add independent thigh and shin length controls
+- [x] add independent neck-to-head offset control
+- [x] expose visual head height independently from skeletal proportions
+- [x] support front/back X-width envelope fitting
+- [x] support left/right Y-depth envelope fitting
+- [x] support vertical head-envelope span fitting
+- [x] add regression coverage for segment independence and view-aware envelope mapping
+
+Still needed before the original seed-refit item is complete:
+- [ ] add/review head-height silhouette annotations on real seed references
+- [ ] add side/back real reference observations
+- [ ] rerun seed skeleton fits using segment-level variables where landmarks support them
+- [ ] compare coarse-vs-segment fit residuals and keep only identifiable parameters
+
+
+### LDraw geometry ingestion pipeline — 2026-09-27
+
+- [x] implement recursive local-library LDraw resolver
+- [x] compose type-1 affine subfile transforms
+- [x] flatten type-3 triangles and triangulate type-4 quads
+- [x] preserve BFC winding/mirror signals needed for reference mesh export
+- [x] capture per-source SHA-256, author, !LDRAW_ORG class, license, help, and history
+- [x] compute LDU and nominal-mm bounding boxes
+- [x] add optional deduplicated OBJ export
+- [x] add strict unresolved-dependency handling
+- [x] add synthetic recursive-ingestion tests and CI coverage
+- [x] create Giant/Axl geometry ingestion target queue
+
+Actual Giant geometry remains open:
+- [ ] run against a pinned official LDraw library release
+- [ ] commit/retain manifests for 10128p01c01, 10128, 10154, 10124, 10127, and 10126
+- [ ] generate source-license-compliant flattened reference meshes or reproducible build artifacts
+- [ ] derive orthographic front/back/side reference envelopes from the flattened Giant assembly
