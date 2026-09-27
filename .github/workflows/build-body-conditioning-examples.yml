@@ -12,6 +12,7 @@ on:
       - "knowledge/libraries/lego-minifigure-customs/data/skeletons/brickmen-broad-v0.json"
       - "knowledge/libraries/lego-minifigure-customs/data/reference-landmarks/lego-giant-ldraw-shoulders-fit.json"
       - "knowledge/libraries/lego-minifigure-customs/data/reference-landmarks/lego-giant-10128-ldraw-body-profile.json"
+      - "knowledge/libraries/lego-minifigure-customs/data/reference-landmarks/lego-giant-limb-ldraw-envelope-profile.json"
       - "knowledge/libraries/lego-minifigure-customs/data/reference-landmarks/lego-axl-front.json"
       - "knowledge/libraries/lego-minifigure-customs/data/joint-profiles/lego-giant-43093-shoulder-reference-v0.json"
   workflow_dispatch:
@@ -52,8 +53,13 @@ jobs:
           assert giant["mechanical_constraints"][0]["manufacturing_authority"] is False
           assert giant["mechanical_constraints"][0]["reference_keepout_bbox_mm"] == [16, 6.4, 6.4]
           torso = next(x for x in giant["visual_envelopes"] if x["envelope_id"] == "torso")
+          arm = next(x for x in giant["visual_envelopes"] if x["envelope_id"] == "arm_l")
           assert abs(torso["size_normalized_body_height"][0] - 0.44822387062555535) < 1e-6
           assert abs(torso["size_normalized_body_height"][1] - 0.41732606682059015) < 1e-6
+          assert abs(arm["size_normalized_body_height"][0] - 0.181781764684078) < 1e-6
+          assert abs(arm["size_normalized_body_height"][1] - 0.27980484946128936) < 1e-6
+          assert arm["a_node"] == "shoulder_l"
+          assert arm["b_node"] == "wrist_l"
 
           assert axl["production_geometry_authority"] is False
           assert abs(axl["skeleton_control"]["nodes"]["shoulder_l"]["position_normalized_body_height"][0] + 0.185) < 1e-9
