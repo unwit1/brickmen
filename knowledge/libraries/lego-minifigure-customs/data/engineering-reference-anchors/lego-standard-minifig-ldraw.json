@@ -1,0 +1,123 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-27",
+  "status": "official_ldraw_reference_assembly_transforms_not_physical_metrology",
+  "architecture_id": "lego_standard_minifigure",
+  "units": {
+    "source": "LDU",
+    "nominal_mm_per_ldu": 0.4,
+    "warning": "LDraw coordinates are reference CAD/assembly geometry. They do not establish mould tolerances, interference fits, friction, or production clearances."
+  },
+  "sources": [
+    {
+      "part_id": "973c01",
+      "name": "Minifig Torso with Arms and Yellow Hands",
+      "source_url": "https://library.ldraw.org/parts/14193",
+      "source_status": "official LDraw shortcut",
+      "observations": [
+        "973.dat torso is placed at the assembly origin with the identity transform.",
+        "3818.dat right arm is placed at [-15.552, 9, 0] LDU with the torso-slope alignment transform.",
+        "3819.dat left arm is placed at [15.552, 9, 0] LDU with the mirrored torso-slope alignment transform.",
+        "3820.dat hands are included with explicit posed assembly transforms; those hand transforms are useful pose references but are not wrist-socket metrology."
+      ]
+    },
+    {
+      "part_id": "3818",
+      "name": "Minifig Arm Right",
+      "source_url": "https://library.ldraw.org/parts/7182",
+      "source_status": "official LDraw part",
+      "help_metadata": [
+        "Place at -15.552 9 0 relative to torso.",
+        "Rotate about x for arm elevation, then 9.782 degrees about z to align with torso slope."
+      ]
+    },
+    {
+      "part_id": "3819",
+      "name": "Minifig Arm Left",
+      "source_url": "https://library.ldraw.org/parts/7186",
+      "source_status": "official LDraw part",
+      "help_metadata": [
+        "Place at 15.552 9 0 relative to torso.",
+        "Rotate about x for arm elevation, then -9.782 degrees about z to align with torso slope."
+      ]
+    },
+    {
+      "part_id": "73200b-f1",
+      "name": "Minifig Hips and Legs (Standing)",
+      "source_url": "https://library.ldraw.org/parts/26214",
+      "source_status": "official LDraw shortcut",
+      "observations": [
+        "3815b.dat hips are placed at the assembly origin.",
+        "3816c.dat and 3817c.dat legs are each placed at [0, 12, 0] LDU relative to the hips shortcut origin.",
+        "BrickLink cross-reference in the LDraw header is 970c00."
+      ]
+    }
+  ],
+  "anchors": [
+    {
+      "anchor_id": "right_arm_part_origin_in_torso_frame",
+      "coordinates_ldu": {
+        "x": -15.552,
+        "y": 9,
+        "z": 0
+      },
+      "nominal_coordinates_mm": {
+        "x": -6.2208,
+        "y": 3.6,
+        "z": 0
+      },
+      "evidence": "official 3818 !HELP and official 973c01 assembly transform",
+      "semantic_caution": "Part-origin placement frame. Do not automatically reinterpret as the physical center of every shoulder interface feature."
+    },
+    {
+      "anchor_id": "left_arm_part_origin_in_torso_frame",
+      "coordinates_ldu": {
+        "x": 15.552,
+        "y": 9,
+        "z": 0
+      },
+      "nominal_coordinates_mm": {
+        "x": 6.2208,
+        "y": 3.6,
+        "z": 0
+      },
+      "evidence": "official 3819 !HELP and official 973c01 assembly transform",
+      "semantic_caution": "Part-origin placement frame. Do not automatically reinterpret as the physical center of every shoulder interface feature."
+    },
+    {
+      "anchor_id": "standing_leg_part_origins_in_hips_frame",
+      "coordinates_ldu": {
+        "x": 0,
+        "y": 12,
+        "z": 0
+      },
+      "nominal_coordinates_mm": {
+        "x": 0,
+        "y": 4.8,
+        "z": 0
+      },
+      "evidence": "official 73200b-f1 assembly transform",
+      "semantic_caution": "Assembly placement frame shared by left/right leg files, not a physical tolerance measurement."
+    }
+  ],
+  "derived": [
+    {
+      "name": "arm_part_origin_lateral_separation",
+      "value_ldu": 31.104,
+      "nominal_mm": 12.4416,
+      "authority": "reference_assembly_geometry_only"
+    }
+  ],
+  "intended_uses": [
+    "standard-minifigure donor-component alignment ground truth",
+    "reference-frame calibration for hybrid bodies such as Axl",
+    "sanity checks for generated standard-compatible component placement",
+    "training labels that distinguish mechanical assembly frames from visual silhouette landmarks"
+  ],
+  "hard_rules": [
+    "Do not infer production fit tolerances from LDraw.",
+    "Keep pose transforms separate from connector geometry.",
+    "Keep part origins, mechanical centers, and visual landmarks as separate semantic types.",
+    "Physical samples and fit testing remain authoritative for manufacturing-critical interfaces."
+  ]
+}
