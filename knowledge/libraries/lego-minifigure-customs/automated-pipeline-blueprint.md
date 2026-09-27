@@ -39,3 +39,45 @@ No unvalidated AI connector geometry.
 No UV job outside machine/jig height constraints.
 No silent substitution of part/mould/color.
 No production promotion from a single unverified render.
+
+## Additive manufacturing extension — 2026-09-27
+
+The custom-geometry stage now routes through the additive-manufacturing controller rather than assuming resin is always the final process.
+
+### Process-routing extension
+
+Before physical production:
+1. classify part geometry and functional interfaces;
+2. insert only validated parametric connector features;
+3. determine feasible processes: MSLA/SLA, FDM, casting, printed injection tooling, traditional molding, outsource;
+4. estimate cost/capacity/labor/risk using observed data;
+5. select a validated machine/material/build/postprocess profile;
+6. create the build artifact and immutable job manifest;
+7. run slicer/slice-level preflight;
+8. dispatch only if safety, traceability and qualification gates pass.
+
+### Closed-loop physical feedback
+
+After printing:
+1. wash/cure/finish using the exact recorded profile;
+2. retain sample identity through post-processing;
+3. inspect critical dimensions;
+4. collect fit/force/cycle evidence where required;
+5. record visible defects and yield;
+6. update cost/labor observations;
+7. create a **candidate** compensation/profile revision;
+8. require validation before production promotion.
+
+### Automation rule
+
+The pipeline may automatically generate, slice, queue, inspect and analyze known experiment/process classes. It must not silently promote an unvalidated connector, material blend, cure recipe or process change.
+
+See:
+- `additive-manufacturing-first-cell-plan.md`
+- `automated-additive-manufacturing-cell.md`
+- `parametric-cad-and-connector-automation.md`
+- `additive-manufacturing-validation-program.md`
+- `additive-manufacturing-economics-and-process-crossover.md`
+- `data/additive-manufacturing-automation-contracts.json`
+- `data/additive-process-selection-rules.json`
+- `data/additive-first-experiments.json`
