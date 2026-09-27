@@ -1,0 +1,210 @@
+{
+  "schema": "skywalker-no-supported-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-no-supported-review-014",
+  "policy": "For named characters with long-standing LEGO screen/game representations but no official set release, preserve the nonphysical status rather than matching arbitrary low-score catalog neighbors. Earlier LEGO video-game or animated appearances are valid digital identity evidence but are not physical-release evidence.",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-f5993cdd6a96461796b68b86",
+      "character_variant_key": "SidonIthano",
+      "decision": "named_crimson_corsair_sidon_ithano_verified_video_game_only_no_official_physical_minifigure",
+      "canonical_subject": "Sidon Ithano",
+      "known_aliases": [
+        "Crimson Corsair",
+        "Blood Buccaneer",
+        "Red Raider"
+      ],
+      "physical_status": {
+        "exact_official_minifigure_located": false,
+        "brickipedia_status": "video-game-only minifigure; never existed in physical form or an official LEGO set"
+      },
+      "rejected_top_candidates": [
+        {
+          "fig_num": "fig-003715",
+          "catalog_name": "Mon Mothma",
+          "reason": "unrelated character"
+        },
+        {
+          "fig_num": "fig-003994",
+          "catalog_name": "Sith Warrior",
+          "reason": "unrelated character/era"
+        },
+        {
+          "fig_num": "fig-010432",
+          "catalog_name": "Pit Droid - Brown and White (Gasgano)",
+          "reason": "unrelated droid"
+        }
+      ],
+      "reason": "Sidon Ithano is a distinct named pirate/corsair with LEGO game appearances in The Force Awakens and The Skywalker Saga. Brickipedia explicitly marks the minifigure as game-only/nonphysical.",
+      "systemic_pattern": "named_nonphysical_character_should_not_be_forced_to_unrelated_low_score_candidates",
+      "evidence_urls": [
+        "https://brickipedia.fandom.com/wiki/Sidon_Ithano"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-7cbdf11b89b3ed4bfd958b32",
+      "character_variant_key": "DexterJettster",
+      "decision": "named_dexter_jettster_verified_legacy_video_game_only_no_official_physical_minifigure",
+      "canonical_subject": "Dexter Jettster",
+      "digital_history": [
+        "LEGO Star Wars: The Video Game (2005)",
+        "LEGO Star Wars: The Complete Saga (2007)",
+        "LEGO Star Wars: The Skywalker Saga (2022)"
+      ],
+      "physical_status": {
+        "exact_official_minifigure_located": false,
+        "brickipedia_status": "video-game-only minifigure; never existed in physical form or an official LEGO set"
+      },
+      "rejected_top_candidates": [
+        {
+          "fig_num": "fig-004443",
+          "catalog_name": "First Order Jet Trooper",
+          "reason": "substring 'jet' similarity only; unrelated identity"
+        },
+        {
+          "fig_num": "fig-004495",
+          "catalog_name": "Sith Jet Trooper",
+          "reason": "substring 'jet' similarity only; unrelated identity"
+        },
+        {
+          "fig_num": "fig-004069",
+          "catalog_name": "Ithorian Jedi Master",
+          "reason": "unrelated character/species"
+        }
+      ],
+      "reason": "Dexter Jettster has been represented digitally by LEGO since 2005 but remains nonphysical. The resolver is being misled by the 'Jettster' spelling into Jet Trooper candidates.",
+      "systemic_pattern": "substring_fragment_jet_inside_jettster_must_not_drive_role_matching",
+      "evidence_urls": [
+        "https://brickipedia.fandom.com/wiki/Dexter_Jettster"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-a219ecc466b287bbf2a42036",
+      "character_variant_key": "TionMedon",
+      "decision": "named_utapau_administrator_tion_medon_verified_nonphysical_no_official_lego_minifigure",
+      "canonical_subject": "Tion Medon",
+      "identity_context": {
+        "role": "Port Administrator of Pau City",
+        "location": "Utapau"
+      },
+      "digital_history": [
+        "LEGO Star Wars animated television appearances",
+        "LEGO Star Wars: The Skywalker Saga"
+      ],
+      "physical_status": {
+        "exact_official_minifigure_located": false,
+        "brickipedia_status": "only television/video-game appearances; never existed in physical form or an official LEGO set"
+      },
+      "rejected_top_candidates": [
+        {
+          "fig_num": "fig-002545",
+          "catalog_name": "Teedo",
+          "reason": "weak phonetic similarity; different character"
+        },
+        {
+          "fig_num": "fig-003715",
+          "catalog_name": "Mon Mothma",
+          "reason": "unrelated character"
+        },
+        {
+          "fig_num": "fig-004072",
+          "catalog_name": "Ten Numb, Red Outfit",
+          "reason": "partial phonetic overlap only"
+        }
+      ],
+      "reason": "Tion Medon is a distinct Utapau character with LEGO screen/game appearances but no physical official minifigure. Brickipedia explicitly separates those nonphysical appearances from set releases.",
+      "systemic_pattern": "digital_animation_and_game_appearance_history_is_not_physical_release_evidence",
+      "evidence_urls": [
+        "https://brickipedia.fandom.com/wiki/Tion_Medon"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-d4d36a6ea8afe0a92d099f24",
+      "character_variant_key": "Alcida-Auka",
+      "decision": "named_lanai_caretaker_alcida_auka_verified_video_game_only_no_official_physical_minifigure",
+      "canonical_subject": "Alcida-Auka",
+      "identity_context": {
+        "species": "Lanai",
+        "role": "leader of the Caretakers",
+        "location": "Ahch-To Temple Island"
+      },
+      "physical_status": {
+        "exact_official_minifigure_located": false,
+        "brickipedia_status": "video-game-only minifigure; never existed in physical form or an official LEGO set"
+      },
+      "rejected_top_candidates": [
+        {
+          "fig_num": "fig-004270",
+          "catalog_name": "Bala-Tik",
+          "reason": "weak name-shape similarity only"
+        },
+        {
+          "fig_num": "fig-003805",
+          "catalog_name": "Onaconda Farr",
+          "reason": "unrelated character"
+        },
+        {
+          "fig_num": "fig-003773",
+          "catalog_name": "Captain Panaka",
+          "reason": "unrelated character"
+        }
+      ],
+      "reason": "Alcida-Auka is a specific Lanai caretaker represented in The Skywalker Saga. Brickipedia explicitly marks the LEGO form as game-only/nonphysical.",
+      "systemic_pattern": "short_or_hyphenated_named_characters_need_entity_lookup_before_low_score_catalog_fallback",
+      "evidence_urls": [
+        "https://brickipedia.fandom.com/wiki/Alcida-Auka"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-e43076b1abeaa0e7df546c5f",
+      "character_variant_key": "MasAmedda",
+      "decision": "named_senate_official_mas_amedda_verified_video_game_only_no_official_physical_minifigure",
+      "canonical_subject": "Mas Amedda",
+      "identity_context": {
+        "roles": [
+          "Vice Chair of the Galactic Senate",
+          "Grand Vizier of the Galactic Empire"
+        ]
+      },
+      "physical_status": {
+        "exact_official_minifigure_located": false,
+        "brickipedia_status": "video-game-only minifigure; never existed in physical form or an official LEGO set"
+      },
+      "rejected_top_candidates": [
+        {
+          "fig_num": "fig-003904",
+          "catalog_name": "ASP Droid",
+          "reason": "unrelated droid"
+        },
+        {
+          "fig_num": "fig-004178",
+          "catalog_name": "Maz Kanata",
+          "reason": "weak initial/phonetic similarity only"
+        },
+        {
+          "fig_num": "fig-004254",
+          "catalog_name": "Admiral Raddus",
+          "reason": "unrelated official/character"
+        }
+      ],
+      "reason": "Mas Amedda is a named Senate/Imperial official represented in The Skywalker Saga and earlier LEGO animation, but Brickipedia still classifies the minifigure as nonphysical. Historical Brickset coverage likewise identified him among major missing minifigures.",
+      "systemic_pattern": "longstanding_digital_lego_representation_must_not_be_mistaken_for_physical_release",
+      "evidence_urls": [
+        "https://brickipedia.fandom.com/wiki/Mas_Amedda",
+        "https://brickset.com/article/34132/which-star-wars-characters-are-missing-minifigs"
+      ]
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "nonphysical_named_characters": 5,
+    "automatic_exact_artwork_equivalence_promotions": 0
+  },
+  "remaining_no_supported_records_after_batch": 26,
+  "systemic_findings": [
+    "Legacy LEGO video-game representation can predate physical production by decades and must remain a separate evidence type.",
+    "Substring fragments such as jet inside Jettster should not trigger occupational/role matching.",
+    "Animated LEGO appearances do not imply a set-released minifigure.",
+    "For very low scores, named-entity evidence should supersede arbitrary nearest-neighbor catalog output."
+  ]
+}
