@@ -413,6 +413,12 @@ def compile_conditioning(
             "default_lower_body_mode": generation_contract.get(
                 "default_lower_body_mode"
             ),
+            "generated_component_slots": generation_contract.get(
+                "generated_component_slots", []
+            ),
+            "expected_generated_part_count": generation_contract.get(
+                "expected_generated_part_count"
+            ),
         },
         "mechanical_constraints": joint_constraints,
         "conditioning_channels": {
