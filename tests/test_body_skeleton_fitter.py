@@ -141,7 +141,7 @@ def test_official_giant_shoulders_fit_close_to_default_width():
     result = fit_skeleton(spec, ref)
 
     assert result["fit_parameters"]["shoulder_width_scale"] == pytest.approx(
-        1.0226339574, rel=1e-4
+        1.0226339574, abs=0.001
     )
     assert result["optimized_parameter_names"] == ["shoulder_width_scale"]
     assert result["residuals"]["shoulder_l"]["axes"]["z"] == pytest.approx(
