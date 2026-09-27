@@ -69,3 +69,47 @@ def test_fit_never_claims_production_authority():
     result = fit_skeleton(spec, synthetic_reference())
     assert result["production_geometry_authority"] is False
     assert "connector" in result["warning"].lower()
+
+
+
+def test_locked_parameter_stays_fixed():
+    spec = load_spec(SKELETON)
+    ref = synthetic_reference()
+    ref["locked_parameters"] = {"shoulder_width_scale": 1.0}
+    result = fit_skeleton(spec, ref)
+
+    assert result["fit_parameters"]["shoulder_width_scale"] == pytest.approx(1.0)
+    assert "shoulder_width_scale" not in result["optimized_parameter_names"]
+    assert result["locked_parameters"]["shoulder_width_scale"] == pytest.approx(1.0)
+    assert "one_or_more_parameters_locked_to_reference_frame" in result["diagnostic_flags"]
+
+
+def test_explicit_lock_overrides_reference_lock():
+    spec = load_spec(SKELETON)
+    ref = synthetic_reference()
+    ref["locked_parameters"] = {"shoulder_width_scale": 1.0}
+    result = fit_skeleton(
+        spec,
+        ref,
+        locked_parameters={"shoulder_width_scale": 1.1},
+    )
+    assert result["fit_parameters"]["shoulder_width_scale"] == pytest.approx(1.1)
+
+
+def test_invalid_locked_parameter_is_rejected():
+    spec = load_spec(SKELETON)
+    ref = synthetic_reference()
+    ref["locked_parameters"] = {"shoulder_width_scale": 99.0}
+    with pytest.raises(ValueError, match="above maximum"):
+        fit_skeleton(spec, ref)
+
+
+def test_default_optimizer_excludes_envelope_only_parameters():
+    spec = load_spec(SKELETON)
+    ref = synthetic_reference()
+    ref.pop("fit_parameters")
+    result = fit_skeleton(spec, ref)
+
+    assert "torso_width_scale" not in result["optimized_parameter_names"]
+    assert "head_width_scale" not in result["optimized_parameter_names"]
+    assert "abdomen_width_scale" not in result["optimized_parameter_names"]
