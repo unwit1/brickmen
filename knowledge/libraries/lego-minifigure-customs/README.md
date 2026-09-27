@@ -99,3 +99,12 @@ Additional implementation documents:
 
 Canonical additive-manufacturing decision summary:
 - `additive-manufacturing-research-synthesis.md` — concise current conclusions, recommended architecture, automation priorities, and unresolved physical experiments.
+
+## Agentic 3D accessory generation
+
+Research and architecture for the target workflow "ask for a character -> automatically generate printable compatible accessories":
+- `agentic-character-to-accessory-3d-generation.md` — end-to-end character resolution, accessory planning, multiview concept generation, provider ensemble, CAD/mesh hybridization, critics, DFM, physical feedback and self-improvement.
+- `data/3d-generation-provider-registry.json` — exact-version provider/capability registry for Tripo, Meshy, Hunyuan3D, TRELLIS, SPAR3D, Stable Fast 3D, CadQuery/build123d, CAD-Recode and Zoo/KCL.
+- `data/accessory-generation-benchmark.json` — common accessory suite, input modes and metrics for empirical model routing.
+
+Core rule: learned 3D systems generate/propose visual shells; deterministic Brickmen CAD, keep-out geometry and validated connector profiles remain authoritative for functional interfaces and manufacturing dimensions.
