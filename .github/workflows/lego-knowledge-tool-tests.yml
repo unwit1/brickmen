@@ -1,0 +1,29 @@
+name: LEGO Knowledge Tool Tests
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/lego-knowledge-tool-tests.yml'
+      - 'tools/knowledge/**'
+      - 'tests/**'
+
+permissions:
+  contents: read
+
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out Brickmen
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run knowledge tool tests
+        run: python -m pytest -q
