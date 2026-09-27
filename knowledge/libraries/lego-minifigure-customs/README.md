@@ -330,3 +330,22 @@ Visual body mass is now parameterized separately from skeletal joint spacing:
 - `data/reference-landmarks/seed-envelope-fit-results.json`
 
 The Broad, Mid, XL and Giant generation skeletons now expose independent torso/head/abdomen envelope parameters. Fitting a wider chest no longer moves the shoulder joints. Outer-shoulder and hip silhouette measurements remain visual diagnostics until explicit visual-envelope primitives exist for them.
+
+
+## Body generation conditioning
+
+Reference fitting now compiles into a provider-neutral generation handoff instead of passing raw measurements directly to an image/3D model.
+
+Core:
+- `data/body-generation-conditioning.schema.json`
+- `tools/geometry/compile_body_generation_conditioning.py`
+- `data/generation-conditioning/brickmen-giant-official-cad-v0.json`
+- `data/generation-conditioning/brickmen-broad-axl-envelope-v0.json`
+
+The payload keeps four layers separate:
+1. skeleton/proportion landmarks;
+2. visual body envelopes;
+3. editable/locked component regions;
+4. mechanical constraints with explicit authority state.
+
+Reference-only or validation-pending mechanical profiles may provide alignment/hardware/keep-out context, but they do not authorize printable mating geometry. Reference scale also does not silently replace the selected Brickmen design height.
