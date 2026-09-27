@@ -1,0 +1,128 @@
+from pathlib import Path
+
+import pytest
+
+from tools.geometry.compile_body_generation_conditioning import (
+    compile_conditioning,
+    load_json,
+)
+from tools.geometry.fit_body_envelope_profile import fit_envelope_profile
+from tools.geometry.fit_body_skeleton import fit_skeleton, load_reference
+from tools.geometry.generate_body_skeleton import load_spec
+
+
+ROOT = Path(__file__).resolve().parents[1]
+BASE = ROOT / "knowledge" / "libraries" / "lego-minifigure-customs" / "data"
+
+
+def envelope_by_id(payload, envelope_id):
+    return next(
+        item
+        for item in payload["visual_envelopes"]
+        if item["envelope_id"] == envelope_id
+    )
+
+
+def test_giant_conditioning_merges_official_shape_and_reference_hardware():
+    spec = load_spec(BASE / "skeletons" / "brickmen-giant-v0.json")
+    shoulder_ref = load_reference(
+        BASE / "reference-landmarks" / "lego-giant-ldraw-shoulders-fit.json"
+    )
+    envelope_ref = load_reference(
+        BASE / "reference-landmarks" / "lego-giant-10128-ldraw-body-profile.json"
+    )
+    joint = load_json(
+        BASE
+        / "joint-profiles"
+        / "lego-giant-43093-shoulder-reference-v0.json"
+    )
+
+    skeleton_fit = fit_skeleton(spec, shoulder_ref)
+    envelope_fit = fit_envelope_profile(spec, envelope_ref)
+    payload = compile_conditioning(
+        spec,
+        skeleton_fit=skeleton_fit,
+        envelope_fit=envelope_fit,
+        joint_profiles=[joint],
+    )
+
+    assert payload["target_height_mm"] == pytest.approx(62.0)
+    torso = envelope_by_id(payload, "torso")
+    abdomen = envelope_by_id(payload, "abdomen")
+    assert torso["size_normalized_body_height"][0] == pytest.approx(
+        0.44822387062555535
+    )
+    assert torso["size_normalized_body_height"][1] == pytest.approx(
+        0.41732606682059015
+    )
+    assert abdomen["size_normalized_body_height"][0] == pytest.approx(
+        0.38169368033424167
+    )
+    assert abdomen["size_normalized_body_height"][1] == pytest.approx(
+        0.34055415885259605
+    )
+
+    left_shoulder = payload["skeleton_control"]["nodes"]["shoulder_l"]
+    assert left_shoulder["position_normalized_body_height"][0] == pytest.approx(
+        -0.224858333348, abs=0.001
+    )
+
+    mechanical = payload["mechanical_constraints"][0]
+    assert mechanical["joint_profile_id"] == "lego_giant_43093_shoulder_reference_v0"
+    assert mechanical["authority_class"] == "reference_only_not_manufacturing_authority"
+    assert mechanical["manufacturing_authority"] is False
+    assert mechanical["reference_keepout_bbox_mm"] == [16, 6.4, 6.4]
+    assert mechanical["reference_keepout_normalized_at_target_height"][0] == pytest.approx(
+        16 / 62
+    )
+    assert payload["production_geometry_authority"] is False
+    assert any("reference-only" in text for text in payload["generation_constraints"])
+
+
+def test_axl_visual_mass_can_change_without_moving_default_broad_shoulders():
+    spec = load_spec(BASE / "skeletons" / "brickmen-broad-v0.json")
+    ref = load_reference(BASE / "reference-landmarks" / "lego-axl-front.json")
+    envelope_fit = fit_envelope_profile(spec, ref)
+    payload = compile_conditioning(spec, envelope_fit=envelope_fit)
+
+    torso = envelope_by_id(payload, "torso")
+    assert torso["size_normalized_body_height"][0] == pytest.approx(
+        0.6743648961, rel=1e-5
+    )
+    assert payload["skeleton_control"]["nodes"]["shoulder_l"][
+        "position_normalized_body_height"
+    ][0] == pytest.approx(-0.185)
+    assert payload["parameter_layers"]["mechanical_shape_and_landmarks"][
+        "shoulder_width_scale"
+    ] == pytest.approx(1.0)
+    assert payload["parameter_layers"]["visual_envelope"]["torso_width_scale"] > 1.9
+
+
+def test_reference_height_does_not_override_design_target_height():
+    spec = load_spec(BASE / "skeletons" / "brickmen-giant-v0.json")
+    shoulder_ref = load_reference(
+        BASE / "reference-landmarks" / "lego-giant-ldraw-shoulders-fit.json"
+    )
+    skeleton_fit = fit_skeleton(spec, shoulder_ref)
+    assert skeleton_fit["target_height_mm"] > 70
+
+    payload = compile_conditioning(spec, skeleton_fit=skeleton_fit)
+    assert payload["target_height_mm"] == pytest.approx(
+        spec["default_target_height_mm"]
+    )
+    assert payload["source_fits"]["skeleton_reference_height_mm"] > 70
+
+
+def test_explicit_target_height_controls_mm_only_not_normalized_shape():
+    spec = load_spec(BASE / "skeletons" / "brickmen-giant-v0.json")
+    payload_62 = compile_conditioning(spec, target_height_mm=62)
+    payload_70 = compile_conditioning(spec, target_height_mm=70)
+
+    torso_62 = envelope_by_id(payload_62, "torso")
+    torso_70 = envelope_by_id(payload_70, "torso")
+    assert torso_62["size_normalized_body_height"] == torso_70[
+        "size_normalized_body_height"
+    ]
+    assert torso_70["size_mm_at_target_height"][0] == pytest.approx(
+        torso_62["size_mm_at_target_height"][0] * 70 / 62
+    )
