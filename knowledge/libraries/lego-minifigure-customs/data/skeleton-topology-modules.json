@@ -1,0 +1,239 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-27",
+  "status": "topology_modules_nonproduction",
+  "purpose": "Reusable graph/topology extensions for body skeleton generation. Modules do not define fit-critical geometry.",
+  "modules": [
+    {
+      "module_id": "module_full_balljoint_poseable_standard",
+      "inspired_by": [
+        "custom_sidan_full_balljoint_poseable"
+      ],
+      "applicability": [
+        "standard humanoid skeleton"
+      ],
+      "replace_joint_types": {
+        "neck": "ball",
+        "shoulder_l": "ball",
+        "shoulder_r": "ball",
+        "hip_l": "ball",
+        "hip_r": "ball"
+      },
+      "add_nodes": [
+        {
+          "id": "foot_joint_l",
+          "relative_to": "ankle_l",
+          "role": "foot_ball_joint"
+        },
+        {
+          "id": "foot_joint_r",
+          "relative_to": "ankle_r",
+          "role": "foot_ball_joint"
+        }
+      ],
+      "add_joints": [
+        {
+          "joint_id": "foot_l",
+          "parent_node": "ankle_l",
+          "child_node": "foot_joint_l",
+          "joint_type": "ball"
+        },
+        {
+          "joint_id": "foot_r",
+          "parent_node": "ankle_r",
+          "child_node": "foot_joint_r",
+          "joint_type": "ball"
+        }
+      ],
+      "notes": [
+        "Topology reference only; Si-Dan product evidence confirms ball joints on arms, legs, feet and neck but public measurements do not establish dimensions."
+      ]
+    },
+    {
+      "module_id": "module_single_torso_four_arm",
+      "inspired_by": [
+        "custom_standard_four_arm_single_torso"
+      ],
+      "applicability": [
+        "standard",
+        "broad",
+        "mid",
+        "xl"
+      ],
+      "add_nodes": [
+        {
+          "id": "shoulder2_l",
+          "relative_to": "chest",
+          "role": "secondary_shoulder_joint"
+        },
+        {
+          "id": "elbow2_l",
+          "relative_to": "shoulder2_l",
+          "role": "secondary_elbow_landmark"
+        },
+        {
+          "id": "wrist2_l",
+          "relative_to": "elbow2_l",
+          "role": "secondary_wrist_joint"
+        },
+        {
+          "id": "hand2_l",
+          "relative_to": "wrist2_l",
+          "role": "secondary_hand_center"
+        },
+        {
+          "id": "shoulder2_r",
+          "relative_to": "chest",
+          "role": "secondary_shoulder_joint"
+        },
+        {
+          "id": "elbow2_r",
+          "relative_to": "shoulder2_r",
+          "role": "secondary_elbow_landmark"
+        },
+        {
+          "id": "wrist2_r",
+          "relative_to": "elbow2_r",
+          "role": "secondary_wrist_joint"
+        },
+        {
+          "id": "hand2_r",
+          "relative_to": "wrist2_r",
+          "role": "secondary_hand_center"
+        }
+      ],
+      "add_joints": [
+        {
+          "joint_id": "shoulder2_l",
+          "parent_node": "chest",
+          "child_node": "shoulder2_l",
+          "joint_type": "architecture_selected"
+        },
+        {
+          "joint_id": "wrist2_l",
+          "parent_node": "wrist2_l",
+          "child_node": "hand2_l",
+          "joint_type": "architecture_selected"
+        },
+        {
+          "joint_id": "shoulder2_r",
+          "parent_node": "chest",
+          "child_node": "shoulder2_r",
+          "joint_type": "architecture_selected"
+        },
+        {
+          "joint_id": "wrist2_r",
+          "parent_node": "wrist2_r",
+          "child_node": "hand2_r",
+          "joint_type": "architecture_selected"
+        }
+      ],
+      "constraints": [
+        "secondary shoulder bank must have independent articulation keep-outs",
+        "generation must preserve torso wall between shoulder sockets",
+        "arm ordering must remain semantically stable"
+      ]
+    },
+    {
+      "module_id": "module_digitigrade_lower_body",
+      "inspired_by": [
+        "minifig_lowerbody_faun_digitigrade"
+      ],
+      "applicability": [
+        "standard",
+        "broad",
+        "mid"
+      ],
+      "replace_lower_chain": {
+        "left": [
+          "hip_l",
+          "knee_l",
+          "hock_l",
+          "hoof_l"
+        ],
+        "right": [
+          "hip_r",
+          "knee_r",
+          "hock_r",
+          "hoof_r"
+        ]
+      },
+      "add_nodes": [
+        {
+          "id": "hock_l",
+          "relative_to": "knee_l",
+          "role": "digitigrade_hock"
+        },
+        {
+          "id": "hoof_l",
+          "relative_to": "hock_l",
+          "role": "digitigrade_foot"
+        },
+        {
+          "id": "hock_r",
+          "relative_to": "knee_r",
+          "role": "digitigrade_hock"
+        },
+        {
+          "id": "hoof_r",
+          "relative_to": "hock_r",
+          "role": "digitigrade_foot"
+        }
+      ],
+      "notes": [
+        "Can be used as visual-only landmarks when the physical lower body is a single molded component.",
+        "Functional joint count must come from the selected architecture, not the anatomical-looking landmark chain."
+      ]
+    },
+    {
+      "module_id": "module_battle_droid_mechanical",
+      "inspired_by": [
+        "minifig_battle_droid_mechanical"
+      ],
+      "applicability": [
+        "mechanical_humanoid"
+      ],
+      "replace_component_graph": [
+        "mechanical_torso",
+        "mechanical_head",
+        "left_mechanical_arm",
+        "right_mechanical_arm",
+        "mechanical_leg_pair"
+      ],
+      "topology_notes": [
+        "No standard humanoid torso/hips assumption.",
+        "Hands/grips are clip/mechanical interfaces rather than standard minifigure C-hands.",
+        "Head uses dedicated mechanical connection."
+      ]
+    },
+    {
+      "module_id": "module_integrated_head_torso",
+      "inspired_by": [
+        "minifig_super_battle_droid_integrated",
+        "lego_giant_integrated_head_legacy"
+      ],
+      "applicability": [
+        "mechanical",
+        "giant",
+        "specialized_character"
+      ],
+      "graph_transform": [
+        "remove separate neck-to-head component boundary",
+        "retain head landmarks for style/recognition",
+        "treat head+torso as one manufacturing component unless architecture revision says otherwise"
+      ]
+    },
+    {
+      "module_id": "module_torso_shell_overlay",
+      "inspired_by": [
+        "custom torso/body add-ons"
+      ],
+      "applicability": [
+        "any donor skeleton with unchanged mechanics"
+      ],
+      "inheritance_rule": "Reuse every node/joint from donor FigureArchitecture; add only a nonmechanical shell envelope.",
+      "generation_rule": "Overlay may modify silhouette/relief but cannot enter donor joint keep-outs.",
+      "classification": "BodyAugmentation rather than new FigureArchitecture unless underlying joints/components change."
+    }
+  ]
+}
