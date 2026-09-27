@@ -140,6 +140,40 @@
           "items": {
             "type": "string"
           }
+        },
+        "component_records": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "path",
+              "provider_part_id",
+              "source_role"
+            ],
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "provider_part_id": {
+                "type": "string"
+              },
+              "provider_part_index": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "provider_manifest": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "source_role": {
+                "type": "string"
+              }
+            }
+          }
         }
       }
     }
