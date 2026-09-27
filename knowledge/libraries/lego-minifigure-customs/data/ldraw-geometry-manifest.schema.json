@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ldraw-geometry-manifest.schema.json",
+  "title": "Brickmen LDraw Geometry Ingestion Manifest",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "root_file",
+    "triangle_count",
+    "source_file_count",
+    "bbox_ldu",
+    "bbox_nominal_mm",
+    "dependencies",
+    "unresolved_references",
+    "production_geometry_authority"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "root_file": {
+      "type": "string"
+    },
+    "ldraw_library_release": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "triangle_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "source_file_count": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "source_occurrence_count": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "line_counts": {
+      "type": "object"
+    },
+    "bbox_ldu": {
+      "type": "object"
+    },
+    "bbox_nominal_mm": {
+      "type": "object"
+    },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "sha256",
+          "metadata",
+          "occurrences"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "bytes_utf8": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "metadata": {
+            "type": "object"
+          },
+          "occurrences": {
+            "type": "integer",
+            "minimum": 1
+          }
+        }
+      }
+    },
+    "unresolved_references": {
+      "type": "array"
+    },
+    "production_geometry_authority": {
+      "const": false
+    },
+    "warning": {
+      "type": "string"
+    }
+  }
+}
