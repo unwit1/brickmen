@@ -121,3 +121,22 @@ def test_sampled_pose_pass_exposes_continuous_motion_blocker():
     assert "sampled_pose_collision_validation" not in state["production_readiness"]["blocking_gates"]
     assert "continuous_motion_collision_validation" in state["production_readiness"]["blocking_gates"]
     assert any("continuous collision" in x for x in state["next_actions"])
+
+
+def test_critic_state_cannot_masquerade_as_primary_generator():
+    state=summarize_pipeline_state(
+        conditioning(),
+        provider_job={
+            "provider_id":"particulate",
+            "pipeline_stage":"post_generation_critic",
+            "execution_interface":{"adapter_status":"runnable_cli_verified"},
+        },
+    )
+    assert state["state_scope"]=="auxiliary_post_generation_critic"
+    assert state["provider_pipeline_stage"]=="post_generation_critic"
+    assert "primary_generator_output_dependency" in state["production_readiness"]["blocking_gates"]
+    mapping_gate=next(
+        g for g in state["gates"] if g["gate_id"]=="component_mapping"
+    )
+    assert mapping_gate["status"]=="not_applicable_to_critic_provider"
+    assert "component_mapping" not in state["production_readiness"]["blocking_gates"]
