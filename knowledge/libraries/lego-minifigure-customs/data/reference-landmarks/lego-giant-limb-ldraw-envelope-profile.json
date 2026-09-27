@@ -1,0 +1,120 @@
+{
+  "schema_version": "0.1",
+  "reference_id": "lego_giant_arms_hands_ldraw_envelope_profile_2303",
+  "architecture_candidate_id": "lego_giant_modular",
+  "source": {
+    "title": "Official LDraw Giant arm/hand component-profile envelope evidence",
+    "engineering_skeleton": "knowledge/libraries/lego-minifigure-customs/data/engineering-skeletons/lego-giant-modular-2303.json",
+    "arm_profiles": [
+      "knowledge/libraries/lego-minifigure-customs/data/digital-twins/ldraw-profiles/ubuntu-noble-2303/10154.json",
+      "knowledge/libraries/lego-minifigure-customs/data/digital-twins/ldraw-profiles/ubuntu-noble-2303/10124.json"
+    ],
+    "hand_profiles": [
+      "knowledge/libraries/lego-minifigure-customs/data/digital-twins/ldraw-profiles/ubuntu-noble-2303/10127.json",
+      "knowledge/libraries/lego-minifigure-customs/data/digital-twins/ldraw-profiles/ubuntu-noble-2303/10126.json"
+    ],
+    "ldraw_library_release": "Ubuntu 24.04 ldraw-parts 2303+ds-1",
+    "source_note": "Cross-section means are measured from central 8–92% component-height triangle-plane slices, then normalized by the complete official Giant body height (71.1176 mm)."
+  },
+  "view": "multi_view",
+  "evidence_class": "reference_cad_geometry",
+  "known_height_mm": 71.1176,
+  "landmark_coordinate_mode": "normalized_body_height",
+  "landmarks": {},
+  "envelope_measurements_normalized": {
+    "arm_front_width_mean": {
+      "value": 0.181781764684078,
+      "confidence": 0.9,
+      "envelope_id": "arm_l",
+      "axis": "x",
+      "semantic": "intrinsic_arm_central_cross_section_front_width_mean",
+      "source": {
+        "parts": [
+          "10154",
+          "10124"
+        ],
+        "sample_band": [
+          0.08,
+          0.92
+        ],
+        "aggregation": "mean"
+      }
+    },
+    "arm_side_depth_mean": {
+      "value": 0.27980484946128936,
+      "confidence": 0.9,
+      "envelope_id": "arm_l",
+      "axis": "y",
+      "semantic": "intrinsic_arm_central_cross_section_side_depth_mean",
+      "source": {
+        "parts": [
+          "10154",
+          "10124"
+        ],
+        "sample_band": [
+          0.08,
+          0.92
+        ],
+        "aggregation": "mean"
+      }
+    },
+    "hand_front_width_mean": {
+      "value": 0.17426889310845864,
+      "confidence": 0.9,
+      "envelope_id": "hand_l",
+      "axis": "x",
+      "semantic": "intrinsic_hand_central_cross_section_front_width_mean",
+      "source": {
+        "parts": [
+          "10127",
+          "10126"
+        ],
+        "sample_band": [
+          0.08,
+          0.92
+        ],
+        "aggregation": "mean"
+      }
+    },
+    "hand_side_depth_mean": {
+      "value": 0.24813372766299466,
+      "confidence": 0.85,
+      "envelope_id": "hand_l",
+      "axis": "y",
+      "semantic": "intrinsic_hand_central_cross_section_side_depth_mean",
+      "source": {
+        "parts": [
+          "10127",
+          "10126"
+        ],
+        "sample_band": [
+          0.08,
+          0.92
+        ],
+        "aggregation": "mean"
+      },
+      "notes": "Hand shape is strongly nonuniform; mean is a visual conditioning statistic, not a fitted grip/socket dimension."
+    },
+    "hand_component_height": {
+      "value": 0.20941651574293846,
+      "confidence": 0.9,
+      "envelope_id": "hand_l",
+      "axis": "z",
+      "semantic": "intrinsic_hand_component_height_over_complete_body_height",
+      "source": {
+        "parts": [
+          "10127",
+          "10126"
+        ],
+        "aggregation": "bbox_component_height"
+      }
+    }
+  },
+  "exclude_from_production_dimensions": true,
+  "notes": [
+    "Left/right official components are mirrored; one shared Brickmen visual scale parameter is fitted and applied symmetrically.",
+    "Arm cross-section evidence controls visual bulk only; arm endpoint frames remain governed by the skeleton/engineering reference.",
+    "Hand envelope evidence does not define the hand socket or power-grip connector.",
+    "Reference CAD remains non-authoritative for physical tolerances."
+  ]
+}
