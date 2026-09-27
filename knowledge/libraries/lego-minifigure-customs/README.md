@@ -188,3 +188,39 @@ compatibility
 visual style
 ```
 instead of reducing every figure to a single body-label class.
+
+
+## Advanced body generation / part-aware articulation
+
+New research layers supporting architecture-aware printable full bodies:
+
+- `hulk-cross-architecture-study.md` — first same-character architecture control corpus.
+- `thing-cross-architecture-study.md` — matched-source standard/intermediate/BigFig control set and rock-surface translation research.
+- `maker-body-family-resolution.md` — release/body-family clustering; maker prefix is not architecture.
+- `custom-bigfig-mold-lineage.md` — cross-brand mold/tooling lineage and MoldFamily model.
+- `printable-nonstandard-body-engineering.md` — hybrid printed-shell + commodity-joint patterns and JointCartridge strategy.
+- `brickmen-original-midfig-architecture.md` — independent automation-first Brickmen MidFig concept.
+- `body-architecture-recognition-implementation.md` — image/scan recognition implementation stack.
+- `nonstandard-digital-twin-ingestion.md` — component-level architecture digital-twin ingestion.
+- `part-aware-3d-generation-and-correspondence.md` — PartCrafter/SAMPart3D/PartField/OmniPart/SAM3D-Part research.
+- `articulated-3d-generation-and-joint-proposals.md` — PAct/Particulate/ArtLLM/LAM and learned JointProposal workflow.
+- `architecture-conditioned-body-style-compiler.md` — compiler from architecture-neutral body semantics to geometry/relief/print/component decisions.
+
+Key structured records:
+- `data/hulk-cross-architecture-corpus.json`
+- `data/thing-cross-architecture-corpus.json`
+- `data/character-body-feature-schema.json`
+- `data/maker-body-family-clusters.json`
+- `data/mold-family-schema.json`
+- `data/custom-bigfig-ecosystem-registry.json`
+- `data/printable-body-engineering-patterns.json`
+- `data/brickmen-midfig-v0.json`
+- `data/body-recognition-model-registry.json`
+- `data/part-aware-3d-model-registry.json`
+- `data/articulated-generation-research-registry.json`
+- `data/joint-proposal-schema.json`
+- `data/body-style-compiler-contract.json`
+- `data/style-mapping-rule-schema.json`
+
+Generation principle:
+**character semantics are architecture-neutral; style compilation is architecture-specific; final mechanical interfaces remain deterministic and physically validated.**
