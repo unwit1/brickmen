@@ -1,0 +1,75 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-27",
+  "status": "research_contract",
+  "purpose": "Choose plausible figure architectures for a character/source appearance without conflating size, maker style and mechanical compatibility.",
+  "input_fields": [
+    "character_id",
+    "incarnation_id",
+    "appearance_id",
+    "outfit_design_id",
+    "source_body_build",
+    "source_scale_relative_to_companions",
+    "source_silhouette_features",
+    "required_limb_count",
+    "required_lower_body_morphology",
+    "required_articulation",
+    "required_accessory_interfaces",
+    "desired_collection_style",
+    "user_requested_architecture",
+    "available_donor_architectures",
+    "manufacturing_constraints",
+    "closest_precedent_ids"
+  ],
+  "candidate_evaluation_dimensions": [
+    "topology_match",
+    "relative_scale_match",
+    "bulk_silhouette_match",
+    "identity_feature_support",
+    "articulation_support",
+    "standard_part_compatibility",
+    "accessory_compatibility",
+    "surface_decor_capacity",
+    "manufacturing_maturity",
+    "physical_validation_level",
+    "existing_digital_twin_quality",
+    "style_profile_evidence",
+    "user_preference"
+  ],
+  "output": {
+    "selected_architecture_id": "nullable until chosen",
+    "selected_style_profile_id": "nullable",
+    "candidates": [
+      {
+        "architecture_id": "string",
+        "style_profile_candidates": [
+          "string"
+        ],
+        "evidence": [
+          "string"
+        ],
+        "tradeoffs": [
+          "string"
+        ],
+        "unknowns": [
+          "string"
+        ],
+        "manufacturing_status": "string",
+        "confidence": "number_0_to_1"
+      }
+    ],
+    "topology_requirements": [
+      "string"
+    ],
+    "user_decision_needed": "boolean",
+    "reason": "string"
+  },
+  "hard_rules": [
+    "Required topology outranks body-size resemblance.",
+    "A muscular character does not automatically imply Giant/BigFig.",
+    "Maker/product prefix is not an architecture.",
+    "BodyStyleProfile can influence appearance but cannot substitute for missing FigureArchitecture joints/connectors.",
+    "If no known architecture satisfies required topology, create an original/candidate architecture rather than deforming a known body beyond its definition.",
+    "If user explicitly requests an architecture, retain it unless it cannot satisfy hard topology/manufacturing constraints; explain conflicts rather than silently switching."
+  ]
+}
