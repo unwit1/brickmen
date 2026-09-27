@@ -192,22 +192,73 @@ def _candidate_values(
     return sorted(set(round(v, 10) for v in values))
 
 
+def _skeleton_parameter_names(spec: Mapping[str, Any]) -> list[str]:
+    """Return parameters that actually alter skeleton node coordinates.
+
+    Envelope-only parameters intentionally stay out of landmark fitting unless a
+    caller explicitly requests them. This prevents visual mass controls from
+    being mistaken for mechanical/proportion controls.
+    """
+    names: list[str] = []
+    for rule in spec.get("parameter_rules", []):
+        name = rule["parameter"]
+        if name not in names:
+            names.append(name)
+    return names
+
+
+def _validated_locked_parameters(
+    definitions: Mapping[str, Mapping[str, Any]],
+    values: Mapping[str, Any],
+) -> Dict[str, float]:
+    locked: Dict[str, float] = {}
+    unknown = set(values) - set(definitions)
+    if unknown:
+        raise ValueError(f"Unknown locked skeleton parameters: {sorted(unknown)}")
+
+    for name, raw in values.items():
+        value = float(raw)
+        definition = definitions[name]
+        lo = definition.get("min")
+        hi = definition.get("max")
+        if lo is not None and value < float(lo):
+            raise ValueError(f"Locked {name}={value} is below minimum {lo}")
+        if hi is not None and value > float(hi):
+            raise ValueError(f"Locked {name}={value} is above maximum {hi}")
+        locked[name] = value
+    return locked
+
+
 def fit_skeleton(
     spec: Mapping[str, Any],
     reference: Mapping[str, Any],
     *,
     parameter_names: Sequence[str] | None = None,
+    locked_parameters: Mapping[str, float] | None = None,
     passes: int = 6,
     samples_per_parameter: int = 13,
 ) -> Dict[str, Any]:
     observations = normalized_landmarks(reference)
     definitions = spec.get("parameters", {})
 
+    reference_locks = reference.get("locked_parameters") or {}
+    merged_locks = dict(reference_locks)
+    if locked_parameters:
+        merged_locks.update(locked_parameters)
+    locked = _validated_locked_parameters(definitions, merged_locks)
+
     if parameter_names is None:
-        parameter_names = reference.get("fit_parameters") or list(definitions)
-    parameter_names = [name for name in parameter_names if name in definitions]
+        parameter_names = (
+            reference.get("fit_parameters") or _skeleton_parameter_names(spec)
+        )
+    parameter_names = [
+        name
+        for name in parameter_names
+        if name in definitions and name not in locked
+    ]
 
     params = {name: float(defn["default"]) for name, defn in definitions.items()}
+    params.update(locked)
     initial_loss, initial_residuals = landmark_loss(
         spec, observations, params
     )
@@ -278,6 +329,8 @@ def fit_skeleton(
             )
 
     diagnostic_flags = []
+    if locked:
+        diagnostic_flags.append("one_or_more_parameters_locked_to_reference_frame")
     if bound_hits:
         diagnostic_flags.append("one_or_more_parameters_hit_bounds")
     if (
@@ -292,7 +345,7 @@ def fit_skeleton(
         diagnostic_flags.append("reference_architecture_differs_from_brickmen_target")
 
     return {
-        "schema_version": "0.2",
+        "schema_version": "0.3",
         "reference_id": reference["reference_id"],
         "reference_architecture_candidate_id": reference.get(
             "architecture_candidate_id"
@@ -302,6 +355,7 @@ def fit_skeleton(
         "evidence_class": reference["evidence_class"],
         "target_height_mm": target_height,
         "fit_parameters": params,
+        "locked_parameters": locked,
         "optimized_parameter_names": list(parameter_names),
         "initial_normalized_rmse": initial_rmse,
         "final_normalized_rmse": rmse,
@@ -324,6 +378,16 @@ def parse_params(values: Iterable[str]) -> list[str]:
     return [value.strip() for value in values if value.strip()]
 
 
+def parse_param_values(values: Iterable[str]) -> Dict[str, float]:
+    result: Dict[str, float] = {}
+    for value in values:
+        if "=" not in value:
+            raise ValueError(f"Locked parameter must be name=value: {value}")
+        name, raw = value.split("=", 1)
+        result[name.strip()] = float(raw)
+    return result
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("skeleton")
@@ -333,6 +397,15 @@ def main() -> int:
         action="append",
         default=[],
         help="Restrict optimization to this parameter; repeat as needed.",
+    )
+    parser.add_argument(
+        "--lock-param",
+        action="append",
+        default=[],
+        help=(
+            "Lock a skeleton parameter to name=value while fitting; repeat as "
+            "needed. Reference-file locked_parameters are applied first."
+        ),
     )
     parser.add_argument("--passes", type=int, default=6)
     parser.add_argument("--samples", type=int, default=13)
@@ -345,6 +418,7 @@ def main() -> int:
         spec,
         reference,
         parameter_names=parse_params(args.fit_param) or None,
+        locked_parameters=parse_param_values(args.lock_param) or None,
         passes=args.passes,
         samples_per_parameter=args.samples,
     )
