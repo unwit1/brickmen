@@ -43,6 +43,33 @@ Outputs:
 Runs every pair in:
 `data/reference-landmarks/manifest.json`.
 
+### Visual-envelope fitter
+
+`python -m tools.geometry.fit_body_envelope_profile`
+
+Accepts:
+- pixel silhouette spans;
+- view-aware front/back width evidence;
+- side-view depth evidence;
+- vertical visual spans;
+- direct normalized CAD/render/physical envelope measurements.
+
+It changes visual envelope parameters without moving skeleton joints.
+
+### Generation conditioning compiler
+
+`python -m tools.geometry.compile_body_generation_conditioning`
+
+Combines:
+- skeleton/reference fit;
+- independent visual-envelope fit;
+- architecture generation contract;
+- JointProfile/JointCartridge evidence;
+
+into a provider-neutral `BodyGenerationConditioning` payload for part-aware shell generation.
+
+Mechanical authority is preserved per source: validation-pending CAD/hardware references remain reference-only.
+
 ## Current seed references
 
 - Alpha Toys AF325 Venom -> Broad
@@ -217,3 +244,30 @@ No catalog-image fit can promote:
 - material clearance.
 
 Those come only from engineering/physical evidence.
+
+
+## Official Giant CAD reference
+
+The fitting stack is no longer image-only for the official Giant control.
+
+Pinned LDraw `2303+ds-1` geometry now supplies:
+- complete component transforms;
+- normalized shoulder centers;
+- body-only orthographic width/depth profiles;
+- multi-view normalized envelope observations;
+- a 43093 shoulder-hardware reference profile.
+
+Current official-body findings include:
+- shoulder-center separation ≈ 0.44996 body heights;
+- upper-torso width mean ≈ 0.44822;
+- upper-torso depth mean ≈ 0.41733;
+- waist-band width mean ≈ 0.38169;
+- waist-band depth mean ≈ 0.34055.
+
+These values are reference CAD geometry, not physical fit tolerances.
+
+The Brickmen Giant design can use them for proportion/envelope conditioning while retaining:
+- its own target height;
+- its own shoulder spacing when desired;
+- fixed-size commodity hardware;
+- separate physical validation requirements.
