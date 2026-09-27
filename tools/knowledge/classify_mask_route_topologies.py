@@ -119,8 +119,7 @@ def classify(record: dict) -> dict:
 
         sports_faceguard = (
             "93561" in gear_ids
-            or ("sports" in gear_text and "hockey mask" in gear_text)
-            or ("helmet, sports" in gear_text and "mask" in gear_text)
+            or "hockey mask" in gear_text
         )
         if sports_faceguard:
             return set_result(

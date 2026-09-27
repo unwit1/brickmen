@@ -85,3 +85,19 @@ def test_cowl_classification_ignores_semantic_translation() -> None:
     assert result["topology_class"] == "head_plus_separate_cowl"
     assert result["semantic_function_status"] == "manual_review_required"
     assert result["source_translation_status"] == "exact_source_appearance_pairing_required"
+
+
+def test_welding_mask_plus_sports_helmet_is_not_sports_faceguard() -> None:
+    tool = load_tool()
+    row = {
+        "fig_num": "fig-test",
+        "candidate_routes": ["helmet_plus_head", "separate_mask_headgear"],
+        "head_components": [{"part_num": "3626cpr1", "print_of": "3626c", "part_name": "Minifig Head"}],
+        "headgear_components": [
+            {"part_num": "93560", "part_name": "Helmet, Sports [Plain]"},
+            {"part_num": "65195pr0004", "part_name": "Headwear Accessory Welding Mask with Visor"},
+        ],
+    }
+    result = tool.classify(row)
+    assert result["topology_class"] == "head_plus_separate_mask_untyped"
+    assert result["topology_class"] != "head_plus_sports_helmet_plus_faceguard"
