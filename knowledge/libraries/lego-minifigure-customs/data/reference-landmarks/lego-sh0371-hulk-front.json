@@ -1,0 +1,157 @@
+{
+  "schema_version": "0.1",
+  "reference_id": "lego_sh0371_hulk_front_seed",
+  "architecture_candidate_id": "lego_giant_modular",
+  "source": {
+    "title": "LEGO Hulk SH0371 front catalog image",
+    "catalog_url": "https://www.brickeconomy.com/minifig/sh371/hulk",
+    "source_note": "Seed landmarks manually estimated from isolated front-facing product image."
+  },
+  "view": "front",
+  "evidence_class": "catalog_manual_estimate",
+  "image_size_px": [
+    512,
+    512
+  ],
+  "body_bbox_px": [
+    48,
+    29,
+    466,
+    510
+  ],
+  "known_height_mm": null,
+  "landmark_coordinate_mode": "pixel",
+  "landmarks": {
+    "head_center": {
+      "position": [
+        257,
+        84
+      ],
+      "confidence": 0.8
+    },
+    "neck": {
+      "position": [
+        257,
+        133
+      ],
+      "confidence": 0.7
+    },
+    "shoulder_l": {
+      "position": [
+        146,
+        160
+      ],
+      "confidence": 0.75
+    },
+    "shoulder_r": {
+      "position": [
+        368,
+        160
+      ],
+      "confidence": 0.75
+    },
+    "elbow_l": {
+      "position": [
+        101,
+        263
+      ],
+      "confidence": 0.65
+    },
+    "elbow_r": {
+      "position": [
+        412,
+        263
+      ],
+      "confidence": 0.65
+    },
+    "wrist_l": {
+      "position": [
+        74,
+        349
+      ],
+      "confidence": 0.6
+    },
+    "wrist_r": {
+      "position": [
+        438,
+        349
+      ],
+      "confidence": 0.6
+    },
+    "hand_l": {
+      "position": [
+        82,
+        390
+      ],
+      "confidence": 0.6
+    },
+    "hand_r": {
+      "position": [
+        430,
+        390
+      ],
+      "confidence": 0.6
+    },
+    "waist": {
+      "position": [
+        257,
+        338
+      ],
+      "confidence": 0.6
+    },
+    "hip_l": {
+      "position": [
+        203,
+        360
+      ],
+      "confidence": 0.55
+    },
+    "hip_r": {
+      "position": [
+        310,
+        360
+      ],
+      "confidence": 0.55
+    },
+    "knee_l": {
+      "position": [
+        199,
+        432
+      ],
+      "confidence": 0.45
+    },
+    "knee_r": {
+      "position": [
+        313,
+        432
+      ],
+      "confidence": 0.45
+    },
+    "ankle_l": {
+      "position": [
+        198,
+        504
+      ],
+      "confidence": 0.45
+    },
+    "ankle_r": {
+      "position": [
+        315,
+        504
+      ],
+      "confidence": 0.45
+    }
+  },
+  "fit_parameters": [
+    "shoulder_width_scale",
+    "arm_length_scale",
+    "torso_height_scale",
+    "lower_body_height_scale",
+    "stance_width_scale"
+  ],
+  "exclude_from_production_dimensions": true,
+  "notes": [
+    "Official Giant component/joint evidence exists separately; this file is only a 2D proportion seed.",
+    "Lower-body landmarks describe silhouette, not hidden articulation."
+  ]
+}
