@@ -248,3 +248,30 @@ Structured:
 
 Important distinction:
 **stature, upper-body mass, lower-body mass, surface material and FigureArchitecture are independent variables.**
+
+
+## Executable body skeletons
+
+Brickmen now has parametric generation/alignment skeletons rather than only body-family prose.
+
+Core:
+- `body-skeleton-system.md`
+- `data/body-skeleton-schema.json`
+- `data/skeletons/registry.json`
+- `data/skeleton-topology-modules.json`
+- `tools/geometry/generate_body_skeleton.py`
+
+Implemented skeletons:
+- `data/skeletons/brickmen-broad-v0.json`
+- `data/skeletons/brickmen-mid-v0.json`
+- `data/skeletons/brickmen-xl-v0.json`
+- `data/skeletons/brickmen-giant-v0.json`
+
+The compiler accepts target height and bounded body parameters and can export compiled JSON or an OBJ line skeleton.
+
+These are **nonproduction generation skeletons**. Fit-critical joints remain locked behind validated JointCartridge / ConnectorProfile data.
+
+Second-pass architecture census:
+- `distinct-body-architecture-census-pass-2.md`
+
+Newly separated references include full ball-joint poseable standard figures, ball-jointed MidFig uppers, single-torso four-arm bodies, bony skeletons, Battle/Super Battle Droid bodies, digitigrade Faun lower bodies, and legacy Homemaker/maxifigure architecture.
