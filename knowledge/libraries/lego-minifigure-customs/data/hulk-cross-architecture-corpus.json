@@ -1,0 +1,321 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-27",
+  "status": "research_control_corpus_v0",
+  "character_id": "marvel_hulk_bruce_banner",
+  "rules": [
+    "Catalog facts and visual inferences must remain distinct.",
+    "Only compare source-appearance-matched records when deriving architecture translation rules.",
+    "Mechanical joint claims require physical/catalog component evidence, not image inference.",
+    "Image-derived morphology is candidate evidence until normalized canonical-view analysis is run."
+  ],
+  "records": [
+    {
+      "record_id": "hulk_lego_sh0037_standard",
+      "release": {
+        "maker": "LEGO",
+        "code": "SH0037",
+        "year": 2012,
+        "label": "Hulk"
+      },
+      "architecture_candidate": "minifig_standard",
+      "source_appearance_family": "avengers_2012_or_general_mcu",
+      "evidence": {
+        "catalog": [
+          "HeroBloks SH0037"
+        ],
+        "physical_component_status": "catalog_known_standard_minifigure"
+      },
+      "observed_translation": {
+        "silhouette": "standard_minifigure",
+        "musculature_carrier": [
+          "torso_print",
+          "face_expression"
+        ],
+        "hand_strategy": "standard_minifigure_hand",
+        "leg_strategy": "standard_minifigure_legs",
+        "sculpt_density": "baseline_standard"
+      },
+      "confidence": "catalog_high"
+    },
+    {
+      "record_id": "hulk_lego_sh0252_mighty_micros",
+      "release": {
+        "maker": "LEGO",
+        "code": "SH0252",
+        "year": 2016,
+        "label": "Hulk - Minifigure, Short Legs"
+      },
+      "architecture_candidate": "minifig_short_leg",
+      "source_appearance_family": "mighty_micros_stylized",
+      "evidence": {
+        "catalog": [
+          "BrickLink 76066 inventory",
+          "BrickLink Mighty Micros category"
+        ],
+        "physical_component_status": "catalog_known_standard_upper_short_lower"
+      },
+      "observed_translation": {
+        "silhouette": "standard_upper_short_lower",
+        "musculature_carrier": [
+          "simple_torso_print"
+        ],
+        "expression_style": "cartoon_exaggerated",
+        "leg_strategy": "short_nonstandard_lower"
+      },
+      "confidence": "catalog_high"
+    },
+    {
+      "record_id": "hulk_lego_sh0371_giant",
+      "release": {
+        "maker": "LEGO",
+        "code": "SH0371",
+        "label": "Hulk (BigFig)"
+      },
+      "architecture_candidate": "lego_giant_modular",
+      "source_appearance_family": "comic_or_general_hulk",
+      "evidence": {
+        "catalog": [
+          "BrickLink/HeroBloks Giant inventories"
+        ],
+        "known_components": [
+          "Giant arm family",
+          "Giant hand family",
+          "Technic 43093 shoulder hardware"
+        ]
+      },
+      "observed_translation": {
+        "silhouette": "broad_blocky_giant",
+        "musculature_carrier": [
+          "major_sculpted_volume",
+          "selected_print"
+        ],
+        "hand_strategy": "giant_dedicated_hand",
+        "leg_strategy": "giant_lower_body",
+        "sculpt_density": "moderate_large_forms"
+      },
+      "confidence": "catalog_high"
+    },
+    {
+      "record_id": "hulk_alpha_af344_avengers",
+      "release": {
+        "maker": "Alpha Toys",
+        "code": "AF344",
+        "year": 2025,
+        "label": "Hulk (Avengers)"
+      },
+      "architecture_candidate": "custom_alpha_7cm_muscle",
+      "source_appearance_family": "mcu_avengers",
+      "evidence": {
+        "catalog": [
+          "HeroBloks AF344"
+        ],
+        "physical_validation": "pending"
+      },
+      "visual_inference": {
+        "torso": "anatomical_muscle_shell",
+        "proportions": "longer_humanoid_than_lego_giant",
+        "waist": "narrow_relative_to_chest",
+        "arm_style": "segmented_action_figure_like",
+        "head_ratio": "smaller_relative_to_body_than_standard_minifig"
+      },
+      "confidence": "visual_inference"
+    },
+    {
+      "record_id": "hulk_alpha_af345_comics",
+      "release": {
+        "maker": "Alpha Toys",
+        "code": "AF345",
+        "year": 2025,
+        "label": "Hulk"
+      },
+      "architecture_candidate": "custom_alpha_7cm_muscle",
+      "source_appearance_family": "comics",
+      "evidence": {
+        "catalog": [
+          "HeroBloks AF345"
+        ],
+        "nominal_height_mm": 70,
+        "scale_comparison_mm": 40,
+        "physical_validation": "pending"
+      },
+      "visual_inference": {
+        "torso": "anatomical_muscle_shell",
+        "leg_strategy": "long_custom_separated_legs",
+        "arm_style": "segmented_action_figure_like",
+        "hand_strategy": "custom_large_hand",
+        "sculpt_density": "high"
+      },
+      "confidence": "catalog_plus_visual"
+    },
+    {
+      "record_id": "hulk_g2_gh0304_avengers",
+      "release": {
+        "maker": "G (2)",
+        "code": "GH0304",
+        "year": 2025,
+        "label": "Hulk (Avengers)"
+      },
+      "architecture_candidate": "custom_g2_muscle_hybrid",
+      "source_appearance_family": "mcu_avengers",
+      "evidence": {
+        "catalog": [
+          "HeroBloks related-release evidence",
+          "retailer product image GH0304"
+        ],
+        "physical_validation": "pending"
+      },
+      "visual_inference": {
+        "head": "standard_like_minifigure_head",
+        "torso": "oversized_sculpted_muscle_torso",
+        "arms": "enlarged_muscular",
+        "hands": "enlarged_minifigure_like_c_grip",
+        "legs": "rectangular_minifigure_derived",
+        "morphology": "oversized_torso_hybrid"
+      },
+      "confidence": "visual_inference"
+    },
+    {
+      "record_id": "hulk_bigguy_ragnarok",
+      "release": {
+        "maker": "Bigguy Minifigs",
+        "code": null,
+        "year": 2025,
+        "label": "Hulk (Ragnarok)"
+      },
+      "architecture_candidate": "custom_bigguy_muscle",
+      "source_appearance_family": "mcu_ragnarok",
+      "evidence": {
+        "catalog": [
+          "HeroBloks Bigguy Hulk Ragnarok"
+        ],
+        "physical_validation": "pending"
+      },
+      "visual_inference": {
+        "shoulders": "extremely_broad",
+        "forearms": "very_large",
+        "head_ratio": "small_relative_to_upper_body",
+        "torso": "high_relief_musculature",
+        "style_signature": "upper_body_mass_exaggeration"
+      },
+      "confidence": "visual_inference"
+    },
+    {
+      "record_id": "hulk_mrj_heart_comics",
+      "release": {
+        "maker": "Mr.J Brick X Heart",
+        "code": null,
+        "year": 2024,
+        "label": "Hulk (Comics)"
+      },
+      "architecture_candidate": "custom_mrj_heart_muscle",
+      "source_appearance_family": "comics",
+      "evidence": {
+        "catalog": [
+          "HeroBloks Mr.J Brick X Heart Hulk Comics"
+        ],
+        "physical_validation": "pending"
+      },
+      "visual_inference": {
+        "chest": "broad_tapered",
+        "abdomen": "pronounced_sculpted",
+        "back": "large_sculpted_planes",
+        "legs": "long_separate",
+        "forearms": "oversized"
+      },
+      "confidence": "visual_inference"
+    },
+    {
+      "record_id": "red_hulk_alpha_af364_bnw",
+      "release": {
+        "maker": "Alpha Toys",
+        "code": "AF364",
+        "year": 2026,
+        "label": "Red Hulk (Brave New World)"
+      },
+      "architecture_candidate": "custom_alpha_7cm_muscle",
+      "source_appearance_family": "mcu_brave_new_world",
+      "evidence": {
+        "catalog": [
+          "HeroBloks AF364"
+        ],
+        "physical_validation": "pending"
+      },
+      "confidence": "catalog_high_architecture_family_candidate"
+    },
+    {
+      "record_id": "red_hulk_g2_gh0303_bnw",
+      "release": {
+        "maker": "G (2)",
+        "code": "GH0303",
+        "year": 2025,
+        "label": "Red Hulk (Brave New World)"
+      },
+      "architecture_candidate": "custom_g2_muscle_hybrid",
+      "source_appearance_family": "mcu_brave_new_world",
+      "evidence": {
+        "catalog": [
+          "HeroBloks GH0303"
+        ],
+        "physical_validation": "pending"
+      },
+      "confidence": "catalog_high_architecture_family_candidate"
+    },
+    {
+      "record_id": "red_hulk_bigguy_bnw",
+      "release": {
+        "maker": "Bigguy Minifigs",
+        "code": null,
+        "year": 2025,
+        "label": "Red Hulk (Brave New World)"
+      },
+      "architecture_candidate": "custom_bigguy_muscle",
+      "source_appearance_family": "mcu_brave_new_world",
+      "evidence": {
+        "catalog": [
+          "HeroBloks Bigguy Red Hulk"
+        ],
+        "physical_validation": "pending"
+      },
+      "confidence": "catalog_high_architecture_family_candidate"
+    }
+  ],
+  "clean_pair_sets": [
+    {
+      "pair_set_id": "hulk_comics_family",
+      "source_appearance_scope": "comics_or_generalized_classic",
+      "records": [
+        "hulk_alpha_af345_comics",
+        "hulk_mrj_heart_comics"
+      ],
+      "desired_additions": [
+        "source-matched standard minifigure",
+        "source-matched LEGO/custom Giant"
+      ]
+    },
+    {
+      "pair_set_id": "hulk_mcu_avengers_family",
+      "source_appearance_scope": "mcu_avengers",
+      "records": [
+        "hulk_alpha_af344_avengers",
+        "hulk_g2_gh0304_avengers"
+      ],
+      "desired_additions": [
+        "matching LEGO Giant",
+        "matching standard minifigure if available"
+      ]
+    },
+    {
+      "pair_set_id": "red_hulk_brave_new_world_family",
+      "source_appearance_scope": "mcu_brave_new_world",
+      "records": [
+        "red_hulk_alpha_af364_bnw",
+        "red_hulk_g2_gh0303_bnw",
+        "red_hulk_bigguy_bnw"
+      ],
+      "desired_additions": [
+        "LEGO SH1001 BigFig"
+      ]
+    }
+  ]
+}
