@@ -474,3 +474,103 @@ Brickmen should be able to respond internally:
 10. produce printable/manufacturable files.
 
 The choice of body architecture becomes a deliberate design decision, not a side effect of whichever AI model happened to generate the mesh.
+
+## Current part-recognition research stack — 2026-09-27
+
+Use an ensemble; do not make one foundation model authoritative.
+
+### 2D / catalog photography
+
+**SAM 2**
+- promptable segmentation across images and video;
+- useful for isolating full figures and tracking the same body/component across turntable/video frames.
+
+Use with:
+- canonical landmark detector;
+- architecture nearest-neighbor retrieval;
+- maker/release metadata priors.
+
+### 3D retrieval
+
+**OpenShape**
+- text/image/point-cloud retrieval and zero-shot 3D representation;
+- suitable candidate for finding the closest known body/part digital twin.
+
+**Uni3D**
+- scalable 3D representation aligned with image/text features;
+- benchmark as an alternative retrieval embedding.
+
+### 3D part segmentation
+
+Candidates:
+- SAMPart3D;
+- PartSLIP++;
+- Find Any Part in 3D / successor open-world part models;
+- Tripo semantic mesh segmentation for generated/provider-hosted meshes;
+- Pointcept backbones for a future Brickmen-trained part segmenter.
+
+Expected semantic queries:
+- head;
+- hair;
+- upper arm;
+- forearm;
+- hand;
+- torso/chest;
+- pelvis;
+- thigh;
+- lower leg;
+- foot;
+- shoulder pin;
+- wrist connector;
+- tail;
+- centaur body;
+- tentacle.
+
+### Articulation estimation research
+
+Newer articulated-object research such as SPLART and dynamic 3D-Gaussian part/motion methods suggests a future workflow in which Brickmen photographs a physical custom figure in two or more poses and estimates:
+- moving components;
+- joint centers;
+- articulation axes;
+- static versus dynamic parts.
+
+Treat this as a research accelerator, not manufacturing metrology. Physical gauges/scans still establish final connectors.
+
+### Hybrid recognition decision
+
+```
+catalog/photo
+ -> SAM2 masks
+ -> landmark/topology features
+ -> image retrieval
+ -> metadata prior
+ -> candidate architectures
+
+mesh/scan
+ -> part segmentation
+ -> OpenShape/Uni3D retrieval
+ -> deterministic measurements
+ -> joint/topology comparison
+ -> candidate architectures
+
+candidate architectures
+ -> evidence reconciliation
+ -> known architecture OR unknown candidate
+```
+
+The final output always exposes evidence and unknown probability.
+
+### Style application after recognition
+
+Once architecture is resolved:
+
+1. retrieve its `BodyStyleProfile`;
+2. retrieve architecture surface schema and neutral digital twin;
+3. extract character identity features independently;
+4. decide per feature: sculpt, print, separate accessory, cloth, or omit;
+5. apply normalized style features to the target surfaces;
+6. regenerate architecture-specific multiview concepts;
+7. attach deterministic joints/connectors;
+8. score source fidelity and architecture-style fidelity separately.
+
+A style profile is descriptive and can be transferred. Proprietary mechanical geometry is not implied by stylistic similarity.
