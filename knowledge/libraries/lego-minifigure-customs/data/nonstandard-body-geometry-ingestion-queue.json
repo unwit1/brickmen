@@ -1,0 +1,198 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-27",
+  "status": "geometry_ingestion_pending",
+  "objective": "Build canonical component-level digital twins for official/reference non-standard architectures before character-specific body generation.",
+  "sources_policy": [
+    "Preserve source/license/hash.",
+    "LDraw geometry is reference/digital-twin evidence; manufacturing-critical dimensions are physically validated.",
+    "Unofficial LDraw parts remain explicitly tagged unofficial.",
+    "Do not ingest third-party commercial STL geometry into canonical distributable templates without appropriate rights; use metadata/derived engineering observations where permitted."
+  ],
+  "queue": [
+    {
+      "priority": 1,
+      "architecture": "lego_giant_modular",
+      "components": [
+        {
+          "id": "10154",
+          "name": "Bigfig Arm Left",
+          "source": "LDraw",
+          "status": "official"
+        },
+        {
+          "id": "10124",
+          "name": "Bigfig Arm Right",
+          "source": "LDraw",
+          "status": "official"
+        },
+        {
+          "id": "10127",
+          "name": "Giant Hand Left",
+          "source": "LDraw",
+          "status": "official"
+        },
+        {
+          "id": "10126",
+          "name": "Giant Hand Right",
+          "source": "LDraw",
+          "status": "official"
+        },
+        {
+          "id": "43093",
+          "name": "Technic axle/pin shoulder hardware",
+          "source": "LDraw/catalog",
+          "status": "official"
+        }
+      ],
+      "tasks": [
+        "download/hash",
+        "normalize coordinates",
+        "derive joint frames",
+        "derive hand/grip frame",
+        "assemble reference skeleton",
+        "compare against physical sample"
+      ]
+    },
+    {
+      "priority": 2,
+      "architecture": "lego_hagrid_half_giant",
+      "components": [
+        {
+          "id": "37777",
+          "name": "Minifig Torso Half Giant",
+          "source": "LDraw",
+          "status": "official"
+        },
+        {
+          "id": "37779",
+          "name": "Minifig Arm Half Giant Left with Friction Pin",
+          "source": "LDraw",
+          "status": "official"
+        },
+        {
+          "id": "37783",
+          "name": "Minifig Arm Half Giant Right with Friction Pin",
+          "source": "LDraw",
+          "status": "official"
+        },
+        {
+          "id": "38628",
+          "name": "Half Giant Left Arm with Hand",
+          "source": "LDraw",
+          "status": "official"
+        },
+        {
+          "id": "38630",
+          "name": "Half Giant Right Arm with Hand",
+          "source": "LDraw",
+          "status": "official"
+        },
+        {
+          "id": "37784",
+          "name": "Half Giant Hair with Beard",
+          "source": "LDraw",
+          "status": "verify_current_status"
+        }
+      ],
+      "tasks": [
+        "download/hash",
+        "component graph",
+        "friction pin frame",
+        "standard head interface",
+        "surface schema",
+        "physical verification"
+      ]
+    },
+    {
+      "priority": 3,
+      "architecture": "lego_axl_oversized_torso_hybrid",
+      "components": [
+        {
+          "id": "23763",
+          "name": "Axl body/armour shortcut",
+          "source": "LDraw",
+          "status": "unofficial_as_of_2026-09-27"
+        },
+        {
+          "id": "24101",
+          "name": "Axl arm family",
+          "source": "catalog/LDraw_search_required",
+          "status": "verify"
+        },
+        {
+          "id": "24104",
+          "name": "Axl arm family",
+          "source": "catalog/LDraw_search_required",
+          "status": "verify"
+        },
+        {
+          "id": "standard_head",
+          "name": "Standard minifigure head interface",
+          "source": "canonical Brickmen",
+          "status": "existing"
+        },
+        {
+          "id": "standard_lower_body",
+          "name": "Standard hips/legs",
+          "source": "canonical Brickmen",
+          "status": "existing"
+        }
+      ],
+      "tasks": [
+        "resolve exact LDraw components",
+        "assemble hybrid digital twin",
+        "derive standard-head/lower-body cross-architecture anchors",
+        "physical verification"
+      ]
+    },
+    {
+      "priority": 4,
+      "architecture": "lego_giant_troll_legacy",
+      "components": [
+        {
+          "id": "60671",
+          "name": "Fantasy Era Troll Body Complete",
+          "source": "LDraw",
+          "status": "official"
+        },
+        {
+          "id": "60634-60644_family",
+          "name": "Troll component subparts",
+          "source": "LDraw",
+          "status": "official"
+        }
+      ],
+      "tasks": [
+        "explode shortcut",
+        "derive component graph",
+        "compare joints with modern Giant",
+        "physical verification"
+      ]
+    },
+    {
+      "priority": 5,
+      "architecture": "lego_hagrid_legacy_giant_40250",
+      "components": [
+        {
+          "id": "40250",
+          "name": "Legacy Hagrid Body Giant",
+          "source": "BrickLink/LDraw_reconstruction_pending",
+          "status": "catalog_official_geometry_not_yet_canonical"
+        },
+        {
+          "id": "3626",
+          "name": "Standard minifigure head",
+          "source": "canonical",
+          "status": "existing"
+        }
+      ],
+      "tasks": [
+        "retain separate from 37777 Half Giant",
+        "resolve geometry source",
+        "measure sample",
+        "derive head/body interface"
+      ]
+    }
+  ]
+}
