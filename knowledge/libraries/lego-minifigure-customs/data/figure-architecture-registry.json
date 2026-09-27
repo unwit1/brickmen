@@ -1,0 +1,363 @@
+{
+  "schema_version": "0.1",
+  "observed_at": "2026-09-27",
+  "status": "research_registry_physical_metrology_incomplete",
+  "rules": [
+    "Preserve source_body_label separately from normalized architecture.",
+    "Do not infer mechanical compatibility from BigFig, midfig, muscle body, 7CM, or mega fig labels alone.",
+    "An architecture requires a component/joint graph; visual similarity alone produces only a family candidate.",
+    "Manufacturing-critical dimensions require physical metrology or authoritative engineering evidence."
+  ],
+  "architectures": [
+    {
+      "architecture_id": "minifig_standard",
+      "canonical_name": "Standard minifigure",
+      "scale_class": "standard",
+      "status": "canonical_existing",
+      "source_aliases": [
+        "minifigure",
+        "minifig"
+      ],
+      "component_graph": [
+        "head",
+        "torso",
+        "left_arm",
+        "right_arm",
+        "left_hand",
+        "right_hand",
+        "hips",
+        "left_leg",
+        "right_leg"
+      ],
+      "notes": [
+        "Baseline architecture; short/medium/long-limb variants should be modeled explicitly when the component graph changes."
+      ]
+    },
+    {
+      "architecture_id": "minifig_short_leg",
+      "canonical_name": "Standard minifigure with short legs",
+      "scale_class": "standard_short",
+      "status": "canonical_existing",
+      "parent_architecture": "minifig_standard"
+    },
+    {
+      "architecture_id": "minifig_medium_leg",
+      "canonical_name": "Standard minifigure with articulated medium legs",
+      "scale_class": "standard_medium",
+      "status": "canonical_existing",
+      "parent_architecture": "minifig_standard",
+      "representative_part_ids": [
+        "37364c01",
+        "970cm00"
+      ]
+    },
+    {
+      "architecture_id": "minifig_long_limb",
+      "canonical_name": "Extended/long-limb minifigure",
+      "scale_class": "standard_tall",
+      "status": "architecture_family",
+      "representative_examples": [
+        "Woody long-leg/long-arm figures"
+      ],
+      "notes": [
+        "Track exact long-arm and long-leg component combinations as subvariants."
+      ]
+    },
+    {
+      "architecture_id": "lego_giant_modular",
+      "canonical_name": "LEGO Giant / modern BigFig modular architecture",
+      "scale_class": "large",
+      "status": "strong_catalog_evidence_physical_measurement_pending",
+      "source_aliases": [
+        "Giant",
+        "BigFig",
+        "big fig"
+      ],
+      "known_component_families": {
+        "arms": [
+          "10154",
+          "10124"
+        ],
+        "hands": [
+          "10127",
+          "10126"
+        ],
+        "shoulder_hardware": [
+          "43093"
+        ],
+        "body_examples": [
+          "10121c03",
+          "bb1114",
+          "77237"
+        ],
+        "head_examples": [
+          "79435"
+        ]
+      },
+      "representative_characters": [
+        "Hulk",
+        "Red Hulk",
+        "Thanos"
+      ],
+      "mechanical_notes": [
+        "Representative inventories show Technic 43093 shoulder pin/axle hardware and reusable Giant arm/hand families."
+      ],
+      "manufacturing_hypothesis": "Prefer printed visual components around validated commodity shoulder hardware rather than resin-printing the wear-critical pin."
+    },
+    {
+      "architecture_id": "lego_giant_troll_legacy",
+      "canonical_name": "Legacy Fantasy Era Troll Giant architecture",
+      "scale_class": "large",
+      "status": "catalog_identified_metrology_pending",
+      "representative_part_ids": [
+        "60671"
+      ],
+      "representative_characters": [
+        "Fantasy Era Troll"
+      ],
+      "notes": [
+        "Do not assume compatibility with modern Hulk/Thanos Giant architecture."
+      ]
+    },
+    {
+      "architecture_id": "lego_hagrid_giant_hybrid",
+      "canonical_name": "Hagrid giant-body hybrid",
+      "scale_class": "intermediate_large",
+      "status": "catalog_identified_metrology_pending",
+      "representative_part_ids": [
+        "40250"
+      ],
+      "compatibility_observations": [
+        "Some releases use standard minifigure head 3626/hair on oversized body."
+      ],
+      "representative_characters": [
+        "Rubeus Hagrid"
+      ]
+    },
+    {
+      "architecture_id": "lego_axl_oversized_torso_hybrid",
+      "canonical_name": "Axl oversized-torso minifigure hybrid",
+      "scale_class": "intermediate",
+      "status": "strong_catalog_evidence_metrology_pending",
+      "known_component_families": {
+        "torso": [
+          "23763c01"
+        ],
+        "arms": [
+          "24101",
+          "24104"
+        ],
+        "lower_body": "standard minifigure hips/legs",
+        "head": "standard minifigure head"
+      },
+      "representative_characters": [
+        "Axl"
+      ],
+      "style_notes": [
+        "Strong official precedent for muscular/oversized torso while preserving standard head and lower-body architecture."
+      ]
+    },
+    {
+      "architecture_id": "custom_alpha_7cm_muscle",
+      "canonical_name": "Alpha Toys AF ~7 cm articulated muscle body",
+      "scale_class": "intermediate_large",
+      "maker_scope": [
+        "Alpha Toys"
+      ],
+      "status": "family_candidate_strong_visual_catalog_evidence_metrology_pending",
+      "source_aliases": [
+        "AF",
+        "7CM",
+        "muscle body",
+        "BigFigs retail category"
+      ],
+      "nominal_height_mm": {
+        "value": 70,
+        "evidence_type": "retailer_and_catalog_examples",
+        "confidence": "catalog_high"
+      },
+      "representative_release_codes": [
+        "AF344",
+        "AF345",
+        "AF346",
+        "AF347",
+        "AF349",
+        "AF350",
+        "AF361",
+        "AF363",
+        "AF364",
+        "AF365",
+        "AF367",
+        "AF368",
+        "AF369"
+      ],
+      "representative_characters": [
+        "Hulk",
+        "Red Hulk",
+        "Maestro",
+        "Abomination",
+        "Beast",
+        "Colossus",
+        "Juggernaut"
+      ],
+      "notes": [
+        "Do not assume every AF release shares every joint until physical teardown confirms the family."
+      ]
+    },
+    {
+      "architecture_id": "custom_g2_muscle_hybrid",
+      "canonical_name": "G (2) muscular hybrid body",
+      "scale_class": "intermediate",
+      "maker_scope": [
+        "G (2)"
+      ],
+      "status": "provisional_visual_family_metrology_pending",
+      "representative_release_codes": [
+        "GH0303",
+        "GH0304",
+        "GH0305",
+        "GH0306"
+      ],
+      "representative_characters": [
+        "Red Hulk",
+        "Hulk",
+        "Grey Hulk",
+        "Captain Universe Hulk"
+      ],
+      "notes": [
+        "Public imagery supports a distinct muscular body morphology; exact joints/height unresolved."
+      ]
+    },
+    {
+      "architecture_id": "custom_bigguy_muscle",
+      "canonical_name": "Bigguy Minifigs muscular body",
+      "scale_class": "intermediate_large",
+      "maker_scope": [
+        "Bigguy Minifigs"
+      ],
+      "status": "provisional_visual_family_metrology_pending",
+      "representative_characters": [
+        "Hulk",
+        "Red Hulk"
+      ],
+      "notes": [
+        "Distinct broad muscular torso/arms and separate lower body visible in maker/catalog imagery."
+      ]
+    },
+    {
+      "architecture_id": "custom_mrj_heart_muscle",
+      "canonical_name": "Mr.J Brick x Heart muscular body",
+      "scale_class": "intermediate_large",
+      "maker_scope": [
+        "Mr.J Brick",
+        "Heart"
+      ],
+      "status": "provisional_visual_family_metrology_pending",
+      "representative_characters": [
+        "Hulk"
+      ],
+      "notes": [
+        "Separate proprietary muscular architecture candidate; do not merge with Bigguy/Alpha from visual category alone."
+      ]
+    },
+    {
+      "architecture_id": "custom_kdl_65mm_large",
+      "canonical_name": "KDL ~6.5 cm large custom body candidate",
+      "scale_class": "intermediate_large",
+      "maker_scope": [
+        "KDL"
+      ],
+      "status": "release_family_candidate_metrology_pending",
+      "nominal_height_mm": {
+        "value": 65,
+        "evidence_type": "retailer_listing",
+        "confidence": "secondary"
+      },
+      "representative_release_codes": [
+        "K2302"
+      ],
+      "representative_characters": [
+        "Thing"
+      ]
+    },
+    {
+      "architecture_id": "custom_bigfig_maker_specific",
+      "canonical_name": "Maker-specific custom BigFig architecture unresolved",
+      "scale_class": "large",
+      "status": "umbrella_candidate_not_a_mechanical_standard",
+      "maker_examples": [
+        "Calypso Customs",
+        "Shadow Studio",
+        "STUDIOGENESIS"
+      ],
+      "notes": [
+        "Temporary classification when source says BigFig but joint geometry is not proven compatible with LEGO Giant."
+      ]
+    },
+    {
+      "architecture_id": "compatible_bigfig_unresolved",
+      "canonical_name": "Compatible/clone BigFig architecture unresolved",
+      "scale_class": "large",
+      "status": "umbrella_candidate_not_a_mechanical_standard",
+      "maker_examples": [
+        "Decool",
+        "Xinh",
+        "Sheng Yuan",
+        "Lele",
+        "Pogo",
+        "Kopf",
+        "Koruit",
+        "Bela",
+        "Eagle"
+      ],
+      "notes": [
+        "Many releases may reproduce LEGO Giant geometry, but compatibility must be observed per body family/release."
+      ]
+    },
+    {
+      "architecture_id": "community_printed_midfig",
+      "canonical_name": "Community printed MidFig family",
+      "scale_class": "intermediate",
+      "status": "source_label_family_not_single_standard",
+      "source_aliases": [
+        "midfig",
+        "mid figure",
+        "muscle body"
+      ],
+      "notes": [
+        "Printable projects vary in scale and joint design; treat each project/revision as a concrete architecture candidate."
+      ]
+    },
+    {
+      "architecture_id": "purist_brickbuilt_midfig",
+      "canonical_name": "Purist brick-built MidFig",
+      "scale_class": "intermediate",
+      "status": "construction_style_not_single_mechanical_body",
+      "notes": [
+        "Built from standard system elements; useful as visual/proportion reference rather than one printable body architecture."
+      ]
+    },
+    {
+      "architecture_id": "microfigure",
+      "canonical_name": "LEGO microfigure",
+      "scale_class": "micro",
+      "status": "adjacent_official_architecture",
+      "representative_part_ids": [
+        "85863"
+      ]
+    },
+    {
+      "architecture_id": "baby_toddler",
+      "canonical_name": "LEGO baby/toddler body",
+      "scale_class": "micro_small",
+      "status": "adjacent_official_architecture",
+      "representative_part_ids": [
+        "25128"
+      ]
+    }
+  ],
+  "unknown_policy": {
+    "architecture_id": "unknown_body_architecture",
+    "action": "Create architecture observation/candidate; do not coerce to nearest known family."
+  }
+}
