@@ -1,0 +1,127 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-27",
+  "joint_profile_id": "lego_giant_43093_shoulder_reference_v0",
+  "primitive_type": "commodity_hardware_hybrid",
+  "revision": 0,
+  "status": "reference_cad_profile_physical_validation_pending",
+  "parent_component_role": "giant_torso_or_shoulder_housing",
+  "child_component_role": "giant_arm",
+  "degrees_of_freedom": 1,
+  "axes": [
+    {
+      "frame": "brickmen_semantic",
+      "vector": [
+        1,
+        0,
+        0
+      ],
+      "semantic": "lateral_shoulder_rotation_pin_axis",
+      "evidence": [
+        "Official complete Giant shortcut places 43093 at the shoulder with its long local axis lateral.",
+        "Pinned 2303 LDraw 43093 reference mesh has nominal bounding extent 16.0 mm along Brickmen X and 6.4 mm across Y/Z."
+      ]
+    }
+  ],
+  "range_degrees": null,
+  "male_geometry": {
+    "role": "commodity_hardware",
+    "part_id": "43093",
+    "description": "Technic Axle Pin with Friction",
+    "geometry_authority": "official_ldraw_reference_shape_only",
+    "physical_fit_authority": false
+  },
+  "female_geometry": {
+    "torso_side": "official Giant body socket geometry available in LDraw 10128; physical tolerance unmeasured",
+    "arm_side": "official Giant arm mating geometry available in LDraw 10154/10124; physical tolerance unmeasured",
+    "geometry_authority": "reference_cad_only",
+    "physical_fit_authority": false
+  },
+  "nominal_dimensions": {
+    "hardware_reference_bbox_mm": {
+      "x_length": 16,
+      "y_span": 6.4,
+      "z_span": 6.4
+    },
+    "source": "Pinned Ubuntu 24.04 ldraw-parts 2303+ds-1 43093.dat flattened manifest",
+    "warning": "Bounding extents are not pin diameters, interference values, socket diameters, or production tolerances."
+  },
+  "shell_interface": {
+    "cartridge_strategy": "Design original Brickmen torso/arm shells around an explicit hardware keep-out and validated mating insert/socket rather than scaling the hardware with character proportions.",
+    "reference_keepout_bbox_mm": [
+      16,
+      6.4,
+      6.4
+    ],
+    "keepout_status": "reference_bbox_only_requires_clearance_margin_and_articulation_sweep_validation"
+  },
+  "hardware_bom": [
+    {
+      "part_id": "43093",
+      "quantity_per_shoulder": 1,
+      "quantity_per_two_shoulder_body": 2,
+      "procurement_role": "commodity wear hardware",
+      "substitution_policy": "No substitute is production-approved until geometry, material, fit, torque, and cycle behavior are validated."
+    }
+  ],
+  "architecture_ids": [
+    "lego_giant_modular"
+  ],
+  "candidate_brickmen_architecture_ids": [
+    "brickmen_giant_v0"
+  ],
+  "compatibility_policy": {
+    "official_body_shoulder_center_separation_mm": 32,
+    "spacing_requirement_for_brickmen": false,
+    "explanation": "The two shoulder pins are independent local interfaces. A Brickmen torso may choose different shoulder-center spacing while preserving each validated local arm/hardware mating frame.",
+    "do_not_assume": [
+      "32 mm shoulder separation is required for arm compatibility",
+      "LDraw nominal geometry defines real interference or friction",
+      "a printed socket matching CAD nominal dimensions will have correct fit"
+    ]
+  },
+  "physical_validation_records": [],
+  "manufacturing_status": "validation_pending",
+  "required_validation": [
+    "Measure physical 43093 critical dimensions from multiple samples.",
+    "Measure official Giant body and arm mating features.",
+    "Record insertion/removal force for hardware into each mating component.",
+    "Measure shoulder breakaway/running torque and axial/radial play.",
+    "Run cycle/wear testing before promoting any printed mating geometry.",
+    "Validate keep-out and articulation sweep inside the intended Brickmen shell."
+  ],
+  "sources": [
+    {
+      "type": "official_ldraw_part",
+      "part_id": "43093",
+      "manifest": "data/digital-twins/ldraw-manifests/ubuntu-noble-2303/43093.json"
+    },
+    {
+      "type": "official_ldraw_assembly",
+      "part_id": "10128p01c01",
+      "manifest": "data/digital-twins/ldraw-manifests/ubuntu-noble-2303/10128p01c01.json"
+    },
+    {
+      "type": "official_ldraw_body",
+      "part_id": "10128",
+      "manifest": "data/digital-twins/ldraw-manifests/ubuntu-noble-2303/10128.json"
+    },
+    {
+      "type": "official_ldraw_arms",
+      "part_ids": [
+        "10154",
+        "10124"
+      ],
+      "manifests": [
+        "data/digital-twins/ldraw-manifests/ubuntu-noble-2303/10154.json",
+        "data/digital-twins/ldraw-manifests/ubuntu-noble-2303/10124.json"
+      ]
+    }
+  ],
+  "hard_rules": [
+    "Commodity hardware dimensions never scale with character proportions.",
+    "Reference CAD may define keep-out starting geometry but not physical fit tolerances.",
+    "Shoulder-center spacing is a body-shape decision unless a separate spanning mechanism makes it mechanically coupled.",
+    "Production approval requires physical force/torque/cycle evidence."
+  ]
+}
