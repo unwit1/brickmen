@@ -107,6 +107,37 @@
         "sample_count": 13,
         "aggregation": "mean"
       }
+    },
+    "lower_body_width": {
+      "value": 0.5650024325259488,
+      "confidence": 0.8,
+      "envelope_id": "lower_body",
+      "axis": "x",
+      "semantic": "lower_body_band_mean_front_width",
+      "source": {
+        "height_band_norm": [
+          0.08,
+          0.34
+        ],
+        "sample_count": 27,
+        "aggregation": "mean"
+      },
+      "notes": "Coarse lower-body mass statistic across a tapered region; visual conditioning only."
+    },
+    "lower_body_depth": {
+      "value": 0.32817198428195515,
+      "confidence": 0.8,
+      "envelope_id": "lower_body",
+      "axis": "y",
+      "semantic": "lower_body_band_mean_side_depth",
+      "source": {
+        "height_band_norm": [
+          0.08,
+          0.34
+        ],
+        "sample_count": 27,
+        "aggregation": "mean"
+      }
     }
   },
   "exclude_from_production_dimensions": true,
