@@ -1,0 +1,171 @@
+{
+  "schema": "mask-headgear-route-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "mask-headgear-route-review-001",
+  "purpose": "Confirm physical component routes for high-confidence mask/headgear candidates and separate identity-bearing mask geometry from protective/environmental face equipment before source-appearance pairing.",
+  "evidence_policy": {
+    "source": "persisted Rebrickable-derived physical component census",
+    "no_visual_guessing": true,
+    "source_translation_requires_exact_source_appearance_pairing": true
+  },
+  "records": [
+    {
+      "fig_num": "fig-000009",
+      "figure_name": "The Flash",
+      "candidate_routes": [
+        "head_print_plus_headgear",
+        "separate_mask_headgear"
+      ],
+      "decision": "physical_route_confirmed_identity_mask_geometry",
+      "confirmed_physical_route": "head_print_plus_mask_headgear",
+      "semantic_function": "identity_mask_cowl",
+      "head_evidence": [
+        {
+          "part_num": "3626cpr1288",
+          "part_name": "Minifig Head The Flash, Balaclava, Light Nougat Face, Orange Eyebrows, Cheek Lines, Smiling / Angry Print"
+        }
+      ],
+      "headgear_evidence": [
+        {
+          "part_num": "15554pr0001",
+          "part_name": "Mask with Lightning Bolt Wings, Yellow Print (The Flash)"
+        }
+      ],
+      "confidence": 1,
+      "source_translation_status": "physical_route_confirmed_source_pairing_pending",
+      "training_note": "The underlying printed head carries facial/balaclava state while the separate molded mask supplies the Flash's lightning-wing silhouette; this is a true identity-bearing mask route."
+    },
+    {
+      "fig_num": "fig-000034",
+      "figure_name": "Aquanaut 2",
+      "candidate_routes": [
+        "helmet_plus_head",
+        "separate_mask_headgear"
+      ],
+      "decision": "physical_route_confirmed_protective_environmental_equipment_not_identity_mask",
+      "confirmed_physical_route": "human_head_plus_underwater_helmet_plus_separate_diving_visor",
+      "semantic_function": "protective_environmental_face_equipment",
+      "head_evidence": [
+        {
+          "part_num": "3626bpr0291",
+          "part_name": "Minifig Head Aquanaut, Glasses with Green Lenses, Brown Hair Print [Blocked Open Stud]"
+        }
+      ],
+      "headgear_evidence": [
+        {
+          "part_num": "6088",
+          "part_name": "Helmet, Chestplate, Clips"
+        },
+        {
+          "part_num": "6090",
+          "part_name": "Headwear Accessory Visor / Divers Mask (Underwater)"
+        }
+      ],
+      "confidence": 1,
+      "source_translation_status": "physical_route_confirmed_source_pairing_pending",
+      "training_note": "The separate face element is functional dive equipment layered over a human head and helmet. Keep it as a face-equipment route, but do not use it as an identity-mask/cowl training example."
+    },
+    {
+      "fig_num": "fig-000096",
+      "figure_name": "Dash",
+      "candidate_routes": [
+        "helmet_plus_head",
+        "separate_mask_headgear"
+      ],
+      "decision": "physical_route_confirmed_protective_environmental_equipment_not_identity_mask",
+      "confirmed_physical_route": "human_head_plus_standard_helmet_plus_separate_diving_visor",
+      "semantic_function": "protective_environmental_face_equipment",
+      "head_evidence": [
+        {
+          "part_num": "3626bpr9984",
+          "part_name": "Minifig Head Dash, Open Mouth, Stubble, Thin Eyes and Headset Print"
+        }
+      ],
+      "headgear_evidence": [
+        {
+          "part_num": "2446",
+          "part_name": "Helmet, Standard"
+        },
+        {
+          "part_num": "30090",
+          "part_name": "Headwear Accessory Visor / Diver's Mask"
+        }
+      ],
+      "confidence": 1,
+      "source_translation_status": "physical_route_confirmed_source_pairing_pending",
+      "training_note": "This is a layered protective-equipment route rather than an identity mask: ordinary decorated human head, helmet, then detachable diving visor/mask."
+    },
+    {
+      "fig_num": "fig-000177",
+      "figure_name": "Hockey Player",
+      "candidate_routes": [
+        "helmet_plus_head",
+        "separate_mask_headgear"
+      ],
+      "decision": "physical_route_confirmed_sports_faceguard_not_identity_mask",
+      "confirmed_physical_route": "human_head_plus_sports_helmet_plus_separate_faceguard",
+      "semantic_function": "protective_sports_faceguard",
+      "head_evidence": [
+        {
+          "part_num": "3626bpr0780",
+          "part_name": "Minifig Head Hockey Player, Raised Eyebrows, Angry Open Mouth, White Pupils Print [Blocked Open Stud]"
+        }
+      ],
+      "headgear_evidence": [
+        {
+          "part_num": "93560",
+          "part_name": "Helmet, Sports [Plain]"
+        },
+        {
+          "part_num": "93561",
+          "part_name": "Headwear Accessory Visor / Hockey Mask"
+        }
+      ],
+      "confidence": 1,
+      "source_translation_status": "physical_route_confirmed_source_pairing_pending",
+      "training_note": "Catalog wording contains 'mask', but the component is a detachable sports faceguard paired with a helmet. It should not be merged into superhero/character identity-mask examples."
+    },
+    {
+      "fig_num": "fig-000459",
+      "figure_name": "Football Player",
+      "candidate_routes": [
+        "helmet_plus_head",
+        "separate_mask_headgear"
+      ],
+      "decision": "physical_route_confirmed_sports_faceguard_not_identity_mask",
+      "confirmed_physical_route": "human_head_plus_sports_helmet_plus_separate_faceguard",
+      "semantic_function": "protective_sports_faceguard",
+      "head_evidence": [
+        {
+          "part_num": "3626bpr1025",
+          "part_name": "Minifig Head Football Player, Eyebrows, Cheek Lines and Black Underlined Eyes Print"
+        }
+      ],
+      "headgear_evidence": [
+        {
+          "part_num": "93560",
+          "part_name": "Helmet, Sports [Plain]"
+        },
+        {
+          "part_num": "93561",
+          "part_name": "Headwear Accessory Visor / Hockey Mask"
+        }
+      ],
+      "confidence": 1,
+      "source_translation_status": "physical_route_confirmed_source_pairing_pending",
+      "training_note": "The same helmet/faceguard geometry used in the sports inventory is protective equipment, not identity-bearing mask geometry. Preserve the physical route while excluding it from identity-mask supervision."
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "identity_mask_geometry": 1,
+    "protective_environmental_face_equipment": 2,
+    "protective_sports_faceguard": 2,
+    "source_translation_pairs_promoted": 0
+  },
+  "systemic_findings": [
+    "Keyword 'mask' is overloaded across identity masks, diving visors, and sports faceguards; semantic function must be modeled separately from component topology.",
+    "Physical component-route confirmation can be high confidence before exact source-appearance pairing, but it must not silently become source-to-LEGO translation supervision.",
+    "Protective equipment should remain available for geometry/component training while being excluded from character-identity mask examples."
+  ]
+}
