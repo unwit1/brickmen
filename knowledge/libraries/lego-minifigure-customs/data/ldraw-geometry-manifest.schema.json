@@ -12,7 +12,10 @@
     "bbox_nominal_mm",
     "dependencies",
     "unresolved_references",
-    "production_geometry_authority"
+    "production_geometry_authority",
+    "coordinate_frames",
+    "bbox_brickmen_ldu",
+    "bbox_brickmen_nominal_mm"
   ],
   "properties": {
     "schema_version": {
@@ -88,6 +91,15 @@
     },
     "warning": {
       "type": "string"
+    },
+    "coordinate_frames": {
+      "type": "object"
+    },
+    "bbox_brickmen_ldu": {
+      "type": "object"
+    },
+    "bbox_brickmen_nominal_mm": {
+      "type": "object"
     }
   }
 }
