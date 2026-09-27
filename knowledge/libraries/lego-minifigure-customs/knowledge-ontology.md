@@ -271,3 +271,29 @@ Three semantic levels must remain separate:
 3. mechanical interface — shoulder socket, wrist cartridge, neck connector.
 
 Learned 3D segmentation/articulation may inform levels 1–2 and propose level-3 hypotheses, but manufacturing level-3 geometry remains deterministic and validated.
+
+
+## Body skeleton extension
+
+Add:
+- BodySkeleton — normalized, parametric generation/alignment graph for one FigureArchitecture.
+- SkeletonTopologyModule — reusable graph transform/addition for multi-arm, digitigrade, ball-joint, mechanical, integrated-head and overlay cases.
+- EngineeringSkeleton — future physically reconciled skeleton with measured joint centers/axes.
+- JointCartridge — remains the authority for actual fit-critical mechanical geometry.
+
+Relationships:
+
+```
+FigureArchitecture HAS_BODY_SKELETON BodySkeleton
+BodySkeleton MAY_APPLY SkeletonTopologyModule
+BodySkeleton PROMOTES_TO EngineeringSkeleton
+EngineeringSkeleton USES_JOINT JointCartridge
+CharacterBodyDesignSpec FITS_TO BodySkeleton
+```
+
+Important distinction:
+- landmark != joint;
+- joint topology != connector geometry;
+- normalized generation coordinate != manufacturing dimension.
+
+The current Brickmen Broad/Mid/XL/Giant skeletons are generation skeletons only. They may guide shell generation and articulation planning but cannot authorize a printed pin/socket until a validated JointCartridge is assigned.
