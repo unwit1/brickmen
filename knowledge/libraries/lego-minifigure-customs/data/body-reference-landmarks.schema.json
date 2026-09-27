@@ -203,6 +203,43 @@
       "additionalProperties": {
         "type": "number"
       }
+    },
+    "silhouette_vertical_pairs_px": {
+      "type": "object",
+      "description": "Optional viewer-vertical silhouette spans normalized by body height. These describe visual envelopes, not skeletal pivots.",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "top_y",
+          "bottom_y",
+          "confidence"
+        ],
+        "properties": {
+          "top_y": {
+            "type": "number"
+          },
+          "bottom_y": {
+            "type": "number"
+          },
+          "x_px": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "confidence": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "semantic": {
+            "type": "string"
+          },
+          "notes": {
+            "type": "string"
+          }
+        }
+      }
     }
   }
 }
