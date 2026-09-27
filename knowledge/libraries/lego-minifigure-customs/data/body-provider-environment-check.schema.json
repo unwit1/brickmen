@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "body-provider-environment-check.schema.json",
+  "title": "Brickmen Body Provider Environment Check",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "provider_id",
+    "provider_repo",
+    "version",
+    "files",
+    "python_modules",
+    "gpu",
+    "ready_to_attempt_inference",
+    "production_geometry_authority"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "provider_id": {
+      "type": "string"
+    },
+    "provider_repo": {
+      "type": "string"
+    },
+    "version": {
+      "type": "object"
+    },
+    "files": {
+      "type": "object"
+    },
+    "python_modules": {
+      "type": "object"
+    },
+    "gpu": {
+      "type": "object"
+    },
+    "ready_to_attempt_inference": {
+      "type": "boolean"
+    },
+    "production_geometry_authority": {
+      "const": false
+    }
+  }
+}
