@@ -165,6 +165,12 @@ def compile_joint_constraint(
                 "hardware_part_id": placement.get("hardware_part_id"),
                 "quantity": placement.get("quantity", 1),
                 "placement_authority": placement.get("placement_authority"),
+                "affected_component_slot_ids": placement.get(
+                    "affected_component_slot_ids", []
+                ),
+                "boolean_subtraction_required_before_mechanical_validation": placement.get(
+                    "boolean_subtraction_required_before_mechanical_validation", False
+                ),
                 "reference_keepout_local_min_mm": local_min_mm,
                 "reference_keepout_local_max_mm": local_max_mm,
                 "reference_keepout_local_min_normalized": local_min_norm,
