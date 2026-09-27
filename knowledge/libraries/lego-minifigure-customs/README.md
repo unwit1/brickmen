@@ -349,3 +349,26 @@ The payload keeps four layers separate:
 4. mechanical constraints with explicit authority state.
 
 Reference-only or validation-pending mechanical profiles may provide alignment/hardware/keep-out context, but they do not authorize printable mating geometry. Reference scale also does not silently replace the selected Brickmen design height.
+
+
+## Reference engineering skeletons and fit identifiability
+
+Official/reference component mechanics are modeled separately from Brickmen-original generation skeletons.
+
+Key additions:
+- `data/reference-engineering-skeleton.schema.json`
+- `data/engineering-skeletons/lego-giant-modular-2303.json`
+- `official-giant-reference-engineering-skeleton.md`
+- `tools/geometry/analyze_body_fit_identifiability.py`
+- `tools/geometry/analyze_body_fit_identifiability_batch.py`
+- `data/reference-landmarks/seed-identifiability-report.json`
+
+The official Giant reference captures a fixed-bend 3D arm/component topology and exact reference frames without forcing `brickmen_giant_v0` to copy that architecture.
+
+Generation conditioning now also supports:
+- bone-aligned arm envelopes;
+- independent hand envelopes;
+- lower-body visual mass independent from hip spacing;
+- fixed-mm mechanical keep-outs placed at selected skeleton nodes.
+
+Parameter expansion is gated by landmark identifiability. The current seed corpus supports adding head-offset, thigh-length and shin-length fitting, but cannot separately identify lower- versus upper-torso segment length until chest/torso-center landmarks are added.
