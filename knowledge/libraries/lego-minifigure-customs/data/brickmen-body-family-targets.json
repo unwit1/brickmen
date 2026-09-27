@@ -1,24 +1,31 @@
 {
-  "schema_version": "0.1",
+  "schema_version": "0.2",
   "created": "2026-09-27",
   "status": "design_targets_no_production_geometry_yet",
   "principle": "Use official/custom systems as design-space evidence and compatibility references. Brickmen printable bodies should have original parametric geometry and validated joints.",
   "families": [
     {
       "architecture_id": "brickmen_broad_v0",
-      "scale_intent": "standard_to_intermediate",
+      "scale_intent": "approximately_standard_height_with_expanded_width_depth",
       "goals": [
         "standard minifigure head compatibility",
         "standard lower-body option",
         "broader torso/shoulders than standard",
         "custom enlarged arm option",
-        "standard 3.18-family accessory compatibility where sensible"
+        "standard 3.18-family accessory compatibility where sensible",
+        "independent stature and upper-body-mass parameters",
+        "standard-height symbiote/heavy/armored style modes",
+        "replaceable shoulder/wrist JointCartridges",
+        "optional enlarged hand shell retaining standard 3.18-family grip"
       ],
       "references": [
         "lego_axl_oversized_torso_hybrid",
-        "lego_hagrid_giant_hybrid"
+        "lego_hagrid_giant_hybrid",
+        "custom_alpha_45mm_muscle_hybrid",
+        "custom_g2_muscle_hybrid"
       ],
-      "stage": "concept"
+      "stage": "concept",
+      "research_doc": "brickmen-original-broad-body-architecture.md"
     },
     {
       "architecture_id": "brickmen_mid_v0",
