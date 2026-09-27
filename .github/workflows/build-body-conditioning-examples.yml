@@ -20,6 +20,7 @@ on:
       - "knowledge/libraries/lego-minifigure-customs/data/reference-landmarks/lego-giant-limb-ldraw-envelope-profile.json"
       - "knowledge/libraries/lego-minifigure-customs/data/reference-landmarks/lego-axl-front.json"
       - "knowledge/libraries/lego-minifigure-customs/data/joint-profiles/lego-giant-43093-shoulder-reference-v0.json"
+      - "knowledge/libraries/lego-minifigure-customs/data/joint-contact-regions/brickmen-giant-v0.json"
   workflow_dispatch:
 
 concurrency:
@@ -61,6 +62,7 @@ jobs:
           set -euo pipefail
           CONDITIONING="knowledge/libraries/lego-minifigure-customs/data/generation-conditioning/brickmen-giant-official-cad-v0.json"
           REGISTRY="knowledge/libraries/lego-minifigure-customs/data/body-generation-provider-registry.json"
+          CONTACTS="knowledge/libraries/lego-minifigure-customs/data/joint-contact-regions/brickmen-giant-v0.json"
           SWEEPS="knowledge/libraries/lego-minifigure-customs/data/articulation-sweeps"
           GUIDES="knowledge/libraries/lego-minifigure-customs/data/generation-guides/brickmen-giant-official-cad-v0"
           JOBS="knowledge/libraries/lego-minifigure-customs/data/provider-jobs/brickmen-giant-official-cad-v0"
@@ -87,6 +89,7 @@ jobs:
               --sweeps "$SWEEPS/brickmen-giant-official-cad-v0.json" \
               --guide-manifest "$GUIDES/manifest.json" \
               --provider-job "$JOBS/$provider.json" \
+              --contact-regions "$CONTACTS" \
               -o "$STATES/$provider.json"
           done
 
@@ -164,6 +167,11 @@ jobs:
               g for g in sam_state["gates"] if g["gate_id"] == "provider_run"
           )["status"] == "blocked"
           assert "mechanical_interface_validation" in partcrafter_state["production_readiness"]["blocking_gates"]
+          contact_gate = next(
+              g for g in partcrafter_state["gates"] if g["gate_id"] == "joint_contact_region_evidence"
+          )
+          assert contact_gate["status"] == "partial_or_pending"
+          assert "0 validated contact region(s)" in contact_gate["detail"]
           print("conditioning, sweep, provider and pipeline-state fixtures validated")
           PY
 
