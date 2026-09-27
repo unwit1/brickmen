@@ -140,3 +140,20 @@ def test_critic_state_cannot_masquerade_as_primary_generator():
     )
     assert mapping_gate["status"]=="not_applicable_to_critic_provider"
     assert "component_mapping" not in state["production_readiness"]["blocking_gates"]
+
+
+def test_wrapper_verified_provider_run_is_pending_not_blocked():
+    state=summarize_pipeline_state(
+        conditioning(),
+        provider_job={
+            "provider_id":"pact",
+            "pipeline_stage":"articulated_generator",
+            "requires_component_slot_mapping":True,
+            "execution_interface":{
+                "adapter_status":"runnable_brickmen_dataset_redirect_wrapper_verified"
+            },
+        },
+    )
+    run_gate=next(g for g in state["gates"] if g["gate_id"]=="provider_run")
+    assert run_gate["status"]=="pending"
+    assert "dry-run the pact adapter" in " ".join(state["next_actions"])
