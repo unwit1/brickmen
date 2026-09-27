@@ -1,0 +1,114 @@
+{
+  "schema_version": "0.1",
+  "status": "physical_validation_pending",
+  "created": "2026-09-27",
+  "objective": "Qualify printer/material/process combinations for minifigure-scale parts with reproducible geometric, fit, durability and cosmetic evidence.",
+  "gates": [
+    {
+      "gate": "digital_preflight",
+      "tests": [
+        "mesh/solid validity",
+        "scale/units",
+        "minimum features",
+        "connector revision",
+        "articulation/keepout",
+        "slice issue scan"
+      ],
+      "promotion": "first_article"
+    },
+    {
+      "gate": "first_article",
+      "tests": [
+        "visual completeness",
+        "critical dimensions",
+        "fit category",
+        "photo record"
+      ],
+      "promotion": "repeatability"
+    },
+    {
+      "gate": "repeatability",
+      "tests": [
+        "same-plate variance",
+        "between-build variance",
+        "build-position variance",
+        "post-cure variance"
+      ],
+      "promotion": "functional"
+    },
+    {
+      "gate": "functional",
+      "tests": [
+        "insertion/removal force",
+        "cycle retention",
+        "drop/impact where relevant",
+        "thin-feature failure",
+        "creep/retention",
+        "warp/straightness",
+        "decoration adhesion where relevant"
+      ],
+      "promotion": "production_candidate"
+    },
+    {
+      "gate": "production_candidate",
+      "tests": [
+        "golden sample",
+        "acceptance limits",
+        "sampling plan",
+        "traceability",
+        "drift triggers",
+        "rollback profile"
+      ],
+      "promotion": "production_approved"
+    }
+  ],
+  "coupon_families": [
+    "generic_geometric_capability",
+    "outside_pin_bar",
+    "internal_circular_bore",
+    "handheld_bar_3_18_family",
+    "headwear_socket",
+    "neck_armor_opening",
+    "clip_throat_and_root",
+    "thin_wall",
+    "weapon_shaft_blade",
+    "raised_detail",
+    "engraved_detail",
+    "flatness_warp",
+    "support_contact",
+    "orientation_strength"
+  ],
+  "required_raw_data": [
+    "cad_nominal",
+    "source_geometry_hash",
+    "slice_hash",
+    "machine_profile",
+    "material_lot",
+    "build_profile",
+    "orientation",
+    "build_position",
+    "pre_cure_measurement_if_applicable",
+    "post_cure_measurement",
+    "force_data_if_applicable",
+    "cycle_count_if_applicable",
+    "photos",
+    "defect_codes"
+  ],
+  "recalibration_triggers": [
+    "new_material_or_lot",
+    "new_pigment_or_blend",
+    "layer_height_change",
+    "exposure_or_extrusion_change",
+    "film_screen_nozzle_change",
+    "firmware_change",
+    "wash_or_cure_change",
+    "temperature_regime_change",
+    "dimensional_drift",
+    "scheduled_usage_threshold"
+  ],
+  "standards_reference": [
+    "ISO/ASTM 52902:2023",
+    "ISO/ASTM 52920:2023",
+    "ISO/ASTM 52901:2017"
+  ]
+}
