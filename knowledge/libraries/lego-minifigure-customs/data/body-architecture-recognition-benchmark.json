@@ -10,7 +10,12 @@
     "detached_component_classification",
     "architecture_unknown_rejection",
     "maker_style_vs_mechanical_architecture_separation",
-    "mesh_scan_architecture_retrieval"
+    "mesh_scan_architecture_retrieval",
+    "topology_variant_classification",
+    "visible_joint_count_estimation",
+    "alternate_lower_body_classification",
+    "multiarm_vs_stacked_torso_detection",
+    "integrated_head_vs_separate_head_detection"
   ],
   "initial_architectures": [
     "minifig_standard",
@@ -26,7 +31,20 @@
     "custom_bigguy_muscle",
     "custom_mrj_heart_muscle",
     "custom_kdl_65mm_large",
-    "community_printed_midfig"
+    "community_printed_midfig",
+    "lego_giant_integrated_head_legacy",
+    "lego_giant_specialized_creature",
+    "minifig_stacked_torso_multiarm",
+    "minifig_mechanical_droid_specialized",
+    "minifig_lowerbody_ghost",
+    "minifig_lowerbody_serpent",
+    "minifig_lowerbody_merfolk",
+    "minifig_lowerbody_tentacle",
+    "minifig_lowerbody_robot_rollers",
+    "minifig_centaur_hybrid",
+    "specialized_integrated_character_body",
+    "specialized_tail_body_jabba",
+    "minidoll_standard"
   ],
   "image_inputs": [
     "catalog_front",
@@ -54,7 +72,12 @@
     "scale_error",
     "landmark_error",
     "mechanical_family_precision",
-    "maker_style_precision"
+    "maker_style_precision",
+    "joint_count_error",
+    "component_graph_edit_distance",
+    "topology_class_accuracy",
+    "head_integration_accuracy",
+    "lower_body_morphology_accuracy"
   ],
   "style_transfer_tasks": [
     {
@@ -127,7 +150,19 @@
       "component_graph",
       "joint_graph",
       "connector_presence"
+    ],
+    "image_segmentation": [
+      "SAM2_or_successor"
+    ],
+    "three_d_part_segmentation": [
+      "SAMPart3D",
+      "PartSLIP++",
+      "Find3D_or_successor",
+      "Tripo_semantic_mesh_segmentation"
+    ],
+    "point_cloud_backbones": [
+      "Pointcept_PT_v3_or_successor"
     ]
   },
-  "rule": "Recognition models propose candidates. Manufacturing-critical architecture identity requires validated joint/connector evidence."
+  "rule": "Recognition models propose architecture/component candidates. Deterministic topology evidence and physical/authoritative connector evidence govern manufacturing identity. Character, maker, market label and product prefix must not leak into the benchmark in a way that lets the model bypass geometry recognition."
 }
