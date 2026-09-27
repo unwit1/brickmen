@@ -1,0 +1,101 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-27",
+  "reference_id": "lego_giant_10128p01c01_normalized_engineering_anchors_2303",
+  "architecture_id": "lego_giant_modular",
+  "status": "official_ldraw_normalized_reference_geometry_not_physical_metrology",
+  "source": {
+    "digital_twin": "knowledge/libraries/lego-minifigure-customs/data/digital-twins/lego-giant-hulk-10128p01c01.json",
+    "manifest": "knowledge/libraries/lego-minifigure-customs/data/digital-twins/ldraw-manifests/ubuntu-noble-2303/10128p01c01.json",
+    "profile": "knowledge/libraries/lego-minifigure-customs/data/digital-twins/ldraw-profiles/ubuntu-noble-2303/10128p01c01.json",
+    "ldraw_library_release": "Ubuntu 24.04 ldraw-parts 2303+ds-1"
+  },
+  "normalization": {
+    "body_height_ldu": 177.794,
+    "body_height_nominal_mm": 71.11760000000001,
+    "brickmen_bbox_min_z_ldu": -0.021,
+    "rule": {
+      "x_norm": "brickmen_x_ldu / body_height_ldu",
+      "y_norm": "brickmen_y_ldu / body_height_ldu",
+      "z_norm": "(brickmen_z_ldu - brickmen_bbox_min_z_ldu) / body_height_ldu"
+    },
+    "warning": "Normalization is for shape/reference comparison. It does not scale commodity hardware or define production geometry."
+  },
+  "anchors": [
+    {
+      "anchor_id": "anatomical_left_shoulder",
+      "component_id": "left_arm",
+      "brickmen_ldu": [
+        40,
+        0,
+        126
+      ],
+      "normalized_body_height": [
+        0.22497947062330562,
+        0,
+        0.7088034466854899
+      ],
+      "source_semantic": "LDraw complete shortcut left arm/pin origin"
+    },
+    {
+      "anchor_id": "anatomical_right_shoulder",
+      "component_id": "right_arm",
+      "brickmen_ldu": [
+        -40,
+        0,
+        126
+      ],
+      "normalized_body_height": [
+        -0.22497947062330562,
+        0,
+        0.7088034466854899
+      ],
+      "source_semantic": "LDraw complete shortcut right arm/pin origin"
+    },
+    {
+      "anchor_id": "anatomical_left_hand_attachment_root",
+      "component_id": "left_hand",
+      "brickmen_ldu": [
+        70,
+        -40,
+        86
+      ],
+      "normalized_body_height": [
+        0.3937140735907848,
+        -0.22497947062330562,
+        0.4838239760621843
+      ],
+      "source_semantic": "Default-pose hand part origin; equals transformed arm hand-socket attachment frame",
+      "pose_dependent": true
+    },
+    {
+      "anchor_id": "anatomical_right_hand_attachment_root",
+      "component_id": "right_hand",
+      "brickmen_ldu": [
+        -70,
+        -40,
+        86
+      ],
+      "normalized_body_height": [
+        -0.3937140735907848,
+        -0.22497947062330562,
+        0.4838239760621843
+      ],
+      "source_semantic": "Default-pose hand part origin; equals transformed arm hand-socket attachment frame",
+      "pose_dependent": true
+    }
+  ],
+  "derived": {
+    "shoulder_center_separation_normalized": 0.44995894124661123,
+    "shoulder_height_normalized": 0.7088034466854899,
+    "default_hand_attachment_separation_normalized": 0.7874281471815696,
+    "default_hand_attachment_height_normalized": 0.4838239760621843
+  },
+  "convention_notes": [
+    "The official assembly's anatomical left shoulder is at +X in the preserved Brickmen semantic model frame.",
+    "The current Brickmen generation-skeleton fitting convention labels left-side nodes at negative X.",
+    "Any fitter-facing mirror must be explicit and must not rewrite the canonical digital-twin coordinates.",
+    "Default hand attachment roots are pose-dependent assembly frames and should not be treated as neutral arm-length landmarks without pose normalization."
+  ],
+  "production_geometry_authority": false
+}
