@@ -275,3 +275,29 @@ Second-pass architecture census:
 - `distinct-body-architecture-census-pass-2.md`
 
 Newly separated references include full ball-joint poseable standard figures, ball-jointed MidFig uppers, single-torso four-arm bodies, bony skeletons, Battle/Super Battle Droid bodies, digitigrade Faun lower bodies, and legacy Homemaker/maxifigure architecture.
+
+
+## Reference fitting
+
+Implemented reference-fitting tools:
+- `reference-fitting-pipeline.md`
+- `data/body-reference-landmarks.schema.json`
+- `data/reference-landmarks/manifest.json`
+- `tools/geometry/fit_body_skeleton.py`
+- `tools/geometry/fit_body_skeleton_batch.py`
+- `tools/geometry/compare_body_skeletons.py`
+
+Seed references:
+- Alpha Toys AF325 Venom
+- Alpha Toys AF345 Hulk
+- LEGO SH0371 Giant Hulk
+- KDL K2302 Thing
+- LEGO Axl
+
+Seed diagnostics are stored under:
+- `data/reference-landmarks/seed-fit-results.json`
+- `data/reference-landmarks/seed-comparative-fit-results.json`
+- `data/skeleton-fit-revision-candidates.json`
+
+Rule:
+**shape residual, known scale, topology, source metadata and physical evidence are separate signals. A low image-fit RMSE never proves mechanical architecture or connector compatibility.**
