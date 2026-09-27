@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "reference-engineering-skeleton.schema.json",
+  "title": "Brickmen Reference Engineering Skeleton",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "engineering_skeleton_id",
+    "architecture_id",
+    "status",
+    "coordinate_system",
+    "normalization",
+    "frames",
+    "component_profiles",
+    "production_geometry_authority"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "engineering_skeleton_id": {
+      "type": "string"
+    },
+    "architecture_id": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "source": {
+      "type": "object"
+    },
+    "coordinate_system": {
+      "type": "object"
+    },
+    "normalization": {
+      "type": "object"
+    },
+    "frames": {
+      "type": "array"
+    },
+    "component_profiles": {
+      "type": "array"
+    },
+    "comparison_rules": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "production_geometry_authority": {
+      "const": false
+    },
+    "warning": {
+      "type": "string"
+    }
+  }
+}
