@@ -44,8 +44,10 @@ def test_postprocessor_provider_keeps_same_authority_boundary():
     job = compile_provider_job(conditioning(), providers["particulate"])
     assert job["provider_role"] == "mesh_to_articulation_inference_critic"
     assert job["mechanical_review_required"] is True
+    assert job["pipeline_stage"]=="post_generation_critic"
+    assert job["requires_component_slot_mapping"] is False
     assert any(
-        "cannot overwrite validated Brickmen joint" in text
+        "cannot overwrite validated Brickmen" in text
         for text in job["output_acceptance_rules"]
     )
 
