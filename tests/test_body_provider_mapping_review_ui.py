@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from tools.geometry.build_body_provider_mapping_review_ui import (
     build_mapping_review_html,
 )
@@ -50,3 +52,31 @@ def test_mapping_reviewer_embeds_metadata_not_mesh_bytes():
     assert "data:model/" not in page
     assert "data:application/octet-stream" not in page
     assert "<model-viewer" not in page
+
+
+def test_mapping_reviewer_embeds_bounded_wireframe_metadata(tmp_path: Path):
+    mesh=tmp_path/"part.obj"
+    mesh.write_text(
+        "v 0 0 0\nv 1 0 0\nv 0 1 0\nf 1 2 3\n",
+        encoding="utf-8",
+    )
+    p=proposal()
+    assignment=p["global_alignment_candidates"][0]["assignments"][0]
+    assignment["provider_part_path"]=str(mesh)
+    p["global_alignment_candidates"][0]["global_transform_matrix_to_brickmen_mm"]=[
+        1,0,0,0,
+        0,1,0,0,
+        0,0,1,0,
+        0,0,0,1,
+    ]
+    page=build_mapping_review_html(p)
+    assert '"wireframe_segment_count":3' in page
+    assert '"source_triangle_count":1' in page
+    assert 'class:"wire"' in page
+    assert "data:model/" not in page
+
+
+def test_mapping_reviewer_tolerates_missing_mesh_for_wireframe():
+    page=build_mapping_review_html(proposal())
+    assert '"status":"unavailable"' in page
+    assert "Brickmen Provider Part Mapping Review" in page
