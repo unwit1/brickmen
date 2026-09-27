@@ -506,3 +506,130 @@ Acceptance:
 - no hallucinated standard legs/hands where the architecture forbids them;
 - source identity preserved;
 - target architecture surface rules respected.
+
+# Track J — Reusable articulated joint engineering
+
+## J0 — JointProfile contracts
+
+Completed research:
+- joint primitive taxonomy;
+- JointProfile schema;
+- force/torque/cycle validation plan;
+- replaceable joint insert strategy.
+
+Files:
+- `printable-body-joint-engineering.md`
+- `data/body-joint-primitive-schema.json`
+- `data/body-joint-validation-plan.json`
+
+## J1 — Joint coupon generator
+
+Implement parametric CAD generators for:
+- rotational pin/bore ladders;
+- captured pins;
+- C-socket ball joints;
+- replaceable socket inserts;
+- shoulder ball-adapter pins;
+- elbow hinge;
+- wrist peg;
+- detents.
+
+Every generator accepts:
+- machine/material profile;
+- orientation;
+- sweep parameters;
+- sample labels.
+
+## J2 — Instrumented torque testing
+
+Extend the additive force station with:
+- rotary axis;
+- torque measurement or calibrated lever/force method;
+- angle encoder;
+- automated cycling.
+
+Store torque-angle curves and cycle drift.
+
+## J3 — standard articulated shoulder
+
+Acquire one current custom ball-joint-arm figure and characterize it.
+
+Then design an **original** Brickmen standard-scale articulated shoulder preserving as much normal minifigure compatibility as possible.
+
+Do not clone proprietary custom joint geometry.
+
+## J4 — Brickmen Mid joint set
+
+Select and validate:
+- shoulder;
+- elbow;
+- wrist;
+- optional hip/lower-body joints.
+
+## J5 — Brickmen XL replaceable joint set
+
+Prioritize replaceable wear inserts and/or commodity hardware.
+
+Validate static load and long-term pose retention.
+
+## J6 — Mega-scale joint research
+
+Large figures require joint selection by required torque, not visual scale alone.
+
+Test:
+- detents;
+- large replaceable ball/socket inserts;
+- pinned hinges;
+- commodity hardware.
+
+# Track X — Mega-scale and buildable figures
+
+## X0 — source-label separation
+
+Completed:
+- MegaFig retained as source label;
+- OA 16 cm family candidate;
+- DY variable 22.5-28.5 cm evidence;
+- buildable treated separately from molded/printed large bodies.
+
+## X1 — OA 16 cm family resolution
+
+Acquire/scan at least one OA2201-OA2204 body, then compare multiview catalog evidence across all four.
+
+Determine:
+- shared blank platform;
+- joints;
+- components;
+- materials;
+- standard system attachment.
+
+## X2 — DY large-scale clustering
+
+Create release-level observations before inferring any shared architecture.
+
+## X3 — buildable CharacterArchitecture
+
+Represent buildable bodies as:
+```
+component/subassembly graph
+ + LEGO-system connection graph
+ + semantic anatomy map
+ + articulation map
+ + style surfaces
+```
+
+Generation can then choose to create:
+- molded/printed body;
+- or a brick-built character.
+
+## X4 — cross-scale character benchmark
+
+Use characters represented at many scales:
+- Ant-Man / Giant Man;
+- Galactus;
+- Sentinel;
+- Hulk;
+- Thing.
+
+Evaluate whether the architecture selector chooses scale and construction method from explicit intent rather than learned popularity bias.
+
