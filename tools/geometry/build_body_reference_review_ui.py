@@ -140,7 +140,9 @@ button.primary{{background:#2541b2}}
   <h2>Image</h2>
   <label for="image-url">Image URL / relative path</label>
   <input id="image-url" value="{image_url}">
-  <button id="apply-image">Apply image</button>
+  <button id="apply-image">Apply image URL/path</button>
+  <label for="image-file">Or preview a local image file (never exported)</label>
+  <input id="image-file" type="file" accept="image/*">
   <label for="opacity">Image opacity</label>
   <input id="opacity" type="range" min="0" max="1" step=".01" value=".65">
 
@@ -354,6 +356,14 @@ document.getElementById("apply-landmark-meta").onclick=()=>{{
 }};
 
 document.getElementById("apply-image").onclick=()=>{{image.setAttribute("href",document.getElementById("image-url").value.trim());}};
+let localImageObjectUrl=null;
+document.getElementById("image-file").onchange=evt=>{{
+  const file=evt.target.files?.[0]; if(!file) return;
+  if(localImageObjectUrl) URL.revokeObjectURL(localImageObjectUrl);
+  localImageObjectUrl=URL.createObjectURL(file);
+  image.setAttribute("href",localImageObjectUrl);
+  setStatus("Local image loaded for preview only; it will not be embedded in exported JSON.");
+}};
 document.getElementById("opacity").oninput=evt=>{{image.style.opacity=evt.target.value;}};
 document.getElementById("reset-bbox").onclick=()=>{{ref.body_bbox_px=[...originalBBox];renderBBox();}};
 document.getElementById("center-bbox").onclick=()=>{{
@@ -369,7 +379,8 @@ function exported(){{
     reviewer:document.getElementById("reviewer").value.trim() || null,
     note:document.getElementById("review-note").value.trim() || null,
     tool:"brickmen_body_reference_reviewer_v0",
-    source_image_embedded:false
+    source_image_embedded:false,
+    local_image_preview_exported:false
   }};
   out.exclude_from_production_dimensions=true;
   out.notes=Array.isArray(out.notes)?out.notes:[];
