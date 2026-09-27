@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.1",
+  "schema_version": "0.2",
   "observed_at": "2026-09-27",
   "status": "research_model_registry",
   "tasks": {
@@ -67,6 +67,30 @@
         "maintenance_note": "Salesforce GitHub repository archived 2026-06-25; do not make primary new runtime dependency without reason.",
         "source": "https://github.com/salesforce/ULIP"
       }
+    ],
+    "three_d_part_segmentation": [
+      {
+        "model": "SAMPart3D",
+        "role": "open-world part segmentation for fused meshes/scans",
+        "strengths": [
+          "multi-view RGB/depth decomposition",
+          "open-source implementation",
+          "useful fallback after monolithic generation"
+        ],
+        "source": "https://github.com/Pointcept/SAMPart3D"
+      },
+      {
+        "model": "PartField",
+        "role": "part-aware feature fields, hierarchical clustering, cross-shape correspondence",
+        "strengths": [
+          "hierarchical part decomposition",
+          "cross-shape consistency",
+          "cosegmentation",
+          "correspondence",
+          "mesh/point-cloud support"
+        ],
+        "source": "https://github.com/nv-tlabs/PartField"
+      }
     ]
   },
   "fusion_features": [
@@ -81,7 +105,9 @@
     "3d_embedding",
     "digital_twin_alignment",
     "connector_evidence",
-    "physical_measurements"
+    "physical_measurements",
+    "part_feature_correspondence",
+    "component_segmentation"
   ],
   "output_states": [
     "exact_release_resolved",
