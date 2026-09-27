@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "body-provider-alignment-candidates.schema.json",
+  "title": "Brickmen Provider Alignment Candidates",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "slot_id",
+    "mesh_path",
+    "target_box_mm",
+    "provider_box",
+    "candidates",
+    "automatic_promotion_allowed",
+    "production_geometry_authority"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "slot_id": {
+      "type": "string"
+    },
+    "mesh_path": {
+      "type": "string"
+    },
+    "target_box_mm": {
+      "type": "object"
+    },
+    "provider_box": {
+      "type": "object"
+    },
+    "candidates": {
+      "type": "array"
+    },
+    "automatic_promotion_allowed": {
+      "type": "boolean"
+    },
+    "production_geometry_authority": {
+      "const": false
+    }
+  }
+}
