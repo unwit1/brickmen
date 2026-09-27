@@ -35,11 +35,18 @@ def test_plane_intersection_crosses_triangle_edges():
     assert any(p[2] == pytest.approx(1.0) for p in points)
 
 
-def test_cube_profile_uses_negative_y_as_up(tmp_path: Path):
+def test_cube_profile_can_use_raw_ldraw_axes(tmp_path: Path):
     path = tmp_path / "cube.obj"
     path.write_text(cube_obj(), encoding="utf-8")
     triangles = load_obj_triangles(path)
-    result = measure_profile(triangles, samples=5)
+    result = measure_profile(
+        triangles,
+        vertical_axis="y",
+        vertical_direction="negative",
+        front_horizontal_axis="x",
+        side_horizontal_axis="z",
+        samples=5,
+    )
 
     assert result["body_height"] == pytest.approx(4.0)
     assert result["overall"]["front_span"] == pytest.approx(2.0)
@@ -64,3 +71,40 @@ def test_extra_height_is_included(tmp_path: Path):
         x["height_norm"] == pytest.approx(0.70880344668549)
         for x in result["slices"]
     )
+
+
+
+def test_default_profile_uses_brickmen_z_up_y_depth(tmp_path: Path):
+    path = tmp_path / "brickmen_cube.obj"
+    path.write_text(
+        """# Brickmen-frame 2 x 6 x 4 box
+v -1 -3 0
+v 1 -3 0
+v 1 3 0
+v -1 3 0
+v -1 -3 4
+v 1 -3 4
+v 1 3 4
+v -1 3 4
+f 1 2 3 4
+f 5 8 7 6
+f 1 5 6 2
+f 2 6 7 3
+f 3 7 8 4
+f 5 1 4 8
+""",
+        encoding="utf-8",
+    )
+    result = measure_profile(load_obj_triangles(path), samples=5)
+
+    assert result["coordinate_mapping"] == {
+        "vertical_axis": "z",
+        "vertical_direction": "positive",
+        "front_horizontal_axis": "x",
+        "side_horizontal_axis": "y",
+    }
+    assert result["body_height"] == pytest.approx(4.0)
+    assert result["overall"]["front_span"] == pytest.approx(2.0)
+    assert result["overall"]["side_span"] == pytest.approx(6.0)
+    middle = next(x for x in result["slices"] if x["height_norm"] == 0.5)
+    assert middle["plane_coordinate"] == pytest.approx(2.0)
