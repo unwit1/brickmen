@@ -5,6 +5,7 @@ import pytest
 from tools.geometry.compile_body_generation_conditioning import (
     compile_conditioning,
     load_json,
+    merge_envelope_fits,
 )
 from tools.geometry.fit_body_envelope_profile import fit_envelope_profile
 from tools.geometry.fit_body_skeleton import fit_skeleton, load_reference
@@ -38,7 +39,12 @@ def test_giant_conditioning_merges_official_shape_and_reference_hardware():
     )
 
     skeleton_fit = fit_skeleton(spec, shoulder_ref)
-    envelope_fit = fit_envelope_profile(spec, envelope_ref)
+    body_envelope_fit = fit_envelope_profile(spec, envelope_ref)
+    limb_ref = load_reference(
+        BASE / "reference-landmarks" / "lego-giant-limb-ldraw-envelope-profile.json"
+    )
+    limb_envelope_fit = fit_envelope_profile(spec, limb_ref)
+    envelope_fit = merge_envelope_fits([body_envelope_fit, limb_envelope_fit])
     payload = compile_conditioning(
         spec,
         skeleton_fit=skeleton_fit,
@@ -60,6 +66,20 @@ def test_giant_conditioning_merges_official_shape_and_reference_hardware():
     )
     assert abdomen["size_normalized_body_height"][1] == pytest.approx(
         0.34055415885259605
+    )
+    arm = envelope_by_id(payload, "arm_l")
+    hand = envelope_by_id(payload, "hand_l")
+    assert arm["size_normalized_body_height"][0] == pytest.approx(
+        0.181781764684078
+    )
+    assert arm["size_normalized_body_height"][1] == pytest.approx(
+        0.27980484946128936
+    )
+    assert arm["a_node"] == "shoulder_l"
+    assert arm["b_node"] == "wrist_l"
+    assert arm["derived_length_normalized_body_height"] > 0
+    assert hand["size_normalized_body_height"] == pytest.approx(
+        [0.17426889310845864, 0.24813372766299466, 0.20941651574293846]
     )
 
     left_shoulder = payload["skeleton_control"]["nodes"]["shoulder_l"]
@@ -126,3 +146,21 @@ def test_explicit_target_height_controls_mm_only_not_normalized_shape():
     assert torso_70["size_mm_at_target_height"][0] == pytest.approx(
         torso_62["size_mm_at_target_height"][0] * 70 / 62
     )
+
+
+
+def test_merge_envelope_fits_rejects_parameter_conflicts():
+    first = {
+        "reference_id": "a",
+        "parameter_overrides": {"torso_width_scale": 1.1},
+        "bound_hits": [],
+        "mechanical_parameter_changes": [],
+    }
+    second = {
+        "reference_id": "b",
+        "parameter_overrides": {"torso_width_scale": 1.2},
+        "bound_hits": [],
+        "mechanical_parameter_changes": [],
+    }
+    with pytest.raises(ValueError, match="Conflicting envelope fits"):
+        merge_envelope_fits([first, second])
