@@ -355,6 +355,60 @@
       },
       "brickmen_domain_verified": false,
       "production_geometry_authority": false
+    },
+    {
+      "provider_id": "sam3d_part",
+      "display_name": "SAM3D-Part",
+      "pipeline_stage": "research_candidate",
+      "provider_role": "post_generation_interactive_part_selector_and_regenerator",
+      "adapter_status": "upstream_gradio_runnable_headless_brickmen_wrapper_pending",
+      "brickmen_execution_runnable": false,
+      "entrypoint": "app.py",
+      "input_requirements": [],
+      "output_contract": {
+        "kind": "single_selected_part_mesh_regeneration_in_object_frame",
+        "likely_mesh_outputs": [
+          "output_sample/<user_id>/part_scene_color.glb",
+          "output_sample/<user_id>/part_scene_textured.glb"
+        ],
+        "brickmen_component_slot_mapping": "one_reviewed_target_slot_required",
+        "production_geometry_authority": false
+      },
+      "requires_component_slot_mapping": true,
+      "helpers": {},
+      "canonical_pipeline_state_path": null,
+      "canonical_provider_run_status": "state_unavailable",
+      "canonical_provider_run_detail": null,
+      "execution_has_been_performed_in_canonical_fixture": false,
+      "limitations": [
+        "Current official entry point is an interactive Gradio app rather than a stable headless Brickmen API.",
+        "Reference environment uses an 80 GB H100/A100-class GPU and a heavy CUDA-extension stack.",
+        "Part selection depends on a rendered view and click/mask interaction; Brickmen still needs a deterministic headless prompt/region adapter.",
+        "The stage-1 model derives from SAM 3D Objects and carries SAM Agreement obligations; vendored TRELLIS/TRELLIS.2 and Hunyuan3D components have separate terms.",
+        "This is a post-generation part repair/refinement candidate, not a verified initial Brickmen body generator."
+      ],
+      "research_status": {
+        "verified_on": "2026-09-27",
+        "venue": "SIGGRAPH Asia 2026",
+        "official_repository": true,
+        "official_weights": true,
+        "public_demo_code": true,
+        "brickmen_domain_fit": "high_for_post_generation_local_part_repair_not_initial_body_generation"
+      },
+      "upstream_verification": {
+        "repository": "https://github.com/Jiahao620/sam3d-part",
+        "verified_commit_sha": "59bc3848f70526b5560389f353c310a630b24938",
+        "verified_on": "2026-09-27",
+        "interface_files": [
+          "app.py",
+          "README.md",
+          "ENV_INFO.txt"
+        ],
+        "version_policy": "exact_verified_revision_preferred_reverify_research_contract_on_mismatch",
+        "verification_scope": "Interactive mesh upload/render/click/part generation flow, output role, reference environment and licensing notes."
+      },
+      "brickmen_domain_verified": false,
+      "production_geometry_authority": false
     }
   ],
   "shared_pipeline": {
