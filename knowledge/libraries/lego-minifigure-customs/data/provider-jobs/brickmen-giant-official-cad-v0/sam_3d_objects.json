@@ -21,7 +21,12 @@
       "--metadata",
       "<output_dir>/sam3d-metadata.json"
     ],
-    "upstream_requirement_note": "Brickmen wrapper calls the published notebook.inference Inference/load_image/load_mask API and exports output['gs'] to PLY. This is a visual Gaussian baseline and does not enter triangle-mesh production validation."
+    "upstream_requirement_note": "Brickmen wrapper calls the published notebook.inference Inference/load_image/load_mask API and exports output['gs'] to PLY. This is a visual Gaussian baseline and does not enter triangle-mesh production validation.",
+    "environment": {
+      "minimum_vram_gb": 32,
+      "minimum_vram_authority": "upstream_documented_minimum",
+      "cuda_required": true
+    }
   },
   "conditioning_digest_sha256": "5f3bfc4f8684705de1b68d096182e4ea452984eabf661c94b2979d4746280978",
   "architecture_id": "brickmen_giant_v0",

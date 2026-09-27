@@ -20,7 +20,12 @@
       "<tag>",
       "--render"
     ],
-    "upstream_requirement_note": "Official README states CUDA GPU with at least 8GB VRAM; reduce parts/tokens to lower memory."
+    "upstream_requirement_note": "Official README states CUDA GPU with at least 8GB VRAM; reduce parts/tokens to lower memory.",
+    "environment": {
+      "minimum_vram_gb": 8,
+      "minimum_vram_authority": "upstream_documented_minimum",
+      "cuda_required": true
+    }
   },
   "conditioning_digest_sha256": "5f3bfc4f8684705de1b68d096182e4ea452984eabf661c94b2979d4746280978",
   "architecture_id": "brickmen_giant_v0",

@@ -21,7 +21,12 @@
       "--metadata",
       "<output_dir>/brickmen-pact-wrapper.json"
     ],
-    "upstream_requirement_note": "Brickmen wrapper redirects PAct's hardcoded ImageConditioned_dataset root in-process without modifying the upstream checkout. Supply a PAct-compatible semantic part-label EXR or a lossless integer-label PNG/TIFF; raster labels are redirected only for the staged mask read."
+    "upstream_requirement_note": "Brickmen wrapper redirects PAct's hardcoded ImageConditioned_dataset root in-process without modifying the upstream checkout. Supply a PAct-compatible semantic part-label EXR or a lossless integer-label PNG/TIFF; raster labels are redirected only for the staged mask read.",
+    "environment": {
+      "minimum_vram_gb": null,
+      "minimum_vram_authority": "not_verified",
+      "cuda_required": true
+    }
   },
   "conditioning_digest_sha256": "5f3bfc4f8684705de1b68d096182e4ea452984eabf661c94b2979d4746280978",
   "architecture_id": "brickmen_giant_v0",

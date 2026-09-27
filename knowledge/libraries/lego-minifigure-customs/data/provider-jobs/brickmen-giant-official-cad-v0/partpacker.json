@@ -17,7 +17,12 @@
       "--output_dir",
       "<output_dir>"
     ],
-    "upstream_requirement_note": "Official README states ~10GB GPU memory for inference assuming float16."
+    "upstream_requirement_note": "Official README states ~10GB GPU memory for inference assuming float16.",
+    "environment": {
+      "minimum_vram_gb": 10,
+      "minimum_vram_authority": "upstream_documented_approximate_inference_requirement_float16",
+      "cuda_required": true
+    }
   },
   "conditioning_digest_sha256": "5f3bfc4f8684705de1b68d096182e4ea452984eabf661c94b2979d4746280978",
   "architecture_id": "brickmen_giant_v0",
