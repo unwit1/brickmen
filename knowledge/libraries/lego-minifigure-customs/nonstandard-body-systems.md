@@ -1,3 +1,5 @@
+> **CANONICALIZATION NOTE (2026-09-27):** This was the first deep-scan draft. Its research remains useful, but new architecture records use the canonical `FigureArchitecture` system defined in `nonstandard-figure-architectures.md`, `data/figure-architecture-registry.json`, and `data/figure-architecture-observation-schema.json`. Legacy BodyArchitecture IDs are mapped through `data/body-architecture-ontology.json`.
+
 # Non-Standard Minifigure Body Systems: Taxonomy, Recognition, Generation, and Manufacturing
 
 Research snapshot: 2026-09-27.
