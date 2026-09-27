@@ -1,0 +1,54 @@
+{
+  "schema_version": "0.1",
+  "architecture_id": "brickmen_giant_v0",
+  "target_height_mm": 62.0,
+  "views": {
+    "front": "front.svg",
+    "side": "side.svg"
+  },
+  "component_slots": [
+    {
+      "slot_id": "torso_shell",
+      "role": "torso",
+      "required": true
+    },
+    {
+      "slot_id": "arm_l_shell",
+      "role": "arm",
+      "side": "left",
+      "required": true
+    },
+    {
+      "slot_id": "arm_r_shell",
+      "role": "arm",
+      "side": "right",
+      "required": true
+    },
+    {
+      "slot_id": "hand_l_shell",
+      "role": "hand",
+      "side": "left",
+      "required": true
+    },
+    {
+      "slot_id": "hand_r_shell",
+      "role": "hand",
+      "side": "right",
+      "required": true
+    },
+    {
+      "slot_id": "head_shell",
+      "role": "head",
+      "required": true
+    },
+    {
+      "slot_id": "lower_body_shell",
+      "role": "lower_body",
+      "required": true
+    }
+  ],
+  "has_articulation_sweeps": true,
+  "source_image_embedded": false,
+  "production_geometry_authority": false,
+  "warning": "Guide SVGs are structural visual controls, not manufacturing drawings or physical clearance/tolerance specifications."
+}
