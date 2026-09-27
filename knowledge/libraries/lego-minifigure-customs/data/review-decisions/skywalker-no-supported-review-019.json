@@ -1,0 +1,218 @@
+{
+  "schema": "skywalker-no-supported-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-no-supported-review-019",
+  "policy": "Expand abbreviated source keys through explicit game/DLC roster evidence, preserve long-running digital-only characters as nonphysical, and avoid substituting generic pilots, Jedi, Gungans, or same-era figures without identity-level evidence.",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-a54deb1ca27c2724ccb2bcdf",
+      "character_variant_key": "Bix",
+      "decision": "abbreviated_dlc_key_resolved_to_bix_caleen_verified_video_game_only_no_official_physical_minifigure",
+      "canonical_subject": "Bix Caleen",
+      "alias_resolution": {
+        "source_key": "Bix",
+        "canonical_name": "Bix Caleen",
+        "confidence": "high",
+        "basis": "The official Skywalker Saga Andor Character Pack roster explicitly includes Bix Caleen."
+      },
+      "source_context": {
+        "pack": "LEGO Star Wars: The Skywalker Saga Andor Character Pack",
+        "release_date": "2022-11-29"
+      },
+      "physical_status": {
+        "exact_official_minifigure_located": false,
+        "brickipedia_status": "video-game-only minifigure; never existed in physical form or appeared in an official LEGO set"
+      },
+      "rejected_top_candidates": [
+        {
+          "fig_num": "fig-004214",
+          "catalog_name": "Bistan",
+          "reason": "short-name prefix similarity only; unrelated character"
+        },
+        {
+          "fig_num": "fig-004450",
+          "catalog_name": "Boolio",
+          "reason": "short-name prefix similarity only; unrelated character"
+        },
+        {
+          "fig_num": "fig-004209",
+          "catalog_name": "Bodhi Rook",
+          "reason": "same broad Rebel-era context only; unrelated person"
+        }
+      ],
+      "reason": "The one-token source key is disambiguated by the official Andor DLC roster, which names Bix Caleen. Brickipedia explicitly marks her LEGO representation as video-game-only/nonphysical. Short-name lexical matches must not override the DLC roster identity.",
+      "systemic_pattern": "abbreviated_dlc_character_keys_should_resolve_against_official_pack_rosters_before_catalog_matching",
+      "evidence_urls": [
+        "https://www.nintendo.com/us/store/products/lego-star-wars-the-skywalker-saga-andor-character-pack-70050000037365-switch/",
+        "https://brickipedia.fandom.com/wiki/Bix_Caleen"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-964aea53092a10bb036380cc",
+      "character_variant_key": "BossNass",
+      "decision": "named_gungan_leader_boss_nass_verified_legacy_video_game_only_no_official_physical_minifigure",
+      "canonical_subject": "Boss Nass",
+      "identity_context": {
+        "species": "Gungan",
+        "role": "leader of the Gungan people"
+      },
+      "digital_history": [
+        "LEGO Star Wars: The Video Game (2005)",
+        "LEGO Star Wars: The Complete Saga (2007)",
+        "LEGO Star Wars: The Skywalker Saga (2022)"
+      ],
+      "physical_status": {
+        "exact_official_minifigure_located": false,
+        "brickipedia_status": "video-game-only minifigure; never existed in physical form or appeared in an official LEGO set"
+      },
+      "rejected_top_candidates": [
+        {
+          "fig_num": "fig-011623",
+          "catalog_name": "Crosshair",
+          "reason": "unrelated character"
+        },
+        {
+          "fig_num": "fig-004122",
+          "catalog_name": "Wes Janson",
+          "reason": "unrelated character"
+        },
+        {
+          "fig_num": "fig-003788",
+          "catalog_name": "Embo, Sand Green",
+          "reason": "unrelated character/species"
+        }
+      ],
+      "reason": "Boss Nass has appeared as a LEGO digital character since 2005 but remains nonphysical. Brickipedia explicitly states he never appeared in an official LEGO set, so generic Gungan existence or unrelated low-score catalog figures cannot be substituted.",
+      "systemic_pattern": "legacy_digital_character_longevity_does_not_imply_physical_release",
+      "evidence_urls": [
+        "https://brickipedia.fandom.com/wiki/Boss_Nass"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-fcacd8a8c1b660e339848b33",
+      "character_variant_key": "Yaddle",
+      "decision": "named_jedi_master_yaddle_verified_video_game_only_no_official_physical_minifigure",
+      "canonical_subject": "Yaddle",
+      "identity_context": {
+        "role": "Jedi Master / Jedi High Council member"
+      },
+      "physical_status": {
+        "exact_official_minifigure_located": false,
+        "brickipedia_status": "video-game-only minifigure; never existed in physical form or appeared in an official LEGO set"
+      },
+      "rejected_top_candidates": [
+        {
+          "fig_num": "fig-004356",
+          "catalog_name": "Val",
+          "reason": "unrelated character"
+        },
+        {
+          "fig_num": "fig-003768",
+          "catalog_name": "Wald",
+          "reason": "weak short-name phonetic similarity only"
+        },
+        {
+          "fig_num": "fig-004484",
+          "catalog_name": "Padawan, Female",
+          "reason": "generic Jedi context is not named identity"
+        }
+      ],
+      "reason": "Yaddle is a specific Jedi Council member represented in The Skywalker Saga, but Brickipedia explicitly marks the LEGO minifigure as digital-only/nonphysical. Generic Jedi figures or other short-name characters are not valid counterparts.",
+      "systemic_pattern": "shared_jedi_context_and_short_name_similarity_are_insufficient_for_named_jedi_identity",
+      "evidence_urls": [
+        "https://brickipedia.fandom.com/wiki/Yaddle"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-4eefa560b1b7cfe712aa4ef3",
+      "character_variant_key": "JessikaPava",
+      "decision": "named_resistance_pilot_jessika_pava_verified_video_game_only_no_official_physical_minifigure",
+      "canonical_subject": "Jessika Pava",
+      "known_aliases": [
+        "Jess Pava",
+        "Testor"
+      ],
+      "identity_context": {
+        "role": "Resistance pilot",
+        "call_sign": "Blue Three"
+      },
+      "digital_history": [
+        "LEGO Star Wars: The Force Awakens",
+        "LEGO Star Wars: The Skywalker Saga"
+      ],
+      "physical_status": {
+        "exact_official_minifigure_located": false,
+        "brickipedia_status": "video-game-only minifigure; never existed in physical form or appeared in an official LEGO set"
+      },
+      "rejected_top_candidates": [
+        {
+          "fig_num": "fig-003894",
+          "catalog_name": "Jek Porkins",
+          "reason": "different pilot and era"
+        },
+        {
+          "fig_num": "fig-004299",
+          "catalog_name": "Resistance Gunner Paige",
+          "reason": "same faction but different person/role"
+        },
+        {
+          "fig_num": "fig-003859",
+          "catalog_name": "Shahan Alama",
+          "reason": "unrelated character"
+        }
+      ],
+      "reason": "Jessika Pava is a distinct Resistance pilot with two LEGO game appearances. Brickipedia explicitly states her minifigure remains video-game-only/nonphysical; faction and pilot-role overlap do not supply an exact physical counterpart.",
+      "systemic_pattern": "same_faction_pilot_role_is_not_named_character_equivalence",
+      "evidence_urls": [
+        "https://brickipedia.fandom.com/wiki/Jessika_Pava"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-63cfbd64e852e2af144ca352",
+      "character_variant_key": "TemiriBlagg",
+      "decision": "named_canto_bight_stable_boy_temiri_blagg_verified_video_game_only_no_official_physical_minifigure",
+      "canonical_subject": "Temiri Blagg",
+      "identity_context": {
+        "role": "Canto Bight stable boy / Force-sensitive child"
+      },
+      "physical_status": {
+        "exact_official_minifigure_located": false,
+        "brickipedia_status": "video-game-only minifigure; never existed in physical form or appeared in an official LEGO set"
+      },
+      "rejected_top_candidates": [
+        {
+          "fig_num": "fig-002116",
+          "catalog_name": "Zorii Bliss",
+          "reason": "unrelated character"
+        },
+        {
+          "fig_num": "fig-003707",
+          "catalog_name": "Luminara Unduli, Black Hat",
+          "reason": "unrelated Jedi; Force sensitivity is not identity evidence"
+        },
+        {
+          "fig_num": "fig-003769",
+          "catalog_name": "Sebulba",
+          "reason": "unrelated character"
+        }
+      ],
+      "reason": "Temiri Blagg is the named Canto Bight stable boy represented in The Skywalker Saga. Brickipedia explicitly classifies the minifigure as game-only/nonphysical; story-theme similarities must not be used to force a physical match.",
+      "systemic_pattern": "narrative_trait_similarity_such_as_force_sensitivity_must_not_override_named_identity",
+      "evidence_urls": [
+        "https://brickipedia.fandom.com/wiki/Temiri_Blagg"
+      ]
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "abbreviated_name_resolution": 1,
+    "nonphysical_named_characters": 5,
+    "automatic_exact_artwork_equivalence_promotions": 0
+  },
+  "remaining_no_supported_records_after_batch": 1,
+  "systemic_findings": [
+    "Official DLC rosters are strong evidence for resolving abbreviated source keys.",
+    "Digital character longevity across multiple LEGO games is not physical-release evidence.",
+    "Faction, role, Jedi status, or narrative traits are contextual evidence only and cannot replace named identity."
+  ]
+}
