@@ -2,6 +2,9 @@ name: LEGO Mask Manual Review Summary
 
 on:
   workflow_dispatch:
+  workflow_run:
+    workflows: ["LEGO Derived Review Repair"]
+    types: [completed]
   push:
     branches: [main]
     paths:
@@ -19,6 +22,7 @@ concurrency:
 
 jobs:
   summarize:
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
