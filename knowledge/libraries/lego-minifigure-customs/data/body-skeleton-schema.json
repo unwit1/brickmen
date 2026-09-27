@@ -1,0 +1,191 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "brickmen-body-skeleton.schema.json",
+  "title": "Brickmen Body Skeleton",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "skeleton_id",
+    "architecture_id",
+    "status",
+    "coordinate_system",
+    "default_target_height_mm",
+    "nodes",
+    "bones",
+    "joints"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "skeleton_id": {
+      "type": "string"
+    },
+    "architecture_id": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "coordinate_system": {
+      "type": "object",
+      "required": [
+        "units",
+        "axes",
+        "origin"
+      ],
+      "properties": {
+        "units": {
+          "enum": [
+            "normalized_body_height"
+          ]
+        },
+        "axes": {
+          "type": "object"
+        },
+        "origin": {
+          "type": "string"
+        }
+      }
+    },
+    "default_target_height_mm": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "parameters": {
+      "type": "object"
+    },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "position_norm",
+          "role"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "position_norm": {
+            "type": "array",
+            "minItems": 3,
+            "maxItems": 3,
+            "items": {
+              "type": "number"
+            }
+          },
+          "role": {
+            "type": "string"
+          },
+          "semantic_side": {
+            "enum": [
+              "left",
+              "right",
+              "center"
+            ]
+          },
+          "functional": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "bones": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "a",
+          "b"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "a": {
+            "type": "string"
+          },
+          "b": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "joints": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "joint_id",
+          "parent_node",
+          "child_node",
+          "joint_type",
+          "production_interface_status"
+        ],
+        "properties": {
+          "joint_id": {
+            "type": "string"
+          },
+          "parent_node": {
+            "type": "string"
+          },
+          "child_node": {
+            "type": "string"
+          },
+          "joint_type": {
+            "type": "string"
+          },
+          "axis": {
+            "type": "array",
+            "minItems": 3,
+            "maxItems": 3,
+            "items": {
+              "type": "number"
+            }
+          },
+          "range_deg": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": {
+              "type": "number"
+            }
+          },
+          "functional": {
+            "type": "boolean"
+          },
+          "production_interface_status": {
+            "type": "string"
+          },
+          "joint_cartridge_ref": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "parameter_rules": {
+      "type": "array"
+    },
+    "envelopes": {
+      "type": "array"
+    },
+    "generation_contract": {
+      "type": "object"
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}
