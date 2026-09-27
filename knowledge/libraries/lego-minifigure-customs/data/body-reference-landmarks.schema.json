@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "body-reference-landmarks.schema.json",
+  "title": "Brickmen Body Reference Landmark Observation",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "reference_id",
+    "source",
+    "view",
+    "evidence_class",
+    "landmarks"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "reference_id": {
+      "type": "string"
+    },
+    "architecture_candidate_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "source": {
+      "type": "object"
+    },
+    "view": {
+      "enum": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "three_quarter",
+        "unknown"
+      ]
+    },
+    "evidence_class": {
+      "enum": [
+        "catalog_manual_estimate",
+        "canonical_image_measurement",
+        "physical_measurement",
+        "render_ground_truth",
+        "synthetic"
+      ]
+    },
+    "image_size_px": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "type": "number"
+      }
+    },
+    "body_bbox_px": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "number"
+      }
+    },
+    "known_height_mm": {
+      "type": [
+        "number",
+        "object",
+        "null"
+      ]
+    },
+    "landmark_coordinate_mode": {
+      "enum": [
+        "pixel",
+        "normalized_body_height"
+      ]
+    },
+    "landmarks": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "position",
+          "confidence"
+        ],
+        "properties": {
+          "position": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 3,
+            "items": {
+              "type": "number"
+            }
+          },
+          "confidence": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "axes": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "x",
+                "y",
+                "z"
+              ]
+            }
+          },
+          "notes": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "fit_parameters": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "exclude_from_production_dimensions": {
+      "type": "boolean"
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}
