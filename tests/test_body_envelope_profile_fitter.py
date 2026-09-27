@@ -55,3 +55,74 @@ def test_joint_width_and_torso_width_are_independent_parameters():
     assert wider_shell["envelopes"][0]["size_mm"][0] > default["envelopes"][0]["size_mm"][0]
     assert wider_joints["nodes_mm"]["shoulder_l"] != default["nodes_mm"]["shoulder_l"]
     assert wider_joints["envelopes"][0]["size_mm"][0] == default["envelopes"][0]["size_mm"][0]
+
+
+
+def test_side_view_horizontal_spans_fit_depth_not_width():
+    spec = load_spec(BROAD)
+    reference = {
+        "schema_version": "0.1",
+        "reference_id": "synthetic_broad_side",
+        "view": "left",
+        "evidence_class": "synthetic",
+        "body_bbox_px": [0, 0, 100, 200],
+        "landmarks": {
+            "neck": {"position": [50, 44], "confidence": 1.0}
+        },
+        "silhouette_pairs_px": {
+            "head_depth": {
+                "left_x": 20,
+                "right_x": 77.2,
+                "y_px": 30,
+                "confidence": 1.0,
+                "semantic": "head_depth",
+            },
+            "chest_outer_depth": {
+                "left_x": 25,
+                "right_x": 73,
+                "y_px": 90,
+                "confidence": 1.0,
+                "semantic": "torso_depth",
+            },
+            "waist_outer_depth": {
+                "left_x": 30,
+                "right_x": 69.6,
+                "y_px": 120,
+                "confidence": 1.0,
+                "semantic": "abdomen_depth",
+            },
+        },
+    }
+    fit = fit_envelope_profile(spec, reference)
+
+    assert fit["parameter_overrides"]["head_depth_scale"] == 1.1
+    assert fit["parameter_overrides"]["torso_depth_scale"] == 1.2
+    assert fit["parameter_overrides"]["abdomen_projection_scale"] == 1.1
+    assert "torso_width_scale" not in fit["parameter_overrides"]
+
+
+def test_vertical_head_span_fits_visual_head_height():
+    spec = load_spec(BROAD)
+    reference = {
+        "schema_version": "0.1",
+        "reference_id": "synthetic_head_height",
+        "view": "front",
+        "evidence_class": "synthetic",
+        "body_bbox_px": [0, 0, 100, 200],
+        "landmarks": {
+            "neck": {"position": [50, 44], "confidence": 1.0}
+        },
+        "silhouette_vertical_pairs_px": {
+            "head_height": {
+                "top_y": 10,
+                "bottom_y": 58.4,
+                "x_px": 50,
+                "confidence": 1.0,
+                "semantic": "head_outer_height",
+            }
+        },
+    }
+    fit = fit_envelope_profile(spec, reference)
+
+    assert fit["parameter_overrides"]["head_height_scale"] == 1.1
+    assert fit["mechanical_parameter_changes"] == []
