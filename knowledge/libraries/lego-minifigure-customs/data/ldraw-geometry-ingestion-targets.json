@@ -1,0 +1,111 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-27",
+  "status": "geometry_ingestion_queue",
+  "preferred_library_release": "2026-08_or_newer_with_release_pinned_in_manifest",
+  "policy": [
+    "Use a local/extracted LDraw library as acquisition input; do not scrape rendered catalog images as geometry.",
+    "Record each dependency file hash and its own !LICENSE/Author/!LDRAW_ORG header metadata.",
+    "Official and unofficial files may enter different evidence tiers and must not be silently merged.",
+    "Flattened LDraw geometry is reference CAD, never physical fit/tolerance authority."
+  ],
+  "targets": [
+    {
+      "target_id": "lego_giant_hulk_complete_reference",
+      "priority": "highest",
+      "root_file": "10128p01c01.dat",
+      "expected_major_components": [
+        "10128p01.dat",
+        "43093.dat",
+        "10154.dat",
+        "10127.dat",
+        "10124.dat",
+        "10126.dat"
+      ],
+      "intended_outputs": [
+        "flattened reference OBJ",
+        "recursive provenance manifest",
+        "front/back/side silhouette renders",
+        "component collision/reference envelopes"
+      ],
+      "evidence_tier": "official_ldraw_shortcut_and_official_components",
+      "source_url": "https://sources.debian.org/src/ldraw-parts/1802%2Bds-1/parts/10128p01c01.dat"
+    },
+    {
+      "target_id": "lego_giant_body",
+      "priority": "highest",
+      "root_file": "10128.dat",
+      "intended_outputs": [
+        "body mesh",
+        "bbox",
+        "shoulder-socket neighborhood extraction"
+      ],
+      "evidence_tier": "official_ldraw_part",
+      "source_url": "https://library.ldraw.org/parts/216"
+    },
+    {
+      "target_id": "lego_giant_left_arm",
+      "priority": "highest",
+      "root_file": "10154.dat",
+      "intended_outputs": [
+        "arm mesh",
+        "bbox",
+        "hand-socket neighborhood extraction"
+      ],
+      "evidence_tier": "official_ldraw_part",
+      "source_url": "https://library.ldraw.org/parts/226"
+    },
+    {
+      "target_id": "lego_giant_right_arm",
+      "priority": "highest",
+      "root_file": "10124.dat",
+      "intended_outputs": [
+        "arm mesh",
+        "bbox",
+        "hand-socket neighborhood extraction"
+      ],
+      "evidence_tier": "official_ldraw_part",
+      "source_url": "https://library.ldraw.org/parts/213"
+    },
+    {
+      "target_id": "lego_giant_left_hand",
+      "priority": "high",
+      "root_file": "10127.dat",
+      "intended_outputs": [
+        "hand mesh",
+        "bbox",
+        "power-grip region"
+      ],
+      "evidence_tier": "official_ldraw_part",
+      "source_url": "https://library.ldraw.org/parts/215"
+    },
+    {
+      "target_id": "lego_giant_right_hand",
+      "priority": "high",
+      "root_file": "10126.dat",
+      "intended_outputs": [
+        "hand mesh",
+        "bbox",
+        "power-grip region"
+      ],
+      "evidence_tier": "official_ldraw_part",
+      "source_url": "https://library.ldraw.org/parts/214"
+    },
+    {
+      "target_id": "lego_axl_23763_research",
+      "priority": "high",
+      "root_file": "23763.dat",
+      "intended_outputs": [
+        "hybrid shell topology research",
+        "standard-973 registration check",
+        "provisional arm-hole neighborhood"
+      ],
+      "evidence_tier": "unofficial_ldraw_quarantine_until_promoted_or_physically_validated",
+      "source_url": "https://library.ldraw.org/parts/51698",
+      "restrictions": [
+        "Do not promote provisional geometry to production connector dimensions.",
+        "Keep official 973 donor geometry distinguishable from unofficial outer-shell geometry."
+      ]
+    }
+  ]
+}
