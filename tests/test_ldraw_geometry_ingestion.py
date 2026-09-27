@@ -5,6 +5,7 @@ import pytest
 from tools.geometry.ingest_ldraw_geometry import (
     LDU_TO_MM,
     flatten_ldraw,
+    ldraw_to_brickmen,
     manifest_without_geometry,
     obj_from_triangles,
 )
@@ -89,3 +90,39 @@ def test_obj_export_deduplicates_shared_vertices(tmp_path):
 
     assert payload.count("\nv ") < result["triangle_count"] * 3
     assert payload.count("\nf ") == result["triangle_count"]
+
+
+
+def test_ldraw_to_brickmen_mapping_is_right_handed_semantic_frame():
+    assert ldraw_to_brickmen((10, -20, 30)) == (10.0, 30.0, 20.0)
+
+
+def test_manifest_contains_brickmen_semantic_bbox(tmp_path):
+    root = synthetic_library(tmp_path)
+    result = flatten_ldraw(root, "root.dat")
+
+    assert result["coordinate_frames"]["brickmen"]["from_ldraw"] == {
+        "x": "ldraw_x",
+        "y": "ldraw_z",
+        "z": "-ldraw_y",
+    }
+    assert result["bbox_brickmen_ldu"]["max"][2] == pytest.approx(
+        -result["bbox_ldu"]["min"][1]
+    )
+    assert result["bbox_brickmen_ldu"]["max"][1] == pytest.approx(
+        result["bbox_ldu"]["max"][2]
+    )
+
+
+def test_obj_can_export_brickmen_frame(tmp_path):
+    root = synthetic_library(tmp_path)
+    result = flatten_ldraw(root, "root.dat")
+    payload = obj_from_triangles(
+        result["triangles_ldu"],
+        frame="brickmen",
+        scale=1.0,
+    )
+
+    # Child reference includes raw LDraw point (10,20,30), which maps to
+    # Brickmen (10,30,-20).
+    assert "v 10.000000000 30.000000000 -20.000000000" in payload
