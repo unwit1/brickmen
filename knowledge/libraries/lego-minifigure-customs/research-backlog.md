@@ -326,3 +326,43 @@ The system is not "fully automated" merely because it can return an STL from a p
 6. can be reproduced from stored inputs/model snapshots;
 7. passes the selected physical validation level;
 8. feeds observed print results back into future routing/ranking.
+
+
+## Non-standard figure architecture program — 2026-09-27
+
+### Research mapped
+
+- [x] establish FigureArchitecture as separate from character/body label
+- [x] resolve AF Hulk family to Alpha Toys and document ~7 cm examples
+- [x] distinguish modern LEGO Giant/BigFig architecture from custom 7 cm muscle bodies
+- [x] identify Axl oversized-torso hybrid as an official intermediate precedent
+- [x] identify Hagrid giant-body hybrid and legacy Troll giant architecture
+- [x] map provisional G (2), Bigguy, Mr.J/Heart, KDL and maker-specific BigFig families
+- [x] classify MidFig as a loose community label rather than one mechanical standard
+- [x] create FigureArchitecture registry/schema additions
+- [x] design image/mesh architecture recognition pipeline
+- [x] design BodyStyleProfile and StyleTransferPair system
+- [x] create cross-architecture recognition/style benchmark
+- [x] create physical sample/metrology queue
+- [x] create unified implementation roadmap
+
+### Next research/implementation
+
+- [ ] ingest release-level architecture observations from HeroBloks/BrickLink/Rebrickable/maker sources
+- [ ] build official Giant exploded digital twin and joint graph
+- [ ] build Axl and Hagrid hybrid digital twins
+- [ ] acquire/measure Alpha Toys AF body
+- [ ] acquire/measure G (2), Bigguy, Mr.J/Heart and KDL representatives
+- [ ] test compatible BigFig releases against LEGO Giant joints/components
+- [ ] build standardized body landmark extractor
+- [ ] benchmark SigLIP-style image retrieval across known body systems
+- [ ] benchmark OpenShape and Uni3D on scans/meshes
+- [ ] construct Hulk cross-architecture translation corpus
+- [ ] construct Thing/Beast/Colossus follow-up pairs
+- [ ] build architecture-specific neutral blank bodies and surface maps
+- [ ] connect BodyStyleProfile to image/3D generation retrieval
+- [ ] connect FigureArchitecture joints to parametric connector library
+- [ ] prototype architecture-conditioned full-body generation
+- [ ] physically print and cycle-test first custom articulated body
+
+Detailed implementation sequencing is canonical in `agentic-custom-parts-and-body-architecture-roadmap.md`.
