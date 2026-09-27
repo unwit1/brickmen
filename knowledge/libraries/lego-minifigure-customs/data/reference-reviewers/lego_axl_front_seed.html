@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Brickmen Reference Reviewer — lego_axl_front_seed</title>
+<style>
+:root{font-family:system-ui,-apple-system,sans-serif;color-scheme:dark;background:#111;color:#eee}
+body{margin:0;display:grid;grid-template-columns:minmax(0,1fr) 360px;height:100vh;overflow:hidden}
+main{position:relative;display:grid;place-items:center;background:#181818;overflow:auto}
+#stage{position:relative;width:min(100%,calc(100vh * 512.0/512.0));aspect-ratio:512.0/512.0;background:#222;box-shadow:0 0 0 1px #444}
+#stage svg{position:absolute;inset:0;width:100%;height:100%;touch-action:none}
+#reference-image{opacity:.65}
+.landmark{cursor:grab;stroke:#fff;stroke-width:2;vector-effect:non-scaling-stroke}
+.landmark.selected{stroke-width:4}
+.landmark-label{font-size:11px;fill:#fff;paint-order:stroke;stroke:#000;stroke-width:3;pointer-events:none}
+.bbox{fill:none;stroke:#ffd166;stroke-width:2;stroke-dasharray:7 5;vector-effect:non-scaling-stroke}
+.handle{cursor:grab;stroke:#111;stroke-width:1.5;vector-effect:non-scaling-stroke}
+.silhouette-line{stroke:#7bdff2;stroke-width:2;vector-effect:non-scaling-stroke;cursor:ns-resize}
+.silhouette-handle{fill:#7bdff2}
+.landmark-handle{fill:#ef476f}
+.bbox-handle{fill:#ffd166}
+aside{overflow:auto;padding:14px;border-left:1px solid #333;background:#141414}
+h1{font-size:17px;margin:0 0 12px}
+h2{font-size:14px;margin:18px 0 8px}
+label{display:block;font-size:12px;margin:8px 0 4px;color:#bbb}
+input,select,textarea,button{box-sizing:border-box;width:100%;background:#222;color:#eee;border:1px solid #555;border-radius:5px;padding:7px}
+textarea{min-height:72px;resize:vertical}
+button{cursor:pointer;margin-top:6px}
+button.primary{background:#2541b2}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.small{font-size:11px;color:#aaa;line-height:1.35}
+#status{margin-top:10px;font-size:12px;color:#9ee6a8;min-height:1.4em}
+.badge{display:inline-block;border:1px solid #555;border-radius:999px;padding:2px 7px;font-size:10px;margin-right:4px}
+.hidden{display:none}
+</style>
+</head>
+<body>
+<main>
+  <div id="stage">
+    <svg id="canvas" viewBox="0 0 512 512" role="img">
+      <image id="reference-image" x="0" y="0" width="512" height="512" preserveAspectRatio="none" href=""/>
+      <g id="bbox-layer"></g>
+      <g id="silhouette-layer"></g>
+      <g id="landmark-layer"></g>
+    </svg>
+  </div>
+</main>
+<aside>
+  <h1>Brickmen Reference Reviewer</h1>
+  <div>
+    <span class="badge">lego_axl_front_seed</span>
+    <span class="badge">review only</span>
+    <span class="badge">non-production</span>
+  </div>
+  <p class="small">The source image is not embedded. Supply an image URL or local relative path. Export preserves provenance and marks the record as reviewed without creating manufacturing authority.</p>
+
+  <h2>Image</h2>
+  <label for="image-url">Image URL / relative path</label>
+  <input id="image-url" value="">
+  <button id="apply-image">Apply image</button>
+  <label for="opacity">Image opacity</label>
+  <input id="opacity" type="range" min="0" max="1" step=".01" value=".65">
+
+  <h2>Landmarks</h2>
+  <label for="landmark-choice">Add / replace landmark</label>
+  <select id="landmark-choice"></select>
+  <button id="add-landmark">Click image to place selected landmark</button>
+  <button id="add-chest">Add chest at torso midpoint</button>
+  <button id="delete-landmark">Delete selected landmark</button>
+
+  <div id="landmark-editor" class="hidden">
+    <label>Selected landmark</label>
+    <input id="selected-name" readonly>
+    <div class="row">
+      <div><label>X px</label><input id="selected-x" type="number" step=".1"></div>
+      <div><label>Y px</label><input id="selected-y" type="number" step=".1"></div>
+    </div>
+    <label>Confidence <span id="confidence-value"></span></label>
+    <input id="selected-confidence" type="range" min="0" max="1" step=".05">
+    <label>Notes</label>
+    <textarea id="selected-notes"></textarea>
+    <button id="apply-landmark-meta">Apply landmark fields</button>
+  </div>
+
+  <h2>Body bounding box</h2>
+  <p class="small">Drag the yellow corner handles. Pixel normalization and all landmark fits depend on this box.</p>
+  <div class="row">
+    <button id="reset-bbox">Reset bbox</button>
+    <button id="center-bbox">Center bbox horizontally</button>
+  </div>
+
+  <h2>Silhouette spans</h2>
+  <p class="small">Blue handles edit left/right edges. Drag the blue line vertically to change y_px. These remain visual-envelope evidence, never joint centers.</p>
+
+  <h2>Review metadata</h2>
+  <label for="reviewer">Reviewer</label>
+  <input id="reviewer" placeholder="name/handle (optional)">
+  <label for="review-note">Review note</label>
+  <textarea id="review-note" placeholder="What changed / why?"></textarea>
+
+  <h2>Export</h2>
+  <div class="row">
+    <button class="primary" id="download-json">Download JSON</button>
+    <button id="copy-json">Copy JSON</button>
+  </div>
+  <button id="validate">Validate review state</button>
+  <div id="status"></div>
+</aside>
+
+<script id="reference-data" type="application/json">{"schema_version":"0.1","reference_id":"lego_axl_front_seed","architecture_candidate_id":"lego_axl_oversized_torso_hybrid","source":{"title":"LEGO Nexo Knights Axl front reference","catalog_url":"https://lego.minifigures.world/post/axl-nex069","source_note":"Seed landmarks estimated from clean front product photograph; oversized armor strongly obscures true shoulder socket center."},"view":"front","evidence_class":"catalog_manual_estimate","image_size_px":[512,512],"body_bbox_px":[21,35,491,468],"known_height_mm":null,"landmark_coordinate_mode":"pixel","landmarks":{"head_center":{"position":[256,114],"confidence":0.75},"neck":{"position":[256,165],"confidence":0.6},"shoulder_l":{"position":[132,214],"confidence":0.55,"notes":"Low confidence because armor obscures shoulder pivot."},"shoulder_r":{"position":[380,214],"confidence":0.55},"elbow_l":{"position":[97,293],"confidence":0.55},"elbow_r":{"position":[415,293],"confidence":0.55},"wrist_l":{"position":[84,359],"confidence":0.55},"wrist_r":{"position":[427,359],"confidence":0.55},"hand_l":{"position":[72,387],"confidence":0.5},"hand_r":{"position":[440,387],"confidence":0.5},"waist":{"position":[256,350],"confidence":0.6},"hip_l":{"position":[217,365],"confidence":0.55},"hip_r":{"position":[295,365],"confidence":0.55},"knee_l":{"position":[218,416],"confidence":0.5},"knee_r":{"position":[294,416],"confidence":0.5},"ankle_l":{"position":[219,462],"confidence":0.5},"ankle_r":{"position":[293,462],"confidence":0.5}},"fit_parameters":["shoulder_width_scale","arm_length_scale","torso_height_scale","lower_body_height_scale","stance_width_scale"],"exclude_from_production_dimensions":true,"notes":["Axl is intentionally included as a stress test for Broad skeleton width.","If fit saturates bounds, revise the Broad design space rather than treating the catalog estimate as exact mechanics.","Silhouette pairs are visual-envelope evidence and must not be interpreted as joint centers."],"silhouette_pairs_px":{"head_width":{"left_x":184,"right_x":329,"y_px":116,"confidence":0.7,"semantic":"helmet_head_outer_width","notes":"Includes helmet/visor silhouette."},"shoulder_outer_width":{"left_x":22,"right_x":491,"y_px":212,"confidence":0.85,"semantic":"armor_outer_shoulders","notes":"Armor edge, explicitly not shoulder pivot."},"chest_outer_width":{"left_x":110,"right_x":402,"y_px":250,"confidence":0.8,"semantic":"armor_chest_width"},"waist_outer_width":{"left_x":210,"right_x":301,"y_px":348,"confidence":0.7,"semantic":"waist_shell_width"},"hip_outer_width":{"left_x":210,"right_x":302,"y_px":366,"confidence":0.65,"semantic":"standard_lower_body_width"}}}</script>
+<script>
+"use strict";
+const ref = JSON.parse(document.getElementById("reference-data").textContent);
+const landmarkChoices = ["head_center","neck","chest","shoulder_l","shoulder_r","elbow_l","elbow_r","wrist_l","wrist_r","hand_l","hand_r","waist","pelvis","hip_l","hip_r","knee_l","knee_r","ankle_l","ankle_r"];
+const SVG_NS = "http://www.w3.org/2000/svg";
+const canvas = document.getElementById("canvas");
+const landmarkLayer = document.getElementById("landmark-layer");
+const silhouetteLayer = document.getElementById("silhouette-layer");
+const bboxLayer = document.getElementById("bbox-layer");
+const image = document.getElementById("reference-image");
+const statusEl = document.getElementById("status");
+let selectedLandmark = null;
+let placementMode = null;
+let drag = null;
+const originalBBox = [...ref.body_bbox_px];
+
+function svgPoint(evt){
+  const p = canvas.createSVGPoint();
+  p.x = evt.clientX; p.y = evt.clientY;
+  const q = p.matrixTransform(canvas.getScreenCTM().inverse());
+  return [q.x, q.y];
+}
+function clamp(v, lo, hi){ return Math.max(lo, Math.min(hi, v)); }
+function make(tag, attrs={}){
+  const el = document.createElementNS(SVG_NS, tag);
+  for (const [k,v] of Object.entries(attrs)) el.setAttribute(k, String(v));
+  return el;
+}
+function setStatus(msg, bad=false){
+  statusEl.textContent = msg;
+  statusEl.style.color = bad ? "#ff9a9a" : "#9ee6a8";
+}
+function selectedObs(){ return selectedLandmark ? ref.landmarks[selectedLandmark] : null; }
+
+function renderLandmarks(){
+  landmarkLayer.replaceChildren();
+  for (const [name, obs] of Object.entries(ref.landmarks || {})){
+    const [x,y] = obs.position;
+    const g = make("g", {"data-name":name});
+    const c = make("circle", {
+      cx:x, cy:y, r: selectedLandmark===name ? 7 : 5,
+      class:"handle landmark landmark-handle" + (selectedLandmark===name ? " selected" : "")
+    });
+    c.addEventListener("pointerdown", evt => {
+      evt.preventDefault(); selectedLandmark=name; drag={type:"landmark",name};
+      canvas.setPointerCapture(evt.pointerId); refreshEditor(); renderLandmarks();
+    });
+    c.addEventListener("click", evt => { evt.stopPropagation(); selectedLandmark=name; refreshEditor(); renderLandmarks(); });
+    const t = make("text", {x:x+7,y:y-7,class:"landmark-label"});
+    t.textContent=name;
+    g.append(c,t); landmarkLayer.append(g);
+  }
+}
+function renderBBox(){
+  bboxLayer.replaceChildren();
+  const [l,t,r,b] = ref.body_bbox_px;
+  bboxLayer.append(make("rect", {x:l,y:t,width:r-l,height:b-t,class:"bbox"}));
+  const corners = {tl:[l,t],tr:[r,t],br:[r,b],bl:[l,b]};
+  for (const [corner,[x,y]] of Object.entries(corners)){
+    const h=make("circle",{cx:x,cy:y,r:6,class:"handle bbox-handle"});
+    h.addEventListener("pointerdown",evt=>{evt.preventDefault();drag={type:"bbox",corner};canvas.setPointerCapture(evt.pointerId);});
+    bboxLayer.append(h);
+  }
+}
+function renderSilhouettes(){
+  silhouetteLayer.replaceChildren();
+  for (const [name,pair] of Object.entries(ref.silhouette_pairs_px || {})){
+    if (pair.y_px == null) continue;
+    const y=pair.y_px;
+    const line=make("line",{x1:pair.left_x,y1:y,x2:pair.right_x,y2:y,class:"silhouette-line"});
+    line.addEventListener("pointerdown",evt=>{evt.preventDefault();drag={type:"silhouette-y",name,offset:y-svgPoint(evt)[1]};canvas.setPointerCapture(evt.pointerId);});
+    silhouetteLayer.append(line);
+    for (const side of ["left","right"]){
+      const key=side+"_x";
+      const h=make("circle",{cx:pair[key],cy:y,r:5,class:"handle silhouette-handle"});
+      h.addEventListener("pointerdown",evt=>{evt.preventDefault();drag={type:"silhouette-x",name,key};canvas.setPointerCapture(evt.pointerId);});
+      silhouetteLayer.append(h);
+    }
+    const label=make("text",{x:(pair.left_x+pair.right_x)/2,y:y-5,class:"landmark-label","text-anchor":"middle"});
+    label.textContent=name; silhouetteLayer.append(label);
+  }
+}
+function renderAll(){ renderBBox(); renderSilhouettes(); renderLandmarks(); }
+
+function refreshEditor(){
+  const box=document.getElementById("landmark-editor");
+  const obs=selectedObs();
+  box.classList.toggle("hidden", !obs);
+  if (!obs) return;
+  document.getElementById("selected-name").value=selectedLandmark;
+  document.getElementById("selected-x").value=obs.position[0];
+  document.getElementById("selected-y").value=obs.position[1];
+  document.getElementById("selected-confidence").value=obs.confidence ?? 1;
+  document.getElementById("confidence-value").textContent=Number(obs.confidence ?? 1).toFixed(2);
+  document.getElementById("selected-notes").value=obs.notes || "";
+}
+
+function placeLandmark(name,x,y){
+  const existing=ref.landmarks[name] || {};
+  ref.landmarks[name]={
+    ...existing,
+    position:[Math.round(x*10)/10,Math.round(y*10)/10],
+    confidence:existing.confidence ?? .7
+  };
+  selectedLandmark=name; placementMode=null; renderAll(); refreshEditor();
+}
+
+canvas.addEventListener("pointermove",evt=>{
+  if (!drag) return;
+  const [x0,y0]=svgPoint(evt);
+  const x=clamp(x0,0,ref.image_size_px[0]), y=clamp(y0,0,ref.image_size_px[1]);
+  if (drag.type==="landmark"){
+    ref.landmarks[drag.name].position=[Math.round(x*10)/10,Math.round(y*10)/10];
+    renderLandmarks(); refreshEditor();
+  } else if (drag.type==="bbox"){
+    let [l,t,r,b]=ref.body_bbox_px;
+    if (drag.corner.includes("l")) l=Math.min(x,r-1); else r=Math.max(x,l+1);
+    if (drag.corner.includes("t")) t=Math.min(y,b-1); else b=Math.max(y,t+1);
+    ref.body_bbox_px=[l,t,r,b].map(v=>Math.round(v*10)/10); renderBBox();
+  } else if (drag.type==="silhouette-x"){
+    const pair=ref.silhouette_pairs_px[drag.name];
+    pair[drag.key]=Math.round(x*10)/10;
+    if (pair.left_x>pair.right_x) [pair.left_x,pair.right_x]=[pair.right_x,pair.left_x];
+    renderSilhouettes();
+  } else if (drag.type==="silhouette-y"){
+    ref.silhouette_pairs_px[drag.name].y_px=Math.round(clamp(y+drag.offset,0,ref.image_size_px[1])*10)/10;
+    renderSilhouettes();
+  }
+});
+canvas.addEventListener("pointerup",()=>{drag=null;});
+canvas.addEventListener("pointercancel",()=>{drag=null;});
+canvas.addEventListener("click",evt=>{
+  if (!placementMode || drag) return;
+  const [x,y]=svgPoint(evt); placeLandmark(placementMode,x,y);
+});
+
+const choice=document.getElementById("landmark-choice");
+for (const name of landmarkChoices){
+  const option=document.createElement("option"); option.value=name; option.textContent=name; choice.append(option);
+}
+document.getElementById("add-landmark").onclick=()=>{ placementMode=choice.value; setStatus("Click the image to place "+placementMode+"."); };
+document.getElementById("add-chest").onclick=()=>{
+  const neck=ref.landmarks.neck?.position, waist=ref.landmarks.waist?.position;
+  const [l,t,r,b]=ref.body_bbox_px;
+  const x=neck && waist ? (neck[0]+waist[0])/2 : (l+r)/2;
+  const y=neck && waist ? neck[1]+(waist[1]-neck[1])*.42 : t+(b-t)*.42;
+  placeLandmark("chest",x,y); setStatus("Chest added at a provisional torso midpoint. Drag it to the reviewed torso center.");
+};
+document.getElementById("delete-landmark").onclick=()=>{
+  if (!selectedLandmark) return;
+  delete ref.landmarks[selectedLandmark]; selectedLandmark=null; renderAll(); refreshEditor();
+};
+document.getElementById("selected-confidence").oninput=evt=>{document.getElementById("confidence-value").textContent=Number(evt.target.value).toFixed(2);};
+document.getElementById("apply-landmark-meta").onclick=()=>{
+  const obs=selectedObs(); if(!obs) return;
+  obs.position=[Number(document.getElementById("selected-x").value),Number(document.getElementById("selected-y").value)];
+  obs.confidence=Number(document.getElementById("selected-confidence").value);
+  const notes=document.getElementById("selected-notes").value.trim();
+  if(notes) obs.notes=notes; else delete obs.notes;
+  renderAll(); refreshEditor(); setStatus("Landmark fields applied.");
+};
+
+document.getElementById("apply-image").onclick=()=>{image.setAttribute("href",document.getElementById("image-url").value.trim());};
+document.getElementById("opacity").oninput=evt=>{image.style.opacity=evt.target.value;};
+document.getElementById("reset-bbox").onclick=()=>{ref.body_bbox_px=[...originalBBox];renderBBox();};
+document.getElementById("center-bbox").onclick=()=>{
+  const [l,t,r,b]=ref.body_bbox_px, w=r-l, cx=ref.image_size_px[0]/2;
+  ref.body_bbox_px=[cx-w/2,t,cx+w/2,b];renderBBox();
+};
+
+function exported(){
+  const out=JSON.parse(JSON.stringify(ref));
+  out.review={
+    ...(out.review||{}),
+    reviewed:true,
+    reviewer:document.getElementById("reviewer").value.trim() || null,
+    note:document.getElementById("review-note").value.trim() || null,
+    tool:"brickmen_body_reference_reviewer_v0",
+    source_image_embedded:false
+  };
+  out.exclude_from_production_dimensions=true;
+  out.notes=Array.isArray(out.notes)?out.notes:[];
+  if(!out.notes.includes("Reviewed annotations remain non-production evidence until separately validated.")) out.notes.push("Reviewed annotations remain non-production evidence until separately validated.");
+  return out;
+}
+function validate(){
+  const issues=[];
+  const [l,t,r,b]=ref.body_bbox_px;
+  if(!(r>l && b>t)) issues.push("invalid body bbox");
+  for(const [name,obs] of Object.entries(ref.landmarks||{})){
+    if(!Array.isArray(obs.position)||obs.position.length<2) issues.push(name+": invalid position");
+    if(!(Number(obs.confidence)>=0 && Number(obs.confidence)<=1)) issues.push(name+": confidence out of range");
+  }
+  if(!ref.landmarks.chest) issues.push("chest landmark still missing (required before segmented-torso fitting)");
+  setStatus(issues.length ? issues.join("; ") : "Review state passes editor checks.", issues.length>0);
+  return issues.length===0;
+}
+document.getElementById("validate").onclick=validate;
+document.getElementById("copy-json").onclick=async()=>{
+  await navigator.clipboard.writeText(JSON.stringify(exported(),null,2)+"
+");
+  setStatus("Revised JSON copied.");
+};
+document.getElementById("download-json").onclick=()=>{
+  const blob=new Blob([JSON.stringify(exported(),null,2)+"
+"],{type:"application/json"});
+  const a=document.createElement("a"); a.href=URL.createObjectURL(blob);
+  a.download=(ref.reference_id||"reference")+".reviewed.json"; a.click();
+  URL.revokeObjectURL(a.href); setStatus("Revised JSON downloaded.");
+};
+renderAll(); refreshEditor();
+</script>
+</body>
+</html>
