@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "body-generation-provider-registry.schema.json",
+  "title": "Brickmen Body Generation Provider Registry",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "verified_as_of",
+    "providers"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "verified_as_of": {
+      "type": "string"
+    },
+    "providers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "provider_id",
+          "name",
+          "role",
+          "availability",
+          "sources",
+          "native_inputs",
+          "native_outputs",
+          "brickmen_integration"
+        ],
+        "properties": {
+          "provider_id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          },
+          "availability": {
+            "type": "string"
+          },
+          "license": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sources": {
+            "type": "object"
+          },
+          "native_inputs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "native_outputs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "native_controls": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "hardware_notes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "brickmen_integration": {
+            "type": "object"
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}
