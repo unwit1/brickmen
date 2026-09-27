@@ -24,7 +24,8 @@ def test_front_guide_contains_slots_and_mechanical_keepouts():
     assert 'data-slot="arm_l_shell"' in svg
     assert "lego_giant_43093_shoulder_reference_v0" in svg
     assert 'data-joint="shoulder_l"' in svg
-    assert "source-image" not in svg.lower()
+    assert "data:image/" not in svg.lower()
+    assert "<image" not in svg.lower()
 
 
 def test_side_guide_contains_depth_sweep():
