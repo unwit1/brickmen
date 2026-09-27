@@ -1,0 +1,162 @@
+{
+  "schema": "skywalker-no-supported-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-no-supported-review-009",
+  "policy": "Resolve punctuation/compact droid identifiers before thresholding. Keep named characters distinct from relatives or same-person alternate identities when the game key encodes a specific redeemed/outfit state. Treat DLC costume variants as separate digital appearance states and do not substitute ordinary physical versions without exact outfit evidence.",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-fb42020f8eff47291dc8d41a",
+      "character_variant_key": "ME-8D9",
+      "decision": "named_protocol_droid_me_8d9_verified_video_game_only_no_official_physical_minifigure",
+      "canonical_subject": "ME-8D9",
+      "physical_status": {
+        "exact_official_minifigure_located": false,
+        "brickipedia_status": "video-game-only minifigure; never existed in physical form or an official LEGO set"
+      },
+      "rejected_top_candidate": {
+        "fig_num": "fig-003520",
+        "catalog_name": "EV-9D9",
+        "reason": "similar compact droid identifier but a different character"
+      },
+      "reason": "ME-8D9 is a distinct protocol droid represented in LEGO Star Wars video games. Brickipedia explicitly classifies the LEGO minifigure as video-game-only and nonphysical. The resolver's EV-9D9 lead is an identifier-shape false positive.",
+      "systemic_pattern": "compact_droid_identifiers_require_full_identity_agreement_not_shared_numeric_letter_shape",
+      "evidence_urls": [
+        "https://brickipedia.fandom.com/wiki/ME-8D9"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-7b98d3c897616f10c9c15051",
+      "character_variant_key": "AftabAckbar",
+      "decision": "named_resistance_officer_aftab_ackbar_verified_video_game_only_no_official_physical_minifigure",
+      "canonical_subject": "Aftab Ackbar",
+      "identity_context": {
+        "relation": "son of Admiral Gial Ackbar",
+        "faction": "Resistance"
+      },
+      "physical_status": {
+        "exact_official_minifigure_located": false,
+        "brickipedia_status": "listed among video-game-only/nonphysical Resistance minifigures"
+      },
+      "rejected_top_candidates": [
+        {
+          "fig_num": "fig-003713",
+          "catalog_name": "Admiral Ackbar, White Outfit",
+          "reason": "Aftab's father, a different individual"
+        },
+        {
+          "fig_num": "fig-004175",
+          "catalog_name": "Admiral Ackbar, Medium Nougat Outfit",
+          "reason": "Aftab's father, a different individual"
+        }
+      ],
+      "reason": "Aftab Ackbar is a separate named Resistance character, not an outfit variant of Admiral Ackbar. Brickipedia's video-game-only listings include Aftab among nonphysical Resistance minifigures. Family-name/species similarity must not collapse father and son.",
+      "systemic_pattern": "family_relationship_and_shared_surname_must_not_collapse_distinct_named_characters",
+      "evidence_urls": [
+        "https://brickipedia.fandom.com/wiki/Category:Video_game_only_minifigures",
+        "https://starwars.fandom.com/wiki/Aftab_Ackbar"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-d9942eca8ba6ed78f64d5acb",
+      "character_variant_key": "BenSolo",
+      "decision": "redeemed_ben_solo_game_state_verified_no_exact_official_physical_minifigure_kylo_ren_family_not_state_equivalent",
+      "canonical_subject": "Ben Solo",
+      "identity_state": "redeemed Ben Solo on Exegol",
+      "related_physical_family": {
+        "subject": "Kylo Ren",
+        "status": "same person but earlier/dark-side identity and different outfit/state"
+      },
+      "physical_status": {
+        "exact_redeemed_ben_solo_minifigure_located": false
+      },
+      "rejected_top_candidates": [
+        {
+          "fig_num": "fig-002546",
+          "catalog_name": "Han Solo, Old, Smile",
+          "reason": "father, different individual"
+        },
+        {
+          "fig_num": "fig-002551",
+          "catalog_name": "Han Solo, Old, Angry",
+          "reason": "father, different individual"
+        }
+      ],
+      "reason": "The Skywalker Saga exposes Ben Solo as a distinct playable redeemed state, and Brickipedia separates that digital variant within Kylo Ren's game gallery. Physical Kylo Ren minifigures establish the same person's broader family but are not exact state/outfit equivalents. Contemporary LEGO collecting coverage continued to note the absence of an official redeemed Ben Solo minifigure.",
+      "systemic_pattern": "same_person_alias_does_not_imply_exact_outfit_or_story_state_equivalence",
+      "evidence_urls": [
+        "https://brickipedia.fandom.com/wiki/Kylo_Ren",
+        "https://www.brickfanatics.com/index.php/the-truth-behind-that-lego-star-wars-ben-solo-minifigure",
+        "https://www.brickfanatics.com/alternate-timeline-lego-star-wars-ben-solo"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-468bd67dc4b01c477ba82351",
+      "character_variant_key": "EmperorBeach",
+      "decision": "summer_vacation_emperor_beach_dlc_outfit_verified_no_matching_official_physical_minifigure",
+      "canonical_subject": "The Emperor (Summer Vacation / beach wear)",
+      "source_context": {
+        "pack": "LEGO Star Wars: The Skywalker Saga Summer Vacation Character Pack",
+        "release_date": "2022-11-01",
+        "digital_outfit": "beach wear"
+      },
+      "physical_status": {
+        "exact_beach_outfit_minifigure_located": false,
+        "note": "ordinary, holiday-sweater, Episode IX, and other Emperor Palpatine physical variants are separate designs"
+      },
+      "reason": "The official Summer Vacation DLC explicitly includes The Emperor in beach wear. Current Palpatine minifigure catalogs list multiple ordinary and novelty physical variants but no matching beach/swimsuit Emperor. The source key therefore encodes a digital DLC costume state rather than a generic Emperor identity.",
+      "systemic_pattern": "dlc_costume_suffixes_must_be_compared_as_exact_outfit_states_not_base_character_matches",
+      "evidence_urls": [
+        "https://store.steampowered.com/app/2150630/LEGO_Star_Wars_The_Skywalker_Saga_Summer_Vacation_Pack/",
+        "https://brickset.com/minifigs/category-Star-Wars/name-Palpatine"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-9b802eda883521bfcd05fbc5",
+      "character_variant_key": "D-0",
+      "decision": "punctuation_normalization_verified_exact_d_o_physical_counterpart_below_threshold",
+      "canonical_subject": "D-O",
+      "alias_resolution": {
+        "source_key": "D-0",
+        "catalog_name": "D-O",
+        "transformations": [
+          "zero/letter-O normalization in canonical droid identifier",
+          "hyphen-preserving compact identifier normalization"
+        ],
+        "confidence": "high"
+      },
+      "physical_counterpart": {
+        "brickset_minifig": "sw1051",
+        "catalog_name": "D-O",
+        "year": 2019,
+        "sets": [
+          "75249-1",
+          "75257-1",
+          "75278-1"
+        ]
+      },
+      "rejected_top_candidate": {
+        "fig_num": "fig-003520",
+        "catalog_name": "EV-9D9",
+        "reason": "compact identifier similarity only; wrong droid"
+      },
+      "reason": "Brickset catalogs D-O as sw1051 beginning in 2019, before The Skywalker Saga. The source key uses D-0 with a zero while the canonical/catalog name uses D-O with the letter O, causing the resolver to miss the exact physical subject and rank unrelated compact droid names instead.",
+      "systemic_pattern": "droid_identifier_zero_letter_o_alias_normalization_should_precede_similarity_scoring",
+      "evidence_urls": [
+        "https://brickset.com/minifigs/sw1051/d-o"
+      ]
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "exact_physical_resolver_misses": 1,
+    "video_game_only_or_no_exact_physical_state": 4,
+    "automatic_exact_artwork_equivalence_promotions": 0
+  },
+  "remaining_no_supported_records_after_batch": 51,
+  "systemic_findings": [
+    "Compact droid identifiers need canonical zero/O and punctuation normalization before lexical similarity scoring.",
+    "Shared surnames and close family relationships are not identity equivalence.",
+    "Same-person aliases such as Kylo Ren and Ben Solo still require story-state/outfit matching before exact physical equivalence.",
+    "DLC costume keys such as EmperorBeach must be evaluated as exact digital outfit states rather than collapsed to the base character."
+  ]
+}
