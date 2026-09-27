@@ -1,5 +1,7 @@
 from pathlib import Path
 
+import pytest
+
 from tools.geometry.fit_body_envelope_profile import fit_envelope_profile
 from tools.geometry.fit_body_skeleton import load_reference
 from tools.geometry.generate_body_skeleton import compile_skeleton, load_spec
@@ -95,9 +97,9 @@ def test_side_view_horizontal_spans_fit_depth_not_width():
     }
     fit = fit_envelope_profile(spec, reference)
 
-    assert fit["parameter_overrides"]["head_depth_scale"] == 1.1
-    assert fit["parameter_overrides"]["torso_depth_scale"] == 1.2
-    assert fit["parameter_overrides"]["abdomen_projection_scale"] == 1.1
+    assert fit["parameter_overrides"]["head_depth_scale"] == pytest.approx(1.1)
+    assert fit["parameter_overrides"]["torso_depth_scale"] == pytest.approx(1.2)
+    assert fit["parameter_overrides"]["abdomen_projection_scale"] == pytest.approx(1.1)
     assert "torso_width_scale" not in fit["parameter_overrides"]
 
 
@@ -124,5 +126,5 @@ def test_vertical_head_span_fits_visual_head_height():
     }
     fit = fit_envelope_profile(spec, reference)
 
-    assert fit["parameter_overrides"]["head_height_scale"] == 1.1
+    assert fit["parameter_overrides"]["head_height_scale"] == pytest.approx(1.1)
     assert fit["mechanical_parameter_changes"] == []
