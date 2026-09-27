@@ -160,6 +160,44 @@
   "notes": [
     "Seed record for fitter development, not final annotation.",
     "Viewer-left/right is used consistently with skeleton X sign.",
-    "Use later manual/canonical reannotation before training."
-  ]
+    "Use later manual/canonical reannotation before training.",
+    "Silhouette pairs are visual-envelope evidence and must not be interpreted as joint centers."
+  ],
+  "silhouette_pairs_px": {
+    "head_width": {
+      "left_x": 216,
+      "right_x": 298,
+      "y_px": 88,
+      "confidence": 0.8,
+      "semantic": "head_outer_width"
+    },
+    "shoulder_outer_width": {
+      "left_x": 143,
+      "right_x": 369,
+      "y_px": 151,
+      "confidence": 0.8,
+      "semantic": "outer_deltoid_shoulders"
+    },
+    "chest_outer_width": {
+      "left_x": 184,
+      "right_x": 328,
+      "y_px": 181,
+      "confidence": 0.75,
+      "semantic": "chest_shell_width"
+    },
+    "waist_outer_width": {
+      "left_x": 223,
+      "right_x": 289,
+      "y_px": 269,
+      "confidence": 0.75,
+      "semantic": "waist_shell_width"
+    },
+    "hip_outer_width": {
+      "left_x": 213,
+      "right_x": 299,
+      "y_px": 286,
+      "confidence": 0.65,
+      "semantic": "lower_body_outer_width"
+    }
+  }
 }
