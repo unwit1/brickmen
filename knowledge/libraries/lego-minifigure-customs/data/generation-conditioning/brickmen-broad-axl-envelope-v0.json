@@ -674,7 +674,45 @@
     "expected_generated_part_count": {
       "min": 6,
       "max": 7
-    }
+    },
+    "joint_component_bindings": [
+      {
+        "joint_id": "neck",
+        "parent_slot": "torso_shell",
+        "child_slot": "head_shell",
+        "binding_status": "inter_component"
+      },
+      {
+        "joint_id": "shoulder_l",
+        "parent_slot": "torso_shell",
+        "child_slot": "arm_l_shell",
+        "binding_status": "inter_component"
+      },
+      {
+        "joint_id": "shoulder_r",
+        "parent_slot": "torso_shell",
+        "child_slot": "arm_r_shell",
+        "binding_status": "inter_component"
+      },
+      {
+        "joint_id": "wrist_l",
+        "parent_slot": "arm_l_shell",
+        "child_slot": "hand_l_shell",
+        "binding_status": "inter_component"
+      },
+      {
+        "joint_id": "wrist_r",
+        "parent_slot": "arm_r_shell",
+        "child_slot": "hand_r_shell",
+        "binding_status": "inter_component"
+      },
+      {
+        "joint_id": "waist",
+        "parent_slot": "torso_shell",
+        "child_slot": "lower_body_shell",
+        "binding_status": "optional_donor_or_adapter_interface"
+      }
+    ]
   },
   "mechanical_constraints": [],
   "conditioning_channels": {
