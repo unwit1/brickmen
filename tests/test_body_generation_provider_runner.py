@@ -217,3 +217,18 @@ def test_partcrafter_component_records_preserve_manifest_indices(tmp_path: Path)
             "source_role":"generated_component",
         }
     ]
+
+
+def test_pact_plan_accepts_lossless_label_png(tmp_path: Path):
+    image=tmp_path/"image.png"; image.write_bytes(b"x")
+    mask=tmp_path/"parts.png"; mask.write_bytes(b"x")
+    repo=fake_repo(tmp_path,"pact")
+    plan=build_execution_plan(
+        job("pact"),providers()["pact"],
+        provider_repo=repo,source_image=image,semantic_mask=mask,
+        output_dir=tmp_path/"out"
+    )
+    assert plan["execution_supported"] is True
+    assert "--semantic-mask" in plan["command"]
+    assert str(mask.resolve()) in plan["command"]
+    assert plan["staging"]["semantic_mask"]==str(mask.resolve())
