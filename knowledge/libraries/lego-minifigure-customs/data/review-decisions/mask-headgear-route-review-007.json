@@ -1,0 +1,151 @@
+{
+  "schema": "mask-headgear-route-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "mask-headgear-route-review-007",
+  "purpose": "Add repeated-route anchors for transparent bubble helmets, wrapped identity masks, anthropomorphic species masks, and dedicated Wookiee head geometry.",
+  "evidence_policy": {
+    "source": "Rebrickable-derived physical component census",
+    "no_visual_guessing": true,
+    "source_translation_requires_exact_source_appearance_pairing": true
+  },
+  "records": [
+    {
+      "fig_num": "fig-000415",
+      "figure_name": "Ogel Minion",
+      "candidate_routes": [
+        "transparent_dome_or_bubble_headgear",
+        "helmet_plus_head"
+      ],
+      "decision": "physical_route_confirmed_transparent_environmental_enclosure",
+      "confirmed_physical_route": "printed_standard_head_plus_transparent_round_bubble_helmet",
+      "semantic_function": "protective_environmental_head_enclosure",
+      "head_evidence": [
+        {
+          "part_num": "3626bpr0190",
+          "part_name": "Minifig Head Skeleton, Evil Skull Print"
+        }
+      ],
+      "headgear_evidence": [
+        {
+          "part_num": "30214",
+          "part_name": "Helmet Round Bubble"
+        }
+      ],
+      "confidence": 1,
+      "source_translation_status": "physical_route_confirmed_source_pairing_pending",
+      "training_note": "The skull identity is printed on a standard head while a separate round bubble helmet supplies transparent enclosure geometry. Keep those channels independent."
+    },
+    {
+      "fig_num": "fig-014563",
+      "figure_name": "Wolf Mask Warrior, Shoulder Pads",
+      "candidate_routes": [
+        "head_print_plus_headgear",
+        "separate_mask_headgear"
+      ],
+      "decision": "physical_route_confirmed_layered_identity_mask_wrap",
+      "confirmed_physical_route": "printed_masked_head_plus_separate_wolf_mask_wrap",
+      "semantic_function": "warrior_identity_mask_wrap",
+      "head_evidence": [
+        {
+          "part_num": "28621pr0012",
+          "part_name": "Minifig Head Wolf Warrior, Silver Face Mask, Nougat Eye Shadow, Black Eyes / Blue Eyes and Fangs Print"
+        }
+      ],
+      "headgear_evidence": [
+        {
+          "part_num": "4919pat0001",
+          "part_name": "Wrap with Wolf Mask with Medium Azure Eyes, Teeth/Fangs pattern"
+        }
+      ],
+      "confidence": 1,
+      "source_translation_status": "physical_route_confirmed_source_pairing_pending",
+      "training_note": "Mask identity is deliberately split across printed face coverage and a separate wolf-mask wrap. Treat the wrap as identity-bearing silhouette geometry, not generic protective headgear."
+    },
+    {
+      "fig_num": "fig-014585",
+      "figure_name": "Lloyd, Ninja Wrap, Katana Holder",
+      "candidate_routes": [
+        "head_print_plus_headgear",
+        "separate_mask_headgear"
+      ],
+      "decision": "physical_route_confirmed_layered_identity_mask_wrap",
+      "confirmed_physical_route": "printed_eye_mask_head_plus_separate_ninja_mask_wrap",
+      "semantic_function": "ninja_identity_mask_wrap",
+      "head_evidence": [
+        {
+          "part_num": "28621pr3980",
+          "part_name": "Minifig Head Lloyd, Black and Yellow Eye Mask, Angry Grin / Dark Red Eyebrows, Green Eyes, Angry Stare print"
+        }
+      ],
+      "headgear_evidence": [
+        {
+          "part_num": "4910pat0004",
+          "part_name": "Wrap with Short Back Knot Smooth, Bright Green Mask pattern"
+        }
+      ],
+      "confidence": 1,
+      "source_translation_status": "physical_route_confirmed_source_pairing_pending",
+      "training_note": "The exposed-eye/facial state is printed on the head while a separate fabric-like ninja wrap supplies external mask silhouette and knot geometry."
+    },
+    {
+      "fig_num": "fig-001714",
+      "figure_name": "Chewbacca, Dark Brown - Long Lines on Legs on Inside",
+      "candidate_routes": [
+        "modified_or_nonhuman_head"
+      ],
+      "decision": "physical_route_confirmed_full_modified_nonhuman_head",
+      "confirmed_physical_route": "full_modified_wookiee_head_no_standard_cylindrical_head",
+      "semantic_function": "nonhuman_creature_head_geometry",
+      "head_evidence": [
+        {
+          "part_num": "15307pr0001",
+          "part_name": "Minifig Head Special, Wookiee with Dark Tan Face Fur and Teeth Print (Chewbacca)"
+        }
+      ],
+      "headgear_evidence": [],
+      "confidence": 1,
+      "source_translation_status": "physical_route_confirmed_source_pairing_pending",
+      "training_note": "Chewbacca's cranial/facial volume is carried by one dedicated Wookiee head element rather than a standard head plus removable mask."
+    },
+    {
+      "fig_num": "fig-000336",
+      "figure_name": "Crug",
+      "candidate_routes": [
+        "separate_mask_headgear"
+      ],
+      "decision": "physical_route_confirmed_anthropomorphic_species_face_mask_geometry",
+      "confirmed_physical_route": "printed_standard_head_plus_separate_crocodile_face_mask",
+      "semantic_function": "anthropomorphic_species_identity_geometry",
+      "head_evidence": [
+        {
+          "part_num": "3626cpr1143",
+          "part_name": "Minifig Head Crug, Crocodile, Silver Lower Jaw, Wide Eyes / Narrow Eyes Print"
+        }
+      ],
+      "headgear_evidence": [
+        {
+          "part_num": "12551pr0005",
+          "part_name": "Mask Crocodile with Silver Lower Jaw Print"
+        }
+      ],
+      "confidence": 1,
+      "source_translation_status": "physical_route_confirmed_source_pairing_pending",
+      "training_note": "Crug repeats the Chima crocodile strategy: expression on a standard cylindrical head, silhouette/jaw identity on a separate crocodile mask."
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "transparent_environmental_enclosure": 1,
+    "layered_identity_mask_wrap": 2,
+    "nonhuman_creature_head_geometry": 1,
+    "anthropomorphic_species_identity_geometry": 1,
+    "expected_exact_signature_group_records_covered": 15,
+    "expected_additional_route_only_propagations": 10,
+    "source_translation_pairs_promoted": 0
+  },
+  "systemic_findings": [
+    "Layered printed-mask plus wrap assemblies should be represented separately from both bare printed masks and rigid cowls.",
+    "Transparent bubble geometry remains a reusable enclosure route even when the underlying character is nonhuman or stylized.",
+    "Dedicated creature heads and removable species masks are distinct physical strategies and should remain separate supervision classes."
+  ]
+}
