@@ -160,3 +160,34 @@ A design-generation model should receive only the relevant slice:
 A collector/research model should receive only the relevant character/release/component/source crosswalk plus current or requested historical market observations.
 
 Do not dump the entire library into the prompt.
+
+
+## Figure architecture extension
+
+Non-standard bodies require first-class architecture entities rather than additional labels on `PartDesign`.
+
+Add:
+- FigureArchitecture — normalized component/joint/connector system independent of character and maker label.
+- FigureArchitectureObservation — evidence that a release/component belongs or may belong to an architecture.
+- BodyStyleProfile — architecture- and optionally maker-specific visual/sculptural grammar.
+- ArchitectureSurfaceSchema — semantic decoration/UV/keep-out surfaces for one body architecture.
+- StyleTransferPair — paired evidence for translating the same character/appearance between architectures.
+- ArchitectureDigitalTwin — validated neutral body/component geometry, landmarks, articulation sweeps and render presets.
+
+Relationships:
+
+```
+FigureRelease USES_ARCHITECTURE FigureArchitecture
+ComponentRelease BELONGS_TO_ARCHITECTURE FigureArchitecture
+FigureArchitecture HAS_COMPONENT PartDesign
+FigureArchitecture HAS_JOINT Connector
+FigureArchitecture HAS_STYLE_PROFILE BodyStyleProfile
+FigureArchitecture HAS_SURFACE_SCHEMA ArchitectureSurfaceSchema
+FigureArchitecture HAS_DIGITAL_TWIN ArchitectureDigitalTwin
+FigureArchitectureObservation SUPPORTS architecture assignment
+StyleTransferPair MAPS BodyStyleProfile/architecture to another architecture
+```
+
+Character identity does not imply architecture. A Hulk release can be a standard minifigure, short-leg minifigure, LEGO Giant, Alpha Toys 7 cm body, or another custom system.
+
+Preserve the source's own label (`BigFig`, `midfig`, `mega fig`, `7CM`, `Giant`) independently from the normalized FigureArchitecture. Mechanical architecture is promoted only from component/joint evidence and, for manufacturing-critical claims, physical validation.
