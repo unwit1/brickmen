@@ -1,0 +1,133 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-27",
+  "status": "benchmark_design",
+  "objective": "Evaluate recognition of figure architectures and architecture-conditioned character style transfer.",
+  "recognition_tasks": [
+    "full_figure_front_classification",
+    "multi_view_figure_classification",
+    "low_resolution_listing_classification",
+    "detached_component_classification",
+    "architecture_unknown_rejection",
+    "maker_style_vs_mechanical_architecture_separation",
+    "mesh_scan_architecture_retrieval"
+  ],
+  "initial_architectures": [
+    "minifig_standard",
+    "minifig_short_leg",
+    "minifig_medium_leg",
+    "minifig_long_limb",
+    "lego_giant_modular",
+    "lego_giant_troll_legacy",
+    "lego_hagrid_giant_hybrid",
+    "lego_axl_oversized_torso_hybrid",
+    "custom_alpha_7cm_muscle",
+    "custom_g2_muscle_hybrid",
+    "custom_bigguy_muscle",
+    "custom_mrj_heart_muscle",
+    "custom_kdl_65mm_large",
+    "community_printed_midfig"
+  ],
+  "image_inputs": [
+    "catalog_front",
+    "catalog_back",
+    "side",
+    "three_quarter",
+    "in_hand_or_scale_reference",
+    "low_resolution",
+    "occluded",
+    "detached_part"
+  ],
+  "mesh_inputs": [
+    "canonical_digital_twin",
+    "scan",
+    "generated_mesh",
+    "detached_component_mesh"
+  ],
+  "metrics": [
+    "top1_accuracy",
+    "top3_accuracy",
+    "unknown_auroc",
+    "architecture_confusion_matrix",
+    "component_type_accuracy",
+    "left_right_accuracy",
+    "scale_error",
+    "landmark_error",
+    "mechanical_family_precision",
+    "maker_style_precision"
+  ],
+  "style_transfer_tasks": [
+    {
+      "character": "Hulk",
+      "architectures": [
+        "minifig_standard",
+        "minifig_short_leg",
+        "lego_giant_modular",
+        "custom_alpha_7cm_muscle",
+        "custom_g2_muscle_hybrid",
+        "custom_bigguy_muscle",
+        "custom_mrj_heart_muscle"
+      ]
+    },
+    {
+      "character": "Red Hulk",
+      "architectures": [
+        "lego_giant_modular",
+        "custom_alpha_7cm_muscle",
+        "custom_g2_muscle_hybrid",
+        "custom_bigguy_muscle"
+      ]
+    },
+    {
+      "character": "Thing",
+      "architectures": [
+        "minifig_standard",
+        "custom_alpha_7cm_muscle",
+        "custom_kdl_65mm_large",
+        "custom_bigfig_maker_specific"
+      ]
+    },
+    {
+      "character": "Beast",
+      "architectures": [
+        "minifig_standard",
+        "custom_alpha_7cm_muscle"
+      ]
+    },
+    {
+      "character": "Colossus",
+      "architectures": [
+        "minifig_standard",
+        "custom_alpha_7cm_muscle"
+      ]
+    }
+  ],
+  "style_metrics": [
+    "source_identity_preservation",
+    "architecture_proportion_match",
+    "geometry_vs_decoration_match",
+    "architecture_surface_usage",
+    "joint_keepout_pass",
+    "accessory_scale_match",
+    "human_preference"
+  ],
+  "candidate_models": {
+    "image_retrieval": [
+      "SigLIP2_or_equivalent"
+    ],
+    "segmentation": [
+      "SAM2_or_equivalent"
+    ],
+    "three_d_retrieval": [
+      "OpenShape",
+      "Uni3D"
+    ],
+    "deterministic_features": [
+      "landmark_ratios",
+      "component_graph",
+      "joint_graph",
+      "connector_presence"
+    ]
+  },
+  "rule": "Recognition models propose candidates. Manufacturing-critical architecture identity requires validated joint/connector evidence."
+}
