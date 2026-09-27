@@ -1,0 +1,87 @@
+from __future__ import annotations
+
+import importlib.util
+from pathlib import Path
+
+
+TOOL = (
+    Path(__file__).resolve().parents[1]
+    / "tools"
+    / "knowledge"
+    / "classify_mask_route_topologies.py"
+)
+
+
+def load_tool():
+    spec = importlib.util.spec_from_file_location("classify_mask_route_topologies", TOOL)
+    assert spec and spec.loader
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def test_diving_route_is_high_confidence() -> None:
+    tool = load_tool()
+    row = {
+        "fig_num": "fig-test",
+        "candidate_routes": ["helmet_plus_head", "separate_mask_headgear"],
+        "head_components": [{"part_num": "3626cpr1", "print_of": "3626c", "part_name": "Minifig Head"}],
+        "headgear_components": [
+            {"part_num": "2446", "part_name": "Helmet, Standard"},
+            {"part_num": "30090", "part_name": "Headwear Accessory Visor / Diver's Mask"},
+        ],
+    }
+    result = tool.classify(row)
+    assert result["topology_class"] == "head_plus_helmet_plus_diving_facegear"
+    assert result["topology_confidence"] == 1.0
+
+
+def test_species_mask_requires_shared_species_signal() -> None:
+    tool = load_tool()
+    row = {
+        "fig_num": "fig-test",
+        "candidate_routes": ["separate_mask_headgear"],
+        "head_components": [{"part_num": "3626cpr1", "print_of": "3626c", "part_name": "Minifig Head Wolf with Fangs"}],
+        "headgear_components": [{"part_num": "mask1", "part_name": "Mask Wolf with White Ears"}],
+    }
+    result = tool.classify(row)
+    assert result["topology_class"] == "head_plus_separate_species_face_mask"
+    assert result["topology_confidence"] >= 0.95
+
+
+def test_standard_skull_print_is_not_dedicated_nonhuman_head() -> None:
+    tool = load_tool()
+    row = {
+        "fig_num": "fig-test",
+        "candidate_routes": ["head_print_or_decorated_head_only"],
+        "head_components": [{"part_num": "3626cpr1732", "print_of": "3626c", "part_name": "Minifig Head Skeleton Guy, Skull Mask Print"}],
+        "headgear_components": [],
+    }
+    result = tool.classify(row)
+    assert result["topology_class"] == "standard_head_print_only"
+
+
+def test_rock_monster_is_dedicated_head() -> None:
+    tool = load_tool()
+    row = {
+        "fig_num": "fig-test",
+        "candidate_routes": ["modified_or_nonhuman_head"],
+        "head_components": [{"part_num": "64785", "print_of": None, "part_name": "Head Special, Rock Monster"}],
+        "headgear_components": [],
+    }
+    result = tool.classify(row)
+    assert result["topology_class"] == "dedicated_nonstandard_head_no_separate_headgear"
+
+
+def test_cowl_classification_ignores_semantic_translation() -> None:
+    tool = load_tool()
+    row = {
+        "fig_num": "fig-test",
+        "candidate_routes": ["cowl_plus_head", "separate_mask_headgear"],
+        "head_components": [{"part_num": "3626cpr1", "print_of": "3626c", "part_name": "Minifig Head"}],
+        "headgear_components": [{"part_num": "10113", "part_name": "Mask, Batman Cowl [Plain]"}],
+    }
+    result = tool.classify(row)
+    assert result["topology_class"] == "head_plus_separate_cowl"
+    assert result["semantic_function_status"] == "manual_review_required"
+    assert result["source_translation_status"] == "exact_source_appearance_pairing_required"
