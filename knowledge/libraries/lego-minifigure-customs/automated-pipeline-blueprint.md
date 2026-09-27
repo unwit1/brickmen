@@ -139,3 +139,65 @@ See:
 - `data/accessory-generation-benchmark.json`
 - `parametric-cad-and-connector-automation.md`
 - `additive-manufacturing-validation-program.md`
+
+
+## Figure architecture resolution extension — 2026-09-27
+
+Before Stage 1 resolves physical components, resolve `FigureArchitecture` independently from the character.
+
+### Stage 0A: architecture candidates
+
+Inputs:
+- Character/Incarnation/SourceAppearance;
+- user body preference if any;
+- official/custom precedents;
+- intended scale;
+- donor/manufacturing constraints.
+
+Return one or more architecture candidates with evidence and unknown probability.
+
+Examples include standard minifigure, short/medium/long-limb variants, LEGO Giant, Axl oversized-torso hybrid, Alpha Toys 7 cm muscle body, or a maker-specific/custom architecture.
+
+### Stage 0B: architecture-conditioned style
+
+For the selected architecture retrieve:
+- FigureArchitecture component/joint graph;
+- BodyStyleProfile;
+- ArchitectureSurfaceSchema;
+- digital twin and canonical landmarks;
+- articulation keep-outs;
+- validated connector/manufacturing profiles;
+- closest same-architecture character analogues.
+
+### Stage 1 change
+
+Physical architecture selection now means both:
+1. choose the **figure architecture**; and
+2. choose the exact components/parts within that architecture.
+
+Do not uniformly scale standard-minifigure artwork or geometry onto a non-standard body.
+
+### Generation change
+
+Custom body generation follows:
+
+```
+SourceAppearance
+ -> FigureArchitecture
+ -> BodyStyleProfile
+ -> CharacterBodyDesignSpec
+ -> architecture-specific multiview concept
+ -> generated visual shell/decoration
+ -> deterministic architecture joints/connectors
+ -> articulation and DFM
+ -> architecture/style critic
+ -> physical validation
+```
+
+Unknown architectures may receive concept renders, but production geometry remains blocked until required joints/scale are resolved.
+
+See:
+- `nonstandard-figure-architectures.md`
+- `body-architecture-recognition-and-style-transfer.md`
+- `agentic-custom-parts-and-body-architecture-roadmap.md`
+- `data/figure-architecture-registry.json`
