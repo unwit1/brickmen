@@ -366,3 +366,31 @@ The system is not "fully automated" merely because it can return an STL from a p
 - [ ] physically print and cycle-test first custom articulated body
 
 Detailed implementation sequencing is canonical in `agentic-custom-parts-and-body-architecture-roadmap.md`.
+
+### Continued topology/census pass — 2026-09-27
+
+- [x] reconcile BodyArchitecture draft into canonical FigureArchitecture
+- [x] add release-level FigureArchitectureObservation contract
+- [x] add architecture-selection contract
+- [x] add architecture-conditioned CharacterBodyDesignSpec
+- [x] define original Brickmen Broad/Mid/XL/Giant design targets
+- [x] distinguish early integrated-head Giant from later modular-head Giant
+- [x] add specialized Giant creature family
+- [x] add stacked-torso multi-arm architecture
+- [x] add specialized mechanical/droid architecture
+- [x] add ghost, serpent, merfolk, tentacle, roller and centaur lower-body topologies
+- [x] add specialized integrated character-body umbrella and Jabba-style tail body
+- [x] document that maker/product prefix cannot define architecture
+- [x] create continuous non-standard body census/ingestion strategy
+- [x] create provisional BodyStyleProfile registry
+- [x] expand recognition benchmark beyond humanoid size classes
+- [x] add SAM2/OpenShape/Uni3D/SAMPart3D/PartSLIP++/Tripo segmentation research path
+- [x] expand physical acquisition queue for topology variants
+- [ ] ingest release-level architecture observations at scale
+- [ ] materialize canonical digital twins for the first official architectures
+- [ ] acquire and physically measure Alpha AF/G (2)/official Giant representatives
+- [ ] train/evaluate first architecture recognition baseline
+- [ ] create first architecture-specific surface maps
+- [ ] implement CharacterBodyDesignSpec compiler
+- [ ] generate first original Brickmen Mid static prototype
+- [ ] validate Brickmen Mid joints before articulated generation
