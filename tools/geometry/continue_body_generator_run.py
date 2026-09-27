@@ -46,6 +46,45 @@ def _write(path: Path,payload: dict[str,Any]) -> None:
     path.write_text(json.dumps(payload,indent=2)+"\n",encoding="utf-8")
 
 
+def automatic_mapping_selection(
+    proposal: dict[str,Any],
+    *,
+    enabled: bool,
+) -> dict[str,Any] | None:
+    """Return a synthetic explicit selection only for a strict unambiguous proposal."""
+    if not enabled or not proposal.get("automatic_promotion_allowed",False):
+        return None
+    candidates=proposal.get("global_alignment_candidates") or []
+    if not candidates:
+        return None
+    ambiguity=proposal.get("ambiguity") or {}
+    if ambiguity.get("near_best_candidate_count") != 1:
+        return None
+    if ambiguity.get("distinct_near_best_mapping_count") != 1:
+        return None
+    best=candidates[0]
+    if not best.get("complete_visual_slot_assignment"):
+        return None
+    return {
+        "schema_version":"0.1",
+        "provider_id":proposal.get("provider_id"),
+        "provider_job_id":proposal.get("provider_job_id"),
+        "architecture_id":proposal.get("architecture_id"),
+        "selected_candidate_index":0,
+        "selected_candidate_total_score":best.get("total_score"),
+        "reviewer":"brickmen:auto-unambiguous-v0",
+        "review_note":(
+            "Automatically selected because the proposal explicitly satisfied "
+            "Brickmen's strict unambiguous auto-promotion criteria."
+        ),
+        "proposal_automatic_promotion_allowed":True,
+        "proposal_ambiguity":ambiguity,
+        "explicit_review_selection":True,
+        "automatic_selection":True,
+        "production_geometry_authority":False,
+    }
+
+
 def continue_generator_run(
     conditioning: dict[str,Any],
     provider_job: dict[str,Any],
@@ -53,6 +92,7 @@ def continue_generator_run(
     workspace: str | Path,
     *,
     mapping_selection: dict[str,Any] | None=None,
+    auto_promote_unambiguous: bool=False,
     sweeps: dict[str,Any] | None=None,
     guide_manifest: dict[str,Any] | None=None,
     contact_regions: dict[str,Any] | None=None,
@@ -93,6 +133,11 @@ def continue_generator_run(
         build_mapping_review_html(proposal),encoding="utf-8"
     )
 
+    if mapping_selection is None:
+        mapping_selection=automatic_mapping_selection(
+            proposal,enabled=auto_promote_unambiguous
+        )
+
     base_manifest={
         "schema_version":"0.1",
         "architecture_id":conditioning.get("architecture_id"),
@@ -103,7 +148,11 @@ def continue_generator_run(
             "mapping_proposal":str(proposal_path),
             "mapping_review_html":str(review_path),
         },
-        "mapping_review_required":True,
+        "mapping_review_required":mapping_selection is None,
+        "automatic_promotion_requested":bool(auto_promote_unambiguous),
+        "automatic_promotion_used":bool(
+            mapping_selection and mapping_selection.get("automatic_selection")
+        ),
         "production_geometry_authority":False,
     }
 
@@ -200,6 +249,7 @@ def main() -> int:
     parser.add_argument("provider_run")
     parser.add_argument("workspace")
     parser.add_argument("--mapping-selection",default=None)
+    parser.add_argument("--auto-promote-unambiguous",action="store_true")
     parser.add_argument("--sweeps",default=None)
     parser.add_argument("--guide-manifest",default=None)
     parser.add_argument("--contact-regions",default=None)
@@ -210,6 +260,7 @@ def main() -> int:
         load_json(args.provider_run),
         args.workspace,
         mapping_selection=load_json(args.mapping_selection),
+        auto_promote_unambiguous=args.auto_promote_unambiguous,
         sweeps=load_json(args.sweeps),
         guide_manifest=load_json(args.guide_manifest),
         contact_regions=load_json(args.contact_regions),
