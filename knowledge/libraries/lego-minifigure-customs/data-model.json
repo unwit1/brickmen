@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.5",
+  "schema_version": "0.6",
   "entities": {
     "color": [
       "local_id",
@@ -461,6 +461,51 @@
       "features_omitted",
       "accessory_scale_transform",
       "confidence",
+      "sources"
+    ],
+    "mold_family": [
+      "mold_family_id",
+      "canonical_name",
+      "architecture_id",
+      "manufacturer_or_factory_if_known",
+      "maker_brand_claims",
+      "first_observed_release",
+      "component_scope",
+      "source_mold_labels",
+      "related_release_ids",
+      "revision_ids",
+      "cross_brand_reuse_claims",
+      "distinguishing_geometry",
+      "connector_profile_ids",
+      "physical_equivalence_status",
+      "evidence",
+      "confidence",
+      "valid_from",
+      "valid_to"
+    ],
+    "mold_revision": [
+      "mold_revision_id",
+      "mold_family_id",
+      "revision_label",
+      "changed_components",
+      "geometry_changes",
+      "joint_changes",
+      "first_observed_release",
+      "last_observed_release",
+      "evidence",
+      "confidence"
+    ],
+    "mold_equivalence_observation": [
+      "observation_id",
+      "release_a",
+      "release_b",
+      "relationship",
+      "evidence_kind",
+      "silhouette_similarity",
+      "tooling_mark_evidence",
+      "physical_dimension_evidence",
+      "joint_fit_evidence",
+      "status",
       "sources"
     ]
   },
