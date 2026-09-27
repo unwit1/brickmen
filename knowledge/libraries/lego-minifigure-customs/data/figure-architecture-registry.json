@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.3",
+  "schema_version": "0.4",
   "observed_at": "2026-09-27",
   "status": "research_registry_physical_metrology_incomplete",
   "rules": [
@@ -221,6 +221,72 @@
       ]
     },
     {
+      "architecture_id": "custom_alpha_45mm_muscle_hybrid",
+      "canonical_name": "Alpha Toys AF ~4–4.5 cm muscular/symbiote hybrid body",
+      "scale_class": "standard_height_oversized_upper_body",
+      "maker_scope": [
+        "Alpha Toys"
+      ],
+      "status": "strong_visual_catalog_family_candidate_metrology_pending",
+      "source_aliases": [
+        "AF321-326",
+        "AF327-332",
+        "MaxiFig",
+        "symbiote muscle body"
+      ],
+      "nominal_height_mm": {
+        "range": [
+          40,
+          45
+        ],
+        "evidence_type": "retailer series dimensions",
+        "confidence": "catalog_high"
+      },
+      "representative_release_codes": [
+        "AF321",
+        "AF322",
+        "AF323",
+        "AF324",
+        "AF325",
+        "AF326",
+        "AF327",
+        "AF328",
+        "AF329",
+        "AF330",
+        "AF331",
+        "AF332"
+      ],
+      "representative_characters": [
+        "Venom",
+        "Carnage",
+        "Riot",
+        "Anti-Venom",
+        "Ancient Venom",
+        "Lasher",
+        "Toxin",
+        "Sleeper",
+        "Phage"
+      ],
+      "visual_component_observations": [
+        "oversized sculpted torso/shoulder shell",
+        "large muscular arms",
+        "standard-like rectangular lower legs",
+        "standard-height overall product dimension despite bulky upper body"
+      ],
+      "notes": [
+        "This is distinct from Alpha's ~7 cm muscular architecture used by AF344/AF345 and AF360-AF363 families.",
+        "HeroBloks uses MaxiFig for some AF327-AF332 releases, but retailer dimensions remain ~4-4.5 cm; preserve MaxiFig as a source label rather than a scale/mechanical standard.",
+        "AF321-AF326 and AF327-AF332 are treated as related visual body-family clusters, not yet a physically validated single mechanical family."
+      ],
+      "sources": [
+        "https://www.herobloks.com/figures/31518/alpha-toys/af325/venom",
+        "https://www.herobloks.com/figures/31376/alpha-toys/af321/venom-%28movie%29",
+        "https://www.herobloks.com/figures/33823/alpha-toys/af328/ancient-venom",
+        "https://brixtoy.com/product/marvel-venom-movie-af321-minifigures/",
+        "https://brixtoy.com/product/marvel-ancient-venom-af328-minifigures-2/"
+      ]
+    },
+    {
       "architecture_id": "custom_alpha_7cm_muscle",
       "canonical_name": "Alpha Toys AF ~7 cm articulated muscle body",
       "scale_class": "intermediate_large",
@@ -266,7 +332,7 @@
       "notes": [
         "Do not assume every AF release shares every joint until physical teardown confirms the family."
       ],
-      "release_resolution_note": "Do not map all Alpha Toys AF releases here. AF336 is visually standard/minifigure-like, while AF344/AF345 and AF360-AF363 provide strong evidence for the 7 cm muscle family. Resolve release/body-family cluster first."
+      "release_resolution_note": "Do not map all Alpha Toys AF releases here. AF321-AF332 include a separate ~4-4.5 cm muscular/symbiote hybrid family; AF336 is standard/minifigure-like; AF344/AF345 and AF360-AF363 provide strong evidence for the ~7 cm muscle family. Resolve release/body-family cluster first."
     },
     {
       "architecture_id": "custom_g2_muscle_hybrid",
