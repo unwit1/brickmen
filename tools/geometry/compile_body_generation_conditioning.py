@@ -79,6 +79,7 @@ def _envelopes(
             "size_mm_at_target_height": mm.get("size_mm"),
             "frame_semantic": item.get("frame_semantic"),
             "visual_authority": item.get("visual_authority"),
+            "component_slot_id": item.get("component_slot_id"),
             "visual_only": True,
         }
         if item.get("a_node") and item.get("b_node"):
