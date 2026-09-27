@@ -1,0 +1,59 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-27",
+  "status": "candidate_changes_not_promoted",
+  "evidence_basis": "manual seed reference fits",
+  "candidates": [
+    {
+      "target": "brickmen_broad_v0",
+      "relationship": "EXTENDS",
+      "proposed_revision": "brickmen_broad_v0.1_candidate",
+      "evidence": [
+        "alpha_af325_venom_front_seed",
+        "lego_axl_front_seed"
+      ],
+      "changes": [
+        "Do not automatically widen mechanical shoulder pivots from shoulder silhouette.",
+        "Add independent shoulder_shell_width / deltoid_envelope parameter.",
+        "Add upper_arm_bulk and forearm_bulk envelope parameters.",
+        "Add hand_scale envelope parameter independent of wrist location.",
+        "Add head_scale/head_vertical placement fitting.",
+        "Consider lower-body compactness parameter after reviewed landmarks.",
+        "Keep current mechanical joint parameter bounds until pivot annotations or physical samples justify change."
+      ],
+      "rationale": "Both stress references saturate current skeletal parameters, but the visual width is strongly confounded by armor/muscle shell."
+    },
+    {
+      "target": "brickmen_xl_v0",
+      "relationship": "EXTENDS",
+      "proposed_revision": "brickmen_xl_v0.1_candidate",
+      "evidence": [
+        "alpha_af345_hulk_front_seed",
+        "kdl_k2302_thing_front_seed"
+      ],
+      "changes": [
+        "Split total lower-body height into pelvis/upper-leg/lower-leg visual parameters.",
+        "Allow longer visual arm envelope without automatically increasing mechanical joint span.",
+        "Add independent head scale.",
+        "Add chest-to-waist taper and abdomen envelope parameters.",
+        "Do not tune KDL and Alpha into one architecture; use both as separate style/scale controls."
+      ],
+      "rationale": "Alpha 7 cm is usable but hits arm/lower-body bounds; KDL remains structurally ambiguous."
+    },
+    {
+      "target": "brickmen_giant_v0",
+      "relationship": "EXTENDS",
+      "proposed_revision": "brickmen_giant_v0.1_candidate",
+      "evidence": [
+        "lego_sh0371_hulk_front_seed"
+      ],
+      "changes": [
+        "Retain current normalized skeleton as baseline.",
+        "Investigate a modest arm-length range extension only after canonical LDraw/physical landmarks are available.",
+        "Prioritize official component-derived shoulder/wrist frames over image tuning."
+      ],
+      "rationale": "Giant is the strongest current seed fit and should not be destabilized by custom-market references."
+    }
+  ],
+  "promotion_rule": "No candidate change becomes canonical from manual catalog landmarks alone. Require reviewed landmark set or digital-twin/physical evidence."
+}
