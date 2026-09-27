@@ -8,6 +8,9 @@
     "skeleton_reference_height_mm": 71.11760000000001,
     "skeleton_fit_status": "strong_visual_fit",
     "envelope_reference_id": "lego_giant_10128_ldraw_body_profile_2303",
+    "envelope_reference_ids": [
+      "lego_giant_10128_ldraw_body_profile_2303"
+    ],
     "envelope_bound_hits": []
   },
   "parameter_layers": {
@@ -572,6 +575,8 @@
         25.874216,
         21.08
       ],
+      "frame_semantic": null,
+      "visual_authority": null,
       "visual_only": true
     },
     {
@@ -588,6 +593,8 @@
         18.376637,
         12.4
       ],
+      "frame_semantic": null,
+      "visual_authority": null,
       "visual_only": true
     },
     {
@@ -604,6 +611,8 @@
         21.114358,
         9.92
       ],
+      "frame_semantic": null,
+      "visual_authority": null,
       "visual_only": true
     },
     {
@@ -620,7 +629,33 @@
         17.36,
         0.0
       ],
-      "visual_only": true
+      "frame_semantic": "bone_aligned_visual_envelope",
+      "visual_authority": "Brickmen rounded baseline informed by official Giant component-profile statistics; not copied surface geometry.",
+      "visual_only": true,
+      "a_node": "shoulder_l",
+      "b_node": "wrist_l",
+      "a_normalized_body_height": [
+        -0.224858,
+        0.0,
+        0.69
+      ],
+      "b_normalized_body_height": [
+        -0.301515,
+        0.0,
+        0.43
+      ],
+      "a_mm_at_target_height": [
+        -13.941217,
+        0.0,
+        42.78
+      ],
+      "b_mm_at_target_height": [
+        -18.693904,
+        0.0,
+        26.66
+      ],
+      "derived_length_normalized_body_height": 0.271065,
+      "derived_length_mm_at_target_height": 16.806024
     },
     {
       "envelope_id": "arm_r",
@@ -636,7 +671,33 @@
         17.36,
         0.0
       ],
-      "visual_only": true
+      "frame_semantic": "bone_aligned_visual_envelope",
+      "visual_authority": "Brickmen rounded baseline informed by official Giant component-profile statistics; not copied surface geometry.",
+      "visual_only": true,
+      "a_node": "shoulder_r",
+      "b_node": "wrist_r",
+      "a_normalized_body_height": [
+        0.224858,
+        0.0,
+        0.69
+      ],
+      "b_normalized_body_height": [
+        0.301515,
+        0.0,
+        0.43
+      ],
+      "a_mm_at_target_height": [
+        13.941217,
+        0.0,
+        42.78
+      ],
+      "b_mm_at_target_height": [
+        18.693904,
+        0.0,
+        26.66
+      ],
+      "derived_length_normalized_body_height": 0.271065,
+      "derived_length_mm_at_target_height": 16.806024
     },
     {
       "envelope_id": "hand_l",
@@ -652,6 +713,8 @@
         15.5,
         13.02
       ],
+      "frame_semantic": "component_local_visual_envelope",
+      "visual_authority": "Brickmen rounded baseline informed by official Giant component-profile statistics.",
       "visual_only": true
     },
     {
@@ -668,6 +731,8 @@
         15.5,
         13.02
       ],
+      "frame_semantic": "component_local_visual_envelope",
+      "visual_authority": "Brickmen rounded baseline informed by official Giant component-profile statistics.",
       "visual_only": true
     }
   ],
