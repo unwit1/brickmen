@@ -13,7 +13,7 @@ import re
 from collections import Counter
 from pathlib import Path
 
-VERSION = "mask-route-topology-classifier/v1"
+VERSION = "mask-route-topology-classifier/v2"
 
 SPECIES_TERMS = {
     "bear", "bird", "crocodile", "eagle", "gorilla", "lion", "phoenix",
@@ -171,6 +171,26 @@ def classify(record: dict) -> dict:
                 0.88,
                 "separate component explicitly named as mask",
                 "semantic subtype not deterministic from component names alone",
+            )
+
+        head_face_cover = any(
+            term in head_text
+            for term in ("mask", "balaclava", "goggles", "face cover", "breathing apparatus")
+        )
+        stronger_headgear = any(
+            term in gear_text
+            for term in ("mask", "cowl", "hood", "helmet", "wrap", "costume", "fishbowl", "bubble")
+        )
+        if (
+            "head_print_plus_headgear" in routes
+            and head_face_cover
+            and not stronger_headgear
+        ):
+            return set_result(
+                "printed_face_cover_head_plus_nonmask_headgear",
+                0.97,
+                "mask/goggle/breathing detail is carried by the printed head",
+                "separate headgear has no mask/cowl/hood/helmet/wrap/enclosure signal",
             )
 
         if "hood" in gear_text:

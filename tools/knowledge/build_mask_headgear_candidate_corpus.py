@@ -5,7 +5,7 @@ import argparse,json,re
 from collections import defaultdict,Counter
 from pathlib import Path
 
-VERSION="mask-headgear-candidate-corpus/v2"
+VERSION="mask-headgear-candidate-corpus/v3"
 
 MASK_WORDS=("mask","masked","balaclava","visor","goggles","face cover","breathing apparatus")
 HEADGEAR_WORDS=("helmet","cowl","hood","mask","hat","headgear","headdress","dome","fishbowl","costume","hair")
@@ -60,11 +60,12 @@ def is_headgear_component(component):
     )
 
 def is_transparent_dome_geometry(component):
+    """Detect actual transparent head-enclosure geometry, not dome-shaped hats."""
     name=str(component.get("part_name") or "").casefold()
     return (
         "fishbowl" in name
-        or "dome" in name
-        or ("bubble" in name and any(k in name for k in ("helmet","headwear","dome")))
+        or ("dome" in name and any(k in name for k in ("helmet","headwear","bubble","fishbowl")))
+        or ("bubble" in name and any(k in name for k in ("helmet","headwear","dome","fishbowl")))
     )
 
 def is_standard_cylindrical_minifig_head(component):

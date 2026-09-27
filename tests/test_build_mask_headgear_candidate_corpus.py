@@ -89,3 +89,26 @@ def test_neckwear_mask_can_still_be_headgear() -> None:
 
     assert not tool.is_body_component(component)
     assert tool.is_headgear_component(component)
+
+
+def test_dome_shaped_hat_is_not_transparent_head_enclosure() -> None:
+    tool = load_tool()
+    component = {
+        "part_num": "41633pr0001",
+        "part_name": "Hat, Black Dome, Dark Red Feather, Red Jewel, Gold Trim Print",
+        "component_role": "headgear",
+    }
+
+    assert tool.is_headgear_component(component)
+    assert not tool.is_transparent_dome_geometry(component)
+
+
+def test_round_bubble_helmet_is_transparent_head_enclosure() -> None:
+    tool = load_tool()
+    component = {
+        "part_num": "30214",
+        "part_name": "Helmet Round Bubble",
+        "component_role": "headgear",
+    }
+
+    assert tool.is_transparent_dome_geometry(component)
