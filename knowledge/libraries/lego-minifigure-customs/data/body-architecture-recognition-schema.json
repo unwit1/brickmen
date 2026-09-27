@@ -1,0 +1,104 @@
+{
+  "schema_version": "0.1",
+  "status": "research_design",
+  "created": "2026-09-27",
+  "objective": "Recognize body architecture independently from character identity and source marketing labels.",
+  "stages": [
+    {
+      "id": "segment",
+      "outputs": [
+        "figure_mask",
+        "component_masks",
+        "confidence"
+      ]
+    },
+    {
+      "id": "normalize",
+      "features": [
+        "feet_baseline",
+        "head_top",
+        "centerline",
+        "shoulder_landmarks",
+        "elbows",
+        "wrists",
+        "hips",
+        "leg_split",
+        "hands",
+        "scale_references"
+      ]
+    },
+    {
+      "id": "measure_visual_architecture",
+      "features": [
+        "height_width_ratio",
+        "head_width_body_height",
+        "shoulder_width_head_width",
+        "torso_width_hip_width",
+        "arm_thickness",
+        "arm_segment_count",
+        "elbow_present",
+        "wrist_hand_separation",
+        "leg_length_ratio",
+        "head_separate",
+        "lower_body_integrated",
+        "standard_head_shape_probability",
+        "standard_leg_shape_probability",
+        "giant_hand_shape_probability",
+        "foot_grid_geometry"
+      ]
+    },
+    {
+      "id": "catalog_retrieval",
+      "features": [
+        "maker",
+        "product_code",
+        "year",
+        "source_label",
+        "seller_height",
+        "known_part_inventory"
+      ]
+    },
+    {
+      "id": "reconcile",
+      "methods": [
+        "exact_release_lookup",
+        "maker_code_map",
+        "embedding_neighbors",
+        "ratio_classifier",
+        "joint_detector",
+        "vlm_explanation"
+      ],
+      "outputs": [
+        "architecture_id",
+        "alternatives",
+        "source_labels",
+        "confidence",
+        "evidence"
+      ]
+    },
+    {
+      "id": "unknown_detection",
+      "rule": "If no architecture passes confidence threshold, capture architecture_unknown_candidate and cluster it rather than coercing into nearest known class."
+    }
+  ],
+  "training_targets": [
+    "architecture_classification",
+    "component_segmentation",
+    "joint_detection",
+    "landmark_detection",
+    "scale_estimation",
+    "unknown_architecture_detection"
+  ],
+  "benchmark_characters": [
+    "Hulk",
+    "Thing",
+    "Bane",
+    "Venom",
+    "Kingpin",
+    "Colossus",
+    "Juggernaut",
+    "Abomination",
+    "Beast",
+    "Killer Croc"
+  ]
+}
