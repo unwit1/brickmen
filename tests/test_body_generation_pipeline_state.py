@@ -86,3 +86,38 @@ def test_bbox_pass_still_requires_topology_keepout_and_pose_collision():
     assert "mesh_topology_preflight" in state["production_readiness"]["blocking_gates"]
     assert "exact_fixed_keepout_validation" in state["production_readiness"]["blocking_gates"]
     assert "sampled_pose_collision_validation" in state["production_readiness"]["blocking_gates"]
+
+
+def test_sampled_pose_pass_exposes_continuous_motion_blocker():
+    state=summarize_pipeline_state(
+        conditioning(),
+        provider_job={"provider_id":"fake"},
+        provider_run={
+            "provider_id":"fake","mode":"executed","return_code":0,
+            "execution_succeeded":True,
+        },
+        output_mapping={
+            "acceptance":{"structurally_complete":True},
+            "components":[
+                {"slot_id":"torso","transform_matrix_to_brickmen_mm":[1]*16}
+            ],
+        },
+        geometry_validation={
+            "summary":{"bbox_geometry_gate_passed":True,"status":"ok"}
+        },
+        mesh_quality={
+            "summary":{"mesh_quality_gate_passed":True,"status":"ok"}
+        },
+        exact_keepout={
+            "summary":{"exact_keepout_gate_passed":True,"status":"ok"}
+        },
+        pose_collision={
+            "summary":{
+                "sampled_pose_collision_gate_passed":True,
+                "status":"sampled_pose_collision_gate_passed",
+            }
+        },
+    )
+    assert "sampled_pose_collision_validation" not in state["production_readiness"]["blocking_gates"]
+    assert "continuous_motion_collision_validation" in state["production_readiness"]["blocking_gates"]
+    assert any("continuous collision" in x for x in state["next_actions"])
