@@ -97,6 +97,8 @@ jobs:
           package_version = sys.argv[2]
           rows = []
           for path in sorted(manifest_dir.glob("*.json")):
+              if path.name == "build-summary.json":
+                  continue
               data = json.loads(path.read_text(encoding="utf-8"))
               rows.append({
                   "root_file": data["root_file"],
