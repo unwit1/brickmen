@@ -12,6 +12,7 @@ on:
       - "tools/geometry/compile_body_generation_provider_job.py"
       - "tools/geometry/compile_body_articulation_sweeps.py"
       - "tools/geometry/render_body_generation_guides.py"
+      - "tools/geometry/summarize_body_generation_pipeline_state.py"
       - "knowledge/libraries/lego-minifigure-customs/data/skeletons/brickmen-giant-v0.json"
       - "knowledge/libraries/lego-minifigure-customs/data/skeletons/brickmen-broad-v0.json"
       - "knowledge/libraries/lego-minifigure-customs/data/reference-landmarks/lego-giant-ldraw-shoulders-fit.json"
@@ -63,7 +64,8 @@ jobs:
           SWEEPS="knowledge/libraries/lego-minifigure-customs/data/articulation-sweeps"
           GUIDES="knowledge/libraries/lego-minifigure-customs/data/generation-guides/brickmen-giant-official-cad-v0"
           JOBS="knowledge/libraries/lego-minifigure-customs/data/provider-jobs/brickmen-giant-official-cad-v0"
-          mkdir -p "$SWEEPS" "$GUIDES" "$JOBS"
+          STATES="knowledge/libraries/lego-minifigure-customs/data/pipeline-state/brickmen-giant-official-cad-v0"
+          mkdir -p "$SWEEPS" "$GUIDES" "$JOBS" "$STATES"
 
           python -m tools.geometry.compile_body_articulation_sweeps \
             "$CONDITIONING" \
@@ -79,6 +81,13 @@ jobs:
               --guide-manifest "$GUIDES/manifest.json" \
               --sweeps "$SWEEPS/brickmen-giant-official-cad-v0.json" \
               -o "$JOBS/$provider.json"
+
+            python -m tools.geometry.summarize_body_generation_pipeline_state \
+              "$CONDITIONING" \
+              --sweeps "$SWEEPS/brickmen-giant-official-cad-v0.json" \
+              --guide-manifest "$GUIDES/manifest.json" \
+              --provider-job "$JOBS/$provider.json" \
+              -o "$STATES/$provider.json"
           done
 
       - name: Validate example invariants
@@ -143,7 +152,19 @@ jobs:
           assert partcrafter["production_geometry_authority"] is False
           particulate = json.loads((job_base / "particulate.json").read_text())
           assert particulate["provider_role"] == "mesh_to_articulation_inference_critic"
-          print("conditioning, sweep and provider fixtures validated")
+          assert partcrafter["execution_interface"]["adapter_status"] == "runnable_cli_verified"
+
+          state_base = Path("knowledge/libraries/lego-minifigure-customs/data/pipeline-state/brickmen-giant-official-cad-v0")
+          partcrafter_state = json.loads((state_base / "partcrafter.json").read_text())
+          sam_state = json.loads((state_base / "sam_3d_objects.json").read_text())
+          assert next(
+              g for g in partcrafter_state["gates"] if g["gate_id"] == "provider_run"
+          )["status"] == "pending"
+          assert next(
+              g for g in sam_state["gates"] if g["gate_id"] == "provider_run"
+          )["status"] == "blocked"
+          assert "mechanical_interface_validation" in partcrafter_state["production_readiness"]["blocking_gates"]
+          print("conditioning, sweep, provider and pipeline-state fixtures validated")
           PY
 
       - name: Commit conditioning examples
@@ -155,7 +176,8 @@ jobs:
             knowledge/libraries/lego-minifigure-customs/data/generation-conditioning \
             knowledge/libraries/lego-minifigure-customs/data/articulation-sweeps \
             knowledge/libraries/lego-minifigure-customs/data/generation-guides \
-            knowledge/libraries/lego-minifigure-customs/data/provider-jobs
+            knowledge/libraries/lego-minifigure-customs/data/provider-jobs \
+            knowledge/libraries/lego-minifigure-customs/data/pipeline-state
           if git diff --cached --quiet; then
             echo "No conditioning example changes."
             exit 0
