@@ -68,15 +68,20 @@ def test_partpacker_plan_stages_single_image_directory(tmp_path: Path):
     assert "--input" in plan["command"]
 
 
-def test_pact_is_plan_only_until_hardcoded_input_path_is_wrapped(tmp_path: Path):
+def test_pact_plan_uses_brickmen_dataset_redirect_wrapper(tmp_path: Path):
+    image=tmp_path/"image.png"; image.write_bytes(b"x")
+    mask=tmp_path/"parts.exr"; mask.write_bytes(b"x")
+    repo=fake_repo(tmp_path,"pact")
     plan=build_execution_plan(
         job("pact"),providers()["pact"],
-        provider_repo=None,output_dir=tmp_path/"out"
+        provider_repo=repo,source_image=image,semantic_mask_exr=mask,
+        output_dir=tmp_path/"out"
     )
-    assert plan["execution_supported"] is False
-    assert plan["mode"]=="plan_only"
-    assert plan["command"] is None
-    assert plan["adapter_status"]=="upstream_cli_input_path_bug_requires_wrapper"
+    assert plan["execution_supported"] is True
+    assert plan["adapter_status"]=="runnable_brickmen_dataset_redirect_wrapper_verified"
+    assert "run_pact_arbitrary_input.py" in " ".join(plan["command"])
+    assert "--semantic-mask-exr" in plan["command"]
+    assert str(mask.resolve()) in plan["command"]
 
 
 def test_particulate_requires_mesh_and_uses_up_z(tmp_path: Path):
@@ -166,3 +171,49 @@ def test_partpacker_output_classification_excludes_dual_volumes(tmp_path: Path):
     assert len(classified["component_candidates"])==2
     assert classified["composite_outputs"]==[str(out/"source_0.glb")]
     assert len(classified["auxiliary_outputs"])==2
+
+
+def test_pact_output_classification_uses_object_manifest(tmp_path: Path):
+    root=tmp_path/"out"/"exported_arti_objects"/"case"
+    glb=root/"glb"; glb.mkdir(parents=True)
+    (glb/"part_0.glb").write_bytes(b"x")
+    (glb/"part_1.glb").write_bytes(b"x")
+    (root/"object.json").write_text(
+        json.dumps({
+            "diffuse_tree":[
+                {"id":0,"glb":["glb/part_0.glb"],"plys":["ply/part_0.ply"]},
+                {"id":1,"glb":["glb/part_1.glb"],"plys":["ply/part_1.ply"]},
+            ]
+        }),
+        encoding="utf-8",
+    )
+    classified=_classify_outputs("pact",tmp_path/"out")
+    assert len(classified["component_candidates"])==2
+    assert [r["provider_part_id"] for r in classified["component_records"]]==[
+        "part_0","part_1"
+    ]
+    assert classified["manifest_files"]==[str(root/"object.json")]
+
+
+def test_partcrafter_component_records_preserve_manifest_indices(tmp_path: Path):
+    run=tmp_path/"out"/"tag"; run.mkdir(parents=True)
+    (run/"part_03.glb").write_bytes(b"x")
+    (run/"object.glb").write_bytes(b"x")
+    manifest=run/"manifest.json"
+    manifest.write_text(
+        json.dumps({
+            "parts":[{"index":3,"file":"part_03.glb"}],
+            "composite_file":"object.glb",
+        }),
+        encoding="utf-8",
+    )
+    classified=_classify_outputs("partcrafter",tmp_path/"out")
+    assert classified["component_records"]==[
+        {
+            "path":str(run/"part_03.glb"),
+            "provider_part_id":"part_03",
+            "provider_part_index":3,
+            "provider_manifest":str(manifest),
+            "source_role":"generated_component",
+        }
+    ]
