@@ -1,0 +1,86 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-27",
+  "status": "research_schema",
+  "entities": {
+    "mold_family": {
+      "fields": [
+        "mold_family_id",
+        "canonical_name",
+        "architecture_id",
+        "manufacturer_or_factory_if_known",
+        "maker_brand_claims",
+        "first_observed_release",
+        "component_scope",
+        "source_mold_labels",
+        "related_release_ids",
+        "revision_ids",
+        "cross_brand_reuse_claims",
+        "distinguishing_geometry",
+        "connector_profile_ids",
+        "physical_equivalence_status",
+        "evidence",
+        "confidence",
+        "valid_from",
+        "valid_to"
+      ]
+    },
+    "mold_revision": {
+      "fields": [
+        "mold_revision_id",
+        "mold_family_id",
+        "revision_label",
+        "changed_components",
+        "geometry_changes",
+        "joint_changes",
+        "first_observed_release",
+        "last_observed_release",
+        "evidence",
+        "confidence"
+      ]
+    },
+    "mold_equivalence_observation": {
+      "fields": [
+        "observation_id",
+        "release_a",
+        "release_b",
+        "relationship",
+        "evidence_kind",
+        "silhouette_similarity",
+        "tooling_mark_evidence",
+        "physical_dimension_evidence",
+        "joint_fit_evidence",
+        "status",
+        "sources"
+      ]
+    }
+  },
+  "relationships": [
+    "FigureArchitecture HAS_MOLD_FAMILY MoldFamily",
+    "MoldFamily HAS_REVISION MoldRevision",
+    "ComponentRelease USES_MOLD_REVISION MoldRevision",
+    "FigureRelease CONTAINS ComponentRelease"
+  ],
+  "statuses": [
+    "source_claim_only",
+    "visual_candidate",
+    "catalog_corroborated",
+    "physical_candidate",
+    "validated_same_mold_family",
+    "rejected"
+  ],
+  "seed_observations": [
+    {
+      "mold_family_id": "blob_sy577_family_candidate",
+      "architecture_id": "compatible_bigfig_unresolved",
+      "releases": [
+        "Sheng Yuan SY577",
+        "RT RT062"
+      ],
+      "relationship": "same_mold_claim",
+      "evidence": "HeroBloks RT062 notes state same mold as original Sheng Yuan SY577 and that Xinh remade it.",
+      "status": "source_claim_only",
+      "source": "https://www.herobloks.com/figures/32675/rt/rt062/blob-%28bigfig%29"
+    }
+  ]
+}
