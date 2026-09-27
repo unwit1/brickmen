@@ -39,7 +39,7 @@
       "gate_id": "primary_generator_output_dependency",
       "status": "pending",
       "artifact": null,
-      "detail": "This provider is an auxiliary post-generation critic. It requires an already-generated mesh from a primary/baseline generator and cannot satisfy Brickmen component-generation gates by itself.",
+      "detail": "This provider is an auxiliary post-generation critic. It requires an already-generated mesh from a primary triangle-mesh generator and cannot satisfy Brickmen component-generation gates by itself.",
       "blocking": true
     },
     {
@@ -60,28 +60,28 @@
       "gate_id": "frame_alignment",
       "status": "not_applicable_to_critic_provider",
       "artifact": null,
-      "detail": "Not applicable to critic-only state; alignment belongs to the primary generated mesh pipeline.",
+      "detail": "Primary component-frame alignment belongs to the triangle-mesh generator pipeline.",
       "blocking": false
     },
     {
       "gate_id": "bbox_geometry_validation",
       "status": "not_applicable_to_critic_provider",
       "artifact": null,
-      "detail": "Not applicable to critic-only state.",
+      "detail": "Primary component geometry validation requires triangle-part generator output.",
       "blocking": false
     },
     {
       "gate_id": "mesh_topology_preflight",
       "status": "not_applicable_to_critic_provider",
       "artifact": null,
-      "detail": "Not applicable to critic-only state.",
+      "detail": "Triangle-mesh topology preflight is not applicable to this provider state.",
       "blocking": false
     },
     {
       "gate_id": "exact_fixed_keepout_validation",
       "status": "not_applicable_to_critic_provider",
       "artifact": null,
-      "detail": "Not applicable to critic-only state.",
+      "detail": "Fixed keep-out validation requires mapped triangle meshes.",
       "blocking": false
     },
     {
@@ -95,14 +95,14 @@
       "gate_id": "sampled_pose_collision_validation",
       "status": "not_applicable_to_critic_provider",
       "artifact": null,
-      "detail": "Not applicable to critic-only state.",
+      "detail": "Pose collision validation requires mapped triangle meshes.",
       "blocking": false
     },
     {
       "gate_id": "continuous_motion_collision_validation",
       "status": "not_applicable_to_critic_provider",
       "artifact": null,
-      "detail": "Not applicable to critic-only state.",
+      "detail": "Continuous collision validation requires mapped triangle meshes.",
       "blocking": false
     },
     {
@@ -114,7 +114,7 @@
     }
   ],
   "next_actions": [
-    "supply a generated body mesh from a primary/baseline generator before running the articulation critic",
+    "supply a generated body mesh from a primary triangle-mesh generator before running the articulation critic",
     "dry-run the particulate critic against a generated body mesh",
     "execute particulate only after the critic dry-run plan is reviewed",
     "physical validation: Measure physical 43093 critical dimensions from multiple samples.",

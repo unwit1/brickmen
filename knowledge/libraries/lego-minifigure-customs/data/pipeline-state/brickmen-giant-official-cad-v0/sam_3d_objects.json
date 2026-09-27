@@ -4,7 +4,7 @@
   "skeleton_id": "brickmen_giant_v0_skeleton",
   "provider_id": "sam_3d_objects",
   "provider_pipeline_stage": "baseline_generator",
-  "state_scope": "primary_body_generation",
+  "state_scope": "visual_reconstruction_baseline",
   "target_height_mm": 62.0,
   "gates": [
     {
@@ -36,66 +36,73 @@
       "blocking": false
     },
     {
-      "gate_id": "provider_run",
-      "status": "blocked",
+      "gate_id": "primary_triangle_mesh_generator_dependency",
+      "status": "pending",
       "artifact": null,
-      "detail": "Provider execution interface is python_api_visual_baseline_verified; no verified runnable Brickmen execution adapter exists yet.",
+      "detail": "This provider is a visual/reconstruction baseline. Its published output is useful evidence but is not the triangle-part bundle required for Brickmen component mapping, topology, keep-out, or articulation validation.",
+      "blocking": true
+    },
+    {
+      "gate_id": "provider_run",
+      "status": "pending",
+      "artifact": null,
+      "detail": "Verified Brickmen wrapper exists for this visual baseline, but no run report exists. The provider environment plus image and binary mask are required.",
       "blocking": true
     },
     {
       "gate_id": "component_mapping",
-      "status": "not_started",
+      "status": "not_applicable_to_visual_baseline",
       "artifact": null,
-      "detail": "Requires provider outputs first.",
+      "detail": "Not applicable: published visual-baseline output is Gaussian/reconstruction evidence, not a mapped triangle-part bundle.",
       "blocking": false
     },
     {
       "gate_id": "frame_alignment",
-      "status": "not_started",
+      "status": "not_applicable_to_visual_baseline",
       "artifact": null,
-      "detail": "Requires mapped provider components.",
+      "detail": "Primary component-frame alignment belongs to the triangle-mesh generator pipeline.",
       "blocking": false
     },
     {
       "gate_id": "bbox_geometry_validation",
-      "status": "not_started",
+      "status": "not_applicable_to_visual_baseline",
       "artifact": null,
-      "detail": "Requires explicit transforms and mapped meshes.",
+      "detail": "Primary component geometry validation requires triangle-part generator output.",
       "blocking": false
     },
     {
       "gate_id": "mesh_topology_preflight",
-      "status": "not_started",
+      "status": "not_applicable_to_visual_baseline",
       "artifact": null,
-      "detail": "Requires mapped provider meshes.",
+      "detail": "Triangle-mesh topology preflight is not applicable to this provider state.",
       "blocking": false
     },
     {
       "gate_id": "exact_fixed_keepout_validation",
-      "status": "not_started",
+      "status": "not_applicable_to_visual_baseline",
       "artifact": null,
-      "detail": "Requires mapped and transformed generated components.",
+      "detail": "Fixed keep-out validation requires mapped triangle meshes.",
       "blocking": false
     },
     {
       "gate_id": "joint_contact_region_evidence",
-      "status": "partial_or_pending",
-      "artifact": "knowledge/libraries/lego-minifigure-customs/data/joint-contact-regions/brickmen-giant-v0.json",
-      "detail": "0 validated contact region(s); 6 joint(s) still have no validated contact region.",
+      "status": "not_applicable_to_visual_baseline",
+      "artifact": null,
+      "detail": "Joint-contact evidence belongs to the primary geometry validation pipeline.",
       "blocking": false
     },
     {
       "gate_id": "sampled_pose_collision_validation",
-      "status": "not_started",
+      "status": "not_applicable_to_visual_baseline",
       "artifact": null,
-      "detail": "Requires mapped and aligned generated components.",
+      "detail": "Pose collision validation requires mapped triangle meshes.",
       "blocking": false
     },
     {
       "gate_id": "continuous_motion_collision_validation",
-      "status": "not_started",
+      "status": "not_applicable_to_visual_baseline",
       "artifact": null,
-      "detail": "Requires a passing sampled-pose collision gate first.",
+      "detail": "Continuous collision validation requires mapped triangle meshes.",
       "blocking": false
     },
     {
@@ -107,7 +114,9 @@
     }
   ],
   "next_actions": [
-    "implement/verify the sam_3d_objects execution adapter before inference",
+    "run a primary triangle-mesh generator such as PartCrafter or PartPacker for production-oriented geometry validation",
+    "dry-run the sam_3d_objects visual baseline with an image and binary mask",
+    "execute sam_3d_objects only after the baseline dry-run plan is reviewed",
     "physical validation: Measure physical 43093 critical dimensions from multiple samples.",
     "physical validation: Measure official Giant body and arm mating features.",
     "physical validation: Record insertion/removal force for hardware into each mating component.",
@@ -118,6 +127,7 @@
   "production_readiness": {
     "ready": false,
     "blocking_gates": [
+      "primary_triangle_mesh_generator_dependency",
       "provider_run",
       "mechanical_interface_validation"
     ],

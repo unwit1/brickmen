@@ -5,17 +5,23 @@
   "provider_role": "single_or_multi_object_image_to_3d_reconstructor",
   "provider_availability": "official_code_weights_and_demo_available",
   "execution_interface": {
-    "adapter_status": "python_api_visual_baseline_verified",
+    "adapter_status": "runnable_brickmen_python_api_visual_baseline",
     "entrypoint": "notebook/inference.py",
     "invocation": [
-      "python_api",
-      "Inference(checkpoints/hf/pipeline.yaml, compile=False)",
-      "load_image(<image>)",
-      "load_mask(<mask>)",
-      "inference(image, mask, seed=<seed>)",
-      "output['gs'].save_ply(<output>)"
+      "python",
+      "<brickmen>/tools/geometry/provider_wrappers/run_sam3d_objects_baseline.py",
+      "--provider-repo",
+      "<sam3d_repo>",
+      "--image",
+      "<image>",
+      "--mask",
+      "<binary_mask>",
+      "--output",
+      "<output_dir>/sam3d-splat.ply",
+      "--metadata",
+      "<output_dir>/sam3d-metadata.json"
     ],
-    "upstream_requirement_note": "Published quick-start uses image+mask and exports output['gs'] as a Gaussian splat PLY. Inference.__call__ currently invokes the pipeline with mesh postprocessing disabled."
+    "upstream_requirement_note": "Brickmen wrapper calls the published notebook.inference Inference/load_image/load_mask API and exports output['gs'] to PLY. This is a visual Gaussian baseline and does not enter triangle-mesh production validation."
   },
   "conditioning_digest_sha256": "5f3bfc4f8684705de1b68d096182e4ea452984eabf661c94b2979d4746280978",
   "architecture_id": "brickmen_giant_v0",
