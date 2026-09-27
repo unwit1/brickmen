@@ -1,0 +1,199 @@
+{
+  "schema_version": "0.1",
+  "engineering_skeleton_id": "lego_giant_modular_10128p01c01_ldraw_2303",
+  "architecture_id": "lego_giant_modular",
+  "status": "official_ldraw_reference_engineering_skeleton_not_physical_metrology",
+  "source": {
+    "ldraw_library_release": "Ubuntu 24.04 ldraw-parts 2303+ds-1",
+    "complete_assembly_manifest": "knowledge/libraries/lego-minifigure-customs/data/digital-twins/ldraw-manifests/ubuntu-noble-2303/10128p01c01.json",
+    "digital_twin": "knowledge/libraries/lego-minifigure-customs/data/digital-twins/lego-giant-hulk-10128p01c01.json",
+    "normalized_anchor_record": "knowledge/libraries/lego-minifigure-customs/data/engineering-reference-anchors/lego-giant-normalized-2303.json",
+    "component_profiles": [
+      "knowledge/libraries/lego-minifigure-customs/data/digital-twins/ldraw-profiles/ubuntu-noble-2303/10154.json",
+      "knowledge/libraries/lego-minifigure-customs/data/digital-twins/ldraw-profiles/ubuntu-noble-2303/10124.json",
+      "knowledge/libraries/lego-minifigure-customs/data/digital-twins/ldraw-profiles/ubuntu-noble-2303/10127.json",
+      "knowledge/libraries/lego-minifigure-customs/data/digital-twins/ldraw-profiles/ubuntu-noble-2303/10126.json"
+    ]
+  },
+  "coordinate_system": {
+    "frame": "brickmen_semantic_preserving_canonical_ldraw_anatomical_sides",
+    "axes": {
+      "x": "left_to_right_in_model_frame; official anatomical left is +X for this assembly",
+      "y": "back_to_front",
+      "z": "feet_to_head"
+    },
+    "source_mapping": {
+      "x": "ldraw_x",
+      "y": "ldraw_z",
+      "z": "-ldraw_y"
+    }
+  },
+  "normalization": {
+    "body_height_ldu": 177.794,
+    "body_height_nominal_mm": 71.11760000000001,
+    "body_bbox_min_z_ldu": -0.021,
+    "rule": "x/H, y/H, (z-zmin)/H",
+    "note": "Reference normalization is for architecture/shape comparison only; fixed hardware and physical interface geometry never scale from these values."
+  },
+  "frames": [
+    {
+      "frame_id": "anatomical_left_shoulder",
+      "role": "shoulder_attachment",
+      "component_id": "left_arm_10154",
+      "position_normalized_body_height": [
+        0.22497947062330562,
+        0,
+        0.7088034466854899
+      ],
+      "position_brickmen_ldu": [
+        40,
+        0,
+        126
+      ],
+      "authority": "official_ldraw_assembly_frame"
+    },
+    {
+      "frame_id": "anatomical_right_shoulder",
+      "role": "shoulder_attachment",
+      "component_id": "right_arm_10124",
+      "position_normalized_body_height": [
+        -0.22497947062330562,
+        0,
+        0.7088034466854899
+      ],
+      "position_brickmen_ldu": [
+        -40,
+        0,
+        126
+      ],
+      "authority": "official_ldraw_assembly_frame"
+    },
+    {
+      "frame_id": "anatomical_left_hand_socket",
+      "role": "arm_to_hand_attachment",
+      "component_id": "left_arm_10154",
+      "position_normalized_body_height": [
+        0.3937140735907848,
+        -0.22497947062330562,
+        0.4838239760621843
+      ],
+      "position_brickmen_ldu": [
+        70,
+        -40,
+        86
+      ],
+      "parent_frame": "anatomical_left_shoulder",
+      "local_vector_normalized_body_height": [
+        0.16873460296747922,
+        -0.22497947062330562,
+        -0.22497947062330562
+      ],
+      "local_vector_nominal_mm": [
+        12,
+        -16,
+        -16
+      ],
+      "local_vector_length_normalized_body_height": 0.3601428753182249,
+      "local_vector_length_nominal_mm": 25.612496949731394,
+      "authority": "official_ldraw_arm_hand_socket_and_complete_assembly_transform"
+    },
+    {
+      "frame_id": "anatomical_right_hand_socket",
+      "role": "arm_to_hand_attachment",
+      "component_id": "right_arm_10124",
+      "position_normalized_body_height": [
+        -0.3937140735907848,
+        -0.22497947062330562,
+        0.4838239760621843
+      ],
+      "position_brickmen_ldu": [
+        -70,
+        -40,
+        86
+      ],
+      "parent_frame": "anatomical_right_shoulder",
+      "local_vector_normalized_body_height": [
+        -0.16873460296747922,
+        -0.22497947062330562,
+        -0.22497947062330562
+      ],
+      "local_vector_nominal_mm": [
+        -12,
+        -16,
+        -16
+      ],
+      "local_vector_length_normalized_body_height": 0.3601428753182249,
+      "local_vector_length_nominal_mm": 25.612496949731394,
+      "authority": "official_ldraw_arm_hand_socket_and_complete_assembly_transform"
+    }
+  ],
+  "component_profiles": [
+    {
+      "component_role": "left_arm",
+      "part_id": "10154",
+      "mirrored_partner_part_id": "10124",
+      "intrinsic_component_height_mm": 31.1628,
+      "intrinsic_component_height_over_body_height": 0.4381868904462468,
+      "central_cross_section": {
+        "front_width_mean_mm": 12.927882828096385,
+        "front_width_mean_over_body_height": 0.181781764684078,
+        "front_width_median_mm": 11.829030631,
+        "side_depth_mean_mm": 19.899049362048192,
+        "side_depth_mean_over_body_height": 0.27980484946128936,
+        "side_depth_median_mm": 20.249322698
+      },
+      "overall_bbox_spans": {
+        "front_width_mm": 17.8492,
+        "front_width_over_body_height": 0.2509814729405942,
+        "side_depth_mm": 25.3924,
+        "side_depth_over_body_height": 0.3570480443659516
+      },
+      "interpretation": "One-piece fixed-bend arm between shoulder and hand socket; not a straight two-dimensional link."
+    },
+    {
+      "component_role": "right_arm",
+      "part_id": "10124",
+      "mirrored_partner_part_id": "10154",
+      "same_profile_as": "left_arm",
+      "interpretation": "Mirrored official arm component with the same profile statistics."
+    },
+    {
+      "component_role": "left_hand",
+      "part_id": "10127",
+      "mirrored_partner_part_id": "10126",
+      "intrinsic_component_height_mm": 14.8932,
+      "intrinsic_component_height_over_body_height": 0.20941651574293846,
+      "central_cross_section": {
+        "front_width_mean_mm": 12.393585432530118,
+        "front_width_mean_over_body_height": 0.17426889310845864,
+        "front_width_median_mm": 12.693506702,
+        "side_depth_mean_mm": 17.646675190445787,
+        "side_depth_mean_over_body_height": 0.24813372766299466,
+        "side_depth_median_mm": 15.218831344
+      },
+      "overall_bbox_spans": {
+        "front_width_mm": 13.6252,
+        "front_width_over_body_height": 0.19158689269604148,
+        "side_depth_mm": 23.2664,
+        "side_depth_over_body_height": 0.32715389720687993
+      },
+      "interpretation": "Intrinsic local hand profile; default assembly rotation is separate from component-local shape."
+    },
+    {
+      "component_role": "right_hand",
+      "part_id": "10126",
+      "mirrored_partner_part_id": "10127",
+      "same_profile_as": "left_hand",
+      "interpretation": "Mirrored official hand component with the same profile statistics."
+    }
+  ],
+  "comparison_rules": [
+    "Preserve canonical official component/anatomical-side semantics in this reference; fitting-view mirrors belong in separate adapters.",
+    "Do not copy the official fixed-bend arm topology into Brickmen Giant automatically.",
+    "Use shoulder-to-hand-socket vectors as architecture/component evidence, not as a universal humanoid arm-length target.",
+    "Visual arm/hand envelope statistics may seed generator controls while local joint/hardware geometry remains separately governed.",
+    "Reference CAD cannot establish physical fit tolerances, torque, wear, or printed socket compensation."
+  ],
+  "production_geometry_authority": false,
+  "warning": "Reference engineering skeleton/component profile derived from official LDraw CAD. Physical metrology and joint qualification remain required."
+}
