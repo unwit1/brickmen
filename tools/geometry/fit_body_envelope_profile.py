@@ -47,6 +47,8 @@ def default_bindings_for_view(view: str) -> dict[str, tuple[str, str]]:
         bindings = dict(FRONT_BACK_BINDINGS)
     elif view in {"left", "right"}:
         bindings = dict(SIDE_BINDINGS)
+    elif view == "multi_view":
+        bindings = {**FRONT_BACK_BINDINGS, **SIDE_BINDINGS}
     else:
         bindings = {}
     bindings.update(VERTICAL_BINDINGS)
@@ -59,19 +61,23 @@ def normalized_visual_measurements(
     bbox = reference.get("body_bbox_px")
     horizontal = reference.get("silhouette_pairs_px", {})
     vertical = reference.get("silhouette_vertical_pairs_px", {})
-    if not bbox:
-        raise ValueError("BodyEnvelopeProfile fitting requires body_bbox_px")
-    if not horizontal and not vertical:
-        raise ValueError("Reference has no silhouette span observations")
+    direct = reference.get("envelope_measurements_normalized", {})
+    if not horizontal and not vertical and not direct:
+        raise ValueError("Reference has no visual envelope observations")
 
-    left, top, right, bottom = [float(v) for v in bbox]
-    height = bottom - top
-    if height <= 0:
-        raise ValueError("Invalid body_bbox_px")
+    height = None
+    if horizontal or vertical:
+        if not bbox:
+            raise ValueError("Pixel envelope observations require body_bbox_px")
+        left, top, right, bottom = [float(v) for v in bbox]
+        height = bottom - top
+        if height <= 0:
+            raise ValueError("Invalid body_bbox_px")
 
     out: dict[str, dict[str, Any]] = {}
     for name, pair in horizontal.items():
         span = float(pair["right_x"]) - float(pair["left_x"])
+        assert height is not None
         out[name] = {
             "value": span / height,
             "span_px": span,
@@ -83,6 +89,7 @@ def normalized_visual_measurements(
 
     for name, pair in vertical.items():
         span = float(pair["bottom_y"]) - float(pair["top_y"])
+        assert height is not None
         out[name] = {
             "value": span / height,
             "span_px": span,
@@ -90,6 +97,22 @@ def normalized_visual_measurements(
             "confidence": float(pair.get("confidence", 1.0)),
             "semantic": pair.get("semantic"),
             "notes": pair.get("notes"),
+        }
+    for name, observation in direct.items():
+        value = float(observation["value"])
+        if value < 0:
+            raise ValueError(f"Normalized envelope measurement {name} is negative")
+        out[name] = {
+            "value": value,
+            "orientation": "normalized_direct",
+            "confidence": float(observation.get("confidence", 1.0)),
+            "semantic": observation.get("semantic"),
+            "notes": observation.get("notes"),
+            "source": observation.get("source"),
+            "binding": (
+                str(observation["envelope_id"]),
+                str(observation["axis"]),
+            ),
         }
     return out
 
@@ -119,7 +142,7 @@ def fit_envelope_profile(
     bound_hits: list[str] = []
 
     for measurement_name, observation in observations.items():
-        binding = resolved_bindings.get(measurement_name)
+        binding = observation.get("binding") or resolved_bindings.get(measurement_name)
         if not binding:
             unmapped[measurement_name] = {
                 **observation,
@@ -194,7 +217,7 @@ def fit_envelope_profile(
     mechanical_changes = sorted(mechanical_names.intersection(overrides))
 
     return {
-        "schema_version": "0.2",
+        "schema_version": "0.3",
         "reference_id": reference["reference_id"],
         "view": reference.get("view"),
         "skeleton_id": spec["skeleton_id"],
