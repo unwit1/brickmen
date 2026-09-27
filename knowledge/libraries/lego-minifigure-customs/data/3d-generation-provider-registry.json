@@ -1,0 +1,233 @@
+{
+  "schema_version": "0.1",
+  "observed_at": "2026-09-27",
+  "status": "research_registry",
+  "principle": "Benchmark exact model snapshots; provider names are not stable performance guarantees.",
+  "providers": [
+    {
+      "provider_id": "tripo",
+      "deployment": "commercial_api",
+      "current_model_observed": "v3.1-20260211",
+      "capabilities": [
+        "text_to_3d",
+        "image_to_3d",
+        "multiview_to_3d",
+        "image_to_multiview",
+        "mesh_segmentation",
+        "mesh_completion",
+        "decimation",
+        "model_conversion",
+        "texturing",
+        "pbr",
+        "smart_low_poly",
+        "quad_output",
+        "seeded_generation"
+      ],
+      "brickmen_hypotheses": [
+        "strong general candidate generator",
+        "particularly useful for multiview",
+        "semantic segmentation can help remove generated connectors",
+        "generate-in-parts may help modular accessories"
+      ],
+      "sources": [
+        "https://developers.tripo3d.ai/"
+      ]
+    },
+    {
+      "provider_id": "meshy",
+      "deployment": "commercial_api_and_mcp",
+      "current_model_observed": "meshy-7.1/latest",
+      "capabilities": [
+        "text_to_3d",
+        "image_to_3d",
+        "multi_image_to_3d",
+        "smart_topology",
+        "remesh",
+        "quad_remesh",
+        "3mf_export",
+        "stl_export",
+        "printability_repair",
+        "mcp_tools"
+      ],
+      "brickmen_hypotheses": [
+        "strong agent integration surface",
+        "useful generation baseline",
+        "use repair API as secondary topology normalization experiment",
+        "direct 3MF path worth benchmarking"
+      ],
+      "sources": [
+        "https://docs.meshy.ai/"
+      ]
+    },
+    {
+      "provider_id": "hunyuan3d_2_1",
+      "deployment": "local_open_source",
+      "current_model_observed": "Hunyuan3D-Shape-v2-1",
+      "capabilities": [
+        "image_to_shape",
+        "pbr_texture",
+        "weights_available",
+        "training_code_available",
+        "local_inference"
+      ],
+      "hardware_notes": [
+        "published shape generation requirement approximately 10GB VRAM",
+        "published texture requirement approximately 21GB VRAM"
+      ],
+      "brickmen_hypotheses": [
+        "primary open fine-tuning candidate",
+        "run geometry-only for manufacturing shell research"
+      ],
+      "sources": [
+        "https://github.com/Tencent-Hunyuan/Hunyuan3D-2.1"
+      ]
+    },
+    {
+      "provider_id": "trellis",
+      "deployment": "local_open_source",
+      "current_model_observed": "TRELLIS-image-large / text models",
+      "capabilities": [
+        "image_to_3d",
+        "text_to_3d",
+        "multi_image_conditioning",
+        "mesh",
+        "3d_gaussians",
+        "radiance_fields",
+        "variants",
+        "local_editing",
+        "training_code"
+      ],
+      "hardware_notes": [
+        "official repo states NVIDIA GPU with at least 16GB memory for tested setup"
+      ],
+      "brickmen_hypotheses": [
+        "image-conditioned generation research",
+        "fine-tuning/variant research",
+        "strong dataset/tooling value"
+      ],
+      "sources": [
+        "https://github.com/microsoft/TRELLIS"
+      ]
+    },
+    {
+      "provider_id": "spar3d",
+      "deployment": "local_open_source",
+      "capabilities": [
+        "single_image_to_mesh",
+        "point_cloud_conditioning",
+        "hidden_surface_inference",
+        "fast_inference"
+      ],
+      "brickmen_hypotheses": [
+        "cheap best-of-N candidate generation",
+        "backside hypothesis generation"
+      ],
+      "sources": [
+        "https://github.com/Stability-AI/stable-point-aware-3d"
+      ]
+    },
+    {
+      "provider_id": "stable_fast_3d",
+      "deployment": "local_or_api",
+      "capabilities": [
+        "single_image_to_3d",
+        "fast_mesh_generation",
+        "uv_mesh",
+        "materials"
+      ],
+      "brickmen_hypotheses": [
+        "fast candidate baseline"
+      ],
+      "sources": [
+        "https://stability.ai/news-updates/introducing-stable-fast-3d"
+      ]
+    },
+    {
+      "provider_id": "cadquery_agent",
+      "deployment": "local_deterministic",
+      "capabilities": [
+        "python_parametric_cad",
+        "step",
+        "stl",
+        "3mf",
+        "headless"
+      ],
+      "brickmen_hypotheses": [
+        "default hard-surface and connector path",
+        "LLM code generation + deterministic execution + render critic"
+      ],
+      "sources": [
+        "https://cadquery.readthedocs.io/"
+      ]
+    },
+    {
+      "provider_id": "build123d_agent",
+      "deployment": "local_deterministic",
+      "capabilities": [
+        "python_parametric_brep",
+        "opencascade",
+        "headless"
+      ],
+      "brickmen_hypotheses": [
+        "alternative/companion to CadQuery for CAD-as-code"
+      ],
+      "sources": [
+        "https://build123d.readthedocs.io/"
+      ]
+    },
+    {
+      "provider_id": "cad_recode",
+      "deployment": "local_open_source",
+      "capabilities": [
+        "point_cloud_to_cadquery_code",
+        "cad_reverse_engineering",
+        "editable_python_output"
+      ],
+      "brickmen_hypotheses": [
+        "convert hard-surface generated/reconstructed geometry into parametric CAD approximation"
+      ],
+      "sources": [
+        "https://github.com/filaPro/cad-recode"
+      ]
+    },
+    {
+      "provider_id": "zoo_text_to_cad",
+      "deployment": "commercial_api",
+      "capabilities": [
+        "text_to_cad",
+        "kcl",
+        "cad_api",
+        "agent_tools"
+      ],
+      "brickmen_hypotheses": [
+        "benchmark direct parametric generation for simple accessories"
+      ],
+      "sources": [
+        "https://docs.zoo.dev/"
+      ]
+    }
+  ],
+  "required_benchmark_fields": [
+    "provider_id",
+    "model_version",
+    "api_version",
+    "seed",
+    "task_type",
+    "part_class",
+    "inputs_hash",
+    "latency_s",
+    "provider_cost",
+    "output_hash",
+    "face_count",
+    "watertight",
+    "manifold",
+    "self_intersections",
+    "repair_operations",
+    "source_fidelity",
+    "lego_abstraction",
+    "dfm_violations",
+    "connector_integration_result",
+    "final_print_result",
+    "human_intervention_minutes"
+  ]
+}
