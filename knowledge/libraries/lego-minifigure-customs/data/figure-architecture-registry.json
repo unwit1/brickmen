@@ -1,12 +1,15 @@
 {
-  "schema_version": "0.1",
+  "schema_version": "0.2",
   "observed_at": "2026-09-27",
   "status": "research_registry_physical_metrology_incomplete",
   "rules": [
     "Preserve source_body_label separately from normalized architecture.",
     "Do not infer mechanical compatibility from BigFig, midfig, muscle body, 7CM, or mega fig labels alone.",
     "An architecture requires a component/joint graph; visual similarity alone produces only a family candidate.",
-    "Manufacturing-critical dimensions require physical metrology or authoritative engineering evidence."
+    "Manufacturing-critical dimensions require physical metrology or authoritative engineering evidence.",
+    "Maker name or product-code prefix is only a prior; classify architecture at release/body-family level.",
+    "Alternate lower bodies and stacked/multi-arm constructions are architecture variants when the component or joint graph changes materially.",
+    "Character-specific integrated bodies must not be coerced into standard humanoid architecture solely because BrickLink catalogs them as minifigure body parts."
   ],
   "architectures": [
     {
@@ -225,8 +228,10 @@
         "Captain Universe Hulk"
       ],
       "notes": [
-        "Public imagery supports a distinct muscular body morphology; exact joints/height unresolved."
-      ]
+        "Public imagery supports a distinct muscular body morphology; exact joints/height unresolved.",
+        "Do not infer that every G (2)/GH-prefix release uses this architecture; GH0318 Kingpin is cataloged separately as a BigFig."
+      ],
+      "scope_rule": "Release-level classification required; GH prefix is not an architecture identifier."
     },
     {
       "architecture_id": "custom_bigguy_muscle",
@@ -369,6 +374,216 @@
       ],
       "notes": [
         "HeroBloks exposes at least one Red Hulk entry labeled Mega fig separately from BigFig and other custom body releases. Preserve the label but require component/joint evidence before normalizing to a mechanical family."
+      ]
+    },
+    {
+      "architecture_id": "lego_giant_integrated_head_legacy",
+      "canonical_name": "LEGO Giant / early BigFig integrated-head architecture",
+      "scale_class": "large",
+      "status": "strong_catalog_evidence_physical_measurement_pending",
+      "parent_architecture": "lego_giant_modular",
+      "representative_characters": [
+        "Hulk",
+        "Thanos"
+      ],
+      "representative_release_ids": [
+        "SH0013",
+        "SH0504"
+      ],
+      "notes": [
+        "Earlier Giant bodies can integrate the character head/face into the body shell rather than using the later separate giant head.",
+        "Treat as a distinct architecture revision for generation, headwear, decoration and manufacturing even where arm/hand hardware overlaps."
+      ],
+      "sources": [
+        "https://www.bricklink.com/catalogItemInv.asp?M=sh0013",
+        "https://www.bricklink.com/catalogItemInv.asp?M=sh0504"
+      ]
+    },
+    {
+      "architecture_id": "lego_giant_specialized_creature",
+      "canonical_name": "LEGO specialized Giant creature architecture",
+      "scale_class": "large",
+      "status": "umbrella_requires_child_joint_graph",
+      "notes": [
+        "Body Giant catalog membership does not imply one universal hand/wrist/arm system.",
+        "Killer Croc SH0321 uses specialized giant arms with wrist studs and Rancor paw/claw components."
+      ],
+      "representative_release_ids": [
+        "SH0321"
+      ],
+      "sources": [
+        "https://www.bricklink.com/catalogItemInv.asp?M=sh0321"
+      ]
+    },
+    {
+      "architecture_id": "minifig_stacked_torso_multiarm",
+      "canonical_name": "Stacked-torso multi-arm minifigure",
+      "scale_class": "standard_tall",
+      "status": "official_architecture_variant",
+      "parent_architecture": "minifig_standard",
+      "representative_characters": [
+        "Lord Garmadon"
+      ],
+      "component_graph_notes": [
+        "Uses normal torso assembly plus an additional modified short torso/armor assembly to create a second shoulder/arm level."
+      ],
+      "representative_release_ids": [
+        "njo0078",
+        "njo0364",
+        "njo0382"
+      ],
+      "sources": [
+        "https://www.bricklink.com/catalogItemInv.asp?M=njo0078",
+        "https://www.bricklink.com/CatalogItemInv.asp?M=njo0364"
+      ]
+    },
+    {
+      "architecture_id": "minifig_mechanical_droid_specialized",
+      "canonical_name": "Specialized mechanical/droid minifigure body",
+      "scale_class": "standard_specialized",
+      "status": "official_architecture_family",
+      "notes": [
+        "Mechanical characters such as General Grievous use dedicated torso, mechanical arm and leg components rather than the standard torso/arm/hand/hip graph."
+      ],
+      "representative_characters": [
+        "General Grievous"
+      ],
+      "representative_part_ids": [
+        "87566",
+        "87568",
+        "87569",
+        "x1463"
+      ],
+      "sources": [
+        "https://www.bricklink.com/catalogList.asp?catID=20&catLike=W&catType=P&q=General+Grievous"
+      ]
+    },
+    {
+      "architecture_id": "minifig_lowerbody_ghost",
+      "canonical_name": "Minifigure upper body with ghost lower body",
+      "scale_class": "standard_modified",
+      "status": "official_architecture_variant",
+      "parent_architecture": "minifig_standard",
+      "representative_part_ids": [
+        "19859"
+      ],
+      "sources": [
+        "https://www.bricklink.com/catalogList.asp?q=Lower+Body%2C+Ghost"
+      ]
+    },
+    {
+      "architecture_id": "minifig_lowerbody_serpent",
+      "canonical_name": "Minifigure upper body with flexible serpent lower body",
+      "scale_class": "standard_modified",
+      "status": "official_architecture_variant",
+      "parent_architecture": "minifig_standard",
+      "representative_part_ids": [
+        "98140"
+      ],
+      "notes": [
+        "Flexible molded tail changes footprint, posing and surface map."
+      ],
+      "sources": [
+        "https://www.bricklink.com/catalogItemPic.asp?P=98140pb07"
+      ]
+    },
+    {
+      "architecture_id": "minifig_lowerbody_merfolk",
+      "canonical_name": "Minifigure upper body with mermaid/merman tail",
+      "scale_class": "standard_modified",
+      "status": "official_architecture_variant",
+      "parent_architecture": "minifig_standard",
+      "representative_part_ids": [
+        "65755"
+      ],
+      "sources": [
+        "https://www.bricklink.com/catalogListOld.asp?catID=1116"
+      ]
+    },
+    {
+      "architecture_id": "minifig_lowerbody_tentacle",
+      "canonical_name": "Minifigure upper body with tentacle lower body",
+      "scale_class": "standard_modified",
+      "status": "official_architecture_variant",
+      "parent_architecture": "minifig_standard",
+      "representative_part_ids": [
+        "24793",
+        "87749"
+      ],
+      "sources": [
+        "https://www.bricklink.com/catalogListOld.asp?catID=1116"
+      ]
+    },
+    {
+      "architecture_id": "minifig_lowerbody_robot_rollers",
+      "canonical_name": "Minifigure upper body with robotic roller lower body",
+      "scale_class": "standard_modified",
+      "status": "official_architecture_variant",
+      "parent_architecture": "minifig_standard",
+      "representative_part_ids": [
+        "5470"
+      ],
+      "sources": [
+        "https://www.bricklink.com/catalogListOld.asp?catID=1116"
+      ]
+    },
+    {
+      "architecture_id": "minifig_centaur_hybrid",
+      "canonical_name": "Minifigure upper body with centaur lower body",
+      "scale_class": "standard_extended",
+      "status": "official_architecture_variant",
+      "parent_architecture": "minifig_standard",
+      "representative_part_ids": [
+        "67638"
+      ],
+      "notes": [
+        "Quadruped lower body changes footprint, articulation/clearance and decoration surfaces."
+      ],
+      "sources": [
+        "https://www.bricklink.com/catalogItemPic.asp?P=67638pb01"
+      ]
+    },
+    {
+      "architecture_id": "specialized_integrated_character_body",
+      "canonical_name": "Specialized integrated character body",
+      "scale_class": "variable",
+      "status": "official_umbrella_requires_concrete_child_architecture",
+      "notes": [
+        "For bodies such as Angry Birds, Gollum-like integrated body/head forms, Lumpy Space Princess and other franchise-specific sculpts.",
+        "Each concrete mold family must get a child architecture when generation/manufacturing support is needed."
+      ],
+      "examples": [
+        "Angry Birds body families",
+        "Gollum integrated body/head",
+        "Lumpy Space Princess"
+      ],
+      "sources": [
+        "https://www.bricklink.com/catalogListOld.asp?catID=20&pg=26&v=0",
+        "https://www.bricklink.com/catalogListOld.asp?catID=20&catType=P&catXrefLevel=0&pg=27&v=0"
+      ]
+    },
+    {
+      "architecture_id": "specialized_tail_body_jabba",
+      "canonical_name": "Jabba-style integrated torso/tail body",
+      "scale_class": "large_specialized",
+      "status": "official_character_specific_architecture",
+      "representative_characters": [
+        "Jabba the Hutt"
+      ],
+      "representative_part_ids": [
+        "98111c01"
+      ],
+      "sources": [
+        "https://www.bricklink.com/catalogItemIn.asp?P=98111c01pb01&in=M"
+      ]
+    },
+    {
+      "architecture_id": "minidoll_standard",
+      "canonical_name": "LEGO mini-doll standard architecture",
+      "scale_class": "adjacent_standard",
+      "status": "adjacent_official_architecture",
+      "notes": [
+        "Keep separate from standard minifigure proportions, joints and surface grammar."
       ]
     }
   ],
