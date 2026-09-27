@@ -212,3 +212,31 @@ CharacterBodyDesignSpec USES_SURFACE ArchitectureSurfaceSchema
 ```
 
 The Knowledge Engine must resolve any legacy `BodyArchitecture` ID through the compatibility bridge before generation or manufacturing.
+
+
+## Mold/tooling lineage extension
+
+Custom/compatible bodies can cross brand boundaries through reused, remade, shared, or derived tooling. Maker identity is therefore not sufficient to identify exact body geometry.
+
+Add:
+- MoldFamily — a physically/tooling-related family of component geometry inside one FigureArchitecture.
+- MoldRevision — a geometry/tooling revision within a MoldFamily.
+- MoldEquivalenceObservation — evidence that two releases/components share, derive from, or do not share the same mold/tooling family.
+
+Relationships:
+
+```
+FigureArchitecture HAS_MOLD_FAMILY MoldFamily
+MoldFamily HAS_REVISION MoldRevision
+ComponentRelease USES_MOLD_REVISION MoldRevision
+MoldEquivalenceObservation COMPARES FigureRelease/ComponentRelease
+```
+
+Use cases:
+- detect cross-brand reissues/remakes;
+- transfer physical measurements only after mold equivalence is validated;
+- avoid buying redundant physical samples;
+- create hard-positive pairs for body recognition where paint/brand differ but geometry is the same;
+- create hard negatives where the architecture is the same but tooling geometry differs.
+
+A source statement such as "same mold" creates a candidate relationship, not manufacturing authority. Promote to validated equivalence only after corroborated catalog/component evidence or physical comparison.
