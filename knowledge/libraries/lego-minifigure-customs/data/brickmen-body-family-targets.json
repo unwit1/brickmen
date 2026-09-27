@@ -1,0 +1,88 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-27",
+  "status": "design_targets_no_production_geometry_yet",
+  "principle": "Use official/custom systems as design-space evidence and compatibility references. Brickmen printable bodies should have original parametric geometry and validated joints.",
+  "families": [
+    {
+      "architecture_id": "brickmen_broad_v0",
+      "scale_intent": "standard_to_intermediate",
+      "goals": [
+        "standard minifigure head compatibility",
+        "standard lower-body option",
+        "broader torso/shoulders than standard",
+        "custom enlarged arm option",
+        "standard 3.18-family accessory compatibility where sensible"
+      ],
+      "references": [
+        "lego_axl_oversized_torso_hybrid",
+        "lego_hagrid_giant_hybrid"
+      ],
+      "stage": "concept"
+    },
+    {
+      "architecture_id": "brickmen_mid_v0",
+      "scale_intent": "intermediate",
+      "goals": [
+        "standard head option",
+        "custom broad torso",
+        "custom modular arms/hands",
+        "optional elbow articulation",
+        "standard or enlarged lower-body modules",
+        "architecture-specific surface map",
+        "printable resin prototype and later moldable variant"
+      ],
+      "references": [
+        "lego_axl_oversized_torso_hybrid",
+        "community_printed_midfig",
+        "custom_g2_muscle_hybrid"
+      ],
+      "stage": "concept"
+    },
+    {
+      "architecture_id": "brickmen_xl_v0",
+      "scale_intent": "approximately_65_to_75mm_class",
+      "goals": [
+        "modular head/hair",
+        "shoulder elbow wrist articulation",
+        "custom pelvis/legs",
+        "enlarged but accessory-compatible hands",
+        "commodity or replaceable wear-critical joint hardware where advantageous",
+        "architecture-specific style/surface system"
+      ],
+      "references": [
+        "custom_alpha_7cm_muscle",
+        "custom_kdl_65mm_large",
+        "lego_giant_modular"
+      ],
+      "stage": "concept"
+    },
+    {
+      "architecture_id": "brickmen_giant_v0",
+      "scale_intent": "large_giant",
+      "goals": [
+        "modular head/hair",
+        "separate torso/body shell",
+        "separate arms/hands",
+        "optional modular lower body/legs",
+        "validated standard-system mounting and accessory interfaces",
+        "design for direct resin prototype and injection-molding crossover"
+      ],
+      "references": [
+        "lego_giant_modular",
+        "lego_giant_integrated_head_legacy"
+      ],
+      "stage": "concept"
+    }
+  ],
+  "development_sequence": [
+    "static silhouette prototype",
+    "modular non-wear assembly",
+    "articulated prototype",
+    "joint coupon validation",
+    "force/torque/cycle qualification",
+    "surface/style mapping",
+    "generation benchmark",
+    "production profile"
+  ]
+}
