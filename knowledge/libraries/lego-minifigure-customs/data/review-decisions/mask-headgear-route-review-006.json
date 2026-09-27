@@ -1,0 +1,152 @@
+{
+  "schema": "mask-headgear-route-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "mask-headgear-route-review-006",
+  "purpose": "Review high-multiplicity protective-diving, anthropomorphic-mask, and dedicated nonhuman-head signatures while the cape-aware rerank completes.",
+  "evidence_policy": {
+    "source": "Rebrickable-derived physical component census",
+    "no_visual_guessing": true,
+    "source_translation_requires_exact_source_appearance_pairing": true
+  },
+  "records": [
+    {
+      "fig_num": "fig-000530",
+      "figure_name": "Diver, Man, Red Wetsuit, Red Helmet with Mask, Airtank, Stubble",
+      "candidate_routes": [
+        "helmet_plus_head",
+        "separate_mask_headgear"
+      ],
+      "decision": "physical_route_confirmed_protective_environmental_equipment_not_identity_mask",
+      "confirmed_physical_route": "human_head_plus_standard_helmet_plus_separate_diving_visor",
+      "semantic_function": "protective_environmental_face_equipment",
+      "head_evidence": [
+        {
+          "part_num": "3626bpr0320",
+          "part_name": "Minifig Head, Brown Bangs and Line Stubble Print"
+        }
+      ],
+      "headgear_evidence": [
+        {
+          "part_num": "2446",
+          "part_name": "Helmet, Standard"
+        },
+        {
+          "part_num": "30090",
+          "part_name": "Headwear Accessory Visor / Diver's Mask"
+        }
+      ],
+      "confidence": 1,
+      "source_translation_status": "physical_route_confirmed_source_pairing_pending",
+      "training_note": "Human facial identity remains on the standard head; helmet and detachable diving visor are environmental equipment. Exact signature repeats across multiple color/issue variants."
+    },
+    {
+      "fig_num": "fig-008230",
+      "figure_name": "Woman, Red Swimsuit, White Helmet with Divers Mask",
+      "candidate_routes": [
+        "helmet_plus_head",
+        "separate_mask_headgear"
+      ],
+      "decision": "physical_route_confirmed_protective_environmental_equipment_not_identity_mask",
+      "confirmed_physical_route": "human_head_plus_standard_helmet_plus_separate_diving_visor",
+      "semantic_function": "protective_environmental_face_equipment",
+      "head_evidence": [
+        {
+          "part_num": "3626cpr0893",
+          "part_name": "Minifig Head Nya / Ms. Santos, Peach Lips, Open Mouth Smile, Black Eyebrows Print"
+        }
+      ],
+      "headgear_evidence": [
+        {
+          "part_num": "2446",
+          "part_name": "Helmet, Standard"
+        },
+        {
+          "part_num": "30090",
+          "part_name": "Headwear Accessory Visor / Diver's Mask"
+        }
+      ],
+      "confidence": 1,
+      "source_translation_status": "physical_route_confirmed_source_pairing_pending",
+      "training_note": "This repeated female-diver signature confirms the same environmental route independent of wetsuit and helmet color variants."
+    },
+    {
+      "fig_num": "fig-000143",
+      "figure_name": "Gorzan with Flat Silver Shoulder Armor",
+      "candidate_routes": [
+        "separate_mask_headgear"
+      ],
+      "decision": "physical_route_confirmed_anthropomorphic_species_face_mask_geometry",
+      "confirmed_physical_route": "printed_standard_head_plus_separate_gorilla_face_mask",
+      "semantic_function": "anthropomorphic_species_identity_geometry",
+      "head_evidence": [
+        {
+          "part_num": "3626cpr1206",
+          "part_name": "Minifig Head Gorzan, Gorilla with Yellow Eyes, Fangs and Gray Face, Closed Mouth / Open Mouth Print"
+        }
+      ],
+      "headgear_evidence": [
+        {
+          "part_num": "13361pr0003",
+          "part_name": "Mask Gorilla with Angry Face Print [Gorzan]"
+        }
+      ],
+      "confidence": 1,
+      "source_translation_status": "physical_route_confirmed_source_pairing_pending",
+      "training_note": "Gorzan uses a standard cylindrical expression head under a removable gorilla mask carrying muzzle/brow/species silhouette."
+    },
+    {
+      "fig_num": "fig-006480",
+      "figure_name": "Skeleton, Square Skull (60115 Torso)",
+      "candidate_routes": [
+        "modified_or_nonhuman_head"
+      ],
+      "decision": "physical_route_confirmed_full_modified_nonhuman_head",
+      "confirmed_physical_route": "dedicated_cube_skeleton_head_no_standard_cylindrical_head",
+      "semantic_function": "nonhuman_creature_head_geometry",
+      "head_evidence": [
+        {
+          "part_num": "19729pr0002",
+          "part_name": "Minifig Head Special, Cube with Skeleton Face Print"
+        }
+      ],
+      "headgear_evidence": [],
+      "confidence": 1,
+      "source_translation_status": "physical_route_confirmed_source_pairing_pending",
+      "training_note": "The square skull is a dedicated cube head element, not printed standard-head mask art. Body armor variants should not alter this head-geometry route."
+    },
+    {
+      "fig_num": "fig-016379",
+      "figure_name": "Spectral Dragonian Warrior, Ghost Lower Body",
+      "candidate_routes": [
+        "modified_or_nonhuman_head"
+      ],
+      "decision": "physical_route_confirmed_full_modified_nonhuman_head",
+      "confirmed_physical_route": "dedicated_nonstandard_dragonian_head_no_separate_headgear",
+      "semantic_function": "nonhuman_creature_head_geometry",
+      "head_evidence": [
+        {
+          "part_num": "28621pr9670",
+          "part_name": "Minifig Head Spectral Dragonian Warrior, Medium Azure Face, Dark Blue Lines, Red Eyes, White Fangs, Red Mouth, Medium Azure/Red Shapes in Back"
+        }
+      ],
+      "headgear_evidence": [],
+      "confidence": 1,
+      "source_translation_status": "physical_route_confirmed_source_pairing_pending",
+      "training_note": "The figure uses a non-3626 dedicated head element carrying the dragonian cranial/face geometry directly, with no separate mask/headgear channel."
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "protective_environmental_face_equipment": 2,
+    "anthropomorphic_species_identity_geometry": 1,
+    "nonhuman_creature_head_geometry": 2,
+    "expected_exact_signature_group_records_covered": 21,
+    "expected_additional_route_only_propagations": 16,
+    "source_translation_pairs_promoted": 0
+  },
+  "systemic_findings": [
+    "Protective-diving signatures repeat independently of torso and color variants and are strong candidates for topology propagation.",
+    "Dedicated non-3626 head elements should remain clearly separated from mask-over-standard-head routes.",
+    "Bodywear/armor variation is orthogonal to head-route topology and should not fragment exact component-signature groups."
+  ]
+}
