@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "body-particulate-critic-report.schema.json",
+  "title": "Brickmen Particulate Articulation Critic Report",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "critic_id",
+    "part_count",
+    "parts",
+    "motion_hierarchy",
+    "authority",
+    "production_geometry_authority"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "critic_id": {
+      "const": "particulate"
+    },
+    "part_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "parts": {
+      "type": "array"
+    },
+    "motion_hierarchy": {
+      "type": "array"
+    },
+    "authority": {
+      "type": "string"
+    },
+    "production_geometry_authority": {
+      "const": false
+    }
+  }
+}
