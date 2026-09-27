@@ -1,0 +1,119 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-27",
+  "status": "research_same_family_corpus",
+  "maker": "Alpha Toys",
+  "purpose": "Learn architecture invariants vs character-specific symbiote shell/surface changes within Alpha's ~4-4.5 cm hybrid family.",
+  "architecture_candidate": "custom_alpha_45mm_muscle_hybrid",
+  "mechanical_equivalence_status": "physical_validation_pending",
+  "clusters": [
+    {
+      "cluster_id": "AF321-AF326",
+      "nominal_height_mm_range": [
+        40,
+        45
+      ],
+      "releases": [
+        {
+          "code": "AF321",
+          "character": "Venom",
+          "variant": "movie"
+        },
+        {
+          "code": "AF322",
+          "character": "Carnage"
+        },
+        {
+          "code": "AF323",
+          "character": "Riot"
+        },
+        {
+          "code": "AF324",
+          "character": "Anti-Venom"
+        },
+        {
+          "code": "AF325",
+          "character": "Venom"
+        },
+        {
+          "code": "AF326",
+          "character": "Anti-Venom"
+        }
+      ],
+      "architecture_invariants_to_measure": [
+        "torso envelope",
+        "shoulder joint location",
+        "arm length/joint pattern",
+        "wrist interface",
+        "hip/lower-body interface",
+        "head/neck interface",
+        "accessory grip"
+      ],
+      "character_varying_features": [
+        "base color",
+        "chest emblem",
+        "head/eye/tongue treatment",
+        "surface veins",
+        "shoulder spikes",
+        "organic weapon/accessory set"
+      ],
+      "sources": [
+        "https://brixtoy.com/product/marvel-venom-movie-af321-minifigures/",
+        "https://www.herobloks.com/figures/31376/alpha-toys/af321/venom-%28movie%29",
+        "https://www.herobloks.com/figures/31404/alpha-toys/af322/carnage",
+        "https://www.herobloks.com/figures/31467",
+        "https://www.herobloks.com/figures/31518/alpha-toys/af325/venom"
+      ]
+    },
+    {
+      "cluster_id": "AF327-AF332",
+      "nominal_height_mm_range": [
+        40,
+        45
+      ],
+      "releases": [
+        {
+          "code": "AF327",
+          "character": "Toxin"
+        },
+        {
+          "code": "AF328",
+          "character": "Ancient Venom",
+          "source_body_label": "MaxiFig"
+        },
+        {
+          "code": "AF329",
+          "character": "Lasher"
+        },
+        {
+          "code": "AF330",
+          "character": "Carnage",
+          "variant": "Absolute Carnage",
+          "source_body_label": "MaxiFig"
+        },
+        {
+          "code": "AF331",
+          "character": "Sleeper"
+        },
+        {
+          "code": "AF332",
+          "character": "Phage"
+        }
+      ],
+      "relationship_to_af321_af326": "visual_related_family_mechanical_equivalence_pending",
+      "sources": [
+        "https://www.herobloks.com/figures/33823/alpha-toys/af328/ancient-venom",
+        "https://www.herobloks.com/figures/33825/alpha-toys/af330/carnage-%28absolute-carnage%29",
+        "https://brixtoy.com/product/marvel-ancient-venom-af328-minifigures-2/"
+      ]
+    }
+  ],
+  "training_tasks": [
+    "architecture_invariant_component_retrieval",
+    "same_skeleton_character_shell_generation",
+    "symbiote_surface_material_variation",
+    "character_identity_classification_after_geometry_normalization",
+    "cross_cluster_mold_revision_detection"
+  ],
+  "hard_rule": "Do not use catalog similarity to copy proprietary joint or sculpt geometry. Learn descriptive style/proportion relationships and validate Brickmen-original mechanics independently."
+}
