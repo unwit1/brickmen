@@ -37,6 +37,18 @@
         "Part identity/order must be verified after generation.",
         "Generated mating geometry has no manufacturing authority."
       ],
+      "research_status": null,
+      "upstream_verification": {
+        "repository": "https://github.com/wgsxm/PartCrafter",
+        "verified_commit_sha": "3d773bf02fad51c7ab31a5615573fec93b287b30",
+        "verified_on": "2026-09-27",
+        "interface_files": [
+          "scripts/inference_partcrafter.py"
+        ],
+        "version_policy": "exact_verified_revision_preferred_reverify_adapter_on_mismatch",
+        "verification_scope": "Brickmen execution interface and output contract only; not model quality or production authority"
+      },
+      "brickmen_domain_verified": true,
       "production_geometry_authority": false
     },
     {
@@ -75,6 +87,18 @@
         "Provider part decomposition may not match Brickmen manufacturing component boundaries.",
         "Generated interfaces are visual hypotheses only."
       ],
+      "research_status": null,
+      "upstream_verification": {
+        "repository": "https://github.com/NVlabs/PartPacker",
+        "verified_commit_sha": "178d6c9408ecde857e6e716bab2763df6ce8bdc0",
+        "verified_on": "2026-09-27",
+        "interface_files": [
+          "flow/scripts/infer.py"
+        ],
+        "version_policy": "exact_verified_revision_preferred_reverify_adapter_on_mismatch",
+        "verification_scope": "Brickmen execution interface and output contract only; not model quality or production authority"
+      },
+      "brickmen_domain_verified": true,
       "production_geometry_authority": false
     },
     {
@@ -117,6 +141,21 @@
         "Arbitrary-input execution requires an upstream-compatible semantic part-label EXR mask; Brickmen does not invent label semantics.",
         "Lossless PNG/TIFF convenience input must encode background 0 and contiguous positive part labels 1..N; multicolor visualization masks are rejected."
       ],
+      "research_status": null,
+      "upstream_verification": {
+        "repository": "https://github.com/Mobiuslqm/PAct",
+        "verified_commit_sha": "a5ccec5056e7b27f39ddb5b83613c0efba9b2861",
+        "verified_on": "2026-09-27",
+        "interface_files": [
+          "infer_imgs.py",
+          "modules/pact/datasets/components.py",
+          "modules/pact/pipelines/pact_i23d_gen_pipe.py",
+          "modules/pact/datasets/structured_latent.py"
+        ],
+        "version_policy": "exact_verified_revision_preferred_reverify_adapter_on_mismatch",
+        "verification_scope": "Brickmen execution interface and output contract only; not model quality or production authority"
+      },
+      "brickmen_domain_verified": true,
       "production_geometry_authority": false
     },
     {
@@ -155,6 +194,19 @@
         "Not a primary geometry generator.",
         "Articulation predictions require reconciliation with deterministic Brickmen engineering evidence."
       ],
+      "research_status": null,
+      "upstream_verification": {
+        "repository": "https://github.com/RuiningLi/particulate",
+        "verified_commit_sha": "dee37a75c449f324d9989993461ee09eaccc1686",
+        "verified_on": "2026-09-27",
+        "interface_files": [
+          "infer.py",
+          "configs/particulate-B.yaml"
+        ],
+        "version_policy": "exact_verified_revision_preferred_reverify_adapter_on_mismatch",
+        "verification_scope": "Brickmen execution interface and output contract only; not model quality or production authority"
+      },
+      "brickmen_domain_verified": true,
       "production_geometry_authority": false
     },
     {
@@ -189,6 +241,18 @@
         "Binary object mask is required for the published API path.",
         "Internal mesh postprocessing should not be assumed stable/public without separate verification."
       ],
+      "research_status": null,
+      "upstream_verification": {
+        "repository": "https://github.com/facebookresearch/sam-3d-objects",
+        "verified_commit_sha": "f91db411c50efee93d8db7aeb323885650f6f722",
+        "verified_on": "2026-09-27",
+        "interface_files": [
+          "notebook/inference.py"
+        ],
+        "version_policy": "exact_verified_revision_preferred_reverify_adapter_on_mismatch",
+        "verification_scope": "Brickmen execution interface and output contract only; not model quality or production authority"
+      },
+      "brickmen_domain_verified": true,
       "production_geometry_authority": false
     },
     {
@@ -199,7 +263,9 @@
       "adapter_status": "unverified",
       "brickmen_execution_runnable": false,
       "entrypoint": null,
-      "input_requirements": [],
+      "input_requirements": [
+        "public_implementation_not_available"
+      ],
       "output_contract": null,
       "requires_component_slot_mapping": null,
       "helpers": {},
@@ -212,6 +278,16 @@
         "Published method is highly relevant to Brickmen because it outputs decomposable full-resolution part meshes, but no runnable Brickmen adapter can be verified without an implementation.",
         "Published training uses substantial GPU resources; inference hardware requirements cannot be inferred safely from the paper alone."
       ],
+      "research_status": {
+        "verified_on": "2026-09-27",
+        "venue": "CVPR 2026 Highlight",
+        "public_project_page": true,
+        "public_code_verified": false,
+        "public_weights_verified": false,
+        "revisit_trigger": "official code, weights, demo, or repository release"
+      },
+      "upstream_verification": null,
+      "brickmen_domain_verified": false,
       "production_geometry_authority": false
     },
     {
@@ -222,7 +298,16 @@
       "adapter_status": "upstream_runnable_not_brickmen_domain_verified",
       "brickmen_execution_runnable": false,
       "entrypoint": "demo/infer_image.py",
-      "input_requirements": [],
+      "input_requirements": [
+        "single_image",
+        "sam_or_sam3_segmentation_checkpoint",
+        "rmbg_or_alpha_foreground",
+        "graph_prediction_api_or_cached_graph_json",
+        "sdxl_vae",
+        "pwm_checkpoint",
+        "partnet_mobility_retrieval_database",
+        "supported_category_only"
+      ],
       "output_contract": {
         "kind": "category_limited_articulation_prediction_plus_mesh_retrieval",
         "prediction_pattern": "predictions/**/joint_*/geom_pred.json",
@@ -245,6 +330,30 @@
         "Project/model card did not specify a project license in the reviewed 2026-09-27 repository snapshot; external models and datasets retain separate terms.",
         "Because Brickmen body figures are outside the documented categories, this provider is not a verified primary Brickmen generator despite the now-runnable upstream pipeline."
       ],
+      "research_status": {
+        "verified_on": "2026-09-27",
+        "venue": "ECCV 2026",
+        "official_repository": true,
+        "official_weights": true,
+        "single_image_demo": true,
+        "brickmen_domain_fit": "unverified_and_documented_categories_exclude_humanoid_character_bodies"
+      },
+      "upstream_verification": {
+        "repository": "https://github.com/Wentap123/PWM-ArtGen",
+        "verified_commit_sha": "03b07386328d87e686e3ac037cf71b21de04ff97",
+        "verified_on": "2026-09-27",
+        "interface_files": [
+          "demo/infer_image.py",
+          "demo/infer_image.sh",
+          "infer.py",
+          "docs/single_image.md",
+          "docs/setup.md",
+          "docs/huggingface/model_card.md"
+        ],
+        "version_policy": "exact_verified_revision_preferred_reverify_research_contract_on_mismatch",
+        "verification_scope": "Upstream single-image stages, geom_pred articulation output, retrieval-backed mesh output and documented supported categories."
+      },
+      "brickmen_domain_verified": false,
       "production_geometry_authority": false
     }
   ],
