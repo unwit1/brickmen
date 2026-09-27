@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.4",
+  "schema_version": "0.5",
   "skeleton_id": "brickmen_giant_v0_skeleton",
   "architecture_id": "brickmen_giant_v0",
   "status": "concept_generation_skeleton_nonproduction",
@@ -98,6 +98,31 @@
       "default": 1,
       "min": 0.8,
       "max": 1.25
+    },
+    "arm_bulk_width_scale": {
+      "default": 1,
+      "min": 0.65,
+      "max": 1.8
+    },
+    "arm_bulk_depth_scale": {
+      "default": 1,
+      "min": 0.65,
+      "max": 1.8
+    },
+    "hand_width_scale": {
+      "default": 1,
+      "min": 0.65,
+      "max": 1.8
+    },
+    "hand_depth_scale": {
+      "default": 1,
+      "min": 0.65,
+      "max": 1.8
+    },
+    "hand_height_scale": {
+      "default": 1,
+      "min": 0.65,
+      "max": 1.8
     }
   },
   "nodes": [
@@ -757,6 +782,76 @@
         "y": "abdomen_projection_scale",
         "x": "abdomen_width_scale"
       }
+    },
+    {
+      "id": "arm_l",
+      "shape": "capsule_between_nodes",
+      "a_node": "shoulder_l",
+      "b_node": "wrist_l",
+      "center_node": "elbow_l",
+      "size_norm": [
+        0.18,
+        0.28,
+        0
+      ],
+      "size_modifiers": {
+        "x": "arm_bulk_width_scale",
+        "y": "arm_bulk_depth_scale"
+      },
+      "frame_semantic": "bone_aligned_visual_envelope",
+      "visual_authority": "Brickmen rounded baseline informed by official Giant component-profile statistics; not copied surface geometry."
+    },
+    {
+      "id": "arm_r",
+      "shape": "capsule_between_nodes",
+      "a_node": "shoulder_r",
+      "b_node": "wrist_r",
+      "center_node": "elbow_r",
+      "size_norm": [
+        0.18,
+        0.28,
+        0
+      ],
+      "size_modifiers": {
+        "x": "arm_bulk_width_scale",
+        "y": "arm_bulk_depth_scale"
+      },
+      "frame_semantic": "bone_aligned_visual_envelope",
+      "visual_authority": "Brickmen rounded baseline informed by official Giant component-profile statistics; not copied surface geometry."
+    },
+    {
+      "id": "hand_l",
+      "shape": "capsule",
+      "center_node": "hand_l",
+      "size_norm": [
+        0.175,
+        0.25,
+        0.21
+      ],
+      "size_modifiers": {
+        "x": "hand_width_scale",
+        "y": "hand_depth_scale",
+        "z": "hand_height_scale"
+      },
+      "frame_semantic": "component_local_visual_envelope",
+      "visual_authority": "Brickmen rounded baseline informed by official Giant component-profile statistics."
+    },
+    {
+      "id": "hand_r",
+      "shape": "capsule",
+      "center_node": "hand_r",
+      "size_norm": [
+        0.175,
+        0.25,
+        0.21
+      ],
+      "size_modifiers": {
+        "x": "hand_width_scale",
+        "y": "hand_depth_scale",
+        "z": "hand_height_scale"
+      },
+      "frame_semantic": "component_local_visual_envelope",
+      "visual_authority": "Brickmen rounded baseline informed by official Giant component-profile statistics."
     }
   ],
   "generation_contract": {
@@ -782,6 +877,7 @@
     "Giant emphasizes broad simple mass rather than XL-style anatomical limb segmentation.",
     "Visual envelope width/depth parameters are independent from skeletal joint-spacing parameters; changing torso/head/abdomen mass must not move shoulder or lower-body joint centers.",
     "Fine-grained vertical segment parameters move each segment endpoint and its downstream nodes, preserving neighboring segment lengths unless their own parameter is changed.",
-    "Official pinned 10128 LDraw body-profile evidence requires torso_depth_scale≈1.669 and abdomen_projection_scale≈1.548; v0.4 expands these visual-only maxima without changing defaults or mechanical node geometry."
+    "Official pinned 10128 LDraw body-profile evidence requires torso_depth_scale≈1.669 and abdomen_projection_scale≈1.548; v0.4 expands these visual-only maxima without changing defaults or mechanical node geometry.",
+    "Giant v0.5 adds visual-only bone-aligned arm and component-local hand envelopes. Their rounded baseline cross-sections are independently fit from official component-profile evidence and do not change shoulder/wrist mechanics."
   ]
 }
