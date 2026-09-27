@@ -1,0 +1,119 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-27",
+  "status": "research_profiles_manufacturing_validation_pending",
+  "profiles": [
+    {
+      "surface_material_profile_id": "surface_skin_smooth",
+      "material_semantic": "skin",
+      "strategy": {
+        "silhouette": "anatomy_from_body_profile",
+        "major_relief": "only major muscle/body planes",
+        "shallow_relief": "limited",
+        "print": "veins/scars/tattoos/source details",
+        "finish": "matte_to_satin source dependent"
+      }
+    },
+    {
+      "surface_material_profile_id": "surface_rock",
+      "material_semantic": "rock",
+      "strategy": {
+        "silhouette": "large rock masses only where identity-critical",
+        "major_relief": "large plates",
+        "shallow_relief": "medium cracks/plate edges",
+        "print": "fine crack network/color variation",
+        "omit": "microtexture below reliable print/cleanup scale"
+      },
+      "constraints": [
+        "fade relief near joints",
+        "avoid deep stress concentrator grooves",
+        "preserve clean mating surfaces"
+      ]
+    },
+    {
+      "surface_material_profile_id": "surface_fur",
+      "material_semantic": "fur",
+      "strategy": {
+        "silhouette": "tufts/clumps at outer contour",
+        "major_relief": "large fur masses",
+        "shallow_relief": "directional fur grooves",
+        "print": "color variation/highlights",
+        "omit": "individual hair strands at miniature scale"
+      },
+      "constraints": [
+        "avoid brittle needle-like strands",
+        "keep joint contact zones smooth"
+      ]
+    },
+    {
+      "surface_material_profile_id": "surface_metal",
+      "material_semantic": "metal",
+      "strategy": {
+        "silhouette": "body/armor planes",
+        "major_relief": "panel seams only when structural/identity-relevant",
+        "shallow_relief": "engraving/panel lines",
+        "print": "highlights, energy lines, fine seams",
+        "finish": "metallic/pearlescent/paint strategy"
+      }
+    },
+    {
+      "surface_material_profile_id": "surface_scales_reptilian",
+      "material_semantic": "scales",
+      "strategy": {
+        "silhouette": "spines/claws only if identity-critical",
+        "major_relief": "large plates/spines",
+        "shallow_relief": "sparse scale fields",
+        "print": "dense small-scale texture",
+        "omit": "micro scales that create noisy/brittle surface"
+      },
+      "constraints": [
+        "no sharp scale field across moving joint contact",
+        "limit spike aspect ratio by material"
+      ]
+    },
+    {
+      "surface_material_profile_id": "surface_symbiote_organic",
+      "material_semantic": "symbiote_organic",
+      "strategy": {
+        "silhouette": "selected tendrils/spikes",
+        "major_relief": "broad organic muscle/symbiote masses",
+        "shallow_relief": "raised veins selectively",
+        "print": "dense vein network/emblems/color transitions",
+        "separate_accessory": "long tendrils/weapons/tongue where appropriate",
+        "finish": "glossy_or_satin source/style dependent"
+      },
+      "constraints": [
+        "avoid dense brittle micro-veins",
+        "avoid tendrils inside articulation sweep",
+        "prefer removable long tendrils"
+      ]
+    },
+    {
+      "surface_material_profile_id": "surface_armor_plating",
+      "material_semantic": "armor_plating",
+      "strategy": {
+        "silhouette": "major armor plates/shoulders",
+        "major_relief": "layered armor volumes",
+        "shallow_relief": "panel seams/rivets",
+        "print": "fine markings/weathering",
+        "separate_component": "large removable armor where architecture permits"
+      },
+      "constraints": [
+        "separate underlying body from armor shell",
+        "preserve joint clearance"
+      ]
+    },
+    {
+      "surface_material_profile_id": "surface_cloth_suit",
+      "material_semantic": "cloth",
+      "strategy": {
+        "silhouette": "major coat/suit/jacket tails only",
+        "major_relief": "large lapels/folds sparingly",
+        "shallow_relief": "selected seams/folds",
+        "print": "most fabric pattern/tie/button detail",
+        "omit": "micro-wrinkles"
+      }
+    }
+  ],
+  "rule": "Surface material controls representation strategy, not actual printed resin/material choice. Manufacturing profiles decide physical material."
+}
