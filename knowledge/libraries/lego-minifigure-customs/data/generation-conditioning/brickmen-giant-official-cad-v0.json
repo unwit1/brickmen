@@ -7,9 +7,10 @@
     "skeleton_reference_id": "lego_giant_10128_ldraw_shoulders_fit_2303",
     "skeleton_reference_height_mm": 71.11760000000001,
     "skeleton_fit_status": "strong_visual_fit",
-    "envelope_reference_id": "lego_giant_10128_ldraw_body_profile_2303",
+    "envelope_reference_id": "merged:lego_giant_10128_ldraw_body_profile_2303+lego_giant_arms_hands_ldraw_envelope_profile_2303",
     "envelope_reference_ids": [
-      "lego_giant_10128_ldraw_body_profile_2303"
+      "lego_giant_10128_ldraw_body_profile_2303",
+      "lego_giant_arms_hands_ldraw_envelope_profile_2303"
     ],
     "envelope_bound_hits": []
   },
@@ -34,11 +35,13 @@
       "head_height_scale": 1.0,
       "abdomen_projection_scale": 1.547973449329982,
       "abdomen_width_scale": 1.1226284715712989,
-      "arm_bulk_width_scale": 1.0,
-      "arm_bulk_depth_scale": 1.0,
-      "hand_width_scale": 1.0,
-      "hand_depth_scale": 1.0,
-      "hand_height_scale": 1.0
+      "arm_bulk_width_scale": 1.0098986926893223,
+      "arm_bulk_depth_scale": 0.999303033790319,
+      "hand_width_scale": 0.9958222463340495,
+      "hand_depth_scale": 0.9925349106519786,
+      "hand_height_scale": 0.9972215035378023,
+      "lower_body_width_scale": 1.0089329152249085,
+      "lower_body_depth_scale": 0.9944605584301671
     },
     "other": {},
     "locked_parameters": {},
@@ -620,13 +623,13 @@
       "shape": "capsule_between_nodes",
       "center_node": "elbow_l",
       "size_normalized_body_height": [
-        0.18,
-        0.28,
+        0.181782,
+        0.279805,
         0.0
       ],
       "size_mm_at_target_height": [
-        11.16,
-        17.36,
+        11.270469,
+        17.347901,
         0.0
       ],
       "frame_semantic": "bone_aligned_visual_envelope",
@@ -662,13 +665,13 @@
       "shape": "capsule_between_nodes",
       "center_node": "elbow_r",
       "size_normalized_body_height": [
-        0.18,
-        0.28,
+        0.181782,
+        0.279805,
         0.0
       ],
       "size_mm_at_target_height": [
-        11.16,
-        17.36,
+        11.270469,
+        17.347901,
         0.0
       ],
       "frame_semantic": "bone_aligned_visual_envelope",
@@ -704,14 +707,14 @@
       "shape": "capsule",
       "center_node": "hand_l",
       "size_normalized_body_height": [
-        0.175,
-        0.25,
-        0.21
+        0.174269,
+        0.248134,
+        0.209417
       ],
       "size_mm_at_target_height": [
-        10.85,
-        15.5,
-        13.02
+        10.804671,
+        15.384291,
+        12.983824
       ],
       "frame_semantic": "component_local_visual_envelope",
       "visual_authority": "Brickmen rounded baseline informed by official Giant component-profile statistics.",
@@ -722,18 +725,60 @@
       "shape": "capsule",
       "center_node": "hand_r",
       "size_normalized_body_height": [
-        0.175,
-        0.25,
-        0.21
+        0.174269,
+        0.248134,
+        0.209417
       ],
       "size_mm_at_target_height": [
-        10.85,
-        15.5,
-        13.02
+        10.804671,
+        15.384291,
+        12.983824
       ],
       "frame_semantic": "component_local_visual_envelope",
       "visual_authority": "Brickmen rounded baseline informed by official Giant component-profile statistics.",
       "visual_only": true
+    },
+    {
+      "envelope_id": "lower_body",
+      "shape": "box_between_nodes",
+      "center_node": "pelvis",
+      "size_normalized_body_height": [
+        0.565002,
+        0.328172,
+        0.0
+      ],
+      "size_mm_at_target_height": [
+        35.030151,
+        20.346663,
+        0.0
+      ],
+      "frame_semantic": "body_axis_visual_envelope",
+      "visual_authority": "Brickmen rounded baseline informed by official Giant lower-body profile-band statistics; deliberately independent from hip/stance joint spacing.",
+      "visual_only": true,
+      "a_node": "root",
+      "b_node": "waist",
+      "a_normalized_body_height": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "b_normalized_body_height": [
+        0.0,
+        0.0,
+        0.4
+      ],
+      "a_mm_at_target_height": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "b_mm_at_target_height": [
+        0.0,
+        0.0,
+        24.8
+      ],
+      "derived_length_normalized_body_height": 0.4,
+      "derived_length_mm_at_target_height": 24.8
     }
   ],
   "component_plan": {
