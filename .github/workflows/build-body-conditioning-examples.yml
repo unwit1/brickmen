@@ -34,9 +34,18 @@ jobs:
           OUT="knowledge/libraries/lego-minifigure-customs/data/generation-conditioning"
           mkdir -p "$OUT"
 
-          python -m tools.geometry.compile_body_generation_conditioning             knowledge/libraries/lego-minifigure-customs/data/skeletons/brickmen-giant-v0.json             --skeleton-reference knowledge/libraries/lego-minifigure-customs/data/reference-landmarks/lego-giant-ldraw-shoulders-fit.json             --envelope-reference knowledge/libraries/lego-minifigure-customs/data/reference-landmarks/lego-giant-10128-ldraw-body-profile.json             --joint-profile knowledge/libraries/lego-minifigure-customs/data/joint-profiles/lego-giant-43093-shoulder-reference-v0.json             -o "$OUT/brickmen-giant-official-cad-v0.json"
+          python -m tools.geometry.compile_body_generation_conditioning \
+            knowledge/libraries/lego-minifigure-customs/data/skeletons/brickmen-giant-v0.json \
+            --skeleton-reference knowledge/libraries/lego-minifigure-customs/data/reference-landmarks/lego-giant-ldraw-shoulders-fit.json \
+            --envelope-reference knowledge/libraries/lego-minifigure-customs/data/reference-landmarks/lego-giant-10128-ldraw-body-profile.json \
+            --envelope-reference knowledge/libraries/lego-minifigure-customs/data/reference-landmarks/lego-giant-limb-ldraw-envelope-profile.json \
+            --joint-profile knowledge/libraries/lego-minifigure-customs/data/joint-profiles/lego-giant-43093-shoulder-reference-v0.json \
+            -o "$OUT/brickmen-giant-official-cad-v0.json"
 
-          python -m tools.geometry.compile_body_generation_conditioning             knowledge/libraries/lego-minifigure-customs/data/skeletons/brickmen-broad-v0.json             --envelope-reference knowledge/libraries/lego-minifigure-customs/data/reference-landmarks/lego-axl-front.json             -o "$OUT/brickmen-broad-axl-envelope-v0.json"
+          python -m tools.geometry.compile_body_generation_conditioning \
+            knowledge/libraries/lego-minifigure-customs/data/skeletons/brickmen-broad-v0.json \
+            --envelope-reference knowledge/libraries/lego-minifigure-customs/data/reference-landmarks/lego-axl-front.json \
+            -o "$OUT/brickmen-broad-axl-envelope-v0.json"
 
       - name: Validate example invariants
         run: |
@@ -50,14 +59,23 @@ jobs:
 
           assert giant["production_geometry_authority"] is False
           assert giant["target_height_mm"] == 62
+          assert len(giant["source_fits"]["envelope_reference_ids"]) == 2
           assert giant["mechanical_constraints"][0]["manufacturing_authority"] is False
           assert giant["mechanical_constraints"][0]["reference_keepout_bbox_mm"] == [16, 6.4, 6.4]
-          torso = next(x for x in giant["visual_envelopes"] if x["envelope_id"] == "torso")
-          arm = next(x for x in giant["visual_envelopes"] if x["envelope_id"] == "arm_l")
+
+          envelopes = {x["envelope_id"]: x for x in giant["visual_envelopes"]}
+          torso = envelopes["torso"]
+          arm = envelopes["arm_l"]
+          hand = envelopes["hand_l"]
+          lower = envelopes["lower_body"]
+
           assert abs(torso["size_normalized_body_height"][0] - 0.44822387062555535) < 1e-6
           assert abs(torso["size_normalized_body_height"][1] - 0.41732606682059015) < 1e-6
           assert abs(arm["size_normalized_body_height"][0] - 0.181781764684078) < 1e-6
           assert abs(arm["size_normalized_body_height"][1] - 0.27980484946128936) < 1e-6
+          assert abs(hand["size_normalized_body_height"][0] - 0.17426889310845864) < 1e-6
+          assert abs(lower["size_normalized_body_height"][0] - 0.5650024325259488) < 1e-6
+          assert abs(lower["size_normalized_body_height"][1] - 0.32817198428195515) < 1e-6
           assert arm["a_node"] == "shoulder_l"
           assert arm["b_node"] == "wrist_l"
 
