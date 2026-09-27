@@ -1,0 +1,125 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-27",
+  "status": "benchmark_design",
+  "name": "nonstandard_body_morphology_v0",
+  "purpose": "Test whether generation/style systems disentangle FigureArchitecture, morphology, surface material, maker style and character identity.",
+  "architecture_targets": [
+    "minifig_standard",
+    "brickmen_broad_v0",
+    "brickmen_mid_v0",
+    "brickmen_giant_v0"
+  ],
+  "semantic_cases": [
+    {
+      "case_id": "muscular_tapered",
+      "archetype": "muscular_humanoid",
+      "feature_targets": {
+        "stature": "large",
+        "shoulders": "very_large",
+        "chest": "very_large",
+        "waist": "large",
+        "taper": "high",
+        "surface": "skin"
+      }
+    },
+    {
+      "case_id": "heavy_round",
+      "archetype": "heavy_round_humanoid",
+      "feature_targets": {
+        "stature": "large",
+        "shoulders": "large",
+        "chest": "very_large",
+        "waist": "very_large",
+        "taper": "low",
+        "abdomen_projection": "very_large",
+        "surface": "cloth_skin"
+      }
+    },
+    {
+      "case_id": "suited_heavy",
+      "archetype": "heavy_round_humanoid",
+      "feature_targets": {
+        "stature": "large",
+        "body_mass": "very_large",
+        "taper": "low",
+        "surface": "cloth",
+        "anatomy_relief": "low"
+      }
+    },
+    {
+      "case_id": "symbiote_standard_height_broad",
+      "archetype": "symbiote_massive_humanoid",
+      "feature_targets": {
+        "stature": "standard",
+        "shoulders": "very_large",
+        "arms": "very_large",
+        "lower_body": "standard_like",
+        "surface": "symbiote_organic"
+      }
+    },
+    {
+      "case_id": "rocky_massive",
+      "archetype": "rocky_massive_humanoid",
+      "feature_targets": {
+        "stature": "large",
+        "mass": "very_large",
+        "surface": "rock",
+        "taper": "low_to_medium"
+      }
+    },
+    {
+      "case_id": "armored_massive",
+      "archetype": "armored_massive_humanoid",
+      "feature_targets": {
+        "stature": "large",
+        "mass": "large",
+        "surface": "armor_plating",
+        "underbody_vs_armor": "separate"
+      }
+    },
+    {
+      "case_id": "gorilla",
+      "archetype": "gorilla_like",
+      "feature_targets": {
+        "stature": "large",
+        "arm_length": "very_long",
+        "leg_length": "shorter_relative",
+        "posture": "forward",
+        "surface": "fur_skin"
+      }
+    },
+    {
+      "case_id": "reptilian_monster",
+      "archetype": "reptilian_monster_large",
+      "feature_targets": {
+        "stature": "large",
+        "mass": "large",
+        "surface": "scales",
+        "hands": "claw_candidate",
+        "head": "monster"
+      }
+    }
+  ],
+  "generation_matrix": "Every semantic case is compiled onto each mechanically compatible architecture target. Incompatible combinations must be rejected with a reason rather than forced.",
+  "metrics": [
+    "architecture_component_graph_pass",
+    "joint_cartridge_integrity",
+    "target_stature_error",
+    "mass_region_error",
+    "taper_error",
+    "surface_representation_accuracy",
+    "source_identity_when_character_conditioned",
+    "body_style_distance",
+    "articulation_pass",
+    "dfm_pass",
+    "human_correction_minutes"
+  ],
+  "failure_examples": [
+    "heavy_round becomes Hulk V-taper",
+    "symbiote standard-height broad becomes tall MidFig",
+    "gorilla gets humanoid arm/leg ratios",
+    "armor is fused into joint geometry",
+    "rock/scales become dense brittle microtexture"
+  ]
+}
