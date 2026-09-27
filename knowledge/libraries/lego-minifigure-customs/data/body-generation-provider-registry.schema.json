@@ -107,6 +107,23 @@
               },
               "upstream_requirement_note": {
                 "type": "string"
+              },
+              "environment": {
+                "type": "object",
+                "properties": {
+                  "minimum_vram_gb": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  },
+                  "minimum_vram_authority": {
+                    "type": "string"
+                  },
+                  "cuda_required": {
+                    "type": "boolean"
+                  }
+                }
               }
             }
           },
@@ -122,6 +139,32 @@
           },
           "output_contract": {
             "type": "object"
+          },
+          "upstream_verification": {
+            "type": "object",
+            "properties": {
+              "repository": {
+                "type": "string"
+              },
+              "verified_commit_sha": {
+                "type": "string"
+              },
+              "verified_on": {
+                "type": "string"
+              },
+              "interface_files": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "version_policy": {
+                "type": "string"
+              },
+              "verification_scope": {
+                "type": "string"
+              }
+            }
           }
         }
       }
