@@ -329,6 +329,13 @@
   ],
   "mechanical_review_required": true,
   "contains_nonproduction_mechanical_constraints": true,
+  "pipeline_stage": "articulated_generator",
+  "output_contract": {
+    "kind": "articulated_part_bundle",
+    "semantic_slot_mapping": "required_after_generation",
+    "articulation_prediction_authority": "candidate_only"
+  },
+  "requires_component_slot_mapping": true,
   "output_acceptance_rules": [
     "All expected required component slots must be resolved or the run is incomplete.",
     "Generated meshes may satisfy visual envelopes but cannot redefine selected skeleton joint frames automatically.",

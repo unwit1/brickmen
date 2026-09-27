@@ -327,6 +327,18 @@
   ],
   "mechanical_review_required": true,
   "contains_nonproduction_mechanical_constraints": true,
+  "pipeline_stage": "primary_generator",
+  "output_contract": {
+    "kind": "part_mesh_bundle",
+    "component_pattern": "*_partN.glb",
+    "composite_pattern": "*_N.glb",
+    "auxiliary_patterns": [
+      "*_vol0.glb",
+      "*_vol1.glb"
+    ],
+    "semantic_slot_mapping": "required_after_generation"
+  },
+  "requires_component_slot_mapping": true,
   "output_acceptance_rules": [
     "All expected required component slots must be resolved or the run is incomplete.",
     "Generated meshes may satisfy visual envelopes but cannot redefine selected skeleton joint frames automatically.",
