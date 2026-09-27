@@ -19,6 +19,23 @@ SKELETON = (
     / "skeletons"
     / "brickmen-broad-v0.json"
 )
+GIANT_SKELETON = (
+    ROOT
+    / "knowledge"
+    / "libraries"
+    / "lego-minifigure-customs"
+    / "data"
+    / "skeletons"
+    / "brickmen-giant-v0.json"
+)
+REFERENCE_DIR = (
+    ROOT
+    / "knowledge"
+    / "libraries"
+    / "lego-minifigure-customs"
+    / "data"
+    / "reference-landmarks"
+)
 
 
 def synthetic_reference():
@@ -113,3 +130,21 @@ def test_default_optimizer_excludes_envelope_only_parameters():
     assert "torso_width_scale" not in result["optimized_parameter_names"]
     assert "head_width_scale" not in result["optimized_parameter_names"]
     assert "abdomen_width_scale" not in result["optimized_parameter_names"]
+
+
+
+def test_official_giant_shoulders_fit_close_to_default_width():
+    from tools.geometry.fit_body_skeleton import load_reference
+
+    spec = load_spec(GIANT_SKELETON)
+    ref = load_reference(REFERENCE_DIR / "lego-giant-ldraw-shoulders-fit.json")
+    result = fit_skeleton(spec, ref)
+
+    assert result["fit_parameters"]["shoulder_width_scale"] == pytest.approx(
+        1.0226339574, rel=1e-4
+    )
+    assert result["optimized_parameter_names"] == ["shoulder_width_scale"]
+    assert result["residuals"]["shoulder_l"]["axes"]["z"] == pytest.approx(
+        -0.0188034467, abs=1e-4
+    )
+    assert result["production_geometry_authority"] is False
