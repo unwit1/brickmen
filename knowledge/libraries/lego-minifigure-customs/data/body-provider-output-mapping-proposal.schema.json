@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "body-provider-output-mapping-proposal.schema.json",
+  "title": "Brickmen Provider Output Mapping Proposal",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "architecture_id",
+    "provider_id",
+    "component_candidates",
+    "required_slots",
+    "global_alignment_candidates",
+    "ambiguity",
+    "automatic_promotion_allowed",
+    "production_geometry_authority"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "architecture_id": {
+      "type": "string"
+    },
+    "provider_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "provider_job_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "component_candidates": {
+      "type": "array"
+    },
+    "required_slots": {
+      "type": "array"
+    },
+    "global_alignment_candidates": {
+      "type": "array"
+    },
+    "ambiguity": {
+      "type": "object"
+    },
+    "automatic_promotion_allowed": {
+      "type": "boolean"
+    },
+    "production_geometry_authority": {
+      "const": false
+    }
+  }
+}
