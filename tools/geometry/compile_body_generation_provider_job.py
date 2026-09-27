@@ -66,7 +66,9 @@ def compile_provider_job(
 
     pipeline_stage = str(provider.get("pipeline_stage", "primary_generator"))
     output_contract = provider.get("output_contract")
-    requires_component_slot_mapping = pipeline_stage != "post_generation_critic"
+    requires_component_slot_mapping = pipeline_stage in {
+        "primary_generator", "articulated_generator"
+    }
 
     mechanical = conditioning.get("mechanical_constraints", [])
     has_unapproved = any(
