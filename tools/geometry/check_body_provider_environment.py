@@ -9,6 +9,7 @@ import json
 from pathlib import Path
 import shutil
 import subprocess
+import sys
 from typing import Any, Mapping
 
 
@@ -81,11 +82,36 @@ def detect_gpus() -> list[dict[str,Any]]:
     return out
 
 
-def _module_status(names: list[str]) -> dict[str,bool]:
-    return {
-        name:importlib.util.find_spec(name) is not None
-        for name in names
-    }
+def _module_status(
+    names: list[str],
+    *,
+    python_executable: str | None=None,
+) -> dict[str,bool]:
+    python_executable=python_executable or sys.executable
+    if not names:
+        return {}
+    code=(
+        "import importlib.util,json;"
+        "names="+repr(names)+";"
+        "print(json.dumps({n:importlib.util.find_spec(n) is not None for n in names}))"
+    )
+    try:
+        completed=subprocess.run(
+            [python_executable,"-c",code],
+            check=False,capture_output=True,text=True,timeout=20,
+        )
+        if completed.returncode==0:
+            payload=json.loads((completed.stdout or "{}").strip() or "{}")
+            return {name:bool(payload.get(name)) for name in names}
+    except Exception:
+        pass
+    # Fallback is valid only for the current interpreter.
+    if python_executable in {sys.executable,"python","python3"}:
+        return {
+            name:importlib.util.find_spec(name) is not None
+            for name in names
+        }
+    return {name:False for name in names}
 
 
 def check_provider_environment(
@@ -95,6 +121,7 @@ def check_provider_environment(
     detected_git_head: str | None=None,
     detected_gpus: list[dict[str,Any]] | None=None,
     module_status: Mapping[str,bool] | None=None,
+    python_executable: str | None=None,
     detect_runtime: bool=True,
 ) -> dict[str,Any]:
     pid=str(provider["provider_id"])
@@ -109,7 +136,9 @@ def check_provider_environment(
         detected_gpus=detect_gpus() if detect_runtime else []
     modules=PYTHON_MODULES.get(pid,[])
     if module_status is None:
-        module_status=_module_status(modules) if detect_runtime else {
+        module_status=_module_status(
+            modules,python_executable=python_executable
+        ) if detect_runtime else {
             name:False for name in modules
         }
 
@@ -202,6 +231,7 @@ def check_provider_environment(
             "runtime_files_ready":runtime_files_ok,
         },
         "python_modules":{
+            "python_executable":python_executable or sys.executable,
             "required":modules,
             "status":dict(module_status),
             "all_available":modules_ok,
@@ -234,6 +264,7 @@ def main() -> int:
     parser.add_argument("registry")
     parser.add_argument("provider_id")
     parser.add_argument("provider_repo")
+    parser.add_argument("--python",default=sys.executable)
     parser.add_argument("-o","--output",required=True)
     args=parser.parse_args()
     registry=load_json(args.registry)
@@ -241,7 +272,8 @@ def main() -> int:
     if args.provider_id not in providers:
         raise SystemExit(f"Unknown provider: {args.provider_id}")
     result=check_provider_environment(
-        providers[args.provider_id],args.provider_repo
+        providers[args.provider_id],args.provider_repo,
+        python_executable=args.python,
     )
     Path(args.output).write_text(
         json.dumps(result,indent=2)+"\n",encoding="utf-8"
