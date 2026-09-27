@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "body-generation-provider-run.schema.json",
+  "title": "Brickmen Body Generation Provider Run",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "provider_id",
+    "provider_job_id",
+    "mode",
+    "execution_supported",
+    "command",
+    "working_directory",
+    "production_geometry_authority"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "provider_id": {
+      "type": "string"
+    },
+    "provider_job_id": {
+      "type": "string"
+    },
+    "mode": {
+      "enum": [
+        "dry_run",
+        "executed",
+        "plan_only"
+      ]
+    },
+    "execution_supported": {
+      "type": "boolean"
+    },
+    "command": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "string"
+      }
+    },
+    "working_directory": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "staging": {
+      "type": "object"
+    },
+    "output_directory": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "return_code": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "stdout_log": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "stderr_log": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "discovered_outputs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "production_geometry_authority": {
+      "const": false
+    }
+  }
+}
