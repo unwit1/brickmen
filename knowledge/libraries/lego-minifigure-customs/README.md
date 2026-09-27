@@ -88,3 +88,11 @@ Machine-readable contracts:
 - `data/additive-manufacturing-validation-plan.json`
 
 Core principle: additive manufacturing is a measured closed-loop process. A nominal connector dimension, advertised printer resolution, or successful single print is not a production qualification.
+
+Additional implementation documents:
+- `additive-manufacturing-economics-and-process-crossover.md` — empirical cost model and automatic direct-print/cast/printed-tooling/metal-tool crossover.
+- `parametric-cad-and-connector-automation.md` — deterministic connector insertion, CadQuery/STEP/3MF strategy, DFM and process compensation.
+- `additive-manufacturing-first-cell-plan.md` — recommended first physical cell and ordered validation program.
+- `data/additive-material-candidates.json` — current mechanically distinct resin candidate matrix.
+- `data/additive-process-selection-rules.json` — machine-readable process selection inputs, constraints and outputs.
+- `data/additive-first-experiments.json` — dependency-ordered E001-E020 physical experiment queue.
