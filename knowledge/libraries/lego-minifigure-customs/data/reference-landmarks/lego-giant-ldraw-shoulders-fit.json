@@ -1,0 +1,49 @@
+{
+  "schema_version": "0.1",
+  "reference_id": "lego_giant_10128_ldraw_shoulders_fit_2303",
+  "architecture_candidate_id": "lego_giant_modular",
+  "source": {
+    "title": "Official Giant shoulder centers derived from pinned LDraw complete assembly",
+    "engineering_anchor_reference": "knowledge/libraries/lego-minifigure-customs/data/engineering-reference-anchors/lego-giant-normalized-2303.json",
+    "source_note": "X is mirrored only for the current Brickmen fitter convention (left node negative X). Canonical engineering coordinates remain unmirrored in the source record."
+  },
+  "view": "front",
+  "evidence_class": "reference_cad_geometry",
+  "known_height_mm": 71.11760000000001,
+  "landmark_coordinate_mode": "normalized_body_height",
+  "landmarks": {
+    "shoulder_l": {
+      "position": [
+        -0.22497947062330562,
+        0.7088034466854899
+      ],
+      "confidence": 1,
+      "axes": [
+        "x",
+        "z"
+      ],
+      "notes": "Fitter-convention mirror of canonical anatomical-left +X engineering anchor."
+    },
+    "shoulder_r": {
+      "position": [
+        0.22497947062330562,
+        0.7088034466854899
+      ],
+      "confidence": 1,
+      "axes": [
+        "x",
+        "z"
+      ],
+      "notes": "Fitter-convention mirror of canonical anatomical-right -X engineering anchor."
+    }
+  },
+  "fit_parameters": [
+    "shoulder_width_scale"
+  ],
+  "exclude_from_production_dimensions": true,
+  "notes": [
+    "Only shoulder width is optimized to avoid underdetermined torso-segment changes from two landmarks.",
+    "The remaining vertical residual is retained as a shape diagnostic.",
+    "This reference does not establish physical socket tolerance or arm compatibility by itself."
+  ]
+}
