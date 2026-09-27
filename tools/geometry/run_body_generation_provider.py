@@ -27,6 +27,10 @@ import shutil
 import subprocess
 from typing import Any, Mapping
 
+from tools.geometry.check_body_provider_environment import (
+    check_provider_environment,
+)
+
 
 RUNNABLE = {"partcrafter", "partpacker", "pact", "particulate", "sam_3d_objects"}
 RUNNABLE_STATUSES = {
@@ -326,6 +330,7 @@ def _discover_outputs(output_dir: str | Path) -> list[str]:
         for path in root.rglob("*")
         if path.is_file()
         and "_input_images" not in path.parts
+        and path.name != "brickmen-provider-environment.json"
         and path.suffix.lower()
         in {".obj", ".glb", ".gltf", ".ply", ".stl", ".fbx", ".json", ".npz"}
     )
@@ -551,6 +556,14 @@ def main() -> int:
     parser.add_argument("--output-dir", required=True)
     parser.add_argument("--python", default="python")
     parser.add_argument("--execute", action="store_true")
+    parser.add_argument(
+        "--allow-unverified-environment",
+        action="store_true",
+        help=(
+            "Execute even when Brickmen environment/revision preflight fails. "
+            "The bypass and failed preflight remain recorded in the run report."
+        ),
+    )
     parser.add_argument("--timeout-seconds", type=int, default=None)
     parser.add_argument("--report", required=True)
     args = parser.parse_args()
@@ -573,16 +586,58 @@ def main() -> int:
         input_mesh=args.input_mesh,
         python_executable=args.python,
     )
-    result = (
-        execute_plan(plan, timeout_seconds=args.timeout_seconds)
-        if args.execute
-        else plan
-    )
+    if args.execute and plan.get("execution_supported"):
+        output_dir=Path(args.output_dir).resolve()
+        output_dir.mkdir(parents=True,exist_ok=True)
+        environment=check_provider_environment(
+            providers[job["provider_id"]],
+            args.provider_repo,
+            python_executable=args.python,
+        )
+        environment_path=output_dir/"brickmen-provider-environment.json"
+        environment_path.write_text(
+            json.dumps(environment,indent=2)+"\n",encoding="utf-8"
+        )
+        plan=dict(plan)
+        plan["environment_preflight_path"]=str(environment_path)
+        plan["environment_preflight"]=environment
+        plan["environment_preflight_bypassed"]=bool(
+            args.allow_unverified_environment
+            and not environment["ready_to_attempt_inference"]
+        )
+        if (
+            not environment["ready_to_attempt_inference"]
+            and not args.allow_unverified_environment
+        ):
+            result=dict(plan)
+            result.update({
+                "mode":"blocked_preflight",
+                "preflight_blocked":True,
+                "execution_succeeded":False,
+                "return_code":None,
+                "blockers":environment.get("blockers",[]),
+            })
+        else:
+            result=execute_plan(
+                plan,timeout_seconds=args.timeout_seconds
+            )
+            result["preflight_blocked"]=False
+    elif args.execute:
+        result=dict(plan)
+        result["mode"]="blocked_preflight"
+        result["preflight_blocked"]=True
+        result["execution_succeeded"]=False
+        result["return_code"]=None
+    else:
+        result=plan
+
     Path(args.report).write_text(
         json.dumps(result, indent=2) + "\n", encoding="utf-8"
     )
 
-    if args.execute and result.get("return_code", 0) != 0:
+    if args.execute and result.get("mode")=="blocked_preflight":
+        return 2
+    if args.execute and result.get("return_code") not in (0,None):
         return int(result["return_code"])
     return 0
 
