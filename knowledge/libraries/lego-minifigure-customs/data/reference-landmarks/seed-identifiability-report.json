@@ -1,0 +1,5061 @@
+{
+  "schema_version": "0.1",
+  "status": "local_landmark_identifiability_diagnostic",
+  "source_manifest": "knowledge/libraries/lego-minifigure-customs/data/reference-landmarks/manifest.json",
+  "records": [
+    {
+      "reference_id": "alpha_af325_venom_front_seed",
+      "reference_file": "alpha-af325-venom-front.json",
+      "skeleton_id": "brickmen_broad_v0_skeleton",
+      "role": "standard-height broad stress test",
+      "analyses": {
+        "current": {
+          "schema_version": "0.1",
+          "reference_id": "alpha_af325_venom_front_seed",
+          "skeleton_id": "brickmen_broad_v0_skeleton",
+          "candidate_parameters": [
+            "shoulder_width_scale",
+            "arm_length_scale",
+            "torso_height_scale",
+            "lower_body_height_scale",
+            "stance_width_scale"
+          ],
+          "observation_axes": [
+            {
+              "node_id": "head_center",
+              "axis": "x"
+            },
+            {
+              "node_id": "head_center",
+              "axis": "z"
+            },
+            {
+              "node_id": "neck",
+              "axis": "x"
+            },
+            {
+              "node_id": "neck",
+              "axis": "z"
+            },
+            {
+              "node_id": "shoulder_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "shoulder_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "shoulder_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "shoulder_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "elbow_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "elbow_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "elbow_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "elbow_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "wrist_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "wrist_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "wrist_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "wrist_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "hand_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "hand_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "hand_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "hand_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "waist",
+              "axis": "x"
+            },
+            {
+              "node_id": "waist",
+              "axis": "z"
+            },
+            {
+              "node_id": "hip_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "hip_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "hip_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "hip_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "knee_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "knee_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "knee_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "knee_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "ankle_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "ankle_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "ankle_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "ankle_r",
+              "axis": "z"
+            }
+          ],
+          "observation_dimension": 34,
+          "parameter_count": 5,
+          "jacobian_rank": 5,
+          "identifiable_dimension_count": 5,
+          "status": "locally_identifiable",
+          "sensitivity_norms": {
+            "shoulder_width_scale": 0.6549809157525183,
+            "arm_length_scale": 0.6190315016216833,
+            "torso_height_scale": 0.7079548008170937,
+            "lower_body_height_scale": 0.7014627573863041,
+            "stance_width_scale": 0.1592168332809054
+          },
+          "unobserved_parameters": [],
+          "confounded_pairs": [],
+          "pairwise_cosines": [
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "arm_length_scale",
+              "cosine": 0.21852057045885048,
+              "absolute_cosine": 0.21852057045885048
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "torso_height_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "lower_body_height_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "stance_width_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "torso_height_scale",
+              "cosine": -0.00638910094688124,
+              "absolute_cosine": 0.00638910094688124
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "lower_body_height_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "stance_width_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "torso_height_scale",
+              "parameter_b": "lower_body_height_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "torso_height_scale",
+              "parameter_b": "stance_width_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "lower_body_height_scale",
+              "parameter_b": "stance_width_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            }
+          ],
+          "diagnostic_rules": {
+            "zero_norm_threshold": 1e-08,
+            "confounded_cosine_threshold": 0.995,
+            "derivative_fraction_of_parameter_range": 0.01
+          },
+          "production_geometry_authority": false,
+          "warning": "Local sensitivity/identifiability only. A full-rank landmark fit does not prove architecture identity or manufacturing geometry."
+        },
+        "safe_expanded_v1": {
+          "schema_version": "0.1",
+          "reference_id": "alpha_af325_venom_front_seed",
+          "skeleton_id": "brickmen_broad_v0_skeleton",
+          "candidate_parameters": [
+            "shoulder_width_scale",
+            "arm_length_scale",
+            "torso_height_scale",
+            "lower_body_height_scale",
+            "stance_width_scale",
+            "neck_head_offset_scale",
+            "thigh_length_scale",
+            "shin_length_scale"
+          ],
+          "observation_axes": [
+            {
+              "node_id": "head_center",
+              "axis": "x"
+            },
+            {
+              "node_id": "head_center",
+              "axis": "z"
+            },
+            {
+              "node_id": "neck",
+              "axis": "x"
+            },
+            {
+              "node_id": "neck",
+              "axis": "z"
+            },
+            {
+              "node_id": "shoulder_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "shoulder_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "shoulder_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "shoulder_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "elbow_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "elbow_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "elbow_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "elbow_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "wrist_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "wrist_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "wrist_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "wrist_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "hand_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "hand_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "hand_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "hand_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "waist",
+              "axis": "x"
+            },
+            {
+              "node_id": "waist",
+              "axis": "z"
+            },
+            {
+              "node_id": "hip_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "hip_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "hip_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "hip_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "knee_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "knee_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "knee_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "knee_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "ankle_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "ankle_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "ankle_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "ankle_r",
+              "axis": "z"
+            }
+          ],
+          "observation_dimension": 34,
+          "parameter_count": 8,
+          "jacobian_rank": 8,
+          "identifiable_dimension_count": 8,
+          "status": "locally_identifiable",
+          "sensitivity_norms": {
+            "shoulder_width_scale": 0.6549809157525183,
+            "arm_length_scale": 0.6190315016216833,
+            "torso_height_scale": 0.7079548008170937,
+            "lower_body_height_scale": 0.7014627573863041,
+            "stance_width_scale": 0.1592168332809054,
+            "neck_head_offset_scale": 0.11999999999999802,
+            "thigh_length_scale": 0.3200000000000037,
+            "shin_length_scale": 0.2049038317038385
+          },
+          "unobserved_parameters": [],
+          "confounded_pairs": [],
+          "pairwise_cosines": [
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "arm_length_scale",
+              "cosine": 0.21852057045885048,
+              "absolute_cosine": 0.21852057045885048
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "torso_height_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "lower_body_height_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "stance_width_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "neck_head_offset_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "torso_height_scale",
+              "cosine": -0.00638910094688124,
+              "absolute_cosine": 0.00638910094688124
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "lower_body_height_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "stance_width_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "neck_head_offset_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "torso_height_scale",
+              "parameter_b": "lower_body_height_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "torso_height_scale",
+              "parameter_b": "stance_width_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "torso_height_scale",
+              "parameter_b": "neck_head_offset_scale",
+              "cosine": 0.6497589951633598,
+              "absolute_cosine": 0.6497589951633598
+            },
+            {
+              "parameter_a": "torso_height_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "torso_height_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "lower_body_height_scale",
+              "parameter_b": "stance_width_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "lower_body_height_scale",
+              "parameter_b": "neck_head_offset_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "lower_body_height_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": -0.3065023734133824,
+              "absolute_cosine": 0.3065023734133824
+            },
+            {
+              "parameter_a": "lower_body_height_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": -0.07056322543407179,
+              "absolute_cosine": 0.07056322543407179
+            },
+            {
+              "parameter_a": "stance_width_scale",
+              "parameter_b": "neck_head_offset_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "stance_width_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "stance_width_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "neck_head_offset_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "neck_head_offset_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "thigh_length_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.7071067811865492,
+              "absolute_cosine": 0.7071067811865492
+            }
+          ],
+          "diagnostic_rules": {
+            "zero_norm_threshold": 1e-08,
+            "confounded_cosine_threshold": 0.995,
+            "derivative_fraction_of_parameter_range": 0.01
+          },
+          "production_geometry_authority": false,
+          "warning": "Local sensitivity/identifiability only. A full-rank landmark fit does not prove architecture identity or manufacturing geometry."
+        },
+        "segmented_torso_experiment": {
+          "schema_version": "0.1",
+          "reference_id": "alpha_af325_venom_front_seed",
+          "skeleton_id": "brickmen_broad_v0_skeleton",
+          "candidate_parameters": [
+            "shoulder_width_scale",
+            "arm_length_scale",
+            "lower_body_height_scale",
+            "stance_width_scale",
+            "lower_torso_length_scale",
+            "upper_torso_length_scale",
+            "neck_head_offset_scale",
+            "thigh_length_scale",
+            "shin_length_scale"
+          ],
+          "observation_axes": [
+            {
+              "node_id": "head_center",
+              "axis": "x"
+            },
+            {
+              "node_id": "head_center",
+              "axis": "z"
+            },
+            {
+              "node_id": "neck",
+              "axis": "x"
+            },
+            {
+              "node_id": "neck",
+              "axis": "z"
+            },
+            {
+              "node_id": "shoulder_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "shoulder_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "shoulder_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "shoulder_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "elbow_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "elbow_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "elbow_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "elbow_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "wrist_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "wrist_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "wrist_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "wrist_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "hand_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "hand_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "hand_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "hand_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "waist",
+              "axis": "x"
+            },
+            {
+              "node_id": "waist",
+              "axis": "z"
+            },
+            {
+              "node_id": "hip_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "hip_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "hip_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "hip_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "knee_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "knee_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "knee_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "knee_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "ankle_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "ankle_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "ankle_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "ankle_r",
+              "axis": "z"
+            }
+          ],
+          "observation_dimension": 34,
+          "parameter_count": 9,
+          "jacobian_rank": 8,
+          "identifiable_dimension_count": 8,
+          "status": "partially_identifiable",
+          "sensitivity_norms": {
+            "shoulder_width_scale": 0.6549809157525183,
+            "arm_length_scale": 0.6190315016216833,
+            "lower_body_height_scale": 0.7014627573863041,
+            "stance_width_scale": 0.1592168332809054,
+            "lower_torso_length_scale": 0.5692099788303184,
+            "upper_torso_length_scale": 0.5059644256269453,
+            "neck_head_offset_scale": 0.11999999999999802,
+            "thigh_length_scale": 0.3200000000000037,
+            "shin_length_scale": 0.2049038317038385
+          },
+          "unobserved_parameters": [],
+          "confounded_pairs": [
+            {
+              "parameter_a": "lower_torso_length_scale",
+              "parameter_b": "upper_torso_length_scale",
+              "cosine": 1.0000000000000002,
+              "absolute_cosine": 1.0000000000000002
+            }
+          ],
+          "pairwise_cosines": [
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "arm_length_scale",
+              "cosine": 0.21852057045885048,
+              "absolute_cosine": 0.21852057045885048
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "lower_body_height_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "stance_width_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "lower_torso_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "upper_torso_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "neck_head_offset_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "lower_body_height_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "stance_width_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "lower_torso_length_scale",
+              "cosine": -0.7151798757636196,
+              "absolute_cosine": 0.7151798757636196
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "upper_torso_length_scale",
+              "cosine": -0.7151798757636242,
+              "absolute_cosine": 0.7151798757636242
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "neck_head_offset_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "lower_body_height_scale",
+              "parameter_b": "stance_width_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "lower_body_height_scale",
+              "parameter_b": "lower_torso_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "lower_body_height_scale",
+              "parameter_b": "upper_torso_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "lower_body_height_scale",
+              "parameter_b": "neck_head_offset_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "lower_body_height_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": -0.3065023734133824,
+              "absolute_cosine": 0.3065023734133824
+            },
+            {
+              "parameter_a": "lower_body_height_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": -0.07056322543407179,
+              "absolute_cosine": 0.07056322543407179
+            },
+            {
+              "parameter_a": "stance_width_scale",
+              "parameter_b": "lower_torso_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "stance_width_scale",
+              "parameter_b": "upper_torso_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "stance_width_scale",
+              "parameter_b": "neck_head_offset_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "stance_width_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "stance_width_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "lower_torso_length_scale",
+              "parameter_b": "upper_torso_length_scale",
+              "cosine": 1.0000000000000002,
+              "absolute_cosine": 1.0000000000000002
+            },
+            {
+              "parameter_a": "lower_torso_length_scale",
+              "parameter_b": "neck_head_offset_scale",
+              "cosine": 0.3162277660168271,
+              "absolute_cosine": 0.3162277660168271
+            },
+            {
+              "parameter_a": "lower_torso_length_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "lower_torso_length_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "upper_torso_length_scale",
+              "parameter_b": "neck_head_offset_scale",
+              "cosine": 0.31622776601683794,
+              "absolute_cosine": 0.31622776601683794
+            },
+            {
+              "parameter_a": "upper_torso_length_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "upper_torso_length_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "neck_head_offset_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "neck_head_offset_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "thigh_length_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.7071067811865492,
+              "absolute_cosine": 0.7071067811865492
+            }
+          ],
+          "diagnostic_rules": {
+            "zero_norm_threshold": 1e-08,
+            "confounded_cosine_threshold": 0.995,
+            "derivative_fraction_of_parameter_range": 0.01
+          },
+          "production_geometry_authority": false,
+          "warning": "Local sensitivity/identifiability only. A full-rank landmark fit does not prove architecture identity or manufacturing geometry."
+        }
+      }
+    },
+    {
+      "reference_id": "alpha_af345_hulk_front_seed",
+      "reference_file": "alpha-af345-hulk-front.json",
+      "skeleton_id": "brickmen_xl_v0_skeleton",
+      "role": "~7cm anatomical/muscular control",
+      "analyses": {
+        "current": {
+          "schema_version": "0.1",
+          "reference_id": "alpha_af345_hulk_front_seed",
+          "skeleton_id": "brickmen_xl_v0_skeleton",
+          "candidate_parameters": [
+            "shoulder_width_scale",
+            "arm_length_scale",
+            "torso_height_scale",
+            "lower_body_height_scale",
+            "stance_width_scale"
+          ],
+          "observation_axes": [
+            {
+              "node_id": "head_center",
+              "axis": "x"
+            },
+            {
+              "node_id": "head_center",
+              "axis": "z"
+            },
+            {
+              "node_id": "neck",
+              "axis": "x"
+            },
+            {
+              "node_id": "neck",
+              "axis": "z"
+            },
+            {
+              "node_id": "shoulder_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "shoulder_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "shoulder_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "shoulder_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "elbow_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "elbow_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "elbow_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "elbow_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "wrist_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "wrist_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "wrist_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "wrist_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "hand_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "hand_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "hand_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "hand_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "waist",
+              "axis": "x"
+            },
+            {
+              "node_id": "waist",
+              "axis": "z"
+            },
+            {
+              "node_id": "hip_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "hip_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "hip_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "hip_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "knee_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "knee_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "knee_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "knee_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "ankle_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "ankle_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "ankle_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "ankle_r",
+              "axis": "z"
+            }
+          ],
+          "observation_dimension": 34,
+          "parameter_count": 5,
+          "jacobian_rank": 5,
+          "identifiable_dimension_count": 5,
+          "status": "locally_identifiable",
+          "sensitivity_norms": {
+            "shoulder_width_scale": 0.5934644049983157,
+            "arm_length_scale": 0.7480641683706172,
+            "torso_height_scale": 0.6663332499582882,
+            "lower_body_height_scale": 0.8339964028699508,
+            "stance_width_scale": 0.16748134224444283
+          },
+          "unobserved_parameters": [],
+          "confounded_pairs": [],
+          "pairwise_cosines": [
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "arm_length_scale",
+              "cosine": 0.2137630727842562,
+              "absolute_cosine": 0.2137630727842562
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "torso_height_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "lower_body_height_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "stance_width_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "torso_height_scale",
+              "cosine": 0.21024755047652577,
+              "absolute_cosine": 0.21024755047652577
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "lower_body_height_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "stance_width_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "torso_height_scale",
+              "parameter_b": "lower_body_height_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "torso_height_scale",
+              "parameter_b": "stance_width_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "lower_body_height_scale",
+              "parameter_b": "stance_width_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            }
+          ],
+          "diagnostic_rules": {
+            "zero_norm_threshold": 1e-08,
+            "confounded_cosine_threshold": 0.995,
+            "derivative_fraction_of_parameter_range": 0.01
+          },
+          "production_geometry_authority": false,
+          "warning": "Local sensitivity/identifiability only. A full-rank landmark fit does not prove architecture identity or manufacturing geometry."
+        },
+        "safe_expanded_v1": {
+          "schema_version": "0.1",
+          "reference_id": "alpha_af345_hulk_front_seed",
+          "skeleton_id": "brickmen_xl_v0_skeleton",
+          "candidate_parameters": [
+            "shoulder_width_scale",
+            "arm_length_scale",
+            "torso_height_scale",
+            "lower_body_height_scale",
+            "stance_width_scale",
+            "neck_head_offset_scale",
+            "thigh_length_scale",
+            "shin_length_scale"
+          ],
+          "observation_axes": [
+            {
+              "node_id": "head_center",
+              "axis": "x"
+            },
+            {
+              "node_id": "head_center",
+              "axis": "z"
+            },
+            {
+              "node_id": "neck",
+              "axis": "x"
+            },
+            {
+              "node_id": "neck",
+              "axis": "z"
+            },
+            {
+              "node_id": "shoulder_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "shoulder_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "shoulder_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "shoulder_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "elbow_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "elbow_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "elbow_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "elbow_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "wrist_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "wrist_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "wrist_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "wrist_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "hand_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "hand_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "hand_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "hand_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "waist",
+              "axis": "x"
+            },
+            {
+              "node_id": "waist",
+              "axis": "z"
+            },
+            {
+              "node_id": "hip_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "hip_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "hip_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "hip_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "knee_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "knee_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "knee_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "knee_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "ankle_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "ankle_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "ankle_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "ankle_r",
+              "axis": "z"
+            }
+          ],
+          "observation_dimension": 34,
+          "parameter_count": 8,
+          "jacobian_rank": 8,
+          "identifiable_dimension_count": 8,
+          "status": "locally_identifiable",
+          "sensitivity_norms": {
+            "shoulder_width_scale": 0.5934644049983157,
+            "arm_length_scale": 0.7480641683706172,
+            "torso_height_scale": 0.6663332499582882,
+            "lower_body_height_scale": 0.8339964028699508,
+            "stance_width_scale": 0.16748134224444283,
+            "neck_head_offset_scale": 0.10000000000000246,
+            "thigh_length_scale": 0.3800000000000027,
+            "shin_length_scale": 0.2614723741987628
+          },
+          "unobserved_parameters": [],
+          "confounded_pairs": [],
+          "pairwise_cosines": [
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "arm_length_scale",
+              "cosine": 0.2137630727842562,
+              "absolute_cosine": 0.2137630727842562
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "torso_height_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "lower_body_height_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "stance_width_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "neck_head_offset_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "torso_height_scale",
+              "cosine": 0.21024755047652577,
+              "absolute_cosine": 0.21024755047652577
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "lower_body_height_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "stance_width_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "neck_head_offset_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "torso_height_scale",
+              "parameter_b": "lower_body_height_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "torso_height_scale",
+              "parameter_b": "stance_width_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "torso_height_scale",
+              "parameter_b": "neck_head_offset_scale",
+              "cosine": 0.6153077308173326,
+              "absolute_cosine": 0.6153077308173326
+            },
+            {
+              "parameter_a": "torso_height_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "torso_height_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "lower_body_height_scale",
+              "parameter_b": "stance_width_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "lower_body_height_scale",
+              "parameter_b": "neck_head_offset_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "lower_body_height_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": -0.3057567144444469,
+              "absolute_cosine": 0.3057567144444469
+            },
+            {
+              "parameter_a": "lower_body_height_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": -0.05934974600936732,
+              "absolute_cosine": 0.05934974600936732
+            },
+            {
+              "parameter_a": "stance_width_scale",
+              "parameter_b": "neck_head_offset_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "stance_width_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "stance_width_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "neck_head_offset_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "neck_head_offset_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "thigh_length_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.707106781186549,
+              "absolute_cosine": 0.707106781186549
+            }
+          ],
+          "diagnostic_rules": {
+            "zero_norm_threshold": 1e-08,
+            "confounded_cosine_threshold": 0.995,
+            "derivative_fraction_of_parameter_range": 0.01
+          },
+          "production_geometry_authority": false,
+          "warning": "Local sensitivity/identifiability only. A full-rank landmark fit does not prove architecture identity or manufacturing geometry."
+        },
+        "segmented_torso_experiment": {
+          "schema_version": "0.1",
+          "reference_id": "alpha_af345_hulk_front_seed",
+          "skeleton_id": "brickmen_xl_v0_skeleton",
+          "candidate_parameters": [
+            "shoulder_width_scale",
+            "arm_length_scale",
+            "lower_body_height_scale",
+            "stance_width_scale",
+            "lower_torso_length_scale",
+            "upper_torso_length_scale",
+            "neck_head_offset_scale",
+            "thigh_length_scale",
+            "shin_length_scale"
+          ],
+          "observation_axes": [
+            {
+              "node_id": "head_center",
+              "axis": "x"
+            },
+            {
+              "node_id": "head_center",
+              "axis": "z"
+            },
+            {
+              "node_id": "neck",
+              "axis": "x"
+            },
+            {
+              "node_id": "neck",
+              "axis": "z"
+            },
+            {
+              "node_id": "shoulder_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "shoulder_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "shoulder_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "shoulder_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "elbow_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "elbow_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "elbow_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "elbow_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "wrist_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "wrist_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "wrist_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "wrist_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "hand_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "hand_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "hand_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "hand_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "waist",
+              "axis": "x"
+            },
+            {
+              "node_id": "waist",
+              "axis": "z"
+            },
+            {
+              "node_id": "hip_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "hip_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "hip_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "hip_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "knee_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "knee_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "knee_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "knee_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "ankle_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "ankle_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "ankle_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "ankle_r",
+              "axis": "z"
+            }
+          ],
+          "observation_dimension": 34,
+          "parameter_count": 9,
+          "jacobian_rank": 8,
+          "identifiable_dimension_count": 8,
+          "status": "partially_identifiable",
+          "sensitivity_norms": {
+            "shoulder_width_scale": 0.5934644049983157,
+            "arm_length_scale": 0.7480641683706172,
+            "lower_body_height_scale": 0.8339964028699508,
+            "stance_width_scale": 0.16748134224444283,
+            "lower_torso_length_scale": 0.53758720222863,
+            "upper_torso_length_scale": 0.44271887242358016,
+            "neck_head_offset_scale": 0.10000000000000246,
+            "thigh_length_scale": 0.3800000000000027,
+            "shin_length_scale": 0.2614723741987628
+          },
+          "unobserved_parameters": [],
+          "confounded_pairs": [
+            {
+              "parameter_a": "lower_torso_length_scale",
+              "parameter_b": "upper_torso_length_scale",
+              "cosine": 0.9999999999999999,
+              "absolute_cosine": 0.9999999999999999
+            }
+          ],
+          "pairwise_cosines": [
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "arm_length_scale",
+              "cosine": 0.2137630727842562,
+              "absolute_cosine": 0.2137630727842562
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "lower_body_height_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "stance_width_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "lower_torso_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "upper_torso_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "neck_head_offset_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "lower_body_height_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "stance_width_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "lower_torso_length_scale",
+              "cosine": -0.718637818730942,
+              "absolute_cosine": 0.718637818730942
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "upper_torso_length_scale",
+              "cosine": -0.7186378187309429,
+              "absolute_cosine": 0.7186378187309429
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "neck_head_offset_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "lower_body_height_scale",
+              "parameter_b": "stance_width_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "lower_body_height_scale",
+              "parameter_b": "lower_torso_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "lower_body_height_scale",
+              "parameter_b": "upper_torso_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "lower_body_height_scale",
+              "parameter_b": "neck_head_offset_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "lower_body_height_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": -0.3057567144444469,
+              "absolute_cosine": 0.3057567144444469
+            },
+            {
+              "parameter_a": "lower_body_height_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": -0.05934974600936732,
+              "absolute_cosine": 0.05934974600936732
+            },
+            {
+              "parameter_a": "stance_width_scale",
+              "parameter_b": "lower_torso_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "stance_width_scale",
+              "parameter_b": "upper_torso_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "stance_width_scale",
+              "parameter_b": "neck_head_offset_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "stance_width_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "stance_width_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "lower_torso_length_scale",
+              "parameter_b": "upper_torso_length_scale",
+              "cosine": 0.9999999999999999,
+              "absolute_cosine": 0.9999999999999999
+            },
+            {
+              "parameter_a": "lower_torso_length_scale",
+              "parameter_b": "neck_head_offset_scale",
+              "cosine": 0.31622776601682184,
+              "absolute_cosine": 0.31622776601682184
+            },
+            {
+              "parameter_a": "lower_torso_length_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "lower_torso_length_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "upper_torso_length_scale",
+              "parameter_b": "neck_head_offset_scale",
+              "cosine": 0.31622776601681835,
+              "absolute_cosine": 0.31622776601681835
+            },
+            {
+              "parameter_a": "upper_torso_length_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "upper_torso_length_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "neck_head_offset_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "neck_head_offset_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "thigh_length_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.707106781186549,
+              "absolute_cosine": 0.707106781186549
+            }
+          ],
+          "diagnostic_rules": {
+            "zero_norm_threshold": 1e-08,
+            "confounded_cosine_threshold": 0.995,
+            "derivative_fraction_of_parameter_range": 0.01
+          },
+          "production_geometry_authority": false,
+          "warning": "Local sensitivity/identifiability only. A full-rank landmark fit does not prove architecture identity or manufacturing geometry."
+        }
+      }
+    },
+    {
+      "reference_id": "lego_sh0371_hulk_front_seed",
+      "reference_file": "lego-sh0371-hulk-front.json",
+      "skeleton_id": "brickmen_giant_v0_skeleton",
+      "role": "official Giant visual control",
+      "analyses": {
+        "current": {
+          "schema_version": "0.1",
+          "reference_id": "lego_sh0371_hulk_front_seed",
+          "skeleton_id": "brickmen_giant_v0_skeleton",
+          "candidate_parameters": [
+            "shoulder_width_scale",
+            "arm_length_scale",
+            "torso_height_scale",
+            "lower_body_height_scale",
+            "stance_width_scale"
+          ],
+          "observation_axes": [
+            {
+              "node_id": "head_center",
+              "axis": "x"
+            },
+            {
+              "node_id": "head_center",
+              "axis": "z"
+            },
+            {
+              "node_id": "neck",
+              "axis": "x"
+            },
+            {
+              "node_id": "neck",
+              "axis": "z"
+            },
+            {
+              "node_id": "shoulder_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "shoulder_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "shoulder_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "shoulder_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "elbow_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "elbow_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "elbow_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "elbow_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "wrist_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "wrist_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "wrist_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "wrist_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "hand_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "hand_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "hand_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "hand_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "waist",
+              "axis": "x"
+            },
+            {
+              "node_id": "waist",
+              "axis": "z"
+            },
+            {
+              "node_id": "hip_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "hip_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "hip_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "hip_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "knee_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "knee_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "knee_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "knee_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "ankle_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "ankle_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "ankle_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "ankle_r",
+              "axis": "z"
+            }
+          ],
+          "observation_dimension": 34,
+          "parameter_count": 5,
+          "jacobian_rank": 5,
+          "identifiable_dimension_count": 5,
+          "status": "locally_identifiable",
+          "sensitivity_norms": {
+            "shoulder_width_scale": 0.7908855795878408,
+            "arm_length_scale": 0.6344288770224608,
+            "torso_height_scale": 0.7860661549767659,
+            "lower_body_height_scale": 0.5977039400907206,
+            "stance_width_scale": 0.25719642299223333
+          },
+          "unobserved_parameters": [],
+          "confounded_pairs": [],
+          "pairwise_cosines": [
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "arm_length_scale",
+              "cosine": 0.27323784750681507,
+              "absolute_cosine": 0.27323784750681507
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "torso_height_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "lower_body_height_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "stance_width_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "torso_height_scale",
+              "cosine": -0.09063509511629006,
+              "absolute_cosine": 0.09063509511629006
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "lower_body_height_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "stance_width_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "torso_height_scale",
+              "parameter_b": "lower_body_height_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "torso_height_scale",
+              "parameter_b": "stance_width_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "lower_body_height_scale",
+              "parameter_b": "stance_width_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            }
+          ],
+          "diagnostic_rules": {
+            "zero_norm_threshold": 1e-08,
+            "confounded_cosine_threshold": 0.995,
+            "derivative_fraction_of_parameter_range": 0.01
+          },
+          "production_geometry_authority": false,
+          "warning": "Local sensitivity/identifiability only. A full-rank landmark fit does not prove architecture identity or manufacturing geometry."
+        },
+        "safe_expanded_v1": {
+          "schema_version": "0.1",
+          "reference_id": "lego_sh0371_hulk_front_seed",
+          "skeleton_id": "brickmen_giant_v0_skeleton",
+          "candidate_parameters": [
+            "shoulder_width_scale",
+            "arm_length_scale",
+            "torso_height_scale",
+            "lower_body_height_scale",
+            "stance_width_scale",
+            "neck_head_offset_scale",
+            "thigh_length_scale",
+            "shin_length_scale"
+          ],
+          "observation_axes": [
+            {
+              "node_id": "head_center",
+              "axis": "x"
+            },
+            {
+              "node_id": "head_center",
+              "axis": "z"
+            },
+            {
+              "node_id": "neck",
+              "axis": "x"
+            },
+            {
+              "node_id": "neck",
+              "axis": "z"
+            },
+            {
+              "node_id": "shoulder_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "shoulder_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "shoulder_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "shoulder_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "elbow_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "elbow_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "elbow_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "elbow_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "wrist_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "wrist_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "wrist_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "wrist_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "hand_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "hand_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "hand_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "hand_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "waist",
+              "axis": "x"
+            },
+            {
+              "node_id": "waist",
+              "axis": "z"
+            },
+            {
+              "node_id": "hip_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "hip_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "hip_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "hip_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "knee_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "knee_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "knee_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "knee_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "ankle_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "ankle_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "ankle_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "ankle_r",
+              "axis": "z"
+            }
+          ],
+          "observation_dimension": 34,
+          "parameter_count": 8,
+          "jacobian_rank": 8,
+          "identifiable_dimension_count": 8,
+          "status": "locally_identifiable",
+          "sensitivity_norms": {
+            "shoulder_width_scale": 0.7908855795878408,
+            "arm_length_scale": 0.6344288770224608,
+            "torso_height_scale": 0.7860661549767659,
+            "lower_body_height_scale": 0.5977039400907206,
+            "stance_width_scale": 0.25719642299223333,
+            "neck_head_offset_scale": 0.11000000000000641,
+            "thigh_length_scale": 0.2800000000000045,
+            "shin_length_scale": 0.16247742483264413
+          },
+          "unobserved_parameters": [],
+          "confounded_pairs": [],
+          "pairwise_cosines": [
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "arm_length_scale",
+              "cosine": 0.27323784750681507,
+              "absolute_cosine": 0.27323784750681507
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "torso_height_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "lower_body_height_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "stance_width_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "neck_head_offset_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "torso_height_scale",
+              "cosine": -0.09063509511629006,
+              "absolute_cosine": 0.09063509511629006
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "lower_body_height_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "stance_width_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "neck_head_offset_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "torso_height_scale",
+              "parameter_b": "lower_body_height_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "torso_height_scale",
+              "parameter_b": "stance_width_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "torso_height_scale",
+              "parameter_b": "neck_head_offset_scale",
+              "cosine": 0.6360787789098727,
+              "absolute_cosine": 0.6360787789098727
+            },
+            {
+              "parameter_a": "torso_height_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "torso_height_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "lower_body_height_scale",
+              "parameter_b": "stance_width_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "lower_body_height_scale",
+              "parameter_b": "neck_head_offset_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "lower_body_height_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": -0.2760564034009007,
+              "absolute_cosine": 0.2760564034009007
+            },
+            {
+              "parameter_a": "lower_body_height_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": -0.05915192570750083,
+              "absolute_cosine": 0.05915192570750083
+            },
+            {
+              "parameter_a": "stance_width_scale",
+              "parameter_b": "neck_head_offset_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "stance_width_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "stance_width_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "neck_head_offset_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "neck_head_offset_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "thigh_length_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.7071067811865447,
+              "absolute_cosine": 0.7071067811865447
+            }
+          ],
+          "diagnostic_rules": {
+            "zero_norm_threshold": 1e-08,
+            "confounded_cosine_threshold": 0.995,
+            "derivative_fraction_of_parameter_range": 0.01
+          },
+          "production_geometry_authority": false,
+          "warning": "Local sensitivity/identifiability only. A full-rank landmark fit does not prove architecture identity or manufacturing geometry."
+        },
+        "segmented_torso_experiment": {
+          "schema_version": "0.1",
+          "reference_id": "lego_sh0371_hulk_front_seed",
+          "skeleton_id": "brickmen_giant_v0_skeleton",
+          "candidate_parameters": [
+            "shoulder_width_scale",
+            "arm_length_scale",
+            "lower_body_height_scale",
+            "stance_width_scale",
+            "lower_torso_length_scale",
+            "upper_torso_length_scale",
+            "neck_head_offset_scale",
+            "thigh_length_scale",
+            "shin_length_scale"
+          ],
+          "observation_axes": [
+            {
+              "node_id": "head_center",
+              "axis": "x"
+            },
+            {
+              "node_id": "head_center",
+              "axis": "z"
+            },
+            {
+              "node_id": "neck",
+              "axis": "x"
+            },
+            {
+              "node_id": "neck",
+              "axis": "z"
+            },
+            {
+              "node_id": "shoulder_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "shoulder_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "shoulder_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "shoulder_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "elbow_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "elbow_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "elbow_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "elbow_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "wrist_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "wrist_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "wrist_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "wrist_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "hand_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "hand_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "hand_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "hand_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "waist",
+              "axis": "x"
+            },
+            {
+              "node_id": "waist",
+              "axis": "z"
+            },
+            {
+              "node_id": "hip_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "hip_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "hip_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "hip_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "knee_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "knee_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "knee_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "knee_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "ankle_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "ankle_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "ankle_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "ankle_r",
+              "axis": "z"
+            }
+          ],
+          "observation_dimension": 34,
+          "parameter_count": 9,
+          "jacobian_rank": 8,
+          "identifiable_dimension_count": 8,
+          "status": "partially_identifiable",
+          "sensitivity_norms": {
+            "shoulder_width_scale": 0.7908855795878408,
+            "arm_length_scale": 0.6344288770224608,
+            "lower_body_height_scale": 0.5977039400907206,
+            "stance_width_scale": 0.25719642299223333,
+            "lower_torso_length_scale": 0.664078308635376,
+            "upper_torso_length_scale": 0.5692099788303223,
+            "neck_head_offset_scale": 0.11000000000000641,
+            "thigh_length_scale": 0.2800000000000045,
+            "shin_length_scale": 0.16247742483264413
+          },
+          "unobserved_parameters": [],
+          "confounded_pairs": [
+            {
+              "parameter_a": "lower_torso_length_scale",
+              "parameter_b": "upper_torso_length_scale",
+              "cosine": 1.0000000000000002,
+              "absolute_cosine": 1.0000000000000002
+            }
+          ],
+          "pairwise_cosines": [
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "arm_length_scale",
+              "cosine": 0.27323784750681507,
+              "absolute_cosine": 0.27323784750681507
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "lower_body_height_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "stance_width_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "lower_torso_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "upper_torso_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "neck_head_offset_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "lower_body_height_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "stance_width_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "lower_torso_length_scale",
+              "cosine": -0.7077915965164909,
+              "absolute_cosine": 0.7077915965164909
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "upper_torso_length_scale",
+              "cosine": -0.7077915965164846,
+              "absolute_cosine": 0.7077915965164846
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "neck_head_offset_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "lower_body_height_scale",
+              "parameter_b": "stance_width_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "lower_body_height_scale",
+              "parameter_b": "lower_torso_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "lower_body_height_scale",
+              "parameter_b": "upper_torso_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "lower_body_height_scale",
+              "parameter_b": "neck_head_offset_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "lower_body_height_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": -0.2760564034009007,
+              "absolute_cosine": 0.2760564034009007
+            },
+            {
+              "parameter_a": "lower_body_height_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": -0.05915192570750083,
+              "absolute_cosine": 0.05915192570750083
+            },
+            {
+              "parameter_a": "stance_width_scale",
+              "parameter_b": "lower_torso_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "stance_width_scale",
+              "parameter_b": "upper_torso_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "stance_width_scale",
+              "parameter_b": "neck_head_offset_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "stance_width_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "stance_width_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "lower_torso_length_scale",
+              "parameter_b": "upper_torso_length_scale",
+              "cosine": 1.0000000000000002,
+              "absolute_cosine": 1.0000000000000002
+            },
+            {
+              "parameter_a": "lower_torso_length_scale",
+              "parameter_b": "neck_head_offset_scale",
+              "cosine": 0.31622776601682495,
+              "absolute_cosine": 0.31622776601682495
+            },
+            {
+              "parameter_a": "lower_torso_length_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "lower_torso_length_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "upper_torso_length_scale",
+              "parameter_b": "neck_head_offset_scale",
+              "cosine": 0.316227766016825,
+              "absolute_cosine": 0.316227766016825
+            },
+            {
+              "parameter_a": "upper_torso_length_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "upper_torso_length_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "neck_head_offset_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "neck_head_offset_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "thigh_length_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.7071067811865447,
+              "absolute_cosine": 0.7071067811865447
+            }
+          ],
+          "diagnostic_rules": {
+            "zero_norm_threshold": 1e-08,
+            "confounded_cosine_threshold": 0.995,
+            "derivative_fraction_of_parameter_range": 0.01
+          },
+          "production_geometry_authority": false,
+          "warning": "Local sensitivity/identifiability only. A full-rank landmark fit does not prove architecture identity or manufacturing geometry."
+        }
+      }
+    },
+    {
+      "reference_id": "kdl_k2302_thing_front_seed",
+      "reference_file": "kdl-k2302-thing-front.json",
+      "skeleton_id": "brickmen_xl_v0_skeleton",
+      "role": "65mm large-body control",
+      "analyses": {
+        "current": {
+          "schema_version": "0.1",
+          "reference_id": "kdl_k2302_thing_front_seed",
+          "skeleton_id": "brickmen_xl_v0_skeleton",
+          "candidate_parameters": [
+            "shoulder_width_scale",
+            "arm_length_scale",
+            "torso_height_scale",
+            "lower_body_height_scale",
+            "stance_width_scale"
+          ],
+          "observation_axes": [
+            {
+              "node_id": "head_center",
+              "axis": "x"
+            },
+            {
+              "node_id": "head_center",
+              "axis": "z"
+            },
+            {
+              "node_id": "neck",
+              "axis": "x"
+            },
+            {
+              "node_id": "neck",
+              "axis": "z"
+            },
+            {
+              "node_id": "shoulder_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "shoulder_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "shoulder_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "shoulder_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "elbow_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "elbow_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "elbow_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "elbow_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "wrist_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "wrist_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "wrist_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "wrist_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "hand_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "hand_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "hand_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "hand_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "waist",
+              "axis": "x"
+            },
+            {
+              "node_id": "waist",
+              "axis": "z"
+            },
+            {
+              "node_id": "hip_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "hip_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "hip_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "hip_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "knee_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "knee_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "knee_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "knee_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "ankle_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "ankle_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "ankle_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "ankle_r",
+              "axis": "z"
+            }
+          ],
+          "observation_dimension": 34,
+          "parameter_count": 5,
+          "jacobian_rank": 5,
+          "identifiable_dimension_count": 5,
+          "status": "locally_identifiable",
+          "sensitivity_norms": {
+            "shoulder_width_scale": 0.5934644049983157,
+            "arm_length_scale": 0.7480641683706172,
+            "torso_height_scale": 0.6663332499582882,
+            "lower_body_height_scale": 0.8339964028699508,
+            "stance_width_scale": 0.16748134224444283
+          },
+          "unobserved_parameters": [],
+          "confounded_pairs": [],
+          "pairwise_cosines": [
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "arm_length_scale",
+              "cosine": 0.2137630727842562,
+              "absolute_cosine": 0.2137630727842562
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "torso_height_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "lower_body_height_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "stance_width_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "torso_height_scale",
+              "cosine": 0.21024755047652577,
+              "absolute_cosine": 0.21024755047652577
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "lower_body_height_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "stance_width_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "torso_height_scale",
+              "parameter_b": "lower_body_height_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "torso_height_scale",
+              "parameter_b": "stance_width_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "lower_body_height_scale",
+              "parameter_b": "stance_width_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            }
+          ],
+          "diagnostic_rules": {
+            "zero_norm_threshold": 1e-08,
+            "confounded_cosine_threshold": 0.995,
+            "derivative_fraction_of_parameter_range": 0.01
+          },
+          "production_geometry_authority": false,
+          "warning": "Local sensitivity/identifiability only. A full-rank landmark fit does not prove architecture identity or manufacturing geometry."
+        },
+        "safe_expanded_v1": {
+          "schema_version": "0.1",
+          "reference_id": "kdl_k2302_thing_front_seed",
+          "skeleton_id": "brickmen_xl_v0_skeleton",
+          "candidate_parameters": [
+            "shoulder_width_scale",
+            "arm_length_scale",
+            "torso_height_scale",
+            "lower_body_height_scale",
+            "stance_width_scale",
+            "neck_head_offset_scale",
+            "thigh_length_scale",
+            "shin_length_scale"
+          ],
+          "observation_axes": [
+            {
+              "node_id": "head_center",
+              "axis": "x"
+            },
+            {
+              "node_id": "head_center",
+              "axis": "z"
+            },
+            {
+              "node_id": "neck",
+              "axis": "x"
+            },
+            {
+              "node_id": "neck",
+              "axis": "z"
+            },
+            {
+              "node_id": "shoulder_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "shoulder_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "shoulder_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "shoulder_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "elbow_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "elbow_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "elbow_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "elbow_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "wrist_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "wrist_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "wrist_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "wrist_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "hand_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "hand_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "hand_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "hand_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "waist",
+              "axis": "x"
+            },
+            {
+              "node_id": "waist",
+              "axis": "z"
+            },
+            {
+              "node_id": "hip_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "hip_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "hip_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "hip_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "knee_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "knee_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "knee_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "knee_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "ankle_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "ankle_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "ankle_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "ankle_r",
+              "axis": "z"
+            }
+          ],
+          "observation_dimension": 34,
+          "parameter_count": 8,
+          "jacobian_rank": 8,
+          "identifiable_dimension_count": 8,
+          "status": "locally_identifiable",
+          "sensitivity_norms": {
+            "shoulder_width_scale": 0.5934644049983157,
+            "arm_length_scale": 0.7480641683706172,
+            "torso_height_scale": 0.6663332499582882,
+            "lower_body_height_scale": 0.8339964028699508,
+            "stance_width_scale": 0.16748134224444283,
+            "neck_head_offset_scale": 0.10000000000000246,
+            "thigh_length_scale": 0.3800000000000027,
+            "shin_length_scale": 0.2614723741987628
+          },
+          "unobserved_parameters": [],
+          "confounded_pairs": [],
+          "pairwise_cosines": [
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "arm_length_scale",
+              "cosine": 0.2137630727842562,
+              "absolute_cosine": 0.2137630727842562
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "torso_height_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "lower_body_height_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "stance_width_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "neck_head_offset_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "torso_height_scale",
+              "cosine": 0.21024755047652577,
+              "absolute_cosine": 0.21024755047652577
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "lower_body_height_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "stance_width_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "neck_head_offset_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "torso_height_scale",
+              "parameter_b": "lower_body_height_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "torso_height_scale",
+              "parameter_b": "stance_width_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "torso_height_scale",
+              "parameter_b": "neck_head_offset_scale",
+              "cosine": 0.6153077308173326,
+              "absolute_cosine": 0.6153077308173326
+            },
+            {
+              "parameter_a": "torso_height_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "torso_height_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "lower_body_height_scale",
+              "parameter_b": "stance_width_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "lower_body_height_scale",
+              "parameter_b": "neck_head_offset_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "lower_body_height_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": -0.3057567144444469,
+              "absolute_cosine": 0.3057567144444469
+            },
+            {
+              "parameter_a": "lower_body_height_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": -0.05934974600936732,
+              "absolute_cosine": 0.05934974600936732
+            },
+            {
+              "parameter_a": "stance_width_scale",
+              "parameter_b": "neck_head_offset_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "stance_width_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "stance_width_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "neck_head_offset_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "neck_head_offset_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "thigh_length_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.707106781186549,
+              "absolute_cosine": 0.707106781186549
+            }
+          ],
+          "diagnostic_rules": {
+            "zero_norm_threshold": 1e-08,
+            "confounded_cosine_threshold": 0.995,
+            "derivative_fraction_of_parameter_range": 0.01
+          },
+          "production_geometry_authority": false,
+          "warning": "Local sensitivity/identifiability only. A full-rank landmark fit does not prove architecture identity or manufacturing geometry."
+        },
+        "segmented_torso_experiment": {
+          "schema_version": "0.1",
+          "reference_id": "kdl_k2302_thing_front_seed",
+          "skeleton_id": "brickmen_xl_v0_skeleton",
+          "candidate_parameters": [
+            "shoulder_width_scale",
+            "arm_length_scale",
+            "lower_body_height_scale",
+            "stance_width_scale",
+            "lower_torso_length_scale",
+            "upper_torso_length_scale",
+            "neck_head_offset_scale",
+            "thigh_length_scale",
+            "shin_length_scale"
+          ],
+          "observation_axes": [
+            {
+              "node_id": "head_center",
+              "axis": "x"
+            },
+            {
+              "node_id": "head_center",
+              "axis": "z"
+            },
+            {
+              "node_id": "neck",
+              "axis": "x"
+            },
+            {
+              "node_id": "neck",
+              "axis": "z"
+            },
+            {
+              "node_id": "shoulder_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "shoulder_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "shoulder_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "shoulder_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "elbow_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "elbow_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "elbow_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "elbow_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "wrist_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "wrist_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "wrist_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "wrist_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "hand_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "hand_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "hand_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "hand_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "waist",
+              "axis": "x"
+            },
+            {
+              "node_id": "waist",
+              "axis": "z"
+            },
+            {
+              "node_id": "hip_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "hip_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "hip_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "hip_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "knee_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "knee_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "knee_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "knee_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "ankle_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "ankle_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "ankle_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "ankle_r",
+              "axis": "z"
+            }
+          ],
+          "observation_dimension": 34,
+          "parameter_count": 9,
+          "jacobian_rank": 8,
+          "identifiable_dimension_count": 8,
+          "status": "partially_identifiable",
+          "sensitivity_norms": {
+            "shoulder_width_scale": 0.5934644049983157,
+            "arm_length_scale": 0.7480641683706172,
+            "lower_body_height_scale": 0.8339964028699508,
+            "stance_width_scale": 0.16748134224444283,
+            "lower_torso_length_scale": 0.53758720222863,
+            "upper_torso_length_scale": 0.44271887242358016,
+            "neck_head_offset_scale": 0.10000000000000246,
+            "thigh_length_scale": 0.3800000000000027,
+            "shin_length_scale": 0.2614723741987628
+          },
+          "unobserved_parameters": [],
+          "confounded_pairs": [
+            {
+              "parameter_a": "lower_torso_length_scale",
+              "parameter_b": "upper_torso_length_scale",
+              "cosine": 0.9999999999999999,
+              "absolute_cosine": 0.9999999999999999
+            }
+          ],
+          "pairwise_cosines": [
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "arm_length_scale",
+              "cosine": 0.2137630727842562,
+              "absolute_cosine": 0.2137630727842562
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "lower_body_height_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "stance_width_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "lower_torso_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "upper_torso_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "neck_head_offset_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "lower_body_height_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "stance_width_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "lower_torso_length_scale",
+              "cosine": -0.718637818730942,
+              "absolute_cosine": 0.718637818730942
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "upper_torso_length_scale",
+              "cosine": -0.7186378187309429,
+              "absolute_cosine": 0.7186378187309429
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "neck_head_offset_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "lower_body_height_scale",
+              "parameter_b": "stance_width_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "lower_body_height_scale",
+              "parameter_b": "lower_torso_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "lower_body_height_scale",
+              "parameter_b": "upper_torso_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "lower_body_height_scale",
+              "parameter_b": "neck_head_offset_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "lower_body_height_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": -0.3057567144444469,
+              "absolute_cosine": 0.3057567144444469
+            },
+            {
+              "parameter_a": "lower_body_height_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": -0.05934974600936732,
+              "absolute_cosine": 0.05934974600936732
+            },
+            {
+              "parameter_a": "stance_width_scale",
+              "parameter_b": "lower_torso_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "stance_width_scale",
+              "parameter_b": "upper_torso_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "stance_width_scale",
+              "parameter_b": "neck_head_offset_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "stance_width_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "stance_width_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "lower_torso_length_scale",
+              "parameter_b": "upper_torso_length_scale",
+              "cosine": 0.9999999999999999,
+              "absolute_cosine": 0.9999999999999999
+            },
+            {
+              "parameter_a": "lower_torso_length_scale",
+              "parameter_b": "neck_head_offset_scale",
+              "cosine": 0.31622776601682184,
+              "absolute_cosine": 0.31622776601682184
+            },
+            {
+              "parameter_a": "lower_torso_length_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "lower_torso_length_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "upper_torso_length_scale",
+              "parameter_b": "neck_head_offset_scale",
+              "cosine": 0.31622776601681835,
+              "absolute_cosine": 0.31622776601681835
+            },
+            {
+              "parameter_a": "upper_torso_length_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "upper_torso_length_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "neck_head_offset_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "neck_head_offset_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "thigh_length_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.707106781186549,
+              "absolute_cosine": 0.707106781186549
+            }
+          ],
+          "diagnostic_rules": {
+            "zero_norm_threshold": 1e-08,
+            "confounded_cosine_threshold": 0.995,
+            "derivative_fraction_of_parameter_range": 0.01
+          },
+          "production_geometry_authority": false,
+          "warning": "Local sensitivity/identifiability only. A full-rank landmark fit does not prove architecture identity or manufacturing geometry."
+        }
+      }
+    },
+    {
+      "reference_id": "lego_axl_front_seed",
+      "reference_file": "lego-axl-front.json",
+      "skeleton_id": "brickmen_broad_v0_skeleton",
+      "role": "official oversized-torso Broad stress test",
+      "analyses": {
+        "current": {
+          "schema_version": "0.1",
+          "reference_id": "lego_axl_front_seed",
+          "skeleton_id": "brickmen_broad_v0_skeleton",
+          "candidate_parameters": [
+            "shoulder_width_scale",
+            "arm_length_scale",
+            "torso_height_scale",
+            "lower_body_height_scale",
+            "stance_width_scale"
+          ],
+          "observation_axes": [
+            {
+              "node_id": "head_center",
+              "axis": "x"
+            },
+            {
+              "node_id": "head_center",
+              "axis": "z"
+            },
+            {
+              "node_id": "neck",
+              "axis": "x"
+            },
+            {
+              "node_id": "neck",
+              "axis": "z"
+            },
+            {
+              "node_id": "shoulder_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "shoulder_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "shoulder_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "shoulder_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "elbow_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "elbow_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "elbow_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "elbow_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "wrist_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "wrist_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "wrist_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "wrist_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "hand_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "hand_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "hand_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "hand_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "waist",
+              "axis": "x"
+            },
+            {
+              "node_id": "waist",
+              "axis": "z"
+            },
+            {
+              "node_id": "hip_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "hip_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "hip_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "hip_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "knee_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "knee_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "knee_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "knee_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "ankle_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "ankle_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "ankle_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "ankle_r",
+              "axis": "z"
+            }
+          ],
+          "observation_dimension": 34,
+          "parameter_count": 5,
+          "jacobian_rank": 5,
+          "identifiable_dimension_count": 5,
+          "status": "locally_identifiable",
+          "sensitivity_norms": {
+            "shoulder_width_scale": 0.6549809157525183,
+            "arm_length_scale": 0.6190315016216833,
+            "torso_height_scale": 0.7079548008170937,
+            "lower_body_height_scale": 0.7014627573863041,
+            "stance_width_scale": 0.1592168332809054
+          },
+          "unobserved_parameters": [],
+          "confounded_pairs": [],
+          "pairwise_cosines": [
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "arm_length_scale",
+              "cosine": 0.21852057045885048,
+              "absolute_cosine": 0.21852057045885048
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "torso_height_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "lower_body_height_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "stance_width_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "torso_height_scale",
+              "cosine": -0.00638910094688124,
+              "absolute_cosine": 0.00638910094688124
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "lower_body_height_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "stance_width_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "torso_height_scale",
+              "parameter_b": "lower_body_height_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "torso_height_scale",
+              "parameter_b": "stance_width_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "lower_body_height_scale",
+              "parameter_b": "stance_width_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            }
+          ],
+          "diagnostic_rules": {
+            "zero_norm_threshold": 1e-08,
+            "confounded_cosine_threshold": 0.995,
+            "derivative_fraction_of_parameter_range": 0.01
+          },
+          "production_geometry_authority": false,
+          "warning": "Local sensitivity/identifiability only. A full-rank landmark fit does not prove architecture identity or manufacturing geometry."
+        },
+        "safe_expanded_v1": {
+          "schema_version": "0.1",
+          "reference_id": "lego_axl_front_seed",
+          "skeleton_id": "brickmen_broad_v0_skeleton",
+          "candidate_parameters": [
+            "shoulder_width_scale",
+            "arm_length_scale",
+            "torso_height_scale",
+            "lower_body_height_scale",
+            "stance_width_scale",
+            "neck_head_offset_scale",
+            "thigh_length_scale",
+            "shin_length_scale"
+          ],
+          "observation_axes": [
+            {
+              "node_id": "head_center",
+              "axis": "x"
+            },
+            {
+              "node_id": "head_center",
+              "axis": "z"
+            },
+            {
+              "node_id": "neck",
+              "axis": "x"
+            },
+            {
+              "node_id": "neck",
+              "axis": "z"
+            },
+            {
+              "node_id": "shoulder_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "shoulder_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "shoulder_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "shoulder_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "elbow_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "elbow_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "elbow_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "elbow_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "wrist_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "wrist_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "wrist_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "wrist_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "hand_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "hand_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "hand_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "hand_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "waist",
+              "axis": "x"
+            },
+            {
+              "node_id": "waist",
+              "axis": "z"
+            },
+            {
+              "node_id": "hip_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "hip_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "hip_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "hip_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "knee_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "knee_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "knee_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "knee_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "ankle_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "ankle_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "ankle_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "ankle_r",
+              "axis": "z"
+            }
+          ],
+          "observation_dimension": 34,
+          "parameter_count": 8,
+          "jacobian_rank": 8,
+          "identifiable_dimension_count": 8,
+          "status": "locally_identifiable",
+          "sensitivity_norms": {
+            "shoulder_width_scale": 0.6549809157525183,
+            "arm_length_scale": 0.6190315016216833,
+            "torso_height_scale": 0.7079548008170937,
+            "lower_body_height_scale": 0.7014627573863041,
+            "stance_width_scale": 0.1592168332809054,
+            "neck_head_offset_scale": 0.11999999999999802,
+            "thigh_length_scale": 0.3200000000000037,
+            "shin_length_scale": 0.2049038317038385
+          },
+          "unobserved_parameters": [],
+          "confounded_pairs": [],
+          "pairwise_cosines": [
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "arm_length_scale",
+              "cosine": 0.21852057045885048,
+              "absolute_cosine": 0.21852057045885048
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "torso_height_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "lower_body_height_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "stance_width_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "neck_head_offset_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "torso_height_scale",
+              "cosine": -0.00638910094688124,
+              "absolute_cosine": 0.00638910094688124
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "lower_body_height_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "stance_width_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "neck_head_offset_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "torso_height_scale",
+              "parameter_b": "lower_body_height_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "torso_height_scale",
+              "parameter_b": "stance_width_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "torso_height_scale",
+              "parameter_b": "neck_head_offset_scale",
+              "cosine": 0.6497589951633598,
+              "absolute_cosine": 0.6497589951633598
+            },
+            {
+              "parameter_a": "torso_height_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "torso_height_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "lower_body_height_scale",
+              "parameter_b": "stance_width_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "lower_body_height_scale",
+              "parameter_b": "neck_head_offset_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "lower_body_height_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": -0.3065023734133824,
+              "absolute_cosine": 0.3065023734133824
+            },
+            {
+              "parameter_a": "lower_body_height_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": -0.07056322543407179,
+              "absolute_cosine": 0.07056322543407179
+            },
+            {
+              "parameter_a": "stance_width_scale",
+              "parameter_b": "neck_head_offset_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "stance_width_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "stance_width_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "neck_head_offset_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "neck_head_offset_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "thigh_length_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.7071067811865492,
+              "absolute_cosine": 0.7071067811865492
+            }
+          ],
+          "diagnostic_rules": {
+            "zero_norm_threshold": 1e-08,
+            "confounded_cosine_threshold": 0.995,
+            "derivative_fraction_of_parameter_range": 0.01
+          },
+          "production_geometry_authority": false,
+          "warning": "Local sensitivity/identifiability only. A full-rank landmark fit does not prove architecture identity or manufacturing geometry."
+        },
+        "segmented_torso_experiment": {
+          "schema_version": "0.1",
+          "reference_id": "lego_axl_front_seed",
+          "skeleton_id": "brickmen_broad_v0_skeleton",
+          "candidate_parameters": [
+            "shoulder_width_scale",
+            "arm_length_scale",
+            "lower_body_height_scale",
+            "stance_width_scale",
+            "lower_torso_length_scale",
+            "upper_torso_length_scale",
+            "neck_head_offset_scale",
+            "thigh_length_scale",
+            "shin_length_scale"
+          ],
+          "observation_axes": [
+            {
+              "node_id": "head_center",
+              "axis": "x"
+            },
+            {
+              "node_id": "head_center",
+              "axis": "z"
+            },
+            {
+              "node_id": "neck",
+              "axis": "x"
+            },
+            {
+              "node_id": "neck",
+              "axis": "z"
+            },
+            {
+              "node_id": "shoulder_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "shoulder_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "shoulder_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "shoulder_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "elbow_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "elbow_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "elbow_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "elbow_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "wrist_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "wrist_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "wrist_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "wrist_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "hand_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "hand_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "hand_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "hand_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "waist",
+              "axis": "x"
+            },
+            {
+              "node_id": "waist",
+              "axis": "z"
+            },
+            {
+              "node_id": "hip_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "hip_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "hip_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "hip_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "knee_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "knee_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "knee_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "knee_r",
+              "axis": "z"
+            },
+            {
+              "node_id": "ankle_l",
+              "axis": "x"
+            },
+            {
+              "node_id": "ankle_l",
+              "axis": "z"
+            },
+            {
+              "node_id": "ankle_r",
+              "axis": "x"
+            },
+            {
+              "node_id": "ankle_r",
+              "axis": "z"
+            }
+          ],
+          "observation_dimension": 34,
+          "parameter_count": 9,
+          "jacobian_rank": 8,
+          "identifiable_dimension_count": 8,
+          "status": "partially_identifiable",
+          "sensitivity_norms": {
+            "shoulder_width_scale": 0.6549809157525183,
+            "arm_length_scale": 0.6190315016216833,
+            "lower_body_height_scale": 0.7014627573863041,
+            "stance_width_scale": 0.1592168332809054,
+            "lower_torso_length_scale": 0.5692099788303184,
+            "upper_torso_length_scale": 0.5059644256269453,
+            "neck_head_offset_scale": 0.11999999999999802,
+            "thigh_length_scale": 0.3200000000000037,
+            "shin_length_scale": 0.2049038317038385
+          },
+          "unobserved_parameters": [],
+          "confounded_pairs": [
+            {
+              "parameter_a": "lower_torso_length_scale",
+              "parameter_b": "upper_torso_length_scale",
+              "cosine": 1.0000000000000002,
+              "absolute_cosine": 1.0000000000000002
+            }
+          ],
+          "pairwise_cosines": [
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "arm_length_scale",
+              "cosine": 0.21852057045885048,
+              "absolute_cosine": 0.21852057045885048
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "lower_body_height_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "stance_width_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "lower_torso_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "upper_torso_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "neck_head_offset_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "shoulder_width_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "lower_body_height_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "stance_width_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "lower_torso_length_scale",
+              "cosine": -0.7151798757636196,
+              "absolute_cosine": 0.7151798757636196
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "upper_torso_length_scale",
+              "cosine": -0.7151798757636242,
+              "absolute_cosine": 0.7151798757636242
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "neck_head_offset_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "arm_length_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "lower_body_height_scale",
+              "parameter_b": "stance_width_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "lower_body_height_scale",
+              "parameter_b": "lower_torso_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "lower_body_height_scale",
+              "parameter_b": "upper_torso_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "lower_body_height_scale",
+              "parameter_b": "neck_head_offset_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "lower_body_height_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": -0.3065023734133824,
+              "absolute_cosine": 0.3065023734133824
+            },
+            {
+              "parameter_a": "lower_body_height_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": -0.07056322543407179,
+              "absolute_cosine": 0.07056322543407179
+            },
+            {
+              "parameter_a": "stance_width_scale",
+              "parameter_b": "lower_torso_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "stance_width_scale",
+              "parameter_b": "upper_torso_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "stance_width_scale",
+              "parameter_b": "neck_head_offset_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "stance_width_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "stance_width_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "lower_torso_length_scale",
+              "parameter_b": "upper_torso_length_scale",
+              "cosine": 1.0000000000000002,
+              "absolute_cosine": 1.0000000000000002
+            },
+            {
+              "parameter_a": "lower_torso_length_scale",
+              "parameter_b": "neck_head_offset_scale",
+              "cosine": 0.3162277660168271,
+              "absolute_cosine": 0.3162277660168271
+            },
+            {
+              "parameter_a": "lower_torso_length_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "lower_torso_length_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "upper_torso_length_scale",
+              "parameter_b": "neck_head_offset_scale",
+              "cosine": 0.31622776601683794,
+              "absolute_cosine": 0.31622776601683794
+            },
+            {
+              "parameter_a": "upper_torso_length_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "upper_torso_length_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "neck_head_offset_scale",
+              "parameter_b": "thigh_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "neck_head_offset_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.0,
+              "absolute_cosine": 0.0
+            },
+            {
+              "parameter_a": "thigh_length_scale",
+              "parameter_b": "shin_length_scale",
+              "cosine": 0.7071067811865492,
+              "absolute_cosine": 0.7071067811865492
+            }
+          ],
+          "diagnostic_rules": {
+            "zero_norm_threshold": 1e-08,
+            "confounded_cosine_threshold": 0.995,
+            "derivative_fraction_of_parameter_range": 0.01
+          },
+          "production_geometry_authority": false,
+          "warning": "Local sensitivity/identifiability only. A full-rank landmark fit does not prove architecture identity or manufacturing geometry."
+        }
+      }
+    }
+  ],
+  "conclusions": [
+    {
+      "reference_id": "alpha_af325_venom_front_seed",
+      "safe_expanded_status": "locally_identifiable",
+      "safe_expanded_rank": 8,
+      "safe_expanded_parameter_count": 8,
+      "segmented_torso_status": "partially_identifiable",
+      "segmented_torso_rank": 8,
+      "segmented_torso_parameter_count": 9,
+      "segmented_torso_confounded_pairs": [
+        {
+          "parameter_a": "lower_torso_length_scale",
+          "parameter_b": "upper_torso_length_scale",
+          "cosine": 1.0000000000000002,
+          "absolute_cosine": 1.0000000000000002
+        }
+      ]
+    },
+    {
+      "reference_id": "alpha_af345_hulk_front_seed",
+      "safe_expanded_status": "locally_identifiable",
+      "safe_expanded_rank": 8,
+      "safe_expanded_parameter_count": 8,
+      "segmented_torso_status": "partially_identifiable",
+      "segmented_torso_rank": 8,
+      "segmented_torso_parameter_count": 9,
+      "segmented_torso_confounded_pairs": [
+        {
+          "parameter_a": "lower_torso_length_scale",
+          "parameter_b": "upper_torso_length_scale",
+          "cosine": 0.9999999999999999,
+          "absolute_cosine": 0.9999999999999999
+        }
+      ]
+    },
+    {
+      "reference_id": "lego_sh0371_hulk_front_seed",
+      "safe_expanded_status": "locally_identifiable",
+      "safe_expanded_rank": 8,
+      "safe_expanded_parameter_count": 8,
+      "segmented_torso_status": "partially_identifiable",
+      "segmented_torso_rank": 8,
+      "segmented_torso_parameter_count": 9,
+      "segmented_torso_confounded_pairs": [
+        {
+          "parameter_a": "lower_torso_length_scale",
+          "parameter_b": "upper_torso_length_scale",
+          "cosine": 1.0000000000000002,
+          "absolute_cosine": 1.0000000000000002
+        }
+      ]
+    },
+    {
+      "reference_id": "kdl_k2302_thing_front_seed",
+      "safe_expanded_status": "locally_identifiable",
+      "safe_expanded_rank": 8,
+      "safe_expanded_parameter_count": 8,
+      "segmented_torso_status": "partially_identifiable",
+      "segmented_torso_rank": 8,
+      "segmented_torso_parameter_count": 9,
+      "segmented_torso_confounded_pairs": [
+        {
+          "parameter_a": "lower_torso_length_scale",
+          "parameter_b": "upper_torso_length_scale",
+          "cosine": 0.9999999999999999,
+          "absolute_cosine": 0.9999999999999999
+        }
+      ]
+    },
+    {
+      "reference_id": "lego_axl_front_seed",
+      "safe_expanded_status": "locally_identifiable",
+      "safe_expanded_rank": 8,
+      "safe_expanded_parameter_count": 8,
+      "segmented_torso_status": "partially_identifiable",
+      "segmented_torso_rank": 8,
+      "segmented_torso_parameter_count": 9,
+      "segmented_torso_confounded_pairs": [
+        {
+          "parameter_a": "lower_torso_length_scale",
+          "parameter_b": "upper_torso_length_scale",
+          "cosine": 1.0000000000000002,
+          "absolute_cosine": 1.0000000000000002
+        }
+      ]
+    }
+  ],
+  "rules": [
+    "Do not add a fine-grained fit parameter merely because it lowers RMSE.",
+    "Prefer candidate parameter sets whose local Jacobian is full column rank for the observed landmark axes.",
+    "A rank-deficient parameterization requires more landmarks, parameter locking, or a simpler model.",
+    "Identifiability does not establish architecture or production geometry authority."
+  ],
+  "production_geometry_authority": false
+}
