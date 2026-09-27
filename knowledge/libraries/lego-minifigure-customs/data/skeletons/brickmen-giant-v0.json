@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.5",
+  "schema_version": "0.6",
   "skeleton_id": "brickmen_giant_v0_skeleton",
   "architecture_id": "brickmen_giant_v0",
   "status": "concept_generation_skeleton_nonproduction",
@@ -120,6 +120,16 @@
       "max": 1.8
     },
     "hand_height_scale": {
+      "default": 1,
+      "min": 0.65,
+      "max": 1.8
+    },
+    "lower_body_width_scale": {
+      "default": 1,
+      "min": 0.65,
+      "max": 1.8
+    },
+    "lower_body_depth_scale": {
       "default": 1,
       "min": 0.65,
       "max": 1.8
@@ -852,6 +862,24 @@
       },
       "frame_semantic": "component_local_visual_envelope",
       "visual_authority": "Brickmen rounded baseline informed by official Giant component-profile statistics."
+    },
+    {
+      "id": "lower_body",
+      "shape": "box_between_nodes",
+      "a_node": "root",
+      "b_node": "waist",
+      "center_node": "pelvis",
+      "size_norm": [
+        0.56,
+        0.33,
+        0
+      ],
+      "size_modifiers": {
+        "x": "lower_body_width_scale",
+        "y": "lower_body_depth_scale"
+      },
+      "frame_semantic": "body_axis_visual_envelope",
+      "visual_authority": "Brickmen rounded baseline informed by official Giant lower-body profile-band statistics; deliberately independent from hip/stance joint spacing."
     }
   ],
   "generation_contract": {
@@ -878,6 +906,7 @@
     "Visual envelope width/depth parameters are independent from skeletal joint-spacing parameters; changing torso/head/abdomen mass must not move shoulder or lower-body joint centers.",
     "Fine-grained vertical segment parameters move each segment endpoint and its downstream nodes, preserving neighboring segment lengths unless their own parameter is changed.",
     "Official pinned 10128 LDraw body-profile evidence requires torso_depth_scale≈1.669 and abdomen_projection_scale≈1.548; v0.4 expands these visual-only maxima without changing defaults or mechanical node geometry.",
-    "Giant v0.5 adds visual-only bone-aligned arm and component-local hand envelopes. Their rounded baseline cross-sections are independently fit from official component-profile evidence and do not change shoulder/wrist mechanics."
+    "Giant v0.5 adds visual-only bone-aligned arm and component-local hand envelopes. Their rounded baseline cross-sections are independently fit from official component-profile evidence and do not change shoulder/wrist mechanics.",
+    "Giant v0.6 adds a visual-only root-to-waist lower-body envelope. Width/depth do not move hip, knee or stance landmarks."
   ]
 }
