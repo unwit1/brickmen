@@ -1,0 +1,23 @@
+{
+  "schema": "mask-route-signature-propagation/v1",
+  "ranked_records": 1000,
+  "unique_component_signatures": 796,
+  "duplicate_signature_groups": 134,
+  "records_in_duplicate_signature_groups": 338,
+  "manual_review_records": 15,
+  "reviewed_component_signatures": 14,
+  "propagated_physical_route_records": 5,
+  "ambiguous_reviewed_signatures": 0,
+  "signature_size_distribution": {
+    "1": 662,
+    "2": 94,
+    "3": 19,
+    "4": 15,
+    "5": 4,
+    "6": 1,
+    "7": 1
+  },
+  "policy": "Only confirmed physical component topology is propagated, and only when the exact head+headgear part-number signature matches a manually reviewed signature with one unanimous route. Semantic function and source-to-LEGO translation are never propagated.",
+  "status": "exact_component_signature_groups_ready",
+  "ambiguous_reviewed_signature_details": []
+}
