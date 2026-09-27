@@ -593,3 +593,18 @@ Next:
 - [ ] add dedicated shoulder-mass and lower-body visual envelope primitives where evidence supports them
 - [ ] add fixed donor/reference-anchor constraints to fitting
 - [ ] render skeleton + envelope overlays for manual review
+
+
+### Locked donor-frame fitting — 2026-09-27
+
+- [x] add reference-level `locked_parameters` contract
+- [x] add CLI/API locked-parameter support to skeleton fitting
+- [x] exclude locked parameters from optimization
+- [x] exclude envelope-only parameters from default skeleton optimization
+- [x] add regression coverage for locks, override precedence, bounds, and envelope exclusion
+
+This supports hybrid bodies where a known donor frame must remain unchanged while other body proportions are fitted. It is intentionally parameter/frame locking rather than pretending a visual landmark is exact mechanical metrology.
+
+Next:
+- [ ] map physically measured donor frames into explicit locks when target-skeleton parameter semantics are validated
+- [ ] add component-frame constraints beyond scalar parameter locks where needed
