@@ -1,0 +1,33 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-27",
+  "entity": "JointProposal",
+  "fields": [
+    "joint_proposal_id",
+    "target_geometry_id",
+    "source_model",
+    "source_model_version",
+    "parent_part_candidate",
+    "child_part_candidate",
+    "joint_type_candidate",
+    "joint_center_candidate",
+    "axis_candidate",
+    "range_candidate",
+    "confidence",
+    "raw_output_uri",
+    "evidence",
+    "target_architecture_id",
+    "architecture_match_class",
+    "mapped_joint_id",
+    "mapped_connector_profile_id",
+    "promotion_status",
+    "review"
+  ],
+  "promotion_status": [
+    "proposal_only",
+    "architecture_mapped",
+    "physical_validation_required",
+    "rejected"
+  ],
+  "rule": "JointProposal can never itself become a production connector. It must map to a validated architecture joint or enter an engineering validation workflow."
+}
