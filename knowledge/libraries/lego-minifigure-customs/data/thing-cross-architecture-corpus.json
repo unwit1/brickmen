@@ -1,0 +1,173 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-27",
+  "status": "research_control_corpus_v0",
+  "character_id": "marvel_thing_ben_grimm",
+  "records": [
+    {
+      "record_id": "thing_lego_sh1051_first_steps",
+      "release": {
+        "maker": "LEGO",
+        "code": "SH1051",
+        "year": 2025,
+        "label": "Ben Grimm"
+      },
+      "source_appearance_family": "mcu_first_steps",
+      "architecture_candidate": "minifig_standard",
+      "evidence": [
+        "BrickLink 2025 First Steps minifigure catalog"
+      ],
+      "confidence": "catalog_high"
+    },
+    {
+      "record_id": "thing_alpha_af336_first_steps",
+      "release": {
+        "maker": "Alpha Toys",
+        "code": "AF336",
+        "year": 2025,
+        "label": "Thing (First Steps)"
+      },
+      "source_appearance_family": "mcu_first_steps",
+      "architecture_candidate": "minifig_standard_or_custom_standard",
+      "evidence": [
+        "HeroBloks AF336",
+        "AF333-AF341 series"
+      ],
+      "confidence": "catalog_plus_visual_candidate"
+    },
+    {
+      "record_id": "thing_kdl_k2302_first_steps",
+      "release": {
+        "maker": "KDL",
+        "code": "K2302",
+        "year": 2025,
+        "label": "Thing (First Steps)"
+      },
+      "source_appearance_family": "mcu_first_steps",
+      "architecture_candidate": "custom_kdl_65mm_large",
+      "nominal_height_mm": 65,
+      "evidence": [
+        "HeroBloks note: 6.5 cm big"
+      ],
+      "confidence": "catalog_high_size"
+    },
+    {
+      "record_id": "thing_tp_tp178_first_steps",
+      "release": {
+        "maker": "TP",
+        "code": "TP178",
+        "year": 2024,
+        "label": "Thing (First Steps)"
+      },
+      "source_appearance_family": "mcu_first_steps",
+      "architecture_candidate": "minifig_standard_or_custom_standard",
+      "evidence": [
+        "HeroBloks TP178"
+      ],
+      "confidence": "catalog_candidate"
+    },
+    {
+      "record_id": "thing_tp_tp349_first_steps_bigfig",
+      "release": {
+        "maker": "TP",
+        "code": "TP349",
+        "year": 2025,
+        "label": "Thing (First Steps) (BigFig)"
+      },
+      "source_appearance_family": "mcu_first_steps",
+      "architecture_candidate": "compatible_bigfig_unresolved",
+      "evidence": [
+        "HeroBloks explicit BigFig label"
+      ],
+      "confidence": "catalog_high_label_physical_unknown"
+    },
+    {
+      "record_id": "thing_g2_gh0348",
+      "release": {
+        "maker": "G (2)",
+        "code": "GH0348",
+        "year": 2025,
+        "label": "Thing"
+      },
+      "source_appearance_family": "comics_or_unspecified",
+      "architecture_candidate": "custom_g2_muscle_hybrid",
+      "evidence": [
+        "HeroBloks GH0348",
+        "visual family candidate"
+      ],
+      "confidence": "visual_catalog_candidate"
+    },
+    {
+      "record_id": "thing_g2_gh0435_bigfig",
+      "release": {
+        "maker": "G (2)",
+        "code": "GH0435",
+        "label": "Thing (Fall of the Fantastic Four) (BigFig)"
+      },
+      "source_appearance_family": "fall_of_fantastic_four",
+      "architecture_candidate": "compatible_bigfig_unresolved",
+      "evidence": [
+        "HeroBloks explicit BigFig label"
+      ],
+      "confidence": "catalog_high_label_physical_unknown"
+    },
+    {
+      "record_id": "thing_g2_gh0440_bigfig",
+      "release": {
+        "maker": "G (2)",
+        "code": "GH0440",
+        "year": 2025,
+        "label": "Thing (Future Foundation) (BigFig)"
+      },
+      "source_appearance_family": "future_foundation",
+      "architecture_candidate": "compatible_bigfig_unresolved",
+      "evidence": [
+        "HeroBloks explicit BigFig label"
+      ],
+      "confidence": "catalog_high_label_physical_unknown"
+    },
+    {
+      "record_id": "thing_shengyuan_sy288_bigfig",
+      "release": {
+        "maker": "Sheng Yuan",
+        "code": "SY288",
+        "label": "Thing (BigFig)"
+      },
+      "source_appearance_family": "comics_or_unspecified",
+      "architecture_candidate": "compatible_bigfig_unresolved",
+      "evidence": [
+        "HeroBloks explicit BigFig label"
+      ],
+      "confidence": "catalog_high_label_physical_unknown"
+    },
+    {
+      "record_id": "thing_xinh_1421_bigfig",
+      "release": {
+        "maker": "Xinh",
+        "code": "1421",
+        "label": "Thing (BigFig)"
+      },
+      "source_appearance_family": "comics_or_unspecified",
+      "architecture_candidate": "compatible_bigfig_unresolved",
+      "evidence": [
+        "HeroBloks explicit BigFig label"
+      ],
+      "confidence": "catalog_high_label_physical_unknown"
+    }
+  ],
+  "strongest_matched_source_set": [
+    "thing_lego_sh1051_first_steps",
+    "thing_alpha_af336_first_steps",
+    "thing_kdl_k2302_first_steps",
+    "thing_tp_tp178_first_steps",
+    "thing_tp_tp349_first_steps_bigfig"
+  ],
+  "high_value_pair": [
+    {
+      "pair_id": "tp_first_steps_standard_vs_bigfig",
+      "from": "thing_tp_tp178_first_steps",
+      "to": "thing_tp_tp349_first_steps_bigfig",
+      "rationale": "same maker + same source family + explicitly different body class"
+    }
+  ]
+}
