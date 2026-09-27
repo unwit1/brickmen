@@ -1,15 +1,16 @@
 #!/usr/bin/env python3
 """Fit visual body-envelope parameters without moving skeletal joint centers.
 
-This fitter consumes silhouette observations from the reference-landmark files.
-It intentionally maps only measurements with an explicit envelope semantic:
-  head_width -> head envelope X
-  chest_outer_width -> torso envelope X
-  waist_outer_width -> abdomen envelope X
+Horizontal measurements are view-aware:
+- front/back: width maps to body X;
+- left/right: depth maps to body Y.
 
-Outer shoulder width and hip outer width remain diagnostics unless the target
-skeleton explicitly defines compatible visual-envelope primitives for them.
-They must never be silently reinterpreted as mechanical joint spacing.
+Vertical silhouette spans can map to visual envelope Z, currently including
+head height. Three-quarter views remain diagnostic unless an explicit binding
+is supplied.
+
+Outer shoulder/hip silhouette spans stay unmapped until a dedicated visual
+primitive exists; they are never silently reinterpreted as joint spacing.
 """
 
 from __future__ import annotations
@@ -22,22 +23,46 @@ from typing import Any, Mapping
 from tools.geometry.fit_body_skeleton import load_reference
 from tools.geometry.generate_body_skeleton import load_spec
 
-DEFAULT_BINDINGS = {
+FRONT_BACK_BINDINGS = {
     "head_width": ("head", "x"),
     "chest_outer_width": ("torso", "x"),
     "waist_outer_width": ("abdomen", "x"),
 }
 
+SIDE_BINDINGS = {
+    "head_depth": ("head", "y"),
+    "chest_outer_depth": ("torso", "y"),
+    "waist_outer_depth": ("abdomen", "y"),
+}
+
+VERTICAL_BINDINGS = {
+    "head_height": ("head", "z"),
+}
+
 AXIS_INDEX = {"x": 0, "y": 1, "z": 2}
 
 
-def normalized_visual_widths(reference: Mapping[str, Any]) -> dict[str, dict[str, Any]]:
+def default_bindings_for_view(view: str) -> dict[str, tuple[str, str]]:
+    if view in {"front", "back"}:
+        bindings = dict(FRONT_BACK_BINDINGS)
+    elif view in {"left", "right"}:
+        bindings = dict(SIDE_BINDINGS)
+    else:
+        bindings = {}
+    bindings.update(VERTICAL_BINDINGS)
+    return bindings
+
+
+def normalized_visual_measurements(
+    reference: Mapping[str, Any],
+) -> dict[str, dict[str, Any]]:
     bbox = reference.get("body_bbox_px")
-    pairs = reference.get("silhouette_pairs_px", {})
+    horizontal = reference.get("silhouette_pairs_px", {})
+    vertical = reference.get("silhouette_vertical_pairs_px", {})
     if not bbox:
         raise ValueError("BodyEnvelopeProfile fitting requires body_bbox_px")
-    if not pairs:
-        raise ValueError("Reference has no silhouette_pairs_px")
+    if not horizontal and not vertical:
+        raise ValueError("Reference has no silhouette span observations")
 
     left, top, right, bottom = [float(v) for v in bbox]
     height = bottom - top
@@ -45,10 +70,23 @@ def normalized_visual_widths(reference: Mapping[str, Any]) -> dict[str, dict[str
         raise ValueError("Invalid body_bbox_px")
 
     out: dict[str, dict[str, Any]] = {}
-    for name, pair in pairs.items():
-        width = float(pair["right_x"]) - float(pair["left_x"])
+    for name, pair in horizontal.items():
+        span = float(pair["right_x"]) - float(pair["left_x"])
         out[name] = {
-            "value": width / height,
+            "value": span / height,
+            "span_px": span,
+            "orientation": "horizontal",
+            "confidence": float(pair.get("confidence", 1.0)),
+            "semantic": pair.get("semantic"),
+            "notes": pair.get("notes"),
+        }
+
+    for name, pair in vertical.items():
+        span = float(pair["bottom_y"]) - float(pair["top_y"])
+        out[name] = {
+            "value": span / height,
+            "span_px": span,
+            "orientation": "vertical",
             "confidence": float(pair.get("confidence", 1.0)),
             "semantic": pair.get("semantic"),
             "notes": pair.get("notes"),
@@ -66,8 +104,12 @@ def fit_envelope_profile(
     *,
     bindings: Mapping[str, tuple[str, str]] | None = None,
 ) -> dict[str, Any]:
-    bindings = dict(bindings or DEFAULT_BINDINGS)
-    observations = normalized_visual_widths(reference)
+    resolved_bindings = (
+        dict(bindings)
+        if bindings is not None
+        else default_bindings_for_view(str(reference.get("view", "unknown")))
+    )
+    observations = normalized_visual_measurements(reference)
     envelopes = _envelope_map(spec)
     definitions = spec.get("parameters", {})
 
@@ -77,9 +119,15 @@ def fit_envelope_profile(
     bound_hits: list[str] = []
 
     for measurement_name, observation in observations.items():
-        binding = bindings.get(measurement_name)
+        binding = resolved_bindings.get(measurement_name)
         if not binding:
-            unmapped[measurement_name] = observation
+            unmapped[measurement_name] = {
+                **observation,
+                "reason": (
+                    f"no default visual-envelope binding for view "
+                    f"{reference.get('view', 'unknown')!r}"
+                ),
+            }
             continue
 
         envelope_id, axis_name = binding
@@ -120,6 +168,7 @@ def fit_envelope_profile(
             "envelope_id": envelope_id,
             "axis": axis_name,
             "parameter": modifier,
+            "orientation": observation["orientation"],
             "observed_normalized": float(observation["value"]),
             "base_normalized": base_size,
             "raw_scale": raw_scale,
@@ -136,12 +185,18 @@ def fit_envelope_profile(
         "torso_height_scale",
         "lower_body_height_scale",
         "stance_width_scale",
+        "lower_torso_length_scale",
+        "upper_torso_length_scale",
+        "neck_head_offset_scale",
+        "thigh_length_scale",
+        "shin_length_scale",
     }
     mechanical_changes = sorted(mechanical_names.intersection(overrides))
 
     return {
-        "schema_version": "0.1",
+        "schema_version": "0.2",
         "reference_id": reference["reference_id"],
+        "view": reference.get("view"),
         "skeleton_id": spec["skeleton_id"],
         "architecture_id": spec["architecture_id"],
         "parameter_overrides": overrides,
