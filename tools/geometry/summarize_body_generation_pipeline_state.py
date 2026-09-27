@@ -97,20 +97,37 @@ def summarize_pipeline_state(
         next_actions.append("compile a provider job from the conditioning payload")
 
     if provider_job and not provider_run:
+        adapter_status = str(
+            (provider_job.get("execution_interface") or {}).get(
+                "adapter_status", "unknown"
+            )
+        )
+        if adapter_status == "runnable_cli_verified":
+            run_status = "pending"
+            detail = (
+                "Verified CLI adapter exists, but no provider run report exists. "
+                "External provider environment and source/guide image input are required."
+            )
+            next_actions.append(
+                f"dry-run the {provider_id} adapter against an installed provider environment"
+            )
+            next_actions.append(
+                f"execute {provider_id} inference only after the dry-run plan is reviewed"
+            )
+        else:
+            run_status = "blocked"
+            detail = (
+                f"Provider execution interface is {adapter_status}; no verified runnable "
+                "Brickmen execution adapter exists yet."
+            )
+            next_actions.append(
+                f"implement/verify the {provider_id} execution adapter before inference"
+            )
         gates.append(_gate(
-            "provider_run","pending",artifact=provider_run_path,
-            detail=(
-                "No provider run report exists. External provider environment and "
-                "source/guide image input are still required."
-            ),
+            "provider_run",run_status,artifact=provider_run_path,
+            detail=detail,
             blocking=True,
         ))
-        next_actions.append(
-            f"dry-run the {provider_id} adapter against an installed provider environment"
-        )
-        next_actions.append(
-            f"execute {provider_id} inference only after the dry-run plan is reviewed"
-        )
     elif provider_run:
         if not provider_run.get("execution_supported",True):
             status="blocked"
