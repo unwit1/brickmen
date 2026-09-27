@@ -473,8 +473,17 @@ def _classify_outputs(
     result["unclassified_outputs"].extend(
         path for path in all_outputs if path not in classified
     )
-    for key in result:
-        result[key] = sorted(set(result[key]))
+    for key, values in list(result.items()):
+        if key == "component_records":
+            by_path = {}
+            for item in values:
+                path = str(item.get("path", ""))
+                if not path:
+                    continue
+                by_path[path] = item
+            result[key] = [by_path[path] for path in sorted(by_path)]
+        else:
+            result[key] = sorted(set(values))
     return result
 
 
