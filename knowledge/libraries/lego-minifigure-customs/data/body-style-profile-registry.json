@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.1",
+  "schema_version": "0.2",
   "created": "2026-09-27",
   "status": "provisional_visual_profiles_require_corpus_validation",
   "principle": "BodyStyleProfile is visual/sculptural grammar, not mechanical architecture. A profile may be used across compatible architectures only through an explicit style-transfer operation.",
@@ -130,6 +130,28 @@
         "rule": "Preserve standard minifigure upper-body grammar only on components that actually remain standard; derive separate surface and locomotion topology for modified components."
       },
       "status": "architecture_specific_subprofiles_needed"
+    },
+    {
+      "body_style_profile_id": "alpha_45mm_symbiote_hybrid_visual",
+      "figure_architecture_ids": [
+        "custom_alpha_45mm_muscle_hybrid"
+      ],
+      "evidence_class": "multiview_catalog_visual_plus_retail_dimensions",
+      "traits": {
+        "anatomy": "standard-height body with dramatically enlarged muscular/symbiote upper shell",
+        "lower_body_relation": "rectangular two-leg lower body remains close to standard minifigure visual language",
+        "shoulders": "very broad sculpted deltoid/shoulder masses",
+        "arms": "large muscular arms with strong sculptural segmentation",
+        "hand_relation": "larger-than-standard-looking hands/forearms in many series images",
+        "sculpt_vs_print": "upper-body character identity is carried heavily by sculpted volume while lower body and emblem/vein detail remain print/color heavy",
+        "surface_language": "symbiote spikes, tendrils and organic weapon forms can be separate accessories or silhouette features"
+      },
+      "hard_limits": [
+        "Do not reuse Alpha proprietary joint geometry as Brickmen manufacturing geometry.",
+        "AF321-AF326 and AF327-AF332 mechanical equivalence is not yet physically proven.",
+        "MaxiFig source tags do not imply giant scale."
+      ],
+      "status": "visual_profile_strong_physical_metrology_pending"
     }
   ],
   "normalized_style_features": [
