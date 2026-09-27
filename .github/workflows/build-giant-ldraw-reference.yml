@@ -39,7 +39,8 @@ jobs:
               /usr/share/ldraw "$part" \
               --manifest "$MANIFEST_DIR/$stem.json" \
               --obj "$OUT/obj/$stem.obj" \
-              --obj-units mm
+              --obj-units mm \
+              --obj-frame brickmen
 
             python - "$MANIFEST_DIR/$stem.json" "$package_version" <<'PY'
           import json
@@ -78,6 +79,8 @@ jobs:
                   "source_file_count": data["source_file_count"],
                   "bbox_ldu": data["bbox_ldu"],
                   "bbox_nominal_mm": data["bbox_nominal_mm"],
+                  "bbox_brickmen_ldu": data["bbox_brickmen_ldu"],
+                  "bbox_brickmen_nominal_mm": data["bbox_brickmen_nominal_mm"],
                   "unresolved_reference_count": len(data["unresolved_references"]),
               })
 
@@ -86,6 +89,12 @@ jobs:
               "build_id": "lego_giant_ldraw_ubuntu_noble_2303",
               "ldraw_library_release": f"Ubuntu 24.04 ldraw-parts {package_version}",
               "targets": rows,
+              "obj_coordinate_frame": "brickmen",
+              "coordinate_mapping": {
+                  "x": "ldraw_x",
+                  "y": "ldraw_z",
+                  "z": "-ldraw_y",
+              },
               "production_geometry_authority": False,
               "warning": "Reference CAD geometry only; not physical fit/tolerance metrology.",
           }
