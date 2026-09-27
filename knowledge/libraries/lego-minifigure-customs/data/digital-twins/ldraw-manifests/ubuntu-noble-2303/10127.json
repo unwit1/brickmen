@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.1",
+  "schema_version": "0.2",
   "root_file": "parts/10127.dat",
   "ldraw_root": "/usr/share/ldraw",
   "triangle_count": 1118,
@@ -27,6 +27,29 @@
       20.0
     ]
   },
+  "coordinate_frames": {
+    "ldraw": {
+      "handedness": "right",
+      "axes": {
+        "x": "lateral",
+        "y": "vertical_down; -Y is up",
+        "z": "depth"
+      }
+    },
+    "brickmen": {
+      "handedness": "right",
+      "axes": {
+        "x": "left_to_right",
+        "y": "back_to_front_depth",
+        "z": "feet_to_head_up"
+      },
+      "from_ldraw": {
+        "x": "ldraw_x",
+        "y": "ldraw_z",
+        "z": "-ldraw_y"
+      }
+    }
+  },
   "bbox_nominal_mm": {
     "min": [
       -6.307200000000001,
@@ -37,6 +60,30 @@
       7.318000000000001,
       6.0608,
       8.0
+    ]
+  },
+  "bbox_brickmen_ldu": {
+    "min": [
+      -15.768,
+      -38.166,
+      -15.152
+    ],
+    "max": [
+      18.295,
+      20.0,
+      22.081
+    ]
+  },
+  "bbox_brickmen_nominal_mm": {
+    "min": [
+      -6.307200000000001,
+      -15.266399999999999,
+      -6.0608
+    ],
+    "max": [
+      7.318000000000001,
+      8.0,
+      8.8324
     ]
   },
   "dependencies": [
