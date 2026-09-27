@@ -106,6 +106,8 @@ def compile_joint_constraint(
     profile: Mapping[str, Any],
     *,
     target_height_mm: float,
+    normalized_nodes: Mapping[str, Sequence[float]] | None = None,
+    physical_nodes: Mapping[str, Sequence[float]] | None = None,
 ) -> dict[str, Any]:
     manufacturing_status = str(
         profile.get("manufacturing_status", profile.get("status", "unknown"))
@@ -126,6 +128,50 @@ def compile_joint_constraint(
     if bbox_mm:
         bbox_norm = [float(value) / target_height_mm for value in bbox_mm]
 
+    placements = []
+    for placement in profile.get("candidate_placements", []):
+        anchor_node = placement.get("anchor_node")
+        center_norm = (
+            list(normalized_nodes[anchor_node])
+            if normalized_nodes is not None and anchor_node in normalized_nodes
+            else None
+        )
+        center_mm = (
+            list(physical_nodes[anchor_node])
+            if physical_nodes is not None and anchor_node in physical_nodes
+            else None
+        )
+        local_min_mm = local_max_mm = None
+        local_min_norm = local_max_norm = None
+        if bbox_mm:
+            half_mm = [float(value) / 2.0 for value in bbox_mm]
+            local_min_mm = [-value for value in half_mm]
+            local_max_mm = half_mm
+            half_norm = [value / target_height_mm for value in half_mm]
+            local_min_norm = [-value for value in half_norm]
+            local_max_norm = half_norm
+        placements.append(
+            {
+                "placement_id": placement.get("placement_id"),
+                "candidate_architecture_id": placement.get(
+                    "candidate_architecture_id"
+                ),
+                "anchor_node": anchor_node,
+                "anchor_normalized_body_height": center_norm,
+                "anchor_mm_at_target_height": center_mm,
+                "axis_vector": placement.get("axis_vector"),
+                "orientation_semantic": placement.get("orientation_semantic"),
+                "hardware_part_id": placement.get("hardware_part_id"),
+                "quantity": placement.get("quantity", 1),
+                "placement_authority": placement.get("placement_authority"),
+                "reference_keepout_local_min_mm": local_min_mm,
+                "reference_keepout_local_max_mm": local_max_mm,
+                "reference_keepout_local_min_normalized": local_min_norm,
+                "reference_keepout_local_max_normalized": local_max_norm,
+                "manufacturing_authority": manufacturing_authority,
+            }
+        )
+
     return {
         "joint_profile_id": profile.get("joint_profile_id"),
         "primitive_type": profile.get("primitive_type"),
@@ -142,6 +188,7 @@ def compile_joint_constraint(
         "keepout_status": shell_interface.get("keepout_status"),
         "required_validation": profile.get("required_validation", []),
         "hard_rules": profile.get("hard_rules", []),
+        "placements": placements,
         "warning": (
             "Normalized keep-out size is a conditioning convenience only. Fixed "
             "commodity hardware dimensions remain in millimeters and must never "
@@ -265,7 +312,12 @@ def compile_conditioning(
     }
 
     joint_constraints = [
-        compile_joint_constraint(profile, target_height_mm=target_height)
+        compile_joint_constraint(
+            profile,
+            target_height_mm=target_height,
+            normalized_nodes=normalized["nodes_mm"],
+            physical_nodes=physical["nodes_mm"],
+        )
         for profile in joint_profiles
     ]
 
