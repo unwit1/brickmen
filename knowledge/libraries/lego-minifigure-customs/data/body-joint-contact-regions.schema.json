@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "body-joint-contact-regions.schema.json",
+  "title": "Brickmen Body Joint Contact Regions",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "architecture_id",
+    "joints",
+    "production_geometry_authority"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "architecture_id": {
+      "type": "string"
+    },
+    "joints": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "joint_id",
+          "status",
+          "component_pairs",
+          "authority"
+        ],
+        "properties": {
+          "joint_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "component_pairs": {
+            "type": "array"
+          },
+          "allowed_contact_regions_mm": {
+            "type": "array"
+          },
+          "authority": {
+            "type": "string"
+          },
+          "source_validation_plan_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "production_geometry_authority": {
+      "const": false
+    }
+  }
+}
