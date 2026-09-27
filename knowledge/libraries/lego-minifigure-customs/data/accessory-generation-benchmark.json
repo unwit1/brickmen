@@ -1,0 +1,191 @@
+{
+  "schema_version": "0.1",
+  "status": "benchmark_design",
+  "created": "2026-09-27",
+  "objective": "Compare 3D/CAD generation systems for source-faithful, minifigure-scale, manufacturable accessory shells after deterministic functional-interface insertion.",
+  "part_classes": [
+    {
+      "id": "sword_straight",
+      "axes": [
+        "thin_feature",
+        "symmetry",
+        "hard_surface"
+      ]
+    },
+    {
+      "id": "sword_curved",
+      "axes": [
+        "thin_feature",
+        "asymmetry",
+        "curvature"
+      ]
+    },
+    {
+      "id": "axe",
+      "axes": [
+        "thin_feature",
+        "mixed_mass"
+      ]
+    },
+    {
+      "id": "spear",
+      "axes": [
+        "long_thin",
+        "straightness"
+      ]
+    },
+    {
+      "id": "shield",
+      "axes": [
+        "hard_surface",
+        "relief",
+        "symmetry"
+      ]
+    },
+    {
+      "id": "blaster_handgun",
+      "axes": [
+        "hard_surface",
+        "small_detail"
+      ]
+    },
+    {
+      "id": "rifle",
+      "axes": [
+        "long_thin",
+        "hard_surface",
+        "small_detail"
+      ]
+    },
+    {
+      "id": "staff",
+      "axes": [
+        "long_thin",
+        "ornament"
+      ]
+    },
+    {
+      "id": "backpack",
+      "axes": [
+        "hard_surface",
+        "body_keepout"
+      ]
+    },
+    {
+      "id": "helmet_simple",
+      "axes": [
+        "organic_hard_surface",
+        "head_socket"
+      ]
+    },
+    {
+      "id": "helmet_ornate",
+      "axes": [
+        "organic_hard_surface",
+        "fine_relief",
+        "head_socket"
+      ]
+    },
+    {
+      "id": "hair",
+      "axes": [
+        "organic",
+        "thin_features",
+        "head_socket"
+      ]
+    },
+    {
+      "id": "neck_armor",
+      "axes": [
+        "organic_hard_surface",
+        "articulation_keepout"
+      ]
+    },
+    {
+      "id": "shoulder_armor",
+      "axes": [
+        "articulation_keepout",
+        "asymmetry"
+      ]
+    },
+    {
+      "id": "horns",
+      "axes": [
+        "organic",
+        "thin_features"
+      ]
+    },
+    {
+      "id": "creature_appendage",
+      "axes": [
+        "organic",
+        "asymmetry"
+      ]
+    },
+    {
+      "id": "scabbard",
+      "axes": [
+        "hard_surface",
+        "thin_wall"
+      ]
+    },
+    {
+      "id": "mechanical_tool",
+      "axes": [
+        "parametric",
+        "hard_surface"
+      ]
+    }
+  ],
+  "input_modes": [
+    "text_only",
+    "single_source_image",
+    "lego_abstracted_single_image",
+    "source_multiview",
+    "lego_abstracted_multiview"
+  ],
+  "metrics": {
+    "geometry": [
+      "valid_file",
+      "units_resolved",
+      "watertight",
+      "manifold",
+      "self_intersections",
+      "floating_components",
+      "min_wall_violations",
+      "bounding_box_error"
+    ],
+    "visual": [
+      "silhouette_iou",
+      "source_fidelity_vlm",
+      "identity_feature_presence",
+      "lego_abstraction_vlm",
+      "multiview_consistency"
+    ],
+    "manufacturing": [
+      "connector_integration_success",
+      "keepout_pass",
+      "articulation_pass",
+      "dfm_pass",
+      "slice_preflight_pass",
+      "physical_print_pass"
+    ],
+    "operational": [
+      "latency_s",
+      "gpu_memory",
+      "provider_cost",
+      "repair_iterations",
+      "human_intervention_minutes"
+    ]
+  },
+  "selection_policy": "Do not rank a candidate as production-ready if it fails deterministic manufacturing gates regardless of visual score.",
+  "benchmark_outputs": [
+    "raw_generated_asset",
+    "normalized_asset",
+    "render_bundle",
+    "metric_record",
+    "repair_log",
+    "final_candidate",
+    "print_record_when_available"
+  ]
+}
