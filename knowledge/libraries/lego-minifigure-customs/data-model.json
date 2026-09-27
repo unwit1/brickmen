@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.7",
+  "schema_version": "0.8",
   "entities": {
     "color": [
       "local_id",
@@ -614,6 +614,37 @@
       "replacement_procedure",
       "validation_status",
       "evidence"
+    ],
+    "body_skeleton": [
+      "skeleton_id",
+      "architecture_id",
+      "status",
+      "coordinate_system",
+      "default_target_height_mm",
+      "parameters",
+      "nodes",
+      "bones",
+      "joints",
+      "parameter_rules",
+      "envelopes",
+      "generation_contract",
+      "engineering_skeleton_id",
+      "validation_status",
+      "sources"
+    ],
+    "skeleton_topology_module": [
+      "module_id",
+      "applicability",
+      "inspired_by",
+      "add_nodes",
+      "remove_nodes",
+      "replace_component_graph",
+      "add_joints",
+      "replace_joint_types",
+      "constraints",
+      "inheritance_rule",
+      "generation_rule",
+      "status"
     ]
   },
   "provenance_class": [
