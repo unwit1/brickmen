@@ -1,0 +1,150 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-27",
+  "status": "research_plan",
+  "objective": "Expand non-standard-body learning beyond Hulk-like muscular morphology so architecture/style generation supports diverse mass distributions and species.",
+  "control_archetypes": [
+    {
+      "archetype": "symbiote_massive_humanoid",
+      "primary_characters": [
+        "Venom",
+        "Carnage",
+        "Riot",
+        "Anti-Venom"
+      ],
+      "evidence_targets": [
+        "Alpha AF321-AF332",
+        "custom BigFig Venom families",
+        "standard LEGO Venom"
+      ],
+      "learning_goals": [
+        "stature vs upper-body mass",
+        "organic surface",
+        "tendrils/spikes",
+        "same-architecture symbiote variants"
+      ]
+    },
+    {
+      "archetype": "heavy_round_humanoid",
+      "primary_characters": [
+        "Blob",
+        "Kingpin"
+      ],
+      "evidence_targets": [
+        "Sheng Yuan SY577 / RT062 Blob mold family",
+        "Kingpin BigFig families including G (2) GH0318 and Xinh variants"
+      ],
+      "learning_goals": [
+        "large waist/abdomen without Hulk taper",
+        "small head vs broad body",
+        "suit/clothing over heavy mass",
+        "mold-family vs character identity"
+      ]
+    },
+    {
+      "archetype": "armored_massive_humanoid",
+      "primary_characters": [
+        "Thanos",
+        "Bane"
+      ],
+      "evidence_targets": [
+        "LEGO/compatible Thanos BigFigs",
+        "Decool/Pogo/LEGO Bane BigFigs"
+      ],
+      "learning_goals": [
+        "armor geometry vs body geometry",
+        "external equipment/backpack/tubes",
+        "helmet/head integration",
+        "large body under costume"
+      ]
+    },
+    {
+      "archetype": "gorilla_like",
+      "primary_characters": [
+        "Gorilla Grodd"
+      ],
+      "evidence_targets": [
+        "LEGO SH0147 and compatible Grodd releases"
+      ],
+      "learning_goals": [
+        "non-human limb proportions",
+        "long arm emphasis",
+        "forward mass",
+        "head/neck placement"
+      ]
+    },
+    {
+      "archetype": "reptilian_monster_large",
+      "primary_characters": [
+        "Abomination",
+        "Killer Croc"
+      ],
+      "evidence_targets": [
+        "Sheng Yuan Abomination BigFigs",
+        "Alpha AF350/AF354",
+        "LEGO specialized Giant Killer Croc"
+      ],
+      "learning_goals": [
+        "scales/spines",
+        "specialized hands/claws",
+        "monster head/neck",
+        "creature Giant architecture branches"
+      ]
+    },
+    {
+      "archetype": "rocky_massive_humanoid",
+      "primary_characters": [
+        "Thing"
+      ],
+      "evidence_targets": [
+        "existing Thing control corpus"
+      ],
+      "learning_goals": [
+        "rock surface grammar",
+        "wide mass without muscle anatomy",
+        "same-source cross-architecture translation"
+      ]
+    },
+    {
+      "archetype": "muscular_humanoid",
+      "primary_characters": [
+        "Hulk",
+        "Red Hulk",
+        "Colossus",
+        "Beast",
+        "Juggernaut"
+      ],
+      "evidence_targets": [
+        "existing Hulk corpus",
+        "Alpha 7cm",
+        "G(2)",
+        "Bigguy",
+        "Mr.J"
+      ],
+      "learning_goals": [
+        "anatomical mass",
+        "style profile separation",
+        "hand/limb scaling"
+      ]
+    }
+  ],
+  "comparative_axes": [
+    "stature",
+    "shoulder_width",
+    "chest_depth",
+    "waist_width",
+    "waist_taper",
+    "abdomen_projection",
+    "arm_length",
+    "upper_arm_bulk",
+    "forearm_bulk",
+    "hand_scale",
+    "leg_length",
+    "head_scale",
+    "surface_relief_density",
+    "armor_fraction",
+    "organic_accessory_fraction",
+    "joint_visibility"
+  ],
+  "rule": "Morphology archetype informs CharacterBodyFeatureSpec but never directly determines FigureArchitecture."
+}
