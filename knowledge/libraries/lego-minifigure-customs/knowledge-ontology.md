@@ -297,3 +297,43 @@ Important distinction:
 - normalized generation coordinate != manufacturing dimension.
 
 The current Brickmen Broad/Mid/XL/Giant skeletons are generation skeletons only. They may guide shell generation and articulation planning but cannot authorize a printed pin/socket until a validated JointCartridge is assigned.
+
+
+## Reference fitting extension
+
+Add:
+- BodyReferenceLandmarkObservation — source-grounded 2D/3D landmark evidence with explicit confidence and evidence class.
+- BodySkeletonFit — parameter fit of one BodySkeleton to one observation.
+- BodySkeletonComparison — comparative diagnostic across multiple Brickmen skeleton families.
+
+Relationships:
+
+```
+SourceAsset PRODUCES BodyReferenceLandmarkObservation
+BodyReferenceLandmarkObservation FITS BodySkeleton
+BodySkeletonFit PARAMETERIZES BodySkeleton
+BodySkeletonComparison COMPARES BodySkeletonFit
+BodySkeletonFit MAY_PROPOSE SkeletonRevisionCandidate
+```
+
+Reference fitting is not manufacturing metrology.
+
+Catalog/manual reference fits may inform:
+- body proportions;
+- architecture candidate ranking;
+- style/envelope research;
+- which parameters need better modeling.
+
+They may not create:
+- connector dimensions;
+- friction targets;
+- insertion depths;
+- production joint geometry.
+
+A parameter hitting its allowed bound is evidence, not permission to expand the bound automatically.
+
+Also distinguish:
+- skeletal/mechanical landmarks such as shoulder pivot or wrist center;
+- visual-envelope landmarks such as armor/deltoid outer edge.
+
+Those must be fitted separately before promoting skeleton revisions.
