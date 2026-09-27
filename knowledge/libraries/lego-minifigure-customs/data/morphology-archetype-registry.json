@@ -1,0 +1,151 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-27",
+  "status": "research_semantic_profiles",
+  "rule": "Morphology archetype is architecture-neutral and cannot determine mechanical architecture by itself.",
+  "archetypes": [
+    {
+      "id": "muscular_humanoid",
+      "exemplars": [
+        "Hulk",
+        "Red Hulk",
+        "Colossus",
+        "Juggernaut"
+      ],
+      "key_features": [
+        "high_shoulder_mass",
+        "high_chest_mass",
+        "high_taper",
+        "large_limbs",
+        "anatomical_relief"
+      ]
+    },
+    {
+      "id": "heavy_round_humanoid",
+      "exemplars": [
+        "Blob",
+        "Kingpin"
+      ],
+      "key_features": [
+        "large_abdomen",
+        "large_waist",
+        "low_or_reverse_taper",
+        "broad_body"
+      ],
+      "substyles": [
+        "soft_body_mass",
+        "suited_heavy_body"
+      ]
+    },
+    {
+      "id": "armored_massive_humanoid",
+      "exemplars": [
+        "Thanos",
+        "Bane"
+      ],
+      "key_features": [
+        "large_body_envelope",
+        "armor_or_equipment_overlay",
+        "helmet_mask_or_headgear",
+        "gauntlet_or_apparatus"
+      ]
+    },
+    {
+      "id": "gorilla_like",
+      "exemplars": [
+        "Gorilla Grodd"
+      ],
+      "key_features": [
+        "long_arms",
+        "forward_shoulders",
+        "shorter_leg_ratio",
+        "primate_head_neck",
+        "large_hands"
+      ]
+    },
+    {
+      "id": "reptilian_monster_large",
+      "exemplars": [
+        "Abomination",
+        "Killer Croc"
+      ],
+      "key_features": [
+        "monster_head",
+        "scales",
+        "spines_or_claws",
+        "nonhuman_hands",
+        "variable_hunch"
+      ]
+    },
+    {
+      "id": "rocky_massive_humanoid",
+      "exemplars": [
+        "Thing"
+      ],
+      "key_features": [
+        "large_mass",
+        "rock_relief",
+        "low_soft_anatomy_visibility",
+        "heavy_brow"
+      ]
+    },
+    {
+      "id": "symbiote_massive_humanoid",
+      "exemplars": [
+        "Venom",
+        "Carnage",
+        "Riot",
+        "Anti-Venom"
+      ],
+      "key_features": [
+        "large_upper_body",
+        "organic_surface",
+        "tendrils_spikes",
+        "large_teeth_tongue",
+        "stature_variable"
+      ]
+    },
+    {
+      "id": "tall_metal_or_armored_humanoid",
+      "exemplars": [
+        "Colossus",
+        "large armored/robotic figures"
+      ],
+      "key_features": [
+        "tall_stature",
+        "structured_surface_panels",
+        "metal_finish",
+        "moderate_to_high_mass"
+      ]
+    }
+  ],
+  "feature_vector": [
+    "stature_class",
+    "target_relative_height",
+    "shoulder_mass",
+    "chest_mass",
+    "abdomen_mass",
+    "waist_mass",
+    "pelvis_mass",
+    "thigh_mass",
+    "forearm_mass",
+    "hand_mass",
+    "chest_to_waist_taper",
+    "abdomen_projection",
+    "torso_roundness",
+    "back_projection",
+    "shoulder_slope",
+    "arm_length_ratio",
+    "leg_length_ratio",
+    "posture_hunch",
+    "species_class",
+    "exposed_skin_fraction",
+    "fur_fraction",
+    "rock_fraction",
+    "scales_fraction",
+    "armor_fraction",
+    "cloth_fraction",
+    "organic_symbiote_fraction",
+    "metal_fraction"
+  ]
+}
