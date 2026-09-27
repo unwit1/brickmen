@@ -1,0 +1,35 @@
+{
+  "schema_version": "0.1",
+  "entity": "StyleMappingRule",
+  "fields": [
+    "rule_id",
+    "feature_semantic",
+    "source_conditions",
+    "architecture_conditions",
+    "style_profile_conditions",
+    "representation",
+    "parameter_mapping",
+    "surface_rules",
+    "keepout_rules",
+    "evidence_ids",
+    "confidence",
+    "validation_status",
+    "supersedes"
+  ],
+  "validation_status": [
+    "observed",
+    "candidate",
+    "corpus_supported",
+    "human_validated",
+    "generation_validated",
+    "physical_validated"
+  ],
+  "relationship_types": [
+    "NEW",
+    "DUPLICATE",
+    "EXTENDS",
+    "CONFLICTS_WITH",
+    "DEPENDS_ON",
+    "SUPERSEDES"
+  ]
+}
