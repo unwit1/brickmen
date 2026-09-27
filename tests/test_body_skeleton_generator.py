@@ -207,3 +207,26 @@ def test_giant_arm_bulk_parameter_does_not_move_joint_nodes():
     bulk_arm = next(x for x in bulk["envelopes"] if x["id"] == "arm_l")
     assert bulk_arm["size_mm"][0] == pytest.approx(default_arm["size_mm"][0] * 1.25)
     assert bulk_arm["size_mm"][1] == pytest.approx(default_arm["size_mm"][1] * 1.1)
+
+
+
+def test_giant_lower_body_visual_bulk_does_not_move_hips():
+    spec = load_spec(SKELETONS / "brickmen-giant-v0.json")
+    default = compile_skeleton(spec, target_height_mm=1.0)
+    bulk = compile_skeleton(
+        spec,
+        target_height_mm=1.0,
+        parameter_overrides={
+            "lower_body_width_scale": 1.2,
+            "lower_body_depth_scale": 1.1,
+        },
+    )
+
+    assert bulk["nodes_mm"]["hip_l"] == default["nodes_mm"]["hip_l"]
+    assert bulk["nodes_mm"]["hip_r"] == default["nodes_mm"]["hip_r"]
+    lower_default = next(x for x in default["envelopes"] if x["id"] == "lower_body")
+    lower_bulk = next(x for x in bulk["envelopes"] if x["id"] == "lower_body")
+    assert lower_bulk["a_mm"] == default["nodes_mm"]["root"]
+    assert lower_bulk["b_mm"] == default["nodes_mm"]["waist"]
+    assert lower_bulk["size_mm"][0] == pytest.approx(lower_default["size_mm"][0] * 1.2)
+    assert lower_bulk["size_mm"][1] == pytest.approx(lower_default["size_mm"][1] * 1.1)
