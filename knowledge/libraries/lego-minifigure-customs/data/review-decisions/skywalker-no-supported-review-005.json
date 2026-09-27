@@ -1,0 +1,255 @@
+{
+  "schema": "skywalker-no-supported-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-no-supported-review-005",
+  "policy": "For military roles, enforce faction plus subtype before lexical similarity. Normalize word-order and compound-word differences such as First Order TIE Pilot/TIE Pilot, First Order and FlameTrooper/Flametrooper. Original game-only named characters should remain distinct from generic species or same-rank physical figures.",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-f5f461e0be7d02648db4c659",
+      "character_variant_key": "TIEFighterPilot_FirstOrder",
+      "decision": "word_order_alias_verified_first_order_tie_pilot_physical_family_supported_below_threshold_multiple_pre_game_helmet_generations",
+      "canonical_subject": "First Order TIE Fighter Pilot",
+      "alias_resolution": {
+        "source": "First Order TIE Fighter Pilot",
+        "catalog_pattern": "TIE Pilot, First Order",
+        "confidence": "high"
+      },
+      "plausible_pre_game_physical_candidates": [
+        {
+          "fig_num": "fig-004117",
+          "catalog_name": "TIE Pilot, First Order, Two White Lines on Helmet",
+          "year": 2015,
+          "set_num": "75101-1"
+        },
+        {
+          "fig_num": "fig-004273",
+          "catalog_name": "TIE Pilot, First Order, Two Red Lines on Helmet",
+          "year": 2017,
+          "set_num": "75179-1"
+        },
+        {
+          "fig_num": "fig-001715",
+          "catalog_name": "TIE Pilot, First Order, Three White Lines on Helmet",
+          "first_year": 2018,
+          "sets": [
+            "75194-1",
+            "75272-1"
+          ]
+        }
+      ],
+      "rejected_top_candidate": {
+        "fig_num": "fig-004282",
+        "catalog_name": "First Order Shuttle Pilot",
+        "reason": "correct faction but different pilot subtype"
+      },
+      "reason": "The resolver underweights the exact role because the catalog places 'First Order' after 'TIE Pilot'. Three genuine First Order TIE Pilot physical generations predate the game; the Shuttle Pilot must be rejected despite a slightly higher lexical score.",
+      "systemic_pattern": "military_role_word_order_normalization_and_subtype_gating",
+      "evidence_urls": [
+        "https://www.brickfigures.com/star-wars/tie-pilot-first-order-two-white-lines-on-helmet/"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-9f8f253cc22415585b7e2655",
+      "character_variant_key": "WanderingWookiee",
+      "decision": "skywalker_saga_original_named_character_no_exact_official_physical_minifigure_located_generic_wookiees_rejected",
+      "canonical_subject": "Wandering Wookiee",
+      "identity_context": {
+        "origin": "LEGO Star Wars: The Skywalker Saga",
+        "species": "Wookiee",
+        "appearance_note": "gray/white-furred wandering scoundrel",
+        "unlock_condition": "talk to him across all 33 locations"
+      },
+      "rejected_generic_candidates": [
+        {
+          "fig_num": "fig-001235",
+          "catalog_name": "Wookiee",
+          "reason": "generic physical Wookiee, not the distinct Wandering Wookiee character"
+        },
+        {
+          "fig_num": "fig-003647",
+          "catalog_name": "Wookiee Warrior",
+          "reason": "generic warrior role"
+        },
+        {
+          "fig_num": "fig-004088",
+          "catalog_name": "Wookiee with Printed Arms",
+          "reason": "generic Wookiee physical variant"
+        },
+        {
+          "fig_num": "fig-004503",
+          "catalog_name": "Wookiee Warrior, Dark Brown",
+          "reason": "generic/different color character family"
+        }
+      ],
+      "reason": "Wandering Wookiee is a distinct Skywalker Saga-original character rather than a generic species label. The game's character is described with gray/white fur and a unique roaming side-activity identity. Generic Wookiee figures are related species evidence but not exact counterparts; no official physical Wandering Wookiee minifigure was located.",
+      "systemic_pattern": "named_game_original_character_must_not_collapse_to_generic_species_candidate",
+      "evidence_urls": [
+        "https://starwars.fandom.com/wiki/Wandering_Wookiee"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-c1b52b7075acb167dfdc9cbc",
+      "character_variant_key": "CaptainCanady",
+      "decision": "named_first_order_officer_verified_video_game_only_lego_minifigure_no_official_physical_release_located_rank_neighbors_rejected",
+      "canonical_subject": "Captain Moden Canady",
+      "alias_resolution": {
+        "source": "Captain Canady",
+        "canonical": "Captain Moden Canady",
+        "confidence": "high"
+      },
+      "rejected_rank_neighbors": [
+        {
+          "fig_num": "fig-003773",
+          "catalog_name": "Captain Panaka",
+          "reason": "different person/faction"
+        },
+        {
+          "fig_num": "fig-004151",
+          "catalog_name": "Captain Phasma",
+          "reason": "different person and troop role"
+        },
+        {
+          "fig_num": "fig-004102",
+          "catalog_name": "Captain Tarpals",
+          "reason": "different person/faction"
+        },
+        {
+          "fig_num": "fig-004206",
+          "catalog_name": "Captain Rex, Old",
+          "reason": "different person/faction"
+        },
+        {
+          "fig_num": "fig-003840",
+          "catalog_name": "Clone Captain Jag",
+          "reason": "different person/faction"
+        }
+      ],
+      "physical_status": {
+        "exact_official_minifigure_located": false
+      },
+      "reason": "Captain Moden Canady is a named First Order officer from The Last Jedi. Rank-token similarity to unrelated captains is meaningless. Brickset's dialogue-without-minifigure audit lists Canady among The Last Jedi characters lacking a physical minifigure, and current LEGO-focused references continue to classify him as nonphysical.",
+      "systemic_pattern": "rank_tokens_are_not_identity_evidence_without_name_and_faction_match",
+      "evidence_urls": [
+        "https://brickset.com/article/51250/star-wars-characters-with-the-most-dialogue-but-no-minifigure",
+        "https://brickipedia.fandom.com/wiki/Category:Star_Wars_minifigures"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-782716efbb50c9a9b237bd9e",
+      "character_variant_key": "CommanderDacy",
+      "decision": "named_resistance_officer_verified_video_game_only_lego_minifigure_no_official_physical_release_located_rank_neighbors_rejected",
+      "canonical_subject": "Commander Larma D'Acy",
+      "alias_resolution": {
+        "source": "Commander Dacy",
+        "canonical": "Commander Larma D'Acy",
+        "confidence": "high",
+        "note": "apostrophe and given-name omission"
+      },
+      "rejected_rank_neighbors": [
+        {
+          "fig_num": "fig-004203",
+          "catalog_name": "Commander Sato",
+          "reason": "different person/faction era"
+        },
+        {
+          "fig_num": "fig-003777",
+          "catalog_name": "Clone Commander Cody",
+          "reason": "different person/faction"
+        },
+        {
+          "fig_num": "fig-003762",
+          "catalog_name": "Clone Commander Wolffe",
+          "reason": "different person/faction"
+        },
+        {
+          "fig_num": "fig-016594",
+          "catalog_name": "Commander Bacara",
+          "reason": "different person/faction and post-game release"
+        },
+        {
+          "fig_num": "fig-004207",
+          "catalog_name": "Clone Commander Gregor, Old",
+          "reason": "different person/faction"
+        }
+      ],
+      "physical_status": {
+        "exact_official_minifigure_located": false,
+        "lego_representation": "Skywalker Saga video-game minifigure only"
+      },
+      "reason": "Larma D'Acy is a named Resistance commander. Brickipedia explicitly describes her LEGO representation as video-game-only and says she never appeared in an official physical LEGO set. Commander-rank neighbors are not valid substitutes.",
+      "systemic_pattern": "rank_tokens_are_not_identity_evidence_without_name_and_faction_match",
+      "evidence_urls": [
+        "https://brickipedia.fandom.com/wiki/Commander_D%27acy"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-4f8d460a93c76246013b247c",
+      "character_variant_key": "FlameTrooper",
+      "decision": "compound_word_alias_verified_first_order_flametrooper_exact_physical_counterpart_missed_by_resolver",
+      "canonical_subject": "First Order Flametrooper",
+      "alias_resolution": {
+        "source_key": "FlameTrooper",
+        "canonical_catalog_term": "Flametrooper",
+        "inferred_faction": "First Order",
+        "confidence": "high"
+      },
+      "physical_counterpart": {
+        "brickset_minifig": "sw0666",
+        "catalog_name": "First Order Flametrooper",
+        "first_year": 2015,
+        "sets": [
+          "75103-1",
+          "75149-1",
+          "75166-1",
+          "75177-1"
+        ]
+      },
+      "rejected_top_candidates": [
+        {
+          "fig_num": "fig-004323",
+          "catalog_name": "Range Trooper",
+          "reason": "different Imperial troop subtype"
+        },
+        {
+          "fig_num": "fig-011625",
+          "catalog_name": "Dark Trooper",
+          "reason": "different troop subtype"
+        },
+        {
+          "fig_num": "fig-004495",
+          "catalog_name": "Sith Jet Trooper",
+          "reason": "different First Order/Sith troop subtype"
+        },
+        {
+          "fig_num": "fig-004005",
+          "catalog_name": "Clone Trooper Captain",
+          "reason": "different faction/era"
+        },
+        {
+          "fig_num": "fig-000305",
+          "catalog_name": "Shadow ARF Trooper",
+          "reason": "different faction/era"
+        }
+      ],
+      "reason": "The game key uses FlameTrooper while the physical catalog uses the closed compound Flametrooper. Brickset confirms sw0666 as an official First Order Flametrooper introduced in 2015. The current unsupported status is therefore a compound-word/tokenization and faction-retrieval failure.",
+      "systemic_pattern": "compound_word_normalization_flame_trooper_equals_flametrooper",
+      "evidence_urls": [
+        "https://brickset.com/minifigs/name-First-Order-Flametrooper/category-Star-Wars"
+      ]
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "exact_physical_family_resolver_misses": 2,
+    "named_game_only_or_nonphysical_characters": 3,
+    "military_role_neighbors_rejected": 14,
+    "automatic_exact_artwork_equivalence_promotions": 0
+  },
+  "remaining_no_supported_records_after_batch": 71,
+  "systemic_findings": [
+    "Military candidate retrieval needs hard faction and subtype gates before rank or role-token scoring.",
+    "Normalize catalog word order such as First Order TIE Pilot versus TIE Pilot, First Order.",
+    "Normalize compound lexical variants such as FlameTrooper versus Flametrooper.",
+    "Named game-original or film characters with no physical release must not collapse to generic species or same-rank figures."
+  ]
+}
