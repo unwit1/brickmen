@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "body-generation-pose-collision-validation.schema.json",
+  "title": "Brickmen Body Generation Pose Collision Validation",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "architecture_id",
+    "joint_results",
+    "summary",
+    "production_geometry_authority"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "architecture_id": {
+      "type": "string"
+    },
+    "provider_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "provider_job_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "joint_results": {
+      "type": "array"
+    },
+    "summary": {
+      "type": "object"
+    },
+    "production_geometry_authority": {
+      "const": false
+    }
+  }
+}
