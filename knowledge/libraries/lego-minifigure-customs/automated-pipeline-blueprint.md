@@ -201,3 +201,40 @@ See:
 - `body-architecture-recognition-and-style-transfer.md`
 - `agentic-custom-parts-and-body-architecture-roadmap.md`
 - `data/figure-architecture-registry.json`
+
+### Stage 0C: topology-first architecture selection
+
+Architecture selection now uses `data/figure-architecture-selection-schema.json`.
+
+Hard ordering:
+1. required topology/component count;
+2. required scale/bulk;
+3. articulation/accessory compatibility;
+4. available validated architecture/digital twin;
+5. desired visual body style.
+
+This prevents a similarity model from choosing a humanoid BigFig for a centaur, serpent, multi-arm or mechanical character merely because the source is large/muscular.
+
+### Stage 0D: CharacterBodyDesignSpec
+
+After architecture + style are selected, compile `data/character-body-design-schema.json`.
+
+The design spec explicitly decides for every component:
+- reuse existing part;
+- reuse + decorate;
+- generate visual shell;
+- parametric CAD;
+- architecture blank modification;
+- cloth/soft goods;
+- omit/abstract.
+
+It also carries:
+- architecture revision;
+- BodyStyleProfile;
+- surface schema;
+- deterministic connector/joint profiles;
+- identity-critical features;
+- manufacturing target;
+- reference evidence.
+
+Generative providers receive this contract rather than a free-form request to invent the body.
