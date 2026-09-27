@@ -1,0 +1,38 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-27",
+  "status": "seed_reference_fitting",
+  "rule": "These are manually estimated catalog-image landmarks for fitting-system development. They are not production measurements or final training labels.",
+  "references": [
+    {
+      "reference": "alpha-af325-venom-front.json",
+      "skeleton": "../skeletons/brickmen-broad-v0.json",
+      "role": "standard-height broad stress test"
+    },
+    {
+      "reference": "alpha-af345-hulk-front.json",
+      "skeleton": "../skeletons/brickmen-xl-v0.json",
+      "role": "~7cm anatomical/muscular control"
+    },
+    {
+      "reference": "lego-sh0371-hulk-front.json",
+      "skeleton": "../skeletons/brickmen-giant-v0.json",
+      "role": "official Giant visual control"
+    },
+    {
+      "reference": "kdl-k2302-thing-front.json",
+      "skeleton": "../skeletons/brickmen-xl-v0.json",
+      "role": "65mm large-body control"
+    },
+    {
+      "reference": "lego-axl-front.json",
+      "skeleton": "../skeletons/brickmen-broad-v0.json",
+      "role": "official oversized-torso Broad stress test"
+    }
+  ],
+  "review_requirements": [
+    "manual landmark review before training",
+    "replace catalog estimate with canonical image measurement when pipeline exists",
+    "do not transfer joint dimensions from these files"
+  ]
+}
