@@ -1,0 +1,182 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-27",
+  "status": "seed_manual_reference_comparison",
+  "production_geometry_authority": false,
+  "rule": "No row is an architecture verdict. Shape RMSE, scale compatibility, parameter saturation and topology evidence remain separate.",
+  "design_height_ranges_mm": {
+    "brickmen_broad_v0_skeleton": [
+      38,
+      48
+    ],
+    "brickmen_mid_v0_skeleton": [
+      45,
+      60
+    ],
+    "brickmen_xl_v0_skeleton": [
+      62,
+      78
+    ],
+    "brickmen_giant_v0_skeleton": [
+      55,
+      70
+    ]
+  },
+  "references": [
+    {
+      "reference_id": "alpha_af325_venom_front_seed",
+      "known_height_mm": 42.5,
+      "candidates": [
+        {
+          "skeleton": "brickmen_broad_v0_skeleton",
+          "shape_rmse": 0.06718,
+          "bound_hits": 5,
+          "height_status": "within_design_range"
+        },
+        {
+          "skeleton": "brickmen_mid_v0_skeleton",
+          "shape_rmse": 0.06482,
+          "bound_hits": 5,
+          "height_status": "below_design_range_by_2.5mm"
+        },
+        {
+          "skeleton": "brickmen_xl_v0_skeleton",
+          "shape_rmse": 0.0838,
+          "bound_hits": 5,
+          "height_status": "below_design_range_by_19.5mm"
+        },
+        {
+          "skeleton": "brickmen_giant_v0_skeleton",
+          "shape_rmse": 0.05216,
+          "bound_hits": 3,
+          "height_status": "below_design_range_by_12.5mm"
+        }
+      ],
+      "interpretation": "Normalized silhouette ratios alone make Giant look deceptively competitive. Known scale strongly supports Broad-class interpretation; shell-envelope width must be modeled separately from joint spacing."
+    },
+    {
+      "reference_id": "alpha_af345_hulk_front_seed",
+      "known_height_mm": 70,
+      "candidates": [
+        {
+          "skeleton": "brickmen_broad_v0_skeleton",
+          "shape_rmse": 0.04205,
+          "bound_hits": 2,
+          "height_status": "above_design_range_by_22mm"
+        },
+        {
+          "skeleton": "brickmen_mid_v0_skeleton",
+          "shape_rmse": 0.03185,
+          "bound_hits": 2,
+          "height_status": "above_design_range_by_10mm"
+        },
+        {
+          "skeleton": "brickmen_xl_v0_skeleton",
+          "shape_rmse": 0.04697,
+          "bound_hits": 2,
+          "height_status": "within_design_range"
+        },
+        {
+          "skeleton": "brickmen_giant_v0_skeleton",
+          "shape_rmse": 0.03864,
+          "bound_hits": 3,
+          "height_status": "within_design_range"
+        }
+      ],
+      "interpretation": "70 mm scale eliminates Broad/Mid despite good normalized shape. XL and Giant both remain visually plausible; known body-family topology/style evidence favors XL-like anatomical research rather than a Giant inference."
+    },
+    {
+      "reference_id": "lego_sh0371_hulk_front_seed",
+      "known_height_mm": null,
+      "candidates": [
+        {
+          "skeleton": "brickmen_broad_v0_skeleton",
+          "shape_rmse": 0.04126,
+          "bound_hits": 4,
+          "height_status": "unknown_reference_height"
+        },
+        {
+          "skeleton": "brickmen_mid_v0_skeleton",
+          "shape_rmse": 0.03506,
+          "bound_hits": 4,
+          "height_status": "unknown_reference_height"
+        },
+        {
+          "skeleton": "brickmen_xl_v0_skeleton",
+          "shape_rmse": 0.04479,
+          "bound_hits": 4,
+          "height_status": "unknown_reference_height"
+        },
+        {
+          "skeleton": "brickmen_giant_v0_skeleton",
+          "shape_rmse": 0.03519,
+          "bound_hits": 1,
+          "height_status": "unknown_reference_height"
+        }
+      ],
+      "interpretation": "Mid and Giant have near-identical seed shape residual, but Giant reaches that fit with far fewer saturated parameters. Together with known official component topology, Giant is the appropriate architecture reference."
+    },
+    {
+      "reference_id": "kdl_k2302_thing_front_seed",
+      "known_height_mm": 65,
+      "candidates": [
+        {
+          "skeleton": "brickmen_broad_v0_skeleton",
+          "shape_rmse": 0.03665,
+          "bound_hits": 3,
+          "height_status": "above_design_range_by_17mm"
+        },
+        {
+          "skeleton": "brickmen_mid_v0_skeleton",
+          "shape_rmse": 0.04192,
+          "bound_hits": 1,
+          "height_status": "above_design_range_by_5mm"
+        },
+        {
+          "skeleton": "brickmen_xl_v0_skeleton",
+          "shape_rmse": 0.05487,
+          "bound_hits": 3,
+          "height_status": "within_design_range"
+        },
+        {
+          "skeleton": "brickmen_giant_v0_skeleton",
+          "shape_rmse": 0.04001,
+          "bound_hits": 5,
+          "height_status": "within_design_range"
+        }
+      ],
+      "interpretation": "KDL's 65 mm body does not map cleanly to current Brickmen families. Preserve it as an unresolved large architecture and acquire side/rear/physical evidence before choosing XL versus Giant-like mechanics."
+    },
+    {
+      "reference_id": "lego_axl_front_seed",
+      "known_height_mm": null,
+      "candidates": [
+        {
+          "skeleton": "brickmen_broad_v0_skeleton",
+          "shape_rmse": 0.0845,
+          "bound_hits": 5,
+          "height_status": "unknown_reference_height"
+        },
+        {
+          "skeleton": "brickmen_mid_v0_skeleton",
+          "shape_rmse": 0.0842,
+          "bound_hits": 4,
+          "height_status": "unknown_reference_height"
+        },
+        {
+          "skeleton": "brickmen_xl_v0_skeleton",
+          "shape_rmse": 0.09959,
+          "bound_hits": 5,
+          "height_status": "unknown_reference_height"
+        },
+        {
+          "skeleton": "brickmen_giant_v0_skeleton",
+          "shape_rmse": 0.06874,
+          "bound_hits": 5,
+          "height_status": "unknown_reference_height"
+        }
+      ],
+      "interpretation": "Every generic skeleton saturates badly. Axl should remain an architecture-specific official hybrid reference rather than forcing the default Broad skeleton to reproduce its armor silhouette."
+    }
+  ]
+}
