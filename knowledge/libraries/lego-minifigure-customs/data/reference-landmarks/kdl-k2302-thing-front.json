@@ -155,6 +155,44 @@
   ],
   "exclude_from_production_dimensions": true,
   "notes": [
-    "Useful XL/intermediate-large proportion control; exact mechanical architecture remains unresolved."
-  ]
+    "Useful XL/intermediate-large proportion control; exact mechanical architecture remains unresolved.",
+    "Silhouette pairs are visual-envelope evidence and must not be interpreted as joint centers."
+  ],
+  "silhouette_pairs_px": {
+    "head_width": {
+      "left_x": 186,
+      "right_x": 305,
+      "y_px": 191,
+      "confidence": 0.8,
+      "semantic": "head_outer_width"
+    },
+    "shoulder_outer_width": {
+      "left_x": 146,
+      "right_x": 344,
+      "y_px": 270,
+      "confidence": 0.75,
+      "semantic": "outer_shoulders"
+    },
+    "chest_outer_width": {
+      "left_x": 179,
+      "right_x": 312,
+      "y_px": 289,
+      "confidence": 0.75,
+      "semantic": "chest_shell_width"
+    },
+    "waist_outer_width": {
+      "left_x": 198,
+      "right_x": 292,
+      "y_px": 350,
+      "confidence": 0.7,
+      "semantic": "waist_shell_width"
+    },
+    "hip_outer_width": {
+      "left_x": 201,
+      "right_x": 290,
+      "y_px": 366,
+      "confidence": 0.65,
+      "semantic": "lower_body_outer_width"
+    }
+  }
 }
