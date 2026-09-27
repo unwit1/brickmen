@@ -337,3 +337,37 @@ Also distinguish:
 - visual-envelope landmarks such as armor/deltoid outer edge.
 
 Those must be fitted separately before promoting skeleton revisions.
+
+
+## Engineering reference and generation-conditioning extension
+
+Add:
+- ReferenceEngineeringSkeleton — source-grounded component/joint-frame model for an existing architecture, distinct from a Brickmen design/generation skeleton.
+- BodyGenerationConditioning — provider-neutral handoff combining fitted proportions, visual envelopes, component editability and authority-tagged mechanical constraints.
+
+Relationships:
+
+```
+ArchitectureDigitalTwin PRODUCES ReferenceEngineeringSkeleton
+BodyReferenceLandmarkObservation FITS BodySkeleton
+BodyEnvelopeEvidence FITS BodyEnvelopeProfile
+BodySkeletonFit + BodyEnvelopeProfile + JointProfile
+  COMPILE_TO BodyGenerationConditioning
+BodyGenerationConditioning CONDITIONS generated visual shell
+JointProfile / JointCartridge GOVERNS deterministic interface compile
+```
+
+Hard distinction:
+
+```
+ReferenceEngineeringSkeleton != Brickmen BodySkeleton
+reference component topology != required Brickmen topology
+visual envelope != mechanical joint spacing
+reference CAD keep-out != physical fit tolerance
+BodyGenerationConditioning != manufacturing drawing
+```
+
+Example:
+the official Giant reference has a fixed-bend one-piece arm whose hand socket sits laterally, in depth and downward from the shoulder. That is valuable architecture evidence, but it does not require `brickmen_giant_v0` to copy the same bent-arm topology.
+
+Mechanical authority must survive every transformation. A validation-pending/reference-only profile can condition alignment and keep-outs, but only a separately validated deterministic interface may authorize production mating geometry.
