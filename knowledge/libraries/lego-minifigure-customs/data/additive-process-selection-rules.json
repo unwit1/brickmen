@@ -1,0 +1,196 @@
+{
+  "schema_version": "0.1",
+  "status": "research_rules_requires_empirical_costs",
+  "created": "2026-09-27",
+  "principle": "No fixed quantity threshold. Rank feasible processes from part requirements and observed total cost/capacity/risk.",
+  "inputs": [
+    "part_revision",
+    "quantity",
+    "bounding_box_mm",
+    "minimum_feature_mm",
+    "thin_feature_count",
+    "connector_families",
+    "expected_cycle_count",
+    "target_material_behavior",
+    "base_color_requirement",
+    "decoration_requirement",
+    "surface_finish_requirement",
+    "deadline",
+    "design_stability",
+    "annual_demand_forecast",
+    "variant_count",
+    "inventory_risk",
+    "approved_machine_material_profiles",
+    "historical_yield",
+    "plate_capacity",
+    "print_minutes_per_plate",
+    "operator_minutes_per_plate",
+    "operator_minutes_per_part",
+    "postprocess_minutes_per_part",
+    "qc_minutes_per_part",
+    "material_cost_per_part",
+    "machine_cost_per_hour",
+    "tooling_quotes",
+    "outsourcing_quotes"
+  ],
+  "processes": {
+    "direct_msla": {
+      "favorable": [
+        "very_small_features",
+        "complex_visual_geometry",
+        "small_or_variable_run",
+        "high_variant_count",
+        "digital_inventory",
+        "smooth_surface_priority"
+      ],
+      "penalties": [
+        "wet_processing",
+        "support_removal_labor",
+        "brittle_material_if_wrong_resin",
+        "many_material_color_changes"
+      ]
+    },
+    "direct_fdm": {
+      "favorable": [
+        "large_part",
+        "fixture_or_jig",
+        "low_microdetail",
+        "thermoplastic_mechanics",
+        "simple_unattended_workflow"
+      ],
+      "penalties": [
+        "tiny_detail",
+        "layer_texture",
+        "small_round_connector_accuracy",
+        "support_scars"
+      ]
+    },
+    "silicone_urethane_cast": {
+      "favorable": [
+        "small_repeat_run",
+        "polished_master_available",
+        "cast_material_advantage",
+        "direct_print_cleanup_high"
+      ],
+      "penalties": [
+        "manual_mixing_demold_trim",
+        "mold_life",
+        "bubbles",
+        "parting_flash"
+      ]
+    },
+    "printed_injection_tool": {
+      "favorable": [
+        "thermoplastic_required",
+        "stable_design",
+        "low_to_medium_volume",
+        "moldable_geometry",
+        "bridge_tooling"
+      ],
+      "penalties": [
+        "tool_design",
+        "press_required",
+        "tool_life",
+        "cooling_cycle",
+        "gating_ejection"
+      ]
+    },
+    "aluminum_injection_tool": {
+      "favorable": [
+        "stable_design",
+        "sustained_volume",
+        "multi_cavity_value",
+        "thermoplastic_required"
+      ],
+      "penalties": [
+        "upfront_tooling",
+        "revision_risk",
+        "lead_time"
+      ]
+    },
+    "steel_injection_tool": {
+      "favorable": [
+        "very_high_sustained_volume",
+        "long_tool_life",
+        "stable_design"
+      ],
+      "penalties": [
+        "highest_tooling_cost",
+        "revision_risk",
+        "lead_time"
+      ]
+    },
+    "outsourced": {
+      "favorable": [
+        "special_process",
+        "insufficient_internal_capacity",
+        "vendor_quality_advantage",
+        "temporary_capacity_spike"
+      ],
+      "penalties": [
+        "lead_time",
+        "shipping",
+        "vendor_minimums",
+        "less_process_control"
+      ]
+    }
+  },
+  "mandatory_constraints": [
+    "Process must meet validated connector/mechanical requirements.",
+    "Process must meet intended-use safety gate.",
+    "Process must have a traceable material path.",
+    "Never recommend an unvalidated material/profile for production solely because it is cheaper.",
+    "Tooling revision risk must be represented while geometry is unstable."
+  ],
+  "cost_terms": [
+    "tooling",
+    "material",
+    "support_or_runner_waste",
+    "machine_depreciation",
+    "maintenance_consumables",
+    "energy",
+    "operator_setup",
+    "operator_postprocess",
+    "support_removal_or_trim",
+    "inspection",
+    "decoration",
+    "reject_rework",
+    "packaging_handling",
+    "shipping",
+    "inventory_carrying",
+    "obsolete_inventory_risk",
+    "opportunity_cost_of_machine_capacity"
+  ],
+  "output_required": [
+    "feasible_processes",
+    "rejected_processes_with_reason",
+    "recommended_process",
+    "estimated_cost_per_accepted_part",
+    "operator_hours",
+    "machine_hours",
+    "capacity_impact",
+    "tooling_cost",
+    "tooling_revision_risk",
+    "assumptions",
+    "uncertainty",
+    "quote_required",
+    "empirical_data_missing"
+  ],
+  "external_case_studies_not_thresholds": [
+    {
+      "source": "Formlabs Race to 1,000, 2024",
+      "observation": "Their mixer-latch model reported a direct-print vs outsourced injection molding crossover around 13,050 units and identified labor as a major Form 4 cost.",
+      "rule": "Never generalize this number to minifigure accessories."
+    },
+    {
+      "source": "Formlabs/Holimaker low-volume printed molds",
+      "observation": "Printed injection tooling is used for lower-volume workflows while machined aluminum may be chosen as volume rises.",
+      "rule": "Use as process feasibility evidence, not a fixed crossover."
+    },
+    {
+      "source": "Protolabs aluminum vs steel guidance",
+      "observation": "Supplier guidance describes aluminum as low/medium-volume bridge tooling and often capable of 10,000+ cycles, with steel serving much higher volumes.",
+      "rule": "Obtain SKU-specific quotes and mold-life assumptions."
+    }
+  ]
+}
