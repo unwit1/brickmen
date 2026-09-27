@@ -1,0 +1,227 @@
+{
+  "schema": "skywalker-no-supported-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-no-supported-review-002",
+  "policy": "Resolve omitted titles, synonyms, and exact named-universe identities independently. Reject faction/role neighbors and near-matching droid serials. A later physical figure may establish a real character/outfit counterpart without proving that it sourced the earlier digital asset.",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-88a35bfabf19a1d0615020c0",
+      "character_variant_key": "Tarkin",
+      "decision": "surname_alias_verified_grand_moff_wilhuff_tarkin_pre_game_physical_family_supported_below_threshold",
+      "canonical_subject": "Grand Moff Wilhuff Tarkin",
+      "alias_resolution": {
+        "source_key": "Tarkin",
+        "canonical_name": "Grand Moff Wilhuff Tarkin",
+        "confidence": "high"
+      },
+      "plausible_pre_game_physical_candidates": [
+        {
+          "fig_num": "fig-003545",
+          "catalog_name": "Grand Moff Wilhuff Tarkin, Dark Bluish Gray, Smooth Hair",
+          "first_year": 2006,
+          "sets": [
+            "6211-1",
+            "10188-1"
+          ]
+        },
+        {
+          "fig_num": "fig-004233",
+          "catalog_name": "Grand Moff Wilhuff Tarkin, Dark Tan",
+          "year": 2016,
+          "set_num": "75150-1"
+        },
+        {
+          "fig_num": "fig-002518",
+          "catalog_name": "Grand Moff Wilhuff Tarkin, Dark Bluish Gray, Ruffled Hair",
+          "year": 2016,
+          "set_num": "75159-1"
+        }
+      ],
+      "rejected_post_game_candidate": {
+        "fig_num": "fig-016909",
+        "catalog_name": "Grand Moff Tarkin, Plain Legs",
+        "year": 2025,
+        "set_num": "75419-1"
+      },
+      "reason": "Tarkin is a high-confidence surname/title omission. Three exact Tarkin physical generations predate the game, while the 2025 release does not. Unsupported status is a name-normalization threshold failure, not a missing physical family.",
+      "systemic_pattern": "surname_and_title_normalization_needed_before_thresholding",
+      "evidence_urls": [
+        "https://brickset.com/minifigs?query=tarkin"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-7d9b756d582dbbc05e6dd06b",
+      "character_variant_key": "ImperialFleetTrooper",
+      "decision": "digital_role_verified_no_exact_lego_minifigure_counterpart_located_faction_neighbor_candidates_rejected",
+      "canonical_subject": "Imperial Fleet Trooper",
+      "rejected_top_candidates": [
+        {
+          "fig_num": "fig-004240",
+          "catalog_name": "Imperial Death Trooper",
+          "reason": "different Imperial troop role"
+        },
+        {
+          "fig_num": "fig-004310",
+          "catalog_name": "Imperial Patrol Trooper",
+          "reason": "different Imperial troop role"
+        },
+        {
+          "fig_num": "fig-017520",
+          "catalog_name": "Imperial Scout Trooper",
+          "reason": "different Imperial troop role"
+        },
+        {
+          "fig_num": "fig-004212",
+          "catalog_name": "Imperial Death Trooper / Specialist / Commander",
+          "reason": "different Imperial troop role"
+        },
+        {
+          "fig_num": "fig-000809",
+          "catalog_name": "Rebel Trooper / Rebel Fleet Trooper, Black Eyes",
+          "reason": "opposing faction despite shared 'Fleet Trooper' wording"
+        }
+      ],
+      "identity_context": {
+        "skywalker_saga_presence": "documented as unlockable reward for Rebel Rescue"
+      },
+      "reason": "Imperial Fleet Trooper is a distinct game role, not a Death, Patrol, Scout, or Rebel Fleet Trooper. Current catalog search did not locate an exact official LEGO minifigure counterpart, so faction/role-neighbor matches remain rejected.",
+      "systemic_pattern": "shared_role_tokens_must_not_cross_faction_or_trooper_subtype_boundaries",
+      "evidence_urls": [
+        "https://www.gamepressure.com/lego-star-wars-the-skywalker-saga/rebel-rescue/z0fde1"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-961c2264a2870fa03baff164",
+      "character_variant_key": "R2N3",
+      "decision": "digital_identity_verified_exact_physical_lego_counterpart_not_located_lookalike_astromech_candidates_rejected",
+      "canonical_subject": "R2-N3",
+      "identity_context": {
+        "model": "R2-series astromech droid",
+        "affiliation": "Royal House of Naboo",
+        "source_appearance": "The Phantom Menace",
+        "skywalker_saga_presence": "documented"
+      },
+      "rejected_top_candidates": [
+        {
+          "fig_num": "fig-004125",
+          "catalog_name": "Astromech Droid, R3-A2",
+          "reason": "different droid identity"
+        },
+        {
+          "fig_num": "fig-003829",
+          "catalog_name": "Astromech Droid, R3-M2",
+          "reason": "different droid identity"
+        },
+        {
+          "fig_num": "fig-004160",
+          "catalog_name": "Astromech Droid, R3-T2",
+          "reason": "different droid identity"
+        },
+        {
+          "fig_num": "fig-003680",
+          "catalog_name": "Astromech Droid, R2-R7",
+          "reason": "different droid identity"
+        },
+        {
+          "fig_num": "fig-003541",
+          "catalog_name": "Astromech Droid, R2-D5",
+          "reason": "different droid identity"
+        }
+      ],
+      "reason": "R2-N3 is a distinct Naboo astromech documented in The Phantom Menace and The Skywalker Saga. No exact LEGO minifigure counterpart was located in the current catalog search; nearby astromech serials are not interchangeable.",
+      "systemic_pattern": "astromech_identifier_edit_distance_must_not_override_exact_unit_number",
+      "evidence_urls": [
+        "https://starwars.fandom.com/wiki/R2-N3"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-ca69e7407d0673be6d2e444b",
+      "character_variant_key": "E3PO",
+      "decision": "digital_identity_verified_exact_physical_lego_counterpart_not_located_protocol_droid_neighbors_rejected",
+      "canonical_subject": "E-3PO",
+      "identity_context": {
+        "model": "3PO-series protocol droid",
+        "plating_color": "silver",
+        "source_appearance": "The Empire Strikes Back"
+      },
+      "rejected_top_candidates": [
+        {
+          "fig_num": "fig-003676",
+          "catalog_name": "K-3PO",
+          "reason": "different protocol droid identity"
+        },
+        {
+          "fig_num": "fig-003698",
+          "catalog_name": "R-3PO",
+          "reason": "different protocol droid identity"
+        },
+        {
+          "fig_num": "fig-012570",
+          "catalog_name": "C-3PO - Arm Print",
+          "reason": "different protocol droid identity"
+        },
+        {
+          "fig_num": "fig-002689",
+          "catalog_name": "C-3PO, Pearl Gold",
+          "reason": "different protocol droid identity"
+        },
+        {
+          "fig_num": "fig-004124",
+          "catalog_name": "K-3PO with Printed Legs",
+          "reason": "different protocol droid identity"
+        }
+      ],
+      "reason": "E-3PO is a distinct silver protocol droid seen on Cloud City, not an alias of K-3PO, R-3PO, or C-3PO. Current catalog search did not surface an exact official LEGO E-3PO minifigure, so serial-neighbor matches remain rejected.",
+      "systemic_pattern": "protocol_droid_serial_prefix_is_identity_bearing",
+      "evidence_urls": [
+        "https://starwars.fandom.com/wiki/E-3PO_%28Bespin%29"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-7f0ad14a441a5a4fdfe1f4d6",
+      "character_variant_key": "DarthVaderHawaiianShirt",
+      "decision": "outfit_synonym_verified_exact_physical_counterpart_exists_post_launch_source_equivalence_not_assumed",
+      "canonical_subject": "Darth Vader — Summer / Hawaiian Shirt outfit",
+      "synonym_resolution": {
+        "source_variant": "Hawaiian Shirt",
+        "catalog_variant": "Summer Outfit",
+        "confidence": "high"
+      },
+      "independently_verified_physical_counterpart": {
+        "bricklink_minifig": "sw1239",
+        "catalog_name": "Darth Vader - Summer Outfit",
+        "year": 2022,
+        "set_num": "75340-1",
+        "set_launch_date": "2022-09-01"
+      },
+      "rejected_generic_top_candidates": [
+        "fig-004057",
+        "fig-003686",
+        "fig-001106",
+        "fig-004439",
+        "fig-003517"
+      ],
+      "reason": "The catalog uses 'Summer Outfit' rather than the game's 'Hawaiian Shirt' wording. Brickset confirms sw1239 in the 2022 Advent Calendar, which released after the base game. This establishes an exact character/outfit counterpart but not that the physical release sourced the digital asset.",
+      "systemic_pattern": "variant_synonym_dictionary_needed_hawaiian_shirt_equals_summer_outfit",
+      "evidence_urls": [
+        "https://brickset.com/minifigs/sw1239/darth-vader-summer-outfit",
+        "https://brickset.com/sets/75340-1/LEGO-Star-Wars-Advent-Calendar"
+      ]
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "alias_or_title_normalization_misses": 1,
+    "exact_named_catalog_gaps": 3,
+    "outfit_synonym_resolver_miss": 1,
+    "unsafe_neighbors_rejected": 15,
+    "automatic_exact_artwork_equivalence_promotions": 0
+  },
+  "remaining_no_supported_records_after_batch": 86,
+  "systemic_findings": [
+    "Faction and troop subtype must be hard constraints before lexical similarity.",
+    "Droid serial identifiers are identity-bearing for protocol droids as well as astromechs.",
+    "Variant synonym normalization should map casual game labels such as Hawaiian Shirt to catalog labels such as Summer Outfit.",
+    "A post-launch exact physical counterpart can validate semantic identity without proving source chronology."
+  ]
+}
