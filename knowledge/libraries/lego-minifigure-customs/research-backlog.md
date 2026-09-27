@@ -712,6 +712,49 @@ Canonical fixtures:
 - `data/generation-conditioning/brickmen-broad-axl-envelope-v0.json`
 
 Next:
-- [ ] extend visual conditioning beyond torso/head/abdomen to arms, hands and lower body
-- [ ] add component-specific keep-out placement frames rather than bbox-only reference sizes
+- [x] extend visual conditioning beyond torso/head/abdomen to arms, hands and lower body
+- [x] add component-specific keep-out placement frames rather than bbox-only reference sizes
 - [ ] route conditioning payloads into provider adapters/benchmarks for PartCrafter and monolithic+segmentation paths
+
+
+### Limb/lower-body conditioning and engineering-reference split — 2026-09-27
+
+- [x] add official Giant ReferenceEngineeringSkeleton separate from brickmen_giant_v0
+- [x] preserve intrinsic 3D shoulder->hand-socket reference vectors
+- [x] derive official arm/hand component envelope statistics from pinned LDraw meshes
+- [x] add bone-aligned visual arm envelopes
+- [x] add independent hand visual envelopes
+- [x] add root-to-waist lower-body visual envelope independent from hip/stance spacing
+- [x] fit official arm/hand/lower-body CAD evidence to rounded Brickmen visual baselines
+- [x] carry oriented envelope endpoints and lengths into BodyGenerationConditioning
+- [x] place two fixed-mm 43093 reference keep-outs on selected Brickmen shoulder nodes
+- [x] prove hardware keep-out mm dimensions do not scale with body target height
+
+Key findings:
+- official Giant arm shoulder->hand-socket vector length ≈ 0.3601 body heights and includes substantial Y-depth offset;
+- rounded Brickmen arm cross-section baseline 0.18 x 0.28 differs from official central-profile means by ~1% or less;
+- rounded hand baseline 0.175 x 0.25 x 0.21 similarly tracks official reference statistics;
+- rounded lower-body width/depth baseline 0.56 x 0.33 is within ~1% of official lower-body profile-band means.
+
+Still open:
+- [ ] decide whether Brickmen Giant itself should adopt a fixed-bend arm topology, segmented arm topology, or selectable variants;
+- [ ] add articulation-sweep volumes around placed shoulder hardware;
+- [ ] physically validate all shoulder/arm mating geometry.
+
+
+### Fit parameter identifiability — 2026-09-27
+
+- [x] add numerical landmark-parameter Jacobian/sensitivity analyzer
+- [x] flag unobserved parameters
+- [x] flag near-collinear/confounded parameter pairs
+- [x] estimate local Jacobian rank without external numeric dependencies
+- [x] batch current five seed references
+- [x] prove current 5-parameter seed fits are full-rank
+- [x] prove current + neck-head offset + thigh length + shin length is full-rank 8/8 for all five seeds
+- [x] prove lower_torso_length_scale + upper_torso_length_scale is rank-deficient 8/9 for all five seeds because no chest landmark separates them
+- [x] automate current-vs-safe-expanded fit comparison report
+
+Policy:
+- do not promote lower/upper torso segment fitting until chest/torso-center landmarks are annotated;
+- safe expanded v1 may be evaluated because it is locally identifiable on every current seed;
+- lower RMSE alone never authorizes architecture or mechanical changes.
