@@ -96,6 +96,28 @@ def test_giant_conditioning_merges_official_shape_and_reference_hardware():
     assert mechanical["reference_keepout_normalized_at_target_height"][0] == pytest.approx(
         16 / 62
     )
+    placements = mechanical["placements"]
+    assert len(placements) == 2
+    left_keepout = next(
+        item for item in placements if item["anchor_node"] == "shoulder_l"
+    )
+    assert left_keepout["anchor_normalized_body_height"] == pytest.approx(
+        payload["skeleton_control"]["nodes"]["shoulder_l"][
+            "position_normalized_body_height"
+        ]
+    )
+    assert left_keepout["anchor_mm_at_target_height"] == pytest.approx(
+        payload["skeleton_control"]["nodes"]["shoulder_l"][
+            "position_mm_at_target_height"
+        ]
+    )
+    assert left_keepout["reference_keepout_local_min_mm"] == pytest.approx(
+        [-8, -3.2, -3.2]
+    )
+    assert left_keepout["reference_keepout_local_max_mm"] == pytest.approx(
+        [8, 3.2, 3.2]
+    )
+    assert left_keepout["manufacturing_authority"] is False
     assert payload["production_geometry_authority"] is False
     assert any("reference-only" in text for text in payload["generation_constraints"])
 
@@ -165,3 +187,47 @@ def test_merge_envelope_fits_rejects_parameter_conflicts():
     }
     with pytest.raises(ValueError, match="Conflicting envelope fits"):
         merge_envelope_fits([first, second])
+
+
+
+def test_fixed_hardware_keepout_mm_does_not_scale_with_body_height():
+    spec = load_spec(BASE / "skeletons" / "brickmen-giant-v0.json")
+    joint = load_json(
+        BASE
+        / "joint-profiles"
+        / "lego-giant-43093-shoulder-reference-v0.json"
+    )
+
+    payload_62 = compile_conditioning(
+        spec, joint_profiles=[joint], target_height_mm=62
+    )
+    payload_70 = compile_conditioning(
+        spec, joint_profiles=[joint], target_height_mm=70
+    )
+
+    mech_62 = payload_62["mechanical_constraints"][0]
+    mech_70 = payload_70["mechanical_constraints"][0]
+    assert mech_62["reference_keepout_bbox_mm"] == [16, 6.4, 6.4]
+    assert mech_70["reference_keepout_bbox_mm"] == [16, 6.4, 6.4]
+
+    left_62 = next(
+        item for item in mech_62["placements"] if item["anchor_node"] == "shoulder_l"
+    )
+    left_70 = next(
+        item for item in mech_70["placements"] if item["anchor_node"] == "shoulder_l"
+    )
+    assert left_62["anchor_normalized_body_height"] == left_70[
+        "anchor_normalized_body_height"
+    ]
+    assert left_70["anchor_mm_at_target_height"][0] == pytest.approx(
+        left_62["anchor_mm_at_target_height"][0] * 70 / 62
+    )
+    assert left_62["reference_keepout_local_max_mm"] == left_70[
+        "reference_keepout_local_max_mm"
+    ]
+    assert left_62["reference_keepout_local_max_normalized"][0] == pytest.approx(
+        8 / 62
+    )
+    assert left_70["reference_keepout_local_max_normalized"][0] == pytest.approx(
+        8 / 70
+    )
