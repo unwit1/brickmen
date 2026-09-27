@@ -30,7 +30,12 @@
       "head_depth_scale": 1.288684202670107,
       "head_height_scale": 1.0,
       "abdomen_projection_scale": 1.547973449329982,
-      "abdomen_width_scale": 1.1226284715712989
+      "abdomen_width_scale": 1.1226284715712989,
+      "arm_bulk_width_scale": 1.0,
+      "arm_bulk_depth_scale": 1.0,
+      "hand_width_scale": 1.0,
+      "hand_depth_scale": 1.0,
+      "hand_height_scale": 1.0
     },
     "other": {},
     "locked_parameters": {},
@@ -598,6 +603,70 @@
         23.665008,
         21.114358,
         9.92
+      ],
+      "visual_only": true
+    },
+    {
+      "envelope_id": "arm_l",
+      "shape": "capsule_between_nodes",
+      "center_node": "elbow_l",
+      "size_normalized_body_height": [
+        0.18,
+        0.28,
+        0.0
+      ],
+      "size_mm_at_target_height": [
+        11.16,
+        17.36,
+        0.0
+      ],
+      "visual_only": true
+    },
+    {
+      "envelope_id": "arm_r",
+      "shape": "capsule_between_nodes",
+      "center_node": "elbow_r",
+      "size_normalized_body_height": [
+        0.18,
+        0.28,
+        0.0
+      ],
+      "size_mm_at_target_height": [
+        11.16,
+        17.36,
+        0.0
+      ],
+      "visual_only": true
+    },
+    {
+      "envelope_id": "hand_l",
+      "shape": "capsule",
+      "center_node": "hand_l",
+      "size_normalized_body_height": [
+        0.175,
+        0.25,
+        0.21
+      ],
+      "size_mm_at_target_height": [
+        10.85,
+        15.5,
+        13.02
+      ],
+      "visual_only": true
+    },
+    {
+      "envelope_id": "hand_r",
+      "shape": "capsule",
+      "center_node": "hand_r",
+      "size_normalized_body_height": [
+        0.175,
+        0.25,
+        0.21
+      ],
+      "size_mm_at_target_height": [
+        10.85,
+        15.5,
+        13.02
       ],
       "visual_only": true
     }
