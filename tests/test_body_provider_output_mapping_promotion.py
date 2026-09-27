@@ -56,10 +56,16 @@ def proposal(torso,head,complete=True):
                 "assignments":[
                     {
                         "provider_part_path":str(torso),
+                        "provider_part_id":"part_07",
+                        "provider_part_index":7,
+                        "provider_manifest":"/tmp/provider-manifest.json",
                         "slot_id":"torso_shell",
                     },
                     {
                         "provider_part_path":str(head),
+                        "provider_part_id":"part_03",
+                        "provider_part_index":3,
+                        "provider_manifest":"/tmp/provider-manifest.json",
                         "slot_id":"head_shell",
                     },
                 ],
@@ -83,6 +89,11 @@ def test_explicit_promotion_records_review_provenance(tmp_path: Path):
         c["transform_source"]=="reviewed_global_mapping_proposal"
         for c in result["components"]
     )
+    components={c["slot_id"]:c for c in result["components"]}
+    assert components["torso_shell"]["provider_part_id"]=="part_07"
+    assert components["torso_shell"]["provider_part_index"]==7
+    assert components["head_shell"]["provider_part_id"]=="part_03"
+    assert components["head_shell"]["provider_manifest"]=="/tmp/provider-manifest.json"
     assert result["production_geometry_authority"] is False
 
 
