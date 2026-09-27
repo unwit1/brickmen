@@ -1,0 +1,209 @@
+{
+  "schema": "skywalker-no-supported-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-no-supported-review-016",
+  "policy": "Correct source spelling and diacritic/punctuation variants before identity resolution. Preserve documented nonphysical status for game-only characters, including generic elite roles and named novel/background characters, rather than substituting same-faction or phonetic neighbors.",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-6336300d8b535012fd73c467",
+      "character_variant_key": "SovereignProtector",
+      "decision": "sith_eternal_sovereign_protector_role_verified_video_game_only_no_official_physical_minifigure",
+      "canonical_game_role": "Sovereign Protector",
+      "identity_context": {
+        "role": "elite Sith Eternal bodyguard of Emperor Palpatine",
+        "location": "Exegol"
+      },
+      "physical_status": {
+        "exact_official_minifigure_located": false,
+        "brickipedia_status": "nonphysical Skywalker Saga minifigure"
+      },
+      "rejected_top_candidates": [
+        {
+          "fig_num": "fig-001857",
+          "catalog_name": "U-3PO, Silver Protocol Droid",
+          "reason": "unrelated droid"
+        },
+        {
+          "fig_num": "fig-004310",
+          "catalog_name": "Imperial Patrol Trooper",
+          "reason": "different faction/role"
+        }
+      ],
+      "reason": "Sovereign Protectors are a distinct Exegol/Sith Eternal elite guard role in The Skywalker Saga. Brickipedia explicitly classifies the LEGO minifigure as nonphysical. Royal Guard/Praetorian visual ancestry does not make those physical figures exact counterparts.",
+      "systemic_pattern": "elite_guard_role_lineage_is_not_exact_identity_equivalence_across_factions_and_eras",
+      "evidence_urls": [
+        "https://brickipedia.fandom.com/wiki/Sovereign_Protector"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-9c32ea7e70fb3327d2a86437",
+      "character_variant_key": "ElloAtsy",
+      "decision": "source_spelling_error_normalized_to_ello_asty_verified_video_game_only_no_official_physical_minifigure",
+      "canonical_subject": "Ello Asty",
+      "alias_resolution": {
+        "source_key": "ElloAtsy",
+        "canonical_name": "Ello Asty",
+        "transformations": [
+          "Atsy -> Asty spelling correction"
+        ],
+        "confidence": "high"
+      },
+      "identity_context": {
+        "species": "Abednedo",
+        "role": "Resistance pilot / Blue Squadron"
+      },
+      "physical_status": {
+        "exact_official_minifigure_located": false,
+        "brickipedia_status": "video-game-only minifigure; never existed in physical form or an official LEGO set"
+      },
+      "rejected_top_candidates": [
+        {
+          "fig_num": "fig-004238",
+          "catalog_name": "Rowan, Yellow Jacket",
+          "reason": "unrelated character"
+        },
+        {
+          "fig_num": "fig-004234",
+          "catalog_name": "Lor San Tekka",
+          "reason": "unrelated character"
+        }
+      ],
+      "reason": "The source key transposes the last two letters of Asty. Brickipedia identifies Ello Asty as a digital-only LEGO character appearing in both The Force Awakens game and The Skywalker Saga. Generic Resistance pilot figures are not a named Ello Asty release.",
+      "systemic_pattern": "minor_transposition_typos_should_use_canonical_entity_alias_resolution_before_catalog_matching",
+      "evidence_urls": [
+        "https://brickipedia.fandom.com/wiki/Ello_Asty",
+        "https://www.starwars.com/databank/ello-asty"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-1772cc60de1cdcfdfac8d2a0",
+      "character_variant_key": "MisterBones",
+      "decision": "named_battle_droid_mister_bones_verified_video_game_only_no_official_physical_minifigure",
+      "canonical_subject": "Mister Bones",
+      "identity_context": {
+        "type": "customized B1 battle droid",
+        "creator": "Temmin Wexley",
+        "origin_medium": "Aftermath novels"
+      },
+      "physical_status": {
+        "exact_official_minifigure_located": false,
+        "brickipedia_status": "video-game-only minifigure; listed as nonphysical battle droid"
+      },
+      "rejected_top_candidates": [
+        {
+          "fig_num": "fig-004403",
+          "catalog_name": "Major Vonreg",
+          "reason": "unrelated character"
+        },
+        {
+          "fig_num": "fig-004443",
+          "catalog_name": "First Order Jet Trooper",
+          "reason": "unrelated role"
+        },
+        {
+          "fig_num": "fig-004228",
+          "catalog_name": "Quinlan Vos, Dark Brown Legs",
+          "reason": "unrelated character"
+        }
+      ],
+      "reason": "Mister Bones is a specific customized battle droid and is documented as a nonphysical LEGO character. A generic B1 body family could inform morphology but cannot substitute an exact named physical release.",
+      "systemic_pattern": "custom_named_droid_identity_must_remain_distinct_from_generic_base_droid_body_family",
+      "evidence_urls": [
+        "https://brickipedia.fandom.com/wiki/Mister_Bones",
+        "https://brickipedia.fandom.com/wiki/List_of_LEGO_Star_Wars_Battle_Droids"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-d2f57f1c8389f4286dadfb37",
+      "character_variant_key": "NambiGhima",
+      "decision": "named_resistance_member_nambi_ghima_verified_video_game_only_no_official_physical_minifigure",
+      "canonical_subject": "Nambi Ghima",
+      "physical_status": {
+        "exact_official_minifigure_located": false,
+        "brickipedia_status": "video-game-only minifigure; listed among nonphysical Other characters"
+      },
+      "rejected_top_candidates": [
+        {
+          "fig_num": "fig-004520",
+          "catalog_name": "Admiral Ematt",
+          "reason": "same broad Resistance era but different individual"
+        },
+        {
+          "fig_num": "fig-003715",
+          "catalog_name": "Mon Mothma",
+          "reason": "unrelated character"
+        },
+        {
+          "fig_num": "fig-003720",
+          "catalog_name": "Magna Guard",
+          "reason": "unrelated droid"
+        }
+      ],
+      "reason": "Nambi Ghima is a distinct Episode IX/Resistance-era background character represented in The Skywalker Saga. Brickipedia marks the LEGO form as game-only/nonphysical; Brickset also listed Nambi Ghima among prominent characters without minifigures.",
+      "systemic_pattern": "same_faction_or_era_cannot_replace_named_background_character_identity",
+      "evidence_urls": [
+        "https://brickipedia.fandom.com/wiki/Nambi_Ghima",
+        "https://brickset.com/article/51250/star-wars-characters-with-the-most-dialogue-but-no-minifigure"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-3e4200b3242ac4b3d43b7682",
+      "character_variant_key": "RicOllie",
+      "decision": "source_spelling_and_diacritic_normalization_to_ric_olie_verified_video_game_only_no_official_physical_minifigure",
+      "canonical_subject": "Ric Olié",
+      "alias_resolution": {
+        "source_key": "RicOllie",
+        "canonical_name": "Ric Olié",
+        "transformations": [
+          "Ollie -> Olié spelling correction",
+          "restore space",
+          "restore acute accent"
+        ],
+        "confidence": "high"
+      },
+      "identity_context": {
+        "role": "Royal Naboo Security Forces pilot / Queen Amidala's personal pilot"
+      },
+      "physical_status": {
+        "exact_official_minifigure_located": false,
+        "brickipedia_status": "video-game-only minifigure; never existed in physical form or an official LEGO set"
+      },
+      "rejected_top_candidates": [
+        {
+          "fig_num": "fig-002116",
+          "catalog_name": "Zorii Bliss",
+          "reason": "unrelated pilot/character"
+        },
+        {
+          "fig_num": "fig-003977",
+          "catalog_name": "Stass Allie",
+          "reason": "phonetic suffix similarity only"
+        },
+        {
+          "fig_num": "fig-004152",
+          "catalog_name": "Resistance Soldier, Hair",
+          "reason": "generic later-era soldier, wrong identity"
+        }
+      ],
+      "reason": "The source key misspells Ric Olié as Ric Ollie. Brickipedia explicitly marks Ric Olié as a Skywalker Saga-only/nonphysical minifigure. Earlier generic Naboo pilot figures do not establish a named Ric Olié release.",
+      "systemic_pattern": "spelling_and_diacritic_normalization_should_precede_named_character_physical_lookup",
+      "evidence_urls": [
+        "https://brickipedia.fandom.com/wiki/Ric_Oli%C3%A9",
+        "https://brickset.com/article/19434"
+      ]
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "source_name_normalizations": 2,
+    "nonphysical_named_or_role_characters": 5,
+    "automatic_exact_artwork_equivalence_promotions": 0
+  },
+  "remaining_no_supported_records_after_batch": 16,
+  "systemic_findings": [
+    "Guard-role lineage across Imperial, Praetorian, and Sith Eternal contexts is not exact identity equivalence.",
+    "Minor transpositions and diacritics should be normalized through canonical entity aliases.",
+    "Named customized droids remain distinct from generic base-body families.",
+    "Same-faction and same-era proximity are weak evidence for named background characters."
+  ]
+}
