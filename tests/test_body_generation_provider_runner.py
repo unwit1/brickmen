@@ -80,7 +80,7 @@ def test_pact_plan_uses_brickmen_dataset_redirect_wrapper(tmp_path: Path):
     assert plan["execution_supported"] is True
     assert plan["adapter_status"]=="runnable_brickmen_dataset_redirect_wrapper_verified"
     assert "run_pact_arbitrary_input.py" in " ".join(plan["command"])
-    assert "--semantic-mask-exr" in plan["command"]
+    assert "--semantic-mask" in plan["command"]
     assert str(mask.resolve()) in plan["command"]
 
 
