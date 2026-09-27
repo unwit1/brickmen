@@ -43,6 +43,8 @@ def compile_provider_job(
     provider: Mapping[str, Any],
     *,
     source_image: str | None = None,
+    guide_manifest: Mapping[str, Any] | None = None,
+    sweep_report: Mapping[str, Any] | None = None,
 ) -> dict[str, Any]:
     slots = _slots(conditioning)
     required = [slot for slot in slots if slot.get("required", True)]
@@ -93,6 +95,21 @@ def compile_provider_job(
         "architecture_id": conditioning["architecture_id"],
         "target_height_mm": conditioning["target_height_mm"],
         "source_image": source_image,
+        "guide_pack": dict(guide_manifest) if guide_manifest else None,
+        "articulation_sweep_summary": (
+            {
+                "architecture_id": sweep_report.get("architecture_id"),
+                "joint_ids": [
+                    item.get("joint_id")
+                    for item in sweep_report.get("joint_sweeps", [])
+                ],
+                "production_geometry_authority": sweep_report.get(
+                    "production_geometry_authority", False
+                ),
+            }
+            if sweep_report
+            else None
+        ),
         "component_slots": {
             "required": required,
             "optional": optional,
@@ -124,6 +141,8 @@ def main() -> int:
     parser.add_argument("registry")
     parser.add_argument("provider_id")
     parser.add_argument("--source-image", default=None)
+    parser.add_argument("--guide-manifest", default=None)
+    parser.add_argument("--sweeps", default=None)
     parser.add_argument("-o", "--output", required=True)
     args = parser.parse_args()
 
@@ -136,6 +155,10 @@ def main() -> int:
         conditioning,
         providers[args.provider_id],
         source_image=args.source_image,
+        guide_manifest=(
+            load_json(args.guide_manifest) if args.guide_manifest else None
+        ),
+        sweep_report=(load_json(args.sweeps) if args.sweeps else None),
     )
     Path(args.output).write_text(
         json.dumps(job, indent=2) + "\n", encoding="utf-8"
