@@ -1,0 +1,159 @@
+{
+  "schema_version": "0.1",
+  "test_plan_id": "giant_43093_shoulder_physical_validation_v0",
+  "joint_profile_id": "lego_giant_43093_shoulder_reference_v0",
+  "architecture_candidate_id": "brickmen_giant_v0",
+  "status": "protocol_defined_testing_not_started",
+  "purpose": [
+    "Convert the 43093 reference-only shoulder profile into physically grounded interface evidence.",
+    "Measure the intentional mating/contact region needed for exact articulation collision.",
+    "Establish repeatable force/torque/play/wear baselines before any production geometry promotion."
+  ],
+  "authority_policy": {
+    "current": "reference_cad_profile_physical_validation_pending",
+    "allowed_transitions": [
+      "reference_cad_profile_physical_validation_pending -> validated_prototype",
+      "validated_prototype -> production_approved only after pre-registered acceptance criteria and repeated qualification"
+    ],
+    "no_automatic_promotion": true
+  },
+  "sampling": {
+    "pilot_hardware_specimens_recommended_minimum": 5,
+    "pilot_official_body_arm_pairs_recommended_minimum": 3,
+    "printed_candidate_specimens_per_process_material_orientation_recommended_minimum": 5,
+    "note": "These are initial evidence-collection minima, not statistical guarantees or pass thresholds. Increase sample size when observed variation or risk justifies it."
+  },
+  "instrumentation_and_recording": [
+    {
+      "measurement": "critical hardware and mating geometry",
+      "requirement": "Use calibrated dimensional metrology appropriate to the feature; record instrument, resolution, calibration state, operator, specimen ID, temperature and measurement locations.",
+      "preferred_capabilities": [
+        "digital micrometer/caliper where accessible",
+        "optical/scan metrology for non-circular lobes, slots and internal mating geometry"
+      ]
+    },
+    {
+      "measurement": "insertion/removal force",
+      "requirement": "Use a controlled force fixture/test stand; record travel, speed, force-vs-displacement curve and peak/steady force rather than a hand-feel label."
+    },
+    {
+      "measurement": "breakaway/running torque",
+      "requirement": "Use a torque fixture; record joint angle, direction, breakaway peak, running torque and hysteresis."
+    },
+    {
+      "measurement": "axial/radial play",
+      "requirement": "Apply and record a defined small test load/displacement method; record direction and repeatability."
+    }
+  ],
+  "phases": [
+    {
+      "phase_id": "A_official_hardware_metrology",
+      "objective": "Measure real 43093 specimen variation and preserve raw geometry evidence.",
+      "records": [
+        "total physical extents and feature stations",
+        "functional lobe/axle/pin cross-section measurements at repeatable datum locations",
+        "friction feature/slot geometry where measurable",
+        "mass and material/marking observations where useful",
+        "specimen photographs/scans with scale and datum"
+      ]
+    },
+    {
+      "phase_id": "B_official_mating_interface_metrology",
+      "objective": "Measure the official Giant torso and arm mating geometry instead of deriving socket dimensions from nominal LDraw surfaces.",
+      "records": [
+        "torso-side mating surface/void geometry",
+        "arm-side mating surface/void geometry",
+        "insertion depth and hard-stop location",
+        "intentional contact zones and non-contact clearance zones",
+        "left/right symmetry differences",
+        "reference coordinate frames tied to the shoulder pivot"
+      ],
+      "output_requirement": "Produce candidate allowed-contact-region geometry with provenance; do not promote until functional tests agree."
+    },
+    {
+      "phase_id": "C_official_functional_baseline",
+      "objective": "Establish force/torque/play distributions of working official hardware/body/arm assemblies.",
+      "records": [
+        "insertion force curve",
+        "removal force curve",
+        "breakaway torque by angle/direction",
+        "running torque by angle/direction",
+        "axial/radial play",
+        "qualitative failure mode notes linked to quantitative traces"
+      ]
+    },
+    {
+      "phase_id": "D_cycle_and_wear",
+      "objective": "Measure degradation and failure modes instead of assuming initial fit persists.",
+      "suggested_observation_checkpoints_cycles": [
+        0,
+        10,
+        50,
+        100,
+        250,
+        500
+      ],
+      "note": "Checkpoints are an evidence-collection schedule, not pass/fail limits. Extend testing if behavior has not stabilized or failure is not characterized.",
+      "records": [
+        "force/torque/play at each checkpoint",
+        "visible wear/deformation",
+        "hardware damage",
+        "mating-surface damage",
+        "creep or permanent set after rest"
+      ]
+    },
+    {
+      "phase_id": "E_printed_candidate_matrix",
+      "objective": "Test each actual process/material/orientation/interface revision against the official/reference distribution.",
+      "required_grouping": [
+        "printer/process",
+        "material/resin/filament lot",
+        "build orientation",
+        "post-cure/post-process",
+        "geometry revision",
+        "hardware lot"
+      ],
+      "rule": "Do not pool unlike process/material/orientation revisions as if they were one population."
+    },
+    {
+      "phase_id": "F_acceptance_definition",
+      "objective": "Pre-register qualification limits after pilot data exists and before formal candidate qualification.",
+      "requirements": [
+        "define acceptable force/torque/play bands from functional baseline and use-case needs",
+        "define cycle-retention requirements",
+        "define allowable wear/failure modes",
+        "define dimensional control features and inspection method",
+        "freeze the tested interface revision before qualification"
+      ],
+      "current_threshold_status": "intentionally_undefined_pending_baseline_data"
+    }
+  ],
+  "required_raw_data_fields": [
+    "test_run_id",
+    "specimen_id",
+    "hardware_id",
+    "body_or_print_id",
+    "arm_id",
+    "geometry_revision",
+    "material_process",
+    "build_orientation",
+    "environment",
+    "instrument_id",
+    "calibration_state",
+    "timestamp",
+    "operator",
+    "raw_measurements",
+    "derived_metrics",
+    "photos_or_scans",
+    "failure_notes"
+  ],
+  "promotion_requirements": [
+    "Raw physical measurements retained with provenance.",
+    "Intentional contact region explicitly modeled from validated evidence.",
+    "Candidate interface passes pre-registered functional criteria.",
+    "Cycle/wear behavior is characterized at the intended use level.",
+    "No unresolved safety/structural/fit-critical review flags remain.",
+    "Promotion decision references the exact tested geometry/process/material revision."
+  ],
+  "production_geometry_authority": false
+}
