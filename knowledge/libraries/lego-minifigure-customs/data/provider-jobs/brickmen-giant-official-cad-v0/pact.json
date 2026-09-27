@@ -1,10 +1,10 @@
 {
   "schema_version": "0.1",
-  "provider_job_id": "brickmen_giant_v0::pact::de048e170925",
+  "provider_job_id": "brickmen_giant_v0::pact::98277c4fc0a2",
   "provider_id": "pact",
   "provider_role": "articulated_part_decomposed_image_to_3d_generator",
   "provider_availability": "official_inference_training_and_preprocessing_available",
-  "conditioning_digest_sha256": "de048e170925793e2f2bc0645cbcaed9aa9841b02a0c09e76b369fef8f1bf445",
+  "conditioning_digest_sha256": "98277c4fc0a23cf46723c4ec9e229200e366ad6fe45de9b2c683d0961c299572",
   "architecture_id": "brickmen_giant_v0",
   "target_height_mm": 62.0,
   "source_image": null,
@@ -229,6 +229,11 @@
           "hardware_part_id": "43093",
           "quantity": 1,
           "placement_authority": "reference_alignment_only_until_physical_validation",
+          "affected_component_slot_ids": [
+            "torso_shell",
+            "arm_l_shell"
+          ],
+          "boolean_subtraction_required_before_mechanical_validation": true,
           "reference_keepout_local_min_mm": [
             -8.0,
             -3.2,
@@ -274,6 +279,11 @@
           "hardware_part_id": "43093",
           "quantity": 1,
           "placement_authority": "reference_alignment_only_until_physical_validation",
+          "affected_component_slot_ids": [
+            "torso_shell",
+            "arm_r_shell"
+          ],
+          "boolean_subtraction_required_before_mechanical_validation": true,
           "reference_keepout_local_min_mm": [
             -8.0,
             -3.2,
