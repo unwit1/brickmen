@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "body-envelope-profile.schema.json",
+  "title": "Brickmen Body Envelope Profile Fit",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "reference_id",
+    "skeleton_id",
+    "architecture_id",
+    "parameter_overrides",
+    "measurements",
+    "mechanical_parameter_changes",
+    "production_geometry_authority"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "reference_id": {
+      "type": "string"
+    },
+    "skeleton_id": {
+      "type": "string"
+    },
+    "architecture_id": {
+      "type": "string"
+    },
+    "parameter_overrides": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number"
+      }
+    },
+    "measurements": {
+      "type": "object"
+    },
+    "unmapped_measurements": {
+      "type": "object"
+    },
+    "mechanical_parameter_changes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "bound_hits": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "production_geometry_authority": {
+      "const": false
+    },
+    "warning": {
+      "type": "string"
+    }
+  }
+}
