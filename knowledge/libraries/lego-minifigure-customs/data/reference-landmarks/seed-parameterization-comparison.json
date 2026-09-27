@@ -1,0 +1,567 @@
+{
+  "schema_version": "0.1",
+  "status": "seed_fit_parameterization_comparison",
+  "source_manifest": "knowledge/libraries/lego-minifigure-customs/data/reference-landmarks/manifest.json",
+  "expanded_parameter_policy": {
+    "retain_current": true,
+    "add": [
+      "neck_head_offset_scale",
+      "thigh_length_scale",
+      "shin_length_scale"
+    ],
+    "excluded_due_to_identifiability": [
+      "lower_torso_length_scale",
+      "upper_torso_length_scale"
+    ]
+  },
+  "records": [
+    {
+      "reference_id": "alpha_af325_venom_front_seed",
+      "skeleton_id": "brickmen_broad_v0_skeleton",
+      "current": {
+        "optimized_parameter_names": [
+          "shoulder_width_scale",
+          "arm_length_scale",
+          "torso_height_scale",
+          "lower_body_height_scale",
+          "stance_width_scale"
+        ],
+        "initial_normalized_rmse": 0.09513750838527678,
+        "final_normalized_rmse": 0.06718047282283487,
+        "fit_status": "weak_fit_review_required",
+        "bound_hits": [
+          {
+            "parameter": "shoulder_width_scale",
+            "bound": "max",
+            "value": 1.25
+          },
+          {
+            "parameter": "arm_length_scale",
+            "bound": "max",
+            "value": 1.12
+          },
+          {
+            "parameter": "torso_height_scale",
+            "bound": "min",
+            "value": 0.92
+          },
+          {
+            "parameter": "lower_body_height_scale",
+            "bound": "min",
+            "value": 0.9
+          },
+          {
+            "parameter": "stance_width_scale",
+            "bound": "max",
+            "value": 1.2
+          }
+        ],
+        "diagnostic_flags": [
+          "one_or_more_parameters_hit_bounds",
+          "skeleton_design_space_may_be_too_narrow",
+          "reference_architecture_differs_from_brickmen_target"
+        ],
+        "fit_parameters": {
+          "shoulder_width_scale": 1.25,
+          "arm_length_scale": 1.12,
+          "torso_height_scale": 0.92,
+          "lower_body_height_scale": 0.9,
+          "stance_width_scale": 1.2
+        },
+        "matched_landmark_count": 17
+      },
+      "safe_expanded_v1": {
+        "optimized_parameter_names": [
+          "shoulder_width_scale",
+          "arm_length_scale",
+          "torso_height_scale",
+          "lower_body_height_scale",
+          "stance_width_scale",
+          "neck_head_offset_scale",
+          "thigh_length_scale",
+          "shin_length_scale"
+        ],
+        "initial_normalized_rmse": 0.09513750838527678,
+        "final_normalized_rmse": 0.06544379273878798,
+        "fit_status": "weak_fit_review_required",
+        "bound_hits": [
+          {
+            "parameter": "shoulder_width_scale",
+            "bound": "max",
+            "value": 1.25
+          },
+          {
+            "parameter": "arm_length_scale",
+            "bound": "max",
+            "value": 1.12
+          },
+          {
+            "parameter": "torso_height_scale",
+            "bound": "min",
+            "value": 0.92
+          },
+          {
+            "parameter": "lower_body_height_scale",
+            "bound": "min",
+            "value": 0.9
+          },
+          {
+            "parameter": "stance_width_scale",
+            "bound": "max",
+            "value": 1.2
+          },
+          {
+            "parameter": "thigh_length_scale",
+            "bound": "max",
+            "value": 1.25
+          }
+        ],
+        "diagnostic_flags": [
+          "one_or_more_parameters_hit_bounds",
+          "skeleton_design_space_may_be_too_narrow",
+          "reference_architecture_differs_from_brickmen_target"
+        ],
+        "fit_parameters": {
+          "shoulder_width_scale": 1.25,
+          "arm_length_scale": 1.12,
+          "torso_height_scale": 0.92,
+          "lower_body_height_scale": 0.9,
+          "stance_width_scale": 1.2,
+          "neck_head_offset_scale": 0.9864583333,
+          "thigh_length_scale": 1.25,
+          "shin_length_scale": 0.8864583333
+        },
+        "matched_landmark_count": 17
+      },
+      "rmse_improvement_absolute": 0.0017366800840468988,
+      "rmse_improvement_fraction": 0.025850965482585815,
+      "expanded_not_worse": true,
+      "production_geometry_authority": false,
+      "reference_file": "alpha-af325-venom-front.json",
+      "role": "standard-height broad stress test"
+    },
+    {
+      "reference_id": "alpha_af345_hulk_front_seed",
+      "skeleton_id": "brickmen_xl_v0_skeleton",
+      "current": {
+        "optimized_parameter_names": [
+          "shoulder_width_scale",
+          "arm_length_scale",
+          "torso_height_scale",
+          "lower_body_height_scale",
+          "stance_width_scale"
+        ],
+        "initial_normalized_rmse": 0.07797958716441446,
+        "final_normalized_rmse": 0.04697277724244882,
+        "fit_status": "usable_visual_fit",
+        "bound_hits": [
+          {
+            "parameter": "arm_length_scale",
+            "bound": "max",
+            "value": 1.18
+          },
+          {
+            "parameter": "lower_body_height_scale",
+            "bound": "min",
+            "value": 0.88
+          }
+        ],
+        "diagnostic_flags": [
+          "one_or_more_parameters_hit_bounds",
+          "reference_architecture_differs_from_brickmen_target"
+        ],
+        "fit_parameters": {
+          "shoulder_width_scale": 1.19,
+          "arm_length_scale": 1.18,
+          "torso_height_scale": 0.9505555555,
+          "lower_body_height_scale": 0.88,
+          "stance_width_scale": 1.0
+        },
+        "matched_landmark_count": 17
+      },
+      "safe_expanded_v1": {
+        "optimized_parameter_names": [
+          "shoulder_width_scale",
+          "arm_length_scale",
+          "torso_height_scale",
+          "lower_body_height_scale",
+          "stance_width_scale",
+          "neck_head_offset_scale",
+          "thigh_length_scale",
+          "shin_length_scale"
+        ],
+        "initial_normalized_rmse": 0.07797958716441446,
+        "final_normalized_rmse": 0.04394364330826463,
+        "fit_status": "usable_visual_fit",
+        "bound_hits": [
+          {
+            "parameter": "arm_length_scale",
+            "bound": "max",
+            "value": 1.18
+          },
+          {
+            "parameter": "lower_body_height_scale",
+            "bound": "min",
+            "value": 0.88
+          },
+          {
+            "parameter": "neck_head_offset_scale",
+            "bound": "min",
+            "value": 0.8
+          },
+          {
+            "parameter": "thigh_length_scale",
+            "bound": "max",
+            "value": 1.25
+          }
+        ],
+        "diagnostic_flags": [
+          "one_or_more_parameters_hit_bounds",
+          "reference_architecture_differs_from_brickmen_target"
+        ],
+        "fit_parameters": {
+          "shoulder_width_scale": 1.19,
+          "arm_length_scale": 1.18,
+          "torso_height_scale": 0.9688888889,
+          "lower_body_height_scale": 0.88,
+          "stance_width_scale": 1.0,
+          "neck_head_offset_scale": 0.8,
+          "thigh_length_scale": 1.25,
+          "shin_length_scale": 0.8305555556
+        },
+        "matched_landmark_count": 17
+      },
+      "rmse_improvement_absolute": 0.0030291339341841916,
+      "rmse_improvement_fraction": 0.0644870095406408,
+      "expanded_not_worse": true,
+      "production_geometry_authority": false,
+      "reference_file": "alpha-af345-hulk-front.json",
+      "role": "~7cm anatomical/muscular control"
+    },
+    {
+      "reference_id": "lego_sh0371_hulk_front_seed",
+      "skeleton_id": "brickmen_giant_v0_skeleton",
+      "current": {
+        "optimized_parameter_names": [
+          "shoulder_width_scale",
+          "arm_length_scale",
+          "torso_height_scale",
+          "lower_body_height_scale",
+          "stance_width_scale"
+        ],
+        "initial_normalized_rmse": 0.05061961830813352,
+        "final_normalized_rmse": 0.035186680628715876,
+        "fit_status": "usable_visual_fit",
+        "bound_hits": [
+          {
+            "parameter": "arm_length_scale",
+            "bound": "max",
+            "value": 1.1
+          }
+        ],
+        "diagnostic_flags": [
+          "one_or_more_parameters_hit_bounds",
+          "reference_architecture_differs_from_brickmen_target"
+        ],
+        "fit_parameters": {
+          "shoulder_width_scale": 1.1433854166,
+          "arm_length_scale": 1.1,
+          "torso_height_scale": 1.0238541667,
+          "lower_body_height_scale": 1.0110416667,
+          "stance_width_scale": 1.1111979166
+        },
+        "matched_landmark_count": 17
+      },
+      "safe_expanded_v1": {
+        "optimized_parameter_names": [
+          "shoulder_width_scale",
+          "arm_length_scale",
+          "torso_height_scale",
+          "lower_body_height_scale",
+          "stance_width_scale",
+          "neck_head_offset_scale",
+          "thigh_length_scale",
+          "shin_length_scale"
+        ],
+        "initial_normalized_rmse": 0.05061961830813352,
+        "final_normalized_rmse": 0.03429658400821841,
+        "fit_status": "usable_visual_fit",
+        "bound_hits": [
+          {
+            "parameter": "arm_length_scale",
+            "bound": "max",
+            "value": 1.1
+          },
+          {
+            "parameter": "neck_head_offset_scale",
+            "bound": "min",
+            "value": 0.8
+          },
+          {
+            "parameter": "shin_length_scale",
+            "bound": "max",
+            "value": 1.25
+          }
+        ],
+        "diagnostic_flags": [
+          "one_or_more_parameters_hit_bounds",
+          "reference_architecture_differs_from_brickmen_target"
+        ],
+        "fit_parameters": {
+          "shoulder_width_scale": 1.1433854166,
+          "arm_length_scale": 1.1,
+          "torso_height_scale": 1.0440104167,
+          "lower_body_height_scale": 1.0002604167,
+          "stance_width_scale": 1.1111979166,
+          "neck_head_offset_scale": 0.8,
+          "thigh_length_scale": 0.8634114583,
+          "shin_length_scale": 1.25
+        },
+        "matched_landmark_count": 17
+      },
+      "rmse_improvement_absolute": 0.0008900966204974659,
+      "rmse_improvement_fraction": 0.02529640774842107,
+      "expanded_not_worse": true,
+      "production_geometry_authority": false,
+      "reference_file": "lego-sh0371-hulk-front.json",
+      "role": "official Giant visual control"
+    },
+    {
+      "reference_id": "kdl_k2302_thing_front_seed",
+      "skeleton_id": "brickmen_xl_v0_skeleton",
+      "current": {
+        "optimized_parameter_names": [
+          "shoulder_width_scale",
+          "arm_length_scale",
+          "torso_height_scale",
+          "lower_body_height_scale",
+          "stance_width_scale"
+        ],
+        "initial_normalized_rmse": 0.07261312455242122,
+        "final_normalized_rmse": 0.054871875015493767,
+        "fit_status": "weak_fit_review_required",
+        "bound_hits": [
+          {
+            "parameter": "arm_length_scale",
+            "bound": "max",
+            "value": 1.18
+          },
+          {
+            "parameter": "torso_height_scale",
+            "bound": "min",
+            "value": 0.92
+          },
+          {
+            "parameter": "lower_body_height_scale",
+            "bound": "min",
+            "value": 0.88
+          }
+        ],
+        "diagnostic_flags": [
+          "one_or_more_parameters_hit_bounds",
+          "skeleton_design_space_may_be_too_narrow",
+          "reference_architecture_differs_from_brickmen_target"
+        ],
+        "fit_parameters": {
+          "shoulder_width_scale": 0.95,
+          "arm_length_scale": 1.18,
+          "torso_height_scale": 0.92,
+          "lower_body_height_scale": 0.88,
+          "stance_width_scale": 1.1418402778
+        },
+        "matched_landmark_count": 17
+      },
+      "safe_expanded_v1": {
+        "optimized_parameter_names": [
+          "shoulder_width_scale",
+          "arm_length_scale",
+          "torso_height_scale",
+          "lower_body_height_scale",
+          "stance_width_scale",
+          "neck_head_offset_scale",
+          "thigh_length_scale",
+          "shin_length_scale"
+        ],
+        "initial_normalized_rmse": 0.07261312455242122,
+        "final_normalized_rmse": 0.053567810992126826,
+        "fit_status": "weak_fit_review_required",
+        "bound_hits": [
+          {
+            "parameter": "arm_length_scale",
+            "bound": "max",
+            "value": 1.18
+          },
+          {
+            "parameter": "torso_height_scale",
+            "bound": "min",
+            "value": 0.92
+          },
+          {
+            "parameter": "lower_body_height_scale",
+            "bound": "min",
+            "value": 0.88
+          },
+          {
+            "parameter": "neck_head_offset_scale",
+            "bound": "min",
+            "value": 0.8
+          }
+        ],
+        "diagnostic_flags": [
+          "one_or_more_parameters_hit_bounds",
+          "skeleton_design_space_may_be_too_narrow",
+          "reference_architecture_differs_from_brickmen_target"
+        ],
+        "fit_parameters": {
+          "shoulder_width_scale": 0.94875,
+          "arm_length_scale": 1.18,
+          "torso_height_scale": 0.92,
+          "lower_body_height_scale": 0.88,
+          "stance_width_scale": 1.1418402778,
+          "neck_head_offset_scale": 0.8,
+          "thigh_length_scale": 1.0821614583,
+          "shin_length_scale": 1.00703125
+        },
+        "matched_landmark_count": 17
+      },
+      "rmse_improvement_absolute": 0.001304064023366941,
+      "rmse_improvement_fraction": 0.023765618051118573,
+      "expanded_not_worse": true,
+      "production_geometry_authority": false,
+      "reference_file": "kdl-k2302-thing-front.json",
+      "role": "65mm large-body control"
+    },
+    {
+      "reference_id": "lego_axl_front_seed",
+      "skeleton_id": "brickmen_broad_v0_skeleton",
+      "current": {
+        "optimized_parameter_names": [
+          "shoulder_width_scale",
+          "arm_length_scale",
+          "torso_height_scale",
+          "lower_body_height_scale",
+          "stance_width_scale"
+        ],
+        "initial_normalized_rmse": 0.11608918493872607,
+        "final_normalized_rmse": 0.08449855471060445,
+        "fit_status": "architecture_or_landmarks_mismatch",
+        "bound_hits": [
+          {
+            "parameter": "shoulder_width_scale",
+            "bound": "max",
+            "value": 1.25
+          },
+          {
+            "parameter": "arm_length_scale",
+            "bound": "max",
+            "value": 1.12
+          },
+          {
+            "parameter": "torso_height_scale",
+            "bound": "min",
+            "value": 0.92
+          },
+          {
+            "parameter": "lower_body_height_scale",
+            "bound": "min",
+            "value": 0.9
+          },
+          {
+            "parameter": "stance_width_scale",
+            "bound": "max",
+            "value": 1.2
+          }
+        ],
+        "diagnostic_flags": [
+          "one_or_more_parameters_hit_bounds",
+          "skeleton_design_space_may_be_too_narrow",
+          "reference_architecture_differs_from_brickmen_target"
+        ],
+        "fit_parameters": {
+          "shoulder_width_scale": 1.25,
+          "arm_length_scale": 1.12,
+          "torso_height_scale": 0.92,
+          "lower_body_height_scale": 0.9,
+          "stance_width_scale": 1.2
+        },
+        "matched_landmark_count": 17
+      },
+      "safe_expanded_v1": {
+        "optimized_parameter_names": [
+          "shoulder_width_scale",
+          "arm_length_scale",
+          "torso_height_scale",
+          "lower_body_height_scale",
+          "stance_width_scale",
+          "neck_head_offset_scale",
+          "thigh_length_scale",
+          "shin_length_scale"
+        ],
+        "initial_normalized_rmse": 0.11608918493872607,
+        "final_normalized_rmse": 0.08348662586694858,
+        "fit_status": "architecture_or_landmarks_mismatch",
+        "bound_hits": [
+          {
+            "parameter": "shoulder_width_scale",
+            "bound": "max",
+            "value": 1.25
+          },
+          {
+            "parameter": "arm_length_scale",
+            "bound": "max",
+            "value": 1.12
+          },
+          {
+            "parameter": "torso_height_scale",
+            "bound": "min",
+            "value": 0.92
+          },
+          {
+            "parameter": "lower_body_height_scale",
+            "bound": "min",
+            "value": 0.9
+          },
+          {
+            "parameter": "stance_width_scale",
+            "bound": "max",
+            "value": 1.2
+          },
+          {
+            "parameter": "neck_head_offset_scale",
+            "bound": "min",
+            "value": 0.8
+          },
+          {
+            "parameter": "thigh_length_scale",
+            "bound": "max",
+            "value": 1.25
+          }
+        ],
+        "diagnostic_flags": [
+          "one_or_more_parameters_hit_bounds",
+          "skeleton_design_space_may_be_too_narrow",
+          "reference_architecture_differs_from_brickmen_target"
+        ],
+        "fit_parameters": {
+          "shoulder_width_scale": 1.25,
+          "arm_length_scale": 1.12,
+          "torso_height_scale": 0.92,
+          "lower_body_height_scale": 0.9,
+          "stance_width_scale": 1.2,
+          "neck_head_offset_scale": 0.8,
+          "thigh_length_scale": 1.25,
+          "shin_length_scale": 0.8611111111
+        },
+        "matched_landmark_count": 17
+      },
+      "rmse_improvement_absolute": 0.0010119288436558765,
+      "rmse_improvement_fraction": 0.011975694106503822,
+      "expanded_not_worse": true,
+      "production_geometry_authority": false,
+      "reference_file": "lego-axl-front.json",
+      "role": "official oversized-torso Broad stress test"
+    }
+  ],
+  "production_geometry_authority": false,
+  "warning": "Lower RMSE on manually estimated seed landmarks is evidence for review, not automatic permission to change architecture or production geometry."
+}
