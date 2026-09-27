@@ -56,3 +56,12 @@ def test_provider_registry_has_unique_ids():
     ids = [item["provider_id"] for item in registry()["providers"]]
     assert len(ids) == len(set(ids))
     assert {"partcrafter", "partpacker", "pact", "particulate", "sam_3d_objects"} <= set(ids)
+
+
+def test_visual_baseline_does_not_require_component_slot_mapping():
+    providers = provider_map(registry())
+    job = compile_provider_job(conditioning(), providers["sam_3d_objects"])
+    assert job["pipeline_stage"]=="baseline_generator"
+    assert job["requires_component_slot_mapping"] is False
+    assert job["execution_interface"]["adapter_status"]=="runnable_brickmen_python_api_visual_baseline"
+    assert job["output_contract"]["kind"]=="masked_gaussian_reconstruction"
