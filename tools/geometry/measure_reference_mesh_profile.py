@@ -1,10 +1,16 @@
 #!/usr/bin/env python3
 """Measure orthographic cross-section profiles from reference OBJ meshes.
 
-Designed for flattened LDraw reference geometry, but intentionally OBJ-generic.
-For the default LDraw mapping:
+Designed for flattened reference geometry, but intentionally OBJ-generic.
+
+The default preset is the Brickmen semantic frame:
 - X is lateral width;
-- Y is vertical and becomes higher as Y decreases;
+- Y is front/back depth;
+- Z is vertical and increases upward.
+
+A raw-LDraw preset remains available for source-frame meshes:
+- X is lateral width;
+- Y is vertical with -Y upward;
 - Z is front/back depth.
 
 The tool intersects triangle faces with horizontal planes instead of sampling
@@ -20,6 +26,21 @@ from pathlib import Path
 from typing import Any, Iterable, Sequence
 
 AXIS_INDEX = {"x": 0, "y": 1, "z": 2}
+
+FRAME_PRESETS = {
+    "brickmen": {
+        "vertical_axis": "z",
+        "vertical_direction": "positive",
+        "front_horizontal_axis": "x",
+        "side_horizontal_axis": "y",
+    },
+    "ldraw": {
+        "vertical_axis": "y",
+        "vertical_direction": "negative",
+        "front_horizontal_axis": "x",
+        "side_horizontal_axis": "z",
+    },
+}
 
 
 def load_obj_triangles(path: str | Path) -> list[tuple[tuple[float, float, float], ...]]:
@@ -99,10 +120,10 @@ def _bounds(triangles: Sequence[Sequence[Sequence[float]]]) -> tuple[list[float]
 def measure_profile(
     triangles: Sequence[Sequence[Sequence[float]]],
     *,
-    vertical_axis: str = "y",
-    vertical_direction: str = "negative",
+    vertical_axis: str = "z",
+    vertical_direction: str = "positive",
     front_horizontal_axis: str = "x",
-    side_horizontal_axis: str = "z",
+    side_horizontal_axis: str = "y",
     samples: int = 101,
     extra_heights: Sequence[float] | None = None,
 ) -> dict[str, Any]:
@@ -176,7 +197,7 @@ def measure_profile(
         )
 
     return {
-        "schema_version": "0.1",
+        "schema_version": "0.2",
         "coordinate_mapping": {
             "vertical_axis": vertical_axis,
             "vertical_direction": vertical_direction,
@@ -213,27 +234,42 @@ def main() -> int:
         default=[],
         help="Additional normalized height to sample; repeat as needed.",
     )
-    parser.add_argument("--vertical-axis", choices=["x", "y", "z"], default="y")
+    parser.add_argument(
+        "--frame",
+        choices=["brickmen", "ldraw"],
+        default="brickmen",
+        help="Coordinate-frame preset for interpreting the OBJ.",
+    )
+    parser.add_argument("--vertical-axis", choices=["x", "y", "z"], default=None)
     parser.add_argument(
         "--vertical-direction",
         choices=["negative", "positive"],
-        default="negative",
+        default=None,
     )
-    parser.add_argument("--front-axis", choices=["x", "y", "z"], default="x")
-    parser.add_argument("--side-axis", choices=["x", "y", "z"], default="z")
+    parser.add_argument("--front-axis", choices=["x", "y", "z"], default=None)
+    parser.add_argument("--side-axis", choices=["x", "y", "z"], default=None)
     args = parser.parse_args()
 
     triangles = load_obj_triangles(args.obj)
+    preset = FRAME_PRESETS[args.frame]
+    vertical_axis = args.vertical_axis or preset["vertical_axis"]
+    vertical_direction = (
+        args.vertical_direction or preset["vertical_direction"]
+    )
+    front_axis = args.front_axis or preset["front_horizontal_axis"]
+    side_axis = args.side_axis or preset["side_horizontal_axis"]
+
     result = measure_profile(
         triangles,
-        vertical_axis=args.vertical_axis,
-        vertical_direction=args.vertical_direction,
-        front_horizontal_axis=args.front_axis,
-        side_horizontal_axis=args.side_axis,
+        vertical_axis=vertical_axis,
+        vertical_direction=vertical_direction,
+        front_horizontal_axis=front_axis,
+        side_horizontal_axis=side_axis,
         samples=args.samples,
         extra_heights=args.height,
     )
     result["source_obj"] = str(args.obj)
+    result["coordinate_frame_preset"] = args.frame
     Path(args.output).write_text(
         json.dumps(result, indent=2) + "\n", encoding="utf-8"
     )
