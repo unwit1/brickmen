@@ -81,3 +81,61 @@ See:
 - `data/additive-manufacturing-automation-contracts.json`
 - `data/additive-process-selection-rules.json`
 - `data/additive-first-experiments.json`
+
+## Character-to-accessory geometry generation extension — 2026-09-27
+
+Stage 6 custom geometry is expanded into a provider-neutral generation compiler.
+
+### 6A. Accessory planning
+- resolve exact Character/Incarnation/SourceAppearance;
+- classify source features as existing part, decoration, cloth, new rigid geometry, new flexible geometry, or omit;
+- create AccessoryDesignSpec for each required custom part.
+
+### 6B. Reference preparation
+- build AccessoryReferenceSet with orthogonal source views, context, official-style analogues and canonical mating-part geometry;
+- segment/isolate the target object;
+- mark hidden/inferred geometry explicitly.
+
+### 6C. Controlled concept
+- generate/reconstruct consistent front/back/left/right views at canonical scale;
+- validate cross-view consistency before 3D generation.
+
+### 6D. Geometry ensemble
+Route by part class among:
+- Tripo/Meshy commercial APIs;
+- Hunyuan3D/TRELLIS/SPAR3D local models;
+- direct CadQuery/build123d;
+- CAD reconstruction such as CAD-Recode.
+
+Generate multiple candidates rather than trusting first output.
+
+### 6E. Geometry compiler
+For each candidate:
+- normalize units/scale;
+- repair bounded topology problems;
+- semantically isolate the visual shell;
+- delete/untrust generated functional interfaces;
+- attach validated parametric Brickmen connector geometry;
+- apply articulation/keep-out volumes;
+- enforce manufacturing minimum features;
+- create deterministic manufacturing geometry.
+
+### 6F. Critic loop
+Render canonical views and score separately:
+- source/reference fidelity;
+- LEGO/minifigure abstraction;
+- topology/geometry validity;
+- connector and articulation correctness;
+- selected-process DFM.
+
+The orchestrator may edit/regenerate/switch provider/switch to CAD/split the part based on the failing dimension.
+
+### 6G. Physical feedback
+After a prototype, attach measurements, failure codes and photos to the GeometryCandidate lineage. Use accepted/rejected history to improve provider routing and candidate ranking.
+
+See:
+- `agentic-character-to-accessory-3d-generation.md`
+- `data/3d-generation-provider-registry.json`
+- `data/accessory-generation-benchmark.json`
+- `parametric-cad-and-connector-automation.md`
+- `additive-manufacturing-validation-program.md`
