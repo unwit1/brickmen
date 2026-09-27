@@ -99,6 +99,14 @@ def summarize_pipeline_state(
         if provider_job else None
     )
     critic_only = provider_stage == "post_generation_critic"
+    baseline_only = (
+        provider_stage == "baseline_generator"
+        and not bool(
+            provider_job.get("requires_component_slot_mapping", False)
+            if provider_job else False
+        )
+    )
+    auxiliary_only = critic_only or baseline_only
     if provider_job:
         gates.append(_gate(
             "provider_job","complete",artifact=provider_job_path,
@@ -117,13 +125,27 @@ def summarize_pipeline_state(
             "pending",
             detail=(
                 "This provider is an auxiliary post-generation critic. It requires "
-                "an already-generated mesh from a primary/baseline generator and "
-                "cannot satisfy Brickmen component-generation gates by itself."
+                "an already-generated mesh from a primary triangle-mesh generator "
+                "and cannot satisfy Brickmen component-generation gates by itself."
             ),
             blocking=True,
         ))
         next_actions.append(
-            "supply a generated body mesh from a primary/baseline generator before running the articulation critic"
+            "supply a generated body mesh from a primary triangle-mesh generator before running the articulation critic"
+        )
+    elif baseline_only:
+        gates.append(_gate(
+            "primary_triangle_mesh_generator_dependency",
+            "pending",
+            detail=(
+                "This provider is a visual/reconstruction baseline. Its published "
+                "output is useful evidence but is not the triangle-part bundle required "
+                "for Brickmen component mapping, topology, keep-out, or articulation validation."
+            ),
+            blocking=True,
+        ))
+        next_actions.append(
+            "run a primary triangle-mesh generator such as PartCrafter or PartPacker for production-oriented geometry validation"
         )
 
     if provider_job and not provider_run:
@@ -132,7 +154,11 @@ def summarize_pipeline_state(
                 "adapter_status", "unknown"
             )
         )
-        if adapter_status == "runnable_cli_verified":
+        runnable_statuses = {
+            "runnable_cli_verified",
+            "runnable_brickmen_python_api_visual_baseline",
+        }
+        if adapter_status in runnable_statuses:
             run_status = "pending"
             if critic_only:
                 detail = (
@@ -144,6 +170,17 @@ def summarize_pipeline_state(
                 )
                 next_actions.append(
                     f"execute {provider_id} only after the critic dry-run plan is reviewed"
+                )
+            elif baseline_only:
+                detail = (
+                    "Verified Brickmen wrapper exists for this visual baseline, but no run "
+                    "report exists. The provider environment plus image and binary mask are required."
+                )
+                next_actions.append(
+                    f"dry-run the {provider_id} visual baseline with an image and binary mask"
+                )
+                next_actions.append(
+                    f"execute {provider_id} only after the baseline dry-run plan is reviewed"
                 )
             else:
                 detail = (
@@ -201,27 +238,33 @@ def summarize_pipeline_state(
             detail=detail,blocking=blocking
         ))
 
-    if critic_only:
+    if auxiliary_only:
+        if critic_only:
+            applicability_status = "not_applicable_to_critic_provider"
+            reason = "post-generation critic output is auxiliary evidence, not primary generated components"
+        else:
+            applicability_status = "not_applicable_to_visual_baseline"
+            reason = (
+                "published visual-baseline output is Gaussian/reconstruction evidence, "
+                "not a mapped triangle-part bundle"
+            )
         for gate_id, detail in (
-            (
-                "component_mapping",
-                "Not applicable: post-generation critic output is auxiliary evidence, not primary generated components.",
-            ),
+            ("component_mapping", f"Not applicable: {reason}."),
             (
                 "frame_alignment",
-                "Not applicable to critic-only state; alignment belongs to the primary generated mesh pipeline.",
+                "Primary component-frame alignment belongs to the triangle-mesh generator pipeline.",
             ),
             (
                 "bbox_geometry_validation",
-                "Not applicable to critic-only state.",
+                "Primary component geometry validation requires triangle-part generator output.",
             ),
             (
                 "mesh_topology_preflight",
-                "Not applicable to critic-only state.",
+                "Triangle-mesh topology preflight is not applicable to this provider state.",
             ),
             (
                 "exact_fixed_keepout_validation",
-                "Not applicable to critic-only state.",
+                "Fixed keep-out validation requires mapped triangle meshes.",
             ),
             (
                 "joint_contact_region_evidence",
@@ -229,16 +272,16 @@ def summarize_pipeline_state(
             ),
             (
                 "sampled_pose_collision_validation",
-                "Not applicable to critic-only state.",
+                "Pose collision validation requires mapped triangle meshes.",
             ),
             (
                 "continuous_motion_collision_validation",
-                "Not applicable to critic-only state.",
+                "Continuous collision validation requires mapped triangle meshes.",
             ),
         ):
             gates.append(_gate(
                 gate_id,
-                "not_applicable_to_critic_provider",
+                applicability_status,
                 detail=detail,
                 blocking=False,
             ))
@@ -549,7 +592,10 @@ def summarize_pipeline_state(
         "provider_pipeline_stage":provider_stage,
         "state_scope":(
             "auxiliary_post_generation_critic"
-            if critic_only else "primary_body_generation"
+            if critic_only
+            else "visual_reconstruction_baseline"
+            if baseline_only
+            else "primary_body_generation"
         ),
         "target_height_mm":conditioning.get("target_height_mm"),
         "gates":gates,
