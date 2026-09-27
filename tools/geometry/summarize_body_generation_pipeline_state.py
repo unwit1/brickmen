@@ -56,6 +56,8 @@ def summarize_pipeline_state(
     contact_regions_path: str | None=None,
     pose_collision: Mapping[str,Any] | None=None,
     pose_collision_path: str | None=None,
+    continuous_collision: Mapping[str,Any] | None=None,
+    continuous_collision_path: str | None=None,
 ) -> dict[str,Any]:
     gates=[]
     next_actions=[]
@@ -394,21 +396,40 @@ def summarize_pipeline_state(
             "sampled_pose_collision_gate_passed"
         )
     )
-    if sampled_pass:
+    if continuous_collision:
+        continuous_pass = bool(
+            continuous_collision.get("summary",{}).get(
+                "continuous_rotation_collision_gate_passed"
+            )
+        )
         gates.append(_gate(
-            "continuous_motion_collision_validation","not_implemented",
+            "continuous_motion_collision_validation",
+            "complete" if continuous_pass else "review_required",
+            artifact=continuous_collision_path,
+            detail=continuous_collision.get("summary",{}).get("status"),
+            blocking=not continuous_pass,
+        ))
+        if not continuous_pass:
+            next_actions.append(
+                "resolve disallowed collisions or unresolved continuous near-contact intervals; validated contact regions may suppress only evidence-backed intentional contact"
+            )
+    elif sampled_pass:
+        gates.append(_gate(
+            "continuous_motion_collision_validation","pending",
+            artifact=continuous_collision_path,
             detail=(
-                "Sampled poses passed, but continuous collision detection between "
-                "sample angles has not been implemented."
+                "Sampled poses passed; run the conservative continuous-rotation "
+                "collision proof across each declared joint range."
             ),
             blocking=True,
         ))
         next_actions.append(
-            "implement conservative continuous collision detection or adaptive interval subdivision before treating motion as continuously collision-free"
+            "run conservative continuous rotation collision validation"
         )
     else:
         gates.append(_gate(
             "continuous_motion_collision_validation","not_started",
+            artifact=continuous_collision_path,
             detail="Requires a passing sampled-pose collision gate first."
         ))
 
@@ -478,6 +499,7 @@ def main() -> int:
     parser.add_argument("--exact-keepout",default=None)
     parser.add_argument("--contact-regions",default=None)
     parser.add_argument("--pose-collision",default=None)
+    parser.add_argument("--continuous-collision",default=None)
     parser.add_argument("-o","--output",required=True)
     args=parser.parse_args()
 
@@ -504,6 +526,8 @@ def main() -> int:
         contact_regions_path=args.contact_regions,
         pose_collision=load_json(args.pose_collision),
         pose_collision_path=args.pose_collision,
+        continuous_collision=load_json(args.continuous_collision),
+        continuous_collision_path=args.continuous_collision,
     )
     Path(args.output).write_text(
         json.dumps(result,indent=2)+"\n",encoding="utf-8"
