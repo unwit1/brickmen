@@ -156,6 +156,12 @@ def test_direct_normalized_ldraw_giant_envelope_reference():
     assert fit["parameter_overrides"]["abdomen_projection_scale"] == pytest.approx(
         0.34055415885259605 / 0.22
     )
+    assert fit["parameter_overrides"]["lower_body_width_scale"] == pytest.approx(
+        0.5650024325259488 / 0.56
+    )
+    assert fit["parameter_overrides"]["lower_body_depth_scale"] == pytest.approx(
+        0.32817198428195515 / 0.33
+    )
     assert "torso_depth_scale" not in fit["bound_hits"]
     assert "abdomen_projection_scale" not in fit["bound_hits"]
     assert fit["mechanical_parameter_changes"] == []
