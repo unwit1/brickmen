@@ -19,16 +19,17 @@ Brickmen therefore redirects only the dataset constructor in the running Python 
 PAct's current real-world dataset loader expects a case directory containing:
 
 - `*_processed.png` — RGBA image;
-- matching `*_mask.exr` — semantic part-label mask.
+- matching `*_mask.exr` — semantic part-label mask at the upstream boundary.
 
 The Brickmen wrapper:
 1. converts the supplied image to RGBA PNG;
-2. copies the supplied semantic EXR unchanged;
+2. accepts either the native semantic EXR or a lossless integer-label PNG/TIFF;
 3. stages both into an isolated output-local case directory;
-4. redirects PAct's hardcoded dataset root to that directory;
-5. runs upstream `infer_imgs.py` with `--save_glb --export_arti_objects`.
+4. for PNG/TIFF only, redirects the exact staged mask read in-process while preserving PAct's expected `*_mask.exr` filename contract;
+5. redirects PAct's hardcoded dataset root to that directory;
+6. runs upstream `infer_imgs.py` with `--save_glb --export_arti_objects`.
 
-The mask must already follow PAct's upstream semantic-label convention. Brickmen does not silently reinterpret labels.
+The mask must still follow PAct's semantic-label convention. Raster convenience masks use background `0` and contiguous positive part labels `1..N`. Brickmen does not silently reinterpret labels or accept arbitrary colored visualization masks.
 
 ## Expected outputs
 
