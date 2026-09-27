@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.9",
+  "schema_version": "0.10",
   "entities": {
     "color": [
       "local_id",
@@ -689,6 +689,32 @@
       "topology_evidence",
       "interpretation",
       "review_status"
+    ],
+    "reference_engineering_skeleton": [
+      "engineering_skeleton_id",
+      "architecture_id",
+      "status",
+      "source",
+      "coordinate_system",
+      "normalization",
+      "frames",
+      "component_profiles",
+      "comparison_rules",
+      "production_geometry_authority"
+    ],
+    "body_generation_conditioning": [
+      "architecture_id",
+      "skeleton_id",
+      "target_height_mm",
+      "source_fits",
+      "parameter_layers",
+      "skeleton_control",
+      "visual_envelopes",
+      "component_plan",
+      "mechanical_constraints",
+      "conditioning_channels",
+      "generation_constraints",
+      "production_geometry_authority"
     ]
   },
   "provenance_class": [
