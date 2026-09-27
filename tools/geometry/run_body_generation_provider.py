@@ -6,11 +6,11 @@ Default mode is dry-run. --execute is required to launch upstream provider code.
 Supported verified adapters:
 - PartCrafter CLI
 - PartPacker CLI
+- PAct through Brickmen's non-destructive dataset-root redirect wrapper
 - Particulate CLI critic
 - SAM 3D Objects published Python API through a Brickmen visual-baseline wrapper
 
-PAct is intentionally plan-only until Brickmen wraps the current upstream
-hardcoded input-dataset path. Unknown or unverified providers are never guessed.
+Unknown or unverified providers are never guessed.
 
 The wrapper does not install dependencies, download repositories, accept
 licenses, or promote generated geometry to manufacturing authority.
