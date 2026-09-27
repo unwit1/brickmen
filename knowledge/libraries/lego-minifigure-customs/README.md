@@ -224,3 +224,27 @@ Key structured records:
 
 Generation principle:
 **character semantics are architecture-neutral; style compilation is architecture-specific; final mechanical interfaces remain deterministic and physically validated.**
+
+
+### Alpha Venom / Broad-body continuation
+
+The non-standard-body subsystem now explicitly includes Alpha Toys' standard-height muscular/symbiote family, separate from Alpha's ~7 cm muscle body.
+
+Research:
+- `alpha-toys-body-family-census.md` — Alpha release/body-family census proving AF prefix != one architecture.
+- `venom-cross-architecture-study.md` — standard Venom vs Alpha ~4–4.5 cm hybrid vs BigFig translation study.
+- `diverse-large-body-morphology-study.md` — muscular, heavy-round, armored, primate, reptilian, rocky and symbiote control morphologies.
+- `brickmen-original-broad-body-architecture.md` — independent standard-height broad-body architecture target.
+
+Structured:
+- `data/alpha-toys-body-family-census.json`
+- `data/alpha-symbiote-family-corpus.json`
+- `data/venom-cross-architecture-corpus.json`
+- `data/nonstandard-morphology-control-plan.json`
+- `data/diverse-large-body-control-corpus.json`
+- `data/morphology-archetype-registry.json`
+- `data/surface-material-profile-registry.json`
+- `data/nonstandard-body-morphology-benchmark.json`
+
+Important distinction:
+**stature, upper-body mass, lower-body mass, surface material and FigureArchitecture are independent variables.**
