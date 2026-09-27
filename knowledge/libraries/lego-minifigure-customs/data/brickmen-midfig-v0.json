@@ -1,0 +1,105 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-27",
+  "status": "concept_not_physically_validated",
+  "architecture_id": "brickmen_midfig_v0",
+  "architecture_class": "original_intermediate_muscle_body",
+  "goals": [
+    "standard-system interoperability where practical",
+    "replaceable wear joints",
+    "resin-friendly visual components",
+    "architecture-conditioned generation",
+    "parametric proportions",
+    "no global scaling for fit correction"
+  ],
+  "component_graph": [
+    "head_interface",
+    "torso",
+    "left_arm",
+    "right_arm",
+    "left_hand",
+    "right_hand",
+    "waist_adapter",
+    "lower_body_module"
+  ],
+  "lower_body_variants": [
+    {
+      "id": "standard_lower_adapter",
+      "description": "Standard minifigure hips/legs compatibility target."
+    },
+    {
+      "id": "midfig_lower_body",
+      "description": "Custom wider/longer lower body with validated joint cartridges."
+    }
+  ],
+  "hand_variants": [
+    {
+      "id": "standard_hand_adapter",
+      "description": "Use standard minifigure hand family where visually viable."
+    },
+    {
+      "id": "midfig_large_hand",
+      "description": "Larger shell with architecture wrist and 3.18-family accessory grip."
+    }
+  ],
+  "joint_strategy": {
+    "shoulder": [
+      "commodity_technic_candidate",
+      "replaceable_thermoplastic_cartridge",
+      "validated_resin_last"
+    ],
+    "wrist": [
+      "standard_hand_interface_candidate",
+      "replaceable_midfig_wrist_cartridge"
+    ],
+    "neck": [
+      "standard_minifigure_head_target"
+    ],
+    "waist": [
+      "standard_lower_adapter",
+      "custom_midfig_lower_joint"
+    ]
+  },
+  "parametric_variables": [
+    "total_height_target",
+    "shoulder_width",
+    "chest_width",
+    "chest_depth",
+    "waist_width",
+    "torso_height",
+    "neck_height",
+    "shoulder_height",
+    "arm_length",
+    "upper_arm_bulk",
+    "forearm_bulk",
+    "hand_scale",
+    "pelvis_width",
+    "leg_length",
+    "thigh_bulk",
+    "calf_bulk",
+    "head_scale_mode",
+    "torso_taper",
+    "stance_width"
+  ],
+  "body_style_profile_candidates": [
+    "official_simple_midfig",
+    "anatomical_custom_midfig",
+    "armored_midfig"
+  ],
+  "validation_state_machine": [
+    "concept",
+    "joint_coupon",
+    "mechanical_mule",
+    "articulation_validated",
+    "style_mule",
+    "character_prototype",
+    "production_candidate",
+    "production_approved"
+  ],
+  "hard_rules": [
+    "Visual shell cannot redefine validated joint frames.",
+    "Fit corrections apply to connector profiles, not global body scale.",
+    "External custom maker geometry is research/style evidence, not an implicit CAD master.",
+    "No production approval without physical force/cycle validation."
+  ]
+}
