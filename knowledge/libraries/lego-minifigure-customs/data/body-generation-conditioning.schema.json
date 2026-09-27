@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "body-generation-conditioning.schema.json",
+  "title": "Brickmen Body Generation Conditioning",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "architecture_id",
+    "skeleton_id",
+    "target_height_mm",
+    "parameter_layers",
+    "skeleton_control",
+    "visual_envelopes",
+    "component_plan",
+    "mechanical_constraints",
+    "generation_constraints",
+    "production_geometry_authority"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "architecture_id": {
+      "type": "string"
+    },
+    "skeleton_id": {
+      "type": "string"
+    },
+    "target_height_mm": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "source_fits": {
+      "type": "object"
+    },
+    "parameter_layers": {
+      "type": "object"
+    },
+    "skeleton_control": {
+      "type": "object"
+    },
+    "visual_envelopes": {
+      "type": "array"
+    },
+    "component_plan": {
+      "type": "object"
+    },
+    "mechanical_constraints": {
+      "type": "array"
+    },
+    "generation_constraints": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "conditioning_channels": {
+      "type": "object"
+    },
+    "production_geometry_authority": {
+      "const": false
+    },
+    "warning": {
+      "type": "string"
+    }
+  }
+}
