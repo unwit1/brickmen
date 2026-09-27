@@ -539,7 +539,7 @@ Next engineering:
 Next:
 - [ ] reannotate seed references with manual-review UI
 - [ ] add side/back views and Y-depth observations
-- [ ] add official LDraw-derived Giant landmark ground truth
+- [x] add official LDraw-derived Giant landmark ground truth
 - [x] add standard-minifigure/Axl donor-component landmark ground truth
 - [x] implement BodyEnvelopeProfile fitting against visual width/depth observations
 - [x] add skeleton-to-reference SVG/image overlay renderer
@@ -555,11 +555,12 @@ Next:
 - [x] separate official Giant EngineeringSkeleton evidence from Brickmen Giant design skeleton
 
 Next:
-- [ ] ingest full 10128/10154/10124/10127/10126 mesh geometry into component digital twin
+- [x] ingest full 10128/10154/10124/10127/10126 mesh geometry into reproducible component digital-twin references
 - [x] ingest complete official `10128p01c01` component assembly frames into digital twin
 - [x] derive complete default-pose local transforms and component frames
 - [ ] reconcile LDraw frames with physical sample measurements
-- [ ] map optional Giant-compatible Brickmen JointCartridges
+- [x] map optional Giant-compatible 43093 shoulder hardware reference profile
+- [ ] physically validate/promote Giant-compatible Brickmen shoulder JointCartridge
 
 ### Standard minifigure / Axl donor frames — 2026-09-27
 
@@ -657,7 +658,36 @@ Still needed before the original seed-refit item is complete:
 - [x] create Giant/Axl geometry ingestion target queue
 
 Actual Giant geometry remains open:
-- [ ] run against a pinned official LDraw library release
-- [ ] commit/retain manifests for 10128p01c01, 10128, 10154, 10124, 10127, and 10126
-- [ ] generate source-license-compliant flattened reference meshes or reproducible build artifacts
-- [ ] derive orthographic front/back/side reference envelopes from the flattened Giant assembly
+- [x] run against a pinned official LDraw library release
+- [x] commit/retain manifests for 10128p01c01, 10128, 10154, 10124, 10127, and 10126
+- [x] generate source-license-aware reproducible flattened reference-mesh build artifacts
+- [x] derive orthographic front/side reference profiles from flattened Giant body/assembly geometry
+- [ ] derive decoration-aware back/front regional surface maps where needed
+
+
+### Official Giant CAD reference promotion — 2026-09-27
+
+- [x] normalize raw LDraw coordinates into the Brickmen semantic body frame
+- [x] preserve canonical source frame separately from fitter/view mirroring
+- [x] derive normalized official shoulder-center engineering anchors
+- [x] add fitter-facing official shoulder reference with explicit left/right convention transform
+- [x] derive body-only multi-view normalized envelope evidence from 10128
+- [x] add direct normalized CAD/physical/render envelope evidence path
+- [x] fit official Giant body width/depth without moving mechanical joints
+- [x] expand Giant visual-only torso/abdomen depth ranges from official CAD evidence
+- [x] map 43093 as local commodity shoulder hardware reference without coupling it to the official body's 32 mm shoulder spacing
+- [x] keep reference CAD authority separate from physical fit/tolerance authority
+
+Measured/reference findings:
+- official normalized shoulder-center separation ≈ 0.44996 body heights;
+- Brickmen Giant default shoulder span = 0.44, requiring only ~1.023x width adjustment;
+- official 10128 upper-torso width mean ≈ 0.44822 body heights;
+- official 10128 upper-torso depth mean ≈ 0.41733 body heights;
+- official 10128 waist-band width mean ≈ 0.38169 body heights;
+- official 10128 waist-band depth mean ≈ 0.34055 body heights.
+
+Still intentionally open:
+- [ ] physical 10128/10154/10124/43093 metrology;
+- [ ] insertion/removal force and torque measurements;
+- [ ] cycle/wear validation;
+- [ ] production-approved shoulder cartridge geometry.
