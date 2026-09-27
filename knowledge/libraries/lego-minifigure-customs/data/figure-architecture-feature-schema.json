@@ -1,0 +1,171 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-27",
+  "status": "canonical_research_schema",
+  "purpose": "Faceted morphology/mechanics representation so Brickmen can recognize and generate known or novel figure architectures without relying only on enumerated class labels.",
+  "dimensions": {
+    "scale": [
+      "micro",
+      "small",
+      "standard",
+      "standard_tall",
+      "intermediate",
+      "intermediate_large",
+      "large_giant",
+      "extra_large",
+      "mega",
+      "variable",
+      "unknown"
+    ],
+    "construction_method": [
+      "standard_molded_modular",
+      "specialized_molded_modular",
+      "integrated_molded_body",
+      "custom_molded_or_cast",
+      "additive_manufactured",
+      "brick_built",
+      "mixed_hybrid",
+      "unknown"
+    ],
+    "head_architecture": [
+      "standard_separate_head",
+      "giant_separate_head",
+      "integrated_head",
+      "custom_separate_head",
+      "head_body_combined",
+      "unknown"
+    ],
+    "torso_architecture": [
+      "standard_torso",
+      "oversized_torso",
+      "integrated_body",
+      "stacked_multi_torso",
+      "mechanical_frame",
+      "brick_built_torso",
+      "custom_articulated_torso",
+      "unknown"
+    ],
+    "arm_architecture": [
+      "standard_arm",
+      "long_arm",
+      "giant_single_segment_arm",
+      "upper_forearm_segmented",
+      "ball_joint_adapter_arm",
+      "mechanical_arm",
+      "multiarm",
+      "fixed_arm",
+      "none",
+      "unknown"
+    ],
+    "shoulder_joint": [
+      "standard_minifigure",
+      "rotational_pin",
+      "technica_like_pin_or_axle",
+      "ball_joint",
+      "adapter_ball_joint",
+      "hinge",
+      "fixed",
+      "unknown"
+    ],
+    "elbow_joint": [
+      "none",
+      "single_axis_hinge",
+      "ball_joint",
+      "flexible",
+      "fixed",
+      "unknown"
+    ],
+    "wrist_hand": [
+      "standard_minifigure_hand",
+      "giant_hand",
+      "rotating_peg_hand",
+      "ball_joint_hand",
+      "paw_claw",
+      "integrated_hand",
+      "none",
+      "unknown"
+    ],
+    "lower_body_topology": [
+      "standard_biped",
+      "short_biped",
+      "medium_biped",
+      "long_biped",
+      "giant_integrated_biped",
+      "custom_articulated_biped",
+      "centaur_quadruped",
+      "serpent_tail",
+      "merfolk_tail",
+      "ghost_tail",
+      "tentacle",
+      "roller_mechanical",
+      "integrated_tail_body",
+      "brick_built",
+      "none",
+      "unknown"
+    ],
+    "locomotion_footprint": [
+      "two_standard_feet",
+      "two_large_feet",
+      "quadruped",
+      "tail_base",
+      "tentacle_base",
+      "rollers",
+      "brick_built_base",
+      "fixed_integrated",
+      "unknown"
+    ],
+    "articulation_level": [
+      "fixed",
+      "limited",
+      "standard_minifigure",
+      "enhanced_shoulders",
+      "enhanced_upper_body",
+      "full_action_figure_like",
+      "brick_built_articulated",
+      "unknown"
+    ],
+    "compatibility_features": [
+      "standard_head",
+      "standard_headgear",
+      "standard_neck_accessory",
+      "standard_torso",
+      "standard_hips",
+      "standard_legs",
+      "standard_hand",
+      "bar_3_18_family",
+      "standard_stud_mount",
+      "technic_pin_or_axle",
+      "giant_arm_family",
+      "giant_hand_family",
+      "unknown"
+    ],
+    "visual_style_axes": [
+      "blocky",
+      "rounded",
+      "anatomical",
+      "muscular",
+      "mechanical",
+      "creature",
+      "chibi_bighead",
+      "micro_simplified",
+      "high_relief",
+      "print_dominant",
+      "sculpt_dominant"
+    ]
+  },
+  "observation_fields": [
+    "feature_name",
+    "value",
+    "confidence",
+    "evidence_asset",
+    "view_required",
+    "source"
+  ],
+  "rules": [
+    "Facets can be partially known; unknown is preferable to fabricated precision.",
+    "Scale and visual style are descriptive features, not architecture identity.",
+    "Architecture recognition should compare both component/joint topology and faceted morphology.",
+    "Novel combinations may create architecture_unknown_candidate rather than being forced into a known class.",
+    "Generation must satisfy hard topology facets before applying optional style facets."
+  ]
+}
