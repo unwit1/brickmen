@@ -1,0 +1,91 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-27",
+  "status": "research_patterns",
+  "patterns": [
+    {
+      "pattern_id": "printed_shell_commodity_joint",
+      "description": "Printed character/body shells use existing durable LEGO-system hardware for wear-critical joints.",
+      "evidence_examples": [
+        "BenTri Iron Golem uses three 43093 axle/pins",
+        "official modern Giant representative inventories use 43093 shoulder hardware"
+      ],
+      "advantages": [
+        "durable joint material",
+        "replaceable hardware",
+        "less resin fatigue",
+        "simpler qualification"
+      ],
+      "automation": [
+        "BOM auto-selection",
+        "hardware stock check",
+        "joint cartridge insertion"
+      ],
+      "preferred_for": [
+        "giant_shoulders",
+        "high_cycle_rotational_joints"
+      ]
+    },
+    {
+      "pattern_id": "manual_scale_friction_midfig",
+      "description": "Community printable MidFig tunes fit by globally scaling 101-102%, sanding and gluing.",
+      "evidence_examples": [
+        "The_amg006 Mid Figure",
+        "Mid Figure Mk2"
+      ],
+      "pain_points": [
+        "global scale changes all dimensions",
+        "manual sanding",
+        "glue reinforcement",
+        "printer-specific tuning"
+      ],
+      "brickmen_replacement": "Per-interface empirical compensation at canonical visual scale."
+    },
+    {
+      "pattern_id": "system_connector_vocabulary_large_body",
+      "description": "Oversized bodies retain studs, anti-studs, bars, Technic and standard neck interfaces.",
+      "evidence_examples": [
+        "BenTri 2x Giant Minifigure"
+      ],
+      "advantages": [
+        "interoperability",
+        "known hardware",
+        "large accessory ecosystem",
+        "fewer proprietary joints"
+      ],
+      "brickmen_policy": "Prefer system connector primitives when compatible with the intended architecture/style."
+    },
+    {
+      "pattern_id": "shared_architecture_character_shells",
+      "description": "Reuse limbs/joints/skeleton across characters while changing head/torso shells.",
+      "evidence_examples": [
+        "BenTri Redstone Golem reuses Iron Golem arms/legs/hands"
+      ],
+      "advantages": [
+        "fewer validation tests",
+        "consistent articulation",
+        "reusable training data",
+        "spares"
+      ]
+    },
+    {
+      "pattern_id": "half_giant_friction_pin",
+      "description": "Oversized torso/arms around a standard-scale head with friction-pin arm system.",
+      "evidence_examples": [
+        "LDraw Hagrid Half Giant 37777, 37779/37783, 38628/38630"
+      ],
+      "advantages": [
+        "official intermediate architecture reference",
+        "componentized geometry",
+        "useful MidFig precedent"
+      ]
+    }
+  ],
+  "target_abstractions": [
+    "SkeletonLayer",
+    "VisualShellLayer",
+    "JointCartridge",
+    "ComponentSplitPolicy",
+    "AccessoryAnchorProfile"
+  ]
+}
