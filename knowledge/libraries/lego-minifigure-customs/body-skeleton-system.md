@@ -112,7 +112,10 @@ Current skeleton compiler supports rules such as:
 - torso height scaling;
 - lower-body height scaling;
 - stance width scaling;
-- envelope depth/projection scaling.
+- independent lower-torso and upper-torso segment scaling;
+- independent thigh and shin segment scaling;
+- independent neck-to-head offset scaling;
+- envelope width/depth/projection scaling kept separate from joint spacing.
 
 CLI example:
 
@@ -227,3 +230,25 @@ They are **not** ready for:
 - force/cycle assumptions.
 
 Those require the existing physical metrology program.
+
+
+### Downstream-preserving segment rules
+
+Fine-grained vertical proportions use `move_endpoint_with_descendants`.
+
+Instead of scaling every node below/above an anchor, the rule:
+
+1. measures the current vector from an anchor to one segment endpoint;
+2. scales only that segment vector;
+3. translates downstream nodes by the endpoint delta.
+
+This lets a thigh become longer while preserving the shin length, or lets the lower torso become longer while preserving the chest-to-neck segment. Adjacent segments change only when their own parameter changes.
+
+Current fine-grained controls:
+- `lower_torso_length_scale`
+- `upper_torso_length_scale`
+- `neck_head_offset_scale`
+- `thigh_length_scale`
+- `shin_length_scale`
+
+The original coarse `torso_height_scale` and `lower_body_height_scale` remain available for broad exploration, but reference fitting can now prefer the segment-level variables when enough landmarks are available.
