@@ -37,9 +37,9 @@
     },
     {
       "gate_id": "provider_run",
-      "status": "blocked",
+      "status": "pending",
       "artifact": null,
-      "detail": "Provider execution interface is runnable_brickmen_dataset_redirect_wrapper_verified; no verified runnable Brickmen execution adapter exists yet.",
+      "detail": "Verified CLI adapter exists, but no provider run report exists. External provider environment and source/guide image input are required.",
       "blocking": true
     },
     {
@@ -107,7 +107,8 @@
     }
   ],
   "next_actions": [
-    "implement/verify the pact execution adapter before inference",
+    "dry-run the pact adapter against an installed provider environment",
+    "execute pact inference only after the dry-run plan is reviewed",
     "physical validation: Measure physical 43093 critical dimensions from multiple samples.",
     "physical validation: Measure official Giant body and arm mating features.",
     "physical validation: Record insertion/removal force for hardware into each mating component.",
