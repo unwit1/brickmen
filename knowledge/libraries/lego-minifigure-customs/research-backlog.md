@@ -240,3 +240,89 @@ A profile is not complete until it has:
 9. rollback/supersession history.
 
 Digital research can design the experiment; only physical evidence can promote a profile to production-approved.
+
+## Agentic character-to-accessory 3D generation — 2026-09-27
+
+### Research architecture completed
+
+- [x] modular character -> accessory -> printable geometry architecture
+- [x] accessory-opportunity planner design separating geometry vs print/cloth/existing parts
+- [x] structured AccessoryDesignSpec concept
+- [x] structured AccessoryReferenceSet concept
+- [x] multiview-first generation strategy
+- [x] current Tripo API/capability survey
+- [x] current Meshy API/capability survey
+- [x] Hunyuan3D 2.1 local/fine-tuning research
+- [x] TRELLIS local/multi-image/editing research
+- [x] SPAR3D / Stable Fast 3D fast-candidate research
+- [x] direct CAD-as-code strategy using CadQuery/build123d
+- [x] CAD-Recode point-cloud -> CadQuery research
+- [x] Zoo/KCL text-to-CAD research
+- [x] hybrid generative-shell + deterministic-connector architecture
+- [x] semantic mesh decomposition strategy
+- [x] deterministic mesh repair/normalization strategy
+- [x] render-critic-repair loop design
+- [x] provider-neutral 3D generation registry
+- [x] common accessory benchmark suite
+- [x] physical-print feedback integration concept
+- [x] staged retrieval -> routing -> ranking -> fine-tuning research program
+
+### Highest-priority implementation
+
+- [ ] define JSON schemas for AccessoryDesignSpec, AccessoryReferenceSet, GeometryCandidate and GeometryEvaluation
+- [ ] implement canonical accessory digital-twin coordinate system
+- [ ] implement AccessoryPlanner geometry-vs-decoration-vs-existing-part classifier
+- [ ] build canonical accessory render harness in Blender
+- [ ] implement source-object segmentation/cropping pipeline
+- [ ] implement controlled front/back/left/right concept-view generator
+- [ ] implement Tripo adapter
+- [ ] implement Meshy adapter
+- [ ] deploy Hunyuan3D 2.1 local evaluation environment
+- [ ] deploy TRELLIS local evaluation environment
+- [ ] deploy SPAR3D local evaluation environment
+- [ ] implement CadQuery/build123d CAD-agent executor sandbox
+- [ ] implement generated-mesh normalization and diagnostics with Trimesh/CGAL
+- [ ] implement semantic/generated connector removal
+- [ ] connect validated Brickmen connector insertion
+- [ ] implement articulation/keep-out Boolean tests
+- [ ] implement automated local wall-thickness/minimum-feature checks
+- [ ] implement canonical render + critic loop
+- [ ] run the first frozen cross-provider accessory benchmark
+- [ ] record exact model snapshots/cost/latency/success metrics
+- [ ] connect accepted models to the additive manufacturing experiment queue
+
+### Research experiments
+
+- [ ] compare literal source-image conditioning vs LEGO-abstracted concept conditioning
+- [ ] compare single-image vs multiview per accessory class
+- [ ] test best-of-N generation scaling
+- [ ] test provider specialization by accessory class
+- [ ] test Tripo semantic segmentation for removing generated connectors
+- [ ] test Meshy printability repair against local deterministic repair
+- [ ] test CAD-Recode on generated hard-surface accessory point clouds
+- [ ] test direct text-to-CadQuery/build123d on shields/backpacks/mechanical props
+- [ ] determine which visual metrics correlate with human "official-like accessory" judgments
+- [ ] build accepted/rejected candidate ranking dataset
+- [ ] build source-object -> minifigure-accessory translation pairs
+- [ ] evaluate fine-tuning only after retrieval/ensemble baseline is frozen
+
+### Long-term ML candidates
+
+- [ ] provider router trained from benchmark/history
+- [ ] candidate ranker trained from accepted/rejected geometry
+- [ ] manufacturability-risk predictor from geometry + print outcomes
+- [ ] minifigure-accessory abstraction model trained on source -> accepted accessory pairs
+- [ ] open-model adapter/fine-tune for Brickmen accessory geometry
+- [ ] geometry simplification model that preserves identity-critical features while enforcing minifigure-scale readability
+
+### Definition of done
+
+The system is not "fully automated" merely because it can return an STL from a prompt. The target is reached when a character request can autonomously produce a source-grounded accessory set whose geometry:
+1. is tied to a resolved source appearance;
+2. passes LEGO/minifigure style and scale checks;
+3. uses only validated functional connector geometry;
+4. passes articulation and deterministic DFM gates;
+5. is watertight/manufacturable;
+6. can be reproduced from stored inputs/model snapshots;
+7. passes the selected physical validation level;
+8. feeds observed print results back into future routing/ranking.
