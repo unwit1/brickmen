@@ -1,0 +1,78 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-27",
+  "status": "research_contract",
+  "entity": "BodyCorpusSample",
+  "required": [
+    "sample_id",
+    "evidence_class",
+    "figure_architecture_candidates",
+    "assets",
+    "provenance"
+  ],
+  "fields": [
+    "sample_id",
+    "figure_release_id",
+    "character_id",
+    "incarnation_id",
+    "appearance_id",
+    "maker_id",
+    "maker_product_code",
+    "evidence_class",
+    "figure_architecture_id",
+    "figure_architecture_candidates",
+    "body_style_profile_id",
+    "character_body_design_id",
+    "source_body_labels",
+    "scale_observations",
+    "component_annotations",
+    "joint_annotations",
+    "morphology_features",
+    "style_features",
+    "surface_annotations",
+    "compatibility_annotations",
+    "assets",
+    "derived_assets",
+    "physical_measurements",
+    "generation_lineage",
+    "review_state",
+    "provenance"
+  ],
+  "evidence_class": [
+    "catalog_thumbnail",
+    "multiview_catalog",
+    "disassembly_closeup",
+    "physical_sample",
+    "authoritative_digital_geometry",
+    "brickmen_synthetic"
+  ],
+  "asset_types": [
+    "source_image",
+    "normalized_image",
+    "component_mask",
+    "silhouette",
+    "depth",
+    "normal",
+    "part_id_render",
+    "mesh",
+    "point_cloud",
+    "scan",
+    "canonical_render",
+    "force_curve",
+    "torque_curve"
+  ],
+  "anti_leakage_fields": [
+    "character_group_id",
+    "maker_group_id",
+    "architecture_family_group_id",
+    "release_family_group_id",
+    "franchise_group_id"
+  ],
+  "rules": [
+    "Every sample preserves source evidence class.",
+    "Style labels cannot silently imply connector geometry.",
+    "Samples with unresolved architecture keep distributions rather than forced labels.",
+    "Synthetic Brickmen samples are tagged separately from observed commercial/official figures.",
+    "Dataset split tooling must support maker-, character-, franchise- and architecture-family-held-out evaluation."
+  ]
+}
