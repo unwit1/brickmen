@@ -199,30 +199,35 @@
         "Brickmen must retain control of component count, hardware, tolerances and validated joint geometry.",
         "Current upstream custom Gradio workflow requires image plus a 2D part mask.",
         "Current upstream infer_imgs.py parses --data_dir but hardcodes assets/real_world_examples when constructing ImageConditioned_dataset.",
-        "Brickmen needs a dedicated safe wrapper around the custom/API path before arbitrary-input CLI execution is enabled."
+        "Arbitrary-input execution requires an upstream-compatible semantic part-label EXR mask; Brickmen does not invent label semantics."
       ],
       "execution": {
-        "adapter_status": "upstream_cli_input_path_bug_requires_wrapper",
+        "adapter_status": "runnable_brickmen_dataset_redirect_wrapper_verified",
         "entrypoint": "infer_imgs.py",
         "invocation": [
           "python",
-          "infer_imgs.py",
-          "--data_dir",
-          "<image_dir>",
-          "--outdir",
+          "<brickmen>/tools/geometry/provider_wrappers/run_pact_arbitrary_input.py",
+          "--provider-repo",
+          "<pact_repo>",
+          "--image",
+          "<image>",
+          "--semantic-mask-exr",
+          "<semantic_part_mask.exr>",
+          "--output-dir",
           "<output_dir>",
-          "--batch_size",
-          "1",
-          "--save_glb",
-          "--export_arti_objects"
+          "--metadata",
+          "<output_dir>/brickmen-pact-wrapper.json"
         ],
-        "upstream_requirement_note": "Current upstream infer_imgs.py parses --data_dir but instantiates ImageConditioned_dataset('assets/real_world_examples') directly. Brickmen must not call this CLI on arbitrary user input until a safe wrapper/API adapter is added."
+        "upstream_requirement_note": "Brickmen wrapper redirects PAct's hardcoded ImageConditioned_dataset root in-process without modifying the upstream checkout. A PAct-compatible semantic part-label EXR mask is required."
       },
       "pipeline_stage": "articulated_generator",
       "output_contract": {
         "kind": "articulated_part_bundle",
         "semantic_slot_mapping": "required_after_generation",
-        "articulation_prediction_authority": "candidate_only"
+        "articulation_prediction_authority": "candidate_only",
+        "component_pattern": "exported_arti_objects/**/glb/part_*.glb",
+        "fallback_component_pattern": "exported_arti_objects/**/ply/part_*.ply",
+        "manifest_pattern": "exported_arti_objects/**/object.json"
       }
     },
     {
