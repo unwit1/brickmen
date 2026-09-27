@@ -90,16 +90,37 @@ def test_particulate_requires_mesh_and_uses_up_z(tmp_path: Path):
     assert plan["command"][-2:]==["--up_dir","Z"]
 
 
-def test_sam_remains_plan_only_without_invented_cli(tmp_path: Path):
+def test_sam_visual_baseline_plan_requires_image_mask_and_public_config(tmp_path: Path):
+    image=tmp_path/"image.png"; mask=tmp_path/"mask.png"
+    image.write_bytes(b"x"); mask.write_bytes(b"x")
+    repo=tmp_path/"sam3d"
+    (repo/"notebook").mkdir(parents=True)
+    (repo/"notebook"/"inference.py").write_text("# stub\n",encoding="utf-8")
+    (repo/"checkpoints"/"hf").mkdir(parents=True)
+    (repo/"checkpoints"/"hf"/"pipeline.yaml").write_text("stub: true\n",encoding="utf-8")
     plan=build_execution_plan(
         job("sam_3d_objects"),providers()["sam_3d_objects"],
-        provider_repo=None,output_dir=tmp_path/"out"
+        provider_repo=repo,source_image=image,mask_path=mask,
+        output_dir=tmp_path/"out"
     )
-    assert plan["execution_supported"] is False
-    assert plan["mode"]=="plan_only"
-    assert plan["command"] is None
-    with pytest.raises(ValueError,match="no executable verified adapter"):
-        execute_plan(plan)
+    assert plan["execution_supported"] is True
+    assert plan["pipeline_stage"]=="baseline_generator"
+    assert plan["adapter_status"]=="runnable_brickmen_python_api_visual_baseline"
+    assert "--mask" in plan["command"]
+    assert str(mask.resolve()) in plan["command"]
+    assert str((tmp_path/"out"/"sam3d-splat.ply").resolve()) in plan["command"]
+    assert "run_sam3d_objects_baseline.py" in " ".join(plan["command"])
+
+
+def test_sam_output_classification_is_baseline_not_component_mesh(tmp_path: Path):
+    out=tmp_path/"out"; out.mkdir()
+    splat=out/"sam3d-splat.ply"; meta=out/"sam3d-metadata.json"
+    splat.write_bytes(b"x")
+    meta.write_text("{}",encoding="utf-8")
+    classified=_classify_outputs("sam_3d_objects",out)
+    assert classified["baseline_outputs"]==[str(splat)]
+    assert classified["manifest_files"]==[str(meta)]
+    assert classified["component_candidates"]==[]
 
 
 def test_missing_verified_entrypoint_is_rejected(tmp_path: Path):
