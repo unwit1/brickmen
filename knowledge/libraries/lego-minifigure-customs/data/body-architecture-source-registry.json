@@ -1,0 +1,112 @@
+{
+  "schema_version": "0.1",
+  "observed_at": "2026-09-27",
+  "purpose": "Discovery/provenance sources supporting the initial non-standard FigureArchitecture registry. Sources establish catalog/size/component evidence; physical measurements remain authoritative for manufacturing-critical geometry.",
+  "sources": [
+    {
+      "source_id": "bricklink_hulk_sh0371_inventory",
+      "url": "https://www.bricklink.com/catalogItemInv.asp?M=sh0371&viewCodes=Y",
+      "evidence": [
+        "modern LEGO Giant Hulk inventory",
+        "Giant arms/hands",
+        "Technic 43093 shoulder hardware"
+      ],
+      "authority": "structured_catalog"
+    },
+    {
+      "source_id": "bricklink_thanos_sh0733_inventory",
+      "url": "https://www.bricklink.com/catalogItemInv.asp?M=sh0733&viewID=N",
+      "evidence": [
+        "modern LEGO Giant Thanos inventory",
+        "shared Giant arm/hand/43093 component family"
+      ],
+      "authority": "structured_catalog"
+    },
+    {
+      "source_id": "bricklink_axl_nex007_inventory",
+      "url": "https://www.bricklink.com/catalogItemInv.asp?M=nex007",
+      "evidence": [
+        "Axl oversized torso assembly",
+        "specialized arms",
+        "standard minifigure head/lower body"
+      ],
+      "authority": "structured_catalog"
+    },
+    {
+      "source_id": "hagrid_hp061_parts",
+      "url": "https://www.minifig-pictures.be/controler/c_FicheMinifig.php?Code=hp061",
+      "evidence": [
+        "Hagrid giant body 40250 family",
+        "standard minifigure head 3626 family",
+        "moveable hands"
+      ],
+      "authority": "secondary_structured_catalog"
+    },
+    {
+      "source_id": "alpha_beast_af361",
+      "url": "https://www.herobloks.com/figures/49858",
+      "evidence": [
+        "Alpha Toys brand",
+        "AF361 serial",
+        "7cm tall",
+        "AF360-AF363 family link"
+      ],
+      "authority": "custom_catalog"
+    },
+    {
+      "source_id": "alpha_colossus_af363",
+      "url": "https://www.herobloks.com/figures/49860/alpha-toys/af363/colossus-(deadpool-2)",
+      "evidence": [
+        "Alpha Toys brand",
+        "AF363 serial",
+        "7cm tall"
+      ],
+      "authority": "custom_catalog"
+    },
+    {
+      "source_id": "alpha_hulk_af344_af347_retail",
+      "url": "https://www.01bigbricks.net/products/minifigures-hulk-lego-af344-af347",
+      "evidence": [
+        "AF344-AF347 Hulk family",
+        "7CM retail positioning",
+        "visual comparison with standard minifigure"
+      ],
+      "authority": "retailer"
+    },
+    {
+      "source_id": "kdl_thing_k2302",
+      "url": "https://www.herobloks.com/figures/38962/kdl/k2302/thing-(first-steps)",
+      "evidence": [
+        "KDL brand",
+        "K2302 serial",
+        "6.5 cm size",
+        "cross-character/maker discovery context"
+      ],
+      "authority": "custom_catalog"
+    },
+    {
+      "source_id": "mrj_heart_hulk",
+      "url": "https://www.herobloks.com/figures/38863/mr.j-brick-x-heart/hulk-(comics)",
+      "evidence": [
+        "Mr.J Brick x Heart custom Hulk",
+        "visual proprietary muscular body",
+        "market separation from explicit BigFig entries"
+      ],
+      "authority": "custom_catalog"
+    },
+    {
+      "source_id": "bigguy_hulk_ragnarok",
+      "url": "https://www.herobloks.com/figures/38319/bigguy-minifigs/hulk-(ragnarok)",
+      "evidence": [
+        "Bigguy Minifigs muscular Hulk body"
+      ],
+      "authority": "custom_catalog"
+    }
+  ],
+  "source_policy": [
+    "HeroBloks is useful for custom/compatible discovery and source labels, not manufacturing metrology.",
+    "Retailer compatibility claims are hypotheses until tested.",
+    "BrickLink inventory evidence can establish official component relationships, but physical dimensions for printing still require measurement/validated geometry.",
+    "Images are evidence for morphology and family candidates, not precise joint dimensions."
+  ]
+}
