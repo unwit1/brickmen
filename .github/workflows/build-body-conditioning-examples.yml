@@ -33,9 +33,9 @@ jobs:
           OUT="knowledge/libraries/lego-minifigure-customs/data/generation-conditioning"
           mkdir -p "$OUT"
 
-          python tools/geometry/compile_body_generation_conditioning.py             knowledge/libraries/lego-minifigure-customs/data/skeletons/brickmen-giant-v0.json             --skeleton-reference knowledge/libraries/lego-minifigure-customs/data/reference-landmarks/lego-giant-ldraw-shoulders-fit.json             --envelope-reference knowledge/libraries/lego-minifigure-customs/data/reference-landmarks/lego-giant-10128-ldraw-body-profile.json             --joint-profile knowledge/libraries/lego-minifigure-customs/data/joint-profiles/lego-giant-43093-shoulder-reference-v0.json             -o "$OUT/brickmen-giant-official-cad-v0.json"
+          python -m tools.geometry.compile_body_generation_conditioning             knowledge/libraries/lego-minifigure-customs/data/skeletons/brickmen-giant-v0.json             --skeleton-reference knowledge/libraries/lego-minifigure-customs/data/reference-landmarks/lego-giant-ldraw-shoulders-fit.json             --envelope-reference knowledge/libraries/lego-minifigure-customs/data/reference-landmarks/lego-giant-10128-ldraw-body-profile.json             --joint-profile knowledge/libraries/lego-minifigure-customs/data/joint-profiles/lego-giant-43093-shoulder-reference-v0.json             -o "$OUT/brickmen-giant-official-cad-v0.json"
 
-          python tools/geometry/compile_body_generation_conditioning.py             knowledge/libraries/lego-minifigure-customs/data/skeletons/brickmen-broad-v0.json             --envelope-reference knowledge/libraries/lego-minifigure-customs/data/reference-landmarks/lego-axl-front.json             -o "$OUT/brickmen-broad-axl-envelope-v0.json"
+          python -m tools.geometry.compile_body_generation_conditioning             knowledge/libraries/lego-minifigure-customs/data/skeletons/brickmen-broad-v0.json             --envelope-reference knowledge/libraries/lego-minifigure-customs/data/reference-landmarks/lego-axl-front.json             -o "$OUT/brickmen-broad-axl-envelope-v0.json"
 
       - name: Validate example invariants
         run: |
