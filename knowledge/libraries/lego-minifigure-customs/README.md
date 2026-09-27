@@ -162,3 +162,29 @@ Character / SourceAppearance
 ```
 
 Terms such as BigFig, midfig, muscle body, 7CM and mega fig are preserved as source labels; they are not mechanical standards.
+
+### Body learning, joints, and adjacent articulation references
+
+- `body-architecture-training-corpus.md` — factorized architecture/style/character corpus, anti-leakage splits, negative examples and training progression.
+- `data/body-corpus-sample-schema.json` — canonical multimodal training sample contract.
+- `data/body-generation-evaluation-schema.json` — separate architecture/style/identity/geometry/physical evaluation axes.
+- `printable-body-joint-engineering.md` — reusable joint primitives, replaceable insert strategy, torque/cycle validation and scale-aware joint selection.
+- `data/body-joint-primitive-schema.json`
+- `data/body-joint-validation-plan.json`
+- `data/figure-architecture-feature-schema.json` — faceted morphology/mechanics representation for known and novel body systems.
+- `adjacent-articulated-figure-systems.md` — Mega Construx/Kre-O/Minimates articulation references kept separate from LEGO-compatible architectures.
+- `data/adjacent-articulated-system-registry.json`
+
+The recognition/generation stack can now reason separately about:
+```
+scale
+construction method
+head integration
+torso topology
+arm segmentation
+shoulder/elbow/wrist joints
+lower-body topology
+compatibility
+visual style
+```
+instead of reducing every figure to a single body-label class.
