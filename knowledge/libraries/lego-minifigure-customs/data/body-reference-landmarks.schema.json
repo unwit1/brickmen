@@ -285,6 +285,35 @@
           }
         }
       }
+    },
+    "review": {
+      "type": "object",
+      "properties": {
+        "reviewed": {
+          "type": "boolean"
+        },
+        "reviewer": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "note": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "tool": {
+          "type": "string"
+        },
+        "source_image_embedded": {
+          "type": "boolean"
+        },
+        "local_image_preview_exported": {
+          "type": "boolean"
+        }
+      }
     }
   }
 }
