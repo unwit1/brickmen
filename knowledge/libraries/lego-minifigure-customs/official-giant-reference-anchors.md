@@ -132,3 +132,48 @@ Those remain measurement/test tasks.
 - Official Bigfig left hand: https://library.ldraw.org/parts/215
 - Official Bigfig right hand: https://library.ldraw.org/parts/214
 - Official Technic axle pin: https://library.ldraw.org/parts/8530
+
+
+## Coordinate-frame normalization
+
+LDraw's source coordinate system is right-handed with **-Y as up**. Brickmen generation skeletons use a different semantic frame:
+
+- Brickmen X = left/right;
+- Brickmen Y = back/front depth;
+- Brickmen Z = feet/head up.
+
+The canonical right-handed conversion is therefore:
+
+```
+brickmen_x = ldraw_x
+brickmen_y = ldraw_z
+brickmen_z = -ldraw_y
+```
+
+All raw source transforms remain preserved for provenance, but downstream Brickmen fitting/generation must use the normalized semantic frame.
+
+Examples from the complete Giant assembly:
+
+| anchor | raw LDraw LDU | Brickmen LDU | Brickmen nominal mm |
+| --- | --- | --- | --- |
+| left shoulder | `[40, -126, 0]` | `[40, 0, 126]` | `[16, 0, 50.4]` |
+| right shoulder | `[-40, -126, 0]` | `[-40, 0, 126]` | `[-16, 0, 50.4]` |
+| left hand root | `[70, -86, -40]` | `[70, -40, 86]` | `[28, -16, 34.4]` |
+| right hand root | `[-70, -86, -40]` | `[-70, -40, 86]` | `[-28, -16, 34.4]` |
+
+The local left-arm hand socket `[30, 40, -40]` becomes `[30, -40, -40]` in Brickmen LDU, and the mirrored right socket becomes `[-30, -40, -40]`.
+
+The machine-readable Giant twin stores both frames and converts the component rotation matrices by basis change rather than relabeling their axes.
+
+### Why this matters
+
+Without the conversion, raw LDraw Y could be mistaken for body depth and raw LDraw Z for body height. That would make side-view envelope measurements, articulation vectors, and learned 3D conditioning systematically wrong even when the source mesh itself was correct.
+
+The recursive geometry ingester now emits:
+
+- raw `bbox_ldu` and `bbox_nominal_mm`;
+- `bbox_brickmen_ldu` and `bbox_brickmen_nominal_mm`;
+- the explicit frame mapping;
+- optional OBJ output directly in the Brickmen semantic frame.
+
+LDraw's nominal unit conversion remains reference CAD scaling rather than production metrology.
