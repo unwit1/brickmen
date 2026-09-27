@@ -1079,3 +1079,31 @@ New research references:
 - legacy Homemaker/maxifigure.
 
 These are references for topology and design-space coverage, not automatic CAD masters.
+
+
+### B10.1 status — seed fitter implemented
+
+Implemented:
+- [x] BodyReferenceLandmarkObservation schema
+- [x] pixel -> normalized body-height landmark conversion
+- [x] bounded skeleton parameter optimization
+- [x] confidence-weighted landmark residuals
+- [x] per-landmark diagnostics
+- [x] parameter-bound hit diagnostics
+- [x] seed batch fitter
+- [x] scale-aware cross-skeleton comparator
+- [x] seed references for AF325 Venom, AF345 Hulk, LEGO Giant Hulk, KDL Thing and Axl
+- [x] first comparative fit report
+- [x] skeleton-revision candidate capture
+
+Next before promoting skeleton revisions:
+- [ ] manually review/redo seed pivot landmarks
+- [ ] add visual-envelope landmarks separately from skeletal pivots
+- [ ] add head-width/hand-width/torso-width observations
+- [ ] add rear/side views where available
+- [ ] add canonical LDraw-derived Giant landmarks
+- [ ] add physical sample landmarks when acquired
+- [ ] implement image-assisted landmark annotation UI/tool
+- [ ] implement body-envelope fitter
+- [ ] refit Broad/XL after envelope separation
+- [ ] promote only corpus-supported parameter-range changes
