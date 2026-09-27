@@ -424,7 +424,7 @@ def summarize_pipeline_state(
             blocking=True,
         ))
         next_actions.append(
-            "run conservative continuous rotation collision validation"
+            "run conservative continuous collision validation for declared joint rotations"
         )
     else:
         gates.append(_gate(
