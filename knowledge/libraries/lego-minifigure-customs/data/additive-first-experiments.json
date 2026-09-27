@@ -1,0 +1,216 @@
+{
+  "schema_version": "0.1",
+  "status": "physical_execution_pending",
+  "created": "2026-09-27",
+  "sequence_policy": "Run in order unless prerequisite evidence already exists. Do not promote a connector/material profile from one build.",
+  "experiments": [
+    {
+      "experiment_id": "E001",
+      "kind": "resin_exposure_baseline",
+      "depends_on": [],
+      "objective": "Find stable exposure/detail window for each material.",
+      "state": "planned"
+    },
+    {
+      "experiment_id": "E002",
+      "kind": "generic_dimensional_benchmark",
+      "depends_on": [
+        "E001"
+      ],
+      "objective": "Characterize outside/inside geometry and build-area behavior.",
+      "state": "planned"
+    },
+    {
+      "experiment_id": "E003",
+      "kind": "post_cure_dimensional_change",
+      "depends_on": [
+        "E002"
+      ],
+      "objective": "Quantify dimensional change across wash/dry/cure/time.",
+      "state": "planned"
+    },
+    {
+      "experiment_id": "E004",
+      "kind": "hand_bar_dimensional_ladder",
+      "depends_on": [
+        "E003"
+      ],
+      "objective": "Sweep 3.18-family bar CAD values.",
+      "state": "planned"
+    },
+    {
+      "experiment_id": "E005",
+      "kind": "hand_bar_force_curve",
+      "depends_on": [
+        "E004"
+      ],
+      "objective": "Map CAD/measured diameter to insertion/removal force.",
+      "state": "planned"
+    },
+    {
+      "experiment_id": "E006",
+      "kind": "hand_bar_cycle_test",
+      "depends_on": [
+        "E005"
+      ],
+      "objective": "Measure retention/damage over repeated cycles.",
+      "state": "planned"
+    },
+    {
+      "experiment_id": "E007",
+      "kind": "orientation_study",
+      "depends_on": [
+        "E003"
+      ],
+      "objective": "Quantify orientation effects on dimension, straightness and strength.",
+      "state": "planned"
+    },
+    {
+      "experiment_id": "E008",
+      "kind": "headwear_socket_ladder",
+      "depends_on": [
+        "E003"
+      ],
+      "objective": "Map socket geometry to insertion/removal/rotational retention.",
+      "state": "planned"
+    },
+    {
+      "experiment_id": "E009",
+      "kind": "neck_armor_articulation",
+      "depends_on": [
+        "E003"
+      ],
+      "objective": "Validate neck fit and articulation keep-outs.",
+      "state": "planned"
+    },
+    {
+      "experiment_id": "E010",
+      "kind": "thin_weapon_study",
+      "depends_on": [
+        "E001"
+      ],
+      "objective": "Establish minimum practical blade/shaft/root geometry.",
+      "state": "planned"
+    },
+    {
+      "experiment_id": "E011",
+      "kind": "support_and_raft_study",
+      "depends_on": [
+        "E001"
+      ],
+      "objective": "Minimize scars/removal labor and improve automation-friendly release.",
+      "state": "planned"
+    },
+    {
+      "experiment_id": "E012",
+      "kind": "build_position_study",
+      "depends_on": [
+        "E002"
+      ],
+      "objective": "Measure center/corner variation.",
+      "state": "planned"
+    },
+    {
+      "experiment_id": "E013",
+      "kind": "within_build_repeatability",
+      "depends_on": [
+        "E002"
+      ],
+      "objective": "Quantify same-plate part-to-part variation.",
+      "state": "planned"
+    },
+    {
+      "experiment_id": "E014",
+      "kind": "between_build_repeatability",
+      "depends_on": [
+        "E013"
+      ],
+      "objective": "Quantify build-to-build variation.",
+      "state": "planned"
+    },
+    {
+      "experiment_id": "E015",
+      "kind": "material_comparison",
+      "depends_on": [
+        "E005",
+        "E007",
+        "E010",
+        "E014"
+      ],
+      "objective": "Compare candidate resins under the same functional methodology.",
+      "state": "planned"
+    },
+    {
+      "experiment_id": "E016",
+      "kind": "toughening_blend_study",
+      "depends_on": [
+        "E015"
+      ],
+      "objective": "Test controlled blend ladder only after a base resin is characterized.",
+      "state": "planned"
+    },
+    {
+      "experiment_id": "E017",
+      "kind": "creep_retention_aging",
+      "depends_on": [
+        "E005",
+        "E008",
+        "E015"
+      ],
+      "objective": "Measure retained fit after time/temperature conditioning.",
+      "state": "planned"
+    },
+    {
+      "experiment_id": "E018",
+      "kind": "color_through_material",
+      "depends_on": [
+        "E015"
+      ],
+      "objective": "Optimize color only inside mechanically acceptable material space.",
+      "state": "planned"
+    },
+    {
+      "experiment_id": "E019",
+      "kind": "finished_accessory_pilot",
+      "depends_on": [
+        "E006",
+        "E008",
+        "E009",
+        "E010",
+        "E011",
+        "E015"
+      ],
+      "objective": "Build representative sword/helmet/armor with validated interfaces.",
+      "state": "planned"
+    },
+    {
+      "experiment_id": "E020",
+      "kind": "small_batch_production_pilot",
+      "depends_on": [
+        "E019"
+      ],
+      "objective": "Measure yield, real labor, material, QC time and unit economics.",
+      "state": "planned"
+    }
+  ],
+  "required_outputs": [
+    "source geometry hash",
+    "build/slice hash",
+    "machine profile",
+    "material lot",
+    "postprocess profile",
+    "raw measurements",
+    "images",
+    "defects",
+    "analysis result",
+    "promotion decision"
+  ],
+  "stop_conditions": [
+    "safety interlock event",
+    "unknown material/profile",
+    "traceability break",
+    "damage to mating reference beyond approved sacrificial-test policy",
+    "unresolved structural slice warning",
+    "measurement device calibration/check failure"
+  ]
+}
