@@ -63,12 +63,21 @@
           "<image>",
           "--num_parts",
           "<N>",
+          "--output_dir",
+          "<output_dir>",
           "--tag",
           "<tag>",
-          "--rmbg",
           "--render"
         ],
         "upstream_requirement_note": "Official README states CUDA GPU with at least 8GB VRAM; reduce parts/tokens to lower memory."
+      },
+      "pipeline_stage": "primary_generator",
+      "output_contract": {
+        "kind": "part_mesh_bundle",
+        "component_pattern": "part_XX.glb",
+        "composite_pattern": "object.glb",
+        "manifest_pattern": "manifest.json",
+        "semantic_slot_mapping": "required_after_generation"
       }
     },
     {
@@ -130,6 +139,17 @@
           "<output_dir>"
         ],
         "upstream_requirement_note": "Official README states ~10GB GPU memory for inference assuming float16."
+      },
+      "pipeline_stage": "primary_generator",
+      "output_contract": {
+        "kind": "part_mesh_bundle",
+        "component_pattern": "*_partN.glb",
+        "composite_pattern": "*_N.glb",
+        "auxiliary_patterns": [
+          "*_vol0.glb",
+          "*_vol1.glb"
+        ],
+        "semantic_slot_mapping": "required_after_generation"
       }
     },
     {
@@ -176,7 +196,7 @@
         "Brickmen must retain control of component count, hardware, tolerances and validated joint geometry."
       ],
       "execution": {
-        "adapter_status": "runnable_cli_verified",
+        "adapter_status": "upstream_cli_input_path_bug_requires_wrapper",
         "entrypoint": "infer_imgs.py",
         "invocation": [
           "python",
@@ -189,7 +209,14 @@
           "1",
           "--save_glb",
           "--export_arti_objects"
-        ]
+        ],
+        "upstream_requirement_note": "Current upstream infer_imgs.py parses --data_dir but instantiates ImageConditioned_dataset('assets/real_world_examples') directly. Brickmen must not call this CLI on arbitrary user input until a safe wrapper/API adapter is added."
+      },
+      "pipeline_stage": "articulated_generator",
+      "output_contract": {
+        "kind": "articulated_part_bundle",
+        "semantic_slot_mapping": "required_after_generation",
+        "articulation_prediction_authority": "candidate_only"
       }
     },
     {
@@ -243,6 +270,17 @@
           "<output_dir>",
           "--up_dir",
           "Z"
+        ]
+      },
+      "pipeline_stage": "post_generation_critic",
+      "output_contract": {
+        "kind": "articulation_critic_report",
+        "component_slot_mapping": "not_applicable_as_primary_generator",
+        "expected_artifacts": [
+          "mesh_parts_with_axes_*.glb",
+          "animated_textured_*.glb",
+          "eval/pred.obj",
+          "eval/pred.npz"
         ]
       }
     },
@@ -301,6 +339,11 @@
           "inference(image, mask, seed=...)"
         ],
         "upstream_requirement_note": "Official setup documents Linux x86-64 and NVIDIA GPU with at least 32GB VRAM."
+      },
+      "pipeline_stage": "baseline_generator",
+      "output_contract": {
+        "kind": "reconstruction_bundle",
+        "semantic_slot_mapping": "required_when_used_as_component_generator"
       }
     },
     {
@@ -334,7 +377,8 @@
       },
       "limitations": [
         "No official implementation was verified during the 2026-09-27 research snapshot."
-      ]
+      ],
+      "pipeline_stage": "research_candidate"
     },
     {
       "provider_id": "pwm_artgen",
@@ -363,7 +407,8 @@
       },
       "limitations": [
         "Repository maturity and runnable inference were not verified in this snapshot."
-      ]
+      ],
+      "pipeline_stage": "research_candidate"
     }
   ],
   "production_geometry_authority": false
