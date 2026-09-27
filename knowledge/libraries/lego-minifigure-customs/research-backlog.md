@@ -419,3 +419,46 @@ Detailed implementation sequencing is canonical in `agentic-custom-parts-and-bod
 - [ ] acquire one OA 16 cm family sample
 - [ ] acquire one Mega Construx modern micro-action figure as adjacent articulation reference
 - [ ] generate first Brickmen Mid static component set
+
+
+### Continued generation/body intelligence pass — 2026-09-27
+
+Completed research/architecture:
+- [x] build Hulk cross-architecture control corpus
+- [x] build Thing cross-architecture matched-source control corpus
+- [x] add architecture-neutral CharacterBodyFeatureSpec
+- [x] separate maker identity from release-level body-family architecture
+- [x] add MoldFamily / MoldRevision / mold-equivalence model
+- [x] map broader compatible/custom BigFig ecosystem beyond Hulk
+- [x] derive hybrid printed-shell + commodity-joint engineering patterns
+- [x] separate legacy Hagrid Body Giant from later Hagrid Half Giant architecture
+- [x] define component-level non-standard digital-twin ingestion queue
+- [x] define Brickmen-original MidFig v0 concept
+- [x] add image/scan architecture recognition model registry
+- [x] add PartCrafter part-aware generation research
+- [x] add SAMPart3D / PartField segmentation and correspondence research
+- [x] add OmniPart and SAM3D-Part selective/part-aware generation research
+- [x] add PAct / Particulate / ArtLLM / UniPart / LAM articulated generation research
+- [x] add Articulate AnyMesh / URDF-Anything+ / SPARK / Kinematify survey
+- [x] define learned JointProposal safety boundary
+- [x] define architecture-conditioned BodyStyleCompiler
+- [x] define StyleMappingRule schema
+
+Highest-priority next implementation:
+- [ ] materialize Giant LDraw component digital twin
+- [ ] materialize Hagrid Half Giant digital twin
+- [ ] finish Axl component geometry/source resolution
+- [ ] implement CharacterBodyFeatureSpec extractor
+- [ ] implement BodyStyleCompiler prototype
+- [ ] implement PartCrafter/PartField/SAMPart3D experiment harness
+- [ ] implement JointProposal -> FigureArchitecture reconciliation
+- [ ] implement Brickmen MidFig parametric skeleton generator
+- [ ] generate MidFig P0 mechanical mule geometry
+- [ ] build first JointCartridge coupons
+- [ ] acquire official/compatible Giant + Alpha AF + G(2) physical samples
+- [ ] run first architecture recognition benchmark
+- [ ] ingest MoldFamily equivalence observations at scale
+- [ ] build statistical BodyStyleProfile measurements from canonical images
+- [ ] add Bane/Thanos/Darkseid/Gorilla Grodd/Blob/Kingpin control corpora
+- [ ] add fur/rock/metal/scales/armor surface-material grammars
+- [ ] benchmark selective component regeneration after one-body-part revisions
