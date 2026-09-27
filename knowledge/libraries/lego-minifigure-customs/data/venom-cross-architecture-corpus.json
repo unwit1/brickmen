@@ -1,0 +1,138 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-27",
+  "status": "research_control_corpus_v0",
+  "character_id": "marvel_venom",
+  "architecture_question": "How should Venom's perceived mass move between print, upper-body geometry, full-body scale and symbiote accessories?",
+  "records": [
+    {
+      "record_id": "venom_lego_sh0542_standard",
+      "release": {
+        "maker": "LEGO",
+        "code": "SH0542",
+        "label": "Venom - White Teeth Parted"
+      },
+      "architecture_candidate": "minifig_standard",
+      "source_appearance_family": "general_comic_lego_interpretation",
+      "evidence": [
+        "BrickLink standard-minifigure catalog/set records"
+      ],
+      "confidence": "catalog_high"
+    },
+    {
+      "record_id": "venom_alpha_af321_movie",
+      "release": {
+        "maker": "Alpha Toys",
+        "code": "AF321",
+        "year": 2024,
+        "label": "Venom (movie)"
+      },
+      "architecture_candidate": "custom_alpha_45mm_muscle_hybrid",
+      "source_appearance_family": "sony_venom_movie",
+      "nominal_height_mm_range": [
+        40,
+        45
+      ],
+      "evidence": [
+        "HeroBloks AF321",
+        "Brixtoy AF321-AF326 series dimensions"
+      ],
+      "confidence": "strong_visual_catalog"
+    },
+    {
+      "record_id": "venom_alpha_af325",
+      "release": {
+        "maker": "Alpha Toys",
+        "code": "AF325",
+        "year": 2024,
+        "label": "Venom"
+      },
+      "architecture_candidate": "custom_alpha_45mm_muscle_hybrid",
+      "source_appearance_family": "comic_or_general_venom",
+      "nominal_height_mm_range": [
+        40,
+        45
+      ],
+      "evidence": [
+        "HeroBloks AF325",
+        "Minifigtoys AF325 dimensions"
+      ],
+      "visual_inference": {
+        "torso": "very_broad_muscular_shell",
+        "arms": "oversized_muscular",
+        "lower_body": "standard_like_two_leg",
+        "stature": "near_standard_minifigure_height"
+      },
+      "confidence": "strong_visual_catalog"
+    },
+    {
+      "record_id": "venom_alpha_af328_ancient",
+      "release": {
+        "maker": "Alpha Toys",
+        "code": "AF328",
+        "year": 2024,
+        "label": "Ancient Venom",
+        "source_body_label": "MaxiFig"
+      },
+      "architecture_candidate": "custom_alpha_45mm_muscle_hybrid",
+      "source_appearance_family": "ancient_venom",
+      "nominal_height_mm_range": [
+        40,
+        45
+      ],
+      "evidence": [
+        "HeroBloks MaxiFig tag",
+        "Brixtoy AF327-AF332 dimensions",
+        "catalog imagery"
+      ],
+      "confidence": "architecture_candidate_mechanical_equivalence_pending"
+    },
+    {
+      "record_id": "venom_xinh_xh1911_bigfig",
+      "release": {
+        "maker": "Xinh",
+        "code": "XH1911",
+        "year": 2022,
+        "label": "Venom (BigFig)"
+      },
+      "architecture_candidate": "compatible_bigfig_unresolved",
+      "source_appearance_family": "comic_modern",
+      "evidence": [
+        "HeroBloks explicit BigFig label"
+      ],
+      "confidence": "catalog_high_label_physical_unknown"
+    },
+    {
+      "record_id": "venom_xinh_xh1829_movie_bigfig",
+      "release": {
+        "maker": "Xinh",
+        "code": "XH1829",
+        "year": 2022,
+        "label": "Venom (movie) (BigFig)"
+      },
+      "architecture_candidate": "compatible_bigfig_unresolved",
+      "source_appearance_family": "sony_venom_movie",
+      "evidence": [
+        "HeroBloks explicit BigFig label"
+      ],
+      "confidence": "catalog_high_label_physical_unknown"
+    }
+  ],
+  "same_architecture_symbiote_family": {
+    "cluster": "alpha_af321_af326_45mm_symbiote_hybrid",
+    "characters": [
+      "Venom",
+      "Carnage",
+      "Riot",
+      "Anti-Venom"
+    ],
+    "research_value": "Learn architecture invariants separately from character/surface identity."
+  },
+  "key_experiments": [
+    "standard_height_vs_upper_body_mass disentanglement",
+    "symbiote_organic surface material compiler",
+    "tendril/spike geometry vs accessory vs print decisions",
+    "same-architecture different-character shell correspondence",
+    "cross-architecture Venom identity preservation"
+  ]
+}
