@@ -79,6 +79,19 @@ def _input_requirements(provider: Mapping[str,Any]) -> list[str]:
         requirements.append("generated_triangle_mesh")
     elif pid=="sam_3d_objects":
         requirements.extend(["source_image","binary_object_mask"])
+    elif pid=="pwm_artgen":
+        requirements.extend([
+            "single_image",
+            "sam_or_sam3_segmentation_checkpoint",
+            "rmbg_or_alpha_foreground",
+            "graph_prediction_api_or_cached_graph_json",
+            "sdxl_vae",
+            "pwm_checkpoint",
+            "partnet_mobility_retrieval_database",
+            "supported_category_only",
+        ])
+    elif pid=="unipart":
+        requirements.append("public_implementation_not_available")
     if stage=="post_generation_critic":
         requirements.append("primary_generator_output_dependency")
     return requirements
@@ -131,6 +144,12 @@ def compile_readiness(
             ),
             "execution_has_been_performed_in_canonical_fixture":False,
             "limitations":provider.get("limitations",[]),
+            "research_status":provider.get("research_status"),
+            "upstream_verification":provider.get("upstream_verification"),
+            "brickmen_domain_verified":(
+                status in RUNNABLE_STATUSES
+                and provider.get("pipeline_stage")!="research_candidate"
+            ),
             "production_geometry_authority":False,
         })
 
