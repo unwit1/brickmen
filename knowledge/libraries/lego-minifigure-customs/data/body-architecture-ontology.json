@@ -1,0 +1,164 @@
+{
+  "schema_version": "0.2",
+  "created": "2026-09-27",
+  "status": "research_ontology",
+  "principle": "Canonical body architecture IDs describe measurable assembly geometry. Source terms such as bigfig, midfig, XL and muscle body are aliases/observations only.",
+  "architecture_families": [
+    {
+      "id": "minifig_standard",
+      "parent": null,
+      "description": "Standard minifigure assembly and compatible leg variants."
+    },
+    {
+      "id": "minifig_standard_long_limb",
+      "parent": "minifig_standard",
+      "description": "Standard minifigure semantic assembly with elongated arms/legs, e.g. Woody."
+    },
+    {
+      "id": "minifig_oversized_torso_hybrid",
+      "parent": "minifig_standard",
+      "description": "Standard head/lower-body ecosystem combined with oversized torso and specialized arms, e.g. NEXO KNIGHTS Axl."
+    },
+    {
+      "id": "giant_broad_standard_head",
+      "parent": null,
+      "description": "Broad/giant integrated body using standard minifigure head ecosystem, e.g. Hagrid."
+    },
+    {
+      "id": "giant_classic_integrated_head",
+      "parent": null,
+      "description": "Classic Hulk-style giant body with integrated head/body/lower shell and separate giant arms/hands."
+    },
+    {
+      "id": "giant_modular_head",
+      "parent": null,
+      "description": "Later giant architecture with separate giant head and optional hair/headgear plus giant arms/hands."
+    },
+    {
+      "id": "giant_specialized_creature",
+      "parent": null,
+      "description": "Character/creature-specific giant architecture; child architecture required when joint graph differs."
+    },
+    {
+      "id": "minifig_baby_toddler",
+      "parent": null,
+      "description": "Small fixed-arm baby/toddler body system."
+    },
+    {
+      "id": "microfigure_integrated",
+      "parent": null,
+      "description": "Integrated microfigure body architecture."
+    },
+    {
+      "id": "minidoll_standard",
+      "parent": null,
+      "description": "Mini-doll component and proportion system."
+    },
+    {
+      "id": "custom_bigfig_compatible",
+      "parent": "giant_classic_integrated_head",
+      "description": "Third-party bigfig marketed as compatible with classic giant architecture; physical compatibility must be observed."
+    },
+    {
+      "id": "custom_muscle_torso_standard_lower_body",
+      "parent": "minifig_standard",
+      "description": "Broad/muscular custom torso/arm architecture retaining standard or near-standard head/lower body semantics."
+    },
+    {
+      "id": "community_midfig_parametric",
+      "parent": null,
+      "description": "Custom medium-scale body between standard and giant, often 3D printed and modular."
+    },
+    {
+      "id": "custom_xl_articulated_7cm_alpha_family",
+      "parent": null,
+      "description": "Approx. 7 cm Alpha Toys AF-family muscular body with visibly segmented/articulated arms; exact joints require physical validation."
+    },
+    {
+      "id": "brick_built_midfig",
+      "parent": null,
+      "description": "Body built from standard construction elements to occupy a middle scale rather than a dedicated molded body."
+    },
+    {
+      "id": "custom_proprietary_body_unknown_architecture",
+      "parent": null,
+      "description": "Known custom body whose mechanical architecture has not yet been resolved."
+    },
+    {
+      "id": "architecture_unknown_candidate",
+      "parent": null,
+      "description": "New/unresolved body architecture candidate."
+    }
+  ],
+  "required_architecture_fields": [
+    "body_architecture_id",
+    "canonical_name",
+    "architecture_family",
+    "source_body_labels",
+    "height_mm",
+    "height_ratio_to_standard",
+    "component_graph",
+    "joint_graph",
+    "connector_families",
+    "standard_part_compatibility",
+    "surface_map_id",
+    "articulation_profile_id",
+    "scale_profile_id",
+    "known_examples",
+    "physical_validation_status",
+    "sources"
+  ],
+  "component_roles": [
+    "head",
+    "hair_headgear",
+    "neck",
+    "chest_shell",
+    "abdomen",
+    "pelvis",
+    "upper_arm_left",
+    "upper_arm_right",
+    "forearm_left",
+    "forearm_right",
+    "hand_left",
+    "hand_right",
+    "hip_left",
+    "hip_right",
+    "thigh_left",
+    "thigh_right",
+    "lower_leg_left",
+    "lower_leg_right",
+    "foot_left",
+    "foot_right",
+    "integrated_lower_body",
+    "tail",
+    "wing",
+    "creature_limb",
+    "armor_shell",
+    "connector_pin",
+    "accessory_mount"
+  ],
+  "joint_types": [
+    "rotational_pin",
+    "friction_axle_pin",
+    "ball",
+    "snap",
+    "c_clip",
+    "press_friction",
+    "integrated_flexible",
+    "fixed",
+    "unknown"
+  ],
+  "source_label_examples": [
+    "bigfig",
+    "BigFig",
+    "large figure",
+    "giant",
+    "midfig",
+    "mid-fig",
+    "medfig",
+    "XL",
+    "mega fig",
+    "muscle body",
+    "big guy"
+  ]
+}
