@@ -1,0 +1,153 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-27",
+  "status": "provisional_visual_profiles_require_corpus_validation",
+  "principle": "BodyStyleProfile is visual/sculptural grammar, not mechanical architecture. A profile may be used across compatible architectures only through an explicit style-transfer operation.",
+  "profiles": [
+    {
+      "body_style_profile_id": "official_minifig_standard_general",
+      "figure_architecture_ids": [
+        "minifig_standard",
+        "minifig_short_leg",
+        "minifig_medium_leg",
+        "minifig_long_limb"
+      ],
+      "evidence_class": "official_corpus",
+      "traits": {
+        "anatomy": "highly abstracted block toy anatomy",
+        "joints": "standard minifigure seams dominate silhouette",
+        "sculpt_vs_print": "most garment/anatomy information represented by decoration or distinct accessory moulds",
+        "proportions": "large cylindrical head, trapezoidal torso, compact limbs"
+      },
+      "status": "corpus_backed_expand_by_era_theme"
+    },
+    {
+      "body_style_profile_id": "official_giant_classic",
+      "figure_architecture_ids": [
+        "lego_giant_integrated_head_legacy",
+        "lego_giant_modular"
+      ],
+      "evidence_class": "official_catalog_and_physical_corpus_target",
+      "traits": {
+        "anatomy": "simplified oversized musculature/forms",
+        "joints": "large shoulder/hand components; limited arm segmentation compared with action-figure-like customs",
+        "sculpt_vs_print": "major anatomy/silhouette carried by mould; color/pattern carries clothing/detail",
+        "head_relation": "integrated in early architecture, separate giant head in later architecture"
+      },
+      "status": "needs_measured_surface_map"
+    },
+    {
+      "body_style_profile_id": "official_axl_broad_hybrid",
+      "figure_architecture_ids": [
+        "lego_axl_oversized_torso_hybrid"
+      ],
+      "evidence_class": "official_catalog",
+      "traits": {
+        "anatomy": "broad upper body while preserving standard head and lower body",
+        "joints": "specialized enlarged arms attached to oversized torso",
+        "sculpt_vs_print": "upper-body bulk is moulded; normal minifigure lower-body style remains"
+      },
+      "status": "needs_digital_twin"
+    },
+    {
+      "body_style_profile_id": "official_hagrid_broad",
+      "figure_architecture_ids": [
+        "lego_hagrid_giant_hybrid"
+      ],
+      "evidence_class": "official_catalog",
+      "traits": {
+        "anatomy": "broad/tall integrated body with standard head ecosystem",
+        "sculpt_vs_print": "body silhouette carries scale; face remains standard-head visual grammar"
+      },
+      "status": "needs_digital_twin"
+    },
+    {
+      "body_style_profile_id": "alpha_af_7cm_muscular_visual",
+      "figure_architecture_ids": [
+        "custom_alpha_7cm_muscle"
+      ],
+      "evidence_class": "multiview_catalog_visual",
+      "traits": {
+        "anatomy": "strongly anatomical muscular torso and limbs",
+        "arm_segmentation": "visible upper-arm/forearm separation and elbow articulation in product imagery",
+        "proportions": "approximately 7 cm class in documented examples; larger hands/feet and longer limbs than standard",
+        "sculpt_vs_print": "muscle groups and much costume structure carried in 3D relief; printed details supplement sculpt"
+      },
+      "hard_limits": [
+        "Do not infer exact joint dimensions or family-wide interchangeability from this visual profile.",
+        "Do not copy proprietary sculpt geometry; use profile as descriptive style evidence for original Brickmen bodies."
+      ],
+      "status": "visual_profile_strong_physical_metrology_pending"
+    },
+    {
+      "body_style_profile_id": "g2_muscle_hybrid_visual",
+      "figure_architecture_ids": [
+        "custom_g2_muscle_hybrid"
+      ],
+      "evidence_class": "catalog_visual",
+      "traits": {
+        "anatomy": "muscular/broad torso and arms while remaining much closer to standard minifigure proportions than Alpha 7 cm",
+        "head_relation": "standard-like head scale",
+        "lower_body_relation": "standard-like two-leg lower silhouette in GH0304 imagery",
+        "sculpt_vs_print": "anatomical torso/arm relief dominates upper body"
+      },
+      "hard_limits": [
+        "Applies only to observed matching releases; G (2)/GH prefix is not one universal architecture."
+      ],
+      "status": "provisional_visual_family_metrology_pending"
+    },
+    {
+      "body_style_profile_id": "custom_premium_muscular_unresolved",
+      "figure_architecture_ids": [
+        "custom_bigguy_muscle",
+        "custom_mrj_heart_muscle",
+        "custom_bigfig_maker_specific"
+      ],
+      "evidence_class": "discovery_only",
+      "traits": {
+        "anatomy": "maker-specific premium sculptural exaggeration",
+        "sculpt_vs_print": "high proportion of identity/detail may be carried by custom 3D sculpt"
+      },
+      "hard_limits": [
+        "Do not merge makers or infer shared joints from similar muscular appearance."
+      ],
+      "status": "split_into_maker_profiles_after_corpus_and_measurement"
+    },
+    {
+      "body_style_profile_id": "morphology_modified_standard",
+      "figure_architecture_ids": [
+        "minifig_lowerbody_ghost",
+        "minifig_lowerbody_serpent",
+        "minifig_lowerbody_merfolk",
+        "minifig_lowerbody_tentacle",
+        "minifig_lowerbody_robot_rollers",
+        "minifig_centaur_hybrid",
+        "minifig_stacked_torso_multiarm",
+        "minifig_mechanical_droid_specialized"
+      ],
+      "evidence_class": "official_catalog",
+      "traits": {
+        "rule": "Preserve standard minifigure upper-body grammar only on components that actually remain standard; derive separate surface and locomotion topology for modified components."
+      },
+      "status": "architecture_specific_subprofiles_needed"
+    }
+  ],
+  "normalized_style_features": [
+    "head_to_height_ratio",
+    "shoulder_to_head_ratio",
+    "chest_to_waist_ratio",
+    "upper_arm_to_forearm_ratio",
+    "hand_to_head_ratio",
+    "leg_to_torso_ratio",
+    "sculptural_relief_density",
+    "printed_detail_density",
+    "edge_rounding",
+    "anatomical_exaggeration",
+    "symmetry_policy",
+    "surface_break_frequency",
+    "joint_visibility",
+    "accessory_scale_factor",
+    "face_landmark_normalization"
+  ],
+  "transfer_rule": "Style transfer re-solves the design on the target architecture; never uniformly scale source geometry/artwork."
+}
