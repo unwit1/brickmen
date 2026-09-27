@@ -128,3 +128,34 @@ def test_vertical_head_span_fits_visual_head_height():
 
     assert fit["parameter_overrides"]["head_height_scale"] == pytest.approx(1.1)
     assert fit["mechanical_parameter_changes"] == []
+
+
+
+def test_direct_normalized_ldraw_giant_envelope_reference():
+    spec = load_spec(GIANT)
+    reference = load_reference(
+        BASE / "reference-landmarks" / "lego-giant-10128-ldraw-body-profile.json"
+    )
+    fit = fit_envelope_profile(spec, reference)
+
+    assert fit["parameter_overrides"]["torso_width_scale"] == pytest.approx(
+        0.44822387062555535 / 0.43
+    )
+    assert fit["parameter_overrides"]["head_width_scale"] == pytest.approx(
+        0.24846648683542003 / 0.23
+    )
+    assert fit["parameter_overrides"]["head_depth_scale"] == pytest.approx(
+        0.29639736661412464 / 0.23
+    )
+
+    # Current Giant visual-depth design space is intentionally diagnosed as too
+    # shallow for this official CAD reference rather than silently expanded.
+    assert fit["parameter_overrides"]["torso_depth_scale"] == pytest.approx(
+        spec["parameters"]["torso_depth_scale"]["max"]
+    )
+    assert fit["parameter_overrides"]["abdomen_projection_scale"] == pytest.approx(
+        spec["parameters"]["abdomen_projection_scale"]["max"]
+    )
+    assert "torso_depth_scale" in fit["bound_hits"]
+    assert "abdomen_projection_scale" in fit["bound_hits"]
+    assert fit["mechanical_parameter_changes"] == []
