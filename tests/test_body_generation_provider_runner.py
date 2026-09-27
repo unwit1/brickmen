@@ -5,6 +5,7 @@ import pytest
 
 from tools.geometry.run_body_generation_provider import (
     build_execution_plan,
+    _classify_outputs,
     execute_plan,
     load_json,
 )
@@ -48,6 +49,9 @@ def test_partcrafter_plan_uses_architecture_part_count(tmp_path: Path):
     assert "--num_parts" in plan["command"]
     i=plan["command"].index("--num_parts")
     assert plan["command"][i+1]=="7"
+    assert "--output_dir" in plan["command"]
+    oi=plan["command"].index("--output_dir")
+    assert plan["command"][oi+1]==str((tmp_path/"out").resolve())
     assert plan["mode"]=="dry_run"
     assert not (tmp_path/"out").exists()
 
@@ -64,17 +68,15 @@ def test_partpacker_plan_stages_single_image_directory(tmp_path: Path):
     assert "--input" in plan["command"]
 
 
-def test_pact_plan_uses_batch_one_and_glb(tmp_path: Path):
-    image=tmp_path/"source.png"; image.write_bytes(b"x")
-    repo=fake_repo(tmp_path,"pact")
+def test_pact_is_plan_only_until_hardcoded_input_path_is_wrapped(tmp_path: Path):
     plan=build_execution_plan(
         job("pact"),providers()["pact"],
-        provider_repo=repo,source_image=image,output_dir=tmp_path/"out"
+        provider_repo=None,output_dir=tmp_path/"out"
     )
-    assert "--batch_size" in plan["command"]
-    assert "1" in plan["command"]
-    assert "--save_glb" in plan["command"]
-    assert "--export_arti_objects" in plan["command"]
+    assert plan["execution_supported"] is False
+    assert plan["mode"]=="plan_only"
+    assert plan["command"] is None
+    assert plan["adapter_status"]=="upstream_cli_input_path_bug_requires_wrapper"
 
 
 def test_particulate_requires_mesh_and_uses_up_z(tmp_path: Path):
@@ -108,3 +110,38 @@ def test_missing_verified_entrypoint_is_rejected(tmp_path: Path):
             job("partcrafter"),providers()["partcrafter"],
             provider_repo=repo,source_image=image,output_dir=tmp_path/"out"
         )
+
+
+def test_partcrafter_output_classification_uses_upstream_manifest(tmp_path: Path):
+    run=tmp_path/"out"/"tag"
+    run.mkdir(parents=True)
+    (run/"part_00.glb").write_bytes(b"x")
+    (run/"part_01.glb").write_bytes(b"x")
+    (run/"object.glb").write_bytes(b"x")
+    (run/"manifest.json").write_text(
+        json.dumps({
+            "parts":[
+                {"index":0,"file":"part_00.glb"},
+                {"index":1,"file":"part_01.glb"},
+            ],
+            "composite_file":"object.glb",
+        }),
+        encoding="utf-8",
+    )
+    classified=_classify_outputs("partcrafter",tmp_path/"out")
+    assert len(classified["component_candidates"])==2
+    assert classified["composite_outputs"]==[str(run/"object.glb")]
+    assert classified["manifest_files"]==[str(run/"manifest.json")]
+
+
+def test_partpacker_output_classification_excludes_dual_volumes(tmp_path: Path):
+    out=tmp_path/"out"; out.mkdir()
+    for name in (
+        "source_0_part0.glb","source_0_part1.glb",
+        "source_0.glb","source_0_vol0.glb","source_0_vol1.glb",
+    ):
+        (out/name).write_bytes(b"x")
+    classified=_classify_outputs("partpacker",out)
+    assert len(classified["component_candidates"])==2
+    assert classified["composite_outputs"]==[str(out/"source_0.glb")]
+    assert len(classified["auxiliary_outputs"])==2
