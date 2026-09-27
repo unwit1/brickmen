@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.1",
+  "schema_version": "0.2",
   "created": "2026-09-27",
   "digital_twin_id": "lego_giant_hulk_10128p01c01_ldraw_frames",
   "architecture_id": "lego_giant_modular",
@@ -82,6 +82,28 @@
           0,
           0,
           1
+        ],
+        "translation_brickmen_ldu": [
+          0,
+          0,
+          0
+        ],
+        "translation_brickmen_nominal_mm": [
+          0,
+          0,
+          0
+        ],
+        "matrix_frame": "ldraw_source",
+        "matrix_brickmen": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
         ]
       }
     },
@@ -110,6 +132,28 @@
           0,
           0,
           1
+        ],
+        "translation_brickmen_ldu": [
+          40,
+          0,
+          126
+        ],
+        "translation_brickmen_nominal_mm": [
+          16,
+          0,
+          50.4
+        ],
+        "matrix_frame": "ldraw_source",
+        "matrix_brickmen": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
         ]
       }
     },
@@ -129,6 +173,28 @@
           0
         ],
         "matrix": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "translation_brickmen_ldu": [
+          40,
+          0,
+          126
+        ],
+        "translation_brickmen_nominal_mm": [
+          16,
+          0,
+          50.4
+        ],
+        "matrix_frame": "ldraw_source",
+        "matrix_brickmen": [
           1,
           0,
           0,
@@ -167,7 +233,30 @@
           0,
           1
         ],
-        "derived_z_rotation_deg_approx": -22.5
+        "derived_z_rotation_deg_approx": -22.5,
+        "translation_brickmen_ldu": [
+          70,
+          -40,
+          86
+        ],
+        "translation_brickmen_nominal_mm": [
+          28,
+          -16,
+          34.4
+        ],
+        "matrix_frame": "ldraw_source",
+        "matrix_brickmen": [
+          0.92388,
+          0,
+          -0.382683,
+          0,
+          1,
+          0,
+          0.382683,
+          0,
+          0.92388
+        ],
+        "derived_brickmen_y_rotation_deg_approx": -22.5
       }
     },
     {
@@ -195,6 +284,28 @@
           0,
           0,
           -1
+        ],
+        "translation_brickmen_ldu": [
+          -40,
+          0,
+          126
+        ],
+        "translation_brickmen_nominal_mm": [
+          -16,
+          0,
+          50.4
+        ],
+        "matrix_frame": "ldraw_source",
+        "matrix_brickmen": [
+          -1,
+          0,
+          0,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          1
         ]
       }
     },
@@ -214,6 +325,28 @@
           0
         ],
         "matrix": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "translation_brickmen_ldu": [
+          -40,
+          0,
+          126
+        ],
+        "translation_brickmen_nominal_mm": [
+          -16,
+          0,
+          50.4
+        ],
+        "matrix_frame": "ldraw_source",
+        "matrix_brickmen": [
           1,
           0,
           0,
@@ -252,7 +385,30 @@
           0,
           1
         ],
-        "derived_z_rotation_deg_approx": 22.5
+        "derived_z_rotation_deg_approx": 22.5,
+        "translation_brickmen_ldu": [
+          -70,
+          -40,
+          86
+        ],
+        "translation_brickmen_nominal_mm": [
+          -28,
+          -16,
+          34.4
+        ],
+        "matrix_frame": "ldraw_source",
+        "matrix_brickmen": [
+          0.92388,
+          0,
+          0.382683,
+          0,
+          1,
+          0,
+          -0.382683,
+          0,
+          0.92388
+        ],
+        "derived_brickmen_y_rotation_deg_approx": 22.5
       }
     }
   ],
@@ -270,7 +426,17 @@
         16,
         -16
       ],
-      "source": "10154 !HELP"
+      "source": "10154 !HELP",
+      "coordinates_brickmen_ldu": [
+        30,
+        -40,
+        -40
+      ],
+      "coordinates_brickmen_nominal_mm": [
+        12,
+        -16,
+        -16
+      ]
     },
     {
       "component_id": "right_arm",
@@ -285,7 +451,17 @@
         16,
         -16
       ],
-      "source": "10124 !HELP"
+      "source": "10124 !HELP",
+      "coordinates_brickmen_ldu": [
+        -30,
+        -40,
+        -40
+      ],
+      "coordinates_brickmen_nominal_mm": [
+        -12,
+        -16,
+        -16
+      ]
     },
     {
       "component_id": "left_hand",
@@ -301,7 +477,17 @@
         "z": -8
       },
       "source": "10127 !HELP",
-      "note": "X is intentionally null because the published HELP line specifies only y and z."
+      "note": "X is intentionally null because the published HELP line specifies only y and z.",
+      "coordinates_brickmen_ldu": {
+        "x": null,
+        "y": -20,
+        "z": 9.745
+      },
+      "coordinates_brickmen_nominal_mm": {
+        "x": null,
+        "y": -8,
+        "z": 3.898
+      }
     },
     {
       "component_id": "right_hand",
@@ -317,7 +503,17 @@
         "z": -8
       },
       "source": "10126 !HELP",
-      "note": "X is intentionally null because the published HELP line specifies only y and z."
+      "note": "X is intentionally null because the published HELP line specifies only y and z.",
+      "coordinates_brickmen_ldu": {
+        "x": null,
+        "y": -20,
+        "z": 9.745
+      },
+      "coordinates_brickmen_nominal_mm": {
+        "x": null,
+        "y": -8,
+        "z": 3.898
+      }
     }
   ],
   "derived_reference_facts": [
@@ -334,7 +530,17 @@
         40,
         -40
       ],
-      "note": "Root-space hand translation minus left-arm root translation exactly matches the published left-arm hand-socket center."
+      "note": "Root-space hand translation minus left-arm root translation exactly matches the published left-arm hand-socket center.",
+      "value_brickmen_ldu": [
+        30,
+        -40,
+        -40
+      ],
+      "value_brickmen_nominal_mm": [
+        12,
+        -16,
+        -16
+      ]
     },
     {
       "name": "default_right_arm_to_hand_translation",
@@ -343,7 +549,17 @@
         40,
         -40
       ],
-      "note": "Root-space hand translation minus right-arm root translation exactly matches the published right-arm hand-socket center."
+      "note": "Root-space hand translation minus right-arm root translation exactly matches the published right-arm hand-socket center.",
+      "value_brickmen_ldu": [
+        -30,
+        -40,
+        -40
+      ],
+      "value_brickmen_nominal_mm": [
+        -12,
+        -16,
+        -16
+      ]
     }
   ],
   "articulation_status": {
@@ -357,6 +573,31 @@
     "Use these transforms for digital-twin alignment and rendering, not as tolerance measurements.",
     "Do not infer insertion force or friction from the LDraw shortcut.",
     "Keep default-pose transforms separate from allowed articulation ranges.",
-    "Physical samples remain authoritative for manufacturing-critical connector geometry."
-  ]
+    "Physical samples remain authoritative for manufacturing-critical connector geometry.",
+    "Never interpret raw LDraw Y as Brickmen depth or raw LDraw Z as Brickmen height; convert through the explicit right-handed frame mapping first."
+  ],
+  "coordinate_frames": {
+    "ldraw_source": {
+      "handedness": "right",
+      "axes": {
+        "x": "lateral",
+        "y": "vertical_down; -Y is up",
+        "z": "depth"
+      },
+      "status": "source_frame_for_all_existing_raw_ldraw_transforms"
+    },
+    "brickmen_semantic": {
+      "handedness": "right",
+      "axes": {
+        "x": "left_to_right",
+        "y": "back_to_front_depth",
+        "z": "feet_to_head_up"
+      },
+      "from_ldraw": {
+        "x": "ldraw_x",
+        "y": "ldraw_z",
+        "z": "-ldraw_y"
+      }
+    }
+  }
 }
