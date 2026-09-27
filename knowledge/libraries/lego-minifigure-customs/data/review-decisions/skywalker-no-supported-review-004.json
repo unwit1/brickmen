@@ -1,0 +1,200 @@
+{
+  "schema": "skywalker-no-supported-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-no-supported-review-004",
+  "policy": "Correct source spelling/alias normalization before thresholding. A one-character typo or punctuation/zero-letter ambiguity should not demote an exact physical match. Conversely, a DLC-only outfit should remain digital-only when no matching official physical minifigure is found, even if the underlying character has many physical releases.",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-0dcb76942c3fd100358d8553",
+      "character_variant_key": "R0GR",
+      "decision": "compact_name_normalization_verified_exact_ro_gr_physical_counterpart_below_threshold",
+      "canonical_subject": "R0-GR (Roger)",
+      "alias_resolution": {
+        "source_key": "R0GR",
+        "catalog_name": "R0-GR (Roger)",
+        "catalog_alias": "RO-GR",
+        "confidence": "high",
+        "note": "zero/O punctuation normalization"
+      },
+      "physical_counterpart": {
+        "fig_num": "fig-004?",
+        "brickset_minifig": "sw0756",
+        "catalog_name": "R0-GR (Roger)",
+        "year": 2016,
+        "sets": [
+          "75147-1",
+          "75186-1"
+        ]
+      },
+      "reason": "Brickset lists R0-GR (Roger) as sw0756 in two Freemaker Adventures sets from 2016/2017. The resolver's compact key lost punctuation and the catalog mixes zero/O notation, causing unrelated astromechs to outrank the exact character. This is a normalization miss, not a catalog gap.",
+      "systemic_pattern": "zero_letter_and_punctuation_normalization_needed_for_droid_names",
+      "evidence_urls": [
+        "https://brickset.com/minifigs/name-RO-GR",
+        "https://brickset.com/minifigs/sw0756/r0-gr-%28roger%29"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-fd71b3ebbacf259a37c82c1e",
+      "character_variant_key": "MaagnaGuard",
+      "decision": "source_typo_normalized_to_magnaguard_exact_physical_counterpart_verified",
+      "canonical_subject": "IG-100 MagnaGuard",
+      "typo_resolution": {
+        "source_key": "MaagnaGuard",
+        "canonical": "MagnaGuard",
+        "confidence": "high",
+        "edit": "remove duplicated 'a'"
+      },
+      "physical_counterpart": {
+        "fig_num": "fig-003720",
+        "brickset_minifig": "sw0190",
+        "catalog_name": "IG-100 MagnaGuard (Magna Guard) / Magna Droid",
+        "first_year": 2008,
+        "sets": [
+          "7673-1",
+          "7752-1"
+        ]
+      },
+      "reason": "The source key contains a simple duplicated-vowel typo. Once normalized to MagnaGuard, the leading candidate is the exact IG-100 MagnaGuard physical figure, released in 2008 and 2009. This should be promoted at the character/release-family level while exact source-art equivalence remains a separate visual question.",
+      "systemic_pattern": "low_edit_distance_typo_correction_should_precede_candidate_thresholding_when_identity_is_unique",
+      "evidence_urls": [
+        "https://brickset.com/minifigs/category-Star-Wars/name-Magnaguard"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-8c39296d656762f0e2aa5ef0",
+      "character_variant_key": "ObiWanHawaiianShirt",
+      "decision": "digital_dlc_outfit_verified_no_matching_official_physical_minifigure_located_base_obi_wan_candidates_rejected",
+      "canonical_subject": "Obi-Wan Kenobi — Hawaiian Shirt / Summer Vacation outfit",
+      "digital_context": {
+        "pack": "LEGO Star Wars Summer Vacation Character Pack",
+        "release_date": "2022-11-01",
+        "source_special": "LEGO Star Wars: Summer Vacation"
+      },
+      "rejected_base_candidates": [
+        {
+          "fig_num": "fig-003634",
+          "catalog_name": "Obi-Wan Kenobi, Yellow Skin",
+          "reason": "ordinary Obi-Wan, not Hawaiian-shirt outfit"
+        },
+        {
+          "fig_num": "fig-000773",
+          "catalog_name": "Obi-Wan Kenobi, Yellow Skin, Headset",
+          "reason": "ordinary/headset variant"
+        },
+        {
+          "fig_num": "fig-004261",
+          "catalog_name": "Obi-Wan Kenobi, Padawan, Printed Legs",
+          "reason": "different age/outfit"
+        },
+        {
+          "fig_num": "fig-003691",
+          "catalog_name": "Obi-Wan Kenobi, Tan Plain Legs, Headset",
+          "reason": "different outfit"
+        },
+        {
+          "fig_num": "fig-001843",
+          "catalog_name": "Obi-Wan Kenobi, Tan Printed Legs, Headset",
+          "reason": "different outfit"
+        }
+      ],
+      "physical_status": {
+        "exact_official_minifigure_located": false,
+        "note": "The 2022 Advent Calendar physically released Darth Vader's Summer Outfit and holiday R2-D2/C-3PO, but current catalog/search evidence did not locate an official Obi-Wan Hawaiian-shirt minifigure."
+      },
+      "reason": "Obi-Wan in a Hawaiian shirt is a documented playable Summer Vacation DLC character released November 1, 2022. The underlying Obi-Wan character has many physical figures, but none of the current candidates represent this explicit beach outfit and no matching official physical minifigure was located. Keep the outfit as a digital-only variant unless later physical evidence appears.",
+      "systemic_pattern": "explicit_dlc_outfit_must_not_fall_back_to_base_character_physical_figures",
+      "evidence_urls": [
+        "https://store.steampowered.com/dlc/920210/LEGO_Star_Wars_Die_Skywalker_Saga/",
+        "https://www.brickfanatics.com/lego-star-wars-skywalker-saga-dlcs-available",
+        "https://www.starwars.com/news/bring-home-the-galaxy-week-2"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-cfe8ca382294244a94d4affc",
+      "character_variant_key": "Emperors_RoyalGuard",
+      "decision": "role_synonym_verified_imperial_royal_guard_physical_family_supported_below_threshold_multiple_pre_game_generations_visual_pending",
+      "canonical_subject": "Emperor's Royal Guard / Imperial Royal Guard",
+      "synonym_resolution": {
+        "source": "Emperor's Royal Guard",
+        "catalog": "Imperial Royal Guard / Royal Guard",
+        "confidence": "high"
+      },
+      "plausible_pre_game_physical_candidates": [
+        {
+          "fig_num": "fig-003543",
+          "brickset_minifig": "sw0040",
+          "catalog_name": "Imperial Royal Guard - Red Hands",
+          "first_year": 2001
+        },
+        {
+          "fig_num": "fig-003955",
+          "brickset_minifig": "sw0040b",
+          "catalog_name": "Imperial Royal Guard - Black Hands",
+          "first_year": 2006
+        },
+        {
+          "fig_num": "fig-002681",
+          "catalog_name": "Royal Guard, Dark Red Hands, 50231 Cape",
+          "first_year": 2014
+        },
+        {
+          "fig_num": "fig-002521",
+          "catalog_name": "Royal Guard, Dark Red Hands, 19888 Cape, 3626c Head",
+          "first_year": 2016
+        }
+      ],
+      "rejected_post_game_candidate": {
+        "fig_num": "fig-017463",
+        "catalog_name": "Royal Guard, Dark Red Hands, Short Cape",
+        "year": 2026
+      },
+      "reason": "'Emperor's Royal Guard' and 'Imperial Royal Guard' refer to the same role family. Several exact Royal Guard physical generations predate the game, but wording differences and possessive normalization suppressed the scores. Exact print/cape generation remains visual pending.",
+      "systemic_pattern": "role_synonym_and_possessive_normalization_needed_before_thresholding",
+      "evidence_urls": [
+        "https://brickset.com/minifigs/sw0040/royal-guard-with-red-hands",
+        "https://brickset.com/minifigs/sw0040b/imperial-royal-guard-black-hands"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-17e356a4664d682f04851e1c",
+      "character_variant_key": "ZorriBliss",
+      "decision": "source_spelling_variant_normalized_to_zorii_bliss_exact_physical_counterpart_verified",
+      "canonical_subject": "Zorii Bliss",
+      "typo_resolution": {
+        "source_key": "ZorriBliss",
+        "canonical": "Zorii Bliss",
+        "confidence": "high",
+        "note": "source uses Zorri; official/catalog spelling is Zorii"
+      },
+      "physical_counterpart": {
+        "fig_num": "fig-002116",
+        "brickset_minifig": "sw1050",
+        "catalog_name": "Zorii Bliss",
+        "first_year": 2019,
+        "sets": [
+          "75249-1",
+          "75263-1"
+        ]
+      },
+      "reason": "The official/catalog character spelling is Zorii Bliss, while the source key uses ZorriBliss. The leading candidate is the exact character and predates the game. This is a spelling-normalization miss rather than an unsupported character.",
+      "systemic_pattern": "canonical_name_spelling_aliases_should_precede_similarity_thresholds",
+      "evidence_urls": [
+        "https://brickset.com/minifigs/name-Zorii-Bliss"
+      ]
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "typo_or_normalization_misses": 3,
+    "role_synonym_threshold_miss": 1,
+    "digital_only_explicit_outfit_current_catalog_gap": 1,
+    "automatic_exact_artwork_equivalence_promotions": 0
+  },
+  "remaining_no_supported_records_after_batch": 76,
+  "systemic_findings": [
+    "Normalize punctuation and zero/O ambiguity in droid names such as R0-GR/RO-GR before scoring.",
+    "Correct obvious source typos such as MaagnaGuard and ZorriBliss when independent catalog identity is exact and unique.",
+    "Possessive/title synonyms such as Emperor's Royal Guard versus Imperial Royal Guard need canonical role aliases.",
+    "Explicit DLC outfits must not silently fall back to ordinary physical versions of the same character."
+  ]
+}
