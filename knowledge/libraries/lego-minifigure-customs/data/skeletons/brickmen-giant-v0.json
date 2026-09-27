@@ -780,7 +780,8 @@
       "size_modifiers": {
         "x": "torso_width_scale",
         "y": "torso_depth_scale"
-      }
+      },
+      "component_slot_id": "torso_shell"
     },
     {
       "id": "head",
@@ -795,7 +796,8 @@
         "x": "head_width_scale",
         "y": "head_depth_scale",
         "z": "head_height_scale"
-      }
+      },
+      "component_slot_id": "head_shell"
     },
     {
       "id": "abdomen",
@@ -809,7 +811,8 @@
       "size_modifiers": {
         "y": "abdomen_projection_scale",
         "x": "abdomen_width_scale"
-      }
+      },
+      "component_slot_id": "torso_shell"
     },
     {
       "id": "arm_l",
@@ -827,7 +830,8 @@
         "y": "arm_bulk_depth_scale"
       },
       "frame_semantic": "bone_aligned_visual_envelope",
-      "visual_authority": "Brickmen rounded baseline informed by official Giant component-profile statistics; not copied surface geometry."
+      "visual_authority": "Brickmen rounded baseline informed by official Giant component-profile statistics; not copied surface geometry.",
+      "component_slot_id": "arm_l_shell"
     },
     {
       "id": "arm_r",
@@ -845,7 +849,8 @@
         "y": "arm_bulk_depth_scale"
       },
       "frame_semantic": "bone_aligned_visual_envelope",
-      "visual_authority": "Brickmen rounded baseline informed by official Giant component-profile statistics; not copied surface geometry."
+      "visual_authority": "Brickmen rounded baseline informed by official Giant component-profile statistics; not copied surface geometry.",
+      "component_slot_id": "arm_r_shell"
     },
     {
       "id": "hand_l",
@@ -862,7 +867,8 @@
         "z": "hand_height_scale"
       },
       "frame_semantic": "component_local_visual_envelope",
-      "visual_authority": "Brickmen rounded baseline informed by official Giant component-profile statistics."
+      "visual_authority": "Brickmen rounded baseline informed by official Giant component-profile statistics.",
+      "component_slot_id": "hand_l_shell"
     },
     {
       "id": "hand_r",
@@ -879,7 +885,8 @@
         "z": "hand_height_scale"
       },
       "frame_semantic": "component_local_visual_envelope",
-      "visual_authority": "Brickmen rounded baseline informed by official Giant component-profile statistics."
+      "visual_authority": "Brickmen rounded baseline informed by official Giant component-profile statistics.",
+      "component_slot_id": "hand_r_shell"
     },
     {
       "id": "lower_body",
@@ -897,7 +904,8 @@
         "y": "lower_body_depth_scale"
       },
       "frame_semantic": "body_axis_visual_envelope",
-      "visual_authority": "Brickmen rounded baseline informed by official Giant lower-body profile-band statistics; deliberately independent from hip/stance joint spacing."
+      "visual_authority": "Brickmen rounded baseline informed by official Giant lower-body profile-band statistics; deliberately independent from hip/stance joint spacing.",
+      "component_slot_id": "lower_body_shell"
     }
   ],
   "generation_contract": {
