@@ -332,3 +332,98 @@ The scan is "coverage-complete" for a target source/period only when:
 - no architecture assignment used unsupported maker-prefix propagation.
 
 The global census remains open-ended because new custom body systems continue to appear.
+
+## Mega-scale, buildable, and enhanced-articulation findings
+
+### MegaFig is a source label, not a scale standard
+
+The current catalog scan finds radically different products under `MegaFig`.
+
+A particularly coherent candidate family is OA2201-OA2204:
+- Dr Manhattan OA2201 — 16 cm;
+- Sentinel OA2202 — 16 cm;
+- Atom Smasher OA2203 — 16 cm;
+- Giant Man OA2204 — 16 cm.
+
+Because four adjacent release codes share the same documented height and product label, Brickmen records an **OA 16 cm MegaFig family candidate**. It is not promoted to a mechanical architecture until joints/components are resolved.
+
+DY_Minifigs demonstrates why the generic label cannot become an architecture:
+- DY1806 Galactus — 28.5 cm;
+- DY1817 Ant-Man Quantum Realm — 22.5 cm tall / 8 cm wide;
+- other DY MegaFig releases exist with unresolved dimensions.
+
+Therefore `MegaFig` is handled as:
+- source label;
+- scale clue;
+- product-family discovery term;
+not connector truth.
+
+### Buildable is separate from MegaFig/BigFig
+
+HeroBloks character graphs explicitly separate:
+- standard/minifigure versions;
+- BigFig;
+- buildable;
+- MegaFig.
+
+Giant Man, Sentinel and Galactus are useful examples.
+
+A buildable figure should be modeled as a **construction graph of ordinary/specialized building elements**, not as one body shell.
+
+Recognition must classify:
+```
+molded_or_printed_body
+vs
+brick_built_character
+```
+before attempting part segmentation or manufacturing.
+
+### Standard-scale ball-joint arm systems
+
+A second important custom direction changes articulation without changing overall minifigure scale.
+
+Current evidence:
+- AmericanBricks Wookiee Warriors use ball-jointed arms;
+- Republic Customs Helldivers use newly molded ball-jointed arms;
+- an AmericanBricks TCS Anakin/Obi-Wan listing instructs the user to insert a small clear pin into the torso before attaching the arm;
+- HeroBloks tags Evri House Kratos FT19 with `Ball-joint Arms`.
+
+This deserves architecture-level tracking because:
+- shoulder joint type changes;
+- arm orientation range changes;
+- animation/pose generation changes;
+- wear surfaces and connector validation change.
+
+But the generic label still does **not** prove that all ball-joint arm products share one pin/socket standard.
+
+Brickmen therefore uses:
+`custom_standard_ball_joint_arm_adapter`
+as a feature/family candidate until concrete maker joint profiles are measured.
+
+### Same maker is not one scale
+
+Renzaima currently has two War Machine Mk 1 records at materially different documented heights:
+- one 8 cm;
+- another 4.3 cm.
+
+This is a strong practical example of why the architecture resolver cannot propagate body architecture from maker + character alone.
+
+### BigFig terminology crosses franchises
+
+The current scan also finds BigFig-labeled custom figures outside Marvel/DC, including:
+- One Piece Franky WM2786;
+- Gear 4 Luffy / Nightmare Luffy BigFig variants.
+
+This further supports treating BigFig as a market morphology label rather than one superhero-specific mechanical standard.
+
+### Bighead remains unresolved
+
+HeroBloks preserves Hulk `bighead` releases separately from normal and BigFig variants.
+
+Without component/joint evidence, `bighead` remains:
+- source morphology label;
+- visual-style/retrieval signal;
+- unknown architecture candidate when necessary.
+
+Do not assume a large head implies any particular torso/leg system.
+
