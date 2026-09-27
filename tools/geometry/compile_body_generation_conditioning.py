@@ -426,6 +426,9 @@ def compile_conditioning(
             "expected_generated_part_count": generation_contract.get(
                 "expected_generated_part_count"
             ),
+            "joint_component_bindings": generation_contract.get(
+                "joint_component_bindings", []
+            ),
         },
         "mechanical_constraints": joint_constraints,
         "conditioning_channels": {
