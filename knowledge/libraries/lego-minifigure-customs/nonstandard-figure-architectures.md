@@ -483,3 +483,55 @@ Representative current evidence:
 - printable community Giant/MidFig models as secondary engineering evidence
 
 Catalog evidence establishes identity and candidate relationships. Only physical metrology should establish manufacturing-critical dimensions.
+
+## Topology extension: non-humanoid and multi-segment bodies
+
+The architecture registry must cover more than humanoid scale classes.
+
+Official catalog evidence establishes useful topology precedents:
+
+- **stacked-torso multi-arm**: Lord Garmadon figures can combine a standard torso with an additional modified short torso/armor assembly, creating a second shoulder/arm level rather than using one four-arm torso;
+- **specialized mechanical/droid**: General Grievous has dedicated mechanical torso, arm and leg families;
+- **ghost lower body**: 19859 family;
+- **serpent lower body**: 98140 family with molded flexible tail;
+- **merfolk lower body**: 65755 family;
+- **tentacle lower bodies**: 24793 / 87749 families;
+- **robot roller lower body**: 5470;
+- **centaur hybrid**: 67638 lower body;
+- **Jabba-style specialized tail body**: 98111c01 family;
+- **integrated character-specific bodies**: Angry Birds, Gollum-like integrated body/head forms, Lumpy Space Princess and other franchise-specific molds.
+
+These are not merely cosmetic tags. They change:
+- component graph;
+- locomotion/footprint;
+- articulation;
+- surface map;
+- accessory clearance;
+- pose generation;
+- support/printing strategy.
+
+### Generation rule
+
+The generator should preserve standard-minifigure grammar only on components that remain standard.
+
+For example:
+- centaur: standard head/torso/arms may use minifigure art grammar, while the quadruped lower body gets its own surface/style map;
+- serpent: do not invent two legs because the character was trained mostly on standard figures;
+- multi-arm: shoulder levels and arm count come from FigureArchitecture before character styling;
+- mechanical droid: do not force flesh/minifigure-arm assumptions onto mechanical limbs.
+
+### Release-level architecture evidence
+
+Maker and serial prefixes are priors, not architecture IDs.
+
+Current custom-market evidence reinforces this:
+- Alpha Toys AF345 Hulk is sold around 7 cm and HeroBloks groups Alpha releases separately from explicit BigFig entries;
+- Alpha AF361 Beast and AF363 Colossus are cataloged at 7 cm;
+- G (2) GH0304 Hulk is a distinct muscular minifigure-like form in product imagery, while G (2) GH0318 Kingpin is separately cataloged as a BigFig.
+
+Therefore all custom ingestion writes a `FigureArchitectureObservation` per release/body family before any maker-level propagation.
+
+See:
+- `nonstandard-body-census-and-ingestion.md`
+- `data/figure-architecture-observation-schema.json`
+- `data/body-style-profile-registry.json`.
