@@ -544,7 +544,7 @@ Next:
 - [x] implement BodyEnvelopeProfile fitting against visual width/depth observations
 - [x] add skeleton-to-reference SVG/image overlay renderer
 - [ ] fit head scale and separate torso/leg segment lengths
-- [ ] connect fitted skeleton/envelope outputs to part-aware generation prompts/conditioning
+- [x] connect fitted skeleton/envelope outputs to part-aware generation prompts/conditioning
 
 
 ### Official geometry fitting anchors — 2026-09-27
@@ -574,7 +574,7 @@ Next:
 - [ ] acquire/scan physical Axl 23763/24128 and 24101/24104 components
 - [ ] replace provisional Axl arm-pinhole hypotheses with physical measurements
 - [x] add fixed/reference-parameter constraints to skeleton fitting
-- [ ] fit Axl outer envelope without scaling locked standard donor frames
+- [x] fit Axl outer envelope without scaling locked/default donor frames
 
 
 ### Independent BodyEnvelopeProfile fitting — 2026-09-27
@@ -691,3 +691,27 @@ Still intentionally open:
 - [ ] insertion/removal force and torque measurements;
 - [ ] cycle/wear validation;
 - [ ] production-approved shoulder cartridge geometry.
+
+
+### BodyGenerationConditioning compiler — 2026-09-27
+
+- [x] add provider-neutral generation-conditioning schema
+- [x] compile skeleton/proportion, visual-envelope, component-plan and mechanical-constraint layers separately
+- [x] preserve reference height separately from Brickmen target design height
+- [x] preserve fixed-mm commodity hardware independently from normalized generator keep-outs
+- [x] propagate per-joint mechanical authority class
+- [x] block validation-pending/reference CAD from becoming production mating geometry
+- [x] add Giant official-CAD + 43093 conditioning regression
+- [x] add Axl Broad-envelope regression proving shell width can change without shoulder movement
+- [x] add canonical generated Giant and Axl conditioning fixtures
+- [x] integrate conditioning into BodyStyleCompilation and CharacterBodyDesignSpec contracts
+- [x] update CLI/documentation flow through part-aware generation
+
+Canonical fixtures:
+- `data/generation-conditioning/brickmen-giant-official-cad-v0.json`
+- `data/generation-conditioning/brickmen-broad-axl-envelope-v0.json`
+
+Next:
+- [ ] extend visual conditioning beyond torso/head/abdomen to arms, hands and lower body
+- [ ] add component-specific keep-out placement frames rather than bbox-only reference sizes
+- [ ] route conditioning payloads into provider adapters/benchmarks for PartCrafter and monolithic+segmentation paths
