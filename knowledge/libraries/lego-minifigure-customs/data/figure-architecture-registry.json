@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.4",
+  "schema_version": "0.5",
   "observed_at": "2026-09-27",
   "status": "research_registry_physical_metrology_incomplete",
   "rules": [
@@ -872,6 +872,191 @@
       ],
       "sources": [
         "https://www.herobloks.com/figures/637/xinh/002/hulk"
+      ]
+    },
+    {
+      "architecture_id": "custom_sidan_full_balljoint_poseable",
+      "canonical_name": "Si-Dan full poseable ball-joint minifigure",
+      "scale_class": "standard_articulated",
+      "maker_scope": [
+        "Si-Dan Toys"
+      ],
+      "status": "commercial_architecture_strong_product_evidence_metrology_pending",
+      "source_aliases": [
+        "Poseable Minifig"
+      ],
+      "component_graph_notes": [
+        "Product description states ball joints on arms, legs, feet and neck.",
+        "Maintains LEGO-style minifigure compatibility."
+      ],
+      "research_value": [
+        "full-body ball-joint standard-scale articulation",
+        "independent foot articulation",
+        "alternative to standard shoulder/hip swivel architecture"
+      ],
+      "sources": [
+        "https://minifigworld.com/categories?page=4",
+        "https://minifigworld.com/minifigures/?page=2&sort=pricedesc"
+      ]
+    },
+    {
+      "architecture_id": "custom_midfig_balljoint_upper",
+      "canonical_name": "Custom MidFig torso with ball-jointed arms",
+      "scale_class": "intermediate_upper_body",
+      "status": "commercial_architecture_product_evidence_metrology_pending",
+      "maker_scope": [
+        "Titanic Bricks"
+      ],
+      "source_aliases": [
+        "Midfig torso and arms with ball joints"
+      ],
+      "component_graph_notes": [
+        "Oversized MidFig torso and arms.",
+        "Product explicitly describes articulated ball joints and compatibility with standard minifigure parts."
+      ],
+      "research_value": [
+        "intermediate-size torso with wider shoulder motion",
+        "useful Brickmen Mid/Broad shoulder-joint precedent"
+      ],
+      "sources": [
+        "https://titanicbricks.com/products/midfig-torso-and-arms-with-ball-joints-custom-lego-compatible"
+      ]
+    },
+    {
+      "architecture_id": "custom_standard_four_arm_single_torso",
+      "canonical_name": "Custom standard-compatible single-torso four-arm architecture",
+      "scale_class": "standard_multiarm",
+      "status": "commercial_architecture_product_evidence_metrology_pending",
+      "maker_scope": [
+        "Titanic Bricks"
+      ],
+      "source_aliases": [
+        "4 four arms torso"
+      ],
+      "notes": [
+        "Distinct from LEGO's stacked-torso multi-arm architecture because four-arm capability is integrated into one standard-compatible custom torso."
+      ],
+      "sources": [
+        "https://titanicbricks.com/products/4-four-arms-torso-custom-minifig"
+      ]
+    },
+    {
+      "architecture_id": "minifig_skeleton_bony",
+      "canonical_name": "LEGO skeleton figure architecture",
+      "scale_class": "standard_specialized",
+      "status": "official_architecture_family",
+      "known_component_families": {
+        "torso": [
+          "60115"
+        ],
+        "arms": [
+          "93609",
+          "93061"
+        ],
+        "legs": [
+          "6266",
+          "23769"
+        ]
+      },
+      "notes": [
+        "Uses standard minifigure-style head compatibility but dedicated bony torso/arm/leg parts.",
+        "Useful reference for extremely thin printable/mechanical bodies."
+      ],
+      "sources": [
+        "https://brickarchitect.com/parts/category-10"
+      ]
+    },
+    {
+      "architecture_id": "minifig_battle_droid_mechanical",
+      "canonical_name": "LEGO Battle Droid mechanical architecture",
+      "scale_class": "standard_mechanical",
+      "status": "official_architecture_family",
+      "known_component_families": {
+        "torso": [
+          "30375"
+        ],
+        "head": [
+          "30378"
+        ],
+        "arms": [
+          "30377",
+          "59230"
+        ],
+        "legs": [
+          "30376"
+        ]
+      },
+      "notes": [
+        "Dedicated mechanical torso, head, arms and legs form a distinct component/joint graph."
+      ],
+      "sources": [
+        "https://brickhub.org/p/class.php?class=Minifig&path=1",
+        "https://www.fanastock.fr/search/sets/set/22808"
+      ]
+    },
+    {
+      "architecture_id": "minifig_super_battle_droid_integrated",
+      "canonical_name": "LEGO Super Battle Droid integrated torso/head architecture",
+      "scale_class": "standard_mechanical",
+      "status": "official_architecture_family",
+      "known_component_families": {
+        "torso_head": [
+          "41889",
+          "5342"
+        ],
+        "arms": [
+          "41890",
+          "31785"
+        ],
+        "legs": [
+          "42687"
+        ]
+      },
+      "notes": [
+        "Head is integrated into the torso/body family rather than using a separate minifigure head connection."
+      ],
+      "sources": [
+        "https://www.beta.fanastock.fr/search/sets/set/22874",
+        "https://brickarchitect.com/parts/category-10"
+      ]
+    },
+    {
+      "architecture_id": "minifig_lowerbody_faun_digitigrade",
+      "canonical_name": "Minifigure upper body with faun/digitigrade lower body",
+      "scale_class": "standard_modified",
+      "status": "official_architecture_variant",
+      "parent_architecture": "minifig_standard",
+      "representative_characters": [
+        "Faun",
+        "Aarakocra Ranger"
+      ],
+      "notes": [
+        "Digitigrade/goat-like lower legs change leg silhouette and foot posture while retaining standard upper-body grammar."
+      ],
+      "sources": [
+        "https://www.brothers-brick.com/2016/01/12/guide-to-feeling-blind-packs-for-lego-collectible-minifigures-series-15-review/",
+        "https://www.brickeconomy.com/minifig/col234/faun"
+      ]
+    },
+    {
+      "architecture_id": "lego_homemaker_maxifigure_legacy",
+      "canonical_name": "Legacy LEGO Homemaker / maxifigure architecture",
+      "scale_class": "large_legacy",
+      "status": "historical_reference_architecture",
+      "source_aliases": [
+        "Homemaker figure",
+        "maxifigure"
+      ],
+      "notes": [
+        "1970s-1980s large figure system predating modern minifigure terminology.",
+        "Uses a modified brick-like torso, flexible/hinged arm construction and stud/towball-like hand pieces rather than modern minifigure joints."
+      ],
+      "research_value": [
+        "historic large-body alternative architecture",
+        "proof that 'maxifigure' has older meaning unrelated to modern custom-market MaxiFig labels"
+      ],
+      "sources": [
+        "https://owiki.org/wiki/Lego_minifigure"
       ]
     }
   ],
