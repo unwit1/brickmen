@@ -1,0 +1,155 @@
+{
+  "schema": "mask-headgear-route-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "mask-headgear-route-review-003",
+  "purpose": "Confirm identity-bearing mask/cowl topology across anthropomorphic species masks and superhero cowls, including repeated component signatures across release variants.",
+  "evidence_policy": {
+    "source": "regenerated Rebrickable-derived physical component census after false-positive repairs",
+    "no_visual_guessing": true,
+    "source_translation_requires_exact_source_appearance_pairing": true
+  },
+  "records": [
+    {
+      "fig_num": "fig-000026",
+      "figure_name": "Firox",
+      "candidate_routes": [
+        "head_print_plus_headgear",
+        "separate_mask_headgear"
+      ],
+      "decision": "physical_route_confirmed_anthropomorphic_species_face_mask_geometry",
+      "confirmed_physical_route": "printed_standard_head_plus_separate_bird_face_mask",
+      "semantic_function": "anthropomorphic_species_identity_geometry",
+      "head_evidence": [
+        {
+          "part_num": "3626cpr9901",
+          "part_name": "Minifig Head Phoenix, Red Eyes and Dark Bluish Gray Goggles, Beak"
+        }
+      ],
+      "headgear_evidence": [
+        {
+          "part_num": "16656pr0005",
+          "part_name": "Mask Bird (Phoenix) with Yellow Beak, Dark Bluish Gray Goggles, Red Eyes print"
+        }
+      ],
+      "confidence": 1,
+      "source_translation_status": "physical_route_confirmed_source_pairing_pending",
+      "training_note": "A standard cylindrical printed head carries eye/goggle/face information while a separate phoenix mask supplies beak and species silhouette. This is identity/species geometry rather than protective equipment."
+    },
+    {
+      "fig_num": "fig-001332",
+      "figure_name": "Ewar with Pearl Gold Shoulder Armor",
+      "candidate_routes": [
+        "head_print_plus_headgear",
+        "separate_mask_headgear"
+      ],
+      "decision": "physical_route_confirmed_anthropomorphic_species_face_mask_geometry",
+      "confirmed_physical_route": "printed_standard_head_plus_separate_bird_face_mask",
+      "semantic_function": "anthropomorphic_species_identity_geometry",
+      "head_evidence": [
+        {
+          "part_num": "3626cpr1126",
+          "part_name": "Minifig Head Equila / Ewar, Dual Sided, Eagle with Beak, Yellow Eyes / Orange Goggles Print"
+        }
+      ],
+      "headgear_evidence": [
+        {
+          "part_num": "12549pr0003",
+          "part_name": "Mask Bird (Eagle) with Yellow Beak and Medium Blue Feathers Print"
+        }
+      ],
+      "confidence": 1,
+      "source_translation_status": "physical_route_confirmed_source_pairing_pending",
+      "training_note": "Ewar's eagle identity is split between a standard printed head and separate beak/feather mask geometry. Shoulder-armor variation is orthogonal to the face route."
+    },
+    {
+      "fig_num": "fig-001334",
+      "figure_name": "Ewar with Flat Silver Shoulder Armor",
+      "candidate_routes": [
+        "head_print_plus_headgear",
+        "separate_mask_headgear"
+      ],
+      "decision": "physical_route_confirmed_anthropomorphic_species_face_mask_geometry",
+      "confirmed_physical_route": "printed_standard_head_plus_separate_bird_face_mask",
+      "semantic_function": "anthropomorphic_species_identity_geometry",
+      "head_evidence": [
+        {
+          "part_num": "3626cpr1126",
+          "part_name": "Minifig Head Equila / Ewar, Dual Sided, Eagle with Beak, Yellow Eyes / Orange Goggles Print"
+        }
+      ],
+      "headgear_evidence": [
+        {
+          "part_num": "12549pr0003",
+          "part_name": "Mask Bird (Eagle) with Yellow Beak and Medium Blue Feathers Print"
+        }
+      ],
+      "confidence": 1,
+      "source_translation_status": "physical_route_confirmed_source_pairing_pending",
+      "training_note": "This release repeats the exact Ewar head-plus-mask topology despite different shoulder armor, confirming that non-head component variants should not create duplicate face-route semantics."
+    },
+    {
+      "fig_num": "fig-001870",
+      "figure_name": "The Flash",
+      "candidate_routes": [
+        "head_print_plus_headgear",
+        "separate_mask_headgear"
+      ],
+      "decision": "physical_route_confirmed_identity_mask_geometry",
+      "confirmed_physical_route": "printed_balaclava_head_plus_separate_lightning_wing_mask",
+      "semantic_function": "superhero_identity_mask_cowl",
+      "head_evidence": [
+        {
+          "part_num": "3626cpr2482",
+          "part_name": "Minifig Head The Flash, Dual Sided, Balaclava, Light Nougat Face, Dark Orange Eyebrows, Grin / Smile with Teeth Print"
+        }
+      ],
+      "headgear_evidence": [
+        {
+          "part_num": "15554pr0001",
+          "part_name": "Mask with Lightning Bolt Wings, Yellow Print (The Flash)"
+        }
+      ],
+      "confidence": 1,
+      "source_translation_status": "physical_route_confirmed_source_pairing_pending",
+      "training_note": "A later Flash head print still uses the same lightning-wing mask geometry as earlier releases. The printed under-mask state can vary while the silhouette-bearing cowl component remains stable."
+    },
+    {
+      "fig_num": "fig-001513",
+      "figure_name": "Batman, Swimsuit with Duck Float (CMF)",
+      "candidate_routes": [
+        "cowl_plus_head",
+        "separate_mask_headgear"
+      ],
+      "decision": "physical_route_confirmed_identity_cowl_with_variant_surface_decoration",
+      "confirmed_physical_route": "human_head_plus_separate_bat_cowl",
+      "semantic_function": "superhero_identity_mask_cowl",
+      "head_evidence": [
+        {
+          "part_num": "3626cpr2116",
+          "part_name": "Minifig Head Bruce Wayne (Batman), Eyebrows, Brown Cheek Lines, Lopsided Open Mouth Grin Print"
+        }
+      ],
+      "headgear_evidence": [
+        {
+          "part_num": "27161pat0001",
+          "part_name": "Mask, Batman Cowl with Blue Swimming Goggles Pattern"
+        }
+      ],
+      "confidence": 1,
+      "source_translation_status": "physical_route_confirmed_source_pairing_pending",
+      "training_note": "The Batman identity silhouette is carried by a separate cowl, with the swimsuit gag expressed as decoration on that same cowl geometry. The duck float is hipwear and correctly excluded from the headgear route after the classifier repair."
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "anthropomorphic_species_identity_geometry": 3,
+    "superhero_identity_mask_cowl": 2,
+    "repeated_component_signature_examples": 2,
+    "source_translation_pairs_promoted": 0
+  },
+  "systemic_findings": [
+    "Exact repeated head-plus-mask component signatures across release variants can support route-topology propagation even when unrelated armor/body components differ.",
+    "The same molded cowl can carry variant decoration while preserving a stable identity-geometry route.",
+    "Physical route topology and semantic function can be reviewed independently of later source-appearance pairing."
+  ]
+}
