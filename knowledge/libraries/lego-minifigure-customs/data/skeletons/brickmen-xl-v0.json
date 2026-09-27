@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.1",
+  "schema_version": "0.2",
   "skeleton_id": "brickmen_xl_v0_skeleton",
   "architecture_id": "brickmen_xl_v0",
   "status": "concept_generation_skeleton_nonproduction",
@@ -53,6 +53,26 @@
       "default": 1,
       "min": 0.75,
       "max": 1.4
+    },
+    "torso_width_scale": {
+      "default": 1,
+      "min": 0.65,
+      "max": 2
+    },
+    "head_width_scale": {
+      "default": 1,
+      "min": 0.75,
+      "max": 1.6
+    },
+    "head_depth_scale": {
+      "default": 1,
+      "min": 0.75,
+      "max": 1.6
+    },
+    "abdomen_width_scale": {
+      "default": 1,
+      "min": 0.65,
+      "max": 1.8
     }
   },
   "nodes": [
@@ -693,7 +713,7 @@
         0.3
       ],
       "size_modifiers": {
-        "x": "shoulder_width_scale",
+        "x": "torso_width_scale",
         "y": "torso_depth_scale"
       }
     },
@@ -707,7 +727,9 @@
         0.22
       ],
       "size_modifiers": {
-        "z": "head_height_scale"
+        "z": "head_height_scale",
+        "x": "head_width_scale",
+        "y": "head_depth_scale"
       }
     },
     {
@@ -720,7 +742,8 @@
         0.14
       ],
       "size_modifiers": {
-        "y": "abdomen_projection_scale"
+        "y": "abdomen_projection_scale",
+        "x": "abdomen_width_scale"
       }
     }
   ],
@@ -746,6 +769,7 @@
     "Coordinates describe a generation/alignment skeleton, not production connector dimensions.",
     "All manufacturing interfaces remain provisional until a validated JointCartridge is assigned.",
     "Target height is a Brickmen design default and may be changed without globally scaling validated connector geometry.",
-    "XL is the most anatomical Brickmen humanoid target and intentionally supports more articulation candidates than Broad/Mid."
+    "XL is the most anatomical Brickmen humanoid target and intentionally supports more articulation candidates than Broad/Mid.",
+    "Visual envelope width/depth parameters are independent from skeletal joint-spacing parameters; changing torso/head/abdomen mass must not move shoulder or lower-body joint centers."
   ]
 }
