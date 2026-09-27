@@ -13,6 +13,15 @@ def conditioning():
                 "joint_profile_id":"pin",
                 "manufacturing_authority":False,
                 "required_validation":["measure pin","cycle test"],
+                "placements":[
+                    {
+                        "placement_id":"shoulder_keepout",
+                        "affected_component_slot_ids":["torso"],
+                        "anchor_mm_at_target_height":[0,0,0],
+                        "reference_keepout_local_min_mm":[-1,-1,-1],
+                        "reference_keepout_local_max_mm":[1,1,1],
+                    }
+                ],
             }
         ],
     }
@@ -76,4 +85,4 @@ def test_bbox_pass_still_requires_topology_keepout_and_pose_collision():
     )
     assert "mesh_topology_preflight" in state["production_readiness"]["blocking_gates"]
     assert "exact_fixed_keepout_validation" in state["production_readiness"]["blocking_gates"]
-    assert "exact_pose_collision_validation" in state["production_readiness"]["blocking_gates"]
+    assert "sampled_pose_collision_validation" in state["production_readiness"]["blocking_gates"]
