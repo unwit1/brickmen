@@ -758,3 +758,26 @@ Policy:
 - do not promote lower/upper torso segment fitting until chest/torso-center landmarks are annotated;
 - safe expanded v1 may be evaluated because it is locally identifiable on every current seed;
 - lower RMSE alone never authorizes architecture or mechanical changes.
+
+
+### Safe-expanded seed fit decision — 2026-09-27
+
+Comparison artifact:
+- `data/reference-landmarks/seed-parameterization-comparison.json`
+
+The identifiable 8-parameter experiment improves all five seed RMSEs, but not strongly enough to replace the current seed defaults yet:
+
+- AF325 Venom: ~2.6% RMSE improvement; thigh still hits max and legacy bounds remain saturated.
+- AF345 Hulk: ~6.4% improvement; neck-head offset hits min and thigh hits max.
+- LEGO Giant image seed: ~2.5% improvement; neck-head offset hits min and shin hits max; stronger official CAD evidence now exists for this architecture.
+- KDL Thing: ~2.4% improvement; neck-head offset hits min and legacy arm/torso/lower-body bounds remain saturated.
+- Axl: ~1.2% improvement; fit remains architecture/landmark mismatch and is superseded by the hybrid-shell/donor-frame interpretation for most purposes.
+
+Decision:
+- [x] keep current 5-parameter seed fit declarations as the default historical baseline;
+- [x] retain safe-expanded v1 as a comparison experiment;
+- [ ] reannotate seed pivots/head/leg landmarks before considering promotion;
+- [ ] add chest/torso-center landmarks to break lower-/upper-torso confounding;
+- [ ] rerun identifiability and parameterization comparison after reviewed annotations.
+
+This avoids interpreting extra degrees of freedom and boundary saturation as automatically better anatomy.
