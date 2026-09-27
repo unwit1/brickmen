@@ -96,3 +96,6 @@ Additional implementation documents:
 - `data/additive-material-candidates.json` — current mechanically distinct resin candidate matrix.
 - `data/additive-process-selection-rules.json` — machine-readable process selection inputs, constraints and outputs.
 - `data/additive-first-experiments.json` — dependency-ordered E001-E020 physical experiment queue.
+
+Canonical additive-manufacturing decision summary:
+- `additive-manufacturing-research-synthesis.md` — concise current conclusions, recommended architecture, automation priorities, and unresolved physical experiments.
