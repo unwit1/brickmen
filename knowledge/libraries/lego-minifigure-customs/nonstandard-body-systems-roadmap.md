@@ -1,3 +1,5 @@
+> **CANONICAL ROADMAP NOTE (2026-09-27):** The unified implementation roadmap is `agentic-custom-parts-and-body-architecture-roadmap.md`. This earlier B0-B14 roadmap remains historical/supporting detail but should not be treated as a separate execution plan.
+
 # Non-Standard Body Systems Roadmap
 
 Created: 2026-09-27
