@@ -955,7 +955,83 @@
     "expected_generated_part_count": {
       "min": 11,
       "max": 11
-    }
+    },
+    "joint_component_bindings": [
+      {
+        "joint_id": "neck",
+        "parent_slot": "torso_shell",
+        "child_slot": "head_shell",
+        "binding_status": "inter_component"
+      },
+      {
+        "joint_id": "shoulder_l",
+        "parent_slot": "torso_shell",
+        "child_slot": "upper_arm_l_shell",
+        "binding_status": "inter_component"
+      },
+      {
+        "joint_id": "shoulder_r",
+        "parent_slot": "torso_shell",
+        "child_slot": "upper_arm_r_shell",
+        "binding_status": "inter_component"
+      },
+      {
+        "joint_id": "elbow_l",
+        "parent_slot": "upper_arm_l_shell",
+        "child_slot": "forearm_l_shell",
+        "binding_status": "inter_component"
+      },
+      {
+        "joint_id": "elbow_r",
+        "parent_slot": "upper_arm_r_shell",
+        "child_slot": "forearm_r_shell",
+        "binding_status": "inter_component"
+      },
+      {
+        "joint_id": "wrist_l",
+        "parent_slot": "forearm_l_shell",
+        "child_slot": "hand_l_shell",
+        "binding_status": "inter_component"
+      },
+      {
+        "joint_id": "wrist_r",
+        "parent_slot": "forearm_r_shell",
+        "child_slot": "hand_r_shell",
+        "binding_status": "inter_component"
+      },
+      {
+        "joint_id": "waist",
+        "parent_slot": "pelvis_shell",
+        "child_slot": "torso_shell",
+        "binding_status": "inter_component"
+      },
+      {
+        "joint_id": "hip_l",
+        "parent_slot": "pelvis_shell",
+        "child_slot": "leg_l_shell",
+        "binding_status": "inter_component"
+      },
+      {
+        "joint_id": "hip_r",
+        "parent_slot": "pelvis_shell",
+        "child_slot": "leg_r_shell",
+        "binding_status": "inter_component"
+      },
+      {
+        "joint_id": "knee_l",
+        "parent_slot": "leg_l_shell",
+        "child_slot": "leg_l_shell",
+        "binding_status": "within_combined_component_slot",
+        "note": "Optional knee requires a future thigh/shin component split before inter-component mechanics can exist."
+      },
+      {
+        "joint_id": "knee_r",
+        "parent_slot": "leg_r_shell",
+        "child_slot": "leg_r_shell",
+        "binding_status": "within_combined_component_slot",
+        "note": "Optional knee requires a future thigh/shin component split before inter-component mechanics can exist."
+      }
+    ]
   },
   "notes": [
     "Coordinates describe a generation/alignment skeleton, not production connector dimensions.",
