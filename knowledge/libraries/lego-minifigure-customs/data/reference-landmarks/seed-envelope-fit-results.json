@@ -1,0 +1,371 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-27",
+  "status": "seed_visual_envelope_fits_after_joint_envelope_decoupling",
+  "authority": "visual_style_only",
+  "references": [
+    {
+      "reference_id": "alpha_af325_venom_front_seed",
+      "skeleton_id": "brickmen_broad_v0_skeleton",
+      "architecture_id": "brickmen_broad_v0",
+      "parameter_overrides": {
+        "head_width_scale": 1.091296,
+        "torso_width_scale": 1.4655,
+        "abdomen_width_scale": 0.951557
+      },
+      "measurements": {
+        "head_width": {
+          "envelope_id": "head",
+          "axis": "x",
+          "parameter": "head_width_scale",
+          "observed_normalized": 0.283737,
+          "base_normalized": 0.26,
+          "raw_scale": 1.091296,
+          "fitted_scale": 1.091296,
+          "fitted_normalized": 0.283737,
+          "residual_normalized": 0,
+          "confidence": 0.8,
+          "bound_hit": false
+        },
+        "chest_outer_width": {
+          "envelope_id": "torso",
+          "axis": "x",
+          "parameter": "torso_width_scale",
+          "observed_normalized": 0.49827,
+          "base_normalized": 0.34,
+          "raw_scale": 1.4655,
+          "fitted_scale": 1.4655,
+          "fitted_normalized": 0.49827,
+          "residual_normalized": 0,
+          "confidence": 0.75,
+          "bound_hit": false
+        },
+        "waist_outer_width": {
+          "envelope_id": "abdomen",
+          "axis": "x",
+          "parameter": "abdomen_width_scale",
+          "observed_normalized": 0.228374,
+          "base_normalized": 0.24,
+          "raw_scale": 0.951557,
+          "fitted_scale": 0.951557,
+          "fitted_normalized": 0.228374,
+          "residual_normalized": 0,
+          "confidence": 0.75,
+          "bound_hit": false
+        }
+      },
+      "unmapped_measurements": {
+        "shoulder_outer_width": {
+          "observed_normalized": 0.782007,
+          "semantic": "outer_deltoid_shoulders",
+          "confidence": 0.8
+        },
+        "hip_outer_width": {
+          "observed_normalized": 0.297578,
+          "semantic": "lower_body_outer_width",
+          "confidence": 0.65
+        }
+      },
+      "bound_hits": [],
+      "diagnostics": {
+        "default_shoulder_joint_span_normalized": 0.37,
+        "observed_outer_shoulder_width_normalized": 0.782007,
+        "outer_shoulder_to_default_joint_span_ratio": 2.113532
+      },
+      "mechanical_parameter_changes": [],
+      "production_geometry_authority": false
+    },
+    {
+      "reference_id": "alpha_af345_hulk_front_seed",
+      "skeleton_id": "brickmen_xl_v0_skeleton",
+      "architecture_id": "brickmen_xl_v0",
+      "parameter_overrides": {
+        "head_width_scale": 0.916258,
+        "torso_width_scale": 1.279127,
+        "abdomen_width_scale": 0.727147
+      },
+      "measurements": {
+        "head_width": {
+          "envelope_id": "head",
+          "axis": "x",
+          "parameter": "head_width_scale",
+          "observed_normalized": 0.238227,
+          "base_normalized": 0.26,
+          "raw_scale": 0.916258,
+          "fitted_scale": 0.916258,
+          "fitted_normalized": 0.238227,
+          "residual_normalized": 0,
+          "confidence": 0.75,
+          "bound_hit": false
+        },
+        "chest_outer_width": {
+          "envelope_id": "torso",
+          "axis": "x",
+          "parameter": "torso_width_scale",
+          "observed_normalized": 0.434903,
+          "base_normalized": 0.34,
+          "raw_scale": 1.279127,
+          "fitted_scale": 1.279127,
+          "fitted_normalized": 0.434903,
+          "residual_normalized": 0,
+          "confidence": 0.75,
+          "bound_hit": false
+        },
+        "waist_outer_width": {
+          "envelope_id": "abdomen",
+          "axis": "x",
+          "parameter": "abdomen_width_scale",
+          "observed_normalized": 0.174515,
+          "base_normalized": 0.24,
+          "raw_scale": 0.727147,
+          "fitted_scale": 0.727147,
+          "fitted_normalized": 0.174515,
+          "residual_normalized": 0,
+          "confidence": 0.7,
+          "bound_hit": false
+        }
+      },
+      "unmapped_measurements": {
+        "shoulder_outer_width": {
+          "observed_normalized": 0.65651,
+          "semantic": "outer_deltoid_shoulders",
+          "confidence": 0.8
+        },
+        "hip_outer_width": {
+          "observed_normalized": 0.218837,
+          "semantic": "lower_body_outer_width",
+          "confidence": 0.6
+        }
+      },
+      "bound_hits": [],
+      "diagnostics": {
+        "default_shoulder_joint_span_normalized": 0.31,
+        "observed_outer_shoulder_width_normalized": 0.65651,
+        "outer_shoulder_to_default_joint_span_ratio": 2.117774
+      },
+      "mechanical_parameter_changes": [],
+      "production_geometry_authority": false
+    },
+    {
+      "reference_id": "lego_sh0371_hulk_front_seed",
+      "skeleton_id": "brickmen_giant_v0_skeleton",
+      "architecture_id": "brickmen_giant_v0",
+      "parameter_overrides": {
+        "head_width_scale": 0.958149,
+        "torso_width_scale": 1.092685,
+        "abdomen_width_scale": 1.057845
+      },
+      "measurements": {
+        "head_width": {
+          "envelope_id": "head",
+          "axis": "x",
+          "parameter": "head_width_scale",
+          "observed_normalized": 0.220374,
+          "base_normalized": 0.23,
+          "raw_scale": 0.958149,
+          "fitted_scale": 0.958149,
+          "fitted_normalized": 0.220374,
+          "residual_normalized": 0,
+          "confidence": 0.8,
+          "bound_hit": false
+        },
+        "chest_outer_width": {
+          "envelope_id": "torso",
+          "axis": "x",
+          "parameter": "torso_width_scale",
+          "observed_normalized": 0.469854,
+          "base_normalized": 0.43,
+          "raw_scale": 1.092685,
+          "fitted_scale": 1.092685,
+          "fitted_normalized": 0.469854,
+          "residual_normalized": 0,
+          "confidence": 0.8,
+          "bound_hit": false
+        },
+        "waist_outer_width": {
+          "envelope_id": "abdomen",
+          "axis": "x",
+          "parameter": "abdomen_width_scale",
+          "observed_normalized": 0.359667,
+          "base_normalized": 0.34,
+          "raw_scale": 1.057845,
+          "fitted_scale": 1.057845,
+          "fitted_normalized": 0.359667,
+          "residual_normalized": 0,
+          "confidence": 0.75,
+          "bound_hit": false
+        }
+      },
+      "unmapped_measurements": {
+        "shoulder_outer_width": {
+          "observed_normalized": 0.679834,
+          "semantic": "outer_shoulders",
+          "confidence": 0.85
+        },
+        "hip_outer_width": {
+          "observed_normalized": 0.397089,
+          "semantic": "giant_lower_body_width",
+          "confidence": 0.7
+        }
+      },
+      "bound_hits": [],
+      "diagnostics": {
+        "default_shoulder_joint_span_normalized": 0.44,
+        "observed_outer_shoulder_width_normalized": 0.679834,
+        "outer_shoulder_to_default_joint_span_ratio": 1.545077
+      },
+      "mechanical_parameter_changes": [],
+      "production_geometry_authority": false
+    },
+    {
+      "reference_id": "kdl_k2302_thing_front_seed",
+      "skeleton_id": "brickmen_xl_v0_skeleton",
+      "architecture_id": "brickmen_xl_v0",
+      "parameter_overrides": {
+        "head_width_scale": 1.210826,
+        "torso_width_scale": 1.034858,
+        "abdomen_width_scale": 1.036155
+      },
+      "measurements": {
+        "head_width": {
+          "envelope_id": "head",
+          "axis": "x",
+          "parameter": "head_width_scale",
+          "observed_normalized": 0.314815,
+          "base_normalized": 0.26,
+          "raw_scale": 1.210826,
+          "fitted_scale": 1.210826,
+          "fitted_normalized": 0.314815,
+          "residual_normalized": 0,
+          "confidence": 0.8,
+          "bound_hit": false
+        },
+        "chest_outer_width": {
+          "envelope_id": "torso",
+          "axis": "x",
+          "parameter": "torso_width_scale",
+          "observed_normalized": 0.351852,
+          "base_normalized": 0.34,
+          "raw_scale": 1.034858,
+          "fitted_scale": 1.034858,
+          "fitted_normalized": 0.351852,
+          "residual_normalized": 0,
+          "confidence": 0.75,
+          "bound_hit": false
+        },
+        "waist_outer_width": {
+          "envelope_id": "abdomen",
+          "axis": "x",
+          "parameter": "abdomen_width_scale",
+          "observed_normalized": 0.248677,
+          "base_normalized": 0.24,
+          "raw_scale": 1.036155,
+          "fitted_scale": 1.036155,
+          "fitted_normalized": 0.248677,
+          "residual_normalized": 0,
+          "confidence": 0.7,
+          "bound_hit": false
+        }
+      },
+      "unmapped_measurements": {
+        "shoulder_outer_width": {
+          "observed_normalized": 0.52381,
+          "semantic": "outer_shoulders",
+          "confidence": 0.75
+        },
+        "hip_outer_width": {
+          "observed_normalized": 0.23545,
+          "semantic": "lower_body_outer_width",
+          "confidence": 0.65
+        }
+      },
+      "bound_hits": [],
+      "diagnostics": {
+        "default_shoulder_joint_span_normalized": 0.31,
+        "observed_outer_shoulder_width_normalized": 0.52381,
+        "outer_shoulder_to_default_joint_span_ratio": 1.68971
+      },
+      "mechanical_parameter_changes": [],
+      "production_geometry_authority": false
+    },
+    {
+      "reference_id": "lego_axl_front_seed",
+      "skeleton_id": "brickmen_broad_v0_skeleton",
+      "architecture_id": "brickmen_broad_v0",
+      "parameter_overrides": {
+        "head_width_scale": 1.287973,
+        "torso_width_scale": 1.983426,
+        "abdomen_width_scale": 0.875674
+      },
+      "measurements": {
+        "head_width": {
+          "envelope_id": "head",
+          "axis": "x",
+          "parameter": "head_width_scale",
+          "observed_normalized": 0.334873,
+          "base_normalized": 0.26,
+          "raw_scale": 1.287973,
+          "fitted_scale": 1.287973,
+          "fitted_normalized": 0.334873,
+          "residual_normalized": 0,
+          "confidence": 0.7,
+          "bound_hit": false
+        },
+        "chest_outer_width": {
+          "envelope_id": "torso",
+          "axis": "x",
+          "parameter": "torso_width_scale",
+          "observed_normalized": 0.674365,
+          "base_normalized": 0.34,
+          "raw_scale": 1.983426,
+          "fitted_scale": 1.983426,
+          "fitted_normalized": 0.674365,
+          "residual_normalized": 0,
+          "confidence": 0.8,
+          "bound_hit": false
+        },
+        "waist_outer_width": {
+          "envelope_id": "abdomen",
+          "axis": "x",
+          "parameter": "abdomen_width_scale",
+          "observed_normalized": 0.210162,
+          "base_normalized": 0.24,
+          "raw_scale": 0.875674,
+          "fitted_scale": 0.875674,
+          "fitted_normalized": 0.210162,
+          "residual_normalized": 0,
+          "confidence": 0.7,
+          "bound_hit": false
+        }
+      },
+      "unmapped_measurements": {
+        "shoulder_outer_width": {
+          "observed_normalized": 1.083141,
+          "semantic": "armor_outer_shoulders",
+          "confidence": 0.85
+        },
+        "hip_outer_width": {
+          "observed_normalized": 0.212471,
+          "semantic": "standard_lower_body_width",
+          "confidence": 0.65
+        }
+      },
+      "bound_hits": [],
+      "diagnostics": {
+        "default_shoulder_joint_span_normalized": 0.37,
+        "observed_outer_shoulder_width_normalized": 1.083141,
+        "outer_shoulder_to_default_joint_span_ratio": 2.927408
+      },
+      "mechanical_parameter_changes": [],
+      "production_geometry_authority": false
+    }
+  ],
+  "derived_lessons": [
+    "All five seed references can fit head/chest/waist visual widths without changing shoulder or other mechanical skeleton parameters.",
+    "Axl requires a very large torso visual-width multiplier while retaining locked standard-compatible donor frames.",
+    "Outer shoulder width is intentionally left unmapped because armor/deltoid/arm mass is not a shoulder-joint-center measurement.",
+    "The large outer-shoulder-to-joint-span diagnostic in Broad references demonstrates why silhouette and mechanics must remain factorized.",
+    "Future side/back references can extend the same profile with depth parameters without altering the mechanical skeleton."
+  ],
+  "warning": "Envelope fits are normalized visual evidence, not production geometry or connector metrology."
+}
