@@ -28,10 +28,11 @@ import subprocess
 from typing import Any, Mapping
 
 
-RUNNABLE = {"partcrafter", "partpacker", "particulate", "sam_3d_objects"}
+RUNNABLE = {"partcrafter", "partpacker", "pact", "particulate", "sam_3d_objects"}
 RUNNABLE_STATUSES = {
     "runnable_cli_verified",
     "runnable_brickmen_python_api_visual_baseline",
+    "runnable_brickmen_dataset_redirect_wrapper_verified",
 }
 
 
@@ -69,6 +70,7 @@ def build_execution_plan(
     output_dir: str | Path,
     source_image: str | Path | None = None,
     mask_path: str | Path | None = None,
+    semantic_mask_exr: str | Path | None = None,
     input_mesh: str | Path | None = None,
     python_executable: str = "python",
 ) -> dict[str, Any]:
@@ -173,6 +175,45 @@ def build_execution_plan(
             "staging_directory": str(stage_dir),
             "staged_path": str(staged),
             "strategy": "single_image_directory",
+        }
+
+    elif provider_id == "pact":
+        image_path = _require_file(
+            source_image or job.get("source_image") or "",
+            "PAct source image",
+        )
+        semantic_mask = _require_file(
+            semantic_mask_exr or "",
+            "PAct semantic part EXR mask",
+        )
+        if semantic_mask.suffix.lower() != ".exr":
+            raise ValueError("PAct semantic part mask must use .exr")
+        wrapper = (
+            Path(__file__).resolve().parent
+            / "provider_wrappers"
+            / "run_pact_arbitrary_input.py"
+        )
+        if not wrapper.is_file():
+            raise ValueError(f"Brickmen PAct wrapper not found: {wrapper}")
+        metadata = out / "brickmen-pact-wrapper.json"
+        command = [
+            python_executable,
+            str(wrapper),
+            "--provider-repo",
+            str(repo),
+            "--image",
+            str(image_path),
+            "--semantic-mask-exr",
+            str(semantic_mask),
+            "--output-dir",
+            str(out),
+            "--metadata",
+            str(metadata),
+        ]
+        staging = {
+            "source_image": str(image_path),
+            "semantic_mask_exr": str(semantic_mask),
+            "strategy": "wrapper_stages_rgba_and_semantic_exr",
         }
 
     elif provider_id == "sam_3d_objects":
@@ -356,6 +397,50 @@ def _classify_outputs(
                 result["auxiliary_outputs"].append(str(path))
             elif path.suffix.lower() == ".glb":
                 result["composite_outputs"].append(str(path))
+    elif provider_id == "pact":
+        manifests = sorted(root.rglob("object.json")) if root.exists() else []
+        seen=set()
+        for manifest_path in manifests:
+            try:
+                payload=json.loads(manifest_path.read_text(encoding="utf-8"))
+            except Exception:
+                continue
+            result["manifest_files"].append(str(manifest_path))
+            parent=manifest_path.parent
+            for item in payload.get("diffuse_tree",[]):
+                part_id=item.get("id")
+                glbs=item.get("glb") or []
+                plys=item.get("plys") or []
+                candidates=[*glbs,*plys]
+                chosen=None
+                for rel in candidates:
+                    candidate=parent/str(rel)
+                    if candidate.is_file():
+                        chosen=candidate
+                        break
+                if chosen is None:
+                    continue
+                path_str=str(chosen)
+                if path_str in seen:
+                    continue
+                seen.add(path_str)
+                result["component_candidates"].append(path_str)
+                result["component_records"].append({
+                    "path":path_str,
+                    "provider_part_id":(
+                        f"part_{int(part_id)}"
+                        if part_id is not None else chosen.stem
+                    ),
+                    "provider_part_index":(
+                        int(part_id) if part_id is not None else None
+                    ),
+                    "provider_manifest":str(manifest_path),
+                    "source_role":"generated_articulated_component",
+                })
+        for path in map(Path, all_outputs):
+            if str(path) in seen or str(path) in result["manifest_files"]:
+                continue
+            result["auxiliary_outputs"].append(str(path))
     elif provider_id == "sam_3d_objects":
         for path in map(Path, all_outputs):
             if path.name == "sam3d-splat.ply":
@@ -448,6 +533,7 @@ def main() -> int:
     parser.add_argument("--provider-repo", default=None)
     parser.add_argument("--source-image", default=None)
     parser.add_argument("--mask", default=None)
+    parser.add_argument("--semantic-mask-exr", default=None)
     parser.add_argument("--input-mesh", default=None)
     parser.add_argument("--output-dir", required=True)
     parser.add_argument("--python", default="python")
@@ -469,6 +555,7 @@ def main() -> int:
         output_dir=args.output_dir,
         source_image=args.source_image,
         mask_path=args.mask,
+        semantic_mask_exr=args.semantic_mask_exr,
         input_mesh=args.input_mesh,
         python_executable=args.python,
     )
