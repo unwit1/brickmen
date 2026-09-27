@@ -159,3 +159,30 @@ def test_direct_normalized_ldraw_giant_envelope_reference():
     assert "torso_depth_scale" not in fit["bound_hits"]
     assert "abdomen_projection_scale" not in fit["bound_hits"]
     assert fit["mechanical_parameter_changes"] == []
+
+
+
+def test_official_giant_limb_envelopes_fit_rounded_brickmen_baselines():
+    spec = load_spec(GIANT)
+    reference = load_reference(
+        BASE / "reference-landmarks" / "lego-giant-limb-ldraw-envelope-profile.json"
+    )
+    fit = fit_envelope_profile(spec, reference)
+
+    assert fit["parameter_overrides"]["arm_bulk_width_scale"] == pytest.approx(
+        0.181781764684078 / 0.18
+    )
+    assert fit["parameter_overrides"]["arm_bulk_depth_scale"] == pytest.approx(
+        0.27980484946128936 / 0.28
+    )
+    assert fit["parameter_overrides"]["hand_width_scale"] == pytest.approx(
+        0.17426889310845864 / 0.175
+    )
+    assert fit["parameter_overrides"]["hand_depth_scale"] == pytest.approx(
+        0.24813372766299466 / 0.25
+    )
+    assert fit["parameter_overrides"]["hand_height_scale"] == pytest.approx(
+        0.20941651574293846 / 0.21
+    )
+    assert fit["mechanical_parameter_changes"] == []
+    assert fit["bound_hits"] == []
