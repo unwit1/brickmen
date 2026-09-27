@@ -1,0 +1,699 @@
+{
+  "schema_version": "0.1",
+  "architecture_id": "brickmen_giant_v0",
+  "skeleton_id": "brickmen_giant_v0_skeleton",
+  "target_height_mm": 62.0,
+  "source_fits": {
+    "skeleton_reference_id": "lego_giant_10128_ldraw_shoulders_fit_2303",
+    "skeleton_reference_height_mm": 71.11760000000001,
+    "skeleton_fit_status": "strong_visual_fit",
+    "envelope_reference_id": "lego_giant_10128_ldraw_body_profile_2303",
+    "envelope_bound_hits": []
+  },
+  "parameter_layers": {
+    "mechanical_shape_and_landmarks": {
+      "shoulder_width_scale": 1.0220833334,
+      "arm_length_scale": 1.0,
+      "torso_height_scale": 1.0,
+      "lower_body_height_scale": 1.0,
+      "stance_width_scale": 1.0,
+      "lower_torso_length_scale": 1.0,
+      "upper_torso_length_scale": 1.0,
+      "neck_head_offset_scale": 1.0,
+      "thigh_length_scale": 1.0,
+      "shin_length_scale": 1.0
+    },
+    "visual_envelope": {
+      "torso_width_scale": 1.0423810944780356,
+      "torso_depth_scale": 1.6693042672823606,
+      "head_width_scale": 1.0802890731974784,
+      "head_depth_scale": 1.288684202670107,
+      "head_height_scale": 1.0,
+      "abdomen_projection_scale": 1.547973449329982,
+      "abdomen_width_scale": 1.1226284715712989
+    },
+    "other": {},
+    "locked_parameters": {},
+    "rule": "Mechanical-shape parameters move skeleton landmarks; visual-envelope parameters resize shell targets. One layer must not silently substitute for the other."
+  },
+  "skeleton_control": {
+    "coordinate_system": {
+      "units": "normalized_body_height",
+      "axes": {
+        "x": "left_to_right",
+        "y": "back_to_front",
+        "z": "feet_to_head"
+      },
+      "origin": "midpoint_between_feet_on_ground"
+    },
+    "nodes": {
+      "root": {
+        "position_normalized_body_height": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "position_mm_at_target_height": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "role": "ground_root",
+        "semantic_side": "center",
+        "functional": false
+      },
+      "pelvis": {
+        "position_normalized_body_height": [
+          0.0,
+          0.0,
+          0.3
+        ],
+        "position_mm_at_target_height": [
+          0.0,
+          0.0,
+          18.6
+        ],
+        "role": "pelvis_center",
+        "semantic_side": "center",
+        "functional": true
+      },
+      "waist": {
+        "position_normalized_body_height": [
+          0.0,
+          0.0,
+          0.4
+        ],
+        "position_mm_at_target_height": [
+          0.0,
+          0.0,
+          24.8
+        ],
+        "role": "waist_interface",
+        "semantic_side": "center",
+        "functional": true
+      },
+      "chest": {
+        "position_normalized_body_height": [
+          0.0,
+          0.0,
+          0.61
+        ],
+        "position_mm_at_target_height": [
+          0.0,
+          0.0,
+          37.82
+        ],
+        "role": "torso_mass_center",
+        "semantic_side": "center",
+        "functional": false
+      },
+      "neck": {
+        "position_normalized_body_height": [
+          0.0,
+          0.0,
+          0.79
+        ],
+        "position_mm_at_target_height": [
+          0.0,
+          0.0,
+          48.98
+        ],
+        "role": "neck_interface",
+        "semantic_side": "center",
+        "functional": true
+      },
+      "head_center": {
+        "position_normalized_body_height": [
+          0.0,
+          0.0,
+          0.9
+        ],
+        "position_mm_at_target_height": [
+          0.0,
+          0.0,
+          55.8
+        ],
+        "role": "head_center",
+        "semantic_side": "center",
+        "functional": false
+      },
+      "shoulder_l": {
+        "position_normalized_body_height": [
+          -0.224858,
+          0.0,
+          0.69
+        ],
+        "position_mm_at_target_height": [
+          -13.941217,
+          0.0,
+          42.78
+        ],
+        "role": "shoulder_joint",
+        "semantic_side": "left",
+        "functional": true
+      },
+      "elbow_l": {
+        "position_normalized_body_height": [
+          -0.291294,
+          0.0,
+          0.55
+        ],
+        "position_mm_at_target_height": [
+          -18.060213,
+          0.0,
+          34.1
+        ],
+        "role": "elbow_landmark",
+        "semantic_side": "left",
+        "functional": false
+      },
+      "wrist_l": {
+        "position_normalized_body_height": [
+          -0.301515,
+          0.0,
+          0.43
+        ],
+        "position_mm_at_target_height": [
+          -18.693904,
+          0.0,
+          26.66
+        ],
+        "role": "wrist_joint",
+        "semantic_side": "left",
+        "functional": true
+      },
+      "hand_l": {
+        "position_normalized_body_height": [
+          -0.316846,
+          0.0,
+          0.38
+        ],
+        "position_mm_at_target_height": [
+          -19.644442,
+          0.0,
+          23.56
+        ],
+        "role": "hand_center",
+        "semantic_side": "left",
+        "functional": false
+      },
+      "shoulder_r": {
+        "position_normalized_body_height": [
+          0.224858,
+          0.0,
+          0.69
+        ],
+        "position_mm_at_target_height": [
+          13.941217,
+          0.0,
+          42.78
+        ],
+        "role": "shoulder_joint",
+        "semantic_side": "right",
+        "functional": true
+      },
+      "elbow_r": {
+        "position_normalized_body_height": [
+          0.291294,
+          0.0,
+          0.55
+        ],
+        "position_mm_at_target_height": [
+          18.060213,
+          0.0,
+          34.1
+        ],
+        "role": "elbow_landmark",
+        "semantic_side": "right",
+        "functional": false
+      },
+      "wrist_r": {
+        "position_normalized_body_height": [
+          0.301515,
+          0.0,
+          0.43
+        ],
+        "position_mm_at_target_height": [
+          18.693904,
+          0.0,
+          26.66
+        ],
+        "role": "wrist_joint",
+        "semantic_side": "right",
+        "functional": true
+      },
+      "hand_r": {
+        "position_normalized_body_height": [
+          0.316846,
+          0.0,
+          0.38
+        ],
+        "position_mm_at_target_height": [
+          19.644442,
+          0.0,
+          23.56
+        ],
+        "role": "hand_center",
+        "semantic_side": "right",
+        "functional": false
+      },
+      "hip_l": {
+        "position_normalized_body_height": [
+          -0.105,
+          0.0,
+          0.28
+        ],
+        "position_mm_at_target_height": [
+          -6.51,
+          0.0,
+          17.36
+        ],
+        "role": "hip_landmark",
+        "semantic_side": "left",
+        "functional": true
+      },
+      "knee_l": {
+        "position_normalized_body_height": [
+          -0.105,
+          0.0,
+          0.14
+        ],
+        "position_mm_at_target_height": [
+          -6.51,
+          0.0,
+          8.68
+        ],
+        "role": "knee_landmark",
+        "semantic_side": "left",
+        "functional": false
+      },
+      "ankle_l": {
+        "position_normalized_body_height": [
+          -0.105,
+          0.0,
+          0.025
+        ],
+        "position_mm_at_target_height": [
+          -6.51,
+          0.0,
+          1.55
+        ],
+        "role": "foot_anchor",
+        "semantic_side": "left",
+        "functional": false
+      },
+      "hip_r": {
+        "position_normalized_body_height": [
+          0.105,
+          0.0,
+          0.28
+        ],
+        "position_mm_at_target_height": [
+          6.51,
+          0.0,
+          17.36
+        ],
+        "role": "hip_landmark",
+        "semantic_side": "right",
+        "functional": true
+      },
+      "knee_r": {
+        "position_normalized_body_height": [
+          0.105,
+          0.0,
+          0.14
+        ],
+        "position_mm_at_target_height": [
+          6.51,
+          0.0,
+          8.68
+        ],
+        "role": "knee_landmark",
+        "semantic_side": "right",
+        "functional": false
+      },
+      "ankle_r": {
+        "position_normalized_body_height": [
+          0.105,
+          0.0,
+          0.025
+        ],
+        "position_mm_at_target_height": [
+          6.51,
+          0.0,
+          1.55
+        ],
+        "role": "foot_anchor",
+        "semantic_side": "right",
+        "functional": false
+      }
+    },
+    "bones": [
+      {
+        "id": "spine_lower",
+        "a": "pelvis",
+        "b": "waist",
+        "role": "torso"
+      },
+      {
+        "id": "spine_upper",
+        "a": "waist",
+        "b": "neck",
+        "role": "torso"
+      },
+      {
+        "id": "neck_head",
+        "a": "neck",
+        "b": "head_center",
+        "role": "head"
+      },
+      {
+        "id": "clavicle_l",
+        "a": "chest",
+        "b": "shoulder_l",
+        "role": "upper_body"
+      },
+      {
+        "id": "upper_arm_l",
+        "a": "shoulder_l",
+        "b": "elbow_l",
+        "role": "arm"
+      },
+      {
+        "id": "forearm_l",
+        "a": "elbow_l",
+        "b": "wrist_l",
+        "role": "arm"
+      },
+      {
+        "id": "hand_link_l",
+        "a": "wrist_l",
+        "b": "hand_l",
+        "role": "hand"
+      },
+      {
+        "id": "clavicle_r",
+        "a": "chest",
+        "b": "shoulder_r",
+        "role": "upper_body"
+      },
+      {
+        "id": "upper_arm_r",
+        "a": "shoulder_r",
+        "b": "elbow_r",
+        "role": "arm"
+      },
+      {
+        "id": "forearm_r",
+        "a": "elbow_r",
+        "b": "wrist_r",
+        "role": "arm"
+      },
+      {
+        "id": "hand_link_r",
+        "a": "wrist_r",
+        "b": "hand_r",
+        "role": "hand"
+      },
+      {
+        "id": "thigh_l",
+        "a": "hip_l",
+        "b": "knee_l",
+        "role": "leg"
+      },
+      {
+        "id": "shin_l",
+        "a": "knee_l",
+        "b": "ankle_l",
+        "role": "leg"
+      },
+      {
+        "id": "thigh_r",
+        "a": "hip_r",
+        "b": "knee_r",
+        "role": "leg"
+      },
+      {
+        "id": "shin_r",
+        "a": "knee_r",
+        "b": "ankle_r",
+        "role": "leg"
+      }
+    ],
+    "joints": [
+      {
+        "joint_id": "neck",
+        "parent_node": "neck",
+        "child_node": "head_center",
+        "joint_type": "modular_head_or_integrated_revision",
+        "axis": [
+          0,
+          0,
+          1
+        ],
+        "range_deg": [
+          -180,
+          180
+        ],
+        "functional": true,
+        "production_interface_status": "unvalidated",
+        "joint_cartridge_ref": null
+      },
+      {
+        "joint_id": "shoulder_l",
+        "parent_node": "chest",
+        "child_node": "shoulder_l",
+        "joint_type": "commodity_pin_or_cartridge_candidate",
+        "axis": [
+          1,
+          0,
+          0
+        ],
+        "range_deg": [
+          -105,
+          105
+        ],
+        "functional": true,
+        "production_interface_status": "unvalidated",
+        "joint_cartridge_ref": null
+      },
+      {
+        "joint_id": "shoulder_r",
+        "parent_node": "chest",
+        "child_node": "shoulder_r",
+        "joint_type": "commodity_pin_or_cartridge_candidate",
+        "axis": [
+          1,
+          0,
+          0
+        ],
+        "range_deg": [
+          -105,
+          105
+        ],
+        "functional": true,
+        "production_interface_status": "unvalidated",
+        "joint_cartridge_ref": null
+      },
+      {
+        "joint_id": "wrist_l",
+        "parent_node": "wrist_l",
+        "child_node": "hand_l",
+        "joint_type": "swivel_cartridge",
+        "axis": [
+          0,
+          1,
+          0
+        ],
+        "range_deg": [
+          -180,
+          180
+        ],
+        "functional": true,
+        "production_interface_status": "unvalidated",
+        "joint_cartridge_ref": null
+      },
+      {
+        "joint_id": "wrist_r",
+        "parent_node": "wrist_r",
+        "child_node": "hand_r",
+        "joint_type": "swivel_cartridge",
+        "axis": [
+          0,
+          1,
+          0
+        ],
+        "range_deg": [
+          -180,
+          180
+        ],
+        "functional": true,
+        "production_interface_status": "unvalidated",
+        "joint_cartridge_ref": null
+      },
+      {
+        "joint_id": "lower_body",
+        "parent_node": "pelvis",
+        "child_node": "waist",
+        "joint_type": "modular_lower_body_interface",
+        "axis": [
+          0,
+          0,
+          1
+        ],
+        "range_deg": [
+          0,
+          0
+        ],
+        "functional": true,
+        "production_interface_status": "unvalidated",
+        "joint_cartridge_ref": null
+      }
+    ],
+    "production_geometry_authority": false
+  },
+  "visual_envelopes": [
+    {
+      "envelope_id": "torso",
+      "shape": "box",
+      "center_node": "chest",
+      "size_normalized_body_height": [
+        0.448224,
+        0.417326,
+        0.34
+      ],
+      "size_mm_at_target_height": [
+        27.78988,
+        25.874216,
+        21.08
+      ],
+      "visual_only": true
+    },
+    {
+      "envelope_id": "head",
+      "shape": "capsule",
+      "center_node": "head_center",
+      "size_normalized_body_height": [
+        0.248466,
+        0.296397,
+        0.2
+      ],
+      "size_mm_at_target_height": [
+        15.404922,
+        18.376637,
+        12.4
+      ],
+      "visual_only": true
+    },
+    {
+      "envelope_id": "abdomen",
+      "shape": "box",
+      "center_node": "waist",
+      "size_normalized_body_height": [
+        0.381694,
+        0.340554,
+        0.16
+      ],
+      "size_mm_at_target_height": [
+        23.665008,
+        21.114358,
+        9.92
+      ],
+      "visual_only": true
+    }
+  ],
+  "component_plan": {
+    "shell_editable_regions": [
+      "torso",
+      "arms",
+      "hands",
+      "head_shell",
+      "lower_body_shell"
+    ],
+    "locked_regions": [
+      "shoulder_hardware_keepouts",
+      "wrist_cartridges",
+      "grip_core",
+      "mounting_anchors"
+    ],
+    "default_lower_body_mode": "giant_modular"
+  },
+  "mechanical_constraints": [
+    {
+      "joint_profile_id": "lego_giant_43093_shoulder_reference_v0",
+      "primitive_type": "commodity_hardware_hybrid",
+      "parent_component_role": "giant_torso_or_shoulder_housing",
+      "child_component_role": "giant_arm",
+      "degrees_of_freedom": 1,
+      "axes": [
+        {
+          "frame": "brickmen_semantic",
+          "vector": [
+            1,
+            0,
+            0
+          ],
+          "semantic": "lateral_shoulder_rotation_pin_axis",
+          "evidence": [
+            "Official complete Giant shortcut places 43093 at the shoulder with its long local axis lateral.",
+            "Pinned 2303 LDraw 43093 reference mesh has nominal bounding extent 16.0 mm along Brickmen X and 6.4 mm across Y/Z."
+          ]
+        }
+      ],
+      "manufacturing_status": "validation_pending",
+      "authority_class": "reference_only_not_manufacturing_authority",
+      "manufacturing_authority": false,
+      "hardware_bom": [
+        {
+          "part_id": "43093",
+          "quantity_per_shoulder": 1,
+          "quantity_per_two_shoulder_body": 2,
+          "procurement_role": "commodity wear hardware",
+          "substitution_policy": "No substitute is production-approved until geometry, material, fit, torque, and cycle behavior are validated."
+        }
+      ],
+      "reference_keepout_bbox_mm": [
+        16,
+        6.4,
+        6.4
+      ],
+      "reference_keepout_normalized_at_target_height": [
+        0.25806451612903225,
+        0.1032258064516129,
+        0.1032258064516129
+      ],
+      "keepout_status": "reference_bbox_only_requires_clearance_margin_and_articulation_sweep_validation",
+      "required_validation": [
+        "Measure physical 43093 critical dimensions from multiple samples.",
+        "Measure official Giant body and arm mating features.",
+        "Record insertion/removal force for hardware into each mating component.",
+        "Measure shoulder breakaway/running torque and axial/radial play.",
+        "Run cycle/wear testing before promoting any printed mating geometry.",
+        "Validate keep-out and articulation sweep inside the intended Brickmen shell."
+      ],
+      "hard_rules": [
+        "Commodity hardware dimensions never scale with character proportions.",
+        "Reference CAD may define keep-out starting geometry but not physical fit tolerances.",
+        "Shoulder-center spacing is a body-shape decision unless a separate spanning mechanism makes it mechanically coupled.",
+        "Production approval requires physical force/torque/cycle evidence."
+      ],
+      "warning": "Normalized keep-out size is a conditioning convenience only. Fixed commodity hardware dimensions remain in millimeters and must never scale with the character body."
+    }
+  ],
+  "conditioning_channels": {
+    "skeleton_landmarks": "skeleton_control.nodes",
+    "skeleton_links": "skeleton_control.bones",
+    "visual_mass_boxes_or_capsules": "visual_envelopes",
+    "component_editability": "component_plan",
+    "mechanical_keepouts_and_hardware": "mechanical_constraints"
+  },
+  "generation_constraints": [
+    "Treat skeleton landmarks as proportion/alignment controls, not printable connector geometry.",
+    "Treat visual envelopes as editable shell targets independent from joint spacing.",
+    "Do not allow generated geometry to overwrite deterministic or reserved mechanical interface regions.",
+    "Preserve locked architecture regions: shoulder_hardware_keepouts, wrist_cartridges, grip_core, mounting_anchors.",
+    "lego_giant_43093_shoulder_reference_v0 is reference-only: preserve its hardware/keep-out intent but do not infer socket tolerances, friction, or production mating geometry."
+  ],
+  "production_geometry_authority": false,
+  "warning": "This payload conditions visual/part-aware generation. It is not a manufacturing drawing. Only separately validated deterministic interface records may authorize fit-critical production geometry."
+}
