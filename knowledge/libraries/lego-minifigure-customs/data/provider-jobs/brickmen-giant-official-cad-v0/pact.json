@@ -14,14 +14,14 @@
       "<pact_repo>",
       "--image",
       "<image>",
-      "--semantic-mask-exr",
-      "<semantic_part_mask.exr>",
+      "--semantic-mask",
+      "<semantic_part_mask.exr_or_lossless_label_png_tiff>",
       "--output-dir",
       "<output_dir>",
       "--metadata",
       "<output_dir>/brickmen-pact-wrapper.json"
     ],
-    "upstream_requirement_note": "Brickmen wrapper redirects PAct's hardcoded ImageConditioned_dataset root in-process without modifying the upstream checkout. A PAct-compatible semantic part-label EXR mask is required."
+    "upstream_requirement_note": "Brickmen wrapper redirects PAct's hardcoded ImageConditioned_dataset root in-process without modifying the upstream checkout. Supply a PAct-compatible semantic part-label EXR or a lossless integer-label PNG/TIFF; raster labels are redirected only for the staged mask read."
   },
   "conditioning_digest_sha256": "5f3bfc4f8684705de1b68d096182e4ea452984eabf661c94b2979d4746280978",
   "architecture_id": "brickmen_giant_v0",
