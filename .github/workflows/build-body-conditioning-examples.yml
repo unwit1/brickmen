@@ -13,6 +13,7 @@ on:
       - "tools/geometry/compile_body_articulation_sweeps.py"
       - "tools/geometry/render_body_generation_guides.py"
       - "tools/geometry/summarize_body_generation_pipeline_state.py"
+      - "tools/geometry/compile_body_provider_readiness.py"
       - "knowledge/libraries/lego-minifigure-customs/data/skeletons/brickmen-giant-v0.json"
       - "knowledge/libraries/lego-minifigure-customs/data/skeletons/brickmen-broad-v0.json"
       - "knowledge/libraries/lego-minifigure-customs/data/reference-landmarks/lego-giant-ldraw-shoulders-fit.json"
@@ -67,7 +68,8 @@ jobs:
           GUIDES="knowledge/libraries/lego-minifigure-customs/data/generation-guides/brickmen-giant-official-cad-v0"
           JOBS="knowledge/libraries/lego-minifigure-customs/data/provider-jobs/brickmen-giant-official-cad-v0"
           STATES="knowledge/libraries/lego-minifigure-customs/data/pipeline-state/brickmen-giant-official-cad-v0"
-          mkdir -p "$SWEEPS" "$GUIDES" "$JOBS" "$STATES"
+          READINESS="knowledge/libraries/lego-minifigure-customs/data/provider-readiness"
+          mkdir -p "$SWEEPS" "$GUIDES" "$JOBS" "$STATES" "$READINESS"
 
           python -m tools.geometry.compile_body_articulation_sweeps \
             "$CONDITIONING" \
@@ -92,6 +94,16 @@ jobs:
               --contact-regions "$CONTACTS" \
               -o "$STATES/$provider.json"
           done
+
+          python -m tools.geometry.compile_body_provider_readiness \
+            "$REGISTRY" "$CONDITIONING" \
+            --contact-regions "$CONTACTS" \
+            --pipeline-state "$STATES/partcrafter.json" \
+            --pipeline-state "$STATES/partpacker.json" \
+            --pipeline-state "$STATES/pact.json" \
+            --pipeline-state "$STATES/particulate.json" \
+            --pipeline-state "$STATES/sam_3d_objects.json" \
+            -o "$READINESS/brickmen-giant-official-cad-v0.json"
 
       - name: Validate example invariants
         run: |
@@ -174,7 +186,20 @@ jobs:
           )
           assert contact_gate["status"] == "partial_or_pending"
           assert "0 validated contact region(s)" in contact_gate["detail"]
-          print("conditioning, sweep, provider and pipeline-state fixtures validated")
+
+          readiness = json.loads(
+              Path("knowledge/libraries/lego-minifigure-customs/data/provider-readiness/brickmen-giant-official-cad-v0.json").read_text()
+          )
+          provider_readiness = {p["provider_id"]: p for p in readiness["providers"]}
+          assert provider_readiness["partcrafter"]["brickmen_execution_runnable"] is True
+          assert provider_readiness["partpacker"]["brickmen_execution_runnable"] is True
+          assert provider_readiness["pact"]["brickmen_execution_runnable"] is True
+          assert "semantic_mask_editor" in provider_readiness["pact"]["helpers"]
+          assert provider_readiness["particulate"]["pipeline_stage"] == "post_generation_critic"
+          assert provider_readiness["sam_3d_objects"]["pipeline_stage"] == "baseline_generator"
+          assert readiness["canonical_gpu_provider_execution_performed"] is False
+          assert readiness["physical_blockers"]
+          print("conditioning, sweep, provider, pipeline-state and readiness fixtures validated")
           PY
 
       - name: Commit conditioning examples
@@ -187,7 +212,8 @@ jobs:
             knowledge/libraries/lego-minifigure-customs/data/articulation-sweeps \
             knowledge/libraries/lego-minifigure-customs/data/generation-guides \
             knowledge/libraries/lego-minifigure-customs/data/provider-jobs \
-            knowledge/libraries/lego-minifigure-customs/data/pipeline-state
+            knowledge/libraries/lego-minifigure-customs/data/pipeline-state \
+            knowledge/libraries/lego-minifigure-customs/data/provider-readiness
           if git diff --cached --quiet; then
             echo "No conditioning example changes."
             exit 0
