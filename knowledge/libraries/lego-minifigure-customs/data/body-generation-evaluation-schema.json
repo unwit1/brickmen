@@ -1,0 +1,67 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-27",
+  "status": "research_contract",
+  "entity": "BodyGenerationEvaluation",
+  "axes": {
+    "architecture": [
+      "selected_architecture_correct",
+      "component_count_correct",
+      "component_graph_edit_distance",
+      "joint_graph_accuracy",
+      "lower_body_topology_correct",
+      "head_integration_correct",
+      "scale_relative_error",
+      "unknown_handling_correct"
+    ],
+    "style": [
+      "body_style_profile_similarity",
+      "normalized_proportion_error",
+      "sculpt_relief_similarity",
+      "print_vs_sculpt_semantics",
+      "joint_visibility_style",
+      "architecture_leakage",
+      "character_leakage"
+    ],
+    "identity": [
+      "source_fidelity",
+      "identity_critical_feature_recall",
+      "costume_topology",
+      "color_role_fidelity"
+    ],
+    "geometry": [
+      "watertight",
+      "self_intersections",
+      "component_separability",
+      "wall_thickness",
+      "keepout_pass",
+      "articulation_collision_pass",
+      "connector_integration_pass"
+    ],
+    "physical": [
+      "print_success",
+      "assembly_success",
+      "joint_force_pass",
+      "joint_torque_pass",
+      "cycle_pass",
+      "creep_pass",
+      "user_visual_acceptance"
+    ]
+  },
+  "hard_failures": [
+    "wrong_required_topology",
+    "unvalidated_generated_joint",
+    "connector_damage_risk",
+    "unprintable_critical_feature",
+    "architecture_component_missing",
+    "traceability_missing"
+  ],
+  "admission_classes": [
+    "reject",
+    "concept_only",
+    "digital_candidate",
+    "print_candidate",
+    "physically_validated_prototype",
+    "production_candidate"
+  ]
+}
