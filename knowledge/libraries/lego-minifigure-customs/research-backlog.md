@@ -542,7 +542,7 @@ Next:
 - [ ] add official LDraw-derived Giant landmark ground truth
 - [x] add standard-minifigure/Axl donor-component landmark ground truth
 - [x] implement BodyEnvelopeProfile fitting against visual width/depth observations
-- [ ] add skeleton-to-reference SVG/image overlay renderer
+- [x] add skeleton-to-reference SVG/image overlay renderer
 - [ ] fit head scale and separate torso/leg segment lengths
 - [ ] connect fitted skeleton/envelope outputs to part-aware generation prompts/conditioning
 
@@ -608,3 +608,17 @@ This supports hybrid bodies where a known donor frame must remain unchanged whil
 Next:
 - [ ] map physically measured donor frames into explicit locks when target-skeleton parameter semantics are validated
 - [ ] add component-frame constraints beyond scalar parameter locks where needed
+
+
+### Reference overlay renderer — 2026-09-27
+
+- [x] add transparent SVG skeleton/reference review renderer
+- [x] render fitted visual envelopes behind skeleton
+- [x] render reference landmarks, fitted nodes, and residual vectors
+- [x] render silhouette-width annotations
+- [x] keep source images external rather than embedding them in generated SVG
+- [x] emit a machine-readable fit report alongside optional SVG output
+
+Next:
+- [ ] add manual-review annotation editing workflow around the overlay
+- [ ] add side/back projection modes when depth references are available
