@@ -238,3 +238,35 @@ It also carries:
 - reference evidence.
 
 Generative providers receive this contract rather than a free-form request to invent the body.
+
+### Stage 6H: structured body generation
+
+When `CharacterBodyDesignSpec` targets a non-standard body:
+
+1. load the selected `FigureArchitecture` component/joint graph;
+2. generate or retrieve architecture blanks;
+3. generate visual component proposals per semantic role;
+4. optionally use part-aware models (PartCrafter/UniPart/PAct-class systems) to propose component geometry/decomposition;
+5. reconcile proposals to canonical component roles;
+6. discard any generated production joints;
+7. attach validated `JointProfile` and connector geometry;
+8. apply architecture keep-outs and motion sweeps;
+9. assemble neutral and articulated proof poses;
+10. score architecture correctness, body style, character identity and DFM separately.
+
+A monolithic generated body mesh cannot enter manufacturing until it has been decomposed/rebuilt onto the selected FigureArchitecture.
+
+### Stage 9B: body-learning feedback
+
+Store generated/printed bodies as `BodyCorpusSample` evidence with:
+- generator/model version;
+- component segmentation;
+- architecture/style labels;
+- physical joint results;
+- visual acceptance.
+
+This data trains future:
+- architecture classifiers;
+- style rankers;
+- provider routers;
+- manufacturability critics.
