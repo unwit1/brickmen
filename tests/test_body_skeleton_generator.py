@@ -77,3 +77,91 @@ def test_obj_export_has_vertices_and_bones():
     assert "\nv " in payload
     assert "\nl " in payload
     assert "# Units: mm" in payload
+
+
+
+def test_thigh_scale_moves_knee_and_preserves_shin_length():
+    spec = load_spec(SKELETONS / "brickmen-broad-v0.json")
+    default = compile_skeleton(spec, target_height_mm=1.0)
+    longer = compile_skeleton(
+        spec,
+        target_height_mm=1.0,
+        parameter_overrides={"thigh_length_scale": 1.2},
+    )
+
+    default_thigh = abs(
+        default["nodes_mm"]["hip_l"][2] - default["nodes_mm"]["knee_l"][2]
+    )
+    longer_thigh = abs(
+        longer["nodes_mm"]["hip_l"][2] - longer["nodes_mm"]["knee_l"][2]
+    )
+    default_shin = abs(
+        default["nodes_mm"]["knee_l"][2] - default["nodes_mm"]["ankle_l"][2]
+    )
+    longer_shin = abs(
+        longer["nodes_mm"]["knee_l"][2] - longer["nodes_mm"]["ankle_l"][2]
+    )
+
+    assert longer_thigh == pytest.approx(default_thigh * 1.2)
+    assert longer_shin == pytest.approx(default_shin)
+
+
+def test_shin_scale_does_not_change_thigh_length():
+    spec = load_spec(SKELETONS / "brickmen-broad-v0.json")
+    default = compile_skeleton(spec, target_height_mm=1.0)
+    longer = compile_skeleton(
+        spec,
+        target_height_mm=1.0,
+        parameter_overrides={"shin_length_scale": 1.2},
+    )
+
+    assert longer["nodes_mm"]["knee_l"] == default["nodes_mm"]["knee_l"]
+    default_shin = abs(
+        default["nodes_mm"]["knee_l"][2] - default["nodes_mm"]["ankle_l"][2]
+    )
+    longer_shin = abs(
+        longer["nodes_mm"]["knee_l"][2] - longer["nodes_mm"]["ankle_l"][2]
+    )
+    assert longer_shin == pytest.approx(default_shin * 1.2)
+
+
+def test_neck_head_offset_is_independent_from_upper_torso_length():
+    spec = load_spec(SKELETONS / "brickmen-broad-v0.json")
+    default = compile_skeleton(spec, target_height_mm=1.0)
+    head_only = compile_skeleton(
+        spec,
+        target_height_mm=1.0,
+        parameter_overrides={"neck_head_offset_scale": 1.2},
+    )
+
+    assert head_only["nodes_mm"]["neck"] == default["nodes_mm"]["neck"]
+    assert head_only["nodes_mm"]["shoulder_l"] == default["nodes_mm"]["shoulder_l"]
+    default_offset = (
+        default["nodes_mm"]["head_center"][2] - default["nodes_mm"]["neck"][2]
+    )
+    head_offset = (
+        head_only["nodes_mm"]["head_center"][2] - head_only["nodes_mm"]["neck"][2]
+    )
+    assert head_offset == pytest.approx(default_offset * 1.2)
+
+
+def test_lower_torso_segment_moves_upper_chain_without_changing_upper_segment():
+    spec = load_spec(SKELETONS / "brickmen-broad-v0.json")
+    default = compile_skeleton(spec, target_height_mm=1.0)
+    adjusted = compile_skeleton(
+        spec,
+        target_height_mm=1.0,
+        parameter_overrides={"lower_torso_length_scale": 1.2},
+    )
+
+    default_lower = default["nodes_mm"]["chest"][2] - default["nodes_mm"]["waist"][2]
+    adjusted_lower = (
+        adjusted["nodes_mm"]["chest"][2] - adjusted["nodes_mm"]["waist"][2]
+    )
+    default_upper = default["nodes_mm"]["neck"][2] - default["nodes_mm"]["chest"][2]
+    adjusted_upper = (
+        adjusted["nodes_mm"]["neck"][2] - adjusted["nodes_mm"]["chest"][2]
+    )
+
+    assert adjusted_lower == pytest.approx(default_lower * 1.2)
+    assert adjusted_upper == pytest.approx(default_upper)
