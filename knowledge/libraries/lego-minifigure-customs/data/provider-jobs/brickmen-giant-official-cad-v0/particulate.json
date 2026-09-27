@@ -4,6 +4,21 @@
   "provider_id": "particulate",
   "provider_role": "mesh_to_articulation_inference_critic",
   "provider_availability": "official_inference_code_available",
+  "execution_interface": {
+    "adapter_status": "runnable_cli_verified",
+    "entrypoint": "infer.py",
+    "invocation": [
+      "python",
+      "infer.py",
+      "--input_mesh",
+      "<mesh>",
+      "--eval",
+      "--output_dir",
+      "<output_dir>",
+      "--up_dir",
+      "Z"
+    ]
+  },
   "conditioning_digest_sha256": "98277c4fc0a23cf46723c4ec9e229200e366ad6fe45de9b2c683d0961c299572",
   "architecture_id": "brickmen_giant_v0",
   "target_height_mm": 62.0,
