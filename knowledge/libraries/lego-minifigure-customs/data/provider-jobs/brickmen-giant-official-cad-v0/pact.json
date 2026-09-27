@@ -141,8 +141,9 @@
   },
   "native_arguments": {},
   "pre_generation_steps": [
-    "supply reference/conditioned image",
-    "retain expected component slots and selected Brickmen skeleton as external truth constraints"
+    "supply source/conditioned RGB image",
+    "supply or review a 2D component/part label mask; PAct custom inference is not image-only",
+    "retain Brickmen expected component slots and selected skeleton as external truth constraints"
   ],
   "post_generation_steps": [
     "compare generated part graph with expected Brickmen component graph",

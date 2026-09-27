@@ -5,14 +5,17 @@
   "provider_role": "single_or_multi_object_image_to_3d_reconstructor",
   "provider_availability": "official_code_weights_and_demo_available",
   "execution_interface": {
-    "adapter_status": "python_api_adapter_pending",
+    "adapter_status": "python_api_visual_baseline_verified",
     "entrypoint": "notebook/inference.py",
     "invocation": [
       "python_api",
-      "Inference(config_path)",
-      "inference(image, mask, seed=...)"
+      "Inference(checkpoints/hf/pipeline.yaml, compile=False)",
+      "load_image(<image>)",
+      "load_mask(<mask>)",
+      "inference(image, mask, seed=<seed>)",
+      "output['gs'].save_ply(<output>)"
     ],
-    "upstream_requirement_note": "Official setup documents Linux x86-64 and NVIDIA GPU with at least 32GB VRAM."
+    "upstream_requirement_note": "Published quick-start uses image+mask and exports output['gs'] as a Gaussian splat PLY. Inference.__call__ currently invokes the pipeline with mesh postprocessing disabled."
   },
   "conditioning_digest_sha256": "dea4e203be38c520b3256369ce7248d6380dbf20419d4600eedd251a827d3d88",
   "architecture_id": "brickmen_giant_v0",
@@ -134,13 +137,13 @@
   },
   "native_arguments": {},
   "pre_generation_steps": [
-    "render/prepare component masks from Brickmen slot plan where possible",
-    "run monolithic reconstruction as a baseline or masked reconstruction per component"
+    "supply RGB/RGBA image",
+    "supply binary mask for the target object/component"
   ],
   "post_generation_steps": [
-    "align reconstructed geometry to skeleton and envelopes",
-    "merge/repair component surfaces if reconstructed separately",
-    "apply deterministic mechanical keep-outs/interfaces",
+    "record Gaussian reconstruction, pose and scale as visual evidence",
+    "do not feed public quick-start PLY directly into triangle-mesh manufacturing validation",
+    "evaluate internal mesh postprocessing only as a separate researched adapter if its public/support boundary is verified",
     "validate returned component count and slot mapping",
     "transform every generated component into the Brickmen conditioning frame",
     "validate shell against visual envelopes and articulation/keep-out volumes",
@@ -323,8 +326,10 @@
   "contains_nonproduction_mechanical_constraints": true,
   "pipeline_stage": "baseline_generator",
   "output_contract": {
-    "kind": "reconstruction_bundle",
-    "semantic_slot_mapping": "required_when_used_as_component_generator"
+    "kind": "masked_gaussian_reconstruction",
+    "public_quickstart_export": "gaussian_splat_ply",
+    "printable_triangle_mesh_available_from_public_quickstart": false,
+    "component_slot_mapping": "not_directly_eligible_for_triangle_mesh_validation"
   },
   "requires_component_slot_mapping": true,
   "output_acceptance_rules": [
