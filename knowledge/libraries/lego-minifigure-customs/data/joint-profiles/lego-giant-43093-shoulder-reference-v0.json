@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.1",
+  "schema_version": "0.2",
   "created": "2026-09-27",
   "joint_profile_id": "lego_giant_43093_shoulder_reference_v0",
   "primitive_type": "commodity_hardware_hybrid",
@@ -122,6 +122,37 @@
     "Commodity hardware dimensions never scale with character proportions.",
     "Reference CAD may define keep-out starting geometry but not physical fit tolerances.",
     "Shoulder-center spacing is a body-shape decision unless a separate spanning mechanism makes it mechanically coupled.",
-    "Production approval requires physical force/torque/cycle evidence."
+    "Production approval requires physical force/torque/cycle evidence.",
+    "Candidate placement centers follow the selected Brickmen skeleton shoulder nodes; they do not force the official body's 32 mm shoulder spacing."
+  ],
+  "candidate_placements": [
+    {
+      "placement_id": "brickmen_giant_v0_left_shoulder_43093_reference",
+      "candidate_architecture_id": "brickmen_giant_v0",
+      "anchor_node": "shoulder_l",
+      "hardware_part_id": "43093",
+      "axis_vector": [
+        1,
+        0,
+        0
+      ],
+      "orientation_semantic": "lateral_pin_axis",
+      "quantity": 1,
+      "placement_authority": "reference_alignment_only_until_physical_validation"
+    },
+    {
+      "placement_id": "brickmen_giant_v0_right_shoulder_43093_reference",
+      "candidate_architecture_id": "brickmen_giant_v0",
+      "anchor_node": "shoulder_r",
+      "hardware_part_id": "43093",
+      "axis_vector": [
+        1,
+        0,
+        0
+      ],
+      "orientation_semantic": "lateral_pin_axis_mirrored_component_context",
+      "quantity": 1,
+      "placement_authority": "reference_alignment_only_until_physical_validation"
+    }
   ]
 }
