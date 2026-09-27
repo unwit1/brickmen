@@ -1,0 +1,247 @@
+{
+  "schema": "skywalker-no-supported-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-no-supported-review-006",
+  "policy": "Named officers are identity-specific; same-rank candidates are not substitutes. Catalog-generic figures can represent named characters when set-level provenance explicitly identifies the character. Senate Guard/Senate Commando terminology is treated as a related LEGO role family but exact visual-generation equivalence remains reviewable.",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-64c1592d1302d781de999b41",
+      "character_variant_key": "CaptainTypho",
+      "decision": "named_naboo_officer_verified_video_game_only_lego_minifigure_no_official_physical_release_located",
+      "canonical_subject": "Captain Gregar Typho",
+      "rejected_rank_neighbors": [
+        {
+          "fig_num": "fig-004151",
+          "catalog_name": "Captain Phasma",
+          "reason": "different person/faction"
+        },
+        {
+          "fig_num": "fig-004102",
+          "catalog_name": "Captain Tarpals",
+          "reason": "different person/species/faction"
+        },
+        {
+          "fig_num": "fig-003773",
+          "catalog_name": "Captain Panaka",
+          "reason": "related Naboo role and Typho's uncle, but different person"
+        },
+        {
+          "fig_num": "fig-004206",
+          "catalog_name": "Captain Rex, Old",
+          "reason": "different person/faction"
+        },
+        {
+          "fig_num": "fig-003739",
+          "catalog_name": "Captain Rex, Visor",
+          "reason": "different person/faction"
+        }
+      ],
+      "physical_status": {
+        "exact_official_minifigure_located": false,
+        "lego_game_appearances": [
+          "LEGO Star Wars III: The Clone Wars",
+          "LEGO Star Wars: The Skywalker Saga"
+        ]
+      },
+      "reason": "Brickipedia explicitly classifies Captain Typho's LEGO minifigure representation as video-game-only and states that it never appeared in an official physical set. Captain Panaka is a related Naboo security character, not an alias.",
+      "systemic_pattern": "related_role_or_family_relationship_is_not_character_identity",
+      "evidence_urls": [
+        "https://brickipedia.fandom.com/wiki/Captain_Typho"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-df3f2594755bf3c86dfbb114",
+      "character_variant_key": "CommanderJir",
+      "decision": "named_imperial_officer_verified_video_game_only_lego_minifigure_no_official_physical_release_located",
+      "canonical_subject": "Commander Daine Jir",
+      "rejected_rank_neighbors": [
+        {
+          "fig_num": "fig-004203",
+          "catalog_name": "Commander Sato",
+          "reason": "different person/faction"
+        },
+        {
+          "fig_num": "fig-003777",
+          "catalog_name": "Clone Commander Cody",
+          "reason": "different person/faction"
+        },
+        {
+          "fig_num": "fig-003762",
+          "catalog_name": "Clone Commander Wolffe",
+          "reason": "different person/faction"
+        },
+        {
+          "fig_num": "fig-015312",
+          "catalog_name": "Commander Praji",
+          "reason": "different Imperial officer and post-game physical release"
+        },
+        {
+          "fig_num": "fig-004207",
+          "catalog_name": "Clone Commander Gregor, Old",
+          "reason": "different person/faction"
+        }
+      ],
+      "physical_status": {
+        "exact_official_minifigure_located": false,
+        "lego_representation": "Skywalker Saga video-game minifigure only"
+      },
+      "reason": "Commander Daine Jir is a distinct Imperial officer. Brickipedia explicitly states his LEGO representation exists only in The Skywalker Saga and has never appeared in an official physical set. Rank similarity to Sato, Cody, Wolffe, Praji, or Gregor is not identity evidence.",
+      "systemic_pattern": "rank_tokens_are_not_identity_evidence_without_name_match",
+      "evidence_urls": [
+        "https://brickipedia.fandom.com/wiki/Commander_Jir"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-9d073e28d81d140bf379c1ec",
+      "character_variant_key": "R4-M9",
+      "decision": "digital_identity_verified_video_game_only_lego_minifigure_no_official_physical_release_located_astromech_neighbors_rejected",
+      "canonical_subject": "R4-M9",
+      "identity_context": {
+        "model": "R4 astromech droid",
+        "affiliation": "Galactic Empire",
+        "scene": "aboard Tantive IV after capture"
+      },
+      "rejected_top_candidates": [
+        {
+          "fig_num": "fig-004017",
+          "catalog_name": "Astromech Droid, R4-G0",
+          "reason": "different astromech serial"
+        },
+        {
+          "fig_num": "fig-003858",
+          "catalog_name": "Astromech Droid, R7-D4",
+          "reason": "different model/serial"
+        },
+        {
+          "fig_num": "fig-005759",
+          "catalog_name": "Astromech Droid, R4-TR3, Christmas Tree",
+          "reason": "different serial and novelty form"
+        },
+        {
+          "fig_num": "fig-003906",
+          "catalog_name": "Astromech Droid, R5-D4, Plain Dome",
+          "reason": "different model/serial"
+        },
+        {
+          "fig_num": "fig-010441",
+          "catalog_name": "Astromech Droid, R1-G4, Plain Dome",
+          "reason": "different model/serial"
+        }
+      ],
+      "physical_status": {
+        "exact_official_minifigure_located": false,
+        "lego_representation": "Skywalker Saga video-game minifigure only"
+      },
+      "reason": "R4-M9 is a distinct Imperial R4-series unit. Brickipedia explicitly marks the LEGO figure as video-game-only. The current resolver again demonstrates unsafe serial-number fuzzing by preferring unrelated R4/R5/R7/R1 droids.",
+      "systemic_pattern": "astromech_serial_is_atomic_identity",
+      "evidence_urls": [
+        "https://brickipedia.fandom.com/wiki/R4-M9",
+        "https://starwars.fandom.com/wiki/R4-M9"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-a5ecd96e6574a3d9f92e4102",
+      "character_variant_key": "CaptainPeavey",
+      "decision": "named_character_hidden_under_generic_catalog_label_physical_counterpart_verified_by_set_provenance",
+      "canonical_subject": "Captain Edrison Peavey",
+      "physical_counterpart": {
+        "brickset_minifig": "sw0870",
+        "catalog_name": "First Order Officer (Lieutenant / Captain)",
+        "year": 2017,
+        "set_num": "75190-1",
+        "set_name": "First Order Star Destroyer",
+        "provenance_note": "Brickipedia identifies the otherwise generic First Order Officer in 75190 as Captain Edrison Peavey."
+      },
+      "rejected_rank_neighbors": [
+        {
+          "fig_num": "fig-003773",
+          "catalog_name": "Captain Panaka",
+          "reason": "different person/faction"
+        },
+        {
+          "fig_num": "fig-004151",
+          "catalog_name": "Captain Phasma",
+          "reason": "different person/role"
+        },
+        {
+          "fig_num": "fig-004102",
+          "catalog_name": "Captain Tarpals",
+          "reason": "different person/faction"
+        },
+        {
+          "fig_num": "fig-003739",
+          "catalog_name": "Captain Rex, Visor",
+          "reason": "different person/faction"
+        },
+        {
+          "fig_num": "fig-004206",
+          "catalog_name": "Captain Rex, Old",
+          "reason": "different person/faction"
+        }
+      ],
+      "reason": "This is not a true catalog gap. LEGO released the character in 75190, but Brickset/BrickLink catalog the figure generically as First Order Officer (Lieutenant / Captain). Brickipedia explicitly notes that Peavey appeared in 75190 under that generic name, and Brickset tags the set with Captain Peavey. The crosswalk needs set-level named-character aliases for generic catalog figures.",
+      "systemic_pattern": "named_character_can_be_hidden_under_generic_catalog_figure_label",
+      "evidence_urls": [
+        "https://brickipedia.fandom.com/wiki/Captain_Peavey",
+        "https://brickset.com/minifigs/sw0870/first-order-officer-%28lieutenant-captain%29",
+        "https://brickset.com/sets/theme-Star-Wars/subtheme-Episode-VIII/year-2017"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-05a92ddacee60afe2813443c",
+      "character_variant_key": "SenateGuard",
+      "decision": "role_terminology_crosswalk_to_senate_commando_physical_family_supported_exact_game_visual_generation_pending",
+      "canonical_subject": "Senate Guard",
+      "related_catalog_role": "Senate Commando",
+      "plausible_pre_game_physical_family": [
+        {
+          "brickset_minifig": "sw0244",
+          "catalog_name": "Senate Commando - Plain Legs, Large Eyes",
+          "first_year": 2009,
+          "sets": [
+            "8039-1",
+            "8128-1"
+          ]
+        },
+        {
+          "brickset_minifig": "sw0244a",
+          "catalog_name": "Senate Commando - Plain Legs, Plain Light Nougat Head",
+          "year": 2010,
+          "set_num": "853037-1"
+        },
+        {
+          "brickset_minifig": "sw0614",
+          "catalog_name": "Senate Commando - Printed Legs",
+          "year": 2015,
+          "set_num": "75088-1"
+        }
+      ],
+      "separate_rank_candidate": {
+        "brickset_minifig": "sw0613",
+        "catalog_name": "Senate Commando Captain - Printed Legs",
+        "year": 2015,
+        "set_num": "75088-1"
+      },
+      "reason": "LEGO catalog terminology uses Senate Commando for the physical blue guard figures, while The Skywalker Saga exposes the playable role as Senate Guard. Brickipedia's Senate Commando entry explicitly lists The Skywalker Saga among appearances and captions the game representation as a Senate Guard. This supports the physical role family, but exact 2009/2010/2015 figure equivalence remains a visual-generation question.",
+      "systemic_pattern": "role_terminology_alias_senate_guard_to_senate_commando_requires_context",
+      "evidence_urls": [
+        "https://brickset.com/minifigs/category-Star-Wars/subcategory-Star-Wars-The-Clone-Wars/name-Senate-Commando",
+        "https://brickipedia.fandom.com/wiki/Senate_Commando"
+      ]
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "video_game_only_or_nonphysical_named_characters": 3,
+    "generic_catalog_label_hiding_named_physical_character": 1,
+    "role_terminology_crosswalk": 1,
+    "automatic_exact_artwork_equivalence_promotions": 0
+  },
+  "remaining_no_supported_records_after_batch": 66,
+  "systemic_findings": [
+    "Set-level provenance is required to recover named characters hidden under generic minifigure catalog labels.",
+    "Rank similarity cannot substitute for named-officer identity.",
+    "Senate Guard/Senate Commando needs a context-aware role alias rather than unconstrained guard-token matching.",
+    "Astromech serial-number gating remains mandatory."
+  ]
+}
