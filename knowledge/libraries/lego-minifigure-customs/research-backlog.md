@@ -545,3 +545,17 @@ Next:
 - [ ] add skeleton-to-reference SVG/image overlay renderer
 - [ ] fit head scale and separate torso/leg segment lengths
 - [ ] connect fitted skeleton/envelope outputs to part-aware generation prompts/conditioning
+
+
+### Official geometry fitting anchors — 2026-09-27
+
+- [x] add LDraw 10128 Giant shoulder-socket anchor metadata
+- [x] add LDraw 10154/10124 hand-socket anchor metadata
+- [x] preserve 43093 as commodity hardware reference
+- [x] separate official Giant EngineeringSkeleton evidence from Brickmen Giant design skeleton
+
+Next:
+- [ ] ingest full 10128/10154/10124 geometry into component digital twin
+- [ ] derive complete local transforms and articulation frames
+- [ ] reconcile LDraw frames with physical sample measurements
+- [ ] map optional Giant-compatible Brickmen JointCartridges
