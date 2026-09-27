@@ -35,18 +35,37 @@ def parse_assignments(values: Sequence[str]) -> list[dict[str, str]]:
     return result
 
 
+def parse_transforms(values: Sequence[str]) -> dict[str, list[float]]:
+    result: dict[str, list[float]] = {}
+    for raw in values:
+        if "=" not in raw:
+            raise ValueError(
+                f"Transform must be slot_id=m00,m01,...,m33: {raw}"
+            )
+        slot, payload = raw.split("=", 1)
+        numbers = [float(x.strip()) for x in payload.split(",") if x.strip()]
+        if len(numbers) != 16:
+            raise ValueError(
+                f"Transform for {slot.strip()} must contain exactly 16 numbers"
+            )
+        result[slot.strip()] = numbers
+    return result
+
+
 def validate_output_mapping(
     job: Mapping[str, Any],
     run: Mapping[str, Any],
     assignments: Sequence[Mapping[str, str]],
+    *,
+    transforms: Mapping[str, Sequence[float]] | None = None,
 ) -> dict[str, Any]:
     if job["provider_id"] != run["provider_id"]:
         raise ValueError("Provider job and run provider_id differ")
     if job["provider_job_id"] != run["provider_job_id"]:
         raise ValueError("Provider job and run provider_job_id differ")
 
-    required=[
-        str(item["slot_id"])
+    transforms = transforms or {}
+    required=[        str(item["slot_id"])
         for item in job.get("component_slots",{}).get("required",[])
     ]
     optional=[
@@ -88,12 +107,29 @@ def validate_output_mapping(
             continue
         path=paths[0]
         assigned_paths.add(str(Path(path).resolve()))
+        transform = transforms.get(slot)
+        if transform is not None and len(transform) != 16:
+            raise ValueError(
+                f"Transform for {slot} must contain exactly 16 numbers"
+            )
         components.append({
             "slot_id":slot,
             "path":path,
             "provider_part_id":None,
             "mapping_authority":"explicit_operator_or_adapter_assignment",
-            "transform_status":"unreconciled_provider_frame",
+            "transform_status":(
+                "brickmen_mm_transform_supplied"
+                if transform is not None
+                else "unreconciled_provider_frame"
+            ),
+            "transform_matrix_to_brickmen_mm":(
+                [float(v) for v in transform]
+                if transform is not None
+                else None
+            ),
+            "transform_source":(
+                "explicit_cli_assignment" if transform is not None else None
+            ),
             "geometry_authority":"generated_visual_geometry_nonproduction",
         })
 
@@ -183,12 +219,19 @@ def main() -> int:
     parser.add_argument("job")
     parser.add_argument("run")
     parser.add_argument("--assign",action="append",default=[])
+    parser.add_argument(
+        "--transform",
+        action="append",
+        default=[],
+        help="slot_id=m00,m01,...,m33 row-major provider->Brickmen-mm transform",
+    )
     parser.add_argument("-o","--output",required=True)
     args=parser.parse_args()
     result=validate_output_mapping(
         load_json(args.job),
         load_json(args.run),
         parse_assignments(args.assign),
+        transforms=parse_transforms(args.transform),
     )
     Path(args.output).write_text(
         json.dumps(result,indent=2)+"\n",encoding="utf-8"
