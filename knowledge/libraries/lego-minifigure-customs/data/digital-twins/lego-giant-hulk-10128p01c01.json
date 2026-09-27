@@ -1,0 +1,363 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-27",
+  "digital_twin_id": "lego_giant_hulk_10128p01c01_ldraw_frames",
+  "architecture_id": "lego_giant_modular",
+  "status": "official_ldraw_component_frame_twin_not_physical_metrology",
+  "root_component": "body",
+  "units": {
+    "source": "LDU",
+    "nominal_mm_per_ldu": 0.4,
+    "warning": "Transforms are official LDraw reference assembly geometry. They do not establish mould tolerances, fit forces, friction, material behavior, or production clearances."
+  },
+  "sources": [
+    {
+      "part_id": "10128p01c01",
+      "name": "Bigfig Figure Hulk with Dark Purple Trousers",
+      "source_url": "https://sources.debian.org/src/ldraw-parts/1802%2Bds-1/parts/10128p01c01.dat",
+      "source_status": "official LDraw shortcut from Official Update 2015-01",
+      "role": "complete_default_pose_assembly"
+    },
+    {
+      "part_id": "10128",
+      "name": "Bigfig Hulk Body",
+      "source_url": "https://library.ldraw.org/parts/216",
+      "source_status": "official LDraw part",
+      "role": "body"
+    },
+    {
+      "part_id": "10154",
+      "name": "Bigfig Arm Left",
+      "source_url": "https://library.ldraw.org/parts/213?search=10154",
+      "source_status": "official LDraw part",
+      "role": "left_arm",
+      "note": "Canonical page may resolve through library search; arm HELP metadata places hand socket at x=30,y=40,z=-40."
+    },
+    {
+      "part_id": "10124",
+      "name": "Bigfig Arm Right",
+      "source_url": "https://library.ldraw.org/parts/213",
+      "source_status": "official LDraw part",
+      "role": "right_arm"
+    },
+    {
+      "part_id": "10127",
+      "name": "Bigfig Hand Left",
+      "source_url": "https://library.ldraw.org/parts/215",
+      "source_status": "official LDraw part",
+      "role": "left_hand"
+    },
+    {
+      "part_id": "10126",
+      "name": "Bigfig Hand Right",
+      "source_url": "https://library.ldraw.org/parts/214",
+      "source_status": "official LDraw part",
+      "role": "right_hand"
+    },
+    {
+      "part_id": "43093",
+      "name": "Technic Axle Pin with Friction",
+      "source_url": "https://library.ldraw.org/parts/8530",
+      "source_status": "official LDraw part",
+      "role": "shoulder_hardware_reference"
+    }
+  ],
+  "components": [
+    {
+      "component_id": "body",
+      "part_id": "10128p01",
+      "parent": null,
+      "transform_in_root": {
+        "translation_ldu": [
+          0,
+          0,
+          0
+        ],
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "component_id": "left_shoulder_pin",
+      "part_id": "43093",
+      "parent": "body",
+      "transform_in_root": {
+        "translation_ldu": [
+          40,
+          -126,
+          0
+        ],
+        "translation_nominal_mm": [
+          16,
+          -50.4,
+          0
+        ],
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "component_id": "left_arm",
+      "part_id": "10154",
+      "parent": "body",
+      "transform_in_root": {
+        "translation_ldu": [
+          40,
+          -126,
+          0
+        ],
+        "translation_nominal_mm": [
+          16,
+          -50.4,
+          0
+        ],
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "component_id": "left_hand",
+      "part_id": "10127",
+      "parent": "body",
+      "transform_in_root": {
+        "translation_ldu": [
+          70,
+          -86,
+          -40
+        ],
+        "translation_nominal_mm": [
+          28,
+          -34.4,
+          -16
+        ],
+        "matrix": [
+          0.92388,
+          0.382683,
+          0,
+          -0.382683,
+          0.92388,
+          0,
+          0,
+          0,
+          1
+        ],
+        "derived_z_rotation_deg_approx": -22.5
+      }
+    },
+    {
+      "component_id": "right_shoulder_pin",
+      "part_id": "43093",
+      "parent": "body",
+      "transform_in_root": {
+        "translation_ldu": [
+          -40,
+          -126,
+          0
+        ],
+        "translation_nominal_mm": [
+          -16,
+          -50.4,
+          0
+        ],
+        "matrix": [
+          -1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          -1
+        ]
+      }
+    },
+    {
+      "component_id": "right_arm",
+      "part_id": "10124",
+      "parent": "body",
+      "transform_in_root": {
+        "translation_ldu": [
+          -40,
+          -126,
+          0
+        ],
+        "translation_nominal_mm": [
+          -16,
+          -50.4,
+          0
+        ],
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "component_id": "right_hand",
+      "part_id": "10126",
+      "parent": "body",
+      "transform_in_root": {
+        "translation_ldu": [
+          -70,
+          -86,
+          -40
+        ],
+        "translation_nominal_mm": [
+          -28,
+          -34.4,
+          -16
+        ],
+        "matrix": [
+          0.92388,
+          -0.382683,
+          0,
+          0.382683,
+          0.92388,
+          0,
+          0,
+          0,
+          1
+        ],
+        "derived_z_rotation_deg_approx": 22.5
+      }
+    }
+  ],
+  "local_reference_anchors": [
+    {
+      "component_id": "left_arm",
+      "anchor_id": "hand_socket_center",
+      "coordinates_ldu": [
+        30,
+        40,
+        -40
+      ],
+      "coordinates_nominal_mm": [
+        12,
+        16,
+        -16
+      ],
+      "source": "10154 !HELP"
+    },
+    {
+      "component_id": "right_arm",
+      "anchor_id": "hand_socket_center",
+      "coordinates_ldu": [
+        -30,
+        40,
+        -40
+      ],
+      "coordinates_nominal_mm": [
+        -12,
+        16,
+        -16
+      ],
+      "source": "10124 !HELP"
+    },
+    {
+      "component_id": "left_hand",
+      "anchor_id": "power_grip_center_partial",
+      "coordinates_ldu": {
+        "x": null,
+        "y": -9.745,
+        "z": -20
+      },
+      "coordinates_nominal_mm": {
+        "x": null,
+        "y": -3.898,
+        "z": -8
+      },
+      "source": "10127 !HELP",
+      "note": "X is intentionally null because the published HELP line specifies only y and z."
+    },
+    {
+      "component_id": "right_hand",
+      "anchor_id": "power_grip_center_partial",
+      "coordinates_ldu": {
+        "x": null,
+        "y": -9.745,
+        "z": -20
+      },
+      "coordinates_nominal_mm": {
+        "x": null,
+        "y": -3.898,
+        "z": -8
+      },
+      "source": "10126 !HELP",
+      "note": "X is intentionally null because the published HELP line specifies only y and z."
+    }
+  ],
+  "derived_reference_facts": [
+    {
+      "name": "shoulder_center_separation",
+      "value_ldu": 80,
+      "nominal_mm": 32,
+      "evidence": "complete shortcut left/right arm origins and 10128 !HELP"
+    },
+    {
+      "name": "default_left_arm_to_hand_translation",
+      "value_ldu": [
+        30,
+        40,
+        -40
+      ],
+      "note": "Root-space hand translation minus left-arm root translation exactly matches the published left-arm hand-socket center."
+    },
+    {
+      "name": "default_right_arm_to_hand_translation",
+      "value_ldu": [
+        -30,
+        40,
+        -40
+      ],
+      "note": "Root-space hand translation minus right-arm root translation exactly matches the published right-arm hand-socket center."
+    }
+  ],
+  "articulation_status": {
+    "shoulder_center_frames": "resolved_in_default_pose",
+    "wrist_attachment_frames": "resolved_in_default_pose",
+    "shoulder_rotation_axis": "requires explicit primitive-axis reconciliation before canonicalization",
+    "wrist_rotation_axis": "requires physical/articulation validation",
+    "production_fit": "unvalidated"
+  },
+  "hard_rules": [
+    "Use these transforms for digital-twin alignment and rendering, not as tolerance measurements.",
+    "Do not infer insertion force or friction from the LDraw shortcut.",
+    "Keep default-pose transforms separate from allowed articulation ranges.",
+    "Physical samples remain authoritative for manufacturing-critical connector geometry."
+  ]
+}
