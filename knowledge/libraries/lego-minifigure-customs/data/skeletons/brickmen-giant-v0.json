@@ -489,7 +489,8 @@
       "production_interface_status": "unvalidated",
       "joint_cartridge_ref": null,
       "visual_envelope_ids": [
-        "arm_l"
+        "arm_l",
+        "hand_l"
       ]
     },
     {
@@ -510,7 +511,8 @@
       "production_interface_status": "unvalidated",
       "joint_cartridge_ref": null,
       "visual_envelope_ids": [
-        "arm_r"
+        "arm_r",
+        "hand_r"
       ]
     },
     {
@@ -978,6 +980,7 @@
     "Fine-grained vertical segment parameters move each segment endpoint and its downstream nodes, preserving neighboring segment lengths unless their own parameter is changed.",
     "Official pinned 10128 LDraw body-profile evidence requires torso_depth_scale≈1.669 and abdomen_projection_scale≈1.548; v0.4 expands these visual-only maxima without changing defaults or mechanical node geometry.",
     "Giant v0.5 adds visual-only bone-aligned arm and component-local hand envelopes. Their rounded baseline cross-sections are independently fit from official component-profile evidence and do not change shoulder/wrist mechanics.",
-    "Giant v0.6 adds a visual-only root-to-waist lower-body envelope. Width/depth do not move hip, knee or stance landmarks."
+    "Giant v0.6 adds a visual-only root-to-waist lower-body envelope. Width/depth do not move hip, knee or stance landmarks.",
+    "Shoulder articulation sweeps include the downstream hand envelope as well as the arm; wrist sweeps remain separate local hand rotations."
   ]
 }
