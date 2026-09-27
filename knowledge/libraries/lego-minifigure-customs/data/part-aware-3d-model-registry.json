@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.1",
+  "schema_version": "0.2",
   "observed_at": "2026-09-27",
   "status": "research_registry",
   "tools": [
@@ -71,12 +71,58 @@
       ],
       "constraint": "Part correspondence is visual/geometric evidence only and cannot establish connector compatibility.",
       "source": "https://github.com/nv-tlabs/PartField"
+    },
+    {
+      "tool_id": "omnipart",
+      "kind": "part_aware_3d_generation",
+      "venue": "SIGGRAPH Asia 2025",
+      "deployment": "local_open_source",
+      "license": "MIT",
+      "capabilities": [
+        "image_plus_part_mask_to_part_aware_3d",
+        "semantic_decoupling",
+        "structural_cohesion",
+        "training_code",
+        "pretrained_models"
+      ],
+      "brickmen_roles": [
+        "mask-guided architecture component generation",
+        "generate specific semantic component layouts from controlled concept art",
+        "benchmark against PartCrafter/UniPart"
+      ],
+      "constraint": "Requires a useful 2D part mask; generated component interfaces remain visual candidates.",
+      "source": "https://github.com/HKU-MMLab/OmniPart"
+    },
+    {
+      "tool_id": "sam3d_part",
+      "kind": "selective_part_generation_from_existing_mesh",
+      "venue": "SIGGRAPH Asia 2026",
+      "deployment": "research_open_weights_code_announced",
+      "capabilities": [
+        "prompted_part_selection",
+        "complete_part_mesh_generation",
+        "source_mesh_conditioning",
+        "part_pose_alignment",
+        "sequential_part_cache"
+      ],
+      "brickmen_roles": [
+        "regenerate one torso/arm/hand from approved body mesh",
+        "complete missing scanned component geometry",
+        "selective component replacement without whole-body regeneration"
+      ],
+      "constraints": [
+        "Released extremely recently; benchmark availability/dependencies before making production dependency.",
+        "Final part boundaries/joints still require Brickmen reconciliation."
+      ],
+      "source": "https://arxiv.org/abs/2609.15639"
     }
   ],
   "integration_policy": [
     "Prefer target FigureArchitecture component graph over unconstrained generic part counts.",
     "Preserve separate semantics for visual regions, manufacturing components, and mechanical interfaces.",
     "Mechanical interfaces are deterministic Brickmen geometry.",
-    "Unknown/ambiguous part mapping triggers alternate segmentation or review rather than forced assignment."
+    "Unknown/ambiguous part mapping triggers alternate segmentation or review rather than forced assignment.",
+    "Prefer selective part regeneration over whole-body regeneration after an architecture has an approved skeleton and unaffected components.",
+    "Part generation tools may replace visual shells but not locked JointCartridge geometry."
   ]
 }
