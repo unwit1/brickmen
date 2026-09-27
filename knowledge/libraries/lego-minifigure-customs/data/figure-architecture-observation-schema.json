@@ -1,0 +1,64 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-27",
+  "status": "canonical_research_schema",
+  "entity": "FigureArchitectureObservation",
+  "purpose": "Record release-level evidence for body architecture without promoting market labels, maker prefixes, or visual similarity directly into mechanical truth.",
+  "required": [
+    "observation_id",
+    "target_release_or_component",
+    "observed_at",
+    "sources",
+    "architecture_candidates"
+  ],
+  "fields": [
+    "observation_id",
+    "target_release_or_component",
+    "maker_id",
+    "maker_product_code",
+    "source_body_labels",
+    "source_height_claims",
+    "normalized_morphology",
+    "observed_component_roles",
+    "observed_joint_cues",
+    "observed_connector_cues",
+    "observed_standard_part_compatibility",
+    "observed_scale_landmarks",
+    "architecture_candidates",
+    "unknown_probability",
+    "evidence_level",
+    "physical_validation_state",
+    "same_family_release_evidence",
+    "conflicts",
+    "observed_at",
+    "sources"
+  ],
+  "evidence_levels": {
+    "I0_catalog_thumbnail": "Morphology/release discovery only; no hidden joint or dimension claims.",
+    "I1_multiview_catalog": "May support component seams, visible joints and proportion estimates.",
+    "I2_disassembly_closeup": "May support component graph and connector-form hypotheses.",
+    "I3_physical_sample": "May support measured dimensions, force, actual interchangeability and wear observations.",
+    "engineering_authority": "Authoritative engineering/CAD/component evidence where provenance permits."
+  },
+  "architecture_candidate_fields": [
+    "architecture_id",
+    "confidence",
+    "relationship",
+    "evidence",
+    "contradictions"
+  ],
+  "relationship_values": [
+    "MATCH",
+    "POSSIBLE_MATCH",
+    "EXTENDS",
+    "VARIANT_OF",
+    "CONFLICTS_WITH",
+    "UNKNOWN"
+  ],
+  "rules": [
+    "Maker/product prefix is never sufficient for MATCH.",
+    "BigFig, midfig, muscle body, 7CM, giant and mega fig remain source labels unless joint/component evidence supports a canonical architecture.",
+    "Manufacturing-critical connectors require I3 physical evidence or authoritative engineering evidence.",
+    "Unknown releases remain unknown rather than being coerced into the nearest architecture."
+  ]
+}
