@@ -9,6 +9,10 @@ on:
       - "tools/geometry/measure_reference_mesh_profile.py"
   workflow_dispatch:
 
+concurrency:
+  group: brickmen-generated-data-writers
+  cancel-in-progress: false
+
 permissions:
   contents: write
 
@@ -168,4 +172,5 @@ jobs:
             exit 0
           fi
           git commit -m "data: update pinned Giant LDraw geometry reference"
+          git pull --rebase origin main
           git push origin HEAD:main
