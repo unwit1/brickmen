@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "body-provider-mapping-selection.schema.json",
+  "title": "Brickmen Provider Mapping Review Selection",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "provider_id",
+    "provider_job_id",
+    "architecture_id",
+    "selected_candidate_index",
+    "explicit_review_selection",
+    "production_geometry_authority"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "provider_id": {
+      "type": "string"
+    },
+    "provider_job_id": {
+      "type": "string"
+    },
+    "architecture_id": {
+      "type": "string"
+    },
+    "selected_candidate_index": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "selected_candidate_total_score": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "reviewer": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "review_note": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "explicit_review_selection": {
+      "const": true
+    },
+    "production_geometry_authority": {
+      "const": false
+    }
+  }
+}
