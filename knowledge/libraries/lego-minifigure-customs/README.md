@@ -310,3 +310,13 @@ Image-only Giant fitting is now supplemented by official LDraw reference metadat
 - `data/engineering-reference-anchors/lego-giant-ldraw.json`
 
 These records provide published shoulder/hand socket frames for the official Giant digital-twin workflow while keeping physical tolerances separate.
+
+
+### Standard minifigure / Axl donor anchors
+
+Reference fitting now has component-frame evidence for standard minifigure donor parts and a hybrid-body interpretation for Axl:
+- `standard-minifig-and-axl-reference-anchors.md`
+- `data/engineering-reference-anchors/lego-standard-minifig-ldraw.json`
+- `data/engineering-reference-anchors/lego-axl-hybrid-reference.json`
+
+Axl is treated as a hybrid architecture: standard lower-body and torso-core frames can remain locked while an oversized upper shell and dedicated arms define the broader visual/mechanical body. Unofficial 23763/24128 LDraw geometry remains provisional until physical measurement or official promotion.
