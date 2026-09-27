@@ -27,7 +27,8 @@
           "sources",
           "native_inputs",
           "native_outputs",
-          "brickmen_integration"
+          "brickmen_integration",
+          "pipeline_stage"
         ],
         "properties": {
           "provider_id": {
@@ -108,6 +109,19 @@
                 "type": "string"
               }
             }
+          },
+          "pipeline_stage": {
+            "type": "string",
+            "enum": [
+              "primary_generator",
+              "articulated_generator",
+              "post_generation_critic",
+              "baseline_generator",
+              "research_candidate"
+            ]
+          },
+          "output_contract": {
+            "type": "object"
           }
         }
       }
