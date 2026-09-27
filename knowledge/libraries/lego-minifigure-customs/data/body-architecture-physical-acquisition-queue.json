@@ -1,0 +1,168 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-27",
+  "status": "planned",
+  "objective": "Acquire representative body systems for teardown, metrology, scanning, compatibility and joint-force testing.",
+  "policy": [
+    "Do not infer manufacturing-critical dimensions from product photographs.",
+    "Use sacrificial/replaceable samples for destructive or repeated-cycle tests.",
+    "Retain maker, release code, seller/source, lot and photographs for every sample.",
+    "A sample can validate its release/body family but does not automatically prove every release from the maker is mechanically identical."
+  ],
+  "queue": [
+    {
+      "priority": 1,
+      "target": "LEGO modern Giant / BigFig representative",
+      "examples": [
+        "Hulk",
+        "Thanos"
+      ],
+      "purpose": [
+        "joint graph",
+        "43093 shoulder interface",
+        "arms/hands",
+        "head/lower-body compatibility"
+      ],
+      "status": "needed"
+    },
+    {
+      "priority": 2,
+      "target": "LEGO Axl oversized-torso hybrid",
+      "examples": [
+        "Nexo Knights Axl"
+      ],
+      "purpose": [
+        "official intermediate architecture",
+        "standard-head/lower-body interfaces",
+        "arm joint metrology"
+      ],
+      "status": "needed"
+    },
+    {
+      "priority": 3,
+      "target": "LEGO Hagrid giant-body hybrid",
+      "examples": [
+        "Hagrid body 40250 family"
+      ],
+      "purpose": [
+        "official hybrid architecture",
+        "standard head compatibility",
+        "joint graph"
+      ],
+      "status": "needed"
+    },
+    {
+      "priority": 4,
+      "target": "Alpha Toys AF 7 cm body",
+      "examples": [
+        "AF345 Hulk",
+        "AF361 Beast"
+      ],
+      "purpose": [
+        "confirm shared family",
+        "height/proportions",
+        "shoulder/wrist/hip/head joints",
+        "bar/accessory compatibility"
+      ],
+      "status": "needed"
+    },
+    {
+      "priority": 5,
+      "target": "G (2) muscle body",
+      "examples": [
+        "GH0304 Hulk",
+        "GH0303 Red Hulk"
+      ],
+      "purpose": [
+        "resolve whether morphology is hybrid/minifig-derived",
+        "joint graph",
+        "scale"
+      ],
+      "status": "needed"
+    },
+    {
+      "priority": 6,
+      "target": "Bigguy Minifigs muscle body",
+      "examples": [
+        "Hulk",
+        "Red Hulk"
+      ],
+      "purpose": [
+        "proprietary body digital twin",
+        "joint graph",
+        "surface schema"
+      ],
+      "status": "needed"
+    },
+    {
+      "priority": 7,
+      "target": "Mr.J Brick x Heart muscle body",
+      "examples": [
+        "Hulk"
+      ],
+      "purpose": [
+        "compare against Bigguy/Alpha",
+        "joint graph",
+        "style profile"
+      ],
+      "status": "needed"
+    },
+    {
+      "priority": 8,
+      "target": "KDL 6.5 cm body",
+      "examples": [
+        "K2302 Thing"
+      ],
+      "purpose": [
+        "determine relationship to Alpha/other intermediate bodies",
+        "joint graph",
+        "scale"
+      ],
+      "status": "needed"
+    },
+    {
+      "priority": 9,
+      "target": "community printable MidFig",
+      "examples": [
+        "muscle-body MidFig project"
+      ],
+      "purpose": [
+        "baseline printable intermediate joints",
+        "compare community compatibility strategies"
+      ],
+      "status": "needed"
+    },
+    {
+      "priority": 10,
+      "target": "standard scale baselines",
+      "examples": [
+        "standard",
+        "short legs",
+        "medium legs",
+        "long limbs"
+      ],
+      "purpose": [
+        "canonical landmarks",
+        "scale ratios",
+        "cross-architecture style transform baseline"
+      ],
+      "status": "needed"
+    }
+  ],
+  "measurement_protocol": [
+    "assembled height and bounding box",
+    "component masses",
+    "component count and exploded photographs",
+    "joint axes and range of motion",
+    "joint pin/socket diameters and depths",
+    "head/neck dimensions",
+    "wrist/hand interface",
+    "hip/leg interface",
+    "stud/anti-stud/bar/Technic compatibility",
+    "insertion/removal force where safe",
+    "repeat-cycle wear where sacrificial",
+    "material observations",
+    "3D scan/photogrammetry where useful",
+    "canonical multiview photos"
+  ]
+}
