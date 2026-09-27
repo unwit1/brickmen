@@ -1,0 +1,127 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-27",
+  "status": "official_ldraw_reference_anchors_not_physical_metrology",
+  "architecture_id": "lego_giant_modular",
+  "units": {
+    "source": "LDU",
+    "nominal_mm_per_ldu": 0.4,
+    "warning": "LDraw unit conversion is appropriate for reference geometry but does not by itself establish physical fit tolerances."
+  },
+  "source_parts": [
+    {
+      "part_id": "10128",
+      "name": "Bigfig Hulk Body",
+      "source_url": "https://sources.debian.org/src/ldraw-parts/1802%2Bds-1/parts/10128.dat",
+      "source_status": "official LDraw part",
+      "help_metadata": "Arm sockets at x = +/-40, y = -126",
+      "anchors": [
+        {
+          "anchor_id": "left_arm_socket_center_partial",
+          "coordinates_ldu": {
+            "x": -40,
+            "y": -126,
+            "z": null
+          },
+          "evidence": "!HELP metadata"
+        },
+        {
+          "anchor_id": "right_arm_socket_center_partial",
+          "coordinates_ldu": {
+            "x": 40,
+            "y": -126,
+            "z": null
+          },
+          "evidence": "!HELP metadata"
+        }
+      ],
+      "derived": [
+        {
+          "name": "arm_socket_center_separation",
+          "value_ldu": 80,
+          "nominal_mm": 32,
+          "authority": "reference_geometry_only"
+        }
+      ]
+    },
+    {
+      "part_id": "10154",
+      "name": "Bigfig Arm Left",
+      "source_url": "https://sources.debian.org/src/ldraw-parts/2206%2Bds-1/parts/10154.dat",
+      "source_status": "official LDraw part",
+      "help_metadata": "Hand socket at x = 30, y = 40, Z = -40",
+      "anchors": [
+        {
+          "anchor_id": "left_hand_socket_center",
+          "coordinates_ldu": {
+            "x": 30,
+            "y": 40,
+            "z": -40
+          },
+          "evidence": "!HELP metadata"
+        }
+      ],
+      "derived": [
+        {
+          "name": "left_hand_socket_center_nominal_mm",
+          "coordinates_mm": {
+            "x": 12,
+            "y": 16,
+            "z": -16
+          },
+          "authority": "reference_geometry_only"
+        }
+      ]
+    },
+    {
+      "part_id": "10124",
+      "name": "Bigfig Arm Right",
+      "source_url": "https://library.ldraw.org/parts/213",
+      "source_status": "official LDraw part",
+      "help_metadata": "Hand socket at x = -30, y = 40, Z = -40",
+      "anchors": [
+        {
+          "anchor_id": "right_hand_socket_center",
+          "coordinates_ldu": {
+            "x": -30,
+            "y": 40,
+            "z": -40
+          },
+          "evidence": "!HELP metadata"
+        }
+      ],
+      "derived": [
+        {
+          "name": "right_hand_socket_center_nominal_mm",
+          "coordinates_mm": {
+            "x": -12,
+            "y": 16,
+            "z": -16
+          },
+          "authority": "reference_geometry_only"
+        }
+      ]
+    },
+    {
+      "part_id": "43093",
+      "name": "Technic Axle Pin with Friction",
+      "source_url": "https://library.ldraw.org/parts/8530",
+      "source_status": "official LDraw part",
+      "observations": [
+        "Current official LDraw file uses the standard friction-pin primitive and axle-end geometry.",
+        "Use as commodity hardware reference; do not derive physical friction performance from CAD alone."
+      ]
+    }
+  ],
+  "reconciliation_targets": [
+    "brickmen_giant_v0_skeleton shoulder centers",
+    "lego_giant_modular EngineeringSkeleton",
+    "Giant JointCartridge shoulder hardware",
+    "Giant arm/hand component frames"
+  ],
+  "hard_rules": [
+    "Reference anchors may correct generation/engineering frames.",
+    "Physical pin/socket clearances still require actual measurement and fit testing.",
+    "Do not scale 43093 or other commodity hardware with character proportions."
+  ]
+}
