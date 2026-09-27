@@ -1,0 +1,71 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-27",
+  "status": "seed_manual_visual_envelope_measurements",
+  "authority": "visual_style_only",
+  "warning": "Values are normalized visual-envelope estimates from manually annotated catalog images. They are not joint spacing or physical dimensions.",
+  "references": [
+    {
+      "reference_id": "alpha_af325_venom_front_seed",
+      "widths_over_body_height": {
+        "head_width": 0.284,
+        "shoulder_outer_width": 0.782,
+        "chest_outer_width": 0.498,
+        "waist_outer_width": 0.228,
+        "hip_outer_width": 0.298
+      },
+      "style_observation": "Standard-height body with extremely broad upper visual envelope and narrow waist/lower-body transition."
+    },
+    {
+      "reference_id": "alpha_af345_hulk_front_seed",
+      "widths_over_body_height": {
+        "head_width": 0.238,
+        "shoulder_outer_width": 0.657,
+        "chest_outer_width": 0.435,
+        "waist_outer_width": 0.175,
+        "hip_outer_width": 0.219
+      },
+      "style_observation": "Tall anatomical body with broad shoulders but stronger chest-to-waist taper than Giant."
+    },
+    {
+      "reference_id": "lego_sh0371_hulk_front_seed",
+      "widths_over_body_height": {
+        "head_width": 0.22,
+        "shoulder_outer_width": 0.68,
+        "chest_outer_width": 0.47,
+        "waist_outer_width": 0.36,
+        "hip_outer_width": 0.397
+      },
+      "style_observation": "Broad Giant mass remains wide through waist/lower body; much less anatomical taper than Alpha 7 cm."
+    },
+    {
+      "reference_id": "kdl_k2302_thing_front_seed",
+      "widths_over_body_height": {
+        "head_width": 0.315,
+        "shoulder_outer_width": 0.524,
+        "chest_outer_width": 0.352,
+        "waist_outer_width": 0.249,
+        "hip_outer_width": 0.235
+      },
+      "style_observation": "Large-height figure with comparatively standard-like torso/lower-body proportions and a large relative head."
+    },
+    {
+      "reference_id": "lego_axl_front_seed",
+      "widths_over_body_height": {
+        "head_width": 0.335,
+        "shoulder_outer_width": 1.083,
+        "chest_outer_width": 0.674,
+        "waist_outer_width": 0.21,
+        "hip_outer_width": 0.212
+      },
+      "style_observation": "Armor dominates silhouette; shoulder outer span is unusable as a proxy for mechanical shoulder pivot."
+    }
+  ],
+  "derived_lessons": [
+    "Visual upper-body mass must be modeled independently from shoulder joint spacing.",
+    "Alpha AF325 and LEGO Giant can have similarly extreme upper-body presence while differing strongly in stature and waist/lower-body treatment.",
+    "Alpha AF345's large shoulder span coexists with a much narrower normalized waist than LEGO Giant.",
+    "KDL K2302 reinforces that tall scale does not imply Hulk/Giant-like upper-body mass.",
+    "Axl must be fitted as skeleton + armor overlay, not as one broad skeletal torso."
+  ]
+}
