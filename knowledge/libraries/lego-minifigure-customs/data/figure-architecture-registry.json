@@ -205,7 +205,8 @@
       ],
       "notes": [
         "Do not assume every AF release shares every joint until physical teardown confirms the family."
-      ]
+      ],
+      "release_resolution_note": "Do not map all Alpha Toys AF releases here. AF336 is visually standard/minifigure-like, while AF344/AF345 and AF360-AF363 provide strong evidence for the 7 cm muscle family. Resolve release/body-family cluster first."
     },
     {
       "architecture_id": "custom_g2_muscle_hybrid",
@@ -231,7 +232,8 @@
         "Public imagery supports a distinct muscular body morphology; exact joints/height unresolved.",
         "Do not infer that every G (2)/GH-prefix release uses this architecture; GH0318 Kingpin is cataloged separately as a BigFig."
       ],
-      "scope_rule": "Release-level classification required; GH prefix is not an architecture identifier."
+      "scope_rule": "Release-level classification required; GH prefix is not an architecture identifier.",
+      "release_resolution_note": "G (2) also sells explicit BigFig releases such as GH0435/GH0440. This architecture applies only to muscle-hybrid clusters such as GH0303/GH0304/GH0348 candidates, pending physical validation."
     },
     {
       "architecture_id": "custom_bigguy_muscle",
@@ -590,5 +592,10 @@
   "unknown_policy": {
     "architecture_id": "unknown_body_architecture",
     "action": "Create architecture observation/candidate; do not coerce to nearest known family."
+  },
+  "resolution_policy": {
+    "maker_is_not_architecture": true,
+    "require_release_or_body_family_resolution": true,
+    "body_family_cluster_registry": "maker-body-family-clusters.json"
   }
 }
