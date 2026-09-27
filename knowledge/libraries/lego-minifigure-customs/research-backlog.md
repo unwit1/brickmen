@@ -540,7 +540,7 @@ Next:
 - [ ] reannotate seed references with manual-review UI
 - [ ] add side/back views and Y-depth observations
 - [ ] add official LDraw-derived Giant landmark ground truth
-- [ ] add standard-minifigure/Axl donor-component landmark ground truth
+- [x] add standard-minifigure/Axl donor-component landmark ground truth
 - [ ] implement BodyEnvelopeProfile fitting against visual width/depth observations
 - [ ] add skeleton-to-reference SVG/image overlay renderer
 - [ ] fit head scale and separate torso/leg segment lengths
@@ -559,3 +559,17 @@ Next:
 - [ ] derive complete local transforms and articulation frames
 - [ ] reconcile LDraw frames with physical sample measurements
 - [ ] map optional Giant-compatible Brickmen JointCartridges
+
+### Standard minifigure / Axl donor frames — 2026-09-27
+
+- [x] ingest official standard torso/arm assembly frames from LDraw
+- [x] ingest current official standing lower-body assembly frame
+- [x] resolve Axl as standard-lower-body + standard-torso-core + oversized-shell + dedicated-arm hybrid
+- [x] preserve current 23763/24128 LDraw geometry as provisional while it remains unofficial
+- [x] separate donor assembly frames from visual silhouette landmarks
+
+Next:
+- [ ] acquire/scan physical Axl 23763/24128 and 24101/24104 components
+- [ ] replace provisional Axl arm-pinhole hypotheses with physical measurements
+- [ ] add fixed/reference-anchor constraints to skeleton fitting
+- [ ] fit Axl outer envelope without scaling locked standard donor frames
