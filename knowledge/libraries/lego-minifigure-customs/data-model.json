@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.8",
+  "schema_version": "0.9",
   "entities": {
     "color": [
       "local_id",
@@ -645,6 +645,50 @@
       "inheritance_rule",
       "generation_rule",
       "status"
+    ],
+    "body_reference_landmark_observation": [
+      "reference_id",
+      "architecture_candidate_id",
+      "source",
+      "view",
+      "evidence_class",
+      "image_size_px",
+      "body_bbox_px",
+      "known_height_mm",
+      "landmark_coordinate_mode",
+      "landmarks",
+      "fit_parameters",
+      "exclude_from_production_dimensions",
+      "notes"
+    ],
+    "body_skeleton_fit": [
+      "fit_id",
+      "reference_id",
+      "skeleton_id",
+      "architecture_id",
+      "target_height_mm",
+      "fit_parameters",
+      "optimized_parameter_names",
+      "initial_normalized_rmse",
+      "final_normalized_rmse",
+      "fit_status",
+      "bound_hits",
+      "diagnostic_flags",
+      "residuals",
+      "production_geometry_authority",
+      "review_status"
+    ],
+    "body_skeleton_comparison": [
+      "comparison_id",
+      "reference_id",
+      "known_height_mm",
+      "candidate_skeletons",
+      "shape_residuals",
+      "height_compatibility",
+      "bound_saturation",
+      "topology_evidence",
+      "interpretation",
+      "review_status"
     ]
   },
   "provenance_class": [
