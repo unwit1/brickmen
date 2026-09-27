@@ -52,6 +52,10 @@ def summarize_pipeline_state(
     mesh_quality_path: str | None=None,
     exact_keepout: Mapping[str,Any] | None=None,
     exact_keepout_path: str | None=None,
+    contact_regions: Mapping[str,Any] | None=None,
+    contact_regions_path: str | None=None,
+    pose_collision: Mapping[str,Any] | None=None,
+    pose_collision_path: str | None=None,
 ) -> dict[str,Any]:
     gates=[]
     next_actions=[]
@@ -306,22 +310,106 @@ def summarize_pipeline_state(
             detail="No scoped fixed mechanical keep-outs are present."
         ))
 
-    if bbox_passed and output_mapping and output_mapping.get("components"):
+    if contact_regions:
+        contact_joints=contact_regions.get("joints",[])
+        validated_regions=[
+            region
+            for joint in contact_joints
+            for region in joint.get("allowed_contact_regions_mm",[])
+            if region.get("status") in {"validated_prototype","production_approved"}
+        ]
+        pending_joints=[
+            joint.get("joint_id")
+            for joint in contact_joints
+            if not any(
+                region.get("status") in {"validated_prototype","production_approved"}
+                for region in joint.get("allowed_contact_regions_mm",[])
+            )
+        ]
         gates.append(_gate(
-            "exact_pose_collision_validation","blocked",
+            "joint_contact_region_evidence",
+            (
+                "validated"
+                if contact_joints and not pending_joints
+                else "partial_or_pending"
+            ),
+            artifact=contact_regions_path,
             detail=(
-                "Exact pose-wise component collision needs explicit joint-local allowed-contact "
-                "regions so intended shoulder/wrist mating contact is not misclassified."
+                f"{len(validated_regions)} validated contact region(s); "
+                f"{len(pending_joints)} joint(s) still have no validated contact region."
+            ),
+            blocking=False,
+        ))
+    else:
+        gates.append(_gate(
+            "joint_contact_region_evidence","not_supplied",
+            artifact=contact_regions_path,
+            detail=(
+                "No joint-contact record supplied. Sampled collision may still run, "
+                "but no joint-local collision can be suppressed as intentional contact."
+            ),
+            blocking=False,
+        ))
+
+    if pose_collision:
+        pose_pass = bool(
+            pose_collision.get("summary",{}).get(
+                "sampled_pose_collision_gate_passed"
+            )
+        )
+        gates.append(_gate(
+            "sampled_pose_collision_validation",
+            "complete" if pose_pass else "review_required",
+            artifact=pose_collision_path,
+            detail=pose_collision.get("summary",{}).get("status"),
+            blocking=not pose_pass,
+        ))
+        if not pose_pass:
+            next_actions.append(
+                "repair disallowed sampled component collisions or validate the intentional joint-local contact region from physical evidence"
+            )
+    elif bbox_passed and output_mapping and output_mapping.get("components"):
+        gates.append(_gate(
+            "sampled_pose_collision_validation","pending",
+            artifact=pose_collision_path,
+            detail=(
+                "Run triangle-level collision checks across sampled joint poses. "
+                "Pending/candidate contact regions must not suppress collisions."
             ),
             blocking=True,
         ))
         next_actions.append(
-            "define/review joint-local allowed-contact regions, then run exact pose-wise triangle collision"
+            "run evidence-gated pose-sampled triangle collision validation"
         )
     else:
         gates.append(_gate(
-            "exact_pose_collision_validation","not_started",
-            detail="Requires mapped, aligned geometry and joint-local allowed-contact regions."
+            "sampled_pose_collision_validation","not_started",
+            artifact=pose_collision_path,
+            detail="Requires mapped and aligned generated components."
+        ))
+
+    sampled_pass = bool(
+        pose_collision
+        and pose_collision.get("summary",{}).get(
+            "sampled_pose_collision_gate_passed"
+        )
+    )
+    if sampled_pass:
+        gates.append(_gate(
+            "continuous_motion_collision_validation","not_implemented",
+            detail=(
+                "Sampled poses passed, but continuous collision detection between "
+                "sample angles has not been implemented."
+            ),
+            blocking=True,
+        ))
+        next_actions.append(
+            "implement conservative continuous collision detection or adaptive interval subdivision before treating motion as continuously collision-free"
+        )
+    else:
+        gates.append(_gate(
+            "continuous_motion_collision_validation","not_started",
+            detail="Requires a passing sampled-pose collision gate first."
         ))
 
     mechanical=conditioning.get("mechanical_constraints",[])
@@ -388,6 +476,8 @@ def main() -> int:
     parser.add_argument("--geometry-validation",default=None)
     parser.add_argument("--mesh-quality",default=None)
     parser.add_argument("--exact-keepout",default=None)
+    parser.add_argument("--contact-regions",default=None)
+    parser.add_argument("--pose-collision",default=None)
     parser.add_argument("-o","--output",required=True)
     args=parser.parse_args()
 
@@ -410,6 +500,10 @@ def main() -> int:
         mesh_quality_path=args.mesh_quality,
         exact_keepout=load_json(args.exact_keepout),
         exact_keepout_path=args.exact_keepout,
+        contact_regions=load_json(args.contact_regions),
+        contact_regions_path=args.contact_regions,
+        pose_collision=load_json(args.pose_collision),
+        pose_collision_path=args.pose_collision,
     )
     Path(args.output).write_text(
         json.dumps(result,indent=2)+"\n",encoding="utf-8"
