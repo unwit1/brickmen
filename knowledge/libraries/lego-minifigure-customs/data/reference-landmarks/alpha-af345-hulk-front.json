@@ -155,6 +155,44 @@
   ],
   "exclude_from_production_dimensions": true,
   "notes": [
-    "Seed visual proportions only; no Alpha joint dimensions are inferred."
-  ]
+    "Seed visual proportions only; no Alpha joint dimensions are inferred.",
+    "Silhouette pairs are visual-envelope evidence and must not be interpreted as joint centers."
+  ],
+  "silhouette_pairs_px": {
+    "head_width": {
+      "left_x": 195,
+      "right_x": 281,
+      "y_px": 151,
+      "confidence": 0.75,
+      "semantic": "head_outer_width"
+    },
+    "shoulder_outer_width": {
+      "left_x": 119,
+      "right_x": 356,
+      "y_px": 207,
+      "confidence": 0.8,
+      "semantic": "outer_deltoid_shoulders"
+    },
+    "chest_outer_width": {
+      "left_x": 160,
+      "right_x": 317,
+      "y_px": 244,
+      "confidence": 0.75,
+      "semantic": "chest_shell_width"
+    },
+    "waist_outer_width": {
+      "left_x": 207,
+      "right_x": 270,
+      "y_px": 338,
+      "confidence": 0.7,
+      "semantic": "waist_shell_width"
+    },
+    "hip_outer_width": {
+      "left_x": 198,
+      "right_x": 277,
+      "y_px": 365,
+      "confidence": 0.6,
+      "semantic": "lower_body_outer_width"
+    }
+  }
 }
