@@ -60,6 +60,14 @@ def promote_mapping_candidate(
         item["slot_id"]:matrix
         for item in candidate.get("assignments",[])
     }
+    provenance_by_path={
+        str(item["provider_part_path"]):{
+            "provider_part_id":item.get("provider_part_id"),
+            "provider_part_index":item.get("provider_part_index"),
+            "provider_manifest":item.get("provider_manifest"),
+        }
+        for item in candidate.get("assignments",[])
+    }
     result=validate_output_mapping(
         provider_job,
         provider_run,
@@ -75,6 +83,10 @@ def promote_mapping_candidate(
     for component in result.get("components",[]):
         component["mapping_authority"]="reviewed_geometry_proposal_promotion"
         component["transform_source"]="reviewed_global_mapping_proposal"
+        provenance=provenance_by_path.get(str(component.get("path")),{})
+        component["provider_part_id"]=provenance.get("provider_part_id")
+        component["provider_part_index"]=provenance.get("provider_part_index")
+        component["provider_manifest"]=provenance.get("provider_manifest")
 
     result["mapping_promotion"]={
         "proposal_schema_version":proposal.get("schema_version"),
