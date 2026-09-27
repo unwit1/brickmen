@@ -208,7 +208,9 @@
       "canonical_provider_run_detail": null,
       "execution_has_been_performed_in_canonical_fixture": false,
       "limitations": [
-        "No official implementation was verified during the 2026-09-27 research snapshot."
+        "Official CVPR 2026 project page and paper are verified, but no public code/model link was found on the project page or author publication page as of 2026-09-27.",
+        "Published method is highly relevant to Brickmen because it outputs decomposable full-resolution part meshes, but no runnable Brickmen adapter can be verified without an implementation.",
+        "Published training uses substantial GPU resources; inference hardware requirements cannot be inferred safely from the paper alone."
       ],
       "production_geometry_authority": false
     },
@@ -217,11 +219,19 @@
       "display_name": "PWM-ArtGen",
       "pipeline_stage": "research_candidate",
       "provider_role": null,
-      "adapter_status": "unverified",
+      "adapter_status": "upstream_runnable_not_brickmen_domain_verified",
       "brickmen_execution_runnable": false,
-      "entrypoint": null,
+      "entrypoint": "demo/infer_image.py",
       "input_requirements": [],
-      "output_contract": null,
+      "output_contract": {
+        "kind": "category_limited_articulation_prediction_plus_mesh_retrieval",
+        "prediction_pattern": "predictions/**/joint_*/geom_pred.json",
+        "retrieval_manifest_pattern": "retrieval/**/object_pwm.json",
+        "retrieval_mesh_pattern": "retrieval/**/object.ply",
+        "free_form_generated_part_meshes": false,
+        "brickmen_component_slot_mapping": "not_verified_outside_supported_categories",
+        "articulation_prediction_authority": "candidate_only"
+      },
       "requires_component_slot_mapping": null,
       "helpers": {},
       "canonical_pipeline_state_path": null,
@@ -229,7 +239,11 @@
       "canonical_provider_run_detail": null,
       "execution_has_been_performed_in_canonical_fixture": false,
       "limitations": [
-        "Repository maturity and runnable inference were not verified in this snapshot."
+        "Official single-image demo currently supports only StorageFurniture, Table, Refrigerator, Oven, Microwave, WashingMachine, and Dishwasher; Brickmen humanoid/character bodies are outside the documented domain.",
+        "Final meshes are assembled through retrieval from a PartNet-Mobility-derived database rather than unrestricted free-form part mesh generation.",
+        "Single-image preprocessing can call a configured graph-prediction API and may incur charges unless cached graph JSON is supplied.",
+        "Project/model card did not specify a project license in the reviewed 2026-09-27 repository snapshot; external models and datasets retain separate terms.",
+        "Because Brickmen body figures are outside the documented categories, this provider is not a verified primary Brickmen generator despite the now-runnable upstream pipeline."
       ],
       "production_geometry_authority": false
     }
