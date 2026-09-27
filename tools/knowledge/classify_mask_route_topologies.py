@@ -13,7 +13,7 @@ import re
 from collections import Counter
 from pathlib import Path
 
-VERSION = "mask-route-topology-classifier/v4"
+VERSION = "mask-route-topology-classifier/v5"
 
 SPECIES_TERMS = {
     "bear", "bird", "crocodile", "eagle", "gorilla", "lion", "phoenix",
@@ -142,6 +142,13 @@ def classify(record: dict) -> dict:
                 "separate cowl component",
             )
 
+        if "wrap" in gear_text and "mask" in gear_text:
+            return set_result(
+                "printed_head_plus_separate_mask_wrap",
+                0.98,
+                "separate wrap component with mask semantics",
+            )
+
         shared_species = shared_species_terms(head_text, gear_text)
         if "mask" in gear_text and shared_species:
             return set_result(
@@ -149,13 +156,6 @@ def classify(record: dict) -> dict:
                 0.99,
                 "separate mask component",
                 "matching species term on head and mask: " + ",".join(shared_species),
-            )
-
-        if "wrap" in gear_text and "mask" in gear_text:
-            return set_result(
-                "printed_head_plus_separate_mask_wrap",
-                0.98,
-                "separate wrap component with mask semantics",
             )
 
         if "costume" in gear_text and "mask" in gear_text:

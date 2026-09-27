@@ -203,3 +203,26 @@ def test_printed_face_mask_with_plain_turban_wrap_is_printed_face_cover_topology
     }
     result = tool.classify(row)
     assert result["topology_class"] == "printed_face_cover_head_plus_nonmask_headgear"
+
+
+def test_mask_wrap_precedes_generic_species_mask_rule() -> None:
+    tool = load_tool()
+    row = {
+        "fig_num": "fig-test",
+        "candidate_routes": ["head_print_plus_headgear", "separate_mask_headgear"],
+        "head_components": [
+            {
+                "part_num": "28621pr0012",
+                "print_of": "28621",
+                "part_name": "Minifig Head Wolf Warrior, Silver Face Mask and Fangs Print",
+            }
+        ],
+        "headgear_components": [
+            {
+                "part_num": "4919pat0001",
+                "part_name": "Wrap with Wolf Mask with Medium Azure Eyes and Fangs pattern",
+            }
+        ],
+    }
+    result = tool.classify(row)
+    assert result["topology_class"] == "printed_head_plus_separate_mask_wrap"
