@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "body-particulate-critic-comparison.schema.json",
+  "title": "Brickmen Particulate Critic Comparison",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "architecture_id",
+    "selected_candidate_index",
+    "graph_comparison",
+    "joint_observations",
+    "authority",
+    "production_geometry_authority"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "architecture_id": {
+      "type": "string"
+    },
+    "selected_candidate_index": {
+      "type": "integer"
+    },
+    "graph_comparison": {
+      "type": "object"
+    },
+    "joint_observations": {
+      "type": "array"
+    },
+    "authority": {
+      "type": "string"
+    },
+    "production_geometry_authority": {
+      "const": false
+    }
+  }
+}
