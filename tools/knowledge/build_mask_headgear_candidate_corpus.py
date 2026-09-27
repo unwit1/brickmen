@@ -42,6 +42,8 @@ def is_body_component(component):
         or name.startswith("hips ")
         or name.startswith("legs ")
         or name.startswith("hips and ")
+        or name.startswith("minifig hipwear")
+        or name.startswith("minidoll hipwear")
     )
 
 def is_headgear_component(component):
@@ -60,6 +62,22 @@ def is_transparent_dome_geometry(component):
         or "dome" in name
         or ("bubble" in name and any(k in name for k in ("helmet","headwear","dome")))
     )
+
+def is_standard_cylindrical_minifig_head(component):
+    """Return True for the standard 3626-family cylindrical minifigure head.
+
+    Printed words such as skull, skeleton, alien, or mask describe decoration on
+    these heads; they are not evidence of modified/nonhuman head geometry.
+    """
+    part_num=str(component.get("part_num") or "").casefold()
+    print_of=str(component.get("print_of") or "").casefold()
+    return part_num.startswith("3626") or print_of.startswith("3626")
+
+def modified_head_terms(component):
+    words=contains(component.get("part_name"),MODIFIED_WORDS)
+    if not words or is_standard_cylindrical_minifig_head(component):
+        return []
+    return words
 
 def main():
     ap=argparse.ArgumentParser()
@@ -83,7 +101,7 @@ def main():
         for x in headgear:
             words=contains(x.get("part_name"),HEADGEAR_WORDS)
             if words:hg_special.append((x,words))
-        modified=[(x,contains(x.get("part_name"),MODIFIED_WORDS)) for x in heads]
+        modified=[(x,modified_head_terms(x)) for x in heads]
         modified=[(x,w) for x,w in modified if w]
         if not (head_mask or hg_special or modified):continue
         evidence=[]
