@@ -619,6 +619,115 @@
         "single_image_demo": true,
         "brickmen_domain_fit": "unverified_and_documented_categories_exclude_humanoid_character_bodies"
       }
+    },
+    {
+      "provider_id": "sam3d_part",
+      "name": "SAM3D-Part",
+      "availability": "official_siggraph_asia_2026_code_weights_and_gradio_demo_verified",
+      "pipeline_stage": "research_candidate",
+      "provider_role": "post_generation_interactive_part_selector_and_regenerator",
+      "sources": {
+        "repository": "https://github.com/Jiahao620/sam3d-part",
+        "paper": "https://arxiv.org/abs/2609.15639",
+        "weights": "https://huggingface.co/bj6/sam3d-part"
+      },
+      "license": "multi_license_sam_agreement_plus_vendored_component_terms",
+      "native_inputs": [
+        "existing_triangle_mesh",
+        "rendered_view",
+        "positive_negative_click_prompts_or_sam_mask",
+        "rendered_pointmap"
+      ],
+      "native_outputs": [
+        "selected_part_mesh_in_object_frame",
+        "optional_pose_refined_part_mesh",
+        "optional_trellis2_high_resolution_refinement",
+        "part_scene_glb_outputs"
+      ],
+      "native_controls": [
+        "view_yaw_pitch_distance_resolution",
+        "positive_negative_click_prompts",
+        "pose_head_toggle",
+        "mesh_conditioning_toggle",
+        "pose_refinement_mode",
+        "trellis2_refinement",
+        "trellis2_resolution_steps_guidance",
+        "optional_pbr_baking"
+      ],
+      "hardware_notes": [
+        "Upstream README reference environment: Python 3.11, PyTorch 2.6.0+cu124.",
+        "Upstream README reference hardware: one 80 GB H100/A100-class GPU.",
+        "Installation builds several CUDA extensions and expects a matching CUDA toolkit/nvcc."
+      ],
+      "brickmen_integration": {
+        "tier": "high_value_post_generation_repair_research",
+        "adapter_mode": "future_non_gradio_component_refinement_wrapper",
+        "use_component_slots_for_part_count": false,
+        "can_consume_mechanical_geometry_directly": false,
+        "pre_generation": [
+          "validated or candidate generated Brickmen body mesh",
+          "reviewed target component or local region",
+          "render/view and segmentation prompt"
+        ],
+        "post_generation": [
+          "treat regenerated part as a replacement candidate for exactly one Brickmen component slot",
+          "reconcile output back to Brickmen-mm frame and preserve provider provenance",
+          "rerun mesh quality, envelope, fixed keepout and articulation collision gates",
+          "never transfer mechanical-interface authority from the replaced component automatically"
+        ]
+      },
+      "limitations": [
+        "Current official entry point is an interactive Gradio app rather than a stable headless Brickmen API.",
+        "Reference environment uses an 80 GB H100/A100-class GPU and a heavy CUDA-extension stack.",
+        "Part selection depends on a rendered view and click/mask interaction; Brickmen still needs a deterministic headless prompt/region adapter.",
+        "The stage-1 model derives from SAM 3D Objects and carries SAM Agreement obligations; vendored TRELLIS/TRELLIS.2 and Hunyuan3D components have separate terms.",
+        "This is a post-generation part repair/refinement candidate, not a verified initial Brickmen body generator."
+      ],
+      "output_contract": {
+        "kind": "single_selected_part_mesh_regeneration_in_object_frame",
+        "likely_mesh_outputs": [
+          "output_sample/<user_id>/part_scene_color.glb",
+          "output_sample/<user_id>/part_scene_textured.glb"
+        ],
+        "brickmen_component_slot_mapping": "one_reviewed_target_slot_required",
+        "production_geometry_authority": false
+      },
+      "execution": {
+        "adapter_status": "upstream_gradio_runnable_headless_brickmen_wrapper_pending",
+        "entrypoint": "app.py",
+        "invocation": [
+          "python",
+          "app.py"
+        ],
+        "upstream_requirement_note": "Official app is runnable; Brickmen has not yet verified a stable headless callable that bypasses global model initialization/Gradio while preserving all required render-mask-pointmap inputs.",
+        "environment": {
+          "minimum_vram_gb": 80,
+          "minimum_vram_authority": "upstream_reference_environment",
+          "cuda_required": true
+        }
+      },
+      "upstream_verification": {
+        "repository": "https://github.com/Jiahao620/sam3d-part",
+        "verified_commit_sha": "59bc3848f70526b5560389f353c310a630b24938",
+        "verified_on": "2026-09-27",
+        "interface_files": [
+          "app.py",
+          "README.md",
+          "ENV_INFO.txt"
+        ],
+        "version_policy": "exact_verified_revision_preferred_reverify_research_contract_on_mismatch",
+        "verification_scope": "Interactive mesh upload/render/click/part generation flow, output role, reference environment and licensing notes."
+      },
+      "research_status": {
+        "verified_on": "2026-09-27",
+        "venue": "SIGGRAPH Asia 2026",
+        "official_repository": true,
+        "official_weights": true,
+        "public_demo_code": true,
+        "brickmen_domain_fit": "high_for_post_generation_local_part_repair_not_initial_body_generation"
+      },
+      "requires_component_slot_mapping": true,
+      "production_geometry_authority": false
     }
   ],
   "production_geometry_authority": false
