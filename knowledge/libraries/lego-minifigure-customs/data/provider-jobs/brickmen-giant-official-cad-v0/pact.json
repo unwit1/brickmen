@@ -5,21 +5,23 @@
   "provider_role": "articulated_part_decomposed_image_to_3d_generator",
   "provider_availability": "official_inference_training_and_preprocessing_available",
   "execution_interface": {
-    "adapter_status": "upstream_cli_input_path_bug_requires_wrapper",
+    "adapter_status": "runnable_brickmen_dataset_redirect_wrapper_verified",
     "entrypoint": "infer_imgs.py",
     "invocation": [
       "python",
-      "infer_imgs.py",
-      "--data_dir",
-      "<image_dir>",
-      "--outdir",
+      "<brickmen>/tools/geometry/provider_wrappers/run_pact_arbitrary_input.py",
+      "--provider-repo",
+      "<pact_repo>",
+      "--image",
+      "<image>",
+      "--semantic-mask-exr",
+      "<semantic_part_mask.exr>",
+      "--output-dir",
       "<output_dir>",
-      "--batch_size",
-      "1",
-      "--save_glb",
-      "--export_arti_objects"
+      "--metadata",
+      "<output_dir>/brickmen-pact-wrapper.json"
     ],
-    "upstream_requirement_note": "Current upstream infer_imgs.py parses --data_dir but instantiates ImageConditioned_dataset('assets/real_world_examples') directly. Brickmen must not call this CLI on arbitrary user input until a safe wrapper/API adapter is added."
+    "upstream_requirement_note": "Brickmen wrapper redirects PAct's hardcoded ImageConditioned_dataset root in-process without modifying the upstream checkout. A PAct-compatible semantic part-label EXR mask is required."
   },
   "conditioning_digest_sha256": "5f3bfc4f8684705de1b68d096182e4ea452984eabf661c94b2979d4746280978",
   "architecture_id": "brickmen_giant_v0",
@@ -334,7 +336,10 @@
   "output_contract": {
     "kind": "articulated_part_bundle",
     "semantic_slot_mapping": "required_after_generation",
-    "articulation_prediction_authority": "candidate_only"
+    "articulation_prediction_authority": "candidate_only",
+    "component_pattern": "exported_arti_objects/**/glb/part_*.glb",
+    "fallback_component_pattern": "exported_arti_objects/**/ply/part_*.ply",
+    "manifest_pattern": "exported_arti_objects/**/object.json"
   },
   "requires_component_slot_mapping": true,
   "output_acceptance_rules": [
