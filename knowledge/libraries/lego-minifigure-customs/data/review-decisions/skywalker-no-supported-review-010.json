@@ -1,0 +1,188 @@
+{
+  "schema": "skywalker-no-supported-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-no-supported-review-010",
+  "policy": "Preserve named game identities when catalog retrieval returns only lexical or identifier-shape neighbors. Generic physical role families do not automatically establish equivalence to a named character. Compact droid identifiers require full normalized-code agreement, and incidental English words such as Hood or Codebreaker must not dominate person-level matching.",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-91062f898ccd88ad59869cd2",
+      "character_variant_key": "OOM9",
+      "decision": "named_separatist_commander_oom_9_verified_video_game_only_no_official_physical_minifigure",
+      "canonical_subject": "OOM-9",
+      "identity_context": {
+        "role": "OOM-series battle droid commander",
+        "faction": "Trade Federation / Separatist precursor forces"
+      },
+      "physical_status": {
+        "exact_official_minifigure_located": false,
+        "brickipedia_status": "video-game-only minifigure; never existed in physical form or an official LEGO set"
+      },
+      "rejected_top_candidates": [
+        {
+          "fig_num": "fig-004271",
+          "catalog_name": "BB-9E",
+          "reason": "shared 9 token and compact droid-code shape only; different droid and era"
+        },
+        {
+          "fig_num": "fig-003520",
+          "catalog_name": "EV-9D9",
+          "reason": "shared 9 token and compact droid-code shape only; different droid"
+        }
+      ],
+      "reason": "OOM-9 is a specific named OOM-series battle droid commander. Brickipedia explicitly classifies the LEGO representation as video-game-only/nonphysical. Generic physical battle droid commanders may establish a broad role/body family but do not make an exact OOM-9 counterpart.",
+      "systemic_pattern": "named_compact_droid_identity_requires_full_code_match_and_must_not_collapse_to_generic_role_family",
+      "evidence_urls": [
+        "https://brickipedia.fandom.com/wiki/OOM-9"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-63d1f6a7178e5cea9d6a7950",
+      "character_variant_key": "WillrowHood",
+      "decision": "named_rebel_willrow_hood_verified_video_game_only_no_official_physical_minifigure",
+      "canonical_subject": "Willrow Hood",
+      "physical_status": {
+        "exact_official_minifigure_located": false,
+        "brickipedia_status": "video-game-only minifigure; never existed in physical form or an official LEGO set"
+      },
+      "rejected_top_candidates": [
+        {
+          "fig_num": "fig-003813",
+          "catalog_name": "Wicket, Ewok, Dark Orange Hood",
+          "reason": "surname Hood is being misread as clothing; unrelated character"
+        },
+        {
+          "fig_num": "fig-004170",
+          "catalog_name": "Naare with Dark Blue Hood",
+          "reason": "surname Hood is being misread as clothing; unrelated character"
+        },
+        {
+          "fig_num": "fig-003825",
+          "catalog_name": "Anakin Skywalker, Dark Blue Hood",
+          "reason": "surname Hood is being misread as clothing; unrelated character"
+        }
+      ],
+      "reason": "Willrow Hood is a named Rebel/Cloud City character whose surname is Hood. The resolver incorrectly treated 'Hood' as an apparel token and returned characters wearing hoods. Brickipedia classifies his LEGO representation as video-game-only and nonphysical.",
+      "systemic_pattern": "surname_tokens_that_are_also_apparel_terms_require_named_entity_gating_before_attribute_matching",
+      "evidence_urls": [
+        "https://brickipedia.fandom.com/wiki/Willrow_Hood"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-0b3e6d7624cab705613f414b",
+      "character_variant_key": "MasterCodebreaker",
+      "decision": "master_codebreaker_verified_video_game_only_no_official_physical_minifigure",
+      "canonical_subject": "Master Codebreaker",
+      "physical_status": {
+        "exact_official_minifigure_located": false,
+        "brickipedia_status": "video-game-only minifigure; never existed in physical form or an official LEGO set"
+      },
+      "rejected_top_candidates": [
+        {
+          "fig_num": "fig-004069",
+          "catalog_name": "Ithorian Jedi Master",
+          "reason": "shared title token Master only; unrelated character"
+        },
+        {
+          "fig_num": "fig-001735",
+          "catalog_name": "DJ Code Breaker",
+          "reason": "DJ is the alternate codebreaker recruited after the Master Codebreaker is unavailable; different character"
+        }
+      ],
+      "reason": "The Master Codebreaker is the distinct Canto Bight character sought by Finn and Rose, not DJ. Brickipedia explicitly classifies the LEGO representation as video-game-only/nonphysical. Both title-only and occupational-word overlap are false-positive routes here.",
+      "systemic_pattern": "title_and_occupation_tokens_require_person_identity_gating_master_codebreaker_is_not_dj",
+      "evidence_urls": [
+        "https://brickipedia.fandom.com/wiki/Master_Codebreaker"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-37910352e73595b61cd4571b",
+      "character_variant_key": "G8R3",
+      "decision": "named_naboo_astromech_g8_r3_verified_video_game_only_no_official_physical_minifigure",
+      "canonical_subject": "G8-R3",
+      "known_aliases": [
+        "R5-A7"
+      ],
+      "identity_context": {
+        "type": "Naboo astromech droid",
+        "appearance": "yellow and white"
+      },
+      "physical_status": {
+        "exact_official_minifigure_located": false,
+        "brickipedia_status": "listed among nonphysical Galactic Republic / video-game droids"
+      },
+      "rejected_top_candidates": [
+        {
+          "fig_num": "fig-003709",
+          "catalog_name": "Astromech Droid, R8-B7",
+          "reason": "different identifier"
+        },
+        {
+          "fig_num": "fig-004017",
+          "catalog_name": "Astromech Droid, R4-G0",
+          "reason": "different identifier"
+        },
+        {
+          "fig_num": "fig-003893",
+          "catalog_name": "Astromech Droid, R5-D8 / R5-D4",
+          "reason": "different identifier despite same astromech body family"
+        }
+      ],
+      "reason": "G8-R3 is a distinct named Naboo astromech, also known canonically as R5-A7. Brickipedia places G8-R3 among nonphysical/video-game droids. Astromech body-family similarity and partial code overlap are insufficient to substitute a different R-series unit.",
+      "systemic_pattern": "astromech_body_family_similarity_must_not_override_full_identifier_identity",
+      "evidence_urls": [
+        "https://brickipedia.fandom.com/wiki/Astromech_Droid",
+        "https://starwars.fandom.com/wiki/G8-R3"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-3dddd64bdcb5192daa707a12",
+      "character_variant_key": "AD4M",
+      "decision": "named_resistance_droid_ad_4m_verified_video_game_only_no_official_physical_minifigure",
+      "canonical_subject": "AD-4M",
+      "identity_context": {
+        "faction": "Resistance",
+        "type": "named droid"
+      },
+      "physical_status": {
+        "exact_official_minifigure_located": false,
+        "brickipedia_status": "listed among nonphysical Resistance / video-game-only minifigures"
+      },
+      "rejected_top_candidates": [
+        {
+          "fig_num": "fig-004242",
+          "catalog_name": "4-LOM",
+          "reason": "identifier-shape overlap only; different named droid"
+        },
+        {
+          "fig_num": "fig-003857",
+          "catalog_name": "EV-A4-D",
+          "reason": "identifier-shape overlap only; different named droid"
+        },
+        {
+          "fig_num": "fig-000115",
+          "catalog_name": "TC-4",
+          "reason": "identifier-shape overlap only; different named droid"
+        }
+      ],
+      "reason": "AD-4M is a distinct Resistance droid represented in the game's nonphysical roster. The resolver currently ranks unrelated droids whose names merely contain similar digits and letters. Full normalized identifier agreement must be required for named droids.",
+      "systemic_pattern": "compact_identifier_similarity_without_full_code_agreement_is_not_named_droid_identity_evidence",
+      "evidence_urls": [
+        "https://brickipedia.fandom.com/wiki/Category:Video_game_only_minifigures",
+        "https://brickipedia.fandom.com/wiki/Category:Star_Wars_minifigures"
+      ]
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "video_game_only_or_nonphysical_named_characters": 5,
+    "automatic_exact_artwork_equivalence_promotions": 0
+  },
+  "remaining_no_supported_records_after_batch": 46,
+  "systemic_findings": [
+    "Compact droid identifiers need full normalized-code agreement; shared digits and letters are weak evidence.",
+    "A generic physical role family must not be promoted to an exact named-character counterpart without direct identity evidence.",
+    "Surnames that are also clothing terms, such as Hood, need person-level parsing before apparel matching.",
+    "Master Codebreaker and DJ are distinct characters even though both share a codebreaking role.",
+    "Named astromechs must remain identity-distinct despite shared R-series body families."
+  ]
+}
