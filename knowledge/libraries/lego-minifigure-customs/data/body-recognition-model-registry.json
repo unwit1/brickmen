@@ -1,0 +1,94 @@
+{
+  "schema_version": "0.1",
+  "observed_at": "2026-09-27",
+  "status": "research_model_registry",
+  "tasks": {
+    "image_segmentation": [
+      {
+        "model": "SAM 2 / SAM 2.1",
+        "role": "full-figure and component masks",
+        "strengths": [
+          "promptable images/video",
+          "zero-shot generalization",
+          "released code/weights"
+        ],
+        "source": "https://ai.meta.com/research/sam2/"
+      }
+    ],
+    "image_embedding": [
+      {
+        "model": "SigLIP 2",
+        "role": "canonical image/release/body retrieval",
+        "strengths": [
+          "image-text retrieval",
+          "zero-shot classification",
+          "localization/dense features",
+          "multiple model sizes"
+        ],
+        "source": "https://arxiv.org/abs/2502.14786"
+      }
+    ],
+    "three_d_embedding": [
+      {
+        "model": "OpenShape",
+        "role": "point-cloud/open-world shape retrieval",
+        "strengths": [
+          "3D classification",
+          "text/image/3D retrieval",
+          "released checkpoints/training"
+        ],
+        "source": "https://github.com/Colin97/OpenShape_code"
+      },
+      {
+        "model": "Uni3D",
+        "role": "3D representation/retrieval/part understanding",
+        "strengths": [
+          "cross-modal retrieval",
+          "one-shot part segmentation",
+          "scalable point-cloud representation"
+        ],
+        "source": "https://github.com/baaivision/Uni3D"
+      },
+      {
+        "model": "Point-Bind",
+        "role": "secondary multimodal point-cloud baseline",
+        "strengths": [
+          "3D-image-text aligned embedding",
+          "zero-shot 3D understanding"
+        ],
+        "source": "https://github.com/ZiyuGuo99/Point-Bind_Point-LLM"
+      },
+      {
+        "model": "ULIP-2",
+        "role": "historical benchmark/reference",
+        "strengths": [
+          "multimodal 3D pretraining"
+        ],
+        "maintenance_note": "Salesforce GitHub repository archived 2026-06-25; do not make primary new runtime dependency without reason.",
+        "source": "https://github.com/salesforce/ULIP"
+      }
+    ]
+  },
+  "fusion_features": [
+    "maker_code_prior",
+    "source_body_label",
+    "body_family_cluster",
+    "image_embedding",
+    "silhouette_embedding",
+    "proportion_vector",
+    "joint_cues",
+    "component_graph",
+    "3d_embedding",
+    "digital_twin_alignment",
+    "connector_evidence",
+    "physical_measurements"
+  ],
+  "output_states": [
+    "exact_release_resolved",
+    "architecture_high_confidence",
+    "architecture_candidate",
+    "morphology_only",
+    "unknown"
+  ],
+  "hard_rule": "Unknown rejection is mandatory. Neural similarity cannot authorize manufacturing-critical connector reuse."
+}
