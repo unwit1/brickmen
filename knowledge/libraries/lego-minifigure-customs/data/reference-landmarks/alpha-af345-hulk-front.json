@@ -1,0 +1,160 @@
+{
+  "schema_version": "0.1",
+  "reference_id": "alpha_af345_hulk_front_seed",
+  "architecture_candidate_id": "custom_alpha_7cm_muscle",
+  "source": {
+    "title": "Alpha Toys AF345 Hulk",
+    "catalog_url": "https://www.herobloks.com/figures/39241/alpha-toys/af345/hulk",
+    "source_note": "Seed landmarks manually estimated from catalog main front figure; image includes inset/comparison graphics."
+  },
+  "view": "front",
+  "evidence_class": "catalog_manual_estimate",
+  "image_size_px": [
+    512,
+    512
+  ],
+  "body_bbox_px": [
+    119,
+    100,
+    356,
+    461
+  ],
+  "known_height_mm": {
+    "min": 68,
+    "max": 72,
+    "nominal": 70
+  },
+  "landmark_coordinate_mode": "pixel",
+  "landmarks": {
+    "head_center": {
+      "position": [
+        238,
+        151
+      ],
+      "confidence": 0.8
+    },
+    "neck": {
+      "position": [
+        238,
+        183
+      ],
+      "confidence": 0.7
+    },
+    "shoulder_l": {
+      "position": [
+        171,
+        198
+      ],
+      "confidence": 0.7
+    },
+    "shoulder_r": {
+      "position": [
+        306,
+        198
+      ],
+      "confidence": 0.7
+    },
+    "elbow_l": {
+      "position": [
+        144,
+        276
+      ],
+      "confidence": 0.65
+    },
+    "elbow_r": {
+      "position": [
+        333,
+        276
+      ],
+      "confidence": 0.65
+    },
+    "wrist_l": {
+      "position": [
+        132,
+        348
+      ],
+      "confidence": 0.65
+    },
+    "wrist_r": {
+      "position": [
+        344,
+        348
+      ],
+      "confidence": 0.65
+    },
+    "hand_l": {
+      "position": [
+        133,
+        372
+      ],
+      "confidence": 0.6
+    },
+    "hand_r": {
+      "position": [
+        343,
+        372
+      ],
+      "confidence": 0.6
+    },
+    "waist": {
+      "position": [
+        238,
+        342
+      ],
+      "confidence": 0.65
+    },
+    "hip_l": {
+      "position": [
+        213,
+        361
+      ],
+      "confidence": 0.55
+    },
+    "hip_r": {
+      "position": [
+        263,
+        361
+      ],
+      "confidence": 0.55
+    },
+    "knee_l": {
+      "position": [
+        214,
+        418
+      ],
+      "confidence": 0.5
+    },
+    "knee_r": {
+      "position": [
+        263,
+        418
+      ],
+      "confidence": 0.5
+    },
+    "ankle_l": {
+      "position": [
+        214,
+        455
+      ],
+      "confidence": 0.5
+    },
+    "ankle_r": {
+      "position": [
+        263,
+        455
+      ],
+      "confidence": 0.5
+    }
+  },
+  "fit_parameters": [
+    "shoulder_width_scale",
+    "arm_length_scale",
+    "torso_height_scale",
+    "lower_body_height_scale",
+    "stance_width_scale"
+  ],
+  "exclude_from_production_dimensions": true,
+  "notes": [
+    "Seed visual proportions only; no Alpha joint dimensions are inferred."
+  ]
+}
