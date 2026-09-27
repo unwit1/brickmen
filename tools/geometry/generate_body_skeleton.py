@@ -188,6 +188,21 @@ def compile_skeleton(
             axis = AXIS_INDEX[axis_name]
             size[axis] *= parameters[parameter_name]
         item["size_mm"] = [round(v * target_height_mm, 6) for v in size]
+        a_node = item.get("a_node")
+        b_node = item.get("b_node")
+        if a_node and b_node:
+            if a_node not in nodes_mm or b_node not in nodes_mm:
+                raise ValueError(
+                    f"Envelope {item.get('id')} references unknown endpoint nodes"
+                )
+            a_mm = nodes_mm[a_node]
+            b_mm = nodes_mm[b_node]
+            item["a_mm"] = list(a_mm)
+            item["b_mm"] = list(b_mm)
+            item["derived_length_mm"] = round(
+                sum((b_mm[i] - a_mm[i]) ** 2 for i in range(3)) ** 0.5,
+                6,
+            )
         item.pop("size_norm", None)
         envelopes.append(item)
 
