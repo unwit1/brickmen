@@ -8,7 +8,8 @@ on:
       - "knowledge/libraries/lego-minifigure-customs/data/reference-landmarks/**"
       - "knowledge/libraries/lego-minifigure-customs/data/body-*.schema.json"
       - "tests/test_body_*.py"
-      - "tests/test_ldraw_geometry_ingestion.py"
+      - "tests/test_ldraw_geometry_ingestion.py tests/test_reference_mesh_profile.py"
+      - "tests/test_reference_mesh_profile.py"
       - ".github/workflows/body-geometry-tests.yml"
   pull_request:
     paths:
