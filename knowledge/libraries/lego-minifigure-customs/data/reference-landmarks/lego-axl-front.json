@@ -153,6 +153,46 @@
   "exclude_from_production_dimensions": true,
   "notes": [
     "Axl is intentionally included as a stress test for Broad skeleton width.",
-    "If fit saturates bounds, revise the Broad design space rather than treating the catalog estimate as exact mechanics."
-  ]
+    "If fit saturates bounds, revise the Broad design space rather than treating the catalog estimate as exact mechanics.",
+    "Silhouette pairs are visual-envelope evidence and must not be interpreted as joint centers."
+  ],
+  "silhouette_pairs_px": {
+    "head_width": {
+      "left_x": 184,
+      "right_x": 329,
+      "y_px": 116,
+      "confidence": 0.7,
+      "semantic": "helmet_head_outer_width",
+      "notes": "Includes helmet/visor silhouette."
+    },
+    "shoulder_outer_width": {
+      "left_x": 22,
+      "right_x": 491,
+      "y_px": 212,
+      "confidence": 0.85,
+      "semantic": "armor_outer_shoulders",
+      "notes": "Armor edge, explicitly not shoulder pivot."
+    },
+    "chest_outer_width": {
+      "left_x": 110,
+      "right_x": 402,
+      "y_px": 250,
+      "confidence": 0.8,
+      "semantic": "armor_chest_width"
+    },
+    "waist_outer_width": {
+      "left_x": 210,
+      "right_x": 301,
+      "y_px": 348,
+      "confidence": 0.7,
+      "semantic": "waist_shell_width"
+    },
+    "hip_outer_width": {
+      "left_x": 210,
+      "right_x": 302,
+      "y_px": 366,
+      "confidence": 0.65,
+      "semantic": "standard_lower_body_width"
+    }
+  }
 }
