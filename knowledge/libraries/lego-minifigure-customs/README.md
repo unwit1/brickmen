@@ -108,3 +108,21 @@ Research and architecture for the target workflow "ask for a character -> automa
 - `data/accessory-generation-benchmark.json` — common accessory suite, input modes and metrics for empirical model routing.
 
 Core rule: learned 3D systems generate/propose visual shells; deterministic Brickmen CAD, keep-out geometry and validated connector profiles remain authoritative for functional interfaces and manufacturing dimensions.
+
+
+## Non-standard body architectures
+
+Figure/body architecture is now modeled separately from character identity and loose market labels.
+
+Primary documents:
+- `nonstandard-figure-architectures.md` — official/custom architecture taxonomy, Alpha Toys AF research, mechanical modeling and 3D-print strategy.
+- `body-architecture-recognition-and-style-transfer.md` — image/mesh recognition, BodyStyleProfile, cross-architecture style transfer and architecture-conditioned generation.
+- `agentic-custom-parts-and-body-architecture-roadmap.md` — unified G/B/R/M implementation roadmap from accessory generation through complete printable custom bodies.
+
+Structured records:
+- `data/figure-architecture-registry.json`
+- `data/body-style-transfer-schema.json`
+- `data/body-architecture-recognition-benchmark.json`
+- `data/body-architecture-physical-acquisition-queue.json`
+
+Rule: labels such as BigFig, midfig, mega fig, Giant, 7CM and muscle body remain source terminology until a component/joint graph establishes the normalized FigureArchitecture.
