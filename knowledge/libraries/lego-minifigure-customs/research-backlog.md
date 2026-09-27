@@ -394,3 +394,28 @@ Detailed implementation sequencing is canonical in `agentic-custom-parts-and-bod
 - [ ] implement CharacterBodyDesignSpec compiler
 - [ ] generate first original Brickmen Mid static prototype
 - [ ] validate Brickmen Mid joints before articulated generation
+
+### Body generation / learning stack additions — 2026-09-27
+
+- [x] add ball-jointed standard-scale custom architecture family
+- [x] add MegaFig/buildable separation
+- [x] identify OA2201-OA2204 16 cm family candidate
+- [x] record DY very-large scale variation
+- [x] record same-maker 4.3 cm vs 8 cm Renzaima evidence
+- [x] add non-Marvel BigFig evidence
+- [x] add faceted figure-architecture feature schema
+- [x] add reusable JointProfile/joint validation subsystem
+- [x] add adjacent articulated figure reference systems
+- [x] add PartCrafter/PAct/ArtLLM/Particulate/UniPart/Trellis SegPart research
+- [x] add factorized BodyCorpusSample training design
+- [x] add body generation evaluation contract
+- [ ] ingest first 500 release-level FigureArchitectureObservation records
+- [ ] materialize first Hulk cross-architecture BodyCorpusSample set
+- [ ] run maker-held-out architecture classification baseline
+- [ ] test PartCrafter on canonical body reference images
+- [ ] test PAct/Particulate articulation proposals against known digital twins
+- [ ] build first JointProfile coupon generator
+- [ ] measure commercial ball-joint-arm torso adapter
+- [ ] acquire one OA 16 cm family sample
+- [ ] acquire one Mega Construx modern micro-action figure as adjacent articulation reference
+- [ ] generate first Brickmen Mid static component set
