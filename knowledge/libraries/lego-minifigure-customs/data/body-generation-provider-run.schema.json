@@ -83,6 +83,59 @@
     },
     "production_geometry_authority": {
       "const": false
+    },
+    "pipeline_stage": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "output_contract": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "output_classification": {
+      "type": "object",
+      "properties": {
+        "component_candidates": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "composite_outputs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "critic_outputs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "auxiliary_outputs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "manifest_files": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "unclassified_outputs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
     }
   }
 }
