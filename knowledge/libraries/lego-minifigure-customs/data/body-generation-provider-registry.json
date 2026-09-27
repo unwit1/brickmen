@@ -52,7 +52,24 @@
         "Does not natively consume Brickmen skeleton/envelope/keep-out JSON.",
         "Part identity/order must be verified after generation.",
         "Generated mating geometry has no manufacturing authority."
-      ]
+      ],
+      "execution": {
+        "adapter_status": "runnable_cli_verified",
+        "entrypoint": "scripts/inference_partcrafter.py",
+        "invocation": [
+          "python",
+          "scripts/inference_partcrafter.py",
+          "--image_path",
+          "<image>",
+          "--num_parts",
+          "<N>",
+          "--tag",
+          "<tag>",
+          "--rmbg",
+          "--render"
+        ],
+        "upstream_requirement_note": "Official README states CUDA GPU with at least 8GB VRAM; reduce parts/tokens to lower memory."
+      }
     },
     {
       "provider_id": "partpacker",
@@ -98,7 +115,22 @@
         "Current Brickmen research has not verified a native exact part-count control.",
         "Provider part decomposition may not match Brickmen manufacturing component boundaries.",
         "Generated interfaces are visual hypotheses only."
-      ]
+      ],
+      "execution": {
+        "adapter_status": "runnable_cli_verified",
+        "entrypoint": "flow/scripts/infer.py",
+        "invocation": [
+          "python",
+          "flow/scripts/infer.py",
+          "--ckpt_path",
+          "pretrained/flow.pt",
+          "--input",
+          "<image_dir>",
+          "--output_dir",
+          "<output_dir>"
+        ],
+        "upstream_requirement_note": "Official README states ~10GB GPU memory for inference assuming float16."
+      }
     },
     {
       "provider_id": "pact",
@@ -142,7 +174,23 @@
       "limitations": [
         "Learned articulation is evidence/candidate structure, not production mechanical authority.",
         "Brickmen must retain control of component count, hardware, tolerances and validated joint geometry."
-      ]
+      ],
+      "execution": {
+        "adapter_status": "runnable_cli_verified",
+        "entrypoint": "infer_imgs.py",
+        "invocation": [
+          "python",
+          "infer_imgs.py",
+          "--data_dir",
+          "<image_dir>",
+          "--outdir",
+          "<output_dir>",
+          "--batch_size",
+          "1",
+          "--save_glb",
+          "--export_arti_objects"
+        ]
+      }
     },
     {
       "provider_id": "particulate",
@@ -181,7 +229,22 @@
       "limitations": [
         "Not a primary geometry generator.",
         "Articulation predictions require reconciliation with deterministic Brickmen engineering evidence."
-      ]
+      ],
+      "execution": {
+        "adapter_status": "runnable_cli_verified",
+        "entrypoint": "infer.py",
+        "invocation": [
+          "python",
+          "infer.py",
+          "--input_mesh",
+          "<mesh>",
+          "--eval",
+          "--output_dir",
+          "<output_dir>",
+          "--up_dir",
+          "Z"
+        ]
+      }
     },
     {
       "provider_id": "sam_3d_objects",
@@ -228,7 +291,17 @@
         "Not a native Brickmen part-aware manufacturing decomposition.",
         "Per-component mask workflow depends on suitable source imagery/masks.",
         "Model output remains visual/reconstruction evidence."
-      ]
+      ],
+      "execution": {
+        "adapter_status": "python_api_adapter_pending",
+        "entrypoint": "notebook/inference.py",
+        "invocation": [
+          "python_api",
+          "Inference(config_path)",
+          "inference(image, mask, seed=...)"
+        ],
+        "upstream_requirement_note": "Official setup documents Linux x86-64 and NVIDIA GPU with at least 32GB VRAM."
+      }
     },
     {
       "provider_id": "unipart",
