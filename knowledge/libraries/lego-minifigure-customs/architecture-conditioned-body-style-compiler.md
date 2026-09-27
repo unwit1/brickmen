@@ -543,3 +543,132 @@ Beast SourceAppearance
 ```
 
 This lets Brickmen learn from the visual language of existing custom figures without making their proprietary body mechanics or exact sculpt the canonical manufacturing geometry.
+
+
+# BodyGenerationConditioning handoff
+
+The fitted skeleton, visual envelope and mechanical-interface layers now compile into a provider-neutral intermediate artifact before learned 3D generation:
+
+```
+CharacterBodyDesignSpec
+ + selected Brickmen skeleton
+ + optional skeleton/reference fit
+ + optional BodyEnvelopeProfile fit
+ + JointProfile / JointCartridge evidence
+ -> BodyGenerationConditioning
+ -> part-aware image/mesh generation
+ -> deterministic interface compile
+```
+
+Implementation:
+- `data/body-generation-conditioning.schema.json`
+- `tools/geometry/compile_body_generation_conditioning.py`
+- `tests/test_body_generation_conditioning.py`
+
+## Why this intermediate representation exists
+
+A generation model should receive enough structure to create the correct shell without being allowed to reinterpret mechanical evidence.
+
+The payload therefore carries four parallel control channels:
+
+### Skeleton landmarks
+Normalized and target-height coordinates for:
+- root/pelvis/waist/chest/neck/head;
+- shoulders;
+- arm/hand landmarks;
+- hips/knees/ankles;
+- architecture bones and joint semantics.
+
+These guide alignment/proportions.
+
+They are **not** printable connector geometry.
+
+### Visual envelopes
+Independent box/capsule-style targets for visual mass:
+- torso width/depth;
+- abdomen width/depth;
+- head width/depth/height;
+- later shoulder/arm/hand/lower-body envelopes.
+
+These may change without moving joint centers.
+
+### Component plan
+Carries:
+- editable shell regions;
+- locked architecture regions;
+- default lower-body mode;
+- later component split zones and expected generated component graph.
+
+### Mechanical constraints
+Each JointProfile/JointCartridge arrives with an explicit authority class.
+
+Current classes:
+- `reference_only_not_manufacturing_authority`;
+- `validated_prototype_not_production`;
+- `production_approved_deterministic_interface`.
+
+A CAD reference or validation-pending profile can contribute:
+- hardware identity;
+- orientation;
+- alignment;
+- reference keep-out;
+- validation requirements.
+
+It cannot contribute an implied printable socket tolerance.
+
+## Scale rule
+
+Reference scale and target design scale are separate.
+
+For example, the official pinned Giant/Hulk reference is about 71.1 mm tall. Brickmen Giant's current design target is 62 mm.
+
+The reference may fit normalized proportions while generation remains targeted at 62 mm.
+
+Commodity hardware such as 43093 is even stricter:
+- its physical dimensions remain fixed;
+- a normalized keep-out copy may be supplied to a generator for spatial conditioning;
+- the hardware itself never scales with body height.
+
+## Current Giant example
+
+The current official Giant conditioning path can combine:
+
+- official shoulder-center shape evidence from `lego-giant-ldraw-shoulders-fit.json`;
+- official body width/depth evidence from `lego-giant-10128-ldraw-body-profile.json`;
+- Brickmen Giant skeleton;
+- `lego_giant_43093_shoulder_reference_v0`.
+
+The resulting visual torso envelope can match the official reference distribution while the shoulder hardware profile remains explicitly reference-only until physical force/torque/cycle validation.
+
+## Generator responsibilities
+
+A learned image/3D system may:
+- satisfy normalized body proportions;
+- fill visual envelopes;
+- propose shell surfaces;
+- propose relief/material language;
+- propose component-local shape inside editable regions.
+
+It may not:
+- resize commodity hardware;
+- invent fit tolerances;
+- erase keep-outs;
+- convert a reference-only profile into a production joint;
+- change architecture component count without an explicit architecture/compiler decision;
+- move a locked interface because a source silhouette is wider.
+
+## Deterministic post-processing
+
+After shell generation:
+
+```
+generated visual shell
+ -> align to BodyGenerationConditioning
+ -> trim/repair component boundaries
+ -> subtract keep-outs
+ -> insert validated deterministic interfaces
+ -> collision/articulation checks
+ -> DFM/manufacturing checks
+```
+
+This keeps learned geometry useful without giving it authority over fit-critical mechanics.
