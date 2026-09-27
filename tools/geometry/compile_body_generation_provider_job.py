@@ -91,6 +91,7 @@ def compile_provider_job(
         "provider_id": provider["provider_id"],
         "provider_role": provider["role"],
         "provider_availability": provider["availability"],
+        "execution_interface": provider.get("execution"),
         "conditioning_digest_sha256": _digest(conditioning),
         "architecture_id": conditioning["architecture_id"],
         "target_height_mm": conditioning["target_height_mm"],
