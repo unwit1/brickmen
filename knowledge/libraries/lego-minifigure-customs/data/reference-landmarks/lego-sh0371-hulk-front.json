@@ -152,6 +152,44 @@
   "exclude_from_production_dimensions": true,
   "notes": [
     "Official Giant component/joint evidence exists separately; this file is only a 2D proportion seed.",
-    "Lower-body landmarks describe silhouette, not hidden articulation."
-  ]
+    "Lower-body landmarks describe silhouette, not hidden articulation.",
+    "Silhouette pairs are visual-envelope evidence and must not be interpreted as joint centers."
+  ],
+  "silhouette_pairs_px": {
+    "head_width": {
+      "left_x": 203,
+      "right_x": 309,
+      "y_px": 85,
+      "confidence": 0.8,
+      "semantic": "head_outer_width"
+    },
+    "shoulder_outer_width": {
+      "left_x": 93,
+      "right_x": 420,
+      "y_px": 160,
+      "confidence": 0.85,
+      "semantic": "outer_shoulders"
+    },
+    "chest_outer_width": {
+      "left_x": 144,
+      "right_x": 370,
+      "y_px": 216,
+      "confidence": 0.8,
+      "semantic": "chest_shell_width"
+    },
+    "waist_outer_width": {
+      "left_x": 170,
+      "right_x": 343,
+      "y_px": 338,
+      "confidence": 0.75,
+      "semantic": "waist_lower_torso_width"
+    },
+    "hip_outer_width": {
+      "left_x": 161,
+      "right_x": 352,
+      "y_px": 366,
+      "confidence": 0.7,
+      "semantic": "giant_lower_body_width"
+    }
+  }
 }
