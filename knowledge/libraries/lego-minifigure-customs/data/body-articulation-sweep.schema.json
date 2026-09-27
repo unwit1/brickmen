@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "body-articulation-sweep.schema.json",
+  "title": "Brickmen Body Articulation Sweep",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "architecture_id",
+    "target_height_mm",
+    "joint_sweeps",
+    "production_geometry_authority"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "architecture_id": {
+      "type": "string"
+    },
+    "target_height_mm": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "joint_sweeps": {
+      "type": "array"
+    },
+    "production_geometry_authority": {
+      "const": false
+    },
+    "warning": {
+      "type": "string"
+    }
+  }
+}
