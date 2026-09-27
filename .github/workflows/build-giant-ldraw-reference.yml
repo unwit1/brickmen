@@ -6,6 +6,7 @@ on:
       - ".github/workflows/build-giant-ldraw-reference.yml"
       - "tools/geometry/ingest_ldraw_geometry.py"
       - "tools/geometry/measure_reference_mesh_profile.py"
+      - "tools/geometry/measure_reference_mesh_profile.py"
   workflow_dispatch:
 
 permissions:
@@ -92,18 +93,25 @@ jobs:
           PY
           done
 
-          python - "$MANIFEST_DIR" "$package_version" <<'PY'
+          python - "$MANIFEST_DIR" "$PROFILE_DIR" "$package_version" <<'PY'
           import json
           import sys
           from pathlib import Path
 
           manifest_dir = Path(sys.argv[1])
-          package_version = sys.argv[2]
+          profile_dir = Path(sys.argv[2])
+          package_version = sys.argv[3]
           rows = []
           for path in sorted(manifest_dir.glob("*.json")):
               if path.name == "build-summary.json":
                   continue
               data = json.loads(path.read_text(encoding="utf-8"))
+              profile_path = profile_dir / path.name
+              profile = (
+                  json.loads(profile_path.read_text(encoding="utf-8"))
+                  if profile_path.exists()
+                  else None
+              )
               rows.append({
                   "root_file": data["root_file"],
                   "triangle_count": data["triangle_count"],
@@ -112,6 +120,11 @@ jobs:
                   "bbox_nominal_mm": data["bbox_nominal_mm"],
                   "bbox_brickmen_ldu": data["bbox_brickmen_ldu"],
                   "bbox_brickmen_nominal_mm": data["bbox_brickmen_nominal_mm"],
+                  "orthographic_profile": None if profile is None else {
+                      "body_height_mm": profile["body_height"],
+                      "overall": profile["overall"],
+                      "slice_count": len(profile["slices"]),
+                  },
                   "unresolved_reference_count": len(data["unresolved_references"]),
               })
 
