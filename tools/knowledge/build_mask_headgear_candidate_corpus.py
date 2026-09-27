@@ -55,6 +55,7 @@ def is_headgear_component(component):
     name=str(component.get("part_name") or "").casefold()
     return (
         component.get("component_role")=="headgear"
+        or "neckwear mask" in name
         or any(w in name for w in ("helmet","cowl","hood","headwear","headdress","hat","costume / mask","hair "))
     )
 
