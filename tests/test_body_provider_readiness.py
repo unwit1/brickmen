@@ -71,3 +71,42 @@ def test_pact_readiness_exposes_mask_editor():
     assert pact["helpers"]["semantic_mask_editor"].endswith(
         "build_pact_semantic_mask_editor.py"
     )
+
+
+def test_research_candidates_expose_release_and_domain_status():
+    registry={
+        "providers":[
+            {
+                "provider_id":"pwm_artgen",
+                "pipeline_stage":"research_candidate",
+                "execution":{
+                    "adapter_status":"upstream_runnable_not_brickmen_domain_verified",
+                    "entrypoint":"demo/infer_image.py",
+                },
+                "research_status":{
+                    "official_repository":True,
+                    "official_weights":True,
+                    "brickmen_domain_fit":"unverified",
+                },
+            },
+            {
+                "provider_id":"unipart",
+                "pipeline_stage":"research_candidate",
+                "research_status":{
+                    "public_project_page":True,
+                    "public_code_verified":False,
+                },
+            },
+        ]
+    }
+    result=compile_readiness(registry,{"architecture_id":"giant"})
+    by_id={p["provider_id"]:p for p in result["providers"]}
+    pwm=by_id["pwm_artgen"]
+    assert pwm["brickmen_execution_runnable"] is False
+    assert pwm["brickmen_domain_verified"] is False
+    assert "supported_category_only" in pwm["input_requirements"]
+    assert pwm["research_status"]["official_weights"] is True
+    uni=by_id["unipart"]
+    assert uni["brickmen_execution_runnable"] is False
+    assert "public_implementation_not_available" in uni["input_requirements"]
+    assert uni["research_status"]["public_code_verified"] is False
