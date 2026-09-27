@@ -1,0 +1,88 @@
+{
+  "schema": "skywalker-no-supported-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-no-supported-review-020",
+  "policy": "Supplement the automated physical-minifigure corpus with authoritative external catalog evidence when a named nonstandard molded character is absent from candidate retrieval. Preserve source-time chronology: pre-source physical releases may be valid candidates, while later redesigns cannot be assumed source-equivalent without direct visual evidence.",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-8077b07f3ec0373db4a6e051",
+      "character_variant_key": "SalaciousCrumb",
+      "decision": "exact_named_physical_character_family_verified_external_catalog_pre_game_release_retrieval_gap_exact_artwork_visual_pending",
+      "canonical_subject": "Salacious B. Crumb",
+      "source_context": {
+        "game": "LEGO Star Wars: The Skywalker Saga",
+        "source_year": 2022,
+        "source_asset": "LSW_PhotoIcons_SalaciousCrumb.png",
+        "authority": "LEGO primary licensed game profile icon"
+      },
+      "physical_counterpart_family": [
+        {
+          "brickset_minifig": "sw0408",
+          "catalog_name": "Salacious B. Crumb - Bright Light Orange Eyes with Black Pupils",
+          "year": 2012,
+          "set_num": "9516-1",
+          "set_name": "Jabba's Palace",
+          "temporal_status": "pre_source_temporally_eligible"
+        },
+        {
+          "brickset_minifig": "sw1387",
+          "catalog_name": "Salacious B. Crumb - Yellow Eyes with White Glints",
+          "year": 2024,
+          "set_num": "75397-1",
+          "set_name": "Jabba's Sail Barge",
+          "temporal_status": "post_source_revision_not_source_equivalent_without_visual_evidence"
+        }
+      ],
+      "automated_candidate_failure": {
+        "status": "no_supported_physical_release_candidate",
+        "observation": "The top automated candidates are unrelated standard minifigures and omit both cataloged Salacious B. Crumb physical figures entirely.",
+        "likely_cause": "The current physical candidate corpus/retriever does not reliably surface nonstandard single-mold creature/character figures that Brickset and BrickLink catalog as minifigures."
+      },
+      "rejected_top_candidates": [
+        {
+          "fig_num": "fig-004155",
+          "catalog_name": "Resistance Ground Crew",
+          "reason": "unrelated character"
+        },
+        {
+          "fig_num": "fig-004267",
+          "catalog_name": "Aayla Secura, Dark Azure",
+          "reason": "unrelated character"
+        },
+        {
+          "fig_num": "fig-003843",
+          "catalog_name": "Aayla Secura, Medium Blue",
+          "reason": "unrelated character"
+        },
+        {
+          "fig_num": "fig-003802",
+          "catalog_name": "Cloud Car Pilot",
+          "reason": "unrelated character"
+        }
+      ],
+      "exact_source_equivalence_status": "visual_comparison_pending",
+      "reason": "Brickset and BrickLink independently catalog Salacious B. Crumb as sw0408 in 9516 Jabba's Palace from 2012, proving a named physical counterpart existed a decade before The Skywalker Saga. Brickset also catalogs a revised sw1387 version from 2024, which is too late to establish the 2022 source artwork. The correct outcome is therefore a verified physical character family with the 2012 release temporally eligible, not 'no physical release'; exact game-to-2012 eye/mold artwork equivalence remains visual-pending.",
+      "systemic_pattern": "nonstandard_molded_character_figures_need_supplemental_catalog_coverage_in_physical_candidate_retrieval",
+      "evidence_urls": [
+        "https://brickset.com/minifigs/in-9516-1/name-Salacious-B-Crumb",
+        "https://brickset.com/minifigs/category-Star-Wars/name-Salacious-B-Crumb",
+        "https://www.bricklink.com/catalogItemIn.asp?M=sw0408"
+      ]
+    }
+  ],
+  "result": {
+    "reviewed": 1,
+    "physical_family_recovered_from_external_catalog": 1,
+    "pre_source_physical_release_verified": 1,
+    "post_source_revision_separated": 1,
+    "exact_artwork_visual_pending": 1,
+    "automatic_exact_artwork_equivalence_promotions": 0
+  },
+  "remaining_no_supported_records_after_batch": 0,
+  "cohort_complete": true,
+  "systemic_findings": [
+    "The physical candidate corpus needs explicit coverage for nonstandard molded character figures that external LEGO catalogs classify as minifigures.",
+    "External catalog recovery should preserve chronology and separate pre-source releases from later redesigns.",
+    "Named-character physical existence can be verified independently while exact source-artwork equivalence remains visual-pending."
+  ]
+}
