@@ -196,6 +196,13 @@
           }
         }
       }
+    },
+    "locked_parameters": {
+      "type": "object",
+      "description": "Optional exact skeleton parameter values held fixed during landmark fitting because a donor/component frame is intentionally preserved. Values must remain inside the target skeleton parameter bounds.",
+      "additionalProperties": {
+        "type": "number"
+      }
     }
   }
 }
