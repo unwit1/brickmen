@@ -1,0 +1,90 @@
+{
+  "schema_version": "0.1",
+  "observed_at": "2026-09-27",
+  "status": "research_census",
+  "maker": "Alpha Toys",
+  "families": [
+    {
+      "family_id": "alpha_45mm_symbiote_hybrid_af321_af326",
+      "architecture_candidate": "custom_alpha_45mm_muscle_hybrid",
+      "release_codes": [
+        "AF321",
+        "AF322",
+        "AF323",
+        "AF324",
+        "AF325",
+        "AF326"
+      ],
+      "stated_height_mm_range": [
+        40,
+        45
+      ],
+      "status": "strong_visual_catalog_cluster"
+    },
+    {
+      "family_id": "alpha_45mm_symbiote_hybrid_af327_af332_revision_candidate",
+      "architecture_candidate": "custom_alpha_45mm_muscle_hybrid",
+      "release_codes": [
+        "AF327",
+        "AF328",
+        "AF329",
+        "AF330",
+        "AF331",
+        "AF332"
+      ],
+      "stated_height_mm_range": [
+        40,
+        45
+      ],
+      "source_labels": [
+        "MaxiFig on some catalog records"
+      ],
+      "status": "strong_visual_cluster_mechanical_equivalence_pending"
+    },
+    {
+      "family_id": "alpha_standard_like_mixed",
+      "architecture_candidate": "minifig_standard_or_custom_standard",
+      "example_release_codes": [
+        "AF336"
+      ],
+      "status": "release_level_resolution_required"
+    },
+    {
+      "family_id": "alpha_7cm_muscle_observed",
+      "architecture_candidate": "custom_alpha_7cm_muscle",
+      "example_release_codes": [
+        "AF344",
+        "AF345",
+        "AF349",
+        "AF351",
+        "AF358",
+        "AF361",
+        "AF362",
+        "AF363",
+        "AF365",
+        "AF367",
+        "AF369"
+      ],
+      "stated_height_mm": 70,
+      "status": "strong_multi_release_catalog_evidence_physical_equivalence_pending"
+    }
+  ],
+  "priority_comparisons": [
+    [
+      "AF325",
+      "AF345",
+      "45mm hybrid vs 7cm muscle"
+    ],
+    [
+      "AF325",
+      "AF328",
+      "symbiote family revision/equivalence"
+    ],
+    [
+      "AF336",
+      "AF362",
+      "same character/maker standard-like vs 7cm Thing"
+    ]
+  ],
+  "rule": "AF serial is only a prior. Never infer architecture from maker/prefix alone."
+}
