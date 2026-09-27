@@ -3,14 +3,14 @@
 
 Default mode is dry-run. --execute is required to launch upstream provider code.
 
-Supported verified CLI adapters:
-- PartCrafter
-- PartPacker
-- Particulate
+Supported verified adapters:
+- PartCrafter CLI
+- PartPacker CLI
+- Particulate CLI critic
+- SAM 3D Objects published Python API through a Brickmen visual-baseline wrapper
 
 PAct is intentionally plan-only until Brickmen wraps the current upstream
-hardcoded input-dataset path. SAM 3D Objects remains plan/API-only until Brickmen adds an explicit mask/API
-runner. Unknown or unverified providers are never guessed.
+hardcoded input-dataset path. Unknown or unverified providers are never guessed.
 
 The wrapper does not install dependencies, download repositories, accept
 licenses, or promote generated geometry to manufacturing authority.
@@ -27,7 +27,11 @@ import subprocess
 from typing import Any, Mapping
 
 
-RUNNABLE = {"partcrafter", "partpacker", "particulate"}
+RUNNABLE = {"partcrafter", "partpacker", "particulate", "sam_3d_objects"}
+RUNNABLE_STATUSES = {
+    "runnable_cli_verified",
+    "runnable_brickmen_python_api_visual_baseline",
+}
 
 
 def load_json(path: str | Path) -> dict[str, Any]:
@@ -63,6 +67,7 @@ def build_execution_plan(
     provider_repo: str | Path | None,
     output_dir: str | Path,
     source_image: str | Path | None = None,
+    mask_path: str | Path | None = None,
     input_mesh: str | Path | None = None,
     python_executable: str = "python",
 ) -> dict[str, Any]:
@@ -72,7 +77,7 @@ def build_execution_plan(
 
     execution = provider.get("execution") or {}
     status = str(execution.get("adapter_status", "unverified"))
-    runnable = provider_id in RUNNABLE and status == "runnable_cli_verified"
+    runnable = provider_id in RUNNABLE and status in RUNNABLE_STATUSES
     out = Path(output_dir).resolve()
 
     if not runnable:
@@ -169,30 +174,46 @@ def build_execution_plan(
             "strategy": "single_image_directory",
         }
 
-    elif provider_id == "pact":
+    elif provider_id == "sam_3d_objects":
         image_path = _require_file(
             source_image or job.get("source_image") or "",
-            "PAct source image",
+            "SAM 3D source image",
         )
-        stage_dir = out / "_input_images"
-        staged = stage_dir / _safe_name(image_path)
+        mask = _require_file(mask_path or "", "SAM 3D binary mask")
+        config = repo / "checkpoints" / "hf" / "pipeline.yaml"
+        if not config.is_file():
+            raise ValueError(
+                "SAM 3D config not found: expected checkpoints/hf/pipeline.yaml"
+            )
+        wrapper = (
+            Path(__file__).resolve().parent
+            / "provider_wrappers"
+            / "run_sam3d_objects_baseline.py"
+        )
+        if not wrapper.is_file():
+            raise ValueError(f"Brickmen SAM 3D wrapper not found: {wrapper}")
+        splat = out / "sam3d-splat.ply"
+        metadata = out / "sam3d-metadata.json"
         command = [
             python_executable,
-            str(entrypoint),
-            "--data_dir",
-            str(stage_dir),
-            "--outdir",
-            str(out),
-            "--batch_size",
-            "1",
-            "--save_glb",
-            "--export_arti_objects",
+            str(wrapper),
+            "--provider-repo",
+            str(repo),
+            "--image",
+            str(image_path),
+            "--mask",
+            str(mask),
+            "--output",
+            str(splat),
+            "--metadata",
+            str(metadata),
+            "--config",
+            str(config),
         ]
         staging = {
             "source_image": str(image_path),
-            "staging_directory": str(stage_dir),
-            "staged_path": str(staged),
-            "strategy": "single_image_directory",
+            "source_mask": str(mask),
+            "strategy": "direct_image_and_mask",
         }
 
     elif provider_id == "particulate":
@@ -275,6 +296,7 @@ def _classify_outputs(
         "component_candidates": [],
         "composite_outputs": [],
         "critic_outputs": [],
+        "baseline_outputs": [],
         "auxiliary_outputs": [],
         "manifest_files": [],
         "unclassified_outputs": [],
@@ -306,6 +328,14 @@ def _classify_outputs(
                 result["auxiliary_outputs"].append(str(path))
             elif path.suffix.lower() == ".glb":
                 result["composite_outputs"].append(str(path))
+    elif provider_id == "sam_3d_objects":
+        for path in map(Path, all_outputs):
+            if path.name == "sam3d-splat.ply":
+                result["baseline_outputs"].append(str(path))
+            elif path.name == "sam3d-metadata.json":
+                result["manifest_files"].append(str(path))
+            else:
+                result["auxiliary_outputs"].append(str(path))
     elif provider_id == "particulate":
         for path in map(Path, all_outputs):
             if (
@@ -323,6 +353,7 @@ def _classify_outputs(
         result["component_candidates"]
         + result["composite_outputs"]
         + result["critic_outputs"]
+        + result["baseline_outputs"]
         + result["auxiliary_outputs"]
         + result["manifest_files"]
     )
@@ -388,6 +419,7 @@ def main() -> int:
     parser.add_argument("registry")
     parser.add_argument("--provider-repo", default=None)
     parser.add_argument("--source-image", default=None)
+    parser.add_argument("--mask", default=None)
     parser.add_argument("--input-mesh", default=None)
     parser.add_argument("--output-dir", required=True)
     parser.add_argument("--python", default="python")
@@ -408,6 +440,7 @@ def main() -> int:
         provider_repo=args.provider_repo,
         output_dir=args.output_dir,
         source_image=args.source_image,
+        mask_path=args.mask,
         input_mesh=args.input_mesh,
         python_executable=args.python,
     )
