@@ -1,0 +1,286 @@
+{
+  "schema": "skywalker-no-supported-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-no-supported-review-007",
+  "policy": "Resolve generic in-game military labels against catalog role families only when faction, function, and historical physical terminology align. Normalize honorific abbreviations/full names before thresholding. Treat internal prefab identifiers separately from public display names, preserving confidence when the alias is inferred from game-file and gameplay evidence. Do not substitute adjacent Sith/Jedi archetypes for distinct game-only characters.",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-75524bbfb5e485b45cb74bf0",
+      "character_variant_key": "Empire_Cpt",
+      "decision": "game_role_terminology_crosswalk_to_imperial_officer_captain_family_supported_exact_visual_generation_pending",
+      "canonical_game_role": "Empire Captain",
+      "catalog_role_family": "Imperial Officer (Captain / Commandant / Commander)",
+      "role_resolution": {
+        "confidence": "high",
+        "evidence": "The game's own description places Empire Captain in the Imperial Officer Corps; Brickset has multiple physical Imperial Officer records explicitly labeled Captain / Commandant / Commander."
+      },
+      "plausible_pre_game_physical_family": [
+        {
+          "brickset_minifig": "sw0046",
+          "catalog_name": "Imperial Officer (Captain / Commandant / Commander) - Police Cap, Yellow Head with Standard Grin",
+          "year": 2002,
+          "set_num": "7201-1"
+        },
+        {
+          "brickset_minifig": "sw0114",
+          "catalog_name": "Imperial Officer (Captain / Commandant / Commander) - Cavalry Kepi, Smile and Brown Eyebrows",
+          "year": 2005,
+          "set_num": "7264-1"
+        },
+        {
+          "brickset_minifig": "sw0154",
+          "catalog_name": "Imperial Officer (Captain / Commandant / Commander) - Cavalry Kepi, Standard Grin",
+          "year": 2006,
+          "set_num": "6211-1"
+        },
+        {
+          "brickset_minifig": "sw0376",
+          "catalog_name": "Imperial Officer (Captain / Commandant / Commander) - Two Code Cylinders, Cavalry Kepi",
+          "year": 2012,
+          "set_num": "9492-1"
+        },
+        {
+          "brickset_minifig": "sw0582",
+          "catalog_name": "Imperial Officer (Captain / Commandant / Commander)",
+          "year": 2014,
+          "set_num": "75055-1"
+        }
+      ],
+      "rejected_top_candidates": [
+        {
+          "fig_num": "fig-003682",
+          "catalog_name": "Republic Captain",
+          "reason": "wrong faction/era"
+        },
+        {
+          "fig_num": "fig-004005",
+          "catalog_name": "Clone Trooper Captain",
+          "reason": "wrong faction/role"
+        },
+        {
+          "fig_num": "fig-003773",
+          "catalog_name": "Captain Panaka",
+          "reason": "named Naboo character, not generic Imperial officer"
+        },
+        {
+          "fig_num": "fig-004151",
+          "catalog_name": "Captain Phasma",
+          "reason": "named First Order character"
+        },
+        {
+          "fig_num": "fig-004102",
+          "catalog_name": "Captain Tarpals",
+          "reason": "named Gungan character"
+        }
+      ],
+      "reason": "Empire Captain is a generic Imperial officer/captain role unlocked in Episode IV, not a named 'Captain' character. The current matcher overweights the rank token and ignores the Empire/Imperial synonym and faction. Brickset's physical Imperial Officer family explicitly includes Captain / Commandant / Commander labels, establishing a pre-game physical family while leaving exact game-model generation visual-pending.",
+      "systemic_pattern": "empire_imperial_synonym_plus_faction_gate_required_for_generic_officer_roles",
+      "evidence_urls": [
+        "https://gamefaqs.gamespot.com/ps4/265996-lego-star-wars-the-skywalker-saga/faqs/79882/villains-and-dark-siders",
+        "https://brickset.com/minifigs/year-2012/name-Imperial-Officer",
+        "https://brickset.com/minifigs/year-2014/name-Imperial-Officer"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-6c3d9d8f9b9adfb431f55c16",
+      "character_variant_key": "ImperialGunneryTechnician",
+      "decision": "functional_role_synonym_verified_imperial_gunner_physical_family_supported_below_threshold_exact_print_generation_pending",
+      "canonical_game_role": "Imperial Gunnery Technician",
+      "catalog_role_family": "Imperial Gunner",
+      "role_resolution": {
+        "confidence": "high",
+        "note": "Star Wars usage describes Imperial weapons/gunnery technicians as gunners operating heavy ship and Death Star weaponry; the game description likewise places them on turbolasers and the Death Star superlaser."
+      },
+      "plausible_pre_game_physical_family": [
+        {
+          "fig_num": "fig-002682",
+          "brickset_minifig": "sw0520",
+          "catalog_name": "Imperial Gunner - Helmet with Silver Imperial Logo, Light Nougat Head, Open Mouth",
+          "year": 2014,
+          "set_num": "75034-1"
+        },
+        {
+          "brickset_minifig": "sw0529",
+          "catalog_name": "Imperial Gunner - Helmet with Silver Imperial Logo, Light Nougat Head, Closed Mouth",
+          "first_year": 2014,
+          "sets": [
+            "75034-1",
+            "75159-1"
+          ]
+        },
+        {
+          "brickset_minifig": "sw1045",
+          "catalog_name": "Imperial Gunner - Helmet with White Imperial Logo, Light Nougat Head",
+          "year": 2019,
+          "sets": [
+            "75245-1",
+            "75246-1"
+          ]
+        }
+      ],
+      "separated_candidate": {
+        "fig_num": "fig-004324",
+        "catalog_name": "Imperial Gunner (Imperial Conveyex Gunner)",
+        "year": 2018,
+        "set_num": "75217-1",
+        "reason": "same broad gunnery family but Solo/Conveyex context; do not use it to choose the Death Star-style game model without visual evidence"
+      },
+      "rejected_top_candidate": {
+        "fig_num": "fig-004220",
+        "catalog_name": "Technician Kent Deezling / Imperial Ground Crew",
+        "reason": "generic technician wording raised the score, but this is ground crew rather than the enclosed-helmet gunnery role"
+      },
+      "reason": "The game describes a specialized Imperial gunner operating turbolasers and the Death Star superlaser. Brickset's Imperial Gunner figures use the matching enclosed gunner helmet and existed in several physical generations before the game. The unsupported result is primarily a 'Gunnery Technician' versus 'Gunner' terminology miss.",
+      "systemic_pattern": "functional_role_synonyms_gunnery_technician_to_imperial_gunner_should_precede_token_scoring",
+      "evidence_urls": [
+        "https://gamefaqs.gamespot.com/ps4/265996-lego-star-wars-the-skywalker-saga/faqs/79882/villains-and-dark-siders",
+        "https://brickset.com/minifigs/name-Imperial-Gunner/category-Star-Wars"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-0a9566fe6a226f83cd5daab9",
+      "character_variant_key": "DoctorEvazan",
+      "decision": "honorific_and_full_name_normalization_verified_exact_physical_counterpart_below_threshold",
+      "canonical_subject": "Doctor Cornelius Evazan",
+      "alias_resolution": {
+        "source": "Doctor Evazan",
+        "catalog": "Dr Cornelius Evazan",
+        "transformations": [
+          "Doctor -> Dr",
+          "insert canonical given name Cornelius"
+        ],
+        "confidence": "high"
+      },
+      "physical_counterpart": {
+        "fig_num": "fig-010673",
+        "catalog_name": "Dr Cornelius Evazan",
+        "year": 2020,
+        "set_num": "75290-1"
+      },
+      "reason": "The leading candidate is the exact character and predates the game; it failed only because the source uses the full honorific without the given name while the catalog uses 'Dr Cornelius Evazan'. This should be a canonical-name alias hit rather than an unsupported record.",
+      "systemic_pattern": "honorific_abbreviation_and_missing_given_name_normalization_should_precede_thresholding",
+      "evidence_urls": [
+        "https://brickset.com/article/53635"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-196ce868e4cfdcd98baba597",
+      "character_variant_key": "SithAcolytes",
+      "decision": "skywalker_saga_sith_acolyte_verified_video_game_only_no_official_physical_minifigure",
+      "canonical_subject": "Sith Acolyte",
+      "identity_context": {
+        "location": "Exegol Sith Citadel",
+        "role": "Sith Eternal adherent / worker",
+        "unlock": "Attack of the Clones (Again) side mission",
+        "source_key_plural_note": "Game asset family uses plural SithAcolytes for the character/prefab family while the playable display identity is singular Sith Acolyte."
+      },
+      "rejected_top_candidates": [
+        {
+          "fig_num": "fig-003994",
+          "catalog_name": "Sith Warrior",
+          "reason": "Old Republic Sith Warrior, different identity/era"
+        },
+        {
+          "fig_num": "fig-004454",
+          "catalog_name": "Sith Trooper, Red",
+          "reason": "Final Order military trooper, not Sith cultist/acolyte"
+        },
+        {
+          "fig_num": "fig-004495",
+          "catalog_name": "Sith Jet Trooper",
+          "reason": "Final Order military trooper subtype"
+        },
+        {
+          "fig_num": "fig-004496",
+          "catalog_name": "Sith Fleet Officer",
+          "reason": "Final Order military officer, not acolyte"
+        },
+        {
+          "fig_num": "fig-003876",
+          "catalog_name": "Sith Trooper, Black, Plain Legs",
+          "reason": "Old Republic Sith trooper, different identity/era"
+        }
+      ],
+      "physical_status": {
+        "exact_official_minifigure_located": false,
+        "brickipedia_status": "video-game-only minifigure"
+      },
+      "reason": "The Skywalker Saga's Sith Acolyte is an Exegol Sith Eternal follower and is documented by Brickipedia as never having existed in an official physical LEGO set. 'Sith' token overlap with Warriors, Troopers, Jet Troopers, and Fleet Officers is not sufficient identity evidence.",
+      "systemic_pattern": "shared_alignment_token_sith_must_not_collapse_distinct_cultist_military_and_old_republic_roles",
+      "evidence_urls": [
+        "https://brickipedia.fandom.com/wiki/Sith_Acolyte",
+        "https://www.gamepressure.com/lego-star-wars-the-skywalker-saga/attack-of-the-clones-again/zafe69"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-1c91e35a08e64945d4d67b94",
+      "character_variant_key": "JediArchiver",
+      "decision": "internal_prefab_alias_probably_maps_to_jocasta_nu_video_game_only_physical_status_none_alias_preserved_with_confidence",
+      "canonical_subject": "Jocasta Nu",
+      "internal_alias_resolution": {
+        "source_internal_key": "JediArchiver",
+        "public_display_identity": "Jocasta Nu",
+        "confidence": "high",
+        "basis": [
+          "Published Skywalker Saga prefab lists expose Chars/Minifig/JediArchiver/JediArchiver.prefab_baked and do not expose a separate JocastaNu prefab in the same character list.",
+          "Gameplay in the Jedi Archives explicitly calls Jocasta Nu 'the Archiver' in the Secret of the Archives clue and uses Jocasta Nu as the archive NPC/playable reward.",
+          "Public character rosters list Jocasta Nu, not a separate playable character named Jedi Archiver."
+        ]
+      },
+      "rejected_top_candidates": [
+        {
+          "fig_num": "fig-003992",
+          "catalog_name": "Jedi Consular",
+          "reason": "different generic Old Republic character"
+        },
+        {
+          "fig_num": "fig-004069",
+          "catalog_name": "Ithorian Jedi Master",
+          "reason": "different character/species"
+        },
+        {
+          "fig_num": "fig-003641",
+          "catalog_name": "Jedi Bob, Brown",
+          "reason": "different character"
+        },
+        {
+          "fig_num": "fig-003993",
+          "catalog_name": "Jedi Knight, Horns",
+          "reason": "different generic Old Republic character"
+        },
+        {
+          "fig_num": "fig-015343",
+          "catalog_name": "Jedi Vader",
+          "reason": "different character and post-game novelty"
+        }
+      ],
+      "physical_status": {
+        "exact_official_jocasta_nu_minifigure_located": false,
+        "brickipedia_status": "Jocasta Nu is documented as a video-game-only LEGO minifigure"
+      },
+      "reason": "`JediArchiver` is best treated as an internal implementation name rather than a separate canonical character. Independent gameplay and prefab evidence converge on Jocasta Nu, the Jedi Archives' chief librarian/archiver. Brickipedia documents Jocasta Nu as game-only with no official physical set release. The alias is stored explicitly so future ingestion does not create a duplicate 'Jedi Archiver' person.",
+      "systemic_pattern": "internal_prefab_names_require_public_display_identity_resolution_before_physical_crosswalk",
+      "evidence_urls": [
+        "https://www.nexusmods.com/legostarwarstheskywalkersaga/mods/339",
+        "https://steamcommunity.com/sharedfiles/filedetails/?id=2896166563",
+        "https://brickipedia.fandom.com/wiki/Jocasta_Nu"
+      ]
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "role_terminology_resolver_misses": 2,
+    "exact_name_normalization_miss": 1,
+    "video_game_only_no_physical_release": 1,
+    "internal_prefab_alias_to_public_game_character": 1,
+    "automatic_exact_artwork_equivalence_promotions": 0
+  },
+  "remaining_no_supported_records_after_batch": 61,
+  "systemic_findings": [
+    "Empire/Imperial synonyms and faction constraints must be applied before rank-token matching for generic officer roles.",
+    "Functional role aliases such as Gunnery Technician -> Imperial Gunner should be represented explicitly.",
+    "Doctor/Dr and omitted-given-name normalization should occur before match thresholding.",
+    "Internal prefab identifiers should be resolved to public display identities before creating durable character entities.",
+    "Shared broad tokens such as Sith or Jedi are weak evidence and must not override distinct role/person identity."
+  ]
+}
