@@ -157,6 +157,7 @@ def summarize_pipeline_state(
         runnable_statuses = {
             "runnable_cli_verified",
             "runnable_brickmen_python_api_visual_baseline",
+            "runnable_brickmen_dataset_redirect_wrapper_verified",
         }
         if adapter_status in runnable_statuses:
             run_status = "pending"
