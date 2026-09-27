@@ -191,15 +191,31 @@ def _required_slots(conditioning,provider_job):
     ]
 
 
-def _component_paths(provider_run):
+def _component_records(provider_run):
     classification=provider_run.get("output_classification") or {}
+    records=[
+        dict(item)
+        for item in classification.get("component_records") or []
+        if item.get("path")
+    ]
+    if records:
+        return records
     paths=list(classification.get("component_candidates") or [])
-    if paths:
-        return paths
-    # Fallback deliberately excludes obvious aggregate/non-mesh artifacts.
+    if not paths:
+        # Fallback deliberately excludes obvious aggregate/non-mesh artifacts.
+        paths=[
+            str(path) for path in provider_run.get("discovered_outputs",[])
+            if Path(path).suffix.lower() in {".obj",".glb",".gltf",".ply",".stl"}
+        ]
     return [
-        str(path) for path in provider_run.get("discovered_outputs",[])
-        if Path(path).suffix.lower() in {".obj",".glb",".gltf",".ply",".stl"}
+        {
+            "path":str(path),
+            "provider_part_id":Path(path).stem,
+            "provider_part_index":None,
+            "provider_manifest":None,
+            "source_role":"generated_component",
+        }
+        for path in paths
     ]
 
 
@@ -235,10 +251,11 @@ def propose_output_mapping(
     if not targets:
         raise ValueError("No required component slots have visual target envelopes")
 
-    raw_paths=_component_paths(provider_run)
+    raw_records=_component_records(provider_run)
     components=[]
     invalid=[]
-    for path in raw_paths:
+    for record in raw_records:
+        path=str(record["path"])
         try:
             bounds=inspect_mesh_bounds(path)
         except Exception as exc:
@@ -252,6 +269,10 @@ def propose_output_mapping(
             continue
         components.append({
             "path":str(path),
+            "provider_part_id":record.get("provider_part_id") or Path(path).stem,
+            "provider_part_index":record.get("provider_part_index"),
+            "provider_manifest":record.get("provider_manifest"),
+            "source_role":record.get("source_role","generated_component"),
             "provider_bounds":{
                 key:bounds[key] for key in ("min","max","size","center","format")
             },
@@ -303,6 +324,9 @@ def propose_output_mapping(
                 assigned_slots.add(slot)
                 assignments.append({
                     "provider_part_path":components[part_idx]["path"],
+                    "provider_part_id":components[part_idx].get("provider_part_id"),
+                    "provider_part_index":components[part_idx].get("provider_part_index"),
+                    "provider_manifest":components[part_idx].get("provider_manifest"),
                     "slot_id":slot,
                     "pair_cost":costs[part_idx][slot_idx],
                     "transformed_aabb_mm":transformed[part_idx],
