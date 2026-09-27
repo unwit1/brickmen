@@ -159,3 +159,84 @@ This file tracks remaining gaps so exhaustive has a measurable meaning rather th
 ## Definition of done
 
 A topic is not done merely because prose exists. It is exhausted only when authoritative/primary sources are indexed, important secondary discovery sources are covered, contradictory claims are reconciled or explicitly retained, structured records exist, time-sensitive observations have dates, unknowns are explicit, and any value requiring physical validation has an experiment or measurement task.
+
+## Additive manufacturing research status — 2026-09-27
+
+### Research/architecture completed in current deep pass
+
+- [x] resin-versus-FDM process-role analysis
+- [x] current hobby high-detail MSLA capability review
+- [x] professional resin API/automation review
+- [x] FDM small-nozzle/material/automation review
+- [x] resin tough/flexible-material candidate research
+- [x] 3.18-family held-accessory connector research and calibration policy
+- [x] orientation/support/warpage design rules
+- [x] standards-inspired AM qualification framework
+- [x] metrology strategy: micrometer, pin/plug gauges, go/no-go fixtures
+- [x] automated insertion/removal force-test architecture
+- [x] camera/vision QC architecture
+- [x] headless slicer and slice-validation architecture
+- [x] OctoPrint/Moonraker/Prusa/Formlabs control-surface research
+- [x] hobby-resin network-control limitations documented
+- [x] automatic unload/build-platform-transfer research
+- [x] automated resin-cleaning/postprocess research
+- [x] silicone casting / printed injection mold / traditional mold crossover research
+- [x] U.S. children's-product safety gate research
+- [x] provider-independent machine-readable manufacturing contracts
+- [x] machine-readable physical validation plan
+
+### Physical evidence still required
+
+These cannot be truthfully closed through web research alone:
+
+- [ ] select first actual resin printer and record exact serial/firmware
+- [ ] select first FDM printer/nozzle configuration
+- [ ] procure at least three mechanically distinct resin candidates
+- [ ] create and print Brickmen generic geometric benchmark
+- [ ] create and print 3.18-family bar ladder
+- [ ] create headwear/neck/clip coupon families
+- [ ] measure pre-cure/post-cure dimensional change
+- [ ] characterize build-position variation
+- [ ] characterize orientation variation
+- [ ] perform repeated insertion/removal cycle testing
+- [ ] establish conservative donor-safe force limits
+- [ ] run thin sword/spear/horn fracture study
+- [ ] run controlled drop comparison
+- [ ] run creep/long-term retention study
+- [ ] run UV/light and moderate-temperature aging study
+- [ ] validate paint/primer/UV-print adhesion on selected resin
+- [ ] qualify a production raft/support strategy
+- [ ] establish actual yield, labor minutes and true per-part cost
+- [ ] quote/calculate crossover to casting/printed tooling/traditional molding for stable SKUs
+
+### Implementation work enabled by the research
+
+- [ ] build CadQuery parametric connector/coupon package
+- [ ] build `manufacturing.preflight`
+- [ ] build slicer adapter interface
+- [ ] build UVtools issue-policy adapter
+- [ ] build FDM printer adapter(s)
+- [ ] build resin printer adapter(s)
+- [ ] build manufacturing job scheduler
+- [ ] build QR/barcode sample traceability
+- [ ] build metrology ingestion
+- [ ] build force-curve ingestion and pass/fail classifier
+- [ ] build camera inspection fixture and deterministic image capture
+- [ ] build profile-candidate/regression service
+- [ ] build consumables/maintenance/drift tracker
+- [ ] build mold-crossover economics service
+
+### Definition of done for a connector/material profile
+
+A profile is not complete until it has:
+1. exact machine/material/build/postprocess revisions;
+2. multiple physical specimens;
+3. dimensions measured with a capable gauge;
+4. insertion/removal force where applicable;
+5. repeated-cycle evidence where applicable;
+6. photographs/raw data;
+7. acceptance limits;
+8. repeatability evidence;
+9. rollback/supersession history.
+
+Digital research can design the experiment; only physical evidence can promote a profile to production-approved.
