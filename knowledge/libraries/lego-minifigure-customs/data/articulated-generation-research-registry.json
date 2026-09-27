@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.1",
+  "schema_version": "0.2",
   "observed_at": "2026-09-27",
   "status": "research_registry",
   "principle": "Learned joint/articulation outputs are proposals. Manufacturing joints only come from validated FigureArchitecture/Connector/JointCartridge records.",
@@ -99,6 +99,78 @@
         "semantic decomposition of generative meshes"
       ],
       "source": "https://github.com/YixinZhu042/Trellis_Seg"
+    },
+    {
+      "id": "articulate_anymesh",
+      "input": "static_3d_mesh",
+      "output": [
+        "movable_part_segmentation",
+        "functional_joint_estimates",
+        "articulated_mesh",
+        "urdf"
+      ],
+      "status": "open_source_corl_2025",
+      "brickmen_use": [
+        "open-vocabulary articulation proposal for unfamiliar custom body meshes",
+        "VLM-assisted movable-part hypotheses",
+        "unknown-architecture discovery"
+      ],
+      "source": "https://github.com/UMass-Embodied-AGI/Articulate-Anymesh"
+    },
+    {
+      "id": "urdf_anything_plus",
+      "input": [
+        "single_rgb_image",
+        "object_level_3d_cues"
+      ],
+      "output": [
+        "autoregressive_part_geometry",
+        "joint_parameters",
+        "complete_urdf"
+      ],
+      "status": "2026 code_available",
+      "brickmen_use": [
+        "end-to-end image-to-part/joint proposal baseline",
+        "compare sequential auto-stop part generation against architecture-guided decomposition"
+      ],
+      "source": "https://github.com/URDF-Anything-plus/Code"
+    },
+    {
+      "id": "spark",
+      "input": "single_rgb_image",
+      "output": [
+        "part_level_geometry",
+        "structure_graph",
+        "refined_urdf_parameters",
+        "simulation_ready_asset"
+      ],
+      "status": "CVPR_2026",
+      "brickmen_use": [
+        "VLM-guided structure proposal",
+        "single-image custom-body digital-twin hypothesis",
+        "kinematic refinement research"
+      ],
+      "source": "https://heyumeng.com/SPARK-web/"
+    },
+    {
+      "id": "kinematify",
+      "input": [
+        "rgb_image",
+        "text_prompt"
+      ],
+      "output": [
+        "segmented_digital_twin",
+        "kinematic_tree",
+        "joint_types",
+        "optimized_joint_parameters"
+      ],
+      "status": "ICRA_2026_research_demo",
+      "brickmen_use": [
+        "high-DoF topology inference research",
+        "symmetry/contact/stability-aware joint proposal",
+        "unknown architecture analysis"
+      ],
+      "source": "https://sites.google.com/deemos.com/kinematify"
     }
   ],
   "reconciliation_classes": [
@@ -113,5 +185,10 @@
     "Known FigureArchitecture skeletons are deterministic; learned systems cannot add/remove production joints.",
     "Unknown-architecture proposals remain nonmanufacturing evidence until physical validation.",
     "Joint axis/range proposals may guide inspection and scan alignment but not connector dimensions."
+  ],
+  "research_lessons": [
+    "Contact, symmetry, stability and hierarchy are useful scoring terms for proposed articulated body skeletons.",
+    "After a FigureArchitecture is known, architecture constraints should dominate open-vocabulary joint inference.",
+    "Autoregressive stop conditions for part generation should be compared against explicit Brickmen component graphs."
   ]
 }
