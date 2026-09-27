@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "body-generation-exact-keepout-validation.schema.json",
+  "title": "Brickmen Exact Mechanical Keepout Validation",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "architecture_id",
+    "components",
+    "summary",
+    "production_geometry_authority"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "architecture_id": {
+      "type": "string"
+    },
+    "components": {
+      "type": "array"
+    },
+    "summary": {
+      "type": "object"
+    },
+    "production_geometry_authority": {
+      "const": false
+    }
+  }
+}
