@@ -992,3 +992,90 @@ Compiler decides whether source material detail becomes:
 - omitted microdetail.
 
 Never let dense decorative texture cross or redefine validated joint/contact geometry.
+
+
+## B10 — Executable skeleton layer
+
+Implemented:
+- [x] graph-based BodySkeleton schema
+- [x] Broad v0 generation skeleton
+- [x] Mid v0 generation skeleton
+- [x] XL v0 generation skeleton
+- [x] Giant v0 generation skeleton
+- [x] bounded proportion parameters
+- [x] JSON/OBJ skeleton compiler
+- [x] graph sanity tests
+- [x] reusable topology modules for ball-joint, multi-arm, digitigrade, mechanical and integrated-head bodies
+
+Next:
+
+### B10.1 Skeleton fitter
+Input:
+- canonical character/body references;
+- image landmarks;
+- selected FigureArchitecture.
+
+Optimize only permitted parameters:
+- shoulder width;
+- torso height/depth;
+- arm length;
+- lower-body height;
+- stance;
+- architecture-specific mass parameters.
+
+Output:
+- fitted skeleton;
+- residual landmark error;
+- out-of-profile warnings.
+
+### B10.2 Envelope generator
+Generate deterministic coarse volumes around:
+- torso;
+- arms;
+- hands;
+- pelvis/legs;
+- head.
+
+Purpose:
+- constrain neural shell generation;
+- provide collision/keep-out starting volumes.
+
+### B10.3 JointCartridge mapping
+Map every functional skeleton joint to:
+- validated cartridge;
+- commodity hardware;
+- standard donor interface;
+- or explicit `unresolved`.
+
+A skeleton with unresolved functional joints cannot become production geometry.
+
+### B10.4 Mechanical mules
+Build in order:
+1. Broad P0;
+2. Giant P0;
+3. Mid P0;
+4. XL P0.
+
+Use blank geometry first. No character surface sculpt until articulation and joints pass.
+
+### B10.5 New-topology skeletons
+After the four primary bodies:
+- standard-scale full ball-joint poseable research body;
+- single-torso four-arm Brickmen variant;
+- digitigrade lower-body module;
+- mechanical/droid skeleton;
+- centaur/taur and serpent/tentacle graph modules.
+
+## B11 — Second-pass body architecture census
+
+New research references:
+- Si-Dan full poseable minifig with ball-jointed arms/legs/feet/neck;
+- Titanic Bricks ball-jointed MidFig upper body;
+- Titanic Bricks single-torso four-arm body;
+- official skeleton/bony architecture;
+- Battle Droid;
+- Super Battle Droid;
+- Faun/digitigrade lower body;
+- legacy Homemaker/maxifigure.
+
+These are references for topology and design-space coverage, not automatic CAD masters.
