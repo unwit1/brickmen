@@ -34,7 +34,8 @@
         "left",
         "right",
         "three_quarter",
-        "unknown"
+        "unknown",
+        "multi_view"
       ]
     },
     "evidence_class": {
@@ -43,7 +44,8 @@
         "canonical_image_measurement",
         "physical_measurement",
         "render_ground_truth",
-        "synthetic"
+        "synthetic",
+        "reference_cad_geometry"
       ]
     },
     "image_size_px": {
@@ -234,6 +236,49 @@
           },
           "semantic": {
             "type": "string"
+          },
+          "notes": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "envelope_measurements_normalized": {
+      "type": "object",
+      "description": "Direct body-height-normalized visual-envelope evidence from CAD, physical metrology, renders, or other non-pixel sources. Each measurement explicitly names its target envelope and axis so view inference is unnecessary.",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "value",
+          "confidence",
+          "envelope_id",
+          "axis"
+        ],
+        "properties": {
+          "value": {
+            "type": "number",
+            "minimum": 0
+          },
+          "confidence": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "envelope_id": {
+            "type": "string"
+          },
+          "axis": {
+            "enum": [
+              "x",
+              "y",
+              "z"
+            ]
+          },
+          "semantic": {
+            "type": "string"
+          },
+          "source": {
+            "type": "object"
           },
           "notes": {
             "type": "string"
