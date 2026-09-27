@@ -9,7 +9,10 @@
     "Manufacturing-critical dimensions require physical metrology or authoritative engineering evidence.",
     "Maker name or product-code prefix is only a prior; classify architecture at release/body-family level.",
     "Alternate lower bodies and stacked/multi-arm constructions are architecture variants when the component or joint graph changes materially.",
-    "Character-specific integrated bodies must not be coerced into standard humanoid architecture solely because BrickLink catalogs them as minifigure body parts."
+    "Character-specific integrated bodies must not be coerced into standard humanoid architecture solely because BrickLink catalogs them as minifigure body parts.",
+    "Scale class is descriptive metadata, never a substitute for component/joint architecture.",
+    "Buildable figures use a construction-part connection graph and must not be forced into molded minifigure-body joint semantics.",
+    "A changed shoulder articulation on an otherwise standard-scale body can justify a FigureArchitecture variant when generation/manufacturing must reproduce the joint."
   ],
   "architectures": [
     {
@@ -643,6 +646,166 @@
       "status": "adjacent_official_architecture",
       "notes": [
         "Keep separate from standard minifigure proportions, joints and surface grammar."
+      ]
+    },
+    {
+      "architecture_id": "custom_standard_ball_joint_arm_adapter",
+      "canonical_name": "Standard-scale custom minifigure with ball-jointed arm adapter",
+      "scale_class": "standard",
+      "status": "architecture_feature_family_exact_joint_standard_unresolved",
+      "parent_architecture": "minifig_standard",
+      "source_aliases": [
+        "Ball-Joint Arms",
+        "ball-jointed arms",
+        "poseable arms"
+      ],
+      "known_evidence": [
+        "AmericanBricks Wookiee figures advertise ball-jointed arms.",
+        "Republic Customs Helldivers advertise brand-new ball-jointed arms.",
+        "HP Bricks/AmericanBricks TCS figures instruct assembly by inserting a small clear pin into the torso before attaching the arm.",
+        "HeroBloks tags Evri House Kratos FT19 with Ball-joint Arms."
+      ],
+      "mechanical_hypothesis": [
+        "Standard-scale torso/head/lower-body ecosystem is retained while the shoulder/arm interface is replaced or adapted with a ball/pin system.",
+        "Do not assume AmericanBricks, Republic Customs and Evri House use identical pins/sockets until measured."
+      ],
+      "representative_examples": [
+        "AmericanBricks Wookiee Warrior",
+        "Republic Customs Helldivers B-01",
+        "AmericanBricks TCS Anakin/Obi-Wan",
+        "Evri House Kratos FT19"
+      ],
+      "sources": [
+        "https://americanbrickstore.com/wookiee-warrior-kashyyyk-minifigures-assorted-colors/",
+        "https://americanbrickstore.com/helldivers-b-01-tactical-minifigures-ball-joint-arms/",
+        "https://hpbrickedup.com/products/tcs-anakin-skywalker-and-obi-wan-kenobi",
+        "https://www.herobloks.com/figures/37457"
+      ]
+    },
+    {
+      "architecture_id": "custom_oa_160mm_megafig_candidate",
+      "canonical_name": "OA 16 cm MegaFig family candidate",
+      "scale_class": "mega_160mm",
+      "maker_scope": [
+        "OA"
+      ],
+      "status": "strong_release_family_candidate_joint_graph_unresolved",
+      "source_aliases": [
+        "MegaFig",
+        "Mega Fig"
+      ],
+      "nominal_height_mm": {
+        "value": 160,
+        "evidence_type": "HeroBloks release notes",
+        "confidence": "catalog_high"
+      },
+      "representative_release_codes": [
+        "OA2201",
+        "OA2202",
+        "OA2203",
+        "OA2204"
+      ],
+      "representative_characters": [
+        "Dr Manhattan",
+        "Sentinel",
+        "Atom Smasher",
+        "Giant Man"
+      ],
+      "notes": [
+        "Four adjacent OA2201-OA2204 releases are each documented at 16 cm, supporting a repeatable scale/product family.",
+        "Shared mechanical architecture remains unproven until multiview/disassembly/physical evidence resolves components and joints."
+      ],
+      "sources": [
+        "https://www.herobloks.com/figures/52795/oa/oa2201/dr-manhattan-%28mega-fig%29",
+        "https://www.herobloks.com/figures/52796/oa/oa2202/sentinel-%28megafig%29",
+        "https://www.herobloks.com/figures/52797/oa/-oa2203/atom-smasher-%28megafig%29",
+        "https://www.herobloks.com/figures/52798/oa/oa2204/giant-man-%28megafig%29"
+      ]
+    },
+    {
+      "architecture_id": "custom_dy_mega_scale_unresolved",
+      "canonical_name": "DY_Minifigs very-large Mega-scale family unresolved",
+      "scale_class": "mega_variable",
+      "maker_scope": [
+        "DY_Minifigs"
+      ],
+      "status": "source_label_scale_family_mechanical_relationship_unresolved",
+      "source_aliases": [
+        "MegaFig",
+        "Mega Fig",
+        "very large custom figure"
+      ],
+      "representative_release_codes": [
+        "DY1805",
+        "DY1806",
+        "DY1817",
+        "DY1818",
+        "DY1819"
+      ],
+      "observed_sizes": [
+        {
+          "release": "DY1806 Galactus",
+          "height_mm": 285
+        },
+        {
+          "release": "DY1817 Ant-Man Quantum Realm",
+          "height_mm": 225,
+          "width_mm": 80
+        }
+      ],
+      "notes": [
+        "Observed DY large figures span at least 22.5-28.5 cm in current catalog evidence; do not assume one mechanical architecture or uniform scale.",
+        "Separate release-level observations are required before creating concrete DY MegaFig architecture children."
+      ],
+      "sources": [
+        "https://www.herobloks.com/figures/40045/dy_minifigs/-dy1806/galactus-%28megafig%29",
+        "https://www.herobloks.com/figures/55068/dy_minifigs/-dy1817/ant-man-%28quantum-realm-suit%29"
+      ]
+    },
+    {
+      "architecture_id": "buildable_character_figure_unresolved",
+      "canonical_name": "Brick-built / buildable character figure architecture unresolved",
+      "scale_class": "variable_buildable",
+      "status": "construction_method_umbrella_not_single_architecture",
+      "source_aliases": [
+        "buildable",
+        "brick-built figure",
+        "buildable character"
+      ],
+      "notes": [
+        "HeroBloks separately categorizes buildable versions from BigFig and MegaFig versions of the same characters.",
+        "A buildable figure is an assembly system of construction elements and must be modeled through a part/connection graph rather than a molded-body joint graph.",
+        "Each buildable design can be a concrete architecture instance; the umbrella itself is not one mechanical standard."
+      ],
+      "representative_characters": [
+        "Giant Man",
+        "Sentinel",
+        "Galactus"
+      ],
+      "sources": [
+        "https://www.herobloks.com/figures/3555/lego/76051-1/giant-man-%28buildable%29",
+        "https://www.herobloks.com/figures/37380/lego/76294/sentinel-%28buildable%29",
+        "https://www.herobloks.com/figures/38994"
+      ]
+    },
+    {
+      "architecture_id": "custom_bighead_unresolved",
+      "canonical_name": "Custom bighead morphology unresolved",
+      "scale_class": "unknown",
+      "status": "source_label_only_not_a_mechanical_standard",
+      "source_aliases": [
+        "bighead",
+        "big head"
+      ],
+      "notes": [
+        "HeroBloks preserves Hulk releases labeled bighead from Lebo and MayLego separately from BigFig and standard releases.",
+        "No mechanical relationship is inferred from the label; capture as morphology/source label until component evidence is available."
+      ],
+      "representative_characters": [
+        "Hulk"
+      ],
+      "sources": [
+        "https://www.herobloks.com/figures/637/xinh/002/hulk"
       ]
     }
   ],
