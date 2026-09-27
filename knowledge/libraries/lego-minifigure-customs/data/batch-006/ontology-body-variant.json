@@ -4,11 +4,18 @@
     "standard",
     "short_leg",
     "medium_leg",
-    "long/extended",
+    "long_or_extended_limb",
+    "oversized_torso_hybrid",
+    "giant_or_bigfig",
+    "maker_specific_muscle_body",
+    "community_midfig",
+    "micro_or_small_body",
     "nonstandard_head",
     "dual_mould",
-    "prosthetic_or_specialized"
+    "prosthetic_or_specialized",
+    "unknown_architecture"
   ],
-  "rule": "Do not force non-standard geometry into standard-body assumptions.",
-  "schema_version": "0.1"
+  "rule": "Body variant is descriptive morphology only. Mechanical compatibility must resolve through FigureArchitecture; do not force non-standard geometry into standard-body assumptions or treat labels such as BigFig/midfig/7CM as universal standards.",
+  "schema_version": "0.2",
+  "architecture_registry": "../figure-architecture-registry.json"
 }
