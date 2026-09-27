@@ -535,3 +535,92 @@ See:
 - `nonstandard-body-census-and-ingestion.md`
 - `data/figure-architecture-observation-schema.json`
 - `data/body-style-profile-registry.json`.
+
+## Mega-scale and enhanced-articulation custom systems
+
+### OA 16 cm MegaFig candidate family
+
+HeroBloks currently documents OA2201-OA2204 as a four-release MegaFig group, each at 16 cm:
+- Dr Manhattan;
+- Sentinel;
+- Atom Smasher;
+- Giant Man.
+
+This is enough to create a *family candidate* and scale profile, but not enough to claim identical joints.
+
+Canonical provisional ID:
+`custom_oa_160mm_megafig_candidate`.
+
+Research questions:
+- molded vs printed vs multi-part construction;
+- head/neck modularity;
+- shoulder/elbow/wrist joints;
+- hips/knees;
+- foot/stud compatibility;
+- whether OA2201-OA2204 share a blank body platform.
+
+### DY very-large figures
+
+DY_Minifigs current records include at least:
+- DY1806 Galactus at 28.5 cm;
+- DY1817 Ant-Man Quantum Realm at 22.5 cm tall and 8 cm wide.
+
+The difference is large enough that Brickmen keeps:
+`custom_dy_mega_scale_unresolved`
+as an umbrella observation only.
+
+### Buildable characters
+
+Buildable Giant Man/Sentinel/Galactus entries are cataloged separately from MegaFig and BigFig versions.
+
+Canonical umbrella:
+`buildable_character_figure_unresolved`.
+
+This is an *assembly architecture* rather than a body mold:
+- graph nodes = parts/subassemblies;
+- graph edges = studs/pins/hinges/ball joints/etc.;
+- surface/style may be distributed across many elements.
+
+Future generation should be able to choose between:
+- minifigure/custom body;
+- Giant/BigFig;
+- Mega-scale custom body;
+- brick-built character.
+
+### Standard-scale custom ball-joint arms
+
+Current custom makers have begun replacing the normal minifigure shoulder connection with ball-jointed/adapted arm systems while retaining roughly 1:1 minifigure scale.
+
+Canonical provisional family:
+`custom_standard_ball_joint_arm_adapter`.
+
+This architecture is strategically important for Brickmen because it demonstrates that **articulation can be upgraded independently from the rest of the body**.
+
+A future Brickmen Standard-Articulated option could preserve:
+- standard head;
+- torso dimensions;
+- hips/legs;
+- hand/accessory system;
+while replacing only the shoulder interface.
+
+Research must establish:
+- adapter/pin dimensions;
+- ball diameter;
+- socket material;
+- insertion force;
+- rotation range;
+- torso-hole stress;
+- cycle wear.
+
+### Scale class remains descriptive
+
+Suggested descriptive scale metadata may include:
+- micro;
+- standard;
+- intermediate;
+- large/Giant;
+- extra-large;
+- mega.
+
+These are useful for retrieval and character-relative scale selection, but **never identify architecture by themselves**.
+
