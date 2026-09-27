@@ -937,3 +937,58 @@ After Hulk and Thing, prioritize:
 
 Purpose:
 avoid a "Hulk = all large figures" bias and learn multiple mass/material/morphology distributions.
+
+
+## B9 — Broad-body and morphology disentanglement
+
+Add `custom_alpha_45mm_muscle_hybrid` as a distinct observed research architecture and `brickmen_broad_v0` as the independent Brickmen implementation target.
+
+Research requirement:
+- keep overall stature separate from upper/lower-body mass;
+- keep morphology separate from mechanical architecture;
+- keep surface material separate from body proportions.
+
+Initial Broad reference evidence:
+- Axl oversized-torso official precedent;
+- Alpha AF321-AF332 symbiote hybrid;
+- G (2) muscle-hybrid observations.
+
+Broad P0:
+- standard head;
+- standard lower body;
+- blank broad torso;
+- replaceable shoulder/wrist cartridges;
+- enlarged optional hand with validated 3.18-family grip.
+
+Then benchmark:
+- muscular;
+- heavy-round;
+- symbiote;
+- armored;
+- rocky;
+- gorilla-like;
+- reptilian/monster semantics.
+
+Use `data/nonstandard-body-morphology-benchmark.json` as the frozen evaluation contract.
+
+## S5 — Surface-material compiler
+
+Implement `SurfaceMaterialProfile` for:
+- skin;
+- rock;
+- fur;
+- metal;
+- scales;
+- symbiote organic;
+- armor plating;
+- cloth/suit.
+
+Compiler decides whether source material detail becomes:
+- silhouette;
+- major relief;
+- shallow relief;
+- print;
+- separate component/accessory;
+- omitted microdetail.
+
+Never let dense decorative texture cross or redefine validated joint/contact geometry.
