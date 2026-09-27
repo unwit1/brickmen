@@ -162,13 +162,15 @@
         "repository": "https://github.com/Mobiuslqm/PAct"
       },
       "native_inputs": [
-        "single_view_image"
+        "single_view_rgb_image",
+        "2d_part_label_mask_with_background_zero"
       ],
       "native_outputs": [
         "part_decomposed_3d_geometry",
         "appearance",
         "articulation_parameters",
-        "simulation_ready_structure"
+        "simulation_ready_structure",
+        "urdf_package"
       ],
       "native_controls": [
         "configuration_files",
@@ -181,8 +183,9 @@
         "use_component_slots_for_part_count": false,
         "can_consume_mechanical_geometry_directly": false,
         "pre_generation": [
-          "supply reference/conditioned image",
-          "retain expected component slots and selected Brickmen skeleton as external truth constraints"
+          "supply source/conditioned RGB image",
+          "supply or review a 2D component/part label mask; PAct custom inference is not image-only",
+          "retain Brickmen expected component slots and selected skeleton as external truth constraints"
         ],
         "post_generation": [
           "compare generated part graph with expected Brickmen component graph",
@@ -193,7 +196,10 @@
       },
       "limitations": [
         "Learned articulation is evidence/candidate structure, not production mechanical authority.",
-        "Brickmen must retain control of component count, hardware, tolerances and validated joint geometry."
+        "Brickmen must retain control of component count, hardware, tolerances and validated joint geometry.",
+        "Current upstream custom Gradio workflow requires image plus a 2D part mask.",
+        "Current upstream infer_imgs.py parses --data_dir but hardcodes assets/real_world_examples when constructing ImageConditioned_dataset.",
+        "Brickmen needs a dedicated safe wrapper around the custom/API path before arbitrary-input CLI execution is enabled."
       ],
       "execution": {
         "adapter_status": "upstream_cli_input_path_bug_requires_wrapper",
@@ -294,14 +300,13 @@
         "repository": "https://github.com/facebookresearch/sam-3d-objects"
       },
       "native_inputs": [
-        "image",
-        "object_mask_or_prompted_object_selection"
+        "single_rgb_or_rgba_image",
+        "binary_object_mask"
       ],
       "native_outputs": [
-        "3d_geometry",
-        "texture",
-        "pose",
-        "layout"
+        "gaussian_splat_point_cloud_ply",
+        "predicted_object_pose_scale_rotation_translation",
+        "internal_reconstruction_state"
       ],
       "native_controls": [
         "single_object_or_multi_object_workflow",
@@ -311,39 +316,44 @@
         "Upstream default setup documents Linux x86-64 and an NVIDIA GPU with at least 32 GB VRAM."
       ],
       "brickmen_integration": {
-        "tier": "baseline_and_masked_component_candidate",
-        "adapter_mode": "monolithic_baseline_or_per_component_mask_reconstruction",
+        "tier": "visual_baseline_and_masked_reconstruction",
+        "adapter_mode": "masked_object_reconstruction_visual_baseline",
         "use_component_slots_for_part_count": false,
         "can_consume_mechanical_geometry_directly": false,
         "pre_generation": [
-          "render/prepare component masks from Brickmen slot plan where possible",
-          "run monolithic reconstruction as a baseline or masked reconstruction per component"
+          "supply RGB/RGBA image",
+          "supply binary mask for the target object/component"
         ],
         "post_generation": [
-          "align reconstructed geometry to skeleton and envelopes",
-          "merge/repair component surfaces if reconstructed separately",
-          "apply deterministic mechanical keep-outs/interfaces"
+          "record Gaussian reconstruction, pose and scale as visual evidence",
+          "do not feed public quick-start PLY directly into triangle-mesh manufacturing validation",
+          "evaluate internal mesh postprocessing only as a separate researched adapter if its public/support boundary is verified"
         ]
       },
       "limitations": [
-        "Not a native Brickmen part-aware manufacturing decomposition.",
-        "Per-component mask workflow depends on suitable source imagery/masks.",
-        "Model output remains visual/reconstruction evidence."
+        "Public quick-start output is a Gaussian splat/point-cloud PLY, not a validated printable triangle mesh.",
+        "Binary object mask is required for the published API path.",
+        "Internal mesh postprocessing should not be assumed stable/public without separate verification."
       ],
       "execution": {
-        "adapter_status": "python_api_adapter_pending",
+        "adapter_status": "python_api_visual_baseline_verified",
         "entrypoint": "notebook/inference.py",
         "invocation": [
           "python_api",
-          "Inference(config_path)",
-          "inference(image, mask, seed=...)"
+          "Inference(checkpoints/hf/pipeline.yaml, compile=False)",
+          "load_image(<image>)",
+          "load_mask(<mask>)",
+          "inference(image, mask, seed=<seed>)",
+          "output['gs'].save_ply(<output>)"
         ],
-        "upstream_requirement_note": "Official setup documents Linux x86-64 and NVIDIA GPU with at least 32GB VRAM."
+        "upstream_requirement_note": "Published quick-start uses image+mask and exports output['gs'] as a Gaussian splat PLY. Inference.__call__ currently invokes the pipeline with mesh postprocessing disabled."
       },
       "pipeline_stage": "baseline_generator",
       "output_contract": {
-        "kind": "reconstruction_bundle",
-        "semantic_slot_mapping": "required_when_used_as_component_generator"
+        "kind": "masked_gaussian_reconstruction",
+        "public_quickstart_export": "gaussian_splat_ply",
+        "printable_triangle_mesh_available_from_public_quickstart": false,
+        "component_slot_mapping": "not_directly_eligible_for_triangle_mesh_validation"
       }
     },
     {
