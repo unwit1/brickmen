@@ -1,0 +1,82 @@
+{
+  "schema_version": "0.1",
+  "observed_at": "2026-09-27",
+  "status": "research_registry",
+  "tools": [
+    {
+      "tool_id": "partcrafter",
+      "kind": "structured_3d_generation",
+      "venue": "NeurIPS 2025",
+      "deployment": "local_open_source",
+      "license": "MIT",
+      "capabilities": [
+        "single_image_to_multi_mesh_parts",
+        "explicit_part_count",
+        "vlm_part_count_suggestion",
+        "background_removal",
+        "input_domain_style_transfer",
+        "scene_generation",
+        "training_code",
+        "pretrained_weights"
+      ],
+      "brickmen_roles": [
+        "architecture-guided separated visual-shell generation",
+        "candidate full-body component generation",
+        "fine-tuning research after Brickmen corpus exists"
+      ],
+      "constraints": [
+        "generated parts are visual-shell candidates, not validated mechanical components",
+        "generic VLM part count must not override FigureArchitecture component graph"
+      ],
+      "hardware_note": "Official README currently states CUDA GPU with at least 8GB VRAM for inference; memory can be reduced by lowering part/token count.",
+      "source": "https://github.com/wgsxm/PartCrafter"
+    },
+    {
+      "tool_id": "sampart3d",
+      "kind": "open_world_3d_part_segmentation",
+      "deployment": "local_open_source",
+      "license": "MIT",
+      "capabilities": [
+        "mesh_part_segmentation",
+        "multi_view_rgb_depth_pipeline",
+        "partobjaverse_tiny_dataset"
+      ],
+      "brickmen_roles": [
+        "fallback decomposition for monolithic AI meshes",
+        "scan component segmentation",
+        "benchmark against PartField"
+      ],
+      "source": "https://github.com/Pointcept/SAMPart3D"
+    },
+    {
+      "tool_id": "partfield",
+      "kind": "part_feature_field_and_correspondence",
+      "venue": "ICCV 2025",
+      "deployment": "local_open_source",
+      "capabilities": [
+        "mesh_feature_field",
+        "point_cloud_feature_field",
+        "gaussian_splat_feature_field",
+        "hierarchical_part_clustering",
+        "cross_shape_consistency",
+        "cosegmentation",
+        "correspondence",
+        "interactive_selection"
+      ],
+      "brickmen_roles": [
+        "component correspondence across character shells",
+        "cross-architecture style-region analysis",
+        "alternate component-boundary proposals",
+        "detached-part correspondence research"
+      ],
+      "constraint": "Part correspondence is visual/geometric evidence only and cannot establish connector compatibility.",
+      "source": "https://github.com/nv-tlabs/PartField"
+    }
+  ],
+  "integration_policy": [
+    "Prefer target FigureArchitecture component graph over unconstrained generic part counts.",
+    "Preserve separate semantics for visual regions, manufacturing components, and mechanical interfaces.",
+    "Mechanical interfaces are deterministic Brickmen geometry.",
+    "Unknown/ambiguous part mapping triggers alternate segmentation or review rather than forced assignment."
+  ]
+}
