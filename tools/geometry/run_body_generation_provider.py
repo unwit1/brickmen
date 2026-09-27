@@ -21,6 +21,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 from pathlib import Path
 import shutil
 import subprocess
@@ -294,6 +295,7 @@ def _classify_outputs(
     all_outputs = _discover_outputs(root)
     result = {
         "component_candidates": [],
+        "component_records": [],
         "composite_outputs": [],
         "critic_outputs": [],
         "baseline_outputs": [],
@@ -314,6 +316,19 @@ def _classify_outputs(
                 file = parent / str(item.get("file", ""))
                 if file.is_file():
                     result["component_candidates"].append(str(file))
+                    index=item.get("index")
+                    result["component_records"].append({
+                        "path":str(file),
+                        "provider_part_id":(
+                            f"part_{int(index):02d}"
+                            if index is not None else file.stem
+                        ),
+                        "provider_part_index":(
+                            int(index) if index is not None else None
+                        ),
+                        "provider_manifest":str(manifest_path),
+                        "source_role":"generated_component",
+                    })
             composite = parent / str(payload.get("composite_file", ""))
             if composite.is_file():
                 result["composite_outputs"].append(str(composite))
@@ -322,6 +337,19 @@ def _classify_outputs(
             name = path.name
             if path.suffix.lower() == ".glb" and "_part" in name:
                 result["component_candidates"].append(str(path))
+                match=re.search(r"_part(\d+)\.glb$",name)
+                result["component_records"].append({
+                    "path":str(path),
+                    "provider_part_id":(
+                        f"part_{int(match.group(1)):02d}"
+                        if match else path.stem
+                    ),
+                    "provider_part_index":(
+                        int(match.group(1)) if match else None
+                    ),
+                    "provider_manifest":None,
+                    "source_role":"generated_component",
+                })
             elif path.suffix.lower() == ".glb" and (
                 "_vol0.glb" in name or "_vol1.glb" in name
             ):
