@@ -240,3 +240,34 @@ Use cases:
 - create hard negatives where the architecture is the same but tooling geometry differs.
 
 A source statement such as "same mold" creates a candidate relationship, not manufacturing authority. Promote to validated equivalence only after corroborated catalog/component evidence or physical comparison.
+
+
+## Body semantics, style compilation, and learned proposals
+
+Add:
+- CharacterBodyFeatureSpec — architecture-neutral semantic body intent for one Character/SourceAppearance.
+- SurfaceMaterialProfile — reusable geometry/relief/print/finish grammar for materials such as rock, fur, metal and scales.
+- StyleMappingRule — evidence-backed rule mapping a semantic feature into an architecture/style-specific representation.
+- BodyStyleCompilation — auditable compilation from semantic features + architecture + style into CharacterBodyDesignSpec.
+- JointProposal — non-authoritative joint/component hypothesis produced by learned articulation models.
+- JointCartridge — deterministic replaceable mechanical interface/hardware module inside a FigureArchitecture.
+
+Relationships:
+
+```
+SourceAppearance DESCRIBED_BY CharacterBodyFeatureSpec
+CharacterBodyFeatureSpec COMPILED_WITH FigureArchitecture
+FigureArchitecture USES_STYLE BodyStyleProfile
+BodyStyleProfile APPLIES_RULE StyleMappingRule
+SurfaceMaterialProfile GUIDES CharacterBodyDesignSpec
+BodyStyleCompilation PRODUCES CharacterBodyDesignSpec
+JointProposal PROPOSES_MATCH Connector / FigureArchitecture joint
+FigureArchitecture USES_JOINT_CARTRIDGE JointCartridge
+```
+
+Three semantic levels must remain separate:
+1. visual region — chest, bicep, rock plate, armor panel;
+2. manufacturing component — torso, arm, hand, lower body;
+3. mechanical interface — shoulder socket, wrist cartridge, neck connector.
+
+Learned 3D segmentation/articulation may inform levels 1–2 and propose level-3 hypotheses, but manufacturing level-3 geometry remains deterministic and validated.
