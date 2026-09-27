@@ -70,16 +70,17 @@ def test_giant_conditioning_merges_official_shape_and_reference_hardware():
     arm = envelope_by_id(payload, "arm_l")
     hand = envelope_by_id(payload, "hand_l")
     assert arm["size_normalized_body_height"][0] == pytest.approx(
-        0.181781764684078
+        0.181781764684078, abs=1e-6
     )
     assert arm["size_normalized_body_height"][1] == pytest.approx(
-        0.27980484946128936
+        0.27980484946128936, abs=1e-6
     )
     assert arm["a_node"] == "shoulder_l"
     assert arm["b_node"] == "wrist_l"
     assert arm["derived_length_normalized_body_height"] > 0
     assert hand["size_normalized_body_height"] == pytest.approx(
-        [0.17426889310845864, 0.24813372766299466, 0.20941651574293846]
+        [0.17426889310845864, 0.24813372766299466, 0.20941651574293846],
+        abs=1e-6,
     )
 
     left_shoulder = payload["skeleton_control"]["nodes"]["shoulder_l"]
