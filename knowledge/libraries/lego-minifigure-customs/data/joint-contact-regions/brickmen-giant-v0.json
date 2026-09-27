@@ -1,0 +1,98 @@
+{
+  "schema_version": "0.1",
+  "architecture_id": "brickmen_giant_v0",
+  "status": "contact_regions_pending_physical_interface_validation",
+  "joints": [
+    {
+      "joint_id": "shoulder_l",
+      "status": "pending_physical_validation_no_contact_geometry",
+      "component_pairs": [
+        [
+          "arm_l_shell",
+          "torso_shell"
+        ]
+      ],
+      "allowed_contact_regions_mm": [],
+      "authority": "none_until_validated",
+      "source_validation_plan_id": "giant_43093_shoulder_physical_validation_v0",
+      "blocker": "Do not infer an allowed collision/contact zone from the 43093 LDraw bounding box alone. Measure/validate the actual mating interface and intentional contact region."
+    },
+    {
+      "joint_id": "shoulder_r",
+      "status": "pending_physical_validation_no_contact_geometry",
+      "component_pairs": [
+        [
+          "arm_r_shell",
+          "torso_shell"
+        ]
+      ],
+      "allowed_contact_regions_mm": [],
+      "authority": "none_until_validated",
+      "source_validation_plan_id": "giant_43093_shoulder_physical_validation_v0",
+      "blocker": "Mirror/use validated right-side interface evidence only after verifying whether the physical system is materially symmetric."
+    },
+    {
+      "joint_id": "wrist_l",
+      "status": "pending_joint_cartridge_and_contact_validation",
+      "component_pairs": [
+        [
+          "hand_l_shell",
+          "arm_l_shell"
+        ]
+      ],
+      "allowed_contact_regions_mm": [],
+      "authority": "none_until_validated",
+      "source_validation_plan_id": null,
+      "blocker": "Wrist contact/mating geometry has no validated JointProfile/JointCartridge yet."
+    },
+    {
+      "joint_id": "wrist_r",
+      "status": "pending_joint_cartridge_and_contact_validation",
+      "component_pairs": [
+        [
+          "hand_r_shell",
+          "arm_r_shell"
+        ]
+      ],
+      "allowed_contact_regions_mm": [],
+      "authority": "none_until_validated",
+      "source_validation_plan_id": null,
+      "blocker": "Wrist contact/mating geometry has no validated JointProfile/JointCartridge yet."
+    },
+    {
+      "joint_id": "neck",
+      "status": "pending_joint_cartridge_and_contact_validation",
+      "component_pairs": [
+        [
+          "head_shell",
+          "torso_shell"
+        ]
+      ],
+      "allowed_contact_regions_mm": [],
+      "authority": "none_until_validated",
+      "source_validation_plan_id": null,
+      "blocker": "Neck/head contact region is not physically validated."
+    },
+    {
+      "joint_id": "lower_body",
+      "status": "pending_joint_cartridge_and_contact_validation",
+      "component_pairs": [
+        [
+          "lower_body_shell",
+          "torso_shell"
+        ]
+      ],
+      "allowed_contact_regions_mm": [],
+      "authority": "none_until_validated",
+      "source_validation_plan_id": null,
+      "blocker": "Lower-body mating/contact region is not physically validated."
+    }
+  ],
+  "rules": [
+    "Allowed contact regions suppress only intentional joint-local contact during pose collision; they never legalize unrelated interpenetration.",
+    "Reference CAD bounding boxes are not automatically allowed-contact regions.",
+    "Every promoted region must retain provenance to physical or otherwise validated deterministic interface evidence.",
+    "Changes to a validated interface invalidate/review the associated allowed-contact region."
+  ],
+  "production_geometry_authority": false
+}
