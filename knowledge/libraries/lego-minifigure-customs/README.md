@@ -70,3 +70,21 @@ Machine-readable records:
 Target coverage is every practical official standard-minifigure visual design found in physical product catalogs, official/licensed games, and in-scope LEGO films. Catalog records, unique characters, unique outfits, and unique visual states are measured separately.
 
 High-volume raw official images, extracted local game assets, and film frames stay in controlled local corpus storage. Git stores schemas, manifests, hashes, source relationships, derived features, coverage reports, and validated visual rules.
+
+## Additive manufacturing / physical production
+
+Deep-research and automation architecture:
+- `additive-manufacturing-feasibility.md` — resin/FDM feasibility, materials, connector engineering, hybrid/crossover manufacturing and safety.
+- `fused-filament-custom-parts.md` — FDM-specific materials, small-nozzle engineering, automation and factory-fixture strategy.
+- `resin-custom-parts.md` — resin design rules and connector-oriented part records.
+- `resin-fit-calibration.md` — empirical fit calibration and reusable connector library.
+- `additive-manufacturing-validation-program.md` — standards-inspired validation hierarchy, metrology, force/cycle testing and profile promotion.
+- `automated-additive-manufacturing-cell.md` — closed-loop CAD-to-print-to-postprocess-to-QC architecture.
+- `additive-manufacturing-equipment-and-automation-options.md` — current printer/control/postprocessing architecture and phased equipment strategy.
+- `additive-manufacturing-product-safety.md` — U.S.-focused gate preventing prototypes from being silently treated as compliant children's products.
+
+Machine-readable contracts:
+- `data/additive-manufacturing-automation-contracts.json`
+- `data/additive-manufacturing-validation-plan.json`
+
+Core principle: additive manufacturing is a measured closed-loop process. A nominal connector dimension, advertised printer resolution, or successful single print is not a production qualification.
