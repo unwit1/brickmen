@@ -522,3 +522,26 @@ Next engineering:
 - [ ] run articulation sweep/collision tests
 - [ ] generate first part-aware neutral shells around locked skeletons
 - [ ] then progress to Mid P0 and XL P0
+
+
+### Reference fitting continuation — 2026-09-27
+
+- [x] implement bounded landmark skeleton fitter
+- [x] implement batch fitting
+- [x] add parameter-bound diagnostics
+- [x] add scale-aware cross-skeleton comparison
+- [x] seed AF325 Venom, AF345 Hulk, LEGO Giant Hulk, KDL Thing, and Axl references
+- [x] record first fit results and revision candidates
+- [x] separate visual silhouette observations from skeletal pivots
+- [x] add visual-envelope measurement tool
+- [x] add normalized seed envelope summary
+
+Next:
+- [ ] reannotate seed references with manual-review UI
+- [ ] add side/back views and Y-depth observations
+- [ ] add official LDraw-derived Giant landmark ground truth
+- [ ] add standard-minifigure/Axl donor-component landmark ground truth
+- [ ] implement BodyEnvelopeProfile fitting against visual width/depth observations
+- [ ] add skeleton-to-reference SVG/image overlay renderer
+- [ ] fit head scale and separate torso/leg segment lengths
+- [ ] connect fitted skeleton/envelope outputs to part-aware generation prompts/conditioning
