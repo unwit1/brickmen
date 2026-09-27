@@ -37,7 +37,76 @@
             "type": "array"
           },
           "allowed_contact_regions_mm": {
-            "type": "array"
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "region_id",
+                "shape",
+                "status",
+                "authority",
+                "source_validation_id"
+              ],
+              "properties": {
+                "region_id": {
+                  "type": "string"
+                },
+                "shape": {
+                  "enum": [
+                    "aabb"
+                  ]
+                },
+                "min_mm": {
+                  "type": "array",
+                  "minItems": 3,
+                  "maxItems": 3,
+                  "items": {
+                    "type": "number"
+                  }
+                },
+                "max_mm": {
+                  "type": "array",
+                  "minItems": 3,
+                  "maxItems": 3,
+                  "items": {
+                    "type": "number"
+                  }
+                },
+                "status": {
+                  "enum": [
+                    "candidate",
+                    "validated_prototype",
+                    "production_approved"
+                  ]
+                },
+                "authority": {
+                  "type": "string"
+                },
+                "source_validation_id": {
+                  "type": "string"
+                },
+                "notes": {
+                  "type": "string"
+                }
+              },
+              "allOf": [
+                {
+                  "if": {
+                    "properties": {
+                      "shape": {
+                        "const": "aabb"
+                      }
+                    }
+                  },
+                  "then": {
+                    "required": [
+                      "min_mm",
+                      "max_mm"
+                    ]
+                  }
+                }
+              ]
+            }
           },
           "authority": {
             "type": "string"
