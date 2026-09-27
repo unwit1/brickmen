@@ -6,10 +6,10 @@ Default mode is dry-run. --execute is required to launch upstream provider code.
 Supported verified CLI adapters:
 - PartCrafter
 - PartPacker
-- PAct
 - Particulate
 
-SAM 3D Objects remains plan/API-only until Brickmen adds an explicit mask/API
+PAct is intentionally plan-only until Brickmen wraps the current upstream
+hardcoded input-dataset path. SAM 3D Objects remains plan/API-only until Brickmen adds an explicit mask/API
 runner. Unknown or unverified providers are never guessed.
 
 The wrapper does not install dependencies, download repositories, accept
@@ -27,7 +27,7 @@ import subprocess
 from typing import Any, Mapping
 
 
-RUNNABLE = {"partcrafter", "partpacker", "pact", "particulate"}
+RUNNABLE = {"partcrafter", "partpacker", "particulate"}
 
 
 def load_json(path: str | Path) -> dict[str, Any]:
@@ -83,6 +83,8 @@ def build_execution_plan(
             "mode": "plan_only",
             "execution_supported": False,
             "adapter_status": status,
+            "pipeline_stage": provider.get("pipeline_stage"),
+            "output_contract": provider.get("output_contract"),
             "command": None,
             "working_directory": (
                 str(Path(provider_repo).resolve()) if provider_repo else None
@@ -132,6 +134,8 @@ def build_execution_plan(
             str(image_path),
             "--num_parts",
             str(num_parts),
+            "--output_dir",
+            str(out),
             "--tag",
             str(tag),
             "--render",
@@ -219,6 +223,8 @@ def build_execution_plan(
         "mode": "dry_run",
         "execution_supported": True,
         "adapter_status": status,
+        "pipeline_stage": provider.get("pipeline_stage"),
+        "output_contract": provider.get("output_contract"),
         "command": command,
         "working_directory": str(repo),
         "staging": staging,
@@ -257,6 +263,75 @@ def _discover_outputs(output_dir: str | Path) -> list[str]:
         and path.suffix.lower()
         in {".obj", ".glb", ".gltf", ".ply", ".stl", ".fbx", ".json", ".npz"}
     )
+
+
+def _classify_outputs(
+    provider_id: str,
+    output_dir: str | Path,
+) -> dict[str, Any]:
+    root = Path(output_dir)
+    all_outputs = _discover_outputs(root)
+    result = {
+        "component_candidates": [],
+        "composite_outputs": [],
+        "critic_outputs": [],
+        "auxiliary_outputs": [],
+        "manifest_files": [],
+        "unclassified_outputs": [],
+    }
+    if provider_id == "partcrafter":
+        manifests = sorted(root.rglob("manifest.json")) if root.exists() else []
+        for manifest_path in manifests:
+            try:
+                payload = json.loads(manifest_path.read_text(encoding="utf-8"))
+            except Exception:
+                continue
+            result["manifest_files"].append(str(manifest_path))
+            parent = manifest_path.parent
+            for item in payload.get("parts", []):
+                file = parent / str(item.get("file", ""))
+                if file.is_file():
+                    result["component_candidates"].append(str(file))
+            composite = parent / str(payload.get("composite_file", ""))
+            if composite.is_file():
+                result["composite_outputs"].append(str(composite))
+    elif provider_id == "partpacker":
+        for path in map(Path, all_outputs):
+            name = path.name
+            if path.suffix.lower() == ".glb" and "_part" in name:
+                result["component_candidates"].append(str(path))
+            elif path.suffix.lower() == ".glb" and (
+                "_vol0.glb" in name or "_vol1.glb" in name
+            ):
+                result["auxiliary_outputs"].append(str(path))
+            elif path.suffix.lower() == ".glb":
+                result["composite_outputs"].append(str(path))
+    elif provider_id == "particulate":
+        for path in map(Path, all_outputs):
+            if (
+                path.name.startswith("mesh_parts_with_axes_")
+                or path.name.startswith("animated_textured_")
+                or path.name in {"pred.obj", "pred.npz"}
+            ):
+                result["critic_outputs"].append(str(path))
+            else:
+                result["auxiliary_outputs"].append(str(path))
+    else:
+        result["unclassified_outputs"] = all_outputs
+
+    classified = set(
+        result["component_candidates"]
+        + result["composite_outputs"]
+        + result["critic_outputs"]
+        + result["auxiliary_outputs"]
+        + result["manifest_files"]
+    )
+    result["unclassified_outputs"].extend(
+        path for path in all_outputs if path not in classified
+    )
+    for key in result:
+        result[key] = sorted(set(result[key]))
+    return result
 
 
 def execute_plan(
@@ -298,6 +373,9 @@ def execute_plan(
             "stdout_log": str(stdout_path),
             "stderr_log": str(stderr_path),
             "discovered_outputs": _discover_outputs(output_dir),
+            "output_classification": _classify_outputs(
+                str(plan.get("provider_id")), output_dir
+            ),
             "execution_succeeded": completed.returncode == 0,
         }
     )
