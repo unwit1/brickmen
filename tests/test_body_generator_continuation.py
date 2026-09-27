@@ -3,6 +3,7 @@ from pathlib import Path
 import pytest
 
 from tools.geometry.continue_body_generator_run import (
+    automatic_mapping_selection,
     continue_generator_run,
 )
 
@@ -111,3 +112,44 @@ def test_generator_continuation_rejects_critic_job(tmp_path: Path):
         continue_generator_run(
             conditioning(),critic,run([head,torso]),tmp_path/"work"
         )
+
+
+def test_auto_mapping_selection_requires_strict_unique_proposal():
+    proposal={
+        "provider_id":"fake",
+        "provider_job_id":"j",
+        "architecture_id":"test",
+        "automatic_promotion_allowed":True,
+        "ambiguity":{
+            "near_best_candidate_count":1,
+            "distinct_near_best_mapping_count":1,
+        },
+        "global_alignment_candidates":[
+            {
+                "complete_visual_slot_assignment":True,
+                "total_score":0.1,
+            }
+        ],
+    }
+    selection=automatic_mapping_selection(proposal,enabled=True)
+    assert selection is not None
+    assert selection["selected_candidate_index"]==0
+    assert selection["automatic_selection"] is True
+    assert selection["explicit_review_selection"] is True
+
+
+def test_auto_mapping_selection_refuses_ambiguous_proposal():
+    proposal={
+        "provider_id":"fake",
+        "provider_job_id":"j",
+        "architecture_id":"test",
+        "automatic_promotion_allowed":True,
+        "ambiguity":{
+            "near_best_candidate_count":2,
+            "distinct_near_best_mapping_count":2,
+        },
+        "global_alignment_candidates":[
+            {"complete_visual_slot_assignment":True,"total_score":0.1}
+        ],
+    }
+    assert automatic_mapping_selection(proposal,enabled=True) is None
