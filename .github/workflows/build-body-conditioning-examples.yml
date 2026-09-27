@@ -165,7 +165,9 @@ jobs:
           )["status"] == "pending"
           assert next(
               g for g in sam_state["gates"] if g["gate_id"] == "provider_run"
-          )["status"] == "blocked"
+          )["status"] == "pending"
+          assert sam_state["state_scope"] == "visual_reconstruction_baseline"
+          assert "primary_triangle_mesh_generator_dependency" in sam_state["production_readiness"]["blocking_gates"]
           assert "mechanical_interface_validation" in partcrafter_state["production_readiness"]["blocking_gates"]
           contact_gate = next(
               g for g in partcrafter_state["gates"] if g["gate_id"] == "joint_contact_region_evidence"
