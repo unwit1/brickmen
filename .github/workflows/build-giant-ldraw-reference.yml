@@ -1,0 +1,118 @@
+name: Build Giant LDraw reference geometry
+
+on:
+  push:
+    paths:
+      - ".github/workflows/build-giant-ldraw-reference.yml"
+      - "tools/geometry/ingest_ldraw_geometry.py"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Install pinned LDraw library baseline
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ldraw-parts=2303+ds-1
+          dpkg-query -W -f='ldraw-parts ${Version}\n' ldraw-parts
+
+      - name: Flatten Giant reference geometry
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUT="build/ldraw-giant"
+          MANIFEST_DIR="knowledge/libraries/lego-minifigure-customs/data/digital-twins/ldraw-manifests/ubuntu-noble-2303"
+          mkdir -p "$OUT/obj" "$MANIFEST_DIR"
+
+          package_version="$(dpkg-query -W -f='${Version}' ldraw-parts)"
+          for part in 10128p01c01.dat 10128.dat 10154.dat 10124.dat 10127.dat 10126.dat 43093.dat; do
+            stem="${part%.dat}"
+            python tools/geometry/ingest_ldraw_geometry.py \
+              /usr/share/ldraw "$part" \
+              --manifest "$MANIFEST_DIR/$stem.json" \
+              --obj "$OUT/obj/$stem.obj" \
+              --obj-units mm
+
+            python - "$MANIFEST_DIR/$stem.json" "$package_version" <<'PY'
+          import json
+          import sys
+          from pathlib import Path
+
+          path = Path(sys.argv[1])
+          package_version = sys.argv[2]
+          data = json.loads(path.read_text(encoding="utf-8"))
+          data["ldraw_library_release"] = f"Ubuntu 24.04 ldraw-parts {package_version}"
+          data["acquisition"] = {
+              "method": "apt",
+              "package": "ldraw-parts",
+              "package_version": package_version,
+              "library_root": "/usr/share/ldraw",
+              "runner": "ubuntu-24.04",
+              "purpose": "reproducible Giant reference-geometry baseline",
+          }
+          path.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
+          PY
+          done
+
+          python - "$MANIFEST_DIR" "$package_version" <<'PY'
+          import json
+          import sys
+          from pathlib import Path
+
+          manifest_dir = Path(sys.argv[1])
+          package_version = sys.argv[2]
+          rows = []
+          for path in sorted(manifest_dir.glob("*.json")):
+              data = json.loads(path.read_text(encoding="utf-8"))
+              rows.append({
+                  "root_file": data["root_file"],
+                  "triangle_count": data["triangle_count"],
+                  "source_file_count": data["source_file_count"],
+                  "bbox_ldu": data["bbox_ldu"],
+                  "bbox_nominal_mm": data["bbox_nominal_mm"],
+                  "unresolved_reference_count": len(data["unresolved_references"]),
+              })
+
+          summary = {
+              "schema_version": "0.1",
+              "build_id": "lego_giant_ldraw_ubuntu_noble_2303",
+              "ldraw_library_release": f"Ubuntu 24.04 ldraw-parts {package_version}",
+              "targets": rows,
+              "production_geometry_authority": False,
+              "warning": "Reference CAD geometry only; not physical fit/tolerance metrology.",
+          }
+          (manifest_dir / "build-summary.json").write_text(
+              json.dumps(summary, indent=2) + "\n", encoding="utf-8"
+          )
+          print(json.dumps(summary, indent=2))
+          PY
+
+      - name: Upload flattened OBJ reference meshes
+        uses: actions/upload-artifact@v4
+        with:
+          name: lego-giant-ldraw-reference-objs-ubuntu-noble-2303
+          path: build/ldraw-giant/obj/*.obj
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Commit reproducible geometry manifests
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "brickmen-reference-bot"
+          git config user.email "130810487+unwit1@users.noreply.github.com"
+          git add knowledge/libraries/lego-minifigure-customs/data/digital-twins/ldraw-manifests/ubuntu-noble-2303
+          if git diff --cached --quiet; then
+            echo "No manifest changes."
+            exit 0
+          fi
+          git commit -m "data: add pinned Giant LDraw geometry manifests"
+          git push origin HEAD:main
