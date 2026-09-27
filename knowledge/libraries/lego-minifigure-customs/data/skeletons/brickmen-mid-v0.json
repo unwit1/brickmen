@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.2",
+  "schema_version": "0.3",
   "skeleton_id": "brickmen_mid_v0_skeleton",
   "architecture_id": "brickmen_mid_v0",
   "status": "concept_generation_skeleton_nonproduction",
@@ -73,6 +73,31 @@
       "default": 1,
       "min": 0.65,
       "max": 1.8
+    },
+    "lower_torso_length_scale": {
+      "default": 1,
+      "min": 0.8,
+      "max": 1.25
+    },
+    "upper_torso_length_scale": {
+      "default": 1,
+      "min": 0.8,
+      "max": 1.25
+    },
+    "neck_head_offset_scale": {
+      "default": 1,
+      "min": 0.8,
+      "max": 1.25
+    },
+    "thigh_length_scale": {
+      "default": 1,
+      "min": 0.8,
+      "max": 1.25
+    },
+    "shin_length_scale": {
+      "default": 1,
+      "min": 0.8,
+      "max": 1.25
     }
   },
   "nodes": [
@@ -628,6 +653,101 @@
         "ankle_l",
         "ankle_r"
       ]
+    },
+    {
+      "parameter": "lower_torso_length_scale",
+      "mode": "move_endpoint_with_descendants",
+      "axes": [
+        "z"
+      ],
+      "anchor_node": "waist",
+      "endpoint_node": "chest",
+      "descendant_nodes": [
+        "neck",
+        "head_center",
+        "shoulder_l",
+        "shoulder_r",
+        "elbow_l",
+        "elbow_r",
+        "wrist_l",
+        "wrist_r",
+        "hand_l",
+        "hand_r"
+      ]
+    },
+    {
+      "parameter": "upper_torso_length_scale",
+      "mode": "move_endpoint_with_descendants",
+      "axes": [
+        "z"
+      ],
+      "anchor_node": "chest",
+      "endpoint_node": "neck",
+      "descendant_nodes": [
+        "head_center",
+        "shoulder_l",
+        "shoulder_r",
+        "elbow_l",
+        "elbow_r",
+        "wrist_l",
+        "wrist_r",
+        "hand_l",
+        "hand_r"
+      ]
+    },
+    {
+      "parameter": "neck_head_offset_scale",
+      "mode": "move_endpoint_with_descendants",
+      "axes": [
+        "z"
+      ],
+      "anchor_node": "neck",
+      "endpoint_node": "head_center",
+      "descendant_nodes": []
+    },
+    {
+      "parameter": "thigh_length_scale",
+      "mode": "move_endpoint_with_descendants",
+      "axes": [
+        "z"
+      ],
+      "anchor_node": "hip_l",
+      "endpoint_node": "knee_l",
+      "descendant_nodes": [
+        "ankle_l"
+      ]
+    },
+    {
+      "parameter": "thigh_length_scale",
+      "mode": "move_endpoint_with_descendants",
+      "axes": [
+        "z"
+      ],
+      "anchor_node": "hip_r",
+      "endpoint_node": "knee_r",
+      "descendant_nodes": [
+        "ankle_r"
+      ]
+    },
+    {
+      "parameter": "shin_length_scale",
+      "mode": "move_endpoint_with_descendants",
+      "axes": [
+        "z"
+      ],
+      "anchor_node": "knee_l",
+      "endpoint_node": "ankle_l",
+      "descendant_nodes": []
+    },
+    {
+      "parameter": "shin_length_scale",
+      "mode": "move_endpoint_with_descendants",
+      "axes": [
+        "z"
+      ],
+      "anchor_node": "knee_r",
+      "endpoint_node": "ankle_r",
+      "descendant_nodes": []
     }
   ],
   "envelopes": [
@@ -696,6 +816,7 @@
     "All manufacturing interfaces remain provisional until a validated JointCartridge is assigned.",
     "Target height is a Brickmen design default and may be changed without globally scaling validated connector geometry.",
     "Mid emphasizes increased stature as well as mass; it is not a globally scaled Broad body.",
-    "Visual envelope width/depth parameters are independent from skeletal joint-spacing parameters; changing torso/head/abdomen mass must not move shoulder or lower-body joint centers."
+    "Visual envelope width/depth parameters are independent from skeletal joint-spacing parameters; changing torso/head/abdomen mass must not move shoulder or lower-body joint centers.",
+    "Fine-grained vertical segment parameters move each segment endpoint and its downstream nodes, preserving neighboring segment lengths unless their own parameter is changed."
   ]
 }
