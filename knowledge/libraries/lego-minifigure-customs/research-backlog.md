@@ -493,3 +493,32 @@ Next:
 - [ ] implement SurfaceMaterialProfile compiler
 - [ ] run nonstandard_body_morphology_v0 benchmark across Broad/Mid/Giant targets
 - [ ] train no morphology model until reviewed feature labels and unknown handling are stable
+
+
+### Skeleton implementation continuation — 2026-09-27
+
+- [x] second-pass distinct architecture census
+- [x] add Si-Dan full-ball-joint poseable reference architecture
+- [x] add ball-jointed custom MidFig upper architecture
+- [x] add single-torso four-arm custom architecture
+- [x] separate skeleton/bony official architecture
+- [x] separate Battle Droid and Super Battle Droid architectures
+- [x] add Faun/digitigrade lower-body architecture
+- [x] preserve legacy Homemaker/maxifigure as separate terminology/architecture
+- [x] define donor torso-shell overlay as augmentation rather than automatic new architecture
+- [x] implement BodySkeleton schema
+- [x] implement Broad/Mid/XL/Giant v0 normalized skeletons
+- [x] implement skeleton compiler and tests
+- [x] add reusable topology modules
+- [x] update ontology/data model
+
+Next engineering:
+- [ ] implement image-landmark skeleton fitter
+- [ ] add architecture-specific envelope generation
+- [ ] create JointCartridge schema instances for Broad/Giant P0
+- [ ] create printable joint coupons
+- [ ] create Broad P0 blank mechanical mule
+- [ ] create Giant P0 blank mechanical mule
+- [ ] run articulation sweep/collision tests
+- [ ] generate first part-aware neutral shells around locked skeletons
+- [ ] then progress to Mid P0 and XL P0
