@@ -1,0 +1,59 @@
+name: Build body reference reviewers
+
+on:
+  push:
+    paths:
+      - ".github/workflows/build-body-reference-reviewers.yml"
+      - "tools/geometry/build_body_reference_review_ui.py"
+      - "tools/geometry/build_body_reference_reviewers.py"
+      - "knowledge/libraries/lego-minifigure-customs/data/reference-landmarks/manifest.json"
+      - "knowledge/libraries/lego-minifigure-customs/data/reference-landmarks/*-front.json"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Build source-image-free reviewers
+        run: |
+          set -euo pipefail
+          python -m tools.geometry.build_body_reference_reviewers \
+            knowledge/libraries/lego-minifigure-customs/data/reference-landmarks/manifest.json \
+            knowledge/libraries/lego-minifigure-customs/data/reference-reviewers
+
+      - name: Validate reviewer index
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          base = Path("knowledge/libraries/lego-minifigure-customs/data/reference-reviewers")
+          data = json.loads((base / "index.json").read_text())
+          assert data["production_geometry_authority"] is False
+          assert len(data["reviewers"]) == 5
+          for item in data["reviewers"]:
+              assert item["source_image_embedded"] is False
+              text = (base / item["reviewer_file"]).read_text()
+              assert "data:image/" not in text
+              assert "Add chest at torso midpoint" in text
+          print("reference reviewers validated")
+          PY
+
+      - name: Commit reviewers
+        run: |
+          set -euo pipefail
+          git config user.name "brickmen-reference-review-bot"
+          git config user.email "130810487+unwit1@users.noreply.github.com"
+          git add knowledge/libraries/lego-minifigure-customs/data/reference-reviewers
+          if git diff --cached --quiet; then
+            echo "No reviewer changes."
+            exit 0
+          fi
+          git commit -m "data: update body reference reviewers"
+          git push origin HEAD:main
