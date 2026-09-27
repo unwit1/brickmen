@@ -1,0 +1,205 @@
+{
+  "schema": "skywalker-no-supported-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-no-supported-review-013",
+  "policy": "Preserve source-time physical status and do not retroactively equate later physical releases with earlier digital assets without direct visual evidence. Named background characters documented as nonphysical remain identity-distinct from weak lexical neighbors.",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-36545f9e7acfa159199f3772",
+      "character_variant_key": "BabuFrik",
+      "decision": "digital_babu_frik_identity_verified_later_2025_physical_release_not_source_equivalent_without_visual_review",
+      "canonical_subject": "Babu Frik",
+      "source_timeline": {
+        "skywalker_saga_year": 2022,
+        "physical_status_at_source_time": "nonphysical"
+      },
+      "later_physical_counterpart": {
+        "brickset_minifig": "sw1439",
+        "catalog_name": "Babu Frik",
+        "year": 2025,
+        "set_num": "75418-1",
+        "status": "first physical release"
+      },
+      "rejected_top_candidates": [
+        {
+          "fig_num": "fig-004270",
+          "catalog_name": "Bala-Tik",
+          "reason": "weak name-shape similarity; unrelated character"
+        },
+        {
+          "fig_num": "fig-002544",
+          "catalog_name": "BB-8",
+          "reason": "unrelated droid; short-name similarity only"
+        }
+      ],
+      "reason": "Brickipedia records Babu Frik as nonphysical in 2020/2022 and physically introduced in 2025; Brickset identifies sw1439 in the 2025 Advent Calendar. The later figure proves a physical Babu Frik now exists, but it cannot be assumed to be the source artwork for a 2022 game asset without visual comparison.",
+      "systemic_pattern": "later_physical_release_must_not_retroactively_prove_earlier_digital_asset_equivalence",
+      "evidence_urls": [
+        "https://brickipedia.fandom.com/wiki/Babu_Frik",
+        "https://brickset.com/minifigs/name-Babu-Frik"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-a076a5a54ef28b3479d1c2b7",
+      "character_variant_key": "CaiThrenalli",
+      "decision": "named_resistance_pilot_cai_threnalli_verified_nonphysical_no_official_lego_minifigure",
+      "canonical_subject": "C'ai Threnalli",
+      "alias_resolution": {
+        "source_key": "CaiThrenalli",
+        "canonical_name": "C'ai Threnalli",
+        "transformations": [
+          "restore apostrophe"
+        ],
+        "confidence": "high"
+      },
+      "identity_context": {
+        "role": "Resistance pilot",
+        "game_history": [
+          "LEGO Star Wars: The Force Awakens",
+          "LEGO Star Wars: The Skywalker Saga"
+        ]
+      },
+      "physical_status": {
+        "exact_official_minifigure_located": false,
+        "brickipedia_status": "only appeared in non-physical form; never in an official LEGO set"
+      },
+      "rejected_top_candidates": [
+        {
+          "fig_num": "fig-004102",
+          "catalog_name": "Captain Tarpals",
+          "reason": "unrelated named character"
+        },
+        {
+          "fig_num": "fig-010460",
+          "catalog_name": "Mini Treadwell Droid",
+          "reason": "unrelated droid"
+        }
+      ],
+      "reason": "C'ai Threnalli is a specific Resistance pilot with documented LEGO game appearances. Brickipedia explicitly states the minifigure has only appeared nonphysically. Restoring the apostrophe is useful for entity resolution but does not reveal a physical counterpart.",
+      "systemic_pattern": "punctuation_stripped_person_names_should_normalize_before_entity_resolution",
+      "evidence_urls": [
+        "https://brickipedia.fandom.com/wiki/C%27ai_Threnalli"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-c7b07d88f330cd775fbedd71",
+      "character_variant_key": "CaribDiss",
+      "decision": "named_bounty_hunter_carib_diss_verified_nonphysical_no_official_lego_minifigure",
+      "canonical_subject": "Carib Diss",
+      "identity_context": {
+        "role": "bounty hunter",
+        "era": "Episode IX / Resistance-First Order War"
+      },
+      "physical_status": {
+        "exact_official_minifigure_located": false,
+        "brickipedia_status": "listed among nonphysical bounty hunters/smugglers/gangsters/pirates/terrorists"
+      },
+      "rejected_top_candidates": [
+        {
+          "fig_num": "fig-002116",
+          "catalog_name": "Zorii Bliss",
+          "reason": "same broad underworld/Kijimi context but different individual"
+        },
+        {
+          "fig_num": "fig-004485",
+          "catalog_name": "Crix Madine, Tan Legs",
+          "reason": "weak lexical similarity only"
+        }
+      ],
+      "reason": "Carib Diss is a distinct named bounty hunter playable in The Skywalker Saga. Brickipedia's Star Wars minifigure roster lists Carib Diss in the nonphysical bounty-hunter group; current candidates do not establish identity.",
+      "systemic_pattern": "same_location_or_underworld_role_context_is_not_named_character_equivalence",
+      "evidence_urls": [
+        "https://brickipedia.fandom.com/wiki/Category:Star_Wars_minifigures",
+        "https://starwars.fandom.com/wiki/Carib_Diss"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-6785ef41f2aaba123b35aef1",
+      "character_variant_key": "DellsoPrin",
+      "decision": "named_resistance_mechanic_dellso_prin_verified_video_game_only_no_official_physical_minifigure",
+      "canonical_subject": "Dellso Prin",
+      "identity_context": {
+        "species": "Cingulon",
+        "role": "used starship seller / mechanic",
+        "affiliation": "loosely affiliated with the Resistance"
+      },
+      "physical_status": {
+        "exact_official_minifigure_located": false,
+        "brickipedia_status": "video-game-only minifigure; never existed in physical form or an official LEGO set"
+      },
+      "rejected_top_candidates": [
+        {
+          "fig_num": "fig-003894",
+          "catalog_name": "Jek Porkins",
+          "reason": "unrelated Rebel pilot"
+        },
+        {
+          "fig_num": "fig-017976",
+          "catalog_name": "Droid Brain",
+          "reason": "unrelated object/character"
+        },
+        {
+          "fig_num": "fig-003540",
+          "catalog_name": "Wedge Antilles, Plain Legs",
+          "reason": "unrelated pilot"
+        }
+      ],
+      "reason": "Dellso Prin is a named Episode IX background character represented in The Skywalker Saga. Brickipedia explicitly marks the LEGO minifigure as game-only/nonphysical. Generic Resistance/Rebel adjacency does not supply a physical counterpart.",
+      "systemic_pattern": "background_character_identity_requires_named_entity_evidence_not_faction_neighbor_substitution",
+      "evidence_urls": [
+        "https://brickipedia.fandom.com/wiki/Dellso_Prin",
+        "https://starwars.fandom.com/wiki/Dellso_Prin"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-b98c8b96aaa756d52c13d8c7",
+      "character_variant_key": "OdyMandrell",
+      "decision": "named_podracer_ody_mandrell_verified_video_game_only_no_official_physical_minifigure",
+      "canonical_subject": "Ody Mandrell",
+      "identity_context": {
+        "species": "Er'Kit",
+        "role": "Boonta Eve Classic podracer"
+      },
+      "physical_status": {
+        "exact_official_minifigure_located": false,
+        "brickipedia_status": "video-game-only minifigure; never existed in physical form or an official LEGO set"
+      },
+      "rejected_top_candidates": [
+        {
+          "fig_num": "fig-003991",
+          "catalog_name": "Pong Krell",
+          "reason": "unrelated character/species"
+        },
+        {
+          "fig_num": "fig-003788",
+          "catalog_name": "Embo, Sand Green",
+          "reason": "unrelated character"
+        },
+        {
+          "fig_num": "fig-004239",
+          "catalog_name": "Kordi, Sand Blue Legs",
+          "reason": "unrelated character"
+        }
+      ],
+      "reason": "Ody Mandrell is a distinct Phantom Menace podracer and playable Skywalker Saga character. Brickipedia explicitly classifies his LEGO form as video-game-only/nonphysical. No top catalog candidate is semantically related.",
+      "systemic_pattern": "named_podracer_identity_should_not_fall_back_to_arbitrary_low_score_character_candidates",
+      "evidence_urls": [
+        "https://brickipedia.fandom.com/wiki/Ody_Mandrell",
+        "https://www.starwars.com/databank/ody-mandrell"
+      ]
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "later_physical_release_not_source_equivalent": 1,
+    "nonphysical_named_characters": 4,
+    "automatic_exact_artwork_equivalence_promotions": 0
+  },
+  "remaining_no_supported_records_after_batch": 31,
+  "systemic_findings": [
+    "Later physical releases need timeline-aware handling and do not automatically validate earlier digital artwork.",
+    "Punctuation restoration can improve entity resolution for names such as C'ai Threnalli.",
+    "Same-faction, same-location, or same-role neighbors must not substitute for named characters.",
+    "Very low similarity candidate lists should be treated as retrieval failure rather than forced matches."
+  ]
+}
