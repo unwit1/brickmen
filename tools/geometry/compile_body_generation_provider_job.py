@@ -64,6 +64,10 @@ def compile_provider_job(
     if source_image is not None:
         native_args["source_image"] = source_image
 
+    pipeline_stage = str(provider.get("pipeline_stage", "primary_generator"))
+    output_contract = provider.get("output_contract")
+    requires_component_slot_mapping = pipeline_stage != "post_generation_critic"
+
     mechanical = conditioning.get("mechanical_constraints", [])
     has_unapproved = any(
         not bool(item.get("manufacturing_authority", False)) for item in mechanical
@@ -72,15 +76,24 @@ def compile_provider_job(
     post = list(
         provider.get("brickmen_integration", {}).get("post_generation", [])
     )
-    post.extend(
-        [
-            "validate returned component count and slot mapping",
-            "transform every generated component into the Brickmen conditioning frame",
-            "validate shell against visual envelopes and articulation/keep-out volumes",
-            "preserve fixed-mm commodity hardware dimensions",
-            "insert only separately validated deterministic interfaces after visual generation",
-        ]
-    )
+    if requires_component_slot_mapping:
+        post.extend(
+            [
+                "validate returned component count and slot mapping",
+                "transform every generated component into the Brickmen conditioning frame",
+                "validate shell against visual envelopes and articulation/keep-out volumes",
+                "preserve fixed-mm commodity hardware dimensions",
+                "insert only separately validated deterministic interfaces after visual generation",
+            ]
+        )
+    else:
+        post.extend(
+            [
+                "treat provider output as auxiliary articulation evidence, not replacement body geometry",
+                "compare inferred part graph, hierarchy, axes and ranges against the selected Brickmen architecture",
+                "record disagreements without overwriting Brickmen skeleton or validated interface records",
+            ]
+        )
 
     return {
         "schema_version": "0.1",
@@ -125,13 +138,24 @@ def compile_provider_job(
         "mechanical_constraints": mechanical,
         "mechanical_review_required": bool(mechanical),
         "contains_nonproduction_mechanical_constraints": has_unapproved,
-        "output_acceptance_rules": [
-            "All expected required component slots must be resolved or the run is incomplete.",
-            "Generated meshes may satisfy visual envelopes but cannot redefine selected skeleton joint frames automatically.",
-            "Generated geometry intersecting locked mechanical keep-outs must be repaired or rejected.",
-            "Provider-inferred articulation may be recorded as evidence but cannot overwrite validated Brickmen joint records automatically.",
-            "No provider output is manufacturing-authoritative until deterministic interface insertion and downstream engineering validation pass.",
-        ],
+        "pipeline_stage": pipeline_stage,
+        "output_contract": output_contract,
+        "requires_component_slot_mapping": requires_component_slot_mapping,
+        "output_acceptance_rules": (
+            [
+                "All expected required component slots must be resolved or the run is incomplete.",
+                "Generated meshes may satisfy visual envelopes but cannot redefine selected skeleton joint frames automatically.",
+                "Generated geometry intersecting locked mechanical keep-outs must be repaired or rejected.",
+                "Provider-inferred articulation may be recorded as evidence but cannot overwrite validated Brickmen joint records automatically.",
+                "No provider output is manufacturing-authoritative until deterministic interface insertion and downstream engineering validation pass.",
+            ]
+            if requires_component_slot_mapping
+            else [
+                "Critic output is auxiliary evidence and is not a substitute for generated component meshes.",
+                "Critic-inferred part identities, hierarchy, axes and ranges must be compared against Brickmen architecture records.",
+                "Critic output cannot overwrite validated Brickmen skeleton or mechanical interface records automatically.",
+            ]
+        ),
         "production_geometry_authority": False,
     }
 
