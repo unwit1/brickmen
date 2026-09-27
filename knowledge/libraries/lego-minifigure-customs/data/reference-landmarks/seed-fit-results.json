@@ -1,0 +1,132 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-27",
+  "status": "seed_results_from_manual_catalog_landmarks",
+  "production_geometry_authority": false,
+  "methodology": [
+    "Landmarks are manually estimated seed annotations from current catalog/front images.",
+    "Fits use the committed v0 skeleton parameter ranges and weighted 2D X/Z residuals.",
+    "Numbers are intended to debug the fitting system and skeleton design space, not establish physical dimensions.",
+    "Parameter-bound hits are treated as evidence for annotation review or skeleton/envelope model revision."
+  ],
+  "results": [
+    {
+      "reference_id": "alpha_af325_venom_front_seed",
+      "target_skeleton": "brickmen_broad_v0_skeleton",
+      "initial_normalized_rmse": 0.095138,
+      "final_normalized_rmse": 0.06718,
+      "fit_status": "weak_fit_review_required",
+      "fitted_parameters": {
+        "shoulder_width_scale": 1.25,
+        "arm_length_scale": 1.12,
+        "torso_height_scale": 0.92,
+        "lower_body_height_scale": 0.9,
+        "stance_width_scale": 1.2
+      },
+      "bound_hits": [
+        "shoulder_width_scale:max",
+        "arm_length_scale:max",
+        "torso_height_scale:min",
+        "lower_body_height_scale:min",
+        "stance_width_scale:max"
+      ],
+      "interpretation": [
+        "Broad v0 cannot cleanly represent the seed image under the current parameter ranges.",
+        "A substantial portion of apparent width is likely visual envelope/deltoid mass rather than true shoulder-pivot separation.",
+        "Do not widen mechanical shoulder joints until pivot landmarks are reviewed; add independent visual envelope fitting."
+      ]
+    },
+    {
+      "reference_id": "alpha_af345_hulk_front_seed",
+      "target_skeleton": "brickmen_xl_v0_skeleton",
+      "initial_normalized_rmse": 0.07798,
+      "final_normalized_rmse": 0.046973,
+      "fit_status": "usable_visual_fit",
+      "fitted_parameters": {
+        "shoulder_width_scale": 1.19,
+        "arm_length_scale": 1.18,
+        "torso_height_scale": 0.950556,
+        "lower_body_height_scale": 0.88,
+        "stance_width_scale": 1
+      },
+      "bound_hits": [
+        "arm_length_scale:max",
+        "lower_body_height_scale:min"
+      ],
+      "interpretation": [
+        "XL v0 is already a plausible proportion scaffold for the 7 cm Alpha visual family.",
+        "Long-arm/compact-lower-body tendencies deserve a dedicated parameter review rather than larger global scale."
+      ]
+    },
+    {
+      "reference_id": "lego_sh0371_hulk_front_seed",
+      "target_skeleton": "brickmen_giant_v0_skeleton",
+      "initial_normalized_rmse": 0.05062,
+      "final_normalized_rmse": 0.035187,
+      "fit_status": "usable_visual_fit",
+      "fitted_parameters": {
+        "shoulder_width_scale": 1.143385,
+        "arm_length_scale": 1.1,
+        "torso_height_scale": 1.023385,
+        "lower_body_height_scale": 1.010573,
+        "stance_width_scale": 1.111198
+      },
+      "bound_hits": [
+        "arm_length_scale:max"
+      ],
+      "interpretation": [
+        "Giant v0 is already close to the official Giant visual proportion family.",
+        "This is the strongest seed validation of the current four skeletons."
+      ]
+    },
+    {
+      "reference_id": "kdl_k2302_thing_front_seed",
+      "target_skeleton": "brickmen_xl_v0_skeleton",
+      "initial_normalized_rmse": 0.072613,
+      "final_normalized_rmse": 0.054872,
+      "fit_status": "weak_fit_review_required",
+      "fitted_parameters": {
+        "shoulder_width_scale": 0.95,
+        "arm_length_scale": 1.18,
+        "torso_height_scale": 0.92,
+        "lower_body_height_scale": 0.88,
+        "stance_width_scale": 1.14184
+      },
+      "bound_hits": [
+        "arm_length_scale:max",
+        "torso_height_scale:min",
+        "lower_body_height_scale:min"
+      ],
+      "interpretation": [
+        "KDL's 6.5 cm figure is not simply a shorter Alpha-like XL body.",
+        "The image suggests a longer-arm / visually larger head / more standard-like lower-body proportion mix that should remain a separate architecture candidate until better references exist."
+      ]
+    },
+    {
+      "reference_id": "lego_axl_front_seed",
+      "target_skeleton": "brickmen_broad_v0_skeleton",
+      "initial_normalized_rmse": 0.116089,
+      "final_normalized_rmse": 0.084499,
+      "fit_status": "architecture_or_landmarks_mismatch",
+      "fitted_parameters": {
+        "shoulder_width_scale": 1.25,
+        "arm_length_scale": 1.12,
+        "torso_height_scale": 0.92,
+        "lower_body_height_scale": 0.9,
+        "stance_width_scale": 1.2
+      },
+      "bound_hits": [
+        "shoulder_width_scale:max",
+        "arm_length_scale:max",
+        "torso_height_scale:min",
+        "lower_body_height_scale:min",
+        "stance_width_scale:max"
+      ],
+      "interpretation": [
+        "Axl is a deliberate Broad stress test and currently fails the v0 skeletal fit.",
+        "The armor obscures shoulder pivots, so visual shell width must be separated from the mechanical skeleton before revising Broad.",
+        "Axl may ultimately warrant an architecture-specific Broad reference skeleton rather than defining Brickmen Broad's default joint spacing."
+      ]
+    }
+  ]
+}
