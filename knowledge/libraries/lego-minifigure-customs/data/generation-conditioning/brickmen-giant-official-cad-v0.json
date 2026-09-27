@@ -854,7 +854,100 @@
         "Commodity hardware dimensions never scale with character proportions.",
         "Reference CAD may define keep-out starting geometry but not physical fit tolerances.",
         "Shoulder-center spacing is a body-shape decision unless a separate spanning mechanism makes it mechanically coupled.",
-        "Production approval requires physical force/torque/cycle evidence."
+        "Production approval requires physical force/torque/cycle evidence.",
+        "Candidate placement centers follow the selected Brickmen skeleton shoulder nodes; they do not force the official body's 32 mm shoulder spacing."
+      ],
+      "placements": [
+        {
+          "placement_id": "brickmen_giant_v0_left_shoulder_43093_reference",
+          "candidate_architecture_id": "brickmen_giant_v0",
+          "anchor_node": "shoulder_l",
+          "anchor_normalized_body_height": [
+            -0.224858,
+            0.0,
+            0.69
+          ],
+          "anchor_mm_at_target_height": [
+            -13.941217,
+            0.0,
+            42.78
+          ],
+          "axis_vector": [
+            1,
+            0,
+            0
+          ],
+          "orientation_semantic": "lateral_pin_axis",
+          "hardware_part_id": "43093",
+          "quantity": 1,
+          "placement_authority": "reference_alignment_only_until_physical_validation",
+          "reference_keepout_local_min_mm": [
+            -8.0,
+            -3.2,
+            -3.2
+          ],
+          "reference_keepout_local_max_mm": [
+            8.0,
+            3.2,
+            3.2
+          ],
+          "reference_keepout_local_min_normalized": [
+            -0.12903225806451613,
+            -0.05161290322580645,
+            -0.05161290322580645
+          ],
+          "reference_keepout_local_max_normalized": [
+            0.12903225806451613,
+            0.05161290322580645,
+            0.05161290322580645
+          ],
+          "manufacturing_authority": false
+        },
+        {
+          "placement_id": "brickmen_giant_v0_right_shoulder_43093_reference",
+          "candidate_architecture_id": "brickmen_giant_v0",
+          "anchor_node": "shoulder_r",
+          "anchor_normalized_body_height": [
+            0.224858,
+            0.0,
+            0.69
+          ],
+          "anchor_mm_at_target_height": [
+            13.941217,
+            0.0,
+            42.78
+          ],
+          "axis_vector": [
+            1,
+            0,
+            0
+          ],
+          "orientation_semantic": "lateral_pin_axis_mirrored_component_context",
+          "hardware_part_id": "43093",
+          "quantity": 1,
+          "placement_authority": "reference_alignment_only_until_physical_validation",
+          "reference_keepout_local_min_mm": [
+            -8.0,
+            -3.2,
+            -3.2
+          ],
+          "reference_keepout_local_max_mm": [
+            8.0,
+            3.2,
+            3.2
+          ],
+          "reference_keepout_local_min_normalized": [
+            -0.12903225806451613,
+            -0.05161290322580645,
+            -0.05161290322580645
+          ],
+          "reference_keepout_local_max_normalized": [
+            0.12903225806451613,
+            0.05161290322580645,
+            0.05161290322580645
+          ],
+          "manufacturing_authority": false
+        }
       ],
       "warning": "Normalized keep-out size is a conditioning convenience only. Fixed commodity hardware dimensions remain in millimeters and must never scale with the character body."
     }
