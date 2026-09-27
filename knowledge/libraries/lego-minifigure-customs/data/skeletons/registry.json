@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.1",
+  "schema_version": "0.2",
   "created": "2026-09-27",
   "status": "generation_skeletons_nonproduction",
   "compiler": "tools/geometry/generate_body_skeleton.py",
@@ -10,28 +10,48 @@
       "architecture_id": "brickmen_broad_v0",
       "file": "brickmen-broad-v0.json",
       "default_target_height_mm": 42,
-      "design_intent": "standard-height or mildly intermediate broad body; standard-lower-body first"
+      "design_intent": "standard-height or mildly intermediate broad body; standard-lower-body first",
+      "design_height_range_mm": [
+        38,
+        48
+      ],
+      "height_range_status": "Brickmen design range, not an external product specification."
     },
     {
       "skeleton_id": "brickmen_mid_v0_skeleton",
       "architecture_id": "brickmen_mid_v0",
       "file": "brickmen-mid-v0.json",
       "default_target_height_mm": 52,
-      "design_intent": "intermediate stature with modular muscular/armored body"
+      "design_intent": "intermediate stature with modular muscular/armored body",
+      "design_height_range_mm": [
+        45,
+        60
+      ],
+      "height_range_status": "Brickmen design range, not an external product specification."
     },
     {
       "skeleton_id": "brickmen_xl_v0_skeleton",
       "architecture_id": "brickmen_xl_v0",
       "file": "brickmen-xl-v0.json",
       "default_target_height_mm": 70,
-      "design_intent": "large anatomical/articulated body class"
+      "design_intent": "large anatomical/articulated body class",
+      "design_height_range_mm": [
+        62,
+        78
+      ],
+      "height_range_status": "Brickmen design range, not an external product specification."
     },
     {
       "skeleton_id": "brickmen_giant_v0_skeleton",
       "architecture_id": "brickmen_giant_v0",
       "file": "brickmen-giant-v0.json",
       "default_target_height_mm": 62,
-      "design_intent": "broad simplified Giant body with modular hardware strategy"
+      "design_intent": "broad simplified Giant body with modular hardware strategy",
+      "design_height_range_mm": [
+        55,
+        70
+      ],
+      "height_range_status": "Brickmen design range, not an external product specification."
     }
   ],
   "safety_boundary": [
