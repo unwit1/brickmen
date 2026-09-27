@@ -1,0 +1,158 @@
+{
+  "schema_version": "0.1",
+  "reference_id": "lego_axl_front_seed",
+  "architecture_candidate_id": "lego_axl_oversized_torso_hybrid",
+  "source": {
+    "title": "LEGO Nexo Knights Axl front reference",
+    "catalog_url": "https://lego.minifigures.world/post/axl-nex069",
+    "source_note": "Seed landmarks estimated from clean front product photograph; oversized armor strongly obscures true shoulder socket center."
+  },
+  "view": "front",
+  "evidence_class": "catalog_manual_estimate",
+  "image_size_px": [
+    512,
+    512
+  ],
+  "body_bbox_px": [
+    21,
+    35,
+    491,
+    468
+  ],
+  "known_height_mm": null,
+  "landmark_coordinate_mode": "pixel",
+  "landmarks": {
+    "head_center": {
+      "position": [
+        256,
+        114
+      ],
+      "confidence": 0.75
+    },
+    "neck": {
+      "position": [
+        256,
+        165
+      ],
+      "confidence": 0.6
+    },
+    "shoulder_l": {
+      "position": [
+        132,
+        214
+      ],
+      "confidence": 0.55,
+      "notes": "Low confidence because armor obscures shoulder pivot."
+    },
+    "shoulder_r": {
+      "position": [
+        380,
+        214
+      ],
+      "confidence": 0.55
+    },
+    "elbow_l": {
+      "position": [
+        97,
+        293
+      ],
+      "confidence": 0.55
+    },
+    "elbow_r": {
+      "position": [
+        415,
+        293
+      ],
+      "confidence": 0.55
+    },
+    "wrist_l": {
+      "position": [
+        84,
+        359
+      ],
+      "confidence": 0.55
+    },
+    "wrist_r": {
+      "position": [
+        427,
+        359
+      ],
+      "confidence": 0.55
+    },
+    "hand_l": {
+      "position": [
+        72,
+        387
+      ],
+      "confidence": 0.5
+    },
+    "hand_r": {
+      "position": [
+        440,
+        387
+      ],
+      "confidence": 0.5
+    },
+    "waist": {
+      "position": [
+        256,
+        350
+      ],
+      "confidence": 0.6
+    },
+    "hip_l": {
+      "position": [
+        217,
+        365
+      ],
+      "confidence": 0.55
+    },
+    "hip_r": {
+      "position": [
+        295,
+        365
+      ],
+      "confidence": 0.55
+    },
+    "knee_l": {
+      "position": [
+        218,
+        416
+      ],
+      "confidence": 0.5
+    },
+    "knee_r": {
+      "position": [
+        294,
+        416
+      ],
+      "confidence": 0.5
+    },
+    "ankle_l": {
+      "position": [
+        219,
+        462
+      ],
+      "confidence": 0.5
+    },
+    "ankle_r": {
+      "position": [
+        293,
+        462
+      ],
+      "confidence": 0.5
+    }
+  },
+  "fit_parameters": [
+    "shoulder_width_scale",
+    "arm_length_scale",
+    "torso_height_scale",
+    "lower_body_height_scale",
+    "stance_width_scale"
+  ],
+  "exclude_from_production_dimensions": true,
+  "notes": [
+    "Axl is intentionally included as a stress test for Broad skeleton width.",
+    "If fit saturates bounds, revise the Broad design space rather than treating the catalog estimate as exact mechanics."
+  ]
+}
