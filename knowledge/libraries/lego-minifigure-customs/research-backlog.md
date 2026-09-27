@@ -541,7 +541,7 @@ Next:
 - [ ] add side/back views and Y-depth observations
 - [ ] add official LDraw-derived Giant landmark ground truth
 - [x] add standard-minifigure/Axl donor-component landmark ground truth
-- [ ] implement BodyEnvelopeProfile fitting against visual width/depth observations
+- [x] implement BodyEnvelopeProfile fitting against visual width/depth observations
 - [ ] add skeleton-to-reference SVG/image overlay renderer
 - [ ] fit head scale and separate torso/leg segment lengths
 - [ ] connect fitted skeleton/envelope outputs to part-aware generation prompts/conditioning
@@ -573,3 +573,22 @@ Next:
 - [ ] replace provisional Axl arm-pinhole hypotheses with physical measurements
 - [ ] add fixed/reference-anchor constraints to skeleton fitting
 - [ ] fit Axl outer envelope without scaling locked standard donor frames
+
+
+### Independent BodyEnvelopeProfile fitting — 2026-09-27
+
+- [x] decouple torso visual width from skeletal shoulder-joint spacing in Broad/Mid/XL/Giant skeletons
+- [x] add independent head width/depth and abdomen width envelope parameters
+- [x] add BodyEnvelopeProfile fit schema and fitter
+- [x] add tests proving envelope fitting does not move mechanical shoulder nodes
+- [x] fit the five seed references and record diagnostics
+- [x] preserve outer shoulder and hip widths as unmapped visual diagnostics rather than coercing them into joint parameters
+
+Key result:
+- Axl front seed fits chest mass with ~1.98x Broad torso envelope width while its outer shoulder silhouette is ~2.93x the default Broad shoulder-joint span. This quantitatively confirms that shell mass and joint spacing must remain independent.
+
+Next:
+- [ ] add side/back references and depth observations
+- [ ] add dedicated shoulder-mass and lower-body visual envelope primitives where evidence supports them
+- [ ] add fixed donor/reference-anchor constraints to fitting
+- [ ] render skeleton + envelope overlays for manual review
