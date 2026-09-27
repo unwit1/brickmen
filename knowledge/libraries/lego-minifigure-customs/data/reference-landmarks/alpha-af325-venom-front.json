@@ -1,0 +1,165 @@
+{
+  "schema_version": "0.1",
+  "reference_id": "alpha_af325_venom_front_seed",
+  "architecture_candidate_id": "custom_alpha_45mm_muscle_hybrid",
+  "source": {
+    "title": "Alpha Toys AF325 Venom",
+    "catalog_url": "https://www.herobloks.com/figures/31518/alpha-toys/af325/venom",
+    "size_source_url": "https://www.minifigtoys.com/products/venom-af325-minifigures-marvel-minifigure",
+    "source_note": "Seed landmarks manually estimated from the clean catalog front view; retailer lists 4-4.5 cm."
+  },
+  "view": "front",
+  "evidence_class": "catalog_manual_estimate",
+  "image_size_px": [
+    512,
+    512
+  ],
+  "body_bbox_px": [
+    139,
+    48,
+    373,
+    337
+  ],
+  "known_height_mm": {
+    "min": 40,
+    "max": 45,
+    "nominal": 42.5
+  },
+  "landmark_coordinate_mode": "pixel",
+  "landmarks": {
+    "head_center": {
+      "position": [
+        256,
+        88
+      ],
+      "confidence": 0.8
+    },
+    "neck": {
+      "position": [
+        256,
+        129
+      ],
+      "confidence": 0.7
+    },
+    "shoulder_l": {
+      "position": [
+        190,
+        150
+      ],
+      "confidence": 0.7,
+      "notes": "Estimated joint center, not deltoid outer edge."
+    },
+    "shoulder_r": {
+      "position": [
+        322,
+        150
+      ],
+      "confidence": 0.7
+    },
+    "elbow_l": {
+      "position": [
+        164,
+        205
+      ],
+      "confidence": 0.6
+    },
+    "elbow_r": {
+      "position": [
+        348,
+        205
+      ],
+      "confidence": 0.6
+    },
+    "wrist_l": {
+      "position": [
+        154,
+        247
+      ],
+      "confidence": 0.65
+    },
+    "wrist_r": {
+      "position": [
+        358,
+        247
+      ],
+      "confidence": 0.65
+    },
+    "hand_l": {
+      "position": [
+        153,
+        270
+      ],
+      "confidence": 0.6
+    },
+    "hand_r": {
+      "position": [
+        360,
+        270
+      ],
+      "confidence": 0.6
+    },
+    "waist": {
+      "position": [
+        256,
+        272
+      ],
+      "confidence": 0.7
+    },
+    "hip_l": {
+      "position": [
+        226,
+        284
+      ],
+      "confidence": 0.6
+    },
+    "hip_r": {
+      "position": [
+        286,
+        284
+      ],
+      "confidence": 0.6
+    },
+    "knee_l": {
+      "position": [
+        226,
+        313
+      ],
+      "confidence": 0.5,
+      "notes": "Visual leg landmark; not a functional knee claim."
+    },
+    "knee_r": {
+      "position": [
+        286,
+        313
+      ],
+      "confidence": 0.5
+    },
+    "ankle_l": {
+      "position": [
+        226,
+        334
+      ],
+      "confidence": 0.5
+    },
+    "ankle_r": {
+      "position": [
+        286,
+        334
+      ],
+      "confidence": 0.5
+    }
+  },
+  "fit_parameters": [
+    "shoulder_width_scale",
+    "arm_length_scale",
+    "torso_height_scale",
+    "lower_body_height_scale",
+    "stance_width_scale"
+  ],
+  "exclude_from_production_dimensions": true,
+  "notes": [
+    "Seed record for fitter development, not final annotation.",
+    "Viewer-left/right is used consistently with skeleton X sign.",
+    "Use later manual/canonical reannotation before training."
+  ]
+}
