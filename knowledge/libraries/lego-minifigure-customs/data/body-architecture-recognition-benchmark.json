@@ -15,7 +15,11 @@
     "visible_joint_count_estimation",
     "alternate_lower_body_classification",
     "multiarm_vs_stacked_torso_detection",
-    "integrated_head_vs_separate_head_detection"
+    "integrated_head_vs_separate_head_detection",
+    "ball_joint_arm_vs_standard_arm_detection",
+    "buildable_vs_molded_body_classification",
+    "mega_scale_family_unknown_rejection",
+    "source_label_vs_mechanical_architecture_separation"
   ],
   "initial_architectures": [
     "minifig_standard",
@@ -44,7 +48,12 @@
     "minifig_centaur_hybrid",
     "specialized_integrated_character_body",
     "specialized_tail_body_jabba",
-    "minidoll_standard"
+    "minidoll_standard",
+    "custom_standard_ball_joint_arm_adapter",
+    "custom_oa_160mm_megafig_candidate",
+    "custom_dy_mega_scale_unresolved",
+    "buildable_character_figure_unresolved",
+    "custom_bighead_unresolved"
   ],
   "image_inputs": [
     "catalog_front",
@@ -77,7 +86,10 @@
     "component_graph_edit_distance",
     "topology_class_accuracy",
     "head_integration_accuracy",
-    "lower_body_morphology_accuracy"
+    "lower_body_morphology_accuracy",
+    "construction_method_accuracy",
+    "articulation_feature_accuracy",
+    "scale_class_error"
   ],
   "style_transfer_tasks": [
     {
