@@ -8,6 +8,7 @@ on:
       - "knowledge/libraries/lego-minifigure-customs/data/reference-landmarks/**"
       - "knowledge/libraries/lego-minifigure-customs/data/body-*.schema.json"
       - "tests/test_body_*.py"
+      - "tests/test_ldraw_geometry_ingestion.py"
       - ".github/workflows/body-geometry-tests.yml"
   pull_request:
     paths:
@@ -16,6 +17,7 @@ on:
       - "knowledge/libraries/lego-minifigure-customs/data/reference-landmarks/**"
       - "knowledge/libraries/lego-minifigure-customs/data/body-*.schema.json"
       - "tests/test_body_*.py"
+      - "tests/test_ldraw_geometry_ingestion.py"
       - ".github/workflows/body-geometry-tests.yml"
   workflow_dispatch:
 
