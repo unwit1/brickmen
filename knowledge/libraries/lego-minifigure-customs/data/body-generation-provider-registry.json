@@ -451,10 +451,12 @@
       "provider_id": "unipart",
       "name": "UniPart",
       "role": "part_level_image_guided_3d_generator",
-      "availability": "paper_verified_implementation_not_verified_in_snapshot",
+      "availability": "cvpr2026_highlight_project_and_paper_verified_public_implementation_not_found_as_of_2026_09_27",
       "license": null,
       "sources": {
-        "paper": "https://arxiv.org/abs/2512.09435"
+        "paper": "https://arxiv.org/abs/2512.09435",
+        "project": "https://xfanhe.github.io/projects/unipart/",
+        "cvf": "https://openaccess.thecvf.com/content/CVPR2026/html/He_UniPart_Part-Level_3D_Generation_with_Unified_3D_Geom-Seg_Latents_CVPR_2026_paper.html"
       },
       "native_inputs": [
         "image_guidance"
@@ -469,47 +471,154 @@
       ],
       "hardware_notes": [],
       "brickmen_integration": {
-        "tier": "research_radar",
-        "adapter_mode": "evaluate_when_official_inference_is_available",
+        "tier": "research_radar_high_value",
+        "adapter_mode": "evaluate_immediately_if_official_weights_or_inference_are_released",
         "use_component_slots_for_part_count": false,
         "can_consume_mechanical_geometry_directly": false,
-        "pre_generation": [],
-        "post_generation": []
+        "pre_generation": [
+          "single RGB image according to the published image-guided method"
+        ],
+        "post_generation": [
+          "map generated independent part meshes to Brickmen component slots",
+          "reconcile part decomposition with Brickmen skeleton and architecture",
+          "retain Brickmen deterministic mechanical authority"
+        ]
       },
       "limitations": [
-        "No official implementation was verified during the 2026-09-27 research snapshot."
+        "Official CVPR 2026 project page and paper are verified, but no public code/model link was found on the project page or author publication page as of 2026-09-27.",
+        "Published method is highly relevant to Brickmen because it outputs decomposable full-resolution part meshes, but no runnable Brickmen adapter can be verified without an implementation.",
+        "Published training uses substantial GPU resources; inference hardware requirements cannot be inferred safely from the paper alone."
       ],
-      "pipeline_stage": "research_candidate"
+      "pipeline_stage": "research_candidate",
+      "research_status": {
+        "verified_on": "2026-09-27",
+        "venue": "CVPR 2026 Highlight",
+        "public_project_page": true,
+        "public_code_verified": false,
+        "public_weights_verified": false,
+        "revisit_trigger": "official code, weights, demo, or repository release"
+      }
     },
     {
       "provider_id": "pwm_artgen",
       "name": "PWM-ArtGen",
       "role": "articulated_object_generation_research_candidate",
-      "availability": "public_research_repository_detected_implementation_maturity_unverified",
+      "availability": "official_eccv2026_implementation_weights_single_image_pipeline_and_retrieval_verified_category_limited",
       "license": null,
       "sources": {
-        "repository": "https://github.com/Wentap123/PWM-ArtGen"
+        "repository": "https://github.com/Wentap123/PWM-ArtGen",
+        "paper": "https://arxiv.org/abs/2607.02045",
+        "model": "https://huggingface.co/Wentap/PWM-ArtGen"
       },
       "native_inputs": [
-        "single_image"
+        "single_image",
+        "image_segmentation_and_part_graph_or_cached_preprocess_artifacts",
+        "supported_object_category",
+        "retrieval_database_for_mesh_assembly"
       ],
       "native_outputs": [
-        "articulated_3d_object_candidate"
+        "predicted_joint_axis_origin_range_and_type",
+        "part_aabb_predictions",
+        "generated_motion_conditioned_images",
+        "retrieved_articulated_mesh_assembly",
+        "object_pwm_json",
+        "object_ply_and_retrieved_part_meshes"
       ],
-      "native_controls": [],
-      "hardware_notes": [],
+      "native_controls": [
+        "segmentation_backend_sam3_or_sam",
+        "cached_graph_json_and_optional_assignments_json",
+        "category_override",
+        "graph_model",
+        "retrieval_hashbook",
+        "pipeline_stage_resume"
+      ],
+      "hardware_notes": [
+        "Official setup pins Python 3.10, PyTorch 2.2.2 and CUDA 11.8 packages.",
+        "Single-image preprocessing may use a separate SAM/SAM3 environment.",
+        "No official minimum inference VRAM was verified in the repository documentation reviewed on 2026-09-27."
+      ],
       "brickmen_integration": {
-        "tier": "research_radar",
-        "adapter_mode": "re_evaluate_after_inference_artifacts_are_verified",
+        "tier": "domain_limited_articulation_research_baseline",
+        "adapter_mode": "evaluate_articulation_prediction_and_retrieval_structure_not_primary_brickmen_body_generation",
         "use_component_slots_for_part_count": false,
         "can_consume_mechanical_geometry_directly": false,
-        "pre_generation": [],
-        "post_generation": []
+        "pre_generation": [
+          "single frontal image",
+          "segmentation checkpoint and preprocessing models",
+          "part graph prediction from API or cached graph JSON",
+          "category from the seven supported appliance/furniture categories",
+          "PM mesh retrieval database"
+        ],
+        "post_generation": [
+          "normalize geom_pred.json into Brickmen articulation evidence",
+          "compare predicted axes/ranges/AABBs with Brickmen skeleton without overwriting it",
+          "treat retrieved meshes as category-library exemplars rather than free-form Brickmen shell geometry",
+          "do not use PWM retrieval output as production component geometry for unsupported humanoid/character bodies"
+        ]
       },
       "limitations": [
-        "Repository maturity and runnable inference were not verified in this snapshot."
+        "Official single-image demo currently supports only StorageFurniture, Table, Refrigerator, Oven, Microwave, WashingMachine, and Dishwasher; Brickmen humanoid/character bodies are outside the documented domain.",
+        "Final meshes are assembled through retrieval from a PartNet-Mobility-derived database rather than unrestricted free-form part mesh generation.",
+        "Single-image preprocessing can call a configured graph-prediction API and may incur charges unless cached graph JSON is supplied.",
+        "Project/model card did not specify a project license in the reviewed 2026-09-27 repository snapshot; external models and datasets retain separate terms.",
+        "Because Brickmen body figures are outside the documented categories, this provider is not a verified primary Brickmen generator despite the now-runnable upstream pipeline."
       ],
-      "pipeline_stage": "research_candidate"
+      "pipeline_stage": "research_candidate",
+      "output_contract": {
+        "kind": "category_limited_articulation_prediction_plus_mesh_retrieval",
+        "prediction_pattern": "predictions/**/joint_*/geom_pred.json",
+        "retrieval_manifest_pattern": "retrieval/**/object_pwm.json",
+        "retrieval_mesh_pattern": "retrieval/**/object.ply",
+        "free_form_generated_part_meshes": false,
+        "brickmen_component_slot_mapping": "not_verified_outside_supported_categories",
+        "articulation_prediction_authority": "candidate_only"
+      },
+      "execution": {
+        "adapter_status": "upstream_runnable_not_brickmen_domain_verified",
+        "entrypoint": "demo/infer_image.py",
+        "invocation": [
+          "python",
+          "demo/infer_image.py",
+          "--image",
+          "<image>",
+          "--out_dir",
+          "<output_dir>",
+          "--seg_checkpoint",
+          "<segmentation_checkpoint>",
+          "--rmbg_model",
+          "<rmbg_model>",
+          "--vae_path",
+          "<sdxl_vae>",
+          "--ckpt",
+          "<pwm_final.pt>",
+          "--database_root",
+          "<partnet_mobility_retrieval_database>"
+        ],
+        "upstream_requirement_note": "Official single-image demo is runnable but category-limited and retrieval-backed; Brickmen intentionally does not mark it as a verified body-generator adapter."
+      },
+      "upstream_verification": {
+        "repository": "https://github.com/Wentap123/PWM-ArtGen",
+        "verified_commit_sha": "03b07386328d87e686e3ac037cf71b21de04ff97",
+        "verified_on": "2026-09-27",
+        "interface_files": [
+          "demo/infer_image.py",
+          "demo/infer_image.sh",
+          "infer.py",
+          "docs/single_image.md",
+          "docs/setup.md",
+          "docs/huggingface/model_card.md"
+        ],
+        "version_policy": "exact_verified_revision_preferred_reverify_research_contract_on_mismatch",
+        "verification_scope": "Upstream single-image stages, geom_pred articulation output, retrieval-backed mesh output and documented supported categories."
+      },
+      "research_status": {
+        "verified_on": "2026-09-27",
+        "venue": "ECCV 2026",
+        "official_repository": true,
+        "official_weights": true,
+        "single_image_demo": true,
+        "brickmen_domain_fit": "unverified_and_documented_categories_exclude_humanoid_character_bodies"
+      }
     }
   ],
   "production_geometry_authority": false
