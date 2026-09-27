@@ -62,10 +62,24 @@
       "blocking": false
     },
     {
-      "gate_id": "exact_collision_boolean_validation",
+      "gate_id": "mesh_topology_preflight",
       "status": "not_started",
       "artifact": null,
-      "detail": "Requires a passing coarse geometry gate.",
+      "detail": "Requires mapped provider meshes.",
+      "blocking": false
+    },
+    {
+      "gate_id": "exact_fixed_keepout_validation",
+      "status": "not_started",
+      "artifact": null,
+      "detail": "Requires mapped and transformed generated components.",
+      "blocking": false
+    },
+    {
+      "gate_id": "exact_pose_collision_validation",
+      "status": "not_started",
+      "artifact": null,
+      "detail": "Requires mapped, aligned geometry and joint-local allowed-contact regions.",
       "blocking": false
     },
     {
