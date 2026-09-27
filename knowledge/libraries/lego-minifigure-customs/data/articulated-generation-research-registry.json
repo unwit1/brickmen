@@ -1,0 +1,117 @@
+{
+  "schema_version": "0.1",
+  "observed_at": "2026-09-27",
+  "status": "research_registry",
+  "principle": "Learned joint/articulation outputs are proposals. Manufacturing joints only come from validated FigureArchitecture/Connector/JointCartridge records.",
+  "systems": [
+    {
+      "id": "pact",
+      "input": "single_image",
+      "output": [
+        "part_decomposition",
+        "part_geometry",
+        "appearance",
+        "articulation_parameters",
+        "simulation_ready_asset"
+      ],
+      "status": "official_repo_inference_and_training_available",
+      "brickmen_use": [
+        "unknown architecture hypothesis",
+        "body decomposition proposal",
+        "joint-axis proposal"
+      ],
+      "source": "https://github.com/Mobiuslqm/PAct"
+    },
+    {
+      "id": "particulate",
+      "input": "static_3d_mesh",
+      "output": [
+        "parts",
+        "kinematic_structure",
+        "motion_constraints"
+      ],
+      "status": "official_repo inference/training available",
+      "brickmen_use": [
+        "post-generation articulation critic",
+        "architecture mismatch detection",
+        "unknown mesh articulation proposal"
+      ],
+      "source": "https://github.com/RuiningLi/particulate"
+    },
+    {
+      "id": "artllm",
+      "input": "point_cloud",
+      "output": [
+        "variable_part_layout",
+        "joint_layout",
+        "kinematic_structure",
+        "generated_part_geometry",
+        "urdf"
+      ],
+      "status": "official_repo code/model/training available with some detailed instructions evolving",
+      "brickmen_use": [
+        "scan-to-component-graph hypothesis",
+        "unknown architecture discovery"
+      ],
+      "source": "https://github.com/AuthorityWang/ArtLLM"
+    },
+    {
+      "id": "unipart",
+      "input": "image",
+      "output": [
+        "whole_geometry",
+        "latent_part_segmentation",
+        "part_level_geometry"
+      ],
+      "status": "CVPR_2026_research",
+      "brickmen_use": [
+        "controlled separated shell generation",
+        "PartCrafter comparison"
+      ],
+      "source": "https://openaccess.thecvf.com/content/CVPR2026/html/He_UniPart_Part-Level_3D_Generation_with_Unified_3D_Geom-Seg_Latents_CVPR_2026_paper.html"
+    },
+    {
+      "id": "lam",
+      "input": "text",
+      "output": [
+        "code_defined_links",
+        "geometry",
+        "articulation",
+        "urdf"
+      ],
+      "status": "official_open_implementation",
+      "brickmen_use": [
+        "multi-agent procedural body compiler architecture reference"
+      ],
+      "source": "https://github.com/gaoypeng/LAM"
+    },
+    {
+      "id": "trellis_segpart",
+      "input": [
+        "mesh",
+        "multi_view_segmentation"
+      ],
+      "output": [
+        "per_voxel_part_labels"
+      ],
+      "status": "code_and_checkpoints_released_2026",
+      "brickmen_use": [
+        "semantic decomposition of generative meshes"
+      ],
+      "source": "https://github.com/YixinZhu042/Trellis_Seg"
+    }
+  ],
+  "reconciliation_classes": [
+    "MATCH",
+    "APPROXIMATE_MATCH",
+    "EXTRA_JOINT",
+    "MISSING_JOINT",
+    "WRONG_PARENT",
+    "UNKNOWN"
+  ],
+  "hard_rules": [
+    "Known FigureArchitecture skeletons are deterministic; learned systems cannot add/remove production joints.",
+    "Unknown-architecture proposals remain nonmanufacturing evidence until physical validation.",
+    "Joint axis/range proposals may guide inspection and scan alignment but not connector dimensions."
+  ]
+}
