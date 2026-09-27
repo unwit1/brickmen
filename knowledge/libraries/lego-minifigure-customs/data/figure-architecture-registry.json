@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.2",
+  "schema_version": "0.3",
   "observed_at": "2026-09-27",
   "status": "research_registry_physical_metrology_incomplete",
   "rules": [
@@ -124,7 +124,7 @@
     },
     {
       "architecture_id": "lego_hagrid_giant_hybrid",
-      "canonical_name": "Hagrid giant-body hybrid",
+      "canonical_name": "Legacy Hagrid Body Giant hybrid (2001-2010 family)",
       "scale_class": "intermediate_large",
       "status": "catalog_identified_metrology_pending",
       "representative_part_ids": [
@@ -135,6 +135,63 @@
       ],
       "representative_characters": [
         "Rubeus Hagrid"
+      ],
+      "source_aliases": [
+        "Body Giant",
+        "40250 family"
+      ],
+      "notes": [
+        "BrickLink inventories show 40250cx1/cx2/cx3 Body Giant assemblies paired with standard 3626-family minifigure heads.",
+        "Keep separate from the later 37777 Half Giant architecture introduced for modern Hagrid designs."
+      ],
+      "representative_release_ids": [
+        "hp009",
+        "hp061",
+        "hp111"
+      ]
+    },
+    {
+      "architecture_id": "lego_hagrid_half_giant",
+      "canonical_name": "LEGO Hagrid Half Giant architecture",
+      "scale_class": "intermediate_large",
+      "status": "strong_ldraw_component_evidence_physical_measurement_pending",
+      "source_aliases": [
+        "Half Giant",
+        "large torso"
+      ],
+      "known_component_families": {
+        "torso": [
+          "37777",
+          "37777c01"
+        ],
+        "left_arm": [
+          "37779",
+          "38628"
+        ],
+        "right_arm": [
+          "37783",
+          "38630"
+        ],
+        "hair": [
+          "37784"
+        ],
+        "head": "standard minifigure head interface candidate"
+      },
+      "joint_notes": [
+        "LDraw names 37779/37783 as Half Giant arms with friction pins.",
+        "38628/38630 are assembled arm-and-hand forms.",
+        "37777 and arm components are official in the current LDraw library; 37784 status should be verified before canonical geometry ingestion."
+      ],
+      "representative_characters": [
+        "Rubeus Hagrid"
+      ],
+      "notes": [
+        "Distinct from legacy 40250 Hagrid Body Giant and from modern Hulk/Thanos Giant architecture.",
+        "High-value official MidFig/oversized-torso precedent."
+      ],
+      "sources": [
+        "https://library.ldraw.org/parts/list?tableSearch=3777.dat",
+        "https://library.ldraw.org/parts/list?tableSearch=3863.dat"
       ]
     },
     {
