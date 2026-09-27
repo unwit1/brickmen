@@ -17,11 +17,12 @@ from tools.geometry.fit_body_skeleton import load_reference
 
 def measure_envelope(reference: Mapping[str, Any]) -> dict[str, Any]:
     bbox = reference.get("body_bbox_px")
-    pairs = reference.get("silhouette_pairs_px", {})
+    horizontal = reference.get("silhouette_pairs_px", {})
+    vertical = reference.get("silhouette_vertical_pairs_px", {})
     if not bbox:
         raise ValueError("Envelope measurement requires body_bbox_px")
-    if not pairs:
-        raise ValueError("Reference has no silhouette_pairs_px")
+    if not horizontal and not vertical:
+        raise ValueError("Reference has no silhouette span observations")
 
     left, top, right, bottom = [float(v) for v in bbox]
     height = bottom - top
@@ -29,27 +30,43 @@ def measure_envelope(reference: Mapping[str, Any]) -> dict[str, Any]:
         raise ValueError("Invalid body bounding box")
 
     measurements = {}
-    for name, pair in pairs.items():
-        width_px = float(pair["right_x"]) - float(pair["left_x"])
+    for name, pair in horizontal.items():
+        span_px = float(pair["right_x"]) - float(pair["left_x"])
         measurements[name] = {
-            "width_px": width_px,
-            "width_over_body_height": width_px / height,
+            "orientation": "horizontal",
+            "span_px": span_px,
+            "span_over_body_height": span_px / height,
+            # Backward-compatible names for existing front-view consumers.
+            "width_px": span_px,
+            "width_over_body_height": span_px / height,
+            "confidence": float(pair.get("confidence", 1.0)),
+            "semantic": pair.get("semantic"),
+            "notes": pair.get("notes"),
+        }
+
+    for name, pair in vertical.items():
+        span_px = float(pair["bottom_y"]) - float(pair["top_y"])
+        measurements[name] = {
+            "orientation": "vertical",
+            "span_px": span_px,
+            "span_over_body_height": span_px / height,
             "confidence": float(pair.get("confidence", 1.0)),
             "semantic": pair.get("semantic"),
             "notes": pair.get("notes"),
         }
 
     return {
-        "schema_version": "0.1",
+        "schema_version": "0.2",
         "reference_id": reference["reference_id"],
         "architecture_candidate_id": reference.get("architecture_candidate_id"),
+        "view": reference.get("view"),
         "evidence_class": reference["evidence_class"],
         "body_height_px": height,
         "measurements": measurements,
         "mechanical_authority": False,
         "warning": (
-            "Silhouette widths describe visual envelopes only. They are not "
-            "joint spacing, connector geometry, or physical metrology."
+            "Silhouette spans describe visual envelopes only. They are not joint "
+            "spacing, connector geometry, or physical metrology."
         ),
     }
 
