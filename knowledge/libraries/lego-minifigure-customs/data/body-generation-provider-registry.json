@@ -69,7 +69,12 @@
           "<tag>",
           "--render"
         ],
-        "upstream_requirement_note": "Official README states CUDA GPU with at least 8GB VRAM; reduce parts/tokens to lower memory."
+        "upstream_requirement_note": "Official README states CUDA GPU with at least 8GB VRAM; reduce parts/tokens to lower memory.",
+        "environment": {
+          "minimum_vram_gb": 8,
+          "minimum_vram_authority": "upstream_documented_minimum",
+          "cuda_required": true
+        }
       },
       "pipeline_stage": "primary_generator",
       "output_contract": {
@@ -78,6 +83,16 @@
         "composite_pattern": "object.glb",
         "manifest_pattern": "manifest.json",
         "semantic_slot_mapping": "required_after_generation"
+      },
+      "upstream_verification": {
+        "repository": "https://github.com/wgsxm/PartCrafter",
+        "verified_commit_sha": "3d773bf02fad51c7ab31a5615573fec93b287b30",
+        "verified_on": "2026-09-27",
+        "interface_files": [
+          "scripts/inference_partcrafter.py"
+        ],
+        "version_policy": "exact_verified_revision_preferred_reverify_adapter_on_mismatch",
+        "verification_scope": "Brickmen execution interface and output contract only; not model quality or production authority"
       }
     },
     {
@@ -138,7 +153,12 @@
           "--output_dir",
           "<output_dir>"
         ],
-        "upstream_requirement_note": "Official README states ~10GB GPU memory for inference assuming float16."
+        "upstream_requirement_note": "Official README states ~10GB GPU memory for inference assuming float16.",
+        "environment": {
+          "minimum_vram_gb": 10,
+          "minimum_vram_authority": "upstream_documented_approximate_inference_requirement_float16",
+          "cuda_required": true
+        }
       },
       "pipeline_stage": "primary_generator",
       "output_contract": {
@@ -150,6 +170,16 @@
           "*_vol1.glb"
         ],
         "semantic_slot_mapping": "required_after_generation"
+      },
+      "upstream_verification": {
+        "repository": "https://github.com/NVlabs/PartPacker",
+        "verified_commit_sha": "178d6c9408ecde857e6e716bab2763df6ce8bdc0",
+        "verified_on": "2026-09-27",
+        "interface_files": [
+          "flow/scripts/infer.py"
+        ],
+        "version_policy": "exact_verified_revision_preferred_reverify_adapter_on_mismatch",
+        "verification_scope": "Brickmen execution interface and output contract only; not model quality or production authority"
       }
     },
     {
@@ -219,7 +249,12 @@
           "--metadata",
           "<output_dir>/brickmen-pact-wrapper.json"
         ],
-        "upstream_requirement_note": "Brickmen wrapper redirects PAct's hardcoded ImageConditioned_dataset root in-process without modifying the upstream checkout. Supply a PAct-compatible semantic part-label EXR or a lossless integer-label PNG/TIFF; raster labels are redirected only for the staged mask read."
+        "upstream_requirement_note": "Brickmen wrapper redirects PAct's hardcoded ImageConditioned_dataset root in-process without modifying the upstream checkout. Supply a PAct-compatible semantic part-label EXR or a lossless integer-label PNG/TIFF; raster labels are redirected only for the staged mask read.",
+        "environment": {
+          "minimum_vram_gb": null,
+          "minimum_vram_authority": "not_verified",
+          "cuda_required": true
+        }
       },
       "pipeline_stage": "articulated_generator",
       "output_contract": {
@@ -229,6 +264,19 @@
         "component_pattern": "exported_arti_objects/**/glb/part_*.glb",
         "fallback_component_pattern": "exported_arti_objects/**/ply/part_*.ply",
         "manifest_pattern": "exported_arti_objects/**/object.json"
+      },
+      "upstream_verification": {
+        "repository": "https://github.com/Mobiuslqm/PAct",
+        "verified_commit_sha": "a5ccec5056e7b27f39ddb5b83613c0efba9b2861",
+        "verified_on": "2026-09-27",
+        "interface_files": [
+          "infer_imgs.py",
+          "modules/pact/datasets/components.py",
+          "modules/pact/pipelines/pact_i23d_gen_pipe.py",
+          "modules/pact/datasets/structured_latent.py"
+        ],
+        "version_policy": "exact_verified_revision_preferred_reverify_adapter_on_mismatch",
+        "verification_scope": "Brickmen execution interface and output contract only; not model quality or production authority"
       }
     },
     {
@@ -282,7 +330,12 @@
           "<output_dir>",
           "--up_dir",
           "Z"
-        ]
+        ],
+        "environment": {
+          "minimum_vram_gb": null,
+          "minimum_vram_authority": "not_verified",
+          "cuda_required": true
+        }
       },
       "pipeline_stage": "post_generation_critic",
       "output_contract": {
@@ -294,6 +347,17 @@
           "eval/pred.obj",
           "eval/pred.npz"
         ]
+      },
+      "upstream_verification": {
+        "repository": "https://github.com/RuiningLi/particulate",
+        "verified_commit_sha": "dee37a75c449f324d9989993461ee09eaccc1686",
+        "verified_on": "2026-09-27",
+        "interface_files": [
+          "infer.py",
+          "configs/particulate-B.yaml"
+        ],
+        "version_policy": "exact_verified_revision_preferred_reverify_adapter_on_mismatch",
+        "verification_scope": "Brickmen execution interface and output contract only; not model quality or production authority"
       }
     },
     {
@@ -358,7 +422,12 @@
           "--metadata",
           "<output_dir>/sam3d-metadata.json"
         ],
-        "upstream_requirement_note": "Brickmen wrapper calls the published notebook.inference Inference/load_image/load_mask API and exports output['gs'] to PLY. This is a visual Gaussian baseline and does not enter triangle-mesh production validation."
+        "upstream_requirement_note": "Brickmen wrapper calls the published notebook.inference Inference/load_image/load_mask API and exports output['gs'] to PLY. This is a visual Gaussian baseline and does not enter triangle-mesh production validation.",
+        "environment": {
+          "minimum_vram_gb": 32,
+          "minimum_vram_authority": "upstream_documented_minimum",
+          "cuda_required": true
+        }
       },
       "pipeline_stage": "baseline_generator",
       "output_contract": {
@@ -366,6 +435,16 @@
         "public_quickstart_export": "gaussian_splat_ply",
         "printable_triangle_mesh_available_from_public_quickstart": false,
         "component_slot_mapping": "not_directly_eligible_for_triangle_mesh_validation"
+      },
+      "upstream_verification": {
+        "repository": "https://github.com/facebookresearch/sam-3d-objects",
+        "verified_commit_sha": "f91db411c50efee93d8db7aeb323885650f6f722",
+        "verified_on": "2026-09-27",
+        "interface_files": [
+          "notebook/inference.py"
+        ],
+        "version_policy": "exact_verified_revision_preferred_reverify_adapter_on_mismatch",
+        "verification_scope": "Brickmen execution interface and output contract only; not model quality or production authority"
       }
     },
     {
