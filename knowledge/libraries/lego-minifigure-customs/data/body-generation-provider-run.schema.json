@@ -27,7 +27,8 @@
       "enum": [
         "dry_run",
         "executed",
-        "plan_only"
+        "plan_only",
+        "blocked_preflight"
       ]
     },
     "execution_supported": {
@@ -175,6 +176,30 @@
             }
           }
         }
+      }
+    },
+    "environment_preflight_path": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "environment_preflight": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "environment_preflight_bypassed": {
+      "type": "boolean"
+    },
+    "preflight_blocked": {
+      "type": "boolean"
+    },
+    "blockers": {
+      "type": "array",
+      "items": {
+        "type": "string"
       }
     }
   }
