@@ -1,0 +1,658 @@
+{
+  "schema_version": "0.1",
+  "architecture_id": "brickmen_giant_v0",
+  "target_height_mm": 62.0,
+  "conditioning_reference": {
+    "skeleton_reference_id": "lego_giant_10128_ldraw_shoulders_fit_2303",
+    "skeleton_reference_height_mm": 71.11760000000001,
+    "skeleton_fit_status": "strong_visual_fit",
+    "envelope_reference_id": "merged:lego_giant_10128_ldraw_body_profile_2303+lego_giant_arms_hands_ldraw_envelope_profile_2303",
+    "envelope_reference_ids": [
+      "lego_giant_10128_ldraw_body_profile_2303",
+      "lego_giant_arms_hands_ldraw_envelope_profile_2303"
+    ],
+    "envelope_bound_hits": []
+  },
+  "samples_per_joint": 73,
+  "joint_sweeps": [
+    {
+      "joint_id": "neck",
+      "pivot_node": "neck",
+      "pivot_normalized_body_height": [
+        0.0,
+        0.0,
+        0.79
+      ],
+      "pivot_mm_at_target_height": [
+        0.0,
+        0.0,
+        48.98
+      ],
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "range_deg": [
+        -180,
+        180
+      ],
+      "visual_envelopes": [
+        {
+          "envelope_id": "head",
+          "shape": "capsule",
+          "samples": 73,
+          "range_deg": [
+            -180.0,
+            180.0
+          ],
+          "radius_approximation_normalized": 0.21770767944941677,
+          "radius_approximation_mm": 13.497892513795005,
+          "swept_aabb_normalized_body_height": {
+            "min": [
+              -0.21770767944941677,
+              -0.21770767944941677,
+              0.6822923205505833
+            ],
+            "max": [
+              0.21770767944941677,
+              0.21770767944941677,
+              1.1177076794494167
+            ]
+          },
+          "swept_aabb_mm": {
+            "min": [
+              -13.497892513795005,
+              -13.497892513795005,
+              42.30210748620499
+            ],
+            "max": [
+              13.497892513795005,
+              13.497892513795005,
+              69.297892513795
+            ]
+          },
+          "swept_aabb_volume_normalized": 0.08254888907708864,
+          "swept_aabb_volume_mm3": 19673.78329430986,
+          "approximation": "conservative_endpoint_arc_plus_isotropic_envelope_radius"
+        }
+      ],
+      "combined_swept_aabb_normalized_body_height": {
+        "min": [
+          -0.21770767944941677,
+          -0.21770767944941677,
+          0.6822923205505833
+        ],
+        "max": [
+          0.21770767944941677,
+          0.21770767944941677,
+          1.1177076794494167
+        ]
+      },
+      "combined_swept_aabb_mm": {
+        "min": [
+          -13.497892513795005,
+          -13.497892513795005,
+          42.30210748620499
+        ],
+        "max": [
+          13.497892513795005,
+          13.497892513795005,
+          69.297892513795
+        ]
+      },
+      "mechanical_placements_at_pivot": [],
+      "authority_class": "visual_articulation_sweep_nonproduction"
+    },
+    {
+      "joint_id": "shoulder_l",
+      "pivot_node": "shoulder_l",
+      "pivot_normalized_body_height": [
+        -0.224858,
+        0.0,
+        0.69
+      ],
+      "pivot_mm_at_target_height": [
+        -13.941217,
+        0.0,
+        42.78
+      ],
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "range_deg": [
+        -105,
+        105
+      ],
+      "visual_envelopes": [
+        {
+          "envelope_id": "arm_l",
+          "shape": "capsule_between_nodes",
+          "samples": 73,
+          "range_deg": [
+            -105.0,
+            105.0
+          ],
+          "radius_approximation_normalized": 0.1399025,
+          "radius_approximation_mm": 8.6739505,
+          "swept_aabb_normalized_body_height": {
+            "min": [
+              -0.4414175,
+              -0.39989562498436615,
+              0.2900975
+            ],
+            "max": [
+              -0.08495549999999999,
+              0.39989562498436615,
+              0.8971954517266554
+            ]
+          },
+          "swept_aabb_mm": {
+            "min": [
+              -27.3678545,
+              -24.7935242490307,
+              17.9860495
+            ],
+            "max": [
+              -5.2672665,
+              24.7935242490307,
+              55.62611350705264
+            ]
+          },
+          "swept_aabb_volume_normalized": 0.1730807050136163,
+          "swept_aabb_volume_mm3": 41249.85639276307,
+          "approximation": "conservative_endpoint_arc_plus_isotropic_envelope_radius"
+        }
+      ],
+      "combined_swept_aabb_normalized_body_height": {
+        "min": [
+          -0.4414175,
+          -0.39989562498436615,
+          0.2900975
+        ],
+        "max": [
+          -0.08495549999999999,
+          0.39989562498436615,
+          0.8971954517266554
+        ]
+      },
+      "combined_swept_aabb_mm": {
+        "min": [
+          -27.3678545,
+          -24.7935242490307,
+          17.9860495
+        ],
+        "max": [
+          -5.2672665,
+          24.7935242490307,
+          55.62611350705264
+        ]
+      },
+      "mechanical_placements_at_pivot": [
+        {
+          "joint_profile_id": "lego_giant_43093_shoulder_reference_v0",
+          "authority_class": "reference_only_not_manufacturing_authority",
+          "manufacturing_authority": false,
+          "placement": {
+            "placement_id": "brickmen_giant_v0_left_shoulder_43093_reference",
+            "candidate_architecture_id": "brickmen_giant_v0",
+            "anchor_node": "shoulder_l",
+            "anchor_normalized_body_height": [
+              -0.224858,
+              0.0,
+              0.69
+            ],
+            "anchor_mm_at_target_height": [
+              -13.941217,
+              0.0,
+              42.78
+            ],
+            "axis_vector": [
+              1,
+              0,
+              0
+            ],
+            "orientation_semantic": "lateral_pin_axis",
+            "hardware_part_id": "43093",
+            "quantity": 1,
+            "placement_authority": "reference_alignment_only_until_physical_validation",
+            "reference_keepout_local_min_mm": [
+              -8.0,
+              -3.2,
+              -3.2
+            ],
+            "reference_keepout_local_max_mm": [
+              8.0,
+              3.2,
+              3.2
+            ],
+            "reference_keepout_local_min_normalized": [
+              -0.12903225806451613,
+              -0.05161290322580645,
+              -0.05161290322580645
+            ],
+            "reference_keepout_local_max_normalized": [
+              0.12903225806451613,
+              0.05161290322580645,
+              0.05161290322580645
+            ],
+            "manufacturing_authority": false
+          }
+        }
+      ],
+      "authority_class": "visual_articulation_sweep_nonproduction"
+    },
+    {
+      "joint_id": "shoulder_r",
+      "pivot_node": "shoulder_r",
+      "pivot_normalized_body_height": [
+        0.224858,
+        0.0,
+        0.69
+      ],
+      "pivot_mm_at_target_height": [
+        13.941217,
+        0.0,
+        42.78
+      ],
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "range_deg": [
+        -105,
+        105
+      ],
+      "visual_envelopes": [
+        {
+          "envelope_id": "arm_r",
+          "shape": "capsule_between_nodes",
+          "samples": 73,
+          "range_deg": [
+            -105.0,
+            105.0
+          ],
+          "radius_approximation_normalized": 0.1399025,
+          "radius_approximation_mm": 8.6739505,
+          "swept_aabb_normalized_body_height": {
+            "min": [
+              0.08495549999999999,
+              -0.39989562498436615,
+              0.2900975
+            ],
+            "max": [
+              0.4414175,
+              0.39989562498436615,
+              0.8971954517266554
+            ]
+          },
+          "swept_aabb_mm": {
+            "min": [
+              5.2672665,
+              -24.7935242490307,
+              17.9860495
+            ],
+            "max": [
+              27.3678545,
+              24.7935242490307,
+              55.62611350705264
+            ]
+          },
+          "swept_aabb_volume_normalized": 0.1730807050136163,
+          "swept_aabb_volume_mm3": 41249.85639276307,
+          "approximation": "conservative_endpoint_arc_plus_isotropic_envelope_radius"
+        }
+      ],
+      "combined_swept_aabb_normalized_body_height": {
+        "min": [
+          0.08495549999999999,
+          -0.39989562498436615,
+          0.2900975
+        ],
+        "max": [
+          0.4414175,
+          0.39989562498436615,
+          0.8971954517266554
+        ]
+      },
+      "combined_swept_aabb_mm": {
+        "min": [
+          5.2672665,
+          -24.7935242490307,
+          17.9860495
+        ],
+        "max": [
+          27.3678545,
+          24.7935242490307,
+          55.62611350705264
+        ]
+      },
+      "mechanical_placements_at_pivot": [
+        {
+          "joint_profile_id": "lego_giant_43093_shoulder_reference_v0",
+          "authority_class": "reference_only_not_manufacturing_authority",
+          "manufacturing_authority": false,
+          "placement": {
+            "placement_id": "brickmen_giant_v0_right_shoulder_43093_reference",
+            "candidate_architecture_id": "brickmen_giant_v0",
+            "anchor_node": "shoulder_r",
+            "anchor_normalized_body_height": [
+              0.224858,
+              0.0,
+              0.69
+            ],
+            "anchor_mm_at_target_height": [
+              13.941217,
+              0.0,
+              42.78
+            ],
+            "axis_vector": [
+              1,
+              0,
+              0
+            ],
+            "orientation_semantic": "lateral_pin_axis_mirrored_component_context",
+            "hardware_part_id": "43093",
+            "quantity": 1,
+            "placement_authority": "reference_alignment_only_until_physical_validation",
+            "reference_keepout_local_min_mm": [
+              -8.0,
+              -3.2,
+              -3.2
+            ],
+            "reference_keepout_local_max_mm": [
+              8.0,
+              3.2,
+              3.2
+            ],
+            "reference_keepout_local_min_normalized": [
+              -0.12903225806451613,
+              -0.05161290322580645,
+              -0.05161290322580645
+            ],
+            "reference_keepout_local_max_normalized": [
+              0.12903225806451613,
+              0.05161290322580645,
+              0.05161290322580645
+            ],
+            "manufacturing_authority": false
+          }
+        }
+      ],
+      "authority_class": "visual_articulation_sweep_nonproduction"
+    },
+    {
+      "joint_id": "wrist_l",
+      "pivot_node": "wrist_l",
+      "pivot_normalized_body_height": [
+        -0.301515,
+        0.0,
+        0.43
+      ],
+      "pivot_mm_at_target_height": [
+        -18.693904,
+        0.0,
+        26.66
+      ],
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "range_deg": [
+        -180,
+        180
+      ],
+      "visual_envelopes": [
+        {
+          "envelope_id": "hand_l",
+          "shape": "capsule",
+          "samples": 73,
+          "range_deg": [
+            -180.0,
+            180.0
+          ],
+          "radius_approximation_normalized": 0.18425230406022064,
+          "radius_approximation_mm": 11.423626948717928,
+          "swept_aabb_normalized_body_height": {
+            "min": [
+              -0.5380315501551407,
+              -0.18425230406022064,
+              0.1934834498448592
+            ],
+            "max": [
+              -0.06499844984485917,
+              0.18425230406022064,
+              0.6665165501551408
+            ]
+          },
+          "swept_aabb_mm": {
+            "min": [
+              -33.3579183477077,
+              -11.423626948717928,
+              11.995985652292298
+            ],
+            "max": [
+              -4.029889652292299,
+              11.423626948717928,
+              41.3240143477077
+            ]
+          },
+          "swept_aabb_volume_normalized": 0.08245670681948115,
+          "swept_aabb_volume_mm3": 19651.6831404152,
+          "approximation": "conservative_endpoint_arc_plus_isotropic_envelope_radius"
+        }
+      ],
+      "combined_swept_aabb_normalized_body_height": {
+        "min": [
+          -0.5380315501551407,
+          -0.18425230406022064,
+          0.1934834498448592
+        ],
+        "max": [
+          -0.06499844984485917,
+          0.18425230406022064,
+          0.6665165501551408
+        ]
+      },
+      "combined_swept_aabb_mm": {
+        "min": [
+          -33.3579183477077,
+          -11.423626948717928,
+          11.995985652292298
+        ],
+        "max": [
+          -4.029889652292299,
+          11.423626948717928,
+          41.3240143477077
+        ]
+      },
+      "mechanical_placements_at_pivot": [],
+      "authority_class": "visual_articulation_sweep_nonproduction"
+    },
+    {
+      "joint_id": "wrist_r",
+      "pivot_node": "wrist_r",
+      "pivot_normalized_body_height": [
+        0.301515,
+        0.0,
+        0.43
+      ],
+      "pivot_mm_at_target_height": [
+        18.693904,
+        0.0,
+        26.66
+      ],
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "range_deg": [
+        -180,
+        180
+      ],
+      "visual_envelopes": [
+        {
+          "envelope_id": "hand_r",
+          "shape": "capsule",
+          "samples": 73,
+          "range_deg": [
+            -180.0,
+            180.0
+          ],
+          "radius_approximation_normalized": 0.18425230406022064,
+          "radius_approximation_mm": 11.423626948717928,
+          "swept_aabb_normalized_body_height": {
+            "min": [
+              0.06499844984485917,
+              -0.18425230406022064,
+              0.1934834498448592
+            ],
+            "max": [
+              0.5380315501551407,
+              0.18425230406022064,
+              0.6665165501551408
+            ]
+          },
+          "swept_aabb_mm": {
+            "min": [
+              4.029889652292299,
+              -11.423626948717928,
+              11.995985652292298
+            ],
+            "max": [
+              33.3579183477077,
+              11.423626948717928,
+              41.3240143477077
+            ]
+          },
+          "swept_aabb_volume_normalized": 0.08245670681948115,
+          "swept_aabb_volume_mm3": 19651.6831404152,
+          "approximation": "conservative_endpoint_arc_plus_isotropic_envelope_radius"
+        }
+      ],
+      "combined_swept_aabb_normalized_body_height": {
+        "min": [
+          0.06499844984485917,
+          -0.18425230406022064,
+          0.1934834498448592
+        ],
+        "max": [
+          0.5380315501551407,
+          0.18425230406022064,
+          0.6665165501551408
+        ]
+      },
+      "combined_swept_aabb_mm": {
+        "min": [
+          4.029889652292299,
+          -11.423626948717928,
+          11.995985652292298
+        ],
+        "max": [
+          33.3579183477077,
+          11.423626948717928,
+          41.3240143477077
+        ]
+      },
+      "mechanical_placements_at_pivot": [],
+      "authority_class": "visual_articulation_sweep_nonproduction"
+    },
+    {
+      "joint_id": "lower_body",
+      "pivot_node": "pelvis",
+      "pivot_normalized_body_height": [
+        0.0,
+        0.0,
+        0.3
+      ],
+      "pivot_mm_at_target_height": [
+        0.0,
+        0.0,
+        18.6
+      ],
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "range_deg": [
+        0,
+        0
+      ],
+      "visual_envelopes": [
+        {
+          "envelope_id": "lower_body",
+          "shape": "box_between_nodes",
+          "samples": 1,
+          "range_deg": [
+            0.0,
+            0.0
+          ],
+          "radius_approximation_normalized": 0.282501,
+          "radius_approximation_mm": 17.5150755,
+          "swept_aabb_normalized_body_height": {
+            "min": [
+              -0.282501,
+              -0.282501,
+              0.017498999999999987
+            ],
+            "max": [
+              0.282501,
+              0.282501,
+              0.682501
+            ]
+          },
+          "swept_aabb_mm": {
+            "min": [
+              -17.5150755,
+              -17.5150755,
+              1.0849245000000032
+            ],
+            "max": [
+              17.5150755,
+              17.5150755,
+              42.3150755
+            ]
+          },
+          "swept_aabb_volume_normalized": 0.21228676635718002,
+          "swept_aabb_volume_mm3": 50593.99157641721,
+          "approximation": "conservative_endpoint_arc_plus_isotropic_envelope_radius"
+        }
+      ],
+      "combined_swept_aabb_normalized_body_height": {
+        "min": [
+          -0.282501,
+          -0.282501,
+          0.017498999999999987
+        ],
+        "max": [
+          0.282501,
+          0.282501,
+          0.682501
+        ]
+      },
+      "combined_swept_aabb_mm": {
+        "min": [
+          -17.5150755,
+          -17.5150755,
+          1.0849245000000032
+        ],
+        "max": [
+          17.5150755,
+          17.5150755,
+          42.3150755
+        ]
+      },
+      "mechanical_placements_at_pivot": [],
+      "authority_class": "visual_articulation_sweep_nonproduction"
+    }
+  ],
+  "generation_rule": "Generated visual shell should not occupy conservative articulation sweep volumes unless the architecture explicitly permits overlap or a later exact collision analysis replaces this approximation.",
+  "production_geometry_authority": false,
+  "warning": "Sweeps are conservative visual/collision-conditioning approximations. They do not establish physical clearance, tolerance, torque, wear, or production articulation limits."
+}
