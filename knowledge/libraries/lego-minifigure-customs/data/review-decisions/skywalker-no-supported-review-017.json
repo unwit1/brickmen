@@ -1,0 +1,203 @@
+{
+  "schema": "skywalker-no-supported-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-no-supported-review-017",
+  "policy": "Treat abbreviated source keys as canonical named identities when context is unambiguous, but keep LEGO television/game appearances separate from physical set releases. Preserve nonphysical status for named background characters even when related species or faction figures exist physically.",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-0075b3d7f2d95bf0513be7ef",
+      "character_variant_key": "Shmi",
+      "decision": "abbreviated_name_resolved_to_shmi_skywalker_verified_nonphysical_no_official_lego_minifigure",
+      "canonical_subject": "Shmi Skywalker",
+      "alias_resolution": {
+        "source_key": "Shmi",
+        "canonical_name": "Shmi Skywalker",
+        "confidence": "high"
+      },
+      "digital_history": [
+        "LEGO Star Wars: The Video Game (GBA)",
+        "LEGO Star Wars: Droid Tales",
+        "LEGO Star Wars: The Skywalker Saga"
+      ],
+      "physical_status": {
+        "exact_official_minifigure_located": false,
+        "brickipedia_status": "television/video-game-only minifigure; never existed in physical form or an official LEGO set"
+      },
+      "rejected_top_candidates": [
+        {
+          "fig_num": "fig-003786",
+          "catalog_name": "Shaak Ti",
+          "reason": "short-name phonetic similarity only"
+        },
+        {
+          "fig_num": "fig-003790",
+          "catalog_name": "Sugi",
+          "reason": "short-name phonetic similarity only"
+        }
+      ],
+      "reason": "In Skywalker Saga context, the one-token key Shmi unambiguously refers to Shmi Skywalker. Brickipedia explicitly marks her LEGO representations as nonphysical, and Brickset has long identified her as a missing physical minifigure.",
+      "systemic_pattern": "short_unique_character_keys_should_expand_through_franchise_entity_context_before_catalog_matching",
+      "evidence_urls": [
+        "https://brickipedia.fandom.com/wiki/Shmi_Skywalker",
+        "https://brickset.com/article/34132/which-star-wars-characters-are-missing-minifigs"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-8a4f449a63b6fae9812a5210",
+      "character_variant_key": "UbblaMollbro",
+      "decision": "named_ubbla_mollbro_verified_nonphysical_no_official_lego_minifigure",
+      "canonical_subject": "Ubbla Mollbro",
+      "physical_status": {
+        "exact_official_minifigure_located": false,
+        "brickipedia_status": "listed among nonphysical Other Star Wars minifigures"
+      },
+      "rejected_top_candidates": [
+        {
+          "fig_num": "fig-003984",
+          "catalog_name": "Umbaran Soldier",
+          "reason": "weak prefix similarity only"
+        },
+        {
+          "fig_num": "fig-001529",
+          "catalog_name": "Lobot, Black Eyebrows",
+          "reason": "unrelated character"
+        },
+        {
+          "fig_num": "fig-003641",
+          "catalog_name": "Jedi Bob, Brown",
+          "reason": "unrelated character"
+        }
+      ],
+      "reason": "Ubbla Mollbro is a distinct named Skywalker Saga/background character in Brickipedia's nonphysical roster. The physical candidate list has no identity-level evidence.",
+      "systemic_pattern": "rare_named_background_characters_should_resolve_to_no_match_when_only_low_score_unrelated_candidates_exist",
+      "evidence_urls": [
+        "https://brickipedia.fandom.com/wiki/Ziro_the_Hutt"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-1649d1a313e3a7de79f12d96",
+      "character_variant_key": "YaraelPoof",
+      "decision": "named_jedi_master_yarael_poof_verified_nonphysical_no_official_lego_minifigure",
+      "canonical_subject": "Yarael Poof",
+      "identity_context": {
+        "species": "Quermian",
+        "role": "Jedi Master / Jedi Council member"
+      },
+      "digital_history": [
+        "LEGO Star Wars: The Padawan Menace",
+        "LEGO Star Wars: The Skywalker Saga"
+      ],
+      "physical_status": {
+        "exact_official_minifigure_located": false,
+        "brickipedia_status": "movie/game representation only; never existed in physical form or an official LEGO set"
+      },
+      "rejected_top_candidates": [
+        {
+          "fig_num": "fig-004323",
+          "catalog_name": "Range Trooper",
+          "reason": "unrelated character/role"
+        },
+        {
+          "fig_num": "fig-004298",
+          "catalog_name": "Vice Admiral Holdo",
+          "reason": "unrelated character"
+        },
+        {
+          "fig_num": "fig-003681",
+          "catalog_name": "Republic Pilot",
+          "reason": "same broad Republic era only"
+        }
+      ],
+      "reason": "Yarael Poof is a specific Jedi Council member with LEGO animated/game appearances but no physical release. Brickipedia explicitly marks him nonphysical; older Brickset Jedi Council inventories also listed him as unavailable.",
+      "systemic_pattern": "lego_animation_presence_and_jedi_council_membership_do_not_establish_physical_release",
+      "evidence_urls": [
+        "https://brickipedia.fandom.com/wiki/Yarael_Poof",
+        "https://brickset.com/bricklists/author-LegoLegs"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-1dca6ec62b30dfa9346152f4",
+      "character_variant_key": "RuneHaako",
+      "decision": "named_trade_federation_official_rune_haako_verified_video_game_only_no_official_physical_minifigure",
+      "canonical_subject": "Rune Haako",
+      "identity_context": {
+        "species": "Neimoidian",
+        "role": "Trade Federation lieutenant / Nute Gunray adviser"
+      },
+      "digital_history": [
+        "LEGO Star Wars III: The Clone Wars",
+        "LEGO Star Wars: The Skywalker Saga"
+      ],
+      "physical_status": {
+        "exact_official_minifigure_located": false,
+        "brickipedia_status": "video-game-only minifigure; never released in a set"
+      },
+      "rejected_top_candidates": [
+        {
+          "fig_num": "fig-010674",
+          "catalog_name": "Kardue'sai'Malloc",
+          "reason": "unrelated character"
+        },
+        {
+          "fig_num": "fig-010528",
+          "catalog_name": "Greef Karga",
+          "reason": "unrelated character"
+        },
+        {
+          "fig_num": "fig-003718",
+          "catalog_name": "Hondo Ohnaka",
+          "reason": "unrelated character"
+        }
+      ],
+      "reason": "Rune Haako has appeared digitally in LEGO Star Wars since 2011 but has never been released physically. Brickipedia states this explicitly, making the low-score catalog candidates false positives.",
+      "systemic_pattern": "legacy_game_character_recurrence_should_not_be_confused_with_set_release",
+      "evidence_urls": [
+        "https://brickipedia.fandom.com/wiki/Rune_Haako"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-8c32b1d637543caf676806db",
+      "character_variant_key": "Bobbajo",
+      "decision": "named_jakku_nu_cosin_bobbajo_verified_nonphysical_no_official_lego_minifigure",
+      "canonical_subject": "Bobbajo",
+      "physical_status": {
+        "exact_official_minifigure_located": false,
+        "brickipedia_status": "listed among nonphysical Other Star Wars minifigures"
+      },
+      "rejected_top_candidates": [
+        {
+          "fig_num": "fig-003641",
+          "catalog_name": "Jedi Bob, Brown",
+          "reason": "shared Bob string only; unrelated character"
+        },
+        {
+          "fig_num": "fig-004450",
+          "catalog_name": "Boolio",
+          "reason": "weak phonetic similarity only"
+        },
+        {
+          "fig_num": "fig-010436",
+          "catalog_name": "B'Omarr Monk",
+          "reason": "unrelated character/construct"
+        }
+      ],
+      "reason": "Bobbajo is a distinct named character in the nonphysical LEGO roster. The resolver's Jedi Bob match is a substring false positive rather than identity evidence.",
+      "systemic_pattern": "substring_bob_inside_bobbajo_must_not_create_named_character_equivalence",
+      "evidence_urls": [
+        "https://brickipedia.fandom.com/wiki/Ziro_the_Hutt"
+      ]
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "abbreviated_name_resolution": 1,
+    "nonphysical_named_characters": 5,
+    "automatic_exact_artwork_equivalence_promotions": 0
+  },
+  "remaining_no_supported_records_after_batch": 11,
+  "systemic_findings": [
+    "Short unique keys should expand through franchise context before physical matching.",
+    "Repeated LEGO digital or animated appearances remain distinct from set-release evidence.",
+    "Substring fragments in unusual names can create severe false positives and need entity-aware matching."
+  ]
+}
