@@ -1,0 +1,149 @@
+{
+  "schema": "mask-headgear-route-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "mask-headgear-route-review-004",
+  "purpose": "Review high-leverage repeated component signatures so one manual topology decision can safely cover multiple release variants through exact-signature propagation.",
+  "evidence_policy": {
+    "source": "regenerated Rebrickable-derived physical component census",
+    "no_visual_guessing": true,
+    "source_translation_requires_exact_source_appearance_pairing": true
+  },
+  "records": [
+    {
+      "fig_num": "fig-000992",
+      "figure_name": "Cragger (Dimensions)",
+      "candidate_routes": [
+        "separate_mask_headgear"
+      ],
+      "decision": "physical_route_confirmed_anthropomorphic_species_face_mask_geometry",
+      "confirmed_physical_route": "printed_standard_head_plus_separate_crocodile_face_mask",
+      "semantic_function": "anthropomorphic_species_identity_geometry",
+      "head_evidence": [
+        {
+          "part_num": "3626cpr1141",
+          "part_name": "Minifig Head Cragger, Dual Sided, Crocodile with Dark Brown Eye Scales, White Teeth and Red Scar, Wide Eye / Narrow Eye Print"
+        }
+      ],
+      "headgear_evidence": [
+        {
+          "part_num": "12551pr0001",
+          "part_name": "Mask Crocodile with Teeth and Red Scar Print"
+        }
+      ],
+      "confidence": 1,
+      "source_translation_status": "physical_route_confirmed_source_pairing_pending",
+      "training_note": "The cylindrical head carries expression and inner face detail while the separate crocodile mask supplies jaw/snout silhouette. Exact signature repeats across numerous Cragger releases, so physical topology can propagate to those variants."
+    },
+    {
+      "fig_num": "fig-000232",
+      "figure_name": "Eris in Silver Outfit with Pearl Gold Shoulder Armor",
+      "candidate_routes": [
+        "separate_mask_headgear"
+      ],
+      "decision": "physical_route_confirmed_anthropomorphic_species_face_mask_geometry",
+      "confirmed_physical_route": "printed_standard_head_plus_separate_eagle_face_mask",
+      "semantic_function": "anthropomorphic_species_identity_geometry",
+      "head_evidence": [
+        {
+          "part_num": "3626cpr1124",
+          "part_name": "Minifig Head Eris, Dual Sided, Eagle with Beak, Yellow Eyes and White Feathers, Wide Eyes / Narrow Eyes Print"
+        }
+      ],
+      "headgear_evidence": [
+        {
+          "part_num": "12549pr0001",
+          "part_name": "Mask Bird (Eagle) with Yellow Beak, Gold Headdress and Blue Feathers Print"
+        }
+      ],
+      "confidence": 1,
+      "source_translation_status": "physical_route_confirmed_source_pairing_pending",
+      "training_note": "Eris uses the same species-identity strategy seen in other Chima bird characters: a standard printed head plus separate eagle/beak/headdress mask geometry."
+    },
+    {
+      "fig_num": "fig-006635",
+      "figure_name": "Sulfurix, Trans-Neon Green",
+      "candidate_routes": [
+        "modified_or_nonhuman_head"
+      ],
+      "decision": "physical_route_confirmed_full_modified_nonhuman_head",
+      "confirmed_physical_route": "full_modified_rock_monster_head_no_standard_cylindrical_head",
+      "semantic_function": "nonhuman_creature_head_geometry",
+      "head_evidence": [
+        {
+          "part_num": "64785",
+          "part_name": "Head Special, Rock Monster, Jaw Upper [Type 1]"
+        }
+      ],
+      "headgear_evidence": [],
+      "confidence": 1,
+      "source_translation_status": "physical_route_confirmed_source_pairing_pending",
+      "training_note": "Identity is carried by dedicated rock-monster head geometry rather than a decorated standard 3626 head or removable mask. The same head signature is reused across several elemental/color variants."
+    },
+    {
+      "fig_num": "fig-010822",
+      "figure_name": "Captain America, Mask",
+      "candidate_routes": [
+        "helmet_plus_head",
+        "separate_mask_headgear"
+      ],
+      "decision": "physical_route_confirmed_superhero_identity_helmet_mask",
+      "confirmed_physical_route": "human_head_plus_separate_captain_america_helmet_mask",
+      "semantic_function": "superhero_identity_mask_cowl",
+      "head_evidence": [
+        {
+          "part_num": "3626cpr3126",
+          "part_name": "Minifig Head Captain America, Dark Brown Eyebrows, Grin with Raised Right Eyebrow / Reddish Brown Chinstrap Print"
+        }
+      ],
+      "headgear_evidence": [
+        {
+          "part_num": "49556pr0001",
+          "part_name": "Helmet / Mask, Top Hole, White Wings, White 'A' Print (Captain America)"
+        }
+      ],
+      "confidence": 1,
+      "source_translation_status": "physical_route_confirmed_source_pairing_pending",
+      "training_note": "Captain America's face and chinstrap are printed on the underlying head while the separate helmet/mask carries the iconic A, wing details, and silhouette. This is identity-bearing superhero headgear rather than generic protection."
+    },
+    {
+      "fig_num": "fig-000125",
+      "figure_name": "Worriz in Fire Chi Outfit",
+      "candidate_routes": [
+        "separate_mask_headgear"
+      ],
+      "decision": "physical_route_confirmed_anthropomorphic_species_face_mask_geometry",
+      "confirmed_physical_route": "printed_standard_head_plus_separate_wolf_face_mask",
+      "semantic_function": "anthropomorphic_species_identity_geometry",
+      "head_evidence": [
+        {
+          "part_num": "3626cpr1134",
+          "part_name": "Minifig Head Worriz, Dual Sided, Wolf with Yellow Eyes, Black Scars, Fangs, Closed Mouth / Open Mouth Print"
+        }
+      ],
+      "headgear_evidence": [
+        {
+          "part_num": "11233pr0002",
+          "part_name": "Mask Wolf with Face Details, Scars and White Ears Print"
+        }
+      ],
+      "confidence": 1,
+      "source_translation_status": "physical_route_confirmed_source_pairing_pending",
+      "training_note": "Wolf identity is split between a standard printed head and removable wolf-face geometry. The exact signature repeats across several Worriz variants, making it a strong route-topology propagation anchor."
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "anthropomorphic_species_identity_geometry": 3,
+    "nonhuman_creature_head_geometry": 1,
+    "superhero_identity_mask_cowl": 1,
+    "expected_exact_signature_group_records_covered": 26,
+    "expected_additional_route_only_propagations": 21,
+    "source_translation_pairs_promoted": 0
+  },
+  "systemic_findings": [
+    "Selecting representatives from large exact-signature groups greatly increases review coverage without weakening source-translation safeguards.",
+    "Anthropomorphic species faces repeatedly use a standard printed head underneath silhouette-bearing removable species masks.",
+    "Dedicated nonhuman head geometry should remain a separate route from masks layered over standard cylindrical heads.",
+    "Identity-bearing superhero helmets can be physically protective in-world while still functioning as character-identity geometry for representation modeling."
+  ]
+}
