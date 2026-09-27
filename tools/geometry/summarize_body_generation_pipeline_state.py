@@ -94,10 +94,15 @@ def summarize_pipeline_state(
         next_actions.append("render front/side structural generation guides")
 
     provider_id=provider_job.get("provider_id") if provider_job else None
+    provider_stage=(
+        str(provider_job.get("pipeline_stage", "primary_generator"))
+        if provider_job else None
+    )
+    critic_only = provider_stage == "post_generation_critic"
     if provider_job:
         gates.append(_gate(
             "provider_job","complete",artifact=provider_job_path,
-            detail=f"Provider job compiled for {provider_id}."
+            detail=f"Provider job compiled for {provider_id} ({provider_stage})."
         ))
     else:
         gates.append(_gate(
@@ -105,6 +110,21 @@ def summarize_pipeline_state(
             detail="Compile provider-specific orchestration job."
         ))
         next_actions.append("compile a provider job from the conditioning payload")
+
+    if critic_only:
+        gates.append(_gate(
+            "primary_generator_output_dependency",
+            "pending",
+            detail=(
+                "This provider is an auxiliary post-generation critic. It requires "
+                "an already-generated mesh from a primary/baseline generator and "
+                "cannot satisfy Brickmen component-generation gates by itself."
+            ),
+            blocking=True,
+        ))
+        next_actions.append(
+            "supply a generated body mesh from a primary/baseline generator before running the articulation critic"
+        )
 
     if provider_job and not provider_run:
         adapter_status = str(
@@ -114,16 +134,28 @@ def summarize_pipeline_state(
         )
         if adapter_status == "runnable_cli_verified":
             run_status = "pending"
-            detail = (
-                "Verified CLI adapter exists, but no provider run report exists. "
-                "External provider environment and source/guide image input are required."
-            )
-            next_actions.append(
-                f"dry-run the {provider_id} adapter against an installed provider environment"
-            )
-            next_actions.append(
-                f"execute {provider_id} inference only after the dry-run plan is reviewed"
-            )
+            if critic_only:
+                detail = (
+                    "Verified critic CLI adapter exists, but no critic run report exists. "
+                    "A primary-generator mesh and installed critic environment are required."
+                )
+                next_actions.append(
+                    f"dry-run the {provider_id} critic against a generated body mesh"
+                )
+                next_actions.append(
+                    f"execute {provider_id} only after the critic dry-run plan is reviewed"
+                )
+            else:
+                detail = (
+                    "Verified CLI adapter exists, but no provider run report exists. "
+                    "External provider environment and source/guide image input are required."
+                )
+                next_actions.append(
+                    f"dry-run the {provider_id} adapter against an installed provider environment"
+                )
+                next_actions.append(
+                    f"execute {provider_id} inference only after the dry-run plan is reviewed"
+                )
         else:
             run_status = "blocked"
             detail = (
@@ -169,269 +201,312 @@ def summarize_pipeline_state(
             detail=detail,blocking=blocking
         ))
 
-    if output_mapping:
-        acceptance=output_mapping.get("acceptance",{})
-        if acceptance.get("structurally_complete"):
-            gates.append(_gate(
-                "component_mapping","complete",artifact=output_mapping_path,
-                detail="Every required component slot is mapped exactly once."
-            ))
-        else:
-            gates.append(_gate(
-                "component_mapping","incomplete",artifact=output_mapping_path,
-                detail=acceptance.get("status"),
-                blocking=True,
-            ))
-            next_actions.append("resolve every required provider output to a Brickmen component slot")
-    elif provider_run and provider_run.get("mode")=="executed":
-        gates.append(_gate(
-            "component_mapping","pending",artifact=output_mapping_path,
-            detail="Provider outputs have not been mapped to component slots.",
-            blocking=True,
-        ))
-        next_actions.append("map generated provider parts to Brickmen component slots")
-    else:
-        gates.append(_gate(
-            "component_mapping","not_started",artifact=output_mapping_path,
-            detail="Requires provider outputs first."
-        ))
-
-    if output_mapping and output_mapping.get("components"):
-        missing_transform=[
-            c["slot_id"] for c in output_mapping["components"]
-            if c.get("transform_matrix_to_brickmen_mm") is None
-        ]
-        if missing_transform:
-            gates.append(_gate(
-                "frame_alignment","incomplete",artifact=output_mapping_path,
-                detail="Missing provider->Brickmen-mm transforms: "+", ".join(missing_transform),
-                blocking=True,
-            ))
-            next_actions.append(
-                "propose/review provider-frame alignment candidates and record explicit transforms"
-            )
-        else:
-            gates.append(_gate(
-                "frame_alignment","complete",artifact=output_mapping_path,
-                detail="All mapped components have explicit provider->Brickmen-mm transforms."
-            ))
-    else:
-        gates.append(_gate(
-            "frame_alignment","not_started",artifact=output_mapping_path,
-            detail="Requires mapped provider components."
-        ))
-
-    if geometry_validation:
-        summary=geometry_validation.get("summary",{})
-        if summary.get("bbox_geometry_gate_passed"):
-            gates.append(_gate(
-                "bbox_geometry_validation","complete",artifact=geometry_validation_path,
-                detail=summary.get("status")
-            ))
-        else:
-            gates.append(_gate(
-                "bbox_geometry_validation","review_required",artifact=geometry_validation_path,
-                detail=summary.get("status"),blocking=True
-            ))
-            next_actions.append("repair scale/alignment/slot geometry until the coarse bbox gate passes")
-    else:
-        gates.append(_gate(
-            "bbox_geometry_validation","not_started",artifact=geometry_validation_path,
-            detail="Requires explicit transforms and mapped meshes."
-        ))
-
-    bbox_passed = bool(
-        geometry_validation
-        and geometry_validation.get("summary",{}).get(
-            "bbox_geometry_gate_passed"
-        )
-    )
-
-    if mesh_quality:
-        quality_pass = bool(
-            mesh_quality.get("summary",{}).get("mesh_quality_gate_passed")
-        )
-        gates.append(_gate(
-            "mesh_topology_preflight",
-            "complete" if quality_pass else "review_required",
-            artifact=mesh_quality_path,
-            detail=mesh_quality.get("summary",{}).get("status"),
-            blocking=not quality_pass,
-        ))
-        if not quality_pass:
-            next_actions.append(
-                "repair open/nonmanifold/degenerate/disconnected generated meshes"
-            )
-    elif output_mapping and output_mapping.get("components"):
-        gates.append(_gate(
-            "mesh_topology_preflight","pending",artifact=mesh_quality_path,
-            detail="Mapped provider meshes have not been audited for topology/closedness.",
-            blocking=True,
-        ))
-        next_actions.append("run generated-mesh topology preflight")
-    else:
-        gates.append(_gate(
-            "mesh_topology_preflight","not_started",artifact=mesh_quality_path,
-            detail="Requires mapped provider meshes."
-        ))
-
-    has_mechanical_keepouts = any(
-        constraint.get("placements")
-        for constraint in conditioning.get("mechanical_constraints",[])
-    )
-    if exact_keepout:
-        keepout_pass = bool(
-            exact_keepout.get("summary",{}).get("exact_keepout_gate_passed")
-        )
-        gates.append(_gate(
-            "exact_fixed_keepout_validation",
-            "complete" if keepout_pass else "review_required",
-            artifact=exact_keepout_path,
-            detail=exact_keepout.get("summary",{}).get("status"),
-            blocking=not keepout_pass,
-        ))
-        if not keepout_pass:
-            next_actions.append(
-                "repair generated shell material intersecting fixed mechanical keep-outs"
-            )
-    elif has_mechanical_keepouts and output_mapping and output_mapping.get("components"):
-        gates.append(_gate(
-            "exact_fixed_keepout_validation","pending",artifact=exact_keepout_path,
-            detail="Run triangle/inside-solid validation for scoped mechanical keep-outs.",
-            blocking=True,
-        ))
-        next_actions.append("run exact fixed mechanical keep-out validation")
-    elif has_mechanical_keepouts:
-        gates.append(_gate(
-            "exact_fixed_keepout_validation","not_started",artifact=exact_keepout_path,
-            detail="Requires mapped and transformed generated components."
-        ))
-    else:
-        gates.append(_gate(
-            "exact_fixed_keepout_validation","not_applicable",artifact=exact_keepout_path,
-            detail="No scoped fixed mechanical keep-outs are present."
-        ))
-
-    if contact_regions:
-        contact_joints=contact_regions.get("joints",[])
-        validated_regions=[
-            region
-            for joint in contact_joints
-            for region in joint.get("allowed_contact_regions_mm",[])
-            if region.get("status") in {"validated_prototype","production_approved"}
-        ]
-        pending_joints=[
-            joint.get("joint_id")
-            for joint in contact_joints
-            if not any(
-                region.get("status") in {"validated_prototype","production_approved"}
-                for region in joint.get("allowed_contact_regions_mm",[])
-            )
-        ]
-        gates.append(_gate(
-            "joint_contact_region_evidence",
+    if critic_only:
+        for gate_id, detail in (
             (
-                "validated"
-                if contact_joints and not pending_joints
-                else "partial_or_pending"
+                "component_mapping",
+                "Not applicable: post-generation critic output is auxiliary evidence, not primary generated components.",
             ),
-            artifact=contact_regions_path,
-            detail=(
-                f"{len(validated_regions)} validated contact region(s); "
-                f"{len(pending_joints)} joint(s) still have no validated contact region."
+            (
+                "frame_alignment",
+                "Not applicable to critic-only state; alignment belongs to the primary generated mesh pipeline.",
             ),
-            blocking=False,
-        ))
+            (
+                "bbox_geometry_validation",
+                "Not applicable to critic-only state.",
+            ),
+            (
+                "mesh_topology_preflight",
+                "Not applicable to critic-only state.",
+            ),
+            (
+                "exact_fixed_keepout_validation",
+                "Not applicable to critic-only state.",
+            ),
+            (
+                "joint_contact_region_evidence",
+                "Joint-contact evidence belongs to the primary geometry validation pipeline.",
+            ),
+            (
+                "sampled_pose_collision_validation",
+                "Not applicable to critic-only state.",
+            ),
+            (
+                "continuous_motion_collision_validation",
+                "Not applicable to critic-only state.",
+            ),
+        ):
+            gates.append(_gate(
+                gate_id,
+                "not_applicable_to_critic_provider",
+                detail=detail,
+                blocking=False,
+            ))
     else:
-        gates.append(_gate(
-            "joint_contact_region_evidence","not_supplied",
-            artifact=contact_regions_path,
-            detail=(
-                "No joint-contact record supplied. Sampled collision may still run, "
-                "but no joint-local collision can be suppressed as intentional contact."
-            ),
-            blocking=False,
-        ))
+        if output_mapping:
+            acceptance=output_mapping.get("acceptance",{})
+            if acceptance.get("structurally_complete"):
+                gates.append(_gate(
+                    "component_mapping","complete",artifact=output_mapping_path,
+                    detail="Every required component slot is mapped exactly once."
+                ))
+            else:
+                gates.append(_gate(
+                    "component_mapping","incomplete",artifact=output_mapping_path,
+                    detail=acceptance.get("status"),
+                    blocking=True,
+                ))
+                next_actions.append("resolve every required provider output to a Brickmen component slot")
+        elif provider_run and provider_run.get("mode")=="executed":
+            gates.append(_gate(
+                "component_mapping","pending",artifact=output_mapping_path,
+                detail="Provider outputs have not been mapped to component slots.",
+                blocking=True,
+            ))
+            next_actions.append("map generated provider parts to Brickmen component slots")
+        else:
+            gates.append(_gate(
+                "component_mapping","not_started",artifact=output_mapping_path,
+                detail="Requires provider outputs first."
+            ))
 
-    if pose_collision:
-        pose_pass = bool(
-            pose_collision.get("summary",{}).get(
+        if output_mapping and output_mapping.get("components"):
+            missing_transform=[
+                c["slot_id"] for c in output_mapping["components"]
+                if c.get("transform_matrix_to_brickmen_mm") is None
+            ]
+            if missing_transform:
+                gates.append(_gate(
+                    "frame_alignment","incomplete",artifact=output_mapping_path,
+                    detail="Missing provider->Brickmen-mm transforms: "+", ".join(missing_transform),
+                    blocking=True,
+                ))
+                next_actions.append(
+                    "propose/review provider-frame alignment candidates and record explicit transforms"
+                )
+            else:
+                gates.append(_gate(
+                    "frame_alignment","complete",artifact=output_mapping_path,
+                    detail="All mapped components have explicit provider->Brickmen-mm transforms."
+                ))
+        else:
+            gates.append(_gate(
+                "frame_alignment","not_started",artifact=output_mapping_path,
+                detail="Requires mapped provider components."
+            ))
+
+        if geometry_validation:
+            summary=geometry_validation.get("summary",{})
+            if summary.get("bbox_geometry_gate_passed"):
+                gates.append(_gate(
+                    "bbox_geometry_validation","complete",artifact=geometry_validation_path,
+                    detail=summary.get("status")
+                ))
+            else:
+                gates.append(_gate(
+                    "bbox_geometry_validation","review_required",artifact=geometry_validation_path,
+                    detail=summary.get("status"),blocking=True
+                ))
+                next_actions.append("repair scale/alignment/slot geometry until the coarse bbox gate passes")
+        else:
+            gates.append(_gate(
+                "bbox_geometry_validation","not_started",artifact=geometry_validation_path,
+                detail="Requires explicit transforms and mapped meshes."
+            ))
+
+        bbox_passed = bool(
+            geometry_validation
+            and geometry_validation.get("summary",{}).get(
+                "bbox_geometry_gate_passed"
+            )
+        )
+
+        if mesh_quality:
+            quality_pass = bool(
+                mesh_quality.get("summary",{}).get("mesh_quality_gate_passed")
+            )
+            gates.append(_gate(
+                "mesh_topology_preflight",
+                "complete" if quality_pass else "review_required",
+                artifact=mesh_quality_path,
+                detail=mesh_quality.get("summary",{}).get("status"),
+                blocking=not quality_pass,
+            ))
+            if not quality_pass:
+                next_actions.append(
+                    "repair open/nonmanifold/degenerate/disconnected generated meshes"
+                )
+        elif output_mapping and output_mapping.get("components"):
+            gates.append(_gate(
+                "mesh_topology_preflight","pending",artifact=mesh_quality_path,
+                detail="Mapped provider meshes have not been audited for topology/closedness.",
+                blocking=True,
+            ))
+            next_actions.append("run generated-mesh topology preflight")
+        else:
+            gates.append(_gate(
+                "mesh_topology_preflight","not_started",artifact=mesh_quality_path,
+                detail="Requires mapped provider meshes."
+            ))
+
+        has_mechanical_keepouts = any(
+            constraint.get("placements")
+            for constraint in conditioning.get("mechanical_constraints",[])
+        )
+        if exact_keepout:
+            keepout_pass = bool(
+                exact_keepout.get("summary",{}).get("exact_keepout_gate_passed")
+            )
+            gates.append(_gate(
+                "exact_fixed_keepout_validation",
+                "complete" if keepout_pass else "review_required",
+                artifact=exact_keepout_path,
+                detail=exact_keepout.get("summary",{}).get("status"),
+                blocking=not keepout_pass,
+            ))
+            if not keepout_pass:
+                next_actions.append(
+                    "repair generated shell material intersecting fixed mechanical keep-outs"
+                )
+        elif has_mechanical_keepouts and output_mapping and output_mapping.get("components"):
+            gates.append(_gate(
+                "exact_fixed_keepout_validation","pending",artifact=exact_keepout_path,
+                detail="Run triangle/inside-solid validation for scoped mechanical keep-outs.",
+                blocking=True,
+            ))
+            next_actions.append("run exact fixed mechanical keep-out validation")
+        elif has_mechanical_keepouts:
+            gates.append(_gate(
+                "exact_fixed_keepout_validation","not_started",artifact=exact_keepout_path,
+                detail="Requires mapped and transformed generated components."
+            ))
+        else:
+            gates.append(_gate(
+                "exact_fixed_keepout_validation","not_applicable",artifact=exact_keepout_path,
+                detail="No scoped fixed mechanical keep-outs are present."
+            ))
+
+        if contact_regions:
+            contact_joints=contact_regions.get("joints",[])
+            validated_regions=[
+                region
+                for joint in contact_joints
+                for region in joint.get("allowed_contact_regions_mm",[])
+                if region.get("status") in {"validated_prototype","production_approved"}
+            ]
+            pending_joints=[
+                joint.get("joint_id")
+                for joint in contact_joints
+                if not any(
+                    region.get("status") in {"validated_prototype","production_approved"}
+                    for region in joint.get("allowed_contact_regions_mm",[])
+                )
+            ]
+            gates.append(_gate(
+                "joint_contact_region_evidence",
+                (
+                    "validated"
+                    if contact_joints and not pending_joints
+                    else "partial_or_pending"
+                ),
+                artifact=contact_regions_path,
+                detail=(
+                    f"{len(validated_regions)} validated contact region(s); "
+                    f"{len(pending_joints)} joint(s) still have no validated contact region."
+                ),
+                blocking=False,
+            ))
+        else:
+            gates.append(_gate(
+                "joint_contact_region_evidence","not_supplied",
+                artifact=contact_regions_path,
+                detail=(
+                    "No joint-contact record supplied. Sampled collision may still run, "
+                    "but no joint-local collision can be suppressed as intentional contact."
+                ),
+                blocking=False,
+            ))
+
+        if pose_collision:
+            pose_pass = bool(
+                pose_collision.get("summary",{}).get(
+                    "sampled_pose_collision_gate_passed"
+                )
+            )
+            gates.append(_gate(
+                "sampled_pose_collision_validation",
+                "complete" if pose_pass else "review_required",
+                artifact=pose_collision_path,
+                detail=pose_collision.get("summary",{}).get("status"),
+                blocking=not pose_pass,
+            ))
+            if not pose_pass:
+                next_actions.append(
+                    "repair disallowed sampled component collisions or validate the intentional joint-local contact region from physical evidence"
+                )
+        elif bbox_passed and output_mapping and output_mapping.get("components"):
+            gates.append(_gate(
+                "sampled_pose_collision_validation","pending",
+                artifact=pose_collision_path,
+                detail=(
+                    "Run triangle-level collision checks across sampled joint poses. "
+                    "Pending/candidate contact regions must not suppress collisions."
+                ),
+                blocking=True,
+            ))
+            next_actions.append(
+                "run evidence-gated pose-sampled triangle collision validation"
+            )
+        else:
+            gates.append(_gate(
+                "sampled_pose_collision_validation","not_started",
+                artifact=pose_collision_path,
+                detail="Requires mapped and aligned generated components."
+            ))
+
+        sampled_pass = bool(
+            pose_collision
+            and pose_collision.get("summary",{}).get(
                 "sampled_pose_collision_gate_passed"
             )
         )
-        gates.append(_gate(
-            "sampled_pose_collision_validation",
-            "complete" if pose_pass else "review_required",
-            artifact=pose_collision_path,
-            detail=pose_collision.get("summary",{}).get("status"),
-            blocking=not pose_pass,
-        ))
-        if not pose_pass:
-            next_actions.append(
-                "repair disallowed sampled component collisions or validate the intentional joint-local contact region from physical evidence"
+        if continuous_collision:
+            continuous_pass = bool(
+                continuous_collision.get("summary",{}).get(
+                    "continuous_rotation_collision_gate_passed"
+                )
             )
-    elif bbox_passed and output_mapping and output_mapping.get("components"):
-        gates.append(_gate(
-            "sampled_pose_collision_validation","pending",
-            artifact=pose_collision_path,
-            detail=(
-                "Run triangle-level collision checks across sampled joint poses. "
-                "Pending/candidate contact regions must not suppress collisions."
-            ),
-            blocking=True,
-        ))
-        next_actions.append(
-            "run evidence-gated pose-sampled triangle collision validation"
-        )
-    else:
-        gates.append(_gate(
-            "sampled_pose_collision_validation","not_started",
-            artifact=pose_collision_path,
-            detail="Requires mapped and aligned generated components."
-        ))
+            gates.append(_gate(
+                "continuous_motion_collision_validation",
+                "complete" if continuous_pass else "review_required",
+                artifact=continuous_collision_path,
+                detail=continuous_collision.get("summary",{}).get("status"),
+                blocking=not continuous_pass,
+            ))
+            if not continuous_pass:
+                next_actions.append(
+                    "resolve disallowed collisions or unresolved continuous near-contact intervals; validated contact regions may suppress only evidence-backed intentional contact"
+                )
+        elif sampled_pass:
+            gates.append(_gate(
+                "continuous_motion_collision_validation","pending",
+                artifact=continuous_collision_path,
+                detail=(
+                    "Sampled poses passed; run the conservative continuous-rotation "
+                    "collision proof across each declared joint range."
+                ),
+                blocking=True,
+            ))
+            next_actions.append(
+                "run conservative continuous collision validation for declared joint rotations"
+            )
+        else:
+            gates.append(_gate(
+                "continuous_motion_collision_validation","not_started",
+                artifact=continuous_collision_path,
+                detail="Requires a passing sampled-pose collision gate first."
+            ))
 
-    sampled_pass = bool(
-        pose_collision
-        and pose_collision.get("summary",{}).get(
-            "sampled_pose_collision_gate_passed"
-        )
-    )
-    if continuous_collision:
-        continuous_pass = bool(
-            continuous_collision.get("summary",{}).get(
-                "continuous_rotation_collision_gate_passed"
-            )
-        )
-        gates.append(_gate(
-            "continuous_motion_collision_validation",
-            "complete" if continuous_pass else "review_required",
-            artifact=continuous_collision_path,
-            detail=continuous_collision.get("summary",{}).get("status"),
-            blocking=not continuous_pass,
-        ))
-        if not continuous_pass:
-            next_actions.append(
-                "resolve disallowed collisions or unresolved continuous near-contact intervals; validated contact regions may suppress only evidence-backed intentional contact"
-            )
-    elif sampled_pass:
-        gates.append(_gate(
-            "continuous_motion_collision_validation","pending",
-            artifact=continuous_collision_path,
-            detail=(
-                "Sampled poses passed; run the conservative continuous-rotation "
-                "collision proof across each declared joint range."
-            ),
-            blocking=True,
-        ))
-        next_actions.append(
-            "run conservative continuous collision validation for declared joint rotations"
-        )
-    else:
-        gates.append(_gate(
-            "continuous_motion_collision_validation","not_started",
-            artifact=continuous_collision_path,
-            detail="Requires a passing sampled-pose collision gate first."
-        ))
 
     mechanical=conditioning.get("mechanical_constraints",[])
     unapproved=[
@@ -471,6 +546,11 @@ def summarize_pipeline_state(
         "architecture_id":conditioning["architecture_id"],
         "skeleton_id":conditioning.get("skeleton_id"),
         "provider_id":provider_id,
+        "provider_pipeline_stage":provider_stage,
+        "state_scope":(
+            "auxiliary_post_generation_critic"
+            if critic_only else "primary_body_generation"
+        ),
         "target_height_mm":conditioning.get("target_height_mm"),
         "gates":gates,
         "next_actions":dedup,
