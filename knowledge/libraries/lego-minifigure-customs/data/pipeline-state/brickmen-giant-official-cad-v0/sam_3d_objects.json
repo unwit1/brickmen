@@ -3,6 +3,8 @@
   "architecture_id": "brickmen_giant_v0",
   "skeleton_id": "brickmen_giant_v0_skeleton",
   "provider_id": "sam_3d_objects",
+  "provider_pipeline_stage": "baseline_generator",
+  "state_scope": "primary_body_generation",
   "target_height_mm": 62.0,
   "gates": [
     {
@@ -30,7 +32,7 @@
       "gate_id": "provider_job",
       "status": "complete",
       "artifact": "knowledge/libraries/lego-minifigure-customs/data/provider-jobs/brickmen-giant-official-cad-v0/sam_3d_objects.json",
-      "detail": "Provider job compiled for sam_3d_objects.",
+      "detail": "Provider job compiled for sam_3d_objects (baseline_generator).",
       "blocking": false
     },
     {
