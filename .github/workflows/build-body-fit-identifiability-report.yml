@@ -13,6 +13,10 @@ on:
       - "knowledge/libraries/lego-minifigure-customs/data/reference-landmarks/*-front.json"
   workflow_dispatch:
 
+concurrency:
+  group: brickmen-generated-data-writers
+  cancel-in-progress: false
+
 permissions:
   contents: write
 
@@ -71,4 +75,5 @@ jobs:
             exit 0
           fi
           git commit -m "data: update seed body fit analysis reports"
+          git pull --rebase origin main
           git push origin HEAD:main
