@@ -462,3 +462,34 @@ Highest-priority next implementation:
 - [ ] add Bane/Thanos/Darkseid/Gorilla Grodd/Blob/Kingpin control corpora
 - [ ] add fur/rock/metal/scales/armor surface-material grammars
 - [ ] benchmark selective component regeneration after one-body-part revisions
+
+
+### Alpha Venom and morphology continuation — 2026-09-27
+
+- [x] verify Alpha Toys Venom AF321/AF325 body was missing as a distinct architecture
+- [x] establish ~4–4.5 cm Alpha muscular/symbiote hybrid architecture candidate
+- [x] separate AF321-AF326 from Alpha ~7 cm Hulk-family body
+- [x] treat AF327-AF332 as related symbiote revision/family candidate
+- [x] preserve MaxiFig as source terminology rather than scale truth
+- [x] add Alpha body-family census
+- [x] add Alpha symbiote same-family/different-character corpus
+- [x] add Venom cross-architecture study
+- [x] add Alpha Venom physical metrology target
+- [x] refine Brickmen Broad body target
+- [x] create Brickmen Broad architecture specification
+- [x] add diverse morphology control corpus
+- [x] add morphology archetype registry
+- [x] add surface-material profile registry
+- [x] add frozen non-standard morphology benchmark
+
+Next:
+- [ ] acquire AF325/AF321 physical sample
+- [ ] acquire AF328 second sample to resolve AF321-326 vs AF327-332 mechanical equivalence
+- [ ] compare AF325 physically against AF345/AF362 7 cm body
+- [ ] build Brickmen Broad P0 mechanical mule
+- [ ] add Broad shoulder/wrist/waist JointCartridge coupons
+- [ ] materialize Blob/Kingpin/Grodd/Thanos/Bane/Abomination canonical image records
+- [ ] measure morphology feature vectors from normalized images
+- [ ] implement SurfaceMaterialProfile compiler
+- [ ] run nonstandard_body_morphology_v0 benchmark across Broad/Mid/Giant targets
+- [ ] train no morphology model until reviewed feature labels and unknown handling are stable
