@@ -1,0 +1,349 @@
+{
+  "schema_version": "0.1",
+  "status": "research_contract",
+  "purpose": "Provider-independent entities and states for automated additive manufacturing of custom minifigure parts.",
+  "provenance": {
+    "created": "2026-09-27",
+    "library": "lego-minifigure-customs"
+  },
+  "entities": {
+    "machine_profile": {
+      "required": [
+        "machine_profile_id",
+        "process",
+        "manufacturer",
+        "model",
+        "capabilities",
+        "status"
+      ],
+      "fields": [
+        "machine_profile_id",
+        "serial_or_asset_id",
+        "process",
+        "manufacturer",
+        "model",
+        "firmware",
+        "controller",
+        "build_volume_mm",
+        "capabilities",
+        "installed_consumables",
+        "usage_counters",
+        "network_adapter",
+        "safety_interlocks",
+        "maintenance_state",
+        "calibration_state",
+        "status",
+        "sources"
+      ]
+    },
+    "material_profile": {
+      "required": [
+        "material_profile_id",
+        "process",
+        "material_name",
+        "revision",
+        "status"
+      ],
+      "fields": [
+        "material_profile_id",
+        "process",
+        "manufacturer",
+        "material_name",
+        "sku",
+        "lot",
+        "base_material_class",
+        "pigment_recipe",
+        "blend_components",
+        "blend_ratios_by_mass",
+        "storage_conditions",
+        "conditioning",
+        "manufacturer_properties",
+        "brickmen_measured_properties",
+        "printer_compatibility",
+        "exposure_or_extrusion_profile_ids",
+        "wash_profile_id",
+        "cure_profile_id",
+        "safety_data",
+        "status",
+        "sources"
+      ]
+    },
+    "connector_profile": {
+      "required": [
+        "connector_profile_id",
+        "connector_family",
+        "revision",
+        "fit_class",
+        "status"
+      ],
+      "fields": [
+        "connector_profile_id",
+        "connector_family",
+        "revision",
+        "nominal_reference_geometry",
+        "parametric_cad_source",
+        "mating_part_scope",
+        "keepout_envelope",
+        "insertion_axis",
+        "fit_class",
+        "cad_compensation_model",
+        "approved_machine_material_profiles",
+        "measurement_evidence",
+        "force_evidence",
+        "cycle_evidence",
+        "status",
+        "supersedes"
+      ]
+    },
+    "build_profile": {
+      "required": [
+        "build_profile_id",
+        "process",
+        "machine_profile_id",
+        "material_profile_id"
+      ],
+      "fields": [
+        "build_profile_id",
+        "process",
+        "machine_profile_id",
+        "material_profile_id",
+        "layer_height_mm",
+        "exposure_settings",
+        "extrusion_settings",
+        "temperature_settings",
+        "orientation_policy",
+        "support_profile_id",
+        "raft_profile_id",
+        "slicer",
+        "slicer_version",
+        "slicer_profile_hash",
+        "post_slice_validator",
+        "post_slice_policy_revision",
+        "status"
+      ]
+    },
+    "manufacturing_job": {
+      "required": [
+        "job_id",
+        "part_revision",
+        "quantity",
+        "process",
+        "status"
+      ],
+      "fields": [
+        "job_id",
+        "part_revision",
+        "quantity",
+        "process",
+        "machine_profile_id",
+        "material_profile_id",
+        "connector_profile_ids",
+        "build_profile_id",
+        "postprocess_profile_id",
+        "qc_profile_id",
+        "source_geometry_hash",
+        "manufacturing_3mf_hash",
+        "slice_hash",
+        "rights_record_id",
+        "intended_use_state",
+        "scheduled_at",
+        "started_at",
+        "completed_at",
+        "status",
+        "exceptions"
+      ]
+    },
+    "calibration_build": {
+      "required": [
+        "calibration_id",
+        "machine_profile_id",
+        "material_profile_id",
+        "coupon_family",
+        "status"
+      ],
+      "fields": [
+        "calibration_id",
+        "machine_profile_id",
+        "material_profile_id",
+        "build_profile_id",
+        "coupon_family",
+        "cad_values",
+        "orientation",
+        "build_positions",
+        "raw_measurements",
+        "derived_compensation",
+        "sample_count",
+        "confidence",
+        "status",
+        "approved_profile_revision"
+      ]
+    },
+    "inspection_record": {
+      "required": [
+        "inspection_id",
+        "job_id",
+        "sample_id",
+        "inspection_type",
+        "result"
+      ],
+      "fields": [
+        "inspection_id",
+        "job_id",
+        "sample_id",
+        "inspection_type",
+        "device_id",
+        "device_calibration_state",
+        "fixture_id",
+        "raw_data_uri",
+        "summary_measurements",
+        "images",
+        "acceptance_limits",
+        "result",
+        "defect_codes",
+        "reviewer",
+        "timestamp"
+      ]
+    },
+    "force_test": {
+      "required": [
+        "force_test_id",
+        "sample_id",
+        "fixture_id",
+        "cycle_count",
+        "result"
+      ],
+      "fields": [
+        "force_test_id",
+        "sample_id",
+        "fixture_id",
+        "mating_fixture_or_part_id",
+        "sensor_id",
+        "sensor_range",
+        "stand_id",
+        "approach_speed",
+        "preload",
+        "target_displacement",
+        "cycle_count",
+        "peak_insertion_forces",
+        "peak_removal_forces",
+        "force_displacement_data_uri",
+        "visible_damage",
+        "failure_cycle",
+        "result"
+      ]
+    },
+    "postprocess_profile": {
+      "required": [
+        "postprocess_profile_id",
+        "process",
+        "revision"
+      ],
+      "fields": [
+        "postprocess_profile_id",
+        "process",
+        "revision",
+        "wash_solvent",
+        "wash_stages",
+        "wash_time",
+        "agitation",
+        "dry_time",
+        "cure_station",
+        "cure_wavelength",
+        "cure_time",
+        "cure_temperature",
+        "support_removal_method",
+        "surface_finish_steps",
+        "decoration_handoff",
+        "safety_requirements",
+        "status"
+      ]
+    },
+    "failure_event": {
+      "required": [
+        "failure_id",
+        "job_id",
+        "failure_code",
+        "stage",
+        "timestamp"
+      ],
+      "fields": [
+        "failure_id",
+        "job_id",
+        "sample_ids",
+        "failure_code",
+        "stage",
+        "severity",
+        "timestamp",
+        "machine_state",
+        "material_state",
+        "evidence",
+        "automatic_action",
+        "root_cause_status",
+        "root_cause",
+        "corrective_action",
+        "profile_change_candidate"
+      ]
+    }
+  },
+  "enums": {
+    "process": [
+      "msla",
+      "sla",
+      "dlp",
+      "fdm",
+      "cast",
+      "printed_injection_mold",
+      "traditional_injection_mold",
+      "outsourced"
+    ],
+    "profile_status": [
+      "observed",
+      "experimental",
+      "candidate",
+      "validation_pending",
+      "validated",
+      "production_approved",
+      "superseded",
+      "blocked"
+    ],
+    "job_status": [
+      "planned",
+      "preflight",
+      "ready",
+      "queued",
+      "printing",
+      "postprocess",
+      "inspection",
+      "accepted",
+      "rework",
+      "rejected",
+      "blocked",
+      "complete"
+    ],
+    "fit_class": [
+      "free_clearance",
+      "close_clearance",
+      "removable_friction",
+      "firm_friction",
+      "interference",
+      "damaging",
+      "failed"
+    ],
+    "intended_use_state": [
+      "research_only",
+      "display_collectible",
+      "general_use_review",
+      "childrens_product_review",
+      "approved_for_marketed_use",
+      "blocked"
+    ]
+  },
+  "hard_rules": [
+    "Never substitute material, connector revision, build profile, or postprocess profile without recording a new revision and provenance.",
+    "Production-critical connector values require empirical validation.",
+    "A new material blend is a new material profile.",
+    "A changed cure schedule can invalidate dimensional/mechanical approval.",
+    "No production promotion from digital-only evidence.",
+    "No child-directed marketing state without the applicable safety review."
+  ]
+}
