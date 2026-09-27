@@ -48,6 +48,10 @@ def summarize_pipeline_state(
     output_mapping_path: str | None=None,
     geometry_validation: Mapping[str,Any] | None=None,
     geometry_validation_path: str | None=None,
+    mesh_quality: Mapping[str,Any] | None=None,
+    mesh_quality_path: str | None=None,
+    exact_keepout: Mapping[str,Any] | None=None,
+    exact_keepout_path: str | None=None,
 ) -> dict[str,Any]:
     gates=[]
     next_actions=[]
@@ -230,21 +234,94 @@ def summarize_pipeline_state(
             detail="Requires explicit transforms and mapped meshes."
         ))
 
-    if geometry_validation and geometry_validation.get("summary",{}).get(
-        "bbox_geometry_gate_passed"
-    ):
+    bbox_passed = bool(
+        geometry_validation
+        and geometry_validation.get("summary",{}).get(
+            "bbox_geometry_gate_passed"
+        )
+    )
+
+    if mesh_quality:
+        quality_pass = bool(
+            mesh_quality.get("summary",{}).get("mesh_quality_gate_passed")
+        )
         gates.append(_gate(
-            "exact_collision_boolean_validation","pending",
-            detail="AABB checks passed; exact mesh collision/boolean clearance is still required.",
+            "mesh_topology_preflight",
+            "complete" if quality_pass else "review_required",
+            artifact=mesh_quality_path,
+            detail=mesh_quality.get("summary",{}).get("status"),
+            blocking=not quality_pass,
+        ))
+        if not quality_pass:
+            next_actions.append(
+                "repair open/nonmanifold/degenerate/disconnected generated meshes"
+            )
+    elif output_mapping and output_mapping.get("components"):
+        gates.append(_gate(
+            "mesh_topology_preflight","pending",artifact=mesh_quality_path,
+            detail="Mapped provider meshes have not been audited for topology/closedness.",
+            blocking=True,
+        ))
+        next_actions.append("run generated-mesh topology preflight")
+    else:
+        gates.append(_gate(
+            "mesh_topology_preflight","not_started",artifact=mesh_quality_path,
+            detail="Requires mapped provider meshes."
+        ))
+
+    has_mechanical_keepouts = any(
+        constraint.get("placements")
+        for constraint in conditioning.get("mechanical_constraints",[])
+    )
+    if exact_keepout:
+        keepout_pass = bool(
+            exact_keepout.get("summary",{}).get("exact_keepout_gate_passed")
+        )
+        gates.append(_gate(
+            "exact_fixed_keepout_validation",
+            "complete" if keepout_pass else "review_required",
+            artifact=exact_keepout_path,
+            detail=exact_keepout.get("summary",{}).get("status"),
+            blocking=not keepout_pass,
+        ))
+        if not keepout_pass:
+            next_actions.append(
+                "repair generated shell material intersecting fixed mechanical keep-outs"
+            )
+    elif has_mechanical_keepouts and output_mapping and output_mapping.get("components"):
+        gates.append(_gate(
+            "exact_fixed_keepout_validation","pending",artifact=exact_keepout_path,
+            detail="Run triangle/inside-solid validation for scoped mechanical keep-outs.",
+            blocking=True,
+        ))
+        next_actions.append("run exact fixed mechanical keep-out validation")
+    elif has_mechanical_keepouts:
+        gates.append(_gate(
+            "exact_fixed_keepout_validation","not_started",artifact=exact_keepout_path,
+            detail="Requires mapped and transformed generated components."
+        ))
+    else:
+        gates.append(_gate(
+            "exact_fixed_keepout_validation","not_applicable",artifact=exact_keepout_path,
+            detail="No scoped fixed mechanical keep-outs are present."
+        ))
+
+    if bbox_passed and output_mapping and output_mapping.get("components"):
+        gates.append(_gate(
+            "exact_pose_collision_validation","blocked",
+            detail=(
+                "Exact pose-wise component collision needs explicit joint-local allowed-contact "
+                "regions so intended shoulder/wrist mating contact is not misclassified."
+            ),
             blocking=True,
         ))
         next_actions.append(
-            "run exact triangle-level keep-out and pose collision validation"
+            "define/review joint-local allowed-contact regions, then run exact pose-wise triangle collision"
         )
     else:
         gates.append(_gate(
-            "exact_collision_boolean_validation","not_started",
-            detail="Requires a passing coarse geometry gate."
+            "exact_pose_collision_validation","not_started",
+            detail="Requires mapped, aligned geometry and joint-local allowed-contact regions."
         ))
 
     mechanical=conditioning.get("mechanical_constraints",[])
@@ -309,6 +386,8 @@ def main() -> int:
     parser.add_argument("--provider-run",default=None)
     parser.add_argument("--output-mapping",default=None)
     parser.add_argument("--geometry-validation",default=None)
+    parser.add_argument("--mesh-quality",default=None)
+    parser.add_argument("--exact-keepout",default=None)
     parser.add_argument("-o","--output",required=True)
     args=parser.parse_args()
 
@@ -327,6 +406,10 @@ def main() -> int:
         output_mapping_path=args.output_mapping,
         geometry_validation=load_json(args.geometry_validation),
         geometry_validation_path=args.geometry_validation,
+        mesh_quality=load_json(args.mesh_quality),
+        mesh_quality_path=args.mesh_quality,
+        exact_keepout=load_json(args.exact_keepout),
+        exact_keepout_path=args.exact_keepout,
     )
     Path(args.output).write_text(
         json.dumps(result,indent=2)+"\n",encoding="utf-8"
