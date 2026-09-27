@@ -128,3 +128,44 @@ def test_zero_extent_dummy_part_is_not_silently_mapped(tmp_path: Path):
         item["path"]==str(dummy)
         for item in result["invalid_or_degenerate_outputs"]
     )
+
+
+def test_mapping_proposal_preserves_provider_part_provenance(tmp_path: Path):
+    head=tmp_path/"part_03.obj"
+    torso=tmp_path/"part_07.obj"
+    box_obj(head,[10,0,8],[2,2,2])
+    box_obj(torso,[10,0,4],[4,2,4])
+    provider_run={
+        "provider_id":"fake",
+        "provider_job_id":"job",
+        "output_classification":{
+            "component_candidates":[str(head),str(torso)],
+            "component_records":[
+                {
+                    "path":str(head),
+                    "provider_part_id":"part_03",
+                    "provider_part_index":3,
+                    "provider_manifest":"/tmp/manifest.json",
+                    "source_role":"generated_component",
+                },
+                {
+                    "path":str(torso),
+                    "provider_part_id":"part_07",
+                    "provider_part_index":7,
+                    "provider_manifest":"/tmp/manifest.json",
+                    "source_role":"generated_component",
+                },
+            ],
+        },
+    }
+    result=propose_output_mapping(
+        conditioning(),provider_run,provider_job=job()
+    )
+    assigned={
+        item["provider_part_path"]:item
+        for item in result["global_alignment_candidates"][0]["assignments"]
+    }
+    assert assigned[str(head)]["provider_part_id"]=="part_03"
+    assert assigned[str(head)]["provider_part_index"]==3
+    assert assigned[str(torso)]["provider_part_id"]=="part_07"
+    assert assigned[str(torso)]["provider_manifest"]=="/tmp/manifest.json"
