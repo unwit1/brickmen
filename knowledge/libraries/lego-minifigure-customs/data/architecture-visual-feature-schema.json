@@ -1,0 +1,94 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-27",
+  "purpose": "Normalized visual and geometric features for recognizing and comparing figure architectures.",
+  "feature_groups": {
+    "global_scale": [
+      "assembled_height_mm",
+      "body_width_mm",
+      "body_depth_mm",
+      "head_height_ratio",
+      "head_width_ratio"
+    ],
+    "landmarks": [
+      "head_center",
+      "neck_center",
+      "left_shoulder_center",
+      "right_shoulder_center",
+      "left_elbow_center",
+      "right_elbow_center",
+      "left_wrist_center",
+      "right_wrist_center",
+      "hip_center",
+      "left_knee_center",
+      "right_knee_center",
+      "left_foot_center",
+      "right_foot_center"
+    ],
+    "normalized_ratios": [
+      "shoulder_width_over_height",
+      "torso_width_over_height",
+      "waist_width_over_shoulder_width",
+      "arm_length_over_height",
+      "forearm_length_over_upper_arm",
+      "hand_width_over_head_width",
+      "leg_length_over_height",
+      "head_height_over_height",
+      "chest_depth_over_height"
+    ],
+    "component_topology": [
+      "head_component_type",
+      "torso_component_count",
+      "arm_segment_count",
+      "hand_separate",
+      "hip_separate",
+      "legs_independent",
+      "feet_integrated",
+      "hair_headwear_separate"
+    ],
+    "visible_joint_cues": [
+      "neck_seam",
+      "shoulder_seam",
+      "elbow_seam",
+      "wrist_seam",
+      "hip_seam",
+      "knee_seam",
+      "techniclilke_pin_visible",
+      "standard_bar_grip_visible"
+    ],
+    "morphology": [
+      "torso_mass_class",
+      "shoulder_mass_class",
+      "waist_taper_class",
+      "limb_anatomy_class",
+      "hand_scale_class",
+      "head_scale_class",
+      "leg_shape_class",
+      "silhouette_blockiness"
+    ],
+    "style_distribution": [
+      "printed_muscle_fraction",
+      "sculpted_muscle_fraction",
+      "major_relief_density",
+      "shallow_relief_density",
+      "decoration_density",
+      "surface_texture_density"
+    ],
+    "compatibility_cues": [
+      "standard_minifigure_head_candidate",
+      "standard_minifigure_hand_candidate",
+      "standard_minifigure_hip_candidate",
+      "standard_bar_grip_candidate",
+      "technic_pin_candidate"
+    ]
+  },
+  "evidence_levels": {
+    "catalog_fact": "Explicit catalog/inventory/manufacturer evidence.",
+    "canonical_image_measurement": "Measured from normalized known-scale imagery.",
+    "visual_inference": "Visible morphology/joint cue without physical confirmation.",
+    "physical_measurement": "Measured sample.",
+    "validated_connector": "Repeated physical compatibility evidence."
+  },
+  "unknown_handling": "Missing/occluded features remain null; do not impute them as negative.",
+  "recognition_rule": "Mechanical family assignment may use visual features as candidate evidence, but production-critical compatibility requires physical_measurement or validated_connector evidence."
+}
