@@ -1,0 +1,142 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-27",
+  "status": "physical_execution_pending",
+  "objective": "Qualify reusable joint primitives for Brickmen Mid/XL/Giant architectures.",
+  "tests": [
+    {
+      "test_id": "J001",
+      "name": "rotational_pin_clearance_ladder",
+      "variables": [
+        "pin_diameter",
+        "bore_diameter",
+        "bearing_length",
+        "orientation"
+      ],
+      "outputs": [
+        "assembly_force",
+        "breakaway_torque",
+        "running_torque",
+        "play",
+        "damage"
+      ]
+    },
+    {
+      "test_id": "J002",
+      "name": "ball_socket_geometry_matrix",
+      "variables": [
+        "ball_diameter",
+        "socket_diameter",
+        "throat",
+        "socket_depth",
+        "wall_thickness",
+        "relief_slits",
+        "root_fillet",
+        "orientation"
+      ],
+      "outputs": [
+        "assembly_force",
+        "retention_force",
+        "breakaway_torque",
+        "range",
+        "cracking",
+        "play"
+      ]
+    },
+    {
+      "test_id": "J003",
+      "name": "joint_cycle_wear",
+      "depends_on": [
+        "J001",
+        "J002"
+      ],
+      "variables": [
+        "joint_profile",
+        "cycle_count",
+        "load"
+      ],
+      "outputs": [
+        "torque_vs_cycles",
+        "play_vs_cycles",
+        "wear",
+        "failure_cycle"
+      ]
+    },
+    {
+      "test_id": "J004",
+      "name": "creep_pose_retention",
+      "depends_on": [
+        "J003"
+      ],
+      "variables": [
+        "joint_profile",
+        "applied_moment",
+        "temperature",
+        "time"
+      ],
+      "outputs": [
+        "angle_drift",
+        "torque_change",
+        "permanent_set"
+      ]
+    },
+    {
+      "test_id": "J005",
+      "name": "replaceable_insert_comparison",
+      "variables": [
+        "insert_material",
+        "shell_material",
+        "interface_geometry"
+      ],
+      "outputs": [
+        "assembly",
+        "torque",
+        "cycles",
+        "replaceability",
+        "shell_damage"
+      ]
+    },
+    {
+      "test_id": "J006",
+      "name": "standard_scale_ball_arm_adapter",
+      "variables": [
+        "adapter_geometry",
+        "ball_size",
+        "arm_socket",
+        "material_pair"
+      ],
+      "outputs": [
+        "torso_insertion_force",
+        "shoulder_range",
+        "torque",
+        "torso_stress",
+        "cycles"
+      ]
+    },
+    {
+      "test_id": "J007",
+      "name": "loaded_limb_hold",
+      "variables": [
+        "joint_profile",
+        "limb_mass",
+        "center_of_mass",
+        "pose_angle"
+      ],
+      "outputs": [
+        "initial_deflection",
+        "angle_drift",
+        "time_to_sag"
+      ]
+    }
+  ],
+  "required_measurement_data": [
+    "machine/material/build profile",
+    "joint CAD revision",
+    "force curve",
+    "torque-angle curve",
+    "cycle count",
+    "environment",
+    "photos/microscope inspection",
+    "failure code"
+  ]
+}
