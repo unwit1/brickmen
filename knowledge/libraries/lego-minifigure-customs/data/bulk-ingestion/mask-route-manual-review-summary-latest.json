@@ -1,0 +1,30 @@
+{
+  "schema": "mask-route-manual-review-summary/v1",
+  "ranked_records": 1000,
+  "review_files_found": 1,
+  "review_files_parsed": 1,
+  "review_files_with_errors": 0,
+  "manual_decision_records": 5,
+  "unique_reviewed_fig_nums": 5,
+  "reviewed_ranked_fig_nums": 5,
+  "reviewed_outside_ranked_queue": 0,
+  "unreviewed_ranked_records": 995,
+  "decision_counts": {
+    "physical_route_confirmed_protective_environmental_equipment_not_identity_mask": 2,
+    "physical_route_confirmed_sports_faceguard_not_identity_mask": 2,
+    "physical_route_confirmed_identity_mask_geometry": 1
+  },
+  "semantic_function_counts": {
+    "protective_environmental_face_equipment": 2,
+    "protective_sports_faceguard": 2,
+    "identity_mask_cowl": 1
+  },
+  "source_translation_status_counts": {
+    "physical_route_confirmed_source_pairing_pending": 5
+  },
+  "conflicting_review_fig_nums": 0,
+  "conflicts": [],
+  "parse_errors": [],
+  "policy": "Manual physical-route decisions are an overlay on the ranked component corpus. A confirmed physical route does not become source-to-LEGO translation supervision until an exact source appearance has been independently paired and reviewed.",
+  "status": "manual_mask_route_coverage_compiled"
+}
