@@ -301,3 +301,12 @@ Seed diagnostics are stored under:
 
 Rule:
 **shape residual, known scale, topology, source metadata and physical evidence are separate signals. A low image-fit RMSE never proves mechanical architecture or connector compatibility.**
+
+
+### Official Giant fitting anchors
+
+Image-only Giant fitting is now supplemented by official LDraw reference metadata:
+- `official-giant-reference-anchors.md`
+- `data/engineering-reference-anchors/lego-giant-ldraw.json`
+
+These records provide published shoulder/hand socket frames for the official Giant digital-twin workflow while keeping physical tolerances separate.
