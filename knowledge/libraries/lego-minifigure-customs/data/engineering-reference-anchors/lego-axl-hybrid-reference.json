@@ -1,0 +1,110 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-27",
+  "status": "mixed_authority_hybrid_reference_unofficial_ldraw_plus_catalog_inventory",
+  "architecture_id": "lego_axl_oversized_torso_hybrid",
+  "evidence_summary": {
+    "conclusion": "Axl is best modeled as a hybrid architecture: standard minifigure lower-body scale plus an oversized upper shell and dedicated armored arms, not as a uniformly enlarged standard minifigure.",
+    "confidence": "high_for_component_topology_medium_for_unofficial_shell_geometry",
+    "manufacturing_authority": false
+  },
+  "sources": [
+    {
+      "source_id": "bricklink_nex069_inventory",
+      "source_url": "https://www.bricklink.com/catalogItemInv.asp?M=nex069",
+      "authority": "catalog_inventory_secondary",
+      "observations": [
+        "nex069 uses a 970-family minifigure hips-and-legs assembly.",
+        "nex069 uses dedicated armored arms 24101pb01 and 24104pb01.",
+        "nex069 uses modified oversized torso assembly 23763c01pb03."
+      ]
+    },
+    {
+      "source_id": "ldraw_23763_current_unofficial",
+      "source_url": "https://library.ldraw.org/parts/51698",
+      "authority": "unofficial_ldraw_parts_tracker",
+      "review_status": "Needs 2 More Votes; has uncertified subfiles as observed 2026-09-27",
+      "observations": [
+        "The current 23763.dat shortcut places 973.dat and 24128.dat at the same identity transform.",
+        "This explicitly represents a standard minifigure torso core combined with an oversized armour/body shell.",
+        "The file is not official and must not be promoted to authoritative mechanical ground truth."
+      ]
+    },
+    {
+      "source_id": "ldraw_forum_23763_development",
+      "source_url": "https://forums.ldraw.org/thread-28851.html",
+      "authority": "community_modeling_discussion",
+      "observations": [
+        "Contributors describe the real assembly as a normal minifigure torso fused/glued into the oversized upper part.",
+        "Draft/source-mesh discussion reports an arm pin near 40.924 LDU before cleanup.",
+        "A proposed LDraw pinhole primitive is centered at [20, 11, 0] LDU in the modeled half, but contributors explicitly note uncertainty and lack of a physical sample.",
+        "Real-world measurement was explicitly identified by contributors as preferable to source-mesh precision."
+      ]
+    }
+  ],
+  "topology": {
+    "lower_body": {
+      "class": "standard_minifigure_lower_body",
+      "evidence": "BrickLink 970-family hips/legs inventory plus standard minifigure proportions",
+      "scale_policy": "do_not_scale_with_upper_shell"
+    },
+    "torso_core": {
+      "class": "standard_minifigure_torso_core",
+      "part_reference": "973",
+      "transform_policy": "identity frame in current 23763 LDraw shortcut",
+      "authority": "unofficial shortcut topology corroborated by modeling discussion"
+    },
+    "upper_shell": {
+      "class": "oversized_armour_body_shell",
+      "part_reference": "24128",
+      "authority": "current unofficial LDraw work",
+      "geometry_status": "provisional_until_official_or_physically_measured"
+    },
+    "arms": {
+      "class": "dedicated_oversized_armoured_arms",
+      "left_catalog_part": "24101pb01",
+      "right_catalog_part": "24104pb01",
+      "authority": "BrickLink catalog inventory"
+    }
+  },
+  "provisional_geometry_evidence": [
+    {
+      "observation_id": "axl_arm_pinhole_draft_center_half_model",
+      "coordinates_ldu": {
+        "x": 20,
+        "y": 11,
+        "z": 0
+      },
+      "mirrored_pair_expected": true,
+      "authority": "forum_proposal_not_physical_metrology",
+      "production_geometry_authority": false,
+      "note": "Retain as a research hypothesis/registration clue only. Do not lock a printable connector from it."
+    },
+    {
+      "observation_id": "axl_source_mesh_pin_location_report",
+      "reported_value_ldu": 40.924,
+      "semantic": "reported source-mesh arm-pin location; exact axis/coordinate interpretation depends on the draft model frame",
+      "authority": "forum_report_of_source_mesh",
+      "production_geometry_authority": false
+    }
+  ],
+  "generation_implications": [
+    "For Broad/Axl-like bodies, preserve a standard-compatible lower-body frame while allowing a much wider upper BodyEnvelopeProfile.",
+    "Do not estimate Axl shoulder pivots from armour silhouette width.",
+    "Represent the standard torso core, outer shell, and special arms as separate components in the digital twin.",
+    "Train architecture recognition to distinguish hybrid-shell bodies from uniformly scaled figures.",
+    "Use visual fitting for mass/silhouette and component-frame evidence for mechanical alignment."
+  ],
+  "validation_queue": [
+    "Acquire or scan a physical 23763/24128 assembly.",
+    "Measure left/right arm pinhole centers relative to the standard 973 frame.",
+    "Measure shell neck and back-stud frames.",
+    "Measure dedicated 24101/24104 arm mating geometry and articulation sweep.",
+    "Replace provisional source-mesh values with physical measurements where they disagree."
+  ],
+  "hard_rules": [
+    "Unofficial LDraw geometry is not manufacturing authority.",
+    "BrickLink inventory proves component identity better than geometry.",
+    "Do not convert forum-reported coordinates into production connector dimensions without physical validation."
+  ]
+}
