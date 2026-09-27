@@ -44,6 +44,9 @@ def is_body_component(component):
         or name.startswith("hips and ")
         or name.startswith("minifig hipwear")
         or name.startswith("minidoll hipwear")
+        or name.startswith("neckwear cape")
+        or name.startswith("minifig neckwear cape")
+        or name.startswith("minidoll neckwear cape")
     )
 
 def is_headgear_component(component):

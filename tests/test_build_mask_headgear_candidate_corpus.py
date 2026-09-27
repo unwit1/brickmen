@@ -65,3 +65,27 @@ def test_nonstandard_wookiee_head_keeps_modified_geometry_signal() -> None:
 
     assert not tool.is_standard_cylindrical_minifig_head(component)
     assert "wookiee" in tool.modified_head_terms(component)
+
+
+def test_neckwear_cape_does_not_become_headgear() -> None:
+    tool = load_tool()
+    component = {
+        "part_num": "56630",
+        "part_name": "Neckwear Cape, Scalloped 5 Points [Traditional Starched Fabric]",
+        "component_role": "headgear",
+    }
+
+    assert tool.is_body_component(component)
+    assert not tool.is_headgear_component(component)
+
+
+def test_neckwear_mask_can_still_be_headgear() -> None:
+    tool = load_tool()
+    component = {
+        "part_num": "13791pr0001",
+        "part_name": "Minifig Neckwear Mask Islander Tiki with Tribal Print",
+        "component_role": None,
+    }
+
+    assert not tool.is_body_component(component)
+    assert tool.is_headgear_component(component)
