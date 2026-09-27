@@ -1,0 +1,82 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-27",
+  "purpose": "Architecture-neutral semantic description of a character's body intent before selecting a FigureArchitecture.",
+  "entity": "CharacterBodyFeatureSpec",
+  "fields": [
+    "spec_id",
+    "character_id",
+    "appearance_id",
+    "source_reference_ids",
+    "morphology_archetype",
+    "stature_intent",
+    "mass_distribution",
+    "limb_emphasis",
+    "hand_emphasis",
+    "head_treatment",
+    "posture_intent",
+    "surface_materials",
+    "identity_features",
+    "silhouette_features",
+    "clothing_armor_layers",
+    "features_that_must_be_geometry",
+    "features_that_may_be_relief",
+    "features_that_may_be_print",
+    "features_to_omit_at_scale",
+    "accessory_relationships",
+    "uncertainties",
+    "confidence",
+    "sources"
+  ],
+  "morphology_archetype_candidates": [
+    "baseline_humanoid",
+    "muscular_humanoid",
+    "rocky_massive_humanoid",
+    "heavy_round_humanoid",
+    "armored_massive_humanoid",
+    "lanky_oversized_humanoid",
+    "gorilla_like",
+    "reptilian_large",
+    "multiarm_humanoid",
+    "mechanical_humanoid",
+    "tailed_humanoid",
+    "quadruped_hybrid",
+    "integrated_character_body",
+    "other"
+  ],
+  "mass_regions": [
+    "head",
+    "neck",
+    "shoulders",
+    "chest",
+    "abdomen",
+    "waist",
+    "upper_arms",
+    "forearms",
+    "hands",
+    "pelvis",
+    "thighs",
+    "calves",
+    "feet",
+    "back"
+  ],
+  "surface_material_example": {
+    "material_semantic": "rock",
+    "regions": [
+      "full_body"
+    ],
+    "properties": {
+      "plate_scale": "medium",
+      "relief_intent": "shallow_to_major",
+      "crack_density": "medium",
+      "joint_exclusion": true
+    }
+  },
+  "compilation_rule": "CharacterBodyFeatureSpec is architecture-neutral. FigureArchitecture + BodyStyleProfile compiles it into CharacterBodyDesignSpec.",
+  "hard_rules": [
+    "Do not encode final joint dimensions in CharacterBodyFeatureSpec.",
+    "Do not infer architecture solely from morphology archetype.",
+    "Preserve exact source appearance over generic character defaults.",
+    "Geometry-vs-decoration decisions may change after architecture selection."
+  ]
+}
