@@ -1,0 +1,271 @@
+{
+  "schema_version": "0.1",
+  "status": "research_candidates_not_production_approved",
+  "observed_at": "2026-09-27",
+  "rule": "Manufacturer datasheet properties are screening evidence only. Brickmen production approval requires physical connector, force, cycle, dimensional and aging validation on the actual machine/process.",
+  "candidates": [
+    {
+      "material_id": "ameralabs_tgm7",
+      "manufacturer": "AmeraLabs",
+      "name": "TGM-7",
+      "process": [
+        "msla",
+        "dlp"
+      ],
+      "use_hypothesis": [
+        "fine weapons",
+        "helmets",
+        "hair",
+        "armor",
+        "thin miniature accessories"
+      ],
+      "manufacturer_properties": {
+        "tensile_modulus_gpa": 1.94,
+        "tensile_stress_at_yield_mpa": 38.4,
+        "tensile_stress_at_break_mpa": 32.7,
+        "tensile_strain_at_break_percent": 61.6,
+        "notched_impact_kj_m2": 8.22,
+        "shore_d": 78,
+        "hdt_0_45_mpa_c": 58.3,
+        "water_absorption_24h_percent": 7.96,
+        "viscosity_mpas_25c": 540
+      },
+      "special_notes": [
+        "Manufacturer positions material specifically for functional tabletop miniatures.",
+        "2026 printing guide says non-clear color variants can be blended while retaining common print settings.",
+        "High published 24h water absorption makes dimensional/retention aging a specific Brickmen test item.",
+        "Manufacturer guide says not compatible with laser-based Formlabs systems; treat as MSLA/DLP candidate."
+      ],
+      "source": "https://ameralabs.com/shop/tgm-7/",
+      "tds": "https://ameralabs.com/wp-content/uploads/2024/07/TGM-7-TDS.pdf"
+    },
+    {
+      "material_id": "siraya_blu_tough",
+      "manufacturer": "Siraya Tech",
+      "name": "Blu Tough",
+      "process": [
+        "msla",
+        "dlp"
+      ],
+      "use_hypothesis": [
+        "functional accessories",
+        "helmets",
+        "weapons",
+        "jigs"
+      ],
+      "manufacturer_properties": {
+        "tensile_stress_at_break_mpa": 50,
+        "tensile_modulus_mpa": 1800,
+        "elongation_at_break_percent": 32,
+        "notched_izod_j_m": 45,
+        "hdt_0_455_mpa_c": 70,
+        "shore_d": 80
+      },
+      "special_notes": [
+        "Engineering resin intended to balance hardness and impact resistance.",
+        "Good baseline for a relatively stiff tough accessory."
+      ],
+      "source": "https://siraya.tech/pages/blu-user-guide",
+      "tds": "https://siraya.tech/pages/blu-tough-resin-tds-for-regular-blu"
+    },
+    {
+      "material_id": "siraya_blu_nylon_black",
+      "manufacturer": "Siraya Tech",
+      "name": "Blu Nylon Black",
+      "process": [
+        "msla",
+        "dlp"
+      ],
+      "use_hypothesis": [
+        "functional accessories",
+        "clip experiments",
+        "weapons"
+      ],
+      "manufacturer_properties": {
+        "tensile_stress_at_break_mpa": 45,
+        "tensile_modulus_mpa": 1750,
+        "elongation_at_break_percent": 50,
+        "notched_izod_j_m": 53,
+        "hdt_0_455_mpa_c": 63,
+        "shore_d": 78,
+        "water_absorption_24h_percent": 0.75
+      },
+      "special_notes": [
+        "More elongation than regular Blu with similar stiffness range.",
+        "Candidate for rigid-but-less-brittle connectors."
+      ],
+      "source": "https://siraya.tech/pages/blu-tough-nylon-black-tds"
+    },
+    {
+      "material_id": "siraya_tenacious_65d",
+      "manufacturer": "Siraya Tech",
+      "name": "Tenacious Clear / Obsidian Black",
+      "process": [
+        "msla",
+        "dlp"
+      ],
+      "use_hypothesis": [
+        "flexible accessories",
+        "toughening blend experiments"
+      ],
+      "manufacturer_properties": {
+        "tensile_stress_at_break_mpa": 28,
+        "tensile_modulus_mpa": 800,
+        "elongation_at_break_percent": 70,
+        "notched_izod_j_m": 57,
+        "hdt_0_455_mpa_c": 55,
+        "shore_d": 65
+      },
+      "special_notes": [
+        "Manufacturer explicitly supports use alone or blending with other 405nm resins to enhance impact resistance.",
+        "Any blend becomes a new Brickmen material profile and must be recalibrated.",
+        "Community miniature reports commonly discuss roughly 10-20% Tenacious blends, but those ratios are only experiment starting points."
+      ],
+      "source": "https://siraya.tech/pages/tenacious-user-guide"
+    },
+    {
+      "material_id": "formlabs_tough_1500_v2",
+      "manufacturer": "Formlabs",
+      "name": "Tough 1500 Resin V2",
+      "process": [
+        "sla_form4"
+      ],
+      "use_hypothesis": [
+        "snap-fit R&D",
+        "compliant accessories",
+        "high-durability functional parts"
+      ],
+      "manufacturer_properties": {
+        "ultimate_tensile_strength_mpa": 34,
+        "tensile_modulus_mpa": 1460,
+        "elongation_at_break_percent": 155,
+        "notched_izod_j_m": 42,
+        "work_of_fracture_j_m2": 1011,
+        "hdt_0_45_mpa_c": 66,
+        "ross_flex_cycles": 8000
+      },
+      "special_notes": [
+        "Manufacturer positions material as polypropylene-like and suitable for compliant mechanisms/latches/snap fits.",
+        "Properties cited are process-specific: Form 4 / defined settings / defined Form Cure V2 cycle.",
+        "High-value reference candidate for professional automation path."
+      ],
+      "source": "https://formlabs.com/products/tough-1500-resin/"
+    },
+    {
+      "material_id": "formlabs_tough_2000_v2",
+      "manufacturer": "Formlabs",
+      "name": "Tough 2000 Resin V2",
+      "process": [
+        "sla_form4"
+      ],
+      "use_hypothesis": [
+        "stiffer armor/accessories",
+        "production jigs",
+        "creep-sensitive parts"
+      ],
+      "manufacturer_properties": {
+        "ultimate_tensile_strength_mpa": 40.4,
+        "tensile_modulus_mpa": 1800,
+        "elongation_at_break_percent": 79,
+        "notched_izod_j_m": 25,
+        "work_of_fracture_j_m2": 305,
+        "hdt_0_45_mpa_c": 70
+      },
+      "special_notes": [
+        "Manufacturer positions stiffness similarly to ABS while remaining far more elongating than cited extruded ABS comparison.",
+        "Tough 1500 is the more obvious compliant/snap-fit candidate; Tough 2000 is the stiffer candidate.",
+        "Properties are process/cure specific."
+      ],
+      "source": "https://formlabs.com/global/products/tough-2000-resin/"
+    },
+    {
+      "material_id": "anycubic_abs_like_pro2",
+      "manufacturer": "Anycubic",
+      "name": "ABS-Like Resin Pro 2",
+      "process": [
+        "msla",
+        "dlp"
+      ],
+      "use_hypothesis": [
+        "low-cost tough baseline",
+        "general accessories"
+      ],
+      "manufacturer_properties": {
+        "tensile_strength_mpa_range": [
+          35,
+          45
+        ],
+        "elongation_at_break_percent_range": [
+          35,
+          40
+        ],
+        "youngs_modulus_mpa_range": [
+          1600,
+          1800
+        ],
+        "izod_impact_j_m": 212,
+        "volume_shrinkage_percent_range": [
+          4.3,
+          5.6
+        ]
+      },
+      "special_notes": [
+        "Low-cost candidate with unusually high supplier-listed Izod impact value; verify test conditions and Brickmen physical performance rather than comparing that number directly across vendors.",
+        "Supplier publishes explicit wash/cure ranges that should be captured in a material profile."
+      ],
+      "source": "https://store.anycubic.com/products/abs-like-resin-pro-2"
+    },
+    {
+      "material_id": "elegoo_abs_like_v3",
+      "manufacturer": "ELEGOO",
+      "name": "ABS-Like Resin V3.0",
+      "process": [
+        "msla",
+        "dlp"
+      ],
+      "use_hypothesis": [
+        "low-cost baseline",
+        "general accessories",
+        "high-volume calibration material"
+      ],
+      "manufacturer_properties": {},
+      "special_notes": [
+        "Manufacturer emphasizes impact resistance, low shrinkage and fine-detail use but the reviewed product page does not expose a complete comparable mechanical-property table.",
+        "Useful economical baseline; obtain/retain the exact TDS for any selected lot before production approval."
+      ],
+      "source": "https://www.elegoo.com/products/elegoo-abs-like-resin-v-3-0"
+    },
+    {
+      "material_id": "formlabs_color_kit",
+      "manufacturer": "Formlabs",
+      "name": "Color Kit / Color Base",
+      "process": [
+        "sla_form4",
+        "sla_form3"
+      ],
+      "use_hypothesis": [
+        "color-through cosmetic pieces",
+        "color-matching experiments"
+      ],
+      "manufacturer_properties": {
+        "post_cured_ultimate_tensile_strength_mpa": 65,
+        "post_cured_tensile_modulus_mpa": 2800,
+        "post_cured_elongation_at_break_percent": 6,
+        "post_cured_notched_izod_j_m": 25
+      },
+      "special_notes": [
+        "CMYKW pigment system with documented recipes enables color-through-part production.",
+        "Post-cured 6% elongation is much lower than the tough-resin candidates; do not default to it for thin hand-held accessories merely to avoid painting.",
+        "Treat color match and mechanical profile as a coupled manufacturing decision."
+      ],
+      "source": "https://formlabs.com/products/color-kit-form-4/"
+    }
+  ],
+  "proposed_first_experiment_matrix": [
+    "TGM-7 grey or graphite grey",
+    "Siraya Blu Tough or Blu Nylon Black",
+    "Anycubic ABS-Like Resin Pro 2 or ELEGOO ABS-Like V3 as a low-cost baseline",
+    "One validated base resin plus Siraya Tenacious experimental blend ladder",
+    "Professional reference material only if/when a Form 4-class system is available"
+  ]
+}
