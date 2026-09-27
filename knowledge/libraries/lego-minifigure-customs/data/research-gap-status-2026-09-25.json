@@ -598,6 +598,26 @@
       "remaining_record": "Wolverine / X-Men row 1052: Identity and Variant both 'Logan Howlett'; retained for intentional design-context review",
       "source_sheet_mutated": false,
       "policy": "All repairs are non-destructive derived semantic overlays with raw source provenance retained."
+    },
+    "skywalker_manual_review": {
+      "records": 377,
+      "reviewed_asset_ids": 377,
+      "manual_decision_records": 379,
+      "unreviewed_records": 0,
+      "review_files": 79,
+      "status": "manual_review_complete",
+      "authoritative_overlay": "data/bulk-ingestion/skywalker-manual-review-summary-latest.json",
+      "note": "Manual review overlay is complete across all 377 Skywalker profile assets. Raw algorithmic candidate/classification summaries may still contain unresolved confidence bands; those are retained as classifier diagnostics rather than the manual-review completion state."
+    },
+    "mask_route_manual_review": {
+      "ranked_review_records": 1000,
+      "manual_decision_records": 15,
+      "unique_reviewed_fig_nums": 15,
+      "unreviewed_ranked_records": 985,
+      "status": "manual_review_in_progress",
+      "authoritative_overlay": "data/bulk-ingestion/mask-route-manual-review-summary-latest.json",
+      "signature_propagation": "exact head+headgear component signature propagation added; only physical topology may inherit, while semantic function and source translation remain review-gated",
+      "latest_review_batch": "data/review-decisions/mask-headgear-route-review-003.json"
     }
   },
   "latest_progress_2026_09_26": {
@@ -656,6 +676,19 @@
       "existing_name_level": 259,
       "name_match_variant_unresolved": 1277,
       "no_exact_name_or_identity_candidate": 3316
+    },
+    "skywalker_manual_review": {
+      "reviewed": 377,
+      "total": 377,
+      "unresolved": 0,
+      "status": "complete"
+    },
+    "mask_route_manual_review": {
+      "reviewed": 15,
+      "ranked_queue": 1000,
+      "remaining_manual": 985,
+      "status": "in_progress",
+      "review_batches": 3
     }
   }
 }
