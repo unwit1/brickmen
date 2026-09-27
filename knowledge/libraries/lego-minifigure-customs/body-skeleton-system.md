@@ -188,16 +188,23 @@ Neither may redefine locked skeleton mechanics once an architecture is selected.
 
 ## Skeleton fitting
 
-Next implementation should solve:
+Reference fitting is now implemented:
 
 ```
 reference landmarks
  -> optimize permitted skeleton parameters
- -> preserve architecture constraints
+ -> preserve architecture constraints / locked parameters
  -> output fitted skeleton + residual errors
+ -> combine with independent BodyEnvelopeProfile fit
+ -> compile BodyGenerationConditioning
 ```
 
-This gives Brickmen a deterministic intermediate representation between reference imagery and 3D generation.
+Core tools:
+- `python -m tools.geometry.fit_body_skeleton`
+- `python -m tools.geometry.fit_body_envelope_profile`
+- `python -m tools.geometry.compile_body_generation_conditioning`
+
+This gives Brickmen a deterministic intermediate representation between reference evidence and part-aware 3D generation.
 
 Example:
 Venom AF-style semantics can increase:
