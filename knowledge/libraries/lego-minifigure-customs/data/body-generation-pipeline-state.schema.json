@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "body-generation-pipeline-state.schema.json",
+  "title": "Brickmen Body Generation Pipeline State",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "architecture_id",
+    "provider_id",
+    "gates",
+    "next_actions",
+    "production_readiness",
+    "production_geometry_authority"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "architecture_id": {
+      "type": "string"
+    },
+    "provider_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "gates": {
+      "type": "array"
+    },
+    "next_actions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "production_readiness": {
+      "type": "object"
+    },
+    "production_geometry_authority": {
+      "const": false
+    }
+  }
+}
