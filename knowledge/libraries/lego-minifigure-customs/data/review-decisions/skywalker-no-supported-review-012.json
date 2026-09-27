@@ -1,0 +1,195 @@
+{
+  "schema": "skywalker-no-supported-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-no-supported-review-012",
+  "policy": "Normalize concatenated role names and source spelling errors before thresholding. Use set provenance to recover broader physical character families when catalogs use generic labels, but do not claim a uniquely named physical instance if identical generic figures represent several characters. Preserve explicitly nonphysical named characters as such.",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-c10aa9929c0bb32706d43c09",
+      "character_variant_key": "Sithtrooper",
+      "decision": "compound_word_normalization_verified_exact_sith_trooper_red_physical_counterpart_below_threshold",
+      "canonical_game_role": "Sith Trooper",
+      "alias_resolution": {
+        "source_key": "Sithtrooper",
+        "catalog_name": "Sith Trooper, Red",
+        "transformations": [
+          "Sithtrooper -> Sith Trooper"
+        ],
+        "confidence": "high"
+      },
+      "physical_counterpart": {
+        "fig_num": "fig-004454",
+        "brickset_minifig": "sw1065",
+        "catalog_name": "Sith Trooper - Red Armor and Helmet",
+        "first_year": 2019,
+        "sets": [
+          "75256-1",
+          "75266-1",
+          "75279-1",
+          "912174-1"
+        ]
+      },
+      "separated_neighbor": {
+        "fig_num": "fig-004495",
+        "catalog_name": "Sith Jet Trooper",
+        "reason": "specialized jet-trooper subtype, not the ordinary red Sith Trooper"
+      },
+      "reason": "The game's compact source key removes the word boundary between Sith and trooper. Brickset catalogs the ordinary red Sith Trooper as sw1065 from 2019, predating the game. The low score is a tokenization failure rather than a missing physical family.",
+      "systemic_pattern": "compound_faction_role_tokens_should_split_before_similarity_scoring",
+      "evidence_urls": [
+        "https://brickset.com/minifigs?query=sw1065"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-bba69fd4c74f55fce66a8273",
+      "character_variant_key": "FigrinD'an",
+      "decision": "named_figrin_dan_verified_pre_game_bith_musician_physical_family_by_set_provenance_exact_named_instance_not_catalog_distinguishable",
+      "canonical_subject": "Figrin D'an",
+      "physical_family": {
+        "brickset_minifig": "sw0554",
+        "catalog_name": "Bith Musician",
+        "first_year": 2014,
+        "sets": [
+          "75052-1",
+          "75290-1"
+        ],
+        "set_provenance": "Both Mos Eisley Cantina sets are tagged for Figrin D'an and the Modal Nodes and include the generic sw0554 Bith Musician figure."
+      },
+      "exact_named_instance_status": "not_catalog_distinguishable",
+      "rejected_top_candidate": {
+        "fig_num": "fig-010675",
+        "catalog_name": "Garindan",
+        "reason": "same 2020 Cantina set but unrelated character; name similarity is accidental"
+      },
+      "reason": "Figrin D'an is represented within LEGO's physical Modal Nodes/Bith musician family, but Brickset/BrickLink catalog the shared print generically as 'Bith Musician' rather than assigning an individual member name. Set provenance supports the physical family; it does not justify pretending one identical copy is uniquely cataloged as Figrin.",
+      "systemic_pattern": "named_character_can_be_hidden_under_generic_identical_group_figure_catalog_label_use_set_provenance_without_overclaiming_instance_identity",
+      "evidence_urls": [
+        "https://brickset.com/minifigs/name-Bith-Musician",
+        "https://brickset.com/sets?query=75052",
+        "https://brickset.com/sets?query=75290"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-9029ff1eba106a86dfb4e9a6",
+      "character_variant_key": "GrebeKorona",
+      "decision": "source_spelling_error_normalized_to_grebe_korora_verified_nonphysical_no_official_lego_minifigure",
+      "canonical_subject": "Grebe-Korora",
+      "alias_resolution": {
+        "source_key": "GrebeKorona",
+        "canonical_name": "Grebe-Korora",
+        "transformations": [
+          "Korona -> Korora spelling correction",
+          "restore hyphen"
+        ],
+        "confidence": "high"
+      },
+      "identity_context": {
+        "species": "Lanai",
+        "homeworld": "Ahch-To",
+        "role": "Visitor / porter"
+      },
+      "physical_status": {
+        "exact_official_minifigure_located": false,
+        "brickipedia_status": "Grebe-Korora listed among nonphysical Other minifigures"
+      },
+      "rejected_top_candidates": [
+        {
+          "fig_num": "fig-010528",
+          "catalog_name": "Greef Karga",
+          "reason": "phonetic/name-prefix similarity only; different character"
+        },
+        {
+          "fig_num": "fig-011634",
+          "catalog_name": "Greef Karga",
+          "reason": "phonetic/name-prefix similarity only; different character"
+        }
+      ],
+      "reason": "The source key contains a spelling error: the documented character is Grebe-Korora, a Lanai from Ahch-To. Wookieepedia identifies the character and his Skywalker Saga appearance, while Brickipedia places Grebe-Korora in its nonphysical roster. The typo prevents identity resolution and causes unrelated Greef Karga matches.",
+      "systemic_pattern": "source_name_typos_should_resolve_through_canonical_entity_aliases_before_candidate_scoring",
+      "evidence_urls": [
+        "https://starwars.fandom.com/wiki/Grebe-Korora",
+        "https://brickipedia.fandom.com/wiki/Wrobie_Tyce"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-4378a66ffe94f2a7b6636411",
+      "character_variant_key": "FodeAndBeed",
+      "decision": "common_name_alias_normalized_to_fodesinbeed_annodue_verified_nonphysical_no_official_lego_minifigure",
+      "canonical_subject": "Fodesinbeed Annodue",
+      "known_aliases": [
+        "Fode and Beed"
+      ],
+      "identity_context": {
+        "species": "Troig",
+        "role": "Boonta Eve Classic podrace announcer",
+        "heads": [
+          "Fode",
+          "Beed"
+        ]
+      },
+      "physical_status": {
+        "exact_official_minifigure_located": false,
+        "brickipedia_status": "Fodesinbeed Annodue listed among nonphysical criminal/Hutt-context minifigures"
+      },
+      "rejected_top_candidate": {
+        "fig_num": "fig-003644",
+        "catalog_name": "Aldar Beedo",
+        "reason": "shared 'Beed' sound only; different individual/species"
+      },
+      "reason": "Fode and Beed are the two heads of the single Troig Fodesinbeed Annodue. The Skywalker Saga unlocks the character under the common Fode and Beed name, while Brickipedia's nonphysical roster uses Fodesinbeed Annodue. Alias resolution should happen before physical matching.",
+      "systemic_pattern": "common_display_names_and_full_canonical_names_must_resolve_to_one_entity_before_catalog_search",
+      "evidence_urls": [
+        "https://starwars.fandom.com/wiki/Fodesinbeed_Annodue",
+        "https://www.gamepressure.com/lego-star-wars-the-skywalker-saga/ancient-idols/z2fcde",
+        "https://brickipedia.fandom.com/wiki/L0-LA59"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-6d15c22b258ef1b79c459028",
+      "character_variant_key": "WrobieTyce",
+      "decision": "named_resistance_pilot_wrobie_tyce_verified_video_game_only_no_official_physical_minifigure",
+      "canonical_subject": "Wrobie Tyce",
+      "physical_status": {
+        "exact_official_minifigure_located": false,
+        "brickipedia_status": "video-game-only minifigure; never existed in physical form or an official LEGO set"
+      },
+      "rejected_top_candidates": [
+        {
+          "fig_num": "fig-004245",
+          "catalog_name": "Rose Tico",
+          "reason": "unrelated Resistance character"
+        },
+        {
+          "fig_num": "fig-001235",
+          "catalog_name": "Wookiee",
+          "reason": "name-prefix similarity only; unrelated species"
+        },
+        {
+          "fig_num": "fig-011621",
+          "catalog_name": "Wrecker",
+          "reason": "name-prefix similarity only; unrelated character"
+        }
+      ],
+      "reason": "Wrobie Tyce is a distinct named Resistance character. Brickipedia explicitly marks the LEGO representation as video-game-only/nonphysical. The current candidates are weak phonetic or faction-adjacent false positives.",
+      "systemic_pattern": "named_character_identity_must_dominate_weak_prefix_and_same_faction_neighbor_similarity",
+      "evidence_urls": [
+        "https://brickipedia.fandom.com/wiki/Wrobie_Tyce"
+      ]
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "exact_physical_resolver_misses": 1,
+    "physical_family_recovered_by_set_provenance": 1,
+    "nonphysical_named_characters": 3,
+    "automatic_exact_artwork_equivalence_promotions": 0
+  },
+  "remaining_no_supported_records_after_batch": 36,
+  "systemic_findings": [
+    "Concatenated faction-role labels such as Sithtrooper should be segmented before matching.",
+    "Set provenance can recover a physical family hidden under a generic catalog label without inventing unique instance identity.",
+    "Source typos should be normalized through canonical entity aliases before retrieval.",
+    "Common display names and canonical full names should resolve to a single entity.",
+    "Weak phonetic similarity must not override named-character identity."
+  ]
+}
