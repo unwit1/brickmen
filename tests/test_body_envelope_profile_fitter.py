@@ -148,14 +148,14 @@ def test_direct_normalized_ldraw_giant_envelope_reference():
         0.29639736661412464 / 0.23
     )
 
-    # Current Giant visual-depth design space is intentionally diagnosed as too
-    # shallow for this official CAD reference rather than silently expanded.
+    # Official CAD evidence promoted a visual-only range expansion. The direct
+    # reference should now fit without touching mechanical parameters or bounds.
     assert fit["parameter_overrides"]["torso_depth_scale"] == pytest.approx(
-        spec["parameters"]["torso_depth_scale"]["max"]
+        0.41732606682059015 / 0.25
     )
     assert fit["parameter_overrides"]["abdomen_projection_scale"] == pytest.approx(
-        spec["parameters"]["abdomen_projection_scale"]["max"]
+        0.34055415885259605 / 0.22
     )
-    assert "torso_depth_scale" in fit["bound_hits"]
-    assert "abdomen_projection_scale" in fit["bound_hits"]
+    assert "torso_depth_scale" not in fit["bound_hits"]
+    assert "abdomen_projection_scale" not in fit["bound_hits"]
     assert fit["mechanical_parameter_changes"] == []
