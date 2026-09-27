@@ -1,0 +1,87 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-27",
+  "entity": "BodyStyleCompilation",
+  "inputs": [
+    "CharacterBodyFeatureSpec",
+    "SourceAppearance",
+    "FigureArchitecture",
+    "BodyStyleProfile",
+    "ArchitectureSurfaceSchema",
+    "ArchitectureDigitalTwin",
+    "ConnectorProfile[]",
+    "JointCartridge[]",
+    "ManufacturingProfile"
+  ],
+  "representation_classes": [
+    "existing_component",
+    "silhouette_geometry",
+    "major_relief",
+    "shallow_relief",
+    "printed_decoration",
+    "color_material_only",
+    "soft_goods",
+    "separate_accessory",
+    "omit"
+  ],
+  "feature_priority": [
+    "must_preserve",
+    "strongly_prefer",
+    "optional",
+    "omit_if_needed"
+  ],
+  "stages": [
+    "resolve_architecture",
+    "inventory_semantic_features",
+    "prioritize_identity",
+    "retrieve_existing_components",
+    "assign_representation",
+    "compile_body_parameters",
+    "compile_surface_materials",
+    "allocate_complexity_budget",
+    "plan_component_splits",
+    "scale_accessories",
+    "retrieve_role_specific_references",
+    "route_generation_method",
+    "compile_deterministic_interfaces",
+    "run_style_and_manufacturing_critics"
+  ],
+  "surface_material_semantics": [
+    "skin",
+    "rock",
+    "fur",
+    "metal",
+    "scales",
+    "bark_wood",
+    "cloth",
+    "bone",
+    "slime_organic",
+    "energy_translucent",
+    "armor_plating"
+  ],
+  "generation_methods": [
+    "reuse_validated_component",
+    "parametric_cad",
+    "part_aware_mesh_generation",
+    "monolithic_mesh_then_segment",
+    "sculpt_modifier",
+    "printed_artwork",
+    "soft_goods"
+  ],
+  "critic_axes": [
+    "source_identity",
+    "architecture_geometry",
+    "body_style",
+    "surface_material",
+    "manufacturability",
+    "articulation"
+  ],
+  "hard_rules": [
+    "Architecture mechanical interfaces remain locked.",
+    "Do not uniformly rescale a standard-body design into a non-standard body.",
+    "Representation assignment is architecture-conditioned.",
+    "Existing validated components are preferred when they satisfy the design.",
+    "Fine surface detail may move from geometry to print/omission when physical scale requires it.",
+    "Mechanical grip scale and visual accessory scale are separate."
+  ]
+}
