@@ -434,3 +434,75 @@ Brickmen should:
 - learn from the physical result.
 
 At that point body architecture is a deliberate reusable system rather than an emergent property of a prompt.
+
+## B1A — topology expansion
+
+Expand official digital twins beyond humanoid size variants:
+
+- stacked-torso multi-arm;
+- mechanical/droid body;
+- ghost lower body;
+- serpent lower body;
+- merfolk tail;
+- tentacle lower body;
+- robot roller lower body;
+- centaur hybrid;
+- specialized integrated character bodies;
+- Jabba-style tail body;
+- mini-doll adjacent architecture.
+
+Reason:
+architecture recognition and generation must learn *topology*, not merely body size/bulk.
+
+## B2A — continuous body census
+
+Implement the pipeline defined in `nonstandard-body-census-and-ingestion.md`.
+
+For every newly ingested custom release:
+1. preserve maker/code/source body labels;
+2. create `FigureArchitectureObservation`;
+3. run known-architecture retrieval;
+4. inspect component/joint cues;
+5. assign confidence distribution;
+6. create unknown cluster when necessary;
+7. queue one representative physical sample when mechanical resolution is valuable.
+
+Do not propagate architecture automatically across all releases sharing a maker/prefix.
+
+## B5A — architecture-conditioned style registry
+
+Build and validate `data/body-style-profile-registry.json`.
+
+Separate:
+- mechanical FigureArchitecture;
+- visual BodyStyleProfile;
+- character-specific CharacterBodyDesign.
+
+Initial style studies:
+- official standard minifigure;
+- official Giant;
+- Axl broad hybrid;
+- Hagrid broad body;
+- Alpha AF ~7 cm muscular visual grammar;
+- G (2) muscular hybrid;
+- premium custom muscular families.
+
+For proprietary custom bodies, learn normalized descriptive style features without treating the original sculpt geometry as the manufacturing template.
+
+## B6A — topology-aware style transfer
+
+Cross-architecture translation tests must include non-biped bodies.
+
+Examples:
+- humanoid -> serpent lower body;
+- humanoid -> centaur;
+- standard -> multi-arm;
+- standard -> mechanical droid;
+- standard -> Giant;
+- standard -> Brickmen Mid/XL.
+
+Acceptance:
+- correct component count/topology;
+- no hallucinated standard legs/hands where the architecture forbids them;
+- source identity preserved;
+- target architecture surface rules respected.
