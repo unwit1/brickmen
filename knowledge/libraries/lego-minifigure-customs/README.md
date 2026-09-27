@@ -320,3 +320,13 @@ Reference fitting now has component-frame evidence for standard minifigure donor
 - `data/engineering-reference-anchors/lego-axl-hybrid-reference.json`
 
 Axl is treated as a hybrid architecture: standard lower-body and torso-core frames can remain locked while an oversized upper shell and dedicated arms define the broader visual/mechanical body. Unofficial 23763/24128 LDraw geometry remains provisional until physical measurement or official promotion.
+
+
+### Independent visual envelope fitting
+
+Visual body mass is now parameterized separately from skeletal joint spacing:
+- `data/body-envelope-profile.schema.json`
+- `tools/geometry/fit_body_envelope_profile.py`
+- `data/reference-landmarks/seed-envelope-fit-results.json`
+
+The Broad, Mid, XL and Giant generation skeletons now expose independent torso/head/abdomen envelope parameters. Fitting a wider chest no longer moves the shoulder joints. Outer-shoulder and hip silhouette measurements remain visual diagnostics until explicit visual-envelope primitives exist for them.
