@@ -53,7 +53,7 @@ def test_executed_mapping_without_transforms_exposes_alignment_gate():
     assert any("alignment candidates" in x for x in state["next_actions"])
 
 
-def test_bbox_pass_still_requires_exact_collision():
+def test_bbox_pass_still_requires_topology_keepout_and_pose_collision():
     state=summarize_pipeline_state(
         conditioning(),
         provider_job={"provider_id":"fake"},
@@ -74,4 +74,6 @@ def test_bbox_pass_still_requires_exact_collision():
             }
         },
     )
-    assert "exact_collision_boolean_validation" in state["production_readiness"]["blocking_gates"]
+    assert "mesh_topology_preflight" in state["production_readiness"]["blocking_gates"]
+    assert "exact_fixed_keepout_validation" in state["production_readiness"]["blocking_gates"]
+    assert "exact_pose_collision_validation" in state["production_readiness"]["blocking_gates"]
