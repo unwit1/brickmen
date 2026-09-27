@@ -13,6 +13,8 @@ import json
 from pathlib import Path
 from typing import Any, Mapping
 
+from tools.geometry.inspect_mesh_triangles import load_mesh_triangles
+
 
 def _script_json(value: Any) -> str:
     return (
@@ -22,11 +24,69 @@ def _script_json(value: Any) -> str:
     )
 
 
+def _edge_key(a, b, *, digits: int=6):
+    aa=tuple(round(float(v),digits) for v in a)
+    bb=tuple(round(float(v),digits) for v in b)
+    return tuple(sorted((aa,bb)))
+
+
+def _sample_review_wireframes(
+    proposal: Mapping[str,Any],
+    *,
+    max_edges_per_part: int=500,
+) -> dict[str,Any]:
+    """Extract a bounded metadata-only wireframe sample for reviewer visualization."""
+    paths=[]
+    for candidate in proposal.get("global_alignment_candidates",[]):
+        for assignment in candidate.get("assignments",[]):
+            path=str(assignment.get("provider_part_path",""))
+            if path and path not in paths:
+                paths.append(path)
+
+    result={}
+    for path in paths:
+        try:
+            triangles=load_mesh_triangles(path)
+        except Exception as exc:
+            result[path]={
+                "segments":[],
+                "source_triangle_count":0,
+                "wireframe_segment_count":0,
+                "status":"unavailable",
+                "reason":str(exc),
+            }
+            continue
+        unique={}
+        for tri in triangles:
+            for a,b in ((tri[0],tri[1]),(tri[1],tri[2]),(tri[2],tri[0])):
+                key=_edge_key(a,b)
+                unique.setdefault(
+                    key,
+                    [
+                        [float(v) for v in a],
+                        [float(v) for v in b],
+                    ],
+                )
+        keys=sorted(unique)
+        if len(keys)>max_edges_per_part:
+            step=max(1,(len(keys)+max_edges_per_part-1)//max_edges_per_part)
+            keys=keys[::step][:max_edges_per_part]
+        result[path]={
+            "segments":[unique[key] for key in keys],
+            "source_triangle_count":len(triangles),
+            "wireframe_segment_count":len(keys),
+            "status":"available",
+        }
+    return result
+
+
 def build_mapping_review_html(proposal: Mapping[str, Any]) -> str:
     candidates = proposal.get("global_alignment_candidates", [])
     if not candidates:
         raise ValueError("Mapping proposal contains no global alignment candidates")
-    embedded = _script_json(proposal)
+    review_payload=dict(proposal)
+    review_payload["review_wireframes"]=_sample_review_wireframes(proposal)
+    embedded = _script_json(review_payload)
     title = html.escape(
         str(proposal.get("provider_id", "provider"))
         + " -> "
@@ -68,7 +128,7 @@ button{{cursor:pointer;margin-top:8px}}
 <main>
   <h1>Brickmen Provider Part Mapping Review</h1>
   <div id="badges"></div>
-  <p class="small">Blue = Brickmen target slot AABB. Orange dashed = provider part AABB after the proposed shared global transform. Metadata only: no generated mesh or source-image bytes are embedded.</p>
+  <p class="small">Blue = Brickmen target slot AABB. Orange dashed = provider part AABB after the proposed shared global transform. White = bounded wireframe sample extracted from provider triangles when readable. Metadata only: no generated mesh or source-image bytes are embedded.</p>
   <div class="views">
     <section class="view"><strong>Front (X/Z)</strong><svg id="front" viewBox="0 0 700 700"></svg></section>
     <section class="view"><strong>Side (Y/Z)</strong><svg id="side" viewBox="0 0 700 700"></svg></section>
@@ -133,6 +193,17 @@ function svgEl(tag,attrs){{
   for(const [k,v] of Object.entries(attrs||{{}})) el.setAttribute(k,String(v));
   return el;
 }}
+function transformPoint(p,m){{
+  if(!Array.isArray(m)||m.length!==16) return p.map(Number);
+  const x=Number(p[0]),y=Number(p[1]),z=Number(p[2]);
+  const out=[
+    Number(m[0])*x+Number(m[1])*y+Number(m[2])*z+Number(m[3]),
+    Number(m[4])*x+Number(m[5])*y+Number(m[6])*z+Number(m[7]),
+    Number(m[8])*x+Number(m[9])*y+Number(m[10])*z+Number(m[11])
+  ];
+  const w=Number(m[12])*x+Number(m[13])*y+Number(m[14])*z+Number(m[15]);
+  return (Math.abs(w)>1e-12&&Math.abs(w-1)>1e-12)?out.map(v=>v/w):out;
+}}
 function draw(svg,axisH,axisV,candidate){{
   svg.replaceChildren();
   const boxes=[];
@@ -147,6 +218,18 @@ function draw(svg,axisH,axisV,candidate){{
   if(hmin<=0&&hmax>=0) svg.append(svgEl("line",{{x1:tx(0),x2:tx(0),y1:55,y2:645,class:"axis"}}));
   if(vmin<=0&&vmax>=0) svg.append(svgEl("line",{{x1:55,x2:645,y1:ty(0),y2:ty(0),class:"axis"}}));
   for(const a of candidate.assignments||[]){{
+    const wire=proposal.review_wireframes?.[a.provider_part_path];
+    const matrix=candidate.global_transform_matrix_to_brickmen_mm;
+    if(wire?.segments?.length && Array.isArray(matrix)){{
+      for(const segment of wire.segments){{
+        const p0=transformPoint(segment[0],matrix), p1=transformPoint(segment[1],matrix);
+        svg.append(svgEl("line",{{
+          x1:tx(p0[axisH]),y1:ty(p0[axisV]),
+          x2:tx(p1[axisH]),y2:ty(p1[axisV]),
+          class:"wire"
+        }}));
+      }}
+    }}
     const pairs=[[a.target_aabb_mm,"target","T"],[a.transformed_aabb_mm,"actual","P"]];
     for(const entry of pairs){{
       const box=entry[0], cls=entry[1], prefix=entry[2];
