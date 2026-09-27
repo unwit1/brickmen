@@ -744,3 +744,196 @@ Use print/joint outcomes to predict:
 - joint wear risk.
 
 This becomes another critic before automatic print dispatch.
+
+
+# Track P — Part-aware and articulated generation
+
+## P0 — Part-aware generation benchmark
+
+Implement/evaluate:
+- PartCrafter;
+- UniPart;
+- OmniPart;
+- conventional monolithic generator + SAMPart3D;
+- conventional monolithic generator + PartField/Trellis SegPart.
+
+Use the same FigureArchitecture target and canonical body concepts.
+
+Measure:
+- required-component recall;
+- over/under segmentation;
+- component semantic mapping;
+- boundary error;
+- shell quality;
+- deterministic joint insertion success;
+- manual correction minutes.
+
+## P1 — selective component regeneration
+
+Evaluate SAM3D-Part or successors for:
+- regenerate one arm while retaining approved torso/other arm;
+- generate a missing part from a scan/body mesh;
+- selectively replace a component after print failure or design revision.
+
+Locked JointCartridges must survive unchanged.
+
+## P2 — articulation proposal/critique
+
+Evaluate:
+- PAct;
+- Particulate;
+- ArtLLM;
+- Articulate AnyMesh;
+- SPARK;
+- URDF-Anything+;
+- Kinematify.
+
+Known architecture:
+use only as critics/proposal models.
+
+Unknown architecture:
+use to propose component/joint graphs before physical metrology.
+
+All learned joints are stored as JointProposal, never production Connector.
+
+## P3 — multi-agent articulated CAD compiler
+
+Adapt the useful LAM pattern:
+
+```
+BodyPlanner
+ -> LinkDesigner
+ -> GeometryCoder
+ -> JointCompiler
+ -> GeometryCritic
+ -> ArticulationCritic
+ -> ManufacturingCritic
+ -> Fixer
+```
+
+Brickmen differences:
+- FigureArchitecture supplies the skeleton;
+- JointCompiler can only instantiate validated JointCartridges;
+- manufacturing output targets STEP/3MF/CadQuery/build123d/Blender assets rather than generic URDF alone;
+- every revision is hashable/reproducible.
+
+## P4 — part correspondence learning
+
+Use PartField/related features to establish correspondence:
+- neutral architecture <-> character shell;
+- same architecture across characters;
+- same character across architectures;
+- same mold family across decorated releases.
+
+Train a lightweight semantic mapper only after reviewed correspondence data exists.
+
+# Track S — Architecture-conditioned style compiler
+
+## S0 — CharacterBodyFeatureSpec
+
+Extract architecture-neutral semantics:
+- morphology archetype;
+- stature;
+- regional mass;
+- limb/hand emphasis;
+- surface material;
+- identity-critical body features;
+- geometry/relief/print candidates.
+
+## S1 — StyleMappingRule library
+
+For each feature + architecture/style profile, learn whether it becomes:
+- existing component;
+- silhouette geometry;
+- major relief;
+- shallow relief;
+- print;
+- material/color;
+- soft goods;
+- separate accessory;
+- omitted detail.
+
+Seed from Hulk and Thing cross-architecture corpora.
+
+## S2 — surface material grammars
+
+Create reusable profiles for:
+- skin;
+- rock;
+- fur;
+- metal;
+- scales;
+- wood/bark;
+- cloth;
+- bone;
+- organic/slime;
+- translucent/energy;
+- armor plating.
+
+Each profile defines relief/print/finish strategy and joint/contact exclusions.
+
+## S3 — statistical BodyStyleProfiles
+
+Move from prose profiles to measured distributions:
+- head/body;
+- shoulder/body;
+- hand/head;
+- torso taper;
+- limb mass;
+- relief density;
+- surface feature scale;
+- accessory proportions.
+
+## S4 — compiler implementation
+
+```
+CharacterBodyFeatureSpec
+ + FigureArchitecture
+ + BodyStyleProfile
+ + SurfaceMaterialProfile
+ -> CharacterBodyDesignSpec
+```
+
+Then route every component to reuse/CAD/neural generation/decoration.
+
+# Track T — Mold/tooling lineage
+
+## T0 — MoldFamily ontology
+
+Model:
+`FigureArchitecture -> MoldFamily -> MoldRevision -> ComponentRelease -> FigureRelease`.
+
+## T1 — cross-brand mold equivalence
+
+Ingest explicit same-mold/remake claims and compare:
+- silhouette;
+- seam/tooling marks;
+- dimensions;
+- joint fit.
+
+Use validated mold-family equivalence to reduce redundant physical sample acquisition.
+
+## T2 — recognition hard pairs
+
+Train recognition using:
+- same mold, different brand/decoration = positive;
+- same architecture, different mold = hard negative.
+
+# Expanded control characters
+
+After Hulk and Thing, prioritize:
+- Bane;
+- Thanos;
+- Darkseid;
+- Gorilla Grodd;
+- Blob;
+- Kingpin;
+- Abomination;
+- Juggernaut;
+- Venom;
+- Rhino;
+- Beast;
+- Colossus.
+
+Purpose:
+avoid a "Hulk = all large figures" bias and learn multiple mass/material/morphology distributions.
