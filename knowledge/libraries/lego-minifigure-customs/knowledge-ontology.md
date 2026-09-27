@@ -191,3 +191,24 @@ StyleTransferPair MAPS BodyStyleProfile/architecture to another architecture
 Character identity does not imply architecture. A Hulk release can be a standard minifigure, short-leg minifigure, LEGO Giant, Alpha Toys 7 cm body, or another custom system.
 
 Preserve the source's own label (`BigFig`, `midfig`, `mega fig`, `7CM`, `Giant`) independently from the normalized FigureArchitecture. Mechanical architecture is promoted only from component/joint evidence and, for manufacturing-critical claims, physical validation.
+
+### CharacterBodyDesignSpec
+
+Add:
+- CharacterBodyDesignSpec — architecture-conditioned design handoff for a specific character/appearance.
+- FigureArchitectureSelection — auditable candidate/selection record.
+- BodyStyleProfileRegistryEntry — reusable descriptive style grammar attached to one or more architectures.
+
+Relationships:
+
+```
+SourceAppearance PROPOSES_ARCHITECTURE FigureArchitectureSelection
+FigureArchitectureSelection SELECTS FigureArchitecture
+CharacterBodyDesignSpec TARGETS FigureArchitecture
+CharacterBodyDesignSpec USES_STYLE BodyStyleProfile
+CharacterBodyDesignSpec DESIGNS_COMPONENT PartDesign/GeneratedComponent
+CharacterBodyDesignSpec USES_CONNECTOR Connector
+CharacterBodyDesignSpec USES_SURFACE ArchitectureSurfaceSchema
+```
+
+The Knowledge Engine must resolve any legacy `BodyArchitecture` ID through the compatibility bridge before generation or manufacturing.
