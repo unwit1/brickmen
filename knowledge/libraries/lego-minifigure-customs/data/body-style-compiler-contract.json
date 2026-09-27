@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.1",
+  "schema_version": "0.2",
   "created": "2026-09-27",
   "entity": "BodyStyleCompilation",
   "inputs": [
@@ -11,7 +11,8 @@
     "ArchitectureDigitalTwin",
     "ConnectorProfile[]",
     "JointCartridge[]",
-    "ManufacturingProfile"
+    "ManufacturingProfile",
+    "BodyGenerationConditioning"
   ],
   "representation_classes": [
     "existing_component",
@@ -43,6 +44,7 @@
     "scale_accessories",
     "retrieve_role_specific_references",
     "route_generation_method",
+    "compile_generation_conditioning",
     "compile_deterministic_interfaces",
     "run_style_and_manufacturing_critics"
   ],
@@ -82,6 +84,20 @@
     "Representation assignment is architecture-conditioned.",
     "Existing validated components are preferred when they satisfy the design.",
     "Fine surface detail may move from geometry to print/omission when physical scale requires it.",
-    "Mechanical grip scale and visual accessory scale are separate."
-  ]
+    "Mechanical grip scale and visual accessory scale are separate.",
+    "BodyGenerationConditioning must preserve the authority class of every joint/connector source.",
+    "Reference-only CAD or validation-pending joints may condition keep-outs and alignment but may not become production mating geometry.",
+    "Reference height and target design height are separate; fitting normalized proportions never silently changes requested product scale.",
+    "Commodity hardware remains at fixed physical dimensions even when normalized copies are supplied to image/mesh generators."
+  ],
+  "outputs": [
+    "CharacterBodyDesignSpec",
+    "BodyGenerationConditioning"
+  ],
+  "conditioning_layers": {
+    "skeleton": "Fitted/selected normalized landmarks and links used for architecture/proportion alignment.",
+    "visual_envelope": "Independent width/depth/height targets for visual shell mass; never substitutes for joint spacing.",
+    "mechanical_constraints": "Deterministic or reference-only interface/keep-out records with explicit authority state.",
+    "component_plan": "Editable shell regions, locked regions and architecture component/split expectations."
+  }
 }
