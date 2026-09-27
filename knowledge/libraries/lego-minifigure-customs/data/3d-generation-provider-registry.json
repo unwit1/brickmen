@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.2",
+  "schema_version": "0.3",
   "observed_at": "2026-09-27",
   "status": "research_registry",
   "principle": "Benchmark exact model snapshots; provider names are not stable performance guarantees.",
@@ -209,22 +209,37 @@
     {
       "provider_id": "partcrafter",
       "deployment": "local_open_source",
-      "current_model_observed": "NeurIPS-2025 PartCrafter",
+      "current_model_observed": "PartCrafter current main / NeurIPS 2025 implementation, observed 2026-09-27",
       "capabilities": [
         "single_image_to_structured_3d",
         "joint_multi_part_mesh_generation",
         "editable_part_meshes",
-        "part_count_control"
+        "part_count_control",
+        "multiple_distinct_meshes",
+        "explicit_part_count",
+        "vlm_part_count_suggestion",
+        "background_removal",
+        "input_style_transfer",
+        "scene_generation",
+        "training_code",
+        "pretrained_weights"
       ],
       "brickmen_hypotheses": [
         "strong candidate for proposing separate body shells/components instead of one fused body",
-        "use generated parts as visual candidates only; deterministic FigureArchitecture controls actual component roles and joints"
+        "use generated parts as visual candidates only; deterministic FigureArchitecture controls actual component roles and joints",
+        "FigureArchitecture component graph should provide the preferred part count rather than relying only on generic VLM suggestion",
+        "benchmark Brickmen architecture-conditioned concept images against built-in real-photo style transfer",
+        "potential future fine-tuning target after reviewed Brickmen component corpus exists"
       ],
       "hardware_notes": [
-        "community/official repo supports local inference; Windows fork reports 8GB+ VRAM with reduced settings"
+        "community/official repo supports local inference; Windows fork reports 8GB+ VRAM with reduced settings",
+        "Official README currently states CUDA GPU with at least 8GB VRAM for inference.",
+        "Part/token count can be reduced to lower memory."
       ],
       "sources": [
-        "https://github.com/wgsxm/PartCrafter"
+        "https://github.com/wgsxm/PartCrafter",
+        "https://wgsxm.github.io/projects/partcrafter/",
+        "https://arxiv.org/abs/2506.05573"
       ]
     },
     {
