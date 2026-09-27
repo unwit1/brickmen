@@ -1,0 +1,119 @@
+{
+  "schema_version": "0.1",
+  "reference_id": "lego_giant_10128_ldraw_body_profile_2303",
+  "architecture_candidate_id": "lego_giant_modular",
+  "source": {
+    "title": "Official LDraw Bigfig Hulk Body 10128 — pinned orthographic mesh profile",
+    "profile_path": "knowledge/libraries/lego-minifigure-customs/data/digital-twins/ldraw-profiles/ubuntu-noble-2303/10128.json",
+    "manifest_path": "knowledge/libraries/lego-minifigure-customs/data/digital-twins/ldraw-manifests/ubuntu-noble-2303/10128.json",
+    "ldraw_library_release": "Ubuntu 24.04 ldraw-parts 2303+ds-1",
+    "source_note": "Measurements are derived from exact triangle-plane intersections through the official reference CAD mesh in Brickmen semantic coordinates."
+  },
+  "view": "multi_view",
+  "evidence_class": "reference_cad_geometry",
+  "known_height_mm": 71.1176,
+  "landmark_coordinate_mode": "normalized_body_height",
+  "landmarks": {},
+  "envelope_measurements_normalized": {
+    "head_width": {
+      "value": 0.24846648683542003,
+      "confidence": 0.9,
+      "envelope_id": "head",
+      "axis": "x",
+      "semantic": "head_band_mean_front_width",
+      "source": {
+        "height_band_norm": [
+          0.86,
+          0.97
+        ],
+        "sample_count": 12,
+        "aggregation": "mean"
+      },
+      "notes": "Band mean avoids relying on a single tangent/extremum slice; this is visual reference geometry, not physical metrology."
+    },
+    "head_depth": {
+      "value": 0.29639736661412464,
+      "confidence": 0.9,
+      "envelope_id": "head",
+      "axis": "y",
+      "semantic": "head_band_mean_side_depth",
+      "source": {
+        "height_band_norm": [
+          0.86,
+          0.97
+        ],
+        "sample_count": 12,
+        "aggregation": "mean"
+      }
+    },
+    "chest_outer_width": {
+      "value": 0.44822387062555535,
+      "confidence": 0.95,
+      "envelope_id": "torso",
+      "axis": "x",
+      "semantic": "upper_torso_band_mean_front_width",
+      "source": {
+        "height_band_norm": [
+          0.58,
+          0.82
+        ],
+        "sample_count": 25,
+        "aggregation": "mean"
+      },
+      "notes": "The same band is extremely stable in width; exact 0.70 and 0.71 slices are 0.4499589412 body heights."
+    },
+    "chest_outer_depth": {
+      "value": 0.41732606682059015,
+      "confidence": 0.9,
+      "envelope_id": "torso",
+      "axis": "y",
+      "semantic": "upper_torso_band_mean_side_depth",
+      "source": {
+        "height_band_norm": [
+          0.58,
+          0.82
+        ],
+        "sample_count": 25,
+        "aggregation": "mean"
+      }
+    },
+    "waist_outer_width": {
+      "value": 0.38169368033424167,
+      "confidence": 0.85,
+      "envelope_id": "abdomen",
+      "axis": "x",
+      "semantic": "waist_band_mean_front_width",
+      "source": {
+        "height_band_norm": [
+          0.44,
+          0.56
+        ],
+        "sample_count": 13,
+        "aggregation": "mean"
+      },
+      "notes": "Band spans a changing abdomen/waist region; confidence is lower than the stable upper-torso band."
+    },
+    "waist_outer_depth": {
+      "value": 0.34055415885259605,
+      "confidence": 0.85,
+      "envelope_id": "abdomen",
+      "axis": "y",
+      "semantic": "waist_band_mean_side_depth",
+      "source": {
+        "height_band_norm": [
+          0.44,
+          0.56
+        ],
+        "sample_count": 13,
+        "aggregation": "mean"
+      }
+    }
+  },
+  "exclude_from_production_dimensions": true,
+  "notes": [
+    "This reference is body-only 10128 geometry, excluding pose-dependent arm/hand silhouette from 10128p01c01.",
+    "The complete assembly remains useful for component transforms and articulation context; body-only geometry is preferred for intrinsic torso/head/lower-body envelope measurements.",
+    "Profile bands are current research semantics and may be refined when component-region segmentation is implemented.",
+    "Reference CAD geometry is not physical fit/tolerance authority."
+  ]
+}
