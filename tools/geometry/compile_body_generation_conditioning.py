@@ -150,6 +150,58 @@ def compile_joint_constraint(
     }
 
 
+def merge_envelope_fits(
+    fits: Sequence[Mapping[str, Any]],
+    *,
+    tolerance: float = 1e-9,
+) -> dict[str, Any] | None:
+    if not fits:
+        return None
+
+    overrides: dict[str, float] = {}
+    references: list[str] = []
+    measurements: dict[str, Any] = {}
+    unmapped: dict[str, Any] = {}
+    bound_hits: set[str] = set()
+    mechanical_changes: set[str] = set()
+
+    for fit in fits:
+        reference_id = str(fit.get("reference_id", "unknown_reference"))
+        references.append(reference_id)
+        measurements[reference_id] = fit.get("measurements", {})
+        unmapped[reference_id] = fit.get("unmapped_measurements", {})
+
+        for name, raw in fit.get("parameter_overrides", {}).items():
+            value = float(raw)
+            if name in overrides and abs(overrides[name] - value) > tolerance:
+                raise ValueError(
+                    f"Conflicting envelope fits for {name}: "
+                    f"{overrides[name]} vs {value} ({reference_id})"
+                )
+            overrides[name] = value
+
+        bound_hits.update(str(x) for x in fit.get("bound_hits", []))
+        mechanical_changes.update(
+            str(x) for x in fit.get("mechanical_parameter_changes", [])
+        )
+
+    return {
+        "schema_version": "0.1",
+        "reference_id": (
+            references[0]
+            if len(references) == 1
+            else "merged:" + "+".join(references)
+        ),
+        "reference_ids": references,
+        "parameter_overrides": overrides,
+        "measurements_by_reference": measurements,
+        "unmapped_measurements_by_reference": unmapped,
+        "bound_hits": sorted(bound_hits),
+        "mechanical_parameter_changes": sorted(mechanical_changes),
+        "production_geometry_authority": False,
+    }
+
+
 def compile_conditioning(
     spec: Mapping[str, Any],
     *,
@@ -276,6 +328,10 @@ def compile_conditioning(
             "envelope_reference_id": (
                 envelope_fit.get("reference_id") if envelope_fit else None
             ),
+            "envelope_reference_ids": (
+                envelope_fit.get("reference_ids", [envelope_fit.get("reference_id")])
+                if envelope_fit else []
+            ),
             "envelope_bound_hits": (
                 envelope_fit.get("bound_hits", []) if envelope_fit else []
             ),
@@ -328,7 +384,12 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("skeleton")
     parser.add_argument("--skeleton-reference", default=None)
-    parser.add_argument("--envelope-reference", default=None)
+    parser.add_argument(
+        "--envelope-reference",
+        action="append",
+        default=[],
+        help="Visual-envelope reference JSON; repeat to merge compatible evidence.",
+    )
     parser.add_argument("--joint-profile", action="append", default=[])
     parser.add_argument("--target-height-mm", type=float, default=None)
     parser.add_argument("-o", "--output", required=True)
@@ -341,10 +402,11 @@ def main() -> int:
         skeleton_reference = load_reference(args.skeleton_reference)
         skeleton_fit = fit_skeleton(spec, skeleton_reference)
 
-    envelope_fit = None
-    if args.envelope_reference:
-        envelope_reference = load_reference(args.envelope_reference)
-        envelope_fit = fit_envelope_profile(spec, envelope_reference)
+    envelope_fits = [
+        fit_envelope_profile(spec, load_reference(path))
+        for path in args.envelope_reference
+    ]
+    envelope_fit = merge_envelope_fits(envelope_fits)
 
     joint_profiles = [load_json(path) for path in args.joint_profile]
     result = compile_conditioning(
