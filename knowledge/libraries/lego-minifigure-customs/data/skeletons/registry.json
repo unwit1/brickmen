@@ -1,0 +1,42 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-27",
+  "status": "generation_skeletons_nonproduction",
+  "compiler": "tools/geometry/generate_body_skeleton.py",
+  "schema": "../body-skeleton-schema.json",
+  "skeletons": [
+    {
+      "skeleton_id": "brickmen_broad_v0_skeleton",
+      "architecture_id": "brickmen_broad_v0",
+      "file": "brickmen-broad-v0.json",
+      "default_target_height_mm": 42,
+      "design_intent": "standard-height or mildly intermediate broad body; standard-lower-body first"
+    },
+    {
+      "skeleton_id": "brickmen_mid_v0_skeleton",
+      "architecture_id": "brickmen_mid_v0",
+      "file": "brickmen-mid-v0.json",
+      "default_target_height_mm": 52,
+      "design_intent": "intermediate stature with modular muscular/armored body"
+    },
+    {
+      "skeleton_id": "brickmen_xl_v0_skeleton",
+      "architecture_id": "brickmen_xl_v0",
+      "file": "brickmen-xl-v0.json",
+      "default_target_height_mm": 70,
+      "design_intent": "large anatomical/articulated body class"
+    },
+    {
+      "skeleton_id": "brickmen_giant_v0_skeleton",
+      "architecture_id": "brickmen_giant_v0",
+      "file": "brickmen-giant-v0.json",
+      "default_target_height_mm": 62,
+      "design_intent": "broad simplified Giant body with modular hardware strategy"
+    }
+  ],
+  "safety_boundary": [
+    "These skeletons define generation landmarks, envelopes and proposed joint topology.",
+    "They do not define fit-critical pin/socket/bar/stud geometry.",
+    "Manufacturing requires a validated JointCartridge/ConnectorProfile mapping for every functional interface."
+  ]
+}
