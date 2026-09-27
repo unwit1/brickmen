@@ -1,0 +1,318 @@
+{
+  "schema_version": "0.1",
+  "architecture_id": "brickmen_giant_v0",
+  "skeleton_id": "brickmen_giant_v0_skeleton",
+  "target_height_mm": 62.0,
+  "providers": [
+    {
+      "provider_id": "partcrafter",
+      "display_name": "PartCrafter",
+      "pipeline_stage": "primary_generator",
+      "provider_role": null,
+      "adapter_status": "runnable_cli_verified",
+      "brickmen_execution_runnable": true,
+      "entrypoint": "scripts/inference_partcrafter.py",
+      "input_requirements": [
+        "source_or_control_image"
+      ],
+      "output_contract": {
+        "kind": "part_mesh_bundle",
+        "component_pattern": "part_XX.glb",
+        "composite_pattern": "object.glb",
+        "manifest_pattern": "manifest.json",
+        "semantic_slot_mapping": "required_after_generation"
+      },
+      "requires_component_slot_mapping": null,
+      "helpers": {
+        "execution": "tools/geometry/run_body_generation_provider.py",
+        "post_run": "tools/geometry/continue_body_generator_run.py",
+        "mapping_review": "tools/geometry/build_body_provider_mapping_review_ui.py"
+      },
+      "canonical_pipeline_state_path": "knowledge/libraries/lego-minifigure-customs/data/pipeline-state/brickmen-giant-official-cad-v0/partcrafter.json",
+      "canonical_provider_run_status": "pending",
+      "canonical_provider_run_detail": "Verified CLI adapter exists, but no provider run report exists. External provider environment and source/guide image input are required.",
+      "execution_has_been_performed_in_canonical_fixture": false,
+      "limitations": [
+        "Does not natively consume Brickmen skeleton/envelope/keep-out JSON.",
+        "Part identity/order must be verified after generation.",
+        "Generated mating geometry has no manufacturing authority."
+      ],
+      "production_geometry_authority": false
+    },
+    {
+      "provider_id": "partpacker",
+      "display_name": "PartPacker",
+      "pipeline_stage": "primary_generator",
+      "provider_role": null,
+      "adapter_status": "runnable_cli_verified",
+      "brickmen_execution_runnable": true,
+      "entrypoint": "flow/scripts/infer.py",
+      "input_requirements": [
+        "source_or_control_image"
+      ],
+      "output_contract": {
+        "kind": "part_mesh_bundle",
+        "component_pattern": "*_partN.glb",
+        "composite_pattern": "*_N.glb",
+        "auxiliary_patterns": [
+          "*_vol0.glb",
+          "*_vol1.glb"
+        ],
+        "semantic_slot_mapping": "required_after_generation"
+      },
+      "requires_component_slot_mapping": null,
+      "helpers": {
+        "execution": "tools/geometry/run_body_generation_provider.py",
+        "post_run": "tools/geometry/continue_body_generator_run.py",
+        "mapping_review": "tools/geometry/build_body_provider_mapping_review_ui.py"
+      },
+      "canonical_pipeline_state_path": "knowledge/libraries/lego-minifigure-customs/data/pipeline-state/brickmen-giant-official-cad-v0/partpacker.json",
+      "canonical_provider_run_status": "pending",
+      "canonical_provider_run_detail": "Verified CLI adapter exists, but no provider run report exists. External provider environment and source/guide image input are required.",
+      "execution_has_been_performed_in_canonical_fixture": false,
+      "limitations": [
+        "Current Brickmen research has not verified a native exact part-count control.",
+        "Provider part decomposition may not match Brickmen manufacturing component boundaries.",
+        "Generated interfaces are visual hypotheses only."
+      ],
+      "production_geometry_authority": false
+    },
+    {
+      "provider_id": "pact",
+      "display_name": "PAct",
+      "pipeline_stage": "articulated_generator",
+      "provider_role": null,
+      "adapter_status": "runnable_brickmen_dataset_redirect_wrapper_verified",
+      "brickmen_execution_runnable": true,
+      "entrypoint": "infer_imgs.py",
+      "input_requirements": [
+        "source_or_control_image",
+        "semantic_part_label_mask_exr_or_lossless_png_tiff"
+      ],
+      "output_contract": {
+        "kind": "articulated_part_bundle",
+        "semantic_slot_mapping": "required_after_generation",
+        "articulation_prediction_authority": "candidate_only",
+        "component_pattern": "exported_arti_objects/**/glb/part_*.glb",
+        "fallback_component_pattern": "exported_arti_objects/**/ply/part_*.ply",
+        "manifest_pattern": "exported_arti_objects/**/object.json"
+      },
+      "requires_component_slot_mapping": null,
+      "helpers": {
+        "execution": "tools/geometry/run_body_generation_provider.py",
+        "provider_wrapper": "tools/geometry/provider_wrappers/run_pact_arbitrary_input.py",
+        "semantic_mask_editor": "tools/geometry/build_pact_semantic_mask_editor.py",
+        "post_run": "tools/geometry/continue_body_generator_run.py",
+        "mapping_review": "tools/geometry/build_body_provider_mapping_review_ui.py"
+      },
+      "canonical_pipeline_state_path": "knowledge/libraries/lego-minifigure-customs/data/pipeline-state/brickmen-giant-official-cad-v0/pact.json",
+      "canonical_provider_run_status": "blocked",
+      "canonical_provider_run_detail": "Provider execution interface is runnable_brickmen_dataset_redirect_wrapper_verified; no verified runnable Brickmen execution adapter exists yet.",
+      "execution_has_been_performed_in_canonical_fixture": false,
+      "limitations": [
+        "Learned articulation is evidence/candidate structure, not production mechanical authority.",
+        "Brickmen must retain control of component count, hardware, tolerances and validated joint geometry.",
+        "Current upstream custom Gradio workflow requires image plus a 2D part mask.",
+        "Current upstream infer_imgs.py parses --data_dir but hardcodes assets/real_world_examples when constructing ImageConditioned_dataset.",
+        "Arbitrary-input execution requires an upstream-compatible semantic part-label EXR mask; Brickmen does not invent label semantics.",
+        "Lossless PNG/TIFF convenience input must encode background 0 and contiguous positive part labels 1..N; multicolor visualization masks are rejected."
+      ],
+      "production_geometry_authority": false
+    },
+    {
+      "provider_id": "particulate",
+      "display_name": "Particulate",
+      "pipeline_stage": "post_generation_critic",
+      "provider_role": null,
+      "adapter_status": "runnable_cli_verified",
+      "brickmen_execution_runnable": true,
+      "entrypoint": "infer.py",
+      "input_requirements": [
+        "generated_triangle_mesh",
+        "primary_generator_output_dependency"
+      ],
+      "output_contract": {
+        "kind": "articulation_critic_report",
+        "component_slot_mapping": "not_applicable_as_primary_generator",
+        "expected_artifacts": [
+          "mesh_parts_with_axes_*.glb",
+          "animated_textured_*.glb",
+          "eval/pred.obj",
+          "eval/pred.npz"
+        ]
+      },
+      "requires_component_slot_mapping": null,
+      "helpers": {
+        "execution": "tools/geometry/run_body_generation_provider.py",
+        "critic_normalization": "tools/geometry/normalize_particulate_critic.py",
+        "architecture_comparison": "tools/geometry/compare_particulate_to_body_architecture.py"
+      },
+      "canonical_pipeline_state_path": "knowledge/libraries/lego-minifigure-customs/data/pipeline-state/brickmen-giant-official-cad-v0/particulate.json",
+      "canonical_provider_run_status": "pending",
+      "canonical_provider_run_detail": "Verified critic CLI adapter exists, but no critic run report exists. A primary-generator mesh and installed critic environment are required.",
+      "execution_has_been_performed_in_canonical_fixture": false,
+      "limitations": [
+        "Not a primary geometry generator.",
+        "Articulation predictions require reconciliation with deterministic Brickmen engineering evidence."
+      ],
+      "production_geometry_authority": false
+    },
+    {
+      "provider_id": "sam_3d_objects",
+      "display_name": "SAM 3D Objects",
+      "pipeline_stage": "baseline_generator",
+      "provider_role": null,
+      "adapter_status": "runnable_brickmen_python_api_visual_baseline",
+      "brickmen_execution_runnable": true,
+      "entrypoint": "notebook/inference.py",
+      "input_requirements": [
+        "source_image",
+        "binary_object_mask"
+      ],
+      "output_contract": {
+        "kind": "masked_gaussian_reconstruction",
+        "public_quickstart_export": "gaussian_splat_ply",
+        "printable_triangle_mesh_available_from_public_quickstart": false,
+        "component_slot_mapping": "not_directly_eligible_for_triangle_mesh_validation"
+      },
+      "requires_component_slot_mapping": null,
+      "helpers": {
+        "execution": "tools/geometry/run_body_generation_provider.py",
+        "provider_wrapper": "tools/geometry/provider_wrappers/run_sam3d_objects_baseline.py"
+      },
+      "canonical_pipeline_state_path": "knowledge/libraries/lego-minifigure-customs/data/pipeline-state/brickmen-giant-official-cad-v0/sam_3d_objects.json",
+      "canonical_provider_run_status": "pending",
+      "canonical_provider_run_detail": "Verified Brickmen wrapper exists for this visual baseline, but no run report exists. The provider environment plus image and binary mask are required.",
+      "execution_has_been_performed_in_canonical_fixture": false,
+      "limitations": [
+        "Public quick-start output is a Gaussian splat/point-cloud PLY, not a validated printable triangle mesh.",
+        "Binary object mask is required for the published API path.",
+        "Internal mesh postprocessing should not be assumed stable/public without separate verification."
+      ],
+      "production_geometry_authority": false
+    },
+    {
+      "provider_id": "unipart",
+      "display_name": "UniPart",
+      "pipeline_stage": "research_candidate",
+      "provider_role": null,
+      "adapter_status": "unverified",
+      "brickmen_execution_runnable": false,
+      "entrypoint": null,
+      "input_requirements": [],
+      "output_contract": null,
+      "requires_component_slot_mapping": null,
+      "helpers": {},
+      "canonical_pipeline_state_path": null,
+      "canonical_provider_run_status": "state_unavailable",
+      "canonical_provider_run_detail": null,
+      "execution_has_been_performed_in_canonical_fixture": false,
+      "limitations": [
+        "No official implementation was verified during the 2026-09-27 research snapshot."
+      ],
+      "production_geometry_authority": false
+    },
+    {
+      "provider_id": "pwm_artgen",
+      "display_name": "PWM-ArtGen",
+      "pipeline_stage": "research_candidate",
+      "provider_role": null,
+      "adapter_status": "unverified",
+      "brickmen_execution_runnable": false,
+      "entrypoint": null,
+      "input_requirements": [],
+      "output_contract": null,
+      "requires_component_slot_mapping": null,
+      "helpers": {},
+      "canonical_pipeline_state_path": null,
+      "canonical_provider_run_status": "state_unavailable",
+      "canonical_provider_run_detail": null,
+      "execution_has_been_performed_in_canonical_fixture": false,
+      "limitations": [
+        "Repository maturity and runnable inference were not verified in this snapshot."
+      ],
+      "production_geometry_authority": false
+    }
+  ],
+  "shared_pipeline": {
+    "conditioning": "implemented",
+    "structural_guides": "implemented",
+    "articulation_sweeps": "implemented",
+    "provider_job_compilation": "implemented",
+    "provider_dry_run_and_execution": "implemented_for_verified_adapters",
+    "provider_output_classification": "provider_specific",
+    "provider_part_provenance": "preserved",
+    "semantic_slot_mapping_proposal": "implemented",
+    "mapping_wireframe_reviewer": "implemented",
+    "strict_unambiguous_auto_promotion": "opt_in_only",
+    "transform_reconciliation": "implemented",
+    "coarse_geometry_validation": "implemented",
+    "mesh_topology_preflight": "implemented",
+    "exact_fixed_keepout_validation": "implemented",
+    "sampled_pose_collision": "implemented",
+    "conservative_continuous_rotation_collision": "implemented",
+    "validation_bundle": "implemented",
+    "pipeline_state": "implemented"
+  },
+  "physical_blockers": [
+    {
+      "kind": "mechanical_interface_validation",
+      "joint_profile_id": "lego_giant_43093_shoulder_reference_v0",
+      "authority_class": "reference_only_not_manufacturing_authority",
+      "required_validation": [
+        "Measure physical 43093 critical dimensions from multiple samples.",
+        "Measure official Giant body and arm mating features.",
+        "Record insertion/removal force for hardware into each mating component.",
+        "Measure shoulder breakaway/running torque and axial/radial play.",
+        "Run cycle/wear testing before promoting any printed mating geometry.",
+        "Validate keep-out and articulation sweep inside the intended Brickmen shell."
+      ]
+    },
+    {
+      "kind": "joint_contact_region_validation",
+      "joint_id": "shoulder_l",
+      "status": "pending_physical_validation_no_contact_geometry",
+      "source_validation_plan_id": "giant_43093_shoulder_physical_validation_v0",
+      "blocker": "Do not infer an allowed collision/contact zone from the 43093 LDraw bounding box alone. Measure/validate the actual mating interface and intentional contact region."
+    },
+    {
+      "kind": "joint_contact_region_validation",
+      "joint_id": "shoulder_r",
+      "status": "pending_physical_validation_no_contact_geometry",
+      "source_validation_plan_id": "giant_43093_shoulder_physical_validation_v0",
+      "blocker": "Mirror/use validated right-side interface evidence only after verifying whether the physical system is materially symmetric."
+    },
+    {
+      "kind": "joint_contact_region_validation",
+      "joint_id": "wrist_l",
+      "status": "pending_joint_cartridge_and_contact_validation",
+      "source_validation_plan_id": null,
+      "blocker": "Wrist contact/mating geometry has no validated JointProfile/JointCartridge yet."
+    },
+    {
+      "kind": "joint_contact_region_validation",
+      "joint_id": "wrist_r",
+      "status": "pending_joint_cartridge_and_contact_validation",
+      "source_validation_plan_id": null,
+      "blocker": "Wrist contact/mating geometry has no validated JointProfile/JointCartridge yet."
+    },
+    {
+      "kind": "joint_contact_region_validation",
+      "joint_id": "neck",
+      "status": "pending_joint_cartridge_and_contact_validation",
+      "source_validation_plan_id": null,
+      "blocker": "Neck/head contact region is not physically validated."
+    },
+    {
+      "kind": "joint_contact_region_validation",
+      "joint_id": "lower_body",
+      "status": "pending_joint_cartridge_and_contact_validation",
+      "source_validation_plan_id": null,
+      "blocker": "Lower-body mating/contact region is not physically validated."
+    }
+  ],
+  "canonical_generated_geometry_available": false,
+  "canonical_gpu_provider_execution_performed": false,
+  "next_system_milestone": "Run at least one verified primary generator on real/reference input, continue it through mapping/validation, and retain the resulting provider-run/output/validation bundle as a non-production experiment.",
+  "production_geometry_authority": false
+}
