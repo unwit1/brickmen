@@ -47,7 +47,11 @@ jobs:
             python tools/geometry/measure_reference_mesh_profile.py \
               "$OUT/obj/$stem.obj" \
               -o "$PROFILE_DIR/$stem.json" \
-              --samples 101
+              --samples 101 \
+              --vertical-axis z \
+              --vertical-direction positive \
+              --front-axis x \
+              --side-axis y
 
             python - "$PROFILE_DIR/$stem.json" "$part" "$package_version" <<'PY'
           import json
@@ -61,8 +65,8 @@ jobs:
           data["source_part"] = part
           data["ldraw_library_release"] = f"Ubuntu 24.04 ldraw-parts {package_version}"
           data["coordinate_note"] = (
-              "Profile uses LDraw X as front-view horizontal, negative Y as up, "
-              "and LDraw Z as side-view horizontal/depth."
+              "Profile consumes Brickmen-frame OBJ: X is front-view horizontal, "
+              "Z is up, and Y is side-view horizontal/depth."
           )
           path.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
           PY
