@@ -262,9 +262,41 @@ def fit_skeleton(
     if target_height is None:
         target_height = float(spec["default_target_height_mm"])
 
+    bound_hits = []
+    for name in parameter_names:
+        definition = definitions[name]
+        lo = float(definition.get("min", params[name]))
+        hi = float(definition.get("max", params[name]))
+        tolerance = max((hi - lo) * 0.005, 1e-9)
+        if abs(params[name] - lo) <= tolerance:
+            bound_hits.append(
+                {"parameter": name, "bound": "min", "value": params[name]}
+            )
+        elif abs(params[name] - hi) <= tolerance:
+            bound_hits.append(
+                {"parameter": name, "bound": "max", "value": params[name]}
+            )
+
+    diagnostic_flags = []
+    if bound_hits:
+        diagnostic_flags.append("one_or_more_parameters_hit_bounds")
+    if (
+        fit_status in {"weak_fit_review_required", "architecture_or_landmarks_mismatch"}
+        and len(bound_hits) >= 2
+    ):
+        diagnostic_flags.append("skeleton_design_space_may_be_too_narrow")
+    if reference.get("architecture_candidate_id") not in (
+        None,
+        spec["architecture_id"],
+    ):
+        diagnostic_flags.append("reference_architecture_differs_from_brickmen_target")
+
     return {
-        "schema_version": "0.1",
+        "schema_version": "0.2",
         "reference_id": reference["reference_id"],
+        "reference_architecture_candidate_id": reference.get(
+            "architecture_candidate_id"
+        ),
         "skeleton_id": spec["skeleton_id"],
         "architecture_id": spec["architecture_id"],
         "evidence_class": reference["evidence_class"],
@@ -274,6 +306,10 @@ def fit_skeleton(
         "initial_normalized_rmse": initial_rmse,
         "final_normalized_rmse": rmse,
         "fit_status": fit_status,
+        "matched_landmark_count": len(final_residuals),
+        "reference_landmark_count": len(observations),
+        "bound_hits": bound_hits,
+        "diagnostic_flags": diagnostic_flags,
         "residuals": final_residuals,
         "history": history,
         "production_geometry_authority": False,
