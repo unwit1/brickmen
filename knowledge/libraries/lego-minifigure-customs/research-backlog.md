@@ -555,8 +555,9 @@ Next:
 - [x] separate official Giant EngineeringSkeleton evidence from Brickmen Giant design skeleton
 
 Next:
-- [ ] ingest full 10128/10154/10124 geometry into component digital twin
-- [ ] derive complete local transforms and articulation frames
+- [ ] ingest full 10128/10154/10124/10127/10126 mesh geometry into component digital twin
+- [x] ingest complete official `10128p01c01` component assembly frames into digital twin
+- [x] derive complete default-pose local transforms and component frames
 - [ ] reconcile LDraw frames with physical sample measurements
 - [ ] map optional Giant-compatible Brickmen JointCartridges
 
