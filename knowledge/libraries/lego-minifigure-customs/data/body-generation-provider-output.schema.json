@@ -56,6 +56,20 @@
           },
           "geometry_authority": {
             "type": "string"
+          },
+          "transform_matrix_to_brickmen_mm": {
+            "type": "array",
+            "minItems": 16,
+            "maxItems": 16,
+            "items": {
+              "type": "number"
+            }
+          },
+          "transform_source": {
+            "type": [
+              "string",
+              "null"
+            ]
           }
         }
       }
