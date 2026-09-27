@@ -1,0 +1,297 @@
+{
+  "schema_version": "0.1",
+  "verified_as_of": "2026-09-27",
+  "rule": "No provider is assumed to understand BodyGenerationConditioning natively. Brickmen adapters must translate conditioning into provider-native inputs and then post-align/repair outputs while preserving mechanical authority boundaries.",
+  "providers": [
+    {
+      "provider_id": "partcrafter",
+      "name": "PartCrafter",
+      "role": "part_aware_image_to_3d_generator",
+      "availability": "official_open_source_inference_available",
+      "license": "MIT",
+      "sources": {
+        "repository": "https://github.com/wgsxm/PartCrafter",
+        "paper": "https://arxiv.org/abs/2506.05573"
+      },
+      "native_inputs": [
+        "single_rgb_image",
+        "part_count_hint",
+        "tag",
+        "optional_background_removal"
+      ],
+      "native_outputs": [
+        "multiple_semantically_distinct_3d_part_meshes",
+        "assembled_object_result"
+      ],
+      "native_controls": [
+        "num_parts",
+        "tag",
+        "optional_vlm_based_part_count_suggestion"
+      ],
+      "hardware_notes": [
+        "Local GPU inference; upstream repository downloads model weights automatically in its quick-start path."
+      ],
+      "brickmen_integration": {
+        "tier": "primary_candidate",
+        "adapter_mode": "render_or_source_image_plus_part_count_then_post_align",
+        "use_component_slots_for_part_count": true,
+        "can_consume_mechanical_geometry_directly": false,
+        "pre_generation": [
+          "choose source/reference render or Brickmen-conditioned guide render",
+          "set part-count hint from required generated component slots",
+          "optionally generate masks/labels from component slots for downstream mapping"
+        ],
+        "post_generation": [
+          "map returned parts to Brickmen component slots",
+          "align part frames to skeleton landmarks",
+          "trim generated geometry away from fixed-mm mechanical keep-outs",
+          "insert deterministic validated interfaces only after visual-shell cleanup"
+        ]
+      },
+      "limitations": [
+        "Does not natively consume Brickmen skeleton/envelope/keep-out JSON.",
+        "Part identity/order must be verified after generation.",
+        "Generated mating geometry has no manufacturing authority."
+      ]
+    },
+    {
+      "provider_id": "partpacker",
+      "name": "PartPacker",
+      "role": "part_level_image_to_3d_generator",
+      "availability": "official_open_source_inference_and_models_available",
+      "license": "upstream license.md; normalize before redistribution",
+      "sources": {
+        "repository": "https://github.com/NVlabs/PartPacker",
+        "paper": "https://arxiv.org/abs/2506.09980"
+      },
+      "native_inputs": [
+        "single_view_image"
+      ],
+      "native_outputs": [
+        "part_level_3d_object_geometry"
+      ],
+      "native_controls": [
+        "model_configuration",
+        "inference_configuration"
+      ],
+      "hardware_notes": [
+        "Upstream documents PyTorch/CUDA local inference and tested RTX 3090/4090 configurations.",
+        "Upstream can use multiple GPUs but falls back to one GPU."
+      ],
+      "brickmen_integration": {
+        "tier": "primary_candidate",
+        "adapter_mode": "image_to_parts_then_slot_mapping_and_post_align",
+        "use_component_slots_for_part_count": false,
+        "can_consume_mechanical_geometry_directly": false,
+        "pre_generation": [
+          "render or select reference image",
+          "retain Brickmen component-slot graph separately for output matching"
+        ],
+        "post_generation": [
+          "segment/map generated part meshes to expected slots",
+          "align to skeleton/envelope controls",
+          "repair interpenetration and shell boundaries",
+          "subtract keep-outs and insert validated interfaces"
+        ]
+      },
+      "limitations": [
+        "Current Brickmen research has not verified a native exact part-count control.",
+        "Provider part decomposition may not match Brickmen manufacturing component boundaries.",
+        "Generated interfaces are visual hypotheses only."
+      ]
+    },
+    {
+      "provider_id": "pact",
+      "name": "PAct",
+      "role": "articulated_part_decomposed_image_to_3d_generator",
+      "availability": "official_inference_training_and_preprocessing_available",
+      "license": "MIT",
+      "sources": {
+        "repository": "https://github.com/Mobiuslqm/PAct"
+      },
+      "native_inputs": [
+        "single_view_image"
+      ],
+      "native_outputs": [
+        "part_decomposed_3d_geometry",
+        "appearance",
+        "articulation_parameters",
+        "simulation_ready_structure"
+      ],
+      "native_controls": [
+        "configuration_files",
+        "inference_pipeline_parameters"
+      ],
+      "hardware_notes": [],
+      "brickmen_integration": {
+        "tier": "articulation_candidate",
+        "adapter_mode": "generate_articulated_candidate_then_reconcile_with_brickmen_architecture",
+        "use_component_slots_for_part_count": false,
+        "can_consume_mechanical_geometry_directly": false,
+        "pre_generation": [
+          "supply reference/conditioned image",
+          "retain expected component slots and selected Brickmen skeleton as external truth constraints"
+        ],
+        "post_generation": [
+          "compare generated part graph with expected Brickmen component graph",
+          "compare inferred articulation axes/ranges with Brickmen skeleton/joint profiles",
+          "discard or override learned fit-critical geometry",
+          "use generated surfaces only after deterministic interface insertion"
+        ]
+      },
+      "limitations": [
+        "Learned articulation is evidence/candidate structure, not production mechanical authority.",
+        "Brickmen must retain control of component count, hardware, tolerances and validated joint geometry."
+      ]
+    },
+    {
+      "provider_id": "particulate",
+      "name": "Particulate",
+      "role": "mesh_to_articulation_inference_critic",
+      "availability": "official_inference_code_available",
+      "license": null,
+      "sources": {
+        "repository": "https://github.com/RuiningLi/particulate"
+      },
+      "native_inputs": [
+        "static_3d_mesh"
+      ],
+      "native_outputs": [
+        "part_decomposition",
+        "kinematic_structure",
+        "motion_constraints"
+      ],
+      "native_controls": [
+        "inference_configuration"
+      ],
+      "hardware_notes": [],
+      "brickmen_integration": {
+        "tier": "post_generation_critic",
+        "adapter_mode": "analyze_generated_mesh_and_compare_to_selected_architecture",
+        "use_component_slots_for_part_count": false,
+        "can_consume_mechanical_geometry_directly": false,
+        "pre_generation": [],
+        "post_generation": [
+          "run on generated visual mesh candidate",
+          "compare inferred components/joints to Brickmen expected component slots and skeleton",
+          "flag topology or motion disagreements",
+          "never overwrite validated Brickmen mechanical records automatically"
+        ]
+      },
+      "limitations": [
+        "Not a primary geometry generator.",
+        "Articulation predictions require reconciliation with deterministic Brickmen engineering evidence."
+      ]
+    },
+    {
+      "provider_id": "sam_3d_objects",
+      "name": "SAM 3D Objects",
+      "role": "single_or_multi_object_image_to_3d_reconstructor",
+      "availability": "official_code_weights_and_demo_available",
+      "license": "SAM License",
+      "sources": {
+        "repository": "https://github.com/facebookresearch/sam-3d-objects"
+      },
+      "native_inputs": [
+        "image",
+        "object_mask_or_prompted_object_selection"
+      ],
+      "native_outputs": [
+        "3d_geometry",
+        "texture",
+        "pose",
+        "layout"
+      ],
+      "native_controls": [
+        "single_object_or_multi_object_workflow",
+        "mask_or_object_selection"
+      ],
+      "hardware_notes": [
+        "Upstream default setup documents Linux x86-64 and an NVIDIA GPU with at least 32 GB VRAM."
+      ],
+      "brickmen_integration": {
+        "tier": "baseline_and_masked_component_candidate",
+        "adapter_mode": "monolithic_baseline_or_per_component_mask_reconstruction",
+        "use_component_slots_for_part_count": false,
+        "can_consume_mechanical_geometry_directly": false,
+        "pre_generation": [
+          "render/prepare component masks from Brickmen slot plan where possible",
+          "run monolithic reconstruction as a baseline or masked reconstruction per component"
+        ],
+        "post_generation": [
+          "align reconstructed geometry to skeleton and envelopes",
+          "merge/repair component surfaces if reconstructed separately",
+          "apply deterministic mechanical keep-outs/interfaces"
+        ]
+      },
+      "limitations": [
+        "Not a native Brickmen part-aware manufacturing decomposition.",
+        "Per-component mask workflow depends on suitable source imagery/masks.",
+        "Model output remains visual/reconstruction evidence."
+      ]
+    },
+    {
+      "provider_id": "unipart",
+      "name": "UniPart",
+      "role": "part_level_image_guided_3d_generator",
+      "availability": "paper_verified_implementation_not_verified_in_snapshot",
+      "license": null,
+      "sources": {
+        "paper": "https://arxiv.org/abs/2512.09435"
+      },
+      "native_inputs": [
+        "image_guidance"
+      ],
+      "native_outputs": [
+        "whole_object_geometry",
+        "part_level_geometry",
+        "latent_part_segmentation"
+      ],
+      "native_controls": [
+        "part_level_latent_generation"
+      ],
+      "hardware_notes": [],
+      "brickmen_integration": {
+        "tier": "research_radar",
+        "adapter_mode": "evaluate_when_official_inference_is_available",
+        "use_component_slots_for_part_count": false,
+        "can_consume_mechanical_geometry_directly": false,
+        "pre_generation": [],
+        "post_generation": []
+      },
+      "limitations": [
+        "No official implementation was verified during the 2026-09-27 research snapshot."
+      ]
+    },
+    {
+      "provider_id": "pwm_artgen",
+      "name": "PWM-ArtGen",
+      "role": "articulated_object_generation_research_candidate",
+      "availability": "public_research_repository_detected_implementation_maturity_unverified",
+      "license": null,
+      "sources": {
+        "repository": "https://github.com/Wentap123/PWM-ArtGen"
+      },
+      "native_inputs": [
+        "single_image"
+      ],
+      "native_outputs": [
+        "articulated_3d_object_candidate"
+      ],
+      "native_controls": [],
+      "hardware_notes": [],
+      "brickmen_integration": {
+        "tier": "research_radar",
+        "adapter_mode": "re_evaluate_after_inference_artifacts_are_verified",
+        "use_component_slots_for_part_count": false,
+        "can_consume_mechanical_geometry_directly": false,
+        "pre_generation": [],
+        "post_generation": []
+      },
+      "limitations": [
+        "Repository maturity and runnable inference were not verified in this snapshot."
+      ]
+    }
+  ],
+  "production_geometry_authority": false
+}
