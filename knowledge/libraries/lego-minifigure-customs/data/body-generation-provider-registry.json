@@ -199,7 +199,8 @@
         "Brickmen must retain control of component count, hardware, tolerances and validated joint geometry.",
         "Current upstream custom Gradio workflow requires image plus a 2D part mask.",
         "Current upstream infer_imgs.py parses --data_dir but hardcodes assets/real_world_examples when constructing ImageConditioned_dataset.",
-        "Arbitrary-input execution requires an upstream-compatible semantic part-label EXR mask; Brickmen does not invent label semantics."
+        "Arbitrary-input execution requires an upstream-compatible semantic part-label EXR mask; Brickmen does not invent label semantics.",
+        "Lossless PNG/TIFF convenience input must encode background 0 and contiguous positive part labels 1..N; multicolor visualization masks are rejected."
       ],
       "execution": {
         "adapter_status": "runnable_brickmen_dataset_redirect_wrapper_verified",
@@ -211,14 +212,14 @@
           "<pact_repo>",
           "--image",
           "<image>",
-          "--semantic-mask-exr",
-          "<semantic_part_mask.exr>",
+          "--semantic-mask",
+          "<semantic_part_mask.exr_or_lossless_label_png_tiff>",
           "--output-dir",
           "<output_dir>",
           "--metadata",
           "<output_dir>/brickmen-pact-wrapper.json"
         ],
-        "upstream_requirement_note": "Brickmen wrapper redirects PAct's hardcoded ImageConditioned_dataset root in-process without modifying the upstream checkout. A PAct-compatible semantic part-label EXR mask is required."
+        "upstream_requirement_note": "Brickmen wrapper redirects PAct's hardcoded ImageConditioned_dataset root in-process without modifying the upstream checkout. Supply a PAct-compatible semantic part-label EXR or a lossless integer-label PNG/TIFF; raster labels are redirected only for the staged mask read."
       },
       "pipeline_stage": "articulated_generator",
       "output_contract": {
