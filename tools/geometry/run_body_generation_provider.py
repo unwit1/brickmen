@@ -70,6 +70,7 @@ def build_execution_plan(
     output_dir: str | Path,
     source_image: str | Path | None = None,
     mask_path: str | Path | None = None,
+    semantic_mask: str | Path | None = None,
     semantic_mask_exr: str | Path | None = None,
     input_mesh: str | Path | None = None,
     python_executable: str = "python",
@@ -182,12 +183,14 @@ def build_execution_plan(
             source_image or job.get("source_image") or "",
             "PAct source image",
         )
-        semantic_mask = _require_file(
-            semantic_mask_exr or "",
-            "PAct semantic part EXR mask",
+        semantic_mask_path = _require_file(
+            semantic_mask or semantic_mask_exr or "",
+            "PAct semantic part mask",
         )
-        if semantic_mask.suffix.lower() != ".exr":
-            raise ValueError("PAct semantic part mask must use .exr")
+        if semantic_mask_path.suffix.lower() not in {".exr",".png",".tif",".tiff"}:
+            raise ValueError(
+                "PAct semantic part mask must use .exr, .png, .tif, or .tiff"
+            )
         wrapper = (
             Path(__file__).resolve().parent
             / "provider_wrappers"
@@ -203,8 +206,8 @@ def build_execution_plan(
             str(repo),
             "--image",
             str(image_path),
-            "--semantic-mask-exr",
-            str(semantic_mask),
+            "--semantic-mask",
+            str(semantic_mask_path),
             "--output-dir",
             str(out),
             "--metadata",
@@ -212,8 +215,8 @@ def build_execution_plan(
         ]
         staging = {
             "source_image": str(image_path),
-            "semantic_mask_exr": str(semantic_mask),
-            "strategy": "wrapper_stages_rgba_and_semantic_exr",
+            "semantic_mask": str(semantic_mask_path),
+            "strategy": "wrapper_stages_rgba_and_semantic_label_mask",
         }
 
     elif provider_id == "sam_3d_objects":
@@ -542,6 +545,7 @@ def main() -> int:
     parser.add_argument("--provider-repo", default=None)
     parser.add_argument("--source-image", default=None)
     parser.add_argument("--mask", default=None)
+    parser.add_argument("--semantic-mask", default=None)
     parser.add_argument("--semantic-mask-exr", default=None)
     parser.add_argument("--input-mesh", default=None)
     parser.add_argument("--output-dir", required=True)
@@ -564,6 +568,7 @@ def main() -> int:
         output_dir=args.output_dir,
         source_image=args.source_image,
         mask_path=args.mask,
+        semantic_mask=args.semantic_mask,
         semantic_mask_exr=args.semantic_mask_exr,
         input_mesh=args.input_mesh,
         python_executable=args.python,
