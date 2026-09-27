@@ -26,6 +26,25 @@ IDENTITY = (
 )
 
 
+def ldraw_to_brickmen(
+    p: Sequence[float],
+) -> tuple[float, float, float]:
+    """Map raw LDraw coordinates into Brickmen semantic body axes.
+
+    LDraw uses a right-handed frame with -Y as up. Brickmen uses:
+      X = left/right
+      Y = back/front depth
+      Z = feet/head (up)
+
+    The right-handed mapping is therefore:
+      brickmen_x = ldraw_x
+      brickmen_y = ldraw_z
+      brickmen_z = -ldraw_y
+    """
+    x, y, z = map(float, p)
+    return (x, z, -y)
+
+
 def apply_transform(t: Sequence[float], p: Sequence[float]) -> tuple[float, float, float]:
     x, y, z = map(float, p)
     return (
@@ -306,11 +325,19 @@ def flatten_ldraw(
     if all_points:
         mins = [min(p[i] for p in all_points) for i in range(3)]
         maxs = [max(p[i] for p in all_points) for i in range(3)]
+        brickmen_points = [ldraw_to_brickmen(p) for p in all_points]
+        brickmen_mins = [
+            min(p[i] for p in brickmen_points) for i in range(3)
+        ]
+        brickmen_maxs = [
+            max(p[i] for p in brickmen_points) for i in range(3)
+        ]
     else:
         mins = maxs = [0.0, 0.0, 0.0]
+        brickmen_mins = brickmen_maxs = [0.0, 0.0, 0.0]
 
     return {
-        "schema_version": "0.1",
+        "schema_version": "0.2",
         "root_file": relative_label(entry),
         "ldraw_root": str(root),
         "triangle_count": len(triangles),
@@ -319,9 +346,40 @@ def flatten_ldraw(
         "line_counts": line_counts,
         "bfc_invertnext_count": bfc_invertnext_count,
         "bbox_ldu": {"min": mins, "max": maxs},
+        "coordinate_frames": {
+            "ldraw": {
+                "handedness": "right",
+                "axes": {
+                    "x": "lateral",
+                    "y": "vertical_down; -Y is up",
+                    "z": "depth",
+                },
+            },
+            "brickmen": {
+                "handedness": "right",
+                "axes": {
+                    "x": "left_to_right",
+                    "y": "back_to_front_depth",
+                    "z": "feet_to_head_up",
+                },
+                "from_ldraw": {
+                    "x": "ldraw_x",
+                    "y": "ldraw_z",
+                    "z": "-ldraw_y",
+                },
+            },
+        },
         "bbox_nominal_mm": {
             "min": [v * LDU_TO_MM for v in mins],
             "max": [v * LDU_TO_MM for v in maxs],
+        },
+        "bbox_brickmen_ldu": {
+            "min": brickmen_mins,
+            "max": brickmen_maxs,
+        },
+        "bbox_brickmen_nominal_mm": {
+            "min": [v * LDU_TO_MM for v in brickmen_mins],
+            "max": [v * LDU_TO_MM for v in brickmen_maxs],
         },
         "dependencies": sorted(dependencies.values(), key=lambda x: x["path"]),
         "unresolved_references": unresolved,
@@ -338,8 +396,11 @@ def obj_from_triangles(
     triangles: Iterable[Sequence[Sequence[float]]],
     *,
     scale: float = 1.0,
+    frame: str = "ldraw",
     title: str = "Brickmen LDraw reference geometry",
 ) -> str:
+    if frame not in {"ldraw", "brickmen"}:
+        raise ValueError("frame must be 'ldraw' or 'brickmen'")
     vertices: list[tuple[float, float, float]] = []
     index: dict[tuple[float, float, float], int] = {}
     faces: list[tuple[int, int, int]] = []
@@ -347,7 +408,10 @@ def obj_from_triangles(
     for triangle in triangles:
         face = []
         for point in triangle:
-            key = tuple(round(float(v) * scale, 9) for v in point)
+            output_point = (
+                ldraw_to_brickmen(point) if frame == "brickmen" else point
+            )
+            key = tuple(round(float(v) * scale, 9) for v in output_point)
             if key not in index:
                 index[key] = len(vertices) + 1
                 vertices.append(key)
@@ -373,6 +437,12 @@ def main() -> int:
     parser.add_argument("--manifest", required=True)
     parser.add_argument("--obj", default=None)
     parser.add_argument("--obj-units", choices=["ldu", "mm"], default="mm")
+    parser.add_argument(
+        "--obj-frame",
+        choices=["ldraw", "brickmen"],
+        default="ldraw",
+        help="Coordinate frame for exported OBJ; manifests always contain both.",
+    )
     parser.add_argument("--allow-missing", action="store_true")
     args = parser.parse_args()
 
@@ -390,7 +460,11 @@ def main() -> int:
         payload = obj_from_triangles(
             result["triangles_ldu"],
             scale=scale,
-            title=f"{result['root_file']} ({args.obj_units})",
+            frame=args.obj_frame,
+            title=(
+                f"{result['root_file']} ({args.obj_units}; "
+                f"{args.obj_frame} frame)"
+            ),
         )
         Path(args.obj).write_text(payload, encoding="utf-8")
     return 0
