@@ -1,0 +1,64 @@
+name: LEGO Mask Topology Manual Audit
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/lego-mask-topology-manual-audit.yml'
+      - 'tools/knowledge/audit_mask_topology_against_manual.py'
+      - 'knowledge/libraries/lego-minifigure-customs/data/review-decisions/mask-headgear-route-review-*.json'
+      - 'knowledge/libraries/lego-minifigure-customs/data/bulk-ingestion/mask-route-topology-classification-latest.jsonl'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: lego-mask-topology-manual-audit-main
+  cancel-in-progress: true
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out Brickmen
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Audit manual versus automated topology
+        shell: bash
+        run: |
+          set -euo pipefail
+          data=knowledge/libraries/lego-minifigure-customs/data
+          bulk="$data/bulk-ingestion"
+          python tools/knowledge/audit_mask_topology_against_manual.py \
+            --classification "$bulk/mask-route-topology-classification-latest.jsonl" \
+            --decisions-dir "$data/review-decisions" \
+            --output "$bulk/mask-topology-manual-audit-latest.jsonl" \
+            --summary "$bulk/mask-topology-manual-audit-summary-latest.json"
+
+      - name: Commit audit outputs
+        if: success()
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "brickmen-ingestion-bot"
+          git config user.email "brickmen-ingestion-bot@users.noreply.github.com"
+          git add knowledge/libraries/lego-minifigure-customs/data/bulk-ingestion/mask-topology-manual-audit-*
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "knowledge: refresh mask topology manual audit"
+          for attempt in 1 2 3 4; do
+            if git push; then exit 0; fi
+            git fetch origin main
+            if ! git rebase origin/main; then
+              git rebase --abort || true
+              echo "Audit output rebase conflicted; a newer run will regenerate."
+              exit 0
+            fi
+          done
+          exit 1
