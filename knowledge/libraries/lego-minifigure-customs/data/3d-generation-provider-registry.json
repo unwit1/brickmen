@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.1",
+  "schema_version": "0.2",
   "observed_at": "2026-09-27",
   "status": "research_registry",
   "principle": "Benchmark exact model snapshots; provider names are not stable performance guarantees.",
@@ -205,6 +205,131 @@
       "sources": [
         "https://docs.zoo.dev/"
       ]
+    },
+    {
+      "provider_id": "partcrafter",
+      "deployment": "local_open_source",
+      "current_model_observed": "NeurIPS-2025 PartCrafter",
+      "capabilities": [
+        "single_image_to_structured_3d",
+        "joint_multi_part_mesh_generation",
+        "editable_part_meshes",
+        "part_count_control"
+      ],
+      "brickmen_hypotheses": [
+        "strong candidate for proposing separate body shells/components instead of one fused body",
+        "use generated parts as visual candidates only; deterministic FigureArchitecture controls actual component roles and joints"
+      ],
+      "hardware_notes": [
+        "community/official repo supports local inference; Windows fork reports 8GB+ VRAM with reduced settings"
+      ],
+      "sources": [
+        "https://github.com/wgsxm/PartCrafter"
+      ]
+    },
+    {
+      "provider_id": "pact_articulated",
+      "deployment": "local_open_source_research",
+      "current_model_observed": "SIGGRAPH-Asia-2026 PAct",
+      "capabilities": [
+        "single_image_to_part_decomposed_3d",
+        "joint_geometry_generation",
+        "articulation_parameter_estimation",
+        "simulation_ready_output"
+      ],
+      "brickmen_hypotheses": [
+        "use as architecture/joint proposal model from catalog photos",
+        "compare proposed decomposition against canonical FigureArchitecture instead of trusting it as manufacturing geometry"
+      ],
+      "sources": [
+        "https://github.com/Mobiuslqm/PAct"
+      ]
+    },
+    {
+      "provider_id": "artllm",
+      "deployment": "research_model",
+      "current_model_observed": "CVPR-2026 ArtLLM",
+      "capabilities": [
+        "point_cloud_to_part_layout",
+        "variable_part_count",
+        "joint_prediction",
+        "part_geometry_conditioning"
+      ],
+      "brickmen_hypotheses": [
+        "candidate for scan/mesh -> component/joint graph hypothesis generation"
+      ],
+      "sources": [
+        "https://openaccess.thecvf.com/content/CVPR2026/html/Wang_ArtLLM_Generating_Articulated_Assets_via_3D_LLM_CVPR_2026_paper.html"
+      ]
+    },
+    {
+      "provider_id": "particulate",
+      "deployment": "research_model",
+      "current_model_observed": "CVPR-2026 Particulate",
+      "capabilities": [
+        "mesh_articulation_estimation",
+        "joint_parameter_prediction",
+        "ai_generated_mesh_support",
+        "feed_forward"
+      ],
+      "brickmen_hypotheses": [
+        "post-process candidate whole-body meshes to infer likely articulated parts/joints",
+        "use for critique/segmentation, then map to Brickmen joint primitives"
+      ],
+      "sources": [
+        "https://openaccess.thecvf.com/content/CVPR2026/html/Li_Particulate_Feed-Forward_3D_Object_Articulation_CVPR_2026_paper.html"
+      ]
+    },
+    {
+      "provider_id": "unipart",
+      "deployment": "research_model",
+      "current_model_observed": "CVPR-2026 UniPart",
+      "capabilities": [
+        "image_guided_part_level_3d_generation",
+        "joint_geometry_and_segmentation_latents",
+        "part_controllability"
+      ],
+      "brickmen_hypotheses": [
+        "candidate for architecture-aware component generation once target semantic parts are specified"
+      ],
+      "sources": [
+        "https://openaccess.thecvf.com/content/CVPR2026/html/He_UniPart_Part-Level_3D_Generation_with_Unified_3D_Geom-Seg_Latents_CVPR_2026_paper.html"
+      ]
+    },
+    {
+      "provider_id": "trellis_segpart",
+      "deployment": "local_open_source_research",
+      "current_model_observed": "Trellis SegPart July-2026",
+      "capabilities": [
+        "mesh_part_segmentation",
+        "multiview_segmentation_conditioning",
+        "per_voxel_part_labels",
+        "trellis2_latent"
+      ],
+      "brickmen_hypotheses": [
+        "segment generated/custom body meshes into semantic component candidates before architecture reconciliation"
+      ],
+      "sources": [
+        "https://github.com/YixinZhu042/Trellis_Seg"
+      ]
+    },
+    {
+      "provider_id": "lam_articulated_cad_agents",
+      "deployment": "local_open_source_research",
+      "current_model_observed": "CVPR-2026 LAM",
+      "capabilities": [
+        "language_to_articulated_code",
+        "multi_agent_geometry_and_articulation",
+        "urdf_output",
+        "self_debugging"
+      ],
+      "brickmen_hypotheses": [
+        "architectural reference for an eventual Brickmen multi-agent CAD body compiler",
+        "not a direct minifigure generator; useful pattern for code-defined components + joints"
+      ],
+      "sources": [
+        "https://github.com/gaoypeng/LAM"
+      ]
     }
   ],
   "required_benchmark_fields": [
@@ -228,6 +353,10 @@
     "dfm_violations",
     "connector_integration_result",
     "final_print_result",
-    "human_intervention_minutes"
+    "human_intervention_minutes",
+    "part_count_predicted",
+    "component_graph_accuracy",
+    "joint_graph_accuracy",
+    "architecture_reconciliation_result"
   ]
 }
