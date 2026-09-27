@@ -1,0 +1,215 @@
+{
+  "schema": "skywalker-no-supported-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-no-supported-review-011",
+  "policy": "Separate post-launch DLC costume states from ordinary base-character physical figures. Preserve exact named droid identities even when generic body-family matches exist. Normalize British/American spelling variants before thresholding, but keep exact digital-to-physical artwork equivalence visual-pending unless directly verified.",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-221d18332cde163add24e844",
+      "character_variant_key": "FinnHawaiianShirt",
+      "decision": "summer_vacation_finn_hawaiian_shirt_dlc_outfit_verified_no_matching_official_physical_minifigure",
+      "canonical_subject": "Finn (Hawaiian shirt)",
+      "source_context": {
+        "pack": "LEGO Star Wars: The Skywalker Saga Summer Vacation Character Pack",
+        "release_date": "2022-11-01",
+        "digital_outfit": "Hawaiian shirt"
+      },
+      "physical_status": {
+        "exact_hawaiian_shirt_minifigure_located": false,
+        "note": "Brickset catalogs ordinary, FN-2187, officer-disguise, bacta-suit, Episode VIII, Episode IX, and later holiday-sweater Finn variants, but not this Hawaiian-shirt DLC costume."
+      },
+      "rejected_top_candidates": [
+        {
+          "fig_num": "fig-001810",
+          "catalog_name": "Finn, Black Undershirt",
+          "reason": "same character but different outfit"
+        },
+        {
+          "fig_num": "fig-004452",
+          "catalog_name": "Finn, Tan Undershirt, Dark Blue Legs",
+          "reason": "same character but different Episode IX outfit"
+        },
+        {
+          "fig_num": "fig-000272",
+          "catalog_name": "Finn, Stormtrooper Armor",
+          "reason": "same character but different story-state/outfit"
+        }
+      ],
+      "reason": "The Hawaiian-shirt Finn is an explicitly named Summer Vacation DLC costume released after the base game. Existing physical Finn minifigures establish the character family but not this exact novelty outfit.",
+      "systemic_pattern": "post_launch_dlc_costume_states_must_not_collapse_to_base_character_physical_variants",
+      "evidence_urls": [
+        "https://www.brickfanatics.com/lego-star-wars-skywalker-saga-dlcs-available",
+        "https://brickset.com/minifigs/category-Star-Wars/name-Finn"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-d0519e50c98de6d0d4878c44",
+      "character_variant_key": "R52JE",
+      "decision": "named_resistance_astromech_r5_2je_verified_nonphysical_no_official_lego_minifigure",
+      "canonical_subject": "R5-2JE",
+      "known_aliases": [
+        "Toojay"
+      ],
+      "identity_context": {
+        "type": "R5-series astromech droid",
+        "faction": "Resistance",
+        "location": "Ajan Kloss"
+      },
+      "physical_status": {
+        "exact_official_minifigure_located": false,
+        "brickipedia_status": "listed among nonphysical Resistance minifigures"
+      },
+      "rejected_top_candidates": [
+        {
+          "fig_num": "fig-003698",
+          "catalog_name": "R-3PO",
+          "reason": "different droid identifier and type"
+        },
+        {
+          "fig_num": "fig-004050",
+          "catalog_name": "Astromech Droid, R2-A5",
+          "reason": "same broad astromech family but different named unit"
+        },
+        {
+          "fig_num": "fig-004163",
+          "catalog_name": "Astromech Droid, R5-A2",
+          "reason": "same R5 family but different named unit"
+        },
+        {
+          "fig_num": "fig-003895",
+          "catalog_name": "Astromech Droid, R5-J2, Imperial",
+          "reason": "same R5 family but different identifier and faction"
+        }
+      ],
+      "reason": "R5-2JE is a specific Resistance R5 unit, also called Toojay. Brickipedia places it in the nonphysical Resistance roster; Wookieepedia identifies the exact droid and its Ajan Kloss role. Partial R5-series overlap cannot substitute another astromech.",
+      "systemic_pattern": "r_series_body_family_and_partial_identifier_overlap_are_insufficient_for_named_astromech_equivalence",
+      "evidence_urls": [
+        "https://brickipedia.fandom.com/wiki/Jar_Jar_Binks",
+        "https://starwars.fandom.com/wiki/R5-2JE"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-0828e99706db5ef5c7f7ac40",
+      "character_variant_key": "H1NT",
+      "decision": "skywalker_saga_original_h1_nt_protocol_droid_verified_game_only_no_official_physical_minifigure",
+      "canonical_subject": "H1-NT",
+      "identity_context": {
+        "type": "protocol droid",
+        "role": "hint and advice droid",
+        "origin": "created specifically for LEGO Star Wars: The Skywalker Saga"
+      },
+      "physical_status": {
+        "exact_official_minifigure_located": false,
+        "lego_games_wiki_status": "no toys made specifically for this character"
+      },
+      "rejected_top_candidates": [
+        {
+          "fig_num": "fig-004165",
+          "catalog_name": "2-1B Medical Droid, Tan Torso",
+          "reason": "different droid model and function"
+        },
+        {
+          "fig_num": "fig-004405",
+          "catalog_name": "Astromech Droid, R1-J5 (Bucket)",
+          "reason": "different droid class and identifier"
+        },
+        {
+          "fig_num": "fig-010441",
+          "catalog_name": "Astromech Droid, R1-G4, Plain Dome",
+          "reason": "different droid class and identifier"
+        }
+      ],
+      "reason": "H1-NT is an original Skywalker Saga protocol droid created to dispense hints across the game's hubs. Independent game references identify it as game-original, and no official physical toy/minifigure counterpart is documented.",
+      "systemic_pattern": "game_original_named_characters_require_explicit_game_only_route_not_nearest_body_or_code_match",
+      "evidence_urls": [
+        "https://starwars.fandom.com/wiki/H1-NT",
+        "https://legogames.fandom.com/wiki/H1-NT"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-29affca4db101a367dcf41c1",
+      "character_variant_key": "LC24_FireDroid",
+      "decision": "named_resistance_lc_24_fire_droid_verified_nonphysical_no_official_lego_minifigure",
+      "canonical_subject": "LC-24 fire droid",
+      "identity_context": {
+        "model": "LC-24",
+        "class": "fire droid",
+        "faction": "Resistance",
+        "location": "Ajan Kloss"
+      },
+      "physical_status": {
+        "exact_official_minifigure_located": false,
+        "brickipedia_status": "LC-24 listed among nonphysical Resistance minifigures"
+      },
+      "rejected_top_candidates": [
+        {
+          "fig_num": "fig-010456",
+          "catalog_name": "Holocron Droid",
+          "reason": "different droid model and function"
+        },
+        {
+          "fig_num": "fig-004044",
+          "catalog_name": "PK-4 Droid",
+          "reason": "different droid model and function"
+        },
+        {
+          "fig_num": "fig-010660",
+          "catalog_name": "Pit Droid",
+          "reason": "generic droid lexical overlap only"
+        }
+      ],
+      "reason": "LC-24 is a specific Resistance firefighting droid model from Ajan Kloss. Brickipedia places LC-24 in the nonphysical Resistance roster, while Wookieepedia independently identifies its firefighting function and model. Generic 'droid' similarity is not physical-counterpart evidence.",
+      "systemic_pattern": "functional_droid_model_identifiers_require_model_plus_role_matching_before_generic_droid_similarity",
+      "evidence_urls": [
+        "https://brickipedia.fandom.com/wiki/Jar_Jar_Binks",
+        "https://starwars.fandom.com/wiki/LC-24_fire_droid"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-dc5f9cca45fd0c28b3fb0272",
+      "character_variant_key": "TheArmourer",
+      "decision": "british_american_spelling_alias_verified_exact_the_armorer_physical_counterpart_below_threshold_visual_equivalence_pending",
+      "canonical_subject": "The Armorer",
+      "alias_resolution": {
+        "source_key": "TheArmourer",
+        "catalog_name": "The Armorer",
+        "transformations": [
+          "British armourer -> American armorer spelling"
+        ],
+        "confidence": "high"
+      },
+      "physical_counterpart": {
+        "brickset_minifig": "sw1171",
+        "catalog_name": "The Armorer",
+        "alternate_catalog_display": "The Armourer",
+        "year": 2021,
+        "set_num": "75319-1"
+      },
+      "source_context": {
+        "pack": "The Book of Boba Fett Character Pack",
+        "digital_release_date": "2022-11-29"
+      },
+      "reason": "Brickset catalogs sw1171 from 2021 and explicitly displays the alternate spelling 'The Armourer'. The resolver's very low score is therefore a spelling/tokenization failure, not an identity ambiguity. Exact subject-level physical correspondence is verified; direct artwork equivalence remains visual-pending.",
+      "systemic_pattern": "british_american_spelling_variants_armourer_armorer_should_normalize_before_identity_scoring",
+      "evidence_urls": [
+        "https://brickset.com/minifigs/category-Star-Wars/name-The-Armourer",
+        "https://www.brickfanatics.com/lego-star-wars-skywalker-saga-dlcs-available"
+      ]
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "digital_costume_no_exact_physical_match": 1,
+    "game_only_or_nonphysical_named_droids": 3,
+    "exact_physical_resolver_misses": 1,
+    "automatic_exact_artwork_equivalence_promotions": 0
+  },
+  "remaining_no_supported_records_after_batch": 41,
+  "systemic_findings": [
+    "Post-launch novelty costumes must remain separate from ordinary physical variants of the same character.",
+    "R-series and other droid body families are not identity evidence without full model/name agreement.",
+    "Game-original characters need an explicit game-only route rather than nearest-neighbor physical matching.",
+    "Functional droid model names should use model-plus-role matching.",
+    "British/American spelling aliases such as Armourer/Armorer should normalize before thresholding."
+  ]
+}
