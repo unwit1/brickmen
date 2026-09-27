@@ -83,6 +83,31 @@
             "items": {
               "type": "string"
             }
+          },
+          "execution": {
+            "type": "object",
+            "required": [
+              "adapter_status",
+              "entrypoint",
+              "invocation"
+            ],
+            "properties": {
+              "adapter_status": {
+                "type": "string"
+              },
+              "entrypoint": {
+                "type": "string"
+              },
+              "invocation": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "upstream_requirement_note": {
+                "type": "string"
+              }
+            }
           }
         }
       }
