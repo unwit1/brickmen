@@ -633,3 +633,114 @@ Use characters represented at many scales:
 
 Evaluate whether the architecture selector chooses scale and construction method from explicit intent rather than learned popularity bias.
 
+# Track C — Body intelligence corpus and learning
+
+## C0 — Corpus contracts
+
+Completed research:
+- BodyCorpusSample schema;
+- architecture/style/character factorization;
+- anti-leakage split policy;
+- BodyGenerationEvaluation schema.
+
+## C1 — Release-level corpus build
+
+Build samples from the architecture census.
+
+Prioritize:
+1. Hulk cross-architecture set;
+2. Thing/Beast/Colossus/Juggernaut/Abomination;
+3. Sentinel/Giant Man/Galactus scale variants;
+4. non-humanoid topology;
+5. ball-joint standard-scale figures;
+6. non-Marvel compatible BigFig examples.
+
+Generate:
+- normalized crops;
+- masks;
+- landmarks;
+- architecture observations;
+- canonical evidence bundles.
+
+## C2 — Architecture classifier baseline
+
+Benchmark:
+- visual-only;
+- visual + non-identifying geometry metadata;
+- visual + catalog prior.
+
+Report held-out performance by:
+- maker;
+- character;
+- franchise;
+- architecture family.
+
+Unknown detection is mandatory.
+
+## C3 — Part/component segmentation
+
+Map 2D/3D proposals to canonical component roles.
+
+Candidate research models:
+- SAM2;
+- SAMPart3D / PartSLIP++ / successor;
+- Trellis SegPart;
+- Tripo semantic segmentation.
+
+## C4 — BodyStyleProfile predictor
+
+Predict interpretable normalized features before training an opaque style latent.
+
+Prevent:
+- character costume;
+- logos;
+- color;
+from becoming the primary body-style signal.
+
+## C5 — style retrieval/ranker
+
+Train from:
+- same-style pairs;
+- deliberately different style pairs;
+- accepted/rejected style transfers.
+
+## C6 — structured part generation
+
+Benchmark:
+- PartCrafter;
+- UniPart;
+- PAct;
+- general 3D generators + segmentation.
+
+Output remains a **visual/component proposal**.
+
+## C7 — articulation proposal/critic
+
+Benchmark:
+- PAct;
+- ArtLLM;
+- Particulate;
+- future articulation models.
+
+Reconcile every proposed joint against:
+- target FigureArchitecture;
+- JointProfile library;
+- manufacturing constraints.
+
+## C8 — original Brickmen fine-tuning
+
+Only after enough original Brickmen body data exists:
+- fine-tune/adapt part-aware open models;
+- train on Brickmen-original parametric bodies and approved outputs;
+- keep third-party proprietary body geometry out of the canonical manufacturing target.
+
+## C9 — physical manufacturability predictor
+
+Use print/joint outcomes to predict:
+- fracture risk;
+- insufficient wall;
+- likely sag;
+- bad support region;
+- joint wear risk.
+
+This becomes another critic before automatic print dispatch.
