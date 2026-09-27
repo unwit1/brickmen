@@ -71,16 +71,34 @@ def _envelopes(
     result = []
     for item in normalized.get("envelopes", []):
         mm = mm_by_id.get(item["id"], {})
-        result.append(
-            {
-                "envelope_id": item["id"],
-                "shape": item.get("shape"),
-                "center_node": item.get("center_node"),
-                "size_normalized_body_height": item.get("size_mm"),
-                "size_mm_at_target_height": mm.get("size_mm"),
-                "visual_only": True,
-            }
-        )
+        payload = {
+            "envelope_id": item["id"],
+            "shape": item.get("shape"),
+            "center_node": item.get("center_node"),
+            "size_normalized_body_height": item.get("size_mm"),
+            "size_mm_at_target_height": mm.get("size_mm"),
+            "frame_semantic": item.get("frame_semantic"),
+            "visual_authority": item.get("visual_authority"),
+            "visual_only": True,
+        }
+        if item.get("a_node") and item.get("b_node"):
+            payload.update(
+                {
+                    "a_node": item.get("a_node"),
+                    "b_node": item.get("b_node"),
+                    "a_normalized_body_height": item.get("a_mm"),
+                    "b_normalized_body_height": item.get("b_mm"),
+                    "a_mm_at_target_height": mm.get("a_mm"),
+                    "b_mm_at_target_height": mm.get("b_mm"),
+                    "derived_length_normalized_body_height": item.get(
+                        "derived_length_mm"
+                    ),
+                    "derived_length_mm_at_target_height": mm.get(
+                        "derived_length_mm"
+                    ),
+                }
+            )
+        result.append(payload)
     return result
 
 
