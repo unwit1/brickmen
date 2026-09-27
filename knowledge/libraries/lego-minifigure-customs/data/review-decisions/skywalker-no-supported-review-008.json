@@ -1,0 +1,221 @@
+{
+  "schema": "skywalker-no-supported-independent-review/v1",
+  "created_at": "2026-09-26",
+  "batch_id": "skywalker-no-supported-review-008",
+  "policy": "Normalize rank/title aliases and concatenated vehicle-role names before thresholding. Distinguish ordinary versus special-forces pilot markings when the source key encodes the specialization. Named game-only characters remain distinct from generic species/body-shape neighbors.",
+  "records": [
+    {
+      "asset_id": "skywalker-profile-8b43f1dbbdd985495a9d1da9",
+      "character_variant_key": "KaydelConnix",
+      "decision": "given_name_vs_ranked_catalog_name_alias_verified_exact_physical_counterpart_below_threshold",
+      "canonical_subject": "Kaydel Ko Connix",
+      "alias_resolution": {
+        "source": "Kaydel Connix",
+        "catalog": "Lieutenant Connix / Lieutenant Kaydel Ko Connix",
+        "confidence": "high"
+      },
+      "physical_counterpart": {
+        "fig_num": "fig-004448",
+        "brickset_minifig": "sw1048",
+        "catalog_name": "Lieutenant Connix",
+        "canonical_catalog_subject": "Lieutenant Kaydel Ko Connix",
+        "year": 2019,
+        "set_num": "75248-1"
+      },
+      "reason": "Brickset explicitly indexes sw1048 as Lieutenant Kaydel Ko Connix. The resolver treated the rank-bearing catalog name as only a partial lexical match to KaydelConnix even though it is the exact person. Rank insertion and middle-name expansion should be canonical aliases.",
+      "systemic_pattern": "ranked_catalog_name_and_given_name_form_should_resolve_to_same_person",
+      "evidence_urls": [
+        "https://brickset.com/minifigs/name-Lieutenant-Kaydel-Ko-Connix"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-b7daad29a78404e6457f7691",
+      "character_variant_key": "TIEfighterPilot",
+      "decision": "generic_imperial_tie_fighter_pilot_exact_physical_family_supported_below_threshold",
+      "canonical_game_role": "Imperial TIE Fighter Pilot",
+      "physical_counterpart_family": [
+        {
+          "fig_num": "fig-001137",
+          "brickset_minifig": "sw0457",
+          "catalog_name": "Imperial TIE Fighter / Bomber Pilot",
+          "year": 2013,
+          "set_num": "75008-1"
+        }
+      ],
+      "rejected_neighbors": [
+        {
+          "fig_num": "fig-003681",
+          "catalog_name": "Republic Pilot",
+          "reason": "wrong faction and vehicle family"
+        },
+        {
+          "fig_num": "fig-004282",
+          "catalog_name": "First Order Shuttle Pilot",
+          "reason": "successor faction and different vehicle"
+        },
+        {
+          "fig_num": "fig-000506",
+          "catalog_name": "AT-DP Pilot",
+          "reason": "Imperial but different vehicle role"
+        },
+        {
+          "fig_num": "fig-003721",
+          "catalog_name": "Pilot Droid",
+          "reason": "different identity type and faction context"
+        }
+      ],
+      "reason": "The leading candidate is already an exact Imperial TIE Fighter/Bomber Pilot and predates the game; it merely falls below the current threshold because compact TIEfighter tokenization weakens the role match. Faction and vehicle class should make this an exact role-family hit.",
+      "systemic_pattern": "compound_vehicle_role_TIEfighter_should_normalize_to_TIE_Fighter_before_scoring",
+      "evidence_urls": [
+        "https://brickset.com/minifigs/name-TIE-Fighter-Pilot/year-2013"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-51be0c6aa53701d7e7ce7933",
+      "character_variant_key": "SpecialForcesFighterPilot_FsO",
+      "decision": "first_order_special_forces_pilot_exact_red_stripe_physical_counterpart_recovered_outside_top_candidates",
+      "canonical_game_role": "First Order Special Forces Fighter Pilot",
+      "physical_counterpart": {
+        "brickset_minifig": "sw0860",
+        "catalog_name": "First Order TIE Fighter Pilot - Two Red Stripes on Helmet",
+        "year": 2017,
+        "set_num": "75179-1",
+        "specialization_evidence": "Brickset's review states the red stripes denote a Special Forces pilot."
+      },
+      "related_but_not_exact_specialization": [
+        {
+          "brickset_minifig": "sw0672",
+          "catalog_name": "First Order TIE Fighter Pilot - Two White Lines on Helmet",
+          "year": 2015,
+          "set_num": "75101-1",
+          "reason": "ordinary First Order pilot included with the Special Forces TIE/sf vehicle, but the physical helmet lacks the later red Special Forces markings"
+        },
+        {
+          "brickset_minifig": "sw0902",
+          "catalog_name": "First Order TIE Fighter Pilot - Three White Lines on Helmet",
+          "year": 2018,
+          "sets": [
+            "75194-1",
+            "75272-1"
+          ],
+          "reason": "ordinary/alternate First Order pilot markings rather than red-stripe Special Forces identification"
+        }
+      ],
+      "rejected_top_candidate": {
+        "fig_num": "fig-004018",
+        "catalog_name": "Clone Trooper, Special Forces, Phase II Blue Armor",
+        "reason": "shared 'Special Forces' phrase but wrong faction, era, and role"
+      },
+      "reason": "The current matcher latched onto a Clone Wars 'Special Forces' token and completely missed the relevant First Order pilot family. Independent Brickset evidence identifies sw0860's two red helmet stripes as denoting a Special Forces pilot, making this a faction/subtype retrieval failure.",
+      "systemic_pattern": "special_forces_token_requires_faction_plus_role_gating_and_visual_marking_aliases",
+      "evidence_urls": [
+        "https://brickset.com/minifigs/category-Star-Wars/name-First-Order-TIE-Fighter-Pilot",
+        "https://brickset.com/article/30438"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-3908dab0f7b258b9725fef24",
+      "character_variant_key": "BlackKrrsantan",
+      "decision": "named_wookiee_bounty_hunter_verified_video_game_only_no_official_physical_minifigure",
+      "canonical_subject": "Black Krrsantan",
+      "physical_status": {
+        "exact_official_minifigure_located": false,
+        "brickipedia_status": "video-game-only minifigure; never existed in physical form or an official LEGO set"
+      },
+      "rejected_top_candidates": [
+        {
+          "fig_num": "fig-014402",
+          "catalog_name": "Porg - Black Tail",
+          "reason": "color-token lexical false positive; unrelated species"
+        },
+        {
+          "fig_num": "fig-001810",
+          "catalog_name": "Finn, Black Undershirt",
+          "reason": "color-token lexical false positive; unrelated character"
+        },
+        {
+          "fig_num": "fig-001529",
+          "catalog_name": "Lobot, Black Eyebrows",
+          "reason": "color-token lexical false positive; unrelated character"
+        },
+        {
+          "fig_num": "fig-014404",
+          "catalog_name": "Porg - Black Wings",
+          "reason": "color-token lexical false positive; unrelated species"
+        },
+        {
+          "fig_num": "fig-004284",
+          "catalog_name": "Kylo Ren, Black Hands",
+          "reason": "color-token lexical false positive; unrelated character"
+        }
+      ],
+      "reason": "Black Krrsantan is a distinct named Wookiee bounty hunter, and Brickipedia currently classifies his LEGO representation as video-game-only with no official physical set release. The resolver's candidate list is dominated by the adjective 'Black', demonstrating that color terms must be weak evidence unless species/name identity already matches.",
+      "systemic_pattern": "color_adjectives_must_not_drive_named_character_candidate_retrieval",
+      "evidence_urls": [
+        "https://brickipedia.fandom.com/wiki/Black_Krrsantan"
+      ]
+    },
+    {
+      "asset_id": "skywalker-profile-279c1dd93130f66588b305d9",
+      "character_variant_key": "MammaTheHutt",
+      "decision": "spelling_alias_to_mama_the_hutt_verified_video_game_only_no_official_physical_minifigure",
+      "canonical_subject": "Mama the Hutt",
+      "alias_resolution": {
+        "source_key": "MammaTheHutt",
+        "public_name": "Mama the Hutt",
+        "confidence": "high",
+        "note": "internal/source spelling doubles the m; public LEGO/Star Wars references use Mama"
+      },
+      "physical_status": {
+        "exact_official_minifigure_located": false,
+        "brickipedia_status": "video-game-only minifigure; never existed in physical form or an official LEGO set"
+      },
+      "rejected_top_candidates": [
+        {
+          "fig_num": "fig-003519",
+          "catalog_name": "Jabba the Hutt, Unprinted",
+          "reason": "same species/family relation but different individual"
+        },
+        {
+          "fig_num": "fig-003929",
+          "catalog_name": "Jabba The Hutt (Big Fig)",
+          "reason": "same species/family relation but different individual"
+        },
+        {
+          "fig_num": "fig-015573",
+          "catalog_name": "Jabba the Hutt (Big Fig), Dark Bluish Grey Stripes",
+          "reason": "different individual and post-game release"
+        },
+        {
+          "fig_num": "fig-002543",
+          "catalog_name": "Unkar Plutt",
+          "reason": "unrelated character"
+        },
+        {
+          "fig_num": "fig-003720",
+          "catalog_name": "Magna Guard",
+          "reason": "unrelated character"
+        }
+      ],
+      "reason": "Mama the Hutt is a specific Hutt character, Ziro's mother and Jabba's grandmother, not an alternate Jabba model. Brickipedia explicitly marks the LEGO character as video-game-only. Species/body-shape similarity cannot substitute one named Hutt for another.",
+      "systemic_pattern": "named_species_members_must_not_collapse_to_better_known_same_species_physical_figures",
+      "evidence_urls": [
+        "https://brickipedia.fandom.com/wiki/Mama_the_Hutt"
+      ]
+    }
+  ],
+  "result": {
+    "reviewed": 5,
+    "exact_physical_resolver_misses": 3,
+    "video_game_only_no_physical_release": 2,
+    "automatic_exact_artwork_equivalence_promotions": 0
+  },
+  "remaining_no_supported_records_after_batch": 56,
+  "systemic_findings": [
+    "Rank-bearing catalog labels and middle-name expansions need person-level alias normalization.",
+    "Compound vehicle-role strings such as TIEfighter must be normalized before lexical scoring.",
+    "Special Forces is not sufficient evidence without faction and role; red-stripe pilot markings provide a useful First Order subtype alias.",
+    "Color adjectives should be low-weight unless the named entity/species already matches.",
+    "Named members of the same species or family, especially Hutts, must remain identity-distinct."
+  ]
+}
