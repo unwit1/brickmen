@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.1",
+  "schema_version": "0.2",
   "created": "2026-09-27",
   "status": "research_contract",
   "purpose": "Canonical handoff from character/source analysis into architecture-conditioned 2D/3D body generation.",
@@ -39,7 +39,11 @@
     "closest_same_character_cross_architecture_pairs",
     "uncertainties",
     "generation_provenance",
-    "status"
+    "status",
+    "generation_conditioning_id",
+    "skeleton_fit_reference_id",
+    "envelope_fit_reference_id",
+    "mechanical_constraint_profile_ids"
   ],
   "component_design_fields": [
     "component_role",
@@ -54,7 +58,10 @@
     "generation_method",
     "minimum_feature_profile",
     "references",
-    "confidence"
+    "confidence",
+    "generation_conditioning",
+    "mechanical_authority_class",
+    "locked_interface_roles"
   ],
   "geometry_actions": [
     "reuse_existing_part",
@@ -80,6 +87,8 @@
     "Character identity features are independent of both architecture and style.",
     "Every generated component uses architecture connector/joint profiles rather than generative connector geometry.",
     "Do not generate two humanoid legs for serpent/centaur/tentacle architectures unless the selected architecture actually contains them.",
-    "Cross-architecture references are supervision/evidence, not geometry to uniformly scale."
+    "Cross-architecture references are supervision/evidence, not geometry to uniformly scale.",
+    "CharacterBodyDesignSpec may reference fitted visual/skeleton evidence, but fit evidence does not become connector geometry authority.",
+    "Every manufacturing component must carry forward the authority class of any mechanical constraint used during generation."
   ]
 }
