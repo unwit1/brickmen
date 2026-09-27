@@ -126,3 +126,39 @@ Structured records:
 - `data/body-architecture-physical-acquisition-queue.json`
 
 Rule: labels such as BigFig, midfig, mega fig, Giant, 7CM and muscle body remain source terminology until a component/joint graph establishes the normalized FigureArchitecture.
+
+## Figure architecture, non-standard bodies, and body style
+
+Canonical subsystem for standard, Giant/BigFig, mid-scale, custom muscle bodies, alternate morphologies and future printable Brickmen bodies:
+
+Research:
+- `nonstandard-figure-architectures.md` — canonical architecture taxonomy and custom-market findings.
+- `body-architecture-recognition-and-style-transfer.md` — image/mesh recognition, style profiles and cross-architecture translation.
+- `nonstandard-body-census-and-ingestion.md` — continuous official/custom architecture census and evidence promotion rules.
+- `agentic-custom-parts-and-body-architecture-roadmap.md` — unified implementation roadmap covering accessory generation plus full body intelligence.
+
+Canonical structured data:
+- `data/figure-architecture-registry.json`
+- `data/figure-architecture-observation-schema.json`
+- `data/figure-architecture-selection-schema.json`
+- `data/character-body-design-schema.json`
+- `data/body-architecture-source-registry.json`
+- `data/body-architecture-recognition-benchmark.json`
+- `data/body-style-profile-registry.json`
+- `data/body-style-transfer-schema.json`
+- `data/body-architecture-physical-acquisition-queue.json`
+- `data/brickmen-body-family-targets.json`
+
+Canonical identity layers:
+
+```
+Character / SourceAppearance
+ -> FigureArchitecture
+ -> BodyStyleProfile
+ -> CharacterBodyDesignSpec
+ -> component geometry + decoration
+ -> deterministic joints/connectors
+ -> manufacturing validation
+```
+
+Terms such as BigFig, midfig, muscle body, 7CM and mega fig are preserved as source labels; they are not mechanical standards.
