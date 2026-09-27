@@ -21,3 +21,20 @@ https://www.lego.com/en-us/pick-and-build/pick-a-brick
 https://rebrickable.com/api/v3/docs/
 https://brickognize.com/
 https://www.bricklink.com/
+
+
+## Architecture-aware anatomy
+
+The standard head/torso/arm/hand/hips/legs decomposition is only the baseline. Before applying anatomy assumptions, resolve `FigureArchitecture`.
+
+Non-standard examples include:
+- LEGO Giant bodies with Giant arms/hands and dedicated shoulder hardware;
+- Hagrid-style giant-body hybrids using a standard-style head;
+- Axl-style oversized torso/arms with standard head and lower body;
+- Alpha Toys AF ~7 cm muscular bodies;
+- maker-specific Bigguy, Mr.J/Heart, G (2), KDL and compatible BigFig systems;
+- community MidFig constructions.
+
+For every architecture store an explicit component graph and joint graph. Compatibility is per interface, not an all-or-nothing property. A body may accept a standard head but use proprietary arms, or use a standard-system bar while retaining proprietary wrist joints.
+
+See `data/figure-architecture-registry.json` and `nonstandard-figure-architectures.md`.
