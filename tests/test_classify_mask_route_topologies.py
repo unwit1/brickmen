@@ -183,3 +183,23 @@ def test_printed_visor_with_ordinary_hair_is_printed_face_cover_topology() -> No
     result = tool.classify(row)
     assert result["topology_class"] == "printed_face_cover_head_plus_nonmask_headgear"
     assert result["topology_confidence"] >= 0.95
+
+
+def test_printed_face_mask_with_plain_turban_wrap_is_printed_face_cover_topology() -> None:
+    tool = load_tool()
+    row = {
+        "fig_num": "fig-test",
+        "candidate_routes": ["head_print_plus_headgear"],
+        "head_components": [
+            {
+                "part_num": "92198pr0014",
+                "print_of": "92198",
+                "part_name": "Minidoll Head with Face Mask Print",
+            }
+        ],
+        "headgear_components": [
+            {"part_num": "40235", "part_name": "Hat Turban Wrap with Hole"}
+        ],
+    }
+    result = tool.classify(row)
+    assert result["topology_class"] == "printed_face_cover_head_plus_nonmask_headgear"

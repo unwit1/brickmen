@@ -13,7 +13,7 @@ import re
 from collections import Counter
 from pathlib import Path
 
-VERSION = "mask-route-topology-classifier/v3"
+VERSION = "mask-route-topology-classifier/v4"
 
 SPECIES_TERMS = {
     "bear", "bird", "crocodile", "eagle", "gorilla", "lion", "phoenix",
@@ -179,7 +179,7 @@ def classify(record: dict) -> dict:
         )
         stronger_headgear = any(
             term in gear_text
-            for term in ("mask", "cowl", "hood", "helmet", "wrap", "costume", "fishbowl", "bubble")
+            for term in ("mask", "cowl", "hood", "helmet", "costume", "fishbowl", "bubble")
         )
         if (
             "head_print_plus_headgear" in routes
