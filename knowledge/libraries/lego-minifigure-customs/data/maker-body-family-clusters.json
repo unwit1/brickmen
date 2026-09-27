@@ -1,0 +1,149 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-27",
+  "status": "research_clusters",
+  "rule": "A body-family cluster is not a validated mechanical family until physical component/joint equivalence is demonstrated.",
+  "clusters": [
+    {
+      "cluster_id": "alpha_af333_af341_standard_family",
+      "maker": "Alpha Toys",
+      "release_range": "AF333-AF341",
+      "sample_codes": [
+        "AF336"
+      ],
+      "architecture_candidate": "minifig_standard_or_custom_standard",
+      "evidence": [
+        "same catalog series",
+        "AF336 product imagery is standard/minifigure-like"
+      ],
+      "status": "visual_catalog_cluster"
+    },
+    {
+      "cluster_id": "alpha_af344_af347_7cm_hulk_family",
+      "maker": "Alpha Toys",
+      "release_range": "AF344-AF347",
+      "sample_codes": [
+        "AF344",
+        "AF345",
+        "AF346"
+      ],
+      "architecture_candidate": "custom_alpha_7cm_muscle",
+      "evidence": [
+        "same catalog series",
+        "AF345 explicit 7cm graphic",
+        "shared large muscle-body morphology"
+      ],
+      "status": "strong_visual_catalog_cluster"
+    },
+    {
+      "cluster_id": "alpha_af360_af363_7cm_family",
+      "maker": "Alpha Toys",
+      "release_range": "AF360-AF363",
+      "sample_codes": [
+        "AF360",
+        "AF361",
+        "AF362",
+        "AF363"
+      ],
+      "architecture_candidate": "custom_alpha_7cm_muscle",
+      "evidence": [
+        "AF361 explicit 7cm",
+        "AF363 explicit 7cm",
+        "AF362 same 7cm comparison graphic",
+        "matched visible body morphology"
+      ],
+      "status": "strong_visual_catalog_cluster"
+    },
+    {
+      "cluster_id": "g2_gh0303_gh0306_muscle_hybrid",
+      "maker": "G (2)",
+      "release_range": "GH0303-GH0306",
+      "sample_codes": [
+        "GH0303",
+        "GH0304",
+        "GH0305",
+        "GH0306"
+      ],
+      "architecture_candidate": "custom_g2_muscle_hybrid",
+      "evidence": [
+        "same release group",
+        "matched enlarged torso/arm body morphology"
+      ],
+      "status": "visual_catalog_cluster"
+    },
+    {
+      "cluster_id": "g2_gh0348_muscle_hybrid",
+      "maker": "G (2)",
+      "release_range": "GH0348",
+      "sample_codes": [
+        "GH0348"
+      ],
+      "architecture_candidate": "custom_g2_muscle_hybrid",
+      "evidence": [
+        "visual match to G2 enlarged-torso/minifigure-derived muscle treatment"
+      ],
+      "status": "visual_candidate_cluster"
+    },
+    {
+      "cluster_id": "g2_bigfig_family_unresolved",
+      "maker": "G (2)",
+      "sample_codes": [
+        "GH0435",
+        "GH0440"
+      ],
+      "architecture_candidate": "compatible_bigfig_unresolved",
+      "evidence": [
+        "HeroBloks explicit BigFig labels",
+        "GH0440 broad Giant/BigFig morphology"
+      ],
+      "status": "catalog_cluster_physical_compatibility_unknown"
+    },
+    {
+      "cluster_id": "tp_standard_like_thing",
+      "maker": "TP",
+      "sample_codes": [
+        "TP178",
+        "TP288"
+      ],
+      "architecture_candidate": "minifig_standard_or_custom_standard",
+      "evidence": [
+        "catalog classification and product morphology"
+      ],
+      "status": "visual_candidate_cluster"
+    },
+    {
+      "cluster_id": "tp_bigfig_thing",
+      "maker": "TP",
+      "sample_codes": [
+        "TP349",
+        "TP348",
+        "TP312"
+      ],
+      "architecture_candidate": "compatible_bigfig_unresolved",
+      "evidence": [
+        "explicit BigFig labels"
+      ],
+      "status": "catalog_cluster_physical_compatibility_unknown"
+    },
+    {
+      "cluster_id": "kdl_k2302_65mm",
+      "maker": "KDL",
+      "sample_codes": [
+        "K2302"
+      ],
+      "architecture_candidate": "custom_kdl_65mm_large",
+      "evidence": [
+        "HeroBloks note 6.5 cm big",
+        "distinct large-body imagery"
+      ],
+      "status": "single_release_candidate"
+    }
+  ],
+  "promotion_states": [
+    "visual_candidate_cluster",
+    "visual_catalog_cluster",
+    "strong_visual_catalog_cluster",
+    "physical_component_cluster",
+    "validated_mechanical_family"
+  ]
+}
