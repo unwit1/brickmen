@@ -1,0 +1,49 @@
+name: Generate Custom Architecture Sanitized Candidates
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/generate-body-architecture-custom-sanitized-candidates.yml'
+      - 'tools/knowledge/generate_body_architecture_sanitization_candidates.py'
+      - 'tools/knowledge/verify_body_architecture_reference_media.py'
+      - 'knowledge/libraries/lego-minifigure-customs/data/body-architecture-custom-sanitization-queue-v1.json'
+      - 'knowledge/libraries/lego-minifigure-customs/data/body-architecture-custom-sanitization-transforms-v1.json'
+
+permissions:
+  contents: read
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out Brickmen
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install Pillow
+        run: python -m pip install pillow
+      - name: Generate exact-hash custom sanitization candidate
+        run: |
+          python tools/knowledge/generate_body_architecture_sanitization_candidates.py \
+            --queue knowledge/libraries/lego-minifigure-customs/data/body-architecture-custom-sanitization-queue-v1.json \
+            --transforms knowledge/libraries/lego-minifigure-customs/data/body-architecture-custom-sanitization-transforms-v1.json \
+            --report .agent-local/body-architecture-custom-sanitized-candidates.json \
+            --write-derivatives-dir .agent-local/custom-derivatives \
+            --allow-host titanicbricks.com \
+            --timeout-seconds 30 \
+            --delay-seconds 0.20
+      - name: Upload candidate report and derivative
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: body-architecture-custom-sanitized-candidates
+          path: |
+            .agent-local/body-architecture-custom-sanitized-candidates.json
+            .agent-local/custom-derivatives
+          if-no-files-found: warn
+          retention-days: 7
