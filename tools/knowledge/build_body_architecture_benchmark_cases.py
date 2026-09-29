@@ -18,6 +18,7 @@ ROOT = Path(__file__).resolve().parents[2]
 DATA = ROOT / "knowledge" / "libraries" / "lego-minifigure-customs" / "data"
 
 DEFAULT_REGISTRY = DATA / "figure-architecture-registry.json"
+DEFAULT_SOURCE_REGISTRY = DATA / "body-architecture-source-registry.json"
 DEFAULT_OUTPUT = DATA / "body-architecture-recognition-benchmark-cases.json"
 DEFAULT_CORPORA = (
     ("hulk", "development", DATA / "hulk-cross-architecture-corpus.json"),
@@ -70,11 +71,31 @@ def build_case(
     architecture_by_id: dict[str, dict[str, Any]],
     architecture_registry_path: Path,
     architecture_registry_blob_sha: str,
+    source_registry_by_id: dict[str, dict[str, Any]],
+    source_registry_path: Path,
 ) -> dict[str, Any]:
     candidate = record.get("architecture_candidate")
     tier, track, open_set = classify_target(candidate, architecture_by_id)
     record_id = record["record_id"]
     release = record.get("release") or {}
+    source_refs = record.get("source_refs") or []
+    reference_locators = []
+    for source_id in source_refs:
+        source = source_registry_by_id.get(source_id)
+        if not source:
+            raise ValueError(
+                f"Unknown source_ref {source_id!r} on benchmark record {record_id!r}"
+            )
+        reference_locators.append(
+            {
+                "source_id": source_id,
+                "url": source.get("url"),
+                "authority": source.get("authority"),
+                "locator_quality": source.get(
+                    "locator_quality", "direct_or_family_reference"
+                ),
+            }
+        )
 
     return {
         "case_id": f"archrec::{record_id}",
@@ -96,6 +117,7 @@ def build_case(
             "status": "reference_locator_only_pending_materialization",
             "required_view": "canonical_or_best_available_full_figure",
             "materialized_asset_id": None,
+            "reference_locators": reference_locators,
         },
         "leakage_guard": {
             "allow_release_maker_as_model_input": False,
@@ -126,12 +148,15 @@ def build_case(
                 ROOT
             ).as_posix(),
             "architecture_registry_blob_sha": architecture_registry_blob_sha,
+            "source_registry_path": source_registry_path.relative_to(ROOT).as_posix(),
+            "source_refs": source_refs,
         },
     }
 
 
 def build(
     registry_path: Path = DEFAULT_REGISTRY,
+    source_registry_path: Path = DEFAULT_SOURCE_REGISTRY,
     corpora: tuple[tuple[str, str, Path], ...] = DEFAULT_CORPORA,
 ) -> dict[str, Any]:
     registry, registry_raw = load_json(registry_path)
@@ -139,6 +164,10 @@ def build(
         row["architecture_id"]: row for row in registry.get("architectures", [])
     }
     registry_blob_sha = git_blob_sha(registry_raw)
+    source_registry, _ = load_json(source_registry_path)
+    source_registry_by_id = {
+        row["source_id"]: row for row in source_registry.get("sources", [])
+    }
 
     cases: list[dict[str, Any]] = []
     source_corpora: list[dict[str, Any]] = []
@@ -164,6 +193,8 @@ def build(
                     architecture_by_id=architecture_by_id,
                     architecture_registry_path=registry_path,
                     architecture_registry_blob_sha=registry_blob_sha,
+                    source_registry_by_id=source_registry_by_id,
+                    source_registry_path=source_registry_path,
                 )
             )
 
@@ -184,6 +215,17 @@ def build(
             split: sum(case["split"] == split for case in cases)
             for split in ("development", "validation", "test")
         },
+        "cases_with_reference_locators": sum(
+            bool(case["input_asset"]["reference_locators"]) for case in cases
+        ),
+        "indirect_only_locator_cases": sum(
+            bool(case["input_asset"]["reference_locators"])
+            and all(
+                locator["locator_quality"] == "indirect_identity_graph"
+                for locator in case["input_asset"]["reference_locators"]
+            )
+            for case in cases
+        ),
     }
 
     return {
@@ -253,6 +295,10 @@ def build(
         "architecture_registry": {
             "path": registry_path.relative_to(ROOT).as_posix(),
             "blob_sha": registry_blob_sha,
+        },
+        "source_registry": {
+            "path": source_registry_path.relative_to(ROOT).as_posix(),
+            "source_count": len(source_registry_by_id),
         },
         "summary": summary,
         "cases": cases,
