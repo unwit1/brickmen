@@ -8,25 +8,14 @@
     "reviewer_type": "model",
     "model_family": "GPT-5.6 Sol",
     "model_revision": "2026-09-29",
-    "review_method": "exact_hash_inheritance_from_v3_plus_direct_visual_inspection_of_byte_verified_exact_image_url"
+    "review_method": "exact_hash_inheritance_from_v3_plus_direct_visual_inspection_of_byte_verified_exact_image_url_or_ephemeral_exact_byte_review_artifact"
   },
   "inheritance": {
     "source_review_set": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-recognition-challenge-sanitization-reviews-v3.json",
     "inherited_review_count": 21,
     "rule": "Inherited approvals are valid only while source_file_sha256 remains identical; the queue builder marks changed hashes stale."
   },
-  "pending_reviews": [
-    {
-      "source_record_id": "challenge_woody_toy003_long_limb",
-      "source_id": "bricklink_woody_toy003_long_limb",
-      "reason": "Exact byte-verified BrickLink image could not be directly rendered in the current review environment; no raw approval is inferred from alternate images."
-    },
-    {
-      "source_record_id": "challenge_homemaker_276_nurse",
-      "source_id": "flickr_tjpcollecting_276_nurse",
-      "reason": "Exact byte-verified Flickr image has not yet received direct visual leakage/sanitization approval; byte verification and release cross-checking do not by themselves authorize model input."
-    }
-  ],
+  "pending_reviews": [],
   "reviews": [
     {
       "source_record_id": "challenge_axl_nex007",
@@ -384,6 +373,42 @@
       "review_confidence": 0.99,
       "notes": [
         "Clean isolated front catalog image on white; the complete bony skeleton architecture is visible with no text, branding, inset panels, or secondary figures."
+      ]
+    },
+    {
+      "source_record_id": "challenge_woody_toy003_long_limb",
+      "source_id": "bricklink_woody_toy003_long_limb",
+      "source_file_sha256": "777fd93e31997b912debb734bf0be461c6795210649370bd6be92717f948e7c9",
+      "status": "approved_raw",
+      "identity_match": true,
+      "primary_view": "front",
+      "primary_figure_complete": true,
+      "visible_text_leakage": [],
+      "visual_confounders": [],
+      "sanitization_action": "none",
+      "raw_model_input_allowed": true,
+      "review_confidence": 0.99,
+      "notes": [
+        "Exact byte-pinned BrickLink asset was materialized through the review-only CI path and visually inspected after SHA-256/dimension verification.",
+        "Clean isolated front catalog image on white; long arms and long legs are fully visible with no text, branding, inset panels, secondary figures, or task-confounding content."
+      ]
+    },
+    {
+      "source_record_id": "challenge_homemaker_276_nurse",
+      "source_id": "flickr_tjpcollecting_276_nurse",
+      "source_file_sha256": "2385f7c7627bb1b5b7412f107d6a2b15ec727e1a13bef8b920809d3504e7a737",
+      "status": "approved_raw",
+      "identity_match": true,
+      "primary_view": "front",
+      "primary_figure_complete": true,
+      "visible_text_leakage": [],
+      "visual_confounders": [],
+      "sanitization_action": "none",
+      "raw_model_input_allowed": true,
+      "review_confidence": 0.99,
+      "notes": [
+        "Exact byte-pinned Flickr asset was materialized through the review-only CI path and visually inspected after SHA-256/dimension verification.",
+        "Clean isolated full-figure photograph on a neutral background; the complete legacy Homemaker/maxifigure body architecture is visible with no source text, labels, inset panels, or secondary figures."
       ]
     }
   ]
