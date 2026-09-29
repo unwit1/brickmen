@@ -119,7 +119,13 @@ def build(benchmark_path: Path = DEFAULT_BENCHMARK) -> dict[str, Any]:
     return {
         "schema_version": "0.1",
         "created": "2026-09-28",
-        "status": "ready_for_resolution",
+        "status": (
+            "exact_image_urls_complete_materialization_pending"
+            if summary_ready_for_materialization == len(queue)
+            and summary_ready_for_image_resolution == 0
+            and summary_blocked == 0
+            else "ready_for_resolution"
+        ),
         "processor_version": VERSION,
         "objective": (
             "Resolve every architecture benchmark case from a provenance page locator "
@@ -130,18 +136,14 @@ def build(benchmark_path: Path = DEFAULT_BENCHMARK) -> dict[str, Any]:
             "Do not crawl a source merely because a page locator exists.",
             "Prefer supported catalog/API adapters when available.",
             "Preserve source occurrence, rights/provenance metadata, and exact image URL.",
-            "Indirect identity-graph evidence must be upgraded to a direct release locator before image acquisition.",
+            "Indirect identity-graph evidence may remain as provenance even when a separate exact media source resolves the visual asset.",
         ],
         "benchmark_manifest": benchmark_path.relative_to(ROOT).as_posix(),
         "summary": {
             "total_cases": len(queue),
-            "ready_for_materialization_cases": sum(
-                row["status"] == "ready_for_materialization" for row in queue
-            ),
-            "ready_for_image_url_resolution_cases": sum(
-                row["status"] == "ready_for_image_url_resolution" for row in queue
-            ),
-            "blocked_cases": sum(row["status"].startswith("blocked") for row in queue),
+            "ready_for_materialization_cases": summary_ready_for_materialization,
+            "ready_for_image_url_resolution_cases": summary_ready_for_image_resolution,
+            "blocked_cases": summary_blocked,
             "action_status_counts": action_status_counts,
             "strategy_counts": strategy_counts,
         },
