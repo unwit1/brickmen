@@ -16,7 +16,8 @@
       "blocked_pending_visual_sanitization_review": 1
     },
     "risk_counts": {
-      "unknown_review_required": 27
+      "medium_review_required": 5,
+      "high": 22
     }
   },
   "queue": [
@@ -41,9 +42,9 @@
         "source_image_format": "png",
         "verification_run_id": 36514815764
       },
-      "source_risk": "unknown_review_required",
+      "source_risk": "medium_review_required",
       "risk_reasons": [
-        "source_host_has_no_sanitization_prior"
+        "catalog_image_may_include_insets_or_auxiliary_panels"
       ],
       "status": "sanitization_required",
       "raw_model_input_allowed": false,
@@ -106,9 +107,9 @@
         "source_image_format": "png",
         "verification_run_id": 36514815764
       },
-      "source_risk": "unknown_review_required",
+      "source_risk": "medium_review_required",
       "risk_reasons": [
-        "source_host_has_no_sanitization_prior"
+        "catalog_image_may_include_insets_or_auxiliary_panels"
       ],
       "status": "approved_raw_model_input",
       "raw_model_input_allowed": true,
@@ -169,9 +170,9 @@
         "source_image_format": "png",
         "verification_run_id": 36514815764
       },
-      "source_risk": "unknown_review_required",
+      "source_risk": "medium_review_required",
       "risk_reasons": [
-        "source_host_has_no_sanitization_prior"
+        "catalog_image_may_include_insets_or_auxiliary_panels"
       ],
       "status": "approved_raw_model_input",
       "raw_model_input_allowed": true,
@@ -232,9 +233,10 @@
         "source_image_format": "jpeg",
         "verification_run_id": 36514815764
       },
-      "source_risk": "unknown_review_required",
+      "source_risk": "high",
       "risk_reasons": [
-        "source_host_has_no_sanitization_prior"
+        "product_media_may_include_text_or_branding",
+        "product_media_may_be_multi_panel_or_composite"
       ],
       "status": "sanitization_required",
       "raw_model_input_allowed": false,
@@ -249,9 +251,11 @@
         "task_confounding_secondary_panels_absent_or_removed"
       ],
       "recommended_actions": [
-        "approve_raw_only_if_visually_clean",
         "tight_figure_crop",
-        "mask_auxiliary_insets"
+        "mask_text_or_logo_regions",
+        "segment_primary_figure",
+        "replace_with_cleaner_exact_release_source",
+        "manual_composite_cleanup"
       ],
       "review": {
         "identity_match": true,
@@ -302,9 +306,10 @@
         "source_image_format": "jpeg",
         "verification_run_id": 36514815764
       },
-      "source_risk": "unknown_review_required",
+      "source_risk": "high",
       "risk_reasons": [
-        "source_host_has_no_sanitization_prior"
+        "product_media_may_include_text_or_branding",
+        "product_media_may_be_multi_panel_or_composite"
       ],
       "status": "sanitization_required",
       "raw_model_input_allowed": false,
@@ -319,9 +324,11 @@
         "task_confounding_secondary_panels_absent_or_removed"
       ],
       "recommended_actions": [
-        "approve_raw_only_if_visually_clean",
         "tight_figure_crop",
-        "mask_auxiliary_insets"
+        "mask_text_or_logo_regions",
+        "segment_primary_figure",
+        "replace_with_cleaner_exact_release_source",
+        "manual_composite_cleanup"
       ],
       "review": {
         "identity_match": true,
@@ -372,9 +379,10 @@
         "source_image_format": "jpeg",
         "verification_run_id": 36514815764
       },
-      "source_risk": "unknown_review_required",
+      "source_risk": "high",
       "risk_reasons": [
-        "source_host_has_no_sanitization_prior"
+        "product_media_may_include_text_or_branding",
+        "product_media_may_be_multi_panel_or_composite"
       ],
       "status": "sanitization_required",
       "raw_model_input_allowed": false,
@@ -389,9 +397,11 @@
         "task_confounding_secondary_panels_absent_or_removed"
       ],
       "recommended_actions": [
-        "approve_raw_only_if_visually_clean",
         "tight_figure_crop",
-        "mask_auxiliary_insets"
+        "mask_text_or_logo_regions",
+        "segment_primary_figure",
+        "replace_with_cleaner_exact_release_source",
+        "manual_composite_cleanup"
       ],
       "review": {
         "identity_match": true,
@@ -438,9 +448,10 @@
         "source_image_format": "jpeg",
         "verification_run_id": 36514815764
       },
-      "source_risk": "unknown_review_required",
+      "source_risk": "high",
       "risk_reasons": [
-        "source_host_has_no_sanitization_prior"
+        "product_media_may_include_text_or_branding",
+        "product_media_may_be_multi_panel_or_composite"
       ],
       "status": "sanitization_required",
       "raw_model_input_allowed": false,
@@ -455,9 +466,11 @@
         "task_confounding_secondary_panels_absent_or_removed"
       ],
       "recommended_actions": [
-        "approve_raw_only_if_visually_clean",
         "tight_figure_crop",
-        "mask_auxiliary_insets"
+        "mask_text_or_logo_regions",
+        "segment_primary_figure",
+        "replace_with_cleaner_exact_release_source",
+        "manual_composite_cleanup"
       ],
       "review": {
         "identity_match": true,
@@ -506,9 +519,10 @@
         "source_image_format": "jpeg",
         "verification_run_id": 36514815764
       },
-      "source_risk": "unknown_review_required",
+      "source_risk": "high",
       "risk_reasons": [
-        "source_host_has_no_sanitization_prior"
+        "product_media_may_include_text_or_branding",
+        "product_media_may_be_multi_panel_or_composite"
       ],
       "status": "sanitization_required",
       "raw_model_input_allowed": false,
@@ -523,9 +537,11 @@
         "task_confounding_secondary_panels_absent_or_removed"
       ],
       "recommended_actions": [
-        "approve_raw_only_if_visually_clean",
         "tight_figure_crop",
-        "mask_auxiliary_insets"
+        "mask_text_or_logo_regions",
+        "segment_primary_figure",
+        "replace_with_cleaner_exact_release_source",
+        "manual_composite_cleanup"
       ],
       "review": {
         "identity_match": true,
@@ -575,9 +591,10 @@
         "source_image_format": "jpeg",
         "verification_run_id": 36514815764
       },
-      "source_risk": "unknown_review_required",
+      "source_risk": "high",
       "risk_reasons": [
-        "source_host_has_no_sanitization_prior"
+        "product_media_may_include_text_or_branding",
+        "product_media_may_be_multi_panel_or_composite"
       ],
       "status": "blocked_pending_visual_sanitization_review",
       "raw_model_input_allowed": false,
@@ -592,9 +609,11 @@
         "task_confounding_secondary_panels_absent_or_removed"
       ],
       "recommended_actions": [
-        "approve_raw_only_if_visually_clean",
         "tight_figure_crop",
-        "mask_auxiliary_insets"
+        "mask_text_or_logo_regions",
+        "segment_primary_figure",
+        "replace_with_cleaner_exact_release_source",
+        "manual_composite_cleanup"
       ],
       "review": {
         "identity_match": null,
@@ -636,9 +655,10 @@
         "source_image_format": "jpeg",
         "verification_run_id": 36514815764
       },
-      "source_risk": "unknown_review_required",
+      "source_risk": "high",
       "risk_reasons": [
-        "source_host_has_no_sanitization_prior"
+        "product_media_may_include_text_or_branding",
+        "product_media_may_be_multi_panel_or_composite"
       ],
       "status": "sanitization_required",
       "raw_model_input_allowed": false,
@@ -653,9 +673,11 @@
         "task_confounding_secondary_panels_absent_or_removed"
       ],
       "recommended_actions": [
-        "approve_raw_only_if_visually_clean",
         "tight_figure_crop",
-        "mask_auxiliary_insets"
+        "mask_text_or_logo_regions",
+        "segment_primary_figure",
+        "replace_with_cleaner_exact_release_source",
+        "manual_composite_cleanup"
       ],
       "review": {
         "identity_match": true,
@@ -702,9 +724,10 @@
         "source_image_format": "jpeg",
         "verification_run_id": 36514815764
       },
-      "source_risk": "unknown_review_required",
+      "source_risk": "high",
       "risk_reasons": [
-        "source_host_has_no_sanitization_prior"
+        "product_media_may_include_text_or_branding",
+        "product_media_may_be_multi_panel_or_composite"
       ],
       "status": "sanitization_required",
       "raw_model_input_allowed": false,
@@ -719,9 +742,11 @@
         "task_confounding_secondary_panels_absent_or_removed"
       ],
       "recommended_actions": [
-        "approve_raw_only_if_visually_clean",
         "tight_figure_crop",
-        "mask_auxiliary_insets"
+        "mask_text_or_logo_regions",
+        "segment_primary_figure",
+        "replace_with_cleaner_exact_release_source",
+        "manual_composite_cleanup"
       ],
       "review": {
         "identity_match": true,
@@ -771,9 +796,9 @@
         "source_image_format": "png",
         "verification_run_id": 36514815764
       },
-      "source_risk": "unknown_review_required",
+      "source_risk": "medium_review_required",
       "risk_reasons": [
-        "source_host_has_no_sanitization_prior"
+        "catalog_image_may_include_insets_or_auxiliary_panels"
       ],
       "status": "approved_raw_model_input",
       "raw_model_input_allowed": true,
@@ -834,9 +859,10 @@
         "source_image_format": "jpeg",
         "verification_run_id": 36514815764
       },
-      "source_risk": "unknown_review_required",
+      "source_risk": "high",
       "risk_reasons": [
-        "source_host_has_no_sanitization_prior"
+        "product_media_may_include_text_or_branding",
+        "product_media_may_be_multi_panel_or_composite"
       ],
       "status": "sanitization_required",
       "raw_model_input_allowed": false,
@@ -851,9 +877,11 @@
         "task_confounding_secondary_panels_absent_or_removed"
       ],
       "recommended_actions": [
-        "approve_raw_only_if_visually_clean",
         "tight_figure_crop",
-        "mask_auxiliary_insets"
+        "mask_text_or_logo_regions",
+        "segment_primary_figure",
+        "replace_with_cleaner_exact_release_source",
+        "manual_composite_cleanup"
       ],
       "review": {
         "identity_match": true,
@@ -900,9 +928,10 @@
         "source_image_format": "jpeg",
         "verification_run_id": 36514815764
       },
-      "source_risk": "unknown_review_required",
+      "source_risk": "high",
       "risk_reasons": [
-        "source_host_has_no_sanitization_prior"
+        "product_media_may_include_text_or_branding",
+        "product_media_may_be_multi_panel_or_composite"
       ],
       "status": "sanitization_required",
       "raw_model_input_allowed": false,
@@ -917,9 +946,11 @@
         "task_confounding_secondary_panels_absent_or_removed"
       ],
       "recommended_actions": [
-        "approve_raw_only_if_visually_clean",
         "tight_figure_crop",
-        "mask_auxiliary_insets"
+        "mask_text_or_logo_regions",
+        "segment_primary_figure",
+        "replace_with_cleaner_exact_release_source",
+        "manual_composite_cleanup"
       ],
       "review": {
         "identity_match": true,
@@ -970,9 +1001,10 @@
         "source_image_format": "jpeg",
         "verification_run_id": 36514815764
       },
-      "source_risk": "unknown_review_required",
+      "source_risk": "high",
       "risk_reasons": [
-        "source_host_has_no_sanitization_prior"
+        "product_media_may_include_text_or_branding",
+        "product_media_may_be_multi_panel_or_composite"
       ],
       "status": "sanitization_required",
       "raw_model_input_allowed": false,
@@ -987,9 +1019,11 @@
         "task_confounding_secondary_panels_absent_or_removed"
       ],
       "recommended_actions": [
-        "approve_raw_only_if_visually_clean",
         "tight_figure_crop",
-        "mask_auxiliary_insets"
+        "mask_text_or_logo_regions",
+        "segment_primary_figure",
+        "replace_with_cleaner_exact_release_source",
+        "manual_composite_cleanup"
       ],
       "review": {
         "identity_match": true,
@@ -1040,9 +1074,10 @@
         "source_image_format": "jpeg",
         "verification_run_id": 36514815764
       },
-      "source_risk": "unknown_review_required",
+      "source_risk": "high",
       "risk_reasons": [
-        "source_host_has_no_sanitization_prior"
+        "product_media_may_include_text_or_branding",
+        "product_media_may_be_multi_panel_or_composite"
       ],
       "status": "sanitization_required",
       "raw_model_input_allowed": false,
@@ -1057,9 +1092,11 @@
         "task_confounding_secondary_panels_absent_or_removed"
       ],
       "recommended_actions": [
-        "approve_raw_only_if_visually_clean",
         "tight_figure_crop",
-        "mask_auxiliary_insets"
+        "mask_text_or_logo_regions",
+        "segment_primary_figure",
+        "replace_with_cleaner_exact_release_source",
+        "manual_composite_cleanup"
       ],
       "review": {
         "identity_match": true,
@@ -1109,9 +1146,10 @@
         "source_image_format": "jpeg",
         "verification_run_id": 36514815764
       },
-      "source_risk": "unknown_review_required",
+      "source_risk": "high",
       "risk_reasons": [
-        "source_host_has_no_sanitization_prior"
+        "product_media_may_include_text_or_branding",
+        "product_media_may_be_multi_panel_or_composite"
       ],
       "status": "sanitization_required",
       "raw_model_input_allowed": false,
@@ -1126,9 +1164,11 @@
         "task_confounding_secondary_panels_absent_or_removed"
       ],
       "recommended_actions": [
-        "approve_raw_only_if_visually_clean",
         "tight_figure_crop",
-        "mask_auxiliary_insets"
+        "mask_text_or_logo_regions",
+        "segment_primary_figure",
+        "replace_with_cleaner_exact_release_source",
+        "manual_composite_cleanup"
       ],
       "review": {
         "identity_match": true,
@@ -1177,9 +1217,9 @@
         "source_image_format": "png",
         "verification_run_id": 36514815764
       },
-      "source_risk": "unknown_review_required",
+      "source_risk": "medium_review_required",
       "risk_reasons": [
-        "source_host_has_no_sanitization_prior"
+        "catalog_image_may_include_insets_or_auxiliary_panels"
       ],
       "status": "approved_raw_model_input",
       "raw_model_input_allowed": true,
@@ -1240,9 +1280,10 @@
         "source_image_format": "jpeg",
         "verification_run_id": 36514815764
       },
-      "source_risk": "unknown_review_required",
+      "source_risk": "high",
       "risk_reasons": [
-        "source_host_has_no_sanitization_prior"
+        "product_media_may_include_text_or_branding",
+        "product_media_may_be_multi_panel_or_composite"
       ],
       "status": "sanitization_required",
       "raw_model_input_allowed": false,
@@ -1257,9 +1298,11 @@
         "task_confounding_secondary_panels_absent_or_removed"
       ],
       "recommended_actions": [
-        "approve_raw_only_if_visually_clean",
         "tight_figure_crop",
-        "mask_auxiliary_insets"
+        "mask_text_or_logo_regions",
+        "segment_primary_figure",
+        "replace_with_cleaner_exact_release_source",
+        "manual_composite_cleanup"
       ],
       "review": {
         "identity_match": true,
@@ -1308,9 +1351,10 @@
         "source_image_format": "jpeg",
         "verification_run_id": 36514815764
       },
-      "source_risk": "unknown_review_required",
+      "source_risk": "high",
       "risk_reasons": [
-        "source_host_has_no_sanitization_prior"
+        "product_media_may_include_text_or_branding",
+        "product_media_may_be_multi_panel_or_composite"
       ],
       "status": "sanitization_required",
       "raw_model_input_allowed": false,
@@ -1325,9 +1369,11 @@
         "task_confounding_secondary_panels_absent_or_removed"
       ],
       "recommended_actions": [
-        "approve_raw_only_if_visually_clean",
         "tight_figure_crop",
-        "mask_auxiliary_insets"
+        "mask_text_or_logo_regions",
+        "segment_primary_figure",
+        "replace_with_cleaner_exact_release_source",
+        "manual_composite_cleanup"
       ],
       "review": {
         "identity_match": true,
@@ -1379,9 +1425,10 @@
         "source_image_format": "jpeg",
         "verification_run_id": 36514815764
       },
-      "source_risk": "unknown_review_required",
+      "source_risk": "high",
       "risk_reasons": [
-        "source_host_has_no_sanitization_prior"
+        "product_media_may_include_text_or_branding",
+        "product_media_may_be_multi_panel_or_composite"
       ],
       "status": "sanitization_required",
       "raw_model_input_allowed": false,
@@ -1396,9 +1443,11 @@
         "task_confounding_secondary_panels_absent_or_removed"
       ],
       "recommended_actions": [
-        "approve_raw_only_if_visually_clean",
         "tight_figure_crop",
-        "mask_auxiliary_insets"
+        "mask_text_or_logo_regions",
+        "segment_primary_figure",
+        "replace_with_cleaner_exact_release_source",
+        "manual_composite_cleanup"
       ],
       "review": {
         "identity_match": true,
@@ -1444,9 +1493,10 @@
         "source_image_format": "jpeg",
         "verification_run_id": 36514815764
       },
-      "source_risk": "unknown_review_required",
+      "source_risk": "high",
       "risk_reasons": [
-        "source_host_has_no_sanitization_prior"
+        "product_media_may_include_text_or_branding",
+        "product_media_may_be_multi_panel_or_composite"
       ],
       "status": "sanitization_required",
       "raw_model_input_allowed": false,
@@ -1461,9 +1511,11 @@
         "task_confounding_secondary_panels_absent_or_removed"
       ],
       "recommended_actions": [
-        "approve_raw_only_if_visually_clean",
         "tight_figure_crop",
-        "mask_auxiliary_insets"
+        "mask_text_or_logo_regions",
+        "segment_primary_figure",
+        "replace_with_cleaner_exact_release_source",
+        "manual_composite_cleanup"
       ],
       "review": {
         "identity_match": true,
@@ -1514,9 +1566,10 @@
         "source_image_format": "jpeg",
         "verification_run_id": 36514815764
       },
-      "source_risk": "unknown_review_required",
+      "source_risk": "high",
       "risk_reasons": [
-        "source_host_has_no_sanitization_prior"
+        "product_media_may_include_text_or_branding",
+        "product_media_may_be_multi_panel_or_composite"
       ],
       "status": "sanitization_required",
       "raw_model_input_allowed": false,
@@ -1531,9 +1584,11 @@
         "task_confounding_secondary_panels_absent_or_removed"
       ],
       "recommended_actions": [
-        "approve_raw_only_if_visually_clean",
         "tight_figure_crop",
-        "mask_auxiliary_insets"
+        "mask_text_or_logo_regions",
+        "segment_primary_figure",
+        "replace_with_cleaner_exact_release_source",
+        "manual_composite_cleanup"
       ],
       "review": {
         "identity_match": true,
@@ -1580,9 +1635,10 @@
         "source_image_format": "jpeg",
         "verification_run_id": 36514815764
       },
-      "source_risk": "unknown_review_required",
+      "source_risk": "high",
       "risk_reasons": [
-        "source_host_has_no_sanitization_prior"
+        "product_media_may_include_text_or_branding",
+        "product_media_may_be_multi_panel_or_composite"
       ],
       "status": "sanitization_required",
       "raw_model_input_allowed": false,
@@ -1597,9 +1653,11 @@
         "task_confounding_secondary_panels_absent_or_removed"
       ],
       "recommended_actions": [
-        "approve_raw_only_if_visually_clean",
         "tight_figure_crop",
-        "mask_auxiliary_insets"
+        "mask_text_or_logo_regions",
+        "segment_primary_figure",
+        "replace_with_cleaner_exact_release_source",
+        "manual_composite_cleanup"
       ],
       "review": {
         "identity_match": true,
@@ -1648,9 +1706,10 @@
         "source_image_format": "jpeg",
         "verification_run_id": 36514815764
       },
-      "source_risk": "unknown_review_required",
+      "source_risk": "high",
       "risk_reasons": [
-        "source_host_has_no_sanitization_prior"
+        "product_media_may_include_text_or_branding",
+        "product_media_may_be_multi_panel_or_composite"
       ],
       "status": "sanitization_required",
       "raw_model_input_allowed": false,
@@ -1665,9 +1724,11 @@
         "task_confounding_secondary_panels_absent_or_removed"
       ],
       "recommended_actions": [
-        "approve_raw_only_if_visually_clean",
         "tight_figure_crop",
-        "mask_auxiliary_insets"
+        "mask_text_or_logo_regions",
+        "segment_primary_figure",
+        "replace_with_cleaner_exact_release_source",
+        "manual_composite_cleanup"
       ],
       "review": {
         "identity_match": true,
@@ -1714,9 +1775,10 @@
         "source_image_format": "jpeg",
         "verification_run_id": 36514815764
       },
-      "source_risk": "unknown_review_required",
+      "source_risk": "high",
       "risk_reasons": [
-        "source_host_has_no_sanitization_prior"
+        "product_media_may_include_text_or_branding",
+        "product_media_may_be_multi_panel_or_composite"
       ],
       "status": "sanitization_required",
       "raw_model_input_allowed": false,
@@ -1731,9 +1793,11 @@
         "task_confounding_secondary_panels_absent_or_removed"
       ],
       "recommended_actions": [
-        "approve_raw_only_if_visually_clean",
         "tight_figure_crop",
-        "mask_auxiliary_insets"
+        "mask_text_or_logo_regions",
+        "segment_primary_figure",
+        "replace_with_cleaner_exact_release_source",
+        "manual_composite_cleanup"
       ],
       "review": {
         "identity_match": true,
@@ -1781,9 +1845,10 @@
         "source_image_format": "jpeg",
         "verification_run_id": 36514815764
       },
-      "source_risk": "unknown_review_required",
+      "source_risk": "high",
       "risk_reasons": [
-        "source_host_has_no_sanitization_prior"
+        "product_media_may_include_text_or_branding",
+        "product_media_may_be_multi_panel_or_composite"
       ],
       "status": "sanitization_required",
       "raw_model_input_allowed": false,
@@ -1798,9 +1863,11 @@
         "task_confounding_secondary_panels_absent_or_removed"
       ],
       "recommended_actions": [
-        "approve_raw_only_if_visually_clean",
         "tight_figure_crop",
-        "mask_auxiliary_insets"
+        "mask_text_or_logo_regions",
+        "segment_primary_figure",
+        "replace_with_cleaner_exact_release_source",
+        "manual_composite_cleanup"
       ],
       "review": {
         "identity_match": true,
