@@ -57,7 +57,10 @@ def classify_target(
 
     if status == "canonical_existing":
         return "canonical", "core", False
-    if status.startswith("official_architecture"):
+    if (
+        status.startswith("official_architecture")
+        or status == "official_character_specific_architecture"
+    ):
         return "official_evidence", "core", False
     if "strong" in status:
         return "strong_evidence", "core", False
