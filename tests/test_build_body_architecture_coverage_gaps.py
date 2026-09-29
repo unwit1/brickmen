@@ -1,0 +1,91 @@
+from __future__ import annotations
+
+import importlib.util
+import json
+from pathlib import Path
+
+
+ROOT = Path(__file__).resolve().parents[1]
+TOOL = ROOT / "tools" / "knowledge" / "build_body_architecture_coverage_gaps.py"
+DATA = ROOT / "knowledge" / "libraries" / "lego-minifigure-customs" / "data"
+REPORT = DATA / "body-architecture-recognition-coverage-gaps.json"
+
+P0_EXPECTED = {
+    "baby_toddler",
+    "lego_giant_troll_legacy",
+    "lego_homemaker_maxifigure_legacy",
+    "microfigure",
+    "minidoll_standard",
+    "minifig_long_limb",
+    "minifig_skeleton_bony",
+}
+
+
+def load_tool():
+    spec = importlib.util.spec_from_file_location(
+        "build_body_architecture_coverage_gaps",
+        TOOL,
+    )
+    assert spec and spec.loader
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def test_coverage_report_tracks_current_breadth() -> None:
+    tool = load_tool()
+    result = tool.build()
+
+    assert result["summary"] == {
+        "registry_architectures": 49,
+        "covered_architectures": 27,
+        "uncovered_architectures": 22,
+        "coverage_fraction": 0.55102,
+        "p0_official_gaps": 7,
+        "p1_gaps": 3,
+        "p2_gaps": 12,
+    }
+
+
+def test_p0_gaps_are_concrete_official_architectures() -> None:
+    tool = load_tool()
+    result = tool.build()
+    p0 = {
+        row["architecture_id"]
+        for row in result["gaps"]
+        if row["priority"] == "P0"
+    }
+
+    assert p0 == P0_EXPECTED
+    assert all(
+        row["gap_type"] == "official_evaluation_gap"
+        for row in result["gaps"]
+        if row["priority"] == "P0"
+    )
+
+
+def test_unresolved_umbrellas_are_not_promoted_to_p0() -> None:
+    tool = load_tool()
+    result = tool.build()
+
+    for row in result["gaps"]:
+        status = str(row["status"] or "").lower()
+        if any(
+            marker in status
+            for marker in (
+                "umbrella",
+                "source_label",
+                "unresolved",
+                "construction_style_not_single",
+            )
+        ):
+            assert row["priority"] == "P2"
+            assert row["gap_type"] == "ontology_resolution"
+
+
+def test_checked_in_coverage_report_matches_builder() -> None:
+    tool = load_tool()
+    expected = tool.build()
+    actual = json.loads(REPORT.read_text(encoding="utf-8"))
+
+    assert actual == expected
