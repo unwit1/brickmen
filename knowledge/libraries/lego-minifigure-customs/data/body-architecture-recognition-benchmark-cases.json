@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "created": "2026-09-28",
-  "status": "populated_case_manifest_assets_pending",
+  "status": "populated_case_manifest_exact_image_urls_complete_materialization_pending",
   "benchmark_id": "body_architecture_recognition_v0_cases",
   "processor_version": "body-architecture-benchmark-cases/v1",
   "objective": "Populate the body-architecture recognition benchmark with real evidence-backed release cases while preventing label leakage.",
@@ -22,7 +22,7 @@
     "aggregate_rule": "Report core, provisional, and open-set metrics separately; do not hide uncertainty in one aggregate score."
   },
   "input_policy": {
-    "current_asset_state": "Reference locators exist in source corpora, but benchmark image/mesh assets are not yet materialized here.",
+    "current_asset_state": "Every benchmark case has at least one exact source-backed image URL; image bytes/hashes are not yet materialized in the benchmark manifest.",
     "allowed_model_inputs": [
       "materialized_image_pixels",
       "materialized_mesh_geometry",
@@ -36,7 +36,7 @@
       "record_id",
       "catalog_text_that_names_the_architecture"
     ],
-    "next_step": "Materialize and checksum one or more canonical views per case, then add low-resolution/occlusion/detached-component variants without changing ground-truth group assignments."
+    "next_step": "Materialize and checksum one or more canonical views per case, validate the bound image identity/view, then add low-resolution/occlusion/detached-component variants without changing ground-truth group assignments."
   },
   "source_corpora": [
     {
@@ -67,7 +67,7 @@
   },
   "source_registry": {
     "path": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-source-registry.json",
-    "blob_sha": "bfd24c6e5e0aae2e5439ab26e8cebca50f3c6341",
+    "blob_sha": "846fc04ef03511da622e926fdcf3a918deba6f17",
     "source_count": 72
   },
   "summary": {
@@ -83,7 +83,7 @@
     },
     "cases_with_reference_locators": 27,
     "indirect_only_locator_cases": 0,
-    "cases_with_exact_image_urls": 20
+    "cases_with_exact_image_urls": 27
   },
   "cases": [
     {
@@ -506,8 +506,8 @@
             "url": "https://www.herobloks.com/figures/38319/bigguy-minifigs/hulk-(ragnarok)",
             "authority": "custom_catalog",
             "locator_quality": "direct_or_family_reference",
-            "exact_image_url": null,
-            "image_resolution_status": null
+            "exact_image_url": "https://static.herobloks.com/x/figure_images/25/12/8/id38319~c88933~u5798.jpg",
+            "image_resolution_status": "verified_exact_image_url"
           }
         ]
       },
@@ -568,8 +568,8 @@
             "url": "https://www.herobloks.com/figures/38863/mr.j-brick-x-heart/hulk-(comics)",
             "authority": "custom_catalog",
             "locator_quality": "direct_or_family_reference",
-            "exact_image_url": null,
-            "image_resolution_status": null
+            "exact_image_url": "https://static.herobloks.com/x/figure_images/25/9/7/id0~c79927~u5798.jpg",
+            "image_resolution_status": "verified_exact_image_url"
           }
         ]
       },
@@ -772,8 +772,8 @@
             "url": "https://www.herobloks.com/figures/38318/bigguy-minifigs/red-hulk-(brave-new-world)",
             "authority": "custom_catalog",
             "locator_quality": "direct_or_family_reference",
-            "exact_image_url": null,
-            "image_resolution_status": null
+            "exact_image_url": "https://static.herobloks.com/x/figure_images/25/12/8/id38318~c88931~u5798.jpg",
+            "image_resolution_status": "verified_exact_image_url"
           }
         ]
       },
@@ -1091,8 +1091,8 @@
             "url": "https://www.herobloks.com/figures/28107/xinh/xh1911/venom-%28bigfig%29",
             "authority": "custom_catalog",
             "locator_quality": "direct_or_family_reference",
-            "exact_image_url": null,
-            "image_resolution_status": null
+            "exact_image_url": "https://static.herobloks.com/x/figure_images/22/6/5/id0~c56631~u1.jpg",
+            "image_resolution_status": "verified_exact_image_url"
           }
         ]
       },
@@ -1641,8 +1641,8 @@
             "url": "https://www.herobloks.com/figures/38547",
             "authority": "custom_catalog",
             "locator_quality": "direct_or_family_reference",
-            "exact_image_url": null,
-            "image_resolution_status": null
+            "exact_image_url": "https://static.herobloks.com/x/figure_images/25/9/7/id0~c79091~u2911-1.jpg",
+            "image_resolution_status": "verified_exact_image_url"
           }
         ]
       },
@@ -1773,8 +1773,8 @@
             "url": "https://www.herobloks.com/figures/2306/sheng-yuan/-sy288/thing-%28bigfig%29",
             "authority": "custom_catalog",
             "locator_quality": "direct_or_family_reference",
-            "exact_image_url": null,
-            "image_resolution_status": null
+            "exact_image_url": "https://static.herobloks.com/x/figure_images/17/3/2/id0~c2671~u1.jpg",
+            "image_resolution_status": "verified_exact_image_url"
           }
         ]
       },
@@ -1834,8 +1834,8 @@
             "url": "https://www.herobloks.com/figures/25180/xinh/1421/thing-%28bigfig%29",
             "authority": "custom_catalog",
             "locator_quality": "direct_or_family_reference",
-            "exact_image_url": null,
-            "image_resolution_status": null
+            "exact_image_url": "https://static.herobloks.com/x/figure_images/20/8/5/id0~c50516~u1.jpg",
+            "image_resolution_status": "verified_exact_image_url"
           }
         ]
       },
