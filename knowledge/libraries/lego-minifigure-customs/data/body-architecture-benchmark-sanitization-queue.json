@@ -11,9 +11,8 @@
     "raw_model_input_allowed_cases": 4,
     "blocked_model_input_cases": 23,
     "status_counts": {
-      "sanitization_required": 22,
-      "approved_raw_model_input": 4,
-      "blocked_pending_visual_sanitization_review": 1
+      "sanitization_required": 23,
+      "approved_raw_model_input": 4
     },
     "risk_counts": {
       "medium_review_required": 5,
@@ -596,7 +595,7 @@
         "product_media_may_include_text_or_branding",
         "product_media_may_be_multi_panel_or_composite"
       ],
-      "status": "blocked_pending_visual_sanitization_review",
+      "status": "sanitization_required",
       "raw_model_input_allowed": false,
       "required_checks": [
         "identity_matches_source_record",
@@ -616,19 +615,29 @@
         "manual_composite_cleanup"
       ],
       "review": {
-        "identity_match": null,
-        "primary_view": null,
-        "primary_figure_complete": null,
-        "visible_text_leakage": [],
-        "visual_confounders": [],
-        "sanitization_action": null,
+        "identity_match": true,
+        "primary_view": "front",
+        "primary_figure_complete": true,
+        "visible_text_leakage": [
+          "release_or_sku_code",
+          "character_name_or_alias_text",
+          "scale_or_dimension_annotation"
+        ],
+        "visual_confounders": [
+          "head_inset",
+          "rear_view_panel",
+          "scale_comparison_figure"
+        ],
+        "sanitization_action": "tight_figure_crop",
         "sanitized_asset_sha256": null,
         "sanitized_asset_status": "pending",
-        "reviewer_id": null,
-        "reviewer_type": null,
-        "review_confidence": null,
-        "notes": [],
-        "review_source_sha256": null,
+        "reviewer_id": "openai_chatgpt_visual_review",
+        "reviewer_type": "model",
+        "review_confidence": 0.99,
+        "notes": [
+          "AF364/Red Hulk labels, head and rear-view insets, and a scale-comparison figure are visible around the complete central front figure. Isolate the front figure before evaluation."
+        ],
+        "review_source_sha256": "12e79bc52f7030701a2296f7cf05e7905e02bcefd0d754969cc8bdf95756773b",
         "review_stale": false
       },
       "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
