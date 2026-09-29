@@ -1,0 +1,445 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-29",
+  "status": "challenge_corpus_v3_exact_urls_pending_byte_verification",
+  "corpus_id": "body_architecture_challenge_v3",
+  "purpose": "Evaluation-only character-disjoint architecture-recognition cohort extending v2 with six remaining concrete official architecture families while leaving the legacy Homemaker/maxifigure system as a separate research gap.",
+  "supersedes": "body_architecture_challenge_v2",
+  "admission_rules": [
+    "Every case must have a specific release/figure identity rather than only a part-family label.",
+    "Architecture target must be backed by a component/joint graph in the canonical figure-architecture registry.",
+    "At least one structured catalog source must support the release-to-architecture assignment.",
+    "Exact image URL must resolve to the same release; byte verification is a separate required gate.",
+    "Challenge cases are evaluation-only and must not be included in training data.",
+    "Maker, release code, character name, theme and source labels are audit metadata only and must not be model inputs.",
+    "V3 is a strict superset of v2 plus six additional concrete official architectures; legacy Homemaker remains excluded until a specific assembled-figure evidence path is resolved."
+  ],
+  "character_overlap_with_v0": false,
+  "records": [
+    {
+      "record_id": "challenge_axl_nex007",
+      "release": {
+        "maker": "LEGO",
+        "code": "nex007",
+        "year": 2016,
+        "label": "Axl - Flat Silver Visor and Torso"
+      },
+      "architecture_candidate": "lego_axl_oversized_torso_hybrid",
+      "source_refs": [
+        "bricklink_axl_nex007_inventory"
+      ],
+      "evidence_summary": [
+        "23763c01 oversized torso",
+        "24101/24104 specialized arms",
+        "standard head and hips/legs"
+      ],
+      "confidence": "catalog_high",
+      "character_id": "axl"
+    },
+    {
+      "record_id": "challenge_hagrid_hp144",
+      "release": {
+        "maker": "LEGO",
+        "code": "hp144",
+        "year": 2018,
+        "label": "Rubeus Hagrid - Medium Nougat Topcoat with Buttons"
+      },
+      "architecture_candidate": "lego_hagrid_half_giant",
+      "source_refs": [
+        "bricklink_hagrid_hp144_inventory"
+      ],
+      "evidence_summary": [
+        "37777 large torso",
+        "37779/37783 large arm family",
+        "standard head",
+        "short legs"
+      ],
+      "confidence": "catalog_high",
+      "character_id": "rubeus_hagrid"
+    },
+    {
+      "record_id": "challenge_killer_croc_sh0321",
+      "release": {
+        "maker": "LEGO",
+        "code": "sh0321",
+        "year": 2017,
+        "label": "Killer Croc with Blue Pants and Claws"
+      },
+      "architecture_candidate": "lego_giant_killer_croc_specialized",
+      "source_refs": [
+        "bricklink_killer_croc_sh0321_specialized_giant"
+      ],
+      "evidence_summary": [
+        "26240c01 Giant body",
+        "28232/28230 studded-wrist Giant arms",
+        "11327 Rancor paws",
+        "11329 claws"
+      ],
+      "confidence": "catalog_high",
+      "character_id": "killer_croc"
+    },
+    {
+      "record_id": "challenge_garmadon_njo0078",
+      "release": {
+        "maker": "LEGO",
+        "code": "njo0078",
+        "year": 2013,
+        "label": "Lord Garmadon - The Final Battle"
+      },
+      "architecture_candidate": "minifig_stacked_torso_multiarm",
+      "source_refs": [
+        "bricklink_garmadon_final_battle"
+      ],
+      "evidence_summary": [
+        "standard torso assembly",
+        "98127c01 modified short torso/armor assembly",
+        "stacked multi-arm component graph"
+      ],
+      "confidence": "catalog_high",
+      "character_id": "lord_garmadon"
+    },
+    {
+      "record_id": "challenge_grievous_sw0254",
+      "release": {
+        "maker": "LEGO",
+        "code": "sw0254",
+        "year": 2010,
+        "label": "General Grievous - Bent Legs, Tan Armor"
+      },
+      "architecture_candidate": "minifig_mechanical_droid_specialized",
+      "source_refs": [
+        "bricklink_grievous_sw0254_inventory"
+      ],
+      "evidence_summary": [
+        "87566 mechanical torso",
+        "87568 mechanical arms",
+        "87569 mechanical legs",
+        "87567 modified head"
+      ],
+      "confidence": "catalog_high",
+      "character_id": "general_grievous"
+    },
+    {
+      "record_id": "challenge_ghost_njo0174",
+      "release": {
+        "maker": "LEGO",
+        "code": "njo0174",
+        "year": 2015,
+        "label": "Blade Master Bansha - Ghost Lower Body"
+      },
+      "architecture_candidate": "minifig_lowerbody_ghost",
+      "source_refs": [
+        "bricklink_ghost_njo0174_inventory"
+      ],
+      "evidence_summary": [
+        "19859-family ghost lower body replaces standard hips/legs"
+      ],
+      "confidence": "catalog_high",
+      "character_id": "bansha"
+    },
+    {
+      "record_id": "challenge_squid_atl007",
+      "release": {
+        "maker": "LEGO",
+        "code": "atl007",
+        "year": 2010,
+        "label": "Atlantis Squid Warrior"
+      },
+      "architecture_candidate": "minifig_lowerbody_tentacle",
+      "source_refs": [
+        "bricklink_tentacle_atl007_inventory"
+      ],
+      "evidence_summary": [
+        "87749 tentacle lower body replaces standard hips/legs"
+      ],
+      "confidence": "catalog_high",
+      "character_id": "atlantis_squid_warrior"
+    },
+    {
+      "record_id": "challenge_centaur_hp236",
+      "release": {
+        "maker": "LEGO",
+        "code": "hp236",
+        "year": null,
+        "label": "Centaur"
+      },
+      "architecture_candidate": "minifig_centaur_hybrid",
+      "source_refs": [
+        "bricklink_centaur_hp236_inventory"
+      ],
+      "evidence_summary": [
+        "67638pb01 centaur lower body creates quadruped hybrid component graph",
+        "clean isolated BrickLink front image replaces col379 to avoid alternate-expression inset leakage"
+      ],
+      "confidence": "catalog_high",
+      "character_id": "centaur_hp236"
+    },
+    {
+      "record_id": "challenge_harry_hp288_medium_leg",
+      "release": {
+        "maker": "LEGO",
+        "code": "hp288",
+        "year": 2021,
+        "label": "Harry Potter - Dark Blue Open Jacket over Sand Blue Shirt, Black Medium Legs"
+      },
+      "architecture_candidate": "minifig_medium_leg",
+      "source_refs": [
+        "bricklink_harry_hp288_medium_legs"
+      ],
+      "evidence_summary": [
+        "970cm00 articulated medium legs",
+        "standard torso/head upper-body graph",
+        "clean isolated exact PNG selected for leakage-safe review"
+      ],
+      "confidence": "catalog_high",
+      "character_id": "harry_potter_hp288"
+    },
+    {
+      "record_id": "challenge_medusa_col146_serpent",
+      "release": {
+        "maker": "LEGO",
+        "code": "col146",
+        "year": 2013,
+        "label": "Medusa, Series 10"
+      },
+      "architecture_candidate": "minifig_lowerbody_serpent",
+      "source_refs": [
+        "bricklink_medusa_col146_serpent"
+      ],
+      "evidence_summary": [
+        "98140pb06 flexible serpent lower body replaces standard hips/legs"
+      ],
+      "confidence": "catalog_high",
+      "character_id": "medusa_col146"
+    },
+    {
+      "record_id": "challenge_mermaid_col140_merfolk",
+      "release": {
+        "maker": "LEGO",
+        "code": "col140",
+        "year": 2013,
+        "label": "Mermaid, Series 9"
+      },
+      "architecture_candidate": "minifig_lowerbody_merfolk",
+      "source_refs": [
+        "bricklink_mermaid_col140_tail"
+      ],
+      "evidence_summary": [
+        "95351pb04 curved mermaid/merman tail replaces standard hips/legs"
+      ],
+      "confidence": "catalog_high",
+      "character_id": "mermaid_col140"
+    },
+    {
+      "record_id": "challenge_faun_col234_digitigrade",
+      "release": {
+        "maker": "LEGO",
+        "code": "col234",
+        "year": 2016,
+        "label": "Faun, Series 15"
+      },
+      "architecture_candidate": "minifig_lowerbody_faun_digitigrade",
+      "source_refs": [
+        "bricklink_faun_col234_digitigrade"
+      ],
+      "evidence_summary": [
+        "970cf00pb01 modified animal/digitigrade legs with hooves"
+      ],
+      "confidence": "catalog_high",
+      "character_id": "faun_col234"
+    },
+    {
+      "record_id": "challenge_jabba_sw0402",
+      "release": {
+        "maker": "LEGO",
+        "code": "sw0402",
+        "year": 2012,
+        "label": "Jabba the Hutt - Olive Green, Tan Face, Dark Tan Wrinkles"
+      },
+      "architecture_candidate": "specialized_tail_body_jabba",
+      "source_refs": [
+        "bricklink_jabba_sw0402_specialized"
+      ],
+      "evidence_summary": [
+        "98109pb01c01 integrated Hutt torso/head/arms",
+        "98111c01pb01 specialized short-tail lower body",
+        "Technic axle links specialized body components"
+      ],
+      "confidence": "catalog_high",
+      "character_id": "jabba_the_hutt_sw0402"
+    },
+    {
+      "record_id": "challenge_battle_droid_sw0001c",
+      "release": {
+        "maker": "LEGO",
+        "code": "sw0001c",
+        "year": 2007,
+        "label": "Battle Droid - Tan, Angled Arm and Straight Arm"
+      },
+      "architecture_candidate": "minifig_battle_droid_mechanical",
+      "source_refs": [
+        "bricklink_battle_droid_sw0001c"
+      ],
+      "evidence_summary": [
+        "30375 mechanical torso",
+        "30378 mechanical head",
+        "30377 and 59230 mechanical arms",
+        "30376 mechanical legs"
+      ],
+      "confidence": "catalog_high",
+      "character_id": "battle_droid_sw0001c"
+    },
+    {
+      "record_id": "challenge_super_battle_droid_sw0092",
+      "release": {
+        "maker": "LEGO",
+        "code": "sw0092",
+        "year": 2007,
+        "label": "Super Battle Droid - Pearl Dark Gray, Wide Head"
+      },
+      "architecture_candidate": "minifig_super_battle_droid_integrated",
+      "source_refs": [
+        "bricklink_super_battle_droid_sw0092"
+      ],
+      "evidence_summary": [
+        "41889 integrated torso/head",
+        "41890 mechanical arms",
+        "42687 mechanical legs"
+      ],
+      "confidence": "catalog_high",
+      "character_id": "super_battle_droid_sw0092"
+    },
+    {
+      "record_id": "challenge_robot_butler_col445",
+      "release": {
+        "maker": "LEGO",
+        "code": "col445",
+        "year": 2024,
+        "label": "Robot Butler, Series 26"
+      },
+      "architecture_candidate": "minifig_lowerbody_robot_rollers",
+      "source_refs": [
+        "bricklink_robot_butler_col445_rollers"
+      ],
+      "evidence_summary": [
+        "5470 ribbed robot lower body with four rollers",
+        "standard minifigure torso/head upper-body grammar"
+      ],
+      "confidence": "catalog_high",
+      "character_id": "robot_butler_col445"
+    },
+    {
+      "record_id": "challenge_baby_cty0668",
+      "release": {
+        "maker": "LEGO",
+        "code": "cty0668",
+        "year": null,
+        "label": "Baby - White Body with Yellow Hands"
+      },
+      "architecture_candidate": "baby_toddler",
+      "source_refs": [
+        "bricklink_baby_cty0668"
+      ],
+      "evidence_summary": [
+        "25128pb001 fixed-arm baby/toddler body"
+      ],
+      "confidence": "catalog_high",
+      "character_id": "baby_cty0668"
+    },
+    {
+      "record_id": "challenge_troll_cas424",
+      "release": {
+        "maker": "LEGO",
+        "code": "cas424",
+        "year": null,
+        "label": "Fantasy Era - Troll, Sand Green with Black Armor"
+      },
+      "architecture_candidate": "lego_giant_troll_legacy",
+      "source_refs": [
+        "bricklink_troll_cas424"
+      ],
+      "evidence_summary": [
+        "60671c03pb01 Giant troll body",
+        "60642/60639 specialized arms",
+        "60641/60640 troll hands"
+      ],
+      "confidence": "catalog_high",
+      "character_id": "fantasy_era_troll_cas424"
+    },
+    {
+      "record_id": "challenge_microfigure_85863pb063",
+      "release": {
+        "maker": "LEGO",
+        "code": "85863pb063",
+        "year": 2011,
+        "label": "Microfigure Heroica Goblin King"
+      },
+      "architecture_candidate": "microfigure",
+      "source_refs": [
+        "bricklink_microfigure_85863pb063"
+      ],
+      "evidence_summary": [
+        "single-piece 85863 microfigure architecture"
+      ],
+      "confidence": "catalog_high",
+      "character_id": "heroica_goblin_king"
+    },
+    {
+      "record_id": "challenge_minidoll_frnd0010",
+      "release": {
+        "maker": "LEGO",
+        "code": "frnd0010",
+        "year": 2012,
+        "label": "Friends Olivia - Dark Blue Layered Skirt, Dark Pink Top with Hearts"
+      },
+      "architecture_candidate": "minidoll_standard",
+      "source_refs": [
+        "bricklink_minidoll_frnd0010"
+      ],
+      "evidence_summary": [
+        "mini-doll head/torso/hips-and-skirt component graph"
+      ],
+      "confidence": "catalog_high",
+      "character_id": "olivia_frnd0010"
+    },
+    {
+      "record_id": "challenge_woody_toy003_long_limb",
+      "release": {
+        "maker": "LEGO",
+        "code": "toy003",
+        "year": 2010,
+        "label": "Woody - Long Legs, Grin"
+      },
+      "architecture_candidate": "minifig_long_limb",
+      "source_refs": [
+        "bricklink_woody_toy003_long_limb"
+      ],
+      "evidence_summary": [
+        "970clg00 long-leg assembly",
+        "973pb0636c99 torso with long arms"
+      ],
+      "confidence": "catalog_high",
+      "character_id": "woody_toy003"
+    },
+    {
+      "record_id": "challenge_skeleton_gen001",
+      "release": {
+        "maker": "LEGO",
+        "code": "gen001",
+        "year": null,
+        "label": "Skeleton - Standard Skull, Floppy Arms"
+      },
+      "architecture_candidate": "minifig_skeleton_bony",
+      "source_refs": [
+        "bricklink_skeleton_gen001"
+      ],
+      "evidence_summary": [
+        "6260 thin rib-cage torso",
+        "6265 floppy skeleton arms",
+        "6266 skeleton legs"
+      ],
+      "confidence": "catalog_high",
+      "character_id": "skeleton_gen001"
+    }
+  ]
+}
