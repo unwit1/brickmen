@@ -1,0 +1,1373 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-28",
+  "status": "populated_case_manifest_assets_pending",
+  "benchmark_id": "body_architecture_recognition_v0_cases",
+  "objective": "Populate the body-architecture recognition benchmark with real evidence-backed release cases while preventing label leakage.",
+  "split_strategy": {
+    "method": "corpus_character_group_holdout",
+    "assignments": {
+      "hulk": "development",
+      "venom": "validation",
+      "thing": "test"
+    },
+    "rationale": "Keep each source character corpus in exactly one split so the same character family cannot leak across benchmark partitions. Maker and architecture overlap is allowed to test architecture recognition across characters.",
+    "training_rule": "Validation and test cases are evaluation-only. Do not train on audit metadata or release identifiers from any split."
+  },
+  "scoring_policy": {
+    "core": "Canonical or strong evidence-backed architecture targets.",
+    "provisional": "Specific architecture-family targets retained for separate scoring because metrology/mechanical validation remains incomplete.",
+    "open_set": "Unresolved or umbrella architecture labels must be rejected as unknown rather than coerced into a known class.",
+    "aggregate_rule": "Report core, provisional, and open-set metrics separately; do not hide uncertainty in one aggregate score."
+  },
+  "input_policy": {
+    "current_asset_state": "Reference locators exist in source corpora, but benchmark image/mesh assets are not yet materialized here.",
+    "allowed_model_inputs": [
+      "materialized_image_pixels",
+      "materialized_mesh_geometry",
+      "deterministic_features_derived_from_allowed_assets"
+    ],
+    "forbidden_model_inputs": [
+      "maker_name",
+      "release_code",
+      "character_name_or_label",
+      "source_corpus_name",
+      "record_id",
+      "catalog_text_that_names_the_architecture"
+    ],
+    "next_step": "Materialize and checksum one or more canonical views per case, then add low-resolution/occlusion/detached-component variants without changing ground-truth group assignments."
+  },
+  "source_corpora": [
+    {
+      "id": "hulk",
+      "path": "knowledge/libraries/lego-minifigure-customs/data/hulk-cross-architecture-corpus.json",
+      "blob_sha": "f65328c1195b7e5b9bb5ff268d095c7fbde98f92",
+      "status": "research_control_corpus_v0",
+      "created": "2026-09-27"
+    },
+    {
+      "id": "venom",
+      "path": "knowledge/libraries/lego-minifigure-customs/data/venom-cross-architecture-corpus.json",
+      "blob_sha": "436b8ffb44ee7118df3688a955bbb21995bd10bf",
+      "status": "research_control_corpus_v0",
+      "created": "2026-09-27"
+    },
+    {
+      "id": "thing",
+      "path": "knowledge/libraries/lego-minifigure-customs/data/thing-cross-architecture-corpus.json",
+      "blob_sha": "db1b75d8ac51d1a8e84a510a56a6eb8ce7b55abf",
+      "status": "research_control_corpus_v0",
+      "created": "2026-09-27"
+    }
+  ],
+  "architecture_registry": {
+    "path": "knowledge/libraries/lego-minifigure-customs/data/figure-architecture-registry.json",
+    "blob_sha": "4d2a26e5991dbb23d8c32a1e5ccd31cc77412ab4"
+  },
+  "summary": {
+    "total_cases": 27,
+    "closed_set_cases": 18,
+    "open_set_unknown_cases": 9,
+    "core_scoring_cases": 11,
+    "provisional_scoring_cases": 7,
+    "split_counts": {
+      "development": 11,
+      "validation": 6,
+      "test": 10
+    }
+  },
+  "cases": [
+    {
+      "case_id": "archrec::hulk_lego_sh0037_standard",
+      "split": "development",
+      "source_corpus": "hulk",
+      "source_record_id": "hulk_lego_sh0037_standard",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "minifig_standard",
+        "unresolved_candidate": null
+      },
+      "target_evidence_tier": "canonical",
+      "scoring_track": "core",
+      "input_asset": {
+        "status": "reference_locator_only_pending_materialization",
+        "required_view": "canonical_or_best_available_full_figure",
+        "materialized_asset_id": null
+      },
+      "leakage_guard": {
+        "allow_release_maker_as_model_input": false,
+        "allow_release_code_as_model_input": false,
+        "allow_character_label_as_model_input": false,
+        "allow_source_corpus_name_as_model_input": false,
+        "note": "Release/maker/character metadata is audit-only. Model input must be image/mesh-derived evidence."
+      },
+      "audit_metadata": {
+        "release": {
+          "maker": "LEGO",
+          "code": "SH0037",
+          "year": 2012,
+          "label": "Hulk"
+        },
+        "source_appearance_family": "avengers_2012_or_general_mcu",
+        "original_architecture_candidate": "minifig_standard",
+        "original_confidence": "catalog_high"
+      },
+      "group_keys": {
+        "corpus_character_group": "hulk",
+        "maker": "LEGO",
+        "source_appearance_family": "avengers_2012_or_general_mcu",
+        "architecture_candidate": "minifig_standard"
+      },
+      "provenance": {
+        "source_path": "knowledge/libraries/lego-minifigure-customs/data/hulk-cross-architecture-corpus.json",
+        "source_record_id": "hulk_lego_sh0037_standard",
+        "architecture_registry_path": "knowledge/libraries/lego-minifigure-customs/data/figure-architecture-registry.json",
+        "architecture_registry_blob_sha": "4d2a26e5991dbb23d8c32a1e5ccd31cc77412ab4"
+      }
+    },
+    {
+      "case_id": "archrec::hulk_lego_sh0252_mighty_micros",
+      "split": "development",
+      "source_corpus": "hulk",
+      "source_record_id": "hulk_lego_sh0252_mighty_micros",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "minifig_short_leg",
+        "unresolved_candidate": null
+      },
+      "target_evidence_tier": "canonical",
+      "scoring_track": "core",
+      "input_asset": {
+        "status": "reference_locator_only_pending_materialization",
+        "required_view": "canonical_or_best_available_full_figure",
+        "materialized_asset_id": null
+      },
+      "leakage_guard": {
+        "allow_release_maker_as_model_input": false,
+        "allow_release_code_as_model_input": false,
+        "allow_character_label_as_model_input": false,
+        "allow_source_corpus_name_as_model_input": false,
+        "note": "Release/maker/character metadata is audit-only. Model input must be image/mesh-derived evidence."
+      },
+      "audit_metadata": {
+        "release": {
+          "maker": "LEGO",
+          "code": "SH0252",
+          "year": 2016,
+          "label": "Hulk - Minifigure, Short Legs"
+        },
+        "source_appearance_family": "mighty_micros_stylized",
+        "original_architecture_candidate": "minifig_short_leg",
+        "original_confidence": "catalog_high"
+      },
+      "group_keys": {
+        "corpus_character_group": "hulk",
+        "maker": "LEGO",
+        "source_appearance_family": "mighty_micros_stylized",
+        "architecture_candidate": "minifig_short_leg"
+      },
+      "provenance": {
+        "source_path": "knowledge/libraries/lego-minifigure-customs/data/hulk-cross-architecture-corpus.json",
+        "source_record_id": "hulk_lego_sh0252_mighty_micros",
+        "architecture_registry_path": "knowledge/libraries/lego-minifigure-customs/data/figure-architecture-registry.json",
+        "architecture_registry_blob_sha": "4d2a26e5991dbb23d8c32a1e5ccd31cc77412ab4"
+      }
+    },
+    {
+      "case_id": "archrec::hulk_lego_sh0371_giant",
+      "split": "development",
+      "source_corpus": "hulk",
+      "source_record_id": "hulk_lego_sh0371_giant",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "lego_giant_modular",
+        "unresolved_candidate": null
+      },
+      "target_evidence_tier": "strong_evidence",
+      "scoring_track": "core",
+      "input_asset": {
+        "status": "reference_locator_only_pending_materialization",
+        "required_view": "canonical_or_best_available_full_figure",
+        "materialized_asset_id": null
+      },
+      "leakage_guard": {
+        "allow_release_maker_as_model_input": false,
+        "allow_release_code_as_model_input": false,
+        "allow_character_label_as_model_input": false,
+        "allow_source_corpus_name_as_model_input": false,
+        "note": "Release/maker/character metadata is audit-only. Model input must be image/mesh-derived evidence."
+      },
+      "audit_metadata": {
+        "release": {
+          "maker": "LEGO",
+          "code": "SH0371",
+          "label": "Hulk (BigFig)"
+        },
+        "source_appearance_family": "comic_or_general_hulk",
+        "original_architecture_candidate": "lego_giant_modular",
+        "original_confidence": "catalog_high"
+      },
+      "group_keys": {
+        "corpus_character_group": "hulk",
+        "maker": "LEGO",
+        "source_appearance_family": "comic_or_general_hulk",
+        "architecture_candidate": "lego_giant_modular"
+      },
+      "provenance": {
+        "source_path": "knowledge/libraries/lego-minifigure-customs/data/hulk-cross-architecture-corpus.json",
+        "source_record_id": "hulk_lego_sh0371_giant",
+        "architecture_registry_path": "knowledge/libraries/lego-minifigure-customs/data/figure-architecture-registry.json",
+        "architecture_registry_blob_sha": "4d2a26e5991dbb23d8c32a1e5ccd31cc77412ab4"
+      }
+    },
+    {
+      "case_id": "archrec::hulk_alpha_af344_avengers",
+      "split": "development",
+      "source_corpus": "hulk",
+      "source_record_id": "hulk_alpha_af344_avengers",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "custom_alpha_7cm_muscle",
+        "unresolved_candidate": null
+      },
+      "target_evidence_tier": "strong_evidence",
+      "scoring_track": "core",
+      "input_asset": {
+        "status": "reference_locator_only_pending_materialization",
+        "required_view": "canonical_or_best_available_full_figure",
+        "materialized_asset_id": null
+      },
+      "leakage_guard": {
+        "allow_release_maker_as_model_input": false,
+        "allow_release_code_as_model_input": false,
+        "allow_character_label_as_model_input": false,
+        "allow_source_corpus_name_as_model_input": false,
+        "note": "Release/maker/character metadata is audit-only. Model input must be image/mesh-derived evidence."
+      },
+      "audit_metadata": {
+        "release": {
+          "maker": "Alpha Toys",
+          "code": "AF344",
+          "year": 2025,
+          "label": "Hulk (Avengers)"
+        },
+        "source_appearance_family": "mcu_avengers",
+        "original_architecture_candidate": "custom_alpha_7cm_muscle",
+        "original_confidence": "visual_inference"
+      },
+      "group_keys": {
+        "corpus_character_group": "hulk",
+        "maker": "Alpha Toys",
+        "source_appearance_family": "mcu_avengers",
+        "architecture_candidate": "custom_alpha_7cm_muscle"
+      },
+      "provenance": {
+        "source_path": "knowledge/libraries/lego-minifigure-customs/data/hulk-cross-architecture-corpus.json",
+        "source_record_id": "hulk_alpha_af344_avengers",
+        "architecture_registry_path": "knowledge/libraries/lego-minifigure-customs/data/figure-architecture-registry.json",
+        "architecture_registry_blob_sha": "4d2a26e5991dbb23d8c32a1e5ccd31cc77412ab4"
+      }
+    },
+    {
+      "case_id": "archrec::hulk_alpha_af345_comics",
+      "split": "development",
+      "source_corpus": "hulk",
+      "source_record_id": "hulk_alpha_af345_comics",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "custom_alpha_7cm_muscle",
+        "unresolved_candidate": null
+      },
+      "target_evidence_tier": "strong_evidence",
+      "scoring_track": "core",
+      "input_asset": {
+        "status": "reference_locator_only_pending_materialization",
+        "required_view": "canonical_or_best_available_full_figure",
+        "materialized_asset_id": null
+      },
+      "leakage_guard": {
+        "allow_release_maker_as_model_input": false,
+        "allow_release_code_as_model_input": false,
+        "allow_character_label_as_model_input": false,
+        "allow_source_corpus_name_as_model_input": false,
+        "note": "Release/maker/character metadata is audit-only. Model input must be image/mesh-derived evidence."
+      },
+      "audit_metadata": {
+        "release": {
+          "maker": "Alpha Toys",
+          "code": "AF345",
+          "year": 2025,
+          "label": "Hulk"
+        },
+        "source_appearance_family": "comics",
+        "original_architecture_candidate": "custom_alpha_7cm_muscle",
+        "original_confidence": "catalog_plus_visual"
+      },
+      "group_keys": {
+        "corpus_character_group": "hulk",
+        "maker": "Alpha Toys",
+        "source_appearance_family": "comics",
+        "architecture_candidate": "custom_alpha_7cm_muscle"
+      },
+      "provenance": {
+        "source_path": "knowledge/libraries/lego-minifigure-customs/data/hulk-cross-architecture-corpus.json",
+        "source_record_id": "hulk_alpha_af345_comics",
+        "architecture_registry_path": "knowledge/libraries/lego-minifigure-customs/data/figure-architecture-registry.json",
+        "architecture_registry_blob_sha": "4d2a26e5991dbb23d8c32a1e5ccd31cc77412ab4"
+      }
+    },
+    {
+      "case_id": "archrec::hulk_g2_gh0304_avengers",
+      "split": "development",
+      "source_corpus": "hulk",
+      "source_record_id": "hulk_g2_gh0304_avengers",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "custom_g2_muscle_hybrid",
+        "unresolved_candidate": null
+      },
+      "target_evidence_tier": "provisional",
+      "scoring_track": "provisional",
+      "input_asset": {
+        "status": "reference_locator_only_pending_materialization",
+        "required_view": "canonical_or_best_available_full_figure",
+        "materialized_asset_id": null
+      },
+      "leakage_guard": {
+        "allow_release_maker_as_model_input": false,
+        "allow_release_code_as_model_input": false,
+        "allow_character_label_as_model_input": false,
+        "allow_source_corpus_name_as_model_input": false,
+        "note": "Release/maker/character metadata is audit-only. Model input must be image/mesh-derived evidence."
+      },
+      "audit_metadata": {
+        "release": {
+          "maker": "G (2)",
+          "code": "GH0304",
+          "year": 2025,
+          "label": "Hulk (Avengers)"
+        },
+        "source_appearance_family": "mcu_avengers",
+        "original_architecture_candidate": "custom_g2_muscle_hybrid",
+        "original_confidence": "visual_inference"
+      },
+      "group_keys": {
+        "corpus_character_group": "hulk",
+        "maker": "G (2)",
+        "source_appearance_family": "mcu_avengers",
+        "architecture_candidate": "custom_g2_muscle_hybrid"
+      },
+      "provenance": {
+        "source_path": "knowledge/libraries/lego-minifigure-customs/data/hulk-cross-architecture-corpus.json",
+        "source_record_id": "hulk_g2_gh0304_avengers",
+        "architecture_registry_path": "knowledge/libraries/lego-minifigure-customs/data/figure-architecture-registry.json",
+        "architecture_registry_blob_sha": "4d2a26e5991dbb23d8c32a1e5ccd31cc77412ab4"
+      }
+    },
+    {
+      "case_id": "archrec::hulk_bigguy_ragnarok",
+      "split": "development",
+      "source_corpus": "hulk",
+      "source_record_id": "hulk_bigguy_ragnarok",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "custom_bigguy_muscle",
+        "unresolved_candidate": null
+      },
+      "target_evidence_tier": "provisional",
+      "scoring_track": "provisional",
+      "input_asset": {
+        "status": "reference_locator_only_pending_materialization",
+        "required_view": "canonical_or_best_available_full_figure",
+        "materialized_asset_id": null
+      },
+      "leakage_guard": {
+        "allow_release_maker_as_model_input": false,
+        "allow_release_code_as_model_input": false,
+        "allow_character_label_as_model_input": false,
+        "allow_source_corpus_name_as_model_input": false,
+        "note": "Release/maker/character metadata is audit-only. Model input must be image/mesh-derived evidence."
+      },
+      "audit_metadata": {
+        "release": {
+          "maker": "Bigguy Minifigs",
+          "code": null,
+          "year": 2025,
+          "label": "Hulk (Ragnarok)"
+        },
+        "source_appearance_family": "mcu_ragnarok",
+        "original_architecture_candidate": "custom_bigguy_muscle",
+        "original_confidence": "visual_inference"
+      },
+      "group_keys": {
+        "corpus_character_group": "hulk",
+        "maker": "Bigguy Minifigs",
+        "source_appearance_family": "mcu_ragnarok",
+        "architecture_candidate": "custom_bigguy_muscle"
+      },
+      "provenance": {
+        "source_path": "knowledge/libraries/lego-minifigure-customs/data/hulk-cross-architecture-corpus.json",
+        "source_record_id": "hulk_bigguy_ragnarok",
+        "architecture_registry_path": "knowledge/libraries/lego-minifigure-customs/data/figure-architecture-registry.json",
+        "architecture_registry_blob_sha": "4d2a26e5991dbb23d8c32a1e5ccd31cc77412ab4"
+      }
+    },
+    {
+      "case_id": "archrec::hulk_mrj_heart_comics",
+      "split": "development",
+      "source_corpus": "hulk",
+      "source_record_id": "hulk_mrj_heart_comics",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "custom_mrj_heart_muscle",
+        "unresolved_candidate": null
+      },
+      "target_evidence_tier": "provisional",
+      "scoring_track": "provisional",
+      "input_asset": {
+        "status": "reference_locator_only_pending_materialization",
+        "required_view": "canonical_or_best_available_full_figure",
+        "materialized_asset_id": null
+      },
+      "leakage_guard": {
+        "allow_release_maker_as_model_input": false,
+        "allow_release_code_as_model_input": false,
+        "allow_character_label_as_model_input": false,
+        "allow_source_corpus_name_as_model_input": false,
+        "note": "Release/maker/character metadata is audit-only. Model input must be image/mesh-derived evidence."
+      },
+      "audit_metadata": {
+        "release": {
+          "maker": "Mr.J Brick X Heart",
+          "code": null,
+          "year": 2024,
+          "label": "Hulk (Comics)"
+        },
+        "source_appearance_family": "comics",
+        "original_architecture_candidate": "custom_mrj_heart_muscle",
+        "original_confidence": "visual_inference"
+      },
+      "group_keys": {
+        "corpus_character_group": "hulk",
+        "maker": "Mr.J Brick X Heart",
+        "source_appearance_family": "comics",
+        "architecture_candidate": "custom_mrj_heart_muscle"
+      },
+      "provenance": {
+        "source_path": "knowledge/libraries/lego-minifigure-customs/data/hulk-cross-architecture-corpus.json",
+        "source_record_id": "hulk_mrj_heart_comics",
+        "architecture_registry_path": "knowledge/libraries/lego-minifigure-customs/data/figure-architecture-registry.json",
+        "architecture_registry_blob_sha": "4d2a26e5991dbb23d8c32a1e5ccd31cc77412ab4"
+      }
+    },
+    {
+      "case_id": "archrec::red_hulk_alpha_af364_bnw",
+      "split": "development",
+      "source_corpus": "hulk",
+      "source_record_id": "red_hulk_alpha_af364_bnw",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "custom_alpha_7cm_muscle",
+        "unresolved_candidate": null
+      },
+      "target_evidence_tier": "strong_evidence",
+      "scoring_track": "core",
+      "input_asset": {
+        "status": "reference_locator_only_pending_materialization",
+        "required_view": "canonical_or_best_available_full_figure",
+        "materialized_asset_id": null
+      },
+      "leakage_guard": {
+        "allow_release_maker_as_model_input": false,
+        "allow_release_code_as_model_input": false,
+        "allow_character_label_as_model_input": false,
+        "allow_source_corpus_name_as_model_input": false,
+        "note": "Release/maker/character metadata is audit-only. Model input must be image/mesh-derived evidence."
+      },
+      "audit_metadata": {
+        "release": {
+          "maker": "Alpha Toys",
+          "code": "AF364",
+          "year": 2026,
+          "label": "Red Hulk (Brave New World)"
+        },
+        "source_appearance_family": "mcu_brave_new_world",
+        "original_architecture_candidate": "custom_alpha_7cm_muscle",
+        "original_confidence": "catalog_high_architecture_family_candidate"
+      },
+      "group_keys": {
+        "corpus_character_group": "hulk",
+        "maker": "Alpha Toys",
+        "source_appearance_family": "mcu_brave_new_world",
+        "architecture_candidate": "custom_alpha_7cm_muscle"
+      },
+      "provenance": {
+        "source_path": "knowledge/libraries/lego-minifigure-customs/data/hulk-cross-architecture-corpus.json",
+        "source_record_id": "red_hulk_alpha_af364_bnw",
+        "architecture_registry_path": "knowledge/libraries/lego-minifigure-customs/data/figure-architecture-registry.json",
+        "architecture_registry_blob_sha": "4d2a26e5991dbb23d8c32a1e5ccd31cc77412ab4"
+      }
+    },
+    {
+      "case_id": "archrec::red_hulk_g2_gh0303_bnw",
+      "split": "development",
+      "source_corpus": "hulk",
+      "source_record_id": "red_hulk_g2_gh0303_bnw",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "custom_g2_muscle_hybrid",
+        "unresolved_candidate": null
+      },
+      "target_evidence_tier": "provisional",
+      "scoring_track": "provisional",
+      "input_asset": {
+        "status": "reference_locator_only_pending_materialization",
+        "required_view": "canonical_or_best_available_full_figure",
+        "materialized_asset_id": null
+      },
+      "leakage_guard": {
+        "allow_release_maker_as_model_input": false,
+        "allow_release_code_as_model_input": false,
+        "allow_character_label_as_model_input": false,
+        "allow_source_corpus_name_as_model_input": false,
+        "note": "Release/maker/character metadata is audit-only. Model input must be image/mesh-derived evidence."
+      },
+      "audit_metadata": {
+        "release": {
+          "maker": "G (2)",
+          "code": "GH0303",
+          "year": 2025,
+          "label": "Red Hulk (Brave New World)"
+        },
+        "source_appearance_family": "mcu_brave_new_world",
+        "original_architecture_candidate": "custom_g2_muscle_hybrid",
+        "original_confidence": "catalog_high_architecture_family_candidate"
+      },
+      "group_keys": {
+        "corpus_character_group": "hulk",
+        "maker": "G (2)",
+        "source_appearance_family": "mcu_brave_new_world",
+        "architecture_candidate": "custom_g2_muscle_hybrid"
+      },
+      "provenance": {
+        "source_path": "knowledge/libraries/lego-minifigure-customs/data/hulk-cross-architecture-corpus.json",
+        "source_record_id": "red_hulk_g2_gh0303_bnw",
+        "architecture_registry_path": "knowledge/libraries/lego-minifigure-customs/data/figure-architecture-registry.json",
+        "architecture_registry_blob_sha": "4d2a26e5991dbb23d8c32a1e5ccd31cc77412ab4"
+      }
+    },
+    {
+      "case_id": "archrec::red_hulk_bigguy_bnw",
+      "split": "development",
+      "source_corpus": "hulk",
+      "source_record_id": "red_hulk_bigguy_bnw",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "custom_bigguy_muscle",
+        "unresolved_candidate": null
+      },
+      "target_evidence_tier": "provisional",
+      "scoring_track": "provisional",
+      "input_asset": {
+        "status": "reference_locator_only_pending_materialization",
+        "required_view": "canonical_or_best_available_full_figure",
+        "materialized_asset_id": null
+      },
+      "leakage_guard": {
+        "allow_release_maker_as_model_input": false,
+        "allow_release_code_as_model_input": false,
+        "allow_character_label_as_model_input": false,
+        "allow_source_corpus_name_as_model_input": false,
+        "note": "Release/maker/character metadata is audit-only. Model input must be image/mesh-derived evidence."
+      },
+      "audit_metadata": {
+        "release": {
+          "maker": "Bigguy Minifigs",
+          "code": null,
+          "year": 2025,
+          "label": "Red Hulk (Brave New World)"
+        },
+        "source_appearance_family": "mcu_brave_new_world",
+        "original_architecture_candidate": "custom_bigguy_muscle",
+        "original_confidence": "catalog_high_architecture_family_candidate"
+      },
+      "group_keys": {
+        "corpus_character_group": "hulk",
+        "maker": "Bigguy Minifigs",
+        "source_appearance_family": "mcu_brave_new_world",
+        "architecture_candidate": "custom_bigguy_muscle"
+      },
+      "provenance": {
+        "source_path": "knowledge/libraries/lego-minifigure-customs/data/hulk-cross-architecture-corpus.json",
+        "source_record_id": "red_hulk_bigguy_bnw",
+        "architecture_registry_path": "knowledge/libraries/lego-minifigure-customs/data/figure-architecture-registry.json",
+        "architecture_registry_blob_sha": "4d2a26e5991dbb23d8c32a1e5ccd31cc77412ab4"
+      }
+    },
+    {
+      "case_id": "archrec::venom_lego_sh0542_standard",
+      "split": "validation",
+      "source_corpus": "venom",
+      "source_record_id": "venom_lego_sh0542_standard",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "minifig_standard",
+        "unresolved_candidate": null
+      },
+      "target_evidence_tier": "canonical",
+      "scoring_track": "core",
+      "input_asset": {
+        "status": "reference_locator_only_pending_materialization",
+        "required_view": "canonical_or_best_available_full_figure",
+        "materialized_asset_id": null
+      },
+      "leakage_guard": {
+        "allow_release_maker_as_model_input": false,
+        "allow_release_code_as_model_input": false,
+        "allow_character_label_as_model_input": false,
+        "allow_source_corpus_name_as_model_input": false,
+        "note": "Release/maker/character metadata is audit-only. Model input must be image/mesh-derived evidence."
+      },
+      "audit_metadata": {
+        "release": {
+          "maker": "LEGO",
+          "code": "SH0542",
+          "label": "Venom - White Teeth Parted"
+        },
+        "source_appearance_family": "general_comic_lego_interpretation",
+        "original_architecture_candidate": "minifig_standard",
+        "original_confidence": "catalog_high"
+      },
+      "group_keys": {
+        "corpus_character_group": "venom",
+        "maker": "LEGO",
+        "source_appearance_family": "general_comic_lego_interpretation",
+        "architecture_candidate": "minifig_standard"
+      },
+      "provenance": {
+        "source_path": "knowledge/libraries/lego-minifigure-customs/data/venom-cross-architecture-corpus.json",
+        "source_record_id": "venom_lego_sh0542_standard",
+        "architecture_registry_path": "knowledge/libraries/lego-minifigure-customs/data/figure-architecture-registry.json",
+        "architecture_registry_blob_sha": "4d2a26e5991dbb23d8c32a1e5ccd31cc77412ab4"
+      }
+    },
+    {
+      "case_id": "archrec::venom_alpha_af321_movie",
+      "split": "validation",
+      "source_corpus": "venom",
+      "source_record_id": "venom_alpha_af321_movie",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "custom_alpha_45mm_muscle_hybrid",
+        "unresolved_candidate": null
+      },
+      "target_evidence_tier": "strong_evidence",
+      "scoring_track": "core",
+      "input_asset": {
+        "status": "reference_locator_only_pending_materialization",
+        "required_view": "canonical_or_best_available_full_figure",
+        "materialized_asset_id": null
+      },
+      "leakage_guard": {
+        "allow_release_maker_as_model_input": false,
+        "allow_release_code_as_model_input": false,
+        "allow_character_label_as_model_input": false,
+        "allow_source_corpus_name_as_model_input": false,
+        "note": "Release/maker/character metadata is audit-only. Model input must be image/mesh-derived evidence."
+      },
+      "audit_metadata": {
+        "release": {
+          "maker": "Alpha Toys",
+          "code": "AF321",
+          "year": 2024,
+          "label": "Venom (movie)"
+        },
+        "source_appearance_family": "sony_venom_movie",
+        "original_architecture_candidate": "custom_alpha_45mm_muscle_hybrid",
+        "original_confidence": "strong_visual_catalog"
+      },
+      "group_keys": {
+        "corpus_character_group": "venom",
+        "maker": "Alpha Toys",
+        "source_appearance_family": "sony_venom_movie",
+        "architecture_candidate": "custom_alpha_45mm_muscle_hybrid"
+      },
+      "provenance": {
+        "source_path": "knowledge/libraries/lego-minifigure-customs/data/venom-cross-architecture-corpus.json",
+        "source_record_id": "venom_alpha_af321_movie",
+        "architecture_registry_path": "knowledge/libraries/lego-minifigure-customs/data/figure-architecture-registry.json",
+        "architecture_registry_blob_sha": "4d2a26e5991dbb23d8c32a1e5ccd31cc77412ab4"
+      }
+    },
+    {
+      "case_id": "archrec::venom_alpha_af325",
+      "split": "validation",
+      "source_corpus": "venom",
+      "source_record_id": "venom_alpha_af325",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "custom_alpha_45mm_muscle_hybrid",
+        "unresolved_candidate": null
+      },
+      "target_evidence_tier": "strong_evidence",
+      "scoring_track": "core",
+      "input_asset": {
+        "status": "reference_locator_only_pending_materialization",
+        "required_view": "canonical_or_best_available_full_figure",
+        "materialized_asset_id": null
+      },
+      "leakage_guard": {
+        "allow_release_maker_as_model_input": false,
+        "allow_release_code_as_model_input": false,
+        "allow_character_label_as_model_input": false,
+        "allow_source_corpus_name_as_model_input": false,
+        "note": "Release/maker/character metadata is audit-only. Model input must be image/mesh-derived evidence."
+      },
+      "audit_metadata": {
+        "release": {
+          "maker": "Alpha Toys",
+          "code": "AF325",
+          "year": 2024,
+          "label": "Venom"
+        },
+        "source_appearance_family": "comic_or_general_venom",
+        "original_architecture_candidate": "custom_alpha_45mm_muscle_hybrid",
+        "original_confidence": "strong_visual_catalog"
+      },
+      "group_keys": {
+        "corpus_character_group": "venom",
+        "maker": "Alpha Toys",
+        "source_appearance_family": "comic_or_general_venom",
+        "architecture_candidate": "custom_alpha_45mm_muscle_hybrid"
+      },
+      "provenance": {
+        "source_path": "knowledge/libraries/lego-minifigure-customs/data/venom-cross-architecture-corpus.json",
+        "source_record_id": "venom_alpha_af325",
+        "architecture_registry_path": "knowledge/libraries/lego-minifigure-customs/data/figure-architecture-registry.json",
+        "architecture_registry_blob_sha": "4d2a26e5991dbb23d8c32a1e5ccd31cc77412ab4"
+      }
+    },
+    {
+      "case_id": "archrec::venom_alpha_af328_ancient",
+      "split": "validation",
+      "source_corpus": "venom",
+      "source_record_id": "venom_alpha_af328_ancient",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "custom_alpha_45mm_muscle_hybrid",
+        "unresolved_candidate": null
+      },
+      "target_evidence_tier": "strong_evidence",
+      "scoring_track": "core",
+      "input_asset": {
+        "status": "reference_locator_only_pending_materialization",
+        "required_view": "canonical_or_best_available_full_figure",
+        "materialized_asset_id": null
+      },
+      "leakage_guard": {
+        "allow_release_maker_as_model_input": false,
+        "allow_release_code_as_model_input": false,
+        "allow_character_label_as_model_input": false,
+        "allow_source_corpus_name_as_model_input": false,
+        "note": "Release/maker/character metadata is audit-only. Model input must be image/mesh-derived evidence."
+      },
+      "audit_metadata": {
+        "release": {
+          "maker": "Alpha Toys",
+          "code": "AF328",
+          "year": 2024,
+          "label": "Ancient Venom",
+          "source_body_label": "MaxiFig"
+        },
+        "source_appearance_family": "ancient_venom",
+        "original_architecture_candidate": "custom_alpha_45mm_muscle_hybrid",
+        "original_confidence": "architecture_candidate_mechanical_equivalence_pending"
+      },
+      "group_keys": {
+        "corpus_character_group": "venom",
+        "maker": "Alpha Toys",
+        "source_appearance_family": "ancient_venom",
+        "architecture_candidate": "custom_alpha_45mm_muscle_hybrid"
+      },
+      "provenance": {
+        "source_path": "knowledge/libraries/lego-minifigure-customs/data/venom-cross-architecture-corpus.json",
+        "source_record_id": "venom_alpha_af328_ancient",
+        "architecture_registry_path": "knowledge/libraries/lego-minifigure-customs/data/figure-architecture-registry.json",
+        "architecture_registry_blob_sha": "4d2a26e5991dbb23d8c32a1e5ccd31cc77412ab4"
+      }
+    },
+    {
+      "case_id": "archrec::venom_xinh_xh1911_bigfig",
+      "split": "validation",
+      "source_corpus": "venom",
+      "source_record_id": "venom_xinh_xh1911_bigfig",
+      "task": "architecture_unknown_rejection",
+      "expected": {
+        "architecture_id": null,
+        "unresolved_candidate": "compatible_bigfig_unresolved"
+      },
+      "target_evidence_tier": "open_set_unknown",
+      "scoring_track": "open_set",
+      "input_asset": {
+        "status": "reference_locator_only_pending_materialization",
+        "required_view": "canonical_or_best_available_full_figure",
+        "materialized_asset_id": null
+      },
+      "leakage_guard": {
+        "allow_release_maker_as_model_input": false,
+        "allow_release_code_as_model_input": false,
+        "allow_character_label_as_model_input": false,
+        "allow_source_corpus_name_as_model_input": false,
+        "note": "Release/maker/character metadata is audit-only. Model input must be image/mesh-derived evidence."
+      },
+      "audit_metadata": {
+        "release": {
+          "maker": "Xinh",
+          "code": "XH1911",
+          "year": 2022,
+          "label": "Venom (BigFig)"
+        },
+        "source_appearance_family": "comic_modern",
+        "original_architecture_candidate": "compatible_bigfig_unresolved",
+        "original_confidence": "catalog_high_label_physical_unknown"
+      },
+      "group_keys": {
+        "corpus_character_group": "venom",
+        "maker": "Xinh",
+        "source_appearance_family": "comic_modern",
+        "architecture_candidate": "compatible_bigfig_unresolved"
+      },
+      "provenance": {
+        "source_path": "knowledge/libraries/lego-minifigure-customs/data/venom-cross-architecture-corpus.json",
+        "source_record_id": "venom_xinh_xh1911_bigfig",
+        "architecture_registry_path": "knowledge/libraries/lego-minifigure-customs/data/figure-architecture-registry.json",
+        "architecture_registry_blob_sha": "4d2a26e5991dbb23d8c32a1e5ccd31cc77412ab4"
+      }
+    },
+    {
+      "case_id": "archrec::venom_xinh_xh1829_movie_bigfig",
+      "split": "validation",
+      "source_corpus": "venom",
+      "source_record_id": "venom_xinh_xh1829_movie_bigfig",
+      "task": "architecture_unknown_rejection",
+      "expected": {
+        "architecture_id": null,
+        "unresolved_candidate": "compatible_bigfig_unresolved"
+      },
+      "target_evidence_tier": "open_set_unknown",
+      "scoring_track": "open_set",
+      "input_asset": {
+        "status": "reference_locator_only_pending_materialization",
+        "required_view": "canonical_or_best_available_full_figure",
+        "materialized_asset_id": null
+      },
+      "leakage_guard": {
+        "allow_release_maker_as_model_input": false,
+        "allow_release_code_as_model_input": false,
+        "allow_character_label_as_model_input": false,
+        "allow_source_corpus_name_as_model_input": false,
+        "note": "Release/maker/character metadata is audit-only. Model input must be image/mesh-derived evidence."
+      },
+      "audit_metadata": {
+        "release": {
+          "maker": "Xinh",
+          "code": "XH1829",
+          "year": 2022,
+          "label": "Venom (movie) (BigFig)"
+        },
+        "source_appearance_family": "sony_venom_movie",
+        "original_architecture_candidate": "compatible_bigfig_unresolved",
+        "original_confidence": "catalog_high_label_physical_unknown"
+      },
+      "group_keys": {
+        "corpus_character_group": "venom",
+        "maker": "Xinh",
+        "source_appearance_family": "sony_venom_movie",
+        "architecture_candidate": "compatible_bigfig_unresolved"
+      },
+      "provenance": {
+        "source_path": "knowledge/libraries/lego-minifigure-customs/data/venom-cross-architecture-corpus.json",
+        "source_record_id": "venom_xinh_xh1829_movie_bigfig",
+        "architecture_registry_path": "knowledge/libraries/lego-minifigure-customs/data/figure-architecture-registry.json",
+        "architecture_registry_blob_sha": "4d2a26e5991dbb23d8c32a1e5ccd31cc77412ab4"
+      }
+    },
+    {
+      "case_id": "archrec::thing_lego_sh1051_first_steps",
+      "split": "test",
+      "source_corpus": "thing",
+      "source_record_id": "thing_lego_sh1051_first_steps",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "minifig_standard",
+        "unresolved_candidate": null
+      },
+      "target_evidence_tier": "canonical",
+      "scoring_track": "core",
+      "input_asset": {
+        "status": "reference_locator_only_pending_materialization",
+        "required_view": "canonical_or_best_available_full_figure",
+        "materialized_asset_id": null
+      },
+      "leakage_guard": {
+        "allow_release_maker_as_model_input": false,
+        "allow_release_code_as_model_input": false,
+        "allow_character_label_as_model_input": false,
+        "allow_source_corpus_name_as_model_input": false,
+        "note": "Release/maker/character metadata is audit-only. Model input must be image/mesh-derived evidence."
+      },
+      "audit_metadata": {
+        "release": {
+          "maker": "LEGO",
+          "code": "SH1051",
+          "year": 2025,
+          "label": "Ben Grimm"
+        },
+        "source_appearance_family": "mcu_first_steps",
+        "original_architecture_candidate": "minifig_standard",
+        "original_confidence": "catalog_high"
+      },
+      "group_keys": {
+        "corpus_character_group": "thing",
+        "maker": "LEGO",
+        "source_appearance_family": "mcu_first_steps",
+        "architecture_candidate": "minifig_standard"
+      },
+      "provenance": {
+        "source_path": "knowledge/libraries/lego-minifigure-customs/data/thing-cross-architecture-corpus.json",
+        "source_record_id": "thing_lego_sh1051_first_steps",
+        "architecture_registry_path": "knowledge/libraries/lego-minifigure-customs/data/figure-architecture-registry.json",
+        "architecture_registry_blob_sha": "4d2a26e5991dbb23d8c32a1e5ccd31cc77412ab4"
+      }
+    },
+    {
+      "case_id": "archrec::thing_alpha_af336_first_steps",
+      "split": "test",
+      "source_corpus": "thing",
+      "source_record_id": "thing_alpha_af336_first_steps",
+      "task": "architecture_unknown_rejection",
+      "expected": {
+        "architecture_id": null,
+        "unresolved_candidate": "minifig_standard_or_custom_standard"
+      },
+      "target_evidence_tier": "open_set_unknown",
+      "scoring_track": "open_set",
+      "input_asset": {
+        "status": "reference_locator_only_pending_materialization",
+        "required_view": "canonical_or_best_available_full_figure",
+        "materialized_asset_id": null
+      },
+      "leakage_guard": {
+        "allow_release_maker_as_model_input": false,
+        "allow_release_code_as_model_input": false,
+        "allow_character_label_as_model_input": false,
+        "allow_source_corpus_name_as_model_input": false,
+        "note": "Release/maker/character metadata is audit-only. Model input must be image/mesh-derived evidence."
+      },
+      "audit_metadata": {
+        "release": {
+          "maker": "Alpha Toys",
+          "code": "AF336",
+          "year": 2025,
+          "label": "Thing (First Steps)"
+        },
+        "source_appearance_family": "mcu_first_steps",
+        "original_architecture_candidate": "minifig_standard_or_custom_standard",
+        "original_confidence": "catalog_plus_visual_candidate"
+      },
+      "group_keys": {
+        "corpus_character_group": "thing",
+        "maker": "Alpha Toys",
+        "source_appearance_family": "mcu_first_steps",
+        "architecture_candidate": "minifig_standard_or_custom_standard"
+      },
+      "provenance": {
+        "source_path": "knowledge/libraries/lego-minifigure-customs/data/thing-cross-architecture-corpus.json",
+        "source_record_id": "thing_alpha_af336_first_steps",
+        "architecture_registry_path": "knowledge/libraries/lego-minifigure-customs/data/figure-architecture-registry.json",
+        "architecture_registry_blob_sha": "4d2a26e5991dbb23d8c32a1e5ccd31cc77412ab4"
+      }
+    },
+    {
+      "case_id": "archrec::thing_kdl_k2302_first_steps",
+      "split": "test",
+      "source_corpus": "thing",
+      "source_record_id": "thing_kdl_k2302_first_steps",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "custom_kdl_65mm_large",
+        "unresolved_candidate": null
+      },
+      "target_evidence_tier": "provisional",
+      "scoring_track": "provisional",
+      "input_asset": {
+        "status": "reference_locator_only_pending_materialization",
+        "required_view": "canonical_or_best_available_full_figure",
+        "materialized_asset_id": null
+      },
+      "leakage_guard": {
+        "allow_release_maker_as_model_input": false,
+        "allow_release_code_as_model_input": false,
+        "allow_character_label_as_model_input": false,
+        "allow_source_corpus_name_as_model_input": false,
+        "note": "Release/maker/character metadata is audit-only. Model input must be image/mesh-derived evidence."
+      },
+      "audit_metadata": {
+        "release": {
+          "maker": "KDL",
+          "code": "K2302",
+          "year": 2025,
+          "label": "Thing (First Steps)"
+        },
+        "source_appearance_family": "mcu_first_steps",
+        "original_architecture_candidate": "custom_kdl_65mm_large",
+        "original_confidence": "catalog_high_size"
+      },
+      "group_keys": {
+        "corpus_character_group": "thing",
+        "maker": "KDL",
+        "source_appearance_family": "mcu_first_steps",
+        "architecture_candidate": "custom_kdl_65mm_large"
+      },
+      "provenance": {
+        "source_path": "knowledge/libraries/lego-minifigure-customs/data/thing-cross-architecture-corpus.json",
+        "source_record_id": "thing_kdl_k2302_first_steps",
+        "architecture_registry_path": "knowledge/libraries/lego-minifigure-customs/data/figure-architecture-registry.json",
+        "architecture_registry_blob_sha": "4d2a26e5991dbb23d8c32a1e5ccd31cc77412ab4"
+      }
+    },
+    {
+      "case_id": "archrec::thing_tp_tp178_first_steps",
+      "split": "test",
+      "source_corpus": "thing",
+      "source_record_id": "thing_tp_tp178_first_steps",
+      "task": "architecture_unknown_rejection",
+      "expected": {
+        "architecture_id": null,
+        "unresolved_candidate": "minifig_standard_or_custom_standard"
+      },
+      "target_evidence_tier": "open_set_unknown",
+      "scoring_track": "open_set",
+      "input_asset": {
+        "status": "reference_locator_only_pending_materialization",
+        "required_view": "canonical_or_best_available_full_figure",
+        "materialized_asset_id": null
+      },
+      "leakage_guard": {
+        "allow_release_maker_as_model_input": false,
+        "allow_release_code_as_model_input": false,
+        "allow_character_label_as_model_input": false,
+        "allow_source_corpus_name_as_model_input": false,
+        "note": "Release/maker/character metadata is audit-only. Model input must be image/mesh-derived evidence."
+      },
+      "audit_metadata": {
+        "release": {
+          "maker": "TP",
+          "code": "TP178",
+          "year": 2024,
+          "label": "Thing (First Steps)"
+        },
+        "source_appearance_family": "mcu_first_steps",
+        "original_architecture_candidate": "minifig_standard_or_custom_standard",
+        "original_confidence": "catalog_candidate"
+      },
+      "group_keys": {
+        "corpus_character_group": "thing",
+        "maker": "TP",
+        "source_appearance_family": "mcu_first_steps",
+        "architecture_candidate": "minifig_standard_or_custom_standard"
+      },
+      "provenance": {
+        "source_path": "knowledge/libraries/lego-minifigure-customs/data/thing-cross-architecture-corpus.json",
+        "source_record_id": "thing_tp_tp178_first_steps",
+        "architecture_registry_path": "knowledge/libraries/lego-minifigure-customs/data/figure-architecture-registry.json",
+        "architecture_registry_blob_sha": "4d2a26e5991dbb23d8c32a1e5ccd31cc77412ab4"
+      }
+    },
+    {
+      "case_id": "archrec::thing_tp_tp349_first_steps_bigfig",
+      "split": "test",
+      "source_corpus": "thing",
+      "source_record_id": "thing_tp_tp349_first_steps_bigfig",
+      "task": "architecture_unknown_rejection",
+      "expected": {
+        "architecture_id": null,
+        "unresolved_candidate": "compatible_bigfig_unresolved"
+      },
+      "target_evidence_tier": "open_set_unknown",
+      "scoring_track": "open_set",
+      "input_asset": {
+        "status": "reference_locator_only_pending_materialization",
+        "required_view": "canonical_or_best_available_full_figure",
+        "materialized_asset_id": null
+      },
+      "leakage_guard": {
+        "allow_release_maker_as_model_input": false,
+        "allow_release_code_as_model_input": false,
+        "allow_character_label_as_model_input": false,
+        "allow_source_corpus_name_as_model_input": false,
+        "note": "Release/maker/character metadata is audit-only. Model input must be image/mesh-derived evidence."
+      },
+      "audit_metadata": {
+        "release": {
+          "maker": "TP",
+          "code": "TP349",
+          "year": 2025,
+          "label": "Thing (First Steps) (BigFig)"
+        },
+        "source_appearance_family": "mcu_first_steps",
+        "original_architecture_candidate": "compatible_bigfig_unresolved",
+        "original_confidence": "catalog_high_label_physical_unknown"
+      },
+      "group_keys": {
+        "corpus_character_group": "thing",
+        "maker": "TP",
+        "source_appearance_family": "mcu_first_steps",
+        "architecture_candidate": "compatible_bigfig_unresolved"
+      },
+      "provenance": {
+        "source_path": "knowledge/libraries/lego-minifigure-customs/data/thing-cross-architecture-corpus.json",
+        "source_record_id": "thing_tp_tp349_first_steps_bigfig",
+        "architecture_registry_path": "knowledge/libraries/lego-minifigure-customs/data/figure-architecture-registry.json",
+        "architecture_registry_blob_sha": "4d2a26e5991dbb23d8c32a1e5ccd31cc77412ab4"
+      }
+    },
+    {
+      "case_id": "archrec::thing_g2_gh0348",
+      "split": "test",
+      "source_corpus": "thing",
+      "source_record_id": "thing_g2_gh0348",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "custom_g2_muscle_hybrid",
+        "unresolved_candidate": null
+      },
+      "target_evidence_tier": "provisional",
+      "scoring_track": "provisional",
+      "input_asset": {
+        "status": "reference_locator_only_pending_materialization",
+        "required_view": "canonical_or_best_available_full_figure",
+        "materialized_asset_id": null
+      },
+      "leakage_guard": {
+        "allow_release_maker_as_model_input": false,
+        "allow_release_code_as_model_input": false,
+        "allow_character_label_as_model_input": false,
+        "allow_source_corpus_name_as_model_input": false,
+        "note": "Release/maker/character metadata is audit-only. Model input must be image/mesh-derived evidence."
+      },
+      "audit_metadata": {
+        "release": {
+          "maker": "G (2)",
+          "code": "GH0348",
+          "year": 2025,
+          "label": "Thing"
+        },
+        "source_appearance_family": "comics_or_unspecified",
+        "original_architecture_candidate": "custom_g2_muscle_hybrid",
+        "original_confidence": "visual_catalog_candidate"
+      },
+      "group_keys": {
+        "corpus_character_group": "thing",
+        "maker": "G (2)",
+        "source_appearance_family": "comics_or_unspecified",
+        "architecture_candidate": "custom_g2_muscle_hybrid"
+      },
+      "provenance": {
+        "source_path": "knowledge/libraries/lego-minifigure-customs/data/thing-cross-architecture-corpus.json",
+        "source_record_id": "thing_g2_gh0348",
+        "architecture_registry_path": "knowledge/libraries/lego-minifigure-customs/data/figure-architecture-registry.json",
+        "architecture_registry_blob_sha": "4d2a26e5991dbb23d8c32a1e5ccd31cc77412ab4"
+      }
+    },
+    {
+      "case_id": "archrec::thing_g2_gh0435_bigfig",
+      "split": "test",
+      "source_corpus": "thing",
+      "source_record_id": "thing_g2_gh0435_bigfig",
+      "task": "architecture_unknown_rejection",
+      "expected": {
+        "architecture_id": null,
+        "unresolved_candidate": "compatible_bigfig_unresolved"
+      },
+      "target_evidence_tier": "open_set_unknown",
+      "scoring_track": "open_set",
+      "input_asset": {
+        "status": "reference_locator_only_pending_materialization",
+        "required_view": "canonical_or_best_available_full_figure",
+        "materialized_asset_id": null
+      },
+      "leakage_guard": {
+        "allow_release_maker_as_model_input": false,
+        "allow_release_code_as_model_input": false,
+        "allow_character_label_as_model_input": false,
+        "allow_source_corpus_name_as_model_input": false,
+        "note": "Release/maker/character metadata is audit-only. Model input must be image/mesh-derived evidence."
+      },
+      "audit_metadata": {
+        "release": {
+          "maker": "G (2)",
+          "code": "GH0435",
+          "label": "Thing (Fall of the Fantastic Four) (BigFig)"
+        },
+        "source_appearance_family": "fall_of_fantastic_four",
+        "original_architecture_candidate": "compatible_bigfig_unresolved",
+        "original_confidence": "catalog_high_label_physical_unknown"
+      },
+      "group_keys": {
+        "corpus_character_group": "thing",
+        "maker": "G (2)",
+        "source_appearance_family": "fall_of_fantastic_four",
+        "architecture_candidate": "compatible_bigfig_unresolved"
+      },
+      "provenance": {
+        "source_path": "knowledge/libraries/lego-minifigure-customs/data/thing-cross-architecture-corpus.json",
+        "source_record_id": "thing_g2_gh0435_bigfig",
+        "architecture_registry_path": "knowledge/libraries/lego-minifigure-customs/data/figure-architecture-registry.json",
+        "architecture_registry_blob_sha": "4d2a26e5991dbb23d8c32a1e5ccd31cc77412ab4"
+      }
+    },
+    {
+      "case_id": "archrec::thing_g2_gh0440_bigfig",
+      "split": "test",
+      "source_corpus": "thing",
+      "source_record_id": "thing_g2_gh0440_bigfig",
+      "task": "architecture_unknown_rejection",
+      "expected": {
+        "architecture_id": null,
+        "unresolved_candidate": "compatible_bigfig_unresolved"
+      },
+      "target_evidence_tier": "open_set_unknown",
+      "scoring_track": "open_set",
+      "input_asset": {
+        "status": "reference_locator_only_pending_materialization",
+        "required_view": "canonical_or_best_available_full_figure",
+        "materialized_asset_id": null
+      },
+      "leakage_guard": {
+        "allow_release_maker_as_model_input": false,
+        "allow_release_code_as_model_input": false,
+        "allow_character_label_as_model_input": false,
+        "allow_source_corpus_name_as_model_input": false,
+        "note": "Release/maker/character metadata is audit-only. Model input must be image/mesh-derived evidence."
+      },
+      "audit_metadata": {
+        "release": {
+          "maker": "G (2)",
+          "code": "GH0440",
+          "year": 2025,
+          "label": "Thing (Future Foundation) (BigFig)"
+        },
+        "source_appearance_family": "future_foundation",
+        "original_architecture_candidate": "compatible_bigfig_unresolved",
+        "original_confidence": "catalog_high_label_physical_unknown"
+      },
+      "group_keys": {
+        "corpus_character_group": "thing",
+        "maker": "G (2)",
+        "source_appearance_family": "future_foundation",
+        "architecture_candidate": "compatible_bigfig_unresolved"
+      },
+      "provenance": {
+        "source_path": "knowledge/libraries/lego-minifigure-customs/data/thing-cross-architecture-corpus.json",
+        "source_record_id": "thing_g2_gh0440_bigfig",
+        "architecture_registry_path": "knowledge/libraries/lego-minifigure-customs/data/figure-architecture-registry.json",
+        "architecture_registry_blob_sha": "4d2a26e5991dbb23d8c32a1e5ccd31cc77412ab4"
+      }
+    },
+    {
+      "case_id": "archrec::thing_shengyuan_sy288_bigfig",
+      "split": "test",
+      "source_corpus": "thing",
+      "source_record_id": "thing_shengyuan_sy288_bigfig",
+      "task": "architecture_unknown_rejection",
+      "expected": {
+        "architecture_id": null,
+        "unresolved_candidate": "compatible_bigfig_unresolved"
+      },
+      "target_evidence_tier": "open_set_unknown",
+      "scoring_track": "open_set",
+      "input_asset": {
+        "status": "reference_locator_only_pending_materialization",
+        "required_view": "canonical_or_best_available_full_figure",
+        "materialized_asset_id": null
+      },
+      "leakage_guard": {
+        "allow_release_maker_as_model_input": false,
+        "allow_release_code_as_model_input": false,
+        "allow_character_label_as_model_input": false,
+        "allow_source_corpus_name_as_model_input": false,
+        "note": "Release/maker/character metadata is audit-only. Model input must be image/mesh-derived evidence."
+      },
+      "audit_metadata": {
+        "release": {
+          "maker": "Sheng Yuan",
+          "code": "SY288",
+          "label": "Thing (BigFig)"
+        },
+        "source_appearance_family": "comics_or_unspecified",
+        "original_architecture_candidate": "compatible_bigfig_unresolved",
+        "original_confidence": "catalog_high_label_physical_unknown"
+      },
+      "group_keys": {
+        "corpus_character_group": "thing",
+        "maker": "Sheng Yuan",
+        "source_appearance_family": "comics_or_unspecified",
+        "architecture_candidate": "compatible_bigfig_unresolved"
+      },
+      "provenance": {
+        "source_path": "knowledge/libraries/lego-minifigure-customs/data/thing-cross-architecture-corpus.json",
+        "source_record_id": "thing_shengyuan_sy288_bigfig",
+        "architecture_registry_path": "knowledge/libraries/lego-minifigure-customs/data/figure-architecture-registry.json",
+        "architecture_registry_blob_sha": "4d2a26e5991dbb23d8c32a1e5ccd31cc77412ab4"
+      }
+    },
+    {
+      "case_id": "archrec::thing_xinh_1421_bigfig",
+      "split": "test",
+      "source_corpus": "thing",
+      "source_record_id": "thing_xinh_1421_bigfig",
+      "task": "architecture_unknown_rejection",
+      "expected": {
+        "architecture_id": null,
+        "unresolved_candidate": "compatible_bigfig_unresolved"
+      },
+      "target_evidence_tier": "open_set_unknown",
+      "scoring_track": "open_set",
+      "input_asset": {
+        "status": "reference_locator_only_pending_materialization",
+        "required_view": "canonical_or_best_available_full_figure",
+        "materialized_asset_id": null
+      },
+      "leakage_guard": {
+        "allow_release_maker_as_model_input": false,
+        "allow_release_code_as_model_input": false,
+        "allow_character_label_as_model_input": false,
+        "allow_source_corpus_name_as_model_input": false,
+        "note": "Release/maker/character metadata is audit-only. Model input must be image/mesh-derived evidence."
+      },
+      "audit_metadata": {
+        "release": {
+          "maker": "Xinh",
+          "code": "1421",
+          "label": "Thing (BigFig)"
+        },
+        "source_appearance_family": "comics_or_unspecified",
+        "original_architecture_candidate": "compatible_bigfig_unresolved",
+        "original_confidence": "catalog_high_label_physical_unknown"
+      },
+      "group_keys": {
+        "corpus_character_group": "thing",
+        "maker": "Xinh",
+        "source_appearance_family": "comics_or_unspecified",
+        "architecture_candidate": "compatible_bigfig_unresolved"
+      },
+      "provenance": {
+        "source_path": "knowledge/libraries/lego-minifigure-customs/data/thing-cross-architecture-corpus.json",
+        "source_record_id": "thing_xinh_1421_bigfig",
+        "architecture_registry_path": "knowledge/libraries/lego-minifigure-customs/data/figure-architecture-registry.json",
+        "architecture_registry_blob_sha": "4d2a26e5991dbb23d8c32a1e5ccd31cc77412ab4"
+      }
+    }
+  ]
+}
