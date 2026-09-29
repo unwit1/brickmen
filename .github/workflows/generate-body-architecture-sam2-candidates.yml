@@ -1,0 +1,75 @@
+name: Generate Body Architecture SAM2 Candidates
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/generate-body-architecture-sam2-candidates.yml'
+      - 'tools/knowledge/generate_body_architecture_sam2_candidates.py'
+      - 'knowledge/libraries/lego-minifigure-customs/data/body-architecture-benchmark-segmentation-prompts.json'
+      - 'knowledge/libraries/lego-minifigure-customs/data/body-architecture-benchmark-sanitization-queue.json'
+      - 'knowledge/libraries/lego-minifigure-customs/data/body-architecture-benchmark-sanitization-candidates.json'
+
+permissions:
+  contents: read
+
+jobs:
+  segment:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      SAM2_BUILD_CUDA: "0"
+      SAM2_REVISION: 2b90b9f5ceec907a1c18123530e92e794ad901a4
+      SAM2_CHECKPOINT_URL: https://dl.fbaipublicfiles.com/segment_anything_2/092824/sam2.1_hiera_tiny.pt
+    steps:
+      - name: Check out Brickmen
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install CPU PyTorch
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+
+      - name: Fetch pinned SAM2 source
+        run: |
+          git clone --filter=blob:none https://github.com/facebookresearch/sam2.git .agent-local/sam2
+          git -C .agent-local/sam2 checkout "$SAM2_REVISION"
+          SAM2_BUILD_CUDA=0 python -m pip install -e .agent-local/sam2
+
+      - name: Download SAM2.1 tiny checkpoint
+        run: |
+          mkdir -p .agent-local/checkpoints
+          curl --fail --location --retry 3 \
+            "$SAM2_CHECKPOINT_URL" \
+            --output .agent-local/checkpoints/sam2.1_hiera_tiny.pt
+          sha256sum .agent-local/checkpoints/sam2.1_hiera_tiny.pt
+
+      - name: Generate exact segmentation candidates on CPU
+        run: |
+          python tools/knowledge/generate_body_architecture_sam2_candidates.py \
+            --sam2-repo .agent-local/sam2 \
+            --checkpoint .agent-local/checkpoints/sam2.1_hiera_tiny.pt \
+            --model-config configs/sam2.1/sam2.1_hiera_t.yaml \
+            --device cpu \
+            --output-dir .agent-local/body-architecture-sam2-derivatives \
+            --report .agent-local/body-architecture-sam2-report.json \
+            --allow-host static.herobloks.com \
+            --allow-host kongbricks.myshopify.com \
+            --timeout-seconds 30
+
+      - name: Upload short-lived SAM2 review bundle
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: body-architecture-sam2-review-bundle
+          path: |
+            .agent-local/body-architecture-sam2-report.json
+            .agent-local/body-architecture-sam2-derivatives
+          if-no-files-found: warn
+          retention-days: 3
