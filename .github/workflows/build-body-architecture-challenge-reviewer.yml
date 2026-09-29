@@ -1,0 +1,41 @@
+name: Build Body Architecture Challenge Reviewer
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/build-body-architecture-challenge-reviewer.yml'
+      - 'tools/knowledge/build_body_architecture_source_sanitization_review_ui.py'
+      - 'knowledge/libraries/lego-minifigure-customs/data/body-architecture-recognition-challenge-sanitization-queue-v1.json'
+
+permissions:
+  contents: read
+
+jobs:
+  build-reviewer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out Brickmen
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build standalone metadata-only reviewer
+        run: |
+          mkdir -p .agent-local
+          python tools/knowledge/build_body_architecture_source_sanitization_review_ui.py \
+            --queue knowledge/libraries/lego-minifigure-customs/data/body-architecture-recognition-challenge-sanitization-queue-v1.json \
+            --output .agent-local/body-architecture-challenge-source-reviewer.html
+
+      - name: Upload reviewer artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: body-architecture-challenge-source-reviewer
+          path: .agent-local/body-architecture-challenge-source-reviewer.html
+          if-no-files-found: error
+          retention-days: 14
