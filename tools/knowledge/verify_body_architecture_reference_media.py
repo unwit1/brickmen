@@ -91,6 +91,92 @@ def sniff_image_format(data: bytes) -> str | None:
     return None
 
 
+def image_dimensions(data: bytes, image_format: str) -> tuple[int, int]:
+    """Extract image dimensions from supported formats without decoding pixels."""
+    if image_format == "png":
+        if len(data) < 24 or not data.startswith(b"\x89PNG\r\n\x1a\n"):
+            raise ValueError("invalid PNG header")
+        width = int.from_bytes(data[16:20], "big")
+        height = int.from_bytes(data[20:24], "big")
+    elif image_format == "gif":
+        if len(data) < 10:
+            raise ValueError("invalid GIF header")
+        width = int.from_bytes(data[6:8], "little")
+        height = int.from_bytes(data[8:10], "little")
+    elif image_format == "bmp":
+        if len(data) < 26:
+            raise ValueError("invalid BMP header")
+        width = int.from_bytes(data[18:22], "little", signed=True)
+        height = abs(int.from_bytes(data[22:26], "little", signed=True))
+    elif image_format == "jpeg":
+        if len(data) < 4 or not data.startswith(b"\xff\xd8"):
+            raise ValueError("invalid JPEG header")
+        i = 2
+        sof_markers = {
+            0xC0, 0xC1, 0xC2, 0xC3,
+            0xC5, 0xC6, 0xC7,
+            0xC9, 0xCA, 0xCB,
+            0xCD, 0xCE, 0xCF,
+        }
+        width = height = 0
+        while i < len(data):
+            if data[i] != 0xFF:
+                i += 1
+                continue
+            while i < len(data) and data[i] == 0xFF:
+                i += 1
+            if i >= len(data):
+                break
+            marker = data[i]
+            i += 1
+            if marker in {0xD8, 0xD9}:
+                continue
+            if marker == 0xDA:
+                break
+            if i + 2 > len(data):
+                break
+            segment_length = int.from_bytes(data[i:i + 2], "big")
+            if segment_length < 2 or i + segment_length > len(data):
+                raise ValueError("invalid JPEG segment length")
+            if marker in sof_markers:
+                if segment_length < 7:
+                    raise ValueError("invalid JPEG SOF segment")
+                height = int.from_bytes(data[i + 3:i + 5], "big")
+                width = int.from_bytes(data[i + 5:i + 7], "big")
+                break
+            i += segment_length
+        if not width or not height:
+            raise ValueError("JPEG dimensions not found")
+    elif image_format == "webp":
+        if len(data) < 30 or data[:4] != b"RIFF" or data[8:12] != b"WEBP":
+            raise ValueError("invalid WebP header")
+        chunk = data[12:16]
+        if chunk == b"VP8X":
+            width = 1 + int.from_bytes(data[24:27], "little")
+            height = 1 + int.from_bytes(data[27:30], "little")
+        elif chunk == b"VP8L":
+            if len(data) < 25 or data[20] != 0x2F:
+                raise ValueError("invalid WebP VP8L header")
+            bits = int.from_bytes(data[21:25], "little")
+            width = (bits & 0x3FFF) + 1
+            height = ((bits >> 14) & 0x3FFF) + 1
+        elif chunk == b"VP8 ":
+            if len(data) < 30 or data[23:26] != b"\x9d\x01\x2a":
+                raise ValueError("invalid WebP VP8 frame header")
+            width = int.from_bytes(data[26:28], "little") & 0x3FFF
+            height = int.from_bytes(data[28:30], "little") & 0x3FFF
+        else:
+            raise ValueError(f"unsupported WebP chunk: {chunk!r}")
+    elif image_format == "tiff":
+        raise ValueError("TIFF dimensions require full IFD parsing and are not supported")
+    else:
+        raise ValueError(f"unsupported image format: {image_format}")
+
+    if width <= 0 or height <= 0:
+        raise ValueError(f"invalid image dimensions: {width}x{height}")
+    return width, height
+
+
 def select_exact_images(benchmark: dict[str, Any]) -> list[dict[str, Any]]:
     """Select one deterministic exact-image locator per benchmark case."""
     rows: list[dict[str, Any]] = []
@@ -180,6 +266,7 @@ def fetch_image_metadata(
         raise ValueError("downloaded bytes do not match a supported image signature")
     if content_type and not content_type.startswith("image/"):
         raise ValueError(f"non-image content type: {content_type}")
+    width, height = image_dimensions(data, image_format)
 
     return {
         "initial_host": initial_host,
@@ -187,6 +274,8 @@ def fetch_image_metadata(
         "final_host": final_host,
         "content_type": content_type or None,
         "image_format": image_format,
+        "width": width,
+        "height": height,
         "size_bytes": len(data),
         "sha256": hashlib.sha256(data).hexdigest(),
     }
