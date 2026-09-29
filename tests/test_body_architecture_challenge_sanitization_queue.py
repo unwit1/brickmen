@@ -41,16 +41,17 @@ def load_tool():
     return module
 
 
-def test_challenge_queue_is_fail_closed_until_visual_review() -> None:
+def test_challenge_queue_applies_completed_visual_reviews() -> None:
     tool = load_tool()
     result = tool.build(CHALLENGE, REVIEWS)
 
     assert result["summary"] == {
         "total_cases": 8,
-        "raw_model_input_allowed_cases": 0,
-        "blocked_model_input_cases": 8,
+        "raw_model_input_allowed_cases": 7,
+        "blocked_model_input_cases": 1,
         "status_counts": {
-            "blocked_pending_visual_sanitization_review": 8,
+            "approved_raw_model_input": 7,
+            "sanitization_required": 1,
         },
         "risk_counts": {
             "medium_review_required": 8,
@@ -60,10 +61,19 @@ def test_challenge_queue_is_fail_closed_until_visual_review() -> None:
         row["split"] == "challenge_test"
         for row in result["queue"]
     )
-    assert all(
-        row["raw_model_input_allowed"] is False
+    assert sum(
+        row["raw_model_input_allowed"]
         for row in result["queue"]
+    ) == 7
+    centaur = next(
+        row for row in result["queue"]
+        if row["source_record_id"] == "challenge_centaur_col379"
     )
+    assert centaur["status"] == "sanitization_required"
+    assert centaur["raw_model_input_allowed"] is False
+    assert centaur["review"]["visual_confounders"] == [
+        "alternate_expression_inset"
+    ]
     assert all(
         row["source"]["verification_run_id"] == 36518447556
         for row in result["queue"]
@@ -101,3 +111,17 @@ def test_challenge_policy_matches_shared_fail_closed_rule() -> None:
     )
 
     assert all(row["policy"] == expected for row in result["queue"])
+
+
+def test_challenge_source_reviews_are_complete() -> None:
+    reviews = json.loads(REVIEWS.read_text(encoding="utf-8"))
+    assert len(reviews["reviews"]) == 8
+    assert reviews["reviewer"]["reviewer_type"] == "model"
+    assert sum(
+        row["status"] == "approved_raw"
+        for row in reviews["reviews"]
+    ) == 7
+    assert sum(
+        row["status"] == "sanitization_required"
+        for row in reviews["reviews"]
+    ) == 1
