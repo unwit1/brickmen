@@ -76,8 +76,24 @@ def test_segmentation_prompts_cover_exactly_current_blockers() -> None:
             source["source_width"],
             source["source_height"],
         ]
-        assert prompt["status"] == "prompt_seed_unvalidated"
+        assert prompt["status"] in {
+            "visual_multimask_selection_v1",
+            "prompt_refined_after_source_review_v2",
+        }
         assert prompt["positive_points_norm"]
+        assert prompt["mask_cleanup"] == "largest_connected_component"
+
+    preferred = {
+        record_id: prompt["preferred_mask_index"]
+        for record_id, prompt in prompt_by_id.items()
+        if "preferred_mask_index" in prompt
+    }
+    assert len(preferred) == 8
+    assert set(preferred.values()) == {0}
+    assert set(prompt_by_id) - set(preferred) == {
+        "thing_shengyuan_sy288_bigfig",
+        "venom_alpha_af325",
+    }
 
 
 def test_normalized_prompt_conversion() -> None:
@@ -192,3 +208,13 @@ def test_torch_determinism_contract_is_explicit() -> None:
     assert "torch.set_num_threads(num_threads)" in source
     assert "torch.manual_seed(0)" in source
     assert '"determinism": determinism' in source
+
+
+def test_reviewed_mask_selection_contract_is_explicit() -> None:
+    source = TOOL.read_text(encoding="utf-8")
+
+    assert "preferred_mask_index" in source
+    assert "prompt_preferred_mask_index" in source
+    assert "largest_connected_component" in source
+    assert '"raw_selected_mask_sha256"' in source
+    assert '"sam_best_mask_index"' in source
