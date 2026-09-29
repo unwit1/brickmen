@@ -203,3 +203,47 @@ def test_sanitization_required_cannot_authorize_raw_input() -> None:
         "sanitization_required requires raw_model_input_allowed=false"
         in errors
     )
+
+
+def test_nonempty_review_set_requires_reviewer_provenance() -> None:
+    tool = load_tool()
+    source_hash = "a" * 64
+    queue = {
+        "queue": [
+            {
+                "source_record_id": "test",
+                "source": {
+                    "source_id": "source-test",
+                    "source_file_sha256": source_hash,
+                },
+            }
+        ]
+    }
+    reviews = {
+        "reviewer": None,
+        "reviews": [
+            {
+                "source_record_id": "test",
+                "source_id": "source-test",
+                "source_file_sha256": source_hash,
+                "status": "sanitization_required",
+                "identity_match": True,
+                "primary_view": "front",
+                "primary_figure_complete": True,
+                "visible_text_leakage": ["character_name_or_alias_text"],
+                "visual_confounders": [],
+                "sanitization_action": "tight_figure_crop",
+                "raw_model_input_allowed": False,
+                "review_confidence": 0.9,
+                "notes": ["test"],
+            }
+        ],
+    }
+
+    result = tool.validate_review_set(reviews, queue)
+    assert result["valid"] is False
+    assert any(
+        row["scope"] == "reviewer"
+        and "reviewer must be an object" in row["error"]
+        for row in result["errors"]
+    )
