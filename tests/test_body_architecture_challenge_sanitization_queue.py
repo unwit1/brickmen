@@ -89,3 +89,15 @@ def test_checked_in_challenge_sanitization_queue_matches_builder() -> None:
     actual = json.loads(QUEUE.read_text(encoding="utf-8"))
 
     assert actual == expected
+
+
+def test_challenge_policy_matches_shared_fail_closed_rule() -> None:
+    tool = load_tool()
+    result = tool.build(CHALLENGE, REVIEWS)
+    expected = (
+        "Byte verification proves file identity, not benchmark suitability. "
+        "Raw media remains blocked from model input until visual sanitization "
+        "is explicitly approved."
+    )
+
+    assert all(row["policy"] == expected for row in result["queue"])
