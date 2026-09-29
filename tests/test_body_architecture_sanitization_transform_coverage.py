@@ -115,3 +115,19 @@ def test_candidate_manifest_retains_source_and_transform_provenance() -> None:
         assert candidate["operations"] == transform["operations"]
         assert candidate["transform_status"] == "candidate_transform"
         assert candidate["model_input_allowed"] is False
+
+
+def test_candidate_hash_fields_are_sha256() -> None:
+    candidates = load(
+        DATA / "body-architecture-benchmark-sanitization-candidates.json"
+    )
+
+    for candidate in candidates["records"]:
+        for key in (
+            "source_file_sha256",
+            "sanitized_pixel_sha256",
+            "sanitized_png_sha256",
+        ):
+            value = candidate[key]
+            assert len(value) == 64
+            assert all(ch in "0123456789abcdef" for ch in value)
