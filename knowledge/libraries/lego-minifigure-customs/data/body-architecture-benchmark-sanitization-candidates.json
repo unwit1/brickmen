@@ -14,153 +14,499 @@
   "records": [
     {
       "source_record_id": "hulk_lego_sh0037_standard",
+      "case_id": "archrec::hulk_lego_sh0037_standard",
+      "split": "development",
+      "source_id": "bricklink_hulk_sh0037_inventory",
+      "source_file_sha256": "fae13ab513dd1d32b405425beb7bca1aa68bd11c5470e2e0e958ac4cb9168157",
+      "source_dimensions": [
+        254,
+        400
+      ],
+      "transform_status": "candidate_transform",
+      "operations": [
+        {
+          "op": "mask_rect_norm",
+          "bounds": [
+            0.7,
+            0.205,
+            0.985,
+            0.355
+          ],
+          "fill_mode": "border_median"
+        }
+      ],
       "output_dimensions": [
         254,
         400
       ],
       "sanitized_pixel_sha256": "1ee0cecb55087c17f72a7c2de0dc406aaace131fec7edf92e68ff9eb3468c881",
       "sanitized_png_sha256": "b5481fe949bae29f26e0ec519623fba72b2bbec0b221c64e18d8e6af085049af",
-      "candidate_status": "generated_pending_visual_review"
+      "candidate_status": "generated_pending_visual_review",
+      "model_input_allowed": false
     },
     {
       "source_record_id": "hulk_g2_gh0304_avengers",
+      "case_id": "archrec::hulk_g2_gh0304_avengers",
+      "split": "development",
+      "source_id": "kongbricks_g2_hulk_gh0304_media",
+      "source_file_sha256": "386526bedf6cccb20984cdfceb7b3f8cb8b148fd59dfd703b338a25e6d07cb07",
+      "source_dimensions": [
+        800,
+        800
+      ],
+      "transform_status": "candidate_transform",
+      "operations": [
+        {
+          "op": "crop_norm",
+          "bounds": [
+            0.28,
+            0.22,
+            0.72,
+            0.8
+          ]
+        }
+      ],
       "output_dimensions": [
         352,
         464
       ],
       "sanitized_pixel_sha256": "c16e95f9b1762b0c05a0815e1854b4954f6e8c0d8ff412fafab204bd6940ef1f",
       "sanitized_png_sha256": "99e506fa499698dd129fb90672a89ddda9c5dfcff23bb70310bd0726978c176f",
-      "candidate_status": "generated_pending_visual_review"
+      "candidate_status": "generated_pending_visual_review",
+      "model_input_allowed": false
     },
     {
       "source_record_id": "hulk_bigguy_ragnarok",
+      "case_id": "archrec::hulk_bigguy_ragnarok",
+      "split": "development",
+      "source_id": "bigguy_hulk_ragnarok",
+      "source_file_sha256": "ebc33442ad2b852ee783f7457f1ab040043aac9dfe36b59cb4239e02ab149e24",
+      "source_dimensions": [
+        566,
+        744
+      ],
+      "transform_status": "candidate_transform",
+      "operations": [
+        {
+          "op": "mask_rect_norm",
+          "bounds": [
+            0.72,
+            0.02,
+            0.99,
+            0.21
+          ],
+          "fill_mode": "border_median"
+        },
+        {
+          "op": "crop_norm",
+          "bounds": [
+            0.04,
+            0.11,
+            0.87,
+            0.89
+          ]
+        }
+      ],
       "output_dimensions": [
         471,
         582
       ],
       "sanitized_pixel_sha256": "e52603e3a3ec09bc0c2e48e567115e8d26508a0b4aa11d3244bc629c9670fde7",
       "sanitized_png_sha256": "b94bce54b19671fe2acfd118a806e2b51d39ab780a99f5e65161eb1ec861a851",
-      "candidate_status": "generated_pending_visual_review"
+      "candidate_status": "generated_pending_visual_review",
+      "model_input_allowed": false
     },
     {
       "source_record_id": "hulk_mrj_heart_comics",
+      "case_id": "archrec::hulk_mrj_heart_comics",
+      "split": "development",
+      "source_id": "mrj_heart_hulk",
+      "source_file_sha256": "39feabdf00538692b035b870a3ae7f7c2835825e8224aa5e8adc9253a98a079a",
+      "source_dimensions": [
+        591,
+        485
+      ],
+      "transform_status": "candidate_transform",
+      "operations": [
+        {
+          "op": "mask_rect_norm",
+          "bounds": [
+            0,
+            0,
+            0.36,
+            0.2
+          ],
+          "fill_mode": "border_median"
+        },
+        {
+          "op": "mask_rect_norm",
+          "bounds": [
+            0.39,
+            0.03,
+            0.6,
+            0.32
+          ],
+          "fill_mode": "border_median"
+        },
+        {
+          "op": "crop_norm",
+          "bounds": [
+            0.02,
+            0.18,
+            0.51,
+            0.93
+          ]
+        }
+      ],
       "output_dimensions": [
         291,
         365
       ],
       "sanitized_pixel_sha256": "bf4e60b1f51e43941d9cc1ba92a58c84c4bf13cde32a357bfaa0bc4e67e3c8f8",
       "sanitized_png_sha256": "0c3878db55b7d6792ca38b1c516cb955b1c6691075a69aad612795b2655fcc24",
-      "candidate_status": "generated_pending_visual_review"
+      "candidate_status": "generated_pending_visual_review",
+      "model_input_allowed": false
     },
     {
       "source_record_id": "venom_alpha_af328_ancient",
+      "case_id": "archrec::venom_alpha_af328_ancient",
+      "split": "validation",
+      "source_id": "alpha_ancient_venom_af328",
+      "source_file_sha256": "929d7a3d8d2c2d315cec8bf276ef0ba180ad2fc877a66515a2b7533f686b90ff",
+      "source_dimensions": [
+        800,
+        800
+      ],
+      "transform_status": "candidate_transform",
+      "operations": [
+        {
+          "op": "crop_norm",
+          "bounds": [
+            0.205,
+            0.225,
+            0.795,
+            0.8
+          ]
+        }
+      ],
       "output_dimensions": [
         472,
         460
       ],
       "sanitized_pixel_sha256": "1d9ffe287dbbedcb0bd0328774199ddf83f255779a52d62a3b0ecc78f9099a90ff",
       "sanitized_png_sha256": "6b0cb5a2062ed09da369baeb8f964e715b060ad56fbe4e7d50cada242f14c8e5",
-      "candidate_status": "generated_pending_visual_review"
+      "candidate_status": "generated_pending_visual_review",
+      "model_input_allowed": false
     },
     {
       "source_record_id": "thing_g2_gh0435_bigfig",
+      "case_id": "archrec::thing_g2_gh0435_bigfig",
+      "split": "test",
+      "source_id": "g2_thing_gh0435_bigfig",
+      "source_file_sha256": "a589332b37fa1e2a8dc5c70131641a36c5f0420fec96895258cf8ba744cd1432",
+      "source_dimensions": [
+        1024,
+        1024
+      ],
+      "transform_status": "candidate_transform",
+      "operations": [
+        {
+          "op": "crop_norm",
+          "bounds": [
+            0.16,
+            0.13,
+            0.84,
+            0.8
+          ]
+        }
+      ],
       "output_dimensions": [
         698,
         687
       ],
       "sanitized_pixel_sha256": "280e7372302773563dc481db6829e9d88682851b71d9e44e6d80a35c11be211f",
       "sanitized_png_sha256": "1acab4e6d2c2106694b78e5a46373e2b782c9b8b97c49fa17836bf947ac5ed53",
-      "candidate_status": "generated_pending_visual_review"
+      "candidate_status": "generated_pending_visual_review",
+      "model_input_allowed": false
     },
     {
       "source_record_id": "thing_xinh_1421_bigfig",
+      "case_id": "archrec::thing_xinh_1421_bigfig",
+      "split": "test",
+      "source_id": "xinh_thing_1421_bigfig",
+      "source_file_sha256": "f3556293cec3cafb4ba2c7a0659713aca485e59c4d3b88fb7f9850d774c685a2",
+      "source_dimensions": [
+        759,
+        1024
+      ],
+      "transform_status": "candidate_transform",
+      "operations": [
+        {
+          "op": "crop_norm",
+          "bounds": [
+            0.08,
+            0.29,
+            0.91,
+            0.89
+          ]
+        }
+      ],
       "output_dimensions": [
         631,
         616
       ],
       "sanitized_pixel_sha256": "3881404b58d3c7adb24b939f4d54871e594f35f3e072c5b63ed45a67eaa25a19",
       "sanitized_png_sha256": "ca6f26221d5db4f48e93e50037287a170124874ff32c5c1e236142ce5c5585e3",
-      "candidate_status": "generated_pending_visual_review"
+      "candidate_status": "generated_pending_visual_review",
+      "model_input_allowed": false
     },
     {
       "source_record_id": "red_hulk_g2_gh0303_bnw",
+      "case_id": "archrec::red_hulk_g2_gh0303_bnw",
+      "split": "development",
+      "source_id": "kongbricks_g2_red_hulk_gh0303_media",
+      "source_file_sha256": "45e630a24f36dfa917b426a91a6c500505a684ced9c55cbadf0ee762c0a04959",
+      "source_dimensions": [
+        800,
+        800
+      ],
+      "transform_status": "candidate_transform",
+      "operations": [
+        {
+          "op": "crop_norm",
+          "bounds": [
+            0.24,
+            0.17,
+            0.76,
+            0.82
+          ]
+        }
+      ],
       "output_dimensions": [
         416,
         520
       ],
       "sanitized_pixel_sha256": "3b597d9f7a404212db6cf3cf3a2a97e86536038d9305b75d26f8939b1175f86e",
       "sanitized_png_sha256": "320a02a0d601523eb83fdb748db9a31c4fbab3fced7cbbd78c59d10a0c7833f8",
-      "candidate_status": "generated_pending_visual_review"
+      "candidate_status": "generated_pending_visual_review",
+      "model_input_allowed": false
     },
     {
       "source_record_id": "red_hulk_bigguy_bnw",
+      "case_id": "archrec::red_hulk_bigguy_bnw",
+      "split": "development",
+      "source_id": "bigguy_red_hulk_bnw",
+      "source_file_sha256": "6f6ca18d72f6c6dbee36d97c7db8eb21ab68854c400b37e999bd4f8e65f4a940",
+      "source_dimensions": [
+        571,
+        748
+      ],
+      "transform_status": "candidate_transform",
+      "operations": [
+        {
+          "op": "crop_norm",
+          "bounds": [
+            0,
+            0.13,
+            0.53,
+            0.87
+          ]
+        }
+      ],
       "output_dimensions": [
         303,
         554
       ],
       "sanitized_pixel_sha256": "cac262ea841c923eb8b69085ac6228a4def95be744ea8b6b95bd378c42d1b9b8",
       "sanitized_png_sha256": "792aa3076c475baf5abf07eadb404369f0fa869e14b952a7105576dc5536ff96",
-      "candidate_status": "generated_pending_visual_review"
+      "candidate_status": "generated_pending_visual_review",
+      "model_input_allowed": false
     },
     {
       "source_record_id": "venom_alpha_af321_movie",
+      "case_id": "archrec::venom_alpha_af321_movie",
+      "split": "validation",
+      "source_id": "alpha_venom_af321",
+      "source_file_sha256": "95dc7af0c08f27f15ef5bd29398819938e561f85be4b65987ad0c232dd174702",
+      "source_dimensions": [
+        750,
+        750
+      ],
+      "transform_status": "candidate_transform",
+      "operations": [
+        {
+          "op": "crop_norm",
+          "bounds": [
+            0.18,
+            0.05,
+            0.82,
+            0.61
+          ]
+        }
+      ],
       "output_dimensions": [
         480,
         421
       ],
       "sanitized_pixel_sha256": "7dee200f0e2ced543efd597dc1a7542e314c899736ffaa548253d8a8f421207d",
       "sanitized_png_sha256": "3fdda1d0ba4bfb7a7ee9f6357478f2476a4fa7b60a80ef1f30fb83a54de465c8",
-      "candidate_status": "generated_pending_visual_review"
+      "candidate_status": "generated_pending_visual_review",
+      "model_input_allowed": false
     },
     {
       "source_record_id": "thing_alpha_af336_first_steps",
+      "case_id": "archrec::thing_alpha_af336_first_steps",
+      "split": "test",
+      "source_id": "kongbricks_alpha_thing_af336_media",
+      "source_file_sha256": "eabe84c927e3bcc3dbf64e53f39587cc6f90f32c2b7fb69bb38ec2332fc6829c",
+      "source_dimensions": [
+        800,
+        800
+      ],
+      "transform_status": "candidate_transform",
+      "operations": [
+        {
+          "op": "crop_norm",
+          "bounds": [
+            0.12,
+            0.22,
+            0.71,
+            0.84
+          ]
+        }
+      ],
       "output_dimensions": [
         472,
         496
       ],
       "sanitized_pixel_sha256": "ace389d0fd774e02af3b8d580a043ec2cadd7cf03c6677f2adfb92daf70aa096",
       "sanitized_png_sha256": "1dd7f9d17e7463b660d13e85abd575aaf0b8712d0057c085ff77849f53911a16",
-      "candidate_status": "generated_pending_visual_review"
+      "candidate_status": "generated_pending_visual_review",
+      "model_input_allowed": false
     },
     {
       "source_record_id": "thing_kdl_k2302_first_steps",
+      "case_id": "archrec::thing_kdl_k2302_first_steps",
+      "split": "test",
+      "source_id": "kongbricks_kdl_thing_k2302_media",
+      "source_file_sha256": "48a859c38557b9b69784b4d85c2061549348ac4ac233aeb307e90a0056fe4b3a",
+      "source_dimensions": [
+        800,
+        800
+      ],
+      "transform_status": "candidate_transform",
+      "operations": [
+        {
+          "op": "crop_norm",
+          "bounds": [
+            0.24,
+            0.18,
+            0.7,
+            0.96
+          ]
+        }
+      ],
       "output_dimensions": [
         368,
         624
       ],
       "sanitized_pixel_sha256": "53d7050bd82462946420dc8f3bd4298c65c347d4ebba4badb2a46534e31f4436",
       "sanitized_png_sha256": "e76cdccdf9f5b0a71f6e87fe9c447b3428c2c4bce1fe0bfb7a8ba46ea2289b99",
-      "candidate_status": "generated_pending_visual_review"
+      "candidate_status": "generated_pending_visual_review",
+      "model_input_allowed": false
     },
     {
       "source_record_id": "thing_tp_tp178_first_steps",
+      "case_id": "archrec::thing_tp_tp178_first_steps",
+      "split": "test",
+      "source_id": "kongbricks_tp_thing_tp178_media",
+      "source_file_sha256": "ecb15f0faa3f46422c85e83096e5d63c864a553a97dbb77682406bad921661cc",
+      "source_dimensions": [
+        800,
+        800
+      ],
+      "transform_status": "candidate_transform",
+      "operations": [
+        {
+          "op": "crop_norm",
+          "bounds": [
+            0,
+            0.12,
+            1,
+            1
+          ]
+        }
+      ],
       "output_dimensions": [
         800,
         704
       ],
       "sanitized_pixel_sha256": "67a8154ff12f5ddc173d17fbf2cf7e1b5b27b5260002dc97b7d24aa0b962f821",
       "sanitized_png_sha256": "e5d599348b14da650cb9627e73038d81d8dbee9fd66f0bd1cf14274681d7b0a6",
-      "candidate_status": "generated_pending_visual_review"
+      "candidate_status": "generated_pending_visual_review",
+      "model_input_allowed": false
     },
     {
       "source_record_id": "thing_g2_gh0348",
+      "case_id": "archrec::thing_g2_gh0348",
+      "split": "test",
+      "source_id": "kongbricks_g2_thing_gh0348_media",
+      "source_file_sha256": "f215a5bd0f33b16b0748ddc3c2b3b0fb85e216dfb1c8d1cd911e556bd3c04da2",
+      "source_dimensions": [
+        800,
+        800
+      ],
+      "transform_status": "candidate_transform",
+      "operations": [
+        {
+          "op": "crop_norm",
+          "bounds": [
+            0.24,
+            0.15,
+            0.76,
+            0.8
+          ]
+        }
+      ],
       "output_dimensions": [
         416,
         520
       ],
       "sanitized_pixel_sha256": "b2248114de137c96fb8db46bd5c1a41a20bf1880ef60ec1b603a1abf64f32775",
       "sanitized_png_sha256": "087e68e5187ef8734ff0cd6f4e0e7d09dc203239566942656e2d6e457226c6dd",
-      "candidate_status": "generated_pending_visual_review"
+      "candidate_status": "generated_pending_visual_review",
+      "model_input_allowed": false
     },
     {
       "source_record_id": "thing_g2_gh0440_bigfig",
+      "case_id": "archrec::thing_g2_gh0440_bigfig",
+      "split": "test",
+      "source_id": "kongbricks_g2_thing_gh0440_media",
+      "source_file_sha256": "f355c2a1c1ee98e0ae7face8be411a1f1f76ed3ffa2c89b9073fcbe799f22fd8",
+      "source_dimensions": [
+        800,
+        800
+      ],
+      "transform_status": "candidate_transform",
+      "operations": [
+        {
+          "op": "crop_norm",
+          "bounds": [
+            0.16,
+            0.13,
+            0.84,
+            0.79
+          ]
+        }
+      ],
       "output_dimensions": [
         544,
         528
       ],
       "sanitized_pixel_sha256": "4b8479ceafd88d1e9200b8a0686fc56c1b03c3d539d12b25fbf539e23ea6db81",
       "sanitized_png_sha256": "f6787af5ec9978c4c981bee0241f412a9cbbd075e685b31539bde97a544c3795",
-      "candidate_status": "generated_pending_visual_review"
+      "candidate_status": "generated_pending_visual_review",
+      "model_input_allowed": false
     }
   ],
   "blockers": [
