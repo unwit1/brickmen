@@ -2047,6 +2047,50 @@
           "height": 400
         }
       }
+    },
+    {
+      "source_id": "flickr_tjpcollecting_276_nurse",
+      "url": "https://www.flickr.com/photos/tjpcollecting/53377649589",
+      "evidence": [
+        "isolated front photograph explicitly labeled as the nurse maxifigure from LEGO 276 Homemaker Nurse and Child / Doctor's Office (1977)",
+        "release identity cross-checked against BrickLink 276-1 inventory and surviving instruction assembly sequence",
+        "used only as evaluation-image evidence; catalog/set/character labels remain audit metadata and are not model inputs"
+      ],
+      "authority": "community_photo_release_identity_cross_checked",
+      "media": {
+        "primary_image_url": "https://live.staticflickr.com/65535/53377649589_e6fb76f268.jpg",
+        "media_type": "image/jpeg",
+        "resolution_status": "verified_exact_image_url",
+        "verified_on": "2026-09-29",
+        "discovery_method": "flickr_source_page_exact_static_image_cross_checked_to_set_276",
+        "byte_verification": {
+          "status": "verified",
+          "sha256": "2385f7c7627bb1b5b7412f107d6a2b15ec727e1a13bef8b920809d3504e7a737",
+          "size_bytes": 34191,
+          "content_type": "image/jpeg",
+          "image_format": "jpeg",
+          "attempts": 1,
+          "verified_at": "2026-09-29T14:23:11.286615+00:00",
+          "verifier_version": "body-architecture-reference-media-verifier/v1",
+          "workflow_run_id": 36582243635,
+          "workflow_artifact_id": 11040265872,
+          "raw_media_committed": false,
+          "width": 457,
+          "height": 499
+        }
+      },
+      "cross_checks": [
+        {
+          "source_id": "bricklink_set_276_inventory",
+          "url": "https://www.bricklink.com/catalogItemInv.asp?S=276-1",
+          "role": "structured_release_component_identity"
+        },
+        {
+          "source_id": "brickinstructions_set_276",
+          "url": "https://lego.brickinstructions.com/lego_instructions/set/276/Nurse_and_Child",
+          "role": "assembled_figure_instruction_evidence"
+        }
+      ]
     }
   ],
   "source_policy": [
@@ -2073,5 +2117,21 @@
     "duplicate_hashes": [],
     "dimensions_recorded_cases": 27,
     "raw_media_committed": false
-  }
+  },
+  "supplemental_media_verification_snapshots": [
+    {
+      "purpose": "legacy_homemaker_maxifigure_candidate",
+      "created_at": "2026-09-29T14:23:11.913865+00:00",
+      "verifier_version": "body-architecture-reference-media-verifier/v1",
+      "workflow_run_id": 36582243635,
+      "workflow_artifact_id": 11040265872,
+      "total_cases": 1,
+      "verified_cases": 1,
+      "error_cases": 0,
+      "unique_verified_hashes": 1,
+      "duplicate_hashes": [],
+      "dimensions_recorded_cases": 1,
+      "raw_media_committed": false
+    }
+  ]
 }
