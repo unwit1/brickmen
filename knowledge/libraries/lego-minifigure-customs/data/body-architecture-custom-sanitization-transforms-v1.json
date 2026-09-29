@@ -36,10 +36,33 @@
             0.245,
             0.985
           ],
-          "fill_mode": "border_median"
+          "fill_mode": "row_median_sample",
+          "sample_bounds": [
+            0.25,
+            0.81,
+            0.31,
+            0.985
+          ]
         }
       ],
-      "rationale": "Remove the lower-left Titanic Bricks maker logo/text while preserving the complete figure and all visible ball-joint architecture evidence."
+      "rationale": "Remove the lower-left Titanic Bricks maker logo/text while preserving the complete figure. Fill each masked row from an adjacent clean background strip so the table/background gradient is retained without introducing a flat rectangular patch.",
+      "revision_history": [
+        {
+          "revision": 1,
+          "decision": "revise",
+          "reason": "The initial border-median fill removed the logo but introduced a conspicuous flat rectangular patch that failed the no-material-transform-artifacts review check.",
+          "prior_operation": {
+            "op": "mask_rect_norm",
+            "bounds": [
+              0.02,
+              0.81,
+              0.245,
+              0.985
+            ],
+            "fill_mode": "border_median"
+          }
+        }
+      ]
     }
   ]
 }
