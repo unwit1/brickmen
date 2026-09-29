@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "created": "2026-09-27",
-  "status": "partially_populated_v0",
+  "status": "populated_v0_reference_resolution_in_progress",
   "objective": "Evaluate recognition of figure architectures and architecture-conditioned character style transfer.",
   "recognition_tasks": [
     "full_figure_front_classification",
@@ -186,12 +186,20 @@
     "core_scoring_cases": 11,
     "provisional_scoring_cases": 7,
     "split_strategy": "corpus_character_group_holdout",
-    "asset_state": "reference_locator_only_pending_materialization"
+    "reference_locator_coverage": "27/27",
+    "direct_or_family_reference_cases": 26,
+    "indirect_identity_graph_cases": 1,
+    "image_resolution_ready_cases": 26,
+    "image_resolution_blocked_cases": 1,
+    "materialized_asset_state": "pending"
   },
   "population_rules": [
     "Maker, product code, character label, record ID and source-corpus labels are audit metadata only and must not be model inputs.",
     "Core, provisional and open-set tracks are scored separately.",
     "Unresolved/umbrella architecture labels are unknown-rejection targets rather than coerced closed-set classes.",
-    "Validation and test groups are evaluation-only; preserve corpus-character group boundaries when adding asset variants."
-  ]
+    "Validation and test groups are evaluation-only; preserve corpus-character group boundaries when adding asset variants.",
+    "HTML catalog pages are provenance locators, not image assets; resolve exact reviewed image URLs before materialization.",
+    "Do not fabricate a direct release locator when only identity-graph evidence is verified."
+  ],
+  "reference_acquisition_queue": "data/body-architecture-reference-acquisition-queue.json"
 }
