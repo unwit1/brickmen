@@ -6,28 +6,28 @@
   "updated_date": "2026-09-29",
   "base_commit_before_bootstrap": "bda2cac8ea8b68bb9e3e5b4d0cf380a9c6ee3ae6",
   "current_objective": "finish_leakage_safe_architecture_evaluation_then_resume_semantic_and_multiview_corpora",
-  "current_workstream": "challenge_v3_input_safety_and_final_official_architecture_gap",
+  "current_workstream": "challenge_v4_input_safety_and_post_official_gap_expansion",
   "current_frontier": [
-    "body_architecture_challenge_v3_input_safety",
-    "legacy_homemaker_architecture_evaluation",
+    "body_architecture_challenge_v4_input_safety",
     "body_architecture_benchmark_model_input_safety",
     "source_appearance_to_minifigure_semantic_translation",
     "multi_view_correspondence",
     "official_visual_grammar",
     "negative_failure_corpus",
     "model_dataset_tool_registry",
+    "custom_architecture_evaluation",
     "reference_fitting_evidence_gaps"
   ],
   "known_gaps": [
     {
-      "id": "challenge_v3_woody_raw_review",
-      "description": "Challenge v3 is byte-verified 22/22 and runnable 21/22. Woody toy003 remains blocked until the exact verified BrickLink asset with SHA-256 777fd93e31997b912debb734bf0be461c6795210649370bd6be92717f948e7c9 can be directly visually inspected.",
+      "id": "challenge_v4_woody_raw_review",
+      "description": "Challenge v4 is byte-verified 23/23 and runnable 21/23. Woody toy003 remains blocked until the exact verified BrickLink asset with SHA-256 777fd93e31997b912debb734bf0be461c6795210649370bd6be92717f948e7c9 can be directly visually inspected.",
       "status": "blocked_on_exact_asset_rendering"
     },
     {
-      "id": "legacy_homemaker_architecture_evaluation",
-      "description": "Set 276-1 provides instruction-confirmed assembled nurse/child identity and BrickLink component assemblies, but Brickmen still needs a byte-pinned, visually reviewed clean single-figure asset before admitting lego_homemaker_maxifigure_legacy to the evaluation cohort.",
-      "status": "open"
+      "id": "challenge_v4_homemaker_raw_review",
+      "description": "The exact 276-1 nurse collector image is byte-verified at SHA-256 2385f7c7627bb1b5b7412f107d6a2b15ec727e1a13bef8b920809d3504e7a737 and admitted to challenge v4 for architecture-target coverage, but raw model input remains blocked until direct leakage/sanitization review of those exact bytes.",
+      "status": "blocked_on_exact_asset_visual_review"
     },
     {
       "id": "architecture_benchmark_sanitized_approval",
@@ -58,7 +58,7 @@
   "highest_value_tasks": [
     {
       "priority": "P0",
-      "task": "Byte-pin and visually gate a specific 276-1 Homemaker nurse or child assembled-figure reference; add the legacy Homemaker architecture only if exact-release identity and leakage-safety gates pass."
+      "task": "Directly inspect the exact byte-verified challenge-v4 Homemaker 276 nurse asset and approve raw input only if identity, completeness, text/logo leakage, and task-confounder checks all pass."
     },
     {
       "priority": "P0",
@@ -95,9 +95,14 @@
   ],
   "blocked_tasks": [
     {
-      "id": "challenge_v3_woody_raw_review",
-      "reason": "The exact verified BrickLink toy003 asset could not be rendered in the current review environment. Alternate images are not accepted as exact-hash substitutes.",
-      "fallback": "Keep the one case blocked and continue Homemaker, semantic supervision, and other independent corpus work."
+      "id": "challenge_v4_woody_raw_review",
+      "reason": "The exact verified BrickLink toy003 asset still cannot be rendered in the current review environment. Alternate images are not accepted as exact-hash substitutes.",
+      "fallback": "Keep the case blocked and continue Homemaker review, semantic supervision, custom architecture evaluation, and other independent corpus work."
+    },
+    {
+      "id": "challenge_v4_homemaker_raw_review",
+      "reason": "The exact Flickr asset is byte-verified and release-cross-checked, but this environment could not render/download the exact bytes for direct visual review.",
+      "fallback": "Keep raw model input blocked; architecture-target coverage remains valid for gap accounting while continuing independent work."
     },
     {
       "id": "architecture_benchmark_segmentation",
@@ -113,13 +118,13 @@
   "pending_validation": [
     {
       "id": "direct_push_ci_visibility",
-      "description": "Regression tests for challenge v3 and v3 coverage were committed, but the connected GitHub status endpoint exposed no CI status for the direct-push checkpoint. Do not claim a fresh full CI run until observed or executed."
+      "description": "Challenge v4 gate tests and v4 coverage regression tests are committed, but no fresh CI execution has yet been observed for the direct-push checkpoint. Do not claim a passing full test run until CI or a capable local runtime executes them."
     }
   ],
   "continuation": {
-    "instruction": "Do not restart architecture v3 expansion or image verification: challenge v3 is 22/22 byte-verified and 21/22 input-approved. First try to close the legacy Homemaker official architecture gap with a byte-pinned exact 276-1 assembled figure and preserve the Woody exact-hash review blocker. If exact asset access remains blocked, switch to Fortnite semantic review/adjudication or other independent high-value corpora. Preserve held-out/leakage-safe split logic, source provenance, uncertainty, and exact-hash approval gates."
+    "instruction": "Do not restart architecture v4 acquisition or Homemaker source verification: challenge v4 is 23/23 byte-verified, 21/23 input-approved, and architecture coverage is 34/49 with zero remaining concrete official P0 gaps. Preserve the exact-hash blockers for Woody toy003 and Homemaker 276 nurse until those exact bytes are visually reviewed. Then continue original benchmark sanitization/SAM2 work, Fortnite semantic supervision, multi-view correspondence, or the three P1 custom architecture gaps. Preserve held-out/leakage-safe split logic, source provenance, uncertainty, and exact-hash approval gates."
   },
-  "last_meaningful_commit": "2bc3239dccfdf8cf4f5f632eaa7a69ffdf4589fc",
+  "last_meaningful_commit": "6bf84ca33cbbf3ecbd3ee6845333c38e45c3d2d6",
   "latest_validated_test_commit": null,
   "completed_batches": [
     {
@@ -236,7 +241,52 @@
         "p2_gaps": 12,
         "remaining_official_p0": "lego_homemaker_maxifigure_legacy"
       }
+    },
+    {
+      "id": "body_architecture_challenge_v4",
+      "status": "complete_for_reference_acquisition",
+      "details": {
+        "total_cases": 23,
+        "unique_character_groups": 23,
+        "unique_architectures": 23,
+        "exact_image_urls": 23,
+        "byte_verified_images": 23,
+        "unique_verified_hashes": 23,
+        "training_allowed": false,
+        "new_architecture": "lego_homemaker_maxifigure_legacy",
+        "new_source_sha256": "2385f7c7627bb1b5b7412f107d6a2b15ec727e1a13bef8b920809d3504e7a737"
+      }
+    },
+    {
+      "id": "body_architecture_challenge_v4_model_input_gate",
+      "status": "partially_runnable",
+      "details": {
+        "total_cases": 23,
+        "model_input_allowed": 21,
+        "approved_raw": 21,
+        "approved_sanitized": 0,
+        "blocked": 2,
+        "blocked_records": [
+          "challenge_homemaker_276_nurse",
+          "challenge_woody_toy003_long_limb"
+        ],
+        "blocked_reason": "pending_visual_sanitization_review"
+      }
+    },
+    {
+      "id": "body_architecture_coverage_v4",
+      "status": "refreshed",
+      "details": {
+        "registry_architectures": 49,
+        "covered_architectures": 34,
+        "uncovered_architectures": 15,
+        "coverage_fraction": 0.693878,
+        "p0_official_gaps": 0,
+        "p1_gaps": 3,
+        "p2_gaps": 12,
+        "remaining_official_p0": null
+      }
     }
   ],
-  "latest_test_lock_commit": "2bc3239dccfdf8cf4f5f632eaa7a69ffdf4589fc"
+  "latest_test_lock_commit": "6bf84ca33cbbf3ecbd3ee6845333c38e45c3d2d6"
 }
