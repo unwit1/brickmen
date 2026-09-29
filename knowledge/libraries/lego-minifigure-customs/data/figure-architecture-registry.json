@@ -1,6 +1,6 @@
 {
   "schema_version": "0.5",
-  "observed_at": "2026-09-27",
+  "observed_at": "2026-09-29",
   "status": "research_registry_physical_metrology_incomplete",
   "rules": [
     "Preserve source_body_label separately from normalized architecture.",
@@ -538,6 +538,50 @@
       ],
       "representative_release_ids": [
         "SH0321"
+      ],
+      "sources": [
+        "https://www.bricklink.com/catalogItemInv.asp?M=sh0321"
+      ]
+    },
+    {
+      "architecture_id": "lego_giant_killer_croc_specialized",
+      "canonical_name": "LEGO Killer Croc specialized Giant architecture",
+      "scale_class": "large",
+      "status": "strong_catalog_evidence_physical_measurement_pending",
+      "parent_architecture": "lego_giant_specialized_creature",
+      "representative_release_ids": [
+        "SH0321"
+      ],
+      "representative_characters": [
+        "Killer Croc"
+      ],
+      "known_component_families": {
+        "body": [
+          "26240c01"
+        ],
+        "left_arm": [
+          "28232"
+        ],
+        "right_arm": [
+          "28230"
+        ],
+        "wrist_paw": [
+          "11327"
+        ],
+        "claw": [
+          "11329"
+        ],
+        "jaw": [
+          "6027"
+        ]
+      },
+      "joint_notes": [
+        "BrickLink SH0321 inventory identifies dedicated Giant arms with studs on the wrists rather than ordinary Giant hands.",
+        "Each wrist uses Rancor paw 11327 plus separate 11329 claws, creating a materially different distal arm/hand graph from modern Hulk/Thanos Giant architecture."
+      ],
+      "notes": [
+        "Treat as a concrete child architecture of the broader specialized-Giant umbrella for recognition/evaluation.",
+        "Physical fit/metrology remains pending; catalog component graph is sufficient for recognition ground truth."
       ],
       "sources": [
         "https://www.bricklink.com/catalogItemInv.asp?M=sh0321"
