@@ -1,0 +1,45 @@
+name: Build Body Architecture Contrast Review Bundle
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/build-body-architecture-contrast-review-bundle.yml'
+      - 'tools/knowledge/prepare_body_architecture_contrast_review.py'
+      - 'knowledge/libraries/lego-minifigure-customs/data/body-architecture-same-character-contrast-v1.json'
+
+permissions:
+  contents: read
+
+jobs:
+  build-review-bundle:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out Brickmen
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install image dependency
+        run: python -m pip install --disable-pip-version-check pillow
+
+      - name: Build exact-source contrast review bundle
+        run: |
+          python tools/knowledge/prepare_body_architecture_contrast_review.py \
+            --corpus knowledge/libraries/lego-minifigure-customs/data/body-architecture-same-character-contrast-v1.json \
+            --output-dir .agent-local/body-architecture-contrast-review \
+            --allow-host img.bricklink.com \
+            --timeout-seconds 30
+
+      - name: Upload transient contrast review bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: body-architecture-contrast-review-bundle
+          path: .agent-local/body-architecture-contrast-review
+          if-no-files-found: error
+          retention-days: 7
