@@ -17,7 +17,7 @@
     "Generated derivatives are candidates until exact-pixel visual approval.",
     "Challenge cases remain evaluation-only.",
     "Do not crop away architecture-defining centaur body geometry merely to remove the inset.",
-    "The initial border-median fill was visually rejected because inset hair contaminated the sampled fill; use explicit white only for this verified white-background BrickLink image."
+    "Two earlier candidates were rejected during visual review: border-median sampled inset hair, then a 0.34-height white mask left a residual inset strip. The current 0.43-height white mask is the next reviewed candidate."
   ],
   "transforms": [
     {
@@ -35,12 +35,12 @@
             0.64,
             0,
             1,
-            0.34
+            0.43
           ],
           "fill_mode": "white"
         }
       ],
-      "rationale": "Remove the alternate-expression head inset in the upper-right with a white background mask matching the catalog field; preserve the complete centaur figure and architecture."
+      "rationale": "Remove the full alternate-expression inset in the upper-right with a white background mask; the masked region remains above/right of the primary centaur body."
     }
   ]
 }
