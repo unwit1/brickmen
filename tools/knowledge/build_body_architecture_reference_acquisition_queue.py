@@ -116,6 +116,14 @@ def build(benchmark_path: Path = DEFAULT_BENCHMARK) -> dict[str, Any]:
                 strategy_counts.get(action["strategy"], 0) + 1
             )
 
+    summary_ready_for_materialization = sum(
+        row["status"] == "ready_for_materialization" for row in queue
+    )
+    summary_ready_for_image_resolution = sum(
+        row["status"] == "ready_for_image_url_resolution" for row in queue
+    )
+    summary_blocked = sum(row["status"].startswith("blocked") for row in queue)
+
     return {
         "schema_version": "0.1",
         "created": "2026-09-28",
