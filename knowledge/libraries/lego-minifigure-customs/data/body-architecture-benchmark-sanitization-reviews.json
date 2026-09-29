@@ -1,0 +1,278 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-29",
+  "review_set_id": "body-architecture-sanitization-visual-seed-v0",
+  "policy": "Reviews are keyed to the verified source SHA-256. If the source hash changes, the review becomes stale and must not authorize the replacement image.",
+  "reviewer": {
+    "reviewer_id": "openai_chatgpt_visual_review",
+    "reviewer_type": "model",
+    "model_family": "GPT-5.6 Sol",
+    "review_method": "direct_visual_inspection_of_verified_exact_image_url"
+  },
+  "reviews": [
+    {
+      "source_record_id": "hulk_lego_sh0037_standard",
+      "source_id": "bricklink_hulk_sh0037_inventory",
+      "source_file_sha256": "fae13ab513dd1d32b405425beb7bca1aa68bd11c5470e2e0e958ac4cb9168157",
+      "status": "sanitization_required",
+      "identity_match": true,
+      "primary_view": "front",
+      "primary_figure_complete": true,
+      "visible_text_leakage": [],
+      "visual_confounders": [
+        "alternate_expression_inset"
+      ],
+      "sanitization_action": "tight_figure_crop",
+      "raw_model_input_allowed": false,
+      "review_confidence": 0.99,
+      "notes": [
+        "Main figure is clean and fully visible, but the auxiliary face inset should be removed for a single-view architecture benchmark."
+      ]
+    },
+    {
+      "source_record_id": "hulk_lego_sh0252_mighty_micros",
+      "source_id": "bricklink_hulk_sh0252_inventory",
+      "source_file_sha256": "1c5a65620cb867b600aa982df9912007a43ab7fa69a7dfbf60ba6b930cf9a272",
+      "status": "approved_raw",
+      "identity_match": true,
+      "primary_view": "front",
+      "primary_figure_complete": true,
+      "visible_text_leakage": [],
+      "visual_confounders": [],
+      "sanitization_action": "none",
+      "raw_model_input_allowed": true,
+      "review_confidence": 0.99,
+      "notes": [
+        "Clean isolated front catalog image."
+      ]
+    },
+    {
+      "source_record_id": "hulk_lego_sh0371_giant",
+      "source_id": "bricklink_hulk_sh0371_inventory",
+      "source_file_sha256": "c6917f1193160420665ef660f4a7cc3644c2d3763fa61247ca372f385f082de4",
+      "status": "approved_raw",
+      "identity_match": true,
+      "primary_view": "front",
+      "primary_figure_complete": true,
+      "visible_text_leakage": [],
+      "visual_confounders": [],
+      "sanitization_action": "none",
+      "raw_model_input_allowed": true,
+      "review_confidence": 0.99,
+      "notes": [
+        "Clean isolated front catalog image."
+      ]
+    },
+    {
+      "source_record_id": "hulk_g2_gh0304_avengers",
+      "source_id": "kongbricks_g2_hulk_gh0304_media",
+      "source_file_sha256": "386526bedf6cccb20984cdfceb7b3f8cb8b148fd59dfd703b338a25e6d07cb07",
+      "status": "sanitization_required",
+      "identity_match": true,
+      "primary_view": "front",
+      "primary_figure_complete": true,
+      "visible_text_leakage": [
+        "release_or_sku_code",
+        "character_name_or_alias_text"
+      ],
+      "visual_confounders": [],
+      "sanitization_action": "tight_figure_crop",
+      "raw_model_input_allowed": false,
+      "review_confidence": 0.99,
+      "notes": [
+        "Product card visibly labels GH0304 and Hulk; crop to the figure before evaluation."
+      ]
+    },
+    {
+      "source_record_id": "hulk_bigguy_ragnarok",
+      "source_id": "bigguy_hulk_ragnarok",
+      "source_file_sha256": "ebc33442ad2b852ee783f7457f1ab040043aac9dfe36b59cb4239e02ab149e24",
+      "status": "sanitization_required",
+      "identity_match": true,
+      "primary_view": "front",
+      "primary_figure_complete": true,
+      "visible_text_leakage": [
+        "maker_or_brand_logo",
+        "character_name_or_alias_text"
+      ],
+      "visual_confounders": [
+        "secondary_figure"
+      ],
+      "sanitization_action": "segment_primary_figure",
+      "raw_model_input_allowed": false,
+      "review_confidence": 0.98,
+      "notes": [
+        "Primary figure is usable, but logo/text and a partial secondary figure create shortcut cues."
+      ]
+    },
+    {
+      "source_record_id": "hulk_mrj_heart_comics",
+      "source_id": "mrj_heart_hulk",
+      "source_file_sha256": "39feabdf00538692b035b870a3ae7f7c2835825e8224aa5e8adc9253a98a079a",
+      "status": "sanitization_required",
+      "identity_match": true,
+      "primary_view": "multi_view_composite",
+      "primary_figure_complete": true,
+      "visible_text_leakage": [
+        "maker_or_brand_logo"
+      ],
+      "visual_confounders": [
+        "multi_panel_product_composite",
+        "rear_view_panel",
+        "head_inset"
+      ],
+      "sanitization_action": "tight_figure_crop",
+      "raw_model_input_allowed": false,
+      "review_confidence": 0.99,
+      "notes": [
+        "Crop the standalone front figure from the left panel; do not expose the rear/head panels to a front-only task."
+      ]
+    },
+    {
+      "source_record_id": "venom_lego_sh0542_standard",
+      "source_id": "bricklink_venom_sh0542_inventory",
+      "source_file_sha256": "5ce8c34ab673168b12690181ca474ef7634522fb8d3d8074073bc62bf87c3078",
+      "status": "approved_raw",
+      "identity_match": true,
+      "primary_view": "front",
+      "primary_figure_complete": true,
+      "visible_text_leakage": [],
+      "visual_confounders": [],
+      "sanitization_action": "none",
+      "raw_model_input_allowed": true,
+      "review_confidence": 0.99,
+      "notes": [
+        "Clean isolated front catalog image."
+      ]
+    },
+    {
+      "source_record_id": "venom_alpha_af328_ancient",
+      "source_id": "alpha_ancient_venom_af328",
+      "source_file_sha256": "929d7a3d8d2c2d315cec8bf276ef0ba180ad2fc877a66515a2b7533f686b90ff",
+      "status": "sanitization_required",
+      "identity_match": true,
+      "primary_view": "front",
+      "primary_figure_complete": true,
+      "visible_text_leakage": [
+        "release_or_sku_code",
+        "character_name_or_alias_text"
+      ],
+      "visual_confounders": [
+        "accessory_layout_around_primary_figure",
+        "head_inset",
+        "scale_comparison_figure"
+      ],
+      "sanitization_action": "segment_primary_figure",
+      "raw_model_input_allowed": false,
+      "review_confidence": 0.99,
+      "notes": [
+        "Manufacturer-style composite includes AF328/Ancient Venom labels, accessories, head inset, and a comparison figure."
+      ]
+    },
+    {
+      "source_record_id": "venom_xinh_xh1911_bigfig",
+      "source_id": "xinh_venom_xh1911_bigfig",
+      "source_file_sha256": "2b65c0bb3af7a734e7b2ed205e2023f0906368ab75762f873b5097863134bb20",
+      "status": "sanitization_required",
+      "identity_match": true,
+      "primary_view": "front",
+      "primary_figure_complete": true,
+      "visible_text_leakage": [
+        "release_or_sku_code",
+        "character_name_or_alias_text"
+      ],
+      "visual_confounders": [
+        "head_inset",
+        "product_option_markers"
+      ],
+      "sanitization_action": "tight_figure_crop",
+      "raw_model_input_allowed": false,
+      "review_confidence": 0.99,
+      "notes": [
+        "Crop to the main figure and exclude XH1911/name text, head inset, and option markers."
+      ]
+    },
+    {
+      "source_record_id": "venom_xinh_xh1829_movie_bigfig",
+      "source_id": "kongbricks_xinh_venom_xh1829_media",
+      "source_file_sha256": "32c91daa329658fcaec4c79acbf0619591015e003bc34fd40043928c2b030d56",
+      "status": "sanitization_required",
+      "identity_match": true,
+      "primary_view": "front",
+      "primary_figure_complete": true,
+      "visible_text_leakage": [
+        "release_or_sku_code",
+        "character_name_or_alias_text"
+      ],
+      "visual_confounders": [
+        "head_inset"
+      ],
+      "sanitization_action": "tight_figure_crop",
+      "raw_model_input_allowed": false,
+      "review_confidence": 0.99,
+      "notes": [
+        "Crop to the main figure and exclude XH1829/name text and head inset."
+      ]
+    },
+    {
+      "source_record_id": "thing_lego_sh1051_first_steps",
+      "source_id": "bricklink_thing_sh1051_inventory",
+      "source_file_sha256": "d1f88d1e5f3922ca5711c1dbe1ae99236e0b6b39c55ed3ab0159f9d6656bdef3",
+      "status": "approved_raw",
+      "identity_match": true,
+      "primary_view": "front",
+      "primary_figure_complete": true,
+      "visible_text_leakage": [],
+      "visual_confounders": [],
+      "sanitization_action": "none",
+      "raw_model_input_allowed": true,
+      "review_confidence": 0.99,
+      "notes": [
+        "Clean isolated front catalog image."
+      ]
+    },
+    {
+      "source_record_id": "thing_g2_gh0435_bigfig",
+      "source_id": "g2_thing_gh0435_bigfig",
+      "source_file_sha256": "a589332b37fa1e2a8dc5c70131641a36c5f0420fec96895258cf8ba744cd1432",
+      "status": "sanitization_required",
+      "identity_match": true,
+      "primary_view": "front",
+      "primary_figure_complete": true,
+      "visible_text_leakage": [
+        "release_or_sku_code",
+        "character_name_or_alias_text"
+      ],
+      "visual_confounders": [
+        "product_option_markers"
+      ],
+      "sanitization_action": "tight_figure_crop",
+      "raw_model_input_allowed": false,
+      "review_confidence": 0.99,
+      "notes": [
+        "Crop to the figure and remove GH0435/name text and bottom option markers."
+      ]
+    },
+    {
+      "source_record_id": "thing_xinh_1421_bigfig",
+      "source_id": "xinh_thing_1421_bigfig",
+      "source_file_sha256": "f3556293cec3cafb4ba2c7a0659713aca485e59c4d3b88fb7f9850d774c685a2",
+      "status": "sanitization_required",
+      "identity_match": true,
+      "primary_view": "front",
+      "primary_figure_complete": true,
+      "visible_text_leakage": [
+        "maker_or_brand_logo",
+        "release_or_sku_code",
+        "character_name_or_alias_text"
+      ],
+      "visual_confounders": [],
+      "sanitization_action": "tight_figure_crop",
+      "raw_model_input_allowed": false,
+      "review_confidence": 0.99,
+      "notes": [
+        "Crop to the main figure; remove XINH branding, 1421 code, and Thing label."
+      ]
+    }
+  ]
+}
