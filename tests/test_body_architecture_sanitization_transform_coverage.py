@@ -84,3 +84,34 @@ def test_transform_plan_has_expected_candidate_blocker_split() -> None:
         "candidate_transform": 15,
         "requires_segmentation": 8,
     }
+
+
+def test_candidate_manifest_retains_source_and_transform_provenance() -> None:
+    queue = load(QUEUE)
+    transforms = load(TRANSFORMS)
+    candidates = load(
+        DATA / "body-architecture-benchmark-sanitization-candidates.json"
+    )
+
+    queue_by_id = {
+        row["source_record_id"]: row
+        for row in queue["queue"]
+    }
+    transform_by_id = {
+        row["source_record_id"]: row
+        for row in transforms["transforms"]
+    }
+
+    assert len(candidates["records"]) == 15
+    for candidate in candidates["records"]:
+        record_id = candidate["source_record_id"]
+        source = queue_by_id[record_id]["source"]
+        transform = transform_by_id[record_id]
+        assert candidate["source_file_sha256"] == source["source_file_sha256"]
+        assert candidate["source_dimensions"] == [
+            source["source_width"],
+            source["source_height"],
+        ]
+        assert candidate["operations"] == transform["operations"]
+        assert candidate["transform_status"] == "candidate_transform"
+        assert candidate["model_input_allowed"] is False
