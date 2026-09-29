@@ -11,13 +11,12 @@
     "raw_model_input_allowed_cases": 4,
     "blocked_model_input_cases": 23,
     "status_counts": {
-      "sanitization_required": 9,
+      "sanitization_required": 22,
       "approved_raw_model_input": 4,
-      "blocked_pending_visual_sanitization_review": 14
+      "blocked_pending_visual_sanitization_review": 1
     },
     "risk_counts": {
-      "medium_review_required": 5,
-      "high": 22
+      "unknown_review_required": 27
     }
   },
   "queue": [
@@ -36,15 +35,15 @@
         "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/sh0037.png",
         "source_file_sha256": "fae13ab513dd1d32b405425beb7bca1aa68bd11c5470e2e0e958ac4cb9168157",
         "source_size_bytes": 128138,
+        "source_width": 254,
+        "source_height": 400,
         "source_content_type": "image/png",
         "source_image_format": "png",
-        "verification_run_id": 36514815764,
-        "source_width": 254,
-        "source_height": 400
+        "verification_run_id": 36514815764
       },
-      "source_risk": "medium_review_required",
+      "source_risk": "unknown_review_required",
       "risk_reasons": [
-        "catalog_image_may_include_insets_or_auxiliary_panels"
+        "source_host_has_no_sanitization_prior"
       ],
       "status": "sanitization_required",
       "raw_model_input_allowed": false,
@@ -101,15 +100,15 @@
         "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/sh0252.png",
         "source_file_sha256": "1c5a65620cb867b600aa982df9912007a43ab7fa69a7dfbf60ba6b930cf9a272",
         "source_size_bytes": 96110,
+        "source_width": 240,
+        "source_height": 320,
         "source_content_type": "image/png",
         "source_image_format": "png",
-        "verification_run_id": 36514815764,
-        "source_width": 240,
-        "source_height": 320
+        "verification_run_id": 36514815764
       },
-      "source_risk": "medium_review_required",
+      "source_risk": "unknown_review_required",
       "risk_reasons": [
-        "catalog_image_may_include_insets_or_auxiliary_panels"
+        "source_host_has_no_sanitization_prior"
       ],
       "status": "approved_raw_model_input",
       "raw_model_input_allowed": true,
@@ -164,15 +163,15 @@
         "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/sh0371.png",
         "source_file_sha256": "c6917f1193160420665ef660f4a7cc3644c2d3763fa61247ca372f385f082de4",
         "source_size_bytes": 146437,
+        "source_width": 300,
+        "source_height": 400,
         "source_content_type": "image/png",
         "source_image_format": "png",
-        "verification_run_id": 36514815764,
-        "source_width": 300,
-        "source_height": 400
+        "verification_run_id": 36514815764
       },
-      "source_risk": "medium_review_required",
+      "source_risk": "unknown_review_required",
       "risk_reasons": [
-        "catalog_image_may_include_insets_or_auxiliary_panels"
+        "source_host_has_no_sanitization_prior"
       ],
       "status": "approved_raw_model_input",
       "raw_model_input_allowed": true,
@@ -227,18 +226,17 @@
         "exact_image_url": "https://kongbricks.myshopify.com/cdn/shop/files/AF344.webp",
         "source_file_sha256": "d6124764a8990bab6ec44015115cf1b8cd7ab5101da04f4da025d028139c11a1",
         "source_size_bytes": 72416,
+        "source_width": 800,
+        "source_height": 800,
         "source_content_type": "image/jpeg",
         "source_image_format": "jpeg",
-        "verification_run_id": 36514815764,
-        "source_width": 800,
-        "source_height": 800
+        "verification_run_id": 36514815764
       },
-      "source_risk": "high",
+      "source_risk": "unknown_review_required",
       "risk_reasons": [
-        "product_media_may_include_text_or_branding",
-        "product_media_may_be_multi_panel_or_composite"
+        "source_host_has_no_sanitization_prior"
       ],
-      "status": "blocked_pending_visual_sanitization_review",
+      "status": "sanitization_required",
       "raw_model_input_allowed": false,
       "required_checks": [
         "identity_matches_source_record",
@@ -251,26 +249,33 @@
         "task_confounding_secondary_panels_absent_or_removed"
       ],
       "recommended_actions": [
+        "approve_raw_only_if_visually_clean",
         "tight_figure_crop",
-        "mask_text_or_logo_regions",
-        "segment_primary_figure",
-        "replace_with_cleaner_exact_release_source",
-        "manual_composite_cleanup"
+        "mask_auxiliary_insets"
       ],
       "review": {
-        "identity_match": null,
-        "primary_view": null,
-        "primary_figure_complete": null,
-        "visible_text_leakage": [],
-        "visual_confounders": [],
-        "sanitization_action": null,
+        "identity_match": true,
+        "primary_view": "front",
+        "primary_figure_complete": true,
+        "visible_text_leakage": [
+          "release_or_sku_code",
+          "character_name_or_alias_text"
+        ],
+        "visual_confounders": [
+          "head_inset",
+          "rear_view_panel",
+          "scale_comparison_figure"
+        ],
+        "sanitization_action": "tight_figure_crop",
         "sanitized_asset_sha256": null,
         "sanitized_asset_status": "pending",
-        "reviewer_id": null,
-        "reviewer_type": null,
-        "review_confidence": null,
-        "notes": [],
-        "review_source_sha256": null,
+        "reviewer_id": "openai_chatgpt_visual_review",
+        "reviewer_type": "model",
+        "review_confidence": 0.99,
+        "notes": [
+          "Product card exposes AF344/Hulk labels plus head, rear-view, and scale-comparison insets. Isolate the central front figure before evaluation."
+        ],
+        "review_source_sha256": "d6124764a8990bab6ec44015115cf1b8cd7ab5101da04f4da025d028139c11a1",
         "review_stale": false
       },
       "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
@@ -291,18 +296,17 @@
         "exact_image_url": "https://kongbricks.myshopify.com/cdn/shop/files/AF345.webp",
         "source_file_sha256": "d508590a6e1c917293d0a28967e56bace04982fa2ea9372615f424eed6a5daf6",
         "source_size_bytes": 79300,
+        "source_width": 800,
+        "source_height": 800,
         "source_content_type": "image/jpeg",
         "source_image_format": "jpeg",
-        "verification_run_id": 36514815764,
-        "source_width": 800,
-        "source_height": 800
+        "verification_run_id": 36514815764
       },
-      "source_risk": "high",
+      "source_risk": "unknown_review_required",
       "risk_reasons": [
-        "product_media_may_include_text_or_branding",
-        "product_media_may_be_multi_panel_or_composite"
+        "source_host_has_no_sanitization_prior"
       ],
-      "status": "blocked_pending_visual_sanitization_review",
+      "status": "sanitization_required",
       "raw_model_input_allowed": false,
       "required_checks": [
         "identity_matches_source_record",
@@ -315,26 +319,33 @@
         "task_confounding_secondary_panels_absent_or_removed"
       ],
       "recommended_actions": [
+        "approve_raw_only_if_visually_clean",
         "tight_figure_crop",
-        "mask_text_or_logo_regions",
-        "segment_primary_figure",
-        "replace_with_cleaner_exact_release_source",
-        "manual_composite_cleanup"
+        "mask_auxiliary_insets"
       ],
       "review": {
-        "identity_match": null,
-        "primary_view": null,
-        "primary_figure_complete": null,
-        "visible_text_leakage": [],
-        "visual_confounders": [],
-        "sanitization_action": null,
+        "identity_match": true,
+        "primary_view": "front",
+        "primary_figure_complete": true,
+        "visible_text_leakage": [
+          "release_or_sku_code",
+          "character_name_or_alias_text"
+        ],
+        "visual_confounders": [
+          "head_inset",
+          "rear_view_panel",
+          "scale_comparison_figure"
+        ],
+        "sanitization_action": "tight_figure_crop",
         "sanitized_asset_sha256": null,
         "sanitized_asset_status": "pending",
-        "reviewer_id": null,
-        "reviewer_type": null,
-        "review_confidence": null,
-        "notes": [],
-        "review_source_sha256": null,
+        "reviewer_id": "openai_chatgpt_visual_review",
+        "reviewer_type": "model",
+        "review_confidence": 0.99,
+        "notes": [
+          "Product card exposes AF345/Comic Hulk labels plus auxiliary head, rear-view, and scale-comparison panels. Isolate the front figure."
+        ],
+        "review_source_sha256": "d508590a6e1c917293d0a28967e56bace04982fa2ea9372615f424eed6a5daf6",
         "review_stale": false
       },
       "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
@@ -355,16 +366,15 @@
         "exact_image_url": "https://kongbricks.myshopify.com/cdn/shop/files/GH0304.webp",
         "source_file_sha256": "386526bedf6cccb20984cdfceb7b3f8cb8b148fd59dfd703b338a25e6d07cb07",
         "source_size_bytes": 32197,
+        "source_width": 800,
+        "source_height": 800,
         "source_content_type": "image/jpeg",
         "source_image_format": "jpeg",
-        "verification_run_id": 36514815764,
-        "source_width": 800,
-        "source_height": 800
+        "verification_run_id": 36514815764
       },
-      "source_risk": "high",
+      "source_risk": "unknown_review_required",
       "risk_reasons": [
-        "product_media_may_include_text_or_branding",
-        "product_media_may_be_multi_panel_or_composite"
+        "source_host_has_no_sanitization_prior"
       ],
       "status": "sanitization_required",
       "raw_model_input_allowed": false,
@@ -379,11 +389,9 @@
         "task_confounding_secondary_panels_absent_or_removed"
       ],
       "recommended_actions": [
+        "approve_raw_only_if_visually_clean",
         "tight_figure_crop",
-        "mask_text_or_logo_regions",
-        "segment_primary_figure",
-        "replace_with_cleaner_exact_release_source",
-        "manual_composite_cleanup"
+        "mask_auxiliary_insets"
       ],
       "review": {
         "identity_match": true,
@@ -424,16 +432,15 @@
         "exact_image_url": "https://static.herobloks.com/x/figure_images/25/12/8/id38319~c88933~u5798.jpg",
         "source_file_sha256": "ebc33442ad2b852ee783f7457f1ab040043aac9dfe36b59cb4239e02ab149e24",
         "source_size_bytes": 27842,
+        "source_width": 566,
+        "source_height": 744,
         "source_content_type": "image/jpeg",
         "source_image_format": "jpeg",
-        "verification_run_id": 36514815764,
-        "source_width": 566,
-        "source_height": 744
+        "verification_run_id": 36514815764
       },
-      "source_risk": "high",
+      "source_risk": "unknown_review_required",
       "risk_reasons": [
-        "product_media_may_include_text_or_branding",
-        "product_media_may_be_multi_panel_or_composite"
+        "source_host_has_no_sanitization_prior"
       ],
       "status": "sanitization_required",
       "raw_model_input_allowed": false,
@@ -448,11 +455,9 @@
         "task_confounding_secondary_panels_absent_or_removed"
       ],
       "recommended_actions": [
+        "approve_raw_only_if_visually_clean",
         "tight_figure_crop",
-        "mask_text_or_logo_regions",
-        "segment_primary_figure",
-        "replace_with_cleaner_exact_release_source",
-        "manual_composite_cleanup"
+        "mask_auxiliary_insets"
       ],
       "review": {
         "identity_match": true,
@@ -495,16 +500,15 @@
         "exact_image_url": "https://static.herobloks.com/x/figure_images/25/9/7/id0~c79927~u5798.jpg",
         "source_file_sha256": "39feabdf00538692b035b870a3ae7f7c2835825e8224aa5e8adc9253a98a079a",
         "source_size_bytes": 39187,
+        "source_width": 591,
+        "source_height": 485,
         "source_content_type": "image/jpeg",
         "source_image_format": "jpeg",
-        "verification_run_id": 36514815764,
-        "source_width": 591,
-        "source_height": 485
+        "verification_run_id": 36514815764
       },
-      "source_risk": "high",
+      "source_risk": "unknown_review_required",
       "risk_reasons": [
-        "product_media_may_include_text_or_branding",
-        "product_media_may_be_multi_panel_or_composite"
+        "source_host_has_no_sanitization_prior"
       ],
       "status": "sanitization_required",
       "raw_model_input_allowed": false,
@@ -519,11 +523,9 @@
         "task_confounding_secondary_panels_absent_or_removed"
       ],
       "recommended_actions": [
+        "approve_raw_only_if_visually_clean",
         "tight_figure_crop",
-        "mask_text_or_logo_regions",
-        "segment_primary_figure",
-        "replace_with_cleaner_exact_release_source",
-        "manual_composite_cleanup"
+        "mask_auxiliary_insets"
       ],
       "review": {
         "identity_match": true,
@@ -567,16 +569,15 @@
         "exact_image_url": "https://kongbricks.com/cdn/shop/files/AF364.jpg?v=1784017311&width=1445",
         "source_file_sha256": "12e79bc52f7030701a2296f7cf05e7905e02bcefd0d754969cc8bdf95756773b",
         "source_size_bytes": 89378,
+        "source_width": 800,
+        "source_height": 800,
         "source_content_type": "image/jpeg",
         "source_image_format": "jpeg",
-        "verification_run_id": 36514815764,
-        "source_width": 800,
-        "source_height": 800
+        "verification_run_id": 36514815764
       },
-      "source_risk": "high",
+      "source_risk": "unknown_review_required",
       "risk_reasons": [
-        "product_media_may_include_text_or_branding",
-        "product_media_may_be_multi_panel_or_composite"
+        "source_host_has_no_sanitization_prior"
       ],
       "status": "blocked_pending_visual_sanitization_review",
       "raw_model_input_allowed": false,
@@ -591,11 +592,9 @@
         "task_confounding_secondary_panels_absent_or_removed"
       ],
       "recommended_actions": [
+        "approve_raw_only_if_visually_clean",
         "tight_figure_crop",
-        "mask_text_or_logo_regions",
-        "segment_primary_figure",
-        "replace_with_cleaner_exact_release_source",
-        "manual_composite_cleanup"
+        "mask_auxiliary_insets"
       ],
       "review": {
         "identity_match": null,
@@ -631,18 +630,17 @@
         "exact_image_url": "https://kongbricks.myshopify.com/cdn/shop/files/GH0303.webp",
         "source_file_sha256": "45e630a24f36dfa917b426a91a6c500505a684ced9c55cbadf0ee762c0a04959",
         "source_size_bytes": 34626,
+        "source_width": 800,
+        "source_height": 800,
         "source_content_type": "image/jpeg",
         "source_image_format": "jpeg",
-        "verification_run_id": 36514815764,
-        "source_width": 800,
-        "source_height": 800
+        "verification_run_id": 36514815764
       },
-      "source_risk": "high",
+      "source_risk": "unknown_review_required",
       "risk_reasons": [
-        "product_media_may_include_text_or_branding",
-        "product_media_may_be_multi_panel_or_composite"
+        "source_host_has_no_sanitization_prior"
       ],
-      "status": "blocked_pending_visual_sanitization_review",
+      "status": "sanitization_required",
       "raw_model_input_allowed": false,
       "required_checks": [
         "identity_matches_source_record",
@@ -655,26 +653,29 @@
         "task_confounding_secondary_panels_absent_or_removed"
       ],
       "recommended_actions": [
+        "approve_raw_only_if_visually_clean",
         "tight_figure_crop",
-        "mask_text_or_logo_regions",
-        "segment_primary_figure",
-        "replace_with_cleaner_exact_release_source",
-        "manual_composite_cleanup"
+        "mask_auxiliary_insets"
       ],
       "review": {
-        "identity_match": null,
-        "primary_view": null,
-        "primary_figure_complete": null,
-        "visible_text_leakage": [],
+        "identity_match": true,
+        "primary_view": "front",
+        "primary_figure_complete": true,
+        "visible_text_leakage": [
+          "release_or_sku_code",
+          "character_name_or_alias_text"
+        ],
         "visual_confounders": [],
-        "sanitization_action": null,
+        "sanitization_action": "tight_figure_crop",
         "sanitized_asset_sha256": null,
         "sanitized_asset_status": "pending",
-        "reviewer_id": null,
-        "reviewer_type": null,
-        "review_confidence": null,
-        "notes": [],
-        "review_source_sha256": null,
+        "reviewer_id": "openai_chatgpt_visual_review",
+        "reviewer_type": "model",
+        "review_confidence": 0.99,
+        "notes": [
+          "Clean central figure, but GH0303 and Red Hulk labels are visible above/below it. Tight crop can retain the complete figure while removing text."
+        ],
+        "review_source_sha256": "45e630a24f36dfa917b426a91a6c500505a684ced9c55cbadf0ee762c0a04959",
         "review_stale": false
       },
       "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
@@ -695,18 +696,17 @@
         "exact_image_url": "https://static.herobloks.com/x/figure_images/25/12/8/id38318~c88931~u5798.jpg",
         "source_file_sha256": "6f6ca18d72f6c6dbee36d97c7db8eb21ab68854c400b37e999bd4f8e65f4a940",
         "source_size_bytes": 27779,
+        "source_width": 571,
+        "source_height": 748,
         "source_content_type": "image/jpeg",
         "source_image_format": "jpeg",
-        "verification_run_id": 36514815764,
-        "source_width": 571,
-        "source_height": 748
+        "verification_run_id": 36514815764
       },
-      "source_risk": "high",
+      "source_risk": "unknown_review_required",
       "risk_reasons": [
-        "product_media_may_include_text_or_branding",
-        "product_media_may_be_multi_panel_or_composite"
+        "source_host_has_no_sanitization_prior"
       ],
-      "status": "blocked_pending_visual_sanitization_review",
+      "status": "sanitization_required",
       "raw_model_input_allowed": false,
       "required_checks": [
         "identity_matches_source_record",
@@ -719,26 +719,32 @@
         "task_confounding_secondary_panels_absent_or_removed"
       ],
       "recommended_actions": [
+        "approve_raw_only_if_visually_clean",
         "tight_figure_crop",
-        "mask_text_or_logo_regions",
-        "segment_primary_figure",
-        "replace_with_cleaner_exact_release_source",
-        "manual_composite_cleanup"
+        "mask_auxiliary_insets"
       ],
       "review": {
-        "identity_match": null,
-        "primary_view": null,
-        "primary_figure_complete": null,
-        "visible_text_leakage": [],
-        "visual_confounders": [],
-        "sanitization_action": null,
+        "identity_match": true,
+        "primary_view": "multi_view_composite",
+        "primary_figure_complete": true,
+        "visible_text_leakage": [
+          "maker_or_brand_logo",
+          "character_name_or_alias_text"
+        ],
+        "visual_confounders": [
+          "multi_panel_product_composite",
+          "rear_view_panel"
+        ],
+        "sanitization_action": "tight_figure_crop",
         "sanitized_asset_sha256": null,
         "sanitized_asset_status": "pending",
-        "reviewer_id": null,
-        "reviewer_type": null,
-        "review_confidence": null,
-        "notes": [],
-        "review_source_sha256": null,
+        "reviewer_id": "openai_chatgpt_visual_review",
+        "reviewer_type": "model",
+        "review_confidence": 0.99,
+        "notes": [
+          "Front and rear figures share one product card with BIGGUY branding and Red Hulk text. Crop to the standalone front figure."
+        ],
+        "review_source_sha256": "6f6ca18d72f6c6dbee36d97c7db8eb21ab68854c400b37e999bd4f8e65f4a940",
         "review_stale": false
       },
       "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
@@ -759,15 +765,15 @@
         "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/sh0542.png",
         "source_file_sha256": "5ce8c34ab673168b12690181ca474ef7634522fb8d3d8074073bc62bf87c3078",
         "source_size_bytes": 99895,
+        "source_width": 260,
+        "source_height": 400,
         "source_content_type": "image/png",
         "source_image_format": "png",
-        "verification_run_id": 36514815764,
-        "source_width": 260,
-        "source_height": 400
+        "verification_run_id": 36514815764
       },
-      "source_risk": "medium_review_required",
+      "source_risk": "unknown_review_required",
       "risk_reasons": [
-        "catalog_image_may_include_insets_or_auxiliary_panels"
+        "source_host_has_no_sanitization_prior"
       ],
       "status": "approved_raw_model_input",
       "raw_model_input_allowed": true,
@@ -822,18 +828,17 @@
         "exact_image_url": "https://static.herobloks.com/x/figure_images/24/2/6/id0~c62651~u5232.jpg",
         "source_file_sha256": "95dc7af0c08f27f15ef5bd29398819938e561f85be4b65987ad0c232dd174702",
         "source_size_bytes": 35830,
+        "source_width": 750,
+        "source_height": 750,
         "source_content_type": "image/jpeg",
         "source_image_format": "jpeg",
-        "verification_run_id": 36514815764,
-        "source_width": 750,
-        "source_height": 750
+        "verification_run_id": 36514815764
       },
-      "source_risk": "high",
+      "source_risk": "unknown_review_required",
       "risk_reasons": [
-        "product_media_may_include_text_or_branding",
-        "product_media_may_be_multi_panel_or_composite"
+        "source_host_has_no_sanitization_prior"
       ],
-      "status": "blocked_pending_visual_sanitization_review",
+      "status": "sanitization_required",
       "raw_model_input_allowed": false,
       "required_checks": [
         "identity_matches_source_record",
@@ -846,26 +851,29 @@
         "task_confounding_secondary_panels_absent_or_removed"
       ],
       "recommended_actions": [
+        "approve_raw_only_if_visually_clean",
         "tight_figure_crop",
-        "mask_text_or_logo_regions",
-        "segment_primary_figure",
-        "replace_with_cleaner_exact_release_source",
-        "manual_composite_cleanup"
+        "mask_auxiliary_insets"
       ],
       "review": {
-        "identity_match": null,
-        "primary_view": null,
-        "primary_figure_complete": null,
-        "visible_text_leakage": [],
+        "identity_match": true,
+        "primary_view": "front",
+        "primary_figure_complete": true,
+        "visible_text_leakage": [
+          "release_or_sku_code",
+          "character_name_or_alias_text"
+        ],
         "visual_confounders": [],
-        "sanitization_action": null,
+        "sanitization_action": "tight_figure_crop",
         "sanitized_asset_sha256": null,
         "sanitized_asset_status": "pending",
-        "reviewer_id": null,
-        "reviewer_type": null,
-        "review_confidence": null,
-        "notes": [],
-        "review_source_sha256": null,
+        "reviewer_id": "openai_chatgpt_visual_review",
+        "reviewer_type": "model",
+        "review_confidence": 0.99,
+        "notes": [
+          "Primary figure is isolated, but VENOM and AF321 text appears directly beneath it. Crop to figure-only content."
+        ],
+        "review_source_sha256": "95dc7af0c08f27f15ef5bd29398819938e561f85be4b65987ad0c232dd174702",
         "review_stale": false
       },
       "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
@@ -886,18 +894,17 @@
         "exact_image_url": "https://kongbricks.myshopify.com/cdn/shop/files/AF325.webp",
         "source_file_sha256": "cc9daee1b700ea8591a0f03d86be137215424e33f4447262e226dbb8fe1f0726",
         "source_size_bytes": 89411,
+        "source_width": 800,
+        "source_height": 800,
         "source_content_type": "image/jpeg",
         "source_image_format": "jpeg",
-        "verification_run_id": 36514815764,
-        "source_width": 800,
-        "source_height": 800
+        "verification_run_id": 36514815764
       },
-      "source_risk": "high",
+      "source_risk": "unknown_review_required",
       "risk_reasons": [
-        "product_media_may_include_text_or_branding",
-        "product_media_may_be_multi_panel_or_composite"
+        "source_host_has_no_sanitization_prior"
       ],
-      "status": "blocked_pending_visual_sanitization_review",
+      "status": "sanitization_required",
       "raw_model_input_allowed": false,
       "required_checks": [
         "identity_matches_source_record",
@@ -910,26 +917,33 @@
         "task_confounding_secondary_panels_absent_or_removed"
       ],
       "recommended_actions": [
+        "approve_raw_only_if_visually_clean",
         "tight_figure_crop",
-        "mask_text_or_logo_regions",
-        "segment_primary_figure",
-        "replace_with_cleaner_exact_release_source",
-        "manual_composite_cleanup"
+        "mask_auxiliary_insets"
       ],
       "review": {
-        "identity_match": null,
-        "primary_view": null,
-        "primary_figure_complete": null,
-        "visible_text_leakage": [],
-        "visual_confounders": [],
-        "sanitization_action": null,
+        "identity_match": true,
+        "primary_view": "multi_view_composite",
+        "primary_figure_complete": true,
+        "visible_text_leakage": [
+          "release_or_sku_code"
+        ],
+        "visual_confounders": [
+          "multi_panel_product_composite",
+          "head_inset",
+          "rear_view_panel",
+          "accessory_layout_around_primary_figure"
+        ],
+        "sanitization_action": "segment_primary_figure",
         "sanitized_asset_sha256": null,
         "sanitized_asset_status": "pending",
-        "reviewer_id": null,
-        "reviewer_type": null,
-        "review_confidence": null,
-        "notes": [],
-        "review_source_sha256": null,
+        "reviewer_id": "openai_chatgpt_visual_review",
+        "reviewer_type": "model",
+        "review_confidence": 0.99,
+        "notes": [
+          "Composite includes AF325 text, accessory/head inset, alternate posed panel, and rear view. Segment the primary front figure instead of exposing the full card."
+        ],
+        "review_source_sha256": "cc9daee1b700ea8591a0f03d86be137215424e33f4447262e226dbb8fe1f0726",
         "review_stale": false
       },
       "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
@@ -950,16 +964,15 @@
         "exact_image_url": "https://static.herobloks.com/x/figure_images/24/10/6/id0~c67636~u1.jpg",
         "source_file_sha256": "929d7a3d8d2c2d315cec8bf276ef0ba180ad2fc877a66515a2b7533f686b90ff",
         "source_size_bytes": 78101,
+        "source_width": 800,
+        "source_height": 800,
         "source_content_type": "image/jpeg",
         "source_image_format": "jpeg",
-        "verification_run_id": 36514815764,
-        "source_width": 800,
-        "source_height": 800
+        "verification_run_id": 36514815764
       },
-      "source_risk": "high",
+      "source_risk": "unknown_review_required",
       "risk_reasons": [
-        "product_media_may_include_text_or_branding",
-        "product_media_may_be_multi_panel_or_composite"
+        "source_host_has_no_sanitization_prior"
       ],
       "status": "sanitization_required",
       "raw_model_input_allowed": false,
@@ -974,11 +987,9 @@
         "task_confounding_secondary_panels_absent_or_removed"
       ],
       "recommended_actions": [
+        "approve_raw_only_if_visually_clean",
         "tight_figure_crop",
-        "mask_text_or_logo_regions",
-        "segment_primary_figure",
-        "replace_with_cleaner_exact_release_source",
-        "manual_composite_cleanup"
+        "mask_auxiliary_insets"
       ],
       "review": {
         "identity_match": true,
@@ -1023,16 +1034,15 @@
         "exact_image_url": "https://static.herobloks.com/x/figure_images/22/6/5/id0~c56631~u1.jpg",
         "source_file_sha256": "2b65c0bb3af7a734e7b2ed205e2023f0906368ab75762f873b5097863134bb20",
         "source_size_bytes": 50092,
+        "source_width": 640,
+        "source_height": 945,
         "source_content_type": "image/jpeg",
         "source_image_format": "jpeg",
-        "verification_run_id": 36514815764,
-        "source_width": 640,
-        "source_height": 945
+        "verification_run_id": 36514815764
       },
-      "source_risk": "high",
+      "source_risk": "unknown_review_required",
       "risk_reasons": [
-        "product_media_may_include_text_or_branding",
-        "product_media_may_be_multi_panel_or_composite"
+        "source_host_has_no_sanitization_prior"
       ],
       "status": "sanitization_required",
       "raw_model_input_allowed": false,
@@ -1047,11 +1057,9 @@
         "task_confounding_secondary_panels_absent_or_removed"
       ],
       "recommended_actions": [
+        "approve_raw_only_if_visually_clean",
         "tight_figure_crop",
-        "mask_text_or_logo_regions",
-        "segment_primary_figure",
-        "replace_with_cleaner_exact_release_source",
-        "manual_composite_cleanup"
+        "mask_auxiliary_insets"
       ],
       "review": {
         "identity_match": true,
@@ -1095,16 +1103,15 @@
         "exact_image_url": "https://cdn.shopify.com/s/files/1/0794/3156/5561/files/Marvel-Venom-Movie-BigFig-XH1829-Minifigures.webp",
         "source_file_sha256": "32c91daa329658fcaec4c79acbf0619591015e003bc34fd40043928c2b030d56",
         "source_size_bytes": 75754,
+        "source_width": 1000,
+        "source_height": 1000,
         "source_content_type": "image/jpeg",
         "source_image_format": "jpeg",
-        "verification_run_id": 36514815764,
-        "source_width": 1000,
-        "source_height": 1000
+        "verification_run_id": 36514815764
       },
-      "source_risk": "high",
+      "source_risk": "unknown_review_required",
       "risk_reasons": [
-        "product_media_may_include_text_or_branding",
-        "product_media_may_be_multi_panel_or_composite"
+        "source_host_has_no_sanitization_prior"
       ],
       "status": "sanitization_required",
       "raw_model_input_allowed": false,
@@ -1119,11 +1126,9 @@
         "task_confounding_secondary_panels_absent_or_removed"
       ],
       "recommended_actions": [
+        "approve_raw_only_if_visually_clean",
         "tight_figure_crop",
-        "mask_text_or_logo_regions",
-        "segment_primary_figure",
-        "replace_with_cleaner_exact_release_source",
-        "manual_composite_cleanup"
+        "mask_auxiliary_insets"
       ],
       "review": {
         "identity_match": true,
@@ -1166,15 +1171,15 @@
         "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/sh1051.png",
         "source_file_sha256": "d1f88d1e5f3922ca5711c1dbe1ae99236e0b6b39c55ed3ab0159f9d6656bdef3",
         "source_size_bytes": 149482,
+        "source_width": 300,
+        "source_height": 357,
         "source_content_type": "image/png",
         "source_image_format": "png",
-        "verification_run_id": 36514815764,
-        "source_width": 300,
-        "source_height": 357
+        "verification_run_id": 36514815764
       },
-      "source_risk": "medium_review_required",
+      "source_risk": "unknown_review_required",
       "risk_reasons": [
-        "catalog_image_may_include_insets_or_auxiliary_panels"
+        "source_host_has_no_sanitization_prior"
       ],
       "status": "approved_raw_model_input",
       "raw_model_input_allowed": true,
@@ -1229,18 +1234,17 @@
         "exact_image_url": "https://kongbricks.myshopify.com/cdn/shop/files/AF336.webp",
         "source_file_sha256": "eabe84c927e3bcc3dbf64e53f39587cc6f90f32c2b7fb69bb38ec2332fc6829c",
         "source_size_bytes": 66624,
+        "source_width": 800,
+        "source_height": 800,
         "source_content_type": "image/jpeg",
         "source_image_format": "jpeg",
-        "verification_run_id": 36514815764,
-        "source_width": 800,
-        "source_height": 800
+        "verification_run_id": 36514815764
       },
-      "source_risk": "high",
+      "source_risk": "unknown_review_required",
       "risk_reasons": [
-        "product_media_may_include_text_or_branding",
-        "product_media_may_be_multi_panel_or_composite"
+        "source_host_has_no_sanitization_prior"
       ],
-      "status": "blocked_pending_visual_sanitization_review",
+      "status": "sanitization_required",
       "raw_model_input_allowed": false,
       "required_checks": [
         "identity_matches_source_record",
@@ -1253,26 +1257,31 @@
         "task_confounding_secondary_panels_absent_or_removed"
       ],
       "recommended_actions": [
+        "approve_raw_only_if_visually_clean",
         "tight_figure_crop",
-        "mask_text_or_logo_regions",
-        "segment_primary_figure",
-        "replace_with_cleaner_exact_release_source",
-        "manual_composite_cleanup"
+        "mask_auxiliary_insets"
       ],
       "review": {
-        "identity_match": null,
-        "primary_view": null,
-        "primary_figure_complete": null,
-        "visible_text_leakage": [],
-        "visual_confounders": [],
-        "sanitization_action": null,
+        "identity_match": true,
+        "primary_view": "front",
+        "primary_figure_complete": true,
+        "visible_text_leakage": [
+          "release_or_sku_code",
+          "character_name_or_alias_text"
+        ],
+        "visual_confounders": [
+          "alternate_expression_inset"
+        ],
+        "sanitization_action": "tight_figure_crop",
         "sanitized_asset_sha256": null,
         "sanitized_asset_status": "pending",
-        "reviewer_id": null,
-        "reviewer_type": null,
-        "review_confidence": null,
-        "notes": [],
-        "review_source_sha256": null,
+        "reviewer_id": "openai_chatgpt_visual_review",
+        "reviewer_type": "model",
+        "review_confidence": 0.99,
+        "notes": [
+          "AF336/Thing text and an alternate-expression inset create shortcut cues. Isolate the main front figure."
+        ],
+        "review_source_sha256": "eabe84c927e3bcc3dbf64e53f39587cc6f90f32c2b7fb69bb38ec2332fc6829c",
         "review_stale": false
       },
       "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
@@ -1293,18 +1302,17 @@
         "exact_image_url": "https://kongbricks.myshopify.com/cdn/shop/files/K2302.webp",
         "source_file_sha256": "48a859c38557b9b69784b4d85c2061549348ac4ac233aeb307e90a0056fe4b3a",
         "source_size_bytes": 61943,
+        "source_width": 800,
+        "source_height": 800,
         "source_content_type": "image/jpeg",
         "source_image_format": "jpeg",
-        "verification_run_id": 36514815764,
-        "source_width": 800,
-        "source_height": 800
+        "verification_run_id": 36514815764
       },
-      "source_risk": "high",
+      "source_risk": "unknown_review_required",
       "risk_reasons": [
-        "product_media_may_include_text_or_branding",
-        "product_media_may_be_multi_panel_or_composite"
+        "source_host_has_no_sanitization_prior"
       ],
-      "status": "blocked_pending_visual_sanitization_review",
+      "status": "sanitization_required",
       "raw_model_input_allowed": false,
       "required_checks": [
         "identity_matches_source_record",
@@ -1317,26 +1325,34 @@
         "task_confounding_secondary_panels_absent_or_removed"
       ],
       "recommended_actions": [
+        "approve_raw_only_if_visually_clean",
         "tight_figure_crop",
-        "mask_text_or_logo_regions",
-        "segment_primary_figure",
-        "replace_with_cleaner_exact_release_source",
-        "manual_composite_cleanup"
+        "mask_auxiliary_insets"
       ],
       "review": {
-        "identity_match": null,
-        "primary_view": null,
-        "primary_figure_complete": null,
-        "visible_text_leakage": [],
-        "visual_confounders": [],
-        "sanitization_action": null,
+        "identity_match": true,
+        "primary_view": "front",
+        "primary_figure_complete": true,
+        "visible_text_leakage": [
+          "maker_or_brand_logo",
+          "release_or_sku_code",
+          "character_name_or_alias_text",
+          "scale_or_dimension_annotation"
+        ],
+        "visual_confounders": [
+          "alternate_expression_inset",
+          "scale_comparison_figure"
+        ],
+        "sanitization_action": "tight_figure_crop",
         "sanitized_asset_sha256": null,
         "sanitized_asset_status": "pending",
-        "reviewer_id": null,
-        "reviewer_type": null,
-        "review_confidence": null,
-        "notes": [],
-        "review_source_sha256": null,
+        "reviewer_id": "openai_chatgpt_visual_review",
+        "reviewer_type": "model",
+        "review_confidence": 0.99,
+        "notes": [
+          "KDL/K2302/Thing labels, a scale silhouette, and a secondary expression/variant panel surround the central figure. Tight crop should preserve the front figure."
+        ],
+        "review_source_sha256": "48a859c38557b9b69784b4d85c2061549348ac4ac233aeb307e90a0056fe4b3a",
         "review_stale": false
       },
       "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
@@ -1357,18 +1373,17 @@
         "exact_image_url": "https://kongbricks.myshopify.com/cdn/shop/files/TP178.webp",
         "source_file_sha256": "ecb15f0faa3f46422c85e83096e5d63c864a553a97dbb77682406bad921661cc",
         "source_size_bytes": 52036,
+        "source_width": 800,
+        "source_height": 800,
         "source_content_type": "image/jpeg",
         "source_image_format": "jpeg",
-        "verification_run_id": 36514815764,
-        "source_width": 800,
-        "source_height": 800
+        "verification_run_id": 36514815764
       },
-      "source_risk": "high",
+      "source_risk": "unknown_review_required",
       "risk_reasons": [
-        "product_media_may_include_text_or_branding",
-        "product_media_may_be_multi_panel_or_composite"
+        "source_host_has_no_sanitization_prior"
       ],
-      "status": "blocked_pending_visual_sanitization_review",
+      "status": "sanitization_required",
       "raw_model_input_allowed": false,
       "required_checks": [
         "identity_matches_source_record",
@@ -1381,26 +1396,28 @@
         "task_confounding_secondary_panels_absent_or_removed"
       ],
       "recommended_actions": [
+        "approve_raw_only_if_visually_clean",
         "tight_figure_crop",
-        "mask_text_or_logo_regions",
-        "segment_primary_figure",
-        "replace_with_cleaner_exact_release_source",
-        "manual_composite_cleanup"
+        "mask_auxiliary_insets"
       ],
       "review": {
-        "identity_match": null,
-        "primary_view": null,
-        "primary_figure_complete": null,
-        "visible_text_leakage": [],
+        "identity_match": true,
+        "primary_view": "front",
+        "primary_figure_complete": true,
+        "visible_text_leakage": [
+          "catalog_caption_or_product_title"
+        ],
         "visual_confounders": [],
-        "sanitization_action": null,
+        "sanitization_action": "tight_figure_crop",
         "sanitized_asset_sha256": null,
         "sanitized_asset_status": "pending",
-        "reviewer_id": null,
-        "reviewer_type": null,
-        "review_confidence": null,
-        "notes": [],
-        "review_source_sha256": null,
+        "reviewer_id": "openai_chatgpt_visual_review",
+        "reviewer_type": "model",
+        "review_confidence": 0.98,
+        "notes": [
+          "The front figure is otherwise isolated, but a Fantastic Four title banner is visible at the top. Crop below the title while retaining the complete figure."
+        ],
+        "review_source_sha256": "ecb15f0faa3f46422c85e83096e5d63c864a553a97dbb77682406bad921661cc",
         "review_stale": false
       },
       "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
@@ -1421,18 +1438,17 @@
         "exact_image_url": "https://kongbricks.myshopify.com/cdn/shop/files/TP349.webp",
         "source_file_sha256": "c35537f56d3d21e81225091f5329053e02f628dc0269a0d491011a85c5d83e6d",
         "source_size_bytes": 72845,
+        "source_width": 800,
+        "source_height": 800,
         "source_content_type": "image/jpeg",
         "source_image_format": "jpeg",
-        "verification_run_id": 36514815764,
-        "source_width": 800,
-        "source_height": 800
+        "verification_run_id": 36514815764
       },
-      "source_risk": "high",
+      "source_risk": "unknown_review_required",
       "risk_reasons": [
-        "product_media_may_include_text_or_branding",
-        "product_media_may_be_multi_panel_or_composite"
+        "source_host_has_no_sanitization_prior"
       ],
-      "status": "blocked_pending_visual_sanitization_review",
+      "status": "sanitization_required",
       "raw_model_input_allowed": false,
       "required_checks": [
         "identity_matches_source_record",
@@ -1445,26 +1461,33 @@
         "task_confounding_secondary_panels_absent_or_removed"
       ],
       "recommended_actions": [
+        "approve_raw_only_if_visually_clean",
         "tight_figure_crop",
-        "mask_text_or_logo_regions",
-        "segment_primary_figure",
-        "replace_with_cleaner_exact_release_source",
-        "manual_composite_cleanup"
+        "mask_auxiliary_insets"
       ],
       "review": {
-        "identity_match": null,
-        "primary_view": null,
-        "primary_figure_complete": null,
-        "visible_text_leakage": [],
-        "visual_confounders": [],
-        "sanitization_action": null,
+        "identity_match": true,
+        "primary_view": "multi_view_composite",
+        "primary_figure_complete": true,
+        "visible_text_leakage": [
+          "release_or_sku_code",
+          "character_name_or_alias_text"
+        ],
+        "visual_confounders": [
+          "secondary_figure",
+          "multi_panel_product_composite",
+          "back_or_side_inset_when_task_is_front_only"
+        ],
+        "sanitization_action": "segment_primary_figure",
         "sanitized_asset_sha256": null,
         "sanitized_asset_status": "pending",
-        "reviewer_id": null,
-        "reviewer_type": null,
-        "review_confidence": null,
-        "notes": [],
-        "review_source_sha256": null,
+        "reviewer_id": "openai_chatgpt_visual_review",
+        "reviewer_type": "model",
+        "review_confidence": 0.99,
+        "notes": [
+          "Card contains TP348 and TP349 figures, code/name text, and auxiliary body/rear panels. Segment the TP349 primary front figure."
+        ],
+        "review_source_sha256": "c35537f56d3d21e81225091f5329053e02f628dc0269a0d491011a85c5d83e6d",
         "review_stale": false
       },
       "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
@@ -1485,18 +1508,17 @@
         "exact_image_url": "https://kongbricks.myshopify.com/cdn/shop/files/GH0348.webp",
         "source_file_sha256": "f215a5bd0f33b16b0748ddc3c2b3b0fb85e216dfb1c8d1cd911e556bd3c04da2",
         "source_size_bytes": 56056,
+        "source_width": 800,
+        "source_height": 800,
         "source_content_type": "image/jpeg",
         "source_image_format": "jpeg",
-        "verification_run_id": 36514815764,
-        "source_width": 800,
-        "source_height": 800
+        "verification_run_id": 36514815764
       },
-      "source_risk": "high",
+      "source_risk": "unknown_review_required",
       "risk_reasons": [
-        "product_media_may_include_text_or_branding",
-        "product_media_may_be_multi_panel_or_composite"
+        "source_host_has_no_sanitization_prior"
       ],
-      "status": "blocked_pending_visual_sanitization_review",
+      "status": "sanitization_required",
       "raw_model_input_allowed": false,
       "required_checks": [
         "identity_matches_source_record",
@@ -1509,26 +1531,29 @@
         "task_confounding_secondary_panels_absent_or_removed"
       ],
       "recommended_actions": [
+        "approve_raw_only_if_visually_clean",
         "tight_figure_crop",
-        "mask_text_or_logo_regions",
-        "segment_primary_figure",
-        "replace_with_cleaner_exact_release_source",
-        "manual_composite_cleanup"
+        "mask_auxiliary_insets"
       ],
       "review": {
-        "identity_match": null,
-        "primary_view": null,
-        "primary_figure_complete": null,
-        "visible_text_leakage": [],
+        "identity_match": true,
+        "primary_view": "front",
+        "primary_figure_complete": true,
+        "visible_text_leakage": [
+          "release_or_sku_code",
+          "character_name_or_alias_text"
+        ],
         "visual_confounders": [],
-        "sanitization_action": null,
+        "sanitization_action": "tight_figure_crop",
         "sanitized_asset_sha256": null,
         "sanitized_asset_status": "pending",
-        "reviewer_id": null,
-        "reviewer_type": null,
-        "review_confidence": null,
-        "notes": [],
-        "review_source_sha256": null,
+        "reviewer_id": "openai_chatgpt_visual_review",
+        "reviewer_type": "model",
+        "review_confidence": 0.99,
+        "notes": [
+          "GH0348 and Thing labels surround an otherwise isolated front figure. Tight crop can remove text while preserving architecture."
+        ],
+        "review_source_sha256": "f215a5bd0f33b16b0748ddc3c2b3b0fb85e216dfb1c8d1cd911e556bd3c04da2",
         "review_stale": false
       },
       "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
@@ -1549,16 +1574,15 @@
         "exact_image_url": "https://static.herobloks.com/x/figure_images/25/9/7/id0~c79091~u2911-1.jpg",
         "source_file_sha256": "a589332b37fa1e2a8dc5c70131641a36c5f0420fec96895258cf8ba744cd1432",
         "source_size_bytes": 72298,
+        "source_width": 1024,
+        "source_height": 1024,
         "source_content_type": "image/jpeg",
         "source_image_format": "jpeg",
-        "verification_run_id": 36514815764,
-        "source_width": 1024,
-        "source_height": 1024
+        "verification_run_id": 36514815764
       },
-      "source_risk": "high",
+      "source_risk": "unknown_review_required",
       "risk_reasons": [
-        "product_media_may_include_text_or_branding",
-        "product_media_may_be_multi_panel_or_composite"
+        "source_host_has_no_sanitization_prior"
       ],
       "status": "sanitization_required",
       "raw_model_input_allowed": false,
@@ -1573,11 +1597,9 @@
         "task_confounding_secondary_panels_absent_or_removed"
       ],
       "recommended_actions": [
+        "approve_raw_only_if_visually_clean",
         "tight_figure_crop",
-        "mask_text_or_logo_regions",
-        "segment_primary_figure",
-        "replace_with_cleaner_exact_release_source",
-        "manual_composite_cleanup"
+        "mask_auxiliary_insets"
       ],
       "review": {
         "identity_match": true,
@@ -1620,18 +1642,17 @@
         "exact_image_url": "https://kongbricks.myshopify.com/cdn/shop/files/GH0440.webp",
         "source_file_sha256": "f355c2a1c1ee98e0ae7face8be411a1f1f76ed3ffa2c89b9073fcbe799f22fd8",
         "source_size_bytes": 55602,
+        "source_width": 800,
+        "source_height": 800,
         "source_content_type": "image/jpeg",
         "source_image_format": "jpeg",
-        "verification_run_id": 36514815764,
-        "source_width": 800,
-        "source_height": 800
+        "verification_run_id": 36514815764
       },
-      "source_risk": "high",
+      "source_risk": "unknown_review_required",
       "risk_reasons": [
-        "product_media_may_include_text_or_branding",
-        "product_media_may_be_multi_panel_or_composite"
+        "source_host_has_no_sanitization_prior"
       ],
-      "status": "blocked_pending_visual_sanitization_review",
+      "status": "sanitization_required",
       "raw_model_input_allowed": false,
       "required_checks": [
         "identity_matches_source_record",
@@ -1644,26 +1665,29 @@
         "task_confounding_secondary_panels_absent_or_removed"
       ],
       "recommended_actions": [
+        "approve_raw_only_if_visually_clean",
         "tight_figure_crop",
-        "mask_text_or_logo_regions",
-        "segment_primary_figure",
-        "replace_with_cleaner_exact_release_source",
-        "manual_composite_cleanup"
+        "mask_auxiliary_insets"
       ],
       "review": {
-        "identity_match": null,
-        "primary_view": null,
-        "primary_figure_complete": null,
-        "visible_text_leakage": [],
+        "identity_match": true,
+        "primary_view": "front",
+        "primary_figure_complete": true,
+        "visible_text_leakage": [
+          "release_or_sku_code",
+          "character_name_or_alias_text"
+        ],
         "visual_confounders": [],
-        "sanitization_action": null,
+        "sanitization_action": "tight_figure_crop",
         "sanitized_asset_sha256": null,
         "sanitized_asset_status": "pending",
-        "reviewer_id": null,
-        "reviewer_type": null,
-        "review_confidence": null,
-        "notes": [],
-        "review_source_sha256": null,
+        "reviewer_id": "openai_chatgpt_visual_review",
+        "reviewer_type": "model",
+        "review_confidence": 0.99,
+        "notes": [
+          "GH0440 and Thing labels are visible above/below an isolated front figure. Tight crop can retain the complete figure."
+        ],
+        "review_source_sha256": "f355c2a1c1ee98e0ae7face8be411a1f1f76ed3ffa2c89b9073fcbe799f22fd8",
         "review_stale": false
       },
       "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
@@ -1684,18 +1708,17 @@
         "exact_image_url": "https://static.herobloks.com/x/figure_images/17/3/2/id0~c2671~u1.jpg",
         "source_file_sha256": "e0de4be480091468e1edd92dca97dc465a2fe062cda2917262977164131b9970",
         "source_size_bytes": 21163,
+        "source_width": 315,
+        "source_height": 346,
         "source_content_type": "image/jpeg",
         "source_image_format": "jpeg",
-        "verification_run_id": 36514815764,
-        "source_width": 315,
-        "source_height": 346
+        "verification_run_id": 36514815764
       },
-      "source_risk": "high",
+      "source_risk": "unknown_review_required",
       "risk_reasons": [
-        "product_media_may_include_text_or_branding",
-        "product_media_may_be_multi_panel_or_composite"
+        "source_host_has_no_sanitization_prior"
       ],
-      "status": "blocked_pending_visual_sanitization_review",
+      "status": "sanitization_required",
       "raw_model_input_allowed": false,
       "required_checks": [
         "identity_matches_source_record",
@@ -1708,26 +1731,30 @@
         "task_confounding_secondary_panels_absent_or_removed"
       ],
       "recommended_actions": [
+        "approve_raw_only_if_visually_clean",
         "tight_figure_crop",
-        "mask_text_or_logo_regions",
-        "segment_primary_figure",
-        "replace_with_cleaner_exact_release_source",
-        "manual_composite_cleanup"
+        "mask_auxiliary_insets"
       ],
       "review": {
-        "identity_match": null,
-        "primary_view": null,
-        "primary_figure_complete": null,
-        "visible_text_leakage": [],
-        "visual_confounders": [],
-        "sanitization_action": null,
+        "identity_match": true,
+        "primary_view": "front",
+        "primary_figure_complete": true,
+        "visible_text_leakage": [
+          "maker_or_brand_logo"
+        ],
+        "visual_confounders": [
+          "secondary_figure"
+        ],
+        "sanitization_action": "tight_figure_crop",
         "sanitized_asset_sha256": null,
         "sanitized_asset_status": "pending",
-        "reviewer_id": null,
-        "reviewer_type": null,
-        "review_confidence": null,
-        "notes": [],
-        "review_source_sha256": null,
+        "reviewer_id": "openai_chatgpt_visual_review",
+        "reviewer_type": "model",
+        "review_confidence": 0.97,
+        "notes": [
+          "Primary figure is front-facing, but the branded display base and a partial secondary figure at the right edge are task-confounding. Crop to figure-only content."
+        ],
+        "review_source_sha256": "e0de4be480091468e1edd92dca97dc465a2fe062cda2917262977164131b9970",
         "review_stale": false
       },
       "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
@@ -1748,16 +1775,15 @@
         "exact_image_url": "https://static.herobloks.com/x/figure_images/20/8/5/id0~c50516~u1.jpg",
         "source_file_sha256": "f3556293cec3cafb4ba2c7a0659713aca485e59c4d3b88fb7f9850d774c685a2",
         "source_size_bytes": 82446,
+        "source_width": 759,
+        "source_height": 1024,
         "source_content_type": "image/jpeg",
         "source_image_format": "jpeg",
-        "verification_run_id": 36514815764,
-        "source_width": 759,
-        "source_height": 1024
+        "verification_run_id": 36514815764
       },
-      "source_risk": "high",
+      "source_risk": "unknown_review_required",
       "risk_reasons": [
-        "product_media_may_include_text_or_branding",
-        "product_media_may_be_multi_panel_or_composite"
+        "source_host_has_no_sanitization_prior"
       ],
       "status": "sanitization_required",
       "raw_model_input_allowed": false,
@@ -1772,11 +1798,9 @@
         "task_confounding_secondary_panels_absent_or_removed"
       ],
       "recommended_actions": [
+        "approve_raw_only_if_visually_clean",
         "tight_figure_crop",
-        "mask_text_or_logo_regions",
-        "segment_primary_figure",
-        "replace_with_cleaner_exact_release_source",
-        "manual_composite_cleanup"
+        "mask_auxiliary_insets"
       ],
       "review": {
         "identity_match": true,
