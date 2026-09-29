@@ -556,8 +556,8 @@
       }
     },
     {
-      "case_id": "archchallenge::challenge_centaur_col379",
-      "source_record_id": "challenge_centaur_col379",
+      "case_id": "archchallenge::challenge_centaur_hp236",
+      "source_record_id": "challenge_centaur_hp236",
       "split": "challenge_test",
       "task": "closed_set_architecture_classification",
       "expected": {
@@ -572,19 +572,19 @@
         "materialized_asset_id": null,
         "reference_locators": [
           {
-            "source_id": "bricklink_centaur_col379_inventory",
-            "url": "https://www.bricklink.com/catalogItemInv.asp?M=col379&viewCodes=Y",
+            "source_id": "bricklink_centaur_hp236_inventory",
+            "url": "https://www.bricklink.com/catalogItemInv.asp?M=hp236&viewCodes=Y",
             "authority": "structured_catalog",
-            "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/col379.png",
+            "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/hp236.png",
             "image_resolution_status": "verified_exact_image_url",
-            "source_file_sha256": "9c6ab60d4b94f6f8544625eac122865b248bd05661cf94a93fd7e7e0085f73c5",
-            "source_size_bytes": 185658,
-            "source_width": 300,
+            "source_file_sha256": "9690938b75bad44108df1b0d15fa85a72ea4f5837b1ba5f774fa6b57acbc3052",
+            "source_size_bytes": 128668,
+            "source_width": 227,
             "source_height": 400,
             "source_content_type": "image/png",
             "source_image_format": "png",
-            "verification_run_id": 36518447556,
-            "verification_artifact_id": 11011044133
+            "verification_run_id": 36520358304,
+            "verification_artifact_id": 11012334034
           }
         ]
       },
@@ -600,28 +600,29 @@
       "audit_metadata": {
         "release": {
           "maker": "LEGO",
-          "code": "col379",
-          "year": 2021,
-          "label": "Centaur Warrior, Series 21"
+          "code": "hp236",
+          "year": null,
+          "label": "Centaur"
         },
-        "character_id": "centaur_warrior",
+        "character_id": "centaur_hp236",
         "evidence_summary": [
-          "67638pb02 centaur lower body creates quadruped hybrid component graph"
+          "67638pb01 centaur lower body creates quadruped hybrid component graph",
+          "clean isolated front reference replaces col379 to remove alternate-expression inset leakage"
         ],
         "original_confidence": "catalog_high"
       },
       "group_keys": {
-        "challenge_character_group": "centaur_warrior",
-        "release_code": "col379",
+        "challenge_character_group": "centaur_hp236",
+        "release_code": "hp236",
         "architecture_candidate": "minifig_centaur_hybrid"
       },
       "provenance": {
         "source_corpus_path": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-recognition-challenge-corpus-v1.json",
-        "source_record_id": "challenge_centaur_col379",
+        "source_record_id": "challenge_centaur_hp236",
         "architecture_registry_path": "knowledge/libraries/lego-minifigure-customs/data/figure-architecture-registry.json",
         "source_registry_path": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-source-registry.json",
         "source_refs": [
-          "bricklink_centaur_col379_inventory"
+          "bricklink_centaur_hp236_inventory"
         ]
       }
     }
