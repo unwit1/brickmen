@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "created": "2026-09-29",
-  "status": "challenge_corpus_v2_byte_verified_pending_sanitization",
+  "status": "challenge_corpus_v2_exact_urls_pending_hp288_byte_verification",
   "corpus_id": "body_architecture_challenge_v2",
   "purpose": "Evaluation-only character-disjoint architecture-recognition cohort extending v1 with additional official lower-body, mechanical, medium-leg and specialized-body systems.",
   "supersedes": "body_architecture_challenge_v1",
@@ -175,23 +175,24 @@
       "character_id": "centaur_hp236"
     },
     {
-      "record_id": "challenge_harry_hp175_medium_leg",
+      "record_id": "challenge_harry_hp288_medium_leg",
       "release": {
         "maker": "LEGO",
-        "code": "hp175",
-        "year": 2019,
-        "label": "Harry Potter - Dark Blue Open Jacket over Sand Blue Shirt, Dark Tan Medium Legs"
+        "code": "hp288",
+        "year": 2021,
+        "label": "Harry Potter - Dark Blue Open Jacket over Sand Blue Shirt, Black Medium Legs"
       },
       "architecture_candidate": "minifig_medium_leg",
       "source_refs": [
-        "bricklink_harry_hp175_medium_legs"
+        "bricklink_harry_hp288_medium_legs"
       ],
       "evidence_summary": [
         "970cm00 articulated medium legs",
-        "standard torso/head upper-body graph"
+        "standard torso/head upper-body graph",
+        "clean isolated exact PNG selected for leakage-safe review"
       ],
       "confidence": "catalog_high",
-      "character_id": "harry_potter_hp175"
+      "character_id": "harry_potter_hp288"
     },
     {
       "record_id": "challenge_medusa_col146_serpent",
