@@ -42,14 +42,14 @@ def test_custom_source_queue_matches_generic_builder() -> None:
     assert actual == expected
     assert actual["created"] == "2026-09-28"
     assert actual["summary"] == {
-        "total_cases": 2,
-        "raw_model_input_allowed_cases": 1,
+        "total_cases": 3,
+        "raw_model_input_allowed_cases": 2,
         "blocked_model_input_cases": 1,
         "status_counts": {
             "sanitization_required": 1,
-            "approved_raw_model_input": 1,
+            "approved_raw_model_input": 2,
         },
-        "risk_counts": {"unknown_review_required": 2},
+        "risk_counts": {"unknown_review_required": 3},
     }
 
 
@@ -75,8 +75,8 @@ def test_custom_model_input_manifest_is_fully_runnable() -> None:
     assert actual == expected
     assert actual["summary"] == {
         "total_cases": 2,
-        "model_input_allowed_cases": 2,
-        "approved_raw_cases": 1,
+        "model_input_allowed_cases": 3,
+        "approved_raw_cases": 2,
         "approved_sanitized_cases": 1,
         "blocked_cases": 0,
     }
@@ -85,5 +85,6 @@ def test_custom_model_input_manifest_is_fully_runnable() -> None:
         for row in actual["entries"]
     } == {
         "custom_midfig_balljoint_upper_titanic": "approved_sanitized",
+        "custom_sidan_full_balljoint_poseable_sidan": "approved_raw",
         "custom_standard_four_arm_single_torso_titanic": "approved_raw",
     }
