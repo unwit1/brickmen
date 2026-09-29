@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "created": "2026-09-29",
-  "status": "byte_verified_pending_sanitization",
+  "status": "exact_urls_pending_byte_verification",
   "benchmark_id": "body_architecture_challenge_v2",
   "processor_version": "body-architecture-challenge-cases/v1",
   "purpose": "Evaluation-only character-disjoint architecture-recognition cohort extending v1 with additional official lower-body, mechanical, medium-leg and specialized-body systems.",
@@ -16,7 +16,7 @@
   },
   "source_corpus": {
     "path": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-recognition-challenge-corpus-v2.json",
-    "blob_sha": "a0f20c5602891777ce20c17f18bd399c90ea3e07"
+    "blob_sha": "f0e2cbae71c4a59825fe66d793f1f93991690627"
   },
   "architecture_registry": {
     "path": "knowledge/libraries/lego-minifigure-customs/data/figure-architecture-registry.json",
@@ -24,7 +24,7 @@
   },
   "source_registry": {
     "path": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-source-registry.json",
-    "blob_sha": "a11a9da83de1bd808f08b22bda8d9ee2e4e2eade"
+    "blob_sha": "42cf3b9dacb7383b84d40ccc44a9a732de9dfa8b"
   },
   "split_policy": {
     "split": "challenge_test",
@@ -39,7 +39,7 @@
     "unique_architectures": 16,
     "core_cases": 16,
     "cases_with_exact_image_urls": 16,
-    "byte_verified_cases": 16
+    "byte_verified_cases": 15
   },
   "architecture_ids": [
     "lego_axl_oversized_torso_hybrid",
@@ -635,8 +635,8 @@
       }
     },
     {
-      "case_id": "archchallenge::challenge_harry_hp175_medium_leg",
-      "source_record_id": "challenge_harry_hp175_medium_leg",
+      "case_id": "archchallenge::challenge_harry_hp288_medium_leg",
+      "source_record_id": "challenge_harry_hp288_medium_leg",
       "split": "challenge_test",
       "task": "closed_set_architecture_classification",
       "expected": {
@@ -646,24 +646,24 @@
       "target_evidence_tier": "canonical",
       "scoring_track": "core",
       "input_asset": {
-        "status": "byte_verified_pending_sanitization",
+        "status": "exact_url_pending_byte_verification",
         "required_view": "canonical_or_best_available_full_figure",
         "materialized_asset_id": null,
         "reference_locators": [
           {
-            "source_id": "bricklink_harry_hp175_medium_legs",
-            "url": "https://www.bricklink.com/catalogItemInv.asp?M=hp175",
+            "source_id": "bricklink_harry_hp288_medium_legs",
+            "url": "https://www.bricklink.com/catalogItemInv.asp?M=hp288&viewCodes=Y",
             "authority": "structured_catalog",
-            "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/hp175.png",
-            "image_resolution_status": "verified_exact_image_url",
-            "source_file_sha256": "2eb8a037659e9375486f61c391e2cf5ab65e4a9bddfacbc2ff82d86f39cd7d44",
-            "source_size_bytes": 57374,
-            "source_width": 158,
-            "source_height": 238,
-            "source_content_type": "image/png",
-            "source_image_format": "png",
-            "verification_run_id": 36561669628,
-            "verification_artifact_id": 11029584166
+            "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/hp288.png",
+            "image_resolution_status": "exact_image_url_resolved_pending_byte_verification",
+            "source_file_sha256": null,
+            "source_size_bytes": null,
+            "source_width": null,
+            "source_height": null,
+            "source_content_type": null,
+            "source_image_format": null,
+            "verification_run_id": null,
+            "verification_artifact_id": null
           }
         ]
       },
@@ -679,29 +679,30 @@
       "audit_metadata": {
         "release": {
           "maker": "LEGO",
-          "code": "hp175",
-          "year": 2019,
-          "label": "Harry Potter - Dark Blue Open Jacket over Sand Blue Shirt, Dark Tan Medium Legs"
+          "code": "hp288",
+          "year": 2021,
+          "label": "Harry Potter - Dark Blue Open Jacket over Sand Blue Shirt, Black Medium Legs"
         },
-        "character_id": "harry_potter_hp175",
+        "character_id": "harry_potter_hp288",
         "evidence_summary": [
           "970cm00 articulated medium legs",
-          "standard torso/head upper-body graph"
+          "standard torso/head upper-body graph",
+          "clean isolated exact PNG selected for leakage-safe review"
         ],
         "original_confidence": "catalog_high"
       },
       "group_keys": {
-        "challenge_character_group": "harry_potter_hp175",
-        "release_code": "hp175",
+        "challenge_character_group": "harry_potter_hp288",
+        "release_code": "hp288",
         "architecture_candidate": "minifig_medium_leg"
       },
       "provenance": {
         "source_corpus_path": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-recognition-challenge-corpus-v2.json",
-        "source_record_id": "challenge_harry_hp175_medium_leg",
+        "source_record_id": "challenge_harry_hp288_medium_leg",
         "architecture_registry_path": "knowledge/libraries/lego-minifigure-customs/data/figure-architecture-registry.json",
         "source_registry_path": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-source-registry.json",
         "source_refs": [
-          "bricklink_harry_hp175_medium_legs"
+          "bricklink_harry_hp288_medium_legs"
         ]
       }
     },
