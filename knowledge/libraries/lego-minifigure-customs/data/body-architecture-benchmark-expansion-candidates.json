@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "created": "2026-09-29",
-  "status": "staged_media_verification_pending",
+  "status": "verification_complete_partitioned_for_promotion",
   "id": "body-architecture-benchmark-expansion-v0",
   "objective": "Broaden architecture-recognition coverage beyond Hulk/Venom/Thing without weakening the canonical benchmark's media/sanitization guarantees.",
   "policy": [
@@ -21,7 +21,18 @@
       "model_input_gate_passes",
       "final_split_assignment_reviewed_for_character_and_family_leakage"
     ],
-    "default_state": "blocked_until_all_required_steps_pass"
+    "default_state": "blocked_until_all_required_steps_pass",
+    "completed": [
+      "architecture_registry_target_exists",
+      "source_registry_refs_resolve",
+      "exact_image_url_byte_verified",
+      "image_hash_deduplicated_or_duplicate_documented"
+    ],
+    "remaining": [
+      "visual_sanitization_decision_complete",
+      "model_input_gate_passes",
+      "final_split_assignment_reviewed_for_character_and_family_leakage"
+    ]
   },
   "summary": {
     "staged_cases": 10,
@@ -31,7 +42,11 @@
     "source_character_groups": 9,
     "same_character_cross_architecture_groups": [
       "hagrid"
-    ]
+    ],
+    "byte_verified_cases": 10,
+    "unique_verified_hashes": 10,
+    "promoted_to_character_disjoint_challenge": 8,
+    "reserved_same_character_contrast": 2
   },
   "cases": [
     {
@@ -46,7 +61,7 @@
       },
       "target_evidence_tier": "official_or_strong_catalog",
       "input_asset": {
-        "status": "staged_exact_media_verification_pending",
+        "status": "byte_verified_pending_sanitization",
         "required_view": "canonical_or_best_available_full_figure",
         "materialized_asset_id": null,
         "reference_locators": [
@@ -56,7 +71,15 @@
             "authority": "structured_catalog",
             "locator_quality": "direct_release_or_component_graph_reference",
             "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/nex007.png",
-            "image_resolution_status": "verified_exact_image_url"
+            "image_resolution_status": "verified_exact_image_url",
+            "source_file_sha256": "9bc5ec3b785089cb008e0121e35661058c311fe52d4afcede7b2ff9e7aea9bc7",
+            "source_size_bytes": 106865,
+            "source_width": 240,
+            "source_height": 281,
+            "source_content_type": "image/png",
+            "source_image_format": "png",
+            "verification_run_id": 36518447556,
+            "verification_artifact_id": 11011044133
           }
         ]
       },
@@ -84,7 +107,8 @@
           "bricklink_axl_nex007_inventory"
         ]
       },
-      "promotion_state": "blocked_pending_media_verification_and_sanitization"
+      "promotion_state": "promoted_to_character_disjoint_challenge",
+      "promoted_case_id": "archchallenge::challenge_axl_nex007"
     },
     {
       "case_id": "archexp::official_hagrid_hp061_legacy",
@@ -98,7 +122,7 @@
       },
       "target_evidence_tier": "catalog_identified_provisional",
       "input_asset": {
-        "status": "staged_exact_media_verification_pending",
+        "status": "byte_verified_pending_sanitization",
         "required_view": "canonical_or_best_available_full_figure",
         "materialized_asset_id": null,
         "reference_locators": [
@@ -108,7 +132,15 @@
             "authority": "structured_catalog",
             "locator_quality": "direct_release_or_component_graph_reference",
             "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/hp061.png",
-            "image_resolution_status": "candidate_unverified_endpoint"
+            "image_resolution_status": "verified_exact_image_url",
+            "source_file_sha256": "2e2273d5ce891f2bac45a0e0f40a0320104c0051ecb8733ce847ac4ba5119bf1",
+            "source_size_bytes": 146456,
+            "source_width": 240,
+            "source_height": 320,
+            "source_content_type": "image/png",
+            "source_image_format": "png",
+            "verification_run_id": 36518447556,
+            "verification_artifact_id": 11011044133
           },
           {
             "source_id": "hagrid_hp061_parts",
@@ -145,7 +177,8 @@
           "hagrid_hp061_parts"
         ]
       },
-      "promotion_state": "blocked_pending_media_verification_and_sanitization"
+      "promotion_state": "reserved_same_character_contrast",
+      "promoted_case_id": null
     },
     {
       "case_id": "archexp::official_hagrid_hp144_half_giant",
@@ -159,7 +192,7 @@
       },
       "target_evidence_tier": "official_or_strong_catalog",
       "input_asset": {
-        "status": "staged_exact_media_verification_pending",
+        "status": "byte_verified_pending_sanitization",
         "required_view": "canonical_or_best_available_full_figure",
         "materialized_asset_id": null,
         "reference_locators": [
@@ -169,7 +202,15 @@
             "authority": "structured_catalog",
             "locator_quality": "direct_release_or_component_graph_reference",
             "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/hp144.png",
-            "image_resolution_status": "verified_exact_image_url"
+            "image_resolution_status": "verified_exact_image_url",
+            "source_file_sha256": "7e387b1db3516036575438e6733202fd00bf53ad771aeb885b29681aa51695b3",
+            "source_size_bytes": 151898,
+            "source_width": 297,
+            "source_height": 400,
+            "source_content_type": "image/png",
+            "source_image_format": "png",
+            "verification_run_id": 36518447556,
+            "verification_artifact_id": 11011044133
           },
           {
             "source_id": "bricklink_hagrid_hp144_half_giant",
@@ -207,7 +248,8 @@
           "bricklink_hagrid_hp144_half_giant"
         ]
       },
-      "promotion_state": "blocked_pending_media_verification_and_sanitization"
+      "promotion_state": "promoted_to_character_disjoint_challenge",
+      "promoted_case_id": "archchallenge::challenge_hagrid_hp144"
     },
     {
       "case_id": "archexp::official_hulk_sh0013_integrated_head",
@@ -221,7 +263,7 @@
       },
       "target_evidence_tier": "official_or_strong_catalog",
       "input_asset": {
-        "status": "staged_exact_media_verification_pending",
+        "status": "byte_verified_pending_sanitization",
         "required_view": "canonical_or_best_available_full_figure",
         "materialized_asset_id": null,
         "reference_locators": [
@@ -231,7 +273,15 @@
             "authority": "structured_catalog",
             "locator_quality": "direct_release_or_component_graph_reference",
             "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/sh0013.png",
-            "image_resolution_status": "candidate_unverified_endpoint"
+            "image_resolution_status": "verified_exact_image_url",
+            "source_file_sha256": "414a6c02b42a33a8d2d957831d2a8e987ff96c1ec5c8b5b671454de90b7f31a5",
+            "source_size_bytes": 124479,
+            "source_width": 300,
+            "source_height": 292,
+            "source_content_type": "image/png",
+            "source_image_format": "png",
+            "verification_run_id": 36518447556,
+            "verification_artifact_id": 11011044133
           }
         ]
       },
@@ -260,7 +310,8 @@
           "bricklink_hulk_sh0013_integrated_head"
         ]
       },
-      "promotion_state": "blocked_pending_media_verification_and_sanitization"
+      "promotion_state": "reserved_same_character_contrast",
+      "promoted_case_id": null
     },
     {
       "case_id": "archexp::official_killer_croc_sh0321",
@@ -274,7 +325,7 @@
       },
       "target_evidence_tier": "official_or_strong_catalog",
       "input_asset": {
-        "status": "staged_exact_media_verification_pending",
+        "status": "byte_verified_pending_sanitization",
         "required_view": "canonical_or_best_available_full_figure",
         "materialized_asset_id": null,
         "reference_locators": [
@@ -284,7 +335,15 @@
             "authority": "structured_catalog",
             "locator_quality": "direct_release_or_component_graph_reference",
             "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/sh0321.png",
-            "image_resolution_status": "verified_exact_image_url"
+            "image_resolution_status": "verified_exact_image_url",
+            "source_file_sha256": "256e0dd6dad22b8a8301d2ea1c88a765d80d34ab75e7cdc2deb8a7dd56bbcf6c",
+            "source_size_bytes": 159937,
+            "source_width": 300,
+            "source_height": 299,
+            "source_content_type": "image/png",
+            "source_image_format": "png",
+            "verification_run_id": 36518447556,
+            "verification_artifact_id": 11011044133
           }
         ]
       },
@@ -312,7 +371,8 @@
           "bricklink_killer_croc_sh0321_specialized_giant"
         ]
       },
-      "promotion_state": "blocked_pending_media_verification_and_sanitization"
+      "promotion_state": "promoted_to_character_disjoint_challenge",
+      "promoted_case_id": "archchallenge::challenge_killer_croc_sh0321"
     },
     {
       "case_id": "archexp::official_garmadon_njo0078",
@@ -326,7 +386,7 @@
       },
       "target_evidence_tier": "official_or_strong_catalog",
       "input_asset": {
-        "status": "staged_exact_media_verification_pending",
+        "status": "byte_verified_pending_sanitization",
         "required_view": "canonical_or_best_available_full_figure",
         "materialized_asset_id": null,
         "reference_locators": [
@@ -336,7 +396,15 @@
             "authority": "structured_catalog",
             "locator_quality": "direct_release_or_component_graph_reference",
             "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/njo0078.png",
-            "image_resolution_status": "verified_exact_image_url"
+            "image_resolution_status": "verified_exact_image_url",
+            "source_file_sha256": "62bfcdbc7eb83b62b8b34e9a47521d06e5ad231ae7fe0e3688a2d9559d8d54a5",
+            "source_size_bytes": 73065,
+            "source_width": 240,
+            "source_height": 320,
+            "source_content_type": "image/png",
+            "source_image_format": "png",
+            "verification_run_id": 36518447556,
+            "verification_artifact_id": 11011044133
           }
         ]
       },
@@ -364,7 +432,8 @@
           "bricklink_garmadon_final_battle"
         ]
       },
-      "promotion_state": "blocked_pending_media_verification_and_sanitization"
+      "promotion_state": "promoted_to_character_disjoint_challenge",
+      "promoted_case_id": "archchallenge::challenge_garmadon_njo0078"
     },
     {
       "case_id": "archexp::official_grievous_sw0254",
@@ -378,7 +447,7 @@
       },
       "target_evidence_tier": "official_or_strong_catalog",
       "input_asset": {
-        "status": "staged_exact_media_verification_pending",
+        "status": "byte_verified_pending_sanitization",
         "required_view": "canonical_or_best_available_full_figure",
         "materialized_asset_id": null,
         "reference_locators": [
@@ -388,7 +457,15 @@
             "authority": "structured_catalog",
             "locator_quality": "direct_release_or_component_graph_reference",
             "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/sw0254.png",
-            "image_resolution_status": "verified_exact_image_url"
+            "image_resolution_status": "verified_exact_image_url",
+            "source_file_sha256": "a80a899836ce6791b194c69329e4108a1229c824b5ea0ff2386082cb97cd39d4",
+            "source_size_bytes": 55082,
+            "source_width": 240,
+            "source_height": 214,
+            "source_content_type": "image/png",
+            "source_image_format": "png",
+            "verification_run_id": 36518447556,
+            "verification_artifact_id": 11011044133
           }
         ]
       },
@@ -416,7 +493,8 @@
           "bricklink_grievous_sw0254_inventory"
         ]
       },
-      "promotion_state": "blocked_pending_media_verification_and_sanitization"
+      "promotion_state": "promoted_to_character_disjoint_challenge",
+      "promoted_case_id": "archchallenge::challenge_grievous_sw0254"
     },
     {
       "case_id": "archexp::official_ghost_njo0174",
@@ -430,7 +508,7 @@
       },
       "target_evidence_tier": "official_or_strong_catalog",
       "input_asset": {
-        "status": "staged_exact_media_verification_pending",
+        "status": "byte_verified_pending_sanitization",
         "required_view": "canonical_or_best_available_full_figure",
         "materialized_asset_id": null,
         "reference_locators": [
@@ -440,7 +518,15 @@
             "authority": "structured_catalog",
             "locator_quality": "direct_release_or_component_graph_reference",
             "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/njo0174.png",
-            "image_resolution_status": "verified_exact_image_url"
+            "image_resolution_status": "verified_exact_image_url",
+            "source_file_sha256": "9a4787d98c741adf58becc959a8121bf650a620f5039ac3e44f96195b417ed6f",
+            "source_size_bytes": 89988,
+            "source_width": 240,
+            "source_height": 320,
+            "source_content_type": "image/png",
+            "source_image_format": "png",
+            "verification_run_id": 36518447556,
+            "verification_artifact_id": 11011044133
           }
         ]
       },
@@ -468,7 +554,8 @@
           "bricklink_ghost_njo0174_inventory"
         ]
       },
-      "promotion_state": "blocked_pending_media_verification_and_sanitization"
+      "promotion_state": "promoted_to_character_disjoint_challenge",
+      "promoted_case_id": "archchallenge::challenge_ghost_njo0174"
     },
     {
       "case_id": "archexp::official_tentacle_atl007",
@@ -482,7 +569,7 @@
       },
       "target_evidence_tier": "official_or_strong_catalog",
       "input_asset": {
-        "status": "staged_exact_media_verification_pending",
+        "status": "byte_verified_pending_sanitization",
         "required_view": "canonical_or_best_available_full_figure",
         "materialized_asset_id": null,
         "reference_locators": [
@@ -492,7 +579,15 @@
             "authority": "structured_catalog",
             "locator_quality": "direct_release_or_component_graph_reference",
             "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/atl007.png",
-            "image_resolution_status": "verified_exact_image_url"
+            "image_resolution_status": "verified_exact_image_url",
+            "source_file_sha256": "f8a38a07a8d80c4447916d8b444ffebb1b3db9e19a210eb5039b38b38d5aac87",
+            "source_size_bytes": 104060,
+            "source_width": 300,
+            "source_height": 338,
+            "source_content_type": "image/png",
+            "source_image_format": "png",
+            "verification_run_id": 36518447556,
+            "verification_artifact_id": 11011044133
           }
         ]
       },
@@ -520,7 +615,8 @@
           "bricklink_tentacle_atl007_inventory"
         ]
       },
-      "promotion_state": "blocked_pending_media_verification_and_sanitization"
+      "promotion_state": "promoted_to_character_disjoint_challenge",
+      "promoted_case_id": "archchallenge::challenge_squid_atl007"
     },
     {
       "case_id": "archexp::official_centaur_col379",
@@ -534,7 +630,7 @@
       },
       "target_evidence_tier": "official_or_strong_catalog",
       "input_asset": {
-        "status": "staged_exact_media_verification_pending",
+        "status": "byte_verified_pending_sanitization",
         "required_view": "canonical_or_best_available_full_figure",
         "materialized_asset_id": null,
         "reference_locators": [
@@ -544,7 +640,15 @@
             "authority": "structured_catalog",
             "locator_quality": "direct_release_or_component_graph_reference",
             "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/col379.png",
-            "image_resolution_status": "verified_exact_image_url"
+            "image_resolution_status": "verified_exact_image_url",
+            "source_file_sha256": "9c6ab60d4b94f6f8544625eac122865b248bd05661cf94a93fd7e7e0085f73c5",
+            "source_size_bytes": 185658,
+            "source_width": 300,
+            "source_height": 400,
+            "source_content_type": "image/png",
+            "source_image_format": "png",
+            "verification_run_id": 36518447556,
+            "verification_artifact_id": 11011044133
           }
         ]
       },
@@ -572,7 +676,8 @@
           "bricklink_centaur_col379_inventory"
         ]
       },
-      "promotion_state": "blocked_pending_media_verification_and_sanitization"
+      "promotion_state": "promoted_to_character_disjoint_challenge",
+      "promoted_case_id": "archchallenge::challenge_centaur_col379"
     }
   ]
 }
