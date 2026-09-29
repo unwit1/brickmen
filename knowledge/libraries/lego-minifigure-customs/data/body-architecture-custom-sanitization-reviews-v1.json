@@ -2,7 +2,7 @@
   "schema_version": "0.1",
   "created": "2026-09-29",
   "review_set_id": "body-architecture-custom-sanitization-v1",
-  "policy": "Reviews are keyed to verified source SHA-256. Product-description evidence does not authorize visual model input; exact byte-pinned media must pass direct visual leakage review, and any sanitized derivative requires a separate exact-hash review.",
+  "policy": "Reviews are keyed to verified source SHA-256. Product-description evidence does not authorize visual model input; exact byte-pinned media must pass direct visual leakage review, and any sanitized derivative requires a separate exact-hash review. The three custom architecture cases are evaluated only through approved raw or exact reviewed sanitized inputs.",
   "reviewer": {
     "reviewer_id": "openai_chatgpt_visual_review",
     "reviewer_type": "model",
@@ -48,6 +48,25 @@
       "notes": [
         "Exact verified product image cleanly shows the single-torso four-arm architecture on a neutral background.",
         "No visible maker logo, product text, SKU, inset panel, secondary figure, or other shortcut cue is present."
+      ]
+    },
+    {
+      "source_record_id": "custom_sidan_full_balljoint_poseable_sidan",
+      "source_id": "minifigworld_sidan_poseable_product_image_1_zoom",
+      "source_file_sha256": "2ac7f9ba8793107e58892205ea56cc772b876cd63cd2fda08e51e1a0ec8e831e",
+      "status": "approved_raw",
+      "identity_match": true,
+      "primary_view": "front_three_quarter",
+      "primary_figure_complete": true,
+      "visible_text_leakage": [],
+      "visual_confounders": [],
+      "sanitization_action": "none",
+      "raw_model_input_allowed": true,
+      "review_confidence": 0.99,
+      "notes": [
+        "Exact byte-pinned 301x500 product zoom image was materialized through the review-only CI path after SHA-256 and dimension verification.",
+        "Clean isolated full-body pose on a neutral gradient background; no visible maker text, logo, product label, SKU, inset panel, or secondary figure is present.",
+        "Ball-jointed shoulders, elbows/arms, hips/legs, feet and neck architecture are visibly represented well enough for the intended custom-architecture evaluation."
       ]
     }
   ]
