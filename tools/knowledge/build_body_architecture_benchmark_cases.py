@@ -101,6 +101,8 @@ def build_case(
                 "byte_verification_status": verification.get("status"),
                 "source_file_sha256": verification.get("sha256"),
                 "source_size_bytes": verification.get("size_bytes"),
+                "source_width": verification.get("width"),
+                "source_height": verification.get("height"),
                 "source_content_type": verification.get("content_type"),
                 "source_image_format": verification.get("image_format"),
                 "verification_run_id": verification.get("workflow_run_id"),
