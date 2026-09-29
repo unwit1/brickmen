@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "created": "2026-09-29",
-  "status": "challenge_corpus_v1_exact_urls_pending_byte_verification",
+  "status": "challenge_corpus_v1_byte_verified_pending_sanitization",
   "corpus_id": "body_architecture_challenge_v1",
   "purpose": "Evaluation-only architecture-recognition cohort that broadens official body-system coverage beyond the original Hulk/Venom/Thing corpora without character overlap.",
   "admission_rules": [
@@ -154,22 +154,23 @@
       "character_id": "atlantis_squid_warrior"
     },
     {
-      "record_id": "challenge_centaur_col379",
+      "record_id": "challenge_centaur_hp236",
       "release": {
         "maker": "LEGO",
-        "code": "col379",
-        "year": 2021,
-        "label": "Centaur Warrior, Series 21"
+        "code": "hp236",
+        "year": null,
+        "label": "Centaur"
       },
       "architecture_candidate": "minifig_centaur_hybrid",
       "source_refs": [
-        "bricklink_centaur_col379_inventory"
+        "bricklink_centaur_hp236_inventory"
       ],
       "evidence_summary": [
-        "67638pb02 centaur lower body creates quadruped hybrid component graph"
+        "67638pb01 centaur lower body creates quadruped hybrid component graph",
+        "clean isolated BrickLink front image replaces col379 to avoid alternate-expression inset leakage"
       ],
       "confidence": "catalog_high",
-      "character_id": "centaur_warrior"
+      "character_id": "centaur_hp236"
     }
   ]
 }
