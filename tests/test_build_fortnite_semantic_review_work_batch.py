@@ -201,3 +201,39 @@ def test_invalid_limit_or_mode_is_rejected() -> None:
             pass
         else:
             raise AssertionError(f"expected ValueError for {kwargs}")
+
+
+def test_checked_in_first_batch_matches_builder() -> None:
+    tool = load_tool()
+    root = Path(__file__).resolve().parents[1]
+    queue_path = (
+        root
+        / "knowledge"
+        / "libraries"
+        / "lego-minifigure-customs"
+        / "data"
+        / "bulk-ingestion"
+        / "fortnite-semantic-review-queue-latest.jsonl"
+    )
+    batch_path = (
+        root
+        / "knowledge"
+        / "libraries"
+        / "lego-minifigure-customs"
+        / "data"
+        / "semantic-review-batches"
+        / "fortnite-first-review-batch-0001.json"
+    )
+
+    expected = tool.build(
+        tool.iter_jsonl([queue_path]),
+        mode="first_review",
+        limit=25,
+        offset=0,
+        min_priority_score=6.0,
+        reviewer_id="unassigned",
+        reviewer_type="human",
+    )
+    actual = __import__("json").loads(batch_path.read_text(encoding="utf-8"))
+
+    assert actual == expected
