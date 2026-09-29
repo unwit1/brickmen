@@ -1,14 +1,14 @@
 {
   "schema_version": "0.1",
-  "created_at": "2026-09-29T03:03:55.559142+00:00",
+  "created_at": "2026-09-29T03:21:34.807115+00:00",
   "processor_version": "body-architecture-sanitization-candidate-generator/v1",
-  "workflow_run_id": 36515440243,
-  "workflow_artifact_id": 11011011047,
+  "workflow_run_id": 36516743830,
+  "workflow_artifact_id": 11010858897,
   "metadata_only": true,
   "raw_source_media_persisted": false,
   "candidate_derivative_media_persisted": false,
-  "generated_candidates": 7,
-  "segmentation_or_manual_blockers": 2,
+  "generated_candidates": 15,
+  "segmentation_or_manual_blockers": 8,
   "errors": 0,
   "policy": "Candidate hashes are not benchmark approval. Sanitized pixels must be visually reviewed before model_input_allowed may become true.",
   "records": [
@@ -58,7 +58,7 @@
         472,
         460
       ],
-      "sanitized_pixel_sha256": "1d9ffe287dbbedcb0bd0328774199ddf83f255779a52d62a3b0ecc78f9099a90",
+      "sanitized_pixel_sha256": "1d9ffe287dbbedcb0bd0328774199ddf83f255779a52d62a3b0ecc78f9099a90ff",
       "sanitized_png_sha256": "6b0cb5a2062ed09da369baeb8f964e715b060ad56fbe4e7d50cada242f14c8e5",
       "candidate_status": "generated_pending_visual_review"
     },
@@ -81,6 +81,86 @@
       "sanitized_pixel_sha256": "3881404b58d3c7adb24b939f4d54871e594f35f3e072c5b63ed45a67eaa25a19",
       "sanitized_png_sha256": "ca6f26221d5db4f48e93e50037287a170124874ff32c5c1e236142ce5c5585e3",
       "candidate_status": "generated_pending_visual_review"
+    },
+    {
+      "source_record_id": "red_hulk_g2_gh0303_bnw",
+      "output_dimensions": [
+        416,
+        520
+      ],
+      "sanitized_pixel_sha256": "3b597d9f7a404212db6cf3cf3a2a97e86536038d9305b75d26f8939b1175f86e",
+      "sanitized_png_sha256": "320a02a0d601523eb83fdb748db9a31c4fbab3fced7cbbd78c59d10a0c7833f8",
+      "candidate_status": "generated_pending_visual_review"
+    },
+    {
+      "source_record_id": "red_hulk_bigguy_bnw",
+      "output_dimensions": [
+        303,
+        554
+      ],
+      "sanitized_pixel_sha256": "cac262ea841c923eb8b69085ac6228a4def95be744ea8b6b95bd378c42d1b9b8",
+      "sanitized_png_sha256": "792aa3076c475baf5abf07eadb404369f0fa869e14b952a7105576dc5536ff96",
+      "candidate_status": "generated_pending_visual_review"
+    },
+    {
+      "source_record_id": "venom_alpha_af321_movie",
+      "output_dimensions": [
+        480,
+        421
+      ],
+      "sanitized_pixel_sha256": "7dee200f0e2ced543efd597dc1a7542e314c899736ffaa548253d8a8f421207d",
+      "sanitized_png_sha256": "3fdda1d0ba4bfb7a7ee9f6357478f2476a4fa7b60a80ef1f30fb83a54de465c8",
+      "candidate_status": "generated_pending_visual_review"
+    },
+    {
+      "source_record_id": "thing_alpha_af336_first_steps",
+      "output_dimensions": [
+        472,
+        496
+      ],
+      "sanitized_pixel_sha256": "ace389d0fd774e02af3b8d580a043ec2cadd7cf03c6677f2adfb92daf70aa096",
+      "sanitized_png_sha256": "1dd7f9d17e7463b660d13e85abd575aaf0b8712d0057c085ff77849f53911a16",
+      "candidate_status": "generated_pending_visual_review"
+    },
+    {
+      "source_record_id": "thing_kdl_k2302_first_steps",
+      "output_dimensions": [
+        368,
+        624
+      ],
+      "sanitized_pixel_sha256": "53d7050bd82462946420dc8f3bd4298c65c347d4ebba4badb2a46534e31f4436",
+      "sanitized_png_sha256": "e76cdccdf9f5b0a71f6e87fe9c447b3428c2c4bce1fe0bfb7a8ba46ea2289b99",
+      "candidate_status": "generated_pending_visual_review"
+    },
+    {
+      "source_record_id": "thing_tp_tp178_first_steps",
+      "output_dimensions": [
+        800,
+        704
+      ],
+      "sanitized_pixel_sha256": "67a8154ff12f5ddc173d17fbf2cf7e1b5b27b5260002dc97b7d24aa0b962f821",
+      "sanitized_png_sha256": "e5d599348b14da650cb9627e73038d81d8dbee9fd66f0bd1cf14274681d7b0a6",
+      "candidate_status": "generated_pending_visual_review"
+    },
+    {
+      "source_record_id": "thing_g2_gh0348",
+      "output_dimensions": [
+        416,
+        520
+      ],
+      "sanitized_pixel_sha256": "b2248114de137c96fb8db46bd5c1a41a20bf1880ef60ec1b603a1abf64f32775",
+      "sanitized_png_sha256": "087e68e5187ef8734ff0cd6f4e0e7d09dc203239566942656e2d6e457226c6dd",
+      "candidate_status": "generated_pending_visual_review"
+    },
+    {
+      "source_record_id": "thing_g2_gh0440_bigfig",
+      "output_dimensions": [
+        544,
+        528
+      ],
+      "sanitized_pixel_sha256": "4b8479ceafd88d1e9200b8a0686fc56c1b03c3d539d12b25fbf539e23ea6db81",
+      "sanitized_png_sha256": "f6787af5ec9978c4c981bee0241f412a9cbbd075e685b31539bde97a544c3795",
+      "candidate_status": "generated_pending_visual_review"
     }
   ],
   "blockers": [
@@ -93,6 +173,36 @@
       "source_record_id": "venom_xinh_xh1829_movie_bigfig",
       "status": "requires_segmentation",
       "rationale": "The head inset overlaps the primary figure's upper-right silhouette; use primary-figure segmentation rather than a destructive crop."
+    },
+    {
+      "source_record_id": "hulk_alpha_af344_avengers",
+      "status": "requires_segmentation",
+      "rationale": "Head/rear/scale-comparison panels sit close to the primary silhouette; prefer primary-figure segmentation over a crop that risks clipping the arms."
+    },
+    {
+      "source_record_id": "hulk_alpha_af345_comics",
+      "status": "requires_segmentation",
+      "rationale": "Head/rear/scale-comparison panels sit close to the primary silhouette; prefer primary-figure segmentation over a crop that risks clipping the arms."
+    },
+    {
+      "source_record_id": "red_hulk_alpha_af364_bnw",
+      "status": "requires_segmentation",
+      "rationale": "AF364 card includes head, rear-view and scale-comparison elements adjacent to the complete front figure; segment the primary figure rather than risk removing hand/arm geometry."
+    },
+    {
+      "source_record_id": "venom_alpha_af325",
+      "status": "requires_segmentation",
+      "rationale": "Multi-panel card interleaves the primary front figure with head/accessory inset, alternate pose and rear view; segment the intended front figure."
+    },
+    {
+      "source_record_id": "thing_tp_tp349_first_steps_bigfig",
+      "status": "requires_segmentation",
+      "rationale": "TP348 and TP349 figures plus auxiliary body/rear panels share the card; segment the TP349 front figure to avoid cross-instance leakage."
+    },
+    {
+      "source_record_id": "thing_shengyuan_sy288_bigfig",
+      "status": "requires_segmentation",
+      "rationale": "The branded base and partial secondary figure touch the useful figure region closely enough that segmentation is safer than a destructive crop."
     }
   ]
 }
