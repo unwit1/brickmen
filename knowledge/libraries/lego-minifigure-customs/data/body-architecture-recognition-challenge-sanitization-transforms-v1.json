@@ -1,0 +1,45 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-29",
+  "id": "body-architecture-challenge-sanitization-transforms-v1",
+  "coordinate_system": {
+    "type": "normalized_current_image",
+    "bounds": "[x0,y0,x1,y1] in [0,1]; operations apply sequentially to the current image",
+    "rounding": "x0/y0=floor; x1/y1=ceil"
+  },
+  "output": {
+    "format": "png",
+    "metadata_only_by_default": true,
+    "raw_or_derivative_media_committed": false
+  },
+  "policy": [
+    "Transforms are pinned to the verified source SHA-256.",
+    "Generated derivatives are candidates until exact-pixel visual approval.",
+    "Challenge cases remain evaluation-only.",
+    "Do not crop away architecture-defining centaur body geometry merely to remove the inset."
+  ],
+  "transforms": [
+    {
+      "source_record_id": "challenge_centaur_col379",
+      "source_file_sha256": "9c6ab60d4b94f6f8544625eac122865b248bd05661cf94a93fd7e7e0085f73c5",
+      "source_dimensions": [
+        300,
+        400
+      ],
+      "status": "candidate_transform",
+      "operations": [
+        {
+          "op": "mask_rect_norm",
+          "bounds": [
+            0.64,
+            0,
+            1,
+            0.34
+          ],
+          "fill_mode": "border_median"
+        }
+      ],
+      "rationale": "Remove the alternate-expression head inset in the upper-right while preserving the complete front centaur body and architecture."
+    }
+  ]
+}
