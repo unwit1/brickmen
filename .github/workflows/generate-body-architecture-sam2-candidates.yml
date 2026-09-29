@@ -58,6 +58,7 @@ jobs:
             --model-config configs/sam2.1/sam2.1_hiera_t.yaml \
             --device cpu \
             --output-dir .agent-local/body-architecture-sam2-derivatives \
+            --write-mask-variants-dir .agent-local/body-architecture-sam2-variants \
             --report .agent-local/body-architecture-sam2-report.json \
             --allow-host static.herobloks.com \
             --allow-host kongbricks.com \
@@ -73,5 +74,6 @@ jobs:
           path: |
             .agent-local/body-architecture-sam2-report.json
             .agent-local/body-architecture-sam2-derivatives
+            .agent-local/body-architecture-sam2-variants
           if-no-files-found: warn
           retention-days: 3
