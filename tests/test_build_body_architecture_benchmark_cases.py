@@ -33,6 +33,8 @@ def test_populated_case_manifest_baseline() -> None:
     assert summary["open_set_unknown_cases"] == 9
     assert summary["core_scoring_cases"] == 11
     assert summary["provisional_scoring_cases"] == 7
+    assert summary["cases_with_reference_locators"] == 27
+    assert summary["indirect_only_locator_cases"] == 1
     assert summary["split_counts"] == {
         "development": 11,
         "validation": 6,
@@ -117,3 +119,22 @@ def test_checked_in_manifest_matches_generator() -> None:
     actual = __import__("json").loads(manifest_path.read_text(encoding="utf-8"))
 
     assert actual == expected
+
+
+def test_every_case_has_resolved_reference_locator() -> None:
+    tool = load_tool()
+    result = tool.build()
+
+    indirect = []
+    for case in result["cases"]:
+        locators = case["input_asset"]["reference_locators"]
+        assert locators
+        assert case["provenance"]["source_refs"]
+        for locator in locators:
+            assert locator["source_id"]
+            assert locator["url"]
+            assert locator["authority"]
+            if locator["locator_quality"] == "indirect_identity_graph":
+                indirect.append(case["source_record_id"])
+
+    assert indirect == ["hulk_g2_gh0304_avengers"]
