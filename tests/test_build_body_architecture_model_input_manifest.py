@@ -220,6 +220,11 @@ def test_canonical_review_corpus_promotes_only_visually_approved_candidates() ->
         row["blocked_reason"] == "requires_segmentation_or_manual_cleanup"
         for row in result["entries"]
     ) == 10
+    assert {
+        row["blocked_reason"]
+        for row in result["entries"]
+        if not row["model_input_allowed"]
+    } == {"requires_segmentation_or_manual_cleanup"}
 
 
 def test_checked_in_model_input_manifest_matches_builder() -> None:
