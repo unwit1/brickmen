@@ -1,0 +1,42 @@
+name: Verify Body Architecture Challenge V3 Media
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/verify-body-architecture-challenge-v3-media.yml'
+      - 'tools/knowledge/verify_body_architecture_reference_media.py'
+      - 'knowledge/libraries/lego-minifigure-customs/data/body-architecture-recognition-challenge-cases-v3.json'
+
+permissions:
+  contents: read
+
+jobs:
+  verify-reference-media:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out Brickmen
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify exact challenge v3 image URLs
+        run: |
+          python tools/knowledge/verify_body_architecture_reference_media.py \
+            --benchmark knowledge/libraries/lego-minifigure-customs/data/body-architecture-recognition-challenge-cases-v3.json \
+            --report .agent-local/body-architecture-challenge-v3-media-verification.json \
+            --allow-host img.bricklink.com \
+            --timeout-seconds 30 \
+            --retries 2 \
+            --delay-seconds 0.20
+      - name: Upload metadata-only verification report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: body-architecture-challenge-v3-media-verification
+          path: .agent-local/body-architecture-challenge-v3-media-verification.json
+          if-no-files-found: warn
+          retention-days: 7
