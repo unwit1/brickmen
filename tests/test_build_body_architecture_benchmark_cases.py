@@ -35,7 +35,7 @@ def test_populated_case_manifest_baseline() -> None:
     assert summary["provisional_scoring_cases"] == 7
     assert summary["cases_with_reference_locators"] == 27
     assert summary["indirect_only_locator_cases"] == 0
-    assert summary["cases_with_exact_image_urls"] == 19
+    assert summary["cases_with_exact_image_urls"] == 20
     assert summary["split_counts"] == {
         "development": 11,
         "validation": 6,
@@ -167,6 +167,7 @@ def test_resolved_exact_image_urls_are_source_backed() -> None:
         "venom_alpha_af325",
         "venom_alpha_af328_ancient",
         "venom_xinh_xh1829_movie_bigfig",
+        "thing_lego_sh1051_first_steps",
         "thing_alpha_af336_first_steps",
         "thing_kdl_k2302_first_steps",
         "thing_tp_tp178_first_steps",
