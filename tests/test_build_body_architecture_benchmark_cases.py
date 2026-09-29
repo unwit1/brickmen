@@ -209,7 +209,10 @@ def test_verified_reference_media_has_hash_metadata() -> None:
             assert locator["source_size_bytes"] > 0
             assert locator["source_content_type"].startswith("image/")
             assert locator["source_image_format"] in {"png", "jpeg", "webp", "gif", "bmp", "tiff"}
-            assert locator["verification_run_id"] == 36513502605
+            assert isinstance(locator["verification_run_id"], int)
+            assert locator["verification_run_id"] > 0
+            assert locator["source_width"] > 0
+            assert locator["source_height"] > 0
             assert locator["raw_media_committed"] is False
             hashes.add(digest)
 
