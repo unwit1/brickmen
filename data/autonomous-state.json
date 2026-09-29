@@ -6,7 +6,7 @@
   "updated_date": "2026-09-28",
   "base_commit_before_bootstrap": "bda2cac8ea8b68bb9e3e5b4d0cf380a9c6ee3ae6",
   "current_objective": "materialize_and_expand_evidence_training_and_evaluation_assets",
-  "current_workstream": "benchmark_reference_resolution_and_p0_corpus_expansion",
+  "current_workstream": "semantic_supervision_and_reference_resolution",
   "current_frontier": [
     "body_architecture_benchmark_reference_resolution",
     "source_appearance_to_minifigure_semantic_translation",
@@ -25,35 +25,46 @@
     },
     {
       "id": "architecture_benchmark_exact_image_resolution",
-      "description": "The 26 ready benchmark cases have provenance page locators but still need exact reviewed image URLs and materialized hashes.",
+      "description": "Four benchmark cases have verified exact BrickLink image URLs; 22 still require exact image URL resolution.",
       "status": "open"
+    },
+    {
+      "id": "architecture_benchmark_materialized_hashes",
+      "description": "The four resolved BrickLink images still need external byte fetch/checksum/materialization in a runtime that can download them.",
+      "status": "blocked_runtime_external_image_fetch"
     },
     {
       "id": "g2_gh0304_direct_locator",
       "description": "G (2) GH0304 Hulk (Avengers) is confirmed in HeroBloks identity/version graphs but no direct release page has been verified.",
       "status": "blocked_external_source_resolution"
+    },
+    {
+      "id": "fortnite_semantic_review_labels",
+      "description": "The 744 high-priority pairs are batched and reviewable, but canonical semantic supervision still requires submitted second reviews and explicit adjudication.",
+      "status": "open"
+    },
+    {
+      "id": "physical_multiview_ground_truth",
+      "description": "Front catalog coverage is broad, but exact-release rear/side/multi-view evidence remains limited and must not be synthesized.",
+      "status": "blocked_on_evidence_acquisition"
     }
   ],
   "highest_value_tasks": [
     {
       "priority": "P0",
-      "task": "Resolve exact image URLs and materialize/bind visual evidence for the 26 ready body-architecture benchmark cases."
+      "task": "Resolve exact image URLs for the remaining 22 body-architecture benchmark cases with source-specific reviewed methods."
     },
     {
       "priority": "P0",
-      "task": "Resolve a verified direct release locator for G (2) GH0304 or preserve it as explicitly blocked."
+      "task": "Materialize and checksum the four already-resolved BrickLink benchmark images when external image byte access is available."
     },
     {
       "priority": "P0",
-      "task": "Add canonical-view, low-resolution, occlusion, and detached-component benchmark variants after materialization without breaking held-out groups."
+      "task": "Execute Fortnite first-review/second-review/adjudication batches using the deterministic 30-batch plan and promote only explicit adjudicated records."
     },
     {
       "priority": "P0",
-      "task": "Continue high-priority Fortnite source-appearance to LEGO semantic translation review with uncertainty-preserving labels."
-    },
-    {
-      "priority": "P0",
-      "task": "Expand exact-release multi-view ReferenceSets and cross-surface correspondence."
+      "task": "Expand exact-release multi-view ReferenceSets and cross-surface correspondence without inventing hidden views."
     },
     {
       "priority": "P1",
@@ -71,16 +82,26 @@
   "blocked_tasks": [
     {
       "id": "g2_gh0304_direct_locator",
-      "reason": "Only indirect HeroBloks identity/version graph evidence is currently verified; do not fabricate a direct release URL.",
-      "fallback": "Continue the other 26 benchmark cases and independent P0 corpus work."
+      "reason": "Only indirect HeroBloks identity/version graph evidence is verified; do not fabricate a direct release URL.",
+      "fallback": "Continue other benchmark references and independent corpus work."
+    },
+    {
+      "id": "architecture_benchmark_materialized_hashes",
+      "reason": "Current chat/runtime cannot directly fetch external image bytes from the verified BrickLink image URLs.",
+      "fallback": "Keep the exact URLs marked ready-for-materialization and continue source resolution/corpus work."
+    },
+    {
+      "id": "physical_multiview_ground_truth",
+      "reason": "Exact rear/side physical evidence requires additional source access, credentials, or controlled capture.",
+      "fallback": "Expand structured correspondence and other independent evaluation assets without synthesizing missing views."
     }
   ],
   "pending_validation": [],
   "continuation": {
-    "instruction": "Resume from the body-architecture benchmark case manifest and reference-acquisition queue. First advance exact-image resolution/materialization for the 26 ready cases using supported/reviewed source-specific paths. If externally blocked, continue the ranked Fortnite semantic translation queue or exact-release multi-view correspondence. Preserve leakage-safe split boundaries, source provenance, uncertainty, and repository drift tests; commit useful increments and continue without waiting."
+    "instruction": "Resume from the architecture reference acquisition queue and Fortnite semantic batch plan. Try a materially different supported/reviewed exact-image resolution method for remaining benchmark pages. If blocked, continue another independent corpus/evaluation task. For Fortnite, use the deterministic 30-batch plan and local review UI; preserve measurement signals as prioritization only and promote only explicit adjudicated reviews. Keep autonomous state current and commit useful increments."
   },
-  "last_meaningful_commit": "2571c8a6358b5f7c6fa82b3f1e547ad9c50306bd",
-  "latest_validated_test_commit": "e0ad93922f7bbb81646a6354e1f6254a95cc8ea4",
+  "last_meaningful_commit": "51001f45ed1cbddf624c5b7dc774e4ab776a2bce",
+  "latest_validated_test_commit": "393c7aa9de572a27cb60df4f5ef2f8913c4747c1",
   "completed_batches": [
     {
       "id": "body_architecture_benchmark_population_v0",
@@ -114,6 +135,53 @@
         "source_integrity_tests": true,
         "acquisition_queue_drift_guard": true,
         "latest_ci_conclusion": "success"
+      }
+    },
+    {
+      "id": "body_architecture_reference_exact_images_v0",
+      "status": "partial",
+      "details": {
+        "total_cases": 27,
+        "exact_image_urls_resolved": 4,
+        "ready_for_exact_image_resolution": 22,
+        "blocked_direct_locator": 1,
+        "resolved_records": [
+          "SH0037",
+          "SH0252",
+          "SH0371",
+          "SH0542"
+        ]
+      }
+    },
+    {
+      "id": "fortnite_semantic_review_pipeline_v1",
+      "status": "validated",
+      "details": {
+        "ranked_pairs": 2494,
+        "high_priority_pairs": 744,
+        "review_schema": true,
+        "validator": true,
+        "adjudication_queue": true,
+        "adjudicated_only_promotion": true,
+        "local_review_ui": true,
+        "end_to_end_ci": "success"
+      }
+    },
+    {
+      "id": "fortnite_semantic_review_batch_plan_v1",
+      "status": "validated",
+      "details": {
+        "eligible_records": 744,
+        "batch_size": 25,
+        "batch_count": 30,
+        "final_batch_records": 19,
+        "materialized_batches": 1,
+        "first_batch_id": "fortnite-review-first_review-056fd3e0773faee9",
+        "first_batch_priority_range": [
+          14,
+          11.5
+        ],
+        "on_demand_workflow": true
       }
     }
   ]
