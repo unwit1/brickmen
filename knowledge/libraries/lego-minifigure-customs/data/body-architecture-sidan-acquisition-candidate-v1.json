@@ -1,0 +1,65 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-29",
+  "status": "exact_url_pending_byte_verification",
+  "benchmark_id": "body_architecture_sidan_acquisition_candidate_v1",
+  "purpose": "Metadata-only acquisition gate for the Si-Dan full poseable ball-joint custom architecture. The exact 500x500 zoom image URL was discovered directly in the live product-page HTML and is not a model input until byte verification and explicit visual sanitization review.",
+  "cases": [
+    {
+      "case_id": "archcandidate::sidan_full_balljoint_poseable",
+      "source_record_id": "custom_sidan_full_balljoint_poseable_sidan",
+      "split": "custom_challenge_test",
+      "scoring_track": "custom",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "custom_sidan_full_balljoint_poseable",
+        "unresolved_candidate": null
+      },
+      "input_asset": {
+        "status": "exact_url_pending_byte_verification",
+        "required_view": "full_figure_architecture",
+        "materialized_asset_id": null,
+        "reference_locators": [
+          {
+            "source_id": "minifigworld_sidan_poseable_product_image_1_zoom",
+            "url": "https://minifigworld.com/si-dan-toys-poseable-minifig/",
+            "authority": "specialist_reseller_product_page",
+            "exact_image_url": "https://cdn1.bigcommerce.com/server3000/99a43/products/1874/images/14575/A0103-02__59883.1768303145.500.500.jpg?c=2",
+            "image_resolution_status": "exact_image_url_discovered_in_product_html_pending_byte_verification",
+            "source_file_sha256": null,
+            "source_size_bytes": null,
+            "source_width": null,
+            "source_height": null,
+            "source_content_type": null,
+            "source_image_format": null,
+            "verification_run_id": null,
+            "verification_artifact_id": null
+          }
+        ]
+      },
+      "leakage_guard": {
+        "allow_maker_as_model_input": false,
+        "allow_product_name_as_model_input": false,
+        "allow_source_labels_as_model_input": false,
+        "note": "Product identity and compatibility claims are audit metadata only. The exact image must be byte-verified and visually reviewed for text, logos, insets, secondary figures, or other shortcut cues before model input."
+      },
+      "audit_metadata": {
+        "maker": "Si-Dan Toys",
+        "product_label": "Poseable Minifig",
+        "listed_height_mm": 43,
+        "evidence_summary": [
+          "Dedicated product page states the figure uses ball joints on arms, legs, feet and neck.",
+          "Dedicated product page lists overall height as 43 mm.",
+          "Product page states LEGO-style heads fit with reduced movement, while LEGO-style legs and Si-Dan legs are not torso-cross-compatible.",
+          "The 500x500 zoom URL is directly embedded as ZoomImageURLs[0] and the primary ProductThumb href in the live product HTML."
+        ]
+      },
+      "provenance": {
+        "source_page_url": "https://minifigworld.com/si-dan-toys-poseable-minifig/",
+        "discovery_artifact_run_id": 36633903491,
+        "discovery_artifact_id": 11063397370,
+        "discovery_processor_version": "product-image-candidate-extractor/v1"
+      }
+    }
+  ]
+}
