@@ -29,6 +29,7 @@ jobs:
             --benchmark knowledge/libraries/lego-minifigure-customs/data/body-architecture-custom-acquisition-candidates-v1.json \
             --report .agent-local/body-architecture-custom-media-verification.json \
             --allow-host titanicbricks.com \
+            --allow-host cdn1.bigcommerce.com \
             --timeout-seconds 30 \
             --retries 2 \
             --delay-seconds 0.20
