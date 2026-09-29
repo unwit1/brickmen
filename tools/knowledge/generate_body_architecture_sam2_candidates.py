@@ -201,6 +201,7 @@ def generate(
     timeout_seconds: float,
     max_bytes: int,
     output_dir: Path | None = None,
+    variant_output_dir: Path | None = None,
     provider_revision: str | None = None,
     checkpoint_sha256: str | None = None,
     model_config: str | None = None,
@@ -256,6 +257,63 @@ def generate(
         mask, score, selected_index = select_best_mask(masks, scores)
         sanitized, crop_pixels = render_masked_candidate(rgb, mask)
 
+        mask_variants: list[dict[str, Any]] = []
+        if variant_output_dir is not None:
+            variant_output_dir.mkdir(parents=True, exist_ok=True)
+            mask_array = np.asarray(masks)
+            score_array = np.asarray(scores).reshape(-1)
+            for index in range(len(score_array)):
+                variant_mask = mask_array[index].astype(bool)
+                if not variant_mask.any():
+                    mask_variants.append(
+                        {
+                            "mask_index": index,
+                            "predicted_mask_score": float(score_array[index]),
+                            "error": "empty_mask",
+                            "selected_by_sam_score": index == selected_index,
+                        }
+                    )
+                    continue
+                variant_image, variant_crop = render_masked_candidate(
+                    rgb,
+                    variant_mask,
+                )
+                variant_png = _png_bytes(variant_image)
+                variant_pixel_sha = _pixel_hash(variant_image)
+                variant_png_sha = hashlib.sha256(variant_png).hexdigest()
+                variant_mask_bytes = np.packbits(
+                    variant_mask.reshape(-1).astype(np.uint8)
+                ).tobytes()
+                variant_mask_sha = hashlib.sha256(
+                    variant_mask_bytes
+                ).hexdigest()
+                variant_path = (
+                    variant_output_dir
+                    / (
+                        f"{queue_row['source_record_id']}--m{index}--"
+                        f"{variant_pixel_sha[:16]}.png"
+                    )
+                )
+                variant_path.write_bytes(variant_png)
+                mask_variants.append(
+                    {
+                        "mask_index": index,
+                        "predicted_mask_score": float(score_array[index]),
+                        "mask_area_fraction": round(
+                            float(variant_mask.mean()),
+                            8,
+                        ),
+                        "mask_sha256": variant_mask_sha,
+                        "crop_pixels": variant_crop,
+                        "output_dimensions": list(variant_image.size),
+                        "sanitized_pixel_sha256": variant_pixel_sha,
+                        "sanitized_png_sha256": variant_png_sha,
+                        "sanitized_png_size_bytes": len(variant_png),
+                        "written_derivative_path": str(variant_path),
+                        "selected_by_sam_score": index == selected_index,
+                    }
+                )
+
     png = _png_bytes(sanitized)
     pixel_sha = _pixel_hash(sanitized)
     png_sha = hashlib.sha256(png).hexdigest()
@@ -292,6 +350,7 @@ def generate(
         "negative_points_norm": prompt.get("negative_points_norm") or [],
         "selected_mask_index": selected_index,
         "predicted_mask_score": score,
+        "mask_variants": mask_variants,
         "mask_area_fraction": round(float(mask.mean()), 8),
         "mask_sha256": mask_sha,
         "crop_pixels": crop_pixels,
@@ -319,6 +378,7 @@ def main() -> None:
     )
     parser.add_argument("--device", default="cuda")
     parser.add_argument("--output-dir", type=Path, required=True)
+    parser.add_argument("--write-mask-variants-dir", type=Path)
     parser.add_argument("--report", type=Path, required=True)
     parser.add_argument("--allow-host", action="append", default=[])
     parser.add_argument("--timeout-seconds", type=float, default=30.0)
@@ -372,6 +432,7 @@ def main() -> None:
                     timeout_seconds=args.timeout_seconds,
                     max_bytes=args.max_bytes,
                     output_dir=args.output_dir,
+                    variant_output_dir=args.write_mask_variants_dir,
                     provider_revision=provider_revision,
                     checkpoint_sha256=checkpoint_sha256,
                     model_config=args.model_config,
