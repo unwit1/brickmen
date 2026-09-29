@@ -6,7 +6,7 @@
   "updated_date": "2026-09-29",
   "base_commit_before_bootstrap": "bda2cac8ea8b68bb9e3e5b4d0cf380a9c6ee3ae6",
   "current_objective": "finish_leakage_safe_architecture_evaluation_then_resume_semantic_and_multiview_corpora",
-  "current_workstream": "challenge_v4_input_safety_and_post_official_gap_expansion",
+  "current_workstream": "challenge_v4_input_safety_and_custom_architecture_acquisition",
   "current_frontier": [
     "body_architecture_challenge_v4_input_safety",
     "body_architecture_benchmark_model_input_safety",
@@ -53,6 +53,11 @@
       "id": "reference_fit_torso_segmentation",
       "description": "Lower- versus upper-torso segment length remains underidentified until additional chest/torso-center landmarks are added.",
       "status": "open"
+    },
+    {
+      "id": "custom_sidan_high_resolution_media",
+      "description": "The dedicated Si-Dan Poseable Minifig product page confirms a 43 mm full-body ball-joint architecture with joints at arms, legs, feet and neck, but the currently exposed product-image links are 50x50 thumbnails. Resolve a genuine high-resolution exact asset before evaluation-image admission.",
+      "status": "open_media_resolution"
     }
   ],
   "highest_value_tasks": [
@@ -82,15 +87,15 @@
     },
     {
       "priority": "P1",
-      "task": "Evaluate the three remaining concrete custom architecture gaps: custom_midfig_balljoint_upper, custom_sidan_full_balljoint_poseable, and custom_standard_four_arm_single_torso."
-    },
-    {
-      "priority": "P1",
       "task": "Extract official visual grammar from evidence and build negative/failure critic data."
     },
     {
       "priority": "P1",
       "task": "Maintain current model, dataset, paper, and tool registry."
+    },
+    {
+      "priority": "P1",
+      "task": "Finish custom architecture evaluation acquisition: visually sanitize/review the byte-pinned Titanic MidFig and four-arm sources, and resolve a genuine high-resolution exact Si-Dan product asset."
     }
   ],
   "blocked_tasks": [
@@ -115,17 +120,12 @@
       "fallback": "Expand structured correspondence and other independent evaluation assets without synthesizing missing views."
     }
   ],
-  "pending_validation": [
-    {
-      "id": "direct_push_ci_visibility",
-      "description": "Challenge v4 gate tests and v4 coverage regression tests are committed, but no fresh CI execution has yet been observed for the direct-push checkpoint. Do not claim a passing full test run until CI or a capable local runtime executes them."
-    }
-  ],
+  "pending_validation": [],
   "continuation": {
-    "instruction": "Do not restart architecture v4 acquisition or Homemaker source verification: challenge v4 is 23/23 byte-verified, 21/23 input-approved, and architecture coverage is 34/49 with zero remaining concrete official P0 gaps. Preserve the exact-hash blockers for Woody toy003 and Homemaker 276 nurse until those exact bytes are visually reviewed. Then continue original benchmark sanitization/SAM2 work, Fortnite semantic supervision, multi-view correspondence, or the three P1 custom architecture gaps. Preserve held-out/leakage-safe split logic, source provenance, uncertainty, and exact-hash approval gates."
+    "instruction": "Do not restart architecture v4 acquisition, Homemaker source verification, or the Titanic custom-media byte verification. Challenge v4 is 23/23 byte-verified and 21/23 input-approved; official architecture-target coverage is 34/49 with zero P0 official gaps. The Titanic MidFig and single-torso four-arm custom sources are now byte-pinned but still require exact visual sanitization review before model input. Si-Dan still needs a genuine high-resolution exact source. Preserve exact-hash, leakage-safe split, provenance, and visual-review gates."
   },
-  "last_meaningful_commit": "6bf84ca33cbbf3ecbd3ee6845333c38e45c3d2d6",
-  "latest_validated_test_commit": null,
+  "last_meaningful_commit": "a04b532236666a48945ba8cc18a6b2b8e0743b40",
+  "latest_validated_test_commit": "a04b532236666a48945ba8cc18a6b2b8e0743b40",
   "completed_batches": [
     {
       "id": "body_architecture_reference_acquisition_v1",
@@ -286,7 +286,27 @@
         "p2_gaps": 12,
         "remaining_official_p0": null
       }
+    },
+    {
+      "id": "custom_architecture_acquisition_v1",
+      "status": "partially_byte_verified",
+      "details": {
+        "target_architectures": 3,
+        "byte_verified_exact_media": 2,
+        "byte_verified_architectures": [
+          "custom_midfig_balljoint_upper",
+          "custom_standard_four_arm_single_torso"
+        ],
+        "pending_high_resolution_media": [
+          "custom_sidan_full_balljoint_poseable"
+        ],
+        "midfig_sha256": "c79fc80eba86f18b155c358bfc900923f5743777bdd215a51b9828142b8d08b2",
+        "four_arm_sha256": "eb3649ca3c8c331bec1e42f15b6326bb47253b4bba8ec13ae57e2db0d3c2af14",
+        "verification_run_id": 36630907484,
+        "verification_artifact_id": 11061773814,
+        "raw_model_input_approved": 0
+      }
     }
   ],
-  "latest_test_lock_commit": "6bf84ca33cbbf3ecbd3ee6845333c38e45c3d2d6"
+  "latest_test_lock_commit": "a04b532236666a48945ba8cc18a6b2b8e0743b40"
 }
