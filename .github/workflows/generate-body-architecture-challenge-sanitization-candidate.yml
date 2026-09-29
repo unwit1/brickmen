@@ -29,6 +29,31 @@ jobs:
       - name: Install image dependency
         run: python -m pip install --disable-pip-version-check pillow
 
+      - name: Save verified source image for transient visual review
+        run: |
+          mkdir -p .agent-local/source
+          python - <<'PY'
+          import hashlib
+          import json
+          import urllib.request
+          from pathlib import Path
+
+          queue = json.loads(Path("knowledge/libraries/lego-minifigure-customs/data/body-architecture-recognition-challenge-sanitization-queue-v1.json").read_text())
+          row = next(x for x in queue["queue"] if x["source_record_id"] == "challenge_centaur_col379")
+          source = row["source"]
+          request = urllib.request.Request(
+              source["exact_image_url"],
+              headers={"User-Agent": "BrickmenChallengeReview/1.0", "Accept": "image/*"},
+          )
+          with urllib.request.urlopen(request, timeout=30) as response:
+              data = response.read(10 * 1024 * 1024)
+          observed = hashlib.sha256(data).hexdigest()
+          if observed != source["source_file_sha256"]:
+              raise SystemExit(f"source hash mismatch: {observed}")
+          Path(".agent-local/source/challenge_centaur_col379.png").write_bytes(data)
+          print(f"verified source {observed}")
+          PY
+
       - name: Generate hash-pinned challenge derivative
         run: |
           python tools/knowledge/generate_body_architecture_sanitization_candidates.py \
@@ -46,6 +71,7 @@ jobs:
           name: body-architecture-challenge-sanitization-review
           path: |
             .agent-local/challenge-sanitization-candidate-report.json
+            .agent-local/source
             .agent-local/derivatives
           if-no-files-found: error
           retention-days: 7
