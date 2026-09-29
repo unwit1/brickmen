@@ -12,6 +12,7 @@ import hashlib
 import io
 import json
 import sys
+import subprocess
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -35,6 +36,25 @@ DEFAULT_PROMPTS = DATA / "body-architecture-benchmark-segmentation-prompts.json"
 
 def now_iso() -> str:
     return datetime.now(timezone.utc).isoformat()
+
+
+def file_sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def git_revision(repo: Path) -> str | None:
+    try:
+        return subprocess.check_output(
+            ["git", "-C", str(repo.resolve()), "rev-parse", "HEAD"],
+            text=True,
+            stderr=subprocess.DEVNULL,
+        ).strip() or None
+    except (OSError, subprocess.CalledProcessError):
+        return None
 
 
 def _norm_xy(point: list[float], width: int, height: int) -> list[float]:
@@ -181,6 +201,10 @@ def generate(
     timeout_seconds: float,
     max_bytes: int,
     output_dir: Path | None = None,
+    provider_revision: str | None = None,
+    checkpoint_sha256: str | None = None,
+    model_config: str | None = None,
+    device: str | None = None,
 ) -> dict[str, Any]:
     validate_prompt(prompt, queue_row)
     source = queue_row["source"]
@@ -258,6 +282,10 @@ def generate(
         "source_dimensions": prompt["source_dimensions"],
         "provider_id": "sam2",
         "provider_api": "SAM2ImagePredictor",
+        "provider_revision": provider_revision,
+        "checkpoint_sha256": checkpoint_sha256,
+        "model_config": model_config,
+        "device": device,
         "prompt_status": prompt.get("status"),
         "box_norm": prompt["box_norm"],
         "positive_points_norm": prompt.get("positive_points_norm") or [],
@@ -311,6 +339,9 @@ def main() -> None:
         row["source_record_id"]: row for row in queue["queue"]
     }
 
+    checkpoint_sha256 = file_sha256(args.checkpoint)
+    provider_revision = git_revision(args.sam2_repo)
+
     predictor = load_sam2_predictor(
         args.sam2_repo,
         args.checkpoint,
@@ -341,6 +372,10 @@ def main() -> None:
                     timeout_seconds=args.timeout_seconds,
                     max_bytes=args.max_bytes,
                     output_dir=args.output_dir,
+                    provider_revision=provider_revision,
+                    checkpoint_sha256=checkpoint_sha256,
+                    model_config=args.model_config,
+                    device=args.device,
                 )
             )
         except Exception as exc:
@@ -356,8 +391,10 @@ def main() -> None:
         "created_at": now_iso(),
         "processor_version": VERSION,
         "provider_id": "sam2",
+        "provider_revision": provider_revision,
         "model_config": args.model_config,
         "checkpoint": str(args.checkpoint),
+        "checkpoint_sha256": checkpoint_sha256,
         "device": args.device,
         "generated_candidates": len(records),
         "errors": len(errors),
