@@ -1,6 +1,6 @@
 {
   "schema_version": "0.1",
-  "observed_at": "2026-09-28",
+  "observed_at": "2026-09-29",
   "purpose": "Discovery/provenance sources supporting the initial non-standard FigureArchitecture registry. Sources establish catalog/size/component evidence; physical measurements remain authoritative for manufacturing-critical geometry.",
   "sources": [
     {
@@ -1244,6 +1244,27 @@
           "height": 1000
         }
       }
+    },
+    {
+      "source_id": "bricklink_hagrid_hp061_legacy_giant",
+      "url": "https://www.bricklink.com/catalogItemInv.asp?M=hp061",
+      "authority": "structured_catalog",
+      "evidence": [
+        "hp061 Rubeus Hagrid uses 40250cx2 Body Giant assembly",
+        "separate standard 3626-family minifigure head",
+        "legacy Hagrid giant-body hybrid distinct from modern 37777 Half Giant architecture"
+      ]
+    },
+    {
+      "source_id": "bricklink_hagrid_hp144_half_giant",
+      "url": "https://www.bricklink.com/catalogItemInv.asp?M=hp144",
+      "authority": "structured_catalog",
+      "evidence": [
+        "hp144 Rubeus Hagrid uses 37777pb01 large torso",
+        "37779/37783 large arms with pin and standard-style hands",
+        "41879 short legs plus standard 3626-family head",
+        "modern Half Giant hybrid distinct from legacy 40250 Hagrid body"
+      ]
     }
   ],
   "source_policy": [
