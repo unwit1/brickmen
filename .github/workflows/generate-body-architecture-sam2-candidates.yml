@@ -40,7 +40,8 @@ jobs:
         run: |
           git clone --filter=blob:none https://github.com/facebookresearch/sam2.git .agent-local/sam2
           git -C .agent-local/sam2 checkout "$SAM2_REVISION"
-          SAM2_BUILD_CUDA=0 python -m pip install -e .agent-local/sam2
+          python -m pip install --upgrade setuptools wheel
+          SAM2_BUILD_CUDA=0 python -m pip install --no-build-isolation -e .agent-local/sam2
 
       - name: Download SAM2.1 tiny checkpoint
         run: |
