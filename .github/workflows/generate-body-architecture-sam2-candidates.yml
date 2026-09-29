@@ -57,6 +57,7 @@ jobs:
             --checkpoint .agent-local/checkpoints/sam2.1_hiera_tiny.pt \
             --model-config configs/sam2.1/sam2.1_hiera_t.yaml \
             --device cpu \
+            --torch-threads 1 \
             --output-dir .agent-local/body-architecture-sam2-derivatives \
             --write-mask-variants-dir .agent-local/body-architecture-sam2-variants \
             --report .agent-local/body-architecture-sam2-report.json \
