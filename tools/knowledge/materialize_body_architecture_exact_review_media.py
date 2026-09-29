@@ -21,6 +21,11 @@ import urllib.parse
 import urllib.request
 from pathlib import Path
 from typing import Any
+import sys
+
+SCRIPT_DIR = Path(__file__).resolve().parent
+if str(SCRIPT_DIR) not in sys.path:
+    sys.path.insert(0, str(SCRIPT_DIR))
 
 from verify_body_architecture_reference_media import (
     AllowlistedRedirectHandler,
