@@ -5,10 +5,10 @@
   "policy": "Only visually approved raw references or exact hash-pinned approved sanitized derivatives are model inputs. Provenance/audit identifiers remain metadata and must not be exposed as model features.",
   "summary": {
     "total_cases": 8,
-    "model_input_allowed_cases": 7,
-    "approved_raw_cases": 7,
+    "model_input_allowed_cases": 8,
+    "approved_raw_cases": 8,
     "approved_sanitized_cases": 0,
-    "blocked_cases": 1
+    "blocked_cases": 0
   },
   "entries": [
     {
@@ -26,18 +26,18 @@
       "blocked_reason": null
     },
     {
-      "source_record_id": "challenge_centaur_col379",
-      "case_id": "archchallenge::challenge_centaur_col379",
+      "source_record_id": "challenge_centaur_hp236",
+      "case_id": "archchallenge::challenge_centaur_hp236",
       "split": "challenge_test",
       "scoring_track": "core",
-      "status": "blocked",
-      "model_input_allowed": false,
-      "asset_kind": null,
-      "asset_sha256": null,
-      "source_file_sha256": "9c6ab60d4b94f6f8544625eac122865b248bd05661cf94a93fd7e7e0085f73c5",
+      "status": "approved_raw",
+      "model_input_allowed": true,
+      "asset_kind": "verified_raw_reference",
+      "asset_sha256": "9690938b75bad44108df1b0d15fa85a72ea4f5837b1ba5f774fa6b57acbc3052",
+      "source_file_sha256": "9690938b75bad44108df1b0d15fa85a72ea4f5837b1ba5f774fa6b57acbc3052",
       "expected_local_asset": null,
       "approval_review_ids": [],
-      "blocked_reason": "requires_segmentation_or_manual_cleanup"
+      "blocked_reason": null
     },
     {
       "source_record_id": "challenge_garmadon_njo0078",
