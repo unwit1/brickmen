@@ -60,6 +60,8 @@ def classify_target(
     if (
         status.startswith("official_architecture")
         or status == "official_character_specific_architecture"
+        or status == "adjacent_official_architecture"
+        or status == "historical_reference_architecture"
     ):
         return "official_evidence", "core", False
     if "strong" in status:
