@@ -2,8 +2,9 @@
 """Generate review-required sanitized candidates for segmentation blockers with SAM 2.
 
 This wrapper follows the public SAM2ImagePredictor image API. Prompt seeds are
-hash-pinned to verified source images. The highest SAM score selects a *candidate*
-mask only; generated derivatives remain blocked until explicit visual approval.
+hash-pinned to verified source images. SAM score proposes masks, while an optional
+reviewed mask-index override and deterministic cleanup can select the candidate.
+Generated derivatives remain blocked until explicit visual approval.
 """
 from __future__ import annotations
 
@@ -13,6 +14,7 @@ import io
 import json
 import sys
 import subprocess
+from collections import deque
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -129,6 +131,81 @@ def select_best_mask(masks, scores):
     if not mask.any():
         raise ValueError("selected SAM2 mask is empty")
     return mask, float(scores[index]), index
+
+
+def select_mask(masks, scores, preferred_index=None):
+    import numpy as np
+
+    masks = np.asarray(masks)
+    scores = np.asarray(scores).reshape(-1)
+    if masks.ndim != 3 or len(masks) != len(scores) or len(scores) == 0:
+        raise ValueError("SAM2 returned unexpected mask/score shapes")
+    sam_best_index = int(np.argmax(scores))
+    index = sam_best_index if preferred_index is None else int(preferred_index)
+    if index < 0 or index >= len(scores):
+        raise ValueError(
+            f"preferred mask index {index} is outside [0, {len(scores) - 1}]"
+        )
+    mask = masks[index].astype(bool)
+    if not mask.any():
+        raise ValueError("selected SAM2 mask is empty")
+    return mask, float(scores[index]), index, sam_best_index
+
+
+def keep_largest_connected_component(mask):
+    import numpy as np
+
+    source = np.asarray(mask, dtype=bool)
+    if source.ndim != 2:
+        raise ValueError("connected-component cleanup requires a 2D mask")
+    height, width = source.shape
+    visited = np.zeros_like(source, dtype=bool)
+    best = []
+    component_count = 0
+
+    ys, xs = np.nonzero(source)
+    for start_y, start_x in zip(ys.tolist(), xs.tolist()):
+        if visited[start_y, start_x]:
+            continue
+        component_count += 1
+        pending = deque([(start_y, start_x)])
+        visited[start_y, start_x] = True
+        component = []
+        while pending:
+            y, x = pending.pop()
+            component.append((y, x))
+            for ny, nx in (
+                (y - 1, x),
+                (y + 1, x),
+                (y, x - 1),
+                (y, x + 1),
+            ):
+                if (
+                    0 <= ny < height
+                    and 0 <= nx < width
+                    and source[ny, nx]
+                    and not visited[ny, nx]
+                ):
+                    visited[ny, nx] = True
+                    pending.append((ny, nx))
+        if len(component) > len(best):
+            best = component
+
+    if not best:
+        raise ValueError("cannot clean an empty SAM2 mask")
+    cleaned = np.zeros_like(source, dtype=bool)
+    ys = np.fromiter((y for y, _ in best), dtype=int)
+    xs = np.fromiter((x for _, x in best), dtype=int)
+    cleaned[ys, xs] = True
+    original_area = int(source.sum())
+    kept_area = int(cleaned.sum())
+    return cleaned, {
+        "method": "largest_connected_component_4",
+        "component_count": component_count,
+        "original_area_pixels": original_area,
+        "kept_area_pixels": kept_area,
+        "removed_area_pixels": original_area - kept_area,
+    }
 
 
 def render_masked_candidate(image, mask, margin_fraction: float = 0.035):
@@ -272,7 +349,19 @@ def generate(
                 multimask_output=True,
             )
 
-        mask, score, selected_index = select_best_mask(masks, scores)
+        preferred_index = prompt.get("preferred_mask_index")
+        mask, score, selected_index, sam_best_index = select_mask(
+            masks,
+            scores,
+            preferred_index,
+        )
+        raw_selected_mask = mask.copy()
+        cleanup_mode = prompt.get("mask_cleanup")
+        cleanup_stats = None
+        if cleanup_mode == "largest_connected_component":
+            mask, cleanup_stats = keep_largest_connected_component(mask)
+        elif cleanup_mode not in {None, "none"}:
+            raise ValueError(f"unsupported mask_cleanup: {cleanup_mode}")
         sanitized, crop_pixels = render_masked_candidate(rgb, mask)
 
         mask_variants: list[dict[str, Any]] = []
@@ -367,7 +456,20 @@ def generate(
         "positive_points_norm": prompt.get("positive_points_norm") or [],
         "negative_points_norm": prompt.get("negative_points_norm") or [],
         "selected_mask_index": selected_index,
+        "sam_best_mask_index": sam_best_index,
+        "mask_selection": (
+            "prompt_preferred_mask_index"
+            if preferred_index is not None
+            else "sam_score"
+        ),
         "predicted_mask_score": score,
+        "mask_cleanup": cleanup_mode or "none",
+        "mask_cleanup_stats": cleanup_stats,
+        "raw_selected_mask_sha256": hashlib.sha256(
+            np.packbits(
+                raw_selected_mask.reshape(-1).astype(np.uint8)
+            ).tobytes()
+        ).hexdigest(),
         "mask_variants": mask_variants,
         "mask_area_fraction": round(float(mask.mean()), 8),
         "mask_sha256": mask_sha,
