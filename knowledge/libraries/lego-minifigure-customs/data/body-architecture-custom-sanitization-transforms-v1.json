@@ -29,23 +29,16 @@
       "status": "candidate_transform",
       "operations": [
         {
-          "op": "mask_rect_norm",
+          "op": "crop_norm",
           "bounds": [
-            0.02,
-            0.81,
-            0.245,
-            0.985
-          ],
-          "fill_mode": "row_median_sample",
-          "sample_bounds": [
-            0.25,
-            0.81,
-            0.31,
-            0.985
+            0,
+            0,
+            1,
+            0.8
           ]
         }
       ],
-      "rationale": "Remove the lower-left Titanic Bricks maker logo/text while preserving the complete figure. Fill each masked row from an adjacent clean background strip so the table/background gradient is retained without introducing a flat rectangular patch.",
+      "rationale": "Remove the entire branded lower strip while retaining the complete head, torso, shoulders, both ball-jointed arms/hands, waist interface, and enough lower-body context for scale. The evaluation target is the custom upper-body architecture, so this crop does not remove target geometry.",
       "revision_history": [
         {
           "revision": 1,
@@ -60,6 +53,27 @@
               0.985
             ],
             "fill_mode": "border_median"
+          }
+        },
+        {
+          "revision": 2,
+          "decision": "revise",
+          "reason": "Row-median background reconstruction removed the logo but left visible horizontal banding and a patch boundary, failing the no-material-transform-artifacts check. A clean crop is preferable because the required view explicitly permits complete upper-body architecture.",
+          "prior_operation": {
+            "op": "mask_rect_norm",
+            "bounds": [
+              0.02,
+              0.81,
+              0.245,
+              0.985
+            ],
+            "fill_mode": "row_median_sample",
+            "sample_bounds": [
+              0.25,
+              0.81,
+              0.31,
+              0.985
+            ]
           }
         }
       ]
