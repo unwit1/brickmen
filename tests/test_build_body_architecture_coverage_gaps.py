@@ -94,3 +94,19 @@ def test_checked_in_coverage_report_matches_builder() -> None:
     actual = json.loads(REPORT.read_text(encoding="utf-8"))
 
     assert actual == expected
+
+def test_custom_gap_sources_use_dedicated_product_pages() -> None:
+    tool = load_tool()
+    result = tool.build()
+    gaps = {row["architecture_id"]: row for row in result["gaps"]}
+
+    assert gaps["custom_sidan_full_balljoint_poseable"]["sources"] == [
+        "https://minifigworld.com/si-dan-toys-poseable-minifig/"
+    ]
+    assert gaps["custom_midfig_balljoint_upper"]["sources"] == [
+        "https://titanicbricks.com/products/midfig-torso-and-arms-with-ball-joints-custom-lego-compatible"
+    ]
+    assert gaps["custom_standard_four_arm_single_torso"]["sources"] == [
+        "https://titanicbricks.com/products/4-four-arms-torso-custom-minifig"
+    ]
+
