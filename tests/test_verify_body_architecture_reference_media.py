@@ -80,6 +80,54 @@ def test_sniff_image_format() -> None:
     assert tool.sniff_image_format(b"not-an-image") is None
 
 
+
+def test_image_dimensions_from_headers() -> None:
+    tool = load_tool()
+
+    png = (
+        b"\x89PNG\r\n\x1a\n"
+        + b"\x00\x00\x00\x0dIHDR"
+        + (320).to_bytes(4, "big")
+        + (240).to_bytes(4, "big")
+        + b"rest"
+    )
+    assert tool.image_dimensions(png, "png") == (320, 240)
+
+    gif = b"GIF89a" + (123).to_bytes(2, "little") + (45).to_bytes(2, "little")
+    assert tool.image_dimensions(gif, "gif") == (123, 45)
+
+    bmp = (
+        b"BM"
+        + b"\x00" * 16
+        + (640).to_bytes(4, "little", signed=True)
+        + (-480).to_bytes(4, "little", signed=True)
+    )
+    assert tool.image_dimensions(bmp, "bmp") == (640, 480)
+
+    jpeg = (
+        b"\xff\xd8"
+        + b"\xff\xe0"
+        + (4).to_bytes(2, "big")
+        + b"xx"
+        + b"\xff\xc0"
+        + (11).to_bytes(2, "big")
+        + b"\x08"
+        + (600).to_bytes(2, "big")
+        + (800).to_bytes(2, "big")
+        + b"\x03\x01\x11\x00"
+        + b"\xff\xd9"
+    )
+    assert tool.image_dimensions(jpeg, "jpeg") == (800, 600)
+
+    webp_vp8x = (
+        b"RIFF" + b"\x00\x00\x00\x00" + b"WEBP" + b"VP8X"
+        + b"\x0a\x00\x00\x00"
+        + b"\x00\x00\x00\x00"
+        + (1023).to_bytes(3, "little")
+        + (511).to_bytes(3, "little")
+    )
+    assert tool.image_dimensions(webp_vp8x, "webp") == (1024, 512)
+
 def test_validate_https_url_enforces_reviewed_hosts() -> None:
     tool = load_tool()
     allowed = {"images.example.test"}
