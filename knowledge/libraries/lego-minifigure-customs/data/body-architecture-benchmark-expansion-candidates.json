@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "created": "2026-09-29",
-  "status": "verification_complete_partitioned_for_promotion",
+  "status": "replacement_media_verification_pending",
   "id": "body-architecture-benchmark-expansion-v0",
   "objective": "Broaden architecture-recognition coverage beyond Hulk/Venom/Thing without weakening the canonical benchmark's media/sanitization guarantees.",
   "policy": [
@@ -29,6 +29,7 @@
       "image_hash_deduplicated_or_duplicate_documented"
     ],
     "remaining": [
+      "replacement_centaur_exact_image_url_byte_verified",
       "visual_sanitization_decision_complete",
       "model_input_gate_passes",
       "final_split_assignment_reviewed_for_character_and_family_leakage"
@@ -43,10 +44,11 @@
     "same_character_cross_architecture_groups": [
       "hagrid"
     ],
-    "byte_verified_cases": 10,
-    "unique_verified_hashes": 10,
-    "promoted_to_character_disjoint_challenge": 8,
-    "reserved_same_character_contrast": 2
+    "byte_verified_cases": 9,
+    "unique_verified_hashes": 9,
+    "promoted_to_character_disjoint_challenge": 7,
+    "reserved_same_character_contrast": 2,
+    "replacement_candidates_pending_verification": 1
   },
   "cases": [
     {
@@ -619,8 +621,8 @@
       "promoted_case_id": "archchallenge::challenge_squid_atl007"
     },
     {
-      "case_id": "archexp::official_centaur_col379",
-      "source_record_id": "official_centaur_col379",
+      "case_id": "archexp::official_centaur_hp236",
+      "source_record_id": "official_centaur_hp236",
       "split": "expansion_holdout",
       "scoring_track": "core",
       "task": "closed_set_architecture_classification",
@@ -630,25 +632,17 @@
       },
       "target_evidence_tier": "official_or_strong_catalog",
       "input_asset": {
-        "status": "byte_verified_pending_sanitization",
+        "status": "staged_exact_media_verification_pending",
         "required_view": "canonical_or_best_available_full_figure",
         "materialized_asset_id": null,
         "reference_locators": [
           {
-            "source_id": "bricklink_centaur_col379_inventory",
-            "url": "https://www.bricklink.com/catalogItemInv.asp?M=col379&viewCodes=Y",
+            "source_id": "bricklink_centaur_hp236_inventory",
+            "url": "https://www.bricklink.com/catalogItemInv.asp?M=hp236&viewCodes=Y",
             "authority": "structured_catalog",
             "locator_quality": "direct_release_or_component_graph_reference",
-            "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/col379.png",
-            "image_resolution_status": "verified_exact_image_url",
-            "source_file_sha256": "9c6ab60d4b94f6f8544625eac122865b248bd05661cf94a93fd7e7e0085f73c5",
-            "source_size_bytes": 185658,
-            "source_width": 300,
-            "source_height": 400,
-            "source_content_type": "image/png",
-            "source_image_format": "png",
-            "verification_run_id": 36518447556,
-            "verification_artifact_id": 11011044133
+            "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/hp236.png",
+            "image_resolution_status": "verified_exact_image_url"
           }
         ]
       },
@@ -662,22 +656,23 @@
       "audit_metadata": {
         "release": {
           "maker": "LEGO",
-          "code": "col379",
-          "label": "Centaur Warrior"
+          "code": "hp236",
+          "label": "Centaur"
         },
-        "character_group": "centaur_warrior",
+        "character_group": "centaur_hp236",
         "evidence_notes": [
-          "67638pb02 centaur lower body creates a quadruped hybrid architecture and distinct footprint."
+          "67638pb01 centaur lower body creates the same quadruped hybrid component graph.",
+          "hp236 exact catalog image is clean and isolated, avoiding the col379 alternate-expression inset."
         ]
       },
       "provenance": {
         "source_registry_path": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-source-registry.json",
         "source_refs": [
-          "bricklink_centaur_col379_inventory"
+          "bricklink_centaur_hp236_inventory"
         ]
       },
-      "promotion_state": "promoted_to_character_disjoint_challenge",
-      "promoted_case_id": "archchallenge::challenge_centaur_col379"
+      "promotion_state": "replacement_candidate_for_character_disjoint_challenge",
+      "promoted_case_id": null
     }
   ]
 }
