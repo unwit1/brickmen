@@ -23,11 +23,12 @@ def load(path: Path) -> dict:
 def test_same_character_contrast_pairs_are_hash_pinned() -> None:
     corpus = load(CONTRAST)
 
-    assert corpus["status"] == "byte_verified_pending_sanitization"
+    assert corpus["status"] == "runnable_all_assets_visual_sanitization_approved"
     assert corpus["summary"]["total_pairs"] == 2
     assert corpus["summary"]["total_unique_assets"] == 4
     assert corpus["summary"]["byte_verified_assets"] == 4
-    assert corpus["summary"]["runnable_pairs"] == 0
+    assert corpus["summary"]["runnable_pairs"] == 2
+    assert corpus["summary"]["model_input_approved_assets"] == 4
 
     hashes = []
     for pair in corpus["pairs"]:
@@ -39,9 +40,7 @@ def test_same_character_contrast_pairs_are_hash_pinned() -> None:
                 pair["right"]["source_file_sha256"],
             ]
         )
-        assert pair["pair_status"] == (
-            "blocked_until_both_assets_model_input_approved"
-        )
+        assert pair["pair_status"] == "runnable"
 
     assert len(hashes) == len(set(hashes)) == 4
 
@@ -63,7 +62,7 @@ def test_each_pair_holds_character_constant_and_changes_architecture() -> None:
         assert pair["character_id"]
 
 
-def test_contrast_assets_remain_metadata_only_until_sanitized() -> None:
+def test_contrast_assets_are_exact_hash_approved_raw_inputs() -> None:
     corpus = load(CONTRAST)
 
     for pair in corpus["pairs"]:
@@ -71,20 +70,11 @@ def test_contrast_assets_remain_metadata_only_until_sanitized() -> None:
             row = pair[side]
             assert row["exact_image_url"].startswith("https://")
             assert len(row["source_file_sha256"]) == 64
+            assert row["model_input_state"] == "approved_raw_reference"
 
-    hagrid = next(
-        pair for pair in corpus["pairs"]
-        if pair["character_id"] == "hagrid"
+    assert corpus["sanitization_reviews"].endswith(
+        "body-architecture-same-character-contrast-sanitization-reviews-v1.json"
     )
-    assert hagrid["left"]["model_input_state"] == "pending_visual_sanitization"
-    assert hagrid["right"]["model_input_state"] == "pending_visual_sanitization"
-
-    hulk = next(
-        pair for pair in corpus["pairs"]
-        if pair["character_id"] == "hulk"
-    )
-    assert hulk["left"]["model_input_state"] == "pending_visual_sanitization"
-    assert hulk["right"]["model_input_state"] == "approved_raw_reference"
 
 
 def test_pair_case_references_point_to_existing_benchmark_cases() -> None:
@@ -106,3 +96,52 @@ def test_pair_case_references_point_to_existing_benchmark_cases() -> None:
         if side["case_ref"]
     }
     assert referenced <= known
+
+
+def test_contrast_model_input_manifest_is_fully_runnable() -> None:
+    manifest = load(
+        DATA / "body-architecture-same-character-contrast-model-input-v1.json"
+    )
+    corpus = load(CONTRAST)
+
+    assert manifest["summary"] == {
+        "total_pairs": 2,
+        "total_assets": 4,
+        "model_input_allowed_assets": 4,
+        "runnable_pairs": 2,
+    }
+    assert all(row["model_input_allowed"] is True for row in manifest["assets"])
+
+    corpus_assets = {
+        side["source_record_id"]: side["source_file_sha256"]
+        for pair in corpus["pairs"]
+        for side in (pair["left"], pair["right"])
+    }
+    manifest_assets = {
+        row["source_record_id"]: row["asset_sha256"]
+        for row in manifest["assets"]
+    }
+    assert manifest_assets == corpus_assets
+
+
+def test_contrast_visual_reviews_cover_every_asset_exactly_once() -> None:
+    reviews = load(
+        DATA
+        / "body-architecture-same-character-contrast-sanitization-reviews-v1.json"
+    )
+    corpus = load(CONTRAST)
+
+    expected = {
+        side["source_record_id"]: side["source_file_sha256"]
+        for pair in corpus["pairs"]
+        for side in (pair["left"], pair["right"])
+    }
+    actual = {
+        row["source_record_id"]: row["source_file_sha256"]
+        for row in reviews["reviews"]
+    }
+
+    assert actual == expected
+    assert len(reviews["reviews"]) == 4
+    assert all(row["status"] == "approved_raw" for row in reviews["reviews"])
+    assert all(row["raw_model_input_allowed"] is True for row in reviews["reviews"])
