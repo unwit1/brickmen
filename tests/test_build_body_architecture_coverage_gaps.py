@@ -10,9 +10,7 @@ TOOL = ROOT / "tools" / "knowledge" / "build_body_architecture_coverage_gaps.py"
 DATA = ROOT / "knowledge" / "libraries" / "lego-minifigure-customs" / "data"
 REPORT = DATA / "body-architecture-recognition-coverage-gaps.json"
 
-P0_EXPECTED = {
-    "lego_homemaker_maxifigure_legacy",
-}
+P0_EXPECTED = set()
 
 
 def load_tool():
@@ -32,26 +30,26 @@ def test_coverage_report_tracks_current_breadth() -> None:
 
     assert result["summary"] == {
         "registry_architectures": 49,
-        "covered_architectures": 33,
-        "uncovered_architectures": 16,
-        "coverage_fraction": 0.673469,
-        "p0_official_gaps": 1,
+        "covered_architectures": 34,
+        "uncovered_architectures": 15,
+        "coverage_fraction": 0.693878,
+        "p0_official_gaps": 0,
         "p1_gaps": 3,
         "p2_gaps": 12,
     }
 
 
 
-def test_challenge_v3_is_the_active_coverage_cohort() -> None:
+def test_challenge_v4_is_the_active_coverage_cohort() -> None:
     tool = load_tool()
     result = tool.build()
 
-    assert "challenge_v3" in result["coverage_sources"]
-    assert "challenge_v2" not in result["coverage_sources"]
+    assert "challenge_v4" in result["coverage_sources"]
+    assert "challenge_v3" not in result["coverage_sources"]
     assert result["inputs"]["challenge"].endswith(
-        "body-architecture-recognition-challenge-cases-v3.json"
+        "body-architecture-recognition-challenge-cases-v4.json"
     )
-    assert len(result["coverage_sources"]["challenge_v3"]) == 22
+    assert len(result["coverage_sources"]["challenge_v4"]) == 23
 
 
 def test_p0_gaps_are_concrete_official_architectures() -> None:
