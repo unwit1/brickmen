@@ -14,12 +14,13 @@
     "points": "[x,y] in [0,1]; labels 1=foreground, 0=background"
   },
   "policy": [
-    "Prompts are seed instructions, not ground-truth masks.",
-    "Every prompt is pinned to the verified source SHA-256 and source dimensions.",
-    "The highest predicted SAM2 score may select a candidate mask, but never constitutes visual approval.",
-    "Generated segmentation derivatives must pass the same hash-pinned visual approval gate as deterministic crop/mask candidates.",
-    "If the source hash or dimensions change, the prompt is stale and must not run.",
-    "The prompt set must exactly cover the active segmentation/manual-cleanup blockers in the canonical sanitization candidate manifest."
+    "Prompts are hash-pinned segmentation instructions, not ground-truth masks.",
+    "SAM2 score proposes multimask hypotheses but does not determine benchmark suitability.",
+    "A preferred_mask_index may be recorded only after exact visual review of all variants for the pinned provider/checkpoint/prompt contract.",
+    "Optional largest_connected_component cleanup is deterministic and must still be visually reviewed on the final derivative.",
+    "Every selected derivative remains model-input blocked until exact source/pixel/PNG hashes pass the visual approval gate.",
+    "If source hash, prompt geometry, provider revision, checkpoint hash, mask selection or cleanup changes, prior derivative approval is stale.",
+    "The prompt set must exactly cover active segmentation/manual-cleanup blockers in the deterministic candidate manifest."
   ],
   "prompts": [
     {
@@ -29,7 +30,7 @@
         800,
         800
       ],
-      "status": "prompt_seed_unvalidated",
+      "status": "visual_multimask_selection_v1",
       "box_norm": [
         0.19,
         0.24,
@@ -60,7 +61,10 @@
           0.72
         ]
       ],
-      "rationale": "Target the central/front Hulk while excluding head inset, rear-view panel and scale-comparison figure."
+      "rationale": "Target the central/front Hulk while excluding head inset, rear-view panel and scale-comparison figure.",
+      "preferred_mask_index": 0,
+      "mask_cleanup": "largest_connected_component",
+      "selection_rationale": "Exact multimask review selected m0 because it preserves the complete primary figure more faithfully than the SAM-score alternative; largest-component cleanup removes disconnected specks/insets."
     },
     {
       "source_record_id": "hulk_alpha_af345_comics",
@@ -69,7 +73,7 @@
         800,
         800
       ],
-      "status": "prompt_seed_unvalidated",
+      "status": "visual_multimask_selection_v1",
       "box_norm": [
         0.19,
         0.24,
@@ -100,7 +104,10 @@
           0.72
         ]
       ],
-      "rationale": "Target the central/front comic Hulk while excluding auxiliary head, rear and scale panels."
+      "rationale": "Target the central/front comic Hulk while excluding auxiliary head, rear and scale panels.",
+      "preferred_mask_index": 0,
+      "mask_cleanup": "largest_connected_component",
+      "selection_rationale": "Exact multimask review selected m0 because it preserves the complete primary figure more faithfully than the SAM-score alternative; largest-component cleanup removes disconnected specks/insets."
     },
     {
       "source_record_id": "hulk_mrj_heart_comics",
@@ -109,7 +116,7 @@
         591,
         485
       ],
-      "status": "prompt_seed_unvalidated",
+      "status": "visual_multimask_selection_v1",
       "box_norm": [
         0.04,
         0.2,
@@ -140,7 +147,10 @@
           0.08
         ]
       ],
-      "rationale": "Target the complete left/front Hulk while excluding the top-center head inset, right/rear figure and upper-left maker branding."
+      "rationale": "Target the complete left/front Hulk while excluding the top-center head inset, right/rear figure and upper-left maker branding.",
+      "preferred_mask_index": 0,
+      "mask_cleanup": "largest_connected_component",
+      "selection_rationale": "Mask m0 preserves the complete primary front figure; largest-component cleanup removes the disconnected head-inset fragment and specks. The SAM-score winner m2 erodes both arms."
     },
     {
       "source_record_id": "red_hulk_alpha_af364_bnw",
@@ -149,7 +159,7 @@
         800,
         800
       ],
-      "status": "prompt_seed_unvalidated",
+      "status": "visual_multimask_selection_v1",
       "box_norm": [
         0.18,
         0.22,
@@ -180,7 +190,10 @@
           0.73
         ]
       ],
-      "rationale": "Target the complete central/front Red Hulk while excluding the card's head/rear/scale comparison content."
+      "rationale": "Target the complete central/front Red Hulk while excluding the card's head/rear/scale comparison content.",
+      "preferred_mask_index": 0,
+      "mask_cleanup": "largest_connected_component",
+      "selection_rationale": "Exact multimask review selected m0 because it preserves the complete primary figure more faithfully than the SAM-score alternative; largest-component cleanup removes disconnected specks/insets."
     },
     {
       "source_record_id": "thing_shengyuan_sy288_bigfig",
@@ -189,42 +202,48 @@
         315,
         346
       ],
-      "status": "prompt_seed_unvalidated",
+      "status": "prompt_refined_after_source_review_v2",
       "box_norm": [
         0,
-        0.27,
-        0.42,
-        0.66
+        0,
+        0.97,
+        0.9
       ],
       "positive_points_norm": [
         [
-          0.2,
-          0.43
+          0.5,
+          0.3
         ],
         [
-          0.2,
-          0.57
+          0.18,
+          0.48
+        ],
+        [
+          0.82,
+          0.48
+        ],
+        [
+          0.35,
+          0.72
+        ],
+        [
+          0.65,
+          0.72
         ]
       ],
       "negative_points_norm": [
         [
-          0.56,
-          0.46
+          0.5,
+          0.92
         ],
         [
-          0.73,
-          0.46
-        ],
-        [
-          0.89,
+          0.99,
           0.55
-        ],
-        [
-          0.2,
-          0.8
         ]
       ],
-      "rationale": "Target the large Thing at upper-left while excluding neighboring minifigures, branded display bases and the rest of the group card."
+      "rationale": "Cover the complete primary ShengYuan Thing figure rather than the prior left-fist subregion. Positive points span torso, both fists and both legs; negatives suppress the branded base and far-right secondary sliver.",
+      "mask_cleanup": "largest_connected_component",
+      "selection_rationale": "No preferred mask index yet; rerun multimask generation after prompt correction and review all alternatives."
     },
     {
       "source_record_id": "thing_tp_tp349_first_steps_bigfig",
@@ -233,7 +252,7 @@
         800,
         800
       ],
-      "status": "prompt_seed_unvalidated",
+      "status": "visual_multimask_selection_v1",
       "box_norm": [
         0.12,
         0.24,
@@ -264,7 +283,10 @@
           0.1
         ]
       ],
-      "rationale": "Target the TP349 front Thing while rejecting the rear/alternate panel and neighboring product-card content."
+      "rationale": "Target the TP349 front Thing while rejecting the rear/alternate panel and neighboring product-card content.",
+      "preferred_mask_index": 0,
+      "mask_cleanup": "largest_connected_component",
+      "selection_rationale": "Exact multimask review selected m0 because it preserves the complete primary figure more faithfully than the SAM-score alternative; largest-component cleanup removes disconnected specks/insets."
     },
     {
       "source_record_id": "venom_alpha_af325",
@@ -273,42 +295,56 @@
         800,
         800
       ],
-      "status": "prompt_seed_unvalidated",
+      "status": "prompt_refined_after_source_review_v2",
       "box_norm": [
-        0.28,
-        0.01,
-        0.72,
-        0.51
+        0.23,
+        0.2,
+        0.77,
+        0.8
       ],
       "positive_points_norm": [
         [
           0.5,
-          0.23
+          0.38
+        ],
+        [
+          0.33,
+          0.5
+        ],
+        [
+          0.67,
+          0.5
         ],
         [
           0.5,
-          0.4
+          0.68
         ]
       ],
       "negative_points_norm": [
         [
           0.12,
-          0.3
+          0.45
         ],
         [
-          0.87,
-          0.25
+          0.88,
+          0.45
         ],
         [
-          0.25,
-          0.76
+          0.16,
+          0.12
         ],
         [
-          0.75,
-          0.76
+          0.84,
+          0.12
+        ],
+        [
+          0.5,
+          0.92
         ]
       ],
-      "rationale": "Target the upper-center primary front Venom while excluding accessory/head inset, standard-scale comparison, alternate pose and rear-view panels."
+      "rationale": "Expand the prompt from the prior upper-half box to the complete central Venom figure while keeping detached weapons, head inset, alternate minifigure and bottom labels outside or negatively prompted.",
+      "mask_cleanup": "largest_connected_component",
+      "selection_rationale": "No preferred mask index yet; rerun multimask generation after prompt correction and review all alternatives."
     },
     {
       "source_record_id": "venom_alpha_af328_ancient",
@@ -317,7 +353,7 @@
         800,
         800
       ],
-      "status": "prompt_seed_unvalidated",
+      "status": "visual_multimask_selection_v1",
       "box_norm": [
         0.21,
         0.21,
@@ -352,7 +388,10 @@
           0.12
         ]
       ],
-      "rationale": "Target the central Ancient Venom figure while excluding the surrounding weapons/accessories, upper-left head inset and upper-right comparison figure."
+      "rationale": "Target the central Ancient Venom figure while excluding the surrounding weapons/accessories, upper-left head inset and upper-right comparison figure.",
+      "preferred_mask_index": 0,
+      "mask_cleanup": "largest_connected_component",
+      "selection_rationale": "Exact multimask review selected m0 because it preserves the complete primary figure more faithfully than the SAM-score alternative; largest-component cleanup removes disconnected specks/insets."
     },
     {
       "source_record_id": "venom_xinh_xh1829_movie_bigfig",
@@ -361,7 +400,7 @@
         1000,
         1000
       ],
-      "status": "prompt_seed_unvalidated",
+      "status": "visual_multimask_selection_v1",
       "box_norm": [
         0.2,
         0.23,
@@ -392,7 +431,10 @@
           0.88
         ]
       ],
-      "rationale": "Target the central movie Venom while rejecting the upper-right head inset and surrounding labels."
+      "rationale": "Target the central movie Venom while rejecting the upper-right head inset and surrounding labels.",
+      "preferred_mask_index": 0,
+      "mask_cleanup": "largest_connected_component",
+      "selection_rationale": "Exact multimask review selected m0 because it preserves the complete primary figure more faithfully than the SAM-score alternative; largest-component cleanup removes disconnected specks/insets."
     },
     {
       "source_record_id": "venom_xinh_xh1911_bigfig",
@@ -401,7 +443,7 @@
         640,
         945
       ],
-      "status": "prompt_seed_unvalidated",
+      "status": "visual_multimask_selection_v1",
       "box_norm": [
         0.07,
         0.22,
@@ -432,7 +474,19 @@
           0.86
         ]
       ],
-      "rationale": "Target the main front Venom; the upper-right head inset overlaps the shoulder region and must be excluded by negative prompting."
+      "rationale": "Target the main front Venom; the upper-right head inset overlaps the shoulder region and must be excluded by negative prompting.",
+      "preferred_mask_index": 0,
+      "mask_cleanup": "largest_connected_component",
+      "selection_rationale": "Exact multimask review selected m0 because it preserves the complete primary figure more faithfully than the SAM-score alternative; largest-component cleanup removes disconnected specks/insets."
     }
-  ]
+  ],
+  "review_iteration": {
+    "id": "sam2-prompt-selection-v2",
+    "basis": "source-and-multimask visual review",
+    "visually_selected_m0_cases": 8,
+    "geometry_refinement_cases": [
+      "thing_shengyuan_sy288_bigfig",
+      "venom_alpha_af325"
+    ]
+  }
 }
