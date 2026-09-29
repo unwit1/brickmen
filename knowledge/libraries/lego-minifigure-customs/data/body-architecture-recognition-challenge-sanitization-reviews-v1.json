@@ -2,7 +2,7 @@
   "schema_version": "0.1",
   "created": "2026-09-29",
   "review_set_id": "body-architecture-challenge-sanitization-v1",
-  "policy": "Reviews are keyed to verified source SHA-256. Challenge cases remain evaluation-only and blocked until exact visual sanitization review is complete.",
+  "policy": "Reviews are keyed to verified source SHA-256. Challenge cases remain evaluation-only; the active hp236 centaur replacement removes the col379 inset confounder rather than sanitizing it.",
   "reviewer": {
     "reviewer_id": "openai_chatgpt_visual_review",
     "reviewer_type": "model",
@@ -131,22 +131,21 @@
       ]
     },
     {
-      "source_record_id": "challenge_centaur_col379",
-      "source_id": "bricklink_centaur_col379_inventory",
-      "source_file_sha256": "9c6ab60d4b94f6f8544625eac122865b248bd05661cf94a93fd7e7e0085f73c5",
-      "status": "sanitization_required",
+      "source_record_id": "challenge_centaur_hp236",
+      "source_id": "bricklink_centaur_hp236_inventory",
+      "source_file_sha256": "9690938b75bad44108df1b0d15fa85a72ea4f5837b1ba5f774fa6b57acbc3052",
+      "status": "approved_raw",
       "identity_match": true,
       "primary_view": "front",
       "primary_figure_complete": true,
       "visible_text_leakage": [],
-      "visual_confounders": [
-        "alternate_expression_inset"
-      ],
-      "sanitization_action": "mask_regions",
-      "raw_model_input_allowed": false,
+      "visual_confounders": [],
+      "sanitization_action": "none",
+      "raw_model_input_allowed": true,
       "review_confidence": 0.99,
       "notes": [
-        "Primary centaur figure is complete and isolated, but an alternate-expression head inset appears in the upper-right and must be removed before model input."
+        "Clean isolated front BrickLink catalog image with complete centaur architecture and no text, branding, alternate-expression inset, secondary figure, or task-confounding panel.",
+        "Replaces col379 specifically to remove the alternate-expression inset leakage present in that earlier challenge source."
       ]
     }
   ]
