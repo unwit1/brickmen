@@ -81,8 +81,8 @@ def test_transform_plan_has_expected_candidate_blocker_split() -> None:
         status_counts[status] = status_counts.get(status, 0) + 1
 
     assert status_counts == {
-        "candidate_transform": 15,
-        "requires_segmentation": 8,
+        "candidate_transform": 13,
+        "requires_segmentation": 10,
     }
 
 
