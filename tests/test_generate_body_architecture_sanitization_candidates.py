@@ -329,3 +329,81 @@ def test_row_median_sample_requires_sample_bounds() -> None:
         assert "requires sample_bounds" in str(exc)
     else:
         raise AssertionError("expected missing sample_bounds to fail")
+
+
+def test_polygon_row_median_mask_preserves_notched_subject_region() -> None:
+    tool = load_tool()
+    from PIL import Image
+
+    image = Image.new("RGB", (20, 20), "white")
+    pixels = image.load()
+    for y in range(20):
+        bg = 120 + y
+        for x in range(20):
+            pixels[x, y] = (bg, bg, bg)
+    # Contaminating inset in the upper-right.
+    for y in range(2, 10):
+        for x in range(12, 20):
+            pixels[x, y] = (180, 20, 20)
+    # Subject edge that must survive in the lower-left notch of that area.
+    for y in range(6, 12):
+        for x in range(10, 13):
+            pixels[x, y] = (20, 40, 180)
+
+    result, applied = tool.apply_operations(
+        image,
+        [
+            {
+                "op": "mask_polygon_norm",
+                "points": [
+                    [0.65, 0.0],
+                    [1.0, 0.0],
+                    [1.0, 0.55],
+                    [0.65, 0.55],
+                    [0.65, 0.30],
+                    [0.75, 0.30],
+                    [0.75, 0.15],
+                    [0.65, 0.15],
+                ],
+                "fill_mode": "row_median_sample",
+                "sample_bounds": [0.0, 0.0, 0.2, 0.6],
+            }
+        ],
+    )
+
+    # Masked inset becomes the row-matched gray background.
+    assert result.getpixel((17, 5))[:3] == (125, 125, 125)
+    # Subject pixels outside the polygon remain intact.
+    assert result.getpixel((11, 8))[:3] == (20, 40, 180)
+    assert applied[0]["op"] == "mask_polygon_norm"
+    assert applied[0]["fill_mode"] == "row_median_sample"
+    assert "pixel_points" in applied[0]
+
+
+def test_polygon_mask_rejects_invalid_points() -> None:
+    tool = load_tool()
+    from PIL import Image
+
+    image = Image.new("RGB", (20, 20), "white")
+    for points in (
+        [[0, 0], [1, 1]],
+        [[0, 0], [1, 0], [1.2, 1]],
+        [[0, 0], [0, 0], [0, 0]],
+    ):
+        try:
+            tool.apply_operations(
+                image,
+                [
+                    {
+                        "op": "mask_polygon_norm",
+                        "points": points,
+                        "fill_mode": "white",
+                    }
+                ],
+            )
+        except ValueError:
+            pass
+        else:
+            raise AssertionError(
+                f"expected invalid polygon points: {points}"
+            )
