@@ -205,6 +205,8 @@ def build(
                     "exact_image_url": locator["exact_image_url"],
                     "source_file_sha256": locator["source_file_sha256"],
                     "source_size_bytes": locator.get("source_size_bytes"),
+                    "source_width": locator.get("source_width"),
+                    "source_height": locator.get("source_height"),
                     "source_content_type": locator.get("source_content_type"),
                     "source_image_format": locator.get("source_image_format"),
                     "verification_run_id": locator.get("verification_run_id"),
