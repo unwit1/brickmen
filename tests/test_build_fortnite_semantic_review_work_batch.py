@@ -153,7 +153,7 @@ def test_work_item_keeps_measurement_signals_nonsemantic() -> None:
     template = item["review_template"]
 
     assert item["measurement_signals"]
-    assert "prioritization" in item["measurement_signal_policy"]
+    assert "prioritize review" in item["measurement_signal_policy"]
     assert template["annotations"]["regions"]["torso"] == []
     assert template["measurement_signal_refs"][0]["role"] == "review_prioritization_only"
     assert template["review_status"] == "draft"
