@@ -14,18 +14,18 @@
   "benchmark_manifest": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-recognition-benchmark-cases.json",
   "summary": {
     "total_cases": 27,
-    "ready_for_materialization_cases": 15,
-    "ready_for_image_url_resolution_cases": 12,
+    "ready_for_materialization_cases": 19,
+    "ready_for_image_url_resolution_cases": 8,
     "blocked_cases": 0,
     "action_status_counts": {
-      "resolved_exact_image_url": 15,
-      "ready_for_reviewed_page_media_resolution": 20,
+      "resolved_exact_image_url": 19,
+      "ready_for_reviewed_page_media_resolution": 19,
       "blocked_on_direct_release_locator": 1,
       "ready_for_catalog_image_resolution": 1
     },
     "strategy_counts": {
-      "already_resolved_source_media": 15,
-      "reviewed_page_to_exact_image_url": 20,
+      "already_resolved_source_media": 19,
+      "reviewed_page_to_exact_image_url": 19,
       "resolve_direct_release_page_before_image_acquisition": 1,
       "bricklink_catalog_adapter_or_reviewed_image_endpoint": 1
     }
@@ -310,7 +310,7 @@
         "architecture_id": "custom_alpha_7cm_muscle",
         "unresolved_candidate": null
       },
-      "status": "ready_for_image_url_resolution",
+      "status": "ready_for_materialization",
       "locator_actions": [
         {
           "source_id": "alpha_red_hulk_af364",
@@ -321,10 +321,20 @@
           "strategy": "reviewed_page_to_exact_image_url",
           "exact_image_url": null,
           "image_resolution_status": null
+        },
+        {
+          "source_id": "kongbricks_alpha_red_hulk_af364_media",
+          "page_url": "https://kongbricks.com/products/marvel-super-hero-red-hulk-compatible-minifigure-single-figure-af364",
+          "authority": "retailer",
+          "locator_quality": "direct_or_family_reference",
+          "status": "resolved_exact_image_url",
+          "strategy": "already_resolved_source_media",
+          "exact_image_url": "https://kongbricks.com/cdn/shop/files/AF364.jpg?v=1784017311&width=1445",
+          "image_resolution_status": "verified_exact_image_url"
         }
       ],
       "required_output": {
-        "exact_image_url": null,
+        "exact_image_url": "https://kongbricks.com/cdn/shop/files/AF364.jpg?v=1784017311&width=1445",
         "source_occurrence_id": null,
         "source_file_sha256": null,
         "view": "canonical_or_best_available_full_figure",
@@ -340,7 +350,7 @@
         "architecture_id": "custom_g2_muscle_hybrid",
         "unresolved_candidate": null
       },
-      "status": "ready_for_image_url_resolution",
+      "status": "ready_for_materialization",
       "locator_actions": [
         {
           "source_id": "g2_red_hulk_gh0303",
@@ -351,10 +361,20 @@
           "strategy": "reviewed_page_to_exact_image_url",
           "exact_image_url": null,
           "image_resolution_status": null
+        },
+        {
+          "source_id": "kongbricks_g2_red_hulk_gh0303_media",
+          "page_url": "https://kongbricks.com/products/red-hulk-brave-new-world-marvel-minifigure",
+          "authority": "retailer",
+          "locator_quality": "direct_or_family_reference",
+          "status": "resolved_exact_image_url",
+          "strategy": "already_resolved_source_media",
+          "exact_image_url": "https://kongbricks.myshopify.com/cdn/shop/files/GH0303.webp",
+          "image_resolution_status": "verified_exact_image_url"
         }
       ],
       "required_output": {
-        "exact_image_url": null,
+        "exact_image_url": "https://kongbricks.myshopify.com/cdn/shop/files/GH0303.webp",
         "source_occurrence_id": null,
         "source_file_sha256": null,
         "view": "canonical_or_best_available_full_figure",
@@ -500,21 +520,21 @@
         "architecture_id": "custom_alpha_45mm_muscle_hybrid",
         "unresolved_candidate": null
       },
-      "status": "ready_for_image_url_resolution",
+      "status": "ready_for_materialization",
       "locator_actions": [
         {
           "source_id": "alpha_ancient_venom_af328",
           "page_url": "https://www.herobloks.com/figures/33823/alpha-toys/af328/ancient-venom",
           "authority": "custom_catalog",
           "locator_quality": "direct_or_family_reference",
-          "status": "ready_for_reviewed_page_media_resolution",
-          "strategy": "reviewed_page_to_exact_image_url",
-          "exact_image_url": null,
-          "image_resolution_status": null
+          "status": "resolved_exact_image_url",
+          "strategy": "already_resolved_source_media",
+          "exact_image_url": "https://static.herobloks.com/x/figure_images/24/10/6/id0~c67636~u1.jpg",
+          "image_resolution_status": "verified_exact_image_url"
         }
       ],
       "required_output": {
-        "exact_image_url": null,
+        "exact_image_url": "https://static.herobloks.com/x/figure_images/24/10/6/id0~c67636~u1.jpg",
         "source_occurrence_id": null,
         "source_file_sha256": null,
         "view": "canonical_or_best_available_full_figure",
@@ -560,7 +580,7 @@
         "architecture_id": null,
         "unresolved_candidate": "compatible_bigfig_unresolved"
       },
-      "status": "ready_for_image_url_resolution",
+      "status": "ready_for_materialization",
       "locator_actions": [
         {
           "source_id": "xinh_venom_xh1829_movie_bigfig",
@@ -571,10 +591,20 @@
           "strategy": "reviewed_page_to_exact_image_url",
           "exact_image_url": null,
           "image_resolution_status": null
+        },
+        {
+          "source_id": "kongbricks_xinh_venom_xh1829_media",
+          "page_url": "https://kongbricks.com/products/venom-minifigures-xh1829-compatible-with-lego",
+          "authority": "retailer",
+          "locator_quality": "direct_or_family_reference",
+          "status": "resolved_exact_image_url",
+          "strategy": "already_resolved_source_media",
+          "exact_image_url": "https://cdn.shopify.com/s/files/1/0794/3156/5561/files/Marvel-Venom-Movie-BigFig-XH1829-Minifigures.webp",
+          "image_resolution_status": "verified_exact_image_url"
         }
       ],
       "required_output": {
-        "exact_image_url": null,
+        "exact_image_url": "https://cdn.shopify.com/s/files/1/0794/3156/5561/files/Marvel-Venom-Movie-BigFig-XH1829-Minifigures.webp",
         "source_occurrence_id": null,
         "source_file_sha256": null,
         "view": "canonical_or_best_available_full_figure",
