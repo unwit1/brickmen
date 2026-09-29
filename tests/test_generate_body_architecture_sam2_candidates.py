@@ -173,3 +173,13 @@ def test_execution_provenance_helpers_are_stable(tmp_path: Path) -> None:
         "523747bb4fe50c13dc194b4bddde6655085979c2515f291eae9df992b2fa597d"
     )
     assert tool.git_revision(tmp_path) is None
+
+
+def test_source_keeps_multimask_variants_review_only() -> None:
+    source = TOOL.read_text(encoding="utf-8")
+
+    assert "--write-mask-variants-dir" in source
+    assert '"mask_variants": mask_variants' in source
+    assert '"selected_by_sam_score": index == selected_index' in source
+    assert '"candidate_status": "generated_pending_visual_review"' in source
+    assert '"model_input_allowed": False' in source
