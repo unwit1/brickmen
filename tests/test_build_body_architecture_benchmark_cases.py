@@ -36,6 +36,9 @@ def test_populated_case_manifest_baseline() -> None:
     assert summary["cases_with_reference_locators"] == 27
     assert summary["indirect_only_locator_cases"] == 0
     assert summary["cases_with_exact_image_urls"] == 27
+    assert summary["cases_with_verified_image_hashes"] == 27
+    assert summary["unique_verified_image_hashes"] == 27
+    assert result["status"] == "populated_case_manifest_reference_media_verified_materialization_pending"
     assert summary["split_counts"] == {
         "development": 11,
         "validation": 6,
@@ -182,3 +185,32 @@ def test_resolved_exact_image_urls_are_source_backed() -> None:
         "thing_shengyuan_sy288_bigfig",
         "thing_xinh_1421_bigfig",
     }
+
+
+def test_verified_reference_media_has_hash_metadata() -> None:
+    tool = load_tool()
+    result = tool.build()
+    hashes = set()
+
+    for case in result["cases"]:
+        verified = [
+            locator
+            for locator in case["input_asset"]["reference_locators"]
+            if locator.get("source_file_sha256")
+        ]
+        assert verified
+        assert case["input_asset"]["status"] == (
+            "reference_media_byte_verified_materialization_pending"
+        )
+        for locator in verified:
+            digest = locator["source_file_sha256"]
+            assert len(digest) == 64
+            assert locator["byte_verification_status"] == "verified"
+            assert locator["source_size_bytes"] > 0
+            assert locator["source_content_type"].startswith("image/")
+            assert locator["source_image_format"] in {"png", "jpeg", "webp", "gif", "bmp", "tiff"}
+            assert locator["verification_run_id"] == 36513502605
+            assert locator["raw_media_committed"] is False
+            hashes.add(digest)
+
+    assert len(hashes) == 27
