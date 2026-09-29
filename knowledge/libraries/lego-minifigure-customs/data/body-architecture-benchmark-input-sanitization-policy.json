@@ -1,0 +1,63 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-28",
+  "id": "body-architecture-benchmark-input-sanitization-v0",
+  "objective": "Prevent benchmark models from using catalog text, maker marks, release codes, character names, multi-panel product graphics, or other non-geometry shortcuts.",
+  "invariant": "A verified source image is reference evidence, not automatically benchmark-ready model input.",
+  "forbidden_model_cues": [
+    "maker_or_brand_logo",
+    "release_or_sku_code",
+    "character_name_or_alias_text",
+    "architecture_or_market_class_label",
+    "catalog_caption_or_product_title",
+    "scale_or_dimension_annotation",
+    "watermark_that_identifies_maker_or_product_family"
+  ],
+  "confounding_visual_elements": [
+    "secondary_figure",
+    "back_or_side_inset_when_task_is_front_only",
+    "alternate_expression_inset",
+    "accessory_layout_around_primary_figure",
+    "scale_comparison_figure",
+    "multi_panel_product_composite"
+  ],
+  "review_fields": {
+    "identity_match": "true|false|uncertain",
+    "primary_view": "front|front_3q|side|rear|multi_view_composite|uncertain",
+    "primary_figure_complete": "true|false|uncertain",
+    "visible_text_leakage": [],
+    "visual_confounders": [],
+    "sanitization_action": "none|tight_figure_crop|mask_regions|segment_primary_figure|replace_source|manual_composite_cleanup",
+    "sanitized_asset_sha256": null,
+    "reviewer_id": null,
+    "reviewer_type": "human|model|hybrid",
+    "review_confidence": null,
+    "notes": []
+  },
+  "approval_gate": [
+    "Raw reference images default to blocked_pending_visual_sanitization_review.",
+    "Byte verification does not grant benchmark model-input approval.",
+    "A model-ready asset must remove or mask forbidden text cues and task-confounding panels.",
+    "Sanitized derivatives must preserve source SHA-256, transformation parameters, derivative SHA-256 and reviewer provenance.",
+    "Held-out split assignment stays inherited from the parent case; sanitization must never create cross-split copies.",
+    "Do not use OCR-derived release or character labels as model features even when OCR is used only to find mask regions."
+  ],
+  "source_risk_priors": [
+    {
+      "match": "img.bricklink.com/ItemImage/MN/",
+      "risk": "medium_review_required",
+      "reason": "Usually isolated catalog figure photography/renders, but insets or alternate-expression panels can still confound a single-view task."
+    },
+    {
+      "match": "static.herobloks.com",
+      "risk": "high",
+      "reason": "Source media frequently preserves manufacturer product-card layouts with codes, names, logos, insets, accessories, or multiple views."
+    },
+    {
+      "match": "kongbricks.com|kongbricks.myshopify.com|cdn.shopify.com",
+      "risk": "high",
+      "reason": "Retailer-hosted product media may preserve manufacturer labels, codes, comparison figures, or composite layouts."
+    }
+  ],
+  "model_input_rule": "Only sanitized_asset_status=approved may enter benchmark model inputs. Raw verified references remain evidence/provenance sources."
+}
