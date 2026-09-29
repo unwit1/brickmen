@@ -1,0 +1,798 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-28",
+  "status": "ready_for_resolution",
+  "processor_version": "body-architecture-reference-acquisition/v1",
+  "objective": "Resolve every architecture benchmark case from a provenance page locator to an exact reviewed image URL before content-addressed materialization.",
+  "policy": [
+    "Do not pass HTML catalog pages to the image materializer.",
+    "Do not crawl a source merely because a page locator exists.",
+    "Prefer supported catalog/API adapters when available.",
+    "Preserve source occurrence, rights/provenance metadata, and exact image URL.",
+    "Indirect identity-graph evidence must be upgraded to a direct release locator before image acquisition."
+  ],
+  "benchmark_manifest": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-recognition-benchmark-cases.json",
+  "summary": {
+    "total_cases": 27,
+    "ready_cases": 26,
+    "blocked_cases": 1,
+    "action_status_counts": {
+      "ready_for_catalog_image_resolution": 5,
+      "ready_for_reviewed_page_media_resolution": 21,
+      "blocked_on_direct_release_locator": 1
+    },
+    "strategy_counts": {
+      "bricklink_catalog_adapter_or_reviewed_image_endpoint": 5,
+      "reviewed_page_to_exact_image_url": 21,
+      "resolve_direct_release_page_before_image_acquisition": 1
+    }
+  },
+  "queue": [
+    {
+      "case_id": "archrec::hulk_lego_sh0037_standard",
+      "source_record_id": "hulk_lego_sh0037_standard",
+      "split": "development",
+      "scoring_track": "core",
+      "architecture_target": {
+        "architecture_id": "minifig_standard",
+        "unresolved_candidate": null
+      },
+      "status": "ready_for_image_url_resolution",
+      "locator_actions": [
+        {
+          "source_id": "bricklink_hulk_sh0037_inventory",
+          "page_url": "https://www.bricklink.com/catalogItemInv.asp?M=sh0037&viewCodes=Y",
+          "authority": "structured_catalog",
+          "locator_quality": "direct_or_family_reference",
+          "status": "ready_for_catalog_image_resolution",
+          "strategy": "bricklink_catalog_adapter_or_reviewed_image_endpoint"
+        }
+      ],
+      "required_output": {
+        "exact_image_url": null,
+        "source_occurrence_id": null,
+        "source_file_sha256": null,
+        "view": "canonical_or_best_available_full_figure",
+        "rights_provenance_status": "preserve_source_permission_overlay"
+      }
+    },
+    {
+      "case_id": "archrec::hulk_lego_sh0252_mighty_micros",
+      "source_record_id": "hulk_lego_sh0252_mighty_micros",
+      "split": "development",
+      "scoring_track": "core",
+      "architecture_target": {
+        "architecture_id": "minifig_short_leg",
+        "unresolved_candidate": null
+      },
+      "status": "ready_for_image_url_resolution",
+      "locator_actions": [
+        {
+          "source_id": "bricklink_hulk_sh0252_inventory",
+          "page_url": "https://www.bricklink.com/catalogItemInv.asp?M=sh0252&viewID=Y",
+          "authority": "structured_catalog",
+          "locator_quality": "direct_or_family_reference",
+          "status": "ready_for_catalog_image_resolution",
+          "strategy": "bricklink_catalog_adapter_or_reviewed_image_endpoint"
+        }
+      ],
+      "required_output": {
+        "exact_image_url": null,
+        "source_occurrence_id": null,
+        "source_file_sha256": null,
+        "view": "canonical_or_best_available_full_figure",
+        "rights_provenance_status": "preserve_source_permission_overlay"
+      }
+    },
+    {
+      "case_id": "archrec::hulk_lego_sh0371_giant",
+      "source_record_id": "hulk_lego_sh0371_giant",
+      "split": "development",
+      "scoring_track": "core",
+      "architecture_target": {
+        "architecture_id": "lego_giant_modular",
+        "unresolved_candidate": null
+      },
+      "status": "ready_for_image_url_resolution",
+      "locator_actions": [
+        {
+          "source_id": "bricklink_hulk_sh0371_inventory",
+          "page_url": "https://www.bricklink.com/catalogItemInv.asp?M=sh0371&viewCodes=Y",
+          "authority": "structured_catalog",
+          "locator_quality": "direct_or_family_reference",
+          "status": "ready_for_catalog_image_resolution",
+          "strategy": "bricklink_catalog_adapter_or_reviewed_image_endpoint"
+        }
+      ],
+      "required_output": {
+        "exact_image_url": null,
+        "source_occurrence_id": null,
+        "source_file_sha256": null,
+        "view": "canonical_or_best_available_full_figure",
+        "rights_provenance_status": "preserve_source_permission_overlay"
+      }
+    },
+    {
+      "case_id": "archrec::hulk_alpha_af344_avengers",
+      "source_record_id": "hulk_alpha_af344_avengers",
+      "split": "development",
+      "scoring_track": "core",
+      "architecture_target": {
+        "architecture_id": "custom_alpha_7cm_muscle",
+        "unresolved_candidate": null
+      },
+      "status": "ready_for_image_url_resolution",
+      "locator_actions": [
+        {
+          "source_id": "alpha_hulk_af344_af347_retail",
+          "page_url": "https://www.01bigbricks.net/products/minifigures-hulk-lego-af344-af347",
+          "authority": "retailer",
+          "locator_quality": "direct_or_family_reference",
+          "status": "ready_for_reviewed_page_media_resolution",
+          "strategy": "reviewed_page_to_exact_image_url"
+        }
+      ],
+      "required_output": {
+        "exact_image_url": null,
+        "source_occurrence_id": null,
+        "source_file_sha256": null,
+        "view": "canonical_or_best_available_full_figure",
+        "rights_provenance_status": "preserve_source_permission_overlay"
+      }
+    },
+    {
+      "case_id": "archrec::hulk_alpha_af345_comics",
+      "source_record_id": "hulk_alpha_af345_comics",
+      "split": "development",
+      "scoring_track": "core",
+      "architecture_target": {
+        "architecture_id": "custom_alpha_7cm_muscle",
+        "unresolved_candidate": null
+      },
+      "status": "ready_for_image_url_resolution",
+      "locator_actions": [
+        {
+          "source_id": "alpha_af345_7cm_retail",
+          "page_url": "https://www.01bigbricks.net/products/minifigures-hulk-lego-af345",
+          "authority": "retailer",
+          "locator_quality": "direct_or_family_reference",
+          "status": "ready_for_reviewed_page_media_resolution",
+          "strategy": "reviewed_page_to_exact_image_url"
+        }
+      ],
+      "required_output": {
+        "exact_image_url": null,
+        "source_occurrence_id": null,
+        "source_file_sha256": null,
+        "view": "canonical_or_best_available_full_figure",
+        "rights_provenance_status": "preserve_source_permission_overlay"
+      }
+    },
+    {
+      "case_id": "archrec::hulk_g2_gh0304_avengers",
+      "source_record_id": "hulk_g2_gh0304_avengers",
+      "split": "development",
+      "scoring_track": "provisional",
+      "architecture_target": {
+        "architecture_id": "custom_g2_muscle_hybrid",
+        "unresolved_candidate": null
+      },
+      "status": "blocked_on_direct_release_locator",
+      "locator_actions": [
+        {
+          "source_id": "herobloks_hulk_avengers_gh0304_version_graph",
+          "page_url": "https://www.herobloks.com/figures/38832/tv/tv1136/hulk-%28avengers%29",
+          "authority": "custom_catalog",
+          "locator_quality": "indirect_identity_graph",
+          "status": "blocked_on_direct_release_locator",
+          "strategy": "resolve_direct_release_page_before_image_acquisition"
+        }
+      ],
+      "required_output": {
+        "exact_image_url": null,
+        "source_occurrence_id": null,
+        "source_file_sha256": null,
+        "view": "canonical_or_best_available_full_figure",
+        "rights_provenance_status": "preserve_source_permission_overlay"
+      }
+    },
+    {
+      "case_id": "archrec::hulk_bigguy_ragnarok",
+      "source_record_id": "hulk_bigguy_ragnarok",
+      "split": "development",
+      "scoring_track": "provisional",
+      "architecture_target": {
+        "architecture_id": "custom_bigguy_muscle",
+        "unresolved_candidate": null
+      },
+      "status": "ready_for_image_url_resolution",
+      "locator_actions": [
+        {
+          "source_id": "bigguy_hulk_ragnarok",
+          "page_url": "https://www.herobloks.com/figures/38319/bigguy-minifigs/hulk-(ragnarok)",
+          "authority": "custom_catalog",
+          "locator_quality": "direct_or_family_reference",
+          "status": "ready_for_reviewed_page_media_resolution",
+          "strategy": "reviewed_page_to_exact_image_url"
+        }
+      ],
+      "required_output": {
+        "exact_image_url": null,
+        "source_occurrence_id": null,
+        "source_file_sha256": null,
+        "view": "canonical_or_best_available_full_figure",
+        "rights_provenance_status": "preserve_source_permission_overlay"
+      }
+    },
+    {
+      "case_id": "archrec::hulk_mrj_heart_comics",
+      "source_record_id": "hulk_mrj_heart_comics",
+      "split": "development",
+      "scoring_track": "provisional",
+      "architecture_target": {
+        "architecture_id": "custom_mrj_heart_muscle",
+        "unresolved_candidate": null
+      },
+      "status": "ready_for_image_url_resolution",
+      "locator_actions": [
+        {
+          "source_id": "mrj_heart_hulk",
+          "page_url": "https://www.herobloks.com/figures/38863/mr.j-brick-x-heart/hulk-(comics)",
+          "authority": "custom_catalog",
+          "locator_quality": "direct_or_family_reference",
+          "status": "ready_for_reviewed_page_media_resolution",
+          "strategy": "reviewed_page_to_exact_image_url"
+        }
+      ],
+      "required_output": {
+        "exact_image_url": null,
+        "source_occurrence_id": null,
+        "source_file_sha256": null,
+        "view": "canonical_or_best_available_full_figure",
+        "rights_provenance_status": "preserve_source_permission_overlay"
+      }
+    },
+    {
+      "case_id": "archrec::red_hulk_alpha_af364_bnw",
+      "source_record_id": "red_hulk_alpha_af364_bnw",
+      "split": "development",
+      "scoring_track": "core",
+      "architecture_target": {
+        "architecture_id": "custom_alpha_7cm_muscle",
+        "unresolved_candidate": null
+      },
+      "status": "ready_for_image_url_resolution",
+      "locator_actions": [
+        {
+          "source_id": "alpha_red_hulk_af364",
+          "page_url": "https://www.herobloks.com/figures/54814",
+          "authority": "custom_catalog",
+          "locator_quality": "direct_or_family_reference",
+          "status": "ready_for_reviewed_page_media_resolution",
+          "strategy": "reviewed_page_to_exact_image_url"
+        }
+      ],
+      "required_output": {
+        "exact_image_url": null,
+        "source_occurrence_id": null,
+        "source_file_sha256": null,
+        "view": "canonical_or_best_available_full_figure",
+        "rights_provenance_status": "preserve_source_permission_overlay"
+      }
+    },
+    {
+      "case_id": "archrec::red_hulk_g2_gh0303_bnw",
+      "source_record_id": "red_hulk_g2_gh0303_bnw",
+      "split": "development",
+      "scoring_track": "provisional",
+      "architecture_target": {
+        "architecture_id": "custom_g2_muscle_hybrid",
+        "unresolved_candidate": null
+      },
+      "status": "ready_for_image_url_resolution",
+      "locator_actions": [
+        {
+          "source_id": "g2_red_hulk_gh0303",
+          "page_url": "https://www.herobloks.com/figures/35534",
+          "authority": "custom_catalog",
+          "locator_quality": "direct_or_family_reference",
+          "status": "ready_for_reviewed_page_media_resolution",
+          "strategy": "reviewed_page_to_exact_image_url"
+        }
+      ],
+      "required_output": {
+        "exact_image_url": null,
+        "source_occurrence_id": null,
+        "source_file_sha256": null,
+        "view": "canonical_or_best_available_full_figure",
+        "rights_provenance_status": "preserve_source_permission_overlay"
+      }
+    },
+    {
+      "case_id": "archrec::red_hulk_bigguy_bnw",
+      "source_record_id": "red_hulk_bigguy_bnw",
+      "split": "development",
+      "scoring_track": "provisional",
+      "architecture_target": {
+        "architecture_id": "custom_bigguy_muscle",
+        "unresolved_candidate": null
+      },
+      "status": "ready_for_image_url_resolution",
+      "locator_actions": [
+        {
+          "source_id": "bigguy_red_hulk_bnw",
+          "page_url": "https://www.herobloks.com/figures/38318/bigguy-minifigs/red-hulk-(brave-new-world)",
+          "authority": "custom_catalog",
+          "locator_quality": "direct_or_family_reference",
+          "status": "ready_for_reviewed_page_media_resolution",
+          "strategy": "reviewed_page_to_exact_image_url"
+        }
+      ],
+      "required_output": {
+        "exact_image_url": null,
+        "source_occurrence_id": null,
+        "source_file_sha256": null,
+        "view": "canonical_or_best_available_full_figure",
+        "rights_provenance_status": "preserve_source_permission_overlay"
+      }
+    },
+    {
+      "case_id": "archrec::venom_lego_sh0542_standard",
+      "source_record_id": "venom_lego_sh0542_standard",
+      "split": "validation",
+      "scoring_track": "core",
+      "architecture_target": {
+        "architecture_id": "minifig_standard",
+        "unresolved_candidate": null
+      },
+      "status": "ready_for_image_url_resolution",
+      "locator_actions": [
+        {
+          "source_id": "bricklink_venom_sh0542_inventory",
+          "page_url": "https://www.bricklink.com/catalogItemInv.asp?M=sh0542&viewID=Y",
+          "authority": "structured_catalog",
+          "locator_quality": "direct_or_family_reference",
+          "status": "ready_for_catalog_image_resolution",
+          "strategy": "bricklink_catalog_adapter_or_reviewed_image_endpoint"
+        }
+      ],
+      "required_output": {
+        "exact_image_url": null,
+        "source_occurrence_id": null,
+        "source_file_sha256": null,
+        "view": "canonical_or_best_available_full_figure",
+        "rights_provenance_status": "preserve_source_permission_overlay"
+      }
+    },
+    {
+      "case_id": "archrec::venom_alpha_af321_movie",
+      "source_record_id": "venom_alpha_af321_movie",
+      "split": "validation",
+      "scoring_track": "core",
+      "architecture_target": {
+        "architecture_id": "custom_alpha_45mm_muscle_hybrid",
+        "unresolved_candidate": null
+      },
+      "status": "ready_for_image_url_resolution",
+      "locator_actions": [
+        {
+          "source_id": "alpha_venom_af321",
+          "page_url": "https://www.herobloks.com/figures/31376/alpha-toys/af321/venom-%28movie%29",
+          "authority": "custom_catalog",
+          "locator_quality": "direct_or_family_reference",
+          "status": "ready_for_reviewed_page_media_resolution",
+          "strategy": "reviewed_page_to_exact_image_url"
+        }
+      ],
+      "required_output": {
+        "exact_image_url": null,
+        "source_occurrence_id": null,
+        "source_file_sha256": null,
+        "view": "canonical_or_best_available_full_figure",
+        "rights_provenance_status": "preserve_source_permission_overlay"
+      }
+    },
+    {
+      "case_id": "archrec::venom_alpha_af325",
+      "source_record_id": "venom_alpha_af325",
+      "split": "validation",
+      "scoring_track": "core",
+      "architecture_target": {
+        "architecture_id": "custom_alpha_45mm_muscle_hybrid",
+        "unresolved_candidate": null
+      },
+      "status": "ready_for_image_url_resolution",
+      "locator_actions": [
+        {
+          "source_id": "alpha_venom_af325",
+          "page_url": "https://www.herobloks.com/figures/31518/alpha-toys/af325/venom",
+          "authority": "custom_catalog",
+          "locator_quality": "direct_or_family_reference",
+          "status": "ready_for_reviewed_page_media_resolution",
+          "strategy": "reviewed_page_to_exact_image_url"
+        }
+      ],
+      "required_output": {
+        "exact_image_url": null,
+        "source_occurrence_id": null,
+        "source_file_sha256": null,
+        "view": "canonical_or_best_available_full_figure",
+        "rights_provenance_status": "preserve_source_permission_overlay"
+      }
+    },
+    {
+      "case_id": "archrec::venom_alpha_af328_ancient",
+      "source_record_id": "venom_alpha_af328_ancient",
+      "split": "validation",
+      "scoring_track": "core",
+      "architecture_target": {
+        "architecture_id": "custom_alpha_45mm_muscle_hybrid",
+        "unresolved_candidate": null
+      },
+      "status": "ready_for_image_url_resolution",
+      "locator_actions": [
+        {
+          "source_id": "alpha_ancient_venom_af328",
+          "page_url": "https://www.herobloks.com/figures/33823/alpha-toys/af328/ancient-venom",
+          "authority": "custom_catalog",
+          "locator_quality": "direct_or_family_reference",
+          "status": "ready_for_reviewed_page_media_resolution",
+          "strategy": "reviewed_page_to_exact_image_url"
+        }
+      ],
+      "required_output": {
+        "exact_image_url": null,
+        "source_occurrence_id": null,
+        "source_file_sha256": null,
+        "view": "canonical_or_best_available_full_figure",
+        "rights_provenance_status": "preserve_source_permission_overlay"
+      }
+    },
+    {
+      "case_id": "archrec::venom_xinh_xh1911_bigfig",
+      "source_record_id": "venom_xinh_xh1911_bigfig",
+      "split": "validation",
+      "scoring_track": "open_set",
+      "architecture_target": {
+        "architecture_id": null,
+        "unresolved_candidate": "compatible_bigfig_unresolved"
+      },
+      "status": "ready_for_image_url_resolution",
+      "locator_actions": [
+        {
+          "source_id": "xinh_venom_xh1911_bigfig",
+          "page_url": "https://www.herobloks.com/figures/28107/xinh/xh1911/venom-%28bigfig%29",
+          "authority": "custom_catalog",
+          "locator_quality": "direct_or_family_reference",
+          "status": "ready_for_reviewed_page_media_resolution",
+          "strategy": "reviewed_page_to_exact_image_url"
+        }
+      ],
+      "required_output": {
+        "exact_image_url": null,
+        "source_occurrence_id": null,
+        "source_file_sha256": null,
+        "view": "canonical_or_best_available_full_figure",
+        "rights_provenance_status": "preserve_source_permission_overlay"
+      }
+    },
+    {
+      "case_id": "archrec::venom_xinh_xh1829_movie_bigfig",
+      "source_record_id": "venom_xinh_xh1829_movie_bigfig",
+      "split": "validation",
+      "scoring_track": "open_set",
+      "architecture_target": {
+        "architecture_id": null,
+        "unresolved_candidate": "compatible_bigfig_unresolved"
+      },
+      "status": "ready_for_image_url_resolution",
+      "locator_actions": [
+        {
+          "source_id": "xinh_venom_xh1829_movie_bigfig",
+          "page_url": "https://www.herobloks.com/figures/27853/xinh/xh1829/venom-%28movie%29-%28bigfig%29",
+          "authority": "custom_catalog",
+          "locator_quality": "direct_or_family_reference",
+          "status": "ready_for_reviewed_page_media_resolution",
+          "strategy": "reviewed_page_to_exact_image_url"
+        }
+      ],
+      "required_output": {
+        "exact_image_url": null,
+        "source_occurrence_id": null,
+        "source_file_sha256": null,
+        "view": "canonical_or_best_available_full_figure",
+        "rights_provenance_status": "preserve_source_permission_overlay"
+      }
+    },
+    {
+      "case_id": "archrec::thing_lego_sh1051_first_steps",
+      "source_record_id": "thing_lego_sh1051_first_steps",
+      "split": "test",
+      "scoring_track": "core",
+      "architecture_target": {
+        "architecture_id": "minifig_standard",
+        "unresolved_candidate": null
+      },
+      "status": "ready_for_image_url_resolution",
+      "locator_actions": [
+        {
+          "source_id": "bricklink_thing_sh1051_inventory",
+          "page_url": "https://www.bricklink.com/catalogItemInv.asp?M=sh1051&viewID=Y",
+          "authority": "structured_catalog",
+          "locator_quality": "direct_or_family_reference",
+          "status": "ready_for_catalog_image_resolution",
+          "strategy": "bricklink_catalog_adapter_or_reviewed_image_endpoint"
+        }
+      ],
+      "required_output": {
+        "exact_image_url": null,
+        "source_occurrence_id": null,
+        "source_file_sha256": null,
+        "view": "canonical_or_best_available_full_figure",
+        "rights_provenance_status": "preserve_source_permission_overlay"
+      }
+    },
+    {
+      "case_id": "archrec::thing_alpha_af336_first_steps",
+      "source_record_id": "thing_alpha_af336_first_steps",
+      "split": "test",
+      "scoring_track": "open_set",
+      "architecture_target": {
+        "architecture_id": null,
+        "unresolved_candidate": "minifig_standard_or_custom_standard"
+      },
+      "status": "ready_for_image_url_resolution",
+      "locator_actions": [
+        {
+          "source_id": "alpha_thing_af336",
+          "page_url": "https://www.herobloks.com/figures/37284/alpha-toys/af336/thing-%28first-steps%29",
+          "authority": "custom_catalog",
+          "locator_quality": "direct_or_family_reference",
+          "status": "ready_for_reviewed_page_media_resolution",
+          "strategy": "reviewed_page_to_exact_image_url"
+        }
+      ],
+      "required_output": {
+        "exact_image_url": null,
+        "source_occurrence_id": null,
+        "source_file_sha256": null,
+        "view": "canonical_or_best_available_full_figure",
+        "rights_provenance_status": "preserve_source_permission_overlay"
+      }
+    },
+    {
+      "case_id": "archrec::thing_kdl_k2302_first_steps",
+      "source_record_id": "thing_kdl_k2302_first_steps",
+      "split": "test",
+      "scoring_track": "provisional",
+      "architecture_target": {
+        "architecture_id": "custom_kdl_65mm_large",
+        "unresolved_candidate": null
+      },
+      "status": "ready_for_image_url_resolution",
+      "locator_actions": [
+        {
+          "source_id": "kdl_thing_k2302",
+          "page_url": "https://www.herobloks.com/figures/38962/kdl/k2302/thing-(first-steps)",
+          "authority": "custom_catalog",
+          "locator_quality": "direct_or_family_reference",
+          "status": "ready_for_reviewed_page_media_resolution",
+          "strategy": "reviewed_page_to_exact_image_url"
+        }
+      ],
+      "required_output": {
+        "exact_image_url": null,
+        "source_occurrence_id": null,
+        "source_file_sha256": null,
+        "view": "canonical_or_best_available_full_figure",
+        "rights_provenance_status": "preserve_source_permission_overlay"
+      }
+    },
+    {
+      "case_id": "archrec::thing_tp_tp178_first_steps",
+      "source_record_id": "thing_tp_tp178_first_steps",
+      "split": "test",
+      "scoring_track": "open_set",
+      "architecture_target": {
+        "architecture_id": null,
+        "unresolved_candidate": "minifig_standard_or_custom_standard"
+      },
+      "status": "ready_for_image_url_resolution",
+      "locator_actions": [
+        {
+          "source_id": "tp_thing_tp178",
+          "page_url": "https://www.herobloks.com/figures/31646/tp/tp178/thing-%28first-steps%29",
+          "authority": "custom_catalog",
+          "locator_quality": "direct_or_family_reference",
+          "status": "ready_for_reviewed_page_media_resolution",
+          "strategy": "reviewed_page_to_exact_image_url"
+        }
+      ],
+      "required_output": {
+        "exact_image_url": null,
+        "source_occurrence_id": null,
+        "source_file_sha256": null,
+        "view": "canonical_or_best_available_full_figure",
+        "rights_provenance_status": "preserve_source_permission_overlay"
+      }
+    },
+    {
+      "case_id": "archrec::thing_tp_tp349_first_steps_bigfig",
+      "source_record_id": "thing_tp_tp349_first_steps_bigfig",
+      "split": "test",
+      "scoring_track": "open_set",
+      "architecture_target": {
+        "architecture_id": null,
+        "unresolved_candidate": "compatible_bigfig_unresolved"
+      },
+      "status": "ready_for_image_url_resolution",
+      "locator_actions": [
+        {
+          "source_id": "tp_thing_tp349_bigfig",
+          "page_url": "https://www.herobloks.com/figures/37476",
+          "authority": "custom_catalog",
+          "locator_quality": "direct_or_family_reference",
+          "status": "ready_for_reviewed_page_media_resolution",
+          "strategy": "reviewed_page_to_exact_image_url"
+        }
+      ],
+      "required_output": {
+        "exact_image_url": null,
+        "source_occurrence_id": null,
+        "source_file_sha256": null,
+        "view": "canonical_or_best_available_full_figure",
+        "rights_provenance_status": "preserve_source_permission_overlay"
+      }
+    },
+    {
+      "case_id": "archrec::thing_g2_gh0348",
+      "source_record_id": "thing_g2_gh0348",
+      "split": "test",
+      "scoring_track": "provisional",
+      "architecture_target": {
+        "architecture_id": "custom_g2_muscle_hybrid",
+        "unresolved_candidate": null
+      },
+      "status": "ready_for_image_url_resolution",
+      "locator_actions": [
+        {
+          "source_id": "g2_thing_gh0348",
+          "page_url": "https://www.herobloks.com/figures/36599/g-%282%29/gh0348/thing",
+          "authority": "custom_catalog",
+          "locator_quality": "direct_or_family_reference",
+          "status": "ready_for_reviewed_page_media_resolution",
+          "strategy": "reviewed_page_to_exact_image_url"
+        }
+      ],
+      "required_output": {
+        "exact_image_url": null,
+        "source_occurrence_id": null,
+        "source_file_sha256": null,
+        "view": "canonical_or_best_available_full_figure",
+        "rights_provenance_status": "preserve_source_permission_overlay"
+      }
+    },
+    {
+      "case_id": "archrec::thing_g2_gh0435_bigfig",
+      "source_record_id": "thing_g2_gh0435_bigfig",
+      "split": "test",
+      "scoring_track": "open_set",
+      "architecture_target": {
+        "architecture_id": null,
+        "unresolved_candidate": "compatible_bigfig_unresolved"
+      },
+      "status": "ready_for_image_url_resolution",
+      "locator_actions": [
+        {
+          "source_id": "g2_thing_gh0435_bigfig",
+          "page_url": "https://www.herobloks.com/figures/38547",
+          "authority": "custom_catalog",
+          "locator_quality": "direct_or_family_reference",
+          "status": "ready_for_reviewed_page_media_resolution",
+          "strategy": "reviewed_page_to_exact_image_url"
+        }
+      ],
+      "required_output": {
+        "exact_image_url": null,
+        "source_occurrence_id": null,
+        "source_file_sha256": null,
+        "view": "canonical_or_best_available_full_figure",
+        "rights_provenance_status": "preserve_source_permission_overlay"
+      }
+    },
+    {
+      "case_id": "archrec::thing_g2_gh0440_bigfig",
+      "source_record_id": "thing_g2_gh0440_bigfig",
+      "split": "test",
+      "scoring_track": "open_set",
+      "architecture_target": {
+        "architecture_id": null,
+        "unresolved_candidate": "compatible_bigfig_unresolved"
+      },
+      "status": "ready_for_image_url_resolution",
+      "locator_actions": [
+        {
+          "source_id": "g2_thing_gh0440_bigfig",
+          "page_url": "https://www.herobloks.com/figures/38552/g-%282%29/gh0440/thing-%28future-foundation%29-%28bigfig%29",
+          "authority": "custom_catalog",
+          "locator_quality": "direct_or_family_reference",
+          "status": "ready_for_reviewed_page_media_resolution",
+          "strategy": "reviewed_page_to_exact_image_url"
+        }
+      ],
+      "required_output": {
+        "exact_image_url": null,
+        "source_occurrence_id": null,
+        "source_file_sha256": null,
+        "view": "canonical_or_best_available_full_figure",
+        "rights_provenance_status": "preserve_source_permission_overlay"
+      }
+    },
+    {
+      "case_id": "archrec::thing_shengyuan_sy288_bigfig",
+      "source_record_id": "thing_shengyuan_sy288_bigfig",
+      "split": "test",
+      "scoring_track": "open_set",
+      "architecture_target": {
+        "architecture_id": null,
+        "unresolved_candidate": "compatible_bigfig_unresolved"
+      },
+      "status": "ready_for_image_url_resolution",
+      "locator_actions": [
+        {
+          "source_id": "shengyuan_thing_sy288_bigfig",
+          "page_url": "https://www.herobloks.com/figures/2306/sheng-yuan/-sy288/thing-%28bigfig%29",
+          "authority": "custom_catalog",
+          "locator_quality": "direct_or_family_reference",
+          "status": "ready_for_reviewed_page_media_resolution",
+          "strategy": "reviewed_page_to_exact_image_url"
+        }
+      ],
+      "required_output": {
+        "exact_image_url": null,
+        "source_occurrence_id": null,
+        "source_file_sha256": null,
+        "view": "canonical_or_best_available_full_figure",
+        "rights_provenance_status": "preserve_source_permission_overlay"
+      }
+    },
+    {
+      "case_id": "archrec::thing_xinh_1421_bigfig",
+      "source_record_id": "thing_xinh_1421_bigfig",
+      "split": "test",
+      "scoring_track": "open_set",
+      "architecture_target": {
+        "architecture_id": null,
+        "unresolved_candidate": "compatible_bigfig_unresolved"
+      },
+      "status": "ready_for_image_url_resolution",
+      "locator_actions": [
+        {
+          "source_id": "xinh_thing_1421_bigfig",
+          "page_url": "https://www.herobloks.com/figures/25180/xinh/1421/thing-%28bigfig%29",
+          "authority": "custom_catalog",
+          "locator_quality": "direct_or_family_reference",
+          "status": "ready_for_reviewed_page_media_resolution",
+          "strategy": "reviewed_page_to_exact_image_url"
+        }
+      ],
+      "required_output": {
+        "exact_image_url": null,
+        "source_occurrence_id": null,
+        "source_file_sha256": null,
+        "view": "canonical_or_best_available_full_figure",
+        "rights_provenance_status": "preserve_source_permission_overlay"
+      }
+    }
+  ],
+  "downstream": {
+    "materializer": "tools/knowledge/materialize_lego_reference_images.py",
+    "materializer_requirement": "exact HTTPS image URLs plus explicit allowed hosts",
+    "post_materialization": [
+      "checksum and content-addressed dedupe",
+      "canonical-view validation",
+      "low-resolution and occlusion derivative generation",
+      "benchmark manifest asset binding"
+    ]
+  }
+}
