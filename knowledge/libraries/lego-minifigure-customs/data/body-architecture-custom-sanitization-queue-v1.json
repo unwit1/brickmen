@@ -87,6 +87,70 @@
       "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
     },
     {
+      "case_id": "archcandidate::titanic_standard_four_arm",
+      "source_record_id": "custom_standard_four_arm_single_torso_titanic",
+      "split": "custom_challenge_test",
+      "scoring_track": "custom",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "custom_standard_four_arm_single_torso",
+        "unresolved_candidate": null
+      },
+      "source": {
+        "source_id": "titanic_bricks_four_arm_product_image_1",
+        "exact_image_url": "https://titanicbricks.com/cdn/shop/files/untitled.1159.jpg?v=1758351992&width=1946",
+        "source_file_sha256": "eb3649ca3c8c331bec1e42f15b6326bb47253b4bba8ec13ae57e2db0d3c2af14",
+        "source_size_bytes": 44455,
+        "source_width": 1280,
+        "source_height": 1280,
+        "source_content_type": "image/jpeg",
+        "source_image_format": "jpeg",
+        "verification_run_id": 36630907484
+      },
+      "source_risk": "unknown_review_required",
+      "risk_reasons": [
+        "source_host_has_no_sanitization_prior"
+      ],
+      "status": "approved_raw_model_input",
+      "raw_model_input_allowed": true,
+      "required_checks": [
+        "identity_matches_source_record",
+        "primary_view_classified",
+        "primary_figure_complete",
+        "release_or_sku_text_absent_or_removed",
+        "character_name_text_absent_or_removed",
+        "maker_or_brand_logo_absent_or_removed",
+        "architecture_or_market_label_absent_or_removed",
+        "task_confounding_secondary_panels_absent_or_removed"
+      ],
+      "recommended_actions": [
+        "approve_raw_only_if_visually_clean",
+        "tight_figure_crop",
+        "mask_auxiliary_insets"
+      ],
+      "review": {
+        "identity_match": true,
+        "primary_view": "front_three_quarter",
+        "primary_figure_complete": true,
+        "visible_text_leakage": [],
+        "visual_confounders": [],
+        "sanitization_action": "none",
+        "sanitized_asset_sha256": "eb3649ca3c8c331bec1e42f15b6326bb47253b4bba8ec13ae57e2db0d3c2af14",
+        "sanitized_asset_status": "approved",
+        "reviewer_id": "openai_chatgpt_visual_review",
+        "reviewer_type": "model",
+        "review_confidence": 0.99,
+        "notes": [
+          "Exact verified product image cleanly shows the single-torso four-arm architecture on a neutral background.",
+          "No visible maker logo, product text, SKU, inset panel, secondary figure, or other shortcut cue is present."
+        ],
+        "review_source_sha256": "eb3649ca3c8c331bec1e42f15b6326bb47253b4bba8ec13ae57e2db0d3c2af14",
+        "review_stale": false
+      },
+      "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
+      "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
+    },
+    {
       "case_id": "archcandidate::sidan_full_balljoint_poseable",
       "source_record_id": "custom_sidan_full_balljoint_poseable_sidan",
       "split": "custom_challenge_test",
@@ -146,70 +210,6 @@
           "Ball-jointed shoulders, elbows/arms, hips/legs, feet and neck architecture are visibly represented well enough for the intended custom-architecture evaluation."
         ],
         "review_source_sha256": "2ac7f9ba8793107e58892205ea56cc772b876cd63cd2fda08e51e1a0ec8e831e",
-        "review_stale": false
-      },
-      "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
-      "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
-    },
-    {
-      "case_id": "archcandidate::titanic_standard_four_arm",
-      "source_record_id": "custom_standard_four_arm_single_torso_titanic",
-      "split": "custom_challenge_test",
-      "scoring_track": "custom",
-      "task": "closed_set_architecture_classification",
-      "expected": {
-        "architecture_id": "custom_standard_four_arm_single_torso",
-        "unresolved_candidate": null
-      },
-      "source": {
-        "source_id": "titanic_bricks_four_arm_product_image_1",
-        "exact_image_url": "https://titanicbricks.com/cdn/shop/files/untitled.1159.jpg?v=1758351992&width=1946",
-        "source_file_sha256": "eb3649ca3c8c331bec1e42f15b6326bb47253b4bba8ec13ae57e2db0d3c2af14",
-        "source_size_bytes": 44455,
-        "source_width": 1280,
-        "source_height": 1280,
-        "source_content_type": "image/jpeg",
-        "source_image_format": "jpeg",
-        "verification_run_id": 36630907484
-      },
-      "source_risk": "unknown_review_required",
-      "risk_reasons": [
-        "source_host_has_no_sanitization_prior"
-      ],
-      "status": "approved_raw_model_input",
-      "raw_model_input_allowed": true,
-      "required_checks": [
-        "identity_matches_source_record",
-        "primary_view_classified",
-        "primary_figure_complete",
-        "release_or_sku_text_absent_or_removed",
-        "character_name_text_absent_or_removed",
-        "maker_or_brand_logo_absent_or_removed",
-        "architecture_or_market_label_absent_or_removed",
-        "task_confounding_secondary_panels_absent_or_removed"
-      ],
-      "recommended_actions": [
-        "approve_raw_only_if_visually_clean",
-        "tight_figure_crop",
-        "mask_auxiliary_insets"
-      ],
-      "review": {
-        "identity_match": true,
-        "primary_view": "front_three_quarter",
-        "primary_figure_complete": true,
-        "visible_text_leakage": [],
-        "visual_confounders": [],
-        "sanitization_action": "none",
-        "sanitized_asset_sha256": "eb3649ca3c8c331bec1e42f15b6326bb47253b4bba8ec13ae57e2db0d3c2af14",
-        "sanitized_asset_status": "approved",
-        "reviewer_id": "openai_chatgpt_visual_review",
-        "reviewer_type": "model",
-        "review_confidence": 0.99,
-        "notes": [
-          "Exact verified product image cleanly shows the single-torso four-arm architecture on a neutral background.",
-          "No visible maker logo, product text, SKU, inset panel, secondary figure, or other shortcut cue is present."
-        ],
-        "review_source_sha256": "eb3649ca3c8c331bec1e42f15b6326bb47253b4bba8ec13ae57e2db0d3c2af14",
         "review_stale": false
       },
       "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
