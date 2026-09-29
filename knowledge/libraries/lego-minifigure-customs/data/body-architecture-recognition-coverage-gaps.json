@@ -2,25 +2,25 @@
   "schema_version": "0.1",
   "created": "2026-09-29",
   "status": "coverage_gap_inventory",
-  "processor_version": "body-architecture-coverage-gaps/v1",
+  "processor_version": "body-architecture-coverage-gaps/v2",
   "policy": [
     "Evaluation coverage is architecture-target coverage, not source-count coverage.",
-    "Challenge-v2 and same-character contrast assets are evaluation-only.",
+    "Challenge-v3 and same-character contrast assets are evaluation-only.",
     "Umbrella, source-label-only and unresolved families are ontology work, not closed-set benchmark classes.",
     "Prioritize concrete official untested architectures before adding redundant examples of already-covered families."
   ],
   "inputs": {
     "registry": "knowledge/libraries/lego-minifigure-customs/data/figure-architecture-registry.json",
     "base_benchmark": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-recognition-benchmark-cases.json",
-    "challenge": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-recognition-challenge-cases-v2.json",
+    "challenge": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-recognition-challenge-cases-v3.json",
     "same_character_contrast": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-same-character-contrast-v1.json"
   },
   "summary": {
     "registry_architectures": 49,
-    "covered_architectures": 27,
-    "uncovered_architectures": 22,
-    "coverage_fraction": 0.55102,
-    "p0_official_gaps": 7,
+    "covered_architectures": 33,
+    "uncovered_architectures": 16,
+    "coverage_fraction": 0.673469,
+    "p0_official_gaps": 1,
     "p1_gaps": 3,
     "p2_gaps": 12
   },
@@ -36,12 +36,17 @@
       "minifig_short_leg",
       "minifig_standard"
     ],
-    "challenge_v2": [
+    "challenge_v3": [
+      "baby_toddler",
       "lego_axl_oversized_torso_hybrid",
       "lego_giant_killer_croc_specialized",
+      "lego_giant_troll_legacy",
       "lego_hagrid_half_giant",
+      "microfigure",
+      "minidoll_standard",
       "minifig_battle_droid_mechanical",
       "minifig_centaur_hybrid",
+      "minifig_long_limb",
       "minifig_lowerbody_faun_digitigrade",
       "minifig_lowerbody_ghost",
       "minifig_lowerbody_merfolk",
@@ -50,6 +55,7 @@
       "minifig_lowerbody_tentacle",
       "minifig_mechanical_droid_specialized",
       "minifig_medium_leg",
+      "minifig_skeleton_bony",
       "minifig_stacked_torso_multiarm",
       "minifig_super_battle_droid_integrated",
       "specialized_tail_body_jabba"
@@ -89,16 +95,18 @@
       "scale_class": "standard_medium",
       "covered": true,
       "coverage_sources": [
-        "challenge_v2"
+        "challenge_v3"
       ]
     },
     {
       "architecture_id": "minifig_long_limb",
       "canonical_name": "Extended/long-limb minifigure",
-      "status": "architecture_family",
+      "status": "official_architecture_family",
       "scale_class": "standard_tall",
-      "covered": false,
-      "coverage_sources": []
+      "covered": true,
+      "coverage_sources": [
+        "challenge_v3"
+      ]
     },
     {
       "architecture_id": "lego_giant_modular",
@@ -114,10 +122,12 @@
     {
       "architecture_id": "lego_giant_troll_legacy",
       "canonical_name": "Legacy Fantasy Era Troll Giant architecture",
-      "status": "catalog_identified_metrology_pending",
+      "status": "strong_catalog_evidence_physical_measurement_pending",
       "scale_class": "large",
-      "covered": false,
-      "coverage_sources": []
+      "covered": true,
+      "coverage_sources": [
+        "challenge_v3"
+      ]
     },
     {
       "architecture_id": "lego_hagrid_giant_hybrid",
@@ -136,7 +146,7 @@
       "scale_class": "intermediate_large",
       "covered": true,
       "coverage_sources": [
-        "challenge_v2",
+        "challenge_v3",
         "same_character_contrast"
       ]
     },
@@ -147,7 +157,7 @@
       "scale_class": "intermediate",
       "covered": true,
       "coverage_sources": [
-        "challenge_v2"
+        "challenge_v3"
       ]
     },
     {
@@ -247,16 +257,20 @@
       "canonical_name": "LEGO microfigure",
       "status": "adjacent_official_architecture",
       "scale_class": "micro",
-      "covered": false,
-      "coverage_sources": []
+      "covered": true,
+      "coverage_sources": [
+        "challenge_v3"
+      ]
     },
     {
       "architecture_id": "baby_toddler",
       "canonical_name": "LEGO baby/toddler body",
       "status": "adjacent_official_architecture",
       "scale_class": "micro_small",
-      "covered": false,
-      "coverage_sources": []
+      "covered": true,
+      "coverage_sources": [
+        "challenge_v3"
+      ]
     },
     {
       "architecture_id": "custom_megafig_unresolved",
@@ -291,7 +305,7 @@
       "scale_class": "large",
       "covered": true,
       "coverage_sources": [
-        "challenge_v2"
+        "challenge_v3"
       ]
     },
     {
@@ -301,7 +315,7 @@
       "scale_class": "standard_tall",
       "covered": true,
       "coverage_sources": [
-        "challenge_v2"
+        "challenge_v3"
       ]
     },
     {
@@ -311,7 +325,7 @@
       "scale_class": "standard_specialized",
       "covered": true,
       "coverage_sources": [
-        "challenge_v2"
+        "challenge_v3"
       ]
     },
     {
@@ -321,7 +335,7 @@
       "scale_class": "standard_modified",
       "covered": true,
       "coverage_sources": [
-        "challenge_v2"
+        "challenge_v3"
       ]
     },
     {
@@ -331,7 +345,7 @@
       "scale_class": "standard_modified",
       "covered": true,
       "coverage_sources": [
-        "challenge_v2"
+        "challenge_v3"
       ]
     },
     {
@@ -341,7 +355,7 @@
       "scale_class": "standard_modified",
       "covered": true,
       "coverage_sources": [
-        "challenge_v2"
+        "challenge_v3"
       ]
     },
     {
@@ -351,7 +365,7 @@
       "scale_class": "standard_modified",
       "covered": true,
       "coverage_sources": [
-        "challenge_v2"
+        "challenge_v3"
       ]
     },
     {
@@ -361,7 +375,7 @@
       "scale_class": "standard_modified",
       "covered": true,
       "coverage_sources": [
-        "challenge_v2"
+        "challenge_v3"
       ]
     },
     {
@@ -371,7 +385,7 @@
       "scale_class": "standard_extended",
       "covered": true,
       "coverage_sources": [
-        "challenge_v2"
+        "challenge_v3"
       ]
     },
     {
@@ -389,7 +403,7 @@
       "scale_class": "large_specialized",
       "covered": true,
       "coverage_sources": [
-        "challenge_v2"
+        "challenge_v3"
       ]
     },
     {
@@ -397,8 +411,10 @@
       "canonical_name": "LEGO mini-doll standard architecture",
       "status": "adjacent_official_architecture",
       "scale_class": "adjacent_standard",
-      "covered": false,
-      "coverage_sources": []
+      "covered": true,
+      "coverage_sources": [
+        "challenge_v3"
+      ]
     },
     {
       "architecture_id": "custom_standard_ball_joint_arm_adapter",
@@ -469,8 +485,10 @@
       "canonical_name": "LEGO skeleton figure architecture",
       "status": "official_architecture_family",
       "scale_class": "standard_specialized",
-      "covered": false,
-      "coverage_sources": []
+      "covered": true,
+      "coverage_sources": [
+        "challenge_v3"
+      ]
     },
     {
       "architecture_id": "minifig_battle_droid_mechanical",
@@ -479,7 +497,7 @@
       "scale_class": "standard_mechanical",
       "covered": true,
       "coverage_sources": [
-        "challenge_v2"
+        "challenge_v3"
       ]
     },
     {
@@ -489,7 +507,7 @@
       "scale_class": "standard_mechanical",
       "covered": true,
       "coverage_sources": [
-        "challenge_v2"
+        "challenge_v3"
       ]
     },
     {
@@ -499,7 +517,7 @@
       "scale_class": "standard_modified",
       "covered": true,
       "coverage_sources": [
-        "challenge_v2"
+        "challenge_v3"
       ]
     },
     {
@@ -513,40 +531,6 @@
   ],
   "gaps": [
     {
-      "architecture_id": "baby_toddler",
-      "canonical_name": "LEGO baby/toddler body",
-      "status": "adjacent_official_architecture",
-      "scale_class": "micro_small",
-      "covered": false,
-      "coverage_sources": [],
-      "gap_type": "official_evaluation_gap",
-      "priority": "P0",
-      "representative_characters": [],
-      "representative_release_ids": [],
-      "representative_part_ids": [
-        "25128"
-      ],
-      "sources": []
-    },
-    {
-      "architecture_id": "lego_giant_troll_legacy",
-      "canonical_name": "Legacy Fantasy Era Troll Giant architecture",
-      "status": "catalog_identified_metrology_pending",
-      "scale_class": "large",
-      "covered": false,
-      "coverage_sources": [],
-      "gap_type": "official_evaluation_gap",
-      "priority": "P0",
-      "representative_characters": [
-        "Fantasy Era Troll"
-      ],
-      "representative_release_ids": [],
-      "representative_part_ids": [
-        "60671"
-      ],
-      "sources": []
-    },
-    {
       "architecture_id": "lego_homemaker_maxifigure_legacy",
       "canonical_name": "Legacy LEGO Homemaker / maxifigure architecture",
       "status": "historical_reference_architecture",
@@ -556,70 +540,23 @@
       "gap_type": "official_evaluation_gap",
       "priority": "P0",
       "representative_characters": [],
-      "representative_release_ids": [],
-      "representative_part_ids": [],
-      "sources": [
-        "https://owiki.org/wiki/Lego_minifigure"
-      ]
-    },
-    {
-      "architecture_id": "microfigure",
-      "canonical_name": "LEGO microfigure",
-      "status": "adjacent_official_architecture",
-      "scale_class": "micro",
-      "covered": false,
-      "coverage_sources": [],
-      "gap_type": "official_evaluation_gap",
-      "priority": "P0",
-      "representative_characters": [],
-      "representative_release_ids": [],
-      "representative_part_ids": [
-        "85863"
+      "representative_release_ids": [
+        "55-1",
+        "200-1",
+        "231-1"
       ],
-      "sources": []
-    },
-    {
-      "architecture_id": "minidoll_standard",
-      "canonical_name": "LEGO mini-doll standard architecture",
-      "status": "adjacent_official_architecture",
-      "scale_class": "adjacent_standard",
-      "covered": false,
-      "coverage_sources": [],
-      "gap_type": "official_evaluation_gap",
-      "priority": "P0",
-      "representative_characters": [],
-      "representative_release_ids": [],
-      "representative_part_ids": [],
-      "sources": []
-    },
-    {
-      "architecture_id": "minifig_long_limb",
-      "canonical_name": "Extended/long-limb minifigure",
-      "status": "architecture_family",
-      "scale_class": "standard_tall",
-      "covered": false,
-      "coverage_sources": [],
-      "gap_type": "official_evaluation_gap",
-      "priority": "P0",
-      "representative_characters": [],
-      "representative_release_ids": [],
-      "representative_part_ids": [],
-      "sources": []
-    },
-    {
-      "architecture_id": "minifig_skeleton_bony",
-      "canonical_name": "LEGO skeleton figure architecture",
-      "status": "official_architecture_family",
-      "scale_class": "standard_specialized",
-      "covered": false,
-      "coverage_sources": [],
-      "gap_type": "official_evaluation_gap",
-      "priority": "P0",
-      "representative_characters": [],
-      "representative_release_ids": [],
-      "representative_part_ids": [],
+      "representative_part_ids": [
+        "792c03",
+        "685",
+        "3612",
+        "3613",
+        "3614a"
+      ],
       "sources": [
-        "https://brickarchitect.com/parts/category-10"
+        "https://owiki.org/wiki/Lego_minifigure",
+        "https://www.bricklink.com/catalogItemInv.asp?S=55-1",
+        "https://www.bricklink.com/CatalogItemInv.asp?S=200-1",
+        "https://www.bricklink.com/catalogItemInv.asp?S=231-1"
       ]
     },
     {
