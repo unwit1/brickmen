@@ -1,0 +1,167 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-29",
+  "status": "challenge_corpus_v1_exact_urls_pending_byte_verification",
+  "corpus_id": "body_architecture_challenge_v1",
+  "purpose": "Evaluation-only architecture-recognition cohort that broadens official body-system coverage beyond the original Hulk/Venom/Thing corpora without character overlap.",
+  "admission_rules": [
+    "Every case must have a specific release/figure identity rather than only a part-family label.",
+    "Architecture target must be backed by a component/joint graph in the canonical figure-architecture registry.",
+    "At least one structured catalog source must support the release-to-architecture assignment.",
+    "Exact image URL must resolve to the same release; byte verification is a separate required gate.",
+    "Challenge cases are evaluation-only and must not be included in training data.",
+    "Maker, release code, character name, theme and source labels are audit metadata only and must not be model inputs."
+  ],
+  "character_overlap_with_v0": false,
+  "records": [
+    {
+      "record_id": "challenge_axl_nex007",
+      "release": {
+        "maker": "LEGO",
+        "code": "nex007",
+        "year": 2016,
+        "label": "Axl - Flat Silver Visor and Torso"
+      },
+      "architecture_candidate": "lego_axl_oversized_torso_hybrid",
+      "source_refs": [
+        "bricklink_axl_nex007_inventory"
+      ],
+      "evidence_summary": [
+        "23763c01 oversized torso",
+        "24101/24104 specialized arms",
+        "standard head and hips/legs"
+      ],
+      "confidence": "catalog_high"
+    },
+    {
+      "record_id": "challenge_hagrid_hp144",
+      "release": {
+        "maker": "LEGO",
+        "code": "hp144",
+        "year": 2018,
+        "label": "Rubeus Hagrid - Medium Nougat Topcoat with Buttons"
+      },
+      "architecture_candidate": "lego_hagrid_half_giant",
+      "source_refs": [
+        "bricklink_hagrid_hp144_inventory"
+      ],
+      "evidence_summary": [
+        "37777 large torso",
+        "37779/37783 large arm family",
+        "standard head",
+        "short legs"
+      ],
+      "confidence": "catalog_high"
+    },
+    {
+      "record_id": "challenge_killer_croc_sh0321",
+      "release": {
+        "maker": "LEGO",
+        "code": "sh0321",
+        "year": 2017,
+        "label": "Killer Croc with Blue Pants and Claws"
+      },
+      "architecture_candidate": "lego_giant_killer_croc_specialized",
+      "source_refs": [
+        "bricklink_killer_croc_sh0321_specialized_giant"
+      ],
+      "evidence_summary": [
+        "26240c01 Giant body",
+        "28232/28230 studded-wrist Giant arms",
+        "11327 Rancor paws",
+        "11329 claws"
+      ],
+      "confidence": "catalog_high"
+    },
+    {
+      "record_id": "challenge_garmadon_njo0078",
+      "release": {
+        "maker": "LEGO",
+        "code": "njo0078",
+        "year": 2013,
+        "label": "Lord Garmadon - The Final Battle"
+      },
+      "architecture_candidate": "minifig_stacked_torso_multiarm",
+      "source_refs": [
+        "bricklink_garmadon_final_battle"
+      ],
+      "evidence_summary": [
+        "standard torso assembly",
+        "98127c01 modified short torso/armor assembly",
+        "stacked multi-arm component graph"
+      ],
+      "confidence": "catalog_high"
+    },
+    {
+      "record_id": "challenge_grievous_sw0254",
+      "release": {
+        "maker": "LEGO",
+        "code": "sw0254",
+        "year": 2010,
+        "label": "General Grievous - Bent Legs, Tan Armor"
+      },
+      "architecture_candidate": "minifig_mechanical_droid_specialized",
+      "source_refs": [
+        "bricklink_grievous_sw0254_inventory"
+      ],
+      "evidence_summary": [
+        "87566 mechanical torso",
+        "87568 mechanical arms",
+        "87569 mechanical legs",
+        "87567 modified head"
+      ],
+      "confidence": "catalog_high"
+    },
+    {
+      "record_id": "challenge_ghost_njo0174",
+      "release": {
+        "maker": "LEGO",
+        "code": "njo0174",
+        "year": 2015,
+        "label": "Blade Master Bansha - Ghost Lower Body"
+      },
+      "architecture_candidate": "minifig_lowerbody_ghost",
+      "source_refs": [
+        "bricklink_ghost_njo0174_inventory"
+      ],
+      "evidence_summary": [
+        "19859-family ghost lower body replaces standard hips/legs"
+      ],
+      "confidence": "catalog_high"
+    },
+    {
+      "record_id": "challenge_squid_atl007",
+      "release": {
+        "maker": "LEGO",
+        "code": "atl007",
+        "year": 2010,
+        "label": "Atlantis Squid Warrior"
+      },
+      "architecture_candidate": "minifig_lowerbody_tentacle",
+      "source_refs": [
+        "bricklink_tentacle_atl007_inventory"
+      ],
+      "evidence_summary": [
+        "87749 tentacle lower body replaces standard hips/legs"
+      ],
+      "confidence": "catalog_high"
+    },
+    {
+      "record_id": "challenge_centaur_col379",
+      "release": {
+        "maker": "LEGO",
+        "code": "col379",
+        "year": 2021,
+        "label": "Centaur Warrior, Series 21"
+      },
+      "architecture_candidate": "minifig_centaur_hybrid",
+      "source_refs": [
+        "bricklink_centaur_col379_inventory"
+      ],
+      "evidence_summary": [
+        "67638pb02 centaur lower body creates quadruped hybrid component graph"
+      ],
+      "confidence": "catalog_high"
+    }
+  ]
+}
