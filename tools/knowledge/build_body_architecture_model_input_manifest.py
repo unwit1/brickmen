@@ -59,15 +59,10 @@ def _review_is_exact_valid_approval(
     return all(checks.get(key) is True for key in CHECKS)
 
 
-def build(
-    queue_doc: dict[str, Any],
+def _merge_candidate_docs(
     candidate_doc: dict[str, Any],
-    reviews: Iterable[dict[str, Any]] = (),
-) -> dict[str, Any]:
-    queue_by_id = {
-        row["source_record_id"]: row
-        for row in queue_doc.get("queue", [])
-    }
+    supplemental_candidate_docs: Iterable[dict[str, Any]] = (),
+) -> tuple[dict[str, dict[str, Any]], dict[str, dict[str, Any]]]:
     candidate_by_id = {
         row["source_record_id"]: row
         for row in candidate_doc.get("records", [])
@@ -76,6 +71,50 @@ def build(
         row["source_record_id"]: row
         for row in candidate_doc.get("blockers", [])
     }
+
+    for doc in supplemental_candidate_docs:
+        for row in doc.get("records", []):
+            record_id = row["source_record_id"]
+            existing = candidate_by_id.get(record_id)
+            if existing is not None:
+                same_hashes = all(
+                    existing.get(key) == row.get(key)
+                    for key in (
+                        "source_file_sha256",
+                        "sanitized_pixel_sha256",
+                        "sanitized_png_sha256",
+                    )
+                )
+                if not same_hashes:
+                    raise ValueError(
+                        "supplemental candidate conflicts with existing "
+                        f"candidate: {record_id}"
+                    )
+            candidate_by_id[record_id] = row
+            blocker_by_id.pop(record_id, None)
+
+        for row in doc.get("blockers", []):
+            record_id = row["source_record_id"]
+            if record_id not in candidate_by_id:
+                blocker_by_id[record_id] = row
+
+    return candidate_by_id, blocker_by_id
+
+
+def build(
+    queue_doc: dict[str, Any],
+    candidate_doc: dict[str, Any],
+    reviews: Iterable[dict[str, Any]] = (),
+    supplemental_candidate_docs: Iterable[dict[str, Any]] = (),
+) -> dict[str, Any]:
+    queue_by_id = {
+        row["source_record_id"]: row
+        for row in queue_doc.get("queue", [])
+    }
+    candidate_by_id, blocker_by_id = _merge_candidate_docs(
+        candidate_doc,
+        supplemental_candidate_docs,
+    )
     reviews_by_id: dict[str, list[dict[str, Any]]] = defaultdict(list)
     for review in reviews:
         record_id = review.get("source_record_id")
@@ -250,15 +289,26 @@ def main() -> None:
     parser.add_argument("--queue", type=Path, default=DEFAULT_QUEUE)
     parser.add_argument("--candidates", type=Path, default=DEFAULT_CANDIDATES)
     parser.add_argument("--reviews", type=Path, action="append", default=[])
+    parser.add_argument(
+        "--supplemental-candidates",
+        type=Path,
+        action="append",
+        default=[],
+    )
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     args = parser.parse_args()
 
     queue_doc = json.loads(args.queue.read_text(encoding="utf-8"))
     candidate_doc = json.loads(args.candidates.read_text(encoding="utf-8"))
+    supplemental_docs = [
+        json.loads(path.read_text(encoding="utf-8"))
+        for path in args.supplemental_candidates
+    ]
     result = build(
         queue_doc,
         candidate_doc,
         iter_jsonl(args.reviews),
+        supplemental_docs,
     )
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(
