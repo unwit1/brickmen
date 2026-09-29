@@ -34,8 +34,8 @@ def test_populated_case_manifest_baseline() -> None:
     assert summary["core_scoring_cases"] == 11
     assert summary["provisional_scoring_cases"] == 7
     assert summary["cases_with_reference_locators"] == 27
-    assert summary["indirect_only_locator_cases"] == 1
-    assert summary["cases_with_exact_image_urls"] == 12
+    assert summary["indirect_only_locator_cases"] == 0
+    assert summary["cases_with_exact_image_urls"] == 15
     assert summary["split_counts"] == {
         "development": 11,
         "validation": 6,
@@ -157,6 +157,9 @@ def test_resolved_exact_image_urls_are_source_backed() -> None:
         "hulk_lego_sh0037_standard",
         "hulk_lego_sh0252_mighty_micros",
         "hulk_lego_sh0371_giant",
+        "hulk_alpha_af344_avengers",
+        "hulk_alpha_af345_comics",
+        "hulk_g2_gh0304_avengers",
         "venom_lego_sh0542_standard",
         "venom_alpha_af321_movie",
         "venom_alpha_af325",
