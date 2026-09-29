@@ -1,0 +1,613 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-29",
+  "status": "exact_urls_pending_byte_verification",
+  "benchmark_id": "body_architecture_challenge_v1",
+  "processor_version": "body-architecture-challenge-cases/v1",
+  "purpose": "Evaluation-only, character-disjoint expansion of official body-architecture recognition coverage.",
+  "baseline_benchmark": {
+    "path": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-recognition-benchmark-cases.json",
+    "blob_sha": "84f4f5ba759860a6ff640e0c506b75ef7d060b25",
+    "character_groups": [
+      "hulk",
+      "thing",
+      "venom"
+    ]
+  },
+  "source_corpus": {
+    "path": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-recognition-challenge-corpus-v1.json",
+    "blob_sha": "6a1e7d7e5976346f1a610b1f3f16db89cbd69af7"
+  },
+  "architecture_registry": {
+    "path": "knowledge/libraries/lego-minifigure-customs/data/figure-architecture-registry.json",
+    "blob_sha": "200b64a6d39eb78fdb0c995cc4918e302a8abb4a"
+  },
+  "source_registry": {
+    "path": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-source-registry.json",
+    "blob_sha": "adf1b3daf38d3f3e2e38661ada5c399e6a44aed1"
+  },
+  "split_policy": {
+    "split": "challenge_test",
+    "training_allowed": false,
+    "character_overlap_with_baseline": false,
+    "architecture_overlap_allowed": true,
+    "rule": "Challenge cases never enter training. Character groups are disjoint from baseline Hulk/Venom/Thing groups."
+  },
+  "summary": {
+    "total_cases": 8,
+    "unique_character_groups": 8,
+    "unique_architectures": 8,
+    "core_cases": 8,
+    "cases_with_exact_image_urls": 8,
+    "byte_verified_cases": 0
+  },
+  "architecture_ids": [
+    "lego_axl_oversized_torso_hybrid",
+    "lego_giant_killer_croc_specialized",
+    "lego_hagrid_half_giant",
+    "minifig_centaur_hybrid",
+    "minifig_lowerbody_ghost",
+    "minifig_lowerbody_tentacle",
+    "minifig_mechanical_droid_specialized",
+    "minifig_stacked_torso_multiarm"
+  ],
+  "cases": [
+    {
+      "case_id": "archchallenge::challenge_axl_nex007",
+      "source_record_id": "challenge_axl_nex007",
+      "split": "challenge_test",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "lego_axl_oversized_torso_hybrid",
+        "unresolved_candidate": null
+      },
+      "target_evidence_tier": "strong_evidence",
+      "scoring_track": "core",
+      "input_asset": {
+        "status": "exact_url_pending_byte_verification",
+        "required_view": "canonical_or_best_available_full_figure",
+        "materialized_asset_id": null,
+        "reference_locators": [
+          {
+            "source_id": "bricklink_axl_nex007_inventory",
+            "url": "https://www.bricklink.com/catalogItemInv.asp?M=nex007",
+            "authority": "structured_catalog",
+            "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/nex007.png",
+            "image_resolution_status": "verified_exact_image_url",
+            "source_file_sha256": null,
+            "source_size_bytes": null,
+            "source_width": null,
+            "source_height": null,
+            "source_content_type": null,
+            "source_image_format": null
+          }
+        ]
+      },
+      "leakage_guard": {
+        "allow_release_maker_as_model_input": false,
+        "allow_release_code_as_model_input": false,
+        "allow_character_label_as_model_input": false,
+        "allow_character_id_as_model_input": false,
+        "allow_theme_as_model_input": false,
+        "allow_source_labels_as_model_input": false,
+        "note": "Identity/catalog metadata is audit-only. Model input must be sanitized image/mesh evidence."
+      },
+      "audit_metadata": {
+        "release": {
+          "maker": "LEGO",
+          "code": "nex007",
+          "year": 2016,
+          "label": "Axl - Flat Silver Visor and Torso"
+        },
+        "character_id": "axl",
+        "evidence_summary": [
+          "23763c01 oversized torso",
+          "24101/24104 specialized arms",
+          "standard head and hips/legs"
+        ],
+        "original_confidence": "catalog_high"
+      },
+      "group_keys": {
+        "challenge_character_group": "axl",
+        "release_code": "nex007",
+        "architecture_candidate": "lego_axl_oversized_torso_hybrid"
+      },
+      "provenance": {
+        "source_corpus_path": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-recognition-challenge-corpus-v1.json",
+        "source_record_id": "challenge_axl_nex007",
+        "architecture_registry_path": "knowledge/libraries/lego-minifigure-customs/data/figure-architecture-registry.json",
+        "source_registry_path": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-source-registry.json",
+        "source_refs": [
+          "bricklink_axl_nex007_inventory"
+        ]
+      }
+    },
+    {
+      "case_id": "archchallenge::challenge_hagrid_hp144",
+      "source_record_id": "challenge_hagrid_hp144",
+      "split": "challenge_test",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "lego_hagrid_half_giant",
+        "unresolved_candidate": null
+      },
+      "target_evidence_tier": "strong_evidence",
+      "scoring_track": "core",
+      "input_asset": {
+        "status": "exact_url_pending_byte_verification",
+        "required_view": "canonical_or_best_available_full_figure",
+        "materialized_asset_id": null,
+        "reference_locators": [
+          {
+            "source_id": "bricklink_hagrid_hp144_inventory",
+            "url": "https://www.bricklink.com/catalogItemInv.asp?M=hp144",
+            "authority": "structured_catalog",
+            "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/hp144.png",
+            "image_resolution_status": "verified_exact_image_url",
+            "source_file_sha256": null,
+            "source_size_bytes": null,
+            "source_width": null,
+            "source_height": null,
+            "source_content_type": null,
+            "source_image_format": null
+          }
+        ]
+      },
+      "leakage_guard": {
+        "allow_release_maker_as_model_input": false,
+        "allow_release_code_as_model_input": false,
+        "allow_character_label_as_model_input": false,
+        "allow_character_id_as_model_input": false,
+        "allow_theme_as_model_input": false,
+        "allow_source_labels_as_model_input": false,
+        "note": "Identity/catalog metadata is audit-only. Model input must be sanitized image/mesh evidence."
+      },
+      "audit_metadata": {
+        "release": {
+          "maker": "LEGO",
+          "code": "hp144",
+          "year": 2018,
+          "label": "Rubeus Hagrid - Medium Nougat Topcoat with Buttons"
+        },
+        "character_id": "rubeus_hagrid",
+        "evidence_summary": [
+          "37777 large torso",
+          "37779/37783 large arm family",
+          "standard head",
+          "short legs"
+        ],
+        "original_confidence": "catalog_high"
+      },
+      "group_keys": {
+        "challenge_character_group": "rubeus_hagrid",
+        "release_code": "hp144",
+        "architecture_candidate": "lego_hagrid_half_giant"
+      },
+      "provenance": {
+        "source_corpus_path": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-recognition-challenge-corpus-v1.json",
+        "source_record_id": "challenge_hagrid_hp144",
+        "architecture_registry_path": "knowledge/libraries/lego-minifigure-customs/data/figure-architecture-registry.json",
+        "source_registry_path": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-source-registry.json",
+        "source_refs": [
+          "bricklink_hagrid_hp144_inventory"
+        ]
+      }
+    },
+    {
+      "case_id": "archchallenge::challenge_killer_croc_sh0321",
+      "source_record_id": "challenge_killer_croc_sh0321",
+      "split": "challenge_test",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "lego_giant_killer_croc_specialized",
+        "unresolved_candidate": null
+      },
+      "target_evidence_tier": "strong_evidence",
+      "scoring_track": "core",
+      "input_asset": {
+        "status": "exact_url_pending_byte_verification",
+        "required_view": "canonical_or_best_available_full_figure",
+        "materialized_asset_id": null,
+        "reference_locators": [
+          {
+            "source_id": "bricklink_killer_croc_sh0321_specialized_giant",
+            "url": "https://www.bricklink.com/catalogItemInv.asp?M=sh0321",
+            "authority": "structured_catalog",
+            "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/sh0321.png",
+            "image_resolution_status": "verified_exact_image_url",
+            "source_file_sha256": null,
+            "source_size_bytes": null,
+            "source_width": null,
+            "source_height": null,
+            "source_content_type": null,
+            "source_image_format": null
+          }
+        ]
+      },
+      "leakage_guard": {
+        "allow_release_maker_as_model_input": false,
+        "allow_release_code_as_model_input": false,
+        "allow_character_label_as_model_input": false,
+        "allow_character_id_as_model_input": false,
+        "allow_theme_as_model_input": false,
+        "allow_source_labels_as_model_input": false,
+        "note": "Identity/catalog metadata is audit-only. Model input must be sanitized image/mesh evidence."
+      },
+      "audit_metadata": {
+        "release": {
+          "maker": "LEGO",
+          "code": "sh0321",
+          "year": 2017,
+          "label": "Killer Croc with Blue Pants and Claws"
+        },
+        "character_id": "killer_croc",
+        "evidence_summary": [
+          "26240c01 Giant body",
+          "28232/28230 studded-wrist Giant arms",
+          "11327 Rancor paws",
+          "11329 claws"
+        ],
+        "original_confidence": "catalog_high"
+      },
+      "group_keys": {
+        "challenge_character_group": "killer_croc",
+        "release_code": "sh0321",
+        "architecture_candidate": "lego_giant_killer_croc_specialized"
+      },
+      "provenance": {
+        "source_corpus_path": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-recognition-challenge-corpus-v1.json",
+        "source_record_id": "challenge_killer_croc_sh0321",
+        "architecture_registry_path": "knowledge/libraries/lego-minifigure-customs/data/figure-architecture-registry.json",
+        "source_registry_path": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-source-registry.json",
+        "source_refs": [
+          "bricklink_killer_croc_sh0321_specialized_giant"
+        ]
+      }
+    },
+    {
+      "case_id": "archchallenge::challenge_garmadon_njo0078",
+      "source_record_id": "challenge_garmadon_njo0078",
+      "split": "challenge_test",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "minifig_stacked_torso_multiarm",
+        "unresolved_candidate": null
+      },
+      "target_evidence_tier": "official_evidence",
+      "scoring_track": "core",
+      "input_asset": {
+        "status": "exact_url_pending_byte_verification",
+        "required_view": "canonical_or_best_available_full_figure",
+        "materialized_asset_id": null,
+        "reference_locators": [
+          {
+            "source_id": "bricklink_garmadon_final_battle",
+            "url": "https://www.bricklink.com/catalogItemInv.asp?M=njo0078",
+            "authority": "structured_catalog",
+            "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/njo0078.png",
+            "image_resolution_status": "verified_exact_image_url",
+            "source_file_sha256": null,
+            "source_size_bytes": null,
+            "source_width": null,
+            "source_height": null,
+            "source_content_type": null,
+            "source_image_format": null
+          }
+        ]
+      },
+      "leakage_guard": {
+        "allow_release_maker_as_model_input": false,
+        "allow_release_code_as_model_input": false,
+        "allow_character_label_as_model_input": false,
+        "allow_character_id_as_model_input": false,
+        "allow_theme_as_model_input": false,
+        "allow_source_labels_as_model_input": false,
+        "note": "Identity/catalog metadata is audit-only. Model input must be sanitized image/mesh evidence."
+      },
+      "audit_metadata": {
+        "release": {
+          "maker": "LEGO",
+          "code": "njo0078",
+          "year": 2013,
+          "label": "Lord Garmadon - The Final Battle"
+        },
+        "character_id": "lord_garmadon",
+        "evidence_summary": [
+          "standard torso assembly",
+          "98127c01 modified short torso/armor assembly",
+          "stacked multi-arm component graph"
+        ],
+        "original_confidence": "catalog_high"
+      },
+      "group_keys": {
+        "challenge_character_group": "lord_garmadon",
+        "release_code": "njo0078",
+        "architecture_candidate": "minifig_stacked_torso_multiarm"
+      },
+      "provenance": {
+        "source_corpus_path": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-recognition-challenge-corpus-v1.json",
+        "source_record_id": "challenge_garmadon_njo0078",
+        "architecture_registry_path": "knowledge/libraries/lego-minifigure-customs/data/figure-architecture-registry.json",
+        "source_registry_path": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-source-registry.json",
+        "source_refs": [
+          "bricklink_garmadon_final_battle"
+        ]
+      }
+    },
+    {
+      "case_id": "archchallenge::challenge_grievous_sw0254",
+      "source_record_id": "challenge_grievous_sw0254",
+      "split": "challenge_test",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "minifig_mechanical_droid_specialized",
+        "unresolved_candidate": null
+      },
+      "target_evidence_tier": "official_evidence",
+      "scoring_track": "core",
+      "input_asset": {
+        "status": "exact_url_pending_byte_verification",
+        "required_view": "canonical_or_best_available_full_figure",
+        "materialized_asset_id": null,
+        "reference_locators": [
+          {
+            "source_id": "bricklink_grievous_sw0254_inventory",
+            "url": "https://www.bricklink.com/catalogItemInv.asp?M=sw0254&viewCodes=Y",
+            "authority": "structured_catalog",
+            "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/sw0254.png",
+            "image_resolution_status": "verified_exact_image_url",
+            "source_file_sha256": null,
+            "source_size_bytes": null,
+            "source_width": null,
+            "source_height": null,
+            "source_content_type": null,
+            "source_image_format": null
+          }
+        ]
+      },
+      "leakage_guard": {
+        "allow_release_maker_as_model_input": false,
+        "allow_release_code_as_model_input": false,
+        "allow_character_label_as_model_input": false,
+        "allow_character_id_as_model_input": false,
+        "allow_theme_as_model_input": false,
+        "allow_source_labels_as_model_input": false,
+        "note": "Identity/catalog metadata is audit-only. Model input must be sanitized image/mesh evidence."
+      },
+      "audit_metadata": {
+        "release": {
+          "maker": "LEGO",
+          "code": "sw0254",
+          "year": 2010,
+          "label": "General Grievous - Bent Legs, Tan Armor"
+        },
+        "character_id": "general_grievous",
+        "evidence_summary": [
+          "87566 mechanical torso",
+          "87568 mechanical arms",
+          "87569 mechanical legs",
+          "87567 modified head"
+        ],
+        "original_confidence": "catalog_high"
+      },
+      "group_keys": {
+        "challenge_character_group": "general_grievous",
+        "release_code": "sw0254",
+        "architecture_candidate": "minifig_mechanical_droid_specialized"
+      },
+      "provenance": {
+        "source_corpus_path": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-recognition-challenge-corpus-v1.json",
+        "source_record_id": "challenge_grievous_sw0254",
+        "architecture_registry_path": "knowledge/libraries/lego-minifigure-customs/data/figure-architecture-registry.json",
+        "source_registry_path": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-source-registry.json",
+        "source_refs": [
+          "bricklink_grievous_sw0254_inventory"
+        ]
+      }
+    },
+    {
+      "case_id": "archchallenge::challenge_ghost_njo0174",
+      "source_record_id": "challenge_ghost_njo0174",
+      "split": "challenge_test",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "minifig_lowerbody_ghost",
+        "unresolved_candidate": null
+      },
+      "target_evidence_tier": "official_evidence",
+      "scoring_track": "core",
+      "input_asset": {
+        "status": "exact_url_pending_byte_verification",
+        "required_view": "canonical_or_best_available_full_figure",
+        "materialized_asset_id": null,
+        "reference_locators": [
+          {
+            "source_id": "bricklink_ghost_njo0174_inventory",
+            "url": "https://www.bricklink.com/catalogItemInv.asp?M=njo0174",
+            "authority": "structured_catalog",
+            "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/njo0174.png",
+            "image_resolution_status": "verified_exact_image_url",
+            "source_file_sha256": null,
+            "source_size_bytes": null,
+            "source_width": null,
+            "source_height": null,
+            "source_content_type": null,
+            "source_image_format": null
+          }
+        ]
+      },
+      "leakage_guard": {
+        "allow_release_maker_as_model_input": false,
+        "allow_release_code_as_model_input": false,
+        "allow_character_label_as_model_input": false,
+        "allow_character_id_as_model_input": false,
+        "allow_theme_as_model_input": false,
+        "allow_source_labels_as_model_input": false,
+        "note": "Identity/catalog metadata is audit-only. Model input must be sanitized image/mesh evidence."
+      },
+      "audit_metadata": {
+        "release": {
+          "maker": "LEGO",
+          "code": "njo0174",
+          "year": 2015,
+          "label": "Blade Master Bansha - Ghost Lower Body"
+        },
+        "character_id": "bansha",
+        "evidence_summary": [
+          "19859-family ghost lower body replaces standard hips/legs"
+        ],
+        "original_confidence": "catalog_high"
+      },
+      "group_keys": {
+        "challenge_character_group": "bansha",
+        "release_code": "njo0174",
+        "architecture_candidate": "minifig_lowerbody_ghost"
+      },
+      "provenance": {
+        "source_corpus_path": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-recognition-challenge-corpus-v1.json",
+        "source_record_id": "challenge_ghost_njo0174",
+        "architecture_registry_path": "knowledge/libraries/lego-minifigure-customs/data/figure-architecture-registry.json",
+        "source_registry_path": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-source-registry.json",
+        "source_refs": [
+          "bricklink_ghost_njo0174_inventory"
+        ]
+      }
+    },
+    {
+      "case_id": "archchallenge::challenge_squid_atl007",
+      "source_record_id": "challenge_squid_atl007",
+      "split": "challenge_test",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "minifig_lowerbody_tentacle",
+        "unresolved_candidate": null
+      },
+      "target_evidence_tier": "official_evidence",
+      "scoring_track": "core",
+      "input_asset": {
+        "status": "exact_url_pending_byte_verification",
+        "required_view": "canonical_or_best_available_full_figure",
+        "materialized_asset_id": null,
+        "reference_locators": [
+          {
+            "source_id": "bricklink_tentacle_atl007_inventory",
+            "url": "https://www.bricklink.com/catalogItemInv.asp?M=atl007&viewCodes=Y",
+            "authority": "structured_catalog",
+            "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/atl007.png",
+            "image_resolution_status": "verified_exact_image_url",
+            "source_file_sha256": null,
+            "source_size_bytes": null,
+            "source_width": null,
+            "source_height": null,
+            "source_content_type": null,
+            "source_image_format": null
+          }
+        ]
+      },
+      "leakage_guard": {
+        "allow_release_maker_as_model_input": false,
+        "allow_release_code_as_model_input": false,
+        "allow_character_label_as_model_input": false,
+        "allow_character_id_as_model_input": false,
+        "allow_theme_as_model_input": false,
+        "allow_source_labels_as_model_input": false,
+        "note": "Identity/catalog metadata is audit-only. Model input must be sanitized image/mesh evidence."
+      },
+      "audit_metadata": {
+        "release": {
+          "maker": "LEGO",
+          "code": "atl007",
+          "year": 2010,
+          "label": "Atlantis Squid Warrior"
+        },
+        "character_id": "atlantis_squid_warrior",
+        "evidence_summary": [
+          "87749 tentacle lower body replaces standard hips/legs"
+        ],
+        "original_confidence": "catalog_high"
+      },
+      "group_keys": {
+        "challenge_character_group": "atlantis_squid_warrior",
+        "release_code": "atl007",
+        "architecture_candidate": "minifig_lowerbody_tentacle"
+      },
+      "provenance": {
+        "source_corpus_path": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-recognition-challenge-corpus-v1.json",
+        "source_record_id": "challenge_squid_atl007",
+        "architecture_registry_path": "knowledge/libraries/lego-minifigure-customs/data/figure-architecture-registry.json",
+        "source_registry_path": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-source-registry.json",
+        "source_refs": [
+          "bricklink_tentacle_atl007_inventory"
+        ]
+      }
+    },
+    {
+      "case_id": "archchallenge::challenge_centaur_col379",
+      "source_record_id": "challenge_centaur_col379",
+      "split": "challenge_test",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "minifig_centaur_hybrid",
+        "unresolved_candidate": null
+      },
+      "target_evidence_tier": "official_evidence",
+      "scoring_track": "core",
+      "input_asset": {
+        "status": "exact_url_pending_byte_verification",
+        "required_view": "canonical_or_best_available_full_figure",
+        "materialized_asset_id": null,
+        "reference_locators": [
+          {
+            "source_id": "bricklink_centaur_col379_inventory",
+            "url": "https://www.bricklink.com/catalogItemInv.asp?M=col379&viewCodes=Y",
+            "authority": "structured_catalog",
+            "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/col379.png",
+            "image_resolution_status": "verified_exact_image_url",
+            "source_file_sha256": null,
+            "source_size_bytes": null,
+            "source_width": null,
+            "source_height": null,
+            "source_content_type": null,
+            "source_image_format": null
+          }
+        ]
+      },
+      "leakage_guard": {
+        "allow_release_maker_as_model_input": false,
+        "allow_release_code_as_model_input": false,
+        "allow_character_label_as_model_input": false,
+        "allow_character_id_as_model_input": false,
+        "allow_theme_as_model_input": false,
+        "allow_source_labels_as_model_input": false,
+        "note": "Identity/catalog metadata is audit-only. Model input must be sanitized image/mesh evidence."
+      },
+      "audit_metadata": {
+        "release": {
+          "maker": "LEGO",
+          "code": "col379",
+          "year": 2021,
+          "label": "Centaur Warrior, Series 21"
+        },
+        "character_id": "centaur_warrior",
+        "evidence_summary": [
+          "67638pb02 centaur lower body creates quadruped hybrid component graph"
+        ],
+        "original_confidence": "catalog_high"
+      },
+      "group_keys": {
+        "challenge_character_group": "centaur_warrior",
+        "release_code": "col379",
+        "architecture_candidate": "minifig_centaur_hybrid"
+      },
+      "provenance": {
+        "source_corpus_path": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-recognition-challenge-corpus-v1.json",
+        "source_record_id": "challenge_centaur_col379",
+        "architecture_registry_path": "knowledge/libraries/lego-minifigure-customs/data/figure-architecture-registry.json",
+        "source_registry_path": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-source-registry.json",
+        "source_refs": [
+          "bricklink_centaur_col379_inventory"
+        ]
+      }
+    }
+  ]
+}
