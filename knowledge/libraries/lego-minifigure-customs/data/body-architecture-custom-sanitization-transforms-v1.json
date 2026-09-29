@@ -1,0 +1,45 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-29",
+  "id": "body-architecture-custom-sanitization-transforms-v1",
+  "coordinate_system": {
+    "type": "normalized_current_image",
+    "bounds": "[x0,y0,x1,y1] in [0,1]; operations apply sequentially to the current image",
+    "rounding": "x0/y0=floor; x1/y1=ceil"
+  },
+  "output": {
+    "format": "png",
+    "metadata_only_by_default": true,
+    "raw_or_derivative_media_committed": false
+  },
+  "policy": [
+    "Every transform is pinned to the verified source SHA-256.",
+    "Generated derivatives are candidates until separately visually reviewed.",
+    "Do not auto-approve a transform merely because it removes known text regions.",
+    "Masks must not overlap architecture evidence."
+  ],
+  "transforms": [
+    {
+      "source_record_id": "custom_midfig_balljoint_upper_titanic",
+      "source_file_sha256": "c79fc80eba86f18b155c358bfc900923f5743777bdd215a51b9828142b8d08b2",
+      "source_dimensions": [
+        1000,
+        1000
+      ],
+      "status": "candidate_transform",
+      "operations": [
+        {
+          "op": "mask_rect_norm",
+          "bounds": [
+            0.02,
+            0.81,
+            0.245,
+            0.985
+          ],
+          "fill_mode": "border_median"
+        }
+      ],
+      "rationale": "Remove the lower-left Titanic Bricks maker logo/text while preserving the complete figure and all visible ball-joint architecture evidence."
+    }
+  ]
+}
