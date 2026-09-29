@@ -1,0 +1,51 @@
+name: Materialize Original Revision Source Media
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/materialize-body-architecture-revision-sources.yml'
+      - 'tools/knowledge/materialize_body_architecture_exact_review_media.py'
+      - 'knowledge/libraries/lego-minifigure-customs/data/body-architecture-recognition-benchmark-cases.json'
+
+permissions:
+  contents: read
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out Brickmen
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Materialize exact revision sources
+        run: |
+          python tools/knowledge/materialize_body_architecture_exact_review_media.py \
+            --benchmark knowledge/libraries/lego-minifigure-customs/data/body-architecture-recognition-benchmark-cases.json \
+            --source-record-id hulk_bigguy_ragnarok \
+            --source-record-id hulk_mrj_heart_comics \
+            --source-record-id red_hulk_bigguy_bnw \
+            --source-record-id venom_alpha_af328_ancient \
+            --source-record-id thing_alpha_af336_first_steps \
+            --source-record-id thing_kdl_k2302_first_steps \
+            --source-record-id thing_tp_tp178_first_steps \
+            --output-dir .agent-local/original-revision-sources \
+            --report .agent-local/original-revision-sources-report.json \
+            --allow-host static.herobloks.com \
+            --allow-host kongbricks.myshopify.com \
+            --timeout-seconds 30
+      - name: Upload revision source bundle
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: body-architecture-original-revision-sources
+          path: |
+            .agent-local/original-revision-sources
+            .agent-local/original-revision-sources-report.json
+          if-no-files-found: warn
+          retention-days: 3
