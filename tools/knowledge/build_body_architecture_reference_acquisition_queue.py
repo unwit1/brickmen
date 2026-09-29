@@ -22,7 +22,13 @@ def classify_locator(locator: dict[str, Any]) -> tuple[str, str]:
     quality = locator.get("locator_quality")
     authority = locator.get("authority")
     url = str(locator.get("url") or "")
+    exact_image_url = locator.get("exact_image_url")
 
+    if exact_image_url:
+        return (
+            "resolved_exact_image_url",
+            "already_resolved_source_media",
+        )
     if quality == "indirect_identity_graph":
         return (
             "blocked_on_direct_release_locator",
@@ -56,11 +62,15 @@ def build(benchmark_path: Path = DEFAULT_BENCHMARK) -> dict[str, Any]:
                     "locator_quality": locator.get("locator_quality"),
                     "status": status,
                     "strategy": strategy,
+                    "exact_image_url": locator.get("exact_image_url"),
+                    "image_resolution_status": locator.get("image_resolution_status"),
                 }
             )
 
         if not actions:
             case_status = "blocked_missing_reference_locator"
+        elif any(action["status"] == "resolved_exact_image_url" for action in actions):
+            case_status = "ready_for_materialization"
         elif all(
             action["status"] == "blocked_on_direct_release_locator"
             for action in actions
@@ -79,7 +89,14 @@ def build(benchmark_path: Path = DEFAULT_BENCHMARK) -> dict[str, Any]:
                 "status": case_status,
                 "locator_actions": actions,
                 "required_output": {
-                    "exact_image_url": None,
+                    "exact_image_url": next(
+                        (
+                            action.get("exact_image_url")
+                            for action in actions
+                            if action.get("exact_image_url")
+                        ),
+                        None,
+                    ),
                     "source_occurrence_id": None,
                     "source_file_sha256": None,
                     "view": "canonical_or_best_available_full_figure",
@@ -118,7 +135,10 @@ def build(benchmark_path: Path = DEFAULT_BENCHMARK) -> dict[str, Any]:
         "benchmark_manifest": benchmark_path.relative_to(ROOT).as_posix(),
         "summary": {
             "total_cases": len(queue),
-            "ready_cases": sum(
+            "ready_for_materialization_cases": sum(
+                row["status"] == "ready_for_materialization" for row in queue
+            ),
+            "ready_for_image_url_resolution_cases": sum(
                 row["status"] == "ready_for_image_url_resolution" for row in queue
             ),
             "blocked_cases": sum(row["status"].startswith("blocked") for row in queue),
