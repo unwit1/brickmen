@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "created": "2026-09-29",
-  "status": "mixed_exact_url_pending_byte_verification_and_media_resolution",
+  "status": "byte_verified_pending_visual_sanitization_and_sidan_media_resolution",
   "benchmark_id": "body_architecture_custom_acquisition_candidates_v1",
   "purpose": "Metadata-only acquisition gate for the three remaining concrete custom-architecture evaluation gaps. Exact media is not model input until byte verification and explicit visual sanitization review.",
   "policy": [
@@ -22,7 +22,7 @@
         "unresolved_candidate": null
       },
       "input_asset": {
-        "status": "exact_url_pending_byte_verification",
+        "status": "byte_verified_pending_sanitization",
         "required_view": "full_figure_or_complete_upper_body_architecture",
         "materialized_asset_id": null,
         "reference_locators": [
@@ -31,15 +31,15 @@
             "url": "https://titanicbricks.com/products/midfig-torso-and-arms-with-ball-joints-custom-lego-compatible",
             "authority": "manufacturer_product_page",
             "exact_image_url": "https://titanicbricks.com/cdn/shop/files/DSC_0303.jpg?v=1743138458&width=1946",
-            "image_resolution_status": "exact_image_url_resolved_pending_byte_verification",
-            "source_file_sha256": null,
-            "source_size_bytes": null,
-            "source_width": null,
-            "source_height": null,
-            "source_content_type": null,
-            "source_image_format": null,
-            "verification_run_id": null,
-            "verification_artifact_id": null
+            "image_resolution_status": "verified_exact_image_url",
+            "source_file_sha256": "c79fc80eba86f18b155c358bfc900923f5743777bdd215a51b9828142b8d08b2",
+            "source_size_bytes": 70751,
+            "source_width": 1000,
+            "source_height": 1000,
+            "source_content_type": "image/jpeg",
+            "source_image_format": "jpeg",
+            "verification_run_id": 36630907484,
+            "verification_artifact_id": 11061773814
           }
         ]
       },
@@ -73,7 +73,7 @@
         "unresolved_candidate": null
       },
       "input_asset": {
-        "status": "exact_url_pending_byte_verification",
+        "status": "byte_verified_pending_sanitization",
         "required_view": "full_torso_and_all_four_arm_mounts_visible",
         "materialized_asset_id": null,
         "reference_locators": [
@@ -82,15 +82,15 @@
             "url": "https://titanicbricks.com/products/4-four-arms-torso-custom-minifig",
             "authority": "manufacturer_product_page",
             "exact_image_url": "https://titanicbricks.com/cdn/shop/files/untitled.1159.jpg?v=1758351992&width=1946",
-            "image_resolution_status": "exact_image_url_resolved_pending_byte_verification",
-            "source_file_sha256": null,
-            "source_size_bytes": null,
-            "source_width": null,
-            "source_height": null,
-            "source_content_type": null,
-            "source_image_format": null,
-            "verification_run_id": null,
-            "verification_artifact_id": null
+            "image_resolution_status": "verified_exact_image_url",
+            "source_file_sha256": "eb3649ca3c8c331bec1e42f15b6326bb47253b4bba8ec13ae57e2db0d3c2af14",
+            "source_size_bytes": 44455,
+            "source_width": 1280,
+            "source_height": 1280,
+            "source_content_type": "image/jpeg",
+            "source_image_format": "jpeg",
+            "verification_run_id": 36630907484,
+            "verification_artifact_id": 11061773814
           }
         ]
       },
@@ -123,5 +123,14 @@
       "reason": "Dedicated product page confirms the architecture, 43 mm height, and ball joints at arms/legs/feet/neck, but the currently exposed image links are only 50x50 thumbnails. A genuine higher-resolution exact asset must be resolved rather than upscaling the thumbnail.",
       "observed_thumbnail_example": "https://cdn1.bigcommerce.com/server3000/99a43/products/1874/images/10359/Scan29__89969.1561893300.50.50.jpg?c=2"
     }
-  ]
+  ],
+  "verification_snapshot": {
+    "workflow_run_id": 36630907484,
+    "workflow_artifact_id": 11061773814,
+    "verified_cases": 2,
+    "error_cases": 0,
+    "unique_verified_hashes": 2,
+    "duplicate_hashes": [],
+    "raw_media_committed": false
+  }
 }
