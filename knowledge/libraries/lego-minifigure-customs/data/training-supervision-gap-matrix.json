@@ -52,7 +52,7 @@
     {
       "id": "source_to_lego_translation_pairs",
       "priority": "critical",
-      "status": "fortnite_identity_image_measurement_and_ranked_semantic_review_ready",
+      "status": "fortnite_ranked_semantic_review_validation_adjudication_and_promotion_pipeline_ready",
       "why": "Directly teaches which source details LEGO preserves/simplifies/omits/moves to mould/accessory.",
       "sources": [
         "Fortnite Outfit -> LEGO Style pairs",
@@ -61,7 +61,9 @@
         "Wednesday/Nightmare/BTS/Viking/Pirates designer articles"
       ],
       "next_actions": [
-        "review the 748 highest-priority Fortnite pairs first for preserve/simplify/omit/exaggerate/mould/accessory/cloth semantics",
+        "process the current 744 highest-priority Fortnite pairs in deterministic first-review batches",
+        "run second-review and explicit adjudication batches; preserve disagreement and do not auto-promote reviewer agreement",
+        "promote only explicit adjudicated records into canonical semantic supervision",
         "audit the 14 alias-fallback records as a separate placeholder-family cohort",
         "review 58 strong and 31 medium Skywalker candidates while retaining 288 unresolved/digital-only records",
         "expand exact source-frame/panel pair resolution theme-by-theme"
@@ -90,7 +92,13 @@
         "2,493/2,494 pairs expose at least one deterministic measurement signal",
         "748 pairs are ranked high-priority for semantic review",
         "user tracker reconciliation now contributes 3,428 SourceAppearance candidates covering 4,607 source records; 3,192 parse as explicit comic issue references",
-        "ranked SourceAppearance review queue contains 3,193 high-priority records and preserves raw appearance strings"
+        "ranked SourceAppearance review queue contains 3,193 high-priority records and preserves raw appearance strings",
+        "2026-09-28 canonical semantic-review summary reports 744 high-priority Fortnite pairs, 2,492/2,494 records with measurement signals, 2,480 direct image pairs and 14 alias fallbacks",
+        "semantic-review schema now separates observed evidence, uncertainty, reviewer identity, adjudication state and heuristic measurement signals",
+        "validator rejects unobserved-surface claims, malformed labels, missing model provenance and invalid adjudication state",
+        "adjudication queue preserves submitted-review disagreement and keeps matching reviews non-canonical until explicit adjudication",
+        "promotion gate admits only explicit non-conflicting adjudicated reviews into canonical semantic supervision",
+        "deterministic first-review, second-review and adjudication work batches now support resumable review of the ranked queue"
       ]
     },
     {
@@ -320,5 +328,5 @@
       ]
     }
   ],
-  "updated_at": "2026-09-26"
+  "updated_at": "2026-09-28"
 }
