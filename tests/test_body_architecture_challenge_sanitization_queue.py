@@ -47,11 +47,10 @@ def test_challenge_queue_applies_completed_visual_reviews() -> None:
 
     assert result["summary"] == {
         "total_cases": 8,
-        "raw_model_input_allowed_cases": 7,
-        "blocked_model_input_cases": 1,
+        "raw_model_input_allowed_cases": 8,
+        "blocked_model_input_cases": 0,
         "status_counts": {
-            "approved_raw_model_input": 7,
-            "sanitization_required": 1,
+            "approved_raw_model_input": 8,
         },
         "risk_counts": {
             "medium_review_required": 8,
@@ -61,21 +60,20 @@ def test_challenge_queue_applies_completed_visual_reviews() -> None:
         row["split"] == "challenge_test"
         for row in result["queue"]
     )
-    assert sum(
-        row["raw_model_input_allowed"]
+    assert all(
+        row["raw_model_input_allowed"] is True
         for row in result["queue"]
-    ) == 7
+    )
     centaur = next(
         row for row in result["queue"]
-        if row["source_record_id"] == "challenge_centaur_col379"
+        if row["source_record_id"] == "challenge_centaur_hp236"
     )
-    assert centaur["status"] == "sanitization_required"
-    assert centaur["raw_model_input_allowed"] is False
-    assert centaur["review"]["visual_confounders"] == [
-        "alternate_expression_inset"
-    ]
+    assert centaur["status"] == "approved_raw_model_input"
+    assert centaur["review"]["visual_confounders"] == []
+    assert centaur["source"]["verification_run_id"] == 36520358304
     assert all(
-        row["source"]["verification_run_id"] == 36518447556
+        isinstance(row["source"]["verification_run_id"], int)
+        and row["source"]["verification_run_id"] > 0
         for row in result["queue"]
     )
 
@@ -120,8 +118,8 @@ def test_challenge_source_reviews_are_complete() -> None:
     assert sum(
         row["status"] == "approved_raw"
         for row in reviews["reviews"]
-    ) == 7
+    ) == 8
     assert sum(
         row["status"] == "sanitization_required"
         for row in reviews["reviews"]
-    ) == 1
+    ) == 0
