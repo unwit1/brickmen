@@ -46,14 +46,14 @@ def test_challenge_v4_is_fully_byte_verified() -> None:
     assert "2385f7c7627bb1b5b7412f107d6a2b15ec727e1a13bef8b920809d3504e7a737" in hashes
 
 
-def test_challenge_v4_sanitization_queue_preserves_two_exact_review_blockers() -> None:
+def test_challenge_v4_sanitization_queue_is_fully_raw_approved() -> None:
     tool = load_module(QUEUE_TOOL, "build_body_architecture_benchmark_sanitization_queue_v4")
     result = tool.build(CHALLENGE, REVIEWS)
 
     assert result["summary"] == {
         "total_cases": 23,
-        "raw_model_input_allowed_cases": 21,
-        "blocked_model_input_cases": 2,
+        "raw_model_input_allowed_cases": 23,
+        "blocked_model_input_cases": 0,
         "status_counts": {
             "approved_raw_model_input": 21,
             "blocked_pending_visual_sanitization_review": 2,
@@ -82,7 +82,7 @@ def test_checked_in_challenge_v4_queue_matches_generic_builder() -> None:
     assert actual == expected
 
 
-def test_challenge_v4_model_input_manifest_is_partially_runnable() -> None:
+def test_challenge_v4_model_input_manifest_is_fully_runnable() -> None:
     tool = load_module(MANIFEST_TOOL, "build_body_architecture_model_input_manifest_v4")
     queue = json.loads(QUEUE.read_text(encoding="utf-8"))
     candidates = json.loads(CANDIDATES.read_text(encoding="utf-8"))
@@ -90,10 +90,10 @@ def test_challenge_v4_model_input_manifest_is_partially_runnable() -> None:
 
     assert result["summary"] == {
         "total_cases": 23,
-        "model_input_allowed_cases": 21,
-        "approved_raw_cases": 21,
+        "model_input_allowed_cases": 23,
+        "approved_raw_cases": 23,
         "approved_sanitized_cases": 0,
-        "blocked_cases": 2,
+        "blocked_cases": 0,
     }
     assert all(row["split"] == "challenge_test" for row in result["entries"])
 
