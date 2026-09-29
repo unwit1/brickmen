@@ -128,7 +128,14 @@ def canonicalize(
                 "positive_points_norm": row.get("positive_points_norm") or [],
                 "negative_points_norm": row.get("negative_points_norm") or [],
                 "selected_mask_index": row.get("selected_mask_index"),
+                "sam_best_mask_index": row.get("sam_best_mask_index"),
+                "mask_selection": row.get("mask_selection"),
                 "predicted_mask_score": row.get("predicted_mask_score"),
+                "mask_cleanup": row.get("mask_cleanup") or "none",
+                "mask_cleanup_stats": row.get("mask_cleanup_stats"),
+                "raw_selected_mask_sha256": row.get(
+                    "raw_selected_mask_sha256"
+                ),
                 "mask_area_fraction": row.get("mask_area_fraction"),
                 "mask_sha256": row.get("mask_sha256"),
                 "crop_pixels": row.get("crop_pixels"),
