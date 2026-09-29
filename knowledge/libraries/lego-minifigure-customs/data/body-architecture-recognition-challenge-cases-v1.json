@@ -7,7 +7,7 @@
   "purpose": "Evaluation-only, character-disjoint expansion of official body-architecture recognition coverage.",
   "baseline_benchmark": {
     "path": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-recognition-benchmark-cases.json",
-    "blob_sha": "fe9cc3a9f07e6798d9e0b222c086cc322a10320f",
+    "blob_sha": "1435930d7c04ae1264fa1678e5445a1e4e7fe356",
     "character_groups": [
       "hulk",
       "thing",
@@ -16,7 +16,7 @@
   },
   "source_corpus": {
     "path": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-recognition-challenge-corpus-v1.json",
-    "blob_sha": "6a1e7d7e5976346f1a610b1f3f16db89cbd69af7"
+    "blob_sha": "45ad2cf60b47ceb9ad1d7fe2041dafe96032b2ee"
   },
   "architecture_registry": {
     "path": "knowledge/libraries/lego-minifigure-customs/data/figure-architecture-registry.json",
@@ -24,7 +24,7 @@
   },
   "source_registry": {
     "path": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-source-registry.json",
-    "blob_sha": "f2de1de5338d74f193bd0524787bcc23a0f3ab22"
+    "blob_sha": "985605e157a268287ab27ab42d7b78fe9e97234e"
   },
   "split_policy": {
     "split": "challenge_test",
@@ -607,7 +607,7 @@
         "character_id": "centaur_hp236",
         "evidence_summary": [
           "67638pb01 centaur lower body creates quadruped hybrid component graph",
-          "clean isolated front reference replaces col379 to remove alternate-expression inset leakage"
+          "clean isolated BrickLink front image replaces col379 to avoid alternate-expression inset leakage"
         ],
         "original_confidence": "catalog_high"
       },
