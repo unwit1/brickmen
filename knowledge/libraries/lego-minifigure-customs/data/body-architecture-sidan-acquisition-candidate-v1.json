@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "created": "2026-09-29",
-  "status": "exact_url_pending_byte_verification",
+  "status": "byte_verified_pending_sanitization",
   "benchmark_id": "body_architecture_sidan_acquisition_candidate_v1",
   "purpose": "Metadata-only acquisition gate for the Si-Dan full poseable ball-joint custom architecture. The exact 500x500 zoom image URL was discovered directly in the live product-page HTML and is not a model input until byte verification and explicit visual sanitization review.",
   "cases": [
@@ -16,7 +16,7 @@
         "unresolved_candidate": null
       },
       "input_asset": {
-        "status": "exact_url_pending_byte_verification",
+        "status": "byte_verified_pending_sanitization",
         "required_view": "full_figure_architecture",
         "materialized_asset_id": null,
         "reference_locators": [
@@ -25,15 +25,15 @@
             "url": "https://minifigworld.com/si-dan-toys-poseable-minifig/",
             "authority": "specialist_reseller_product_page",
             "exact_image_url": "https://cdn1.bigcommerce.com/server3000/99a43/products/1874/images/14575/A0103-02__59883.1768303145.500.500.jpg?c=2",
-            "image_resolution_status": "exact_image_url_discovered_in_product_html_pending_byte_verification",
-            "source_file_sha256": null,
-            "source_size_bytes": null,
-            "source_width": null,
-            "source_height": null,
-            "source_content_type": null,
-            "source_image_format": null,
-            "verification_run_id": null,
-            "verification_artifact_id": null
+            "image_resolution_status": "verified_exact_image_url",
+            "source_file_sha256": "2ac7f9ba8793107e58892205ea56cc772b876cd63cd2fda08e51e1a0ec8e831e",
+            "source_size_bytes": 20776,
+            "source_width": 301,
+            "source_height": 500,
+            "source_content_type": "image/jpeg",
+            "source_image_format": "jpeg",
+            "verification_run_id": 36634149308,
+            "verification_artifact_id": 11062873338
           }
         ]
       },
@@ -61,5 +61,13 @@
         "discovery_processor_version": "product-image-candidate-extractor/v1"
       }
     }
-  ]
+  ],
+  "verification_snapshot": {
+    "workflow_run_id": 36634149308,
+    "workflow_artifact_id": 11062873338,
+    "verified_cases": 1,
+    "error_cases": 0,
+    "unique_verified_hashes": 1,
+    "raw_media_committed": false
+  }
 }
