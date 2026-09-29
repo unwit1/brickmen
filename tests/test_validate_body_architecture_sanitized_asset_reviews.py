@@ -146,3 +146,23 @@ def test_review_id_is_deterministic() -> None:
     row = review()
 
     assert tool.review_id(row) == tool.review_id(row)
+
+
+def test_historical_revise_survives_candidate_regeneration() -> None:
+    tool = load_tool()
+    row = review(decision="revise")
+    row["sanitized_pixel_sha256"] = "d" * 64
+    row["sanitized_png_sha256"] = "e" * 64
+    row["notes"] = ["prior derivative required revision"]
+
+    assert tool.validate_record(row, {"test": candidate()}) == []
+    assert tool.normalize_record(row)["model_input_allowed"] is False
+
+
+def test_historical_revise_survives_candidate_retirement() -> None:
+    tool = load_tool()
+    row = review(decision="revise")
+    row["notes"] = ["candidate was promoted to segmentation"]
+
+    assert tool.validate_record(row, {}) == []
+    assert tool.normalize_record(row)["model_input_allowed"] is False
