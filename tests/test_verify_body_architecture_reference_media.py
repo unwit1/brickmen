@@ -174,10 +174,10 @@ def test_select_exact_images_requires_every_case() -> None:
 
 def test_verify_records_hashes_without_raw_bytes(monkeypatch) -> None:
     tool = load_tool()
-    calls: list[str] = []
+    calls: list[tuple[str, str | None]] = []
 
     def fake_fetch(url: str, **kwargs):
-        calls.append(url)
+        calls.append((url, kwargs.get("referer_url")))
         digest = "a" * 64 if url.endswith("a.png") else "b" * 64
         return {
             "initial_host": "images.example.test",
@@ -204,7 +204,10 @@ def test_verify_records_hashes_without_raw_bytes(monkeypatch) -> None:
     assert result["error_cases"] == 0
     assert result["unique_verified_hashes"] == 2
     assert result["duplicate_hashes"] == []
-    assert len(calls) == 2
+    assert calls == [
+        ("https://images.example.test/a.png", "https://example.test/a"),
+        ("https://images.example.test/b.webp", "https://example.test/b"),
+    ]
     assert all("raw_bytes" not in row for row in result["records"])
     assert all(row["status"] == "verified" for row in result["records"])
 
