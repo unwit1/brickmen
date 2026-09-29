@@ -1,0 +1,288 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-29",
+  "review_set_id": "body-architecture-challenge-sanitization-v2",
+  "policy": "Reviews are keyed to verified source SHA-256. Challenge v2 remains evaluation-only; every active image must be directly visually inspected and clean before raw model-input approval.",
+  "reviewer": {
+    "reviewer_id": "openai_chatgpt_visual_review",
+    "reviewer_type": "model",
+    "model_family": "GPT-5.6 Sol",
+    "model_revision": "2026-09-29",
+    "review_method": "direct_visual_inspection_of_byte_verified_exact_image_url"
+  },
+  "reviews": [
+    {
+      "source_record_id": "challenge_axl_nex007",
+      "source_id": "bricklink_axl_nex007_inventory",
+      "source_file_sha256": "9bc5ec3b785089cb008e0121e35661058c311fe52d4afcede7b2ff9e7aea9bc7",
+      "status": "approved_raw",
+      "identity_match": true,
+      "primary_view": "front",
+      "primary_figure_complete": true,
+      "visible_text_leakage": [],
+      "visual_confounders": [],
+      "sanitization_action": "none",
+      "raw_model_input_allowed": true,
+      "review_confidence": 0.99,
+      "notes": [
+        "Clean isolated front catalog image on neutral background; no text, labels, secondary figures, or task-confounding inset panels are visible."
+      ]
+    },
+    {
+      "source_record_id": "challenge_hagrid_hp144",
+      "source_id": "bricklink_hagrid_hp144_inventory",
+      "source_file_sha256": "7e387b1db3516036575438e6733202fd00bf53ad771aeb885b29681aa51695b3",
+      "status": "approved_raw",
+      "identity_match": true,
+      "primary_view": "front",
+      "primary_figure_complete": true,
+      "visible_text_leakage": [],
+      "visual_confounders": [],
+      "sanitization_action": "none",
+      "raw_model_input_allowed": true,
+      "review_confidence": 0.99,
+      "notes": [
+        "Clean isolated front catalog image; complete figure with no visible text, branding, alternate panels, or extra figures."
+      ]
+    },
+    {
+      "source_record_id": "challenge_killer_croc_sh0321",
+      "source_id": "bricklink_killer_croc_sh0321_specialized_giant",
+      "source_file_sha256": "256e0dd6dad22b8a8301d2ea1c88a765d80d34ab75e7cdc2deb8a7dd56bbcf6c",
+      "status": "approved_raw",
+      "identity_match": true,
+      "primary_view": "front",
+      "primary_figure_complete": true,
+      "visible_text_leakage": [],
+      "visual_confounders": [],
+      "sanitization_action": "none",
+      "raw_model_input_allowed": true,
+      "review_confidence": 0.99,
+      "notes": [
+        "Clean isolated front catalog image; specialized giant silhouette is fully visible without text or auxiliary panels."
+      ]
+    },
+    {
+      "source_record_id": "challenge_garmadon_njo0078",
+      "source_id": "bricklink_garmadon_final_battle",
+      "source_file_sha256": "62bfcdbc7eb83b62b8b34e9a47521d06e5ad231ae7fe0e3688a2d9559d8d54a5",
+      "status": "approved_raw",
+      "identity_match": true,
+      "primary_view": "front",
+      "primary_figure_complete": true,
+      "visible_text_leakage": [],
+      "visual_confounders": [],
+      "sanitization_action": "none",
+      "raw_model_input_allowed": true,
+      "review_confidence": 0.99,
+      "notes": [
+        "Clean isolated front catalog image; stacked-torso/multi-arm architecture is visible without release text or secondary panels."
+      ]
+    },
+    {
+      "source_record_id": "challenge_grievous_sw0254",
+      "source_id": "bricklink_grievous_sw0254_inventory",
+      "source_file_sha256": "a80a899836ce6791b194c69329e4108a1229c824b5ea0ff2386082cb97cd39d4",
+      "status": "approved_raw",
+      "identity_match": true,
+      "primary_view": "front",
+      "primary_figure_complete": true,
+      "visible_text_leakage": [],
+      "visual_confounders": [],
+      "sanitization_action": "none",
+      "raw_model_input_allowed": true,
+      "review_confidence": 0.99,
+      "notes": [
+        "Clean isolated front catalog image; complete specialized mechanical body with no text, branding, or task-confounding content."
+      ]
+    },
+    {
+      "source_record_id": "challenge_ghost_njo0174",
+      "source_id": "bricklink_ghost_njo0174_inventory",
+      "source_file_sha256": "9a4787d98c741adf58becc959a8121bf650a620f5039ac3e44f96195b417ed6f",
+      "status": "approved_raw",
+      "identity_match": true,
+      "primary_view": "front",
+      "primary_figure_complete": true,
+      "visible_text_leakage": [],
+      "visual_confounders": [],
+      "sanitization_action": "none",
+      "raw_model_input_allowed": true,
+      "review_confidence": 0.99,
+      "notes": [
+        "Clean isolated front catalog image; ghost lower-body architecture is fully visible without labels or inset panels."
+      ]
+    },
+    {
+      "source_record_id": "challenge_squid_atl007",
+      "source_id": "bricklink_tentacle_atl007_inventory",
+      "source_file_sha256": "f8a38a07a8d80c4447916d8b444ffebb1b3db9e19a210eb5039b38b38d5aac87",
+      "status": "approved_raw",
+      "identity_match": true,
+      "primary_view": "front",
+      "primary_figure_complete": true,
+      "visible_text_leakage": [],
+      "visual_confounders": [],
+      "sanitization_action": "none",
+      "raw_model_input_allowed": true,
+      "review_confidence": 0.99,
+      "notes": [
+        "Clean isolated front catalog image; tentacle lower-body architecture is complete and unobstructed with no text or auxiliary panels."
+      ]
+    },
+    {
+      "source_record_id": "challenge_centaur_hp236",
+      "source_id": "bricklink_centaur_hp236_inventory",
+      "source_file_sha256": "9690938b75bad44108df1b0d15fa85a72ea4f5837b1ba5f774fa6b57acbc3052",
+      "status": "approved_raw",
+      "identity_match": true,
+      "primary_view": "front",
+      "primary_figure_complete": true,
+      "visible_text_leakage": [],
+      "visual_confounders": [],
+      "sanitization_action": "none",
+      "raw_model_input_allowed": true,
+      "review_confidence": 0.99,
+      "notes": [
+        "Clean isolated front BrickLink catalog image with complete centaur architecture and no text, branding, alternate-expression inset, secondary figure, or task-confounding panel.",
+        "Replaces col379 specifically to remove the alternate-expression inset leakage present in that earlier challenge source."
+      ]
+    },
+    {
+      "source_record_id": "challenge_harry_hp288_medium_leg",
+      "source_id": "bricklink_harry_hp288_medium_legs",
+      "source_file_sha256": "75b0f4bfb0454f9b85e1ac8564ff6a67415e537db0576f9fb6a9ab186b1c692d",
+      "status": "approved_raw",
+      "identity_match": true,
+      "primary_view": "front",
+      "primary_figure_complete": true,
+      "visible_text_leakage": [],
+      "visual_confounders": [],
+      "sanitization_action": "none",
+      "raw_model_input_allowed": true,
+      "review_confidence": 0.99,
+      "notes": [
+        "Clean isolated front catalog image; articulated medium legs are fully visible with no text, branding, inset panels, or secondary figures."
+      ]
+    },
+    {
+      "source_record_id": "challenge_medusa_col146_serpent",
+      "source_id": "bricklink_medusa_col146_serpent",
+      "source_file_sha256": "df4a52eb9d15b95d117eb19285f4b51530669477b1c2282ba528cef35419c6cc",
+      "status": "approved_raw",
+      "identity_match": true,
+      "primary_view": "front",
+      "primary_figure_complete": true,
+      "visible_text_leakage": [],
+      "visual_confounders": [],
+      "sanitization_action": "none",
+      "raw_model_input_allowed": true,
+      "review_confidence": 0.99,
+      "notes": [
+        "Clean isolated front catalog image; the full flexible serpent lower body is visible without text, branding, or auxiliary panels."
+      ]
+    },
+    {
+      "source_record_id": "challenge_mermaid_col140_merfolk",
+      "source_id": "bricklink_mermaid_col140_tail",
+      "source_file_sha256": "1a67ce510fd3ed2027f3e4ffd4b80f3627cf1b90b53a715146dfe4000e64a5f7",
+      "status": "approved_raw",
+      "identity_match": true,
+      "primary_view": "front",
+      "primary_figure_complete": true,
+      "visible_text_leakage": [],
+      "visual_confounders": [],
+      "sanitization_action": "none",
+      "raw_model_input_allowed": true,
+      "review_confidence": 0.99,
+      "notes": [
+        "Clean isolated front catalog image; the complete merfolk tail architecture is visible without labels or secondary content."
+      ]
+    },
+    {
+      "source_record_id": "challenge_faun_col234_digitigrade",
+      "source_id": "bricklink_faun_col234_digitigrade",
+      "source_file_sha256": "a2fe4ccfdae77c605b8abf18f9d0bad9d1d53d23a4ea31727386aa27ebfaa05d",
+      "status": "approved_raw",
+      "identity_match": true,
+      "primary_view": "front",
+      "primary_figure_complete": true,
+      "visible_text_leakage": [],
+      "visual_confounders": [],
+      "sanitization_action": "none",
+      "raw_model_input_allowed": true,
+      "review_confidence": 0.99,
+      "notes": [
+        "Clean isolated front catalog image; digitigrade/faun lower legs and feet are fully visible with no text or inset panels."
+      ]
+    },
+    {
+      "source_record_id": "challenge_jabba_sw0402",
+      "source_id": "bricklink_jabba_sw0402_specialized",
+      "source_file_sha256": "0b817f0499d2dee61ca6e4412ad07b508d1a40cbb433c1f58e0c1c10709227eb",
+      "status": "approved_raw",
+      "identity_match": true,
+      "primary_view": "front",
+      "primary_figure_complete": true,
+      "visible_text_leakage": [],
+      "visual_confounders": [],
+      "sanitization_action": "none",
+      "raw_model_input_allowed": true,
+      "review_confidence": 0.99,
+      "notes": [
+        "Clean isolated catalog image; the specialized integrated Hutt torso/tail architecture is complete and unobstructed with no text or auxiliary panels."
+      ]
+    },
+    {
+      "source_record_id": "challenge_battle_droid_sw0001c",
+      "source_id": "bricklink_battle_droid_sw0001c",
+      "source_file_sha256": "35717cabaab0d2ad8b9cc81e84f6e277c547b5818a31971680f6e9fffc93f500",
+      "status": "approved_raw",
+      "identity_match": true,
+      "primary_view": "front",
+      "primary_figure_complete": true,
+      "visible_text_leakage": [],
+      "visual_confounders": [],
+      "sanitization_action": "none",
+      "raw_model_input_allowed": true,
+      "review_confidence": 0.99,
+      "notes": [
+        "Clean isolated front catalog image; the complete Battle Droid mechanical joint graph is visible without text, branding, or secondary figures."
+      ]
+    },
+    {
+      "source_record_id": "challenge_super_battle_droid_sw0092",
+      "source_id": "bricklink_super_battle_droid_sw0092",
+      "source_file_sha256": "893c94e47077114e027712fd1c73868d07cda180dc8f3472858009c655bdc316",
+      "status": "approved_raw",
+      "identity_match": true,
+      "primary_view": "front",
+      "primary_figure_complete": true,
+      "visible_text_leakage": [],
+      "visual_confounders": [],
+      "sanitization_action": "none",
+      "raw_model_input_allowed": true,
+      "review_confidence": 0.99,
+      "notes": [
+        "Clean isolated front catalog image; integrated torso/head and mechanical limbs are fully visible without labels or task-confounding content."
+      ]
+    },
+    {
+      "source_record_id": "challenge_robot_butler_col445",
+      "source_id": "bricklink_robot_butler_col445_rollers",
+      "source_file_sha256": "ed344c79ec70ab5cf67db179bafa7f92da72704ab732354b523faf2b6851db71",
+      "status": "approved_raw",
+      "identity_match": true,
+      "primary_view": "front",
+      "primary_figure_complete": true,
+      "visible_text_leakage": [],
+      "visual_confounders": [],
+      "sanitization_action": "none",
+      "raw_model_input_allowed": true,
+      "review_confidence": 0.99,
+      "notes": [
+        "Clean isolated front catalog image; roller lower-body architecture is fully visible without text, branding, insets, or extra figures."
+      ]
+    }
+  ]
+}
