@@ -56,6 +56,28 @@ def normalized_box(
     return left, top, right, bottom
 
 
+def normalized_polygon(
+    points: list[list[float]] | list[tuple[float, float]],
+    width: int,
+    height: int,
+) -> list[tuple[int, int]]:
+    if not isinstance(points, list) or len(points) < 3:
+        raise ValueError("polygon requires at least three normalized points")
+    result: list[tuple[int, int]] = []
+    for point in points:
+        if not isinstance(point, (list, tuple)) or len(point) != 2:
+            raise ValueError("polygon points must be [x, y] pairs")
+        x, y = (float(value) for value in point)
+        if not (0 <= x <= 1 and 0 <= y <= 1):
+            raise ValueError(f"invalid normalized polygon point: {point}")
+        px = max(0, min(width - 1, round(x * (width - 1))))
+        py = max(0, min(height - 1, round(y * (height - 1))))
+        result.append((px, py))
+    if len(set(result)) < 3:
+        raise ValueError("polygon collapses to fewer than three pixel points")
+    return result
+
+
 def _median_color(image, box: tuple[int, int, int, int]) -> tuple[int, ...]:
     """Sample a narrow ring around a rectangle and return median channel values."""
     left, top, right, bottom = box
@@ -116,6 +138,48 @@ def _fill_rect_with_row_median_sample(
         draw.line((left, y, right - 1, y), fill=fill)
 
 
+def _fill_polygon_with_row_median_sample(
+    image,
+    pixel_points: list[tuple[int, int]],
+    sample_box: tuple[int, int, int, int],
+) -> None:
+    """Fill a polygon from per-row medians sampled from a clean background strip."""
+    from PIL import Image, ImageDraw
+
+    mask = Image.new("1", image.size, 0)
+    ImageDraw.Draw(mask).polygon(pixel_points, fill=1)
+    xs = [point[0] for point in pixel_points]
+    ys = [point[1] for point in pixel_points]
+    left, right = min(xs), max(xs)
+    top, bottom = min(ys), max(ys)
+    sample_left, sample_top, sample_right, sample_bottom = sample_box
+    if sample_right <= sample_left or sample_bottom <= sample_top:
+        raise ValueError("row-median sample box must have positive area")
+
+    draw = ImageDraw.Draw(image)
+    for y in range(top, bottom + 1):
+        covered = [
+            x
+            for x in range(left, right + 1)
+            if mask.getpixel((x, y))
+        ]
+        if not covered:
+            continue
+        sample_y = min(max(y, sample_top), sample_bottom - 1)
+        pixels = [
+            tuple(image.getpixel((x, sample_y)))
+            for x in range(sample_left, sample_right)
+        ]
+        if not pixels:
+            raise ValueError("row-median sample produced no pixels")
+        channels = list(zip(*pixels))
+        fill = tuple(
+            int(round(statistics.median(channel)))
+            for channel in channels
+        )
+        draw.line((min(covered), y, max(covered), y), fill=fill)
+
+
 def apply_operations(image, operations: list[dict[str, Any]]):
     """Apply deterministic normalized crop/mask operations in order."""
     from PIL import ImageDraw
@@ -126,7 +190,11 @@ def apply_operations(image, operations: list[dict[str, Any]]):
     for index, operation in enumerate(operations):
         op = operation.get("op")
         bounds = operation.get("bounds")
-        box = normalized_box(bounds, *current.size)
+        box = (
+            normalized_box(bounds, *current.size)
+            if op in {"mask_rect_norm", "crop_norm"}
+            else None
+        )
 
         if op == "mask_rect_norm":
             fill_mode = operation.get("fill_mode", "border_median")
@@ -164,6 +232,58 @@ def apply_operations(image, operations: list[dict[str, Any]]):
                 "op": op,
                 "requested_bounds": bounds,
                 "pixel_bounds": list(box),
+                "fill_mode": fill_mode,
+                "result_dimensions": list(current.size),
+            }
+            if fill is not None:
+                applied_row["fill_rgba"] = list(fill)
+            if sample_bounds is not None and sample_box is not None:
+                applied_row["sample_bounds"] = sample_bounds
+                applied_row["sample_pixel_bounds"] = list(sample_box)
+            applied.append(applied_row)
+        elif op == "mask_polygon_norm":
+            points = operation.get("points")
+            pixel_points = normalized_polygon(
+                points, *current.size
+            )
+            fill_mode = operation.get("fill_mode", "white")
+            sample_bounds = None
+            sample_box = None
+            if fill_mode == "white":
+                fill = (255, 255, 255, 255)
+                ImageDraw.Draw(current).polygon(
+                    pixel_points, fill=fill
+                )
+            elif fill_mode == "transparent":
+                fill = (0, 0, 0, 0)
+                ImageDraw.Draw(current).polygon(
+                    pixel_points, fill=fill
+                )
+            elif fill_mode == "row_median_sample":
+                fill = None
+                sample_bounds = operation.get("sample_bounds")
+                if sample_bounds is None:
+                    raise ValueError(
+                        "row_median_sample requires sample_bounds"
+                    )
+                sample_box = normalized_box(
+                    sample_bounds, *current.size
+                )
+                _fill_polygon_with_row_median_sample(
+                    current, pixel_points, sample_box
+                )
+            else:
+                raise ValueError(
+                    "mask_polygon_norm supports white, transparent, "
+                    "or row_median_sample fill modes"
+                )
+            applied_row = {
+                "index": index,
+                "op": op,
+                "requested_points": points,
+                "pixel_points": [
+                    list(point) for point in pixel_points
+                ],
                 "fill_mode": fill_mode,
                 "result_dimensions": list(current.size),
             }
