@@ -86,6 +86,8 @@ def build_case(
             raise ValueError(
                 f"Unknown source_ref {source_id!r} on benchmark record {record_id!r}"
             )
+        media = source.get("media") or {}
+        verification = media.get("byte_verification") or {}
         reference_locators.append(
             {
                 "source_id": source_id,
@@ -94,12 +96,15 @@ def build_case(
                 "locator_quality": source.get(
                     "locator_quality", "direct_or_family_reference"
                 ),
-                "exact_image_url": (source.get("media") or {}).get(
-                    "primary_image_url"
-                ),
-                "image_resolution_status": (source.get("media") or {}).get(
-                    "resolution_status"
-                ),
+                "exact_image_url": media.get("primary_image_url"),
+                "image_resolution_status": media.get("resolution_status"),
+                "byte_verification_status": verification.get("status"),
+                "source_file_sha256": verification.get("sha256"),
+                "source_size_bytes": verification.get("size_bytes"),
+                "source_content_type": verification.get("content_type"),
+                "source_image_format": verification.get("image_format"),
+                "verification_run_id": verification.get("workflow_run_id"),
+                "raw_media_committed": verification.get("raw_media_committed"),
             }
         )
 
@@ -120,7 +125,14 @@ def build_case(
         "target_evidence_tier": tier,
         "scoring_track": track,
         "input_asset": {
-            "status": "reference_locator_only_pending_materialization",
+            "status": (
+                "reference_media_byte_verified_materialization_pending"
+                if any(
+                    locator.get("source_file_sha256")
+                    for locator in reference_locators
+                )
+                else "reference_locator_only_pending_materialization"
+            ),
             "required_view": "canonical_or_best_available_full_figure",
             "materialized_asset_id": None,
             "reference_locators": reference_locators,
@@ -240,15 +252,34 @@ def build(
             )
             for case in cases
         ),
+        "cases_with_verified_image_hashes": sum(
+            any(
+                locator.get("source_file_sha256")
+                for locator in case["input_asset"]["reference_locators"]
+            )
+            for case in cases
+        ),
+        "unique_verified_image_hashes": len(
+            {
+                locator["source_file_sha256"]
+                for case in cases
+                for locator in case["input_asset"]["reference_locators"]
+                if locator.get("source_file_sha256")
+            }
+        ),
     }
 
     return {
         "schema_version": "0.1",
         "created": "2026-09-28",
         "status": (
-            "populated_case_manifest_exact_image_urls_complete_materialization_pending"
-            if summary["cases_with_exact_image_urls"] == summary["total_cases"]
-            else "populated_case_manifest_assets_pending"
+            "populated_case_manifest_reference_media_verified_materialization_pending"
+            if summary["cases_with_verified_image_hashes"] == summary["total_cases"]
+            else (
+                "populated_case_manifest_exact_image_urls_complete_materialization_pending"
+                if summary["cases_with_exact_image_urls"] == summary["total_cases"]
+                else "populated_case_manifest_assets_pending"
+            )
         ),
         "benchmark_id": "body_architecture_recognition_v0_cases",
         "processor_version": VERSION,
@@ -287,12 +318,18 @@ def build(
         },
         "input_policy": {
             "current_asset_state": (
-                "Every benchmark case has at least one exact source-backed image URL; "
-                "image bytes/hashes are not yet materialized in the benchmark manifest."
-                if summary["cases_with_exact_image_urls"] == summary["total_cases"]
+                "Every benchmark case has an exact source-backed image URL and verified "
+                "SHA-256/size/type metadata. Raw image bytes are not stored in Git and "
+                "local materialized asset IDs remain pending."
+                if summary["cases_with_verified_image_hashes"] == summary["total_cases"]
                 else (
-                    "Reference locators exist in source corpora, but benchmark image/mesh "
-                    "assets are not yet materialized here."
+                    "Every benchmark case has at least one exact source-backed image URL; "
+                    "image byte verification is incomplete."
+                    if summary["cases_with_exact_image_urls"] == summary["total_cases"]
+                    else (
+                        "Reference locators exist in source corpora, but benchmark image/mesh "
+                        "assets are not yet materialized here."
+                    )
                 )
             ),
             "allowed_model_inputs": [
@@ -309,9 +346,9 @@ def build(
                 "catalog_text_that_names_the_architecture",
             ],
             "next_step": (
-                "Materialize and checksum one or more canonical views per case, validate "
-                "the bound image identity/view, then add low-resolution/occlusion/"
-                "detached-component variants without changing ground-truth group assignments."
+                "Validate canonical-view identity/quality against the verified media, "
+                "materialize locally only where needed for evaluation, then add low-resolution/"
+                "occlusion/detached-component variants without changing ground-truth groups."
             ),
         },
         "source_corpora": source_corpora,
