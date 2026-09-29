@@ -239,3 +239,65 @@ def test_checked_in_model_input_manifest_matches_builder() -> None:
     )
 
     assert actual == expected
+
+
+def test_supplemental_candidate_resolves_segmentation_blocker() -> None:
+    tool = load_tool()
+    queue, candidates = live_inputs()
+    blocker = candidates["blockers"][0]
+    record_id = blocker["source_record_id"]
+    source = next(
+        row["source"]
+        for row in queue["queue"]
+        if row["source_record_id"] == record_id
+    )
+    supplemental = {
+        "records": [
+            {
+                "source_record_id": record_id,
+                "source_file_sha256": source["source_file_sha256"],
+                "sanitized_pixel_sha256": "d" * 64,
+                "sanitized_png_sha256": "e" * 64,
+                "candidate_status": "generated_pending_visual_review",
+            }
+        ],
+        "blockers": [],
+    }
+    review = approval(supplemental["records"][0])
+
+    result = tool.build(
+        queue,
+        candidates,
+        [review],
+        [supplemental],
+    )
+    entry = next(
+        row
+        for row in result["entries"]
+        if row["source_record_id"] == record_id
+    )
+
+    assert entry["status"] == "approved_sanitized"
+    assert entry["model_input_allowed"] is True
+    assert entry["asset_sha256"] == "e" * 64
+
+
+def test_conflicting_supplemental_candidate_fails_closed() -> None:
+    tool = load_tool()
+    queue, candidates = live_inputs()
+    existing = candidates["records"][0]
+    supplemental = {
+        "records": [
+            {
+                **existing,
+                "sanitized_png_sha256": "0" * 64,
+            }
+        ]
+    }
+
+    try:
+        tool.build(queue, candidates, [], [supplemental])
+    except ValueError as exc:
+        assert "supplemental candidate conflicts" in str(exc)
+    else:
+        raise AssertionError("expected conflicting supplemental candidate to fail")
