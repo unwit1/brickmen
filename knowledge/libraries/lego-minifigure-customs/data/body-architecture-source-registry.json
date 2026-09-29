@@ -1838,9 +1838,24 @@
       "media": {
         "primary_image_url": "https://img.bricklink.com/ItemImage/MN/0/hp288.png",
         "media_type": "image/png",
-        "resolution_status": "exact_image_url_resolved_pending_byte_verification",
+        "resolution_status": "verified_exact_image_url",
         "verified_on": "2026-09-29",
-        "discovery_method": "bricklink_itemimage_endpoint_visually_verified"
+        "discovery_method": "bricklink_itemimage_endpoint_visually_and_byte_verified",
+        "byte_verification": {
+          "status": "verified",
+          "sha256": "75b0f4bfb0454f9b85e1ac8564ff6a67415e537db0576f9fb6a9ab186b1c692d",
+          "size_bytes": 211354,
+          "content_type": "image/png",
+          "image_format": "png",
+          "attempts": 1,
+          "verified_at": "2026-09-29T11:32:35.882896+00:00",
+          "verifier_version": "body-architecture-reference-media-verifier/v1",
+          "workflow_run_id": 36562356952,
+          "workflow_artifact_id": 11029932963,
+          "raw_media_committed": false,
+          "width": 397,
+          "height": 596
+        }
       }
     }
   ],
