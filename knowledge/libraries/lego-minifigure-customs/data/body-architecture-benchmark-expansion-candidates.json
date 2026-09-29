@@ -1,0 +1,578 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-29",
+  "status": "staged_media_verification_pending",
+  "id": "body-architecture-benchmark-expansion-v0",
+  "objective": "Broaden architecture-recognition coverage beyond Hulk/Venom/Thing without weakening the canonical benchmark's media/sanitization guarantees.",
+  "policy": [
+    "These cases are staged and excluded from canonical benchmark metrics until promoted.",
+    "Byte verification and visual sanitization are mandatory before model input.",
+    "Keep Hagrid hp061 and hp144 in the same final split because they are a deliberate same-character cross-architecture pair.",
+    "Release codes, names, source IDs and catalog text are provenance only and forbidden as model features.",
+    "Promotion must preserve exact source hashes, sanitization hashes and reviewer provenance."
+  ],
+  "promotion_gate": {
+    "required": [
+      "architecture_registry_target_exists",
+      "source_registry_refs_resolve",
+      "exact_image_url_byte_verified",
+      "image_hash_deduplicated_or_duplicate_documented",
+      "visual_sanitization_decision_complete",
+      "model_input_gate_passes",
+      "final_split_assignment_reviewed_for_character_and_family_leakage"
+    ],
+    "default_state": "blocked_until_all_required_steps_pass"
+  },
+  "summary": {
+    "staged_cases": 10,
+    "distinct_architecture_targets": 10,
+    "core_cases": 9,
+    "provisional_cases": 1,
+    "source_character_groups": 9,
+    "same_character_cross_architecture_groups": [
+      "hagrid"
+    ]
+  },
+  "cases": [
+    {
+      "case_id": "archexp::official_axl_nex007",
+      "source_record_id": "official_axl_nex007",
+      "split": "expansion_holdout",
+      "scoring_track": "core",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "lego_axl_oversized_torso_hybrid",
+        "unresolved_candidate": null
+      },
+      "target_evidence_tier": "official_or_strong_catalog",
+      "input_asset": {
+        "status": "staged_exact_media_verification_pending",
+        "required_view": "canonical_or_best_available_full_figure",
+        "materialized_asset_id": null,
+        "reference_locators": [
+          {
+            "source_id": "bricklink_axl_nex007_inventory",
+            "url": "https://www.bricklink.com/catalogItemInv.asp?M=nex007",
+            "authority": "structured_catalog",
+            "locator_quality": "direct_release_or_component_graph_reference",
+            "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/nex007.png",
+            "image_resolution_status": "verified_exact_image_url"
+          }
+        ]
+      },
+      "leakage_guard": {
+        "allow_release_maker_as_model_input": false,
+        "allow_release_code_as_model_input": false,
+        "allow_character_label_as_model_input": false,
+        "allow_source_corpus_name_as_model_input": false,
+        "note": "All release/character/catalog identifiers remain audit-only; promotion requires the same sanitization gate as the canonical benchmark."
+      },
+      "audit_metadata": {
+        "release": {
+          "maker": "LEGO",
+          "code": "nex007",
+          "label": "Axl - Flat Silver Visor and Torso"
+        },
+        "character_group": "axl",
+        "evidence_notes": [
+          "Oversized 23763c01 torso plus dedicated 24101/24104 armored arms with standard minifigure head/lower body."
+        ]
+      },
+      "provenance": {
+        "source_registry_path": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-source-registry.json",
+        "source_refs": [
+          "bricklink_axl_nex007_inventory"
+        ]
+      },
+      "promotion_state": "blocked_pending_media_verification_and_sanitization"
+    },
+    {
+      "case_id": "archexp::official_hagrid_hp061_legacy",
+      "source_record_id": "official_hagrid_hp061_legacy",
+      "split": "expansion_holdout",
+      "scoring_track": "provisional",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "lego_hagrid_giant_hybrid",
+        "unresolved_candidate": null
+      },
+      "target_evidence_tier": "catalog_identified_provisional",
+      "input_asset": {
+        "status": "staged_exact_media_verification_pending",
+        "required_view": "canonical_or_best_available_full_figure",
+        "materialized_asset_id": null,
+        "reference_locators": [
+          {
+            "source_id": "bricklink_hagrid_hp061_legacy_giant",
+            "url": "https://www.bricklink.com/catalogItemInv.asp?M=hp061",
+            "authority": "structured_catalog",
+            "locator_quality": "direct_release_or_component_graph_reference",
+            "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/hp061.png",
+            "image_resolution_status": "candidate_unverified_endpoint"
+          },
+          {
+            "source_id": "hagrid_hp061_parts",
+            "url": "https://www.minifig-pictures.be/controler/c_FicheMinifig.php?Code=hp061",
+            "authority": "secondary_structured_catalog",
+            "locator_quality": "direct_release_or_component_graph_reference",
+            "exact_image_url": null,
+            "image_resolution_status": null
+          }
+        ]
+      },
+      "leakage_guard": {
+        "allow_release_maker_as_model_input": false,
+        "allow_release_code_as_model_input": false,
+        "allow_character_label_as_model_input": false,
+        "allow_source_corpus_name_as_model_input": false,
+        "note": "All release/character/catalog identifiers remain audit-only; promotion requires the same sanitization gate as the canonical benchmark."
+      },
+      "audit_metadata": {
+        "release": {
+          "maker": "LEGO",
+          "code": "hp061",
+          "label": "Rubeus Hagrid - Reddish Brown Topcoat (Light Nougat Version with Movable Hands)"
+        },
+        "character_group": "hagrid",
+        "evidence_notes": [
+          "Legacy 40250cx2 Body Giant with separate standard 3626-family head; distinct from later 37777 Half Giant."
+        ]
+      },
+      "provenance": {
+        "source_registry_path": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-source-registry.json",
+        "source_refs": [
+          "bricklink_hagrid_hp061_legacy_giant",
+          "hagrid_hp061_parts"
+        ]
+      },
+      "promotion_state": "blocked_pending_media_verification_and_sanitization"
+    },
+    {
+      "case_id": "archexp::official_hagrid_hp144_half_giant",
+      "source_record_id": "official_hagrid_hp144_half_giant",
+      "split": "expansion_holdout",
+      "scoring_track": "core",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "lego_hagrid_half_giant",
+        "unresolved_candidate": null
+      },
+      "target_evidence_tier": "official_or_strong_catalog",
+      "input_asset": {
+        "status": "staged_exact_media_verification_pending",
+        "required_view": "canonical_or_best_available_full_figure",
+        "materialized_asset_id": null,
+        "reference_locators": [
+          {
+            "source_id": "bricklink_hagrid_hp144_inventory",
+            "url": "https://www.bricklink.com/catalogItemInv.asp?M=hp144",
+            "authority": "structured_catalog",
+            "locator_quality": "direct_release_or_component_graph_reference",
+            "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/hp144.png",
+            "image_resolution_status": "verified_exact_image_url"
+          },
+          {
+            "source_id": "bricklink_hagrid_hp144_half_giant",
+            "url": "https://www.bricklink.com/catalogItemInv.asp?M=hp144",
+            "authority": "structured_catalog",
+            "locator_quality": "direct_release_or_component_graph_reference",
+            "exact_image_url": null,
+            "image_resolution_status": null
+          }
+        ]
+      },
+      "leakage_guard": {
+        "allow_release_maker_as_model_input": false,
+        "allow_release_code_as_model_input": false,
+        "allow_character_label_as_model_input": false,
+        "allow_source_corpus_name_as_model_input": false,
+        "note": "All release/character/catalog identifiers remain audit-only; promotion requires the same sanitization gate as the canonical benchmark."
+      },
+      "audit_metadata": {
+        "release": {
+          "maker": "LEGO",
+          "code": "hp144",
+          "label": "Rubeus Hagrid - Medium Nougat Topcoat with Buttons"
+        },
+        "character_group": "hagrid",
+        "evidence_notes": [
+          "37777 large torso, 37779/37783 large arms, 41879 short legs and standard 3626-family head.",
+          "Same-character cross-architecture pair with hp061 is deliberately staged together."
+        ]
+      },
+      "provenance": {
+        "source_registry_path": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-source-registry.json",
+        "source_refs": [
+          "bricklink_hagrid_hp144_inventory",
+          "bricklink_hagrid_hp144_half_giant"
+        ]
+      },
+      "promotion_state": "blocked_pending_media_verification_and_sanitization"
+    },
+    {
+      "case_id": "archexp::official_hulk_sh0013_integrated_head",
+      "source_record_id": "official_hulk_sh0013_integrated_head",
+      "split": "expansion_holdout",
+      "scoring_track": "core",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "lego_giant_integrated_head_legacy",
+        "unresolved_candidate": null
+      },
+      "target_evidence_tier": "official_or_strong_catalog",
+      "input_asset": {
+        "status": "staged_exact_media_verification_pending",
+        "required_view": "canonical_or_best_available_full_figure",
+        "materialized_asset_id": null,
+        "reference_locators": [
+          {
+            "source_id": "bricklink_hulk_sh0013_integrated_head",
+            "url": "https://www.bricklink.com/catalogItemInv.asp?M=sh0013",
+            "authority": "structured_catalog",
+            "locator_quality": "direct_release_or_component_graph_reference",
+            "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/sh0013.png",
+            "image_resolution_status": "candidate_unverified_endpoint"
+          }
+        ]
+      },
+      "leakage_guard": {
+        "allow_release_maker_as_model_input": false,
+        "allow_release_code_as_model_input": false,
+        "allow_character_label_as_model_input": false,
+        "allow_source_corpus_name_as_model_input": false,
+        "note": "All release/character/catalog identifiers remain audit-only; promotion requires the same sanitization gate as the canonical benchmark."
+      },
+      "audit_metadata": {
+        "release": {
+          "maker": "LEGO",
+          "code": "sh0013",
+          "label": "Hulk - early integrated-head Giant"
+        },
+        "character_group": "hulk",
+        "evidence_notes": [
+          "Catalog component graph has giant body/arms/hands and no separate head item.",
+          "Provides direct contrast with the later modular Giant Hulk already present in the canonical benchmark."
+        ]
+      },
+      "provenance": {
+        "source_registry_path": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-source-registry.json",
+        "source_refs": [
+          "bricklink_hulk_sh0013_integrated_head"
+        ]
+      },
+      "promotion_state": "blocked_pending_media_verification_and_sanitization"
+    },
+    {
+      "case_id": "archexp::official_killer_croc_sh0321",
+      "source_record_id": "official_killer_croc_sh0321",
+      "split": "expansion_holdout",
+      "scoring_track": "core",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "lego_giant_killer_croc_specialized",
+        "unresolved_candidate": null
+      },
+      "target_evidence_tier": "official_or_strong_catalog",
+      "input_asset": {
+        "status": "staged_exact_media_verification_pending",
+        "required_view": "canonical_or_best_available_full_figure",
+        "materialized_asset_id": null,
+        "reference_locators": [
+          {
+            "source_id": "bricklink_killer_croc_sh0321_specialized_giant",
+            "url": "https://www.bricklink.com/catalogItemInv.asp?M=sh0321",
+            "authority": "structured_catalog",
+            "locator_quality": "direct_release_or_component_graph_reference",
+            "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/sh0321.png",
+            "image_resolution_status": "verified_exact_image_url"
+          }
+        ]
+      },
+      "leakage_guard": {
+        "allow_release_maker_as_model_input": false,
+        "allow_release_code_as_model_input": false,
+        "allow_character_label_as_model_input": false,
+        "allow_source_corpus_name_as_model_input": false,
+        "note": "All release/character/catalog identifiers remain audit-only; promotion requires the same sanitization gate as the canonical benchmark."
+      },
+      "audit_metadata": {
+        "release": {
+          "maker": "LEGO",
+          "code": "sh0321",
+          "label": "Killer Croc with Blue Pants and Claws"
+        },
+        "character_group": "killer_croc",
+        "evidence_notes": [
+          "Specialized giant arms use wrist studs and Rancor paw/claw components instead of ordinary Giant hands."
+        ]
+      },
+      "provenance": {
+        "source_registry_path": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-source-registry.json",
+        "source_refs": [
+          "bricklink_killer_croc_sh0321_specialized_giant"
+        ]
+      },
+      "promotion_state": "blocked_pending_media_verification_and_sanitization"
+    },
+    {
+      "case_id": "archexp::official_garmadon_njo0078",
+      "source_record_id": "official_garmadon_njo0078",
+      "split": "expansion_holdout",
+      "scoring_track": "core",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "minifig_stacked_torso_multiarm",
+        "unresolved_candidate": null
+      },
+      "target_evidence_tier": "official_or_strong_catalog",
+      "input_asset": {
+        "status": "staged_exact_media_verification_pending",
+        "required_view": "canonical_or_best_available_full_figure",
+        "materialized_asset_id": null,
+        "reference_locators": [
+          {
+            "source_id": "bricklink_garmadon_final_battle",
+            "url": "https://www.bricklink.com/catalogItemInv.asp?M=njo0078",
+            "authority": "structured_catalog",
+            "locator_quality": "direct_release_or_component_graph_reference",
+            "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/njo0078.png",
+            "image_resolution_status": "verified_exact_image_url"
+          }
+        ]
+      },
+      "leakage_guard": {
+        "allow_release_maker_as_model_input": false,
+        "allow_release_code_as_model_input": false,
+        "allow_character_label_as_model_input": false,
+        "allow_source_corpus_name_as_model_input": false,
+        "note": "All release/character/catalog identifiers remain audit-only; promotion requires the same sanitization gate as the canonical benchmark."
+      },
+      "audit_metadata": {
+        "release": {
+          "maker": "LEGO",
+          "code": "njo0078",
+          "label": "Lord Garmadon - The Final Battle"
+        },
+        "character_group": "garmadon",
+        "evidence_notes": [
+          "Standard torso plus modified short torso/armor creates an official stacked multi-arm body graph."
+        ]
+      },
+      "provenance": {
+        "source_registry_path": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-source-registry.json",
+        "source_refs": [
+          "bricklink_garmadon_final_battle"
+        ]
+      },
+      "promotion_state": "blocked_pending_media_verification_and_sanitization"
+    },
+    {
+      "case_id": "archexp::official_grievous_sw0254",
+      "source_record_id": "official_grievous_sw0254",
+      "split": "expansion_holdout",
+      "scoring_track": "core",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "minifig_mechanical_droid_specialized",
+        "unresolved_candidate": null
+      },
+      "target_evidence_tier": "official_or_strong_catalog",
+      "input_asset": {
+        "status": "staged_exact_media_verification_pending",
+        "required_view": "canonical_or_best_available_full_figure",
+        "materialized_asset_id": null,
+        "reference_locators": [
+          {
+            "source_id": "bricklink_grievous_sw0254_inventory",
+            "url": "https://www.bricklink.com/catalogItemInv.asp?M=sw0254&viewCodes=Y",
+            "authority": "structured_catalog",
+            "locator_quality": "direct_release_or_component_graph_reference",
+            "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/sw0254.png",
+            "image_resolution_status": "verified_exact_image_url"
+          }
+        ]
+      },
+      "leakage_guard": {
+        "allow_release_maker_as_model_input": false,
+        "allow_release_code_as_model_input": false,
+        "allow_character_label_as_model_input": false,
+        "allow_source_corpus_name_as_model_input": false,
+        "note": "All release/character/catalog identifiers remain audit-only; promotion requires the same sanitization gate as the canonical benchmark."
+      },
+      "audit_metadata": {
+        "release": {
+          "maker": "LEGO",
+          "code": "sw0254",
+          "label": "General Grievous - White Armor"
+        },
+        "character_group": "general_grievous",
+        "evidence_notes": [
+          "87566 mechanical torso, 87568 arms and 87569 legs establish a dedicated non-human component graph."
+        ]
+      },
+      "provenance": {
+        "source_registry_path": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-source-registry.json",
+        "source_refs": [
+          "bricklink_grievous_sw0254_inventory"
+        ]
+      },
+      "promotion_state": "blocked_pending_media_verification_and_sanitization"
+    },
+    {
+      "case_id": "archexp::official_ghost_njo0174",
+      "source_record_id": "official_ghost_njo0174",
+      "split": "expansion_holdout",
+      "scoring_track": "core",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "minifig_lowerbody_ghost",
+        "unresolved_candidate": null
+      },
+      "target_evidence_tier": "official_or_strong_catalog",
+      "input_asset": {
+        "status": "staged_exact_media_verification_pending",
+        "required_view": "canonical_or_best_available_full_figure",
+        "materialized_asset_id": null,
+        "reference_locators": [
+          {
+            "source_id": "bricklink_ghost_njo0174_inventory",
+            "url": "https://www.bricklink.com/catalogItemInv.asp?M=njo0174",
+            "authority": "structured_catalog",
+            "locator_quality": "direct_release_or_component_graph_reference",
+            "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/njo0174.png",
+            "image_resolution_status": "verified_exact_image_url"
+          }
+        ]
+      },
+      "leakage_guard": {
+        "allow_release_maker_as_model_input": false,
+        "allow_release_code_as_model_input": false,
+        "allow_character_label_as_model_input": false,
+        "allow_source_corpus_name_as_model_input": false,
+        "note": "All release/character/catalog identifiers remain audit-only; promotion requires the same sanitization gate as the canonical benchmark."
+      },
+      "audit_metadata": {
+        "release": {
+          "maker": "LEGO",
+          "code": "njo0174",
+          "label": "Blade Master Bansha"
+        },
+        "character_group": "bansha",
+        "evidence_notes": [
+          "19859-family ghost lower body changes support/footprint while retaining standard upper-body grammar."
+        ]
+      },
+      "provenance": {
+        "source_registry_path": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-source-registry.json",
+        "source_refs": [
+          "bricklink_ghost_njo0174_inventory"
+        ]
+      },
+      "promotion_state": "blocked_pending_media_verification_and_sanitization"
+    },
+    {
+      "case_id": "archexp::official_tentacle_atl007",
+      "source_record_id": "official_tentacle_atl007",
+      "split": "expansion_holdout",
+      "scoring_track": "core",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "minifig_lowerbody_tentacle",
+        "unresolved_candidate": null
+      },
+      "target_evidence_tier": "official_or_strong_catalog",
+      "input_asset": {
+        "status": "staged_exact_media_verification_pending",
+        "required_view": "canonical_or_best_available_full_figure",
+        "materialized_asset_id": null,
+        "reference_locators": [
+          {
+            "source_id": "bricklink_tentacle_atl007_inventory",
+            "url": "https://www.bricklink.com/catalogItemInv.asp?M=atl007&viewCodes=Y",
+            "authority": "structured_catalog",
+            "locator_quality": "direct_release_or_component_graph_reference",
+            "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/atl007.png",
+            "image_resolution_status": "verified_exact_image_url"
+          }
+        ]
+      },
+      "leakage_guard": {
+        "allow_release_maker_as_model_input": false,
+        "allow_release_code_as_model_input": false,
+        "allow_character_label_as_model_input": false,
+        "allow_source_corpus_name_as_model_input": false,
+        "note": "All release/character/catalog identifiers remain audit-only; promotion requires the same sanitization gate as the canonical benchmark."
+      },
+      "audit_metadata": {
+        "release": {
+          "maker": "LEGO",
+          "code": "atl007",
+          "label": "Atlantis Squid Warrior"
+        },
+        "character_group": "squid_warrior",
+        "evidence_notes": [
+          "87749 tentacle lower body creates a non-legged lower-body topology."
+        ]
+      },
+      "provenance": {
+        "source_registry_path": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-source-registry.json",
+        "source_refs": [
+          "bricklink_tentacle_atl007_inventory"
+        ]
+      },
+      "promotion_state": "blocked_pending_media_verification_and_sanitization"
+    },
+    {
+      "case_id": "archexp::official_centaur_col379",
+      "source_record_id": "official_centaur_col379",
+      "split": "expansion_holdout",
+      "scoring_track": "core",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "minifig_centaur_hybrid",
+        "unresolved_candidate": null
+      },
+      "target_evidence_tier": "official_or_strong_catalog",
+      "input_asset": {
+        "status": "staged_exact_media_verification_pending",
+        "required_view": "canonical_or_best_available_full_figure",
+        "materialized_asset_id": null,
+        "reference_locators": [
+          {
+            "source_id": "bricklink_centaur_col379_inventory",
+            "url": "https://www.bricklink.com/catalogItemInv.asp?M=col379&viewCodes=Y",
+            "authority": "structured_catalog",
+            "locator_quality": "direct_release_or_component_graph_reference",
+            "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/col379.png",
+            "image_resolution_status": "verified_exact_image_url"
+          }
+        ]
+      },
+      "leakage_guard": {
+        "allow_release_maker_as_model_input": false,
+        "allow_release_code_as_model_input": false,
+        "allow_character_label_as_model_input": false,
+        "allow_source_corpus_name_as_model_input": false,
+        "note": "All release/character/catalog identifiers remain audit-only; promotion requires the same sanitization gate as the canonical benchmark."
+      },
+      "audit_metadata": {
+        "release": {
+          "maker": "LEGO",
+          "code": "col379",
+          "label": "Centaur Warrior"
+        },
+        "character_group": "centaur_warrior",
+        "evidence_notes": [
+          "67638pb02 centaur lower body creates a quadruped hybrid architecture and distinct footprint."
+        ]
+      },
+      "provenance": {
+        "source_registry_path": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-source-registry.json",
+        "source_refs": [
+          "bricklink_centaur_col379_inventory"
+        ]
+      },
+      "promotion_state": "blocked_pending_media_verification_and_sanitization"
+    }
+  ]
+}
