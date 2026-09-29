@@ -70,6 +70,11 @@ def build(
     }
     challenge_character_groups: set[str] = set()
     cases = []
+    corpus_id = str(
+        corpus.get("corpus_id") or "body_architecture_challenge_v1"
+    ).strip()
+    if not corpus_id:
+        raise ValueError("challenge corpus requires corpus_id")
 
     for record in corpus.get("records", []):
         record_id = record["record_id"]
@@ -263,11 +268,16 @@ def build(
             if verified == len(cases)
             else "exact_urls_pending_byte_verification"
         ),
-        "benchmark_id": "body_architecture_challenge_v1",
+        "benchmark_id": corpus_id,
         "processor_version": VERSION,
         "purpose": (
             "Evaluation-only, character-disjoint expansion of official "
             "body-architecture recognition coverage."
+            if corpus_id == "body_architecture_challenge_v1"
+            else str(
+                corpus.get("purpose")
+                or "Evaluation-only body-architecture challenge cohort."
+            )
         ),
         "baseline_benchmark": {
             "path": baseline_path.relative_to(ROOT).as_posix(),
