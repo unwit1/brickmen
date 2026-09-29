@@ -1,0 +1,57 @@
+name: Build Fortnite Semantic Review UI
+
+on:
+  workflow_dispatch:
+    inputs:
+      batch_path:
+        description: "Repository-relative semantic review batch JSON"
+        required: true
+        default: "knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-0001.json"
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  build-reviewer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      BATCH_PATH: ${{ inputs.batch_path }}
+    steps:
+      - name: Check out Brickmen
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate requested batch path
+        shell: bash
+        run: |
+          set -euo pipefail
+          case "$BATCH_PATH" in
+            knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/*.json) ;;
+            *)
+              echo "Batch must be a JSON file under semantic-review-batches/" >&2
+              exit 2
+              ;;
+          esac
+          test -f "$BATCH_PATH"
+
+      - name: Build standalone semantic reviewer
+        run: |
+          mkdir -p .agent-local/review-ui
+          python tools/knowledge/build_fortnite_semantic_review_ui.py             --batch "$BATCH_PATH"             --output .agent-local/review-ui/fortnite-semantic-review.html
+
+      - name: Copy source batch beside reviewer
+        run: cp "$BATCH_PATH" .agent-local/review-ui/review-batch.json
+
+      - name: Upload reviewer artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: fortnite-semantic-review-ui-${{ github.run_id }}
+          path: .agent-local/review-ui/
+          if-no-files-found: error
+          retention-days: 14
