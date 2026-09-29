@@ -1,0 +1,54 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-29",
+  "review_set_id": "body-architecture-custom-sanitization-v1",
+  "policy": "Reviews are keyed to verified source SHA-256. Product-description evidence does not authorize visual model input; exact byte-pinned media must pass direct visual leakage review, and any sanitized derivative requires a separate exact-hash review.",
+  "reviewer": {
+    "reviewer_id": "openai_chatgpt_visual_review",
+    "reviewer_type": "model",
+    "model_family": "GPT-5.6 Sol",
+    "model_revision": "2026-09-29",
+    "review_method": "direct_visual_inspection_of_exact_byte_verified_product_image_url"
+  },
+  "reviews": [
+    {
+      "source_record_id": "custom_midfig_balljoint_upper_titanic",
+      "source_id": "titanic_bricks_midfig_balljoint_product_image_1",
+      "source_file_sha256": "c79fc80eba86f18b155c358bfc900923f5743777bdd215a51b9828142b8d08b2",
+      "status": "sanitization_required",
+      "identity_match": true,
+      "primary_view": "front_three_quarter",
+      "primary_figure_complete": true,
+      "visible_text_leakage": [
+        "maker_or_brand_logo"
+      ],
+      "visual_confounders": [],
+      "sanitization_action": "mask_logo_region",
+      "raw_model_input_allowed": false,
+      "review_confidence": 0.99,
+      "notes": [
+        "Exact verified manufacturer image shows the complete MidFig ball-jointed upper-body architecture.",
+        "Titanic Bricks logo and text are visibly present in the lower-left background and must be removed before evaluation use.",
+        "The logo region is spatially separated from the figure, so a deterministic background-fill mask can preserve the full architecture."
+      ]
+    },
+    {
+      "source_record_id": "custom_standard_four_arm_single_torso_titanic",
+      "source_id": "titanic_bricks_four_arm_product_image_1",
+      "source_file_sha256": "eb3649ca3c8c331bec1e42f15b6326bb47253b4bba8ec13ae57e2db0d3c2af14",
+      "status": "approved_raw",
+      "identity_match": true,
+      "primary_view": "front_three_quarter",
+      "primary_figure_complete": true,
+      "visible_text_leakage": [],
+      "visual_confounders": [],
+      "sanitization_action": "none",
+      "raw_model_input_allowed": true,
+      "review_confidence": 0.99,
+      "notes": [
+        "Exact verified product image cleanly shows the single-torso four-arm architecture on a neutral background.",
+        "No visible maker logo, product text, SKU, inset panel, secondary figure, or other shortcut cue is present."
+      ]
+    }
+  ]
+}
