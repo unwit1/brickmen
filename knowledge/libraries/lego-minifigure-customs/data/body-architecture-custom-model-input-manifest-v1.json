@@ -1,0 +1,46 @@
+{
+  "schema_version": "0.1",
+  "processor_version": "body-architecture-model-input-manifest/v1",
+  "status": "gated_model_input_manifest",
+  "policy": "Only visually approved raw references or exact hash-pinned approved sanitized derivatives are model inputs. Provenance/audit identifiers remain metadata and must not be exposed as model features.",
+  "summary": {
+    "total_cases": 2,
+    "model_input_allowed_cases": 2,
+    "approved_raw_cases": 1,
+    "approved_sanitized_cases": 1,
+    "blocked_cases": 0
+  },
+  "entries": [
+    {
+      "source_record_id": "custom_midfig_balljoint_upper_titanic",
+      "case_id": "archcandidate::titanic_midfig_balljoint_upper",
+      "split": "custom_challenge_test",
+      "scoring_track": "custom",
+      "status": "approved_sanitized",
+      "model_input_allowed": true,
+      "asset_kind": "sanitized_derivative",
+      "asset_sha256": "4a73e0884c69f53c5621bcb0a8f90c999330e8607c710a7ad20421641c911fd5",
+      "sanitized_pixel_sha256": "d8c6b8184b741fde1e1d54159fd20ac530475e0883ad6a72ca11eac46e381635",
+      "source_file_sha256": "c79fc80eba86f18b155c358bfc900923f5743777bdd215a51b9828142b8d08b2",
+      "expected_local_asset": "custom_midfig_balljoint_upper_titanic--d8c6b8184b741fde.png",
+      "approval_review_ids": [
+        "sanreview-93c0cd5323e1967650034a47"
+      ],
+      "blocked_reason": null
+    },
+    {
+      "source_record_id": "custom_standard_four_arm_single_torso_titanic",
+      "case_id": "archcandidate::titanic_standard_four_arm",
+      "split": "custom_challenge_test",
+      "scoring_track": "custom",
+      "status": "approved_raw",
+      "model_input_allowed": true,
+      "asset_kind": "verified_raw_reference",
+      "asset_sha256": "eb3649ca3c8c331bec1e42f15b6326bb47253b4bba8ec13ae57e2db0d3c2af14",
+      "source_file_sha256": "eb3649ca3c8c331bec1e42f15b6326bb47253b4bba8ec13ae57e2db0d3c2af14",
+      "expected_local_asset": null,
+      "approval_review_ids": [],
+      "blocked_reason": null
+    }
+  ]
+}
