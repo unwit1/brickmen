@@ -1,0 +1,64 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-29",
+  "id": "body-architecture-same-character-contrast-model-input-v1",
+  "status": "runnable",
+  "policy": [
+    "Evaluation-only. None of these assets may enter training.",
+    "Only exact byte-verified, visually approved raw references are admitted.",
+    "Character/release/source identifiers are audit metadata and must not be model features.",
+    "Pair members remain coupled; report pairwise results without mixing them into the main challenge aggregate."
+  ],
+  "summary": {
+    "total_pairs": 2,
+    "total_assets": 4,
+    "model_input_allowed_assets": 4,
+    "runnable_pairs": 2
+  },
+  "assets": [
+    {
+      "source_record_id": "official_hagrid_hp061_legacy",
+      "pair_id": "archcontrast::hagrid_legacy_vs_half_giant",
+      "side": "left",
+      "architecture_id": "lego_hagrid_giant_hybrid",
+      "asset_kind": "verified_raw_reference",
+      "asset_sha256": "2e2273d5ce891f2bac45a0e0f40a0320104c0051ecb8733ce847ac4ba5119bf1",
+      "model_input_allowed": true
+    },
+    {
+      "source_record_id": "challenge_hagrid_hp144",
+      "pair_id": "archcontrast::hagrid_legacy_vs_half_giant",
+      "side": "right",
+      "architecture_id": "lego_hagrid_half_giant",
+      "asset_kind": "verified_raw_reference",
+      "asset_sha256": "7e387b1db3516036575438e6733202fd00bf53ad771aeb885b29681aa51695b3",
+      "model_input_allowed": true
+    },
+    {
+      "source_record_id": "official_hulk_sh0013_integrated_head",
+      "pair_id": "archcontrast::hulk_integrated_vs_modular_giant",
+      "side": "left",
+      "architecture_id": "lego_giant_integrated_head_legacy",
+      "asset_kind": "verified_raw_reference",
+      "asset_sha256": "414a6c02b42a33a8d2d957831d2a8e987ff96c1ec5c8b5b671454de90b7f31a5",
+      "model_input_allowed": true
+    },
+    {
+      "source_record_id": "hulk_lego_sh0371_giant",
+      "pair_id": "archcontrast::hulk_integrated_vs_modular_giant",
+      "side": "right",
+      "architecture_id": "lego_giant_modular",
+      "asset_kind": "verified_raw_reference",
+      "asset_sha256": "c6917f1193160420665ef660f4a7cc3644c2d3763fa61247ca372f385f082de4",
+      "model_input_allowed": true
+    }
+  ],
+  "scoring": {
+    "primary_metrics": [
+      "pairwise_architecture_accuracy",
+      "both_sides_correct_rate",
+      "character_invariance_error"
+    ],
+    "aggregate_with_main_challenge": false
+  }
+}
