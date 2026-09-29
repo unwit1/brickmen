@@ -1,0 +1,44 @@
+name: Materialize Si-Dan Exact Review Media
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/materialize-body-architecture-sidan-review-media.yml'
+      - 'tools/knowledge/materialize_body_architecture_exact_review_media.py'
+      - 'knowledge/libraries/lego-minifigure-customs/data/body-architecture-sidan-acquisition-candidate-v1.json'
+
+permissions:
+  contents: read
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out Brickmen
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Materialize exact Si-Dan review media
+        run: |
+          python tools/knowledge/materialize_body_architecture_exact_review_media.py \
+            --benchmark knowledge/libraries/lego-minifigure-customs/data/body-architecture-sidan-acquisition-candidate-v1.json \
+            --source-record-id custom_sidan_full_balljoint_poseable_sidan \
+            --output-dir .agent-local/sidan-exact-review-media \
+            --report .agent-local/sidan-exact-review-media-report.json \
+            --allow-host cdn1.bigcommerce.com \
+            --timeout-seconds 30
+      - name: Upload exact review bundle
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: body-architecture-sidan-exact-review-media
+          path: |
+            .agent-local/sidan-exact-review-media
+            .agent-local/sidan-exact-review-media-report.json
+          if-no-files-found: warn
+          retention-days: 3
