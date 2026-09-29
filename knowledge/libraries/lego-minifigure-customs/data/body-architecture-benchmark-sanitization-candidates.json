@@ -1,0 +1,98 @@
+{
+  "schema_version": "0.1",
+  "created_at": "2026-09-29T03:03:55.559142+00:00",
+  "processor_version": "body-architecture-sanitization-candidate-generator/v1",
+  "workflow_run_id": 36515440243,
+  "workflow_artifact_id": 11011011047,
+  "metadata_only": true,
+  "raw_source_media_persisted": false,
+  "candidate_derivative_media_persisted": false,
+  "generated_candidates": 7,
+  "segmentation_or_manual_blockers": 2,
+  "errors": 0,
+  "policy": "Candidate hashes are not benchmark approval. Sanitized pixels must be visually reviewed before model_input_allowed may become true.",
+  "records": [
+    {
+      "source_record_id": "hulk_lego_sh0037_standard",
+      "output_dimensions": [
+        254,
+        400
+      ],
+      "sanitized_pixel_sha256": "1ee0cecb55087c17f72a7c2de0dc406aaace131fec7edf92e68ff9eb3468c881",
+      "sanitized_png_sha256": "b5481fe949bae29f26e0ec519623fba72b2bbec0b221c64e18d8e6af085049af",
+      "candidate_status": "generated_pending_visual_review"
+    },
+    {
+      "source_record_id": "hulk_g2_gh0304_avengers",
+      "output_dimensions": [
+        352,
+        464
+      ],
+      "sanitized_pixel_sha256": "c16e95f9b1762b0c05a0815e1854b4954f6e8c0d8ff412fafab204bd6940ef1f",
+      "sanitized_png_sha256": "99e506fa499698dd129fb90672a89ddda9c5dfcff23bb70310bd0726978c176f",
+      "candidate_status": "generated_pending_visual_review"
+    },
+    {
+      "source_record_id": "hulk_bigguy_ragnarok",
+      "output_dimensions": [
+        471,
+        582
+      ],
+      "sanitized_pixel_sha256": "e52603e3a3ec09bc0c2e48e567115e8d26508a0b4aa11d3244bc629c9670fde7",
+      "sanitized_png_sha256": "b94bce54b19671fe2acfd118a806e2b51d39ab780a99f5e65161eb1ec861a851",
+      "candidate_status": "generated_pending_visual_review"
+    },
+    {
+      "source_record_id": "hulk_mrj_heart_comics",
+      "output_dimensions": [
+        291,
+        365
+      ],
+      "sanitized_pixel_sha256": "bf4e60b1f51e43941d9cc1ba92a58c84c4bf13cde32a357bfaa0bc4e67e3c8f8",
+      "sanitized_png_sha256": "0c3878db55b7d6792ca38b1c516cb955b1c6691075a69aad612795b2655fcc24",
+      "candidate_status": "generated_pending_visual_review"
+    },
+    {
+      "source_record_id": "venom_alpha_af328_ancient",
+      "output_dimensions": [
+        472,
+        460
+      ],
+      "sanitized_pixel_sha256": "1d9ffe287dbbedcb0bd0328774199ddf83f255779a52d62a3b0ecc78f9099a90",
+      "sanitized_png_sha256": "6b0cb5a2062ed09da369baeb8f964e715b060ad56fbe4e7d50cada242f14c8e5",
+      "candidate_status": "generated_pending_visual_review"
+    },
+    {
+      "source_record_id": "thing_g2_gh0435_bigfig",
+      "output_dimensions": [
+        698,
+        687
+      ],
+      "sanitized_pixel_sha256": "280e7372302773563dc481db6829e9d88682851b71d9e44e6d80a35c11be211f",
+      "sanitized_png_sha256": "1acab4e6d2c2106694b78e5a46373e2b782c9b8b97c49fa17836bf947ac5ed53",
+      "candidate_status": "generated_pending_visual_review"
+    },
+    {
+      "source_record_id": "thing_xinh_1421_bigfig",
+      "output_dimensions": [
+        631,
+        616
+      ],
+      "sanitized_pixel_sha256": "3881404b58d3c7adb24b939f4d54871e594f35f3e072c5b63ed45a67eaa25a19",
+      "sanitized_png_sha256": "ca6f26221d5db4f48e93e50037287a170124874ff32c5c1e236142ce5c5585e3",
+      "candidate_status": "generated_pending_visual_review"
+    }
+  ],
+  "blockers": [
+    {
+      "source_record_id": "venom_xinh_xh1911_bigfig",
+      "status": "requires_segmentation",
+      "rationale": "The head inset overlaps the primary figure's right-shoulder region; a simple crop/mask risks removing architecture evidence."
+    },
+    {
+      "source_record_id": "venom_xinh_xh1829_movie_bigfig",
+      "status": "requires_segmentation",
+      "rationale": "The head inset overlaps the primary figure's upper-right silhouette; use primary-figure segmentation rather than a destructive crop."
+    }
+  ]
+}
