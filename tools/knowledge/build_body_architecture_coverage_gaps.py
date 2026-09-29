@@ -16,10 +16,10 @@ ROOT = Path(__file__).resolve().parents[2]
 DATA = ROOT / "knowledge" / "libraries" / "lego-minifigure-customs" / "data"
 DEFAULT_REGISTRY = DATA / "figure-architecture-registry.json"
 DEFAULT_BASE = DATA / "body-architecture-recognition-benchmark-cases.json"
-DEFAULT_CHALLENGE = DATA / "body-architecture-recognition-challenge-cases-v2.json"
+DEFAULT_CHALLENGE = DATA / "body-architecture-recognition-challenge-cases-v3.json"
 DEFAULT_CONTRAST = DATA / "body-architecture-same-character-contrast-v1.json"
 DEFAULT_OUTPUT = DATA / "body-architecture-recognition-coverage-gaps.json"
-VERSION = "body-architecture-coverage-gaps/v1"
+VERSION = "body-architecture-coverage-gaps/v2"
 
 NON_CLASS_STATUSES = (
     "umbrella",
@@ -110,7 +110,7 @@ def build(
 
     sources = {
         "base_benchmark": sorted(target_ids(base)),
-        "challenge_v2": sorted(target_ids(challenge)),
+        "challenge_v3": sorted(target_ids(challenge)),
         "same_character_contrast": sorted(contrast_ids(contrast)),
     }
     covered = set().union(*(set(values) for values in sources.values()))
@@ -172,7 +172,7 @@ def build(
         "processor_version": VERSION,
         "policy": [
             "Evaluation coverage is architecture-target coverage, not source-count coverage.",
-            "Challenge-v2 and same-character contrast assets are evaluation-only.",
+            "Challenge-v3 and same-character contrast assets are evaluation-only.",
             "Umbrella, source-label-only and unresolved families are ontology work, not closed-set benchmark classes.",
             "Prioritize concrete official untested architectures before adding redundant examples of already-covered families.",
         ],
