@@ -64,8 +64,10 @@ def test_segmentation_prompts_cover_exactly_current_blockers() -> None:
         for row in queue["queue"]
     }
 
-    assert len(prompt_by_id) == 8
+    assert len(prompt_by_id) == 10
     assert set(prompt_by_id) == blocker_ids
+    assert "hulk_mrj_heart_comics" in prompt_by_id
+    assert "venom_alpha_af328_ancient" in prompt_by_id
 
     for record_id, prompt in prompt_by_id.items():
         source = queue_by_id[record_id]["source"]
@@ -160,3 +162,14 @@ def test_sam2_wrapper_never_describes_generated_masks_as_approved() -> None:
     assert '"candidate_status": "generated_pending_visual_review"' in source
     assert '"model_input_allowed": False' in source
     assert "SAM2 score chooses a candidate mask only" in source
+
+
+def test_execution_provenance_helpers_are_stable(tmp_path: Path) -> None:
+    tool = load_tool()
+    checkpoint = tmp_path / "checkpoint.pt"
+    checkpoint.write_bytes(b"sam2-test")
+
+    assert tool.file_sha256(checkpoint) == (
+        "b1c24c157f41759da002cf0cfb6bcae3845e4b0e1eb8368ae9088a4c9ca5be35"
+    )
+    assert tool.git_revision(tmp_path) is None
