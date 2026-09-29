@@ -1,0 +1,45 @@
+name: Prepare Original Architecture Sanitization Review
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/prepare-body-architecture-sanitization-review.yml'
+      - 'tools/knowledge/prepare_body_architecture_sanitization_review.py'
+      - 'tools/knowledge/generate_body_architecture_sanitization_candidates.py'
+      - 'tools/knowledge/build_body_architecture_sanitization_review_ui.py'
+      - 'knowledge/libraries/lego-minifigure-customs/data/body-architecture-benchmark-sanitization-queue.json'
+      - 'knowledge/libraries/lego-minifigure-customs/data/body-architecture-benchmark-sanitization-transforms.json'
+      - 'knowledge/libraries/lego-minifigure-customs/data/body-architecture-benchmark-sanitization-candidates.json'
+
+permissions:
+  contents: read
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out Brickmen
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install Pillow
+        run: python -m pip install pillow
+      - name: Prepare exact-hash review bundle
+        run: |
+          python tools/knowledge/prepare_body_architecture_sanitization_review.py \
+            --output-dir .agent-local/body-architecture-original-review \
+            --timeout-seconds 30 \
+            --delay-seconds 0.20
+      - name: Upload ephemeral review bundle
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: body-architecture-original-sanitization-review
+          path: .agent-local/body-architecture-original-review
+          if-no-files-found: warn
+          retention-days: 3
