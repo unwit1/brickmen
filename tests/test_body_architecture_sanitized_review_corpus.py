@@ -42,13 +42,24 @@ def load_reviews() -> list[dict]:
     ]
 
 
-def test_canonical_sanitized_review_corpus_is_exact_hash_valid() -> None:
+def exact_match(review: dict, candidate: dict) -> bool:
+    return (
+        review["source_record_id"] == candidate["source_record_id"]
+        and review["source_file_sha256"] == candidate["source_file_sha256"]
+        and review["sanitized_pixel_sha256"]
+        == candidate["sanitized_pixel_sha256"]
+        and review["sanitized_png_sha256"]
+        == candidate["sanitized_png_sha256"]
+    )
+
+
+def test_canonical_sanitized_review_corpus_is_append_only_and_valid() -> None:
     tool = load_tool()
     candidates = tool.load_candidates(CANDIDATES)
     rows = load_reviews()
 
-    assert len(rows) == 15
-    assert sum(row["decision"] == "approved" for row in rows) == 8
+    assert len(rows) == 20
+    assert sum(row["decision"] == "approved" for row in rows) == 13
     assert sum(row["decision"] == "revise" for row in rows) == 7
 
     for row in rows:
@@ -58,24 +69,52 @@ def test_canonical_sanitized_review_corpus_is_exact_hash_valid() -> None:
         )
 
 
-def test_every_generated_candidate_has_exactly_one_review() -> None:
+def test_every_active_candidate_has_one_exact_current_approval() -> None:
     candidates = json.loads(CANDIDATES.read_text(encoding="utf-8"))
     rows = load_reviews()
 
-    candidate_ids = {
-        row["source_record_id"] for row in candidates["records"]
-    }
-    review_ids = [row["source_record_id"] for row in rows]
+    assert len(candidates["records"]) == 13
+    for candidate in candidates["records"]:
+        exact = [
+            review
+            for review in rows
+            if exact_match(review, candidate)
+        ]
+        assert len(exact) == 1
+        assert exact[0]["decision"] == "approved"
+        assert exact[0]["model_input_allowed"] is True
 
-    assert set(review_ids) == candidate_ids
-    assert len(review_ids) == len(set(review_ids))
+
+def test_superseded_reviews_remain_historical_audit_evidence() -> None:
+    candidates = json.loads(CANDIDATES.read_text(encoding="utf-8"))
+    rows = load_reviews()
+
+    historical = [
+        review
+        for review in rows
+        if not any(
+            exact_match(review, candidate)
+            for candidate in candidates["records"]
+        )
+    ]
+
+    assert len(historical) == 7
+    assert all(row["decision"] == "revise" for row in historical)
+    assert {
+        row["source_record_id"] for row in historical
+    }.issuperset(
+        {
+            "hulk_mrj_heart_comics",
+            "venom_alpha_af328_ancient",
+        }
+    )
 
 
 def test_failed_candidates_preserve_actionable_failure_evidence() -> None:
     rows = load_reviews()
     revise = [row for row in rows if row["decision"] == "revise"]
 
-    assert revise
+    assert len(revise) == 7
     for row in revise:
         assert row["notes"]
         assert any(value is False for value in row["checks"].values())
