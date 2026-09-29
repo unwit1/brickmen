@@ -1,0 +1,54 @@
+{
+  "schema_version": "0.1",
+  "record_type": "body_architecture_sanitized_asset_review/v1",
+  "purpose": "Explicit visual approval/rejection of a hash-pinned sanitized benchmark derivative. Candidate generation alone never authorizes model input.",
+  "decisions": [
+    "approved",
+    "rejected",
+    "revise"
+  ],
+  "required_approval_checks": [
+    "identity_preserved",
+    "primary_figure_complete",
+    "forbidden_text_absent",
+    "task_confounders_absent",
+    "architecture_evidence_preserved",
+    "no_material_transform_artifacts"
+  ],
+  "review_record": {
+    "schema": "body-architecture-sanitized-asset-review/v1",
+    "source_record_id": "",
+    "source_file_sha256": "",
+    "sanitized_pixel_sha256": "",
+    "sanitized_png_sha256": "",
+    "decision": "approved|rejected|revise",
+    "checks": {
+      "identity_preserved": null,
+      "primary_figure_complete": null,
+      "forbidden_text_absent": null,
+      "task_confounders_absent": null,
+      "architecture_evidence_preserved": null,
+      "no_material_transform_artifacts": null
+    },
+    "reviewer": {
+      "reviewer_id": "",
+      "reviewer_type": "human|model|hybrid",
+      "model_id": null,
+      "model_revision": null
+    },
+    "review_confidence": null,
+    "notes": [],
+    "reviewed_at": "",
+    "provenance": []
+  },
+  "approval_gate": [
+    "The source SHA-256 must exactly match the verified source hash used to generate the candidate.",
+    "The sanitized pixel and PNG SHA-256 values must exactly match the generated candidate under review.",
+    "All required approval checks must be true before decision=approved is valid.",
+    "Model/hybrid reviews must record model ID and revision.",
+    "An approval applies only to the exact reviewed derivative hashes and becomes stale if source or derivative hashes change.",
+    "Rejected/revise candidates remain blocked and their failure notes are retained as negative/failure evidence.",
+    "Raw or sanitized image bytes are not required in Git; metadata and hashes are sufficient for durable approval state."
+  ],
+  "model_input_rule": "Only an exact candidate with a valid explicit approved review may become sanitized_asset_status=approved and model_input_allowed=true."
+}
