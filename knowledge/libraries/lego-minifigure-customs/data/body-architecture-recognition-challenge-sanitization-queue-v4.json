@@ -8,11 +8,10 @@
   "reviews": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-recognition-challenge-sanitization-reviews-v4.json",
   "summary": {
     "total_cases": 23,
-    "raw_model_input_allowed_cases": 21,
-    "blocked_model_input_cases": 2,
+    "raw_model_input_allowed_cases": 23,
+    "blocked_model_input_cases": 0,
     "status_counts": {
-      "approved_raw_model_input": 21,
-      "blocked_pending_visual_sanitization_review": 2
+      "approved_raw_model_input": 23
     },
     "risk_counts": {
       "medium_review_required": 22,
@@ -1306,8 +1305,8 @@
       "risk_reasons": [
         "catalog_image_may_include_insets_or_auxiliary_panels"
       ],
-      "status": "blocked_pending_visual_sanitization_review",
-      "raw_model_input_allowed": false,
+      "status": "approved_raw_model_input",
+      "raw_model_input_allowed": true,
       "required_checks": [
         "identity_matches_source_record",
         "primary_view_classified",
@@ -1324,19 +1323,22 @@
         "mask_auxiliary_insets"
       ],
       "review": {
-        "identity_match": null,
-        "primary_view": null,
-        "primary_figure_complete": null,
+        "identity_match": true,
+        "primary_view": "front",
+        "primary_figure_complete": true,
         "visible_text_leakage": [],
         "visual_confounders": [],
-        "sanitization_action": null,
-        "sanitized_asset_sha256": null,
-        "sanitized_asset_status": "pending",
-        "reviewer_id": null,
-        "reviewer_type": null,
-        "review_confidence": null,
-        "notes": [],
-        "review_source_sha256": null,
+        "sanitization_action": "none",
+        "sanitized_asset_sha256": "777fd93e31997b912debb734bf0be461c6795210649370bd6be92717f948e7c9",
+        "sanitized_asset_status": "approved",
+        "reviewer_id": "openai_chatgpt_visual_review",
+        "reviewer_type": "model",
+        "review_confidence": 0.99,
+        "notes": [
+          "Exact byte-pinned BrickLink asset was materialized through the review-only CI path and visually inspected after SHA-256/dimension verification.",
+          "Clean isolated front catalog image on white; long arms and long legs are fully visible with no text, branding, inset panels, secondary figures, or task-confounding content."
+        ],
+        "review_source_sha256": "777fd93e31997b912debb734bf0be461c6795210649370bd6be92717f948e7c9",
         "review_stale": false
       },
       "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
@@ -1430,8 +1432,8 @@
       "risk_reasons": [
         "source_host_has_no_sanitization_prior"
       ],
-      "status": "blocked_pending_visual_sanitization_review",
-      "raw_model_input_allowed": false,
+      "status": "approved_raw_model_input",
+      "raw_model_input_allowed": true,
       "required_checks": [
         "identity_matches_source_record",
         "primary_view_classified",
@@ -1448,19 +1450,22 @@
         "mask_auxiliary_insets"
       ],
       "review": {
-        "identity_match": null,
-        "primary_view": null,
-        "primary_figure_complete": null,
+        "identity_match": true,
+        "primary_view": "front",
+        "primary_figure_complete": true,
         "visible_text_leakage": [],
         "visual_confounders": [],
-        "sanitization_action": null,
-        "sanitized_asset_sha256": null,
-        "sanitized_asset_status": "pending",
-        "reviewer_id": null,
-        "reviewer_type": null,
-        "review_confidence": null,
-        "notes": [],
-        "review_source_sha256": null,
+        "sanitization_action": "none",
+        "sanitized_asset_sha256": "2385f7c7627bb1b5b7412f107d6a2b15ec727e1a13bef8b920809d3504e7a737",
+        "sanitized_asset_status": "approved",
+        "reviewer_id": "openai_chatgpt_visual_review",
+        "reviewer_type": "model",
+        "review_confidence": 0.99,
+        "notes": [
+          "Exact byte-pinned Flickr asset was materialized through the review-only CI path and visually inspected after SHA-256/dimension verification.",
+          "Clean isolated full-figure photograph on a neutral background; the complete legacy Homemaker/maxifigure body architecture is visible with no source text, labels, inset panels, or secondary figures."
+        ],
+        "review_source_sha256": "2385f7c7627bb1b5b7412f107d6a2b15ec727e1a13bef8b920809d3504e7a737",
         "review_stale": false
       },
       "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
