@@ -1,0 +1,51 @@
+name: Generate Body Architecture Challenge Sanitization Candidate
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/generate-body-architecture-challenge-sanitization-candidate.yml'
+      - 'tools/knowledge/generate_body_architecture_sanitization_candidates.py'
+      - 'knowledge/libraries/lego-minifigure-customs/data/body-architecture-recognition-challenge-sanitization-queue-v1.json'
+      - 'knowledge/libraries/lego-minifigure-customs/data/body-architecture-recognition-challenge-sanitization-transforms-v1.json'
+
+permissions:
+  contents: read
+
+jobs:
+  generate-review-bundle:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out Brickmen
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install image dependency
+        run: python -m pip install --disable-pip-version-check pillow
+
+      - name: Generate hash-pinned challenge derivative
+        run: |
+          python tools/knowledge/generate_body_architecture_sanitization_candidates.py \
+            --queue knowledge/libraries/lego-minifigure-customs/data/body-architecture-recognition-challenge-sanitization-queue-v1.json \
+            --transforms knowledge/libraries/lego-minifigure-customs/data/body-architecture-recognition-challenge-sanitization-transforms-v1.json \
+            --report .agent-local/challenge-sanitization-candidate-report.json \
+            --write-derivatives-dir .agent-local/derivatives \
+            --allow-host img.bricklink.com \
+            --timeout-seconds 30 \
+            --delay-seconds 0
+
+      - name: Upload local-review artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: body-architecture-challenge-sanitization-review
+          path: |
+            .agent-local/challenge-sanitization-candidate-report.json
+            .agent-local/derivatives
+          if-no-files-found: error
+          retention-days: 7
