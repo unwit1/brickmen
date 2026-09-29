@@ -1,0 +1,104 @@
+{
+  "schema_version": "0.1",
+  "record_type": "fortnite_semantic_review/v1",
+  "purpose": "Human/model review record for source-appearance -> LEGO semantic translation decisions. Measurement heuristics may prioritize review but are never labels.",
+  "allowed_regions": [
+    "head",
+    "torso",
+    "lower_body",
+    "accessory_or_silhouette"
+  ],
+  "allowed_decisions": [
+    "preserved",
+    "simplified",
+    "omitted",
+    "exaggerated",
+    "moved_to_mould",
+    "moved_to_accessory",
+    "moved_to_cloth",
+    "color_block_changed",
+    "not_applicable",
+    "uncertain"
+  ],
+  "allowed_evidence_basis": [
+    "observed_in_both",
+    "source_only",
+    "lego_only",
+    "multi_view",
+    "metadata_only",
+    "uncertain"
+  ],
+  "allowed_evidence_scope": [
+    "front_pair",
+    "wide_pair",
+    "front_and_wide",
+    "multi_view",
+    "mixed",
+    "unknown"
+  ],
+  "allowed_reviewer_types": [
+    "human",
+    "model",
+    "hybrid"
+  ],
+  "allowed_review_roles": [
+    "reviewer",
+    "adjudicator"
+  ],
+  "allowed_review_status": [
+    "draft",
+    "submitted",
+    "adjudicated"
+  ],
+  "review_record": {
+    "schema": "fortnite-semantic-review/v1",
+    "review_id": "",
+    "translation_pair_id": "",
+    "reviewer": {
+      "reviewer_type": "human|model|hybrid",
+      "reviewer_id": "",
+      "model_id": null,
+      "model_revision": null,
+      "review_role": "reviewer|adjudicator"
+    },
+    "evidence": {
+      "source_image_url": "",
+      "lego_image_url": "",
+      "source_image_sha256": null,
+      "lego_image_sha256": null,
+      "evidence_scope": "front_pair|wide_pair|front_and_wide|multi_view|mixed|unknown",
+      "claims_unobserved_surfaces": false
+    },
+    "annotations": {
+      "regions": {
+        "head": [
+          {
+            "feature": "",
+            "decision": "",
+            "confidence": null,
+            "evidence_basis": "",
+            "notes": null
+          }
+        ],
+        "torso": [],
+        "lower_body": [],
+        "accessory_or_silhouette": []
+      },
+      "identity_critical_features": [],
+      "mask_headgear_route": null,
+      "expression_translation": null
+    },
+    "limitations": [],
+    "measurement_signal_refs": [],
+    "review_status": "draft|submitted|adjudicated",
+    "adjudicates_review_ids": [],
+    "created_at": "",
+    "provenance": []
+  },
+  "training_gate": {
+    "direct_training_eligibility": "Only records with review_status=adjudicated may be promoted automatically into canonical semantic supervision.",
+    "submitted_reviews": "Valid evidence records, but remain review evidence rather than canonical truth.",
+    "conflicts": "Preserve all conflicting submitted reviews and route the pair to adjudication; never last-write-wins.",
+    "heuristic_policy": "Measurement signals are prioritization/context only and cannot satisfy the adjudication gate."
+  }
+}
