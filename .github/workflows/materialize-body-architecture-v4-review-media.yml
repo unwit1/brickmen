@@ -1,0 +1,47 @@
+name: Materialize Challenge V4 Exact Review Media
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/materialize-body-architecture-v4-review-media.yml'
+      - 'tools/knowledge/materialize_body_architecture_exact_review_media.py'
+      - 'tools/knowledge/verify_body_architecture_reference_media.py'
+      - 'knowledge/libraries/lego-minifigure-customs/data/body-architecture-recognition-challenge-cases-v4.json'
+
+permissions:
+  contents: read
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out Brickmen
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Materialize exact blocked review media
+        run: |
+          python tools/knowledge/materialize_body_architecture_exact_review_media.py \
+            --benchmark knowledge/libraries/lego-minifigure-customs/data/body-architecture-recognition-challenge-cases-v4.json \
+            --source-record-id challenge_homemaker_276_nurse \
+            --source-record-id challenge_woody_toy003_long_limb \
+            --output-dir .agent-local/v4-exact-review-media \
+            --report .agent-local/v4-exact-review-media-report.json \
+            --allow-host live.staticflickr.com \
+            --allow-host img.bricklink.com \
+            --timeout-seconds 30
+      - name: Upload exact review bundle
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: body-architecture-v4-exact-review-media
+          path: |
+            .agent-local/v4-exact-review-media
+            .agent-local/v4-exact-review-media-report.json
+          if-no-files-found: warn
+          retention-days: 3
