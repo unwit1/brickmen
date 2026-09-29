@@ -86,14 +86,16 @@ def validate_record(
     if record.get("schema") != SCHEMA:
         errors.append(f"schema must be {SCHEMA!r}")
 
+    decision = record.get("decision")
+    if decision not in DECISIONS:
+        errors.append(f"decision must be one of {sorted(DECISIONS)}")
+
     record_id = record.get("source_record_id")
     if not isinstance(record_id, str) or not record_id:
         errors.append("source_record_id must be a non-empty string")
         candidate = None
     else:
         candidate = candidates.get(record_id)
-        if candidate is None:
-            errors.append("source_record_id is not a generated sanitization candidate")
 
     for key in (
         "source_file_sha256",
@@ -103,19 +105,22 @@ def validate_record(
         if not _hash(record.get(key)):
             errors.append(f"{key} must be a lowercase 64-character SHA-256 hex digest")
 
-    if candidate is not None:
-        expected = {
-            "source_file_sha256": candidate.get("source_file_sha256"),
-            "sanitized_pixel_sha256": candidate.get("sanitized_pixel_sha256"),
-            "sanitized_png_sha256": candidate.get("sanitized_png_sha256"),
-        }
-        for key, value in expected.items():
-            if record.get(key) != value:
-                errors.append(f"{key} does not match the generated candidate")
-
-    decision = record.get("decision")
-    if decision not in DECISIONS:
-        errors.append(f"decision must be one of {sorted(DECISIONS)}")
+    # Only an approval can authorize current model input, so only approvals must
+    # bind exactly to a currently generated candidate. Rejected/revise records
+    # remain valid historical evidence even after a candidate is regenerated,
+    # superseded, or promoted to segmentation/manual cleanup.
+    if decision == "approved":
+        if candidate is None:
+            errors.append("source_record_id is not a generated sanitization candidate")
+        else:
+            expected = {
+                "source_file_sha256": candidate.get("source_file_sha256"),
+                "sanitized_pixel_sha256": candidate.get("sanitized_pixel_sha256"),
+                "sanitized_png_sha256": candidate.get("sanitized_png_sha256"),
+            }
+            for key, value in expected.items():
+                if record.get(key) != value:
+                    errors.append(f"{key} does not match the generated candidate")
 
     checks = record.get("checks")
     if not isinstance(checks, dict):
