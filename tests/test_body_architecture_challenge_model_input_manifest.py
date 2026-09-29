@@ -51,7 +51,7 @@ def live_inputs() -> tuple[dict, dict]:
     )
 
 
-def test_challenge_model_input_gate_allows_seven_clean_raw_cases() -> None:
+def test_challenge_model_input_gate_allows_all_eight_clean_raw_cases() -> None:
     tool = load_tool()
     queue, candidates = live_inputs()
 
@@ -59,10 +59,10 @@ def test_challenge_model_input_gate_allows_seven_clean_raw_cases() -> None:
 
     assert result["summary"] == {
         "total_cases": 8,
-        "model_input_allowed_cases": 7,
-        "approved_raw_cases": 7,
+        "model_input_allowed_cases": 8,
+        "approved_raw_cases": 8,
         "approved_sanitized_cases": 0,
-        "blocked_cases": 1,
+        "blocked_cases": 0,
     }
     assert all(
         row["split"] == "challenge_test"
@@ -70,7 +70,7 @@ def test_challenge_model_input_gate_allows_seven_clean_raw_cases() -> None:
     )
 
 
-def test_centaur_remains_fail_closed_until_sanitized() -> None:
+def test_clean_hp236_centaur_is_raw_model_input() -> None:
     tool = load_tool()
     queue, candidates = live_inputs()
     result = tool.build(queue, candidates)
@@ -78,15 +78,12 @@ def test_centaur_remains_fail_closed_until_sanitized() -> None:
     row = next(
         entry
         for entry in result["entries"]
-        if entry["source_record_id"] == "challenge_centaur_col379"
+        if entry["source_record_id"] == "challenge_centaur_hp236"
     )
-    assert row["model_input_allowed"] is False
-    assert row["status"] == "blocked"
-    assert row["blocked_reason"] == (
-        "requires_segmentation_or_manual_cleanup"
-    )
+    assert row["model_input_allowed"] is True
+    assert row["status"] == "approved_raw"
     assert row["source_file_sha256"] == (
-        "9c6ab60d4b94f6f8544625eac122865b248bd05661cf94a93fd7e7e0085f73c5"
+        "9690938b75bad44108df1b0d15fa85a72ea4f5837b1ba5f774fa6b57acbc3052"
     )
 
 
