@@ -74,7 +74,7 @@ def test_custom_model_input_manifest_is_fully_runnable() -> None:
 
     assert actual == expected
     assert actual["summary"] == {
-        "total_cases": 2,
+        "total_cases": 3,
         "model_input_allowed_cases": 3,
         "approved_raw_cases": 2,
         "approved_sanitized_cases": 1,
