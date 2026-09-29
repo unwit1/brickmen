@@ -87,12 +87,14 @@ def test_target_classification_tracks_evidence_strength() -> None:
     registry = {
         "canonical": {"status": "canonical_existing"},
         "strong": {"status": "strong_catalog_evidence_physical_measurement_pending"},
+        "official": {"status": "official_architecture_variant"},
         "provisional": {"status": "provisional_visual_family_metrology_pending"},
         "umbrella": {"status": "umbrella_candidate_not_a_mechanical_standard"},
     }
 
     assert tool.classify_target("canonical", registry) == ("canonical", "core", False)
     assert tool.classify_target("strong", registry) == ("strong_evidence", "core", False)
+    assert tool.classify_target("official", registry) == ("official_evidence", "core", False)
     assert tool.classify_target("provisional", registry) == (
         "provisional",
         "provisional",
