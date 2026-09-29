@@ -14,18 +14,18 @@
   "benchmark_manifest": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-recognition-benchmark-cases.json",
   "summary": {
     "total_cases": 27,
-    "ready_for_materialization_cases": 4,
-    "ready_for_image_url_resolution_cases": 22,
+    "ready_for_materialization_cases": 12,
+    "ready_for_image_url_resolution_cases": 14,
     "blocked_cases": 1,
     "action_status_counts": {
-      "resolved_exact_image_url": 4,
-      "ready_for_reviewed_page_media_resolution": 21,
+      "resolved_exact_image_url": 12,
+      "ready_for_reviewed_page_media_resolution": 20,
       "blocked_on_direct_release_locator": 1,
       "ready_for_catalog_image_resolution": 1
     },
     "strategy_counts": {
-      "already_resolved_source_media": 4,
-      "reviewed_page_to_exact_image_url": 21,
+      "already_resolved_source_media": 12,
+      "reviewed_page_to_exact_image_url": 20,
       "resolve_direct_release_page_before_image_acquisition": 1,
       "bricklink_catalog_adapter_or_reviewed_image_endpoint": 1
     }
@@ -400,21 +400,21 @@
         "architecture_id": "custom_alpha_45mm_muscle_hybrid",
         "unresolved_candidate": null
       },
-      "status": "ready_for_image_url_resolution",
+      "status": "ready_for_materialization",
       "locator_actions": [
         {
           "source_id": "alpha_venom_af321",
           "page_url": "https://www.herobloks.com/figures/31376/alpha-toys/af321/venom-%28movie%29",
           "authority": "custom_catalog",
           "locator_quality": "direct_or_family_reference",
-          "status": "ready_for_reviewed_page_media_resolution",
-          "strategy": "reviewed_page_to_exact_image_url",
-          "exact_image_url": null,
-          "image_resolution_status": null
+          "status": "resolved_exact_image_url",
+          "strategy": "already_resolved_source_media",
+          "exact_image_url": "https://static.herobloks.com/x/figure_images/24/2/6/id0~c62651~u5232.jpg",
+          "image_resolution_status": "verified_exact_image_url"
         }
       ],
       "required_output": {
-        "exact_image_url": null,
+        "exact_image_url": "https://static.herobloks.com/x/figure_images/24/2/6/id0~c62651~u5232.jpg",
         "source_occurrence_id": null,
         "source_file_sha256": null,
         "view": "canonical_or_best_available_full_figure",
@@ -430,7 +430,7 @@
         "architecture_id": "custom_alpha_45mm_muscle_hybrid",
         "unresolved_candidate": null
       },
-      "status": "ready_for_image_url_resolution",
+      "status": "ready_for_materialization",
       "locator_actions": [
         {
           "source_id": "alpha_venom_af325",
@@ -441,10 +441,20 @@
           "strategy": "reviewed_page_to_exact_image_url",
           "exact_image_url": null,
           "image_resolution_status": null
+        },
+        {
+          "source_id": "kongbricks_alpha_venom_af325_media",
+          "page_url": "https://kongbricks.com/products/venom-marvel-minifigure",
+          "authority": "retailer",
+          "locator_quality": "direct_or_family_reference",
+          "status": "resolved_exact_image_url",
+          "strategy": "already_resolved_source_media",
+          "exact_image_url": "https://kongbricks.myshopify.com/cdn/shop/files/AF325.webp",
+          "image_resolution_status": "verified_exact_image_url"
         }
       ],
       "required_output": {
-        "exact_image_url": null,
+        "exact_image_url": "https://kongbricks.myshopify.com/cdn/shop/files/AF325.webp",
         "source_occurrence_id": null,
         "source_file_sha256": null,
         "view": "canonical_or_best_available_full_figure",
@@ -580,7 +590,7 @@
         "architecture_id": null,
         "unresolved_candidate": "minifig_standard_or_custom_standard"
       },
-      "status": "ready_for_image_url_resolution",
+      "status": "ready_for_materialization",
       "locator_actions": [
         {
           "source_id": "alpha_thing_af336",
@@ -591,10 +601,20 @@
           "strategy": "reviewed_page_to_exact_image_url",
           "exact_image_url": null,
           "image_resolution_status": null
+        },
+        {
+          "source_id": "kongbricks_alpha_thing_af336_media",
+          "page_url": "https://kongbricks.com/products/ben-grimm-marvel-minifigure",
+          "authority": "retailer",
+          "locator_quality": "direct_or_family_reference",
+          "status": "resolved_exact_image_url",
+          "strategy": "already_resolved_source_media",
+          "exact_image_url": "https://kongbricks.myshopify.com/cdn/shop/files/AF336.webp",
+          "image_resolution_status": "verified_exact_image_url"
         }
       ],
       "required_output": {
-        "exact_image_url": null,
+        "exact_image_url": "https://kongbricks.myshopify.com/cdn/shop/files/AF336.webp",
         "source_occurrence_id": null,
         "source_file_sha256": null,
         "view": "canonical_or_best_available_full_figure",
@@ -610,7 +630,7 @@
         "architecture_id": "custom_kdl_65mm_large",
         "unresolved_candidate": null
       },
-      "status": "ready_for_image_url_resolution",
+      "status": "ready_for_materialization",
       "locator_actions": [
         {
           "source_id": "kdl_thing_k2302",
@@ -621,10 +641,20 @@
           "strategy": "reviewed_page_to_exact_image_url",
           "exact_image_url": null,
           "image_resolution_status": null
+        },
+        {
+          "source_id": "kongbricks_kdl_thing_k2302_media",
+          "page_url": "https://kongbricks.com/products/ben-grimm-marvel-minifigure",
+          "authority": "retailer",
+          "locator_quality": "direct_or_family_reference",
+          "status": "resolved_exact_image_url",
+          "strategy": "already_resolved_source_media",
+          "exact_image_url": "https://kongbricks.myshopify.com/cdn/shop/files/K2302.webp",
+          "image_resolution_status": "verified_exact_image_url"
         }
       ],
       "required_output": {
-        "exact_image_url": null,
+        "exact_image_url": "https://kongbricks.myshopify.com/cdn/shop/files/K2302.webp",
         "source_occurrence_id": null,
         "source_file_sha256": null,
         "view": "canonical_or_best_available_full_figure",
@@ -640,7 +670,7 @@
         "architecture_id": null,
         "unresolved_candidate": "minifig_standard_or_custom_standard"
       },
-      "status": "ready_for_image_url_resolution",
+      "status": "ready_for_materialization",
       "locator_actions": [
         {
           "source_id": "tp_thing_tp178",
@@ -651,10 +681,20 @@
           "strategy": "reviewed_page_to_exact_image_url",
           "exact_image_url": null,
           "image_resolution_status": null
+        },
+        {
+          "source_id": "kongbricks_tp_thing_tp178_media",
+          "page_url": "https://kongbricks.com/products/thing-tp178-marvel-minifigure",
+          "authority": "retailer",
+          "locator_quality": "direct_or_family_reference",
+          "status": "resolved_exact_image_url",
+          "strategy": "already_resolved_source_media",
+          "exact_image_url": "https://kongbricks.myshopify.com/cdn/shop/files/TP178.webp",
+          "image_resolution_status": "verified_exact_image_url"
         }
       ],
       "required_output": {
-        "exact_image_url": null,
+        "exact_image_url": "https://kongbricks.myshopify.com/cdn/shop/files/TP178.webp",
         "source_occurrence_id": null,
         "source_file_sha256": null,
         "view": "canonical_or_best_available_full_figure",
@@ -670,7 +710,7 @@
         "architecture_id": null,
         "unresolved_candidate": "compatible_bigfig_unresolved"
       },
-      "status": "ready_for_image_url_resolution",
+      "status": "ready_for_materialization",
       "locator_actions": [
         {
           "source_id": "tp_thing_tp349_bigfig",
@@ -681,10 +721,20 @@
           "strategy": "reviewed_page_to_exact_image_url",
           "exact_image_url": null,
           "image_resolution_status": null
+        },
+        {
+          "source_id": "kongbricks_tp_thing_tp349_media",
+          "page_url": "https://kongbricks.com/products/ben-grimm-marvel-minifigure",
+          "authority": "retailer",
+          "locator_quality": "direct_or_family_reference",
+          "status": "resolved_exact_image_url",
+          "strategy": "already_resolved_source_media",
+          "exact_image_url": "https://kongbricks.myshopify.com/cdn/shop/files/TP349.webp",
+          "image_resolution_status": "verified_exact_image_url"
         }
       ],
       "required_output": {
-        "exact_image_url": null,
+        "exact_image_url": "https://kongbricks.myshopify.com/cdn/shop/files/TP349.webp",
         "source_occurrence_id": null,
         "source_file_sha256": null,
         "view": "canonical_or_best_available_full_figure",
@@ -700,7 +750,7 @@
         "architecture_id": "custom_g2_muscle_hybrid",
         "unresolved_candidate": null
       },
-      "status": "ready_for_image_url_resolution",
+      "status": "ready_for_materialization",
       "locator_actions": [
         {
           "source_id": "g2_thing_gh0348",
@@ -711,10 +761,20 @@
           "strategy": "reviewed_page_to_exact_image_url",
           "exact_image_url": null,
           "image_resolution_status": null
+        },
+        {
+          "source_id": "kongbricks_g2_thing_gh0348_media",
+          "page_url": "https://kongbricks.com/products/ben-grimm-marvel-minifigure",
+          "authority": "retailer",
+          "locator_quality": "direct_or_family_reference",
+          "status": "resolved_exact_image_url",
+          "strategy": "already_resolved_source_media",
+          "exact_image_url": "https://kongbricks.myshopify.com/cdn/shop/files/GH0348.webp",
+          "image_resolution_status": "verified_exact_image_url"
         }
       ],
       "required_output": {
-        "exact_image_url": null,
+        "exact_image_url": "https://kongbricks.myshopify.com/cdn/shop/files/GH0348.webp",
         "source_occurrence_id": null,
         "source_file_sha256": null,
         "view": "canonical_or_best_available_full_figure",
@@ -760,7 +820,7 @@
         "architecture_id": null,
         "unresolved_candidate": "compatible_bigfig_unresolved"
       },
-      "status": "ready_for_image_url_resolution",
+      "status": "ready_for_materialization",
       "locator_actions": [
         {
           "source_id": "g2_thing_gh0440_bigfig",
@@ -771,10 +831,20 @@
           "strategy": "reviewed_page_to_exact_image_url",
           "exact_image_url": null,
           "image_resolution_status": null
+        },
+        {
+          "source_id": "kongbricks_g2_thing_gh0440_media",
+          "page_url": "https://kongbricks.com/products/ben-grimm-marvel-minifigure",
+          "authority": "retailer",
+          "locator_quality": "direct_or_family_reference",
+          "status": "resolved_exact_image_url",
+          "strategy": "already_resolved_source_media",
+          "exact_image_url": "https://kongbricks.myshopify.com/cdn/shop/files/GH0440.webp",
+          "image_resolution_status": "verified_exact_image_url"
         }
       ],
       "required_output": {
-        "exact_image_url": null,
+        "exact_image_url": "https://kongbricks.myshopify.com/cdn/shop/files/GH0440.webp",
         "source_occurrence_id": null,
         "source_file_sha256": null,
         "view": "canonical_or_best_available_full_figure",
