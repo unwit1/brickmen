@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "created": "2026-09-29",
-  "status": "byte_verified_pending_sanitization",
+  "status": "runnable_all_assets_visual_sanitization_approved",
   "id": "body-architecture-same-character-contrast-v1",
   "purpose": "Evaluation-only paired cases where character identity stays constant while FigureArchitecture changes, testing whether architecture recognition is independent of character memorization.",
   "policy": [
@@ -15,11 +15,12 @@
     "total_pairs": 2,
     "total_unique_assets": 4,
     "byte_verified_assets": 4,
-    "runnable_pairs": 0,
+    "runnable_pairs": 2,
     "characters": [
       "hagrid",
       "hulk"
-    ]
+    ],
+    "model_input_approved_assets": 4
   },
   "pairs": [
     {
@@ -38,7 +39,7 @@
           240,
           320
         ],
-        "model_input_state": "pending_visual_sanitization"
+        "model_input_state": "approved_raw_reference"
       },
       "right": {
         "case_ref": "archchallenge::challenge_hagrid_hp144",
@@ -52,9 +53,9 @@
           297,
           400
         ],
-        "model_input_state": "pending_visual_sanitization"
+        "model_input_state": "approved_raw_reference"
       },
-      "pair_status": "blocked_until_both_assets_model_input_approved"
+      "pair_status": "runnable"
     },
     {
       "pair_id": "archcontrast::hulk_integrated_vs_modular_giant",
@@ -72,7 +73,7 @@
           300,
           292
         ],
-        "model_input_state": "pending_visual_sanitization"
+        "model_input_state": "approved_raw_reference"
       },
       "right": {
         "case_ref": "archrec::hulk_lego_sh0371_giant",
@@ -88,7 +89,7 @@
         ],
         "model_input_state": "approved_raw_reference"
       },
-      "pair_status": "blocked_until_both_assets_model_input_approved"
+      "pair_status": "runnable"
     }
   ],
   "scoring": {
@@ -98,5 +99,6 @@
       "character_invariance_error"
     ],
     "reporting_rule": "Report pairwise metrics separately from the main challenge cohort; do not merge them into one aggregate architecture score."
-  }
+  },
+  "sanitization_reviews": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-same-character-contrast-sanitization-reviews-v1.json"
 }
