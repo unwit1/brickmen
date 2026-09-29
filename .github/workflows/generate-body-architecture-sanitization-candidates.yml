@@ -1,0 +1,53 @@
+name: Generate Body Architecture Sanitization Candidates
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/generate-body-architecture-sanitization-candidates.yml'
+      - 'tools/knowledge/generate_body_architecture_sanitization_candidates.py'
+      - 'knowledge/libraries/lego-minifigure-customs/data/body-architecture-benchmark-sanitization-queue.json'
+      - 'knowledge/libraries/lego-minifigure-customs/data/body-architecture-benchmark-sanitization-transforms.json'
+
+permissions:
+  contents: read
+
+jobs:
+  generate-metadata:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out Brickmen
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install image dependency
+        run: python -m pip install --disable-pip-version-check pillow
+
+      - name: Generate metadata-only sanitization candidates
+        run: |
+          python tools/knowledge/generate_body_architecture_sanitization_candidates.py \
+            --queue knowledge/libraries/lego-minifigure-customs/data/body-architecture-benchmark-sanitization-queue.json \
+            --transforms knowledge/libraries/lego-minifigure-customs/data/body-architecture-benchmark-sanitization-transforms.json \
+            --report .agent-local/body-architecture-sanitization-candidate-report.json \
+            --allow-host img.bricklink.com \
+            --allow-host kongbricks.com \
+            --allow-host kongbricks.myshopify.com \
+            --allow-host cdn.shopify.com \
+            --allow-host static.herobloks.com \
+            --timeout-seconds 30 \
+            --delay-seconds 0.20
+
+      - name: Upload metadata-only candidate report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: body-architecture-sanitization-candidate-report
+          path: .agent-local/body-architecture-sanitization-candidate-report.json
+          if-no-files-found: warn
+          retention-days: 7
