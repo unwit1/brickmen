@@ -73,6 +73,8 @@ def build(benchmark_path: Path = DEFAULT_BENCHMARK) -> dict[str, Any]:
                     "byte_verification_status": locator.get("byte_verification_status"),
                     "source_file_sha256": locator.get("source_file_sha256"),
                     "source_size_bytes": locator.get("source_size_bytes"),
+                    "source_width": locator.get("source_width"),
+                    "source_height": locator.get("source_height"),
                     "source_content_type": locator.get("source_content_type"),
                     "source_image_format": locator.get("source_image_format"),
                     "verification_run_id": locator.get("verification_run_id"),
@@ -130,6 +132,22 @@ def build(benchmark_path: Path = DEFAULT_BENCHMARK) -> dict[str, Any]:
                     "source_size_bytes": next(
                         (
                             action.get("source_size_bytes")
+                            for action in actions
+                            if action.get("source_file_sha256")
+                        ),
+                        None,
+                    ),
+                    "source_width": next(
+                        (
+                            action.get("source_width")
+                            for action in actions
+                            if action.get("source_file_sha256")
+                        ),
+                        None,
+                    ),
+                    "source_height": next(
+                        (
+                            action.get("source_height")
                             for action in actions
                             if action.get("source_file_sha256")
                         ),
