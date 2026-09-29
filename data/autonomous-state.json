@@ -5,13 +5,13 @@
   "status": "active",
   "updated_date": "2026-09-28",
   "base_commit_before_bootstrap": "bda2cac8ea8b68bb9e3e5b4d0cf380a9c6ee3ae6",
-  "current_objective": "expand_evidence_training_and_evaluation_assets",
-  "current_workstream": "corpus_and_benchmark_completion",
+  "current_objective": "materialize_and_expand_evidence_training_and_evaluation_assets",
+  "current_workstream": "benchmark_reference_resolution_and_p0_corpus_expansion",
   "current_frontier": [
-    "official_visual_reference_corpus",
-    "source_appearance_to_minifigure_translation_pairs",
-    "benchmark_population",
+    "body_architecture_benchmark_reference_resolution",
+    "source_appearance_to_minifigure_semantic_translation",
     "multi_view_correspondence",
+    "official_visual_reference_corpus",
     "official_visual_grammar",
     "negative_failure_corpus",
     "model_dataset_tool_registry",
@@ -22,24 +22,38 @@
       "id": "reference_fit_torso_segmentation",
       "description": "Lower- versus upper-torso segment length remains underidentified until additional chest/torso-center landmarks are added.",
       "status": "open"
+    },
+    {
+      "id": "architecture_benchmark_exact_image_resolution",
+      "description": "The 26 ready benchmark cases have provenance page locators but still need exact reviewed image URLs and materialized hashes.",
+      "status": "open"
+    },
+    {
+      "id": "g2_gh0304_direct_locator",
+      "description": "G (2) GH0304 Hulk (Avengers) is confirmed in HeroBloks identity/version graphs but no direct release page has been verified.",
+      "status": "blocked_external_source_resolution"
     }
   ],
   "highest_value_tasks": [
     {
       "priority": "P0",
-      "task": "Audit and expand official visual-reference coverage."
+      "task": "Resolve exact image URLs and materialize/bind visual evidence for the 26 ready body-architecture benchmark cases."
     },
     {
       "priority": "P0",
-      "task": "Build source-appearance to minifigure translation pairs."
+      "task": "Resolve a verified direct release locator for G (2) GH0304 or preserve it as explicitly blocked."
     },
     {
       "priority": "P0",
-      "task": "Populate existing benchmark designs with real held-out cases."
+      "task": "Add canonical-view, low-resolution, occlusion, and detached-component benchmark variants after materialization without breaking held-out groups."
     },
     {
       "priority": "P0",
-      "task": "Expand exact-release multi-view correspondence."
+      "task": "Continue high-priority Fortnite source-appearance to LEGO semantic translation review with uncertainty-preserving labels."
+    },
+    {
+      "priority": "P0",
+      "task": "Expand exact-release multi-view ReferenceSets and cross-surface correspondence."
     },
     {
       "priority": "P1",
@@ -54,9 +68,53 @@
       "task": "Maintain current model, dataset, paper, and tool registry."
     }
   ],
-  "blocked_tasks": [],
+  "blocked_tasks": [
+    {
+      "id": "g2_gh0304_direct_locator",
+      "reason": "Only indirect HeroBloks identity/version graph evidence is currently verified; do not fabricate a direct release URL.",
+      "fallback": "Continue the other 26 benchmark cases and independent P0 corpus work."
+    }
+  ],
   "pending_validation": [],
   "continuation": {
-    "instruction": "Inspect the latest repository state and recent commits, audit the listed corpus/benchmark gaps, select the highest expected-value executable task, persist and commit useful work, update autonomous state, and continue without waiting for further instruction."
-  }
+    "instruction": "Resume from the body-architecture benchmark case manifest and reference-acquisition queue. First advance exact-image resolution/materialization for the 26 ready cases using supported/reviewed source-specific paths. If externally blocked, continue the ranked Fortnite semantic translation queue or exact-release multi-view correspondence. Preserve leakage-safe split boundaries, source provenance, uncertainty, and repository drift tests; commit useful increments and continue without waiting."
+  },
+  "last_meaningful_commit": "2571c8a6358b5f7c6fa82b3f1e547ad9c50306bd",
+  "latest_validated_test_commit": "e0ad93922f7bbb81646a6354e1f6254a95cc8ea4",
+  "completed_batches": [
+    {
+      "id": "body_architecture_benchmark_population_v0",
+      "status": "complete",
+      "details": {
+        "total_cases": 27,
+        "closed_set_cases": 18,
+        "open_set_unknown_cases": 9,
+        "core_scoring_cases": 11,
+        "provisional_scoring_cases": 7,
+        "split_strategy": "corpus_character_group_holdout"
+      }
+    },
+    {
+      "id": "body_architecture_reference_locator_resolution_v0",
+      "status": "complete_for_page_locators",
+      "details": {
+        "source_registry_count": 59,
+        "cases_with_reference_locators": 27,
+        "direct_or_family_reference_cases": 26,
+        "indirect_identity_graph_cases": 1,
+        "ready_for_exact_image_resolution": 26,
+        "blocked_on_direct_release_locator": 1
+      }
+    },
+    {
+      "id": "body_architecture_benchmark_reproducibility",
+      "status": "validated",
+      "details": {
+        "manifest_drift_guard": true,
+        "source_integrity_tests": true,
+        "acquisition_queue_drift_guard": true,
+        "latest_ci_conclusion": "success"
+      }
+    }
+  ]
 }
