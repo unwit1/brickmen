@@ -186,3 +186,17 @@ def test_unvalidated_approval_flag_cannot_be_omitted() -> None:
 
     assert entry["model_input_allowed"] is False
     assert entry["blocked_reason"] == "no_valid_exact_approval"
+
+
+def test_checked_in_model_input_manifest_matches_builder() -> None:
+    tool = load_tool()
+    queue, candidates = live_inputs()
+    expected = tool.build(queue, candidates)
+    actual = json.loads(
+        (
+            DATA
+            / "body-architecture-benchmark-model-input-manifest.json"
+        ).read_text(encoding="utf-8")
+    )
+
+    assert actual == expected
