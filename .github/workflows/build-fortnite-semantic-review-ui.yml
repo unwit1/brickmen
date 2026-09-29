@@ -3,10 +3,15 @@ name: Build Fortnite Semantic Review UI
 on:
   workflow_dispatch:
     inputs:
-      batch_path:
-        description: "Repository-relative semantic review batch JSON"
+      batch_index:
+        description: "High-priority first-review batch index (1-30); ignored when batch_path is supplied"
         required: true
-        default: "knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-0001.json"
+        default: "1"
+        type: string
+      batch_path:
+        description: "Optional repository-relative semantic review batch JSON; overrides batch_index"
+        required: false
+        default: ""
         type: string
 
 permissions:
@@ -17,7 +22,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     env:
+      BATCH_INDEX: ${{ inputs.batch_index }}
       BATCH_PATH: ${{ inputs.batch_path }}
+      QUEUE_PATH: knowledge/libraries/lego-minifigure-customs/data/bulk-ingestion/fortnite-semantic-review-queue-latest.jsonl
     steps:
       - name: Check out Brickmen
         uses: actions/checkout@v4
@@ -27,26 +34,33 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Validate requested batch path
+      - name: Resolve or build review batch
         shell: bash
         run: |
           set -euo pipefail
-          case "$BATCH_PATH" in
-            knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/*.json) ;;
-            *)
-              echo "Batch must be a JSON file under semantic-review-batches/" >&2
+          mkdir -p .agent-local/review-ui
+          if [[ -n "$BATCH_PATH" ]]; then
+            case "$BATCH_PATH" in
+              knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/*.json) ;;
+              *)
+                echo "batch_path must be a JSON file under semantic-review-batches/" >&2
+                exit 2
+                ;;
+            esac
+            test -f "$BATCH_PATH"
+            cp "$BATCH_PATH" .agent-local/review-ui/review-batch.json
+          else
+            if ! [[ "$BATCH_INDEX" =~ ^[0-9]+$ ]] || (( BATCH_INDEX < 1 || BATCH_INDEX > 30 )); then
+              echo "batch_index must be an integer from 1 through 30" >&2
               exit 2
-              ;;
-          esac
-          test -f "$BATCH_PATH"
+            fi
+            OFFSET=$(( (BATCH_INDEX - 1) * 25 ))
+            python tools/knowledge/build_fortnite_semantic_review_work_batch.py               --queue "$QUEUE_PATH"               --output .agent-local/review-ui/review-batch.json               --summary .agent-local/review-ui/review-batch-summary.json               --mode first_review               --limit 25               --offset "$OFFSET"               --min-priority-score 6               --reviewer-id unassigned               --reviewer-type human
+          fi
 
       - name: Build standalone semantic reviewer
         run: |
-          mkdir -p .agent-local/review-ui
-          python tools/knowledge/build_fortnite_semantic_review_ui.py             --batch "$BATCH_PATH"             --output .agent-local/review-ui/fortnite-semantic-review.html
-
-      - name: Copy source batch beside reviewer
-        run: cp "$BATCH_PATH" .agent-local/review-ui/review-batch.json
+          python tools/knowledge/build_fortnite_semantic_review_ui.py             --batch .agent-local/review-ui/review-batch.json             --output .agent-local/review-ui/fortnite-semantic-review.html
 
       - name: Upload reviewer artifact
         uses: actions/upload-artifact@v4
