@@ -5,11 +5,12 @@
   "status": "active",
   "updated_date": "2026-09-29",
   "base_commit_before_bootstrap": "bda2cac8ea8b68bb9e3e5b4d0cf380a9c6ee3ae6",
-  "current_objective": "expand_and_gate_evidence_backed_training_and_evaluation_assets",
-  "current_workstream": "architecture_benchmark_readiness_and_corpus_expansion",
+  "current_objective": "finish_leakage_safe_architecture_evaluation_then_resume_semantic_and_multiview_corpora",
+  "current_workstream": "challenge_v3_input_safety_and_final_official_architecture_gap",
   "current_frontier": [
+    "body_architecture_challenge_v3_input_safety",
+    "legacy_homemaker_architecture_evaluation",
     "body_architecture_benchmark_model_input_safety",
-    "body_architecture_benchmark_coverage_expansion",
     "source_appearance_to_minifigure_semantic_translation",
     "multi_view_correspondence",
     "official_visual_grammar",
@@ -19,19 +20,24 @@
   ],
   "known_gaps": [
     {
+      "id": "challenge_v3_woody_raw_review",
+      "description": "Challenge v3 is byte-verified 22/22 and runnable 21/22. Woody toy003 remains blocked until the exact verified BrickLink asset with SHA-256 777fd93e31997b912debb734bf0be461c6795210649370bd6be92717f948e7c9 can be directly visually inspected.",
+      "status": "blocked_on_exact_asset_rendering"
+    },
+    {
+      "id": "legacy_homemaker_architecture_evaluation",
+      "description": "Set 276-1 provides instruction-confirmed assembled nurse/child identity and BrickLink component assemblies, but Brickmen still needs a byte-pinned, visually reviewed clean single-figure asset before admitting lego_homemaker_maxifigure_legacy to the evaluation cohort.",
+      "status": "open"
+    },
+    {
       "id": "architecture_benchmark_sanitized_approval",
-      "description": "Fifteen deterministic sanitized derivative candidates are hash-pinned but require direct visual review before model input approval.",
+      "description": "Fifteen deterministic sanitized derivative candidates for the original 27-case benchmark are hash-pinned but require direct local visual review before model input approval.",
       "status": "open"
     },
     {
       "id": "architecture_benchmark_segmentation",
-      "description": "Eight benchmark cases require primary-figure segmentation. SAM2 prompt seeds and wrapper exist, but outputs require a capable local SAM2 environment and visual approval.",
+      "description": "Eight original benchmark cases require primary-figure segmentation. SAM2 prompt seeds and wrapper exist, but outputs require a capable local SAM2 environment and visual approval.",
       "status": "blocked_on_local_model_runtime"
-    },
-    {
-      "id": "architecture_benchmark_coverage_breadth",
-      "description": "The current 27 cases are concentrated in Hulk, Venom, and Thing character corpora and do not yet test many official/specialized architecture families.",
-      "status": "open"
     },
     {
       "id": "fortnite_semantic_review_labels",
@@ -52,15 +58,19 @@
   "highest_value_tasks": [
     {
       "priority": "P0",
-      "task": "Expand architecture benchmark coverage beyond Hulk/Venom/Thing using evidence-backed official and specialized architecture releases."
+      "task": "Byte-pin and visually gate a specific 276-1 Homemaker nurse or child assembled-figure reference; add the legacy Homemaker architecture only if exact-release identity and leakage-safety gates pass."
     },
     {
       "priority": "P0",
-      "task": "Visually review the 15 deterministic sanitized candidates, validate exact-hash approvals, and rebuild the model-input manifest."
+      "task": "Resolve the exact-hash Woody toy003 raw visual review without substituting an alternate image."
     },
     {
       "priority": "P0",
-      "task": "Run and review the 8 hash-pinned SAM2 segmentation candidates in a capable local runtime."
+      "task": "Visually review the original benchmark's 15 deterministic sanitized candidates and rebuild the model-input manifest from exact approvals."
+    },
+    {
+      "priority": "P0",
+      "task": "Run and review the original benchmark's 8 hash-pinned SAM2 segmentation candidates in a capable local runtime."
     },
     {
       "priority": "P0",
@@ -72,11 +82,11 @@
     },
     {
       "priority": "P1",
-      "task": "Extract official visual grammar from evidence."
+      "task": "Evaluate the three remaining concrete custom architecture gaps: custom_midfig_balljoint_upper, custom_sidan_full_balljoint_poseable, and custom_standard_four_arm_single_torso."
     },
     {
       "priority": "P1",
-      "task": "Build negative/failure training and critic data."
+      "task": "Extract official visual grammar from evidence and build negative/failure critic data."
     },
     {
       "priority": "P1",
@@ -85,9 +95,14 @@
   ],
   "blocked_tasks": [
     {
+      "id": "challenge_v3_woody_raw_review",
+      "reason": "The exact verified BrickLink toy003 asset could not be rendered in the current review environment. Alternate images are not accepted as exact-hash substitutes.",
+      "fallback": "Keep the one case blocked and continue Homemaker, semantic supervision, and other independent corpus work."
+    },
+    {
       "id": "architecture_benchmark_segmentation",
       "reason": "SAM2 wrapper and prompt seeds exist, but this repository/chat environment does not provide a configured local SAM2 repo/checkpoint/runtime.",
-      "fallback": "Continue benchmark coverage expansion, semantic supervision, and multi-view corpus work."
+      "fallback": "Continue Homemaker, Fortnite semantic supervision, and multi-view corpus work."
     },
     {
       "id": "physical_multiview_ground_truth",
@@ -95,12 +110,17 @@
       "fallback": "Expand structured correspondence and other independent evaluation assets without synthesizing missing views."
     }
   ],
-  "pending_validation": [],
+  "pending_validation": [
+    {
+      "id": "direct_push_ci_visibility",
+      "description": "Regression tests for challenge v3 and v3 coverage were committed, but the connected GitHub status endpoint exposed no CI status for the direct-push checkpoint. Do not claim a fresh full CI run until observed or executed."
+    }
+  ],
   "continuation": {
-    "instruction": "Do not restart architecture image acquisition: it is complete at 27/27 exact byte-verified images. Resume from benchmark model-input safety and corpus breadth. Prefer expanding evidence-backed architecture cases beyond Hulk/Venom/Thing when local sanitized pixels/SAM2 are unavailable. Preserve held-out/leakage-safe split logic, source provenance, uncertainty, and exact-hash approval gates. Continue Fortnite semantic batches independently when useful."
+    "instruction": "Do not restart architecture v3 expansion or image verification: challenge v3 is 22/22 byte-verified and 21/22 input-approved. First try to close the legacy Homemaker official architecture gap with a byte-pinned exact 276-1 assembled figure and preserve the Woody exact-hash review blocker. If exact asset access remains blocked, switch to Fortnite semantic review/adjudication or other independent high-value corpora. Preserve held-out/leakage-safe split logic, source provenance, uncertainty, and exact-hash approval gates."
   },
-  "last_meaningful_commit": "9314cb352296556ff624a7d0045f2db7c318fe74",
-  "latest_validated_test_commit": "9314cb352296556ff624a7d0045f2db7c318fe74",
+  "last_meaningful_commit": "2bc3239dccfdf8cf4f5f632eaa7a69ffdf4589fc",
+  "latest_validated_test_commit": null,
   "completed_batches": [
     {
       "id": "body_architecture_reference_acquisition_v1",
@@ -176,6 +196,47 @@
         "local_review_ui": true,
         "first_review_batch_count": 30
       }
+    },
+    {
+      "id": "body_architecture_challenge_v3",
+      "status": "complete_for_reference_acquisition",
+      "details": {
+        "total_cases": 22,
+        "unique_character_groups": 22,
+        "unique_architectures": 22,
+        "exact_image_urls": 22,
+        "byte_verified_images": 22,
+        "unique_verified_hashes": 22,
+        "training_allowed": false
+      }
+    },
+    {
+      "id": "body_architecture_challenge_v3_model_input_gate",
+      "status": "partially_runnable",
+      "details": {
+        "total_cases": 22,
+        "model_input_allowed": 21,
+        "approved_raw": 21,
+        "approved_sanitized": 0,
+        "blocked": 1,
+        "blocked_record": "challenge_woody_toy003_long_limb",
+        "blocked_reason": "pending_visual_sanitization_review"
+      }
+    },
+    {
+      "id": "body_architecture_coverage_v3",
+      "status": "refreshed",
+      "details": {
+        "registry_architectures": 49,
+        "covered_architectures": 33,
+        "uncovered_architectures": 16,
+        "coverage_fraction": 0.673469,
+        "p0_official_gaps": 1,
+        "p1_gaps": 3,
+        "p2_gaps": 12,
+        "remaining_official_p0": "lego_homemaker_maxifigure_legacy"
+      }
     }
-  ]
+  ],
+  "latest_test_lock_commit": "2bc3239dccfdf8cf4f5f632eaa7a69ffdf4589fc"
 }
