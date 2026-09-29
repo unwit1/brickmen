@@ -2,8 +2,8 @@
 
 Last updated: 2026-09-29
 Base commit before autonomous bootstrap: `bda2cac8ea8b68bb9e3e5b4d0cf380a9c6ee3ae6`
-Last meaningful benchmark/development checkpoint: `6bf84ca33cbbf3ecbd3ee6845333c38e45c3d2d6`
-Latest test-lock checkpoint: `6bf84ca33cbbf3ecbd3ee6845333c38e45c3d2d6`
+Last meaningful benchmark/development checkpoint: `a04b532236666a48945ba8cc18a6b2b8e0743b40`
+Latest test-lock checkpoint: `a04b532236666a48945ba8cc18a6b2b8e0743b40`
 Status: active
 
 ## Current major objective
@@ -19,7 +19,7 @@ Current priority order:
 2. finish the original 27-case benchmark's 15 deterministic derivative reviews and 8 SAM2 segmentation reviews in a capable local pixel/runtime environment;
 3. execute Fortnite source-appearance -> LEGO semantic first-review/second-review/adjudication;
 4. expand exact-release multi-view/cross-surface correspondence;
-5. evaluate the three remaining concrete custom architecture gaps;
+5. finish custom-architecture acquisition/review: two Titanic sources are byte-pinned; Si-Dan still needs a genuine high-resolution exact asset;
 6. expand official visual grammar and negative/failure corpora;
 7. keep model/tool/dataset registries current and resolve ontology gaps.
 
@@ -62,6 +62,23 @@ Current priority order:
 - The figure is admitted to challenge v4 for held-out architecture evaluation metadata.
 - Raw visual model input remains blocked until direct inspection of the exact verified bytes passes the normal leakage/sanitization checks.
 
+### Custom architecture acquisition v1
+- Product evidence for all three P1 custom architecture gaps has been normalized to dedicated product pages.
+- Titanic Bricks MidFig ball-joint upper-body source is byte-verified:
+  - exact image: `DSC_0303.jpg`;
+  - 1000x1000 JPEG;
+  - SHA-256 `c79fc80eba86f18b155c358bfc900923f5743777bdd215a51b9828142b8d08b2`.
+- Titanic Bricks standard-compatible single-torso four-arm source is byte-verified:
+  - exact image: `untitled.1159.jpg`;
+  - 1280x1280 JPEG;
+  - SHA-256 `eb3649ca3c8c331bec1e42f15b6326bb47253b4bba8ec13ae57e2db0d3c2af14`.
+- Both remain blocked from model input pending exact visual sanitization review; byte verification alone is not approval.
+- The MidFig product imagery visibly carries Titanic Bricks branding, so expect sanitization or a cleaner exact source rather than raw approval.
+- The dedicated Si-Dan Poseable Minifig page confirms 43 mm height and ball joints at arms, legs, feet and neck, plus torso/leg compatibility constraints. Current exposed media is only 50x50 thumbnails, so it is not admitted as evaluation media.
+- Verification workflow run `36630907484` succeeded with 2/2 unique verified hashes.
+- Acquisition manifest: `knowledge/libraries/lego-minifigure-customs/data/body-architecture-custom-acquisition-candidates-v1.json`.
+- Regression test: `tests/test_body_architecture_custom_acquisition.py`.
+
 ### Original 27-case architecture benchmark
 - Reference acquisition remains complete at 27/27 exact byte-verified images.
 - Source sanitization review remains complete:
@@ -92,7 +109,7 @@ Current priority order:
 4. **Original architecture segmentation candidates** — 8 cases require a configured SAM2 runtime/checkpoint plus direct review.
 5. **Fortnite semantic supervision labels** — review infrastructure is complete, but canonical supervision requires actual reviews/adjudication.
 6. **Physical multi-view ground truth** — exact rear/side/physical evidence remains limited; do not synthesize hidden views.
-7. **Reference-fit torso segmentation** — lower-vs-upper torso segment length remains underidentified until additional landmarks are available.
+7. **Reference-fit torso segmentation** — lower-vs-upper torso segment length remains underidentified until additional landmarks are available.\n8. **Si-Dan evaluation media** — dedicated product evidence is strong, but only 50x50 image thumbnails are currently resolved; require a genuine high-resolution exact asset rather than upscaling.
 
 ## Highest-value next work
 
@@ -131,7 +148,7 @@ For architecture gaps:
 - `tools/knowledge/build_body_architecture_coverage_gaps.py`
 - `tests/test_build_body_architecture_coverage_gaps.py`
 
-For original benchmark safety:
+For custom architecture acquisition:\n- `knowledge/libraries/lego-minifigure-customs/data/body-architecture-custom-acquisition-candidates-v1.json`\n- `.github/workflows/verify-body-architecture-custom-media.yml`\n- `tests/test_body_architecture_custom_acquisition.py`\n\nFor original benchmark safety:
 - `knowledge/libraries/lego-minifigure-customs/data/body-architecture-benchmark-model-input-manifest.json`
 - `knowledge/libraries/lego-minifigure-customs/data/body-architecture-benchmark-sanitization-candidates.json`
 - `knowledge/libraries/lego-minifigure-customs/data/body-architecture-benchmark-segmentation-prompts.json`
@@ -150,7 +167,13 @@ Do not restart completed source acquisition, challenge-v3 expansion, or Homemake
 
 ## Validation note
 
-Challenge-v4 input-gate tests and v4 coverage regression tests are committed, and checked-in artifacts were built against the same deterministic contracts. No fresh full CI execution has yet been observed for this direct-push checkpoint, so do not claim the suite is green until CI or a capable local runtime actually executes it.
+Fresh CI has now been observed on the corrected checkpoint:
+- LEGO Knowledge Tool Tests run `36631376981` completed successfully on commit `a04b532236666a48945ba8cc18a6b2b8e0743b40`;
+- Body geometry tests completed successfully on the immediately preceding custom-acquisition test checkpoint;
+- custom architecture media verification completed successfully, including the hash-pinned Titanic sources;
+- v2/v3/base reference-media verification workflows also completed successfully after provenance refresh.
+
+The earlier red knowledge runs were caused by deterministic provenance/report drift after registry updates; those generated manifests and coverage artifacts were resynchronized and regression-locked.
 
 ## Continuation rule
 
