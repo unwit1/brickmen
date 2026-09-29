@@ -14,17 +14,20 @@
   "benchmark_manifest": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-recognition-benchmark-cases.json",
   "summary": {
     "total_cases": 27,
-    "ready_cases": 26,
+    "ready_for_materialization_cases": 4,
+    "ready_for_image_url_resolution_cases": 22,
     "blocked_cases": 1,
     "action_status_counts": {
-      "ready_for_catalog_image_resolution": 5,
+      "resolved_exact_image_url": 4,
       "ready_for_reviewed_page_media_resolution": 21,
-      "blocked_on_direct_release_locator": 1
+      "blocked_on_direct_release_locator": 1,
+      "ready_for_catalog_image_resolution": 1
     },
     "strategy_counts": {
-      "bricklink_catalog_adapter_or_reviewed_image_endpoint": 5,
+      "already_resolved_source_media": 4,
       "reviewed_page_to_exact_image_url": 21,
-      "resolve_direct_release_page_before_image_acquisition": 1
+      "resolve_direct_release_page_before_image_acquisition": 1,
+      "bricklink_catalog_adapter_or_reviewed_image_endpoint": 1
     }
   },
   "queue": [
@@ -37,19 +40,21 @@
         "architecture_id": "minifig_standard",
         "unresolved_candidate": null
       },
-      "status": "ready_for_image_url_resolution",
+      "status": "ready_for_materialization",
       "locator_actions": [
         {
           "source_id": "bricklink_hulk_sh0037_inventory",
           "page_url": "https://www.bricklink.com/catalogItemInv.asp?M=sh0037&viewCodes=Y",
           "authority": "structured_catalog",
           "locator_quality": "direct_or_family_reference",
-          "status": "ready_for_catalog_image_resolution",
-          "strategy": "bricklink_catalog_adapter_or_reviewed_image_endpoint"
+          "status": "resolved_exact_image_url",
+          "strategy": "already_resolved_source_media",
+          "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/sh0037.png",
+          "image_resolution_status": "verified_exact_image_url"
         }
       ],
       "required_output": {
-        "exact_image_url": null,
+        "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/sh0037.png",
         "source_occurrence_id": null,
         "source_file_sha256": null,
         "view": "canonical_or_best_available_full_figure",
@@ -65,19 +70,21 @@
         "architecture_id": "minifig_short_leg",
         "unresolved_candidate": null
       },
-      "status": "ready_for_image_url_resolution",
+      "status": "ready_for_materialization",
       "locator_actions": [
         {
           "source_id": "bricklink_hulk_sh0252_inventory",
           "page_url": "https://www.bricklink.com/catalogItemInv.asp?M=sh0252&viewID=Y",
           "authority": "structured_catalog",
           "locator_quality": "direct_or_family_reference",
-          "status": "ready_for_catalog_image_resolution",
-          "strategy": "bricklink_catalog_adapter_or_reviewed_image_endpoint"
+          "status": "resolved_exact_image_url",
+          "strategy": "already_resolved_source_media",
+          "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/sh0252.png",
+          "image_resolution_status": "verified_exact_image_url"
         }
       ],
       "required_output": {
-        "exact_image_url": null,
+        "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/sh0252.png",
         "source_occurrence_id": null,
         "source_file_sha256": null,
         "view": "canonical_or_best_available_full_figure",
@@ -93,19 +100,21 @@
         "architecture_id": "lego_giant_modular",
         "unresolved_candidate": null
       },
-      "status": "ready_for_image_url_resolution",
+      "status": "ready_for_materialization",
       "locator_actions": [
         {
           "source_id": "bricklink_hulk_sh0371_inventory",
           "page_url": "https://www.bricklink.com/catalogItemInv.asp?M=sh0371&viewCodes=Y",
           "authority": "structured_catalog",
           "locator_quality": "direct_or_family_reference",
-          "status": "ready_for_catalog_image_resolution",
-          "strategy": "bricklink_catalog_adapter_or_reviewed_image_endpoint"
+          "status": "resolved_exact_image_url",
+          "strategy": "already_resolved_source_media",
+          "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/sh0371.png",
+          "image_resolution_status": "verified_exact_image_url"
         }
       ],
       "required_output": {
-        "exact_image_url": null,
+        "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/sh0371.png",
         "source_occurrence_id": null,
         "source_file_sha256": null,
         "view": "canonical_or_best_available_full_figure",
@@ -129,7 +138,9 @@
           "authority": "retailer",
           "locator_quality": "direct_or_family_reference",
           "status": "ready_for_reviewed_page_media_resolution",
-          "strategy": "reviewed_page_to_exact_image_url"
+          "strategy": "reviewed_page_to_exact_image_url",
+          "exact_image_url": null,
+          "image_resolution_status": null
         }
       ],
       "required_output": {
@@ -157,7 +168,9 @@
           "authority": "retailer",
           "locator_quality": "direct_or_family_reference",
           "status": "ready_for_reviewed_page_media_resolution",
-          "strategy": "reviewed_page_to_exact_image_url"
+          "strategy": "reviewed_page_to_exact_image_url",
+          "exact_image_url": null,
+          "image_resolution_status": null
         }
       ],
       "required_output": {
@@ -185,7 +198,9 @@
           "authority": "custom_catalog",
           "locator_quality": "indirect_identity_graph",
           "status": "blocked_on_direct_release_locator",
-          "strategy": "resolve_direct_release_page_before_image_acquisition"
+          "strategy": "resolve_direct_release_page_before_image_acquisition",
+          "exact_image_url": null,
+          "image_resolution_status": null
         }
       ],
       "required_output": {
@@ -213,7 +228,9 @@
           "authority": "custom_catalog",
           "locator_quality": "direct_or_family_reference",
           "status": "ready_for_reviewed_page_media_resolution",
-          "strategy": "reviewed_page_to_exact_image_url"
+          "strategy": "reviewed_page_to_exact_image_url",
+          "exact_image_url": null,
+          "image_resolution_status": null
         }
       ],
       "required_output": {
@@ -241,7 +258,9 @@
           "authority": "custom_catalog",
           "locator_quality": "direct_or_family_reference",
           "status": "ready_for_reviewed_page_media_resolution",
-          "strategy": "reviewed_page_to_exact_image_url"
+          "strategy": "reviewed_page_to_exact_image_url",
+          "exact_image_url": null,
+          "image_resolution_status": null
         }
       ],
       "required_output": {
@@ -269,7 +288,9 @@
           "authority": "custom_catalog",
           "locator_quality": "direct_or_family_reference",
           "status": "ready_for_reviewed_page_media_resolution",
-          "strategy": "reviewed_page_to_exact_image_url"
+          "strategy": "reviewed_page_to_exact_image_url",
+          "exact_image_url": null,
+          "image_resolution_status": null
         }
       ],
       "required_output": {
@@ -297,7 +318,9 @@
           "authority": "custom_catalog",
           "locator_quality": "direct_or_family_reference",
           "status": "ready_for_reviewed_page_media_resolution",
-          "strategy": "reviewed_page_to_exact_image_url"
+          "strategy": "reviewed_page_to_exact_image_url",
+          "exact_image_url": null,
+          "image_resolution_status": null
         }
       ],
       "required_output": {
@@ -325,7 +348,9 @@
           "authority": "custom_catalog",
           "locator_quality": "direct_or_family_reference",
           "status": "ready_for_reviewed_page_media_resolution",
-          "strategy": "reviewed_page_to_exact_image_url"
+          "strategy": "reviewed_page_to_exact_image_url",
+          "exact_image_url": null,
+          "image_resolution_status": null
         }
       ],
       "required_output": {
@@ -345,19 +370,21 @@
         "architecture_id": "minifig_standard",
         "unresolved_candidate": null
       },
-      "status": "ready_for_image_url_resolution",
+      "status": "ready_for_materialization",
       "locator_actions": [
         {
           "source_id": "bricklink_venom_sh0542_inventory",
           "page_url": "https://www.bricklink.com/catalogItemInv.asp?M=sh0542&viewID=Y",
           "authority": "structured_catalog",
           "locator_quality": "direct_or_family_reference",
-          "status": "ready_for_catalog_image_resolution",
-          "strategy": "bricklink_catalog_adapter_or_reviewed_image_endpoint"
+          "status": "resolved_exact_image_url",
+          "strategy": "already_resolved_source_media",
+          "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/sh0542.png",
+          "image_resolution_status": "verified_exact_image_url"
         }
       ],
       "required_output": {
-        "exact_image_url": null,
+        "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/sh0542.png",
         "source_occurrence_id": null,
         "source_file_sha256": null,
         "view": "canonical_or_best_available_full_figure",
@@ -381,7 +408,9 @@
           "authority": "custom_catalog",
           "locator_quality": "direct_or_family_reference",
           "status": "ready_for_reviewed_page_media_resolution",
-          "strategy": "reviewed_page_to_exact_image_url"
+          "strategy": "reviewed_page_to_exact_image_url",
+          "exact_image_url": null,
+          "image_resolution_status": null
         }
       ],
       "required_output": {
@@ -409,7 +438,9 @@
           "authority": "custom_catalog",
           "locator_quality": "direct_or_family_reference",
           "status": "ready_for_reviewed_page_media_resolution",
-          "strategy": "reviewed_page_to_exact_image_url"
+          "strategy": "reviewed_page_to_exact_image_url",
+          "exact_image_url": null,
+          "image_resolution_status": null
         }
       ],
       "required_output": {
@@ -437,7 +468,9 @@
           "authority": "custom_catalog",
           "locator_quality": "direct_or_family_reference",
           "status": "ready_for_reviewed_page_media_resolution",
-          "strategy": "reviewed_page_to_exact_image_url"
+          "strategy": "reviewed_page_to_exact_image_url",
+          "exact_image_url": null,
+          "image_resolution_status": null
         }
       ],
       "required_output": {
@@ -465,7 +498,9 @@
           "authority": "custom_catalog",
           "locator_quality": "direct_or_family_reference",
           "status": "ready_for_reviewed_page_media_resolution",
-          "strategy": "reviewed_page_to_exact_image_url"
+          "strategy": "reviewed_page_to_exact_image_url",
+          "exact_image_url": null,
+          "image_resolution_status": null
         }
       ],
       "required_output": {
@@ -493,7 +528,9 @@
           "authority": "custom_catalog",
           "locator_quality": "direct_or_family_reference",
           "status": "ready_for_reviewed_page_media_resolution",
-          "strategy": "reviewed_page_to_exact_image_url"
+          "strategy": "reviewed_page_to_exact_image_url",
+          "exact_image_url": null,
+          "image_resolution_status": null
         }
       ],
       "required_output": {
@@ -521,7 +558,9 @@
           "authority": "structured_catalog",
           "locator_quality": "direct_or_family_reference",
           "status": "ready_for_catalog_image_resolution",
-          "strategy": "bricklink_catalog_adapter_or_reviewed_image_endpoint"
+          "strategy": "bricklink_catalog_adapter_or_reviewed_image_endpoint",
+          "exact_image_url": null,
+          "image_resolution_status": null
         }
       ],
       "required_output": {
@@ -549,7 +588,9 @@
           "authority": "custom_catalog",
           "locator_quality": "direct_or_family_reference",
           "status": "ready_for_reviewed_page_media_resolution",
-          "strategy": "reviewed_page_to_exact_image_url"
+          "strategy": "reviewed_page_to_exact_image_url",
+          "exact_image_url": null,
+          "image_resolution_status": null
         }
       ],
       "required_output": {
@@ -577,7 +618,9 @@
           "authority": "custom_catalog",
           "locator_quality": "direct_or_family_reference",
           "status": "ready_for_reviewed_page_media_resolution",
-          "strategy": "reviewed_page_to_exact_image_url"
+          "strategy": "reviewed_page_to_exact_image_url",
+          "exact_image_url": null,
+          "image_resolution_status": null
         }
       ],
       "required_output": {
@@ -605,7 +648,9 @@
           "authority": "custom_catalog",
           "locator_quality": "direct_or_family_reference",
           "status": "ready_for_reviewed_page_media_resolution",
-          "strategy": "reviewed_page_to_exact_image_url"
+          "strategy": "reviewed_page_to_exact_image_url",
+          "exact_image_url": null,
+          "image_resolution_status": null
         }
       ],
       "required_output": {
@@ -633,7 +678,9 @@
           "authority": "custom_catalog",
           "locator_quality": "direct_or_family_reference",
           "status": "ready_for_reviewed_page_media_resolution",
-          "strategy": "reviewed_page_to_exact_image_url"
+          "strategy": "reviewed_page_to_exact_image_url",
+          "exact_image_url": null,
+          "image_resolution_status": null
         }
       ],
       "required_output": {
@@ -661,7 +708,9 @@
           "authority": "custom_catalog",
           "locator_quality": "direct_or_family_reference",
           "status": "ready_for_reviewed_page_media_resolution",
-          "strategy": "reviewed_page_to_exact_image_url"
+          "strategy": "reviewed_page_to_exact_image_url",
+          "exact_image_url": null,
+          "image_resolution_status": null
         }
       ],
       "required_output": {
@@ -689,7 +738,9 @@
           "authority": "custom_catalog",
           "locator_quality": "direct_or_family_reference",
           "status": "ready_for_reviewed_page_media_resolution",
-          "strategy": "reviewed_page_to_exact_image_url"
+          "strategy": "reviewed_page_to_exact_image_url",
+          "exact_image_url": null,
+          "image_resolution_status": null
         }
       ],
       "required_output": {
@@ -717,7 +768,9 @@
           "authority": "custom_catalog",
           "locator_quality": "direct_or_family_reference",
           "status": "ready_for_reviewed_page_media_resolution",
-          "strategy": "reviewed_page_to_exact_image_url"
+          "strategy": "reviewed_page_to_exact_image_url",
+          "exact_image_url": null,
+          "image_resolution_status": null
         }
       ],
       "required_output": {
@@ -745,7 +798,9 @@
           "authority": "custom_catalog",
           "locator_quality": "direct_or_family_reference",
           "status": "ready_for_reviewed_page_media_resolution",
-          "strategy": "reviewed_page_to_exact_image_url"
+          "strategy": "reviewed_page_to_exact_image_url",
+          "exact_image_url": null,
+          "image_resolution_status": null
         }
       ],
       "required_output": {
@@ -773,7 +828,9 @@
           "authority": "custom_catalog",
           "locator_quality": "direct_or_family_reference",
           "status": "ready_for_reviewed_page_media_resolution",
-          "strategy": "reviewed_page_to_exact_image_url"
+          "strategy": "reviewed_page_to_exact_image_url",
+          "exact_image_url": null,
+          "image_resolution_status": null
         }
       ],
       "required_output": {
