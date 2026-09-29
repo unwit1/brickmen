@@ -110,11 +110,17 @@ def build(
         relevant = reviews_by_id.get(record_id, [])
 
         if candidate is None:
-            reason = (
-                "requires_segmentation_or_manual_cleanup"
-                if blocker is not None
-                else "missing_sanitization_candidate"
-            )
+            queue_status = row.get("status")
+            if blocker is not None:
+                reason = "requires_segmentation_or_manual_cleanup"
+            elif queue_status == "blocked_pending_visual_sanitization_review":
+                reason = "pending_visual_sanitization_review"
+            elif queue_status == "review_stale_source_hash_changed":
+                reason = "stale_visual_sanitization_review"
+            elif queue_status == "sanitization_required":
+                reason = "missing_sanitization_candidate"
+            else:
+                reason = "missing_sanitization_candidate"
             entries.append(
                 {
                     "source_record_id": record_id,
