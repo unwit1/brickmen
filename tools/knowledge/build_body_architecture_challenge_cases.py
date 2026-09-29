@@ -157,6 +157,16 @@ def build(
                         if byte.get("status") == "verified"
                         else None
                     ),
+                    "verification_run_id": (
+                        byte.get("workflow_run_id")
+                        if byte.get("status") == "verified"
+                        else None
+                    ),
+                    "verification_artifact_id": (
+                        byte.get("workflow_artifact_id")
+                        if byte.get("status") == "verified"
+                        else None
+                    ),
                 }
             )
         if not locators:
