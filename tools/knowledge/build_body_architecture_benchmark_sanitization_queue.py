@@ -30,6 +30,13 @@ HIGH_RISK_HOSTS = {
 MEDIUM_RISK_HOSTS = {"img.bricklink.com"}
 
 
+def path_label(path: Path) -> str:
+    try:
+        return path.relative_to(ROOT).as_posix()
+    except ValueError:
+        return str(path)
+
+
 def url_host(url: str | None) -> str:
     return (
         urllib.parse.urlparse(str(url or "")).hostname or ""
@@ -234,9 +241,9 @@ def build(
         "created": "2026-09-28",
         "status": "visual_sanitization_in_progress",
         "processor_version": VERSION,
-        "benchmark_manifest": benchmark_path.relative_to(ROOT).as_posix(),
+        "benchmark_manifest": path_label(benchmark_path),
         "policy": "data/body-architecture-benchmark-input-sanitization-policy.json",
-        "reviews": reviews_path.relative_to(ROOT).as_posix(),
+        "reviews": path_label(reviews_path),
         "summary": {
             "total_cases": len(queue),
             "raw_model_input_allowed_cases": sum(
