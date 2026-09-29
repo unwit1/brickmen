@@ -1,0 +1,60 @@
+{
+  "schema_version": "0.1",
+  "record_type": "body_architecture_source_sanitization_review/v1",
+  "purpose": "Hash-pinned visual review of a verified source image before raw benchmark use or derivative sanitization planning.",
+  "allowed_status": [
+    "approved_raw",
+    "sanitization_required"
+  ],
+  "allowed_primary_view": [
+    "front",
+    "front_3q",
+    "side",
+    "rear",
+    "multi_view_composite",
+    "uncertain"
+  ],
+  "allowed_sanitization_action": [
+    "none",
+    "tight_figure_crop",
+    "mask_regions",
+    "segment_primary_figure",
+    "replace_source",
+    "manual_composite_cleanup"
+  ],
+  "required_fields": [
+    "source_record_id",
+    "source_id",
+    "source_file_sha256",
+    "status",
+    "identity_match",
+    "primary_view",
+    "primary_figure_complete",
+    "visible_text_leakage",
+    "visual_confounders",
+    "sanitization_action",
+    "raw_model_input_allowed",
+    "review_confidence",
+    "notes"
+  ],
+  "approval_rules": [
+    "Review source SHA-256 must exactly match the verified source image used by the benchmark/challenge queue.",
+    "approved_raw requires identity_match=true, primary_figure_complete=true, no visible text leakage, no visual confounders, sanitization_action=none, and raw_model_input_allowed=true.",
+    "sanitization_required requires raw_model_input_allowed=false and a non-none sanitization action.",
+    "A changed source hash makes the review stale and incapable of authorizing model input.",
+    "Reviewer provenance is recorded at review-set level and model/hybrid reviewers must record model family/revision where available.",
+    "Review metadata does not make derivative pixels approved; sanitized derivatives still require the separate exact-hash derivative review gate."
+  ],
+  "review_set": {
+    "schema": "body-architecture-source-sanitization-review-set/v1",
+    "review_set_id": "",
+    "reviewer": {
+      "reviewer_id": "",
+      "reviewer_type": "human|model|hybrid",
+      "model_family": null,
+      "model_revision": null,
+      "review_method": ""
+    },
+    "reviews": []
+  }
+}
