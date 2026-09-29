@@ -47,6 +47,18 @@ def live_inputs() -> tuple[dict, dict]:
     return queue, candidates
 
 
+def live_reviews() -> list[dict]:
+    path = (
+        DATA
+        / "body-architecture-benchmark-sanitized-asset-reviews.jsonl"
+    )
+    return [
+        json.loads(line)
+        for line in path.read_text(encoding="utf-8").splitlines()
+        if line.strip()
+    ]
+
+
 def approval(candidate: dict, *, decision: str = "approved") -> dict:
     return {
         "review_id": "sanreview-test",
@@ -188,10 +200,32 @@ def test_unvalidated_approval_flag_cannot_be_omitted() -> None:
     assert entry["blocked_reason"] == "no_valid_exact_approval"
 
 
+def test_canonical_review_corpus_promotes_only_visually_approved_candidates() -> None:
+    tool = load_tool()
+    queue, candidates = live_inputs()
+    result = tool.build(queue, candidates, live_reviews())
+
+    assert result["summary"] == {
+        "total_cases": 27,
+        "model_input_allowed_cases": 12,
+        "approved_raw_cases": 4,
+        "approved_sanitized_cases": 8,
+        "blocked_cases": 15,
+    }
+    assert sum(
+        row["blocked_reason"] == "candidate_revision_required"
+        for row in result["entries"]
+    ) == 7
+    assert sum(
+        row["blocked_reason"] == "requires_segmentation_or_manual_cleanup"
+        for row in result["entries"]
+    ) == 8
+
+
 def test_checked_in_model_input_manifest_matches_builder() -> None:
     tool = load_tool()
     queue, candidates = live_inputs()
-    expected = tool.build(queue, candidates)
+    expected = tool.build(queue, candidates, live_reviews())
     actual = json.loads(
         (
             DATA
