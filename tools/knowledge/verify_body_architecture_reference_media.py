@@ -222,17 +222,25 @@ def fetch_image_metadata(
     allowed_hosts: set[str],
     timeout_seconds: float,
     max_bytes: int,
+    referer_url: str | None = None,
 ) -> dict[str, Any]:
     initial_host = validate_https_url(url, allowed_hosts)
     opener = urllib.request.build_opener(
         AllowlistedRedirectHandler(allowed_hosts)
     )
+    headers = {
+        "User-Agent": USER_AGENT,
+        "Accept": "image/*",
+    }
+    if referer_url:
+        parsed_referer = urllib.parse.urlparse(referer_url)
+        if parsed_referer.scheme.lower() != "https" or not parsed_referer.hostname:
+            raise ValueError(f"invalid HTTPS referer URL: {referer_url}")
+        headers["Referer"] = referer_url
+
     request = urllib.request.Request(
         url,
-        headers={
-            "User-Agent": USER_AGENT,
-            "Accept": "image/*",
-        },
+        headers=headers,
     )
 
     with opener.open(request, timeout=timeout_seconds) as response:
@@ -308,6 +316,11 @@ def verify(
                     allowed_hosts=allowed_hosts,
                     timeout_seconds=timeout_seconds,
                     max_bytes=max_bytes,
+                    referer_url=(
+                        str(item.get("source_page_url"))
+                        if item.get("source_page_url")
+                        else None
+                    ),
                 )
                 occurrence.update(metadata)
                 occurrence["status"] = "verified"
