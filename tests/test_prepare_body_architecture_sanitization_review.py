@@ -58,8 +58,8 @@ def test_canonical_candidate_metadata_is_self_consistent() -> None:
         canonical,
     )
     assert result == {
-        "verified_candidates": 15,
-        "verified_blockers": 8,
+        "verified_candidates": 13,
+        "verified_blockers": 10,
         "candidate_hash_drift": 0,
     }
 
