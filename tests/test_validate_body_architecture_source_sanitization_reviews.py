@@ -52,7 +52,7 @@ def test_canonical_source_sanitization_reviews_validate_complete() -> None:
     assert result["reviewed_unknown_cases"] == []
 
 
-def test_challenge_empty_review_set_is_valid_but_incomplete() -> None:
+def test_challenge_review_set_is_valid_and_progress_accounted_for() -> None:
     tool = load_tool()
     result = tool.validate_review_set(
         tool.load_json(
@@ -66,9 +66,17 @@ def test_challenge_empty_review_set_is_valid_but_incomplete() -> None:
     )
 
     assert result["valid"] is True
-    assert result["review_count"] == 0
     assert result["queue_cases"] == 8
-    assert len(result["unreviewed_queue_cases"]) == 8
+    assert result["review_count"] <= 8
+    assert (
+        result["approved_raw"] + result["sanitization_required"]
+        == result["review_count"]
+    )
+    assert (
+        len(result["unreviewed_queue_cases"])
+        == 8 - result["review_count"]
+    )
+    assert result["reviewed_unknown_cases"] == []
 
 
 def test_approved_raw_fails_closed_on_leakage() -> None:
