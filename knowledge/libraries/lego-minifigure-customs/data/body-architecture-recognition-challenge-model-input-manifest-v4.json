@@ -5,10 +5,10 @@
   "policy": "Only visually approved raw references or exact hash-pinned approved sanitized derivatives are model inputs. Provenance/audit identifiers remain metadata and must not be exposed as model features.",
   "summary": {
     "total_cases": 23,
-    "model_input_allowed_cases": 21,
-    "approved_raw_cases": 21,
+    "model_input_allowed_cases": 23,
+    "approved_raw_cases": 23,
     "approved_sanitized_cases": 0,
-    "blocked_cases": 2
+    "blocked_cases": 0
   },
   "entries": [
     {
@@ -156,14 +156,14 @@
       "case_id": "archchallenge::challenge_homemaker_276_nurse",
       "split": "challenge_test",
       "scoring_track": "core",
-      "status": "blocked",
-      "model_input_allowed": false,
-      "asset_kind": null,
-      "asset_sha256": null,
+      "status": "approved_raw",
+      "model_input_allowed": true,
+      "asset_kind": "verified_raw_reference",
+      "asset_sha256": "2385f7c7627bb1b5b7412f107d6a2b15ec727e1a13bef8b920809d3504e7a737",
       "source_file_sha256": "2385f7c7627bb1b5b7412f107d6a2b15ec727e1a13bef8b920809d3504e7a737",
       "expected_local_asset": null,
       "approval_review_ids": [],
-      "blocked_reason": "pending_visual_sanitization_review"
+      "blocked_reason": null
     },
     {
       "source_record_id": "challenge_jabba_sw0402",
@@ -324,14 +324,14 @@
       "case_id": "archchallenge::challenge_woody_toy003_long_limb",
       "split": "challenge_test",
       "scoring_track": "core",
-      "status": "blocked",
-      "model_input_allowed": false,
-      "asset_kind": null,
-      "asset_sha256": null,
+      "status": "approved_raw",
+      "model_input_allowed": true,
+      "asset_kind": "verified_raw_reference",
+      "asset_sha256": "777fd93e31997b912debb734bf0be461c6795210649370bd6be92717f948e7c9",
       "source_file_sha256": "777fd93e31997b912debb734bf0be461c6795210649370bd6be92717f948e7c9",
       "expected_local_asset": null,
       "approval_review_ids": [],
-      "blocked_reason": "pending_visual_sanitization_review"
+      "blocked_reason": null
     }
   ]
 }
