@@ -82,6 +82,40 @@ def _median_color(image, box: tuple[int, int, int, int]) -> tuple[int, ...]:
     return tuple(int(round(statistics.median(channel))) for channel in channels)
 
 
+def _fill_rect_with_row_median_sample(
+    image,
+    target_box: tuple[int, int, int, int],
+    sample_box: tuple[int, int, int, int],
+) -> None:
+    """Fill each target row from median pixels in a clean sample strip.
+
+    This preserves studio-background vertical gradients better than a single flat
+    color and avoids sampling the contaminated inset being removed.
+    """
+    from PIL import ImageDraw
+
+    left, top, right, bottom = target_box
+    sample_left, sample_top, sample_right, sample_bottom = sample_box
+    if sample_right <= sample_left or sample_bottom <= sample_top:
+        raise ValueError("row-median sample box must have positive area")
+
+    draw = ImageDraw.Draw(image)
+    for y in range(top, bottom):
+        sample_y = min(max(y, sample_top), sample_bottom - 1)
+        pixels = [
+            tuple(image.getpixel((x, sample_y)))
+            for x in range(sample_left, sample_right)
+        ]
+        if not pixels:
+            raise ValueError("row-median sample produced no pixels")
+        channels = list(zip(*pixels))
+        fill = tuple(
+            int(round(statistics.median(channel)))
+            for channel in channels
+        )
+        draw.line((left, y, right - 1, y), fill=fill)
+
+
 def apply_operations(image, operations: list[dict[str, Any]]):
     """Apply deterministic normalized crop/mask operations in order."""
     from PIL import ImageDraw
@@ -96,27 +130,49 @@ def apply_operations(image, operations: list[dict[str, Any]]):
 
         if op == "mask_rect_norm":
             fill_mode = operation.get("fill_mode", "border_median")
+            sample_bounds = None
+            sample_box = None
             if fill_mode == "border_median":
                 fill = _median_color(current, box)
+                draw = ImageDraw.Draw(current)
+                draw.rectangle(box, fill=fill)
             elif fill_mode == "white":
                 fill = (255, 255, 255, 255)
+                draw = ImageDraw.Draw(current)
+                draw.rectangle(box, fill=fill)
             elif fill_mode == "transparent":
                 fill = (0, 0, 0, 0)
+                draw = ImageDraw.Draw(current)
+                draw.rectangle(box, fill=fill)
+            elif fill_mode == "row_median_sample":
+                fill = None
+                sample_bounds = operation.get("sample_bounds")
+                if sample_bounds is None:
+                    raise ValueError(
+                        "row_median_sample requires sample_bounds"
+                    )
+                sample_box = normalized_box(
+                    sample_bounds, *current.size
+                )
+                _fill_rect_with_row_median_sample(
+                    current, box, sample_box
+                )
             else:
                 raise ValueError(f"unsupported fill_mode: {fill_mode}")
-            draw = ImageDraw.Draw(current)
-            draw.rectangle(box, fill=fill)
-            applied.append(
-                {
-                    "index": index,
-                    "op": op,
-                    "requested_bounds": bounds,
-                    "pixel_bounds": list(box),
-                    "fill_mode": fill_mode,
-                    "fill_rgba": list(fill),
-                    "result_dimensions": list(current.size),
-                }
-            )
+            applied_row = {
+                "index": index,
+                "op": op,
+                "requested_bounds": bounds,
+                "pixel_bounds": list(box),
+                "fill_mode": fill_mode,
+                "result_dimensions": list(current.size),
+            }
+            if fill is not None:
+                applied_row["fill_rgba"] = list(fill)
+            if sample_bounds is not None and sample_box is not None:
+                applied_row["sample_bounds"] = sample_bounds
+                applied_row["sample_pixel_bounds"] = list(sample_box)
+            applied.append(applied_row)
         elif op == "crop_norm":
             current = current.crop(box)
             applied.append(
