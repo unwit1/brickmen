@@ -1,0 +1,223 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-29",
+  "id": "body-architecture-benchmark-sanitization-transforms-v0",
+  "coordinate_system": {
+    "type": "normalized_current_image",
+    "bounds": "[x0,y0,x1,y1] in [0,1]; operations apply sequentially to the current image",
+    "rounding": "x0/y0=floor; x1/y1=ceil"
+  },
+  "output": {
+    "format": "png",
+    "metadata_only_by_default": true,
+    "raw_or_derivative_media_committed": false
+  },
+  "policy": [
+    "Every transform is pinned to the verified source SHA-256.",
+    "Generated derivatives are candidates until separately visually reviewed.",
+    "Do not auto-approve a transform merely because it removes known text regions.",
+    "Prefer a segmentation/manual-cleanup path over a crop that materially removes architecture evidence."
+  ],
+  "transforms": [
+    {
+      "source_record_id": "hulk_lego_sh0037_standard",
+      "source_file_sha256": "fae13ab513dd1d32b405425beb7bca1aa68bd11c5470e2e0e958ac4cb9168157",
+      "source_dimensions": [
+        254,
+        400
+      ],
+      "status": "candidate_transform",
+      "operations": [
+        {
+          "op": "mask_rect_norm",
+          "bounds": [
+            0.7,
+            0.205,
+            0.985,
+            0.355
+          ],
+          "fill_mode": "border_median"
+        }
+      ],
+      "rationale": "Remove alternate-expression inset while preserving the full primary front figure."
+    },
+    {
+      "source_record_id": "hulk_g2_gh0304_avengers",
+      "source_file_sha256": "386526bedf6cccb20984cdfceb7b3f8cb8b148fd59dfd703b338a25e6d07cb07",
+      "source_dimensions": [
+        800,
+        800
+      ],
+      "status": "candidate_transform",
+      "operations": [
+        {
+          "op": "crop_norm",
+          "bounds": [
+            0.28,
+            0.22,
+            0.72,
+            0.8
+          ]
+        }
+      ],
+      "rationale": "Exclude GH0304/Hulk text while retaining the complete front figure with margin."
+    },
+    {
+      "source_record_id": "hulk_bigguy_ragnarok",
+      "source_file_sha256": "ebc33442ad2b852ee783f7457f1ab040043aac9dfe36b59cb4239e02ab149e24",
+      "source_dimensions": [
+        566,
+        744
+      ],
+      "status": "candidate_transform",
+      "operations": [
+        {
+          "op": "mask_rect_norm",
+          "bounds": [
+            0.72,
+            0.02,
+            0.99,
+            0.21
+          ],
+          "fill_mode": "border_median"
+        },
+        {
+          "op": "crop_norm",
+          "bounds": [
+            0.04,
+            0.11,
+            0.87,
+            0.89
+          ]
+        }
+      ],
+      "rationale": "Remove maker logo, bottom character label and right-edge secondary figure while retaining the primary figure."
+    },
+    {
+      "source_record_id": "hulk_mrj_heart_comics",
+      "source_file_sha256": "39feabdf00538692b035b870a3ae7f7c2835825e8224aa5e8adc9253a98a079a",
+      "source_dimensions": [
+        591,
+        485
+      ],
+      "status": "candidate_transform",
+      "operations": [
+        {
+          "op": "mask_rect_norm",
+          "bounds": [
+            0,
+            0,
+            0.36,
+            0.2
+          ],
+          "fill_mode": "border_median"
+        },
+        {
+          "op": "mask_rect_norm",
+          "bounds": [
+            0.39,
+            0.03,
+            0.6,
+            0.32
+          ],
+          "fill_mode": "border_median"
+        },
+        {
+          "op": "crop_norm",
+          "bounds": [
+            0.02,
+            0.18,
+            0.51,
+            0.93
+          ]
+        }
+      ],
+      "rationale": "Isolate the front figure and remove maker logos plus head/rear-view panels."
+    },
+    {
+      "source_record_id": "venom_alpha_af328_ancient",
+      "source_file_sha256": "929d7a3d8d2c2d315cec8bf276ef0ba180ad2fc877a66515a2b7533f686b90ff",
+      "source_dimensions": [
+        800,
+        800
+      ],
+      "status": "candidate_transform",
+      "operations": [
+        {
+          "op": "crop_norm",
+          "bounds": [
+            0.205,
+            0.225,
+            0.795,
+            0.8
+          ]
+        }
+      ],
+      "rationale": "Exclude code/name text, head/comparison insets and surrounding accessory layout while retaining the primary figure."
+    },
+    {
+      "source_record_id": "thing_g2_gh0435_bigfig",
+      "source_file_sha256": "a589332b37fa1e2a8dc5c70131641a36c5f0420fec96895258cf8ba744cd1432",
+      "source_dimensions": [
+        1024,
+        1024
+      ],
+      "status": "candidate_transform",
+      "operations": [
+        {
+          "op": "crop_norm",
+          "bounds": [
+            0.16,
+            0.13,
+            0.84,
+            0.8
+          ]
+        }
+      ],
+      "rationale": "Exclude GH0435/name/options text while retaining the complete primary front figure."
+    },
+    {
+      "source_record_id": "thing_xinh_1421_bigfig",
+      "source_file_sha256": "f3556293cec3cafb4ba2c7a0659713aca485e59c4d3b88fb7f9850d774c685a2",
+      "source_dimensions": [
+        759,
+        1024
+      ],
+      "status": "candidate_transform",
+      "operations": [
+        {
+          "op": "crop_norm",
+          "bounds": [
+            0.08,
+            0.29,
+            0.91,
+            0.89
+          ]
+        }
+      ],
+      "rationale": "Exclude Xinh/Storm Heroes branding, 1421 code and bottom character label while retaining the primary front figure."
+    },
+    {
+      "source_record_id": "venom_xinh_xh1911_bigfig",
+      "source_file_sha256": "2b65c0bb3af7a734e7b2ed205e2023f0906368ab75762f873b5097863134bb20",
+      "source_dimensions": [
+        640,
+        945
+      ],
+      "status": "requires_segmentation",
+      "operations": [],
+      "rationale": "The head inset overlaps the primary figure's right-shoulder region; a simple crop/mask risks removing architecture evidence."
+    },
+    {
+      "source_record_id": "venom_xinh_xh1829_movie_bigfig",
+      "source_file_sha256": "32c91daa329658fcaec4c79acbf0619591015e003bc34fd40043928c2b030d56",
+      "source_dimensions": [
+        1000,
+        1000
+      ],
+      "status": "requires_segmentation",
+      "operations": [],
+      "rationale": "The head inset overlaps the primary figure's upper-right silhouette; use primary-figure segmentation rather than a destructive crop."
+    }
+  ]
+}
