@@ -183,3 +183,12 @@ def test_source_keeps_multimask_variants_review_only() -> None:
     assert '"selected_by_sam_score": index == selected_index' in source
     assert '"candidate_status": "generated_pending_visual_review"' in source
     assert '"model_input_allowed": False' in source
+
+
+def test_torch_determinism_contract_is_explicit() -> None:
+    source = TOOL.read_text(encoding="utf-8")
+
+    assert "torch.use_deterministic_algorithms(True)" in source
+    assert "torch.set_num_threads(num_threads)" in source
+    assert "torch.manual_seed(0)" in source
+    assert '"determinism": determinism' in source
