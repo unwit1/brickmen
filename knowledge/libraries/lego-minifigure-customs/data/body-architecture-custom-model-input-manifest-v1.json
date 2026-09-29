@@ -4,9 +4,9 @@
   "status": "gated_model_input_manifest",
   "policy": "Only visually approved raw references or exact hash-pinned approved sanitized derivatives are model inputs. Provenance/audit identifiers remain metadata and must not be exposed as model features.",
   "summary": {
-    "total_cases": 2,
-    "model_input_allowed_cases": 2,
-    "approved_raw_cases": 1,
+    "total_cases": 3,
+    "model_input_allowed_cases": 3,
+    "approved_raw_cases": 2,
     "approved_sanitized_cases": 1,
     "blocked_cases": 0
   },
@@ -26,6 +26,20 @@
       "approval_review_ids": [
         "sanreview-93c0cd5323e1967650034a47"
       ],
+      "blocked_reason": null
+    },
+    {
+      "source_record_id": "custom_sidan_full_balljoint_poseable_sidan",
+      "case_id": "archcandidate::sidan_full_balljoint_poseable",
+      "split": "custom_challenge_test",
+      "scoring_track": "custom",
+      "status": "approved_raw",
+      "model_input_allowed": true,
+      "asset_kind": "verified_raw_reference",
+      "asset_sha256": "2ac7f9ba8793107e58892205ea56cc772b876cd63cd2fda08e51e1a0ec8e831e",
+      "source_file_sha256": "2ac7f9ba8793107e58892205ea56cc772b876cd63cd2fda08e51e1a0ec8e831e",
+      "expected_local_asset": null,
+      "approval_review_ids": [],
       "blocked_reason": null
     },
     {
