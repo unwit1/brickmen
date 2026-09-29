@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "created": "2026-09-29",
-  "id": "body-architecture-sanitization-segmentation-prompts-v0",
+  "id": "body-architecture-sanitization-segmentation-prompts-v1",
   "provider_family": "sam2_image_predictor",
   "provider_reference": {
     "repository": "https://github.com/facebookresearch/sam2",
@@ -18,7 +18,8 @@
     "Every prompt is pinned to the verified source SHA-256 and source dimensions.",
     "The highest predicted SAM2 score may select a candidate mask, but never constitutes visual approval.",
     "Generated segmentation derivatives must pass the same hash-pinned visual approval gate as deterministic crop/mask candidates.",
-    "If the source hash or dimensions change, the prompt is stale and must not run."
+    "If the source hash or dimensions change, the prompt is stale and must not run.",
+    "The prompt set must exactly cover the active segmentation/manual-cleanup blockers in the canonical sanitization candidate manifest."
   ],
   "prompts": [
     {
@@ -102,6 +103,46 @@
       "rationale": "Target the central/front comic Hulk while excluding auxiliary head, rear and scale panels."
     },
     {
+      "source_record_id": "hulk_mrj_heart_comics",
+      "source_file_sha256": "39feabdf00538692b035b870a3ae7f7c2835825e8224aa5e8adc9253a98a079a",
+      "source_dimensions": [
+        591,
+        485
+      ],
+      "status": "prompt_seed_unvalidated",
+      "box_norm": [
+        0.04,
+        0.2,
+        0.54,
+        0.92
+      ],
+      "positive_points_norm": [
+        [
+          0.25,
+          0.47
+        ],
+        [
+          0.27,
+          0.7
+        ]
+      ],
+      "negative_points_norm": [
+        [
+          0.52,
+          0.16
+        ],
+        [
+          0.74,
+          0.55
+        ],
+        [
+          0.12,
+          0.08
+        ]
+      ],
+      "rationale": "Target the complete left/front Hulk while excluding the top-center head inset, right/rear figure and upper-left maker branding."
+    },
+    {
       "source_record_id": "red_hulk_alpha_af364_bnw",
       "source_file_sha256": "12e79bc52f7030701a2296f7cf05e7905e02bcefd0d754969cc8bdf95756773b",
       "source_dimensions": [
@@ -140,6 +181,90 @@
         ]
       ],
       "rationale": "Target the complete central/front Red Hulk while excluding the card's head/rear/scale comparison content."
+    },
+    {
+      "source_record_id": "thing_shengyuan_sy288_bigfig",
+      "source_file_sha256": "e0de4be480091468e1edd92dca97dc465a2fe062cda2917262977164131b9970",
+      "source_dimensions": [
+        315,
+        346
+      ],
+      "status": "prompt_seed_unvalidated",
+      "box_norm": [
+        0,
+        0.27,
+        0.42,
+        0.66
+      ],
+      "positive_points_norm": [
+        [
+          0.2,
+          0.43
+        ],
+        [
+          0.2,
+          0.57
+        ]
+      ],
+      "negative_points_norm": [
+        [
+          0.56,
+          0.46
+        ],
+        [
+          0.73,
+          0.46
+        ],
+        [
+          0.89,
+          0.55
+        ],
+        [
+          0.2,
+          0.8
+        ]
+      ],
+      "rationale": "Target the large Thing at upper-left while excluding neighboring minifigures, branded display bases and the rest of the group card."
+    },
+    {
+      "source_record_id": "thing_tp_tp349_first_steps_bigfig",
+      "source_file_sha256": "c35537f56d3d21e81225091f5329053e02f628dc0269a0d491011a85c5d83e6d",
+      "source_dimensions": [
+        800,
+        800
+      ],
+      "status": "prompt_seed_unvalidated",
+      "box_norm": [
+        0.12,
+        0.24,
+        0.72,
+        0.84
+      ],
+      "positive_points_norm": [
+        [
+          0.42,
+          0.48
+        ],
+        [
+          0.42,
+          0.7
+        ]
+      ],
+      "negative_points_norm": [
+        [
+          0.75,
+          0.15
+        ],
+        [
+          0.86,
+          0.56
+        ],
+        [
+          0.2,
+          0.1
+        ]
+      ],
+      "rationale": "Target the TP349 front Thing while rejecting the rear/alternate panel and neighboring product-card content."
     },
     {
       "source_record_id": "venom_alpha_af325",
@@ -186,44 +311,48 @@
       "rationale": "Target the upper-center primary front Venom while excluding accessory/head inset, standard-scale comparison, alternate pose and rear-view panels."
     },
     {
-      "source_record_id": "venom_xinh_xh1911_bigfig",
-      "source_file_sha256": "2b65c0bb3af7a734e7b2ed205e2023f0906368ab75762f873b5097863134bb20",
+      "source_record_id": "venom_alpha_af328_ancient",
+      "source_file_sha256": "929d7a3d8d2c2d315cec8bf276ef0ba180ad2fc877a66515a2b7533f686b90ff",
       "source_dimensions": [
-        640,
-        945
+        800,
+        800
       ],
       "status": "prompt_seed_unvalidated",
       "box_norm": [
-        0.07,
-        0.22,
-        0.93,
-        0.8
+        0.21,
+        0.21,
+        0.79,
+        0.79
       ],
       "positive_points_norm": [
         [
           0.5,
-          0.45
+          0.44
         ],
         [
           0.5,
-          0.68
+          0.66
         ]
       ],
       "negative_points_norm": [
         [
-          0.84,
-          0.23
+          0.12,
+          0.47
         ],
         [
-          0.5,
-          0.08
+          0.88,
+          0.45
         ],
         [
-          0.5,
-          0.86
+          0.16,
+          0.13
+        ],
+        [
+          0.86,
+          0.12
         ]
       ],
-      "rationale": "Target the main front Venom; the upper-right head inset overlaps the shoulder region and must be excluded by negative prompting."
+      "rationale": "Target the central Ancient Venom figure while excluding the surrounding weapons/accessories, upper-left head inset and upper-right comparison figure."
     },
     {
       "source_record_id": "venom_xinh_xh1829_movie_bigfig",
@@ -266,88 +395,44 @@
       "rationale": "Target the central movie Venom while rejecting the upper-right head inset and surrounding labels."
     },
     {
-      "source_record_id": "thing_tp_tp349_first_steps_bigfig",
-      "source_file_sha256": "c35537f56d3d21e81225091f5329053e02f628dc0269a0d491011a85c5d83e6d",
+      "source_record_id": "venom_xinh_xh1911_bigfig",
+      "source_file_sha256": "2b65c0bb3af7a734e7b2ed205e2023f0906368ab75762f873b5097863134bb20",
       "source_dimensions": [
-        800,
-        800
+        640,
+        945
       ],
       "status": "prompt_seed_unvalidated",
       "box_norm": [
-        0.12,
-        0.24,
-        0.72,
-        0.84
+        0.07,
+        0.22,
+        0.93,
+        0.8
       ],
       "positive_points_norm": [
         [
-          0.42,
-          0.48
+          0.5,
+          0.45
         ],
         [
-          0.42,
-          0.7
+          0.5,
+          0.68
         ]
       ],
       "negative_points_norm": [
         [
-          0.75,
-          0.15
+          0.84,
+          0.23
         ],
         [
-          0.86,
-          0.56
+          0.5,
+          0.08
         ],
         [
-          0.2,
-          0.1
+          0.5,
+          0.86
         ]
       ],
-      "rationale": "Target the TP349 front Thing while rejecting the rear/alternate panel and neighboring product-card content."
-    },
-    {
-      "source_record_id": "thing_shengyuan_sy288_bigfig",
-      "source_file_sha256": "e0de4be480091468e1edd92dca97dc465a2fe062cda2917262977164131b9970",
-      "source_dimensions": [
-        315,
-        346
-      ],
-      "status": "prompt_seed_unvalidated",
-      "box_norm": [
-        0,
-        0.27,
-        0.42,
-        0.66
-      ],
-      "positive_points_norm": [
-        [
-          0.2,
-          0.43
-        ],
-        [
-          0.2,
-          0.57
-        ]
-      ],
-      "negative_points_norm": [
-        [
-          0.56,
-          0.46
-        ],
-        [
-          0.73,
-          0.46
-        ],
-        [
-          0.89,
-          0.55
-        ],
-        [
-          0.2,
-          0.8
-        ]
-      ],
-      "rationale": "Target the large Thing at upper-left while excluding neighboring minifigures, branded display bases and the rest of the group card."
+      "rationale": "Target the main front Venom; the upper-right head inset overlaps the shoulder region and must be excluded by negative prompting."
     }
   ]
 }
