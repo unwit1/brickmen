@@ -2,10 +2,11 @@
   "schema_version": "0.1",
   "created": "2026-09-29",
   "status": "coverage_gap_inventory",
-  "processor_version": "body-architecture-coverage-gaps/v2",
+  "processor_version": "body-architecture-coverage-gaps/v3",
   "policy": [
     "Evaluation coverage is architecture-target coverage, not source-count coverage.",
-    "Challenge-v4 and same-character contrast assets are evaluation-only.",
+    "Challenge-v4, custom challenge, and same-character contrast assets are evaluation-only.",
+    "Custom challenge coverage counts only cases admitted by the exact model-input gate.",
     "Umbrella, source-label-only and unresolved families are ontology work, not closed-set benchmark classes.",
     "Prioritize concrete official untested architectures before adding redundant examples of already-covered families."
   ],
@@ -13,15 +14,17 @@
     "registry": "knowledge/libraries/lego-minifigure-customs/data/figure-architecture-registry.json",
     "base_benchmark": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-recognition-benchmark-cases.json",
     "challenge": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-recognition-challenge-cases-v4.json",
+    "custom_challenge": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-custom-acquisition-candidates-v1.json",
+    "custom_model_input_gate": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-custom-model-input-manifest-v1.json",
     "same_character_contrast": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-same-character-contrast-v1.json"
   },
   "summary": {
     "registry_architectures": 49,
-    "covered_architectures": 34,
-    "uncovered_architectures": 15,
-    "coverage_fraction": 0.693878,
+    "covered_architectures": 37,
+    "uncovered_architectures": 12,
+    "coverage_fraction": 0.755102,
     "p0_official_gaps": 0,
-    "p1_gaps": 3,
+    "p1_gaps": 0,
     "p2_gaps": 12
   },
   "coverage_sources": {
@@ -60,6 +63,11 @@
       "minifig_stacked_torso_multiarm",
       "minifig_super_battle_droid_integrated",
       "specialized_tail_body_jabba"
+    ],
+    "custom_challenge_v1": [
+      "custom_midfig_balljoint_upper",
+      "custom_sidan_full_balljoint_poseable",
+      "custom_standard_four_arm_single_torso"
     ],
     "same_character_contrast": [
       "lego_giant_integrated_head_legacy",
@@ -462,24 +470,30 @@
       "canonical_name": "Si-Dan full poseable ball-joint minifigure",
       "status": "commercial_architecture_strong_product_evidence_metrology_pending",
       "scale_class": "standard_articulated",
-      "covered": false,
-      "coverage_sources": []
+      "covered": true,
+      "coverage_sources": [
+        "custom_challenge_v1"
+      ]
     },
     {
       "architecture_id": "custom_midfig_balljoint_upper",
       "canonical_name": "Custom MidFig torso with ball-jointed arms",
       "status": "commercial_architecture_product_evidence_metrology_pending",
       "scale_class": "intermediate_upper_body",
-      "covered": false,
-      "coverage_sources": []
+      "covered": true,
+      "coverage_sources": [
+        "custom_challenge_v1"
+      ]
     },
     {
       "architecture_id": "custom_standard_four_arm_single_torso",
       "canonical_name": "Custom standard-compatible single-torso four-arm architecture",
       "status": "commercial_architecture_product_evidence_metrology_pending",
       "scale_class": "standard_multiarm",
-      "covered": false,
-      "coverage_sources": []
+      "covered": true,
+      "coverage_sources": [
+        "custom_challenge_v1"
+      ]
     },
     {
       "architecture_id": "minifig_skeleton_bony",
@@ -533,54 +547,6 @@
     }
   ],
   "gaps": [
-    {
-      "architecture_id": "custom_midfig_balljoint_upper",
-      "canonical_name": "Custom MidFig torso with ball-jointed arms",
-      "status": "commercial_architecture_product_evidence_metrology_pending",
-      "scale_class": "intermediate_upper_body",
-      "covered": false,
-      "coverage_sources": [],
-      "gap_type": "custom_evaluation_gap",
-      "priority": "P1",
-      "representative_characters": [],
-      "representative_release_ids": [],
-      "representative_part_ids": [],
-      "sources": [
-        "https://titanicbricks.com/products/midfig-torso-and-arms-with-ball-joints-custom-lego-compatible"
-      ]
-    },
-    {
-      "architecture_id": "custom_sidan_full_balljoint_poseable",
-      "canonical_name": "Si-Dan full poseable ball-joint minifigure",
-      "status": "commercial_architecture_strong_product_evidence_metrology_pending",
-      "scale_class": "standard_articulated",
-      "covered": false,
-      "coverage_sources": [],
-      "gap_type": "custom_evaluation_gap",
-      "priority": "P1",
-      "representative_characters": [],
-      "representative_release_ids": [],
-      "representative_part_ids": [],
-      "sources": [
-        "https://minifigworld.com/si-dan-toys-poseable-minifig/"
-      ]
-    },
-    {
-      "architecture_id": "custom_standard_four_arm_single_torso",
-      "canonical_name": "Custom standard-compatible single-torso four-arm architecture",
-      "status": "commercial_architecture_product_evidence_metrology_pending",
-      "scale_class": "standard_multiarm",
-      "covered": false,
-      "coverage_sources": [],
-      "gap_type": "custom_evaluation_gap",
-      "priority": "P1",
-      "representative_characters": [],
-      "representative_release_ids": [],
-      "representative_part_ids": [],
-      "sources": [
-        "https://titanicbricks.com/products/4-four-arms-torso-custom-minifig"
-      ]
-    },
     {
       "architecture_id": "buildable_character_figure_unresolved",
       "canonical_name": "Brick-built / buildable character figure architecture unresolved",
