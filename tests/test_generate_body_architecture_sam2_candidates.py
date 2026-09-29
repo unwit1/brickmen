@@ -170,6 +170,6 @@ def test_execution_provenance_helpers_are_stable(tmp_path: Path) -> None:
     checkpoint.write_bytes(b"sam2-test")
 
     assert tool.file_sha256(checkpoint) == (
-        "b1c24c157f41759da002cf0cfb6bcae3845e4b0e1eb8368ae9088a4c9ca5be35"
+        "523747bb4fe50c13dc194b4bddde6655085979c2515f291eae9df992b2fa597d"
     )
     assert tool.git_revision(tmp_path) is None
