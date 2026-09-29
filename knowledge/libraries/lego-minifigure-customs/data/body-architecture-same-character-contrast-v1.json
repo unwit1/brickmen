@@ -1,0 +1,102 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-29",
+  "status": "byte_verified_pending_sanitization",
+  "id": "body-architecture-same-character-contrast-v1",
+  "purpose": "Evaluation-only paired cases where character identity stays constant while FigureArchitecture changes, testing whether architecture recognition is independent of character memorization.",
+  "policy": [
+    "Pairs are evaluation-only and never training data.",
+    "Both sides of a pair share character identity but must have different architecture targets.",
+    "Release names, codes, character labels and source IDs are audit metadata only and forbidden as model inputs.",
+    "Each side must pass the same exact-hash sanitization/model-input gate before the pair is runnable.",
+    "Do not split the two sides of a pair across training/evaluation partitions."
+  ],
+  "summary": {
+    "total_pairs": 2,
+    "total_unique_assets": 4,
+    "byte_verified_assets": 4,
+    "runnable_pairs": 0,
+    "characters": [
+      "hagrid",
+      "hulk"
+    ]
+  },
+  "pairs": [
+    {
+      "pair_id": "archcontrast::hagrid_legacy_vs_half_giant",
+      "character_id": "hagrid",
+      "evaluation_goal": "Distinguish legacy 40250 Body Giant hybrid from modern 37777 Half Giant while character identity remains Rubeus Hagrid.",
+      "left": {
+        "case_ref": null,
+        "source_record_id": "official_hagrid_hp061_legacy",
+        "architecture_id": "lego_hagrid_giant_hybrid",
+        "release_code": "hp061",
+        "source_id": "bricklink_hagrid_hp061_legacy_giant",
+        "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/hp061.png",
+        "source_file_sha256": "2e2273d5ce891f2bac45a0e0f40a0320104c0051ecb8733ce847ac4ba5119bf1",
+        "dimensions": [
+          240,
+          320
+        ],
+        "model_input_state": "pending_visual_sanitization"
+      },
+      "right": {
+        "case_ref": "archchallenge::challenge_hagrid_hp144",
+        "source_record_id": "challenge_hagrid_hp144",
+        "architecture_id": "lego_hagrid_half_giant",
+        "release_code": "hp144",
+        "source_id": "bricklink_hagrid_hp144_inventory",
+        "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/hp144.png",
+        "source_file_sha256": "7e387b1db3516036575438e6733202fd00bf53ad771aeb885b29681aa51695b3",
+        "dimensions": [
+          297,
+          400
+        ],
+        "model_input_state": "pending_visual_sanitization"
+      },
+      "pair_status": "blocked_until_both_assets_model_input_approved"
+    },
+    {
+      "pair_id": "archcontrast::hulk_integrated_vs_modular_giant",
+      "character_id": "hulk",
+      "evaluation_goal": "Distinguish early integrated-head Giant from later modular Giant while character identity remains Hulk.",
+      "left": {
+        "case_ref": null,
+        "source_record_id": "official_hulk_sh0013_integrated_head",
+        "architecture_id": "lego_giant_integrated_head_legacy",
+        "release_code": "sh0013",
+        "source_id": "bricklink_hulk_sh0013_integrated_head",
+        "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/sh0013.png",
+        "source_file_sha256": "414a6c02b42a33a8d2d957831d2a8e987ff96c1ec5c8b5b671454de90b7f31a5",
+        "dimensions": [
+          300,
+          292
+        ],
+        "model_input_state": "pending_visual_sanitization"
+      },
+      "right": {
+        "case_ref": "archrec::hulk_lego_sh0371_giant",
+        "source_record_id": "hulk_lego_sh0371_giant",
+        "architecture_id": "lego_giant_modular",
+        "release_code": "sh0371",
+        "source_id": "bricklink_hulk_sh0371_inventory",
+        "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/sh0371.png",
+        "source_file_sha256": "c6917f1193160420665ef660f4a7cc3644c2d3763fa61247ca372f385f082de4",
+        "dimensions": [
+          300,
+          400
+        ],
+        "model_input_state": "approved_raw_reference"
+      },
+      "pair_status": "blocked_until_both_assets_model_input_approved"
+    }
+  ],
+  "scoring": {
+    "primary_metrics": [
+      "pairwise_architecture_accuracy",
+      "both_sides_correct_rate",
+      "character_invariance_error"
+    ],
+    "reporting_rule": "Report pairwise metrics separately from the main challenge cohort; do not merge them into one aggregate architecture score."
+  }
+}
