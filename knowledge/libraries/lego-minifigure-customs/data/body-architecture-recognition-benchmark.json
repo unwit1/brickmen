@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "created": "2026-09-27",
-  "status": "populated_v0_reference_resolution_in_progress",
+  "status": "populated_v0_exact_image_urls_complete_verification_pending",
   "objective": "Evaluate recognition of figure architectures and architecture-conditioned character style transfer.",
   "recognition_tasks": [
     "full_figure_front_classification",
@@ -187,19 +187,24 @@
     "provisional_scoring_cases": 7,
     "split_strategy": "corpus_character_group_holdout",
     "reference_locator_coverage": "27/27",
-    "direct_or_family_reference_cases": 26,
-    "indirect_identity_graph_cases": 1,
-    "image_resolution_ready_cases": 26,
-    "image_resolution_blocked_cases": 1,
-    "materialized_asset_state": "pending"
+    "exact_image_url_coverage": "27/27",
+    "direct_or_family_reference_cases": 27,
+    "cases_with_indirect_provenance_locator": 1,
+    "indirect_only_locator_cases": 0,
+    "ready_for_media_verification_cases": 27,
+    "image_resolution_blocked_cases": 0,
+    "materialized_asset_state": "pending_metadata_verification_and_hash_binding"
   },
   "population_rules": [
     "Maker, product code, character label, record ID and source-corpus labels are audit metadata only and must not be model inputs.",
     "Core, provisional and open-set tracks are scored separately.",
     "Unresolved/umbrella architecture labels are unknown-rejection targets rather than coerced closed-set classes.",
     "Validation and test groups are evaluation-only; preserve corpus-character group boundaries when adding asset variants.",
-    "HTML catalog pages are provenance locators, not image assets; resolve exact reviewed image URLs before materialization.",
-    "Do not fabricate a direct release locator when only identity-graph evidence is verified."
+    "HTML catalog pages are provenance locators, not image assets; only exact reviewed image URLs may advance to byte verification/materialization.",
+    "Indirect identity-graph evidence may remain as provenance when a separate exact media source resolves the visual asset.",
+    "Raw reference image bytes must remain out of Git history; verification reports may store hashes, sizes, content types, final URLs and status."
   ],
-  "reference_acquisition_queue": "data/body-architecture-reference-acquisition-queue.json"
+  "reference_acquisition_queue": "data/body-architecture-reference-acquisition-queue.json",
+  "reference_media_verifier": "tools/knowledge/verify_body_architecture_reference_media.py",
+  "reference_media_verification_workflow": ".github/workflows/verify-body-architecture-reference-media.yml"
 }
