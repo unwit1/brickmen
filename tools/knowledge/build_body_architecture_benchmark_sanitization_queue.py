@@ -18,6 +18,7 @@ VERSION = "body-architecture-benchmark-sanitization-queue/v1"
 ROOT = Path(__file__).resolve().parents[2]
 DATA = ROOT / "knowledge" / "libraries" / "lego-minifigure-customs" / "data"
 DEFAULT_BENCHMARK = DATA / "body-architecture-recognition-benchmark-cases.json"
+DEFAULT_REVIEWS = DATA / "body-architecture-benchmark-sanitization-reviews.json"
 DEFAULT_OUTPUT = DATA / "body-architecture-benchmark-sanitization-queue.json"
 
 HIGH_RISK_HOSTS = {
@@ -82,8 +83,18 @@ def source_risk(locator: dict[str, Any]) -> tuple[str, list[str]]:
 
 def build(
     benchmark_path: Path = DEFAULT_BENCHMARK,
+    reviews_path: Path = DEFAULT_REVIEWS,
 ) -> dict[str, Any]:
     benchmark = json.loads(benchmark_path.read_text(encoding="utf-8"))
+    reviews_doc = (
+        json.loads(reviews_path.read_text(encoding="utf-8"))
+        if reviews_path.exists()
+        else {"reviews": [], "reviewer": None}
+    )
+    reviews_by_record = {
+        row["source_record_id"]: row
+        for row in reviews_doc.get("reviews", [])
+    }
     queue: list[dict[str, Any]] = []
 
     for case in benchmark.get("cases", []):
@@ -104,6 +115,76 @@ def build(
                 "mask_auxiliary_insets",
             ]
         )
+        stored_review = reviews_by_record.get(case["source_record_id"])
+        review_stale = bool(
+            stored_review
+            and stored_review.get("source_file_sha256")
+            != locator.get("source_file_sha256")
+        )
+        if stored_review and not review_stale:
+            stored_status = stored_review.get("status")
+            if stored_status == "approved_raw":
+                status = "approved_raw_model_input"
+                raw_allowed = True
+                sanitized_status = "approved"
+                sanitized_hash = locator.get("source_file_sha256")
+            elif stored_status == "sanitization_required":
+                status = "sanitization_required"
+                raw_allowed = False
+                sanitized_status = "pending"
+                sanitized_hash = None
+            else:
+                status = "blocked_pending_visual_sanitization_review"
+                raw_allowed = False
+                sanitized_status = "pending"
+                sanitized_hash = None
+        elif review_stale:
+            status = "review_stale_source_hash_changed"
+            raw_allowed = False
+            sanitized_status = "stale"
+            sanitized_hash = None
+        else:
+            status = "blocked_pending_visual_sanitization_review"
+            raw_allowed = False
+            sanitized_status = "pending"
+            sanitized_hash = None
+
+        review_payload = {
+            "identity_match": None,
+            "primary_view": None,
+            "primary_figure_complete": None,
+            "visible_text_leakage": [],
+            "visual_confounders": [],
+            "sanitization_action": None,
+            "sanitized_asset_sha256": sanitized_hash,
+            "sanitized_asset_status": sanitized_status,
+            "reviewer_id": None,
+            "reviewer_type": None,
+            "review_confidence": None,
+            "notes": [],
+            "review_source_sha256": (
+                stored_review.get("source_file_sha256")
+                if stored_review
+                else None
+            ),
+            "review_stale": review_stale,
+        }
+        if stored_review and not review_stale:
+            for key in (
+                "identity_match",
+                "primary_view",
+                "primary_figure_complete",
+                "visible_text_leakage",
+                "visual_confounders",
+                "sanitization_action",
+                "review_confidence",
+                "notes",
+            ):
+                review_payload[key] = stored_review.get(key)
+            reviewer = reviews_doc.get("reviewer") or {}
+            review_payload["reviewer_id"] = reviewer.get("reviewer_id")
+            review_payload["reviewer_type"] = reviewer.get("reviewer_type")
+
         queue.append(
             {
                 "case_id": case["case_id"],
@@ -123,8 +204,8 @@ def build(
                 },
                 "source_risk": risk,
                 "risk_reasons": reasons,
-                "status": "blocked_pending_visual_sanitization_review",
-                "raw_model_input_allowed": False,
+                "status": status,
+                "raw_model_input_allowed": raw_allowed,
                 "required_checks": [
                     "identity_matches_source_record",
                     "primary_view_classified",
@@ -136,20 +217,7 @@ def build(
                     "task_confounding_secondary_panels_absent_or_removed",
                 ],
                 "recommended_actions": recommended,
-                "review": {
-                    "identity_match": None,
-                    "primary_view": None,
-                    "primary_figure_complete": None,
-                    "visible_text_leakage": [],
-                    "visual_confounders": [],
-                    "sanitization_action": None,
-                    "sanitized_asset_sha256": None,
-                    "sanitized_asset_status": "pending",
-                    "reviewer_id": None,
-                    "reviewer_type": None,
-                    "review_confidence": None,
-                    "notes": [],
-                },
+                "review": review_payload,
                 "policy": (
                     "Byte verification proves file identity, not benchmark suitability. "
                     "Raw media remains blocked from model input until visual sanitization "
@@ -160,23 +228,24 @@ def build(
         )
 
     counts = Counter(row["source_risk"] for row in queue)
+    status_counts = Counter(row["status"] for row in queue)
     return {
         "schema_version": "0.1",
         "created": "2026-09-28",
-        "status": "visual_sanitization_review_required",
+        "status": "visual_sanitization_in_progress",
         "processor_version": VERSION,
         "benchmark_manifest": benchmark_path.relative_to(ROOT).as_posix(),
         "policy": "data/body-architecture-benchmark-input-sanitization-policy.json",
+        "reviews": reviews_path.relative_to(ROOT).as_posix(),
         "summary": {
             "total_cases": len(queue),
             "raw_model_input_allowed_cases": sum(
                 row["raw_model_input_allowed"] for row in queue
             ),
-            "blocked_pending_visual_sanitization_review": sum(
-                row["status"]
-                == "blocked_pending_visual_sanitization_review"
-                for row in queue
+            "blocked_model_input_cases": sum(
+                not row["raw_model_input_allowed"] for row in queue
             ),
+            "status_counts": dict(status_counts),
             "risk_counts": dict(counts),
         },
         "queue": queue,
@@ -186,10 +255,11 @@ def build(
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--benchmark", type=Path, default=DEFAULT_BENCHMARK)
+    parser.add_argument("--reviews", type=Path, default=DEFAULT_REVIEWS)
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     args = parser.parse_args()
 
-    result = build(args.benchmark)
+    result = build(args.benchmark, args.reviews)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(
         json.dumps(result, indent=2, ensure_ascii=False) + "\n",
