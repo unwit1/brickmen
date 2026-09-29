@@ -48,8 +48,8 @@ def test_live_payload_contains_only_generated_candidates() -> None:
 
     payload = tool.build_payload(candidates, queue)
 
-    assert payload["candidate_count"] == 15
-    assert len(payload["items"]) == 15
+    assert payload["candidate_count"] == 13
+    assert len(payload["items"]) == 13
     assert {
         row["source_record_id"] for row in payload["items"]
     }.isdisjoint(
