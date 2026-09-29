@@ -70,12 +70,18 @@ def test_every_expansion_source_ref_resolves() -> None:
 def test_staged_cases_are_not_model_input_or_canonical_score_cases() -> None:
     expansion = load(EXPANSION)
 
-    assert expansion["status"] == "staged_media_verification_pending"
+    assert expansion["status"] == "verification_complete_partitioned_for_promotion"
+    states = {
+        case["promotion_state"]
+        for case in expansion["cases"]
+    }
+    assert states == {
+        "promoted_to_character_disjoint_challenge",
+        "reserved_same_character_contrast",
+    }
     for case in expansion["cases"]:
         assert case["split"] == "expansion_holdout"
-        assert case["promotion_state"] == (
-            "blocked_pending_media_verification_and_sanitization"
-        )
+        assert case["input_asset"]["status"] == "byte_verified_pending_sanitization"
         guard = case["leakage_guard"]
         assert guard["allow_release_maker_as_model_input"] is False
         assert guard["allow_release_code_as_model_input"] is False
@@ -119,3 +125,7 @@ def test_summary_matches_cases() -> None:
         row["scoring_track"] == "provisional"
         for row in cases
     )
+    assert summary["byte_verified_cases"] == 10
+    assert summary["unique_verified_hashes"] == 10
+    assert summary["promoted_to_character_disjoint_challenge"] == 8
+    assert summary["reserved_same_character_contrast"] == 2
