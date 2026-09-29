@@ -1,0 +1,502 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-29",
+  "status": "visual_sanitization_pending",
+  "processor_version": "body-architecture-benchmark-sanitization-queue/v1",
+  "benchmark_manifest": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-recognition-challenge-cases-v1.json",
+  "policy": "data/body-architecture-benchmark-input-sanitization-policy.json",
+  "reviews": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-recognition-challenge-sanitization-reviews-v1.json",
+  "summary": {
+    "total_cases": 8,
+    "raw_model_input_allowed_cases": 0,
+    "blocked_model_input_cases": 8,
+    "status_counts": {
+      "blocked_pending_visual_sanitization_review": 8
+    },
+    "risk_counts": {
+      "medium_review_required": 8
+    }
+  },
+  "queue": [
+    {
+      "case_id": "archchallenge::challenge_axl_nex007",
+      "source_record_id": "challenge_axl_nex007",
+      "split": "challenge_test",
+      "scoring_track": "core",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "lego_axl_oversized_torso_hybrid",
+        "unresolved_candidate": null
+      },
+      "source": {
+        "source_id": "bricklink_axl_nex007_inventory",
+        "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/nex007.png",
+        "source_file_sha256": "9bc5ec3b785089cb008e0121e35661058c311fe52d4afcede7b2ff9e7aea9bc7",
+        "source_size_bytes": 106865,
+        "source_width": 240,
+        "source_height": 281,
+        "source_content_type": "image/png",
+        "source_image_format": "png"
+      },
+      "source_risk": "medium_review_required",
+      "risk_reasons": [
+        "catalog_image_may_include_insets_or_auxiliary_panels"
+      ],
+      "status": "blocked_pending_visual_sanitization_review",
+      "raw_model_input_allowed": false,
+      "required_checks": [
+        "identity_matches_source_record",
+        "primary_view_classified",
+        "primary_figure_complete",
+        "release_or_sku_text_absent_or_removed",
+        "character_name_text_absent_or_removed",
+        "maker_or_brand_logo_absent_or_removed",
+        "architecture_or_market_label_absent_or_removed",
+        "task_confounding_secondary_panels_absent_or_removed"
+      ],
+      "recommended_actions": [
+        "approve_raw_only_if_visually_clean",
+        "tight_figure_crop",
+        "mask_auxiliary_insets"
+      ],
+      "review": {
+        "identity_match": null,
+        "primary_view": null,
+        "primary_figure_complete": null,
+        "visible_text_leakage": [],
+        "visual_confounders": [],
+        "sanitization_action": null,
+        "sanitized_asset_sha256": null,
+        "sanitized_asset_status": "pending",
+        "reviewer_id": null,
+        "reviewer_type": null,
+        "review_confidence": null,
+        "notes": [],
+        "review_source_sha256": null,
+        "review_stale": false
+      },
+      "policy": "Byte verification proves file identity, not benchmark suitability. Challenge media remains blocked from model input until visual sanitization is explicitly approved.",
+      "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
+    },
+    {
+      "case_id": "archchallenge::challenge_hagrid_hp144",
+      "source_record_id": "challenge_hagrid_hp144",
+      "split": "challenge_test",
+      "scoring_track": "core",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "lego_hagrid_half_giant",
+        "unresolved_candidate": null
+      },
+      "source": {
+        "source_id": "bricklink_hagrid_hp144_inventory",
+        "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/hp144.png",
+        "source_file_sha256": "7e387b1db3516036575438e6733202fd00bf53ad771aeb885b29681aa51695b3",
+        "source_size_bytes": 151898,
+        "source_width": 297,
+        "source_height": 400,
+        "source_content_type": "image/png",
+        "source_image_format": "png"
+      },
+      "source_risk": "medium_review_required",
+      "risk_reasons": [
+        "catalog_image_may_include_insets_or_auxiliary_panels"
+      ],
+      "status": "blocked_pending_visual_sanitization_review",
+      "raw_model_input_allowed": false,
+      "required_checks": [
+        "identity_matches_source_record",
+        "primary_view_classified",
+        "primary_figure_complete",
+        "release_or_sku_text_absent_or_removed",
+        "character_name_text_absent_or_removed",
+        "maker_or_brand_logo_absent_or_removed",
+        "architecture_or_market_label_absent_or_removed",
+        "task_confounding_secondary_panels_absent_or_removed"
+      ],
+      "recommended_actions": [
+        "approve_raw_only_if_visually_clean",
+        "tight_figure_crop",
+        "mask_auxiliary_insets"
+      ],
+      "review": {
+        "identity_match": null,
+        "primary_view": null,
+        "primary_figure_complete": null,
+        "visible_text_leakage": [],
+        "visual_confounders": [],
+        "sanitization_action": null,
+        "sanitized_asset_sha256": null,
+        "sanitized_asset_status": "pending",
+        "reviewer_id": null,
+        "reviewer_type": null,
+        "review_confidence": null,
+        "notes": [],
+        "review_source_sha256": null,
+        "review_stale": false
+      },
+      "policy": "Byte verification proves file identity, not benchmark suitability. Challenge media remains blocked from model input until visual sanitization is explicitly approved.",
+      "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
+    },
+    {
+      "case_id": "archchallenge::challenge_killer_croc_sh0321",
+      "source_record_id": "challenge_killer_croc_sh0321",
+      "split": "challenge_test",
+      "scoring_track": "core",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "lego_giant_killer_croc_specialized",
+        "unresolved_candidate": null
+      },
+      "source": {
+        "source_id": "bricklink_killer_croc_sh0321_specialized_giant",
+        "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/sh0321.png",
+        "source_file_sha256": "256e0dd6dad22b8a8301d2ea1c88a765d80d34ab75e7cdc2deb8a7dd56bbcf6c",
+        "source_size_bytes": 159937,
+        "source_width": 300,
+        "source_height": 299,
+        "source_content_type": "image/png",
+        "source_image_format": "png"
+      },
+      "source_risk": "medium_review_required",
+      "risk_reasons": [
+        "catalog_image_may_include_insets_or_auxiliary_panels"
+      ],
+      "status": "blocked_pending_visual_sanitization_review",
+      "raw_model_input_allowed": false,
+      "required_checks": [
+        "identity_matches_source_record",
+        "primary_view_classified",
+        "primary_figure_complete",
+        "release_or_sku_text_absent_or_removed",
+        "character_name_text_absent_or_removed",
+        "maker_or_brand_logo_absent_or_removed",
+        "architecture_or_market_label_absent_or_removed",
+        "task_confounding_secondary_panels_absent_or_removed"
+      ],
+      "recommended_actions": [
+        "approve_raw_only_if_visually_clean",
+        "tight_figure_crop",
+        "mask_auxiliary_insets"
+      ],
+      "review": {
+        "identity_match": null,
+        "primary_view": null,
+        "primary_figure_complete": null,
+        "visible_text_leakage": [],
+        "visual_confounders": [],
+        "sanitization_action": null,
+        "sanitized_asset_sha256": null,
+        "sanitized_asset_status": "pending",
+        "reviewer_id": null,
+        "reviewer_type": null,
+        "review_confidence": null,
+        "notes": [],
+        "review_source_sha256": null,
+        "review_stale": false
+      },
+      "policy": "Byte verification proves file identity, not benchmark suitability. Challenge media remains blocked from model input until visual sanitization is explicitly approved.",
+      "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
+    },
+    {
+      "case_id": "archchallenge::challenge_garmadon_njo0078",
+      "source_record_id": "challenge_garmadon_njo0078",
+      "split": "challenge_test",
+      "scoring_track": "core",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "minifig_stacked_torso_multiarm",
+        "unresolved_candidate": null
+      },
+      "source": {
+        "source_id": "bricklink_garmadon_final_battle",
+        "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/njo0078.png",
+        "source_file_sha256": "62bfcdbc7eb83b62b8b34e9a47521d06e5ad231ae7fe0e3688a2d9559d8d54a5",
+        "source_size_bytes": 73065,
+        "source_width": 240,
+        "source_height": 320,
+        "source_content_type": "image/png",
+        "source_image_format": "png"
+      },
+      "source_risk": "medium_review_required",
+      "risk_reasons": [
+        "catalog_image_may_include_insets_or_auxiliary_panels"
+      ],
+      "status": "blocked_pending_visual_sanitization_review",
+      "raw_model_input_allowed": false,
+      "required_checks": [
+        "identity_matches_source_record",
+        "primary_view_classified",
+        "primary_figure_complete",
+        "release_or_sku_text_absent_or_removed",
+        "character_name_text_absent_or_removed",
+        "maker_or_brand_logo_absent_or_removed",
+        "architecture_or_market_label_absent_or_removed",
+        "task_confounding_secondary_panels_absent_or_removed"
+      ],
+      "recommended_actions": [
+        "approve_raw_only_if_visually_clean",
+        "tight_figure_crop",
+        "mask_auxiliary_insets"
+      ],
+      "review": {
+        "identity_match": null,
+        "primary_view": null,
+        "primary_figure_complete": null,
+        "visible_text_leakage": [],
+        "visual_confounders": [],
+        "sanitization_action": null,
+        "sanitized_asset_sha256": null,
+        "sanitized_asset_status": "pending",
+        "reviewer_id": null,
+        "reviewer_type": null,
+        "review_confidence": null,
+        "notes": [],
+        "review_source_sha256": null,
+        "review_stale": false
+      },
+      "policy": "Byte verification proves file identity, not benchmark suitability. Challenge media remains blocked from model input until visual sanitization is explicitly approved.",
+      "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
+    },
+    {
+      "case_id": "archchallenge::challenge_grievous_sw0254",
+      "source_record_id": "challenge_grievous_sw0254",
+      "split": "challenge_test",
+      "scoring_track": "core",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "minifig_mechanical_droid_specialized",
+        "unresolved_candidate": null
+      },
+      "source": {
+        "source_id": "bricklink_grievous_sw0254_inventory",
+        "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/sw0254.png",
+        "source_file_sha256": "a80a899836ce6791b194c69329e4108a1229c824b5ea0ff2386082cb97cd39d4",
+        "source_size_bytes": 55082,
+        "source_width": 240,
+        "source_height": 214,
+        "source_content_type": "image/png",
+        "source_image_format": "png"
+      },
+      "source_risk": "medium_review_required",
+      "risk_reasons": [
+        "catalog_image_may_include_insets_or_auxiliary_panels"
+      ],
+      "status": "blocked_pending_visual_sanitization_review",
+      "raw_model_input_allowed": false,
+      "required_checks": [
+        "identity_matches_source_record",
+        "primary_view_classified",
+        "primary_figure_complete",
+        "release_or_sku_text_absent_or_removed",
+        "character_name_text_absent_or_removed",
+        "maker_or_brand_logo_absent_or_removed",
+        "architecture_or_market_label_absent_or_removed",
+        "task_confounding_secondary_panels_absent_or_removed"
+      ],
+      "recommended_actions": [
+        "approve_raw_only_if_visually_clean",
+        "tight_figure_crop",
+        "mask_auxiliary_insets"
+      ],
+      "review": {
+        "identity_match": null,
+        "primary_view": null,
+        "primary_figure_complete": null,
+        "visible_text_leakage": [],
+        "visual_confounders": [],
+        "sanitization_action": null,
+        "sanitized_asset_sha256": null,
+        "sanitized_asset_status": "pending",
+        "reviewer_id": null,
+        "reviewer_type": null,
+        "review_confidence": null,
+        "notes": [],
+        "review_source_sha256": null,
+        "review_stale": false
+      },
+      "policy": "Byte verification proves file identity, not benchmark suitability. Challenge media remains blocked from model input until visual sanitization is explicitly approved.",
+      "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
+    },
+    {
+      "case_id": "archchallenge::challenge_ghost_njo0174",
+      "source_record_id": "challenge_ghost_njo0174",
+      "split": "challenge_test",
+      "scoring_track": "core",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "minifig_lowerbody_ghost",
+        "unresolved_candidate": null
+      },
+      "source": {
+        "source_id": "bricklink_ghost_njo0174_inventory",
+        "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/njo0174.png",
+        "source_file_sha256": "9a4787d98c741adf58becc959a8121bf650a620f5039ac3e44f96195b417ed6f",
+        "source_size_bytes": 89988,
+        "source_width": 240,
+        "source_height": 320,
+        "source_content_type": "image/png",
+        "source_image_format": "png"
+      },
+      "source_risk": "medium_review_required",
+      "risk_reasons": [
+        "catalog_image_may_include_insets_or_auxiliary_panels"
+      ],
+      "status": "blocked_pending_visual_sanitization_review",
+      "raw_model_input_allowed": false,
+      "required_checks": [
+        "identity_matches_source_record",
+        "primary_view_classified",
+        "primary_figure_complete",
+        "release_or_sku_text_absent_or_removed",
+        "character_name_text_absent_or_removed",
+        "maker_or_brand_logo_absent_or_removed",
+        "architecture_or_market_label_absent_or_removed",
+        "task_confounding_secondary_panels_absent_or_removed"
+      ],
+      "recommended_actions": [
+        "approve_raw_only_if_visually_clean",
+        "tight_figure_crop",
+        "mask_auxiliary_insets"
+      ],
+      "review": {
+        "identity_match": null,
+        "primary_view": null,
+        "primary_figure_complete": null,
+        "visible_text_leakage": [],
+        "visual_confounders": [],
+        "sanitization_action": null,
+        "sanitized_asset_sha256": null,
+        "sanitized_asset_status": "pending",
+        "reviewer_id": null,
+        "reviewer_type": null,
+        "review_confidence": null,
+        "notes": [],
+        "review_source_sha256": null,
+        "review_stale": false
+      },
+      "policy": "Byte verification proves file identity, not benchmark suitability. Challenge media remains blocked from model input until visual sanitization is explicitly approved.",
+      "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
+    },
+    {
+      "case_id": "archchallenge::challenge_squid_atl007",
+      "source_record_id": "challenge_squid_atl007",
+      "split": "challenge_test",
+      "scoring_track": "core",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "minifig_lowerbody_tentacle",
+        "unresolved_candidate": null
+      },
+      "source": {
+        "source_id": "bricklink_tentacle_atl007_inventory",
+        "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/atl007.png",
+        "source_file_sha256": "f8a38a07a8d80c4447916d8b444ffebb1b3db9e19a210eb5039b38b38d5aac87",
+        "source_size_bytes": 104060,
+        "source_width": 300,
+        "source_height": 338,
+        "source_content_type": "image/png",
+        "source_image_format": "png"
+      },
+      "source_risk": "medium_review_required",
+      "risk_reasons": [
+        "catalog_image_may_include_insets_or_auxiliary_panels"
+      ],
+      "status": "blocked_pending_visual_sanitization_review",
+      "raw_model_input_allowed": false,
+      "required_checks": [
+        "identity_matches_source_record",
+        "primary_view_classified",
+        "primary_figure_complete",
+        "release_or_sku_text_absent_or_removed",
+        "character_name_text_absent_or_removed",
+        "maker_or_brand_logo_absent_or_removed",
+        "architecture_or_market_label_absent_or_removed",
+        "task_confounding_secondary_panels_absent_or_removed"
+      ],
+      "recommended_actions": [
+        "approve_raw_only_if_visually_clean",
+        "tight_figure_crop",
+        "mask_auxiliary_insets"
+      ],
+      "review": {
+        "identity_match": null,
+        "primary_view": null,
+        "primary_figure_complete": null,
+        "visible_text_leakage": [],
+        "visual_confounders": [],
+        "sanitization_action": null,
+        "sanitized_asset_sha256": null,
+        "sanitized_asset_status": "pending",
+        "reviewer_id": null,
+        "reviewer_type": null,
+        "review_confidence": null,
+        "notes": [],
+        "review_source_sha256": null,
+        "review_stale": false
+      },
+      "policy": "Byte verification proves file identity, not benchmark suitability. Challenge media remains blocked from model input until visual sanitization is explicitly approved.",
+      "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
+    },
+    {
+      "case_id": "archchallenge::challenge_centaur_col379",
+      "source_record_id": "challenge_centaur_col379",
+      "split": "challenge_test",
+      "scoring_track": "core",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "minifig_centaur_hybrid",
+        "unresolved_candidate": null
+      },
+      "source": {
+        "source_id": "bricklink_centaur_col379_inventory",
+        "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/col379.png",
+        "source_file_sha256": "9c6ab60d4b94f6f8544625eac122865b248bd05661cf94a93fd7e7e0085f73c5",
+        "source_size_bytes": 185658,
+        "source_width": 300,
+        "source_height": 400,
+        "source_content_type": "image/png",
+        "source_image_format": "png"
+      },
+      "source_risk": "medium_review_required",
+      "risk_reasons": [
+        "catalog_image_may_include_insets_or_auxiliary_panels"
+      ],
+      "status": "blocked_pending_visual_sanitization_review",
+      "raw_model_input_allowed": false,
+      "required_checks": [
+        "identity_matches_source_record",
+        "primary_view_classified",
+        "primary_figure_complete",
+        "release_or_sku_text_absent_or_removed",
+        "character_name_text_absent_or_removed",
+        "maker_or_brand_logo_absent_or_removed",
+        "architecture_or_market_label_absent_or_removed",
+        "task_confounding_secondary_panels_absent_or_removed"
+      ],
+      "recommended_actions": [
+        "approve_raw_only_if_visually_clean",
+        "tight_figure_crop",
+        "mask_auxiliary_insets"
+      ],
+      "review": {
+        "identity_match": null,
+        "primary_view": null,
+        "primary_figure_complete": null,
+        "visible_text_leakage": [],
+        "visual_confounders": [],
+        "sanitization_action": null,
+        "sanitized_asset_sha256": null,
+        "sanitized_asset_status": "pending",
+        "reviewer_id": null,
+        "reviewer_type": null,
+        "review_confidence": null,
+        "notes": [],
+        "review_source_sha256": null,
+        "review_stale": false
+      },
+      "policy": "Byte verification proves file identity, not benchmark suitability. Challenge media remains blocked from model input until visual sanitization is explicitly approved.",
+      "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
+    }
+  ]
+}
