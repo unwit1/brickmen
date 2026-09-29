@@ -273,6 +273,292 @@
       "notes": [
         "Crop to the main figure; remove XINH branding, 1421 code, and Thing label."
       ]
+    },
+    {
+      "source_record_id": "hulk_alpha_af344_avengers",
+      "source_id": "kongbricks_alpha_hulk_af344_media",
+      "source_file_sha256": "d6124764a8990bab6ec44015115cf1b8cd7ab5101da04f4da025d028139c11a1",
+      "status": "sanitization_required",
+      "identity_match": true,
+      "primary_view": "front",
+      "primary_figure_complete": true,
+      "visible_text_leakage": [
+        "release_or_sku_code",
+        "character_name_or_alias_text"
+      ],
+      "visual_confounders": [
+        "head_inset",
+        "rear_view_panel",
+        "scale_comparison_figure"
+      ],
+      "sanitization_action": "tight_figure_crop",
+      "raw_model_input_allowed": false,
+      "review_confidence": 0.99,
+      "notes": [
+        "Product card exposes AF344/Hulk labels plus head, rear-view, and scale-comparison insets. Isolate the central front figure before evaluation."
+      ]
+    },
+    {
+      "source_record_id": "hulk_alpha_af345_comics",
+      "source_id": "kongbricks_alpha_hulk_af345_media",
+      "source_file_sha256": "d508590a6e1c917293d0a28967e56bace04982fa2ea9372615f424eed6a5daf6",
+      "status": "sanitization_required",
+      "identity_match": true,
+      "primary_view": "front",
+      "primary_figure_complete": true,
+      "visible_text_leakage": [
+        "release_or_sku_code",
+        "character_name_or_alias_text"
+      ],
+      "visual_confounders": [
+        "head_inset",
+        "rear_view_panel",
+        "scale_comparison_figure"
+      ],
+      "sanitization_action": "tight_figure_crop",
+      "raw_model_input_allowed": false,
+      "review_confidence": 0.99,
+      "notes": [
+        "Product card exposes AF345/Comic Hulk labels plus auxiliary head, rear-view, and scale-comparison panels. Isolate the front figure."
+      ]
+    },
+    {
+      "source_record_id": "red_hulk_g2_gh0303_bnw",
+      "source_id": "kongbricks_g2_red_hulk_gh0303_media",
+      "source_file_sha256": "45e630a24f36dfa917b426a91a6c500505a684ced9c55cbadf0ee762c0a04959",
+      "status": "sanitization_required",
+      "identity_match": true,
+      "primary_view": "front",
+      "primary_figure_complete": true,
+      "visible_text_leakage": [
+        "release_or_sku_code",
+        "character_name_or_alias_text"
+      ],
+      "visual_confounders": [],
+      "sanitization_action": "tight_figure_crop",
+      "raw_model_input_allowed": false,
+      "review_confidence": 0.99,
+      "notes": [
+        "Clean central figure, but GH0303 and Red Hulk labels are visible above/below it. Tight crop can retain the complete figure while removing text."
+      ]
+    },
+    {
+      "source_record_id": "red_hulk_bigguy_bnw",
+      "source_id": "bigguy_red_hulk_bnw",
+      "source_file_sha256": "6f6ca18d72f6c6dbee36d97c7db8eb21ab68854c400b37e999bd4f8e65f4a940",
+      "status": "sanitization_required",
+      "identity_match": true,
+      "primary_view": "multi_view_composite",
+      "primary_figure_complete": true,
+      "visible_text_leakage": [
+        "maker_or_brand_logo",
+        "character_name_or_alias_text"
+      ],
+      "visual_confounders": [
+        "multi_panel_product_composite",
+        "rear_view_panel"
+      ],
+      "sanitization_action": "tight_figure_crop",
+      "raw_model_input_allowed": false,
+      "review_confidence": 0.99,
+      "notes": [
+        "Front and rear figures share one product card with BIGGUY branding and Red Hulk text. Crop to the standalone front figure."
+      ]
+    },
+    {
+      "source_record_id": "venom_alpha_af321_movie",
+      "source_id": "alpha_venom_af321",
+      "source_file_sha256": "95dc7af0c08f27f15ef5bd29398819938e561f85be4b65987ad0c232dd174702",
+      "status": "sanitization_required",
+      "identity_match": true,
+      "primary_view": "front",
+      "primary_figure_complete": true,
+      "visible_text_leakage": [
+        "release_or_sku_code",
+        "character_name_or_alias_text"
+      ],
+      "visual_confounders": [],
+      "sanitization_action": "tight_figure_crop",
+      "raw_model_input_allowed": false,
+      "review_confidence": 0.99,
+      "notes": [
+        "Primary figure is isolated, but VENOM and AF321 text appears directly beneath it. Crop to figure-only content."
+      ]
+    },
+    {
+      "source_record_id": "venom_alpha_af325",
+      "source_id": "kongbricks_alpha_venom_af325_media",
+      "source_file_sha256": "cc9daee1b700ea8591a0f03d86be137215424e33f4447262e226dbb8fe1f0726",
+      "status": "sanitization_required",
+      "identity_match": true,
+      "primary_view": "multi_view_composite",
+      "primary_figure_complete": true,
+      "visible_text_leakage": [
+        "release_or_sku_code"
+      ],
+      "visual_confounders": [
+        "multi_panel_product_composite",
+        "head_inset",
+        "rear_view_panel",
+        "accessory_layout_around_primary_figure"
+      ],
+      "sanitization_action": "segment_primary_figure",
+      "raw_model_input_allowed": false,
+      "review_confidence": 0.99,
+      "notes": [
+        "Composite includes AF325 text, accessory/head inset, alternate posed panel, and rear view. Segment the primary front figure instead of exposing the full card."
+      ]
+    },
+    {
+      "source_record_id": "thing_alpha_af336_first_steps",
+      "source_id": "kongbricks_alpha_thing_af336_media",
+      "source_file_sha256": "eabe84c927e3bcc3dbf64e53f39587cc6f90f32c2b7fb69bb38ec2332fc6829c",
+      "status": "sanitization_required",
+      "identity_match": true,
+      "primary_view": "front",
+      "primary_figure_complete": true,
+      "visible_text_leakage": [
+        "release_or_sku_code",
+        "character_name_or_alias_text"
+      ],
+      "visual_confounders": [
+        "alternate_expression_inset"
+      ],
+      "sanitization_action": "tight_figure_crop",
+      "raw_model_input_allowed": false,
+      "review_confidence": 0.99,
+      "notes": [
+        "AF336/Thing text and an alternate-expression inset create shortcut cues. Isolate the main front figure."
+      ]
+    },
+    {
+      "source_record_id": "thing_kdl_k2302_first_steps",
+      "source_id": "kongbricks_kdl_thing_k2302_media",
+      "source_file_sha256": "48a859c38557b9b69784b4d85c2061549348ac4ac233aeb307e90a0056fe4b3a",
+      "status": "sanitization_required",
+      "identity_match": true,
+      "primary_view": "front",
+      "primary_figure_complete": true,
+      "visible_text_leakage": [
+        "maker_or_brand_logo",
+        "release_or_sku_code",
+        "character_name_or_alias_text",
+        "scale_or_dimension_annotation"
+      ],
+      "visual_confounders": [
+        "alternate_expression_inset",
+        "scale_comparison_figure"
+      ],
+      "sanitization_action": "tight_figure_crop",
+      "raw_model_input_allowed": false,
+      "review_confidence": 0.99,
+      "notes": [
+        "KDL/K2302/Thing labels, a scale silhouette, and a secondary expression/variant panel surround the central figure. Tight crop should preserve the front figure."
+      ]
+    },
+    {
+      "source_record_id": "thing_tp_tp178_first_steps",
+      "source_id": "kongbricks_tp_thing_tp178_media",
+      "source_file_sha256": "ecb15f0faa3f46422c85e83096e5d63c864a553a97dbb77682406bad921661cc",
+      "status": "sanitization_required",
+      "identity_match": true,
+      "primary_view": "front",
+      "primary_figure_complete": true,
+      "visible_text_leakage": [
+        "catalog_caption_or_product_title"
+      ],
+      "visual_confounders": [],
+      "sanitization_action": "tight_figure_crop",
+      "raw_model_input_allowed": false,
+      "review_confidence": 0.98,
+      "notes": [
+        "The front figure is otherwise isolated, but a Fantastic Four title banner is visible at the top. Crop below the title while retaining the complete figure."
+      ]
+    },
+    {
+      "source_record_id": "thing_tp_tp349_first_steps_bigfig",
+      "source_id": "kongbricks_tp_thing_tp349_media",
+      "source_file_sha256": "c35537f56d3d21e81225091f5329053e02f628dc0269a0d491011a85c5d83e6d",
+      "status": "sanitization_required",
+      "identity_match": true,
+      "primary_view": "multi_view_composite",
+      "primary_figure_complete": true,
+      "visible_text_leakage": [
+        "release_or_sku_code",
+        "character_name_or_alias_text"
+      ],
+      "visual_confounders": [
+        "secondary_figure",
+        "multi_panel_product_composite",
+        "back_or_side_inset_when_task_is_front_only"
+      ],
+      "sanitization_action": "segment_primary_figure",
+      "raw_model_input_allowed": false,
+      "review_confidence": 0.99,
+      "notes": [
+        "Card contains TP348 and TP349 figures, code/name text, and auxiliary body/rear panels. Segment the TP349 primary front figure."
+      ]
+    },
+    {
+      "source_record_id": "thing_g2_gh0348",
+      "source_id": "kongbricks_g2_thing_gh0348_media",
+      "source_file_sha256": "f215a5bd0f33b16b0748ddc3c2b3b0fb85e216dfb1c8d1cd911e556bd3c04da2",
+      "status": "sanitization_required",
+      "identity_match": true,
+      "primary_view": "front",
+      "primary_figure_complete": true,
+      "visible_text_leakage": [
+        "release_or_sku_code",
+        "character_name_or_alias_text"
+      ],
+      "visual_confounders": [],
+      "sanitization_action": "tight_figure_crop",
+      "raw_model_input_allowed": false,
+      "review_confidence": 0.99,
+      "notes": [
+        "GH0348 and Thing labels surround an otherwise isolated front figure. Tight crop can remove text while preserving architecture."
+      ]
+    },
+    {
+      "source_record_id": "thing_g2_gh0440_bigfig",
+      "source_id": "kongbricks_g2_thing_gh0440_media",
+      "source_file_sha256": "f355c2a1c1ee98e0ae7face8be411a1f1f76ed3ffa2c89b9073fcbe799f22fd8",
+      "status": "sanitization_required",
+      "identity_match": true,
+      "primary_view": "front",
+      "primary_figure_complete": true,
+      "visible_text_leakage": [
+        "release_or_sku_code",
+        "character_name_or_alias_text"
+      ],
+      "visual_confounders": [],
+      "sanitization_action": "tight_figure_crop",
+      "raw_model_input_allowed": false,
+      "review_confidence": 0.99,
+      "notes": [
+        "GH0440 and Thing labels are visible above/below an isolated front figure. Tight crop can retain the complete figure."
+      ]
+    },
+    {
+      "source_record_id": "thing_shengyuan_sy288_bigfig",
+      "source_id": "shengyuan_thing_sy288_bigfig",
+      "source_file_sha256": "e0de4be480091468e1edd92dca97dc465a2fe062cda2917262977164131b9970",
+      "status": "sanitization_required",
+      "identity_match": true,
+      "primary_view": "front",
+      "primary_figure_complete": true,
+      "visible_text_leakage": [
+        "maker_or_brand_logo"
+      ],
+      "visual_confounders": [
+        "secondary_figure"
+      ],
+      "sanitization_action": "tight_figure_crop",
+      "raw_model_input_allowed": false,
+      "review_confidence": 0.97,
+      "notes": [
+        "Primary figure is front-facing, but the branded display base and a partial secondary figure at the right edge are task-confounding. Crop to figure-only content."
+      ]
     }
   ]
 }
