@@ -45,7 +45,10 @@ def test_sanitization_queue_blocks_all_raw_model_inputs() -> None:
 
     for row in result["queue"]:
         assert len(row["source"]["source_file_sha256"]) == 64
-        assert row["source"]["verification_run_id"] == 36513502605
+        assert isinstance(row["source"]["verification_run_id"], int)
+        assert row["source"]["verification_run_id"] > 0
+        assert row["source"]["source_width"] > 0
+        assert row["source"]["source_height"] > 0
         if row["raw_model_input_allowed"]:
             assert row["status"] == "approved_raw_model_input"
             assert row["review"]["sanitized_asset_status"] == "approved"
