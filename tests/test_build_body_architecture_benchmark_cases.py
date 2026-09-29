@@ -102,3 +102,18 @@ def test_target_classification_tracks_evidence_strength() -> None:
         "open_set",
         True,
     )
+
+def test_checked_in_manifest_matches_generator() -> None:
+    tool = load_tool()
+    expected = tool.build()
+    manifest_path = (
+        Path(__file__).resolve().parents[1]
+        / "knowledge"
+        / "libraries"
+        / "lego-minifigure-customs"
+        / "data"
+        / "body-architecture-recognition-benchmark-cases.json"
+    )
+    actual = __import__("json").loads(manifest_path.read_text(encoding="utf-8"))
+
+    assert actual == expected
