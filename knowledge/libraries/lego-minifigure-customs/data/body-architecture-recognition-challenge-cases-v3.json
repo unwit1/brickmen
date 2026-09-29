@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "created": "2026-09-29",
-  "status": "exact_urls_pending_byte_verification",
+  "status": "byte_verified_pending_sanitization",
   "benchmark_id": "body_architecture_challenge_v3",
   "processor_version": "body-architecture-challenge-cases/v1",
   "purpose": "Evaluation-only character-disjoint architecture-recognition cohort extending v2 with six remaining concrete official architecture families while leaving the legacy Homemaker/maxifigure system as a separate research gap.",
@@ -20,11 +20,11 @@
   },
   "architecture_registry": {
     "path": "knowledge/libraries/lego-minifigure-customs/data/figure-architecture-registry.json",
-    "blob_sha": "736512631bebb7a7f09f71e38b2f8e5ee8acf9cc"
+    "blob_sha": "231692f6c897117a19a56224464bca0c4653c8ba"
   },
   "source_registry": {
     "path": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-source-registry.json",
-    "blob_sha": "8829a9d8f6ce6828384994d3b31bb7267836883f"
+    "blob_sha": "2ff6e5f45bd6a1f6d7c684dd37b3710617d0eb27"
   },
   "split_policy": {
     "split": "challenge_test",
@@ -39,7 +39,7 @@
     "unique_architectures": 22,
     "core_cases": 22,
     "cases_with_exact_image_urls": 22,
-    "byte_verified_cases": 16
+    "byte_verified_cases": 22
   },
   "architecture_ids": [
     "baby_toddler",
@@ -1222,7 +1222,7 @@
       "target_evidence_tier": "official_evidence",
       "scoring_track": "core",
       "input_asset": {
-        "status": "exact_url_pending_byte_verification",
+        "status": "byte_verified_pending_sanitization",
         "required_view": "canonical_or_best_available_full_figure",
         "materialized_asset_id": null,
         "reference_locators": [
@@ -1231,15 +1231,15 @@
             "url": "https://www.bricklink.com/catalogItemInv.asp?M=cty0668",
             "authority": "structured_catalog",
             "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/cty0668.png",
-            "image_resolution_status": "exact_image_url_resolved_pending_byte_verification",
-            "source_file_sha256": null,
-            "source_size_bytes": null,
-            "source_width": null,
-            "source_height": null,
-            "source_content_type": null,
-            "source_image_format": null,
-            "verification_run_id": null,
-            "verification_artifact_id": null
+            "image_resolution_status": "verified_exact_image_url",
+            "source_file_sha256": "681a3c566c944deea64deaa2e697f3ad351d3123148a25e878665d062fb0c860",
+            "source_size_bytes": 76049,
+            "source_width": 240,
+            "source_height": 320,
+            "source_content_type": "image/png",
+            "source_image_format": "png",
+            "verification_run_id": 36563124134,
+            "verification_artifact_id": 11029869389
           }
         ]
       },
@@ -1292,7 +1292,7 @@
       "target_evidence_tier": "strong_evidence",
       "scoring_track": "core",
       "input_asset": {
-        "status": "exact_url_pending_byte_verification",
+        "status": "byte_verified_pending_sanitization",
         "required_view": "canonical_or_best_available_full_figure",
         "materialized_asset_id": null,
         "reference_locators": [
@@ -1301,15 +1301,15 @@
             "url": "https://www.bricklink.com/catalogItemInv.asp?M=cas424",
             "authority": "structured_catalog",
             "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/cas424.png",
-            "image_resolution_status": "exact_image_url_resolved_pending_byte_verification",
-            "source_file_sha256": null,
-            "source_size_bytes": null,
-            "source_width": null,
-            "source_height": null,
-            "source_content_type": null,
-            "source_image_format": null,
-            "verification_run_id": null,
-            "verification_artifact_id": null
+            "image_resolution_status": "verified_exact_image_url",
+            "source_file_sha256": "d4d7469bd8f27380fb745eb6d5da650929b68a822235014fce001cb2375414ac",
+            "source_size_bytes": 142164,
+            "source_width": 240,
+            "source_height": 320,
+            "source_content_type": "image/png",
+            "source_image_format": "png",
+            "verification_run_id": 36563124134,
+            "verification_artifact_id": 11029869389
           }
         ]
       },
@@ -1364,7 +1364,7 @@
       "target_evidence_tier": "official_evidence",
       "scoring_track": "core",
       "input_asset": {
-        "status": "exact_url_pending_byte_verification",
+        "status": "byte_verified_pending_sanitization",
         "required_view": "canonical_or_best_available_full_figure",
         "materialized_asset_id": null,
         "reference_locators": [
@@ -1373,15 +1373,15 @@
             "url": "https://www.bricklink.com/catalogItemInv.asp?M=85863pb063",
             "authority": "structured_catalog",
             "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/85863pb063.png",
-            "image_resolution_status": "exact_image_url_resolved_pending_byte_verification",
-            "source_file_sha256": null,
-            "source_size_bytes": null,
-            "source_width": null,
-            "source_height": null,
-            "source_content_type": null,
-            "source_image_format": null,
-            "verification_run_id": null,
-            "verification_artifact_id": null
+            "image_resolution_status": "verified_exact_image_url",
+            "source_file_sha256": "647d0e684cf54058ae422b02ae1696f141c900a62d349acd536eb8614a31391a",
+            "source_size_bytes": 91176,
+            "source_width": 162,
+            "source_height": 288,
+            "source_content_type": "image/png",
+            "source_image_format": "png",
+            "verification_run_id": 36563124134,
+            "verification_artifact_id": 11029869389
           }
         ]
       },
@@ -1434,7 +1434,7 @@
       "target_evidence_tier": "official_evidence",
       "scoring_track": "core",
       "input_asset": {
-        "status": "exact_url_pending_byte_verification",
+        "status": "byte_verified_pending_sanitization",
         "required_view": "canonical_or_best_available_full_figure",
         "materialized_asset_id": null,
         "reference_locators": [
@@ -1443,15 +1443,15 @@
             "url": "https://www.bricklink.com/catalogItemInv.asp?M=frnd0010&viewCodes=Y",
             "authority": "structured_catalog",
             "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/frnd0010.png",
-            "image_resolution_status": "exact_image_url_resolved_pending_byte_verification",
-            "source_file_sha256": null,
-            "source_size_bytes": null,
-            "source_width": null,
-            "source_height": null,
-            "source_content_type": null,
-            "source_image_format": null,
-            "verification_run_id": null,
-            "verification_artifact_id": null
+            "image_resolution_status": "verified_exact_image_url",
+            "source_file_sha256": "bbe4115bce9826131c95184b6e8123d477adaab8bdf0c494696e5574a95679be",
+            "source_size_bytes": 101903,
+            "source_width": 300,
+            "source_height": 400,
+            "source_content_type": "image/png",
+            "source_image_format": "png",
+            "verification_run_id": 36563124134,
+            "verification_artifact_id": 11029869389
           }
         ]
       },
@@ -1504,7 +1504,7 @@
       "target_evidence_tier": "official_evidence",
       "scoring_track": "core",
       "input_asset": {
-        "status": "exact_url_pending_byte_verification",
+        "status": "byte_verified_pending_sanitization",
         "required_view": "canonical_or_best_available_full_figure",
         "materialized_asset_id": null,
         "reference_locators": [
@@ -1513,15 +1513,15 @@
             "url": "https://www.bricklink.com/catalogItemInv.asp?M=toy003",
             "authority": "structured_catalog",
             "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/toy003.png",
-            "image_resolution_status": "exact_image_url_resolved_pending_byte_verification",
-            "source_file_sha256": null,
-            "source_size_bytes": null,
-            "source_width": null,
-            "source_height": null,
-            "source_content_type": null,
-            "source_image_format": null,
-            "verification_run_id": null,
-            "verification_artifact_id": null
+            "image_resolution_status": "verified_exact_image_url",
+            "source_file_sha256": "777fd93e31997b912debb734bf0be461c6795210649370bd6be92717f948e7c9",
+            "source_size_bytes": 107481,
+            "source_width": 209,
+            "source_height": 400,
+            "source_content_type": "image/png",
+            "source_image_format": "png",
+            "verification_run_id": 36563124134,
+            "verification_artifact_id": 11029869389
           }
         ]
       },
@@ -1575,7 +1575,7 @@
       "target_evidence_tier": "official_evidence",
       "scoring_track": "core",
       "input_asset": {
-        "status": "exact_url_pending_byte_verification",
+        "status": "byte_verified_pending_sanitization",
         "required_view": "canonical_or_best_available_full_figure",
         "materialized_asset_id": null,
         "reference_locators": [
@@ -1584,15 +1584,15 @@
             "url": "https://www.bricklink.com/catalogItemInv.asp?M=gen001",
             "authority": "structured_catalog",
             "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/gen001.png",
-            "image_resolution_status": "exact_image_url_resolved_pending_byte_verification",
-            "source_file_sha256": null,
-            "source_size_bytes": null,
-            "source_width": null,
-            "source_height": null,
-            "source_content_type": null,
-            "source_image_format": null,
-            "verification_run_id": null,
-            "verification_artifact_id": null
+            "image_resolution_status": "verified_exact_image_url",
+            "source_file_sha256": "0971f2f5c7e31bdf0e2ce49cedfc1d99486448b79374d7f3fa0db68843a33e72",
+            "source_size_bytes": 100970,
+            "source_width": 258,
+            "source_height": 400,
+            "source_content_type": "image/png",
+            "source_image_format": "png",
+            "verification_run_id": 36563124134,
+            "verification_artifact_id": 11029869389
           }
         ]
       },
