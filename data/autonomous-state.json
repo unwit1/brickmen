@@ -3,15 +3,15 @@
   "project": "brickmen",
   "mode": "autonomous",
   "status": "active",
-  "updated_date": "2026-09-28",
+  "updated_date": "2026-09-29",
   "base_commit_before_bootstrap": "bda2cac8ea8b68bb9e3e5b4d0cf380a9c6ee3ae6",
-  "current_objective": "materialize_and_expand_evidence_training_and_evaluation_assets",
-  "current_workstream": "semantic_supervision_and_reference_resolution",
+  "current_objective": "expand_and_gate_evidence_backed_training_and_evaluation_assets",
+  "current_workstream": "architecture_benchmark_readiness_and_corpus_expansion",
   "current_frontier": [
-    "body_architecture_benchmark_reference_resolution",
+    "body_architecture_benchmark_model_input_safety",
+    "body_architecture_benchmark_coverage_expansion",
     "source_appearance_to_minifigure_semantic_translation",
     "multi_view_correspondence",
-    "official_visual_reference_corpus",
     "official_visual_grammar",
     "negative_failure_corpus",
     "model_dataset_tool_registry",
@@ -19,48 +19,52 @@
   ],
   "known_gaps": [
     {
-      "id": "reference_fit_torso_segmentation",
-      "description": "Lower- versus upper-torso segment length remains underidentified until additional chest/torso-center landmarks are added.",
+      "id": "architecture_benchmark_sanitized_approval",
+      "description": "Fifteen deterministic sanitized derivative candidates are hash-pinned but require direct visual review before model input approval.",
       "status": "open"
     },
     {
-      "id": "architecture_benchmark_exact_image_resolution",
-      "description": "Four benchmark cases have verified exact BrickLink image URLs; 22 still require exact image URL resolution.",
+      "id": "architecture_benchmark_segmentation",
+      "description": "Eight benchmark cases require primary-figure segmentation. SAM2 prompt seeds and wrapper exist, but outputs require a capable local SAM2 environment and visual approval.",
+      "status": "blocked_on_local_model_runtime"
+    },
+    {
+      "id": "architecture_benchmark_coverage_breadth",
+      "description": "The current 27 cases are concentrated in Hulk, Venom, and Thing character corpora and do not yet test many official/specialized architecture families.",
       "status": "open"
-    },
-    {
-      "id": "architecture_benchmark_materialized_hashes",
-      "description": "The four resolved BrickLink images still need external byte fetch/checksum/materialization in a runtime that can download them.",
-      "status": "blocked_runtime_external_image_fetch"
-    },
-    {
-      "id": "g2_gh0304_direct_locator",
-      "description": "G (2) GH0304 Hulk (Avengers) is confirmed in HeroBloks identity/version graphs but no direct release page has been verified.",
-      "status": "blocked_external_source_resolution"
     },
     {
       "id": "fortnite_semantic_review_labels",
-      "description": "The 744 high-priority pairs are batched and reviewable, but canonical semantic supervision still requires submitted second reviews and explicit adjudication.",
+      "description": "The 744 high-priority source->LEGO pairs are batched and reviewable, but canonical supervision still requires submitted reviews, second reviews where needed, and explicit adjudication.",
       "status": "open"
     },
     {
       "id": "physical_multiview_ground_truth",
-      "description": "Front catalog coverage is broad, but exact-release rear/side/multi-view evidence remains limited and must not be synthesized.",
+      "description": "Exact rear/side/physical evidence remains limited and must not be synthesized.",
       "status": "blocked_on_evidence_acquisition"
+    },
+    {
+      "id": "reference_fit_torso_segmentation",
+      "description": "Lower- versus upper-torso segment length remains underidentified until additional chest/torso-center landmarks are added.",
+      "status": "open"
     }
   ],
   "highest_value_tasks": [
     {
       "priority": "P0",
-      "task": "Resolve exact image URLs for the remaining 22 body-architecture benchmark cases with source-specific reviewed methods."
+      "task": "Expand architecture benchmark coverage beyond Hulk/Venom/Thing using evidence-backed official and specialized architecture releases."
     },
     {
       "priority": "P0",
-      "task": "Materialize and checksum the four already-resolved BrickLink benchmark images when external image byte access is available."
+      "task": "Visually review the 15 deterministic sanitized candidates, validate exact-hash approvals, and rebuild the model-input manifest."
     },
     {
       "priority": "P0",
-      "task": "Execute Fortnite first-review/second-review/adjudication batches using the deterministic 30-batch plan and promote only explicit adjudicated records."
+      "task": "Run and review the 8 hash-pinned SAM2 segmentation candidates in a capable local runtime."
+    },
+    {
+      "priority": "P0",
+      "task": "Execute Fortnite first-review, second-review, and adjudication batches; promote only explicit adjudicated supervision."
     },
     {
       "priority": "P0",
@@ -81,14 +85,9 @@
   ],
   "blocked_tasks": [
     {
-      "id": "g2_gh0304_direct_locator",
-      "reason": "Only indirect HeroBloks identity/version graph evidence is verified; do not fabricate a direct release URL.",
-      "fallback": "Continue other benchmark references and independent corpus work."
-    },
-    {
-      "id": "architecture_benchmark_materialized_hashes",
-      "reason": "Current chat/runtime cannot directly fetch external image bytes from the verified BrickLink image URLs.",
-      "fallback": "Keep the exact URLs marked ready-for-materialization and continue source resolution/corpus work."
+      "id": "architecture_benchmark_segmentation",
+      "reason": "SAM2 wrapper and prompt seeds exist, but this repository/chat environment does not provide a configured local SAM2 repo/checkpoint/runtime.",
+      "fallback": "Continue benchmark coverage expansion, semantic supervision, and multi-view corpus work."
     },
     {
       "id": "physical_multiview_ground_truth",
@@ -98,59 +97,70 @@
   ],
   "pending_validation": [],
   "continuation": {
-    "instruction": "Resume from the architecture reference acquisition queue and Fortnite semantic batch plan. Try a materially different supported/reviewed exact-image resolution method for remaining benchmark pages. If blocked, continue another independent corpus/evaluation task. For Fortnite, use the deterministic 30-batch plan and local review UI; preserve measurement signals as prioritization only and promote only explicit adjudicated reviews. Keep autonomous state current and commit useful increments."
+    "instruction": "Do not restart architecture image acquisition: it is complete at 27/27 exact byte-verified images. Resume from benchmark model-input safety and corpus breadth. Prefer expanding evidence-backed architecture cases beyond Hulk/Venom/Thing when local sanitized pixels/SAM2 are unavailable. Preserve held-out/leakage-safe split logic, source provenance, uncertainty, and exact-hash approval gates. Continue Fortnite semantic batches independently when useful."
   },
-  "last_meaningful_commit": "51001f45ed1cbddf624c5b7dc774e4ab776a2bce",
-  "latest_validated_test_commit": "393c7aa9de572a27cb60df4f5ef2f8913c4747c1",
+  "last_meaningful_commit": "9314cb352296556ff624a7d0045f2db7c318fe74",
+  "latest_validated_test_commit": "9314cb352296556ff624a7d0045f2db7c318fe74",
   "completed_batches": [
     {
-      "id": "body_architecture_benchmark_population_v0",
+      "id": "body_architecture_reference_acquisition_v1",
       "status": "complete",
       "details": {
         "total_cases": 27,
-        "closed_set_cases": 18,
-        "open_set_unknown_cases": 9,
-        "core_scoring_cases": 11,
-        "provisional_scoring_cases": 7,
-        "split_strategy": "corpus_character_group_holdout"
+        "exact_image_urls": 27,
+        "byte_verified_images": 27,
+        "unique_verified_hashes": 27,
+        "unresolved_cases": 0
       }
     },
     {
-      "id": "body_architecture_reference_locator_resolution_v0",
-      "status": "complete_for_page_locators",
-      "details": {
-        "source_registry_count": 59,
-        "cases_with_reference_locators": 27,
-        "direct_or_family_reference_cases": 26,
-        "indirect_identity_graph_cases": 1,
-        "ready_for_exact_image_resolution": 26,
-        "blocked_on_direct_release_locator": 1
-      }
-    },
-    {
-      "id": "body_architecture_benchmark_reproducibility",
-      "status": "validated",
-      "details": {
-        "manifest_drift_guard": true,
-        "source_integrity_tests": true,
-        "acquisition_queue_drift_guard": true,
-        "latest_ci_conclusion": "success"
-      }
-    },
-    {
-      "id": "body_architecture_reference_exact_images_v0",
-      "status": "partial",
+      "id": "body_architecture_sanitization_review_v1",
+      "status": "complete_for_source_review",
       "details": {
         "total_cases": 27,
-        "exact_image_urls_resolved": 4,
-        "ready_for_exact_image_resolution": 22,
-        "blocked_direct_locator": 1,
-        "resolved_records": [
-          "SH0037",
-          "SH0252",
-          "SH0371",
-          "SH0542"
-        ]
+        "approved_raw": 4,
+        "sanitization_required": 23,
+        "unreviewed": 0,
+        "source_risk_high": 22,
+        "source_risk_medium": 5
+      }
+    },
+    {
+      "id": "body_architecture_sanitization_plan_v1",
+      "status": "validated",
+      "details": {
+        "sanitization_required": 23,
+        "deterministic_candidate_transforms": 15,
+        "segmentation_cases": 8,
+        "generated_candidates": 15,
+        "generator_errors": 0,
+        "workflow_run_id": 36516743830,
+        "workflow_artifact_id": 11010858897
+      }
+    },
+    {
+      "id": "body_architecture_model_input_gate_v1",
+      "status": "validated",
+      "details": {
+        "total_cases": 27,
+        "model_input_allowed": 4,
+        "approved_raw": 4,
+        "approved_sanitized": 0,
+        "blocked": 23,
+        "deterministic_pending_visual_review": 15,
+        "segmentation_pending": 8,
+        "hash_pinned_review_validator": true,
+        "local_hash_verifying_review_ui": true
+      }
+    },
+    {
+      "id": "body_architecture_sam2_segmentation_path_v1",
+      "status": "implemented_not_executed",
+      "details": {
+        "prompt_seed_count": 8,
+        "source_hash_pinned": true,
+        "source_dimension_pinned": true,
+        "auto_approval": false
       }
     },
     {
@@ -164,24 +174,7 @@
         "adjudication_queue": true,
         "adjudicated_only_promotion": true,
         "local_review_ui": true,
-        "end_to_end_ci": "success"
-      }
-    },
-    {
-      "id": "fortnite_semantic_review_batch_plan_v1",
-      "status": "validated",
-      "details": {
-        "eligible_records": 744,
-        "batch_size": 25,
-        "batch_count": 30,
-        "final_batch_records": 19,
-        "materialized_batches": 1,
-        "first_batch_id": "fortnite-review-first_review-056fd3e0773faee9",
-        "first_batch_priority_range": [
-          14,
-          11.5
-        ],
-        "on_demand_workflow": true
+        "first_review_batch_count": 30
       }
     }
   ]
