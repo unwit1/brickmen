@@ -7,15 +7,15 @@
   "policy": "data/body-architecture-benchmark-input-sanitization-policy.json",
   "reviews": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-custom-sanitization-reviews-v1.json",
   "summary": {
-    "total_cases": 2,
-    "raw_model_input_allowed_cases": 1,
+    "total_cases": 3,
+    "raw_model_input_allowed_cases": 2,
     "blocked_model_input_cases": 1,
     "status_counts": {
       "sanitization_required": 1,
-      "approved_raw_model_input": 1
+      "approved_raw_model_input": 2
     },
     "risk_counts": {
-      "unknown_review_required": 2
+      "unknown_review_required": 3
     }
   },
   "queue": [
@@ -81,6 +81,71 @@
           "The logo region is spatially separated from the figure, so a deterministic background-fill mask can preserve the full architecture."
         ],
         "review_source_sha256": "c79fc80eba86f18b155c358bfc900923f5743777bdd215a51b9828142b8d08b2",
+        "review_stale": false
+      },
+      "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
+      "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
+    },
+    {
+      "case_id": "archcandidate::sidan_full_balljoint_poseable",
+      "source_record_id": "custom_sidan_full_balljoint_poseable_sidan",
+      "split": "custom_challenge_test",
+      "scoring_track": "custom",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "custom_sidan_full_balljoint_poseable",
+        "unresolved_candidate": null
+      },
+      "source": {
+        "source_id": "minifigworld_sidan_poseable_product_image_1_zoom",
+        "exact_image_url": "https://cdn1.bigcommerce.com/server3000/99a43/products/1874/images/14575/A0103-02__59883.1768303145.500.500.jpg?c=2",
+        "source_file_sha256": "2ac7f9ba8793107e58892205ea56cc772b876cd63cd2fda08e51e1a0ec8e831e",
+        "source_size_bytes": 20776,
+        "source_width": 301,
+        "source_height": 500,
+        "source_content_type": "image/jpeg",
+        "source_image_format": "jpeg",
+        "verification_run_id": 36634149308
+      },
+      "source_risk": "unknown_review_required",
+      "risk_reasons": [
+        "source_host_has_no_sanitization_prior"
+      ],
+      "status": "approved_raw_model_input",
+      "raw_model_input_allowed": true,
+      "required_checks": [
+        "identity_matches_source_record",
+        "primary_view_classified",
+        "primary_figure_complete",
+        "release_or_sku_text_absent_or_removed",
+        "character_name_text_absent_or_removed",
+        "maker_or_brand_logo_absent_or_removed",
+        "architecture_or_market_label_absent_or_removed",
+        "task_confounding_secondary_panels_absent_or_removed"
+      ],
+      "recommended_actions": [
+        "approve_raw_only_if_visually_clean",
+        "tight_figure_crop",
+        "mask_auxiliary_insets"
+      ],
+      "review": {
+        "identity_match": true,
+        "primary_view": "front_three_quarter",
+        "primary_figure_complete": true,
+        "visible_text_leakage": [],
+        "visual_confounders": [],
+        "sanitization_action": "none",
+        "sanitized_asset_sha256": "2ac7f9ba8793107e58892205ea56cc772b876cd63cd2fda08e51e1a0ec8e831e",
+        "sanitized_asset_status": "approved",
+        "reviewer_id": "openai_chatgpt_visual_review",
+        "reviewer_type": "model",
+        "review_confidence": 0.99,
+        "notes": [
+          "Exact byte-pinned 301x500 product zoom image was materialized through the review-only CI path after SHA-256 and dimension verification.",
+          "Clean isolated full-body pose on a neutral gradient background; no visible maker text, logo, product label, SKU, inset panel, or secondary figure is present.",
+          "Ball-jointed shoulders, elbows/arms, hips/legs, feet and neck architecture are visibly represented well enough for the intended custom-architecture evaluation."
+        ],
+        "review_source_sha256": "2ac7f9ba8793107e58892205ea56cc772b876cd63cd2fda08e51e1a0ec8e831e",
         "review_stale": false
       },
       "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
