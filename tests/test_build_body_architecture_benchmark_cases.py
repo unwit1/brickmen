@@ -219,3 +219,18 @@ def test_verified_reference_media_has_hash_metadata() -> None:
             hashes.add(digest)
 
     assert len(hashes) == 27
+
+
+def test_character_specific_official_architecture_is_core() -> None:
+    tool = load_tool()
+    registry = {
+        "jabba": {
+            "status": "official_character_specific_architecture",
+        }
+    }
+
+    assert tool.classify_target("jabba", registry) == (
+        "official_evidence",
+        "core",
+        False,
+    )
