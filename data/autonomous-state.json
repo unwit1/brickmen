@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0",
+  "project": "brickmen",
+  "mode": "autonomous",
+  "status": "active",
+  "updated_date": "2026-09-28",
+  "base_commit_before_bootstrap": "bda2cac8ea8b68bb9e3e5b4d0cf380a9c6ee3ae6",
+  "current_objective": "expand_evidence_training_and_evaluation_assets",
+  "current_workstream": "corpus_and_benchmark_completion",
+  "current_frontier": [
+    "official_visual_reference_corpus",
+    "source_appearance_to_minifigure_translation_pairs",
+    "benchmark_population",
+    "multi_view_correspondence",
+    "official_visual_grammar",
+    "negative_failure_corpus",
+    "model_dataset_tool_registry",
+    "reference_fitting_evidence_gaps"
+  ],
+  "known_gaps": [
+    {
+      "id": "reference_fit_torso_segmentation",
+      "description": "Lower- versus upper-torso segment length remains underidentified until additional chest/torso-center landmarks are added.",
+      "status": "open"
+    }
+  ],
+  "highest_value_tasks": [
+    {
+      "priority": "P0",
+      "task": "Audit and expand official visual-reference coverage."
+    },
+    {
+      "priority": "P0",
+      "task": "Build source-appearance to minifigure translation pairs."
+    },
+    {
+      "priority": "P0",
+      "task": "Populate existing benchmark designs with real held-out cases."
+    },
+    {
+      "priority": "P0",
+      "task": "Expand exact-release multi-view correspondence."
+    },
+    {
+      "priority": "P1",
+      "task": "Extract official visual grammar from evidence."
+    },
+    {
+      "priority": "P1",
+      "task": "Build negative/failure training and critic data."
+    },
+    {
+      "priority": "P1",
+      "task": "Maintain current model, dataset, paper, and tool registry."
+    }
+  ],
+  "blocked_tasks": [],
+  "pending_validation": [],
+  "continuation": {
+    "instruction": "Inspect the latest repository state and recent commits, audit the listed corpus/benchmark gaps, select the highest expected-value executable task, persist and commit useful work, update autonomous state, and continue without waiting for further instruction."
+  }
+}
