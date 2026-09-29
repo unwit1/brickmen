@@ -1,0 +1,353 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-29",
+  "id": "body-architecture-sanitization-segmentation-prompts-v0",
+  "provider_family": "sam2_image_predictor",
+  "provider_reference": {
+    "repository": "https://github.com/facebookresearch/sam2",
+    "api": "SAM2ImagePredictor",
+    "validated_against_public_api_on": "2026-09-29"
+  },
+  "coordinate_system": {
+    "type": "normalized_source_image",
+    "box": "[x0,y0,x1,y1] in [0,1]",
+    "points": "[x,y] in [0,1]; labels 1=foreground, 0=background"
+  },
+  "policy": [
+    "Prompts are seed instructions, not ground-truth masks.",
+    "Every prompt is pinned to the verified source SHA-256 and source dimensions.",
+    "The highest predicted SAM2 score may select a candidate mask, but never constitutes visual approval.",
+    "Generated segmentation derivatives must pass the same hash-pinned visual approval gate as deterministic crop/mask candidates.",
+    "If the source hash or dimensions change, the prompt is stale and must not run."
+  ],
+  "prompts": [
+    {
+      "source_record_id": "hulk_alpha_af344_avengers",
+      "source_file_sha256": "d6124764a8990bab6ec44015115cf1b8cd7ab5101da04f4da025d028139c11a1",
+      "source_dimensions": [
+        800,
+        800
+      ],
+      "status": "prompt_seed_unvalidated",
+      "box_norm": [
+        0.19,
+        0.24,
+        0.79,
+        0.85
+      ],
+      "positive_points_norm": [
+        [
+          0.5,
+          0.5
+        ],
+        [
+          0.5,
+          0.72
+        ]
+      ],
+      "negative_points_norm": [
+        [
+          0.12,
+          0.12
+        ],
+        [
+          0.82,
+          0.14
+        ],
+        [
+          0.82,
+          0.72
+        ]
+      ],
+      "rationale": "Target the central/front Hulk while excluding head inset, rear-view panel and scale-comparison figure."
+    },
+    {
+      "source_record_id": "hulk_alpha_af345_comics",
+      "source_file_sha256": "d508590a6e1c917293d0a28967e56bace04982fa2ea9372615f424eed6a5daf6",
+      "source_dimensions": [
+        800,
+        800
+      ],
+      "status": "prompt_seed_unvalidated",
+      "box_norm": [
+        0.19,
+        0.24,
+        0.79,
+        0.85
+      ],
+      "positive_points_norm": [
+        [
+          0.5,
+          0.5
+        ],
+        [
+          0.5,
+          0.72
+        ]
+      ],
+      "negative_points_norm": [
+        [
+          0.12,
+          0.12
+        ],
+        [
+          0.82,
+          0.14
+        ],
+        [
+          0.82,
+          0.72
+        ]
+      ],
+      "rationale": "Target the central/front comic Hulk while excluding auxiliary head, rear and scale panels."
+    },
+    {
+      "source_record_id": "red_hulk_alpha_af364_bnw",
+      "source_file_sha256": "12e79bc52f7030701a2296f7cf05e7905e02bcefd0d754969cc8bdf95756773b",
+      "source_dimensions": [
+        800,
+        800
+      ],
+      "status": "prompt_seed_unvalidated",
+      "box_norm": [
+        0.18,
+        0.22,
+        0.8,
+        0.86
+      ],
+      "positive_points_norm": [
+        [
+          0.5,
+          0.5
+        ],
+        [
+          0.5,
+          0.73
+        ]
+      ],
+      "negative_points_norm": [
+        [
+          0.12,
+          0.12
+        ],
+        [
+          0.83,
+          0.15
+        ],
+        [
+          0.83,
+          0.73
+        ]
+      ],
+      "rationale": "Target the complete central/front Red Hulk while excluding the card's head/rear/scale comparison content."
+    },
+    {
+      "source_record_id": "venom_alpha_af325",
+      "source_file_sha256": "cc9daee1b700ea8591a0f03d86be137215424e33f4447262e226dbb8fe1f0726",
+      "source_dimensions": [
+        800,
+        800
+      ],
+      "status": "prompt_seed_unvalidated",
+      "box_norm": [
+        0.28,
+        0.01,
+        0.72,
+        0.51
+      ],
+      "positive_points_norm": [
+        [
+          0.5,
+          0.23
+        ],
+        [
+          0.5,
+          0.4
+        ]
+      ],
+      "negative_points_norm": [
+        [
+          0.12,
+          0.3
+        ],
+        [
+          0.87,
+          0.25
+        ],
+        [
+          0.25,
+          0.76
+        ],
+        [
+          0.75,
+          0.76
+        ]
+      ],
+      "rationale": "Target the upper-center primary front Venom while excluding accessory/head inset, standard-scale comparison, alternate pose and rear-view panels."
+    },
+    {
+      "source_record_id": "venom_xinh_xh1911_bigfig",
+      "source_file_sha256": "2b65c0bb3af7a734e7b2ed205e2023f0906368ab75762f873b5097863134bb20",
+      "source_dimensions": [
+        640,
+        945
+      ],
+      "status": "prompt_seed_unvalidated",
+      "box_norm": [
+        0.07,
+        0.22,
+        0.93,
+        0.8
+      ],
+      "positive_points_norm": [
+        [
+          0.5,
+          0.45
+        ],
+        [
+          0.5,
+          0.68
+        ]
+      ],
+      "negative_points_norm": [
+        [
+          0.84,
+          0.23
+        ],
+        [
+          0.5,
+          0.08
+        ],
+        [
+          0.5,
+          0.86
+        ]
+      ],
+      "rationale": "Target the main front Venom; the upper-right head inset overlaps the shoulder region and must be excluded by negative prompting."
+    },
+    {
+      "source_record_id": "venom_xinh_xh1829_movie_bigfig",
+      "source_file_sha256": "32c91daa329658fcaec4c79acbf0619591015e003bc34fd40043928c2b030d56",
+      "source_dimensions": [
+        1000,
+        1000
+      ],
+      "status": "prompt_seed_unvalidated",
+      "box_norm": [
+        0.2,
+        0.23,
+        0.8,
+        0.8
+      ],
+      "positive_points_norm": [
+        [
+          0.5,
+          0.48
+        ],
+        [
+          0.5,
+          0.7
+        ]
+      ],
+      "negative_points_norm": [
+        [
+          0.75,
+          0.25
+        ],
+        [
+          0.5,
+          0.1
+        ],
+        [
+          0.5,
+          0.88
+        ]
+      ],
+      "rationale": "Target the central movie Venom while rejecting the upper-right head inset and surrounding labels."
+    },
+    {
+      "source_record_id": "thing_tp_tp349_first_steps_bigfig",
+      "source_file_sha256": "c35537f56d3d21e81225091f5329053e02f628dc0269a0d491011a85c5d83e6d",
+      "source_dimensions": [
+        800,
+        800
+      ],
+      "status": "prompt_seed_unvalidated",
+      "box_norm": [
+        0.12,
+        0.24,
+        0.72,
+        0.84
+      ],
+      "positive_points_norm": [
+        [
+          0.42,
+          0.48
+        ],
+        [
+          0.42,
+          0.7
+        ]
+      ],
+      "negative_points_norm": [
+        [
+          0.75,
+          0.15
+        ],
+        [
+          0.86,
+          0.56
+        ],
+        [
+          0.2,
+          0.1
+        ]
+      ],
+      "rationale": "Target the TP349 front Thing while rejecting the rear/alternate panel and neighboring product-card content."
+    },
+    {
+      "source_record_id": "thing_shengyuan_sy288_bigfig",
+      "source_file_sha256": "e0de4be480091468e1edd92dca97dc465a2fe062cda2917262977164131b9970",
+      "source_dimensions": [
+        315,
+        346
+      ],
+      "status": "prompt_seed_unvalidated",
+      "box_norm": [
+        0,
+        0.27,
+        0.42,
+        0.66
+      ],
+      "positive_points_norm": [
+        [
+          0.2,
+          0.43
+        ],
+        [
+          0.2,
+          0.57
+        ]
+      ],
+      "negative_points_norm": [
+        [
+          0.56,
+          0.46
+        ],
+        [
+          0.73,
+          0.46
+        ],
+        [
+          0.89,
+          0.55
+        ],
+        [
+          0.2,
+          0.8
+        ]
+      ],
+      "rationale": "Target the large Thing at upper-left while excluding neighboring minifigures, branded display bases and the rest of the group card."
+    }
+  ]
+}
