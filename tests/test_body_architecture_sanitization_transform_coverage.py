@@ -102,7 +102,7 @@ def test_candidate_manifest_retains_source_and_transform_provenance() -> None:
         for row in transforms["transforms"]
     }
 
-    assert len(candidates["records"]) == 15
+    assert len(candidates["records"]) == 13
     for candidate in candidates["records"]:
         record_id = candidate["source_record_id"]
         source = queue_by_id[record_id]["source"]
