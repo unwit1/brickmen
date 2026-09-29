@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "created": "2026-09-27",
-  "status": "populated_v0_exact_image_urls_complete_verification_pending",
+  "status": "populated_v0_reference_media_verified_sanitization_in_progress",
   "objective": "Evaluate recognition of figure architectures and architecture-conditioned character style transfer.",
   "recognition_tasks": [
     "full_figure_front_classification",
@@ -188,23 +188,47 @@
     "split_strategy": "corpus_character_group_holdout",
     "reference_locator_coverage": "27/27",
     "exact_image_url_coverage": "27/27",
-    "direct_or_family_reference_cases": 27,
-    "cases_with_indirect_provenance_locator": 1,
-    "indirect_only_locator_cases": 0,
-    "ready_for_media_verification_cases": 27,
-    "image_resolution_blocked_cases": 0,
-    "materialized_asset_state": "pending_metadata_verification_and_hash_binding"
+    "byte_verified_media_coverage": "27/27",
+    "unique_verified_image_hashes": 27,
+    "byte_verification_errors": 0,
+    "duplicate_verified_hashes": 0,
+    "raw_model_input_approved_cases": 4,
+    "sanitization_required_cases": 9,
+    "pending_visual_review_cases": 14,
+    "blocked_model_input_cases": 23,
+    "materialized_asset_state": "raw_source_media_not_committed; sanitized/local benchmark derivatives pending"
   },
   "population_rules": [
     "Maker, product code, character label, record ID and source-corpus labels are audit metadata only and must not be model inputs.",
     "Core, provisional and open-set tracks are scored separately.",
     "Unresolved/umbrella architecture labels are unknown-rejection targets rather than coerced closed-set classes.",
     "Validation and test groups are evaluation-only; preserve corpus-character group boundaries when adding asset variants.",
-    "HTML catalog pages are provenance locators, not image assets; only exact reviewed image URLs may advance to byte verification/materialization.",
-    "Indirect identity-graph evidence may remain as provenance when a separate exact media source resolves the visual asset.",
-    "Raw reference image bytes must remain out of Git history; verification reports may store hashes, sizes, content types, final URLs and status."
+    "HTML catalog pages are provenance locators, not image assets; only exact reviewed image URLs may advance to byte verification.",
+    "Byte verification proves file identity and stability, not benchmark suitability.",
+    "Raw media containing release codes, character names, maker branding, multi-panel layouts or task-confounding insets must remain blocked until sanitized.",
+    "Sanitization approvals are pinned to the verified source SHA-256 and become stale if the upstream image changes.",
+    "Verified hashes/metadata may be stored in Git; raw reference image bytes and sanitized copyrighted derivatives remain outside Git unless redistribution rights explicitly permit them."
   ],
   "reference_acquisition_queue": "data/body-architecture-reference-acquisition-queue.json",
   "reference_media_verifier": "tools/knowledge/verify_body_architecture_reference_media.py",
-  "reference_media_verification_workflow": ".github/workflows/verify-body-architecture-reference-media.yml"
+  "reference_media_verification_workflow": ".github/workflows/verify-body-architecture-reference-media.yml",
+  "reference_media_verification_run": {
+    "run_id": 36513502605,
+    "artifact_id": 11009364105,
+    "verified_cases": 27,
+    "errors": 0,
+    "unique_hashes": 27,
+    "duplicate_hashes": []
+  },
+  "input_sanitization": {
+    "policy": "data/body-architecture-benchmark-input-sanitization-policy.json",
+    "review_queue": "data/body-architecture-benchmark-sanitization-queue.json",
+    "reviews": "data/body-architecture-benchmark-sanitization-reviews.json",
+    "queue_builder": "tools/knowledge/build_body_architecture_benchmark_sanitization_queue.py",
+    "current_counts": {
+      "approved_raw": 4,
+      "sanitization_required": 9,
+      "pending_visual_review": 14
+    }
+  }
 }
