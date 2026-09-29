@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "created": "2026-09-29",
-  "status": "replacement_media_verification_pending",
+  "status": "verification_complete_partitioned_for_promotion",
   "id": "body-architecture-benchmark-expansion-v0",
   "objective": "Broaden architecture-recognition coverage beyond Hulk/Venom/Thing without weakening the canonical benchmark's media/sanitization guarantees.",
   "policy": [
@@ -26,10 +26,10 @@
       "architecture_registry_target_exists",
       "source_registry_refs_resolve",
       "exact_image_url_byte_verified",
-      "image_hash_deduplicated_or_duplicate_documented"
+      "image_hash_deduplicated_or_duplicate_documented",
+      "replacement_centaur_exact_image_url_byte_verified"
     ],
     "remaining": [
-      "replacement_centaur_exact_image_url_byte_verified",
       "visual_sanitization_decision_complete",
       "model_input_gate_passes",
       "final_split_assignment_reviewed_for_character_and_family_leakage"
@@ -44,11 +44,10 @@
     "same_character_cross_architecture_groups": [
       "hagrid"
     ],
-    "byte_verified_cases": 9,
-    "unique_verified_hashes": 9,
-    "promoted_to_character_disjoint_challenge": 7,
-    "reserved_same_character_contrast": 2,
-    "replacement_candidates_pending_verification": 1
+    "byte_verified_cases": 10,
+    "unique_verified_hashes": 10,
+    "promoted_to_character_disjoint_challenge": 8,
+    "reserved_same_character_contrast": 2
   },
   "cases": [
     {
@@ -632,7 +631,7 @@
       },
       "target_evidence_tier": "official_or_strong_catalog",
       "input_asset": {
-        "status": "staged_exact_media_verification_pending",
+        "status": "byte_verified_pending_sanitization",
         "required_view": "canonical_or_best_available_full_figure",
         "materialized_asset_id": null,
         "reference_locators": [
@@ -642,7 +641,15 @@
             "authority": "structured_catalog",
             "locator_quality": "direct_release_or_component_graph_reference",
             "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/hp236.png",
-            "image_resolution_status": "verified_exact_image_url"
+            "image_resolution_status": "verified_exact_image_url",
+            "source_file_sha256": "9690938b75bad44108df1b0d15fa85a72ea4f5837b1ba5f774fa6b57acbc3052",
+            "source_size_bytes": 128668,
+            "source_width": 227,
+            "source_height": 400,
+            "source_content_type": "image/png",
+            "source_image_format": "png",
+            "verification_run_id": 36520358304,
+            "verification_artifact_id": 11012334034
           }
         ]
       },
@@ -671,8 +678,8 @@
           "bricklink_centaur_hp236_inventory"
         ]
       },
-      "promotion_state": "replacement_candidate_for_character_disjoint_challenge",
-      "promoted_case_id": null
+      "promotion_state": "promoted_to_character_disjoint_challenge",
+      "promoted_case_id": "archchallenge::challenge_centaur_hp236"
     }
   ]
 }
