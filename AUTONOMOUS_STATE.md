@@ -2,8 +2,8 @@
 
 Last updated: 2026-09-29
 Base commit before autonomous bootstrap: `bda2cac8ea8b68bb9e3e5b4d0cf380a9c6ee3ae6`
-Last meaningful benchmark checkpoint: `9314cb352296556ff624a7d0045f2db7c318fe74`
-Latest validated knowledge-tool test checkpoint: `9314cb352296556ff624a7d0045f2db7c318fe74`
+Last meaningful benchmark/development checkpoint: `2bc3239dccfdf8cf4f5f632eaa7a69ffdf4589fc`
+Latest test-lock checkpoint: `2bc3239dccfdf8cf4f5f632eaa7a69ffdf4589fc`
 Status: active
 
 ## Current major objective
@@ -12,88 +12,106 @@ Turn Brickmen into a self-contained, evidence-backed system for custom-minifigur
 
 ## Current research frontier
 
-Corpus and evaluation completion remains the highest-value frontier, but architecture **reference acquisition is complete**. The body-architecture benchmark now needs safe model inputs and broader architecture coverage, not more URL hunting.
+Architecture breadth has advanced materially. Challenge v3 now covers 22 character-disjoint official/specialized architectures and the architecture registry has evaluation coverage for 33/49 registered families.
 
 Current priority order:
-1. finish leakage-safe model-input preparation for the architecture benchmark;
-2. broaden architecture benchmark coverage beyond Hulk/Venom/Thing;
-3. execute Fortnite source-appearance -> LEGO semantic review/adjudication;
-4. expand exact-release multi-view/cross-surface correspondence;
-5. expand official visual grammar and negative/failure corpora;
-6. keep model/tool/dataset registries current;
-7. close specific reference-fitting evidence gaps and ontology gaps.
+1. close the final concrete official architecture gap, legacy LEGO Homemaker/maxifigure, if a specific assembled figure can be tied to an exact byte-pinned clean source;
+2. finish the one remaining challenge-v3 raw-input review blocker (Woody `toy003`) without weakening exact-hash review rules;
+3. finish the original 27-case benchmark's 15 deterministic derivative reviews and 8 SAM2 segmentation reviews in a capable local pixel/runtime environment;
+4. execute Fortnite source-appearance -> LEGO semantic first-review/second-review/adjudication;
+5. expand exact-release multi-view/cross-surface correspondence;
+6. expand official visual grammar and negative/failure corpora;
+7. keep model/tool/dataset registries current and resolve high-value custom/ontology gaps.
 
 ## Latest completed autonomous batches
 
-### Architecture benchmark acquisition — complete
-- 27 benchmark cases remain populated:
-  - 18 closed-set architecture-classification cases;
-  - 9 open-set unknown-rejection cases;
-  - 11 core-evidence cases;
-  - 7 provisional-evidence cases.
-- Existing character-corpus holdouts remain Hulk=development, Venom=validation, Thing=test.
-- **27/27 cases now have exact image URLs.**
-- **27/27 exact images are byte-verified with SHA-256, dimensions, format, and provenance.**
-- All 27 verified images have unique source hashes.
-- Acquisition queue has zero unresolved or blocked cases.
-- GH0304 still preserves its weaker HeroBloks identity-graph evidence, but exact KongBricks GH0304 visual media removes it as a benchmark-image blocker.
+### Architecture challenge v3 — 22 architecture cohort
+- Challenge v3 contains 22 evaluation-only, character-disjoint cases across 22 unique architectures.
+- 22/22 exact source images are byte-verified and hash-pinned.
+- The manifest was repaired after the source registry had advanced beyond stale v3 verification metadata.
+- 16 exact-hash approvals were inherited from challenge v2 because their source hashes are unchanged.
+- Five new v3 references were directly visually reviewed and approved raw:
+  - baby/toddler `cty0668`;
+  - legacy Fantasy Era troll `cas424`;
+  - Heroica microfigure `85863pb063`;
+  - Friends mini-doll `frnd0010`;
+  - skeleton `gen001`.
+- Woody `toy003` remains deliberately blocked because the exact verified BrickLink source image could not be rendered in the current review environment. Alternate images are not accepted as a substitute for exact-hash approval.
+- Current challenge-v3 model-input gate:
+  - 22 total cases;
+  - 21 approved raw model inputs;
+  - 0 approved sanitized derivatives;
+  - 1 blocked exact raw review.
+- The generic model-input compiler now preserves raw-review blockers as `pending_visual_sanitization_review` rather than incorrectly reporting them as missing sanitization candidates.
+- Regression tests lock byte verification, queue state, exact blocker identity, manifest state, and builder drift.
 
-### Architecture benchmark leakage-sanitization — planned end to end
-- All 27 verified source images received explicit visual sanitization review:
-  - 4 approved as clean raw model inputs;
-  - 23 require sanitization.
-- All 23 cleanup-required cases have explicit implementation plans:
-  - 15 deterministic crop/mask candidates;
-  - 8 primary-figure segmentation cases.
-- Metadata-only deterministic candidate workflow completed successfully:
+### Architecture coverage refresh
+- Registry architectures: 49.
+- Evaluation-covered architectures: 33.
+- Uncovered architectures: 16.
+- Coverage fraction: 0.673469.
+- Remaining gap priorities:
+  - P0 official: 1;
+  - P1 custom evaluation: 3;
+  - P2 ontology/unresolved: 12.
+- The only remaining concrete official P0 gap is `lego_homemaker_maxifigure_legacy`.
+- Coverage tooling and tests now use challenge v3 rather than challenge v2.
+
+### Homemaker/maxifigure evidence progress
+- Existing component-graph evidence remains valid for sets 55-1, 200-1 and 231-1.
+- A stronger exact-release path has been identified in LEGO Homemaker set 276-1 (1977, Nurse and Child / Doctor's Office):
+  - BrickLink inventory explicitly records blue and white Homemaker torso/head counterpart assemblies and the underlying arm/hand/head parts;
+  - surviving instructions visibly define the nurse and child assemblies;
+  - an external collector archive has isolated front photos explicitly labeled as the 276 nurse and child.
+- This materially reduces the identity/assembly uncertainty, but the benchmark gap is not yet closed because Brickmen still lacks a byte-pinned exact clean single-figure asset admitted through the normal leakage/input gate.
+
+### Original 27-case architecture benchmark
+- Reference acquisition remains complete at 27/27 exact byte-verified images.
+- Source sanitization review remains complete:
+  - 4 clean raw approvals;
+  - 23 sanitization-required.
+- Deterministic derivative path:
   - 15 generated candidates;
-  - 8 segmentation blockers;
-  - 0 errors;
-  - workflow run `36516743830`;
-  - artifact `11010858897`.
-- Canonical candidate metadata preserves source hashes/dimensions, transform operations, output dimensions, sanitized pixel hashes, sanitized PNG hashes, and review status without storing image bytes in Git.
-- Hash-pinned sanitized-asset review schema and validator are implemented.
-- Local sanitization review UI:
-  - keeps derivative bytes local;
-  - computes PNG SHA-256 in-browser;
-  - refuses approval unless the exact canonical candidate hash is loaded;
-  - requires all visual safety checks;
-  - exports metadata-only review JSONL.
-- One-command local review preparation regenerates derivatives, verifies canonical hash equality, and builds the local reviewer.
-- Canonical model-input manifest currently admits only:
-  - 4 approved raw assets;
-  - 0 sanitized derivatives;
-  - 23 blocked assets.
-- The 8 segmentation blockers now have hash-pinned SAM 2 box/point prompt seeds and an executable `SAM2ImagePredictor` wrapper. SAM score chooses a candidate only; no segmentation result is auto-approved.
-- Latest full knowledge-tool and body-geometry CI is green at `9314cb352296556ff624a7d0045f2db7c318fe74`.
+  - exact-hash visual approval still pending in a local pixel environment.
+- Segmentation path:
+  - 8 SAM2 cases;
+  - prompt seeds and wrapper exist;
+  - execution/visual approval still require a capable local SAM2 runtime.
+- Do not weaken exact-hash or visual-review gates to increase runnable count.
 
 ### Fortnite semantic translation supervision pipeline
-- Ranked corpus: 2,494 pairs, 744 current high-priority records.
-- Uncertainty-safe review schema/validator, conflict-preserving adjudication, adjudicated-only promotion, deterministic work batching, and local review UI are implemented.
-- High-priority first-review plan is 30 deterministic batches:
-  - 29 batches of 25;
-  - final batch of 19.
-- Batch 0001 is materialized (25 pairs, priority 14 to 11.5).
-- Measurement heuristics remain prioritization context only and never become semantic labels automatically.
+- Ranked corpus: 2,494 pairs.
+- High-priority records: 744.
+- First-review plan: 30 deterministic batches (29 x 25, final x 19).
+- Batch 0001 is materialized.
+- Review schema/validator, conflict-preserving adjudication, adjudicated-only promotion, batching, and local review UI are implemented.
+- Measurement heuristics remain prioritization context only; they never become semantic labels automatically.
 
 ## Active blockers / constraints
 
-1. **Architecture sanitized derivative approval** — the 15 deterministic candidates require direct local pixel review before they can enter the model-input manifest.
-2. **Architecture segmentation candidates** — the 8 segmentation cases require a capable local SAM 2 environment/checkpoint, candidate generation, then the same exact-hash visual review. Prompt seeds are explicitly unvalidated.
-3. **Fortnite semantic supervision labels** — review infrastructure is complete, but canonical supervision still requires actual first reviews, second reviews where required, and explicit adjudication.
-4. **Physical multi-view ground truth** — exact rear/side/physical evidence still requires additional source access, credentials, or controlled capture; do not synthesize hidden views.
-5. **Reference-fit torso segmentation** — lower- versus upper-torso segment length remains underidentified until additional chest/torso-center landmarks are available.
+1. **Challenge-v3 Woody exact visual approval** — source hash `777fd93e31997b912debb734bf0be461c6795210649370bd6be92717f948e7c9` is byte-verified, but the exact source image could not be rendered in the current review environment. Keep blocked until that exact asset is inspected.
+2. **Legacy Homemaker benchmark admission** — set 276-1 now provides strong assembled-identity evidence, but a clean exact single-figure source must still be byte-pinned and reviewed before the architecture enters the evaluation cohort.
+3. **Original architecture sanitized derivatives** — 15 deterministic candidates require direct local pixel review.
+4. **Original architecture segmentation candidates** — 8 cases require a configured SAM2 runtime/checkpoint plus direct review.
+5. **Fortnite semantic supervision labels** — review infrastructure is complete, but canonical supervision requires actual reviews/adjudication.
+6. **Physical multi-view ground truth** — exact rear/side/physical evidence remains limited; do not synthesize hidden views.
+7. **Reference-fit torso segmentation** — lower-vs-upper torso segment length remains underidentified until additional landmarks are available.
 
 ## Highest-value next work
 
 ### P0
-1. Expand body-architecture recognition benchmark coverage beyond the three current character corpora using only evidence-backed architecture/release records, especially official Hagrid/Axl/Giant variants, specialized creatures, alternate lower bodies, multi-arm bodies, and mechanical bodies.
-2. Run/review the 15 deterministic sanitization candidates locally when derivative pixels are available; validate review JSONL and rebuild the model-input manifest.
-3. Run the 8 SAM 2 segmentation prompt seeds in a capable local environment; visually review exact outputs; bind only approved hashes.
-4. Execute Fortnite first-review/second-review/adjudication batches and promote only explicit adjudicated supervision.
-5. Expand exact-release multi-view ReferenceSets and cross-surface correspondence.
+1. Attempt to byte-pin and sanitize a specific 276-1 nurse or child Homemaker figure reference; admit it only if exact-release identity and visual-safety gates pass.
+2. Resolve the exact-hash Woody `toy003` raw visual review when the verified asset can be rendered.
+3. Run/review the original 15 deterministic sanitization candidates locally; validate review JSONL and rebuild the model-input manifest.
+4. Run/review the 8 SAM2 segmentation candidates in a capable local runtime.
+5. Execute Fortnite first-review/second-review/adjudication batches and promote only explicit adjudicated supervision.
+6. Expand exact-release multi-view ReferenceSets and cross-surface correspondence.
 
 ### P1
+- Evaluate the three concrete custom-architecture gaps:
+  - `custom_midfig_balljoint_upper`;
+  - `custom_sidan_full_balljoint_poseable`;
+  - `custom_standard_four_arm_single_torso`.
 - Official face/clothing/decoration grammar extraction.
 - Negative/failure critic corpus.
 - Current model/dataset/tool census.
@@ -102,19 +120,26 @@ Current priority order:
 
 ## Exact continuation point
 
-For architecture benchmark safety:
+For challenge v3:
+- `knowledge/libraries/lego-minifigure-customs/data/body-architecture-recognition-challenge-cases-v3.json`
+- `knowledge/libraries/lego-minifigure-customs/data/body-architecture-recognition-challenge-sanitization-reviews-v3.json`
+- `knowledge/libraries/lego-minifigure-customs/data/body-architecture-recognition-challenge-sanitization-queue-v3.json`
+- `knowledge/libraries/lego-minifigure-customs/data/body-architecture-recognition-challenge-model-input-manifest-v3.json`
+- `tests/test_body_architecture_challenge_v3_model_input.py`
+
+For architecture gaps:
+- `knowledge/libraries/lego-minifigure-customs/data/body-architecture-recognition-coverage-gaps.json`
+- `knowledge/libraries/lego-minifigure-customs/data/figure-architecture-registry.json`
+- `tools/knowledge/build_body_architecture_coverage_gaps.py`
+- `tests/test_build_body_architecture_coverage_gaps.py`
+
+For original benchmark safety:
 - `knowledge/libraries/lego-minifigure-customs/data/body-architecture-benchmark-model-input-manifest.json`
 - `knowledge/libraries/lego-minifigure-customs/data/body-architecture-benchmark-sanitization-candidates.json`
 - `knowledge/libraries/lego-minifigure-customs/data/body-architecture-benchmark-segmentation-prompts.json`
 - `tools/knowledge/prepare_body_architecture_sanitization_review.py`
 - `tools/knowledge/validate_body_architecture_sanitized_asset_reviews.py`
 - `tools/knowledge/generate_body_architecture_sam2_candidates.py`
-
-For benchmark expansion:
-- `knowledge/libraries/lego-minifigure-customs/data/figure-architecture-registry.json`
-- `knowledge/libraries/lego-minifigure-customs/data/body-architecture-source-registry.json`
-- `knowledge/libraries/lego-minifigure-customs/data/body-architecture-recognition-benchmark-cases.json`
-- `knowledge/libraries/lego-minifigure-customs/data/body-architecture-physical-acquisition-queue.json`
 
 For Fortnite semantic supervision:
 - `knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-plan.json`
@@ -123,7 +148,11 @@ For Fortnite semantic supervision:
 - `tools/knowledge/build_fortnite_semantic_adjudication_queue.py`
 - `tools/knowledge/promote_fortnite_semantic_supervision.py`
 
-Do not restart source acquisition. Select the highest-value executable corpus/evaluation gap, preserve provenance and uncertainty, commit useful increments, update state, and continue.
+Do not restart completed source acquisition or architecture-v3 expansion. Preserve held-out/leakage-safe split logic, provenance, uncertainty, and exact-hash approval gates.
+
+## Validation note
+
+The new v3/gap regression tests have been committed, and checked-in artifacts were built against the same deterministic logic. The connected GitHub status endpoint exposed no CI status for the direct-push checkpoint, so do not claim a fresh full CI run until one is observed or executed.
 
 ## Continuation rule
 
