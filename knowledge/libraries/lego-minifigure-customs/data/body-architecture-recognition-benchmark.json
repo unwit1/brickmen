@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "created": "2026-09-27",
-  "status": "benchmark_design",
+  "status": "partially_populated_v0",
   "objective": "Evaluate recognition of figure architectures and architecture-conditioned character style transfer.",
   "recognition_tasks": [
     "full_figure_front_classification",
@@ -176,5 +176,22 @@
       "Pointcept_PT_v3_or_successor"
     ]
   },
-  "rule": "Recognition models propose architecture/component candidates. Deterministic topology evidence and physical/authoritative connector evidence govern manufacturing identity. Character, maker, market label and product prefix must not leak into the benchmark in a way that lets the model bypass geometry recognition."
+  "rule": "Recognition models propose architecture/component candidates. Deterministic topology evidence and physical/authoritative connector evidence govern manufacturing identity. Character, maker, market label and product prefix must not leak into the benchmark in a way that lets the model bypass geometry recognition.",
+  "case_manifest": "data/body-architecture-recognition-benchmark-cases.json",
+  "population_summary": {
+    "as_of": "2026-09-28",
+    "total_cases": 27,
+    "closed_set_cases": 18,
+    "open_set_unknown_cases": 9,
+    "core_scoring_cases": 11,
+    "provisional_scoring_cases": 7,
+    "split_strategy": "corpus_character_group_holdout",
+    "asset_state": "reference_locator_only_pending_materialization"
+  },
+  "population_rules": [
+    "Maker, product code, character label, record ID and source-corpus labels are audit metadata only and must not be model inputs.",
+    "Core, provisional and open-set tracks are scored separately.",
+    "Unresolved/umbrella architecture labels are unknown-rejection targets rather than coerced closed-set classes.",
+    "Validation and test groups are evaluation-only; preserve corpus-character group boundaries when adding asset variants."
+  ]
 }
