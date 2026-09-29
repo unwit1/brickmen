@@ -55,8 +55,7 @@ def test_challenge_v4_sanitization_queue_is_fully_raw_approved() -> None:
         "raw_model_input_allowed_cases": 23,
         "blocked_model_input_cases": 0,
         "status_counts": {
-            "approved_raw_model_input": 21,
-            "blocked_pending_visual_sanitization_review": 2,
+            "approved_raw_model_input": 23,
         },
         "risk_counts": {
             "medium_review_required": 22,
@@ -64,15 +63,7 @@ def test_challenge_v4_sanitization_queue_is_fully_raw_approved() -> None:
         },
     }
 
-    blocked = {
-        row["source_record_id"]
-        for row in result["queue"]
-        if not row["raw_model_input_allowed"]
-    }
-    assert blocked == {
-        "challenge_woody_toy003_long_limb",
-        "challenge_homemaker_276_nurse",
-    }
+    assert all(row["raw_model_input_allowed"] for row in result["queue"])
 
 
 def test_checked_in_challenge_v4_queue_matches_generic_builder() -> None:
@@ -97,15 +88,7 @@ def test_challenge_v4_model_input_manifest_is_fully_runnable() -> None:
     }
     assert all(row["split"] == "challenge_test" for row in result["entries"])
 
-    blocked = {
-        row["source_record_id"]: row["blocked_reason"]
-        for row in result["entries"]
-        if not row["model_input_allowed"]
-    }
-    assert blocked == {
-        "challenge_homemaker_276_nurse": "pending_visual_sanitization_review",
-        "challenge_woody_toy003_long_limb": "pending_visual_sanitization_review",
-    }
+    assert all(row["model_input_allowed"] for row in result["entries"])
 
 
 def test_checked_in_challenge_v4_model_input_matches_generic_builder() -> None:
