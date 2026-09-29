@@ -269,3 +269,63 @@ def test_build_keeps_segmentation_blockers_separate(tmp_path: Path, monkeypatch)
     assert result["metadata_only"] is True
     assert result["raw_source_media_persisted"] is False
     assert result["candidate_derivative_media_persisted"] is False
+
+
+def test_apply_operations_row_median_sample_preserves_vertical_gradient() -> None:
+    tool = load_tool()
+    from PIL import Image
+
+    image = Image.new("RGB", (20, 20), "white")
+    pixels = image.load()
+    for y in range(20):
+        value = 100 + y
+        for x in range(20):
+            pixels[x, y] = (value, value, value)
+    for y in range(0, 10):
+        for x in range(12, 20):
+            pixels[x, y] = (180, 20, 20)
+
+    result, applied = tool.apply_operations(
+        image,
+        [
+            {
+                "op": "mask_rect_norm",
+                "bounds": [0.6, 0.0, 1.0, 0.5],
+                "fill_mode": "row_median_sample",
+                "sample_bounds": [0.0, 0.0, 0.2, 0.5],
+            }
+        ],
+    )
+
+    for y in range(10):
+        expected = 100 + y
+        assert result.getpixel((15, y))[:3] == (
+            expected,
+            expected,
+            expected,
+        )
+    assert applied[0]["fill_mode"] == "row_median_sample"
+    assert applied[0]["sample_pixel_bounds"] == [0, 0, 4, 10]
+    assert "fill_rgba" not in applied[0]
+
+
+def test_row_median_sample_requires_sample_bounds() -> None:
+    tool = load_tool()
+    from PIL import Image
+
+    image = Image.new("RGB", (20, 20), "white")
+    try:
+        tool.apply_operations(
+            image,
+            [
+                {
+                    "op": "mask_rect_norm",
+                    "bounds": [0.6, 0.0, 1.0, 0.5],
+                    "fill_mode": "row_median_sample",
+                }
+            ],
+        )
+    except ValueError as exc:
+        assert "requires sample_bounds" in str(exc)
+    else:
+        raise AssertionError("expected missing sample_bounds to fail")
