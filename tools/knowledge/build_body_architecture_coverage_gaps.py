@@ -17,9 +17,11 @@ DATA = ROOT / "knowledge" / "libraries" / "lego-minifigure-customs" / "data"
 DEFAULT_REGISTRY = DATA / "figure-architecture-registry.json"
 DEFAULT_BASE = DATA / "body-architecture-recognition-benchmark-cases.json"
 DEFAULT_CHALLENGE = DATA / "body-architecture-recognition-challenge-cases-v4.json"
+DEFAULT_CUSTOM = DATA / "body-architecture-custom-acquisition-candidates-v1.json"
+DEFAULT_CUSTOM_GATE = DATA / "body-architecture-custom-model-input-manifest-v1.json"
 DEFAULT_CONTRAST = DATA / "body-architecture-same-character-contrast-v1.json"
 DEFAULT_OUTPUT = DATA / "body-architecture-recognition-coverage-gaps.json"
-VERSION = "body-architecture-coverage-gaps/v2"
+VERSION = "body-architecture-coverage-gaps/v3"
 
 NON_CLASS_STATUSES = (
     "umbrella",
@@ -51,6 +53,23 @@ def target_ids(manifest: dict[str, Any]) -> set[str]:
         row["expected"]["architecture_id"]
         for row in manifest.get("cases", [])
         if (row.get("expected") or {}).get("architecture_id")
+    }
+
+
+def gated_target_ids(
+    manifest: dict[str, Any],
+    gate: dict[str, Any],
+) -> set[str]:
+    allowed_record_ids = {
+        row["source_record_id"]
+        for row in gate.get("entries", [])
+        if row.get("model_input_allowed") is True
+    }
+    return {
+        row["expected"]["architecture_id"]
+        for row in manifest.get("cases", [])
+        if row.get("source_record_id") in allowed_record_ids
+        and (row.get("expected") or {}).get("architecture_id")
     }
 
 
@@ -101,16 +120,21 @@ def build(
     registry_path: Path = DEFAULT_REGISTRY,
     base_path: Path = DEFAULT_BASE,
     challenge_path: Path = DEFAULT_CHALLENGE,
+    custom_path: Path = DEFAULT_CUSTOM,
+    custom_gate_path: Path = DEFAULT_CUSTOM_GATE,
     contrast_path: Path = DEFAULT_CONTRAST,
 ) -> dict[str, Any]:
     registry = load(registry_path)
     base = load(base_path)
     challenge = load(challenge_path)
+    custom = load(custom_path)
+    custom_gate = load(custom_gate_path)
     contrast = load(contrast_path)
 
     sources = {
         "base_benchmark": sorted(target_ids(base)),
         "challenge_v4": sorted(target_ids(challenge)),
+        "custom_challenge_v1": sorted(gated_target_ids(custom, custom_gate)),
         "same_character_contrast": sorted(contrast_ids(contrast)),
     }
     covered = set().union(*(set(values) for values in sources.values()))
@@ -172,7 +196,8 @@ def build(
         "processor_version": VERSION,
         "policy": [
             "Evaluation coverage is architecture-target coverage, not source-count coverage.",
-            "Challenge-v4 and same-character contrast assets are evaluation-only.",
+            "Challenge-v4, custom challenge, and same-character contrast assets are evaluation-only.",
+            "Custom challenge coverage counts only cases admitted by the exact model-input gate.",
             "Umbrella, source-label-only and unresolved families are ontology work, not closed-set benchmark classes.",
             "Prioritize concrete official untested architectures before adding redundant examples of already-covered families.",
         ],
@@ -180,6 +205,8 @@ def build(
             "registry": registry_path.relative_to(ROOT).as_posix(),
             "base_benchmark": base_path.relative_to(ROOT).as_posix(),
             "challenge": challenge_path.relative_to(ROOT).as_posix(),
+            "custom_challenge": custom_path.relative_to(ROOT).as_posix(),
+            "custom_model_input_gate": custom_gate_path.relative_to(ROOT).as_posix(),
             "same_character_contrast": contrast_path.relative_to(ROOT).as_posix(),
         },
         "summary": {
@@ -216,6 +243,8 @@ def main() -> None:
     parser.add_argument("--registry", type=Path, default=DEFAULT_REGISTRY)
     parser.add_argument("--base", type=Path, default=DEFAULT_BASE)
     parser.add_argument("--challenge", type=Path, default=DEFAULT_CHALLENGE)
+    parser.add_argument("--custom", type=Path, default=DEFAULT_CUSTOM)
+    parser.add_argument("--custom-gate", type=Path, default=DEFAULT_CUSTOM_GATE)
     parser.add_argument("--contrast", type=Path, default=DEFAULT_CONTRAST)
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     args = parser.parse_args()
@@ -224,6 +253,8 @@ def main() -> None:
         args.registry,
         args.base,
         args.challenge,
+        args.custom,
+        args.custom_gate,
         args.contrast,
     )
     args.output.parent.mkdir(parents=True, exist_ok=True)
