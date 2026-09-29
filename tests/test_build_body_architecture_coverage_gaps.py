@@ -11,13 +11,7 @@ DATA = ROOT / "knowledge" / "libraries" / "lego-minifigure-customs" / "data"
 REPORT = DATA / "body-architecture-recognition-coverage-gaps.json"
 
 P0_EXPECTED = {
-    "baby_toddler",
-    "lego_giant_troll_legacy",
     "lego_homemaker_maxifigure_legacy",
-    "microfigure",
-    "minidoll_standard",
-    "minifig_long_limb",
-    "minifig_skeleton_bony",
 }
 
 
@@ -38,13 +32,26 @@ def test_coverage_report_tracks_current_breadth() -> None:
 
     assert result["summary"] == {
         "registry_architectures": 49,
-        "covered_architectures": 27,
-        "uncovered_architectures": 22,
-        "coverage_fraction": 0.55102,
-        "p0_official_gaps": 7,
+        "covered_architectures": 33,
+        "uncovered_architectures": 16,
+        "coverage_fraction": 0.673469,
+        "p0_official_gaps": 1,
         "p1_gaps": 3,
         "p2_gaps": 12,
     }
+
+
+
+def test_challenge_v3_is_the_active_coverage_cohort() -> None:
+    tool = load_tool()
+    result = tool.build()
+
+    assert "challenge_v3" in result["coverage_sources"]
+    assert "challenge_v2" not in result["coverage_sources"]
+    assert result["inputs"]["challenge"].endswith(
+        "body-architecture-recognition-challenge-cases-v3.json"
+    )
+    assert len(result["coverage_sources"]["challenge_v3"]) == 22
 
 
 def test_p0_gaps_are_concrete_official_architectures() -> None:
