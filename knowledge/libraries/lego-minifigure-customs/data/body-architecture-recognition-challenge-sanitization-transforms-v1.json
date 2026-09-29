@@ -16,7 +16,8 @@
     "Transforms are pinned to the verified source SHA-256.",
     "Generated derivatives are candidates until exact-pixel visual approval.",
     "Challenge cases remain evaluation-only.",
-    "Do not crop away architecture-defining centaur body geometry merely to remove the inset."
+    "Do not crop away architecture-defining centaur body geometry merely to remove the inset.",
+    "The initial border-median fill was visually rejected because inset hair contaminated the sampled fill; use explicit white only for this verified white-background BrickLink image."
   ],
   "transforms": [
     {
@@ -36,10 +37,10 @@
             1,
             0.34
           ],
-          "fill_mode": "border_median"
+          "fill_mode": "white"
         }
       ],
-      "rationale": "Remove the alternate-expression head inset in the upper-right while preserving the complete front centaur body and architecture."
+      "rationale": "Remove the alternate-expression head inset in the upper-right with a white background mask matching the catalog field; preserve the complete centaur figure and architecture."
     }
   ]
 }
