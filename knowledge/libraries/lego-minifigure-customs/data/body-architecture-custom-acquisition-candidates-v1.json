@@ -1,0 +1,127 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-29",
+  "status": "mixed_exact_url_pending_byte_verification_and_media_resolution",
+  "benchmark_id": "body_architecture_custom_acquisition_candidates_v1",
+  "purpose": "Metadata-only acquisition gate for the three remaining concrete custom-architecture evaluation gaps. Exact media is not model input until byte verification and explicit visual sanitization review.",
+  "policy": [
+    "Product-description evidence may establish architecture existence and compatibility claims but does not authorize image model input.",
+    "Exact media must be byte-verified before review.",
+    "Visible maker branding/watermarks are task-confounding leakage and require sanitization or a cleaner exact source before model input approval.",
+    "Do not upscale tiny thumbnails and treat them as new evidence; resolve a genuine higher-resolution source instead."
+  ],
+  "cases": [
+    {
+      "case_id": "archcandidate::titanic_midfig_balljoint_upper",
+      "source_record_id": "custom_midfig_balljoint_upper_titanic",
+      "split": "custom_challenge_test",
+      "scoring_track": "custom",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "custom_midfig_balljoint_upper",
+        "unresolved_candidate": null
+      },
+      "input_asset": {
+        "status": "exact_url_pending_byte_verification",
+        "required_view": "full_figure_or_complete_upper_body_architecture",
+        "materialized_asset_id": null,
+        "reference_locators": [
+          {
+            "source_id": "titanic_bricks_midfig_balljoint_product_image_1",
+            "url": "https://titanicbricks.com/products/midfig-torso-and-arms-with-ball-joints-custom-lego-compatible",
+            "authority": "manufacturer_product_page",
+            "exact_image_url": "https://titanicbricks.com/cdn/shop/files/DSC_0303.jpg?v=1743138458&width=1946",
+            "image_resolution_status": "exact_image_url_resolved_pending_byte_verification",
+            "source_file_sha256": null,
+            "source_size_bytes": null,
+            "source_width": null,
+            "source_height": null,
+            "source_content_type": null,
+            "source_image_format": null,
+            "verification_run_id": null,
+            "verification_artifact_id": null
+          }
+        ]
+      },
+      "leakage_guard": {
+        "allow_maker_as_model_input": false,
+        "allow_product_name_as_model_input": false,
+        "allow_source_labels_as_model_input": false,
+        "note": "Current product imagery visibly carries Titanic Bricks branding. Even after byte verification, raw media remains blocked until branding/leakage is removed or a clean exact source is found."
+      },
+      "audit_metadata": {
+        "maker": "Titanic Bricks",
+        "product_label": "Midfig torso and arms with ball joints custom lego compatible",
+        "evidence_summary": [
+          "Product title explicitly identifies a MidFig torso/arm system with ball joints.",
+          "Product page states all parts are compatible with standard minifigure parts.",
+          "Product page states the parts are printed using resin."
+        ]
+      },
+      "provenance": {
+        "source_page_url": "https://titanicbricks.com/products/midfig-torso-and-arms-with-ball-joints-custom-lego-compatible"
+      }
+    },
+    {
+      "case_id": "archcandidate::titanic_standard_four_arm",
+      "source_record_id": "custom_standard_four_arm_single_torso_titanic",
+      "split": "custom_challenge_test",
+      "scoring_track": "custom",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "custom_standard_four_arm_single_torso",
+        "unresolved_candidate": null
+      },
+      "input_asset": {
+        "status": "exact_url_pending_byte_verification",
+        "required_view": "full_torso_and_all_four_arm_mounts_visible",
+        "materialized_asset_id": null,
+        "reference_locators": [
+          {
+            "source_id": "titanic_bricks_four_arm_product_image_1",
+            "url": "https://titanicbricks.com/products/4-four-arms-torso-custom-minifig",
+            "authority": "manufacturer_product_page",
+            "exact_image_url": "https://titanicbricks.com/cdn/shop/files/untitled.1159.jpg?v=1758351992&width=1946",
+            "image_resolution_status": "exact_image_url_resolved_pending_byte_verification",
+            "source_file_sha256": null,
+            "source_size_bytes": null,
+            "source_width": null,
+            "source_height": null,
+            "source_content_type": null,
+            "source_image_format": null,
+            "verification_run_id": null,
+            "verification_artifact_id": null
+          }
+        ]
+      },
+      "leakage_guard": {
+        "allow_maker_as_model_input": false,
+        "allow_product_name_as_model_input": false,
+        "allow_source_labels_as_model_input": false,
+        "note": "Byte verification is required first; then inspect the exact source for branding, text, secondary figures, or other task confounders before any raw approval."
+      },
+      "audit_metadata": {
+        "maker": "Titanic Bricks",
+        "product_label": "4 four arms torso Custom Minifig",
+        "evidence_summary": [
+          "Dedicated product page identifies a four-arm custom minifigure torso.",
+          "Product page states all parts are compatible with standard minifigure parts.",
+          "Product page states the pieces are resin-printed."
+        ]
+      },
+      "provenance": {
+        "source_page_url": "https://titanicbricks.com/products/4-four-arms-torso-custom-minifig"
+      }
+    }
+  ],
+  "unresolved_media": [
+    {
+      "architecture_id": "custom_sidan_full_balljoint_poseable",
+      "source_id": "minifigworld_sidan_poseable_product",
+      "source_page_url": "https://minifigworld.com/si-dan-toys-poseable-minifig/",
+      "status": "high_resolution_exact_media_unresolved",
+      "reason": "Dedicated product page confirms the architecture, 43 mm height, and ball joints at arms/legs/feet/neck, but the currently exposed image links are only 50x50 thumbnails. A genuine higher-resolution exact asset must be resolved rather than upscaling the thumbnail.",
+      "observed_thumbnail_example": "https://cdn1.bigcommerce.com/server3000/99a43/products/1874/images/10359/Scan29__89969.1561893300.50.50.jpg?c=2"
+    }
+  ]
+}
