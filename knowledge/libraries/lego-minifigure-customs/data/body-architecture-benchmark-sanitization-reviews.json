@@ -559,6 +559,31 @@
       "notes": [
         "Primary figure is front-facing, but the branded display base and a partial secondary figure at the right edge are task-confounding. Crop to figure-only content."
       ]
+    },
+    {
+      "source_record_id": "red_hulk_alpha_af364_bnw",
+      "source_id": "kongbricks_alpha_red_hulk_af364_media",
+      "source_file_sha256": "12e79bc52f7030701a2296f7cf05e7905e02bcefd0d754969cc8bdf95756773b",
+      "status": "sanitization_required",
+      "identity_match": true,
+      "primary_view": "front",
+      "primary_figure_complete": true,
+      "visible_text_leakage": [
+        "release_or_sku_code",
+        "character_name_or_alias_text",
+        "scale_or_dimension_annotation"
+      ],
+      "visual_confounders": [
+        "head_inset",
+        "rear_view_panel",
+        "scale_comparison_figure"
+      ],
+      "sanitization_action": "tight_figure_crop",
+      "raw_model_input_allowed": false,
+      "review_confidence": 0.99,
+      "notes": [
+        "AF364/Red Hulk labels, head and rear-view insets, and a scale-comparison figure are visible around the complete central front figure. Isolate the front figure before evaluation."
+      ]
     }
   ]
 }
