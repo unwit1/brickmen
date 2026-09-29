@@ -35,6 +35,7 @@ def test_populated_case_manifest_baseline() -> None:
     assert summary["provisional_scoring_cases"] == 7
     assert summary["cases_with_reference_locators"] == 27
     assert summary["indirect_only_locator_cases"] == 1
+    assert summary["cases_with_exact_image_urls"] == 4
     assert summary["split_counts"] == {
         "development": 11,
         "validation": 6,
@@ -138,3 +139,23 @@ def test_every_case_has_resolved_reference_locator() -> None:
                 indirect.append(case["source_record_id"])
 
     assert indirect == ["hulk_g2_gh0304_avengers"]
+
+
+def test_resolved_exact_image_urls_are_source_backed() -> None:
+    tool = load_tool()
+    result = tool.build()
+    resolved = []
+
+    for case in result["cases"]:
+        for locator in case["input_asset"]["reference_locators"]:
+            if locator.get("exact_image_url"):
+                resolved.append((case["source_record_id"], locator))
+                assert locator["exact_image_url"].startswith("https://")
+                assert locator["image_resolution_status"] == "verified_exact_image_url"
+
+    assert {record_id for record_id, _ in resolved} == {
+        "hulk_lego_sh0037_standard",
+        "hulk_lego_sh0252_mighty_micros",
+        "hulk_lego_sh0371_giant",
+        "venom_lego_sh0542_standard",
+    }
