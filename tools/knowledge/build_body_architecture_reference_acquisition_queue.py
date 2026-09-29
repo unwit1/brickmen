@@ -23,7 +23,13 @@ def classify_locator(locator: dict[str, Any]) -> tuple[str, str]:
     authority = locator.get("authority")
     url = str(locator.get("url") or "")
     exact_image_url = locator.get("exact_image_url")
+    source_file_sha256 = locator.get("source_file_sha256")
 
+    if source_file_sha256:
+        return (
+            "byte_verified",
+            "verified_source_media_metadata",
+        )
     if exact_image_url:
         return (
             "resolved_exact_image_url",
@@ -64,11 +70,19 @@ def build(benchmark_path: Path = DEFAULT_BENCHMARK) -> dict[str, Any]:
                     "strategy": strategy,
                     "exact_image_url": locator.get("exact_image_url"),
                     "image_resolution_status": locator.get("image_resolution_status"),
+                    "byte_verification_status": locator.get("byte_verification_status"),
+                    "source_file_sha256": locator.get("source_file_sha256"),
+                    "source_size_bytes": locator.get("source_size_bytes"),
+                    "source_content_type": locator.get("source_content_type"),
+                    "source_image_format": locator.get("source_image_format"),
+                    "verification_run_id": locator.get("verification_run_id"),
                 }
             )
 
         if not actions:
             case_status = "blocked_missing_reference_locator"
+        elif any(action["status"] == "byte_verified" for action in actions):
+            case_status = "byte_verified_materialization_pending"
         elif any(action["status"] == "resolved_exact_image_url" for action in actions):
             case_status = "ready_for_materialization"
         elif all(
@@ -97,8 +111,38 @@ def build(benchmark_path: Path = DEFAULT_BENCHMARK) -> dict[str, Any]:
                         ),
                         None,
                     ),
-                    "source_occurrence_id": None,
-                    "source_file_sha256": None,
+                    "source_occurrence_id": next(
+                        (
+                            action.get("source_id")
+                            for action in actions
+                            if action.get("source_file_sha256")
+                        ),
+                        None,
+                    ),
+                    "source_file_sha256": next(
+                        (
+                            action.get("source_file_sha256")
+                            for action in actions
+                            if action.get("source_file_sha256")
+                        ),
+                        None,
+                    ),
+                    "source_size_bytes": next(
+                        (
+                            action.get("source_size_bytes")
+                            for action in actions
+                            if action.get("source_file_sha256")
+                        ),
+                        None,
+                    ),
+                    "source_content_type": next(
+                        (
+                            action.get("source_content_type")
+                            for action in actions
+                            if action.get("source_file_sha256")
+                        ),
+                        None,
+                    ),
                     "view": "canonical_or_best_available_full_figure",
                     "rights_provenance_status": "preserve_source_permission_overlay",
                 },
@@ -116,8 +160,15 @@ def build(benchmark_path: Path = DEFAULT_BENCHMARK) -> dict[str, Any]:
                 strategy_counts.get(action["strategy"], 0) + 1
             )
 
+    summary_byte_verified = sum(
+        row["status"] == "byte_verified_materialization_pending" for row in queue
+    )
     summary_ready_for_materialization = sum(
-        row["status"] == "ready_for_materialization" for row in queue
+        row["status"] in {
+            "ready_for_materialization",
+            "byte_verified_materialization_pending",
+        }
+        for row in queue
     )
     summary_ready_for_image_resolution = sum(
         row["status"] == "ready_for_image_url_resolution" for row in queue
@@ -128,11 +179,15 @@ def build(benchmark_path: Path = DEFAULT_BENCHMARK) -> dict[str, Any]:
         "schema_version": "0.1",
         "created": "2026-09-28",
         "status": (
-            "exact_image_urls_complete_materialization_pending"
-            if summary_ready_for_materialization == len(queue)
-            and summary_ready_for_image_resolution == 0
-            and summary_blocked == 0
-            else "ready_for_resolution"
+            "reference_media_verified_materialization_pending"
+            if summary_byte_verified == len(queue)
+            else (
+                "exact_image_urls_complete_materialization_pending"
+                if summary_ready_for_materialization == len(queue)
+                and summary_ready_for_image_resolution == 0
+                and summary_blocked == 0
+                else "ready_for_resolution"
+            )
         ),
         "processor_version": VERSION,
         "objective": (
@@ -143,12 +198,14 @@ def build(benchmark_path: Path = DEFAULT_BENCHMARK) -> dict[str, Any]:
             "Do not pass HTML catalog pages to the image materializer.",
             "Do not crawl a source merely because a page locator exists.",
             "Prefer supported catalog/API adapters when available.",
-            "Preserve source occurrence, rights/provenance metadata, and exact image URL.",
+            "Preserve source occurrence, rights/provenance metadata, exact image URL, and byte-verification hashes.",
+            "Verified hashes and metadata may be stored in Git; raw reference image bytes must not be committed.",
             "Indirect identity-graph evidence may remain as provenance even when a separate exact media source resolves the visual asset.",
         ],
         "benchmark_manifest": benchmark_path.relative_to(ROOT).as_posix(),
         "summary": {
             "total_cases": len(queue),
+            "byte_verified_cases": summary_byte_verified,
             "ready_for_materialization_cases": summary_ready_for_materialization,
             "ready_for_image_url_resolution_cases": summary_ready_for_image_resolution,
             "blocked_cases": summary_blocked,
@@ -158,9 +215,9 @@ def build(benchmark_path: Path = DEFAULT_BENCHMARK) -> dict[str, Any]:
         "queue": queue,
         "downstream": {
             "materializer": "tools/knowledge/materialize_lego_reference_images.py",
-            "materializer_requirement": "exact HTTPS image URLs plus explicit allowed hosts",
+            "materializer_requirement": "exact HTTPS image URLs plus explicit allowed hosts; verified hashes must be checked after fetch",
             "post_materialization": [
-                "checksum and content-addressed dedupe",
+                "verify fetched bytes match the stored SHA-256",
                 "canonical-view validation",
                 "low-resolution and occlusion derivative generation",
                 "benchmark manifest asset binding",
