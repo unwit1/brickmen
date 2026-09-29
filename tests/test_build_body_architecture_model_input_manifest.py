@@ -95,11 +95,11 @@ def test_live_manifest_defaults_to_four_clean_raw_inputs() -> None:
     assert sum(
         row["blocked_reason"] == "pending_visual_review"
         for row in result["entries"]
-    ) == 15
+    ) == 13
     assert sum(
         row["blocked_reason"] == "requires_segmentation_or_manual_cleanup"
         for row in result["entries"]
-    ) == 8
+    ) == 10
 
 
 def test_exact_valid_approval_promotes_one_candidate() -> None:
@@ -207,19 +207,19 @@ def test_canonical_review_corpus_promotes_only_visually_approved_candidates() ->
 
     assert result["summary"] == {
         "total_cases": 27,
-        "model_input_allowed_cases": 12,
+        "model_input_allowed_cases": 17,
         "approved_raw_cases": 4,
-        "approved_sanitized_cases": 8,
-        "blocked_cases": 15,
+        "approved_sanitized_cases": 13,
+        "blocked_cases": 10,
     }
     assert sum(
         row["blocked_reason"] == "candidate_revision_required"
         for row in result["entries"]
-    ) == 7
+    ) == 0
     assert sum(
         row["blocked_reason"] == "requires_segmentation_or_manual_cleanup"
         for row in result["entries"]
-    ) == 8
+    ) == 10
 
 
 def test_checked_in_model_input_manifest_matches_builder() -> None:
