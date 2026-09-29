@@ -1,0 +1,1031 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-28",
+  "status": "visual_sanitization_in_progress",
+  "processor_version": "body-architecture-benchmark-sanitization-queue/v1",
+  "benchmark_manifest": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-recognition-challenge-cases-v2.json",
+  "policy": "data/body-architecture-benchmark-input-sanitization-policy.json",
+  "reviews": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-recognition-challenge-sanitization-reviews-v2.json",
+  "summary": {
+    "total_cases": 16,
+    "raw_model_input_allowed_cases": 16,
+    "blocked_model_input_cases": 0,
+    "status_counts": {
+      "approved_raw_model_input": 16
+    },
+    "risk_counts": {
+      "medium_review_required": 16
+    }
+  },
+  "queue": [
+    {
+      "case_id": "archchallenge::challenge_axl_nex007",
+      "source_record_id": "challenge_axl_nex007",
+      "split": "challenge_test",
+      "scoring_track": "core",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "lego_axl_oversized_torso_hybrid",
+        "unresolved_candidate": null
+      },
+      "source": {
+        "source_id": "bricklink_axl_nex007_inventory",
+        "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/nex007.png",
+        "source_file_sha256": "9bc5ec3b785089cb008e0121e35661058c311fe52d4afcede7b2ff9e7aea9bc7",
+        "source_size_bytes": 106865,
+        "source_width": 240,
+        "source_height": 281,
+        "source_content_type": "image/png",
+        "source_image_format": "png",
+        "verification_run_id": 36518447556
+      },
+      "source_risk": "medium_review_required",
+      "risk_reasons": [
+        "catalog_image_may_include_insets_or_auxiliary_panels"
+      ],
+      "status": "approved_raw_model_input",
+      "raw_model_input_allowed": true,
+      "required_checks": [
+        "identity_matches_source_record",
+        "primary_view_classified",
+        "primary_figure_complete",
+        "release_or_sku_text_absent_or_removed",
+        "character_name_text_absent_or_removed",
+        "maker_or_brand_logo_absent_or_removed",
+        "architecture_or_market_label_absent_or_removed",
+        "task_confounding_secondary_panels_absent_or_removed"
+      ],
+      "recommended_actions": [
+        "approve_raw_only_if_visually_clean",
+        "tight_figure_crop",
+        "mask_auxiliary_insets"
+      ],
+      "review": {
+        "identity_match": true,
+        "primary_view": "front",
+        "primary_figure_complete": true,
+        "visible_text_leakage": [],
+        "visual_confounders": [],
+        "sanitization_action": "none",
+        "sanitized_asset_sha256": "9bc5ec3b785089cb008e0121e35661058c311fe52d4afcede7b2ff9e7aea9bc7",
+        "sanitized_asset_status": "approved",
+        "reviewer_id": "openai_chatgpt_visual_review",
+        "reviewer_type": "model",
+        "review_confidence": 0.99,
+        "notes": [
+          "Clean isolated front catalog image on neutral background; no text, labels, secondary figures, or task-confounding inset panels are visible."
+        ],
+        "review_source_sha256": "9bc5ec3b785089cb008e0121e35661058c311fe52d4afcede7b2ff9e7aea9bc7",
+        "review_stale": false
+      },
+      "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
+      "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
+    },
+    {
+      "case_id": "archchallenge::challenge_hagrid_hp144",
+      "source_record_id": "challenge_hagrid_hp144",
+      "split": "challenge_test",
+      "scoring_track": "core",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "lego_hagrid_half_giant",
+        "unresolved_candidate": null
+      },
+      "source": {
+        "source_id": "bricklink_hagrid_hp144_inventory",
+        "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/hp144.png",
+        "source_file_sha256": "7e387b1db3516036575438e6733202fd00bf53ad771aeb885b29681aa51695b3",
+        "source_size_bytes": 151898,
+        "source_width": 297,
+        "source_height": 400,
+        "source_content_type": "image/png",
+        "source_image_format": "png",
+        "verification_run_id": 36518447556
+      },
+      "source_risk": "medium_review_required",
+      "risk_reasons": [
+        "catalog_image_may_include_insets_or_auxiliary_panels"
+      ],
+      "status": "approved_raw_model_input",
+      "raw_model_input_allowed": true,
+      "required_checks": [
+        "identity_matches_source_record",
+        "primary_view_classified",
+        "primary_figure_complete",
+        "release_or_sku_text_absent_or_removed",
+        "character_name_text_absent_or_removed",
+        "maker_or_brand_logo_absent_or_removed",
+        "architecture_or_market_label_absent_or_removed",
+        "task_confounding_secondary_panels_absent_or_removed"
+      ],
+      "recommended_actions": [
+        "approve_raw_only_if_visually_clean",
+        "tight_figure_crop",
+        "mask_auxiliary_insets"
+      ],
+      "review": {
+        "identity_match": true,
+        "primary_view": "front",
+        "primary_figure_complete": true,
+        "visible_text_leakage": [],
+        "visual_confounders": [],
+        "sanitization_action": "none",
+        "sanitized_asset_sha256": "7e387b1db3516036575438e6733202fd00bf53ad771aeb885b29681aa51695b3",
+        "sanitized_asset_status": "approved",
+        "reviewer_id": "openai_chatgpt_visual_review",
+        "reviewer_type": "model",
+        "review_confidence": 0.99,
+        "notes": [
+          "Clean isolated front catalog image; complete figure with no visible text, branding, alternate panels, or extra figures."
+        ],
+        "review_source_sha256": "7e387b1db3516036575438e6733202fd00bf53ad771aeb885b29681aa51695b3",
+        "review_stale": false
+      },
+      "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
+      "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
+    },
+    {
+      "case_id": "archchallenge::challenge_killer_croc_sh0321",
+      "source_record_id": "challenge_killer_croc_sh0321",
+      "split": "challenge_test",
+      "scoring_track": "core",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "lego_giant_killer_croc_specialized",
+        "unresolved_candidate": null
+      },
+      "source": {
+        "source_id": "bricklink_killer_croc_sh0321_specialized_giant",
+        "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/sh0321.png",
+        "source_file_sha256": "256e0dd6dad22b8a8301d2ea1c88a765d80d34ab75e7cdc2deb8a7dd56bbcf6c",
+        "source_size_bytes": 159937,
+        "source_width": 300,
+        "source_height": 299,
+        "source_content_type": "image/png",
+        "source_image_format": "png",
+        "verification_run_id": 36518447556
+      },
+      "source_risk": "medium_review_required",
+      "risk_reasons": [
+        "catalog_image_may_include_insets_or_auxiliary_panels"
+      ],
+      "status": "approved_raw_model_input",
+      "raw_model_input_allowed": true,
+      "required_checks": [
+        "identity_matches_source_record",
+        "primary_view_classified",
+        "primary_figure_complete",
+        "release_or_sku_text_absent_or_removed",
+        "character_name_text_absent_or_removed",
+        "maker_or_brand_logo_absent_or_removed",
+        "architecture_or_market_label_absent_or_removed",
+        "task_confounding_secondary_panels_absent_or_removed"
+      ],
+      "recommended_actions": [
+        "approve_raw_only_if_visually_clean",
+        "tight_figure_crop",
+        "mask_auxiliary_insets"
+      ],
+      "review": {
+        "identity_match": true,
+        "primary_view": "front",
+        "primary_figure_complete": true,
+        "visible_text_leakage": [],
+        "visual_confounders": [],
+        "sanitization_action": "none",
+        "sanitized_asset_sha256": "256e0dd6dad22b8a8301d2ea1c88a765d80d34ab75e7cdc2deb8a7dd56bbcf6c",
+        "sanitized_asset_status": "approved",
+        "reviewer_id": "openai_chatgpt_visual_review",
+        "reviewer_type": "model",
+        "review_confidence": 0.99,
+        "notes": [
+          "Clean isolated front catalog image; specialized giant silhouette is fully visible without text or auxiliary panels."
+        ],
+        "review_source_sha256": "256e0dd6dad22b8a8301d2ea1c88a765d80d34ab75e7cdc2deb8a7dd56bbcf6c",
+        "review_stale": false
+      },
+      "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
+      "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
+    },
+    {
+      "case_id": "archchallenge::challenge_garmadon_njo0078",
+      "source_record_id": "challenge_garmadon_njo0078",
+      "split": "challenge_test",
+      "scoring_track": "core",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "minifig_stacked_torso_multiarm",
+        "unresolved_candidate": null
+      },
+      "source": {
+        "source_id": "bricklink_garmadon_final_battle",
+        "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/njo0078.png",
+        "source_file_sha256": "62bfcdbc7eb83b62b8b34e9a47521d06e5ad231ae7fe0e3688a2d9559d8d54a5",
+        "source_size_bytes": 73065,
+        "source_width": 240,
+        "source_height": 320,
+        "source_content_type": "image/png",
+        "source_image_format": "png",
+        "verification_run_id": 36518447556
+      },
+      "source_risk": "medium_review_required",
+      "risk_reasons": [
+        "catalog_image_may_include_insets_or_auxiliary_panels"
+      ],
+      "status": "approved_raw_model_input",
+      "raw_model_input_allowed": true,
+      "required_checks": [
+        "identity_matches_source_record",
+        "primary_view_classified",
+        "primary_figure_complete",
+        "release_or_sku_text_absent_or_removed",
+        "character_name_text_absent_or_removed",
+        "maker_or_brand_logo_absent_or_removed",
+        "architecture_or_market_label_absent_or_removed",
+        "task_confounding_secondary_panels_absent_or_removed"
+      ],
+      "recommended_actions": [
+        "approve_raw_only_if_visually_clean",
+        "tight_figure_crop",
+        "mask_auxiliary_insets"
+      ],
+      "review": {
+        "identity_match": true,
+        "primary_view": "front",
+        "primary_figure_complete": true,
+        "visible_text_leakage": [],
+        "visual_confounders": [],
+        "sanitization_action": "none",
+        "sanitized_asset_sha256": "62bfcdbc7eb83b62b8b34e9a47521d06e5ad231ae7fe0e3688a2d9559d8d54a5",
+        "sanitized_asset_status": "approved",
+        "reviewer_id": "openai_chatgpt_visual_review",
+        "reviewer_type": "model",
+        "review_confidence": 0.99,
+        "notes": [
+          "Clean isolated front catalog image; stacked-torso/multi-arm architecture is visible without release text or secondary panels."
+        ],
+        "review_source_sha256": "62bfcdbc7eb83b62b8b34e9a47521d06e5ad231ae7fe0e3688a2d9559d8d54a5",
+        "review_stale": false
+      },
+      "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
+      "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
+    },
+    {
+      "case_id": "archchallenge::challenge_grievous_sw0254",
+      "source_record_id": "challenge_grievous_sw0254",
+      "split": "challenge_test",
+      "scoring_track": "core",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "minifig_mechanical_droid_specialized",
+        "unresolved_candidate": null
+      },
+      "source": {
+        "source_id": "bricklink_grievous_sw0254_inventory",
+        "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/sw0254.png",
+        "source_file_sha256": "a80a899836ce6791b194c69329e4108a1229c824b5ea0ff2386082cb97cd39d4",
+        "source_size_bytes": 55082,
+        "source_width": 240,
+        "source_height": 214,
+        "source_content_type": "image/png",
+        "source_image_format": "png",
+        "verification_run_id": 36518447556
+      },
+      "source_risk": "medium_review_required",
+      "risk_reasons": [
+        "catalog_image_may_include_insets_or_auxiliary_panels"
+      ],
+      "status": "approved_raw_model_input",
+      "raw_model_input_allowed": true,
+      "required_checks": [
+        "identity_matches_source_record",
+        "primary_view_classified",
+        "primary_figure_complete",
+        "release_or_sku_text_absent_or_removed",
+        "character_name_text_absent_or_removed",
+        "maker_or_brand_logo_absent_or_removed",
+        "architecture_or_market_label_absent_or_removed",
+        "task_confounding_secondary_panels_absent_or_removed"
+      ],
+      "recommended_actions": [
+        "approve_raw_only_if_visually_clean",
+        "tight_figure_crop",
+        "mask_auxiliary_insets"
+      ],
+      "review": {
+        "identity_match": true,
+        "primary_view": "front",
+        "primary_figure_complete": true,
+        "visible_text_leakage": [],
+        "visual_confounders": [],
+        "sanitization_action": "none",
+        "sanitized_asset_sha256": "a80a899836ce6791b194c69329e4108a1229c824b5ea0ff2386082cb97cd39d4",
+        "sanitized_asset_status": "approved",
+        "reviewer_id": "openai_chatgpt_visual_review",
+        "reviewer_type": "model",
+        "review_confidence": 0.99,
+        "notes": [
+          "Clean isolated front catalog image; complete specialized mechanical body with no text, branding, or task-confounding content."
+        ],
+        "review_source_sha256": "a80a899836ce6791b194c69329e4108a1229c824b5ea0ff2386082cb97cd39d4",
+        "review_stale": false
+      },
+      "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
+      "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
+    },
+    {
+      "case_id": "archchallenge::challenge_ghost_njo0174",
+      "source_record_id": "challenge_ghost_njo0174",
+      "split": "challenge_test",
+      "scoring_track": "core",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "minifig_lowerbody_ghost",
+        "unresolved_candidate": null
+      },
+      "source": {
+        "source_id": "bricklink_ghost_njo0174_inventory",
+        "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/njo0174.png",
+        "source_file_sha256": "9a4787d98c741adf58becc959a8121bf650a620f5039ac3e44f96195b417ed6f",
+        "source_size_bytes": 89988,
+        "source_width": 240,
+        "source_height": 320,
+        "source_content_type": "image/png",
+        "source_image_format": "png",
+        "verification_run_id": 36518447556
+      },
+      "source_risk": "medium_review_required",
+      "risk_reasons": [
+        "catalog_image_may_include_insets_or_auxiliary_panels"
+      ],
+      "status": "approved_raw_model_input",
+      "raw_model_input_allowed": true,
+      "required_checks": [
+        "identity_matches_source_record",
+        "primary_view_classified",
+        "primary_figure_complete",
+        "release_or_sku_text_absent_or_removed",
+        "character_name_text_absent_or_removed",
+        "maker_or_brand_logo_absent_or_removed",
+        "architecture_or_market_label_absent_or_removed",
+        "task_confounding_secondary_panels_absent_or_removed"
+      ],
+      "recommended_actions": [
+        "approve_raw_only_if_visually_clean",
+        "tight_figure_crop",
+        "mask_auxiliary_insets"
+      ],
+      "review": {
+        "identity_match": true,
+        "primary_view": "front",
+        "primary_figure_complete": true,
+        "visible_text_leakage": [],
+        "visual_confounders": [],
+        "sanitization_action": "none",
+        "sanitized_asset_sha256": "9a4787d98c741adf58becc959a8121bf650a620f5039ac3e44f96195b417ed6f",
+        "sanitized_asset_status": "approved",
+        "reviewer_id": "openai_chatgpt_visual_review",
+        "reviewer_type": "model",
+        "review_confidence": 0.99,
+        "notes": [
+          "Clean isolated front catalog image; ghost lower-body architecture is fully visible without labels or inset panels."
+        ],
+        "review_source_sha256": "9a4787d98c741adf58becc959a8121bf650a620f5039ac3e44f96195b417ed6f",
+        "review_stale": false
+      },
+      "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
+      "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
+    },
+    {
+      "case_id": "archchallenge::challenge_squid_atl007",
+      "source_record_id": "challenge_squid_atl007",
+      "split": "challenge_test",
+      "scoring_track": "core",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "minifig_lowerbody_tentacle",
+        "unresolved_candidate": null
+      },
+      "source": {
+        "source_id": "bricklink_tentacle_atl007_inventory",
+        "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/atl007.png",
+        "source_file_sha256": "f8a38a07a8d80c4447916d8b444ffebb1b3db9e19a210eb5039b38b38d5aac87",
+        "source_size_bytes": 104060,
+        "source_width": 300,
+        "source_height": 338,
+        "source_content_type": "image/png",
+        "source_image_format": "png",
+        "verification_run_id": 36518447556
+      },
+      "source_risk": "medium_review_required",
+      "risk_reasons": [
+        "catalog_image_may_include_insets_or_auxiliary_panels"
+      ],
+      "status": "approved_raw_model_input",
+      "raw_model_input_allowed": true,
+      "required_checks": [
+        "identity_matches_source_record",
+        "primary_view_classified",
+        "primary_figure_complete",
+        "release_or_sku_text_absent_or_removed",
+        "character_name_text_absent_or_removed",
+        "maker_or_brand_logo_absent_or_removed",
+        "architecture_or_market_label_absent_or_removed",
+        "task_confounding_secondary_panels_absent_or_removed"
+      ],
+      "recommended_actions": [
+        "approve_raw_only_if_visually_clean",
+        "tight_figure_crop",
+        "mask_auxiliary_insets"
+      ],
+      "review": {
+        "identity_match": true,
+        "primary_view": "front",
+        "primary_figure_complete": true,
+        "visible_text_leakage": [],
+        "visual_confounders": [],
+        "sanitization_action": "none",
+        "sanitized_asset_sha256": "f8a38a07a8d80c4447916d8b444ffebb1b3db9e19a210eb5039b38b38d5aac87",
+        "sanitized_asset_status": "approved",
+        "reviewer_id": "openai_chatgpt_visual_review",
+        "reviewer_type": "model",
+        "review_confidence": 0.99,
+        "notes": [
+          "Clean isolated front catalog image; tentacle lower-body architecture is complete and unobstructed with no text or auxiliary panels."
+        ],
+        "review_source_sha256": "f8a38a07a8d80c4447916d8b444ffebb1b3db9e19a210eb5039b38b38d5aac87",
+        "review_stale": false
+      },
+      "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
+      "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
+    },
+    {
+      "case_id": "archchallenge::challenge_centaur_hp236",
+      "source_record_id": "challenge_centaur_hp236",
+      "split": "challenge_test",
+      "scoring_track": "core",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "minifig_centaur_hybrid",
+        "unresolved_candidate": null
+      },
+      "source": {
+        "source_id": "bricklink_centaur_hp236_inventory",
+        "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/hp236.png",
+        "source_file_sha256": "9690938b75bad44108df1b0d15fa85a72ea4f5837b1ba5f774fa6b57acbc3052",
+        "source_size_bytes": 128668,
+        "source_width": 227,
+        "source_height": 400,
+        "source_content_type": "image/png",
+        "source_image_format": "png",
+        "verification_run_id": 36520358304
+      },
+      "source_risk": "medium_review_required",
+      "risk_reasons": [
+        "catalog_image_may_include_insets_or_auxiliary_panels"
+      ],
+      "status": "approved_raw_model_input",
+      "raw_model_input_allowed": true,
+      "required_checks": [
+        "identity_matches_source_record",
+        "primary_view_classified",
+        "primary_figure_complete",
+        "release_or_sku_text_absent_or_removed",
+        "character_name_text_absent_or_removed",
+        "maker_or_brand_logo_absent_or_removed",
+        "architecture_or_market_label_absent_or_removed",
+        "task_confounding_secondary_panels_absent_or_removed"
+      ],
+      "recommended_actions": [
+        "approve_raw_only_if_visually_clean",
+        "tight_figure_crop",
+        "mask_auxiliary_insets"
+      ],
+      "review": {
+        "identity_match": true,
+        "primary_view": "front",
+        "primary_figure_complete": true,
+        "visible_text_leakage": [],
+        "visual_confounders": [],
+        "sanitization_action": "none",
+        "sanitized_asset_sha256": "9690938b75bad44108df1b0d15fa85a72ea4f5837b1ba5f774fa6b57acbc3052",
+        "sanitized_asset_status": "approved",
+        "reviewer_id": "openai_chatgpt_visual_review",
+        "reviewer_type": "model",
+        "review_confidence": 0.99,
+        "notes": [
+          "Clean isolated front BrickLink catalog image with complete centaur architecture and no text, branding, alternate-expression inset, secondary figure, or task-confounding panel.",
+          "Replaces col379 specifically to remove the alternate-expression inset leakage present in that earlier challenge source."
+        ],
+        "review_source_sha256": "9690938b75bad44108df1b0d15fa85a72ea4f5837b1ba5f774fa6b57acbc3052",
+        "review_stale": false
+      },
+      "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
+      "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
+    },
+    {
+      "case_id": "archchallenge::challenge_harry_hp288_medium_leg",
+      "source_record_id": "challenge_harry_hp288_medium_leg",
+      "split": "challenge_test",
+      "scoring_track": "core",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "minifig_medium_leg",
+        "unresolved_candidate": null
+      },
+      "source": {
+        "source_id": "bricklink_harry_hp288_medium_legs",
+        "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/hp288.png",
+        "source_file_sha256": "75b0f4bfb0454f9b85e1ac8564ff6a67415e537db0576f9fb6a9ab186b1c692d",
+        "source_size_bytes": 211354,
+        "source_width": 397,
+        "source_height": 596,
+        "source_content_type": "image/png",
+        "source_image_format": "png",
+        "verification_run_id": 36562356952
+      },
+      "source_risk": "medium_review_required",
+      "risk_reasons": [
+        "catalog_image_may_include_insets_or_auxiliary_panels"
+      ],
+      "status": "approved_raw_model_input",
+      "raw_model_input_allowed": true,
+      "required_checks": [
+        "identity_matches_source_record",
+        "primary_view_classified",
+        "primary_figure_complete",
+        "release_or_sku_text_absent_or_removed",
+        "character_name_text_absent_or_removed",
+        "maker_or_brand_logo_absent_or_removed",
+        "architecture_or_market_label_absent_or_removed",
+        "task_confounding_secondary_panels_absent_or_removed"
+      ],
+      "recommended_actions": [
+        "approve_raw_only_if_visually_clean",
+        "tight_figure_crop",
+        "mask_auxiliary_insets"
+      ],
+      "review": {
+        "identity_match": true,
+        "primary_view": "front",
+        "primary_figure_complete": true,
+        "visible_text_leakage": [],
+        "visual_confounders": [],
+        "sanitization_action": "none",
+        "sanitized_asset_sha256": "75b0f4bfb0454f9b85e1ac8564ff6a67415e537db0576f9fb6a9ab186b1c692d",
+        "sanitized_asset_status": "approved",
+        "reviewer_id": "openai_chatgpt_visual_review",
+        "reviewer_type": "model",
+        "review_confidence": 0.99,
+        "notes": [
+          "Clean isolated front catalog image; articulated medium legs are fully visible with no text, branding, inset panels, or secondary figures."
+        ],
+        "review_source_sha256": "75b0f4bfb0454f9b85e1ac8564ff6a67415e537db0576f9fb6a9ab186b1c692d",
+        "review_stale": false
+      },
+      "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
+      "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
+    },
+    {
+      "case_id": "archchallenge::challenge_medusa_col146_serpent",
+      "source_record_id": "challenge_medusa_col146_serpent",
+      "split": "challenge_test",
+      "scoring_track": "core",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "minifig_lowerbody_serpent",
+        "unresolved_candidate": null
+      },
+      "source": {
+        "source_id": "bricklink_medusa_col146_serpent",
+        "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/col146.png",
+        "source_file_sha256": "df4a52eb9d15b95d117eb19285f4b51530669477b1c2282ba528cef35419c6cc",
+        "source_size_bytes": 155953,
+        "source_width": 283,
+        "source_height": 400,
+        "source_content_type": "image/png",
+        "source_image_format": "png",
+        "verification_run_id": 36561669628
+      },
+      "source_risk": "medium_review_required",
+      "risk_reasons": [
+        "catalog_image_may_include_insets_or_auxiliary_panels"
+      ],
+      "status": "approved_raw_model_input",
+      "raw_model_input_allowed": true,
+      "required_checks": [
+        "identity_matches_source_record",
+        "primary_view_classified",
+        "primary_figure_complete",
+        "release_or_sku_text_absent_or_removed",
+        "character_name_text_absent_or_removed",
+        "maker_or_brand_logo_absent_or_removed",
+        "architecture_or_market_label_absent_or_removed",
+        "task_confounding_secondary_panels_absent_or_removed"
+      ],
+      "recommended_actions": [
+        "approve_raw_only_if_visually_clean",
+        "tight_figure_crop",
+        "mask_auxiliary_insets"
+      ],
+      "review": {
+        "identity_match": true,
+        "primary_view": "front",
+        "primary_figure_complete": true,
+        "visible_text_leakage": [],
+        "visual_confounders": [],
+        "sanitization_action": "none",
+        "sanitized_asset_sha256": "df4a52eb9d15b95d117eb19285f4b51530669477b1c2282ba528cef35419c6cc",
+        "sanitized_asset_status": "approved",
+        "reviewer_id": "openai_chatgpt_visual_review",
+        "reviewer_type": "model",
+        "review_confidence": 0.99,
+        "notes": [
+          "Clean isolated front catalog image; the full flexible serpent lower body is visible without text, branding, or auxiliary panels."
+        ],
+        "review_source_sha256": "df4a52eb9d15b95d117eb19285f4b51530669477b1c2282ba528cef35419c6cc",
+        "review_stale": false
+      },
+      "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
+      "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
+    },
+    {
+      "case_id": "archchallenge::challenge_mermaid_col140_merfolk",
+      "source_record_id": "challenge_mermaid_col140_merfolk",
+      "split": "challenge_test",
+      "scoring_track": "core",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "minifig_lowerbody_merfolk",
+        "unresolved_candidate": null
+      },
+      "source": {
+        "source_id": "bricklink_mermaid_col140_tail",
+        "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/col140.png",
+        "source_file_sha256": "1a67ce510fd3ed2027f3e4ffd4b80f3627cf1b90b53a715146dfe4000e64a5f7",
+        "source_size_bytes": 143338,
+        "source_width": 300,
+        "source_height": 371,
+        "source_content_type": "image/png",
+        "source_image_format": "png",
+        "verification_run_id": 36561669628
+      },
+      "source_risk": "medium_review_required",
+      "risk_reasons": [
+        "catalog_image_may_include_insets_or_auxiliary_panels"
+      ],
+      "status": "approved_raw_model_input",
+      "raw_model_input_allowed": true,
+      "required_checks": [
+        "identity_matches_source_record",
+        "primary_view_classified",
+        "primary_figure_complete",
+        "release_or_sku_text_absent_or_removed",
+        "character_name_text_absent_or_removed",
+        "maker_or_brand_logo_absent_or_removed",
+        "architecture_or_market_label_absent_or_removed",
+        "task_confounding_secondary_panels_absent_or_removed"
+      ],
+      "recommended_actions": [
+        "approve_raw_only_if_visually_clean",
+        "tight_figure_crop",
+        "mask_auxiliary_insets"
+      ],
+      "review": {
+        "identity_match": true,
+        "primary_view": "front",
+        "primary_figure_complete": true,
+        "visible_text_leakage": [],
+        "visual_confounders": [],
+        "sanitization_action": "none",
+        "sanitized_asset_sha256": "1a67ce510fd3ed2027f3e4ffd4b80f3627cf1b90b53a715146dfe4000e64a5f7",
+        "sanitized_asset_status": "approved",
+        "reviewer_id": "openai_chatgpt_visual_review",
+        "reviewer_type": "model",
+        "review_confidence": 0.99,
+        "notes": [
+          "Clean isolated front catalog image; the complete merfolk tail architecture is visible without labels or secondary content."
+        ],
+        "review_source_sha256": "1a67ce510fd3ed2027f3e4ffd4b80f3627cf1b90b53a715146dfe4000e64a5f7",
+        "review_stale": false
+      },
+      "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
+      "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
+    },
+    {
+      "case_id": "archchallenge::challenge_faun_col234_digitigrade",
+      "source_record_id": "challenge_faun_col234_digitigrade",
+      "split": "challenge_test",
+      "scoring_track": "core",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "minifig_lowerbody_faun_digitigrade",
+        "unresolved_candidate": null
+      },
+      "source": {
+        "source_id": "bricklink_faun_col234_digitigrade",
+        "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/col234.png",
+        "source_file_sha256": "a2fe4ccfdae77c605b8abf18f9d0bad9d1d53d23a4ea31727386aa27ebfaa05d",
+        "source_size_bytes": 135636,
+        "source_width": 252,
+        "source_height": 400,
+        "source_content_type": "image/png",
+        "source_image_format": "png",
+        "verification_run_id": 36561669628
+      },
+      "source_risk": "medium_review_required",
+      "risk_reasons": [
+        "catalog_image_may_include_insets_or_auxiliary_panels"
+      ],
+      "status": "approved_raw_model_input",
+      "raw_model_input_allowed": true,
+      "required_checks": [
+        "identity_matches_source_record",
+        "primary_view_classified",
+        "primary_figure_complete",
+        "release_or_sku_text_absent_or_removed",
+        "character_name_text_absent_or_removed",
+        "maker_or_brand_logo_absent_or_removed",
+        "architecture_or_market_label_absent_or_removed",
+        "task_confounding_secondary_panels_absent_or_removed"
+      ],
+      "recommended_actions": [
+        "approve_raw_only_if_visually_clean",
+        "tight_figure_crop",
+        "mask_auxiliary_insets"
+      ],
+      "review": {
+        "identity_match": true,
+        "primary_view": "front",
+        "primary_figure_complete": true,
+        "visible_text_leakage": [],
+        "visual_confounders": [],
+        "sanitization_action": "none",
+        "sanitized_asset_sha256": "a2fe4ccfdae77c605b8abf18f9d0bad9d1d53d23a4ea31727386aa27ebfaa05d",
+        "sanitized_asset_status": "approved",
+        "reviewer_id": "openai_chatgpt_visual_review",
+        "reviewer_type": "model",
+        "review_confidence": 0.99,
+        "notes": [
+          "Clean isolated front catalog image; digitigrade/faun lower legs and feet are fully visible with no text or inset panels."
+        ],
+        "review_source_sha256": "a2fe4ccfdae77c605b8abf18f9d0bad9d1d53d23a4ea31727386aa27ebfaa05d",
+        "review_stale": false
+      },
+      "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
+      "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
+    },
+    {
+      "case_id": "archchallenge::challenge_jabba_sw0402",
+      "source_record_id": "challenge_jabba_sw0402",
+      "split": "challenge_test",
+      "scoring_track": "core",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "specialized_tail_body_jabba",
+        "unresolved_candidate": null
+      },
+      "source": {
+        "source_id": "bricklink_jabba_sw0402_specialized",
+        "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/sw0402.png",
+        "source_file_sha256": "0b817f0499d2dee61ca6e4412ad07b508d1a40cbb433c1f58e0c1c10709227eb",
+        "source_size_bytes": 59284,
+        "source_width": 300,
+        "source_height": 170,
+        "source_content_type": "image/png",
+        "source_image_format": "png",
+        "verification_run_id": 36561669628
+      },
+      "source_risk": "medium_review_required",
+      "risk_reasons": [
+        "catalog_image_may_include_insets_or_auxiliary_panels"
+      ],
+      "status": "approved_raw_model_input",
+      "raw_model_input_allowed": true,
+      "required_checks": [
+        "identity_matches_source_record",
+        "primary_view_classified",
+        "primary_figure_complete",
+        "release_or_sku_text_absent_or_removed",
+        "character_name_text_absent_or_removed",
+        "maker_or_brand_logo_absent_or_removed",
+        "architecture_or_market_label_absent_or_removed",
+        "task_confounding_secondary_panels_absent_or_removed"
+      ],
+      "recommended_actions": [
+        "approve_raw_only_if_visually_clean",
+        "tight_figure_crop",
+        "mask_auxiliary_insets"
+      ],
+      "review": {
+        "identity_match": true,
+        "primary_view": "front",
+        "primary_figure_complete": true,
+        "visible_text_leakage": [],
+        "visual_confounders": [],
+        "sanitization_action": "none",
+        "sanitized_asset_sha256": "0b817f0499d2dee61ca6e4412ad07b508d1a40cbb433c1f58e0c1c10709227eb",
+        "sanitized_asset_status": "approved",
+        "reviewer_id": "openai_chatgpt_visual_review",
+        "reviewer_type": "model",
+        "review_confidence": 0.99,
+        "notes": [
+          "Clean isolated catalog image; the specialized integrated Hutt torso/tail architecture is complete and unobstructed with no text or auxiliary panels."
+        ],
+        "review_source_sha256": "0b817f0499d2dee61ca6e4412ad07b508d1a40cbb433c1f58e0c1c10709227eb",
+        "review_stale": false
+      },
+      "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
+      "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
+    },
+    {
+      "case_id": "archchallenge::challenge_battle_droid_sw0001c",
+      "source_record_id": "challenge_battle_droid_sw0001c",
+      "split": "challenge_test",
+      "scoring_track": "core",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "minifig_battle_droid_mechanical",
+        "unresolved_candidate": null
+      },
+      "source": {
+        "source_id": "bricklink_battle_droid_sw0001c",
+        "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/sw0001c.png",
+        "source_file_sha256": "35717cabaab0d2ad8b9cc81e84f6e277c547b5818a31971680f6e9fffc93f500",
+        "source_size_bytes": 67039,
+        "source_width": 240,
+        "source_height": 320,
+        "source_content_type": "image/png",
+        "source_image_format": "png",
+        "verification_run_id": 36561669628
+      },
+      "source_risk": "medium_review_required",
+      "risk_reasons": [
+        "catalog_image_may_include_insets_or_auxiliary_panels"
+      ],
+      "status": "approved_raw_model_input",
+      "raw_model_input_allowed": true,
+      "required_checks": [
+        "identity_matches_source_record",
+        "primary_view_classified",
+        "primary_figure_complete",
+        "release_or_sku_text_absent_or_removed",
+        "character_name_text_absent_or_removed",
+        "maker_or_brand_logo_absent_or_removed",
+        "architecture_or_market_label_absent_or_removed",
+        "task_confounding_secondary_panels_absent_or_removed"
+      ],
+      "recommended_actions": [
+        "approve_raw_only_if_visually_clean",
+        "tight_figure_crop",
+        "mask_auxiliary_insets"
+      ],
+      "review": {
+        "identity_match": true,
+        "primary_view": "front",
+        "primary_figure_complete": true,
+        "visible_text_leakage": [],
+        "visual_confounders": [],
+        "sanitization_action": "none",
+        "sanitized_asset_sha256": "35717cabaab0d2ad8b9cc81e84f6e277c547b5818a31971680f6e9fffc93f500",
+        "sanitized_asset_status": "approved",
+        "reviewer_id": "openai_chatgpt_visual_review",
+        "reviewer_type": "model",
+        "review_confidence": 0.99,
+        "notes": [
+          "Clean isolated front catalog image; the complete Battle Droid mechanical joint graph is visible without text, branding, or secondary figures."
+        ],
+        "review_source_sha256": "35717cabaab0d2ad8b9cc81e84f6e277c547b5818a31971680f6e9fffc93f500",
+        "review_stale": false
+      },
+      "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
+      "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
+    },
+    {
+      "case_id": "archchallenge::challenge_super_battle_droid_sw0092",
+      "source_record_id": "challenge_super_battle_droid_sw0092",
+      "split": "challenge_test",
+      "scoring_track": "core",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "minifig_super_battle_droid_integrated",
+        "unresolved_candidate": null
+      },
+      "source": {
+        "source_id": "bricklink_super_battle_droid_sw0092",
+        "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/sw0092.png",
+        "source_file_sha256": "893c94e47077114e027712fd1c73868d07cda180dc8f3472858009c655bdc316",
+        "source_size_bytes": 70010,
+        "source_width": 240,
+        "source_height": 320,
+        "source_content_type": "image/png",
+        "source_image_format": "png",
+        "verification_run_id": 36561669628
+      },
+      "source_risk": "medium_review_required",
+      "risk_reasons": [
+        "catalog_image_may_include_insets_or_auxiliary_panels"
+      ],
+      "status": "approved_raw_model_input",
+      "raw_model_input_allowed": true,
+      "required_checks": [
+        "identity_matches_source_record",
+        "primary_view_classified",
+        "primary_figure_complete",
+        "release_or_sku_text_absent_or_removed",
+        "character_name_text_absent_or_removed",
+        "maker_or_brand_logo_absent_or_removed",
+        "architecture_or_market_label_absent_or_removed",
+        "task_confounding_secondary_panels_absent_or_removed"
+      ],
+      "recommended_actions": [
+        "approve_raw_only_if_visually_clean",
+        "tight_figure_crop",
+        "mask_auxiliary_insets"
+      ],
+      "review": {
+        "identity_match": true,
+        "primary_view": "front",
+        "primary_figure_complete": true,
+        "visible_text_leakage": [],
+        "visual_confounders": [],
+        "sanitization_action": "none",
+        "sanitized_asset_sha256": "893c94e47077114e027712fd1c73868d07cda180dc8f3472858009c655bdc316",
+        "sanitized_asset_status": "approved",
+        "reviewer_id": "openai_chatgpt_visual_review",
+        "reviewer_type": "model",
+        "review_confidence": 0.99,
+        "notes": [
+          "Clean isolated front catalog image; integrated torso/head and mechanical limbs are fully visible without labels or task-confounding content."
+        ],
+        "review_source_sha256": "893c94e47077114e027712fd1c73868d07cda180dc8f3472858009c655bdc316",
+        "review_stale": false
+      },
+      "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
+      "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
+    },
+    {
+      "case_id": "archchallenge::challenge_robot_butler_col445",
+      "source_record_id": "challenge_robot_butler_col445",
+      "split": "challenge_test",
+      "scoring_track": "core",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "minifig_lowerbody_robot_rollers",
+        "unresolved_candidate": null
+      },
+      "source": {
+        "source_id": "bricklink_robot_butler_col445_rollers",
+        "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/col445.png",
+        "source_file_sha256": "ed344c79ec70ab5cf67db179bafa7f92da72704ab732354b523faf2b6851db71",
+        "source_size_bytes": 137768,
+        "source_width": 239,
+        "source_height": 400,
+        "source_content_type": "image/png",
+        "source_image_format": "png",
+        "verification_run_id": 36561669628
+      },
+      "source_risk": "medium_review_required",
+      "risk_reasons": [
+        "catalog_image_may_include_insets_or_auxiliary_panels"
+      ],
+      "status": "approved_raw_model_input",
+      "raw_model_input_allowed": true,
+      "required_checks": [
+        "identity_matches_source_record",
+        "primary_view_classified",
+        "primary_figure_complete",
+        "release_or_sku_text_absent_or_removed",
+        "character_name_text_absent_or_removed",
+        "maker_or_brand_logo_absent_or_removed",
+        "architecture_or_market_label_absent_or_removed",
+        "task_confounding_secondary_panels_absent_or_removed"
+      ],
+      "recommended_actions": [
+        "approve_raw_only_if_visually_clean",
+        "tight_figure_crop",
+        "mask_auxiliary_insets"
+      ],
+      "review": {
+        "identity_match": true,
+        "primary_view": "front",
+        "primary_figure_complete": true,
+        "visible_text_leakage": [],
+        "visual_confounders": [],
+        "sanitization_action": "none",
+        "sanitized_asset_sha256": "ed344c79ec70ab5cf67db179bafa7f92da72704ab732354b523faf2b6851db71",
+        "sanitized_asset_status": "approved",
+        "reviewer_id": "openai_chatgpt_visual_review",
+        "reviewer_type": "model",
+        "review_confidence": 0.99,
+        "notes": [
+          "Clean isolated front catalog image; roller lower-body architecture is fully visible without text, branding, insets, or extra figures."
+        ],
+        "review_source_sha256": "ed344c79ec70ab5cf67db179bafa7f92da72704ab732354b523faf2b6851db71",
+        "review_stale": false
+      },
+      "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
+      "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
+    }
+  ]
+}
