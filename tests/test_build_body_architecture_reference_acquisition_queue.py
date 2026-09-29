@@ -30,25 +30,36 @@ def test_reference_acquisition_queue_baseline() -> None:
     summary = result["summary"]
 
     assert summary["total_cases"] == 27
-    assert summary["ready_for_materialization_cases"] == 12
-    assert summary["ready_for_image_url_resolution_cases"] == 14
-    assert summary["blocked_cases"] == 1
+    assert summary["ready_for_materialization_cases"] == 15
+    assert summary["ready_for_image_url_resolution_cases"] == 12
+    assert summary["blocked_cases"] == 0
     assert summary["action_status_counts"] == {
-        "resolved_exact_image_url": 12,
+        "resolved_exact_image_url": 15,
         "ready_for_reviewed_page_media_resolution": 20,
         "blocked_on_direct_release_locator": 1,
         "ready_for_catalog_image_resolution": 1,
     }
 
 
-def test_only_gh0304_is_indirectly_blocked() -> None:
+def test_gh0304_preserves_indirect_locator_but_is_visually_resolved() -> None:
     tool = load_tool()
     result = tool.build()
-    blocked = [row for row in result["queue"] if row["status"].startswith("blocked")]
+    row = next(
+        item for item in result["queue"]
+        if item["source_record_id"] == "hulk_g2_gh0304_avengers"
+    )
 
-    assert len(blocked) == 1
-    assert blocked[0]["source_record_id"] == "hulk_g2_gh0304_avengers"
-    assert blocked[0]["locator_actions"][0]["locator_quality"] == "indirect_identity_graph"
+    assert row["status"] == "ready_for_materialization"
+    assert any(
+        action["locator_quality"] == "indirect_identity_graph"
+        and action["status"] == "blocked_on_direct_release_locator"
+        for action in row["locator_actions"]
+    )
+    assert any(
+        action["source_id"] == "kongbricks_g2_hulk_gh0304_media"
+        and action["status"] == "resolved_exact_image_url"
+        for action in row["locator_actions"]
+    )
 
 
 def test_queue_does_not_treat_page_urls_as_materialized_images() -> None:
@@ -64,8 +75,8 @@ def test_queue_does_not_treat_page_urls_as_materialized_images() -> None:
         if not row["required_output"]["exact_image_url"]
     ]
 
-    assert len(resolved) == 12
-    assert len(unresolved) == 15
+    assert len(resolved) == 15
+    assert len(unresolved) == 12
     assert all(row["status"] == "ready_for_materialization" for row in resolved)
     assert all(row["required_output"]["source_file_sha256"] is None for row in result["queue"])
     assert "Do not pass HTML catalog pages to the image materializer." in result["policy"]
