@@ -35,7 +35,7 @@ def test_populated_case_manifest_baseline() -> None:
     assert summary["provisional_scoring_cases"] == 7
     assert summary["cases_with_reference_locators"] == 27
     assert summary["indirect_only_locator_cases"] == 0
-    assert summary["cases_with_exact_image_urls"] == 20
+    assert summary["cases_with_exact_image_urls"] == 27
     assert summary["split_counts"] == {
         "development": 11,
         "validation": 6,
@@ -160,18 +160,25 @@ def test_resolved_exact_image_urls_are_source_backed() -> None:
         "hulk_alpha_af344_avengers",
         "hulk_alpha_af345_comics",
         "hulk_g2_gh0304_avengers",
+        "hulk_bigguy_ragnarok",
+        "hulk_mrj_heart_comics",
         "red_hulk_alpha_af364_bnw",
         "red_hulk_g2_gh0303_bnw",
+        "red_hulk_bigguy_bnw",
         "venom_lego_sh0542_standard",
         "venom_alpha_af321_movie",
         "venom_alpha_af325",
         "venom_alpha_af328_ancient",
         "venom_xinh_xh1829_movie_bigfig",
+        "venom_xinh_xh1911_bigfig",
         "thing_lego_sh1051_first_steps",
         "thing_alpha_af336_first_steps",
         "thing_kdl_k2302_first_steps",
         "thing_tp_tp178_first_steps",
         "thing_tp_tp349_first_steps_bigfig",
         "thing_g2_gh0348",
+        "thing_g2_gh0435_bigfig",
         "thing_g2_gh0440_bigfig",
+        "thing_shengyuan_sy288_bigfig",
+        "thing_xinh_1421_bigfig",
     }
