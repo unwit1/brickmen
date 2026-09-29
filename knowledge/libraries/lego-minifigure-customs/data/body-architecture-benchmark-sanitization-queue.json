@@ -1,14 +1,20 @@
 {
   "schema_version": "0.1",
   "created": "2026-09-28",
-  "status": "visual_sanitization_review_required",
+  "status": "visual_sanitization_in_progress",
   "processor_version": "body-architecture-benchmark-sanitization-queue/v1",
   "benchmark_manifest": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-recognition-benchmark-cases.json",
   "policy": "data/body-architecture-benchmark-input-sanitization-policy.json",
+  "reviews": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-benchmark-sanitization-reviews.json",
   "summary": {
     "total_cases": 27,
-    "raw_model_input_allowed_cases": 0,
-    "blocked_pending_visual_sanitization_review": 27,
+    "raw_model_input_allowed_cases": 4,
+    "blocked_model_input_cases": 23,
+    "status_counts": {
+      "sanitization_required": 9,
+      "approved_raw_model_input": 4,
+      "blocked_pending_visual_sanitization_review": 14
+    },
     "risk_counts": {
       "medium_review_required": 5,
       "high": 22
@@ -38,7 +44,7 @@
       "risk_reasons": [
         "catalog_image_may_include_insets_or_auxiliary_panels"
       ],
-      "status": "blocked_pending_visual_sanitization_review",
+      "status": "sanitization_required",
       "raw_model_input_allowed": false,
       "required_checks": [
         "identity_matches_source_record",
@@ -56,18 +62,24 @@
         "mask_auxiliary_insets"
       ],
       "review": {
-        "identity_match": null,
-        "primary_view": null,
-        "primary_figure_complete": null,
+        "identity_match": true,
+        "primary_view": "front",
+        "primary_figure_complete": true,
         "visible_text_leakage": [],
-        "visual_confounders": [],
-        "sanitization_action": null,
+        "visual_confounders": [
+          "alternate_expression_inset"
+        ],
+        "sanitization_action": "tight_figure_crop",
         "sanitized_asset_sha256": null,
         "sanitized_asset_status": "pending",
-        "reviewer_id": null,
-        "reviewer_type": null,
-        "review_confidence": null,
-        "notes": []
+        "reviewer_id": "openai_chatgpt_visual_review",
+        "reviewer_type": "model",
+        "review_confidence": 0.99,
+        "notes": [
+          "Main figure is clean and fully visible, but the auxiliary face inset should be removed for a single-view architecture benchmark."
+        ],
+        "review_source_sha256": "fae13ab513dd1d32b405425beb7bca1aa68bd11c5470e2e0e958ac4cb9168157",
+        "review_stale": false
       },
       "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
       "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
@@ -95,8 +107,8 @@
       "risk_reasons": [
         "catalog_image_may_include_insets_or_auxiliary_panels"
       ],
-      "status": "blocked_pending_visual_sanitization_review",
-      "raw_model_input_allowed": false,
+      "status": "approved_raw_model_input",
+      "raw_model_input_allowed": true,
       "required_checks": [
         "identity_matches_source_record",
         "primary_view_classified",
@@ -113,18 +125,22 @@
         "mask_auxiliary_insets"
       ],
       "review": {
-        "identity_match": null,
-        "primary_view": null,
-        "primary_figure_complete": null,
+        "identity_match": true,
+        "primary_view": "front",
+        "primary_figure_complete": true,
         "visible_text_leakage": [],
         "visual_confounders": [],
-        "sanitization_action": null,
-        "sanitized_asset_sha256": null,
-        "sanitized_asset_status": "pending",
-        "reviewer_id": null,
-        "reviewer_type": null,
-        "review_confidence": null,
-        "notes": []
+        "sanitization_action": "none",
+        "sanitized_asset_sha256": "1c5a65620cb867b600aa982df9912007a43ab7fa69a7dfbf60ba6b930cf9a272",
+        "sanitized_asset_status": "approved",
+        "reviewer_id": "openai_chatgpt_visual_review",
+        "reviewer_type": "model",
+        "review_confidence": 0.99,
+        "notes": [
+          "Clean isolated front catalog image."
+        ],
+        "review_source_sha256": "1c5a65620cb867b600aa982df9912007a43ab7fa69a7dfbf60ba6b930cf9a272",
+        "review_stale": false
       },
       "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
       "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
@@ -152,8 +168,8 @@
       "risk_reasons": [
         "catalog_image_may_include_insets_or_auxiliary_panels"
       ],
-      "status": "blocked_pending_visual_sanitization_review",
-      "raw_model_input_allowed": false,
+      "status": "approved_raw_model_input",
+      "raw_model_input_allowed": true,
       "required_checks": [
         "identity_matches_source_record",
         "primary_view_classified",
@@ -170,18 +186,22 @@
         "mask_auxiliary_insets"
       ],
       "review": {
-        "identity_match": null,
-        "primary_view": null,
-        "primary_figure_complete": null,
+        "identity_match": true,
+        "primary_view": "front",
+        "primary_figure_complete": true,
         "visible_text_leakage": [],
         "visual_confounders": [],
-        "sanitization_action": null,
-        "sanitized_asset_sha256": null,
-        "sanitized_asset_status": "pending",
-        "reviewer_id": null,
-        "reviewer_type": null,
-        "review_confidence": null,
-        "notes": []
+        "sanitization_action": "none",
+        "sanitized_asset_sha256": "c6917f1193160420665ef660f4a7cc3644c2d3763fa61247ca372f385f082de4",
+        "sanitized_asset_status": "approved",
+        "reviewer_id": "openai_chatgpt_visual_review",
+        "reviewer_type": "model",
+        "review_confidence": 0.99,
+        "notes": [
+          "Clean isolated front catalog image."
+        ],
+        "review_source_sha256": "c6917f1193160420665ef660f4a7cc3644c2d3763fa61247ca372f385f082de4",
+        "review_stale": false
       },
       "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
       "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
@@ -241,7 +261,9 @@
         "reviewer_id": null,
         "reviewer_type": null,
         "review_confidence": null,
-        "notes": []
+        "notes": [],
+        "review_source_sha256": null,
+        "review_stale": false
       },
       "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
       "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
@@ -301,7 +323,9 @@
         "reviewer_id": null,
         "reviewer_type": null,
         "review_confidence": null,
-        "notes": []
+        "notes": [],
+        "review_source_sha256": null,
+        "review_stale": false
       },
       "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
       "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
@@ -330,7 +354,7 @@
         "product_media_may_include_text_or_branding",
         "product_media_may_be_multi_panel_or_composite"
       ],
-      "status": "blocked_pending_visual_sanitization_review",
+      "status": "sanitization_required",
       "raw_model_input_allowed": false,
       "required_checks": [
         "identity_matches_source_record",
@@ -350,18 +374,25 @@
         "manual_composite_cleanup"
       ],
       "review": {
-        "identity_match": null,
-        "primary_view": null,
-        "primary_figure_complete": null,
-        "visible_text_leakage": [],
+        "identity_match": true,
+        "primary_view": "front",
+        "primary_figure_complete": true,
+        "visible_text_leakage": [
+          "release_or_sku_code",
+          "character_name_or_alias_text"
+        ],
         "visual_confounders": [],
-        "sanitization_action": null,
+        "sanitization_action": "tight_figure_crop",
         "sanitized_asset_sha256": null,
         "sanitized_asset_status": "pending",
-        "reviewer_id": null,
-        "reviewer_type": null,
-        "review_confidence": null,
-        "notes": []
+        "reviewer_id": "openai_chatgpt_visual_review",
+        "reviewer_type": "model",
+        "review_confidence": 0.99,
+        "notes": [
+          "Product card visibly labels GH0304 and Hulk; crop to the figure before evaluation."
+        ],
+        "review_source_sha256": "386526bedf6cccb20984cdfceb7b3f8cb8b148fd59dfd703b338a25e6d07cb07",
+        "review_stale": false
       },
       "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
       "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
@@ -390,7 +421,7 @@
         "product_media_may_include_text_or_branding",
         "product_media_may_be_multi_panel_or_composite"
       ],
-      "status": "blocked_pending_visual_sanitization_review",
+      "status": "sanitization_required",
       "raw_model_input_allowed": false,
       "required_checks": [
         "identity_matches_source_record",
@@ -410,18 +441,27 @@
         "manual_composite_cleanup"
       ],
       "review": {
-        "identity_match": null,
-        "primary_view": null,
-        "primary_figure_complete": null,
-        "visible_text_leakage": [],
-        "visual_confounders": [],
-        "sanitization_action": null,
+        "identity_match": true,
+        "primary_view": "front",
+        "primary_figure_complete": true,
+        "visible_text_leakage": [
+          "maker_or_brand_logo",
+          "character_name_or_alias_text"
+        ],
+        "visual_confounders": [
+          "secondary_figure"
+        ],
+        "sanitization_action": "segment_primary_figure",
         "sanitized_asset_sha256": null,
         "sanitized_asset_status": "pending",
-        "reviewer_id": null,
-        "reviewer_type": null,
-        "review_confidence": null,
-        "notes": []
+        "reviewer_id": "openai_chatgpt_visual_review",
+        "reviewer_type": "model",
+        "review_confidence": 0.98,
+        "notes": [
+          "Primary figure is usable, but logo/text and a partial secondary figure create shortcut cues."
+        ],
+        "review_source_sha256": "ebc33442ad2b852ee783f7457f1ab040043aac9dfe36b59cb4239e02ab149e24",
+        "review_stale": false
       },
       "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
       "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
@@ -450,7 +490,7 @@
         "product_media_may_include_text_or_branding",
         "product_media_may_be_multi_panel_or_composite"
       ],
-      "status": "blocked_pending_visual_sanitization_review",
+      "status": "sanitization_required",
       "raw_model_input_allowed": false,
       "required_checks": [
         "identity_matches_source_record",
@@ -470,18 +510,28 @@
         "manual_composite_cleanup"
       ],
       "review": {
-        "identity_match": null,
-        "primary_view": null,
-        "primary_figure_complete": null,
-        "visible_text_leakage": [],
-        "visual_confounders": [],
-        "sanitization_action": null,
+        "identity_match": true,
+        "primary_view": "multi_view_composite",
+        "primary_figure_complete": true,
+        "visible_text_leakage": [
+          "maker_or_brand_logo"
+        ],
+        "visual_confounders": [
+          "multi_panel_product_composite",
+          "rear_view_panel",
+          "head_inset"
+        ],
+        "sanitization_action": "tight_figure_crop",
         "sanitized_asset_sha256": null,
         "sanitized_asset_status": "pending",
-        "reviewer_id": null,
-        "reviewer_type": null,
-        "review_confidence": null,
-        "notes": []
+        "reviewer_id": "openai_chatgpt_visual_review",
+        "reviewer_type": "model",
+        "review_confidence": 0.99,
+        "notes": [
+          "Crop the standalone front figure from the left panel; do not expose the rear/head panels to a front-only task."
+        ],
+        "review_source_sha256": "39feabdf00538692b035b870a3ae7f7c2835825e8224aa5e8adc9253a98a079a",
+        "review_stale": false
       },
       "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
       "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
@@ -541,7 +591,9 @@
         "reviewer_id": null,
         "reviewer_type": null,
         "review_confidence": null,
-        "notes": []
+        "notes": [],
+        "review_source_sha256": null,
+        "review_stale": false
       },
       "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
       "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
@@ -601,7 +653,9 @@
         "reviewer_id": null,
         "reviewer_type": null,
         "review_confidence": null,
-        "notes": []
+        "notes": [],
+        "review_source_sha256": null,
+        "review_stale": false
       },
       "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
       "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
@@ -661,7 +715,9 @@
         "reviewer_id": null,
         "reviewer_type": null,
         "review_confidence": null,
-        "notes": []
+        "notes": [],
+        "review_source_sha256": null,
+        "review_stale": false
       },
       "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
       "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
@@ -689,8 +745,8 @@
       "risk_reasons": [
         "catalog_image_may_include_insets_or_auxiliary_panels"
       ],
-      "status": "blocked_pending_visual_sanitization_review",
-      "raw_model_input_allowed": false,
+      "status": "approved_raw_model_input",
+      "raw_model_input_allowed": true,
       "required_checks": [
         "identity_matches_source_record",
         "primary_view_classified",
@@ -707,18 +763,22 @@
         "mask_auxiliary_insets"
       ],
       "review": {
-        "identity_match": null,
-        "primary_view": null,
-        "primary_figure_complete": null,
+        "identity_match": true,
+        "primary_view": "front",
+        "primary_figure_complete": true,
         "visible_text_leakage": [],
         "visual_confounders": [],
-        "sanitization_action": null,
-        "sanitized_asset_sha256": null,
-        "sanitized_asset_status": "pending",
-        "reviewer_id": null,
-        "reviewer_type": null,
-        "review_confidence": null,
-        "notes": []
+        "sanitization_action": "none",
+        "sanitized_asset_sha256": "5ce8c34ab673168b12690181ca474ef7634522fb8d3d8074073bc62bf87c3078",
+        "sanitized_asset_status": "approved",
+        "reviewer_id": "openai_chatgpt_visual_review",
+        "reviewer_type": "model",
+        "review_confidence": 0.99,
+        "notes": [
+          "Clean isolated front catalog image."
+        ],
+        "review_source_sha256": "5ce8c34ab673168b12690181ca474ef7634522fb8d3d8074073bc62bf87c3078",
+        "review_stale": false
       },
       "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
       "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
@@ -778,7 +838,9 @@
         "reviewer_id": null,
         "reviewer_type": null,
         "review_confidence": null,
-        "notes": []
+        "notes": [],
+        "review_source_sha256": null,
+        "review_stale": false
       },
       "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
       "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
@@ -838,7 +900,9 @@
         "reviewer_id": null,
         "reviewer_type": null,
         "review_confidence": null,
-        "notes": []
+        "notes": [],
+        "review_source_sha256": null,
+        "review_stale": false
       },
       "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
       "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
@@ -867,7 +931,7 @@
         "product_media_may_include_text_or_branding",
         "product_media_may_be_multi_panel_or_composite"
       ],
-      "status": "blocked_pending_visual_sanitization_review",
+      "status": "sanitization_required",
       "raw_model_input_allowed": false,
       "required_checks": [
         "identity_matches_source_record",
@@ -887,18 +951,29 @@
         "manual_composite_cleanup"
       ],
       "review": {
-        "identity_match": null,
-        "primary_view": null,
-        "primary_figure_complete": null,
-        "visible_text_leakage": [],
-        "visual_confounders": [],
-        "sanitization_action": null,
+        "identity_match": true,
+        "primary_view": "front",
+        "primary_figure_complete": true,
+        "visible_text_leakage": [
+          "release_or_sku_code",
+          "character_name_or_alias_text"
+        ],
+        "visual_confounders": [
+          "accessory_layout_around_primary_figure",
+          "head_inset",
+          "scale_comparison_figure"
+        ],
+        "sanitization_action": "segment_primary_figure",
         "sanitized_asset_sha256": null,
         "sanitized_asset_status": "pending",
-        "reviewer_id": null,
-        "reviewer_type": null,
-        "review_confidence": null,
-        "notes": []
+        "reviewer_id": "openai_chatgpt_visual_review",
+        "reviewer_type": "model",
+        "review_confidence": 0.99,
+        "notes": [
+          "Manufacturer-style composite includes AF328/Ancient Venom labels, accessories, head inset, and a comparison figure."
+        ],
+        "review_source_sha256": "929d7a3d8d2c2d315cec8bf276ef0ba180ad2fc877a66515a2b7533f686b90ff",
+        "review_stale": false
       },
       "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
       "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
@@ -927,7 +1002,7 @@
         "product_media_may_include_text_or_branding",
         "product_media_may_be_multi_panel_or_composite"
       ],
-      "status": "blocked_pending_visual_sanitization_review",
+      "status": "sanitization_required",
       "raw_model_input_allowed": false,
       "required_checks": [
         "identity_matches_source_record",
@@ -947,18 +1022,28 @@
         "manual_composite_cleanup"
       ],
       "review": {
-        "identity_match": null,
-        "primary_view": null,
-        "primary_figure_complete": null,
-        "visible_text_leakage": [],
-        "visual_confounders": [],
-        "sanitization_action": null,
+        "identity_match": true,
+        "primary_view": "front",
+        "primary_figure_complete": true,
+        "visible_text_leakage": [
+          "release_or_sku_code",
+          "character_name_or_alias_text"
+        ],
+        "visual_confounders": [
+          "head_inset",
+          "product_option_markers"
+        ],
+        "sanitization_action": "tight_figure_crop",
         "sanitized_asset_sha256": null,
         "sanitized_asset_status": "pending",
-        "reviewer_id": null,
-        "reviewer_type": null,
-        "review_confidence": null,
-        "notes": []
+        "reviewer_id": "openai_chatgpt_visual_review",
+        "reviewer_type": "model",
+        "review_confidence": 0.99,
+        "notes": [
+          "Crop to the main figure and exclude XH1911/name text, head inset, and option markers."
+        ],
+        "review_source_sha256": "2b65c0bb3af7a734e7b2ed205e2023f0906368ab75762f873b5097863134bb20",
+        "review_stale": false
       },
       "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
       "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
@@ -987,7 +1072,7 @@
         "product_media_may_include_text_or_branding",
         "product_media_may_be_multi_panel_or_composite"
       ],
-      "status": "blocked_pending_visual_sanitization_review",
+      "status": "sanitization_required",
       "raw_model_input_allowed": false,
       "required_checks": [
         "identity_matches_source_record",
@@ -1007,18 +1092,27 @@
         "manual_composite_cleanup"
       ],
       "review": {
-        "identity_match": null,
-        "primary_view": null,
-        "primary_figure_complete": null,
-        "visible_text_leakage": [],
-        "visual_confounders": [],
-        "sanitization_action": null,
+        "identity_match": true,
+        "primary_view": "front",
+        "primary_figure_complete": true,
+        "visible_text_leakage": [
+          "release_or_sku_code",
+          "character_name_or_alias_text"
+        ],
+        "visual_confounders": [
+          "head_inset"
+        ],
+        "sanitization_action": "tight_figure_crop",
         "sanitized_asset_sha256": null,
         "sanitized_asset_status": "pending",
-        "reviewer_id": null,
-        "reviewer_type": null,
-        "review_confidence": null,
-        "notes": []
+        "reviewer_id": "openai_chatgpt_visual_review",
+        "reviewer_type": "model",
+        "review_confidence": 0.99,
+        "notes": [
+          "Crop to the main figure and exclude XH1829/name text and head inset."
+        ],
+        "review_source_sha256": "32c91daa329658fcaec4c79acbf0619591015e003bc34fd40043928c2b030d56",
+        "review_stale": false
       },
       "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
       "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
@@ -1046,8 +1140,8 @@
       "risk_reasons": [
         "catalog_image_may_include_insets_or_auxiliary_panels"
       ],
-      "status": "blocked_pending_visual_sanitization_review",
-      "raw_model_input_allowed": false,
+      "status": "approved_raw_model_input",
+      "raw_model_input_allowed": true,
       "required_checks": [
         "identity_matches_source_record",
         "primary_view_classified",
@@ -1064,18 +1158,22 @@
         "mask_auxiliary_insets"
       ],
       "review": {
-        "identity_match": null,
-        "primary_view": null,
-        "primary_figure_complete": null,
+        "identity_match": true,
+        "primary_view": "front",
+        "primary_figure_complete": true,
         "visible_text_leakage": [],
         "visual_confounders": [],
-        "sanitization_action": null,
-        "sanitized_asset_sha256": null,
-        "sanitized_asset_status": "pending",
-        "reviewer_id": null,
-        "reviewer_type": null,
-        "review_confidence": null,
-        "notes": []
+        "sanitization_action": "none",
+        "sanitized_asset_sha256": "d1f88d1e5f3922ca5711c1dbe1ae99236e0b6b39c55ed3ab0159f9d6656bdef3",
+        "sanitized_asset_status": "approved",
+        "reviewer_id": "openai_chatgpt_visual_review",
+        "reviewer_type": "model",
+        "review_confidence": 0.99,
+        "notes": [
+          "Clean isolated front catalog image."
+        ],
+        "review_source_sha256": "d1f88d1e5f3922ca5711c1dbe1ae99236e0b6b39c55ed3ab0159f9d6656bdef3",
+        "review_stale": false
       },
       "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
       "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
@@ -1135,7 +1233,9 @@
         "reviewer_id": null,
         "reviewer_type": null,
         "review_confidence": null,
-        "notes": []
+        "notes": [],
+        "review_source_sha256": null,
+        "review_stale": false
       },
       "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
       "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
@@ -1195,7 +1295,9 @@
         "reviewer_id": null,
         "reviewer_type": null,
         "review_confidence": null,
-        "notes": []
+        "notes": [],
+        "review_source_sha256": null,
+        "review_stale": false
       },
       "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
       "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
@@ -1255,7 +1357,9 @@
         "reviewer_id": null,
         "reviewer_type": null,
         "review_confidence": null,
-        "notes": []
+        "notes": [],
+        "review_source_sha256": null,
+        "review_stale": false
       },
       "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
       "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
@@ -1315,7 +1419,9 @@
         "reviewer_id": null,
         "reviewer_type": null,
         "review_confidence": null,
-        "notes": []
+        "notes": [],
+        "review_source_sha256": null,
+        "review_stale": false
       },
       "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
       "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
@@ -1375,7 +1481,9 @@
         "reviewer_id": null,
         "reviewer_type": null,
         "review_confidence": null,
-        "notes": []
+        "notes": [],
+        "review_source_sha256": null,
+        "review_stale": false
       },
       "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
       "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
@@ -1404,7 +1512,7 @@
         "product_media_may_include_text_or_branding",
         "product_media_may_be_multi_panel_or_composite"
       ],
-      "status": "blocked_pending_visual_sanitization_review",
+      "status": "sanitization_required",
       "raw_model_input_allowed": false,
       "required_checks": [
         "identity_matches_source_record",
@@ -1424,18 +1532,27 @@
         "manual_composite_cleanup"
       ],
       "review": {
-        "identity_match": null,
-        "primary_view": null,
-        "primary_figure_complete": null,
-        "visible_text_leakage": [],
-        "visual_confounders": [],
-        "sanitization_action": null,
+        "identity_match": true,
+        "primary_view": "front",
+        "primary_figure_complete": true,
+        "visible_text_leakage": [
+          "release_or_sku_code",
+          "character_name_or_alias_text"
+        ],
+        "visual_confounders": [
+          "product_option_markers"
+        ],
+        "sanitization_action": "tight_figure_crop",
         "sanitized_asset_sha256": null,
         "sanitized_asset_status": "pending",
-        "reviewer_id": null,
-        "reviewer_type": null,
-        "review_confidence": null,
-        "notes": []
+        "reviewer_id": "openai_chatgpt_visual_review",
+        "reviewer_type": "model",
+        "review_confidence": 0.99,
+        "notes": [
+          "Crop to the figure and remove GH0435/name text and bottom option markers."
+        ],
+        "review_source_sha256": "a589332b37fa1e2a8dc5c70131641a36c5f0420fec96895258cf8ba744cd1432",
+        "review_stale": false
       },
       "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
       "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
@@ -1495,7 +1612,9 @@
         "reviewer_id": null,
         "reviewer_type": null,
         "review_confidence": null,
-        "notes": []
+        "notes": [],
+        "review_source_sha256": null,
+        "review_stale": false
       },
       "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
       "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
@@ -1555,7 +1674,9 @@
         "reviewer_id": null,
         "reviewer_type": null,
         "review_confidence": null,
-        "notes": []
+        "notes": [],
+        "review_source_sha256": null,
+        "review_stale": false
       },
       "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
       "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
@@ -1584,7 +1705,7 @@
         "product_media_may_include_text_or_branding",
         "product_media_may_be_multi_panel_or_composite"
       ],
-      "status": "blocked_pending_visual_sanitization_review",
+      "status": "sanitization_required",
       "raw_model_input_allowed": false,
       "required_checks": [
         "identity_matches_source_record",
@@ -1604,18 +1725,26 @@
         "manual_composite_cleanup"
       ],
       "review": {
-        "identity_match": null,
-        "primary_view": null,
-        "primary_figure_complete": null,
-        "visible_text_leakage": [],
+        "identity_match": true,
+        "primary_view": "front",
+        "primary_figure_complete": true,
+        "visible_text_leakage": [
+          "maker_or_brand_logo",
+          "release_or_sku_code",
+          "character_name_or_alias_text"
+        ],
         "visual_confounders": [],
-        "sanitization_action": null,
+        "sanitization_action": "tight_figure_crop",
         "sanitized_asset_sha256": null,
         "sanitized_asset_status": "pending",
-        "reviewer_id": null,
-        "reviewer_type": null,
-        "review_confidence": null,
-        "notes": []
+        "reviewer_id": "openai_chatgpt_visual_review",
+        "reviewer_type": "model",
+        "review_confidence": 0.99,
+        "notes": [
+          "Crop to the main figure; remove XINH branding, 1421 code, and Thing label."
+        ],
+        "review_source_sha256": "f3556293cec3cafb4ba2c7a0659713aca485e59c4d3b88fb7f9850d774c685a2",
+        "review_stale": false
       },
       "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
       "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
