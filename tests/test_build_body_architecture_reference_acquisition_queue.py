@@ -29,16 +29,17 @@ def test_reference_acquisition_queue_baseline() -> None:
     result = tool.build()
     summary = result["summary"]
 
-    assert result["status"] == "exact_image_urls_complete_materialization_pending"
+    assert result["status"] == "reference_media_verified_materialization_pending"
     assert summary["total_cases"] == 27
+    assert summary["byte_verified_cases"] == 27
     assert summary["ready_for_materialization_cases"] == 27
     assert summary["ready_for_image_url_resolution_cases"] == 0
     assert summary["blocked_cases"] == 0
     assert summary["action_status_counts"] == {
-        "resolved_exact_image_url": 27,
+        "byte_verified": 27,
         "ready_for_reviewed_page_media_resolution": 12,
         "blocked_on_direct_release_locator": 1,
-            }
+    }
 
 
 def test_gh0304_preserves_indirect_locator_but_is_visually_resolved() -> None:
@@ -49,7 +50,7 @@ def test_gh0304_preserves_indirect_locator_but_is_visually_resolved() -> None:
         if item["source_record_id"] == "hulk_g2_gh0304_avengers"
     )
 
-    assert row["status"] == "ready_for_materialization"
+    assert row["status"] == "byte_verified_materialization_pending"
     assert any(
         action["locator_quality"] == "indirect_identity_graph"
         and action["status"] == "blocked_on_direct_release_locator"
@@ -57,7 +58,7 @@ def test_gh0304_preserves_indirect_locator_but_is_visually_resolved() -> None:
     )
     assert any(
         action["source_id"] == "kongbricks_g2_hulk_gh0304_media"
-        and action["status"] == "resolved_exact_image_url"
+        and action["status"] == "byte_verified"
         for action in row["locator_actions"]
     )
 
@@ -77,9 +78,20 @@ def test_queue_does_not_treat_page_urls_as_materialized_images() -> None:
 
     assert len(resolved) == 27
     assert len(unresolved) == 0
-    assert all(row["status"] == "ready_for_materialization" for row in resolved)
-    assert all(row["required_output"]["source_file_sha256"] is None for row in result["queue"])
+    assert all(
+        row["status"] == "byte_verified_materialization_pending"
+        for row in resolved
+    )
+    assert all(
+        len(row["required_output"]["source_file_sha256"]) == 64
+        for row in result["queue"]
+    )
+    assert all(
+        row["required_output"]["source_size_bytes"] > 0
+        for row in result["queue"]
+    )
     assert "Do not pass HTML catalog pages to the image materializer." in result["policy"]
+    assert "Verified hashes and metadata may be stored in Git; raw reference image bytes must not be committed." in result["policy"]
 
 
 def test_checked_in_queue_matches_generator() -> None:
