@@ -49,14 +49,14 @@
     {
       "id": "venom",
       "path": "knowledge/libraries/lego-minifigure-customs/data/venom-cross-architecture-corpus.json",
-      "blob_sha": "ed23e063dd577a2acecf2667343a895a102b4e96",
+      "blob_sha": "4dbbd3148c3581513fc103648e30482451a377b1",
       "status": "research_control_corpus_v0",
       "created": "2026-09-27"
     },
     {
       "id": "thing",
       "path": "knowledge/libraries/lego-minifigure-customs/data/thing-cross-architecture-corpus.json",
-      "blob_sha": "b8b9830082adf29b084fbeb2c5fff39d341cbd20",
+      "blob_sha": "d5d10ed8be3111a47bf4cd18219fb5d3e7eb408e",
       "status": "research_control_corpus_v0",
       "created": "2026-09-27"
     }
@@ -67,8 +67,8 @@
   },
   "source_registry": {
     "path": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-source-registry.json",
-    "blob_sha": "acc6e972850e7ac16b28eec2eb34440ccdbe5815",
-    "source_count": 59
+    "blob_sha": "ba57164915b5187ac792ca4ff845959fd19a3299",
+    "source_count": 66
   },
   "summary": {
     "total_cases": 27,
@@ -83,7 +83,7 @@
     },
     "cases_with_reference_locators": 27,
     "indirect_only_locator_cases": 1,
-    "cases_with_exact_image_urls": 4
+    "cases_with_exact_image_urls": 12
   },
   "cases": [
     {
@@ -850,8 +850,8 @@
             "url": "https://www.herobloks.com/figures/31376/alpha-toys/af321/venom-%28movie%29",
             "authority": "custom_catalog",
             "locator_quality": "direct_or_family_reference",
-            "exact_image_url": null,
-            "image_resolution_status": null
+            "exact_image_url": "https://static.herobloks.com/x/figure_images/24/2/6/id0~c62651~u5232.jpg",
+            "image_resolution_status": "verified_exact_image_url"
           }
         ]
       },
@@ -914,6 +914,14 @@
             "locator_quality": "direct_or_family_reference",
             "exact_image_url": null,
             "image_resolution_status": null
+          },
+          {
+            "source_id": "kongbricks_alpha_venom_af325_media",
+            "url": "https://kongbricks.com/products/venom-marvel-minifigure",
+            "authority": "retailer",
+            "locator_quality": "direct_or_family_reference",
+            "exact_image_url": "https://kongbricks.myshopify.com/cdn/shop/files/AF325.webp",
+            "image_resolution_status": "verified_exact_image_url"
           }
         ]
       },
@@ -948,7 +956,8 @@
         "architecture_registry_blob_sha": "4d2a26e5991dbb23d8c32a1e5ccd31cc77412ab4",
         "source_registry_path": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-source-registry.json",
         "source_refs": [
-          "alpha_venom_af325"
+          "alpha_venom_af325",
+          "kongbricks_alpha_venom_af325_media"
         ]
       }
     },
@@ -1225,6 +1234,14 @@
             "locator_quality": "direct_or_family_reference",
             "exact_image_url": null,
             "image_resolution_status": null
+          },
+          {
+            "source_id": "kongbricks_alpha_thing_af336_media",
+            "url": "https://kongbricks.com/products/ben-grimm-marvel-minifigure",
+            "authority": "retailer",
+            "locator_quality": "direct_or_family_reference",
+            "exact_image_url": "https://kongbricks.myshopify.com/cdn/shop/files/AF336.webp",
+            "image_resolution_status": "verified_exact_image_url"
           }
         ]
       },
@@ -1259,7 +1276,8 @@
         "architecture_registry_blob_sha": "4d2a26e5991dbb23d8c32a1e5ccd31cc77412ab4",
         "source_registry_path": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-source-registry.json",
         "source_refs": [
-          "alpha_thing_af336"
+          "alpha_thing_af336",
+          "kongbricks_alpha_thing_af336_media"
         ]
       }
     },
@@ -1287,6 +1305,14 @@
             "locator_quality": "direct_or_family_reference",
             "exact_image_url": null,
             "image_resolution_status": null
+          },
+          {
+            "source_id": "kongbricks_kdl_thing_k2302_media",
+            "url": "https://kongbricks.com/products/ben-grimm-marvel-minifigure",
+            "authority": "retailer",
+            "locator_quality": "direct_or_family_reference",
+            "exact_image_url": "https://kongbricks.myshopify.com/cdn/shop/files/K2302.webp",
+            "image_resolution_status": "verified_exact_image_url"
           }
         ]
       },
@@ -1321,7 +1347,8 @@
         "architecture_registry_blob_sha": "4d2a26e5991dbb23d8c32a1e5ccd31cc77412ab4",
         "source_registry_path": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-source-registry.json",
         "source_refs": [
-          "kdl_thing_k2302"
+          "kdl_thing_k2302",
+          "kongbricks_kdl_thing_k2302_media"
         ]
       }
     },
@@ -1349,6 +1376,14 @@
             "locator_quality": "direct_or_family_reference",
             "exact_image_url": null,
             "image_resolution_status": null
+          },
+          {
+            "source_id": "kongbricks_tp_thing_tp178_media",
+            "url": "https://kongbricks.com/products/thing-tp178-marvel-minifigure",
+            "authority": "retailer",
+            "locator_quality": "direct_or_family_reference",
+            "exact_image_url": "https://kongbricks.myshopify.com/cdn/shop/files/TP178.webp",
+            "image_resolution_status": "verified_exact_image_url"
           }
         ]
       },
@@ -1383,7 +1418,8 @@
         "architecture_registry_blob_sha": "4d2a26e5991dbb23d8c32a1e5ccd31cc77412ab4",
         "source_registry_path": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-source-registry.json",
         "source_refs": [
-          "tp_thing_tp178"
+          "tp_thing_tp178",
+          "kongbricks_tp_thing_tp178_media"
         ]
       }
     },
@@ -1411,6 +1447,14 @@
             "locator_quality": "direct_or_family_reference",
             "exact_image_url": null,
             "image_resolution_status": null
+          },
+          {
+            "source_id": "kongbricks_tp_thing_tp349_media",
+            "url": "https://kongbricks.com/products/ben-grimm-marvel-minifigure",
+            "authority": "retailer",
+            "locator_quality": "direct_or_family_reference",
+            "exact_image_url": "https://kongbricks.myshopify.com/cdn/shop/files/TP349.webp",
+            "image_resolution_status": "verified_exact_image_url"
           }
         ]
       },
@@ -1445,7 +1489,8 @@
         "architecture_registry_blob_sha": "4d2a26e5991dbb23d8c32a1e5ccd31cc77412ab4",
         "source_registry_path": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-source-registry.json",
         "source_refs": [
-          "tp_thing_tp349_bigfig"
+          "tp_thing_tp349_bigfig",
+          "kongbricks_tp_thing_tp349_media"
         ]
       }
     },
@@ -1473,6 +1518,14 @@
             "locator_quality": "direct_or_family_reference",
             "exact_image_url": null,
             "image_resolution_status": null
+          },
+          {
+            "source_id": "kongbricks_g2_thing_gh0348_media",
+            "url": "https://kongbricks.com/products/ben-grimm-marvel-minifigure",
+            "authority": "retailer",
+            "locator_quality": "direct_or_family_reference",
+            "exact_image_url": "https://kongbricks.myshopify.com/cdn/shop/files/GH0348.webp",
+            "image_resolution_status": "verified_exact_image_url"
           }
         ]
       },
@@ -1507,7 +1560,8 @@
         "architecture_registry_blob_sha": "4d2a26e5991dbb23d8c32a1e5ccd31cc77412ab4",
         "source_registry_path": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-source-registry.json",
         "source_refs": [
-          "g2_thing_gh0348"
+          "g2_thing_gh0348",
+          "kongbricks_g2_thing_gh0348_media"
         ]
       }
     },
@@ -1596,6 +1650,14 @@
             "locator_quality": "direct_or_family_reference",
             "exact_image_url": null,
             "image_resolution_status": null
+          },
+          {
+            "source_id": "kongbricks_g2_thing_gh0440_media",
+            "url": "https://kongbricks.com/products/ben-grimm-marvel-minifigure",
+            "authority": "retailer",
+            "locator_quality": "direct_or_family_reference",
+            "exact_image_url": "https://kongbricks.myshopify.com/cdn/shop/files/GH0440.webp",
+            "image_resolution_status": "verified_exact_image_url"
           }
         ]
       },
@@ -1630,7 +1692,8 @@
         "architecture_registry_blob_sha": "4d2a26e5991dbb23d8c32a1e5ccd31cc77412ab4",
         "source_registry_path": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-source-registry.json",
         "source_refs": [
-          "g2_thing_gh0440_bigfig"
+          "g2_thing_gh0440_bigfig",
+          "kongbricks_g2_thing_gh0440_media"
         ]
       }
     },
