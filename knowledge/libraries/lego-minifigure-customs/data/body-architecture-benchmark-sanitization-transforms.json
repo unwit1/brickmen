@@ -79,19 +79,26 @@
             0.99,
             0.21
           ],
-          "fill_mode": "border_median"
+          "fill_mode": "row_median_sample",
+          "sample_bounds": [
+            0.58,
+            0.02,
+            0.68,
+            0.21
+          ]
         },
         {
           "op": "crop_norm",
           "bounds": [
             0.04,
-            0.11,
-            0.87,
+            0.14,
+            0.84,
             0.89
           ]
         }
       ],
-      "rationale": "Remove maker logo, bottom character label and right-edge secondary figure while retaining the primary figure."
+      "rationale": "Reconstruct the top-right maker-logo region from an adjacent clean background strip, then crop out the bottom label and far-right secondary figure while retaining the complete primary figure.",
+      "revision_note": "Revised after exact-byte visual review of the prior candidate; preserve the prior review record as audit evidence and require a new exact-hash review for this output."
     },
     {
       "source_record_id": "hulk_mrj_heart_comics",
@@ -100,39 +107,10 @@
         591,
         485
       ],
-      "status": "candidate_transform",
-      "operations": [
-        {
-          "op": "mask_rect_norm",
-          "bounds": [
-            0,
-            0,
-            0.36,
-            0.2
-          ],
-          "fill_mode": "border_median"
-        },
-        {
-          "op": "mask_rect_norm",
-          "bounds": [
-            0.39,
-            0.03,
-            0.6,
-            0.32
-          ],
-          "fill_mode": "border_median"
-        },
-        {
-          "op": "crop_norm",
-          "bounds": [
-            0.02,
-            0.18,
-            0.51,
-            0.93
-          ]
-        }
-      ],
-      "rationale": "Isolate the front figure and remove maker logos plus head/rear-view panels."
+      "status": "requires_segmentation",
+      "operations": [],
+      "rationale": "Maker/product-card graphics remain in the background behind the complete primary figure; rectangular masking would either leave source-family leakage or overwrite figure/background boundaries. Route to primary-figure segmentation/background normalization.",
+      "revision_note": "Revised after exact-byte visual review of the prior candidate; preserve the prior review record as audit evidence and require a new exact-hash review for this output."
     },
     {
       "source_record_id": "venom_alpha_af328_ancient",
@@ -141,19 +119,10 @@
         800,
         800
       ],
-      "status": "candidate_transform",
-      "operations": [
-        {
-          "op": "crop_norm",
-          "bounds": [
-            0.205,
-            0.225,
-            0.795,
-            0.8
-          ]
-        }
-      ],
-      "rationale": "Exclude code/name text, head/comparison insets and surrounding accessory layout while retaining the primary figure."
+      "status": "requires_segmentation",
+      "operations": [],
+      "rationale": "The primary figure is surrounded by accessories that approach or overlap its silhouette closely enough that rectangular crop/mask cleanup risks clipping architecture evidence. Route to primary-figure segmentation.",
+      "revision_note": "Revised after exact-byte visual review of the prior candidate; preserve the prior review record as audit evidence and require a new exact-hash review for this output."
     },
     {
       "source_record_id": "thing_g2_gh0435_bigfig",
@@ -283,16 +252,33 @@
       "status": "candidate_transform",
       "operations": [
         {
+          "op": "mask_rect_norm",
+          "bounds": [
+            0.72,
+            0.02,
+            0.99,
+            0.21
+          ],
+          "fill_mode": "row_median_sample",
+          "sample_bounds": [
+            0.58,
+            0.02,
+            0.68,
+            0.21
+          ]
+        },
+        {
           "op": "crop_norm",
           "bounds": [
-            0,
-            0.13,
-            0.53,
-            0.87
+            0.04,
+            0.14,
+            0.84,
+            0.89
           ]
         }
       ],
-      "rationale": "Isolate the left/front figure from the BIGGUY logo, right/rear figure and bottom character label."
+      "rationale": "Reconstruct the top-right maker-logo region from adjacent background and crop out the bottom label/right secondary figure without clipping the complete primary figure.",
+      "revision_note": "Revised after exact-byte visual review of the prior candidate; preserve the prior review record as audit evidence and require a new exact-hash review for this output."
     },
     {
       "source_record_id": "venom_alpha_af321_movie",
@@ -336,16 +322,27 @@
       "status": "candidate_transform",
       "operations": [
         {
+          "op": "mask_rect_norm",
+          "bounds": [
+            0.32,
+            0.28,
+            0.39,
+            0.405
+          ],
+          "fill_mode": "white"
+        },
+        {
           "op": "crop_norm",
           "bounds": [
-            0.12,
-            0.22,
-            0.71,
-            0.84
+            0.33,
+            0.29,
+            0.68,
+            0.81
           ]
         }
       ],
-      "rationale": "Exclude AF336/Thing text, alternate-expression inset and bottom option marker while retaining the front figure."
+      "rationale": "Remove the small remaining blue border from the alternate-figure panel on the white background, then isolate the complete lower-center primary figure without retaining either auxiliary panel.",
+      "revision_note": "Revised after exact-byte visual review of the prior candidate; preserve the prior review record as audit evidence and require a new exact-hash review for this output."
     },
     {
       "source_record_id": "thing_kdl_k2302_first_steps",
@@ -357,16 +354,47 @@
       "status": "candidate_transform",
       "operations": [
         {
+          "op": "mask_rect_norm",
+          "bounds": [
+            0.02,
+            0.02,
+            0.39,
+            0.26
+          ],
+          "fill_mode": "white"
+        },
+        {
+          "op": "mask_rect_norm",
+          "bounds": [
+            0.71,
+            0.03,
+            0.9,
+            0.34
+          ],
+          "fill_mode": "white"
+        },
+        {
+          "op": "mask_rect_norm",
+          "bounds": [
+            0.65,
+            0.55,
+            0.89,
+            0.9
+          ],
+          "fill_mode": "white"
+        },
+        {
           "op": "crop_norm",
           "bounds": [
-            0.24,
             0.18,
-            0.7,
-            0.96
+            0.2,
+            0.68,
+            0.95
           ]
         }
       ],
-      "rationale": "Exclude KDL/K2302/name text, scale silhouette and expression inset while retaining the central front figure."
+      "rationale": "Remove the product/logo, top-right comparison silhouette, and bottom-right alternate figure on the white background, then isolate the complete primary figure.",
+      "revision_note": "Revised after exact-byte visual review of the prior candidate; preserve the prior review record as audit evidence and require a new exact-hash review for this output."
     },
     {
       "source_record_id": "thing_tp_tp178_first_steps",
@@ -380,14 +408,15 @@
         {
           "op": "crop_norm",
           "bounds": [
-            0,
             0.12,
-            1,
-            1
+            0.08,
+            0.88,
+            0.835
           ]
         }
       ],
-      "rationale": "Remove the Fantastic Four title banner while retaining the complete front figure."
+      "rationale": "Tighten the white-background crop to remove the TP178/Thing labels beneath the figure while preserving the complete front figure.",
+      "revision_note": "Revised after exact-byte visual review of the prior candidate; preserve the prior review record as audit evidence and require a new exact-hash review for this output."
     },
     {
       "source_record_id": "thing_tp_tp349_first_steps_bigfig",
