@@ -224,9 +224,6 @@ def validate_review_set(
     source_by_record = queue_sources(queue_doc)
     errors: list[dict[str, Any]] = []
 
-    for error in validate_reviewer(review_doc.get("reviewer")):
-        errors.append({"scope": "reviewer", "error": error})
-
     reviews = review_doc.get("reviews")
     if not isinstance(reviews, list):
         return {
@@ -241,6 +238,12 @@ def validate_review_set(
             "unreviewed_queue_cases": sorted(source_by_record),
             "reviewed_unknown_cases": [],
         }
+
+    # An initialized-but-empty review set is a valid incomplete state. Reviewer
+    # provenance becomes mandatory as soon as the first review is recorded.
+    if reviews:
+        for error in validate_reviewer(review_doc.get("reviewer")):
+            errors.append({"scope": "reviewer", "error": error})
 
     seen: set[str] = set()
     approved = 0
