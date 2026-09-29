@@ -30,12 +30,14 @@ def test_reference_acquisition_queue_baseline() -> None:
     summary = result["summary"]
 
     assert summary["total_cases"] == 27
-    assert summary["ready_cases"] == 26
+    assert summary["ready_for_materialization_cases"] == 4
+    assert summary["ready_for_image_url_resolution_cases"] == 22
     assert summary["blocked_cases"] == 1
     assert summary["action_status_counts"] == {
-        "ready_for_catalog_image_resolution": 5,
+        "resolved_exact_image_url": 4,
         "ready_for_reviewed_page_media_resolution": 21,
         "blocked_on_direct_release_locator": 1,
+        "ready_for_catalog_image_resolution": 1,
     }
 
 
@@ -53,10 +55,19 @@ def test_queue_does_not_treat_page_urls_as_materialized_images() -> None:
     tool = load_tool()
     result = tool.build()
 
-    for row in result["queue"]:
-        assert row["required_output"]["exact_image_url"] is None
-        assert row["required_output"]["source_file_sha256"] is None
+    resolved = [
+        row for row in result["queue"]
+        if row["required_output"]["exact_image_url"]
+    ]
+    unresolved = [
+        row for row in result["queue"]
+        if not row["required_output"]["exact_image_url"]
+    ]
 
+    assert len(resolved) == 4
+    assert len(unresolved) == 23
+    assert all(row["status"] == "ready_for_materialization" for row in resolved)
+    assert all(row["required_output"]["source_file_sha256"] is None for row in result["queue"])
     assert "Do not pass HTML catalog pages to the image materializer." in result["policy"]
 
 
