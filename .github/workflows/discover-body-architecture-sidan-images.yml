@@ -1,0 +1,41 @@
+name: Discover Si-Dan Product Image URLs
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/discover-body-architecture-sidan-images.yml'
+      - 'tools/knowledge/extract_product_image_candidates.py'
+
+permissions:
+  contents: read
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out Brickmen
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Extract Si-Dan product image candidates
+        run: |
+          python tools/knowledge/extract_product_image_candidates.py \
+            --url https://minifigworld.com/si-dan-toys-poseable-minifig/ \
+            --output .agent-local/sidan-product-image-candidates.json \
+            --allow-host minifigworld.com \
+            --allow-host www.minifigworld.com \
+            --contains /products/1874/images/ \
+            --timeout-seconds 30
+      - name: Upload candidate URL report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sidan-product-image-candidates
+          path: .agent-local/sidan-product-image-candidates.json
+          if-no-files-found: warn
+          retention-days: 7
