@@ -34,9 +34,8 @@ def test_sanitization_queue_blocks_all_raw_model_inputs() -> None:
     assert summary["raw_model_input_allowed_cases"] == 4
     assert summary["blocked_model_input_cases"] == 23
     assert summary["status_counts"] == {
-        "sanitization_required": 22,
+        "sanitization_required": 23,
         "approved_raw_model_input": 4,
-        "blocked_pending_visual_sanitization_review": 1,
     }
     assert summary["risk_counts"] == {
         "high": 22,
@@ -163,7 +162,7 @@ def test_review_hash_change_invalidates_approval(tmp_path: Path) -> None:
     assert row["review"]["sanitized_asset_status"] == "stale"
 
 
-def test_only_af364_remains_unreviewed() -> None:
+def test_all_architecture_inputs_have_sanitization_decisions() -> None:
     tool = load_tool()
     result = tool.build()
     pending = [
@@ -172,4 +171,8 @@ def test_only_af364_remains_unreviewed() -> None:
         if row["status"] == "blocked_pending_visual_sanitization_review"
     ]
 
-    assert pending == ["red_hulk_alpha_af364_bnw"]
+    assert pending == []
+    assert sum(
+        row["status"] == "sanitization_required"
+        for row in result["queue"]
+    ) == 23
