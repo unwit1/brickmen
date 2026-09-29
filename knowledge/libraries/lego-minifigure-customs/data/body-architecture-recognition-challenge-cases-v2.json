@@ -1,13 +1,13 @@
 {
   "schema_version": "0.1",
   "created": "2026-09-29",
-  "status": "exact_urls_pending_byte_verification",
+  "status": "byte_verified_pending_sanitization",
   "benchmark_id": "body_architecture_challenge_v2",
   "processor_version": "body-architecture-challenge-cases/v1",
   "purpose": "Evaluation-only character-disjoint architecture-recognition cohort extending v1 with additional official lower-body, mechanical, medium-leg and specialized-body systems.",
   "baseline_benchmark": {
     "path": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-recognition-benchmark-cases.json",
-    "blob_sha": "5c3b6e03ebe29cbea86f2ce7ec0a98bb3a175460",
+    "blob_sha": "94c692eec8f0b40b778e4d3a4bd050d71a5de075",
     "character_groups": [
       "hulk",
       "thing",
@@ -24,7 +24,7 @@
   },
   "source_registry": {
     "path": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-source-registry.json",
-    "blob_sha": "42cf3b9dacb7383b84d40ccc44a9a732de9dfa8b"
+    "blob_sha": "3349dfc31a4bd15bdd0dbe6a2818dc1c499be98c"
   },
   "split_policy": {
     "split": "challenge_test",
@@ -39,7 +39,7 @@
     "unique_architectures": 16,
     "core_cases": 16,
     "cases_with_exact_image_urls": 16,
-    "byte_verified_cases": 15
+    "byte_verified_cases": 16
   },
   "architecture_ids": [
     "lego_axl_oversized_torso_hybrid",
@@ -646,7 +646,7 @@
       "target_evidence_tier": "canonical",
       "scoring_track": "core",
       "input_asset": {
-        "status": "exact_url_pending_byte_verification",
+        "status": "byte_verified_pending_sanitization",
         "required_view": "canonical_or_best_available_full_figure",
         "materialized_asset_id": null,
         "reference_locators": [
@@ -655,15 +655,15 @@
             "url": "https://www.bricklink.com/catalogItemInv.asp?M=hp288&viewCodes=Y",
             "authority": "structured_catalog",
             "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/hp288.png",
-            "image_resolution_status": "exact_image_url_resolved_pending_byte_verification",
-            "source_file_sha256": null,
-            "source_size_bytes": null,
-            "source_width": null,
-            "source_height": null,
-            "source_content_type": null,
-            "source_image_format": null,
-            "verification_run_id": null,
-            "verification_artifact_id": null
+            "image_resolution_status": "verified_exact_image_url",
+            "source_file_sha256": "75b0f4bfb0454f9b85e1ac8564ff6a67415e537db0576f9fb6a9ab186b1c692d",
+            "source_size_bytes": 211354,
+            "source_width": 397,
+            "source_height": 596,
+            "source_content_type": "image/png",
+            "source_image_format": "png",
+            "verification_run_id": 36562356952,
+            "verification_artifact_id": 11029932963
           }
         ]
       },
