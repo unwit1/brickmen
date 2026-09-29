@@ -94,6 +94,12 @@ def build_case(
                 "locator_quality": source.get(
                     "locator_quality", "direct_or_family_reference"
                 ),
+                "exact_image_url": (source.get("media") or {}).get(
+                    "primary_image_url"
+                ),
+                "image_resolution_status": (source.get("media") or {}).get(
+                    "resolution_status"
+                ),
             }
         )
 
@@ -164,7 +170,8 @@ def build(
         row["architecture_id"]: row for row in registry.get("architectures", [])
     }
     registry_blob_sha = git_blob_sha(registry_raw)
-    source_registry, _ = load_json(source_registry_path)
+    source_registry, source_registry_raw = load_json(source_registry_path)
+    source_registry_blob_sha = git_blob_sha(source_registry_raw)
     source_registry_by_id = {
         row["source_id"]: row for row in source_registry.get("sources", [])
     }
@@ -222,6 +229,13 @@ def build(
             bool(case["input_asset"]["reference_locators"])
             and all(
                 locator["locator_quality"] == "indirect_identity_graph"
+                for locator in case["input_asset"]["reference_locators"]
+            )
+            for case in cases
+        ),
+        "cases_with_exact_image_urls": sum(
+            any(
+                locator.get("exact_image_url")
                 for locator in case["input_asset"]["reference_locators"]
             )
             for case in cases
@@ -298,6 +312,7 @@ def build(
         },
         "source_registry": {
             "path": source_registry_path.relative_to(ROOT).as_posix(),
+            "blob_sha": source_registry_blob_sha,
             "source_count": len(source_registry_by_id),
         },
         "summary": summary,
