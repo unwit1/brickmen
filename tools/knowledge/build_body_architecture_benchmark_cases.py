@@ -1,0 +1,278 @@
+#!/usr/bin/env python3
+"""Build the populated body-architecture recognition benchmark case manifest.
+
+The source corpora intentionally keep release/maker/character metadata for audit and
+provenance. Those fields are explicitly forbidden as model inputs so recognition must
+come from visual/mesh evidence rather than catalog-label leakage.
+"""
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+from pathlib import Path
+from typing import Any
+
+VERSION = "body-architecture-benchmark-cases/v1"
+ROOT = Path(__file__).resolve().parents[2]
+DATA = ROOT / "knowledge" / "libraries" / "lego-minifigure-customs" / "data"
+
+DEFAULT_REGISTRY = DATA / "figure-architecture-registry.json"
+DEFAULT_OUTPUT = DATA / "body-architecture-recognition-benchmark-cases.json"
+DEFAULT_CORPORA = (
+    ("hulk", "development", DATA / "hulk-cross-architecture-corpus.json"),
+    ("venom", "validation", DATA / "venom-cross-architecture-corpus.json"),
+    ("thing", "test", DATA / "thing-cross-architecture-corpus.json"),
+)
+
+OPEN_SET_STATUS_MARKERS = (
+    "umbrella_candidate_not_a_mechanical_standard",
+    "source_label_only",
+    "unresolved",
+)
+
+
+def load_json(path: Path) -> tuple[dict[str, Any], bytes]:
+    raw = path.read_bytes()
+    return json.loads(raw.decode("utf-8")), raw
+
+
+def git_blob_sha(raw: bytes) -> str:
+    header = f"blob {len(raw)}\0".encode("ascii")
+    return hashlib.sha1(header + raw).hexdigest()
+
+
+def classify_target(
+    architecture_candidate: str | None,
+    architecture_by_id: dict[str, dict[str, Any]],
+) -> tuple[str, str, bool]:
+    architecture = architecture_by_id.get(architecture_candidate or "")
+    if not architecture:
+        return "open_set_unknown", "open_set", True
+
+    status = str(architecture.get("status") or "").lower()
+    if any(marker in status for marker in OPEN_SET_STATUS_MARKERS):
+        return "open_set_unknown", "open_set", True
+
+    if status == "canonical_existing":
+        return "canonical", "core", False
+    if "strong" in status:
+        return "strong_evidence", "core", False
+    return "provisional", "provisional", False
+
+
+def build_case(
+    *,
+    corpus_id: str,
+    split: str,
+    source_path: Path,
+    record: dict[str, Any],
+    architecture_by_id: dict[str, dict[str, Any]],
+    architecture_registry_path: Path,
+    architecture_registry_blob_sha: str,
+) -> dict[str, Any]:
+    candidate = record.get("architecture_candidate")
+    tier, track, open_set = classify_target(candidate, architecture_by_id)
+    record_id = record["record_id"]
+    release = record.get("release") or {}
+
+    return {
+        "case_id": f"archrec::{record_id}",
+        "split": split,
+        "source_corpus": corpus_id,
+        "source_record_id": record_id,
+        "task": (
+            "architecture_unknown_rejection"
+            if open_set
+            else "closed_set_architecture_classification"
+        ),
+        "expected": {
+            "architecture_id": None if open_set else candidate,
+            "unresolved_candidate": candidate if open_set else None,
+        },
+        "target_evidence_tier": tier,
+        "scoring_track": track,
+        "input_asset": {
+            "status": "reference_locator_only_pending_materialization",
+            "required_view": "canonical_or_best_available_full_figure",
+            "materialized_asset_id": None,
+        },
+        "leakage_guard": {
+            "allow_release_maker_as_model_input": False,
+            "allow_release_code_as_model_input": False,
+            "allow_character_label_as_model_input": False,
+            "allow_source_corpus_name_as_model_input": False,
+            "note": (
+                "Release/maker/character metadata is audit-only. Model input must be "
+                "image/mesh-derived evidence."
+            ),
+        },
+        "audit_metadata": {
+            "release": release,
+            "source_appearance_family": record.get("source_appearance_family"),
+            "original_architecture_candidate": candidate,
+            "original_confidence": record.get("confidence"),
+        },
+        "group_keys": {
+            "corpus_character_group": corpus_id,
+            "maker": release.get("maker"),
+            "source_appearance_family": record.get("source_appearance_family"),
+            "architecture_candidate": candidate,
+        },
+        "provenance": {
+            "source_path": source_path.relative_to(ROOT).as_posix(),
+            "source_record_id": record_id,
+            "architecture_registry_path": architecture_registry_path.relative_to(
+                ROOT
+            ).as_posix(),
+            "architecture_registry_blob_sha": architecture_registry_blob_sha,
+        },
+    }
+
+
+def build(
+    registry_path: Path = DEFAULT_REGISTRY,
+    corpora: tuple[tuple[str, str, Path], ...] = DEFAULT_CORPORA,
+) -> dict[str, Any]:
+    registry, registry_raw = load_json(registry_path)
+    architecture_by_id = {
+        row["architecture_id"]: row for row in registry.get("architectures", [])
+    }
+    registry_blob_sha = git_blob_sha(registry_raw)
+
+    cases: list[dict[str, Any]] = []
+    source_corpora: list[dict[str, Any]] = []
+
+    for corpus_id, split, path in corpora:
+        corpus, corpus_raw = load_json(path)
+        source_corpora.append(
+            {
+                "id": corpus_id,
+                "path": path.relative_to(ROOT).as_posix(),
+                "blob_sha": git_blob_sha(corpus_raw),
+                "status": corpus.get("status"),
+                "created": corpus.get("created"),
+            }
+        )
+        for record in corpus.get("records", []):
+            cases.append(
+                build_case(
+                    corpus_id=corpus_id,
+                    split=split,
+                    source_path=path,
+                    record=record,
+                    architecture_by_id=architecture_by_id,
+                    architecture_registry_path=registry_path,
+                    architecture_registry_blob_sha=registry_blob_sha,
+                )
+            )
+
+    summary = {
+        "total_cases": len(cases),
+        "closed_set_cases": sum(
+            case["task"] == "closed_set_architecture_classification"
+            for case in cases
+        ),
+        "open_set_unknown_cases": sum(
+            case["task"] == "architecture_unknown_rejection" for case in cases
+        ),
+        "core_scoring_cases": sum(case["scoring_track"] == "core" for case in cases),
+        "provisional_scoring_cases": sum(
+            case["scoring_track"] == "provisional" for case in cases
+        ),
+        "split_counts": {
+            split: sum(case["split"] == split for case in cases)
+            for split in ("development", "validation", "test")
+        },
+    }
+
+    return {
+        "schema_version": "0.1",
+        "created": "2026-09-28",
+        "status": "populated_case_manifest_assets_pending",
+        "benchmark_id": "body_architecture_recognition_v0_cases",
+        "processor_version": VERSION,
+        "objective": (
+            "Populate the body-architecture recognition benchmark with real "
+            "evidence-backed release cases while preventing label leakage."
+        ),
+        "split_strategy": {
+            "method": "corpus_character_group_holdout",
+            "assignments": {corpus_id: split for corpus_id, split, _ in corpora},
+            "rationale": (
+                "Keep each source character corpus in exactly one split so the same "
+                "character family cannot leak across benchmark partitions. Maker and "
+                "architecture overlap is allowed to test architecture recognition "
+                "across characters."
+            ),
+            "training_rule": (
+                "Validation and test cases are evaluation-only. Do not train on audit "
+                "metadata or release identifiers from any split."
+            ),
+        },
+        "scoring_policy": {
+            "core": "Canonical or strong evidence-backed architecture targets.",
+            "provisional": (
+                "Specific architecture-family targets retained for separate scoring "
+                "because metrology/mechanical validation remains incomplete."
+            ),
+            "open_set": (
+                "Unresolved or umbrella architecture labels must be rejected as "
+                "unknown rather than coerced into a known class."
+            ),
+            "aggregate_rule": (
+                "Report core, provisional, and open-set metrics separately; do not "
+                "hide uncertainty in one aggregate score."
+            ),
+        },
+        "input_policy": {
+            "current_asset_state": (
+                "Reference locators exist in source corpora, but benchmark image/mesh "
+                "assets are not yet materialized here."
+            ),
+            "allowed_model_inputs": [
+                "materialized_image_pixels",
+                "materialized_mesh_geometry",
+                "deterministic_features_derived_from_allowed_assets",
+            ],
+            "forbidden_model_inputs": [
+                "maker_name",
+                "release_code",
+                "character_name_or_label",
+                "source_corpus_name",
+                "record_id",
+                "catalog_text_that_names_the_architecture",
+            ],
+            "next_step": (
+                "Materialize and checksum one or more canonical views per case, then "
+                "add low-resolution/occlusion/detached-component variants without "
+                "changing ground-truth group assignments."
+            ),
+        },
+        "source_corpora": source_corpora,
+        "architecture_registry": {
+            "path": registry_path.relative_to(ROOT).as_posix(),
+            "blob_sha": registry_blob_sha,
+        },
+        "summary": summary,
+        "cases": cases,
+    }
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--registry", type=Path, default=DEFAULT_REGISTRY)
+    parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
+    args = parser.parse_args()
+
+    result = build(args.registry)
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+    args.output.write_text(
+        json.dumps(result, indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
+    print(json.dumps(result["summary"], indent=2))
+
+
+if __name__ == "__main__":
+    main()
