@@ -1,0 +1,71 @@
+{
+  "schema_version": "0.1",
+  "created": "2026-09-29",
+  "status": "exact_url_pending_byte_verification",
+  "benchmark_id": "body_architecture_homemaker_acquisition_candidate_v1",
+  "purpose": "Metadata-only acquisition gate for a clean single-figure legacy LEGO Homemaker/maxifigure evaluation reference. This is not a model-input approval.",
+  "cases": [
+    {
+      "case_id": "archcandidate::homemaker_276_nurse",
+      "source_record_id": "homemaker_276_nurse",
+      "split": "challenge_test",
+      "scoring_track": "core",
+      "task": "closed_set_architecture_classification",
+      "expected": {
+        "architecture_id": "lego_homemaker_maxifigure_legacy",
+        "unresolved_candidate": null
+      },
+      "input_asset": {
+        "status": "exact_url_pending_byte_verification",
+        "required_view": "isolated_front_full_figure",
+        "materialized_asset_id": null,
+        "reference_locators": [
+          {
+            "source_id": "flickr_tjpcollecting_276_nurse",
+            "url": "https://www.flickr.com/photos/tjpcollecting/53377649589",
+            "authority": "community_photo_release_identity_cross_checked",
+            "exact_image_url": "https://live.staticflickr.com/65535/53377649589_e6fb76f268.jpg",
+            "image_resolution_status": "exact_image_url_resolved_pending_byte_verification",
+            "source_file_sha256": null,
+            "source_size_bytes": null,
+            "source_width": null,
+            "source_height": null,
+            "source_content_type": null,
+            "source_image_format": null,
+            "verification_run_id": null,
+            "verification_artifact_id": null
+          }
+        ]
+      },
+      "leakage_guard": {
+        "allow_release_maker_as_model_input": false,
+        "allow_release_code_as_model_input": false,
+        "allow_character_label_as_model_input": false,
+        "allow_theme_as_model_input": false,
+        "allow_source_labels_as_model_input": false,
+        "note": "Catalog and set identity are audit metadata only. Raw source cannot become model input before exact-byte verification and explicit visual sanitization review."
+      },
+      "audit_metadata": {
+        "release": {
+          "maker": "LEGO",
+          "code": "276-1",
+          "year": 1977,
+          "label": "Nurse and Child / Doctor's Office"
+        },
+        "figure_label": "nurse",
+        "torso_head_assembly": "685px2c01",
+        "evidence_summary": [
+          "BrickLink 276-1 inventory records blue 685px2c01 counterpart assembly and Homemaker arm/hand/head components.",
+          "Surviving 276-1 instructions show the assembled nurse body.",
+          "The Flickr source page explicitly labels the isolated figure as the nurse maxifigure from LEGO 276."
+        ]
+      },
+      "provenance": {
+        "architecture_registry_path": "knowledge/libraries/lego-minifigure-customs/data/figure-architecture-registry.json",
+        "structured_catalog_url": "https://www.bricklink.com/catalogItemInv.asp?S=276-1",
+        "instruction_reference_url": "https://lego.brickinstructions.com/lego_instructions/set/276/Nurse_and_Child",
+        "source_page_url": "https://www.flickr.com/photos/tjpcollecting/53377649589"
+      }
+    }
+  ]
+}
