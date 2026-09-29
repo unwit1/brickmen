@@ -1,15 +1,15 @@
 {
   "schema_version": "0.1",
   "created": "2026-09-29",
-  "status": "one_manual_sanitization_plan_pending",
+  "status": "no_active_sanitization_candidates",
   "processor_version": "body-architecture-challenge-sanitization-candidates/v1",
   "records": [],
-  "blockers": [
-    {
-      "source_record_id": "challenge_centaur_col379",
-      "status": "requires_manual_mask_plan",
-      "rationale": "Byte-verified BrickLink image contains an alternate-expression inset in the upper-right. Define and review a deterministic mask/crop candidate before model input."
-    }
-  ],
-  "policy": "Clean challenge sources are admitted through raw-source visual approval. The Centaur remains blocked until an exact sanitized derivative candidate is generated and separately hash-approved."
+  "blockers": [],
+  "policy": "All active challenge cases are visually approved raw references. The prior col379 sanitization experiment is superseded by the clean hp236 release and must not be reintroduced into challenge metrics.",
+  "superseded": {
+    "source_record_id": "challenge_centaur_col379",
+    "reason": "Replaced by clean, byte-verified challenge_centaur_hp236 source before model-input promotion.",
+    "replacement_source_record_id": "challenge_centaur_hp236",
+    "replacement_source_file_sha256": "9690938b75bad44108df1b0d15fa85a72ea4f5837b1ba5f774fa6b57acbc3052"
+  }
 }
