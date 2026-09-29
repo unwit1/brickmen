@@ -40,6 +40,7 @@ def test_custom_source_queue_matches_generic_builder() -> None:
     expected = tool.build(BENCHMARK, SOURCE_REVIEWS)
     actual = json.loads(QUEUE.read_text(encoding="utf-8"))
     assert actual == expected
+    assert actual["created"] == "2026-09-28"
     assert actual["summary"] == {
         "total_cases": 2,
         "raw_model_input_allowed_cases": 1,
