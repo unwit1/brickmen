@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "created": "2026-09-28",
-  "status": "ready_for_resolution",
+  "status": "exact_image_urls_complete_materialization_pending",
   "processor_version": "body-architecture-reference-acquisition/v1",
   "objective": "Resolve every architecture benchmark case from a provenance page locator to an exact reviewed image URL before content-addressed materialization.",
   "policy": [
@@ -9,22 +9,22 @@
     "Do not crawl a source merely because a page locator exists.",
     "Prefer supported catalog/API adapters when available.",
     "Preserve source occurrence, rights/provenance metadata, and exact image URL.",
-    "Indirect identity-graph evidence must be upgraded to a direct release locator before image acquisition."
+    "Indirect identity-graph evidence may remain as provenance even when a separate exact media source resolves the visual asset."
   ],
   "benchmark_manifest": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-recognition-benchmark-cases.json",
   "summary": {
     "total_cases": 27,
-    "ready_for_materialization_cases": 20,
-    "ready_for_image_url_resolution_cases": 7,
+    "ready_for_materialization_cases": 27,
+    "ready_for_image_url_resolution_cases": 0,
     "blocked_cases": 0,
     "action_status_counts": {
-      "resolved_exact_image_url": 20,
-      "ready_for_reviewed_page_media_resolution": 19,
+      "resolved_exact_image_url": 27,
+      "ready_for_reviewed_page_media_resolution": 12,
       "blocked_on_direct_release_locator": 1
     },
     "strategy_counts": {
-      "already_resolved_source_media": 20,
-      "reviewed_page_to_exact_image_url": 19,
+      "already_resolved_source_media": 27,
+      "reviewed_page_to_exact_image_url": 12,
       "resolve_direct_release_page_before_image_acquisition": 1
     }
   },
@@ -248,21 +248,21 @@
         "architecture_id": "custom_bigguy_muscle",
         "unresolved_candidate": null
       },
-      "status": "ready_for_image_url_resolution",
+      "status": "ready_for_materialization",
       "locator_actions": [
         {
           "source_id": "bigguy_hulk_ragnarok",
           "page_url": "https://www.herobloks.com/figures/38319/bigguy-minifigs/hulk-(ragnarok)",
           "authority": "custom_catalog",
           "locator_quality": "direct_or_family_reference",
-          "status": "ready_for_reviewed_page_media_resolution",
-          "strategy": "reviewed_page_to_exact_image_url",
-          "exact_image_url": null,
-          "image_resolution_status": null
+          "status": "resolved_exact_image_url",
+          "strategy": "already_resolved_source_media",
+          "exact_image_url": "https://static.herobloks.com/x/figure_images/25/12/8/id38319~c88933~u5798.jpg",
+          "image_resolution_status": "verified_exact_image_url"
         }
       ],
       "required_output": {
-        "exact_image_url": null,
+        "exact_image_url": "https://static.herobloks.com/x/figure_images/25/12/8/id38319~c88933~u5798.jpg",
         "source_occurrence_id": null,
         "source_file_sha256": null,
         "view": "canonical_or_best_available_full_figure",
@@ -278,21 +278,21 @@
         "architecture_id": "custom_mrj_heart_muscle",
         "unresolved_candidate": null
       },
-      "status": "ready_for_image_url_resolution",
+      "status": "ready_for_materialization",
       "locator_actions": [
         {
           "source_id": "mrj_heart_hulk",
           "page_url": "https://www.herobloks.com/figures/38863/mr.j-brick-x-heart/hulk-(comics)",
           "authority": "custom_catalog",
           "locator_quality": "direct_or_family_reference",
-          "status": "ready_for_reviewed_page_media_resolution",
-          "strategy": "reviewed_page_to_exact_image_url",
-          "exact_image_url": null,
-          "image_resolution_status": null
+          "status": "resolved_exact_image_url",
+          "strategy": "already_resolved_source_media",
+          "exact_image_url": "https://static.herobloks.com/x/figure_images/25/9/7/id0~c79927~u5798.jpg",
+          "image_resolution_status": "verified_exact_image_url"
         }
       ],
       "required_output": {
-        "exact_image_url": null,
+        "exact_image_url": "https://static.herobloks.com/x/figure_images/25/9/7/id0~c79927~u5798.jpg",
         "source_occurrence_id": null,
         "source_file_sha256": null,
         "view": "canonical_or_best_available_full_figure",
@@ -388,21 +388,21 @@
         "architecture_id": "custom_bigguy_muscle",
         "unresolved_candidate": null
       },
-      "status": "ready_for_image_url_resolution",
+      "status": "ready_for_materialization",
       "locator_actions": [
         {
           "source_id": "bigguy_red_hulk_bnw",
           "page_url": "https://www.herobloks.com/figures/38318/bigguy-minifigs/red-hulk-(brave-new-world)",
           "authority": "custom_catalog",
           "locator_quality": "direct_or_family_reference",
-          "status": "ready_for_reviewed_page_media_resolution",
-          "strategy": "reviewed_page_to_exact_image_url",
-          "exact_image_url": null,
-          "image_resolution_status": null
+          "status": "resolved_exact_image_url",
+          "strategy": "already_resolved_source_media",
+          "exact_image_url": "https://static.herobloks.com/x/figure_images/25/12/8/id38318~c88931~u5798.jpg",
+          "image_resolution_status": "verified_exact_image_url"
         }
       ],
       "required_output": {
-        "exact_image_url": null,
+        "exact_image_url": "https://static.herobloks.com/x/figure_images/25/12/8/id38318~c88931~u5798.jpg",
         "source_occurrence_id": null,
         "source_file_sha256": null,
         "view": "canonical_or_best_available_full_figure",
@@ -548,21 +548,21 @@
         "architecture_id": null,
         "unresolved_candidate": "compatible_bigfig_unresolved"
       },
-      "status": "ready_for_image_url_resolution",
+      "status": "ready_for_materialization",
       "locator_actions": [
         {
           "source_id": "xinh_venom_xh1911_bigfig",
           "page_url": "https://www.herobloks.com/figures/28107/xinh/xh1911/venom-%28bigfig%29",
           "authority": "custom_catalog",
           "locator_quality": "direct_or_family_reference",
-          "status": "ready_for_reviewed_page_media_resolution",
-          "strategy": "reviewed_page_to_exact_image_url",
-          "exact_image_url": null,
-          "image_resolution_status": null
+          "status": "resolved_exact_image_url",
+          "strategy": "already_resolved_source_media",
+          "exact_image_url": "https://static.herobloks.com/x/figure_images/22/6/5/id0~c56631~u1.jpg",
+          "image_resolution_status": "verified_exact_image_url"
         }
       ],
       "required_output": {
-        "exact_image_url": null,
+        "exact_image_url": "https://static.herobloks.com/x/figure_images/22/6/5/id0~c56631~u1.jpg",
         "source_occurrence_id": null,
         "source_file_sha256": null,
         "view": "canonical_or_best_available_full_figure",
@@ -848,21 +848,21 @@
         "architecture_id": null,
         "unresolved_candidate": "compatible_bigfig_unresolved"
       },
-      "status": "ready_for_image_url_resolution",
+      "status": "ready_for_materialization",
       "locator_actions": [
         {
           "source_id": "g2_thing_gh0435_bigfig",
           "page_url": "https://www.herobloks.com/figures/38547",
           "authority": "custom_catalog",
           "locator_quality": "direct_or_family_reference",
-          "status": "ready_for_reviewed_page_media_resolution",
-          "strategy": "reviewed_page_to_exact_image_url",
-          "exact_image_url": null,
-          "image_resolution_status": null
+          "status": "resolved_exact_image_url",
+          "strategy": "already_resolved_source_media",
+          "exact_image_url": "https://static.herobloks.com/x/figure_images/25/9/7/id0~c79091~u2911-1.jpg",
+          "image_resolution_status": "verified_exact_image_url"
         }
       ],
       "required_output": {
-        "exact_image_url": null,
+        "exact_image_url": "https://static.herobloks.com/x/figure_images/25/9/7/id0~c79091~u2911-1.jpg",
         "source_occurrence_id": null,
         "source_file_sha256": null,
         "view": "canonical_or_best_available_full_figure",
@@ -918,21 +918,21 @@
         "architecture_id": null,
         "unresolved_candidate": "compatible_bigfig_unresolved"
       },
-      "status": "ready_for_image_url_resolution",
+      "status": "ready_for_materialization",
       "locator_actions": [
         {
           "source_id": "shengyuan_thing_sy288_bigfig",
           "page_url": "https://www.herobloks.com/figures/2306/sheng-yuan/-sy288/thing-%28bigfig%29",
           "authority": "custom_catalog",
           "locator_quality": "direct_or_family_reference",
-          "status": "ready_for_reviewed_page_media_resolution",
-          "strategy": "reviewed_page_to_exact_image_url",
-          "exact_image_url": null,
-          "image_resolution_status": null
+          "status": "resolved_exact_image_url",
+          "strategy": "already_resolved_source_media",
+          "exact_image_url": "https://static.herobloks.com/x/figure_images/17/3/2/id0~c2671~u1.jpg",
+          "image_resolution_status": "verified_exact_image_url"
         }
       ],
       "required_output": {
-        "exact_image_url": null,
+        "exact_image_url": "https://static.herobloks.com/x/figure_images/17/3/2/id0~c2671~u1.jpg",
         "source_occurrence_id": null,
         "source_file_sha256": null,
         "view": "canonical_or_best_available_full_figure",
@@ -948,21 +948,21 @@
         "architecture_id": null,
         "unresolved_candidate": "compatible_bigfig_unresolved"
       },
-      "status": "ready_for_image_url_resolution",
+      "status": "ready_for_materialization",
       "locator_actions": [
         {
           "source_id": "xinh_thing_1421_bigfig",
           "page_url": "https://www.herobloks.com/figures/25180/xinh/1421/thing-%28bigfig%29",
           "authority": "custom_catalog",
           "locator_quality": "direct_or_family_reference",
-          "status": "ready_for_reviewed_page_media_resolution",
-          "strategy": "reviewed_page_to_exact_image_url",
-          "exact_image_url": null,
-          "image_resolution_status": null
+          "status": "resolved_exact_image_url",
+          "strategy": "already_resolved_source_media",
+          "exact_image_url": "https://static.herobloks.com/x/figure_images/20/8/5/id0~c50516~u1.jpg",
+          "image_resolution_status": "verified_exact_image_url"
         }
       ],
       "required_output": {
-        "exact_image_url": null,
+        "exact_image_url": "https://static.herobloks.com/x/figure_images/20/8/5/id0~c50516~u1.jpg",
         "source_occurrence_id": null,
         "source_file_sha256": null,
         "view": "canonical_or_best_available_full_figure",
