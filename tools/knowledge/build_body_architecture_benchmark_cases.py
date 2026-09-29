@@ -245,7 +245,11 @@ def build(
     return {
         "schema_version": "0.1",
         "created": "2026-09-28",
-        "status": "populated_case_manifest_assets_pending",
+        "status": (
+            "populated_case_manifest_exact_image_urls_complete_materialization_pending"
+            if summary["cases_with_exact_image_urls"] == summary["total_cases"]
+            else "populated_case_manifest_assets_pending"
+        ),
         "benchmark_id": "body_architecture_recognition_v0_cases",
         "processor_version": VERSION,
         "objective": (
@@ -283,8 +287,13 @@ def build(
         },
         "input_policy": {
             "current_asset_state": (
-                "Reference locators exist in source corpora, but benchmark image/mesh "
-                "assets are not yet materialized here."
+                "Every benchmark case has at least one exact source-backed image URL; "
+                "image bytes/hashes are not yet materialized in the benchmark manifest."
+                if summary["cases_with_exact_image_urls"] == summary["total_cases"]
+                else (
+                    "Reference locators exist in source corpora, but benchmark image/mesh "
+                    "assets are not yet materialized here."
+                )
             ),
             "allowed_model_inputs": [
                 "materialized_image_pixels",
@@ -300,9 +309,9 @@ def build(
                 "catalog_text_that_names_the_architecture",
             ],
             "next_step": (
-                "Materialize and checksum one or more canonical views per case, then "
-                "add low-resolution/occlusion/detached-component variants without "
-                "changing ground-truth group assignments."
+                "Materialize and checksum one or more canonical views per case, validate "
+                "the bound image identity/view, then add low-resolution/occlusion/"
+                "detached-component variants without changing ground-truth group assignments."
             ),
         },
         "source_corpora": source_corpora,
