@@ -1,18 +1,17 @@
 {
   "schema_version": "0.1",
   "created": "2026-09-28",
-  "status": "visual_sanitization_in_progress",
+  "status": "visual_sanitization_complete",
   "processor_version": "body-architecture-benchmark-sanitization-queue/v1",
   "benchmark_manifest": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-recognition-challenge-cases-v1.json",
   "policy": "data/body-architecture-benchmark-input-sanitization-policy.json",
   "reviews": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-recognition-challenge-sanitization-reviews-v1.json",
   "summary": {
     "total_cases": 8,
-    "raw_model_input_allowed_cases": 7,
-    "blocked_model_input_cases": 1,
+    "raw_model_input_allowed_cases": 8,
+    "blocked_model_input_cases": 0,
     "status_counts": {
-      "approved_raw_model_input": 7,
-      "sanitization_required": 1
+      "approved_raw_model_input": 8
     },
     "risk_counts": {
       "medium_review_required": 8
@@ -461,8 +460,8 @@
       "processor_version": "body-architecture-benchmark-sanitization-queue/v1"
     },
     {
-      "case_id": "archchallenge::challenge_centaur_col379",
-      "source_record_id": "challenge_centaur_col379",
+      "case_id": "archchallenge::challenge_centaur_hp236",
+      "source_record_id": "challenge_centaur_hp236",
       "split": "challenge_test",
       "scoring_track": "core",
       "task": "closed_set_architecture_classification",
@@ -471,22 +470,22 @@
         "unresolved_candidate": null
       },
       "source": {
-        "source_id": "bricklink_centaur_col379_inventory",
-        "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/col379.png",
-        "source_file_sha256": "9c6ab60d4b94f6f8544625eac122865b248bd05661cf94a93fd7e7e0085f73c5",
-        "source_size_bytes": 185658,
-        "source_width": 300,
+        "source_id": "bricklink_centaur_hp236_inventory",
+        "exact_image_url": "https://img.bricklink.com/ItemImage/MN/0/hp236.png",
+        "source_file_sha256": "9690938b75bad44108df1b0d15fa85a72ea4f5837b1ba5f774fa6b57acbc3052",
+        "source_size_bytes": 128668,
+        "source_width": 227,
         "source_height": 400,
         "source_content_type": "image/png",
         "source_image_format": "png",
-        "verification_run_id": 36518447556
+        "verification_run_id": 36520358304
       },
       "source_risk": "medium_review_required",
       "risk_reasons": [
         "catalog_image_may_include_insets_or_auxiliary_panels"
       ],
-      "status": "sanitization_required",
-      "raw_model_input_allowed": false,
+      "status": "approved_raw_model_input",
+      "raw_model_input_allowed": true,
       "required_checks": [
         "identity_matches_source_record",
         "primary_view_classified",
@@ -507,19 +506,18 @@
         "primary_view": "front",
         "primary_figure_complete": true,
         "visible_text_leakage": [],
-        "visual_confounders": [
-          "alternate_expression_inset"
-        ],
-        "sanitization_action": "mask_regions",
-        "sanitized_asset_sha256": null,
-        "sanitized_asset_status": "pending",
+        "visual_confounders": [],
+        "sanitization_action": "none",
+        "sanitized_asset_sha256": "9690938b75bad44108df1b0d15fa85a72ea4f5837b1ba5f774fa6b57acbc3052",
+        "sanitized_asset_status": "approved",
         "reviewer_id": "openai_chatgpt_visual_review",
         "reviewer_type": "model",
         "review_confidence": 0.99,
         "notes": [
-          "Primary centaur figure is complete and isolated, but an alternate-expression head inset appears in the upper-right and must be removed before model input."
+          "Clean isolated front BrickLink catalog image with complete centaur architecture and no text, branding, alternate-expression inset, secondary figure, or task-confounding panel.",
+          "Replaces col379 specifically to remove the alternate-expression inset leakage present in that earlier challenge source."
         ],
-        "review_source_sha256": "9c6ab60d4b94f6f8544625eac122865b248bd05661cf94a93fd7e7e0085f73c5",
+        "review_source_sha256": "9690938b75bad44108df1b0d15fa85a72ea4f5837b1ba5f774fa6b57acbc3052",
         "review_stale": false
       },
       "policy": "Byte verification proves file identity, not benchmark suitability. Raw media remains blocked from model input until visual sanitization is explicitly approved.",
