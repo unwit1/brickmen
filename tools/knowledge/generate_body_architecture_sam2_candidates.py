@@ -57,6 +57,24 @@ def git_revision(repo: Path) -> str | None:
         return None
 
 
+def configure_torch_determinism(num_threads: int = 1) -> dict[str, Any]:
+    import torch
+
+    if num_threads < 1:
+        raise ValueError("torch thread count must be >= 1")
+    torch.set_num_threads(num_threads)
+    torch.manual_seed(0)
+    torch.use_deterministic_algorithms(True)
+    return {
+        "torch_version": str(torch.__version__),
+        "torch_num_threads": int(torch.get_num_threads()),
+        "deterministic_algorithms": bool(
+            torch.are_deterministic_algorithms_enabled()
+        ),
+        "manual_seed": 0,
+    }
+
+
 def _norm_xy(point: list[float], width: int, height: int) -> list[float]:
     if len(point) != 2:
         raise ValueError("point must contain x,y")
@@ -377,6 +395,7 @@ def main() -> None:
         default="configs/sam2.1/sam2.1_hiera_l.yaml",
     )
     parser.add_argument("--device", default="cuda")
+    parser.add_argument("--torch-threads", type=int, default=1)
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--write-mask-variants-dir", type=Path)
     parser.add_argument("--report", type=Path, required=True)
@@ -401,6 +420,7 @@ def main() -> None:
 
     checkpoint_sha256 = file_sha256(args.checkpoint)
     provider_revision = git_revision(args.sam2_repo)
+    determinism = configure_torch_determinism(args.torch_threads)
 
     predictor = load_sam2_predictor(
         args.sam2_repo,
@@ -457,6 +477,7 @@ def main() -> None:
         "checkpoint": str(args.checkpoint),
         "checkpoint_sha256": checkpoint_sha256,
         "device": args.device,
+        "determinism": determinism,
         "generated_candidates": len(records),
         "errors": len(errors),
         "records": records,
