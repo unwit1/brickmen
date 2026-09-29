@@ -30,11 +30,11 @@ def test_coverage_report_tracks_current_breadth() -> None:
 
     assert result["summary"] == {
         "registry_architectures": 49,
-        "covered_architectures": 34,
-        "uncovered_architectures": 15,
-        "coverage_fraction": 0.693878,
+        "covered_architectures": 37,
+        "uncovered_architectures": 12,
+        "coverage_fraction": 0.755102,
         "p0_official_gaps": 0,
-        "p1_gaps": 3,
+        "p1_gaps": 0,
         "p2_gaps": 12,
     }
 
@@ -95,18 +95,46 @@ def test_checked_in_coverage_report_matches_builder() -> None:
 
     assert actual == expected
 
-def test_custom_gap_sources_use_dedicated_product_pages() -> None:
+def test_custom_challenge_is_gated_and_closes_p1_gaps() -> None:
     tool = load_tool()
     result = tool.build()
-    gaps = {row["architecture_id"]: row for row in result["gaps"]}
 
-    assert gaps["custom_sidan_full_balljoint_poseable"]["sources"] == [
-        "https://minifigworld.com/si-dan-toys-poseable-minifig/"
-    ]
-    assert gaps["custom_midfig_balljoint_upper"]["sources"] == [
-        "https://titanicbricks.com/products/midfig-torso-and-arms-with-ball-joints-custom-lego-compatible"
-    ]
-    assert gaps["custom_standard_four_arm_single_torso"]["sources"] == [
-        "https://titanicbricks.com/products/4-four-arms-torso-custom-minifig"
-    ]
+    assert result["inputs"]["custom_challenge"].endswith(
+        "body-architecture-custom-acquisition-candidates-v1.json"
+    )
+    assert result["inputs"]["custom_model_input_gate"].endswith(
+        "body-architecture-custom-model-input-manifest-v1.json"
+    )
+    assert set(result["coverage_sources"]["custom_challenge_v1"]) == {
+        "custom_midfig_balljoint_upper",
+        "custom_sidan_full_balljoint_poseable",
+        "custom_standard_four_arm_single_torso",
+    }
+    assert not any(row["priority"] == "P1" for row in result["gaps"])
+
+    coverage = {
+        row["architecture_id"]: row
+        for row in result["coverage"]
+    }
+    for architecture_id in result["coverage_sources"]["custom_challenge_v1"]:
+        assert coverage[architecture_id]["covered"] is True
+        assert "custom_challenge_v1" in coverage[architecture_id]["coverage_sources"]
+
+
+def test_custom_coverage_requires_model_input_admission() -> None:
+    tool = load_tool()
+    custom = json.loads(
+        (DATA / "body-architecture-custom-acquisition-candidates-v1.json")
+        .read_text(encoding="utf-8")
+    )
+    gate = json.loads(
+        (DATA / "body-architecture-custom-model-input-manifest-v1.json")
+        .read_text(encoding="utf-8")
+    )
+    gate["entries"][0]["model_input_allowed"] = False
+
+    covered = tool.gated_target_ids(custom, gate)
+    assert "custom_midfig_balljoint_upper" not in covered
+    assert "custom_sidan_full_balljoint_poseable" in covered
+    assert "custom_standard_four_arm_single_torso" in covered
 
