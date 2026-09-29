@@ -17,7 +17,8 @@
     "Generated derivatives are candidates until exact-pixel visual approval.",
     "Challenge cases remain evaluation-only.",
     "Do not crop away architecture-defining centaur body geometry merely to remove the inset.",
-    "Two earlier candidates were rejected during visual review: border-median sampled inset hair, then a 0.34-height white mask left a residual inset strip. The current 0.43-height white mask is the next reviewed candidate."
+    "Two earlier candidates were rejected during visual review: border-median sampled inset hair, then a 0.34-height white mask left a residual inset strip. The current 0.43-height white mask is the next reviewed candidate.",
+    "The 0.64-left-edge candidate left a vertical inset remnant; the current 0.60-left-edge candidate is explicitly pending visual review for possible main-hair clipping."
   ],
   "transforms": [
     {
@@ -32,7 +33,7 @@
         {
           "op": "mask_rect_norm",
           "bounds": [
-            0.64,
+            0.6,
             0,
             1,
             0.43
@@ -40,7 +41,7 @@
           "fill_mode": "white"
         }
       ],
-      "rationale": "Remove the full alternate-expression inset in the upper-right with a white background mask; the masked region remains above/right of the primary centaur body."
+      "rationale": "Remove the full alternate-expression inset in the upper-right. The mask reaches left only to x=60% and stays above the architecture-defining centaur body; a small non-architectural hair-edge loss is acceptable only if visual review confirms figure integrity."
     }
   ]
 }
