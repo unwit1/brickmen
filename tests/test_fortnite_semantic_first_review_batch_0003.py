@@ -29,6 +29,7 @@ def test_batch_0003_model_reviews_are_valid_hash_bound_submissions() -> None:
     batch_by_pair = {row["translation_pair_id"]: row for row in batch["items"]}
     assert len(reviews) == 25
     assert len(by_pair) == 25
+    assert len({row["review_id"] for row in reviews}) == 25
     assert set(by_pair) == set(batch_by_pair)
     for pair_id, review in by_pair.items():
         assert validator.validate_record(review) == []

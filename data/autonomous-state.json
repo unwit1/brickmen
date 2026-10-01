@@ -6,7 +6,7 @@
   "updated_date": "2026-10-01",
   "base_commit_before_bootstrap": "bda2cac8ea8b68bb9e3e5b4d0cf380a9c6ee3ae6",
   "current_objective": "advance_semantic_multiview_visual_grammar_after_completing_architecture_input_safety",
-  "current_workstream": "fortnite_semantic_first_review_batch_0003_plus_exact_release_multiview",
+  "current_workstream": "fortnite_semantic_first_review_batch_0004_plus_exact_release_multiview",
   "current_frontier": [
     "source_appearance_to_minifigure_semantic_translation",
     "multi_view_correspondence",
@@ -18,8 +18,8 @@
   "known_gaps": [
     {
       "id": "fortnite_semantic_review_labels",
-      "description": "Batches 0001 and 0002 now contain 50 exact-hash-bound submitted model reviews with 217 annotations total. They remain non-canonical pending genuinely independent second review and explicit adjudication; 694 high-priority pairs remain for first-review coverage.",
-      "status": "first_review_batches_0001_0002_submitted_pending_independent_second_review_and_more_first_review"
+      "description": "Batches 0001-0003 now contain 75 exact-hash-bound submitted model reviews with 317 annotations total. They remain non-canonical pending genuinely independent second review and explicit adjudication; 669 high-priority pairs remain for first-review coverage.",
+      "status": "first_review_batches_0001_0003_submitted_pending_independent_second_review_and_more_first_review"
     },
     {
       "id": "physical_multiview_ground_truth",
@@ -35,7 +35,7 @@
   "highest_value_tasks": [
     {
       "priority": "P0",
-      "task": "Continue Fortnite first-review coverage from batch 0003 onward; obtain a genuinely independent second review for batch 0001 and adjudicate before canonical promotion."
+      "task": "Continue Fortnite first-review coverage from batch 0004 onward; obtain a genuinely independent second review for batch 0001 and adjudicate before canonical promotion."
     },
     {
       "priority": "P0",
@@ -63,9 +63,9 @@
   ],
   "pending_validation": [],
   "continuation": {
-    "instruction": "Do not restart challenge-v4, the original 27-case architecture sanitization/SAM2 gate, or custom-architecture acquisition/model-input review: all are complete. Fortnite batches 0001 and 0002 now have 50 submitted GPT-5.6 Sol first reviews with 217 annotations and zero training-eligible records; require a genuinely independent second review plus adjudication before promotion. Continue first-review coverage from batch 0003, independent second-review preparation, multi-view evidence expansion, visual grammar, and failure-corpus work. Preserve exact hashes, provenance, uncertainty, and no-hidden-view rules."
+    "instruction": "Do not restart completed architecture gates. Fortnite batches 0001-0003 now have 75 submitted GPT-5.6 Sol first reviews with 317 annotations and zero training-eligible records; require a genuinely independent second review plus adjudication before promotion. Continue first-review coverage from batch 0004, independent second-review preparation, multi-view evidence expansion, visual grammar, and failure-corpus work. Preserve exact hashes, provenance, uncertainty, and no-hidden-view rules."
   },
-  "last_meaningful_commit": "8157095062e87b36c5cd3b03ad50d57edbacbfaa",
+  "last_meaningful_commit": "e01f2c5bec8cdc8caa3c4b9343028b81b87dbbbc",
   "latest_validated_test_commit": "8157095062e87b36c5cd3b03ad50d57edbacbfaa",
   "completed_batches": [
     {
@@ -314,6 +314,23 @@
         "workflow_run_id": 36888310826,
         "workflow_artifact_id": 11174174737,
         "validated_test_run_id": 36890371822,
+        "independent_second_review_required": true
+      }
+    },
+    {
+      "id": "fortnite_semantic_first_review_batch_0003",
+      "status": "submitted_noncanonical_pending_validation",
+      "details": {
+        "reviewed_pairs": 25,
+        "semantic_annotations": 100,
+        "reviewer_id": "openai_chatgpt_visual_review_batch3",
+        "model_id": "GPT-5.6 Sol",
+        "review_status": "submitted",
+        "training_eligible": 0,
+        "workflow_run_id": 36891164586,
+        "workflow_artifact_id": 11175719705,
+        "canonical_batch_commit": "f3a84c542d83ac6ca07b29f8103a33367e637ac8",
+        "review_id_repair_commit": "e01f2c5bec8cdc8caa3c4b9343028b81b87dbbbc",
         "independent_second_review_required": true
       }
     }
