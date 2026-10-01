@@ -65,8 +65,8 @@
   "continuation": {
     "instruction": "Do not restart completed architecture gates. Fortnite batches 0001-0003 now have 75 submitted GPT-5.6 Sol first reviews with 317 annotations and zero training-eligible records; require a genuinely independent second review plus adjudication before promotion. Continue first-review coverage from batch 0004, independent second-review preparation, multi-view evidence expansion, visual grammar, and failure-corpus work. Preserve exact hashes, provenance, uncertainty, and no-hidden-view rules."
   },
-  "last_meaningful_commit": "e01f2c5bec8cdc8caa3c4b9343028b81b87dbbbc",
-  "latest_validated_test_commit": "8157095062e87b36c5cd3b03ad50d57edbacbfaa",
+  "last_meaningful_commit": "8c182c21c9c81b89abcfda018f9ab8ce8176c9ab",
+  "latest_validated_test_commit": "8c182c21c9c81b89abcfda018f9ab8ce8176c9ab",
   "completed_batches": [
     {
       "id": "body_architecture_reference_acquisition_v1",
@@ -319,7 +319,7 @@
     },
     {
       "id": "fortnite_semantic_first_review_batch_0003",
-      "status": "submitted_noncanonical_pending_validation",
+      "status": "submitted_noncanonical",
       "details": {
         "reviewed_pairs": 25,
         "semantic_annotations": 100,
@@ -331,9 +331,12 @@
         "workflow_artifact_id": 11175719705,
         "canonical_batch_commit": "f3a84c542d83ac6ca07b29f8103a33367e637ac8",
         "review_id_repair_commit": "e01f2c5bec8cdc8caa3c4b9343028b81b87dbbbc",
-        "independent_second_review_required": true
+        "independent_second_review_required": true,
+        "validated_test_run_id": 36892803590,
+        "exact_hash_provenance_locked": true,
+        "canonical_review_ids_locked": true
       }
     }
   ],
-  "latest_test_lock_commit": "8157095062e87b36c5cd3b03ad50d57edbacbfaa"
+  "latest_test_lock_commit": "8c182c21c9c81b89abcfda018f9ab8ce8176c9ab"
 }

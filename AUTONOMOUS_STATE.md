@@ -2,8 +2,8 @@
 
 Last updated: 2026-10-01
 Base commit before autonomous bootstrap: `bda2cac8ea8b68bb9e3e5b4d0cf380a9c6ee3ae6`
-Last meaningful benchmark/development checkpoint: `e01f2c5bec8cdc8caa3c4b9343028b81b87dbbbc`
-Latest validated test-lock checkpoint: `8157095062e87b36c5cd3b03ad50d57edbacbfaa`
+Last meaningful benchmark/development checkpoint: `8c182c21c9c81b89abcfda018f9ab8ce8176c9ab`
+Latest validated test-lock checkpoint: `8c182c21c9c81b89abcfda018f9ab8ce8176c9ab`
 Status: active
 
 ## Current major objective
@@ -134,6 +134,7 @@ Current priority order:
 - A stale review-ID draft was rejected by regression tests; the reusable canonical-ID normalizer repaired the exact committed records at `e01f2c5bec8cdc8caa3c4b9343028b81b87dbbbc` without changing annotations, evidence, reviewer identity, status, or training eligibility.
 - Multi-style composites remain explicitly limitation-scoped; hidden/rear surfaces are never inferred.
 - The corpus remains non-canonical and training-ineligible pending independent second review and adjudication.
+- Exact-hash and canonical-ID regression validation passed in LEGO Knowledge Tool Tests run `36892803590` on commit `8c182c21c9c81b89abcfda018f9ab8ce8176c9ab`.
 - Across batches 0001-0003, first-review coverage is now 75/744 high-priority pairs with 317 annotations; 669 high-priority pairs remain.
 
 ## Active blockers / constraints
