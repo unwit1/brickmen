@@ -3,45 +3,28 @@
   "project": "brickmen",
   "mode": "autonomous",
   "status": "active",
-  "updated_date": "2026-09-29",
+  "updated_date": "2026-09-30",
   "base_commit_before_bootstrap": "bda2cac8ea8b68bb9e3e5b4d0cf380a9c6ee3ae6",
-  "current_objective": "finish_leakage_safe_architecture_evaluation_then_resume_semantic_and_multiview_corpora",
-  "current_workstream": "challenge_v4_input_safety_and_custom_architecture_acquisition",
+  "current_objective": "advance_semantic_multiview_and_custom_architecture_after_completing_architecture_input_safety",
+  "current_workstream": "fortnite_semantic_review_and_custom_architecture_evaluation",
   "current_frontier": [
-    "body_architecture_challenge_v4_input_safety",
-    "body_architecture_benchmark_model_input_safety",
     "source_appearance_to_minifigure_semantic_translation",
     "multi_view_correspondence",
+    "custom_architecture_evaluation",
     "official_visual_grammar",
     "negative_failure_corpus",
     "model_dataset_tool_registry",
-    "custom_architecture_evaluation",
     "reference_fitting_evidence_gaps"
   ],
   "known_gaps": [
     {
-      "id": "challenge_v4_woody_raw_review",
-      "description": "Challenge v4 is byte-verified 23/23 and runnable 21/23. Woody toy003 remains blocked until the exact verified BrickLink asset with SHA-256 777fd93e31997b912debb734bf0be461c6795210649370bd6be92717f948e7c9 can be directly visually inspected.",
-      "status": "blocked_on_exact_asset_rendering"
-    },
-    {
-      "id": "challenge_v4_homemaker_raw_review",
-      "description": "The exact 276-1 nurse collector image is byte-verified at SHA-256 2385f7c7627bb1b5b7412f107d6a2b15ec727e1a13bef8b920809d3504e7a737 and admitted to challenge v4 for architecture-target coverage, but raw model input remains blocked until direct leakage/sanitization review of those exact bytes.",
-      "status": "blocked_on_exact_asset_visual_review"
-    },
-    {
-      "id": "architecture_benchmark_sanitized_approval",
-      "description": "Fifteen deterministic sanitized derivative candidates for the original 27-case benchmark are hash-pinned but require direct local visual review before model input approval.",
+      "id": "fortnite_semantic_review_labels",
+      "description": "The 744 high-priority source->LEGO pairs are batched and reviewable, but canonical supervision still requires submitted reviews, second reviews where needed, and explicit adjudication.",
       "status": "open"
     },
     {
-      "id": "architecture_benchmark_segmentation",
-      "description": "Eight original benchmark cases require primary-figure segmentation. SAM2 prompt seeds and wrapper exist, but outputs require a capable local SAM2 environment and visual approval.",
-      "status": "blocked_on_local_model_runtime"
-    },
-    {
-      "id": "fortnite_semantic_review_labels",
-      "description": "The 744 high-priority source->LEGO pairs are batched and reviewable, but canonical supervision still requires submitted reviews, second reviews where needed, and explicit adjudication.",
+      "id": "custom_titanic_visual_review",
+      "description": "Two P1 custom-architecture sources are byte-pinned (Titanic MidFig and standard-compatible single-torso four-arm) but still require direct exact-asset visual leakage/sanitization review before model-input admission.",
       "status": "open"
     },
     {
@@ -63,22 +46,6 @@
   "highest_value_tasks": [
     {
       "priority": "P0",
-      "task": "Directly inspect the exact byte-verified challenge-v4 Homemaker 276 nurse asset and approve raw input only if identity, completeness, text/logo leakage, and task-confounder checks all pass."
-    },
-    {
-      "priority": "P0",
-      "task": "Resolve the exact-hash Woody toy003 raw visual review without substituting an alternate image."
-    },
-    {
-      "priority": "P0",
-      "task": "Visually review the original benchmark's 15 deterministic sanitized candidates and rebuild the model-input manifest from exact approvals."
-    },
-    {
-      "priority": "P0",
-      "task": "Run and review the original benchmark's 8 hash-pinned SAM2 segmentation candidates in a capable local runtime."
-    },
-    {
-      "priority": "P0",
       "task": "Execute Fortnite first-review, second-review, and adjudication batches; promote only explicit adjudicated supervision."
     },
     {
@@ -86,46 +53,44 @@
       "task": "Expand exact-release multi-view ReferenceSets and cross-surface correspondence without inventing hidden views."
     },
     {
-      "priority": "P1",
-      "task": "Extract official visual grammar from evidence and build negative/failure critic data."
+      "priority": "P0",
+      "task": "Visually review the byte-pinned Titanic MidFig and single-torso four-arm custom-architecture assets and record exact-hash model-input decisions."
+    },
+    {
+      "priority": "P0",
+      "task": "Resolve a genuine high-resolution exact Si-Dan product asset for evaluation rather than upscaling the current 50x50 thumbnails."
     },
     {
       "priority": "P1",
-      "task": "Maintain current model, dataset, paper, and tool registry."
+      "task": "Extract official face, clothing, and decoration grammar from evidence and expand negative/failure critic data."
     },
     {
       "priority": "P1",
-      "task": "Finish custom architecture evaluation acquisition: visually sanitize/review the byte-pinned Titanic MidFig and four-arm sources, and resolve a genuine high-resolution exact Si-Dan product asset."
+      "task": "Maintain the current model, dataset, paper, and tool registry."
+    },
+    {
+      "priority": "P1",
+      "task": "Expand cross-catalog minifigure-part/geometry crosswalks and continue ontology-breaker searches."
     }
   ],
   "blocked_tasks": [
     {
-      "id": "challenge_v4_woody_raw_review",
-      "reason": "The exact verified BrickLink toy003 asset still cannot be rendered in the current review environment. Alternate images are not accepted as exact-hash substitutes.",
-      "fallback": "Keep the case blocked and continue Homemaker review, semantic supervision, custom architecture evaluation, and other independent corpus work."
-    },
-    {
-      "id": "challenge_v4_homemaker_raw_review",
-      "reason": "The exact Flickr asset is byte-verified and release-cross-checked, but this environment could not render/download the exact bytes for direct visual review.",
-      "fallback": "Keep raw model input blocked; architecture-target coverage remains valid for gap accounting while continuing independent work."
-    },
-    {
-      "id": "architecture_benchmark_segmentation",
-      "reason": "SAM2 wrapper and prompt seeds exist, but this repository/chat environment does not provide a configured local SAM2 repo/checkpoint/runtime.",
-      "fallback": "Continue Homemaker, Fortnite semantic supervision, and multi-view corpus work."
-    },
-    {
       "id": "physical_multiview_ground_truth",
       "reason": "Exact rear/side physical evidence requires additional source access, credentials, or controlled capture.",
       "fallback": "Expand structured correspondence and other independent evaluation assets without synthesizing missing views."
+    },
+    {
+      "id": "custom_sidan_high_resolution_media",
+      "reason": "The dedicated Si-Dan Poseable Minifig page currently resolves only 50x50 product thumbnails. Upscaling does not create a genuine exact evaluation asset.",
+      "fallback": "Continue Titanic exact visual review, Fortnite semantic supervision, multi-view work, and other evidence-backed tasks while searching for a genuine high-resolution source."
     }
   ],
   "pending_validation": [],
   "continuation": {
-    "instruction": "Do not restart architecture v4 acquisition, Homemaker source verification, or the Titanic custom-media byte verification. Challenge v4 is 23/23 byte-verified and 21/23 input-approved; official architecture-target coverage is 34/49 with zero P0 official gaps. The Titanic MidFig and single-torso four-arm custom sources are now byte-pinned but still require exact visual sanitization review before model input. Si-Dan still needs a genuine high-resolution exact source. Preserve exact-hash, leakage-safe split, provenance, and visual-review gates."
+    "instruction": "Do not restart challenge-v4 raw review or the original 27-case architecture sanitization/SAM2 approval work. Challenge v4 is 23/23 byte-verified and 23/23 raw-input approved. The original architecture benchmark is 27/27 model-input allowed (4 raw + 23 sanitized, 0 blocked), including 10 exact-hash approved SAM2 candidates. Resume Fortnite semantic review, multi-view correspondence, and custom-architecture evaluation. The Titanic MidFig and single-torso four-arm sources are byte-pinned but still need exact visual review; Si-Dan still needs genuine high-resolution exact media. Preserve exact-hash, leakage-safe split, provenance, uncertainty, and visual-review gates."
   },
-  "last_meaningful_commit": "a04b532236666a48945ba8cc18a6b2b8e0743b40",
-  "latest_validated_test_commit": "a04b532236666a48945ba8cc18a6b2b8e0743b40",
+  "last_meaningful_commit": "dcf43cb327e22a101400d2dd90a64d9e0842d896",
+  "latest_validated_test_commit": "4c69a64cd21754ce6dbdd3f3adb252228d4958e7",
   "completed_batches": [
     {
       "id": "body_architecture_reference_acquisition_v1",
@@ -259,18 +224,15 @@
     },
     {
       "id": "body_architecture_challenge_v4_model_input_gate",
-      "status": "partially_runnable",
+      "status": "complete",
       "details": {
         "total_cases": 23,
-        "model_input_allowed": 21,
-        "approved_raw": 21,
+        "model_input_allowed": 23,
+        "approved_raw": 23,
         "approved_sanitized": 0,
-        "blocked": 2,
-        "blocked_records": [
-          "challenge_homemaker_276_nurse",
-          "challenge_woody_toy003_long_limb"
-        ],
-        "blocked_reason": "pending_visual_sanitization_review"
+        "blocked": 0,
+        "blocked_records": [],
+        "exact_hash_visual_review_complete": true
       }
     },
     {
@@ -306,7 +268,39 @@
         "verification_artifact_id": 11061773814,
         "raw_model_input_approved": 0
       }
+    },
+    {
+      "id": "body_architecture_benchmark_model_input_gate",
+      "status": "complete",
+      "details": {
+        "total_cases": 27,
+        "model_input_allowed": 27,
+        "approved_raw": 4,
+        "approved_sanitized": 23,
+        "blocked": 0,
+        "deterministic_current_approvals": 13,
+        "sam2_current_approvals": 10,
+        "review_corpus_records": 30,
+        "historical_revise_records": 7,
+        "sam2_canonical_workflow_run_id": 36806483552,
+        "sam2_canonical_artifact_id": 11137138426,
+        "latest_validated_test_run_id": 36807156707
+      }
+    },
+    {
+      "id": "body_architecture_sam2_pipeline",
+      "status": "operational_and_review_gated",
+      "details": {
+        "canonical_candidates": 10,
+        "generated_candidates_auto_approved": false,
+        "metadata_only_manifest": "knowledge/libraries/lego-minifigure-customs/data/body-architecture-benchmark-sam2-candidates.json",
+        "exact_reproduction_verified": true,
+        "normalized_exclusion_cleanup_cases": [
+          "thing_shengyuan_sy288_bigfig"
+        ],
+        "canonical_workflow_run_id": 36806483552
+      }
     }
   ],
-  "latest_test_lock_commit": "a04b532236666a48945ba8cc18a6b2b8e0743b40"
+  "latest_test_lock_commit": "4c69a64cd21754ce6dbdd3f3adb252228d4958e7"
 }
