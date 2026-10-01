@@ -1,0 +1,919 @@
+{
+  "schema_version": "0.1",
+  "created_at": "2026-10-01T02:36:21.619935+00:00",
+  "status": "sam2_candidates_pending_visual_review",
+  "processor_version": "body-architecture-sam2-candidate-canonicalizer/v1",
+  "source_processor_version": "body-architecture-sam2-sanitization/v1",
+  "provider_id": "sam2",
+  "provider_revision": "2b90b9f5ceec907a1c18123530e92e794ad901a4",
+  "checkpoint_sha256": "7402e0d864fa82708a20fbd15bc84245c2f26dff0eb43a4b5b93452deb34be69",
+  "model_config": "configs/sam2.1/sam2.1_hiera_t.yaml",
+  "device": "cpu",
+  "workflow_run_id": 36806483552,
+  "workflow_artifact_id": 11137138426,
+  "metadata_only": true,
+  "derivative_media_committed": false,
+  "generated_candidates": 10,
+  "errors": 0,
+  "records": [
+    {
+      "source_record_id": "hulk_alpha_af344_avengers",
+      "case_id": "archrec::hulk_alpha_af344_avengers",
+      "split": "development",
+      "source_id": "kongbricks_alpha_hulk_af344_media",
+      "source_file_sha256": "d6124764a8990bab6ec44015115cf1b8cd7ab5101da04f4da025d028139c11a1",
+      "source_dimensions": [
+        800,
+        800
+      ],
+      "candidate_kind": "sam2_segmentation",
+      "provider_id": "sam2",
+      "provider_api": "SAM2ImagePredictor",
+      "provider_revision": "2b90b9f5ceec907a1c18123530e92e794ad901a4",
+      "checkpoint_sha256": "7402e0d864fa82708a20fbd15bc84245c2f26dff0eb43a4b5b93452deb34be69",
+      "model_config": "configs/sam2.1/sam2.1_hiera_t.yaml",
+      "device": "cpu",
+      "prompt_status": "visual_multimask_selection_v1",
+      "box_norm": [
+        0.19,
+        0.24,
+        0.79,
+        0.85
+      ],
+      "positive_points_norm": [
+        [
+          0.5,
+          0.5
+        ],
+        [
+          0.5,
+          0.72
+        ]
+      ],
+      "negative_points_norm": [
+        [
+          0.12,
+          0.12
+        ],
+        [
+          0.82,
+          0.14
+        ],
+        [
+          0.82,
+          0.72
+        ]
+      ],
+      "selected_mask_index": 0,
+      "sam_best_mask_index": 0,
+      "mask_selection": "prompt_preferred_mask_index",
+      "predicted_mask_score": 0.8909268379211426,
+      "mask_exclude_rects_norm": [],
+      "mask_exclusion_stats": null,
+      "mask_cleanup": "largest_connected_component",
+      "mask_cleanup_stats": {
+        "method": "largest_connected_component_4",
+        "component_count": 6,
+        "original_area_pixels": 123369,
+        "kept_area_pixels": 123198,
+        "removed_area_pixels": 171
+      },
+      "raw_selected_mask_sha256": "091167e6bfdefa45bb330180db0015840ca8105702e8c599a224980c5e330d16",
+      "mask_area_fraction": 0.19249688,
+      "mask_sha256": "6381dafddc148e35cfa03e21d85cac0111bed22365bf85b52420d7477513d148",
+      "crop_pixels": [
+        164,
+        178,
+        636,
+        729
+      ],
+      "output_dimensions": [
+        472,
+        551
+      ],
+      "sanitized_pixel_sha256": "633faa22901ea65869749eefc4aa9f2335d60d7b6451d1801d72c7a4ce3121c8",
+      "sanitized_png_sha256": "72a39734d108475ff1f1f95f806ae474ad322236bd769bd27838f06c525ffa37",
+      "sanitized_png_size_bytes": 143008,
+      "expected_local_asset": "hulk_alpha_af344_avengers--633faa22901ea658.png",
+      "candidate_status": "generated_pending_visual_review",
+      "model_input_allowed": false
+    },
+    {
+      "source_record_id": "hulk_alpha_af345_comics",
+      "case_id": "archrec::hulk_alpha_af345_comics",
+      "split": "development",
+      "source_id": "kongbricks_alpha_hulk_af345_media",
+      "source_file_sha256": "d508590a6e1c917293d0a28967e56bace04982fa2ea9372615f424eed6a5daf6",
+      "source_dimensions": [
+        800,
+        800
+      ],
+      "candidate_kind": "sam2_segmentation",
+      "provider_id": "sam2",
+      "provider_api": "SAM2ImagePredictor",
+      "provider_revision": "2b90b9f5ceec907a1c18123530e92e794ad901a4",
+      "checkpoint_sha256": "7402e0d864fa82708a20fbd15bc84245c2f26dff0eb43a4b5b93452deb34be69",
+      "model_config": "configs/sam2.1/sam2.1_hiera_t.yaml",
+      "device": "cpu",
+      "prompt_status": "visual_multimask_selection_v1",
+      "box_norm": [
+        0.19,
+        0.24,
+        0.79,
+        0.85
+      ],
+      "positive_points_norm": [
+        [
+          0.5,
+          0.5
+        ],
+        [
+          0.5,
+          0.72
+        ]
+      ],
+      "negative_points_norm": [
+        [
+          0.12,
+          0.12
+        ],
+        [
+          0.82,
+          0.14
+        ],
+        [
+          0.82,
+          0.72
+        ]
+      ],
+      "selected_mask_index": 0,
+      "sam_best_mask_index": 2,
+      "mask_selection": "prompt_preferred_mask_index",
+      "predicted_mask_score": 0.8694036602973938,
+      "mask_exclude_rects_norm": [],
+      "mask_exclusion_stats": null,
+      "mask_cleanup": "largest_connected_component",
+      "mask_cleanup_stats": {
+        "method": "largest_connected_component_4",
+        "component_count": 11,
+        "original_area_pixels": 123842,
+        "kept_area_pixels": 123525,
+        "removed_area_pixels": 317
+      },
+      "raw_selected_mask_sha256": "c75ea9c2fd432102f55d343eea24be5553ef720e299ddd8ba738840d0ab4ce5b",
+      "mask_area_fraction": 0.19300781,
+      "mask_sha256": "ab36ba29ec674ddbd6f7082d33ad592b8bdf4cd33c247a9c4fad6ca39dc7c3de",
+      "crop_pixels": [
+        165,
+        183,
+        636,
+        727
+      ],
+      "output_dimensions": [
+        471,
+        544
+      ],
+      "sanitized_pixel_sha256": "c915680174c315bc6b0a5da4a90a5b375f4ebafc8ac015b0676a7e350bf56e34",
+      "sanitized_png_sha256": "9c815b930d51ba5ad2737f5cce6992bb58e90162841fa923731ede282ac4aa09",
+      "sanitized_png_size_bytes": 153869,
+      "expected_local_asset": "hulk_alpha_af345_comics--c915680174c315bc.png",
+      "candidate_status": "generated_pending_visual_review",
+      "model_input_allowed": false
+    },
+    {
+      "source_record_id": "hulk_mrj_heart_comics",
+      "case_id": "archrec::hulk_mrj_heart_comics",
+      "split": "development",
+      "source_id": "mrj_heart_hulk",
+      "source_file_sha256": "39feabdf00538692b035b870a3ae7f7c2835825e8224aa5e8adc9253a98a079a",
+      "source_dimensions": [
+        591,
+        485
+      ],
+      "candidate_kind": "sam2_segmentation",
+      "provider_id": "sam2",
+      "provider_api": "SAM2ImagePredictor",
+      "provider_revision": "2b90b9f5ceec907a1c18123530e92e794ad901a4",
+      "checkpoint_sha256": "7402e0d864fa82708a20fbd15bc84245c2f26dff0eb43a4b5b93452deb34be69",
+      "model_config": "configs/sam2.1/sam2.1_hiera_t.yaml",
+      "device": "cpu",
+      "prompt_status": "visual_multimask_selection_v1",
+      "box_norm": [
+        0.04,
+        0.2,
+        0.54,
+        0.92
+      ],
+      "positive_points_norm": [
+        [
+          0.25,
+          0.47
+        ],
+        [
+          0.27,
+          0.7
+        ]
+      ],
+      "negative_points_norm": [
+        [
+          0.52,
+          0.16
+        ],
+        [
+          0.74,
+          0.55
+        ],
+        [
+          0.12,
+          0.08
+        ]
+      ],
+      "selected_mask_index": 0,
+      "sam_best_mask_index": 2,
+      "mask_selection": "prompt_preferred_mask_index",
+      "predicted_mask_score": 0.8159523010253906,
+      "mask_exclude_rects_norm": [],
+      "mask_exclusion_stats": null,
+      "mask_cleanup": "largest_connected_component",
+      "mask_cleanup_stats": {
+        "method": "largest_connected_component_4",
+        "component_count": 38,
+        "original_area_pixels": 60774,
+        "kept_area_pixels": 59743,
+        "removed_area_pixels": 1031
+      },
+      "raw_selected_mask_sha256": "710ded59e6d02f2979aa0debde0111de78a80ee585ceab08fc467a8b614b1d80",
+      "mask_area_fraction": 0.20842884,
+      "mask_sha256": "6edd42a20e16bc626619bfbe67f3a7e9604281f65447139558788ea5384c13aa",
+      "crop_pixels": [
+        21,
+        81,
+        330,
+        455
+      ],
+      "output_dimensions": [
+        309,
+        374
+      ],
+      "sanitized_pixel_sha256": "d33798960f93ca25e2aefde43b5adf34859b7fb4a2ca2a4fca0b36c746958615",
+      "sanitized_png_sha256": "46eb233f16bababbd04330a55d988c07de54979cb279c442ed541c57dc1dd8dc",
+      "sanitized_png_size_bytes": 103901,
+      "expected_local_asset": "hulk_mrj_heart_comics--d33798960f93ca25.png",
+      "candidate_status": "generated_pending_visual_review",
+      "model_input_allowed": false
+    },
+    {
+      "source_record_id": "red_hulk_alpha_af364_bnw",
+      "case_id": "archrec::red_hulk_alpha_af364_bnw",
+      "split": "development",
+      "source_id": "kongbricks_alpha_red_hulk_af364_media",
+      "source_file_sha256": "12e79bc52f7030701a2296f7cf05e7905e02bcefd0d754969cc8bdf95756773b",
+      "source_dimensions": [
+        800,
+        800
+      ],
+      "candidate_kind": "sam2_segmentation",
+      "provider_id": "sam2",
+      "provider_api": "SAM2ImagePredictor",
+      "provider_revision": "2b90b9f5ceec907a1c18123530e92e794ad901a4",
+      "checkpoint_sha256": "7402e0d864fa82708a20fbd15bc84245c2f26dff0eb43a4b5b93452deb34be69",
+      "model_config": "configs/sam2.1/sam2.1_hiera_t.yaml",
+      "device": "cpu",
+      "prompt_status": "visual_multimask_selection_v1",
+      "box_norm": [
+        0.18,
+        0.22,
+        0.8,
+        0.86
+      ],
+      "positive_points_norm": [
+        [
+          0.5,
+          0.5
+        ],
+        [
+          0.5,
+          0.73
+        ]
+      ],
+      "negative_points_norm": [
+        [
+          0.12,
+          0.12
+        ],
+        [
+          0.83,
+          0.15
+        ],
+        [
+          0.83,
+          0.73
+        ]
+      ],
+      "selected_mask_index": 0,
+      "sam_best_mask_index": 2,
+      "mask_selection": "prompt_preferred_mask_index",
+      "predicted_mask_score": 0.8520522117614746,
+      "mask_exclude_rects_norm": [],
+      "mask_exclusion_stats": null,
+      "mask_cleanup": "largest_connected_component",
+      "mask_cleanup_stats": {
+        "method": "largest_connected_component_4",
+        "component_count": 8,
+        "original_area_pixels": 122657,
+        "kept_area_pixels": 122576,
+        "removed_area_pixels": 81
+      },
+      "raw_selected_mask_sha256": "b9b2056e666d82db678ee33d11a8b49586090e989b3be2465dd5a3b142e4fd7b",
+      "mask_area_fraction": 0.191525,
+      "mask_sha256": "76f7e111d27d3da2aa06c995902e08761b7dd9ee511fb073ff08ef7b637fb6ac",
+      "crop_pixels": [
+        165,
+        175,
+        636,
+        729
+      ],
+      "output_dimensions": [
+        471,
+        554
+      ],
+      "sanitized_pixel_sha256": "050fd8424efffd1d731fa58596fe1079062c8762dc1da9e997707d3a7dd64fdf",
+      "sanitized_png_sha256": "3b54922fbdc2d2b7302450df16e26cd4c4d1d89ade70f4d5316c48d4232a5b22",
+      "sanitized_png_size_bytes": 189163,
+      "expected_local_asset": "red_hulk_alpha_af364_bnw--050fd8424efffd1d.png",
+      "candidate_status": "generated_pending_visual_review",
+      "model_input_allowed": false
+    },
+    {
+      "source_record_id": "thing_shengyuan_sy288_bigfig",
+      "case_id": "archrec::thing_shengyuan_sy288_bigfig",
+      "split": "test",
+      "source_id": "shengyuan_thing_sy288_bigfig",
+      "source_file_sha256": "e0de4be480091468e1edd92dca97dc465a2fe062cda2917262977164131b9970",
+      "source_dimensions": [
+        315,
+        346
+      ],
+      "candidate_kind": "sam2_segmentation",
+      "provider_id": "sam2",
+      "provider_api": "SAM2ImagePredictor",
+      "provider_revision": "2b90b9f5ceec907a1c18123530e92e794ad901a4",
+      "checkpoint_sha256": "7402e0d864fa82708a20fbd15bc84245c2f26dff0eb43a4b5b93452deb34be69",
+      "model_config": "configs/sam2.1/sam2.1_hiera_t.yaml",
+      "device": "cpu",
+      "prompt_status": "visual_multimask_selection_v2",
+      "box_norm": [
+        0,
+        0,
+        0.97,
+        0.9
+      ],
+      "positive_points_norm": [
+        [
+          0.5,
+          0.3
+        ],
+        [
+          0.18,
+          0.48
+        ],
+        [
+          0.82,
+          0.48
+        ],
+        [
+          0.35,
+          0.72
+        ],
+        [
+          0.65,
+          0.72
+        ]
+      ],
+      "negative_points_norm": [
+        [
+          0.5,
+          0.92
+        ],
+        [
+          0.99,
+          0.55
+        ]
+      ],
+      "selected_mask_index": 0,
+      "sam_best_mask_index": 2,
+      "mask_selection": "prompt_preferred_mask_index",
+      "predicted_mask_score": 0.7412405610084534,
+      "mask_exclude_rects_norm": [
+        [
+          0.4,
+          0.8,
+          0.6,
+          0.92
+        ],
+        [
+          0,
+          0.92,
+          0.97,
+          0.96
+        ]
+      ],
+      "mask_exclusion_stats": {
+        "method": "normalized_exclusion_rects_v1",
+        "rect_count": 2,
+        "removed_area_pixels": 1090,
+        "rects": [
+          {
+            "rect_norm": [
+              0.4,
+              0.8,
+              0.6,
+              0.92
+            ],
+            "rect_pixels": [
+              126,
+              276,
+              189,
+              319
+            ],
+            "removed_area_pixels": 1090
+          },
+          {
+            "rect_norm": [
+              0.0,
+              0.92,
+              0.97,
+              0.96
+            ],
+            "rect_pixels": [
+              0,
+              318,
+              306,
+              333
+            ],
+            "removed_area_pixels": 0
+          }
+        ]
+      },
+      "mask_cleanup": "largest_connected_component",
+      "mask_cleanup_stats": {
+        "method": "largest_connected_component_4",
+        "component_count": 88,
+        "original_area_pixels": 55240,
+        "kept_area_pixels": 54761,
+        "removed_area_pixels": 479
+      },
+      "raw_selected_mask_sha256": "1173740b25ddbf83571328797a5f2ff252b358bc1ab2847193c2236f66efb996",
+      "mask_area_fraction": 0.50244059,
+      "mask_sha256": "dd5ed3c8545e56dd87588cd6fdb45700d5501aefdf21fe993732c887d64065ba",
+      "crop_pixels": [
+        0,
+        0,
+        315,
+        324
+      ],
+      "output_dimensions": [
+        315,
+        324
+      ],
+      "sanitized_pixel_sha256": "00f84e0122319736742021d5506d79c365b2678deee41911509c0cdb508b2257",
+      "sanitized_png_sha256": "5b5e2b209c939cb5983d6783a1aaf4a8df0da336b5e8d4177372a540ec9c3dae",
+      "sanitized_png_size_bytes": 149050,
+      "expected_local_asset": "thing_shengyuan_sy288_bigfig--00f84e0122319736.png",
+      "candidate_status": "generated_pending_visual_review",
+      "model_input_allowed": false
+    },
+    {
+      "source_record_id": "thing_tp_tp349_first_steps_bigfig",
+      "case_id": "archrec::thing_tp_tp349_first_steps_bigfig",
+      "split": "test",
+      "source_id": "kongbricks_tp_thing_tp349_media",
+      "source_file_sha256": "c35537f56d3d21e81225091f5329053e02f628dc0269a0d491011a85c5d83e6d",
+      "source_dimensions": [
+        800,
+        800
+      ],
+      "candidate_kind": "sam2_segmentation",
+      "provider_id": "sam2",
+      "provider_api": "SAM2ImagePredictor",
+      "provider_revision": "2b90b9f5ceec907a1c18123530e92e794ad901a4",
+      "checkpoint_sha256": "7402e0d864fa82708a20fbd15bc84245c2f26dff0eb43a4b5b93452deb34be69",
+      "model_config": "configs/sam2.1/sam2.1_hiera_t.yaml",
+      "device": "cpu",
+      "prompt_status": "visual_multimask_selection_v1",
+      "box_norm": [
+        0.12,
+        0.24,
+        0.72,
+        0.84
+      ],
+      "positive_points_norm": [
+        [
+          0.42,
+          0.48
+        ],
+        [
+          0.42,
+          0.7
+        ]
+      ],
+      "negative_points_norm": [
+        [
+          0.75,
+          0.15
+        ],
+        [
+          0.86,
+          0.56
+        ],
+        [
+          0.2,
+          0.1
+        ]
+      ],
+      "selected_mask_index": 0,
+      "sam_best_mask_index": 0,
+      "mask_selection": "prompt_preferred_mask_index",
+      "predicted_mask_score": 0.8371911644935608,
+      "mask_exclude_rects_norm": [],
+      "mask_exclusion_stats": null,
+      "mask_cleanup": "largest_connected_component",
+      "mask_cleanup_stats": {
+        "method": "largest_connected_component_4",
+        "component_count": 9,
+        "original_area_pixels": 132074,
+        "kept_area_pixels": 131957,
+        "removed_area_pixels": 117
+      },
+      "raw_selected_mask_sha256": "6b6ece31659835ccdece4f5f9fa2873b9dbe407cb5803ec33b4fdb1ac0c3e4d2",
+      "mask_area_fraction": 0.20618281,
+      "mask_sha256": "f92970669eeae322a8055ba5a28ee69b0f66f8832265c0b4b12868923c9c8ade",
+      "crop_pixels": [
+        104,
+        218,
+        597,
+        697
+      ],
+      "output_dimensions": [
+        493,
+        479
+      ],
+      "sanitized_pixel_sha256": "8a409eda63e918afbc8255f4a679216e9c6c9055ba522f4f20e07cfd7a9bd8db",
+      "sanitized_png_sha256": "d41f142503fada8391dd419aa3c20e8dc05b2ecf43cbd953cfaff5277118c7be",
+      "sanitized_png_size_bytes": 237697,
+      "expected_local_asset": "thing_tp_tp349_first_steps_bigfig--8a409eda63e918af.png",
+      "candidate_status": "generated_pending_visual_review",
+      "model_input_allowed": false
+    },
+    {
+      "source_record_id": "venom_alpha_af325",
+      "case_id": "archrec::venom_alpha_af325",
+      "split": "validation",
+      "source_id": "kongbricks_alpha_venom_af325_media",
+      "source_file_sha256": "cc9daee1b700ea8591a0f03d86be137215424e33f4447262e226dbb8fe1f0726",
+      "source_dimensions": [
+        800,
+        800
+      ],
+      "candidate_kind": "sam2_segmentation",
+      "provider_id": "sam2",
+      "provider_api": "SAM2ImagePredictor",
+      "provider_revision": "2b90b9f5ceec907a1c18123530e92e794ad901a4",
+      "checkpoint_sha256": "7402e0d864fa82708a20fbd15bc84245c2f26dff0eb43a4b5b93452deb34be69",
+      "model_config": "configs/sam2.1/sam2.1_hiera_t.yaml",
+      "device": "cpu",
+      "prompt_status": "visual_multimask_selection_v1",
+      "box_norm": [
+        0.23,
+        0.2,
+        0.77,
+        0.8
+      ],
+      "positive_points_norm": [
+        [
+          0.5,
+          0.38
+        ],
+        [
+          0.33,
+          0.5
+        ],
+        [
+          0.67,
+          0.5
+        ],
+        [
+          0.5,
+          0.68
+        ]
+      ],
+      "negative_points_norm": [
+        [
+          0.12,
+          0.45
+        ],
+        [
+          0.88,
+          0.45
+        ],
+        [
+          0.16,
+          0.12
+        ],
+        [
+          0.84,
+          0.12
+        ],
+        [
+          0.5,
+          0.92
+        ]
+      ],
+      "selected_mask_index": 0,
+      "sam_best_mask_index": 2,
+      "mask_selection": "prompt_preferred_mask_index",
+      "predicted_mask_score": 0.7669326663017273,
+      "mask_exclude_rects_norm": [],
+      "mask_exclusion_stats": null,
+      "mask_cleanup": "largest_connected_component",
+      "mask_cleanup_stats": {
+        "method": "largest_connected_component_4",
+        "component_count": 57,
+        "original_area_pixels": 124680,
+        "kept_area_pixels": 123488,
+        "removed_area_pixels": 1192
+      },
+      "raw_selected_mask_sha256": "b506d535240ca652bc5d19257b859dfbf73415b3b6766e4e783748b35907abe9",
+      "mask_area_fraction": 0.19295,
+      "mask_sha256": "b6349778c72db07abe3dbd18c79cb1ef886b18e893a27f043e5ee8eea5c5da2a",
+      "crop_pixels": [
+        172,
+        163,
+        631,
+        640
+      ],
+      "output_dimensions": [
+        459,
+        477
+      ],
+      "sanitized_pixel_sha256": "5065b5d87612aeca6b0b860b27685ff442921f62a06506c0aea90a32c00127ec",
+      "sanitized_png_sha256": "e7eb08fa001ef6d124984083952d64595b9f1e63d2c8c8a782586a70dea5dfe1",
+      "sanitized_png_size_bytes": 134543,
+      "expected_local_asset": "venom_alpha_af325--5065b5d87612aeca.png",
+      "candidate_status": "generated_pending_visual_review",
+      "model_input_allowed": false
+    },
+    {
+      "source_record_id": "venom_alpha_af328_ancient",
+      "case_id": "archrec::venom_alpha_af328_ancient",
+      "split": "validation",
+      "source_id": "alpha_ancient_venom_af328",
+      "source_file_sha256": "929d7a3d8d2c2d315cec8bf276ef0ba180ad2fc877a66515a2b7533f686b90ff",
+      "source_dimensions": [
+        800,
+        800
+      ],
+      "candidate_kind": "sam2_segmentation",
+      "provider_id": "sam2",
+      "provider_api": "SAM2ImagePredictor",
+      "provider_revision": "2b90b9f5ceec907a1c18123530e92e794ad901a4",
+      "checkpoint_sha256": "7402e0d864fa82708a20fbd15bc84245c2f26dff0eb43a4b5b93452deb34be69",
+      "model_config": "configs/sam2.1/sam2.1_hiera_t.yaml",
+      "device": "cpu",
+      "prompt_status": "visual_multimask_selection_v1",
+      "box_norm": [
+        0.21,
+        0.21,
+        0.79,
+        0.79
+      ],
+      "positive_points_norm": [
+        [
+          0.5,
+          0.44
+        ],
+        [
+          0.5,
+          0.66
+        ]
+      ],
+      "negative_points_norm": [
+        [
+          0.12,
+          0.47
+        ],
+        [
+          0.88,
+          0.45
+        ],
+        [
+          0.16,
+          0.13
+        ],
+        [
+          0.86,
+          0.12
+        ]
+      ],
+      "selected_mask_index": 0,
+      "sam_best_mask_index": 2,
+      "mask_selection": "prompt_preferred_mask_index",
+      "predicted_mask_score": 0.839886486530304,
+      "mask_exclude_rects_norm": [],
+      "mask_exclusion_stats": null,
+      "mask_cleanup": "largest_connected_component",
+      "mask_cleanup_stats": {
+        "method": "largest_connected_component_4",
+        "component_count": 25,
+        "original_area_pixels": 126904,
+        "kept_area_pixels": 126662,
+        "removed_area_pixels": 242
+      },
+      "raw_selected_mask_sha256": "b510d114e66b1a700e89b8159b24deeb0843fce0d49de54c4454474435de7d24",
+      "mask_area_fraction": 0.19790937,
+      "mask_sha256": "7812ea41eb30da7060d102559127f566d2e78247ad877565bc88cf482e7afeb3",
+      "crop_pixels": [
+        157,
+        163,
+        644,
+        636
+      ],
+      "output_dimensions": [
+        487,
+        473
+      ],
+      "sanitized_pixel_sha256": "0d2a2f9db6d7579688547a0e6b5ecb128b94cc940499419764dc0600d303eb3d",
+      "sanitized_png_sha256": "e7108d400fb371cb52c8a550c6c05889d9569c8b13971a999b8fc3ee39982293",
+      "sanitized_png_size_bytes": 218379,
+      "expected_local_asset": "venom_alpha_af328_ancient--0d2a2f9db6d75796.png",
+      "candidate_status": "generated_pending_visual_review",
+      "model_input_allowed": false
+    },
+    {
+      "source_record_id": "venom_xinh_xh1829_movie_bigfig",
+      "case_id": "archrec::venom_xinh_xh1829_movie_bigfig",
+      "split": "validation",
+      "source_id": "kongbricks_xinh_venom_xh1829_media",
+      "source_file_sha256": "32c91daa329658fcaec4c79acbf0619591015e003bc34fd40043928c2b030d56",
+      "source_dimensions": [
+        1000,
+        1000
+      ],
+      "candidate_kind": "sam2_segmentation",
+      "provider_id": "sam2",
+      "provider_api": "SAM2ImagePredictor",
+      "provider_revision": "2b90b9f5ceec907a1c18123530e92e794ad901a4",
+      "checkpoint_sha256": "7402e0d864fa82708a20fbd15bc84245c2f26dff0eb43a4b5b93452deb34be69",
+      "model_config": "configs/sam2.1/sam2.1_hiera_t.yaml",
+      "device": "cpu",
+      "prompt_status": "visual_multimask_selection_v1",
+      "box_norm": [
+        0.2,
+        0.23,
+        0.8,
+        0.8
+      ],
+      "positive_points_norm": [
+        [
+          0.5,
+          0.48
+        ],
+        [
+          0.5,
+          0.7
+        ]
+      ],
+      "negative_points_norm": [
+        [
+          0.75,
+          0.25
+        ],
+        [
+          0.5,
+          0.1
+        ],
+        [
+          0.5,
+          0.88
+        ]
+      ],
+      "selected_mask_index": 0,
+      "sam_best_mask_index": 0,
+      "mask_selection": "prompt_preferred_mask_index",
+      "predicted_mask_score": 0.8942753076553345,
+      "mask_exclude_rects_norm": [],
+      "mask_exclusion_stats": null,
+      "mask_cleanup": "largest_connected_component",
+      "mask_cleanup_stats": {
+        "method": "largest_connected_component_4",
+        "component_count": 29,
+        "original_area_pixels": 186078,
+        "kept_area_pixels": 185827,
+        "removed_area_pixels": 251
+      },
+      "raw_selected_mask_sha256": "28c6a3fb49d660228f034333de123a8de86d70fe9a5e331a6d0334a1f1eaf287",
+      "mask_area_fraction": 0.185827,
+      "mask_sha256": "9d88030d918eebc809e3ca8b1c92869e47cede0fb2055741978ca28b652ad73b",
+      "crop_pixels": [
+        213,
+        222,
+        785,
+        808
+      ],
+      "output_dimensions": [
+        572,
+        586
+      ],
+      "sanitized_pixel_sha256": "90dc515f5a4d75372320391578750b01650f688d4d402d5dc96d092f81552c15",
+      "sanitized_png_sha256": "8386bb073240a3284b52718e73c14bb37c6a895fe9be3626b28b91822b47297e",
+      "sanitized_png_size_bytes": 284039,
+      "expected_local_asset": "venom_xinh_xh1829_movie_bigfig--90dc515f5a4d7537.png",
+      "candidate_status": "generated_pending_visual_review",
+      "model_input_allowed": false
+    },
+    {
+      "source_record_id": "venom_xinh_xh1911_bigfig",
+      "case_id": "archrec::venom_xinh_xh1911_bigfig",
+      "split": "validation",
+      "source_id": "xinh_venom_xh1911_bigfig",
+      "source_file_sha256": "2b65c0bb3af7a734e7b2ed205e2023f0906368ab75762f873b5097863134bb20",
+      "source_dimensions": [
+        640,
+        945
+      ],
+      "candidate_kind": "sam2_segmentation",
+      "provider_id": "sam2",
+      "provider_api": "SAM2ImagePredictor",
+      "provider_revision": "2b90b9f5ceec907a1c18123530e92e794ad901a4",
+      "checkpoint_sha256": "7402e0d864fa82708a20fbd15bc84245c2f26dff0eb43a4b5b93452deb34be69",
+      "model_config": "configs/sam2.1/sam2.1_hiera_t.yaml",
+      "device": "cpu",
+      "prompt_status": "visual_multimask_selection_v1",
+      "box_norm": [
+        0.07,
+        0.22,
+        0.93,
+        0.8
+      ],
+      "positive_points_norm": [
+        [
+          0.5,
+          0.45
+        ],
+        [
+          0.5,
+          0.68
+        ]
+      ],
+      "negative_points_norm": [
+        [
+          0.84,
+          0.23
+        ],
+        [
+          0.5,
+          0.08
+        ],
+        [
+          0.5,
+          0.86
+        ]
+      ],
+      "selected_mask_index": 0,
+      "sam_best_mask_index": 0,
+      "mask_selection": "prompt_preferred_mask_index",
+      "predicted_mask_score": 0.8837496042251587,
+      "mask_exclude_rects_norm": [],
+      "mask_exclusion_stats": null,
+      "mask_cleanup": "largest_connected_component",
+      "mask_cleanup_stats": {
+        "method": "largest_connected_component_4",
+        "component_count": 26,
+        "original_area_pixels": 177271,
+        "kept_area_pixels": 176985,
+        "removed_area_pixels": 286
+      },
+      "raw_selected_mask_sha256": "0b059d21ddb4217acd414d9dac64c5914b47124fa8191a93e14802db7421b28a",
+      "mask_area_fraction": 0.29263393,
+      "mask_sha256": "2300e5f78b2a0dad3968250d068007da242fd9320ad641bf0fe7ff89d266c9fc",
+      "crop_pixels": [
+        47,
+        205,
+        592,
+        779
+      ],
+      "output_dimensions": [
+        545,
+        574
+      ],
+      "sanitized_pixel_sha256": "790ca9e60382f2a4c736d7562d51ea9e2381d295512aaa024fb4838bd6751438",
+      "sanitized_png_sha256": "31998b7496ec43e639a5034ca4046d211cf4cefff350bdd3d41b74a26ff3a66b",
+      "sanitized_png_size_bytes": 219791,
+      "expected_local_asset": "venom_xinh_xh1911_bigfig--790ca9e60382f2a4.png",
+      "candidate_status": "generated_pending_visual_review",
+      "model_input_allowed": false
+    }
+  ],
+  "blockers": [],
+  "policy": "SAM2 candidates are supplemental exact-hash review inputs only. They do not supersede deterministic blocker provenance and never authorize model input until separately visually approved."
+}
