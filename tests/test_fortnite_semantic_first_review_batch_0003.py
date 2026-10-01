@@ -48,6 +48,13 @@ def test_batch_0003_model_reviews_are_valid_hash_bound_submissions() -> None:
         assert len(review["evidence"]["source_image_sha256"]) == 64
         assert len(review["evidence"]["lego_image_sha256"]) == 64
         assert review["evidence"]["claims_unobserved_surfaces"] is False
+        direct = next(
+            item
+            for item in review["provenance"]
+            if item.get("source") == "direct_visual_inspection_of_hash_verified_pair"
+        )
+        assert direct["source_image_sha256"] == review["evidence"]["source_image_sha256"]
+        assert direct["lego_image_sha256"] == review["evidence"]["lego_image_sha256"]
         assert validator.annotation_count(review) >= 3
 
 def test_batch_0003_reviews_remain_noncanonical_until_adjudication() -> None:
