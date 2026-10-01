@@ -13,13 +13,11 @@ PATTERN = re.compile(
 )
 
 
-def resolve(event: dict) -> str | None:
+def resolve_paths(paths: list[str]) -> str | None:
     matches: list[str] = []
-    for commit in event.get("commits") or []:
-        for key in ("added", "modified"):
-            for path in commit.get(key) or []:
-                if PATTERN.match(path) and path not in matches:
-                    matches.append(path)
+    for path in paths:
+        if PATTERN.match(path) and path not in matches:
+            matches.append(path)
     if len(matches) > 1:
         raise ValueError(
             "push changed multiple numeric Fortnite review batches; "
@@ -28,12 +26,30 @@ def resolve(event: dict) -> str | None:
     return matches[0] if matches else None
 
 
+def resolve(event: dict) -> str | None:
+    paths: list[str] = []
+    for commit in event.get("commits") or []:
+        for key in ("added", "modified"):
+            paths.extend(str(path) for path in (commit.get(key) or []))
+    return resolve_paths(paths)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("event", type=Path)
+    parser.add_argument("event", type=Path, nargs="?")
+    parser.add_argument("--paths-stdin", action="store_true")
     args = parser.parse_args()
-    event = json.loads(args.event.read_text(encoding="utf-8"))
-    path = resolve(event)
+    if args.paths_stdin:
+        import sys
+
+        path = resolve_paths(
+            [line.strip() for line in sys.stdin if line.strip()]
+        )
+    else:
+        if args.event is None:
+            raise SystemExit("event path is required unless --paths-stdin is used")
+        event = json.loads(args.event.read_text(encoding="utf-8"))
+        path = resolve(event)
     if path:
         print(path)
 

@@ -69,3 +69,17 @@ def test_multiple_numeric_batches_fail_closed() -> None:
                 ]
             }
         )
+
+
+def test_resolve_paths_matches_git_diff_input() -> None:
+    tool = load_tool()
+    assert tool.resolve_paths(
+        [
+            ".github/workflows/build-fortnite-semantic-review-ui.yml",
+            "knowledge/libraries/lego-minifigure-customs/data/"
+            "semantic-review-batches/fortnite-first-review-batch-0002.json",
+        ]
+    ) == (
+        "knowledge/libraries/lego-minifigure-customs/data/"
+        "semantic-review-batches/fortnite-first-review-batch-0002.json"
+    )

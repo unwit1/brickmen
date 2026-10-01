@@ -11,6 +11,7 @@ def test_push_materializes_the_numeric_batch_that_changed() -> None:
     source = WORKFLOW.read_text(encoding="utf-8")
     assert "fortnite-first-review-batch-[0-9][0-9][0-9][0-9].json" in source
     assert "RESOLVED_BATCH_PATH" in source
-    assert "GITHUB_EVENT_PATH" in source
-    assert "resolve_fortnite_review_batch_from_event.py" in source
+    assert 'fetch-depth: 2' in source
+    assert 'git diff --name-only "$GITHUB_SHA^" "$GITHUB_SHA"' in source
+    assert "resolve_fortnite_review_batch_from_event.py --paths-stdin" in source
     assert 'cp "$RESOLVED_BATCH_PATH" .agent-local/review-ui/review-batch.json' in source

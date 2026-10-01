@@ -34,6 +34,8 @@ jobs:
     steps:
       - name: Check out Brickmen
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -48,7 +50,8 @@ jobs:
           RESOLVED_BATCH_PATH="$BATCH_PATH"
           if [[ "$GITHUB_EVENT_NAME" == "push" ]]; then
             PUSH_BATCH_PATH="$(
-              python tools/knowledge/resolve_fortnite_review_batch_from_event.py                 "$GITHUB_EVENT_PATH"
+              git diff --name-only "$GITHUB_SHA^" "$GITHUB_SHA" |
+                python tools/knowledge/resolve_fortnite_review_batch_from_event.py --paths-stdin
             )"
             if [[ -n "$PUSH_BATCH_PATH" ]]; then
               RESOLVED_BATCH_PATH="$PUSH_BATCH_PATH"
