@@ -2,6 +2,8 @@ from __future__ import annotations
 
 import importlib.util
 import json
+import subprocess
+import sys
 from pathlib import Path
 
 
@@ -75,3 +77,16 @@ def test_checked_in_batch_plan_matches_generator() -> None:
     actual = json.loads(plan_path.read_text(encoding="utf-8"))
 
     assert actual == expected
+
+
+def test_batch_plan_supports_direct_script_execution() -> None:
+    result = subprocess.run(
+        [sys.executable, str(TOOL), "--help"],
+        cwd=TOOL.parents[2],
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+
+    assert result.returncode == 0, result.stderr
+    assert "--min-priority-score" in result.stdout
