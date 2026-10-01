@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import importlib.util
 from pathlib import Path
+import json
 
 
 TOOL = (
@@ -166,3 +167,36 @@ def test_historical_revise_survives_candidate_retirement() -> None:
 
     assert tool.validate_record(row, {}) == []
     assert tool.normalize_record(row)["model_input_allowed"] is False
+
+
+def test_load_candidates_merges_supplemental_docs(tmp_path: Path) -> None:
+    tool = load_tool()
+    base = tmp_path / "base.json"
+    supplemental = tmp_path / "supplemental.json"
+    base.write_text(json.dumps({"records": [candidate()]}), encoding="utf-8")
+    extra = {
+        "source_record_id": "extra",
+        "source_file_sha256": "d" * 64,
+        "sanitized_pixel_sha256": "e" * 64,
+        "sanitized_png_sha256": "f" * 64,
+    }
+    supplemental.write_text(json.dumps({"records": [extra]}), encoding="utf-8")
+
+    merged = tool.load_candidates(base, [supplemental])
+    assert set(merged) == {"test", "extra"}
+
+
+def test_load_candidates_rejects_conflicting_supplement(tmp_path: Path) -> None:
+    tool = load_tool()
+    base = tmp_path / "base.json"
+    supplemental = tmp_path / "supplemental.json"
+    base.write_text(json.dumps({"records": [candidate()]}), encoding="utf-8")
+    conflict = {**candidate(), "sanitized_png_sha256": "d" * 64}
+    supplemental.write_text(json.dumps({"records": [conflict]}), encoding="utf-8")
+
+    try:
+        tool.load_candidates(base, [supplemental])
+    except ValueError as exc:
+        assert "supplemental candidate conflicts" in str(exc)
+    else:
+        raise AssertionError("expected conflicting supplemental candidate to fail")
