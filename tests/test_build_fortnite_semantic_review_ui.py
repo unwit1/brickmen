@@ -120,6 +120,24 @@ def test_valid_batch_builds_standalone_review_html() -> None:
     assert "prioritization only" in html
 
 
+def test_materialized_batch_prefers_local_exact_media() -> None:
+    tool = load_tool()
+    value = batch()
+    item = value["items"][0]
+    item["source_image_local_asset"] = "media/source--abc.png"
+    item["lego_image_local_asset"] = "media/lego--def.png"
+    item["source_image_sha256"] = "a" * 64
+    item["lego_image_sha256"] = "b" * 64
+
+    html = tool.build_review_html(value)
+
+    assert "source_image_local_asset||item.source_image_url" in html
+    assert "lego_image_local_asset||item.lego_image_url" in html
+    assert "sha256" in html
+    assert "media/source--abc.png" in html
+    assert "media/lego--def.png" in html
+
+
 def test_batch_validation_rejects_missing_items() -> None:
     tool = load_tool()
     value = batch()
