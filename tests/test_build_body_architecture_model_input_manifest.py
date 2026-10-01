@@ -47,6 +47,11 @@ def live_inputs() -> tuple[dict, dict]:
     return queue, candidates
 
 
+def live_supplemental_candidates() -> list[dict]:
+    path = DATA / "body-architecture-benchmark-sam2-candidates.json"
+    return [json.loads(path.read_text(encoding="utf-8"))]
+
+
 def live_reviews() -> list[dict]:
     path = (
         DATA
@@ -203,34 +208,33 @@ def test_unvalidated_approval_flag_cannot_be_omitted() -> None:
 def test_canonical_review_corpus_promotes_only_visually_approved_candidates() -> None:
     tool = load_tool()
     queue, candidates = live_inputs()
-    result = tool.build(queue, candidates, live_reviews())
+    result = tool.build(
+        queue,
+        candidates,
+        live_reviews(),
+        live_supplemental_candidates(),
+    )
 
     assert result["summary"] == {
         "total_cases": 27,
-        "model_input_allowed_cases": 17,
+        "model_input_allowed_cases": 27,
         "approved_raw_cases": 4,
-        "approved_sanitized_cases": 13,
-        "blocked_cases": 10,
+        "approved_sanitized_cases": 23,
+        "blocked_cases": 0,
     }
-    assert sum(
-        row["blocked_reason"] == "candidate_revision_required"
-        for row in result["entries"]
-    ) == 0
-    assert sum(
-        row["blocked_reason"] == "requires_segmentation_or_manual_cleanup"
-        for row in result["entries"]
-    ) == 10
-    assert {
-        row["blocked_reason"]
-        for row in result["entries"]
-        if not row["model_input_allowed"]
-    } == {"requires_segmentation_or_manual_cleanup"}
+    assert all(row["model_input_allowed"] for row in result["entries"])
+    assert all(row["blocked_reason"] is None for row in result["entries"])
 
 
 def test_checked_in_model_input_manifest_matches_builder() -> None:
     tool = load_tool()
     queue, candidates = live_inputs()
-    expected = tool.build(queue, candidates, live_reviews())
+    expected = tool.build(
+        queue,
+        candidates,
+        live_reviews(),
+        live_supplemental_candidates(),
+    )
     actual = json.loads(
         (
             DATA
