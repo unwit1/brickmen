@@ -21,6 +21,7 @@ DATA = (
 )
 REVIEWS = DATA / "body-architecture-benchmark-sanitized-asset-reviews.jsonl"
 CANDIDATES = DATA / "body-architecture-benchmark-sanitization-candidates.json"
+SUPPLEMENTAL = DATA / "body-architecture-benchmark-sam2-candidates.json"
 
 
 def load_tool():
@@ -55,11 +56,11 @@ def exact_match(review: dict, candidate: dict) -> bool:
 
 def test_canonical_sanitized_review_corpus_is_append_only_and_valid() -> None:
     tool = load_tool()
-    candidates = tool.load_candidates(CANDIDATES)
+    candidates = tool.load_candidates(CANDIDATES, [SUPPLEMENTAL])
     rows = load_reviews()
 
-    assert len(rows) == 20
-    assert sum(row["decision"] == "approved" for row in rows) == 13
+    assert len(rows) == 30
+    assert sum(row["decision"] == "approved" for row in rows) == 23
     assert sum(row["decision"] == "revise" for row in rows) == 7
 
     for row in rows:
@@ -70,11 +71,12 @@ def test_canonical_sanitized_review_corpus_is_append_only_and_valid() -> None:
 
 
 def test_every_active_candidate_has_one_exact_current_approval() -> None:
-    candidates = json.loads(CANDIDATES.read_text(encoding="utf-8"))
+    tool = load_tool()
+    candidates = tool.load_candidates(CANDIDATES, [SUPPLEMENTAL])
     rows = load_reviews()
 
-    assert len(candidates["records"]) == 13
-    for candidate in candidates["records"]:
+    assert len(candidates) == 23
+    for candidate in candidates.values():
         exact = [
             review
             for review in rows
@@ -86,7 +88,8 @@ def test_every_active_candidate_has_one_exact_current_approval() -> None:
 
 
 def test_superseded_reviews_remain_historical_audit_evidence() -> None:
-    candidates = json.loads(CANDIDATES.read_text(encoding="utf-8"))
+    tool = load_tool()
+    candidates = tool.load_candidates(CANDIDATES, [SUPPLEMENTAL])
     rows = load_reviews()
 
     historical = [
@@ -94,7 +97,7 @@ def test_superseded_reviews_remain_historical_audit_evidence() -> None:
         for review in rows
         if not any(
             exact_match(review, candidate)
-            for candidate in candidates["records"]
+            for candidate in candidates.values()
         )
     ]
 
