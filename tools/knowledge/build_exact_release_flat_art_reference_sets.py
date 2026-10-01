@@ -18,6 +18,7 @@ from pathlib import Path
 from typing import Any
 
 VERSION = "exact-release-flat-art-reference-sets/v1"
+SOURCE_FILE = "knowledge/libraries/lego-minifigure-customs/data/flat-art-verified-crosswalk-2026-09-25.json"
 
 
 def canonical_role(record: dict[str, Any]) -> str:
@@ -220,6 +221,7 @@ def build(doc: dict[str, Any]) -> tuple[list[dict[str, Any]], dict[str, Any]]:
     summary = {
         "schema": "exact-release-flat-art-reference-set-summary/v1",
         "processor_version": VERSION,
+        "source_file": SOURCE_FILE,
         "source_records": len(source_records),
         "exact_single_release_records": len(admitted),
         "excluded_records": len(source_records) - len(admitted),
