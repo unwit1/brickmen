@@ -22,7 +22,7 @@ on:
       - ".github/fortnite-semantic-review-trigger"
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   build-reviewer:
@@ -49,6 +49,7 @@ jobs:
           set -euo pipefail
           mkdir -p .agent-local/review-ui
           RESOLVED_BATCH_PATH="$BATCH_PATH"
+          TRIGGER_REQUESTED=0
           if [[ "$GITHUB_EVENT_NAME" == "push" ]]; then
             CHANGED_PATHS="$(git diff --name-only "$GITHUB_SHA^" "$GITHUB_SHA")"
             PUSH_BATCH_PATH="$(
@@ -59,6 +60,7 @@ jobs:
               RESOLVED_BATCH_PATH="$PUSH_BATCH_PATH"
             elif grep -Fxq ".github/fortnite-semantic-review-trigger" <<<"$CHANGED_PATHS"; then
               BATCH_INDEX="$(tr -d '[:space:]' < .github/fortnite-semantic-review-trigger)"
+              TRIGGER_REQUESTED=1
             fi
           fi
           if [[ -n "$RESOLVED_BATCH_PATH" ]]; then
@@ -76,8 +78,37 @@ jobs:
               echo "batch_index must be an integer from 1 through 30" >&2
               exit 2
             fi
-            OFFSET=$(( (BATCH_INDEX - 1) * 25 ))
-            python tools/knowledge/build_fortnite_semantic_review_work_batch.py               --queue "$QUEUE_PATH"               --output .agent-local/review-ui/review-batch.json               --summary .agent-local/review-ui/review-batch-summary.json               --mode first_review               --limit 25               --offset "$OFFSET"               --min-priority-score 6               --reviewer-id unassigned               --reviewer-type human
+            CANONICAL_BATCH_PATH="$(
+              printf 'knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-%04d.json' "$BATCH_INDEX"
+            )"
+            if [[ "$TRIGGER_REQUESTED" == "1" && -f "$CANONICAL_BATCH_PATH" ]]; then
+              cp "$CANONICAL_BATCH_PATH" .agent-local/review-ui/review-batch.json
+            else
+              OFFSET=$(( (BATCH_INDEX - 1) * 25 ))
+              python tools/knowledge/build_fortnite_semantic_review_work_batch.py \
+                --queue "$QUEUE_PATH" \
+                --output .agent-local/review-ui/review-batch.json \
+                --summary .agent-local/review-ui/review-batch-summary.json \
+                --mode first_review \
+                --limit 25 \
+                --offset "$OFFSET" \
+                --min-priority-score 6 \
+                --reviewer-id unassigned \
+                --reviewer-type human
+              if [[ "$TRIGGER_REQUESTED" == "1" ]]; then
+                cp .agent-local/review-ui/review-batch.json "$CANONICAL_BATCH_PATH"
+                python tools/knowledge/build_fortnite_semantic_review_batch_plan.py
+                git config user.name "brickmen-review-bot"
+                git config user.email "actions@users.noreply.github.com"
+                git add "$CANONICAL_BATCH_PATH" \
+                  knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-plan.json
+                if ! git diff --cached --quiet; then
+                  git commit -m "data: materialize Fortnite semantic review batch $(printf '%04d' "$BATCH_INDEX")"
+                  git pull --rebase origin main
+                  git push origin HEAD:main
+                fi
+              fi
+            fi
           fi
 
       - name: Materialize exact semantic review media

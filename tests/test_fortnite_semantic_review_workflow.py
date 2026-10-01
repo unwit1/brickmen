@@ -17,3 +17,7 @@ def test_push_materializes_the_numeric_batch_that_changed() -> None:
     assert 'BATCH_INDEX="$(tr -d \'[:space:]\' < .github/fortnite-semantic-review-trigger)"' in source
     assert "resolve_fortnite_review_batch_from_event.py --paths-stdin" in source
     assert 'cp "$RESOLVED_BATCH_PATH" .agent-local/review-ui/review-batch.json' in source
+    assert "contents: write" in source
+    assert "TRIGGER_REQUESTED=1" in source
+    assert "build_fortnite_semantic_review_batch_plan.py" in source
+    assert 'git push origin HEAD:main' in source
