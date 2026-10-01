@@ -19,6 +19,7 @@ on:
       - "tools/knowledge/materialize_fortnite_semantic_review_media.py"
       - "tools/knowledge/build_fortnite_semantic_review_ui.py"
       - "knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-[0-9][0-9][0-9][0-9].json"
+      - ".github/fortnite-semantic-review-trigger"
 
 permissions:
   contents: read
@@ -49,12 +50,15 @@ jobs:
           mkdir -p .agent-local/review-ui
           RESOLVED_BATCH_PATH="$BATCH_PATH"
           if [[ "$GITHUB_EVENT_NAME" == "push" ]]; then
+            CHANGED_PATHS="$(git diff --name-only "$GITHUB_SHA^" "$GITHUB_SHA")"
             PUSH_BATCH_PATH="$(
-              git diff --name-only "$GITHUB_SHA^" "$GITHUB_SHA" |
+              printf '%s\n' "$CHANGED_PATHS" |
                 python tools/knowledge/resolve_fortnite_review_batch_from_event.py --paths-stdin
             )"
             if [[ -n "$PUSH_BATCH_PATH" ]]; then
               RESOLVED_BATCH_PATH="$PUSH_BATCH_PATH"
+            elif grep -Fxq ".github/fortnite-semantic-review-trigger" <<<"$CHANGED_PATHS"; then
+              BATCH_INDEX="$(tr -d '[:space:]' < .github/fortnite-semantic-review-trigger)"
             fi
           fi
           if [[ -n "$RESOLVED_BATCH_PATH" ]]; then
