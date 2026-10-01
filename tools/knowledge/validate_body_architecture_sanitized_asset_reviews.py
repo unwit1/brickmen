@@ -23,6 +23,9 @@ SCHEMA = "body-architecture-sanitized-asset-review/v1"
 ROOT = Path(__file__).resolve().parents[2]
 DATA = ROOT / "knowledge" / "libraries" / "lego-minifigure-customs" / "data"
 DEFAULT_CANDIDATES = DATA / "body-architecture-benchmark-sanitization-candidates.json"
+DEFAULT_SUPPLEMENTAL_CANDIDATES = (
+    DATA / "body-architecture-benchmark-sam2-candidates.json"
+)
 
 DECISIONS = {"approved", "rejected", "revise"}
 REVIEWER_TYPES = {"human", "model", "hybrid"}
@@ -37,12 +40,36 @@ CHECKS = (
 HEX64 = re.compile(r"^[0-9a-f]{64}$")
 
 
-def load_candidates(path: Path = DEFAULT_CANDIDATES) -> dict[str, dict[str, Any]]:
-    doc = json.loads(path.read_text(encoding="utf-8"))
-    return {
-        row["source_record_id"]: row
-        for row in doc.get("records", [])
-    }
+def load_candidates(
+    path: Path = DEFAULT_CANDIDATES,
+    supplemental_paths: Iterable[Path] = (),
+) -> dict[str, dict[str, Any]]:
+    docs = [json.loads(path.read_text(encoding="utf-8"))]
+    docs.extend(
+        json.loads(supplemental.read_text(encoding="utf-8"))
+        for supplemental in supplemental_paths
+    )
+    candidates: dict[str, dict[str, Any]] = {}
+    for doc in docs:
+        for row in doc.get("records", []):
+            record_id = row["source_record_id"]
+            existing = candidates.get(record_id)
+            if existing is not None:
+                same_hashes = all(
+                    existing.get(key) == row.get(key)
+                    for key in (
+                        "source_file_sha256",
+                        "sanitized_pixel_sha256",
+                        "sanitized_png_sha256",
+                    )
+                )
+                if not same_hashes:
+                    raise ValueError(
+                        "supplemental candidate conflicts with existing "
+                        f"candidate: {record_id}"
+                    )
+            candidates[record_id] = row
+    return candidates
 
 
 def iter_jsonl(paths: Iterable[Path]):
@@ -199,13 +226,24 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--input", type=Path, action="append", required=True)
     parser.add_argument("--candidates", type=Path, default=DEFAULT_CANDIDATES)
+    parser.add_argument(
+        "--supplemental-candidates",
+        type=Path,
+        action="append",
+        default=None,
+    )
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--invalid-output", type=Path, required=True)
     parser.add_argument("--summary", type=Path, required=True)
     parser.add_argument("--allow-invalid", action="store_true")
     args = parser.parse_args()
 
-    candidates = load_candidates(args.candidates)
+    supplemental_paths = (
+        args.supplemental_candidates
+        if args.supplemental_candidates is not None
+        else [DEFAULT_SUPPLEMENTAL_CANDIDATES]
+    )
+    candidates = load_candidates(args.candidates, supplemental_paths)
     valid: list[dict[str, Any]] = []
     invalid: list[dict[str, Any]] = []
 
