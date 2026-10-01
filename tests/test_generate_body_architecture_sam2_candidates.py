@@ -88,12 +88,11 @@ def test_segmentation_prompts_cover_exactly_current_blockers() -> None:
         for record_id, prompt in prompt_by_id.items()
         if "preferred_mask_index" in prompt
     }
-    assert len(preferred) == 8
+    assert len(preferred) == 10
     assert set(preferred.values()) == {0}
-    assert set(prompt_by_id) - set(preferred) == {
-        "thing_shengyuan_sy288_bigfig",
-        "venom_alpha_af325",
-    }
+    assert set(prompt_by_id) == set(preferred)
+    assert preferred["thing_shengyuan_sy288_bigfig"] == 0
+    assert preferred["venom_alpha_af325"] == 0
 
 
 def test_normalized_prompt_conversion() -> None:

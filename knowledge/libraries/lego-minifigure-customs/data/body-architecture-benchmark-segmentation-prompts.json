@@ -202,7 +202,7 @@
         315,
         346
       ],
-      "status": "prompt_refined_after_source_review_v2",
+      "status": "visual_multimask_selection_v1",
       "box_norm": [
         0,
         0,
@@ -243,7 +243,8 @@
       ],
       "rationale": "Cover the complete primary ShengYuan Thing figure rather than the prior left-fist subregion. Positive points span torso, both fists and both legs; negatives suppress the branded base and far-right secondary sliver.",
       "mask_cleanup": "largest_connected_component",
-      "selection_rationale": "No preferred mask index yet; rerun multimask generation after prompt correction and review all alternatives."
+      "selection_rationale": "Exact multimask review selected m0 because it is the only current hypothesis that preserves both fists, both feet and the complete primary figure. The raw m0 still contains lower-edge/base contamination, so the preferred selection remains review-blocked until deterministic largest-component cleanup is rerun and the exact final derivative is inspected.",
+      "preferred_mask_index": 0
     },
     {
       "source_record_id": "thing_tp_tp349_first_steps_bigfig",
@@ -295,7 +296,7 @@
         800,
         800
       ],
-      "status": "prompt_refined_after_source_review_v2",
+      "status": "visual_multimask_selection_v1",
       "box_norm": [
         0.23,
         0.2,
@@ -344,7 +345,8 @@
       ],
       "rationale": "Expand the prompt from the prior upper-half box to the complete central Venom figure while keeping detached weapons, head inset, alternate minifigure and bottom labels outside or negatively prompted.",
       "mask_cleanup": "largest_connected_component",
-      "selection_rationale": "No preferred mask index yet; rerun multimask generation after prompt correction and review all alternatives."
+      "selection_rationale": "Exact multimask review selected m0 because it preserves the complete primary figure; m2, despite the higher SAM score, erodes facial and torso detail. Small disconnected specks above the raw m0 figure must be removed by deterministic largest-component cleanup and the exact final derivative must still pass visual review.",
+      "preferred_mask_index": 0
     },
     {
       "source_record_id": "venom_alpha_af328_ancient",
@@ -481,10 +483,11 @@
     }
   ],
   "review_iteration": {
-    "id": "sam2-prompt-selection-v2",
+    "id": "sam2-prompt-selection-v3",
     "basis": "source-and-multimask visual review",
-    "visually_selected_m0_cases": 8,
-    "geometry_refinement_cases": [
+    "visually_selected_m0_cases": 10,
+    "geometry_refinement_cases": [],
+    "final_derivative_review_pending_cases": [
       "thing_shengyuan_sy288_bigfig",
       "venom_alpha_af325"
     ]
