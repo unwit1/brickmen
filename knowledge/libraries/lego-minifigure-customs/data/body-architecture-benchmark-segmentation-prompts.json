@@ -202,7 +202,7 @@
         315,
         346
       ],
-      "status": "visual_multimask_selection_v1",
+      "status": "prompt_refined_after_source_review_v3",
       "box_norm": [
         0,
         0,
@@ -234,6 +234,18 @@
       "negative_points_norm": [
         [
           0.5,
+          0.84
+        ],
+        [
+          0.5,
+          0.88
+        ],
+        [
+          0.22,
+          0.92
+        ],
+        [
+          0.78,
           0.92
         ],
         [
@@ -241,10 +253,9 @@
           0.55
         ]
       ],
-      "rationale": "Cover the complete primary ShengYuan Thing figure rather than the prior left-fist subregion. Positive points span torso, both fists and both legs; negatives suppress the branded base and far-right secondary sliver.",
+      "rationale": "Cover the complete primary ShengYuan Thing while explicitly suppressing the branded center stand/logo and the lower base under both feet. Positive points retain torso, fists and both legs; multiple lower negatives target the observed run-10 contamination without touching the figure.",
       "mask_cleanup": "largest_connected_component",
-      "selection_rationale": "Exact multimask review selected m0 because it is the only current hypothesis that preserves both fists, both feet and the complete primary figure. The raw m0 still contains lower-edge/base contamination, so the preferred selection remains review-blocked until deterministic largest-component cleanup is rerun and the exact final derivative is inspected.",
-      "preferred_mask_index": 0
+      "selection_rationale": "Run 10 showed that m0 preserved the figure but retained branded stand/logo pixels. Because the prompt geometry is now refined, the previous mask-index choice is stale; rerun all multimask hypotheses and review the exact cleaned derivative before selecting or approving one."
     },
     {
       "source_record_id": "thing_tp_tp349_first_steps_bigfig",
@@ -483,13 +494,14 @@
     }
   ],
   "review_iteration": {
-    "id": "sam2-prompt-selection-v3",
-    "basis": "source-and-multimask visual review",
-    "visually_selected_m0_cases": 10,
-    "geometry_refinement_cases": [],
+    "id": "sam2-prompt-selection-v4",
+    "basis": "exact run-10 derivative review plus source-and-multimask review",
+    "visually_selected_m0_cases": 9,
+    "geometry_refinement_cases": [
+      "thing_shengyuan_sy288_bigfig"
+    ],
     "final_derivative_review_pending_cases": [
-      "thing_shengyuan_sy288_bigfig",
-      "venom_alpha_af325"
+      "thing_shengyuan_sy288_bigfig"
     ]
   }
 }

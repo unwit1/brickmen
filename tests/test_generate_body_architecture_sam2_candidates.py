@@ -79,6 +79,7 @@ def test_segmentation_prompts_cover_exactly_current_blockers() -> None:
         assert prompt["status"] in {
             "visual_multimask_selection_v1",
             "prompt_refined_after_source_review_v2",
+            "prompt_refined_after_source_review_v3",
         }
         assert prompt["positive_points_norm"]
         assert prompt["mask_cleanup"] == "largest_connected_component"
@@ -88,10 +89,11 @@ def test_segmentation_prompts_cover_exactly_current_blockers() -> None:
         for record_id, prompt in prompt_by_id.items()
         if "preferred_mask_index" in prompt
     }
-    assert len(preferred) == 10
+    assert len(preferred) == 9
     assert set(preferred.values()) == {0}
-    assert set(prompt_by_id) == set(preferred)
-    assert preferred["thing_shengyuan_sy288_bigfig"] == 0
+    assert set(prompt_by_id) - set(preferred) == {
+        "thing_shengyuan_sy288_bigfig",
+    }
     assert preferred["venom_alpha_af325"] == 0
 
 
