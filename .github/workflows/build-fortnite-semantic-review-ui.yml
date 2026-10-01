@@ -45,36 +45,11 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p .agent-local/review-ui
-          RESOLVED_BATCH_PATH="$RESOLVED_BATCH_PATH"
+          RESOLVED_BATCH_PATH="$BATCH_PATH"
           if [[ "$GITHUB_EVENT_NAME" == "push" ]]; then
-            PUSH_BATCH_PATH="$(python - <<'PY'
-import json
-import os
-import re
-
-with open(os.environ["GITHUB_EVENT_PATH"], "r", encoding="utf-8") as handle:
-    event = json.load(handle)
-
-pattern = re.compile(
-    r"^knowledge/libraries/lego-minifigure-customs/data/"
-    r"semantic-review-batches/fortnite-first-review-batch-[0-9]{4}\.json$"
-)
-matches = []
-for commit in event.get("commits") or []:
-    for key in ("added", "modified"):
-        for path in commit.get(key) or []:
-            if pattern.match(path) and path not in matches:
-                matches.append(path)
-
-if len(matches) > 1:
-    raise SystemExit(
-        "push changed multiple numeric Fortnite review batches; "
-        "materialize them separately"
-    )
-if matches:
-    print(matches[0])
-PY
-)"
+            PUSH_BATCH_PATH="$(
+              python tools/knowledge/resolve_fortnite_review_batch_from_event.py                 "$GITHUB_EVENT_PATH"
+            )"
             if [[ -n "$PUSH_BATCH_PATH" ]]; then
               RESOLVED_BATCH_PATH="$PUSH_BATCH_PATH"
             fi
