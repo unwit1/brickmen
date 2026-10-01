@@ -31,8 +31,8 @@ def test_first_review_batch_plan_baseline() -> None:
     assert result["eligible_records"] == 744
     assert result["batch_count"] == 30
     assert result["batch_size"] == 25
-    assert result["materialized_batch_count"] == 1
-    assert result["planned_batch_count"] == 29
+    assert result["materialized_batch_count"] == 2
+    assert result["planned_batch_count"] == 28
 
     first = result["batches"][0]
     last = result["batches"][-1]
@@ -40,6 +40,11 @@ def test_first_review_batch_plan_baseline() -> None:
     assert first["batch_id"] == "fortnite-review-first_review-056fd3e0773faee9"
     assert first["selected_records"] == 25
     assert first["materialized"] is True
+    second = result["batches"][1]
+    assert second["batch_id"] == "fortnite-review-first_review-dde51a69c8ff5a91"
+    assert second["materialized"] is True
+    assert second["first_translation_pair_id"] == "fortnitepair-1c84a038477fa48199de67cb"
+    assert second["last_translation_pair_id"] == "fortnitepair-fb6013fe4fa25062ef7d8c95"
     assert last["batch_index"] == 30
     assert last["selected_records"] == 19
     assert last["offset"] == 725
