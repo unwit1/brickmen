@@ -5,10 +5,10 @@
   "policy": "Only visually approved raw references or exact hash-pinned approved sanitized derivatives are model inputs. Provenance/audit identifiers remain metadata and must not be exposed as model features.",
   "summary": {
     "total_cases": 27,
-    "model_input_allowed_cases": 17,
+    "model_input_allowed_cases": 27,
     "approved_raw_cases": 4,
-    "approved_sanitized_cases": 13,
-    "blocked_cases": 10
+    "approved_sanitized_cases": 23,
+    "blocked_cases": 0
   },
   "entries": [
     {
@@ -16,28 +16,34 @@
       "case_id": "archrec::hulk_alpha_af344_avengers",
       "split": "development",
       "scoring_track": "core",
-      "status": "blocked",
-      "model_input_allowed": false,
-      "asset_kind": null,
-      "asset_sha256": null,
+      "status": "approved_sanitized",
+      "model_input_allowed": true,
+      "asset_kind": "sanitized_derivative",
+      "asset_sha256": "72a39734d108475ff1f1f95f806ae474ad322236bd769bd27838f06c525ffa37",
+      "sanitized_pixel_sha256": "633faa22901ea65869749eefc4aa9f2335d60d7b6451d1801d72c7a4ce3121c8",
       "source_file_sha256": "d6124764a8990bab6ec44015115cf1b8cd7ab5101da04f4da025d028139c11a1",
-      "expected_local_asset": null,
-      "approval_review_ids": [],
-      "blocked_reason": "requires_segmentation_or_manual_cleanup"
+      "expected_local_asset": "hulk_alpha_af344_avengers--633faa22901ea658.png",
+      "approval_review_ids": [
+        "sanreview-20260930-hulk_alpha_af344_avengers-sam2-v1"
+      ],
+      "blocked_reason": null
     },
     {
       "source_record_id": "hulk_alpha_af345_comics",
       "case_id": "archrec::hulk_alpha_af345_comics",
       "split": "development",
       "scoring_track": "core",
-      "status": "blocked",
-      "model_input_allowed": false,
-      "asset_kind": null,
-      "asset_sha256": null,
+      "status": "approved_sanitized",
+      "model_input_allowed": true,
+      "asset_kind": "sanitized_derivative",
+      "asset_sha256": "9c815b930d51ba5ad2737f5cce6992bb58e90162841fa923731ede282ac4aa09",
+      "sanitized_pixel_sha256": "c915680174c315bc6b0a5da4a90a5b375f4ebafc8ac015b0676a7e350bf56e34",
       "source_file_sha256": "d508590a6e1c917293d0a28967e56bace04982fa2ea9372615f424eed6a5daf6",
-      "expected_local_asset": null,
-      "approval_review_ids": [],
-      "blocked_reason": "requires_segmentation_or_manual_cleanup"
+      "expected_local_asset": "hulk_alpha_af345_comics--c915680174c315bc.png",
+      "approval_review_ids": [
+        "sanreview-20260930-hulk_alpha_af345_comics-sam2-v1"
+      ],
+      "blocked_reason": null
     },
     {
       "source_record_id": "hulk_bigguy_ragnarok",
@@ -123,28 +129,34 @@
       "case_id": "archrec::hulk_mrj_heart_comics",
       "split": "development",
       "scoring_track": "provisional",
-      "status": "blocked",
-      "model_input_allowed": false,
-      "asset_kind": null,
-      "asset_sha256": null,
+      "status": "approved_sanitized",
+      "model_input_allowed": true,
+      "asset_kind": "sanitized_derivative",
+      "asset_sha256": "46eb233f16bababbd04330a55d988c07de54979cb279c442ed541c57dc1dd8dc",
+      "sanitized_pixel_sha256": "d33798960f93ca25e2aefde43b5adf34859b7fb4a2ca2a4fca0b36c746958615",
       "source_file_sha256": "39feabdf00538692b035b870a3ae7f7c2835825e8224aa5e8adc9253a98a079a",
-      "expected_local_asset": null,
-      "approval_review_ids": [],
-      "blocked_reason": "requires_segmentation_or_manual_cleanup"
+      "expected_local_asset": "hulk_mrj_heart_comics--d33798960f93ca25.png",
+      "approval_review_ids": [
+        "sanreview-20260930-hulk_mrj_heart_comics-sam2-v1"
+      ],
+      "blocked_reason": null
     },
     {
       "source_record_id": "red_hulk_alpha_af364_bnw",
       "case_id": "archrec::red_hulk_alpha_af364_bnw",
       "split": "development",
       "scoring_track": "core",
-      "status": "blocked",
-      "model_input_allowed": false,
-      "asset_kind": null,
-      "asset_sha256": null,
+      "status": "approved_sanitized",
+      "model_input_allowed": true,
+      "asset_kind": "sanitized_derivative",
+      "asset_sha256": "3b54922fbdc2d2b7302450df16e26cd4c4d1d89ade70f4d5316c48d4232a5b22",
+      "sanitized_pixel_sha256": "050fd8424efffd1d731fa58596fe1079062c8762dc1da9e997707d3a7dd64fdf",
       "source_file_sha256": "12e79bc52f7030701a2296f7cf05e7905e02bcefd0d754969cc8bdf95756773b",
-      "expected_local_asset": null,
-      "approval_review_ids": [],
-      "blocked_reason": "requires_segmentation_or_manual_cleanup"
+      "expected_local_asset": "red_hulk_alpha_af364_bnw--050fd8424efffd1d.png",
+      "approval_review_ids": [
+        "sanreview-20260930-red_hulk_alpha_af364_bnw-sam2-v1"
+      ],
+      "blocked_reason": null
     },
     {
       "source_record_id": "red_hulk_bigguy_bnw",
@@ -284,14 +296,17 @@
       "case_id": "archrec::thing_shengyuan_sy288_bigfig",
       "split": "test",
       "scoring_track": "open_set",
-      "status": "blocked",
-      "model_input_allowed": false,
-      "asset_kind": null,
-      "asset_sha256": null,
+      "status": "approved_sanitized",
+      "model_input_allowed": true,
+      "asset_kind": "sanitized_derivative",
+      "asset_sha256": "5b5e2b209c939cb5983d6783a1aaf4a8df0da336b5e8d4177372a540ec9c3dae",
+      "sanitized_pixel_sha256": "00f84e0122319736742021d5506d79c365b2678deee41911509c0cdb508b2257",
       "source_file_sha256": "e0de4be480091468e1edd92dca97dc465a2fe062cda2917262977164131b9970",
-      "expected_local_asset": null,
-      "approval_review_ids": [],
-      "blocked_reason": "requires_segmentation_or_manual_cleanup"
+      "expected_local_asset": "thing_shengyuan_sy288_bigfig--00f84e0122319736.png",
+      "approval_review_ids": [
+        "sanreview-20260930-thing_shengyuan_sy288_bigfig-sam2-v1"
+      ],
+      "blocked_reason": null
     },
     {
       "source_record_id": "thing_tp_tp178_first_steps",
@@ -315,14 +330,17 @@
       "case_id": "archrec::thing_tp_tp349_first_steps_bigfig",
       "split": "test",
       "scoring_track": "open_set",
-      "status": "blocked",
-      "model_input_allowed": false,
-      "asset_kind": null,
-      "asset_sha256": null,
+      "status": "approved_sanitized",
+      "model_input_allowed": true,
+      "asset_kind": "sanitized_derivative",
+      "asset_sha256": "d41f142503fada8391dd419aa3c20e8dc05b2ecf43cbd953cfaff5277118c7be",
+      "sanitized_pixel_sha256": "8a409eda63e918afbc8255f4a679216e9c6c9055ba522f4f20e07cfd7a9bd8db",
       "source_file_sha256": "c35537f56d3d21e81225091f5329053e02f628dc0269a0d491011a85c5d83e6d",
-      "expected_local_asset": null,
-      "approval_review_ids": [],
-      "blocked_reason": "requires_segmentation_or_manual_cleanup"
+      "expected_local_asset": "thing_tp_tp349_first_steps_bigfig--8a409eda63e918af.png",
+      "approval_review_ids": [
+        "sanreview-20260930-thing_tp_tp349_first_steps_bigfig-sam2-v1"
+      ],
+      "blocked_reason": null
     },
     {
       "source_record_id": "thing_xinh_1421_bigfig",
@@ -363,28 +381,34 @@
       "case_id": "archrec::venom_alpha_af325",
       "split": "validation",
       "scoring_track": "core",
-      "status": "blocked",
-      "model_input_allowed": false,
-      "asset_kind": null,
-      "asset_sha256": null,
+      "status": "approved_sanitized",
+      "model_input_allowed": true,
+      "asset_kind": "sanitized_derivative",
+      "asset_sha256": "e7eb08fa001ef6d124984083952d64595b9f1e63d2c8c8a782586a70dea5dfe1",
+      "sanitized_pixel_sha256": "5065b5d87612aeca6b0b860b27685ff442921f62a06506c0aea90a32c00127ec",
       "source_file_sha256": "cc9daee1b700ea8591a0f03d86be137215424e33f4447262e226dbb8fe1f0726",
-      "expected_local_asset": null,
-      "approval_review_ids": [],
-      "blocked_reason": "requires_segmentation_or_manual_cleanup"
+      "expected_local_asset": "venom_alpha_af325--5065b5d87612aeca.png",
+      "approval_review_ids": [
+        "sanreview-20260930-venom_alpha_af325-sam2-v1"
+      ],
+      "blocked_reason": null
     },
     {
       "source_record_id": "venom_alpha_af328_ancient",
       "case_id": "archrec::venom_alpha_af328_ancient",
       "split": "validation",
       "scoring_track": "core",
-      "status": "blocked",
-      "model_input_allowed": false,
-      "asset_kind": null,
-      "asset_sha256": null,
+      "status": "approved_sanitized",
+      "model_input_allowed": true,
+      "asset_kind": "sanitized_derivative",
+      "asset_sha256": "e7108d400fb371cb52c8a550c6c05889d9569c8b13971a999b8fc3ee39982293",
+      "sanitized_pixel_sha256": "0d2a2f9db6d7579688547a0e6b5ecb128b94cc940499419764dc0600d303eb3d",
       "source_file_sha256": "929d7a3d8d2c2d315cec8bf276ef0ba180ad2fc877a66515a2b7533f686b90ff",
-      "expected_local_asset": null,
-      "approval_review_ids": [],
-      "blocked_reason": "requires_segmentation_or_manual_cleanup"
+      "expected_local_asset": "venom_alpha_af328_ancient--0d2a2f9db6d75796.png",
+      "approval_review_ids": [
+        "sanreview-20260930-venom_alpha_af328_ancient-sam2-v1"
+      ],
+      "blocked_reason": null
     },
     {
       "source_record_id": "venom_lego_sh0542_standard",
@@ -405,28 +429,34 @@
       "case_id": "archrec::venom_xinh_xh1829_movie_bigfig",
       "split": "validation",
       "scoring_track": "open_set",
-      "status": "blocked",
-      "model_input_allowed": false,
-      "asset_kind": null,
-      "asset_sha256": null,
+      "status": "approved_sanitized",
+      "model_input_allowed": true,
+      "asset_kind": "sanitized_derivative",
+      "asset_sha256": "8386bb073240a3284b52718e73c14bb37c6a895fe9be3626b28b91822b47297e",
+      "sanitized_pixel_sha256": "90dc515f5a4d75372320391578750b01650f688d4d402d5dc96d092f81552c15",
       "source_file_sha256": "32c91daa329658fcaec4c79acbf0619591015e003bc34fd40043928c2b030d56",
-      "expected_local_asset": null,
-      "approval_review_ids": [],
-      "blocked_reason": "requires_segmentation_or_manual_cleanup"
+      "expected_local_asset": "venom_xinh_xh1829_movie_bigfig--90dc515f5a4d7537.png",
+      "approval_review_ids": [
+        "sanreview-20260930-venom_xinh_xh1829_movie_bigfig-sam2-v1"
+      ],
+      "blocked_reason": null
     },
     {
       "source_record_id": "venom_xinh_xh1911_bigfig",
       "case_id": "archrec::venom_xinh_xh1911_bigfig",
       "split": "validation",
       "scoring_track": "open_set",
-      "status": "blocked",
-      "model_input_allowed": false,
-      "asset_kind": null,
-      "asset_sha256": null,
+      "status": "approved_sanitized",
+      "model_input_allowed": true,
+      "asset_kind": "sanitized_derivative",
+      "asset_sha256": "31998b7496ec43e639a5034ca4046d211cf4cefff350bdd3d41b74a26ff3a66b",
+      "sanitized_pixel_sha256": "790ca9e60382f2a4c736d7562d51ea9e2381d295512aaa024fb4838bd6751438",
       "source_file_sha256": "2b65c0bb3af7a734e7b2ed205e2023f0906368ab75762f873b5097863134bb20",
-      "expected_local_asset": null,
-      "approval_review_ids": [],
-      "blocked_reason": "requires_segmentation_or_manual_cleanup"
+      "expected_local_asset": "venom_xinh_xh1911_bigfig--790ca9e60382f2a4.png",
+      "approval_review_ids": [
+        "sanreview-20260930-venom_xinh_xh1911_bigfig-sam2-v1"
+      ],
+      "blocked_reason": null
     }
   ]
 }
