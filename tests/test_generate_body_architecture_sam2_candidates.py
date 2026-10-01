@@ -80,6 +80,7 @@ def test_segmentation_prompts_cover_exactly_current_blockers() -> None:
             "visual_multimask_selection_v1",
             "prompt_refined_after_source_review_v2",
             "prompt_refined_after_source_review_v3",
+            "visual_multimask_selection_v2",
         }
         assert prompt["positive_points_norm"]
         assert prompt["mask_cleanup"] == "largest_connected_component"
@@ -89,12 +90,17 @@ def test_segmentation_prompts_cover_exactly_current_blockers() -> None:
         for record_id, prompt in prompt_by_id.items()
         if "preferred_mask_index" in prompt
     }
-    assert len(preferred) == 9
+    assert len(preferred) == 10
     assert set(preferred.values()) == {0}
-    assert set(prompt_by_id) - set(preferred) == {
-        "thing_shengyuan_sy288_bigfig",
-    }
+    assert set(prompt_by_id) == set(preferred)
+    assert preferred["thing_shengyuan_sy288_bigfig"] == 0
     assert preferred["venom_alpha_af325"] == 0
+    assert prompt_by_id["thing_shengyuan_sy288_bigfig"][
+        "mask_exclude_rects_norm"
+    ] == [
+        [0.4, 0.8, 0.6, 0.92],
+        [0.0, 0.92, 0.97, 0.96],
+    ]
 
 
 def test_normalized_prompt_conversion() -> None:
@@ -134,6 +140,24 @@ def test_invalid_normalized_box_is_rejected() -> None:
             pass
         else:
             raise AssertionError(f"expected invalid box to fail: {box}")
+
+
+def test_normalized_exclusion_rects_are_deterministic() -> None:
+    import numpy as np
+
+    tool = load_tool()
+    mask = np.ones((10, 10), dtype=bool)
+    cleaned, stats = tool.apply_normalized_exclusion_rects(
+        mask,
+        [[0.2, 0.3, 0.5, 0.6]],
+    )
+
+    assert int(mask.sum()) == 100
+    assert int(cleaned.sum()) == 91
+    assert not cleaned[3:6, 2:5].any()
+    assert stats["method"] == "normalized_exclusion_rects_v1"
+    assert stats["rect_count"] == 1
+    assert stats["removed_area_pixels"] == 9
 
 
 def test_prompt_hash_or_dimensions_cannot_go_stale() -> None:
@@ -217,5 +241,7 @@ def test_reviewed_mask_selection_contract_is_explicit() -> None:
     assert "preferred_mask_index" in source
     assert "prompt_preferred_mask_index" in source
     assert "largest_connected_component" in source
+    assert "mask_exclude_rects_norm" in source
+    assert "mask_exclusion_stats" in source
     assert '"raw_selected_mask_sha256"' in source
     assert '"sam_best_mask_index"' in source

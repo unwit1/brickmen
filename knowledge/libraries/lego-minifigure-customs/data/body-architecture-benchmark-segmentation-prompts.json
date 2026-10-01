@@ -18,6 +18,7 @@
     "SAM2 score proposes multimask hypotheses but does not determine benchmark suitability.",
     "A preferred_mask_index may be recorded only after exact visual review of all variants for the pinned provider/checkpoint/prompt contract.",
     "Optional largest_connected_component cleanup is deterministic and must still be visually reviewed on the final derivative.",
+    "Optional normalized exclusion rectangles may remove known non-figure stand/logo regions after reviewed mask selection; their source-normalized coordinates and removed-area statistics must be retained in candidate provenance.",
     "Every selected derivative remains model-input blocked until exact source/pixel/PNG hashes pass the visual approval gate.",
     "If source hash, prompt geometry, provider revision, checkpoint hash, mask selection or cleanup changes, prior derivative approval is stale.",
     "The prompt set must exactly cover active segmentation/manual-cleanup blockers in the deterministic candidate manifest."
@@ -202,7 +203,7 @@
         315,
         346
       ],
-      "status": "prompt_refined_after_source_review_v3",
+      "status": "visual_multimask_selection_v2",
       "box_norm": [
         0,
         0,
@@ -234,18 +235,6 @@
       "negative_points_norm": [
         [
           0.5,
-          0.84
-        ],
-        [
-          0.5,
-          0.88
-        ],
-        [
-          0.22,
-          0.92
-        ],
-        [
-          0.78,
           0.92
         ],
         [
@@ -253,9 +242,24 @@
           0.55
         ]
       ],
-      "rationale": "Cover the complete primary ShengYuan Thing while explicitly suppressing the branded center stand/logo and the lower base under both feet. Positive points retain torso, fists and both legs; multiple lower negatives target the observed run-10 contamination without touching the figure.",
+      "rationale": "Use the reviewed complete-figure m0 hypothesis, then deterministically exclude only the center branded stand/logo gap and the thin bottom base strip in source-normalized coordinates before largest-component cleanup.",
       "mask_cleanup": "largest_connected_component",
-      "selection_rationale": "Run 10 showed that m0 preserved the figure but retained branded stand/logo pixels. Because the prompt geometry is now refined, the previous mask-index choice is stale; rerun all multimask hypotheses and review the exact cleaned derivative before selecting or approving one."
+      "selection_rationale": "Run 10 established m0 as the complete figure hypothesis; run 11 showed that additional negative prompting damaged anatomy. Keep the run-10 prompt/m0 selection and apply auditable deterministic exclusion rectangles to the known non-figure stand regions. Final exact derivative remains review-blocked.",
+      "preferred_mask_index": 0,
+      "mask_exclude_rects_norm": [
+        [
+          0.4,
+          0.8,
+          0.6,
+          0.92
+        ],
+        [
+          0,
+          0.92,
+          0.97,
+          0.96
+        ]
+      ]
     },
     {
       "source_record_id": "thing_tp_tp349_first_steps_bigfig",
@@ -494,10 +498,11 @@
     }
   ],
   "review_iteration": {
-    "id": "sam2-prompt-selection-v4",
-    "basis": "exact run-10 derivative review plus source-and-multimask review",
-    "visually_selected_m0_cases": 9,
-    "geometry_refinement_cases": [
+    "id": "sam2-prompt-selection-v5",
+    "basis": "run-10/run-11 exact derivative review plus deterministic stand-exclusion preview",
+    "visually_selected_m0_cases": 10,
+    "geometry_refinement_cases": [],
+    "deterministic_exclusion_cases": [
       "thing_shengyuan_sy288_bigfig"
     ],
     "final_derivative_review_pending_cases": [

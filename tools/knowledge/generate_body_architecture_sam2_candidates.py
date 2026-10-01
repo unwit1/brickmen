@@ -208,6 +208,42 @@ def keep_largest_connected_component(mask):
     }
 
 
+def apply_normalized_exclusion_rects(mask, rects):
+    """Clear deterministic source-normalized rectangles from a selected mask."""
+    import numpy as np
+
+    source = np.asarray(mask, dtype=bool).copy()
+    if source.ndim != 2:
+        raise ValueError("mask exclusion requires a 2D mask")
+    height, width = source.shape
+    applied = []
+    removed_total = 0
+    for rect in rects:
+        x0, y0, x1, y1 = norm_box_to_pixels(rect, width, height)
+        left = max(0, int(np.floor(x0)))
+        top = max(0, int(np.floor(y0)))
+        right = min(width, int(np.ceil(x1)))
+        bottom = min(height, int(np.ceil(y1)))
+        removed = int(source[top:bottom, left:right].sum())
+        source[top:bottom, left:right] = False
+        removed_total += removed
+        applied.append(
+            {
+                "rect_norm": list(map(float, rect)),
+                "rect_pixels": [left, top, right, bottom],
+                "removed_area_pixels": removed,
+            }
+        )
+    if not source.any():
+        raise ValueError("mask exclusions removed the entire SAM2 mask")
+    return source, {
+        "method": "normalized_exclusion_rects_v1",
+        "rect_count": len(applied),
+        "removed_area_pixels": removed_total,
+        "rects": applied,
+    }
+
+
 def render_masked_candidate(image, mask, margin_fraction: float = 0.035):
     import numpy as np
     from PIL import Image
@@ -356,6 +392,13 @@ def generate(
             preferred_index,
         )
         raw_selected_mask = mask.copy()
+        exclusion_rects = prompt.get("mask_exclude_rects_norm") or []
+        exclusion_stats = None
+        if exclusion_rects:
+            mask, exclusion_stats = apply_normalized_exclusion_rects(
+                mask,
+                exclusion_rects,
+            )
         cleanup_mode = prompt.get("mask_cleanup")
         cleanup_stats = None
         if cleanup_mode == "largest_connected_component":
@@ -463,6 +506,8 @@ def generate(
             else "sam_score"
         ),
         "predicted_mask_score": score,
+        "mask_exclude_rects_norm": exclusion_rects,
+        "mask_exclusion_stats": exclusion_stats,
         "mask_cleanup": cleanup_mode or "none",
         "mask_cleanup_stats": cleanup_stats,
         "raw_selected_mask_sha256": hashlib.sha256(
