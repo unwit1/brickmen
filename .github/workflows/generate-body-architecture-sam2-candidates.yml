@@ -12,7 +12,7 @@ on:
       - 'knowledge/libraries/lego-minifigure-customs/data/body-architecture-benchmark-sanitization-candidates.json'
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   segment:
@@ -69,6 +69,7 @@ jobs:
             --timeout-seconds 30
 
       - name: Upload short-lived SAM2 review bundle
+        id: review_bundle
         if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -79,3 +80,25 @@ jobs:
             .agent-local/body-architecture-sam2-variants
           if-no-files-found: warn
           retention-days: 3
+
+      - name: Canonicalize complete SAM2 candidate metadata
+        if: success()
+        run: |
+          python tools/knowledge/canonicalize_body_architecture_sam2_report.py \
+            --report .agent-local/body-architecture-sam2-report.json \
+            --output knowledge/libraries/lego-minifigure-customs/data/body-architecture-benchmark-sam2-candidates.json \
+            --workflow-run-id "${{ github.run_id }}" \
+            --workflow-artifact-id "${{ steps.review_bundle.outputs.artifact-id }}"
+
+      - name: Persist review-blocked candidate manifest
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add knowledge/libraries/lego-minifigure-customs/data/body-architecture-benchmark-sam2-candidates.json
+          if git diff --cached --quiet; then
+            echo "Canonical SAM2 candidate manifest is unchanged."
+          else
+            git commit -m "data: canonicalize SAM2 review candidates"
+            git push
+          fi
