@@ -2,8 +2,8 @@
 
 Last updated: 2026-10-01
 Base commit before autonomous bootstrap: `bda2cac8ea8b68bb9e3e5b4d0cf380a9c6ee3ae6`
-Last meaningful benchmark/development checkpoint: `7a8fcf226eb53b0187cbff922692b554afcb26e9`
-Latest validated test-lock checkpoint: `7a8fcf226eb53b0187cbff922692b554afcb26e9`
+Last meaningful benchmark/development checkpoint: `8157095062e87b36c5cd3b03ad50d57edbacbfaa`
+Latest validated test-lock checkpoint: `8157095062e87b36c5cd3b03ad50d57edbacbfaa`
 Status: active
 
 ## Current major objective
@@ -21,7 +21,7 @@ Two major architecture evaluation gates are now fully runnable:
 - Architecture-target evaluation coverage remains 34/49 registered architecture families, with zero remaining P0 official gaps.
 
 Current priority order:
-1. continue Fortnite source-appearance -> LEGO semantic first-review batches while preserving the requirement for a genuinely independent second review/adjudication before canonical promotion;
+1. continue Fortnite source-appearance -> LEGO semantic first-review coverage from batch 0003 onward while preserving the requirement for a genuinely independent second review/adjudication before canonical promotion;
 2. expand exact-release multi-view/cross-surface correspondence beyond the new reviewed flat-art ReferenceSet layer;
 3. expand official visual grammar and negative/failure critic corpora;
 4. keep model/tool/dataset registries current and continue ontology-breaker searches;
@@ -118,9 +118,18 @@ Current priority order:
 - Review schema/validator, conflict-preserving adjudication, adjudicated-only promotion, batching, and local review UI are implemented.
 - Measurement heuristics remain prioritization context only; they never become semantic labels automatically.
 
+### Fortnite semantic first-review batch 0002
+
+- Batch 0002 now has 25 submitted GPT-5.6 Sol first reviews with 100 explicit semantic annotations.
+- Exact review media came from workflow run `36888310826`, artifact `11174174737`; source and LEGO bytes were SHA-256 verified before review.
+- Multi-style source composites are explicitly limitation-scoped rather than being treated as hidden/rear-view evidence.
+- The corpus remains non-canonical and training-ineligible pending independent second review and adjudication.
+- Regression validation passed in LEGO Knowledge Tool Tests run `36890371822` on commit `8157095062e87b36c5cd3b03ad50d57edbacbfaa`.
+- Across batches 0001-0002, first-review coverage is now 50/744 high-priority pairs with 217 annotations; 694 high-priority pairs remain for first-review coverage.
+
 ## Active blockers / constraints
 
-1. **Fortnite semantic supervision adjudication** — batch 0001 now has 25 submitted first reviews, but canonical supervision still requires an independent second review and explicit adjudication. The remaining 719 high-priority pairs also still need first-review coverage.
+1. **Fortnite semantic supervision adjudication** — batches 0001 and 0002 now provide 50 submitted first reviews (217 annotations total), but canonical supervision still requires an independent second review and explicit adjudication. The remaining 694 high-priority pairs still need first-review coverage.
 2. **Physical multi-view ground truth** — structured exact-release flat-art correspondence has improved, but exact rear/side physical photography remains limited; do not synthesize hidden views.
 3. **Reference-fit torso segmentation** — lower-vs-upper torso segment length remains underidentified until additional landmarks are available.
 
@@ -173,6 +182,9 @@ For Fortnite semantic supervision:
 - `knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-0001.json`
 - `knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-0001-gpt56sol-submitted.jsonl`
 - `knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-0001-gpt56sol-summary.json`
+- `knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-0002.json`
+- `knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-0002-gpt56sol-submitted.jsonl`
+- `knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-0002-gpt56sol-summary.json`
 - `tools/knowledge/build_fortnite_semantic_review_ui.py`
 - `tools/knowledge/build_fortnite_semantic_adjudication_queue.py`
 - `tools/knowledge/promote_fortnite_semantic_supervision.py`
@@ -182,6 +194,7 @@ Do not restart completed challenge-v4 raw review or original 27-case sanitizatio
 ## Validation note
 
 Fresh validation observed on the current checkpoint:
+- LEGO Knowledge Tool Tests run `36890371822` completed successfully on commit `8157095062e87b36c5cd3b03ad50d57edbacbfaa`, validating all 25 batch-0002 submitted reviews and their canonical review IDs;
 - LEGO Knowledge Tool Tests run `36878401937` completed successfully on commit `7a8fcf226eb53b0187cbff922692b554afcb26e9`, including the exact-release ReferenceSet compiler/tests;
 - Fortnite batch-0001 review regression coverage passed in LEGO Knowledge Tool Tests run `36877400586` on commit `430eea29fbcf999c3c808d9138d590b0617fefe4`;
 - LEGO Knowledge Tool Tests run `36807156707` completed successfully on commit `4c69a64cd21754ce6dbdd3f3adb252228d4958e7`;
