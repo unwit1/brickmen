@@ -1,9 +1,9 @@
 # Brickmen Autonomous State
 
-Last updated: 2026-09-30
+Last updated: 2026-10-01
 Base commit before autonomous bootstrap: `bda2cac8ea8b68bb9e3e5b4d0cf380a9c6ee3ae6`
-Last meaningful benchmark/development checkpoint: `dcf43cb327e22a101400d2dd90a64d9e0842d896`
-Latest validated test-lock checkpoint: `4c69a64cd21754ce6dbdd3f3adb252228d4958e7`
+Last meaningful benchmark/development checkpoint: `7a8fcf226eb53b0187cbff922692b554afcb26e9`
+Latest validated test-lock checkpoint: `7a8fcf226eb53b0187cbff922692b554afcb26e9`
 Status: active
 
 ## Current major objective
@@ -21,12 +21,11 @@ Two major architecture evaluation gates are now fully runnable:
 - Architecture-target evaluation coverage remains 34/49 registered architecture families, with zero remaining P0 official gaps.
 
 Current priority order:
-1. execute Fortnite source-appearance -> LEGO semantic first-review/second-review/adjudication and promote only explicit reviewed supervision;
-2. expand exact-release multi-view/cross-surface correspondence;
-3. finish custom-architecture evaluation acquisition/review: visually review the two byte-pinned Titanic sources and resolve genuine high-resolution Si-Dan media;
-4. expand official visual grammar and negative/failure critic corpora;
-5. keep model/tool/dataset registries current and continue ontology-breaker searches;
-6. close reference-fitting evidence gaps without inventing hidden geometry or physical measurements.
+1. continue Fortnite source-appearance -> LEGO semantic first-review batches while preserving the requirement for a genuinely independent second review/adjudication before canonical promotion;
+2. expand exact-release multi-view/cross-surface correspondence beyond the new reviewed flat-art ReferenceSet layer;
+3. expand official visual grammar and negative/failure critic corpora;
+4. keep model/tool/dataset registries current and continue ontology-breaker searches;
+5. close reference-fitting evidence gaps without inventing hidden geometry or physical measurements.
 
 ## Latest completed autonomous batches
 
@@ -75,44 +74,61 @@ Current priority order:
   - P1 custom evaluation gaps: 3;
   - P2 ontology/unresolved gaps: 12.
 
-### Custom architecture acquisition v1
+### Custom architecture acquisition v1 — complete
 
-- Product evidence for all three P1 custom architecture gaps is normalized to dedicated product pages.
-- Titanic Bricks MidFig ball-joint upper-body source is byte-verified:
-  - `DSC_0303.jpg`;
-  - 1000x1000 JPEG;
-  - SHA-256 `c79fc80eba86f18b155c358bfc900923f5743777bdd215a51b9828142b8d08b2`.
-- Titanic Bricks standard-compatible single-torso four-arm source is byte-verified:
-  - `untitled.1159.jpg`;
-  - 1280x1280 JPEG;
-  - SHA-256 `eb3649ca3c8c331bec1e42f15b6326bb47253b4bba8ec13ae57e2db0d3c2af14`.
-- Both still require exact visual sanitization/model-input review.
-- Si-Dan product evidence confirms a 43 mm poseable figure with ball joints at arms, legs, feet and neck, but only 50x50 thumbnails are currently resolved. Do not admit an upscaled thumbnail as exact evaluation media.
+- All three P1 custom architecture evaluation cases now have exact byte-pinned media and a complete model-input gate.
+- Titanic Bricks MidFig ball-joint upper body:
+  - source SHA-256 `c79fc80eba86f18b155c358bfc900923f5743777bdd215a51b9828142b8d08b2`;
+  - exact source required logo sanitization;
+  - exact reviewed sanitized derivative is approved.
+- Titanic Bricks single-torso four-arm body:
+  - source SHA-256 `eb3649ca3c8c331bec1e42f15b6326bb47253b4bba8ec13ae57e2db0d3c2af14`;
+  - approved raw after exact visual review.
+- Si-Dan full ball-joint poseable:
+  - genuine 301x500 exact product zoom recovered and byte-pinned at SHA-256 `2ac7f9ba8793107e58892205ea56cc772b876cd63cd2fda08e51e1a0ec8e831e`;
+  - approved raw after exact visual review.
+- Custom model-input manifest is 3/3 runnable: 2 raw + 1 sanitized, 0 blocked.
+- Do not reopen the earlier 50x50-thumbnail or pending-Titanic-review blockers; they are obsolete.
+
+### Exact-release flat-art ReferenceSets v1
+
+- A deterministic compiler now converts reviewed one-to-one flat-art/catalog crosswalks into exact physical-release ReferenceSets.
+- Current evidence layer:
+  - 61 reviewed crosswalk source records;
+  - 47 records resolve one-to-one to a single BrickLink + Rebrickable physical release;
+  - 23 exact-release ReferenceSets;
+  - 13 multi-surface ReferenceSets;
+  - 5 releases with explicit torso-front + torso-rear evidence;
+  - 5 same-decorated-component multi-surface correspondences.
+- Surface linkage is provenance-only: no hidden surface, pixel alignment, or geometry equivalence is inferred.
+- Canonical artifacts:
+  - `knowledge/libraries/lego-minifigure-customs/data/exact-release-flat-art-reference-sets-v1.jsonl`
+  - `knowledge/libraries/lego-minifigure-customs/data/exact-release-flat-art-reference-sets-v1-summary.json`
+  - `tools/knowledge/build_exact_release_flat_art_reference_sets.py`
 
 ### Fortnite semantic translation supervision pipeline
 
 - Ranked corpus: 2,494 pairs.
 - High-priority records: 744.
 - First-review plan: 30 deterministic batches (29 x 25, final x 19).
-- Batch 0001 is materialized.
+- Batch 0001 has now completed a first model-review pass over 25 exact materialized source/LEGO pairs.
+- The first-review corpus contains 25 submitted review records and 117 explicit semantic annotations, all bound to the exact source/LEGO SHA-256 values from workflow run `36807686000`, artifact `11137649234`.
+- These records are deliberately non-canonical: `review_status=submitted`, training-eligible count 0.
+- A second pass must be genuinely independent; do not manufacture reviewer independence by having the same reviewer simply repeat its own first pass.
 - Review schema/validator, conflict-preserving adjudication, adjudicated-only promotion, batching, and local review UI are implemented.
 - Measurement heuristics remain prioritization context only; they never become semantic labels automatically.
 
 ## Active blockers / constraints
 
-1. **Fortnite semantic supervision labels** — infrastructure is complete, but canonical supervision requires actual first reviews, second reviews where appropriate, and explicit adjudication.
-2. **Custom Titanic model-input review** — two exact media assets are byte-pinned but still need direct visual leakage/sanitization review.
-3. **Si-Dan evaluation media** — current product evidence is strong but only 50x50 media are resolved; require a genuine high-resolution exact asset rather than upscaling.
-4. **Physical multi-view ground truth** — exact rear/side/physical evidence remains limited; do not synthesize hidden views.
-5. **Reference-fit torso segmentation** — lower-vs-upper torso segment length remains underidentified until additional landmarks are available.
+1. **Fortnite semantic supervision adjudication** — batch 0001 now has 25 submitted first reviews, but canonical supervision still requires an independent second review and explicit adjudication. The remaining 719 high-priority pairs also still need first-review coverage.
+2. **Physical multi-view ground truth** — structured exact-release flat-art correspondence has improved, but exact rear/side physical photography remains limited; do not synthesize hidden views.
+3. **Reference-fit torso segmentation** — lower-vs-upper torso segment length remains underidentified until additional landmarks are available.
 
 ## Highest-value next work
 
 ### P0
-1. Execute Fortnite first-review, second-review, and adjudication batches; promote only explicit adjudicated supervision.
-2. Expand exact-release multi-view ReferenceSets and cross-surface correspondence without inventing hidden views.
-3. Directly visually review the two byte-pinned Titanic custom-architecture assets and build exact-hash model-input decisions.
-4. Resolve a genuine high-resolution exact Si-Dan product asset for evaluation.
+1. Continue Fortnite first-review coverage from batch 0002 onward; obtain an independent second review for batch 0001 and adjudicate before any canonical promotion.
+2. Expand exact-release multi-view ReferenceSets and cross-surface correspondence beyond structured flat-art, without inventing hidden views.
 
 ### P1
 - Extract official face/clothing/decoration grammar from evidence.
@@ -142,14 +158,21 @@ For challenge v4:
 - `knowledge/libraries/lego-minifigure-customs/data/body-architecture-recognition-challenge-model-input-manifest-v4.json`
 - `tests/test_body_architecture_challenge_v4_model_input.py`
 
-For custom architecture acquisition:
+For completed custom architecture evaluation:
 - `knowledge/libraries/lego-minifigure-customs/data/body-architecture-custom-acquisition-candidates-v1.json`
-- `.github/workflows/verify-body-architecture-custom-media.yml`
-- `tests/test_body_architecture_custom_acquisition.py`
+- `knowledge/libraries/lego-minifigure-customs/data/body-architecture-custom-model-input-manifest-v1.json`
+- `knowledge/libraries/lego-minifigure-customs/data/body-architecture-custom-sanitization-reviews-v1.json`
+
+For exact-release cross-surface evidence:
+- `knowledge/libraries/lego-minifigure-customs/data/exact-release-flat-art-reference-sets-v1.jsonl`
+- `knowledge/libraries/lego-minifigure-customs/data/exact-release-flat-art-reference-sets-v1-summary.json`
+- `tools/knowledge/build_exact_release_flat_art_reference_sets.py`
 
 For Fortnite semantic supervision:
 - `knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-plan.json`
 - `knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-0001.json`
+- `knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-0001-gpt56sol-submitted.jsonl`
+- `knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-0001-gpt56sol-summary.json`
 - `tools/knowledge/build_fortnite_semantic_review_ui.py`
 - `tools/knowledge/build_fortnite_semantic_adjudication_queue.py`
 - `tools/knowledge/promote_fortnite_semantic_supervision.py`
@@ -158,7 +181,9 @@ Do not restart completed challenge-v4 raw review or original 27-case sanitizatio
 
 ## Validation note
 
-Fresh validation observed on the current architecture checkpoint:
+Fresh validation observed on the current checkpoint:
+- LEGO Knowledge Tool Tests run `36878401937` completed successfully on commit `7a8fcf226eb53b0187cbff922692b554afcb26e9`, including the exact-release ReferenceSet compiler/tests;
+- Fortnite batch-0001 review regression coverage passed in LEGO Knowledge Tool Tests run `36877400586` on commit `430eea29fbcf999c3c808d9138d590b0617fefe4`;
 - LEGO Knowledge Tool Tests run `36807156707` completed successfully on commit `4c69a64cd21754ce6dbdd3f3adb252228d4958e7`;
 - Body geometry tests run `36807156814` completed successfully on the same commit;
 - SAM2 canonical generation run `36806483552` completed successfully and persisted the canonical 10-record metadata-only candidate manifest;

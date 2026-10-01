@@ -3,14 +3,13 @@
   "project": "brickmen",
   "mode": "autonomous",
   "status": "active",
-  "updated_date": "2026-09-30",
+  "updated_date": "2026-10-01",
   "base_commit_before_bootstrap": "bda2cac8ea8b68bb9e3e5b4d0cf380a9c6ee3ae6",
-  "current_objective": "advance_semantic_multiview_and_custom_architecture_after_completing_architecture_input_safety",
-  "current_workstream": "fortnite_semantic_review_and_custom_architecture_evaluation",
+  "current_objective": "advance_semantic_multiview_visual_grammar_after_completing_architecture_input_safety",
+  "current_workstream": "fortnite_semantic_review_and_exact_release_multiview_correspondence",
   "current_frontier": [
     "source_appearance_to_minifigure_semantic_translation",
     "multi_view_correspondence",
-    "custom_architecture_evaluation",
     "official_visual_grammar",
     "negative_failure_corpus",
     "model_dataset_tool_registry",
@@ -19,46 +18,28 @@
   "known_gaps": [
     {
       "id": "fortnite_semantic_review_labels",
-      "description": "The 744 high-priority source->LEGO pairs are batched and reviewable, but canonical supervision still requires submitted reviews, second reviews where needed, and explicit adjudication.",
-      "status": "open"
-    },
-    {
-      "id": "custom_titanic_visual_review",
-      "description": "Two P1 custom-architecture sources are byte-pinned (Titanic MidFig and standard-compatible single-torso four-arm) but still require direct exact-asset visual leakage/sanitization review before model-input admission.",
-      "status": "open"
+      "description": "Batch 0001 now has 25 exact-hash-bound submitted model reviews with 117 annotations. They remain non-canonical pending a genuinely independent second review and explicit adjudication; the remaining high-priority pairs also need first-review coverage.",
+      "status": "first_review_batch_0001_submitted_pending_independent_second_review"
     },
     {
       "id": "physical_multiview_ground_truth",
-      "description": "Exact rear/side/physical evidence remains limited and must not be synthesized.",
+      "description": "Exact rear/side physical photography remains limited. A reviewed structured flat-art layer now provides 23 exact-release ReferenceSets, 13 multi-surface sets, and five explicit front/rear torso correspondences without hidden-view inference.",
       "status": "blocked_on_evidence_acquisition"
     },
     {
       "id": "reference_fit_torso_segmentation",
       "description": "Lower- versus upper-torso segment length remains underidentified until additional chest/torso-center landmarks are added.",
       "status": "open"
-    },
-    {
-      "id": "custom_sidan_high_resolution_media",
-      "description": "The dedicated Si-Dan Poseable Minifig product page confirms a 43 mm full-body ball-joint architecture with joints at arms, legs, feet and neck, but the currently exposed product-image links are 50x50 thumbnails. Resolve a genuine high-resolution exact asset before evaluation-image admission.",
-      "status": "open_media_resolution"
     }
   ],
   "highest_value_tasks": [
     {
       "priority": "P0",
-      "task": "Execute Fortnite first-review, second-review, and adjudication batches; promote only explicit adjudicated supervision."
+      "task": "Continue Fortnite first-review coverage from batch 0002 onward; obtain a genuinely independent second review for batch 0001 and adjudicate before canonical promotion."
     },
     {
       "priority": "P0",
-      "task": "Expand exact-release multi-view ReferenceSets and cross-surface correspondence without inventing hidden views."
-    },
-    {
-      "priority": "P0",
-      "task": "Visually review the byte-pinned Titanic MidFig and single-torso four-arm custom-architecture assets and record exact-hash model-input decisions."
-    },
-    {
-      "priority": "P0",
-      "task": "Resolve a genuine high-resolution exact Si-Dan product asset for evaluation rather than upscaling the current 50x50 thumbnails."
+      "task": "Expand exact-release multi-view ReferenceSets beyond the reviewed structured flat-art layer without inventing hidden views or pixel alignment."
     },
     {
       "priority": "P1",
@@ -77,20 +58,15 @@
     {
       "id": "physical_multiview_ground_truth",
       "reason": "Exact rear/side physical evidence requires additional source access, credentials, or controlled capture.",
-      "fallback": "Expand structured correspondence and other independent evaluation assets without synthesizing missing views."
-    },
-    {
-      "id": "custom_sidan_high_resolution_media",
-      "reason": "The dedicated Si-Dan Poseable Minifig page currently resolves only 50x50 product thumbnails. Upscaling does not create a genuine exact evaluation asset.",
-      "fallback": "Continue Titanic exact visual review, Fortnite semantic supervision, multi-view work, and other evidence-backed tasks while searching for a genuine high-resolution source."
+      "fallback": "Continue reviewed exact-release structured surface correspondence, digital/physical crosswalks, and other evidence-backed work without synthesizing missing views."
     }
   ],
   "pending_validation": [],
   "continuation": {
-    "instruction": "Do not restart challenge-v4 raw review or the original 27-case architecture sanitization/SAM2 approval work. Challenge v4 is 23/23 byte-verified and 23/23 raw-input approved. The original architecture benchmark is 27/27 model-input allowed (4 raw + 23 sanitized, 0 blocked), including 10 exact-hash approved SAM2 candidates. Resume Fortnite semantic review, multi-view correspondence, and custom-architecture evaluation. The Titanic MidFig and single-torso four-arm sources are byte-pinned but still need exact visual review; Si-Dan still needs genuine high-resolution exact media. Preserve exact-hash, leakage-safe split, provenance, uncertainty, and visual-review gates."
+    "instruction": "Do not restart challenge-v4, the original 27-case architecture sanitization/SAM2 gate, or custom-architecture acquisition/model-input review: all are complete. Fortnite batch 0001 now has 25 submitted GPT-5.6 Sol first reviews with 117 annotations and zero training-eligible records; require a genuinely independent second review plus adjudication before promotion. Exact-release flat-art ReferenceSets now cover 23 physical releases (13 multi-surface; five explicit torso front/rear). Continue Fortnite first-review coverage, independent second-review preparation, multi-view evidence expansion, visual grammar, and failure-corpus work. Preserve exact hashes, provenance, uncertainty, and no-hidden-view rules."
   },
-  "last_meaningful_commit": "dcf43cb327e22a101400d2dd90a64d9e0842d896",
-  "latest_validated_test_commit": "4c69a64cd21754ce6dbdd3f3adb252228d4958e7",
+  "last_meaningful_commit": "7a8fcf226eb53b0187cbff922692b554afcb26e9",
+  "latest_validated_test_commit": "7a8fcf226eb53b0187cbff922692b554afcb26e9",
   "completed_batches": [
     {
       "id": "body_architecture_reference_acquisition_v1",
@@ -251,22 +227,17 @@
     },
     {
       "id": "custom_architecture_acquisition_v1",
-      "status": "partially_byte_verified",
+      "status": "complete_and_model_input_gated",
       "details": {
         "target_architectures": 3,
-        "byte_verified_exact_media": 2,
-        "byte_verified_architectures": [
-          "custom_midfig_balljoint_upper",
-          "custom_standard_four_arm_single_torso"
-        ],
-        "pending_high_resolution_media": [
-          "custom_sidan_full_balljoint_poseable"
-        ],
+        "byte_verified_exact_media": 3,
+        "model_input_allowed": 3,
+        "approved_raw": 2,
+        "approved_sanitized": 1,
+        "blocked": 0,
         "midfig_sha256": "c79fc80eba86f18b155c358bfc900923f5743777bdd215a51b9828142b8d08b2",
         "four_arm_sha256": "eb3649ca3c8c331bec1e42f15b6326bb47253b4bba8ec13ae57e2db0d3c2af14",
-        "verification_run_id": 36630907484,
-        "verification_artifact_id": 11061773814,
-        "raw_model_input_approved": 0
+        "sidan_sha256": "2ac7f9ba8793107e58892205ea56cc772b876cd63cd2fda08e51e1a0ec8e831e"
       }
     },
     {
@@ -300,7 +271,36 @@
         ],
         "canonical_workflow_run_id": 36806483552
       }
+    },
+    {
+      "id": "fortnite_semantic_first_review_batch_0001",
+      "status": "submitted_noncanonical",
+      "details": {
+        "reviewed_pairs": 25,
+        "semantic_annotations": 117,
+        "reviewer_id": "openai_chatgpt_visual_review_batch1",
+        "model_id": "GPT-5.6 Sol",
+        "review_status": "submitted",
+        "training_eligible": 0,
+        "workflow_run_id": 36807686000,
+        "workflow_artifact_id": 11137649234,
+        "independent_second_review_required": true
+      }
+    },
+    {
+      "id": "exact_release_flat_art_reference_sets_v1",
+      "status": "validated",
+      "details": {
+        "source_records": 61,
+        "exact_single_release_records": 47,
+        "reference_sets": 23,
+        "multi_surface_reference_sets": 13,
+        "explicit_torso_front_rear_reference_sets": 5,
+        "same_component_cross_surface_correspondences": 5,
+        "hidden_surface_inference": false,
+        "validated_test_run_id": 36878401937
+      }
     }
   ],
-  "latest_test_lock_commit": "4c69a64cd21754ce6dbdd3f3adb252228d4958e7"
+  "latest_test_lock_commit": "7a8fcf226eb53b0187cbff922692b554afcb26e9"
 }

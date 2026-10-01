@@ -110,3 +110,23 @@ Track ReferenceSet completeness:
 - unresolved_conflict_count
 
 Coverage dashboards should use these measures instead of raw image totals.
+
+
+## Implemented exact-release structured-surface layer
+
+As of 2026-10-01, Brickmen has a populated conservative ReferenceSet layer built from independently reviewed flat-art/catalog crosswalks:
+
+- 61 reviewed source crosswalk records;
+- 47 records with one explicit BrickLink minifigure ID and one explicit Rebrickable figure ID;
+- 23 exact physical-release ReferenceSets;
+- 13 ReferenceSets spanning multiple independently observed surfaces;
+- 5 releases with explicit torso-front and torso-rear evidence;
+- 5 same-decorated-component multi-surface correspondences.
+
+Canonical artifacts:
+
+- `data/exact-release-flat-art-reference-sets-v1.jsonl`
+- `data/exact-release-flat-art-reference-sets-v1-summary.json`
+- `../../../tools/knowledge/build_exact_release_flat_art_reference_sets.py`
+
+These links establish that structured surface evidence belongs to the same exact physical release. They **do not** assert pixel alignment, infer unobserved rear/side content, or imply mechanical/geometry equivalence. Generic missing views remain missing.
