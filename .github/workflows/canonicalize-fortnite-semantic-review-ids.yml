@@ -1,0 +1,56 @@
+name: Canonicalize Fortnite Semantic Review IDs
+
+on:
+  push:
+    paths:
+      - ".github/workflows/canonicalize-fortnite-semantic-review-ids.yml"
+      - "tools/knowledge/canonicalize_fortnite_semantic_review_ids.py"
+      - "tools/knowledge/validate_fortnite_semantic_reviews.py"
+      - "knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-*-gpt56sol-submitted.jsonl"
+
+permissions:
+  contents: write
+
+jobs:
+  canonicalize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out Brickmen
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Canonicalize submitted review IDs
+        shell: bash
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          files=(knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-*-gpt56sol-submitted.jsonl)
+          if (( ${#files[@]} == 0 )); then
+            exit 0
+          fi
+          args=()
+          for path in "${files[@]}"; do
+            args+=(--input "$path")
+          done
+          python tools/knowledge/canonicalize_fortnite_semantic_review_ids.py "${args[@]}"
+
+      - name: Commit canonical IDs if needed
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git diff --quiet; then
+            exit 0
+          fi
+          git config user.name "brickmen-review-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/*-gpt56sol-submitted.jsonl
+          git commit -m "fix: canonicalize Fortnite semantic review IDs"
+          git pull --rebase origin main
+          git push origin HEAD:main
