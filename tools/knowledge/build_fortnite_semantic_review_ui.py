@@ -217,10 +217,10 @@ function render(){{
   const item=currentItem(), record=currentRecord();
   document.getElementById("counter").textContent=(index+1)+" / "+batch.items.length;
   document.getElementById("pair-id").textContent=item.translation_pair_id+" · priority "+item.review_priority_score;
-  document.getElementById("source-image").src=item.source_image_url;
-  document.getElementById("lego-image").src=item.lego_image_url;
-  document.getElementById("source-url").textContent=item.source_image_url;
-  document.getElementById("lego-url").textContent=item.lego_image_url;
+  document.getElementById("source-image").src=item.source_image_local_asset||item.source_image_url;
+  document.getElementById("lego-image").src=item.lego_image_local_asset||item.lego_image_url;
+  document.getElementById("source-url").textContent=item.source_image_url+(item.source_image_sha256?" · sha256 "+item.source_image_sha256:"");
+  document.getElementById("lego-url").textContent=item.lego_image_url+(item.lego_image_sha256?" · sha256 "+item.lego_image_sha256:"");
   const sig=document.getElementById("signals");sig.replaceChildren();
   for(const s of item.measurement_signals||[]){{
     const span=document.createElement("span");span.className="signal";
