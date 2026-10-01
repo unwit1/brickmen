@@ -63,6 +63,12 @@ def fixtures():
         "negative_points_norm": [],
         "selected_mask_index": 0,
         "predicted_mask_score": 0.9,
+        "mask_exclude_rects_norm": [[0.1, 0.8, 0.2, 0.9]],
+        "mask_exclusion_stats": {
+            "method": "normalized_exclusion_rects_v1",
+            "rect_count": 1,
+            "removed_area_pixels": 12,
+        },
         "mask_area_fraction": 0.4,
         "mask_sha256": "d" * 64,
         "crop_pixels": [1, 2, 90, 190],
@@ -109,6 +115,8 @@ def test_complete_report_canonicalizes_fail_closed_metadata() -> None:
     assert row["candidate_status"] == "generated_pending_visual_review"
     assert row["model_input_allowed"] is False
     assert row["expected_local_asset"] == "test--eeeeeeeeeeeeeeee.png"
+    assert row["mask_exclude_rects_norm"] == [[0.1, 0.8, 0.2, 0.9]]
+    assert row["mask_exclusion_stats"]["removed_area_pixels"] == 12
 
 
 def test_partial_report_is_rejected() -> None:

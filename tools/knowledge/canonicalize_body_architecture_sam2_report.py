@@ -131,6 +131,10 @@ def canonicalize(
                 "sam_best_mask_index": row.get("sam_best_mask_index"),
                 "mask_selection": row.get("mask_selection"),
                 "predicted_mask_score": row.get("predicted_mask_score"),
+                "mask_exclude_rects_norm": row.get(
+                    "mask_exclude_rects_norm"
+                ) or [],
+                "mask_exclusion_stats": row.get("mask_exclusion_stats"),
                 "mask_cleanup": row.get("mask_cleanup") or "none",
                 "mask_cleanup_stats": row.get("mask_cleanup_stats"),
                 "raw_selected_mask_sha256": row.get(
