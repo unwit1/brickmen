@@ -20,6 +20,10 @@ ROOT = Path(__file__).resolve().parents[2]
 DATA = ROOT / "knowledge" / "libraries" / "lego-minifigure-customs" / "data"
 DEFAULT_QUEUE = DATA / "body-architecture-benchmark-sanitization-queue.json"
 DEFAULT_CANDIDATES = DATA / "body-architecture-benchmark-sanitization-candidates.json"
+DEFAULT_SUPPLEMENTAL_CANDIDATES = (
+    DATA / "body-architecture-benchmark-sam2-candidates.json"
+)
+DEFAULT_REVIEWS = DATA / "body-architecture-benchmark-sanitized-asset-reviews.jsonl"
 DEFAULT_OUTPUT = DATA / "body-architecture-benchmark-model-input-manifest.json"
 
 CHECKS = (
@@ -288,26 +292,32 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--queue", type=Path, default=DEFAULT_QUEUE)
     parser.add_argument("--candidates", type=Path, default=DEFAULT_CANDIDATES)
-    parser.add_argument("--reviews", type=Path, action="append", default=[])
+    parser.add_argument("--reviews", type=Path, action="append", default=None)
     parser.add_argument(
         "--supplemental-candidates",
         type=Path,
         action="append",
-        default=[],
+        default=None,
     )
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     args = parser.parse_args()
 
     queue_doc = json.loads(args.queue.read_text(encoding="utf-8"))
     candidate_doc = json.loads(args.candidates.read_text(encoding="utf-8"))
+    review_paths = args.reviews if args.reviews is not None else [DEFAULT_REVIEWS]
+    supplemental_paths = (
+        args.supplemental_candidates
+        if args.supplemental_candidates is not None
+        else [DEFAULT_SUPPLEMENTAL_CANDIDATES]
+    )
     supplemental_docs = [
         json.loads(path.read_text(encoding="utf-8"))
-        for path in args.supplemental_candidates
+        for path in supplemental_paths
     ]
     result = build(
         queue_doc,
         candidate_doc,
-        iter_jsonl(args.reviews),
+        iter_jsonl(review_paths),
         supplemental_docs,
     )
     args.output.parent.mkdir(parents=True, exist_ok=True)
