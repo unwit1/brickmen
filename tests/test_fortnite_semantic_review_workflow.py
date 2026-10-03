@@ -20,6 +20,8 @@ def test_push_materializes_the_numeric_batch_that_changed() -> None:
     assert "contents: write" in source
     assert "TRIGGER_REQUESTED=1" in source
     assert "build_fortnite_semantic_review_batch_plan.py" in source
+    assert "build_fortnite_semantic_review_progress.py" in source
+    assert "fortnite-semantic-review-progress.json" in source
     assert 'git push origin HEAD:main' in source
 
 
