@@ -29,6 +29,7 @@ def review(
     pair_id: str = "pair-a",
     status: str = "submitted",
     role: str = "reviewer",
+    reviewer_id: str | None = None,
     adjudicates: list[str] | None = None,
 ) -> dict:
     return {
@@ -37,7 +38,7 @@ def review(
         "translation_pair_id": pair_id,
         "reviewer": {
             "reviewer_type": "human",
-            "reviewer_id": review_id,
+            "reviewer_id": reviewer_id or review_id,
             "model_id": None,
             "model_revision": None,
             "review_role": role,
@@ -91,15 +92,15 @@ def queue_row(
 
 def test_explicit_adjudicated_review_is_promoted() -> None:
     tool = load_tool()
-    submitted = review("r1")
+    submitted = [review("r1"), review("r2")]
     adjudicated = review(
         "a1",
         status="adjudicated",
         role="adjudicator",
-        adjudicates=["r1"],
+        adjudicates=["r1", "r2"],
     )
 
-    result = tool.promote([submitted, adjudicated], [queue_row()])
+    result = tool.promote([*submitted, adjudicated], [queue_row()])
 
     assert result["promoted_records"] == 1
     assert result["skipped_pairs"] == 0
@@ -107,7 +108,29 @@ def test_explicit_adjudicated_review_is_promoted() -> None:
     assert promoted["translation_pair_id"] == "pair-a"
     assert promoted["canonical_review_id"] == "a1"
     assert promoted["promotion"]["training_eligible"] is True
-    assert promoted["adjudicates_review_ids"] == ["r1"]
+    assert promoted["promotion"]["independent_submitted_reviewer_count"] == 2
+    assert promoted["adjudicates_review_ids"] == ["r1", "r2"]
+
+
+def test_adjudicated_review_with_same_reviewer_twice_is_rejected() -> None:
+    tool = load_tool()
+    submitted = [
+        review("r1", reviewer_id="same-reviewer"),
+        review("r2", reviewer_id="same-reviewer"),
+    ]
+    adjudicated = review(
+        "a1",
+        status="adjudicated",
+        role="adjudicator",
+        adjudicates=["r1", "r2"],
+    )
+
+    try:
+        tool.promote([*submitted, adjudicated], [queue_row()])
+    except ValueError as exc:
+        assert "at least two independent submitted reviewers" in str(exc)
+    else:
+        raise AssertionError("expected same-reviewer submissions to be rejected")
 
 
 def test_agreement_candidate_is_not_promoted() -> None:
