@@ -214,6 +214,10 @@ def build(
 ) -> dict[str, Any]:
     if reviewer_type not in {"human", "model", "hybrid"}:
         raise ValueError("reviewer_type must be human, model, or hybrid")
+    if mode == "second_review" and reviewer_id.strip().casefold() == "unassigned":
+        raise ValueError(
+            "second_review mode requires an explicit independent reviewer_id"
+        )
 
     selected = select(
         queue_records,
