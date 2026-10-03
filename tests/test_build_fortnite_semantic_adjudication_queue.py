@@ -98,6 +98,47 @@ def test_matching_submitted_reviews_are_not_auto_promoted() -> None:
     assert result["selected_review_id"] is None
 
 
+def test_duplicate_submissions_from_same_reviewer_do_not_count_as_independent() -> None:
+    tool = load_tool()
+    result = tool.classify_group(
+        [
+            review("r1", reviewer_id="same-reviewer"),
+            review("r2", reviewer_id="same-reviewer"),
+        ]
+    )
+
+    assert result["status"] == "needs_independent_second_review"
+    assert result["independent_submitted_reviewer_count"] == 1
+    assert result["training_eligible"] is False
+
+
+def test_adjudication_requires_two_independent_submitted_reviewers() -> None:
+    tool = load_tool()
+    submitted = [
+        review("r1", reviewer_id="same-reviewer"),
+        review("r2", reviewer_id="same-reviewer"),
+    ]
+    adjudicator = review(
+        "a1",
+        status="adjudicated",
+        role="adjudicator",
+        adjudicates=["r1", "r2"],
+    )
+
+    result = tool.classify_group([*submitted, adjudicator])
+
+    assert result["status"] == "invalid_adjudicator_independence"
+    assert result["training_eligible"] is False
+    assert result["adjudicator_independence_errors"] == [
+        {
+            "review_id": "a1",
+            "referenced_submitted_review_ids": ["r1", "r2"],
+            "independent_submitted_reviewer_count": 1,
+            "required_independent_submitted_reviewers": 2,
+        }
+    ]
+
+
 def test_conflicting_submitted_reviews_require_adjudication() -> None:
     tool = load_tool()
     result = tool.classify_group(
