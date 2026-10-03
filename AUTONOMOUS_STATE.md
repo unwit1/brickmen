@@ -2,7 +2,7 @@
 
 Last updated: 2026-10-01
 Base commit before autonomous bootstrap: `bda2cac8ea8b68bb9e3e5b4d0cf380a9c6ee3ae6`
-Last meaningful benchmark/development checkpoint: `2ff0df33dcf673397306c5bf444ff247e05af478`
+Last meaningful benchmark/development checkpoint: `dedb89665ba1a6b64e282422d855fc1eab2da492`
 Latest validated test-lock checkpoint: `8c182c21c9c81b89abcfda018f9ab8ce8176c9ab`
 Status: active
 
@@ -143,9 +143,11 @@ Current priority order:
 - Two submitted reviews only count as an independent second-review pair when their declared reviewer IDs are distinct.
 - An adjudicated record is blocked if it does not reference at least two independent submitted reviewers.
 - Canonical supervision promotion now re-checks the same independence requirement instead of trusting the adjudication queue alone.
+- Second-review work-batch selection now recognizes both `needs_second_review` and `needs_independent_second_review`, excludes pairs already reviewed by the assigned reviewer identity, and refuses unassigned second-review batches.
+- First-review batch IDs/policy output remain byte-stable; reviewer identity only affects second-review batch IDs.
 - Regression coverage was added for duplicate same-reviewer submissions and promotion attempts that try to reuse the same reviewer twice.
-- Implementation checkpoint: `2ff0df33dcf673397306c5bf444ff247e05af478`.
-- No GitHub Actions run auto-triggered from these connector commits, so this checkpoint is intentionally marked pending validation; the latest validated test-lock remains `8c182c21c9c81b89abcfda018f9ab8ce8176c9ab`.
+- Implementation checkpoint: `dedb89665ba1a6b64e282422d855fc1eab2da492`.
+- Focused local checks passed for the independence logic (5 adjudication/promotion tests and 4 second-review-selection tests), with a committed regression test covering the final explicit-reviewer guard. No GitHub Actions run auto-triggered from these connector commits, so this checkpoint remains pending full CI; the latest validated test-lock remains `8c182c21c9c81b89abcfda018f9ab8ce8176c9ab`.
 - Batch 0004 is already materialized and remains the next first-review coverage target.
 
 
