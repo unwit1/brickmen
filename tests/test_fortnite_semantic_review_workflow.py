@@ -21,3 +21,19 @@ def test_push_materializes_the_numeric_batch_that_changed() -> None:
     assert "TRIGGER_REQUESTED=1" in source
     assert "build_fortnite_semantic_review_batch_plan.py" in source
     assert 'git push origin HEAD:main' in source
+
+
+def test_manual_dispatch_can_prepare_blind_independent_second_review() -> None:
+    source = WORKFLOW.read_text(encoding="utf-8")
+
+    assert "review_mode:" in source
+    assert "second_review" in source
+    assert "reviewer_id:" in source
+    assert "reviewer_type:" in source
+    assert 'REVIEW_MODE: ${{ inputs.review_mode || \'first_review\' }}' in source
+    assert "prepare_fortnite_semantic_second_review.py" in source
+    assert "-name '*-submitted.jsonl'" in source
+    assert 'REVIEW_ARGS+=(--existing-reviews "$review_file")' in source
+    assert '--reviewer-id "$REVIEWER_ID"' in source
+    assert '--reviewer-type "$REVIEWER_TYPE"' in source
+    assert 'OFFSET=$(( (BATCH_INDEX - 1) * 25 ))' in source
