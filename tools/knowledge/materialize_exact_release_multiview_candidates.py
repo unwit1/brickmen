@@ -99,49 +99,87 @@ def materialize(
     for candidate in doc.get("candidates") or []:
         candidate_id = str(candidate["candidate_id"])
         page_url = str(candidate["source_page_url"])
-        page_bytes, page_type, resolved_page_url = fetcher(page_url)
-        html = page_bytes.decode("utf-8", errors="replace")
-        image_url = extract_image_url(html, resolved_page_url)
-        image_bytes, image_type, resolved_image_url = fetcher(image_url)
-        suffix = extension_for(resolved_image_url, image_type)
-        output_path = output_dir / f"{candidate_id}{suffix}"
-        output_path.write_bytes(image_bytes)
+        base = {
+            "candidate_id": candidate_id,
+            "reference_set_id": candidate["reference_set_id"],
+            "subject": candidate.get("subject"),
+            "identifiers": candidate.get("identifiers") or {},
+            "observed_view": candidate.get("observed_view"),
+            "source_provider": candidate.get("source_provider"),
+            "declared_source_page_url": page_url,
+            "canonical_eligible": False,
+            "training_eligible": False,
+        }
+        try:
+            direct_image_url = candidate.get("direct_image_url")
+            if isinstance(direct_image_url, str) and direct_image_url:
+                resolved_page_url = page_url
+                page_type = None
+                image_url = direct_image_url
+            else:
+                page_bytes, page_type, resolved_page_url = fetcher(page_url)
+                html = page_bytes.decode("utf-8", errors="replace")
+                image_url = extract_image_url(html, resolved_page_url)
 
-        results.append(
-            {
-                "candidate_id": candidate_id,
-                "reference_set_id": candidate["reference_set_id"],
-                "subject": candidate.get("subject"),
-                "identifiers": candidate.get("identifiers") or {},
-                "observed_view": candidate.get("observed_view"),
-                "source_provider": candidate.get("source_provider"),
-                "declared_source_page_url": page_url,
-                "resolved_source_page_url": resolved_page_url,
-                "source_page_content_type": page_type,
-                "resolved_image_url": resolved_image_url,
-                "image_content_type": image_type,
-                "local_path": output_path.name,
-                "image_sha256": sha256_bytes(image_bytes),
-                "image_bytes": len(image_bytes),
-                "byte_materialized": True,
-                "visual_review_status": "pending",
-                "exact_release_visual_identity_verified": False,
-                "canonical_eligible": False,
-                "training_eligible": False,
-                "limitations": [
-                    "Byte materialization alone does not prove the image depicts the declared exact release.",
-                    "A reviewer must visually verify exact-release identity and the claimed view before promotion.",
-                    "Hidden surfaces remain unknown even after a successful download.",
-                ],
-            }
-        )
+            image_bytes, image_type, resolved_image_url = fetcher(image_url)
+            suffix = extension_for(resolved_image_url, image_type)
+            output_path = output_dir / f"{candidate_id}{suffix}"
+            output_path.write_bytes(image_bytes)
 
+            results.append(
+                {
+                    **base,
+                    "materialization_status": "materialized",
+                    "resolved_source_page_url": resolved_page_url,
+                    "source_page_content_type": page_type,
+                    "resolved_image_url": resolved_image_url,
+                    "image_content_type": image_type,
+                    "local_path": output_path.name,
+                    "image_sha256": sha256_bytes(image_bytes),
+                    "image_bytes": len(image_bytes),
+                    "byte_materialized": True,
+                    "visual_review_status": "pending",
+                    "exact_release_visual_identity_verified": False,
+                    "limitations": [
+                        "Byte materialization alone does not prove the image depicts the declared exact release.",
+                        "A reviewer must visually verify exact-release identity and the claimed view before promotion.",
+                        "Hidden surfaces remain unknown even after a successful download.",
+                    ],
+                }
+            )
+        except Exception as exc:
+            results.append(
+                {
+                    **base,
+                    "materialization_status": "blocked",
+                    "byte_materialized": False,
+                    "visual_review_status": "blocked_on_acquisition",
+                    "exact_release_visual_identity_verified": False,
+                    "blocker": {
+                        "error_type": type(exc).__name__,
+                        "message": str(exc)[:500],
+                    },
+                    "limitations": [
+                        "The declared source could not be materialized in this run.",
+                        "No image bytes were accepted or hashed.",
+                        "Provider blocking must not be treated as evidence about the unseen view.",
+                    ],
+                }
+            )
+
+    materialized_count = sum(
+        row["materialization_status"] == "materialized" for row in results
+    )
+    blocked_count = sum(
+        row["materialization_status"] == "blocked" for row in results
+    )
     return {
         "schema": "exact-release-multiview-materialization-manifest/v1",
         "processor_version": VERSION,
         "source_schema": doc.get("schema"),
         "candidate_count": len(doc.get("candidates") or []),
-        "materialized_count": len(results),
+        "materialized_count": materialized_count,
+        "blocked_count": blocked_count,
         "results": results,
         "policy": [
             "Downloaded bytes are review evidence only and are never canonicalized automatically.",
