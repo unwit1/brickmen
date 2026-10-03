@@ -87,7 +87,6 @@ jobs:
           TRIGGER_REQUESTED=0
           if [[ "$GITHUB_EVENT_NAME" == "pull_request" ]]; then
             BATCH_INDEX="$(tr -d '[:space:]' < .github/fortnite-semantic-review-trigger)"
-            TRIGGER_REQUESTED=1
           elif [[ "$GITHUB_EVENT_NAME" == "push" ]]; then
             CHANGED_PATHS="$(git diff --name-only "$GITHUB_SHA^" "$GITHUB_SHA")"
             PUSH_BATCH_PATH="$(
