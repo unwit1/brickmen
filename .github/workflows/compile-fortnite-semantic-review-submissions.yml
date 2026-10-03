@@ -7,7 +7,8 @@ on:
       - ".github/workflows/compile-fortnite-semantic-review-submissions.yml"
       - "tools/knowledge/build_fortnite_semantic_review_submission.py"
       - "tools/knowledge/build_fortnite_semantic_review_progress.py"
-      - "knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/*-decisions.json.gz"\n      - "knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/*-decisions.json"
+      - "knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/*-decisions.json.gz"
+      - "knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/*-decisions.json"
 
 permissions:
   contents: write
@@ -41,7 +42,7 @@ jobs:
 
           for decisions in "${DECISION_FILES[@]}"; do
             filename="$(basename "$decisions")"
-            if [[ ! "$filename" =~ ^(fortnite-first-review-batch-[0-9]{4})-(.+)-decisions\.json\.gz$ ]]; then
+            if [[ ! "$filename" =~ ^(fortnite-first-review-batch-[0-9]{4})-(.+)-decisions\.json(\.gz)?$ ]]; then
               echo "Unsupported decision filename: $filename" >&2
               exit 2
             fi
