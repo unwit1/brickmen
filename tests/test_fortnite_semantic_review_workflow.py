@@ -22,6 +22,11 @@ def test_push_materializes_the_numeric_batch_that_changed() -> None:
     assert "build_fortnite_semantic_review_batch_plan.py" in source
     assert "build_fortnite_semantic_review_progress.py" in source
     assert "fortnite-semantic-review-progress.json" in source
+    assert "concurrency:" in source
+    assert "group: fortnite-semantic-review-${{ github.ref }}" in source
+    assert "git commit --amend --no-edit" in source
+    assert source.index('git pull --rebase origin main') < source.index("build_fortnite_semantic_review_batch_plan.py")
+    assert source.index("build_fortnite_semantic_review_batch_plan.py") < source.index('git push origin HEAD:main')
     assert 'git push origin HEAD:main' in source
 
 
