@@ -61,11 +61,29 @@
       "fallback": "Continue reviewed exact-release structured surface correspondence, digital/physical crosswalks, and other evidence-backed work without synthesizing missing views."
     }
   ],
-  "pending_validation": [],
+  "pending_validation": [
+    {
+      "id": "fortnite_semantic_independence_gate_v2",
+      "status": "implemented_pending_ci",
+      "commit": "2ff0df33dcf673397306c5bf444ff247e05af478",
+      "details": {
+        "adjudication_queue_version": "fortnite-semantic-adjudication-queue/v2",
+        "promotion_version": "fortnite-semantic-supervision-promotion/v2",
+        "requires_distinct_declared_reviewer_ids": true,
+        "minimum_independent_submitted_reviewers_for_adjudication": 2,
+        "promotion_rechecks_independence": true,
+        "regression_tests_added": [
+          "tests/test_build_fortnite_semantic_adjudication_queue.py",
+          "tests/test_promote_fortnite_semantic_supervision.py"
+        ],
+        "ci_note": "No workflow run auto-triggered from the connector commits; keep latest_validated_test_commit unchanged until LEGO Knowledge Tool Tests runs successfully."
+      }
+    }
+  ],
   "continuation": {
-    "instruction": "Do not restart completed architecture gates. Fortnite batches 0001-0003 now have 75 submitted GPT-5.6 Sol first reviews with 317 annotations and zero training-eligible records; require a genuinely independent second review plus adjudication before promotion. Continue first-review coverage from batch 0004, independent second-review preparation, multi-view evidence expansion, visual grammar, and failure-corpus work. Preserve exact hashes, provenance, uncertainty, and no-hidden-view rules."
+    "instruction": "Do not restart completed architecture gates. Fortnite batches 0001-0003 now have 75 submitted GPT-5.6 Sol first reviews with 317 annotations and zero training-eligible records; batch 0004 is materialized and awaits first review. Require a genuinely independent second review plus adjudication before promotion. The v2 independence gate is implemented but still needs CI validation. Continue batch-0004 first-review coverage, independent second-review preparation, multi-view evidence expansion, visual grammar, and failure-corpus work. Preserve exact hashes, provenance, uncertainty, and no-hidden-view rules."
   },
-  "last_meaningful_commit": "8c182c21c9c81b89abcfda018f9ab8ce8176c9ab",
+  "last_meaningful_commit": "2ff0df33dcf673397306c5bf444ff247e05af478",
   "latest_validated_test_commit": "8c182c21c9c81b89abcfda018f9ab8ce8176c9ab",
   "completed_batches": [
     {
