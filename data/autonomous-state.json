@@ -61,39 +61,12 @@
       "fallback": "Continue reviewed exact-release structured surface correspondence, digital/physical crosswalks, and other evidence-backed work without synthesizing missing views."
     }
   ],
-  "pending_validation": [
-    {
-      "id": "fortnite_semantic_independence_gate_v2",
-      "status": "implemented_pending_ci",
-      "commit": "dedb89665ba1a6b64e282422d855fc1eab2da492",
-      "details": {
-        "adjudication_queue_version": "fortnite-semantic-adjudication-queue/v2",
-        "promotion_version": "fortnite-semantic-supervision-promotion/v2",
-        "requires_distinct_declared_reviewer_ids": true,
-        "minimum_independent_submitted_reviewers_for_adjudication": 2,
-        "promotion_rechecks_independence": true,
-        "regression_tests_added": [
-          "tests/test_build_fortnite_semantic_adjudication_queue.py",
-          "tests/test_promote_fortnite_semantic_supervision.py"
-        ],
-        "ci_note": "No workflow run auto-triggered from the connector commits; keep latest_validated_test_commit unchanged until LEGO Knowledge Tool Tests runs successfully.",
-        "second_review_builder_recognizes_independence_status": true,
-        "second_review_builder_excludes_prior_reviewer_ids": true,
-        "second_review_requires_explicit_reviewer_id": true,
-        "first_review_deterministic_output_preserved": true,
-        "targeted_local_validation": {
-          "adjudication_and_promotion_tests_passed": 5,
-          "second_review_selection_tests_passed": 4,
-          "note": "Focused local checks passed before the final explicit-reviewer guard; the final guard is covered by a committed regression test. No GitHub Actions run auto-triggered from connector commits."
-        }
-      }
-    }
-  ],
+  "pending_validation": [],
   "continuation": {
-    "instruction": "Do not restart completed architecture gates. Fortnite batches 0001-0003 have 75 submitted GPT-5.6 Sol first reviews with 317 annotations and zero training-eligible records; batch 0004 is materialized and awaits first review. Require a genuinely independent second review plus adjudication before promotion. The v2 independence gate now also prevents assigning second-review work to an existing reviewer and requires an explicit second-review reviewer ID; it remains pending full CI because connector-authored pushes have not triggered GitHub Actions. Continue batch-0004 first-review coverage, independent second-review preparation with a genuinely distinct reviewer, multi-view evidence expansion, visual grammar, and failure-corpus work. Preserve exact hashes, provenance, uncertainty, and no-hidden-view rules."
+    "instruction": "Do not restart completed architecture gates. Fortnite batches 0001-0003 have 75 submitted GPT-5.6 Sol first reviews with 317 annotations and zero training-eligible records; batch 0004 is materialized and awaits first review. Require a genuinely independent second review plus adjudication before promotion. The validated v2 independence gate now prevents duplicate-reviewer second passes, requires explicit second-review assignment, provides a blind end-to-end second-review preparation tool, and rechecks independence at promotion. Continue batch-0004 first-review coverage, obtain a genuinely distinct second reviewer for existing submitted pairs, expand multi-view evidence, visual grammar, and failure-corpus work. Preserve exact hashes, provenance, uncertainty, and no-hidden-view rules."
   },
-  "last_meaningful_commit": "dedb89665ba1a6b64e282422d855fc1eab2da492",
-  "latest_validated_test_commit": "8c182c21c9c81b89abcfda018f9ab8ce8176c9ab",
+  "last_meaningful_commit": "b28c9b892f3b2c2f0ca283c1613e6513a4d6346e",
+  "latest_validated_test_commit": "b28c9b892f3b2c2f0ca283c1613e6513a4d6346e",
   "completed_batches": [
     {
       "id": "body_architecture_reference_acquisition_v1",
@@ -363,7 +336,25 @@
         "exact_hash_provenance_locked": true,
         "canonical_review_ids_locked": true
       }
+    },
+    {
+      "id": "fortnite_semantic_independence_gate_v2",
+      "status": "validated",
+      "details": {
+        "implementation_commit": "b28c9b892f3b2c2f0ca283c1613e6513a4d6346e",
+        "validated_test_run_id": 37142532406,
+        "full_suite_tests_passed": 425,
+        "adjudication_queue_version": "fortnite-semantic-adjudication-queue/v2",
+        "promotion_version": "fortnite-semantic-supervision-promotion/v2",
+        "second_review_preparation_version": "fortnite-semantic-second-review-preparation/v1",
+        "requires_distinct_declared_reviewer_ids": true,
+        "second_review_builder_excludes_prior_reviewer_ids": true,
+        "second_review_requires_explicit_reviewer_id": true,
+        "blind_second_review_does_not_copy_first_review_annotations": true,
+        "promotion_rechecks_independence": true,
+        "first_review_deterministic_output_preserved": true
+      }
     }
   ],
-  "latest_test_lock_commit": "8c182c21c9c81b89abcfda018f9ab8ce8176c9ab"
+  "latest_test_lock_commit": "b28c9b892f3b2c2f0ca283c1613e6513a4d6346e"
 }
