@@ -4,7 +4,7 @@
   "plan_path": "knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-plan.json",
   "plan_batch_count": 30,
   "eligible_pairs": 744,
-  "materialized_batch_count": 6,
+  "materialized_batch_count": 7,
   "complete_first_review_batch_count": 6,
   "submitted_reviewer_records": 150,
   "submitted_first_review_pairs": 150,
@@ -14,11 +14,18 @@
   "adjudicated_pairs": 0,
   "review_pairs_outside_materialized_plan": [],
   "invalid_review_records": 0,
-  "next_materialized_incomplete_batch": null,
-  "next_planned_batch": {
+  "next_materialized_incomplete_batch": {
     "batch_index": 7,
     "batch_id": "fortnite-review-first_review-ffb51cb7d7edc343",
     "path": "knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-0007.json",
+    "selected_records": 25,
+    "submitted_pairs": 0,
+    "remaining_first_review_pairs": 25
+  },
+  "next_planned_batch": {
+    "batch_index": 8,
+    "batch_id": "fortnite-review-first_review-7130481fcfc0f582",
+    "path": "knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-0008.json",
     "selected_records": 25
   },
   "batch_progress": [
@@ -104,7 +111,7 @@
       "batch_index": 7,
       "batch_id": "fortnite-review-first_review-ffb51cb7d7edc343",
       "path": "knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-0007.json",
-      "materialized": false,
+      "materialized": true,
       "selected_records": 25,
       "submitted_pairs": 0,
       "remaining_first_review_pairs": 25,
