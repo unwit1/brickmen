@@ -1,0 +1,69 @@
+{
+  "schema": "exact-release-multiview-source-candidates/v1",
+  "processor_version": "manual-web-evidence-seed/v1",
+  "generated_at": "2026-10-03",
+  "candidates": [
+    {
+      "candidate_id": "multiview-candidate-col106-fig-000935-rear",
+      "reference_set_id": "refset-flatart-col106-fig-000935",
+      "subject": "Jungle Boy",
+      "identifiers": {
+        "bricklink_minifigure_id": "col106",
+        "rebrickable_fig_num": "fig-000935"
+      },
+      "source_provider": "Rebrickable",
+      "source_page_url": "https://rebrickable.com/minifigs/fig-000935/jungle-boy/",
+      "observed_view": "rear",
+      "observed_features": [
+        "rear physical view of the exact fig-000935 release is available",
+        "rear torso appears undecorated yellow in the indexed image",
+        "rear head surface is substantially obscured by the hair element",
+        "rear legs are visible"
+      ],
+      "acquisition_status": "source_candidate",
+      "byte_verified": false,
+      "exact_image_sha256": null,
+      "canonical_eligible": false,
+      "training_eligible": false,
+      "limitations": [
+        "Observation comes from a web-indexed image preview and is not yet byte-pinned.",
+        "No claim is made about surfaces hidden by the hair or camera angle.",
+        "The exact image asset must be fetched, hashed, and reviewed before canonical promotion."
+      ]
+    },
+    {
+      "candidate_id": "multiview-candidate-sw0070-fig-003522-rear",
+      "reference_set_id": "refset-flatart-sw0070-fig-003522",
+      "subject": "Princess Leia - Slave Outfit",
+      "identifiers": {
+        "bricklink_minifigure_id": "sw0070",
+        "rebrickable_fig_num": "fig-003522"
+      },
+      "source_provider": "Rebrickable",
+      "source_page_url": "https://rebrickable.com/minifigs/fig-003522/princess-leia-slave-outfit-yellow-skin-neck-bracket/",
+      "observed_view": "rear",
+      "observed_features": [
+        "rear physical view of the exact fig-003522 release is available",
+        "light gray neck bracket is visible across the upper back",
+        "rear torso appears yellow where unobscured by the neck bracket",
+        "rear legs are visible",
+        "rear head surface is largely obscured by the hair element"
+      ],
+      "acquisition_status": "source_candidate",
+      "byte_verified": false,
+      "exact_image_sha256": null,
+      "canonical_eligible": false,
+      "training_eligible": false,
+      "limitations": [
+        "Observation comes from a web-indexed image preview and is not yet byte-pinned.",
+        "No claim is made about surfaces hidden by the hair, neck bracket, or camera angle.",
+        "The exact image asset must be fetched, hashed, and reviewed before canonical promotion."
+      ]
+    }
+  ],
+  "policy": [
+    "Source candidates are leads for exact-media acquisition, not canonical supervision.",
+    "Indexed previews may guide acquisition but never substitute for byte-pinned evidence.",
+    "Only directly visible surfaces may be described; hidden content remains unknown."
+  ]
+}
