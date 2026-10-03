@@ -212,6 +212,23 @@ def test_work_item_keeps_measurement_signals_nonsemantic() -> None:
     assert template["evidence"]["claims_unobserved_surfaces"] is False
 
 
+def test_second_review_requires_explicit_reviewer_assignment() -> None:
+    tool = load_tool()
+
+    try:
+        tool.build(
+            [queue_record("pair-a", 10)],
+            mode="second_review",
+            limit=1,
+            existing_reviews=[existing_review("pair-a", reviewer_id="reviewer-a")],
+            adjudication_rows=[adjudication("pair-a", "needs_second_review")],
+        )
+    except ValueError as exc:
+        assert "explicit independent reviewer_id" in str(exc)
+    else:
+        raise AssertionError("expected unassigned second-review batch to be rejected")
+
+
 def test_adjudication_batch_uses_adjudicator_role() -> None:
     tool = load_tool()
     result = tool.build(
