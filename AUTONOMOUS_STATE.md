@@ -104,6 +104,7 @@ Current priority order:
 - A deterministic multi-view acquisition queue now ranks missing exact-release rear/side evidence without asserting unseen decoration exists: 15 torso-rear targets, 10 head-rear targets, 7 lower-body rear/side targets, and left/right physical side-view targets for all 23 releases.
 - Highest-priority current acquisition targets are Jungle Boy (col106) and Princess Leia - Slave Outfit (sw0070), where multiple exact front surfaces are already known but complementary rear/side evidence is absent.
 - Exact-release Rebrickable rear-photo leads for both top targets are now preserved in `exact-release-multiview-source-candidates-v1.json` as noncanonical, unpinned acquisition candidates. They are explicitly byte-unverified and training-ineligible until the exact image assets are fetched, hashed, and reviewed.
+- `materialize_exact_release_multiview_candidates.py` now attempts byte-pinned acquisition without promotion, records per-candidate provider failures as structured blocked state, and supports an explicit direct-image URL when a trustworthy asset URL is known. GitHub-hosted acquisition currently receives HTTP 403 from the two seeded Rebrickable page URLs, so no bytes or hashes have been accepted for those candidates.
 - Canonical artifacts:
   - `knowledge/libraries/lego-minifigure-customs/data/exact-release-flat-art-reference-sets-v1.jsonl`
   - `knowledge/libraries/lego-minifigure-customs/data/exact-release-flat-art-reference-sets-v1-summary.json`
