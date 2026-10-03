@@ -187,6 +187,16 @@ Current priority order:
 - The batch remains non-canonical and training-ineligible pending a genuinely independent second review and explicit adjudication.
 - Across batches 0001-0007, first-review coverage is now 175/744 high-priority pairs with 717 annotations; 569 high-priority pairs remain.
 
+### Fortnite semantic first-review batch 0008
+
+- Deterministic batch 0008 was materialized at commit `388d53207265368a5c4363d0e3f5044ca65c8760`.
+- Exact hash-pinned review media came from workflow run `37155139511`, artifact `11286060233`, batch `fortnite-review-first_review-7130481fcfc0f582`.
+- Batch 0008 adds 25 submitted GPT-5.6 Sol first reviews with 100 explicit semantic annotations.
+- Compact visual decisions are byte-locked at `fortnite-first-review-batch-0008-gpt56sol-decisions.json.gz`; canonical JSONL and summary are deterministically compiled through the existing submission builder.
+- Observations remain limited to directly visible source/front and LEGO wide/front evidence; rear and hidden surfaces are not inferred.
+- The batch remains non-canonical and training-ineligible pending a genuinely independent second review and explicit adjudication.
+- Across batches 0001-0008, first-review coverage is now 200/744 high-priority pairs with 817 annotations; 544 high-priority pairs remain.
+
 ### Independent second-review gate hardening — validated
 
 - Adjudication queue semantics are now `fortnite-semantic-adjudication-queue/v2`.
@@ -200,19 +210,19 @@ Current priority order:
 - The end-to-end `prepare_fortnite_semantic_second_review.py` helper now composes adjudication-state building and blind second-review selection while keeping prior semantic annotations out of the reviewer batch.
 - LEGO Knowledge Tool Tests run `37142721848` passed the full suite at this checkpoint: **426 passed**.
 - Build Fortnite Semantic Review UI run `37142712478` completed successfully after the workflow integration.
-- Batch 0007 first review is complete; batch 0008 is the next first-review coverage target.
+- Batch 0008 first review is complete; batch 0009 is the next first-review coverage target.
 
 
 ## Active blockers / constraints
 
-1. **Fortnite semantic supervision adjudication** — batches 0001-0007 now provide 175 submitted first reviews (717 annotations total), but canonical supervision still requires independent second reviews and explicit adjudication. The remaining 569 high-priority pairs still lack submitted first-review coverage.
+1. **Fortnite semantic supervision adjudication** — batches 0001-0008 now provide 200 submitted first reviews (817 annotations total), but canonical supervision still requires independent second reviews and explicit adjudication. The remaining 544 high-priority pairs still lack submitted first-review coverage.
 2. **Physical multi-view ground truth** — structured exact-release flat-art correspondence has improved, but exact rear/side physical photography remains limited; do not synthesize hidden views.
 3. **Reference-fit torso segmentation** — lower-vs-upper torso segment length remains underidentified until additional landmarks are available.
 
 ## Highest-value next work
 
 ### P0
-1. Continue Fortnite first-review coverage with batch 0008 next; obtain genuinely independent second reviews for existing submitted batches and adjudicate before any canonical promotion.
+1. Continue Fortnite first-review coverage with batch 0009 next; obtain genuinely independent second reviews for existing submitted batches and adjudicate before any canonical promotion.
 2. Expand exact-release multi-view ReferenceSets and cross-surface correspondence beyond structured flat-art, without inventing hidden views.
 
 ### P1
