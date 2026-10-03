@@ -2,6 +2,12 @@ name: Materialize Exact-Release Multiview Candidates
 
 on:
   workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - "knowledge/libraries/lego-minifigure-customs/data/exact-release-multiview-source-candidates-v1.json"
+      - "tools/knowledge/materialize_exact_release_multiview_candidates.py"
+      - ".github/workflows/materialize-exact-release-multiview-candidates.yml"
   push:
     branches: [main]
     paths:
