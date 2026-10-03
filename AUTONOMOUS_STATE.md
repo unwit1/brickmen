@@ -2,8 +2,8 @@
 
 Last updated: 2026-10-01
 Base commit before autonomous bootstrap: `bda2cac8ea8b68bb9e3e5b4d0cf380a9c6ee3ae6`
-Last meaningful benchmark/development checkpoint: `30dc8e5d01bce9a0b118e33e5290aa1b9aba628f`
-Latest validated test-lock checkpoint: `30dc8e5d01bce9a0b118e33e5290aa1b9aba628f`
+Last meaningful benchmark/development checkpoint: `4991692cc21b40eadac7fce01a0936d6e59b8c88`
+Latest validated test-lock checkpoint: `4991692cc21b40eadac7fce01a0936d6e59b8c88`
 Status: active
 
 ## Current major objective
@@ -137,6 +137,16 @@ Current priority order:
 - Exact-hash and canonical-ID regression validation passed in LEGO Knowledge Tool Tests run `36892803590` on commit `8c182c21c9c81b89abcfda018f9ab8ce8176c9ab`.
 - Across batches 0001-0003, first-review coverage is now 75/744 high-priority pairs with 317 annotations; 669 high-priority pairs remain.
 
+### Fortnite semantic first-review batch 0004
+
+- Batch 0004 adds 25 submitted GPT-5.6 Sol first reviews with 100 explicit semantic annotations.
+- Exact review media came from workflow run `36892963786`, artifact `11177481661`, batch `fortnite-review-first_review-606e51443a942a92`.
+- The canonical-ID workflow mechanically normalized the submitted corpus at commit `93301c3a3e720a08ef9476b8ee8c8ea027c611fa`.
+- Multi-style source composites are explicitly limitation-scoped; rear and hidden surfaces are never inferred.
+- The batch remains non-canonical and training-ineligible pending a genuinely independent second review and adjudication.
+- LEGO Knowledge Tool Tests run `37143420363` passed **428 tests** on commit `4991692cc21b40eadac7fce01a0936d6e59b8c88`.
+- Across batches 0001-0004, first-review coverage is now 100/744 high-priority pairs with 417 annotations; 644 high-priority pairs remain.
+
 ### Independent second-review gate hardening — validated
 
 - Adjudication queue semantics are now `fortnite-semantic-adjudication-queue/v2`.
@@ -160,7 +170,7 @@ Current priority order:
 ## Highest-value next work
 
 ### P0
-1. Continue Fortnite first-review coverage from materialized batch 0004 onward; obtain genuinely independent second reviews for existing submitted batches and adjudicate before any canonical promotion.
+1. Continue Fortnite first-review coverage with batch 0005 next; obtain genuinely independent second reviews for existing submitted batches and adjudicate before any canonical promotion.
 2. Expand exact-release multi-view ReferenceSets and cross-surface correspondence beyond structured flat-art, without inventing hidden views.
 
 ### P1
