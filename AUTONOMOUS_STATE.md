@@ -2,7 +2,7 @@
 
 Last updated: 2026-10-01
 Base commit before autonomous bootstrap: `bda2cac8ea8b68bb9e3e5b4d0cf380a9c6ee3ae6`
-Last meaningful benchmark/development checkpoint: `8c182c21c9c81b89abcfda018f9ab8ce8176c9ab`
+Last meaningful benchmark/development checkpoint: `2ff0df33dcf673397306c5bf444ff247e05af478`
 Latest validated test-lock checkpoint: `8c182c21c9c81b89abcfda018f9ab8ce8176c9ab`
 Status: active
 
@@ -137,6 +137,18 @@ Current priority order:
 - Exact-hash and canonical-ID regression validation passed in LEGO Knowledge Tool Tests run `36892803590` on commit `8c182c21c9c81b89abcfda018f9ab8ce8176c9ab`.
 - Across batches 0001-0003, first-review coverage is now 75/744 high-priority pairs with 317 annotations; 669 high-priority pairs remain.
 
+### Independent second-review gate hardening — pending CI validation
+
+- Adjudication queue semantics are now `fortnite-semantic-adjudication-queue/v2`.
+- Two submitted reviews only count as an independent second-review pair when their declared reviewer IDs are distinct.
+- An adjudicated record is blocked if it does not reference at least two independent submitted reviewers.
+- Canonical supervision promotion now re-checks the same independence requirement instead of trusting the adjudication queue alone.
+- Regression coverage was added for duplicate same-reviewer submissions and promotion attempts that try to reuse the same reviewer twice.
+- Implementation checkpoint: `2ff0df33dcf673397306c5bf444ff247e05af478`.
+- No GitHub Actions run auto-triggered from these connector commits, so this checkpoint is intentionally marked pending validation; the latest validated test-lock remains `8c182c21c9c81b89abcfda018f9ab8ce8176c9ab`.
+- Batch 0004 is already materialized and remains the next first-review coverage target.
+
+
 ## Active blockers / constraints
 
 1. **Fortnite semantic supervision adjudication** — batches 0001-0003 now provide 75 submitted first reviews (317 annotations total), but canonical supervision still requires an independent second review and explicit adjudication. The remaining 669 high-priority pairs still need first-review coverage.
@@ -146,7 +158,7 @@ Current priority order:
 ## Highest-value next work
 
 ### P0
-1. Continue Fortnite first-review coverage from batch 0002 onward; obtain an independent second review for batch 0001 and adjudicate before any canonical promotion.
+1. Continue Fortnite first-review coverage from materialized batch 0004 onward; obtain genuinely independent second reviews for existing submitted batches and adjudicate before any canonical promotion.
 2. Expand exact-release multi-view ReferenceSets and cross-surface correspondence beyond structured flat-art, without inventing hidden views.
 
 ### P1
