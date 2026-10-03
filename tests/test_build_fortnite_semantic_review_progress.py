@@ -37,11 +37,11 @@ def test_current_fortnite_semantic_review_progress_baseline() -> None:
     assert result["eligible_pairs"] == 744
     plan = json.loads((PROGRESS.parent / "fortnite-first-review-batch-plan.json").read_text(encoding="utf-8"))
     assert result["materialized_batch_count"] == plan["materialized_batch_count"]
-    assert result["complete_first_review_batch_count"] == 6
-    assert result["submitted_reviewer_records"] == 150
-    assert result["submitted_first_review_pairs"] == 150
-    assert result["remaining_first_review_pairs"] == 594
-    assert result["submitted_semantic_annotations"] == 617
+    assert result["complete_first_review_batch_count"] == 7
+    assert result["submitted_reviewer_records"] == 175
+    assert result["submitted_first_review_pairs"] == 175
+    assert result["remaining_first_review_pairs"] == 569
+    assert result["submitted_semantic_annotations"] == 717
     assert result["independently_double_reviewed_pairs"] == 0
     assert result["adjudicated_pairs"] == 0
     assert result["invalid_review_records"] == 0
@@ -49,6 +49,8 @@ def test_current_fortnite_semantic_review_progress_baseline() -> None:
 
     if result["materialized_batch_count"] > result["complete_first_review_batch_count"]:
         assert result["next_materialized_incomplete_batch"]["batch_index"] == result["complete_first_review_batch_count"] + 1
+    else:
+        assert result["next_materialized_incomplete_batch"] is None
     if result["materialized_batch_count"] < result["plan_batch_count"]:
         assert result["next_planned_batch"]["batch_index"] == result["materialized_batch_count"] + 1
 
