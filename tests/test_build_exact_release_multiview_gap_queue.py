@@ -90,3 +90,25 @@ def test_checked_in_gap_queue_matches_generator() -> None:
     expected = tool.build(load_reference_sets())
     actual = json.loads(OUTPUT.read_text(encoding="utf-8"))
     assert actual == expected
+
+
+def test_seeded_multiview_candidates_are_exact_release_and_noncanonical() -> None:
+    candidate_path = (
+        ROOT
+        / "knowledge"
+        / "libraries"
+        / "lego-minifigure-customs"
+        / "data"
+        / "exact-release-multiview-source-candidates-v1.json"
+    )
+    doc = json.loads(candidate_path.read_text(encoding="utf-8"))
+    refs = {row["reference_set_id"]: row for row in load_reference_sets()}
+
+    assert len(doc["candidates"]) >= 2
+    for candidate in doc["candidates"]:
+        ref = refs[candidate["reference_set_id"]]
+        assert candidate["identifiers"] == ref["identifiers"]
+        assert candidate["byte_verified"] is False
+        assert candidate["canonical_eligible"] is False
+        assert candidate["training_eligible"] is False
+        assert candidate["exact_image_sha256"] is None
