@@ -35,7 +35,7 @@ def test_current_fortnite_semantic_review_progress_baseline() -> None:
     result = tool.build_progress()
 
     assert result["eligible_pairs"] == 744
-    assert result["materialized_batch_count"] == 6
+    assert result["materialized_batch_count"] == 7
     assert result["complete_first_review_batch_count"] == 6
     assert result["submitted_reviewer_records"] == 150
     assert result["submitted_first_review_pairs"] == 150
@@ -46,8 +46,9 @@ def test_current_fortnite_semantic_review_progress_baseline() -> None:
     assert result["invalid_review_records"] == 0
     assert result["review_pairs_outside_materialized_plan"] == []
 
-    assert result["next_materialized_incomplete_batch"] is None
-    assert result["next_planned_batch"]["batch_index"] == 7
+    assert result["next_materialized_incomplete_batch"]["batch_index"] == 7
+    assert result["next_materialized_incomplete_batch"]["submitted_pairs"] == 0
+    assert result["next_planned_batch"]["batch_index"] == 8
 
 
 def test_progress_tracks_each_materialized_batch_without_manual_counts() -> None:
@@ -55,8 +56,8 @@ def test_progress_tracks_each_materialized_batch_without_manual_counts() -> None
     result = tool.build_progress()
 
     materialized = [row for row in result["batch_progress"] if row["materialized"]]
-    assert [row["batch_index"] for row in materialized] == [1, 2, 3, 4, 5, 6]
-    assert [row["submitted_pairs"] for row in materialized] == [25, 25, 25, 25, 25, 25]
+    assert [row["batch_index"] for row in materialized] == [1, 2, 3, 4, 5, 6, 7]
+    assert [row["submitted_pairs"] for row in materialized] == [25, 25, 25, 25, 25, 25, 0]
     assert [row["first_review_complete"] for row in materialized] == [
         True,
         True,
@@ -64,6 +65,7 @@ def test_progress_tracks_each_materialized_batch_without_manual_counts() -> None
         True,
         True,
         True,
+        False,
     ]
 
 
