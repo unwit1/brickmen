@@ -2,12 +2,20 @@ name: LEGO Knowledge Tool Tests
 
 on:
   workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/lego-knowledge-tool-tests.yml'
+      - 'tools/knowledge/**'
+      - 'tests/**'
+      - 'knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/**'
   push:
     branches: [main]
     paths:
       - '.github/workflows/lego-knowledge-tool-tests.yml'
       - 'tools/knowledge/**'
       - 'tests/**'
+      - 'knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/**'
 
 permissions:
   contents: read

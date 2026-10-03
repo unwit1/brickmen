@@ -1,0 +1,77 @@
+name: Compile Fortnite Semantic Review Submissions
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/compile-fortnite-semantic-review-submissions.yml"
+      - "tools/knowledge/build_fortnite_semantic_review_submission.py"
+      - "tools/knowledge/build_fortnite_semantic_review_progress.py"
+      - "knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/*-decisions.json.gz"
+
+permissions:
+  contents: write
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out Brickmen
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Compile compact semantic review decisions
+        shell: bash
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          REVIEW_DIR="knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches"
+          DECISION_FILES=("$REVIEW_DIR"/*-decisions.json.gz)
+          if (( ${#DECISION_FILES[@]} == 0 )); then
+            echo "No compact decision files found."
+            exit 0
+          fi
+
+          for decisions in "${DECISION_FILES[@]}"; do
+            filename="$(basename "$decisions")"
+            if [[ ! "$filename" =~ ^(fortnite-first-review-batch-[0-9]{4})-(.+)-decisions\.json\.gz$ ]]; then
+              echo "Unsupported decision filename: $filename" >&2
+              exit 2
+            fi
+            batch_stem="${BASH_REMATCH[1]}"
+            reviewer_stem="${BASH_REMATCH[2]}"
+            batch="$REVIEW_DIR/${batch_stem}.json"
+            output="$REVIEW_DIR/${batch_stem}-${reviewer_stem}-submitted.jsonl"
+            summary="$REVIEW_DIR/${batch_stem}-${reviewer_stem}-summary.json"
+            test -f "$batch"
+
+            python tools/knowledge/build_fortnite_semantic_review_submission.py \
+              --batch "$batch" \
+              --decisions "$decisions" \
+              --output "$output" \
+              --summary "$summary"
+          done
+
+          python tools/knowledge/build_fortnite_semantic_review_progress.py
+
+      - name: Persist deterministic generated review state
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "brickmen-review-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/
+          if git diff --cached --quiet; then
+            echo "Generated semantic review state is already current."
+            exit 0
+          fi
+          git commit -m "data: compile Fortnite semantic review submissions"
+          git pull --rebase origin "$GITHUB_REF_NAME"
+          git push origin "HEAD:$GITHUB_REF_NAME"
