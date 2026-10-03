@@ -65,7 +65,7 @@
     {
       "id": "fortnite_semantic_independence_gate_v2",
       "status": "implemented_pending_ci",
-      "commit": "2ff0df33dcf673397306c5bf444ff247e05af478",
+      "commit": "dedb89665ba1a6b64e282422d855fc1eab2da492",
       "details": {
         "adjudication_queue_version": "fortnite-semantic-adjudication-queue/v2",
         "promotion_version": "fortnite-semantic-supervision-promotion/v2",
@@ -76,14 +76,23 @@
           "tests/test_build_fortnite_semantic_adjudication_queue.py",
           "tests/test_promote_fortnite_semantic_supervision.py"
         ],
-        "ci_note": "No workflow run auto-triggered from the connector commits; keep latest_validated_test_commit unchanged until LEGO Knowledge Tool Tests runs successfully."
+        "ci_note": "No workflow run auto-triggered from the connector commits; keep latest_validated_test_commit unchanged until LEGO Knowledge Tool Tests runs successfully.",
+        "second_review_builder_recognizes_independence_status": true,
+        "second_review_builder_excludes_prior_reviewer_ids": true,
+        "second_review_requires_explicit_reviewer_id": true,
+        "first_review_deterministic_output_preserved": true,
+        "targeted_local_validation": {
+          "adjudication_and_promotion_tests_passed": 5,
+          "second_review_selection_tests_passed": 4,
+          "note": "Focused local checks passed before the final explicit-reviewer guard; the final guard is covered by a committed regression test. No GitHub Actions run auto-triggered from connector commits."
+        }
       }
     }
   ],
   "continuation": {
-    "instruction": "Do not restart completed architecture gates. Fortnite batches 0001-0003 now have 75 submitted GPT-5.6 Sol first reviews with 317 annotations and zero training-eligible records; batch 0004 is materialized and awaits first review. Require a genuinely independent second review plus adjudication before promotion. The v2 independence gate is implemented but still needs CI validation. Continue batch-0004 first-review coverage, independent second-review preparation, multi-view evidence expansion, visual grammar, and failure-corpus work. Preserve exact hashes, provenance, uncertainty, and no-hidden-view rules."
+    "instruction": "Do not restart completed architecture gates. Fortnite batches 0001-0003 have 75 submitted GPT-5.6 Sol first reviews with 317 annotations and zero training-eligible records; batch 0004 is materialized and awaits first review. Require a genuinely independent second review plus adjudication before promotion. The v2 independence gate now also prevents assigning second-review work to an existing reviewer and requires an explicit second-review reviewer ID; it remains pending full CI because connector-authored pushes have not triggered GitHub Actions. Continue batch-0004 first-review coverage, independent second-review preparation with a genuinely distinct reviewer, multi-view evidence expansion, visual grammar, and failure-corpus work. Preserve exact hashes, provenance, uncertainty, and no-hidden-view rules."
   },
-  "last_meaningful_commit": "2ff0df33dcf673397306c5bf444ff247e05af478",
+  "last_meaningful_commit": "dedb89665ba1a6b64e282422d855fc1eab2da492",
   "latest_validated_test_commit": "8c182c21c9c81b89abcfda018f9ab8ce8176c9ab",
   "completed_batches": [
     {
