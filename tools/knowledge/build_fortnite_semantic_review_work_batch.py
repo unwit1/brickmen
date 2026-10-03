@@ -256,6 +256,17 @@ def build(
         ("|".join([*digest_parts, *pair_ids])).encode("utf-8")
     ).hexdigest()[:16]
 
+    policy = [
+        "Work batches are deterministic for the same queue, mode, filters, and offset.",
+        "Measurement signals are prioritization hints only.",
+        "Do not infer hidden or rear features from front-only evidence.",
+        "First and second reviews remain non-canonical until explicit adjudication.",
+    ]
+    if mode == "second_review":
+        policy.append(
+            "Second-review work must be assigned to a reviewer identity distinct from prior submitted reviewers for the same pair."
+        )
+
     return {
         "schema": "fortnite-semantic-review-work-batch/v1",
         "processor_version": VERSION,
@@ -268,13 +279,7 @@ def build(
         "reviewer_id": reviewer_id,
         "reviewer_type": reviewer_type,
         "items": items,
-        "policy": [
-            "Work batches are deterministic for the same queue, mode, filters, and offset.",
-            "Measurement signals are prioritization hints only.",
-            "Do not infer hidden or rear features from front-only evidence.",
-            "First and second reviews remain non-canonical until explicit adjudication.",
-            "Second-review work must be assigned to a reviewer identity distinct from prior submitted reviewers for the same pair.",
-        ],
+        "policy": policy,
     }
 
 
