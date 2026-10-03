@@ -102,6 +102,24 @@ def _reviewed_pair_ids(reviews: Iterable[dict[str, Any]]) -> set[str]:
     }
 
 
+def _submitted_reviewer_ids_by_pair(
+    reviews: Iterable[dict[str, Any]],
+) -> dict[str, set[str]]:
+    by_pair: dict[str, set[str]] = {}
+    for record in reviews:
+        if record.get("review_status") != "submitted":
+            continue
+        pair_id = record.get("translation_pair_id")
+        reviewer = record.get("reviewer") or {}
+        reviewer_id = reviewer.get("reviewer_id")
+        if not isinstance(pair_id, str) or not pair_id:
+            continue
+        if not isinstance(reviewer_id, str) or not reviewer_id.strip():
+            continue
+        by_pair.setdefault(pair_id, set()).add(reviewer_id.strip().casefold())
+    return by_pair
+
+
 def _status_by_pair(
     adjudication_rows: Iterable[dict[str, Any]],
 ) -> dict[str, str]:
@@ -121,6 +139,7 @@ def select(
     min_priority_score: float = 0.0,
     existing_reviews: Iterable[dict[str, Any]] = (),
     adjudication_rows: Iterable[dict[str, Any]] = (),
+    reviewer_id: str | None = None,
 ) -> list[dict[str, Any]]:
     if mode not in MODES:
         raise ValueError(f"mode must be one of {sorted(MODES)}")
@@ -129,8 +148,15 @@ def select(
     if offset < 0:
         raise ValueError("offset must be non-negative")
 
+    existing_reviews = list(existing_reviews)
     reviewed_pairs = _reviewed_pair_ids(existing_reviews)
+    submitted_reviewers_by_pair = _submitted_reviewer_ids_by_pair(existing_reviews)
     status_by_pair = _status_by_pair(adjudication_rows)
+    normalized_reviewer_id = (
+        reviewer_id.strip().casefold()
+        if isinstance(reviewer_id, str) and reviewer_id.strip()
+        else None
+    )
     eligible: list[dict[str, Any]] = []
 
     for record in queue_records:
@@ -148,7 +174,17 @@ def select(
             if pair_id in reviewed_pairs:
                 continue
         elif mode == "second_review":
-            if status_by_pair.get(pair_id) != "needs_second_review":
+            if status_by_pair.get(pair_id) not in {
+                "needs_second_review",
+                "needs_independent_second_review",
+            }:
+                continue
+            if (
+                normalized_reviewer_id
+                and normalized_reviewer_id != "unassigned"
+                and normalized_reviewer_id
+                in submitted_reviewers_by_pair.get(pair_id, set())
+            ):
                 continue
         elif mode == "adjudication":
             if status_by_pair.get(pair_id) not in {
@@ -187,6 +223,7 @@ def build(
         min_priority_score=min_priority_score,
         existing_reviews=existing_reviews,
         adjudication_rows=adjudication_rows,
+        reviewer_id=reviewer_id,
     )
     review_role = "adjudicator" if mode == "adjudication" else "reviewer"
     items = [
@@ -212,8 +249,11 @@ def build(
     ]
 
     pair_ids = [str(item["translation_pair_id"]) for item in items]
+    digest_parts = [VERSION, mode]
+    if mode == "second_review":
+        digest_parts.append(reviewer_id.strip().casefold())
     digest = hashlib.sha256(
-        ("|".join([VERSION, mode, *pair_ids])).encode("utf-8")
+        ("|".join([*digest_parts, *pair_ids])).encode("utf-8")
     ).hexdigest()[:16]
 
     return {
@@ -233,6 +273,7 @@ def build(
             "Measurement signals are prioritization hints only.",
             "Do not infer hidden or rear features from front-only evidence.",
             "First and second reviews remain non-canonical until explicit adjudication.",
+            "Second-review work must be assigned to a reviewer identity distinct from prior submitted reviewers for the same pair.",
         ],
     }
 
@@ -265,6 +306,13 @@ def main() -> None:
     if args.mode in {"second_review", "adjudication"} and not adjudication_rows:
         raise SystemExit(
             "--adjudication-queue is required for second_review/adjudication modes"
+        )
+    if (
+        args.mode == "second_review"
+        and args.reviewer_id.strip().casefold() == "unassigned"
+    ):
+        raise SystemExit(
+            "--reviewer-id must identify the independent reviewer for second_review mode"
         )
 
     result = build(
