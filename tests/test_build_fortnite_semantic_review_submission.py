@@ -11,6 +11,8 @@ BATCH = BATCH_DIR / "fortnite-first-review-batch-0006.json"
 DECISIONS = BATCH_DIR / "fortnite-first-review-batch-0006-gpt56sol-decisions.json.gz"
 BATCH7 = BATCH_DIR / "fortnite-first-review-batch-0007.json"
 DECISIONS7 = BATCH_DIR / "fortnite-first-review-batch-0007-gpt56sol-decisions.json.gz"
+BATCH8 = BATCH_DIR / "fortnite-first-review-batch-0008.json"
+DECISIONS8 = BATCH_DIR / "fortnite-first-review-batch-0008-gpt56sol-decisions.json.gz"
 
 
 def load_tool():
