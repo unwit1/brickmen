@@ -160,10 +160,12 @@ jobs:
                 if [[ "$TRIGGER_REQUESTED" == "1" ]]; then
                   cp .agent-local/review-ui/review-batch.json "$CANONICAL_BATCH_PATH"
                   python tools/knowledge/build_fortnite_semantic_review_batch_plan.py
+                  python tools/knowledge/build_fortnite_semantic_review_progress.py
                   git config user.name "brickmen-review-bot"
                   git config user.email "actions@users.noreply.github.com"
                   git add "$CANONICAL_BATCH_PATH" \
-                    knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-plan.json
+                    knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-plan.json \
+                    knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-semantic-review-progress.json
                   if ! git diff --cached --quiet; then
                     git commit -m "data: materialize Fortnite semantic review batch $(printf '%04d' "$BATCH_INDEX")"
                     git pull --rebase origin main
