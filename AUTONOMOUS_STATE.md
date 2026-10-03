@@ -21,7 +21,7 @@ Two major architecture evaluation gates are now fully runnable:
 - Architecture-target evaluation coverage remains 34/49 registered architecture families, with zero remaining P0 official gaps.
 
 Current priority order:
-1. continue Fortnite source-appearance -> LEGO semantic first-review coverage from batch 0006 onward while preserving the requirement for a genuinely independent second review/adjudication before canonical promotion;
+1. continue Fortnite source-appearance -> LEGO semantic first-review coverage from batch 0008 onward while preserving the requirement for a genuinely independent second review/adjudication before canonical promotion;
 2. expand exact-release multi-view/cross-surface correspondence beyond the new reviewed flat-art ReferenceSet layer;
 3. expand official visual grammar and negative/failure critic corpora;
 4. keep model/tool/dataset registries current and continue ontology-breaker searches;
@@ -170,6 +170,17 @@ Current priority order:
 - The batch remains non-canonical and training-ineligible pending a genuinely independent second review and explicit adjudication.
 - Across batches 0001-0006, first-review coverage is now 150/744 high-priority pairs with 617 annotations; 594 high-priority pairs remain.
 
+### Fortnite semantic first-review batch 0007
+
+- Deterministic batch 0007 was materialized at commit `ccda444e7e32ad76fbc58caf3b899187669028be`.
+- Exact hash-pinned review media came from workflow run `37152595877`, artifact `11284218022`.
+- Batch 0007 adds 25 submitted GPT-5.6 Sol first reviews with 100 explicit semantic annotations.
+- Compact visual decisions are byte-locked at `fortnite-first-review-batch-0007-gpt56sol-decisions.json.gz` and compile deterministically into the canonical submitted JSONL and summary.
+- Compiler workflow coverage now supports both gzip and plain JSON compact-decision bundles so future batches can avoid binary transfer fragility when desired.
+- Rear and hidden surfaces are never inferred; observations remain limited to the exact source/front and LEGO wide/front evidence.
+- The batch remains non-canonical and training-ineligible pending a genuinely independent second review and explicit adjudication.
+- Across batches 0001-0007, first-review coverage is now 175/744 high-priority pairs with 717 annotations; 569 high-priority pairs remain.
+
 ### Independent second-review gate hardening — validated
 
 - Adjudication queue semantics are now `fortnite-semantic-adjudication-queue/v2`.
@@ -183,19 +194,19 @@ Current priority order:
 - The end-to-end `prepare_fortnite_semantic_second_review.py` helper now composes adjudication-state building and blind second-review selection while keeping prior semantic annotations out of the reviewer batch.
 - LEGO Knowledge Tool Tests run `37142721848` passed the full suite at this checkpoint: **426 passed**.
 - Build Fortnite Semantic Review UI run `37142712478` completed successfully after the workflow integration.
-- Batch 0006 first review is complete; batch 0007 is the next first-review coverage target.
+- Batch 0007 first review is complete; batch 0008 is the next first-review coverage target.
 
 
 ## Active blockers / constraints
 
-1. **Fortnite semantic supervision adjudication** — batches 0001-0006 now provide 150 submitted first reviews (617 annotations total), but canonical supervision still requires independent second reviews and explicit adjudication. The remaining 594 high-priority pairs still lack submitted first-review coverage.
+1. **Fortnite semantic supervision adjudication** — batches 0001-0007 now provide 175 submitted first reviews (717 annotations total), but canonical supervision still requires independent second reviews and explicit adjudication. The remaining 569 high-priority pairs still lack submitted first-review coverage.
 2. **Physical multi-view ground truth** — structured exact-release flat-art correspondence has improved, but exact rear/side physical photography remains limited; do not synthesize hidden views.
 3. **Reference-fit torso segmentation** — lower-vs-upper torso segment length remains underidentified until additional landmarks are available.
 
 ## Highest-value next work
 
 ### P0
-1. Continue Fortnite first-review coverage with batch 0007 next; obtain genuinely independent second reviews for existing submitted batches and adjudicate before any canonical promotion.
+1. Continue Fortnite first-review coverage with batch 0008 next; obtain genuinely independent second reviews for existing submitted batches and adjudicate before any canonical promotion.
 2. Expand exact-release multi-view ReferenceSets and cross-surface correspondence beyond structured flat-art, without inventing hidden views.
 
 ### P1
@@ -259,6 +270,10 @@ For Fortnite semantic supervision:
 - `knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-0006-gpt56sol-decisions.json.gz`
 - `knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-0006-gpt56sol-submitted.jsonl`
 - `knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-0006-gpt56sol-summary.json`
+- `knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-0007.json`
+- `knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-0007-gpt56sol-decisions.json.gz`
+- `knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-0007-gpt56sol-submitted.jsonl`
+- `knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-0007-gpt56sol-summary.json`
 - `tools/knowledge/build_fortnite_semantic_review_submission.py`
 - `.github/workflows/compile-fortnite-semantic-review-submissions.yml`
 - `tools/knowledge/canonicalize_fortnite_semantic_review_ids.py`
