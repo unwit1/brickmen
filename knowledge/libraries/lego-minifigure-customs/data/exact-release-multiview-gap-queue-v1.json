@@ -1,0 +1,1002 @@
+{
+  "schema": "exact-release-multiview-gap-queue/v1",
+  "processor_version": "exact-release-multiview-gap-queue/v1",
+  "source_reference_sets": 23,
+  "queued_reference_sets": 23,
+  "target_counts": {
+    "head_rear_evidence": 10,
+    "lower_body_rear_or_side_evidence": 7,
+    "physical_left_side_view": 23,
+    "physical_right_side_view": 23,
+    "torso_rear_evidence": 15
+  },
+  "queue": [
+    {
+      "reference_set_id": "refset-flatart-col106-fig-000935",
+      "sample_id": "physicalrelease::bricklink::col106",
+      "subject": "Jungle Boy",
+      "identifiers": {
+        "bricklink_minifigure_id": "col106",
+        "rebrickable_fig_num": "fig-000935"
+      },
+      "priority_score": 13,
+      "existing_evidence_records": 3,
+      "existing_canonical_roles": [
+        "head_front",
+        "hips_legs_front_or_unspecified",
+        "torso_front"
+      ],
+      "multi_surface": true,
+      "same_component_cross_surface_correspondences": 0,
+      "targets": [
+        {
+          "target": "torso_rear_evidence",
+          "evidence_goal": "Acquire an exact-release rear torso view, even if the rear proves undecorated.",
+          "priority_weight": 4,
+          "content_inferred": false
+        },
+        {
+          "target": "head_rear_evidence",
+          "evidence_goal": "Acquire an exact-release rear head view; do not assume a reverse print exists.",
+          "priority_weight": 3,
+          "content_inferred": false
+        },
+        {
+          "target": "lower_body_rear_or_side_evidence",
+          "evidence_goal": "Acquire exact-release rear or side lower-body evidence beyond the current front/unspecified flat-art view.",
+          "priority_weight": 2,
+          "content_inferred": false
+        },
+        {
+          "target": "physical_left_side_view",
+          "evidence_goal": "Acquire an exact-release physical left-side view for silhouette and cross-surface correspondence.",
+          "priority_weight": 1,
+          "content_inferred": false
+        },
+        {
+          "target": "physical_right_side_view",
+          "evidence_goal": "Acquire an exact-release physical right-side view for silhouette and cross-surface correspondence.",
+          "priority_weight": 1,
+          "content_inferred": false
+        }
+      ],
+      "source_urls": [
+        "https://www.bricklink.com/catalogItemInv.asp?M=col106"
+      ]
+    },
+    {
+      "reference_set_id": "refset-flatart-sw0070-fig-003522",
+      "sample_id": "physicalrelease::bricklink::sw0070",
+      "subject": "Princess Leia - Slave Outfit",
+      "identifiers": {
+        "bricklink_minifigure_id": "sw0070",
+        "rebrickable_fig_num": "fig-003522"
+      },
+      "priority_score": 13,
+      "existing_evidence_records": 3,
+      "existing_canonical_roles": [
+        "head_front",
+        "hips_legs_front_or_unspecified",
+        "torso_front"
+      ],
+      "multi_surface": true,
+      "same_component_cross_surface_correspondences": 0,
+      "targets": [
+        {
+          "target": "torso_rear_evidence",
+          "evidence_goal": "Acquire an exact-release rear torso view, even if the rear proves undecorated.",
+          "priority_weight": 4,
+          "content_inferred": false
+        },
+        {
+          "target": "head_rear_evidence",
+          "evidence_goal": "Acquire an exact-release rear head view; do not assume a reverse print exists.",
+          "priority_weight": 3,
+          "content_inferred": false
+        },
+        {
+          "target": "lower_body_rear_or_side_evidence",
+          "evidence_goal": "Acquire exact-release rear or side lower-body evidence beyond the current front/unspecified flat-art view.",
+          "priority_weight": 2,
+          "content_inferred": false
+        },
+        {
+          "target": "physical_left_side_view",
+          "evidence_goal": "Acquire an exact-release physical left-side view for silhouette and cross-surface correspondence.",
+          "priority_weight": 1,
+          "content_inferred": false
+        },
+        {
+          "target": "physical_right_side_view",
+          "evidence_goal": "Acquire an exact-release physical right-side view for silhouette and cross-surface correspondence.",
+          "priority_weight": 1,
+          "content_inferred": false
+        }
+      ],
+      "source_urls": [
+        "https://www.bricklink.com/catalogItemInv.asp?M=sw0070&viewCodes=Y",
+        "https://www.bricklink.com/catalogList.asp?catID=1098&catType=P&catXrefLevel=0&dispColor=115&dispView=F&itemYear=2003&pg=1&v=2",
+        "https://www.bricklink.com/v2/catalog/catalogitem.page?P=973pb0087c01"
+      ]
+    },
+    {
+      "reference_set_id": "refset-flatart-col140-fig-000110",
+      "sample_id": "physicalrelease::bricklink::col140",
+      "subject": "Mermaid, Series 9",
+      "identifiers": {
+        "bricklink_minifigure_id": "col140",
+        "rebrickable_fig_num": "fig-000110"
+      },
+      "priority_score": 11,
+      "existing_evidence_records": 4,
+      "existing_canonical_roles": [
+        "head_front",
+        "torso_front"
+      ],
+      "multi_surface": true,
+      "same_component_cross_surface_correspondences": 0,
+      "targets": [
+        {
+          "target": "torso_rear_evidence",
+          "evidence_goal": "Acquire an exact-release rear torso view, even if the rear proves undecorated.",
+          "priority_weight": 4,
+          "content_inferred": false
+        },
+        {
+          "target": "head_rear_evidence",
+          "evidence_goal": "Acquire an exact-release rear head view; do not assume a reverse print exists.",
+          "priority_weight": 3,
+          "content_inferred": false
+        },
+        {
+          "target": "physical_left_side_view",
+          "evidence_goal": "Acquire an exact-release physical left-side view for silhouette and cross-surface correspondence.",
+          "priority_weight": 1,
+          "content_inferred": false
+        },
+        {
+          "target": "physical_right_side_view",
+          "evidence_goal": "Acquire an exact-release physical right-side view for silhouette and cross-surface correspondence.",
+          "priority_weight": 1,
+          "content_inferred": false
+        }
+      ],
+      "source_urls": [
+        "https://www.bricklink.com/catalogItemInv.asp?M=col140"
+      ]
+    },
+    {
+      "reference_set_id": "refset-flatart-adv010-fig-000359",
+      "sample_id": "physicalrelease::bricklink::adv010",
+      "subject": "Johnny Thunder (Desert)",
+      "identifiers": {
+        "bricklink_minifigure_id": "adv010",
+        "rebrickable_fig_num": "fig-000359"
+      },
+      "priority_score": 11,
+      "existing_evidence_records": 2,
+      "existing_canonical_roles": [
+        "head_front",
+        "torso_front"
+      ],
+      "multi_surface": true,
+      "same_component_cross_surface_correspondences": 0,
+      "targets": [
+        {
+          "target": "torso_rear_evidence",
+          "evidence_goal": "Acquire an exact-release rear torso view, even if the rear proves undecorated.",
+          "priority_weight": 4,
+          "content_inferred": false
+        },
+        {
+          "target": "head_rear_evidence",
+          "evidence_goal": "Acquire an exact-release rear head view; do not assume a reverse print exists.",
+          "priority_weight": 3,
+          "content_inferred": false
+        },
+        {
+          "target": "physical_left_side_view",
+          "evidence_goal": "Acquire an exact-release physical left-side view for silhouette and cross-surface correspondence.",
+          "priority_weight": 1,
+          "content_inferred": false
+        },
+        {
+          "target": "physical_right_side_view",
+          "evidence_goal": "Acquire an exact-release physical right-side view for silhouette and cross-surface correspondence.",
+          "priority_weight": 1,
+          "content_inferred": false
+        }
+      ],
+      "source_urls": [
+        "https://www.bricklink.com/catalogItemInv.asp?M=adv010"
+      ]
+    },
+    {
+      "reference_set_id": "refset-flatart-cas034-fig-007676",
+      "sample_id": "physicalrelease::bricklink::cas034",
+      "subject": "Princess Storm",
+      "identifiers": {
+        "bricklink_minifigure_id": "cas034",
+        "rebrickable_fig_num": "fig-007676"
+      },
+      "priority_score": 11,
+      "existing_evidence_records": 2,
+      "existing_canonical_roles": [
+        "head_front",
+        "torso_front"
+      ],
+      "multi_surface": true,
+      "same_component_cross_surface_correspondences": 0,
+      "targets": [
+        {
+          "target": "torso_rear_evidence",
+          "evidence_goal": "Acquire an exact-release rear torso view, even if the rear proves undecorated.",
+          "priority_weight": 4,
+          "content_inferred": false
+        },
+        {
+          "target": "head_rear_evidence",
+          "evidence_goal": "Acquire an exact-release rear head view; do not assume a reverse print exists.",
+          "priority_weight": 3,
+          "content_inferred": false
+        },
+        {
+          "target": "physical_left_side_view",
+          "evidence_goal": "Acquire an exact-release physical left-side view for silhouette and cross-surface correspondence.",
+          "priority_weight": 1,
+          "content_inferred": false
+        },
+        {
+          "target": "physical_right_side_view",
+          "evidence_goal": "Acquire an exact-release physical right-side view for silhouette and cross-surface correspondence.",
+          "priority_weight": 1,
+          "content_inferred": false
+        }
+      ],
+      "source_urls": [
+        "https://www.bricklink.com/catalogItemInv.asp?M=cas034"
+      ]
+    },
+    {
+      "reference_set_id": "refset-flatart-tim003-fig-005138",
+      "sample_id": "physicalrelease::bricklink::tim003",
+      "subject": "Dr. Cyber",
+      "identifiers": {
+        "bricklink_minifigure_id": "tim003",
+        "rebrickable_fig_num": "fig-005138"
+      },
+      "priority_score": 11,
+      "existing_evidence_records": 2,
+      "existing_canonical_roles": [
+        "head_front",
+        "torso_front"
+      ],
+      "multi_surface": true,
+      "same_component_cross_surface_correspondences": 0,
+      "targets": [
+        {
+          "target": "torso_rear_evidence",
+          "evidence_goal": "Acquire an exact-release rear torso view, even if the rear proves undecorated.",
+          "priority_weight": 4,
+          "content_inferred": false
+        },
+        {
+          "target": "head_rear_evidence",
+          "evidence_goal": "Acquire an exact-release rear head view; do not assume a reverse print exists.",
+          "priority_weight": 3,
+          "content_inferred": false
+        },
+        {
+          "target": "physical_left_side_view",
+          "evidence_goal": "Acquire an exact-release physical left-side view for silhouette and cross-surface correspondence.",
+          "priority_weight": 1,
+          "content_inferred": false
+        },
+        {
+          "target": "physical_right_side_view",
+          "evidence_goal": "Acquire an exact-release physical right-side view for silhouette and cross-surface correspondence.",
+          "priority_weight": 1,
+          "content_inferred": false
+        }
+      ],
+      "source_urls": [
+        "https://library.ldraw.org/parts/43737",
+        "https://www.bricklink.com/catalogItemInv.asp?M=tim003",
+        "https://www.bricklink.com/v2/catalog/catalogitem.page?P=3626px55",
+        "https://www.bricklink.com/v2/catalog/catalogitem.page?P=973px91c01"
+      ]
+    },
+    {
+      "reference_set_id": "refset-flatart-sh0004-fig-000008",
+      "sample_id": "physicalrelease::bricklink::sh0004",
+      "subject": "Wonder Woman",
+      "identifiers": {
+        "bricklink_minifigure_id": "sh0004",
+        "rebrickable_fig_num": "fig-000008"
+      },
+      "priority_score": 10,
+      "existing_evidence_records": 4,
+      "existing_canonical_roles": [
+        "head_front",
+        "hips_legs_front_or_unspecified",
+        "torso_front",
+        "torso_rear"
+      ],
+      "multi_surface": true,
+      "same_component_cross_surface_correspondences": 1,
+      "targets": [
+        {
+          "target": "head_rear_evidence",
+          "evidence_goal": "Acquire an exact-release rear head view; do not assume a reverse print exists.",
+          "priority_weight": 3,
+          "content_inferred": false
+        },
+        {
+          "target": "lower_body_rear_or_side_evidence",
+          "evidence_goal": "Acquire exact-release rear or side lower-body evidence beyond the current front/unspecified flat-art view.",
+          "priority_weight": 2,
+          "content_inferred": false
+        },
+        {
+          "target": "physical_left_side_view",
+          "evidence_goal": "Acquire an exact-release physical left-side view for silhouette and cross-surface correspondence.",
+          "priority_weight": 1,
+          "content_inferred": false
+        },
+        {
+          "target": "physical_right_side_view",
+          "evidence_goal": "Acquire an exact-release physical right-side view for silhouette and cross-surface correspondence.",
+          "priority_weight": 1,
+          "content_inferred": false
+        }
+      ],
+      "source_urls": [
+        "https://www.bricklink.com/catalogItemInv.asp?M=sh0004"
+      ]
+    },
+    {
+      "reference_set_id": "refset-flatart-col102-fig-000938",
+      "sample_id": "physicalrelease::bricklink::col102",
+      "subject": "Bagpiper, Series 7",
+      "identifiers": {
+        "bricklink_minifigure_id": "col102",
+        "rebrickable_fig_num": "fig-000938"
+      },
+      "priority_score": 10,
+      "existing_evidence_records": 2,
+      "existing_canonical_roles": [
+        "hips_legs_front_or_unspecified",
+        "torso_front"
+      ],
+      "multi_surface": true,
+      "same_component_cross_surface_correspondences": 0,
+      "targets": [
+        {
+          "target": "torso_rear_evidence",
+          "evidence_goal": "Acquire an exact-release rear torso view, even if the rear proves undecorated.",
+          "priority_weight": 4,
+          "content_inferred": false
+        },
+        {
+          "target": "lower_body_rear_or_side_evidence",
+          "evidence_goal": "Acquire exact-release rear or side lower-body evidence beyond the current front/unspecified flat-art view.",
+          "priority_weight": 2,
+          "content_inferred": false
+        },
+        {
+          "target": "physical_left_side_view",
+          "evidence_goal": "Acquire an exact-release physical left-side view for silhouette and cross-surface correspondence.",
+          "priority_weight": 1,
+          "content_inferred": false
+        },
+        {
+          "target": "physical_right_side_view",
+          "evidence_goal": "Acquire an exact-release physical right-side view for silhouette and cross-surface correspondence.",
+          "priority_weight": 1,
+          "content_inferred": false
+        }
+      ],
+      "source_urls": [
+        "https://www.bricklink.com/catalogItemInv.asp?M=col102"
+      ]
+    },
+    {
+      "reference_set_id": "refset-flatart-col104-fig-000939",
+      "sample_id": "physicalrelease::bricklink::col104",
+      "subject": "Galaxy Patrol",
+      "identifiers": {
+        "bricklink_minifigure_id": "col104",
+        "rebrickable_fig_num": "fig-000939"
+      },
+      "priority_score": 10,
+      "existing_evidence_records": 2,
+      "existing_canonical_roles": [
+        "hips_legs_front_or_unspecified",
+        "torso_front"
+      ],
+      "multi_surface": true,
+      "same_component_cross_surface_correspondences": 0,
+      "targets": [
+        {
+          "target": "torso_rear_evidence",
+          "evidence_goal": "Acquire an exact-release rear torso view, even if the rear proves undecorated.",
+          "priority_weight": 4,
+          "content_inferred": false
+        },
+        {
+          "target": "lower_body_rear_or_side_evidence",
+          "evidence_goal": "Acquire exact-release rear or side lower-body evidence beyond the current front/unspecified flat-art view.",
+          "priority_weight": 2,
+          "content_inferred": false
+        },
+        {
+          "target": "physical_left_side_view",
+          "evidence_goal": "Acquire an exact-release physical left-side view for silhouette and cross-surface correspondence.",
+          "priority_weight": 1,
+          "content_inferred": false
+        },
+        {
+          "target": "physical_right_side_view",
+          "evidence_goal": "Acquire an exact-release physical right-side view for silhouette and cross-surface correspondence.",
+          "priority_weight": 1,
+          "content_inferred": false
+        }
+      ],
+      "source_urls": [
+        "https://www.bricklink.com/catalogItemInv.asp?M=col104"
+      ]
+    },
+    {
+      "reference_set_id": "refset-flatart-sh0003-fig-000227",
+      "sample_id": "physicalrelease::bricklink::sh0003",
+      "subject": "Superman",
+      "identifiers": {
+        "bricklink_minifigure_id": "sh0003",
+        "rebrickable_fig_num": "fig-000227"
+      },
+      "priority_score": 8,
+      "existing_evidence_records": 4,
+      "existing_canonical_roles": [
+        "head_front",
+        "torso_front",
+        "torso_rear"
+      ],
+      "multi_surface": true,
+      "same_component_cross_surface_correspondences": 1,
+      "targets": [
+        {
+          "target": "head_rear_evidence",
+          "evidence_goal": "Acquire an exact-release rear head view; do not assume a reverse print exists.",
+          "priority_weight": 3,
+          "content_inferred": false
+        },
+        {
+          "target": "physical_left_side_view",
+          "evidence_goal": "Acquire an exact-release physical left-side view for silhouette and cross-surface correspondence.",
+          "priority_weight": 1,
+          "content_inferred": false
+        },
+        {
+          "target": "physical_right_side_view",
+          "evidence_goal": "Acquire an exact-release physical right-side view for silhouette and cross-surface correspondence.",
+          "priority_weight": 1,
+          "content_inferred": false
+        }
+      ],
+      "source_urls": [
+        "https://www.bricklink.com/catalogItemInv.asp?M=sh0003"
+      ]
+    },
+    {
+      "reference_set_id": "refset-flatart-mof001-fig-000900",
+      "sample_id": "physicalrelease::bricklink::mof001",
+      "subject": "Mummy - Glow In Dark Pattern",
+      "identifiers": {
+        "bricklink_minifigure_id": "mof001",
+        "rebrickable_fig_num": "fig-000900"
+      },
+      "priority_score": 7,
+      "existing_evidence_records": 3,
+      "existing_canonical_roles": [
+        "hips_legs_front_or_unspecified",
+        "torso_front",
+        "torso_rear"
+      ],
+      "multi_surface": true,
+      "same_component_cross_surface_correspondences": 1,
+      "targets": [
+        {
+          "target": "lower_body_rear_or_side_evidence",
+          "evidence_goal": "Acquire exact-release rear or side lower-body evidence beyond the current front/unspecified flat-art view.",
+          "priority_weight": 2,
+          "content_inferred": false
+        },
+        {
+          "target": "physical_left_side_view",
+          "evidence_goal": "Acquire an exact-release physical left-side view for silhouette and cross-surface correspondence.",
+          "priority_weight": 1,
+          "content_inferred": false
+        },
+        {
+          "target": "physical_right_side_view",
+          "evidence_goal": "Acquire an exact-release physical right-side view for silhouette and cross-surface correspondence.",
+          "priority_weight": 1,
+          "content_inferred": false
+        }
+      ],
+      "source_urls": [
+        "https://www.bricklink.com/catalogItemInv.asp?M=mof001"
+      ]
+    },
+    {
+      "reference_set_id": "refset-flatart-njo0047-fig-000149",
+      "sample_id": "physicalrelease::bricklink::njo0047",
+      "subject": "Jay ZX",
+      "identifiers": {
+        "bricklink_minifigure_id": "njo0047",
+        "rebrickable_fig_num": "fig-000149"
+      },
+      "priority_score": 7,
+      "existing_evidence_records": 3,
+      "existing_canonical_roles": [
+        "hips_legs_front_or_unspecified",
+        "torso_front",
+        "torso_rear"
+      ],
+      "multi_surface": true,
+      "same_component_cross_surface_correspondences": 1,
+      "targets": [
+        {
+          "target": "lower_body_rear_or_side_evidence",
+          "evidence_goal": "Acquire exact-release rear or side lower-body evidence beyond the current front/unspecified flat-art view.",
+          "priority_weight": 2,
+          "content_inferred": false
+        },
+        {
+          "target": "physical_left_side_view",
+          "evidence_goal": "Acquire an exact-release physical left-side view for silhouette and cross-surface correspondence.",
+          "priority_weight": 1,
+          "content_inferred": false
+        },
+        {
+          "target": "physical_right_side_view",
+          "evidence_goal": "Acquire an exact-release physical right-side view for silhouette and cross-surface correspondence.",
+          "priority_weight": 1,
+          "content_inferred": false
+        }
+      ],
+      "source_urls": [
+        "https://www.bricklink.com/catalogItemInv.asp?M=njo0047"
+      ]
+    },
+    {
+      "reference_set_id": "refset-flatart-col031-fig-000046",
+      "sample_id": "physicalrelease::bricklink::col031",
+      "subject": "Surfer, Series 2",
+      "identifiers": {
+        "bricklink_minifigure_id": "col031",
+        "rebrickable_fig_num": "fig-000046"
+      },
+      "priority_score": 6,
+      "existing_evidence_records": 1,
+      "existing_canonical_roles": [
+        "torso_front"
+      ],
+      "multi_surface": false,
+      "same_component_cross_surface_correspondences": 0,
+      "targets": [
+        {
+          "target": "torso_rear_evidence",
+          "evidence_goal": "Acquire an exact-release rear torso view, even if the rear proves undecorated.",
+          "priority_weight": 4,
+          "content_inferred": false
+        },
+        {
+          "target": "physical_left_side_view",
+          "evidence_goal": "Acquire an exact-release physical left-side view for silhouette and cross-surface correspondence.",
+          "priority_weight": 1,
+          "content_inferred": false
+        },
+        {
+          "target": "physical_right_side_view",
+          "evidence_goal": "Acquire an exact-release physical right-side view for silhouette and cross-surface correspondence.",
+          "priority_weight": 1,
+          "content_inferred": false
+        }
+      ],
+      "source_urls": [
+        "https://brickset.com/minifigs/col031/surfer-series-2-%28minifigure-only-without-stand-and-accessories%29",
+        "https://www.bricklink.com/CatalogItemInv.asp?M=col031"
+      ]
+    },
+    {
+      "reference_set_id": "refset-flatart-col144-fig-000949",
+      "sample_id": "physicalrelease::bricklink::col144",
+      "subject": "Plumber, Series 9",
+      "identifiers": {
+        "bricklink_minifigure_id": "col144",
+        "rebrickable_fig_num": "fig-000949"
+      },
+      "priority_score": 6,
+      "existing_evidence_records": 1,
+      "existing_canonical_roles": [
+        "torso_front"
+      ],
+      "multi_surface": false,
+      "same_component_cross_surface_correspondences": 0,
+      "targets": [
+        {
+          "target": "torso_rear_evidence",
+          "evidence_goal": "Acquire an exact-release rear torso view, even if the rear proves undecorated.",
+          "priority_weight": 4,
+          "content_inferred": false
+        },
+        {
+          "target": "physical_left_side_view",
+          "evidence_goal": "Acquire an exact-release physical left-side view for silhouette and cross-surface correspondence.",
+          "priority_weight": 1,
+          "content_inferred": false
+        },
+        {
+          "target": "physical_right_side_view",
+          "evidence_goal": "Acquire an exact-release physical right-side view for silhouette and cross-surface correspondence.",
+          "priority_weight": 1,
+          "content_inferred": false
+        }
+      ],
+      "source_urls": [
+        "https://www.bricklink.com/catalogItemInv.asp?M=col144"
+      ]
+    },
+    {
+      "reference_set_id": "refset-flatart-inf001-fig-000421",
+      "sample_id": "physicalrelease::bricklink::inf001",
+      "subject": "Infomaniac, LEGO Logo on Back",
+      "identifiers": {
+        "bricklink_minifigure_id": "inf001",
+        "rebrickable_fig_num": "fig-000421"
+      },
+      "priority_score": 6,
+      "existing_evidence_records": 1,
+      "existing_canonical_roles": [
+        "torso_front"
+      ],
+      "multi_surface": false,
+      "same_component_cross_surface_correspondences": 0,
+      "targets": [
+        {
+          "target": "torso_rear_evidence",
+          "evidence_goal": "Acquire an exact-release rear torso view, even if the rear proves undecorated.",
+          "priority_weight": 4,
+          "content_inferred": false
+        },
+        {
+          "target": "physical_left_side_view",
+          "evidence_goal": "Acquire an exact-release physical left-side view for silhouette and cross-surface correspondence.",
+          "priority_weight": 1,
+          "content_inferred": false
+        },
+        {
+          "target": "physical_right_side_view",
+          "evidence_goal": "Acquire an exact-release physical right-side view for silhouette and cross-surface correspondence.",
+          "priority_weight": 1,
+          "content_inferred": false
+        }
+      ],
+      "source_urls": [
+        "https://www.bricklink.com/catalogItemIn.asp?P=973pb0232c01&in=M"
+      ]
+    },
+    {
+      "reference_set_id": "refset-flatart-lor002-fig-001360",
+      "sample_id": "physicalrelease::bricklink::lor002",
+      "subject": "Frodo Baggins - Sand Green Shirt",
+      "identifiers": {
+        "bricklink_minifigure_id": "lor002",
+        "rebrickable_fig_num": "fig-001360"
+      },
+      "priority_score": 6,
+      "existing_evidence_records": 1,
+      "existing_canonical_roles": [
+        "torso_front"
+      ],
+      "multi_surface": false,
+      "same_component_cross_surface_correspondences": 0,
+      "targets": [
+        {
+          "target": "torso_rear_evidence",
+          "evidence_goal": "Acquire an exact-release rear torso view, even if the rear proves undecorated.",
+          "priority_weight": 4,
+          "content_inferred": false
+        },
+        {
+          "target": "physical_left_side_view",
+          "evidence_goal": "Acquire an exact-release physical left-side view for silhouette and cross-surface correspondence.",
+          "priority_weight": 1,
+          "content_inferred": false
+        },
+        {
+          "target": "physical_right_side_view",
+          "evidence_goal": "Acquire an exact-release physical right-side view for silhouette and cross-surface correspondence.",
+          "priority_weight": 1,
+          "content_inferred": false
+        }
+      ],
+      "source_urls": [
+        "https://www.bricklink.com/catalogItemInv.asp?M=lor002"
+      ]
+    },
+    {
+      "reference_set_id": "refset-flatart-shell008-fig-000231",
+      "sample_id": "physicalrelease::bricklink::shell008",
+      "subject": "Shell - Jacket, Black Legs, Red Cap, Eyebrows",
+      "identifiers": {
+        "bricklink_minifigure_id": "shell008",
+        "rebrickable_fig_num": "fig-000231"
+      },
+      "priority_score": 6,
+      "existing_evidence_records": 1,
+      "existing_canonical_roles": [
+        "torso_front"
+      ],
+      "multi_surface": false,
+      "same_component_cross_surface_correspondences": 0,
+      "targets": [
+        {
+          "target": "torso_rear_evidence",
+          "evidence_goal": "Acquire an exact-release rear torso view, even if the rear proves undecorated.",
+          "priority_weight": 4,
+          "content_inferred": false
+        },
+        {
+          "target": "physical_left_side_view",
+          "evidence_goal": "Acquire an exact-release physical left-side view for silhouette and cross-surface correspondence.",
+          "priority_weight": 1,
+          "content_inferred": false
+        },
+        {
+          "target": "physical_right_side_view",
+          "evidence_goal": "Acquire an exact-release physical right-side view for silhouette and cross-surface correspondence.",
+          "priority_weight": 1,
+          "content_inferred": false
+        }
+      ],
+      "source_urls": [
+        "https://www.bricklink.com/catalogItemInv.asp?M=shell008&viewCodes=Y"
+      ]
+    },
+    {
+      "reference_set_id": "refset-flatart-sp005-fig-000020",
+      "sample_id": "physicalrelease::bricklink::sp005",
+      "subject": "Classic Space - Red with Air Tanks",
+      "identifiers": {
+        "bricklink_minifigure_id": "sp005",
+        "rebrickable_fig_num": "fig-000020"
+      },
+      "priority_score": 6,
+      "existing_evidence_records": 1,
+      "existing_canonical_roles": [
+        "torso_front"
+      ],
+      "multi_surface": false,
+      "same_component_cross_surface_correspondences": 0,
+      "targets": [
+        {
+          "target": "torso_rear_evidence",
+          "evidence_goal": "Acquire an exact-release rear torso view, even if the rear proves undecorated.",
+          "priority_weight": 4,
+          "content_inferred": false
+        },
+        {
+          "target": "physical_left_side_view",
+          "evidence_goal": "Acquire an exact-release physical left-side view for silhouette and cross-surface correspondence.",
+          "priority_weight": 1,
+          "content_inferred": false
+        },
+        {
+          "target": "physical_right_side_view",
+          "evidence_goal": "Acquire an exact-release physical right-side view for silhouette and cross-surface correspondence.",
+          "priority_weight": 1,
+          "content_inferred": false
+        }
+      ],
+      "source_urls": [
+        "https://www.bricklink.com/v2/catalog/catalogitem.page?M=sp005-08"
+      ]
+    },
+    {
+      "reference_set_id": "refset-flatart-spd023-fig-004930",
+      "sample_id": "physicalrelease::bricklink::spd023",
+      "subject": "Ambulance Driver / Paramedic with Star of Life Badge",
+      "identifiers": {
+        "bricklink_minifigure_id": "spd023",
+        "rebrickable_fig_num": "fig-004930"
+      },
+      "priority_score": 6,
+      "existing_evidence_records": 1,
+      "existing_canonical_roles": [
+        "torso_front"
+      ],
+      "multi_surface": false,
+      "same_component_cross_surface_correspondences": 0,
+      "targets": [
+        {
+          "target": "torso_rear_evidence",
+          "evidence_goal": "Acquire an exact-release rear torso view, even if the rear proves undecorated.",
+          "priority_weight": 4,
+          "content_inferred": false
+        },
+        {
+          "target": "physical_left_side_view",
+          "evidence_goal": "Acquire an exact-release physical left-side view for silhouette and cross-surface correspondence.",
+          "priority_weight": 1,
+          "content_inferred": false
+        },
+        {
+          "target": "physical_right_side_view",
+          "evidence_goal": "Acquire an exact-release physical right-side view for silhouette and cross-surface correspondence.",
+          "priority_weight": 1,
+          "content_inferred": false
+        }
+      ],
+      "source_urls": [
+        "https://www.bricklink.com/v2/catalog/catalogitem.page?id=47626"
+      ]
+    },
+    {
+      "reference_set_id": "refset-flatart-mof002-fig-003303",
+      "sample_id": "physicalrelease::bricklink::mof002",
+      "subject": "Ann Lee",
+      "identifiers": {
+        "bricklink_minifigure_id": "mof002",
+        "rebrickable_fig_num": "fig-003303"
+      },
+      "priority_score": 5,
+      "existing_evidence_records": 3,
+      "existing_canonical_roles": [
+        "head_reverse",
+        "torso_front",
+        "torso_rear"
+      ],
+      "multi_surface": true,
+      "same_component_cross_surface_correspondences": 1,
+      "targets": [
+        {
+          "target": "physical_left_side_view",
+          "evidence_goal": "Acquire an exact-release physical left-side view for silhouette and cross-surface correspondence.",
+          "priority_weight": 1,
+          "content_inferred": false
+        },
+        {
+          "target": "physical_right_side_view",
+          "evidence_goal": "Acquire an exact-release physical right-side view for silhouette and cross-surface correspondence.",
+          "priority_weight": 1,
+          "content_inferred": false
+        }
+      ],
+      "source_urls": [
+        "https://www.bricklink.com/catalogItemInv.asp?M=mof002",
+        "https://www.bricklink.com/v2/catalog/catalogitem.page?P=3626pb0736",
+        "https://www.bricklink.com/v2/catalog/catalogitem.page?P=973pb1152c01"
+      ]
+    },
+    {
+      "reference_set_id": "refset-flatart-adv025-fig-000327",
+      "sample_id": "physicalrelease::bricklink::adv025",
+      "subject": "Lord Sam Sinister",
+      "identifiers": {
+        "bricklink_minifigure_id": "adv025",
+        "rebrickable_fig_num": "fig-000327"
+      },
+      "priority_score": 5,
+      "existing_evidence_records": 1,
+      "existing_canonical_roles": [
+        "head_front"
+      ],
+      "multi_surface": false,
+      "same_component_cross_surface_correspondences": 0,
+      "targets": [
+        {
+          "target": "head_rear_evidence",
+          "evidence_goal": "Acquire an exact-release rear head view; do not assume a reverse print exists.",
+          "priority_weight": 3,
+          "content_inferred": false
+        },
+        {
+          "target": "physical_left_side_view",
+          "evidence_goal": "Acquire an exact-release physical left-side view for silhouette and cross-surface correspondence.",
+          "priority_weight": 1,
+          "content_inferred": false
+        },
+        {
+          "target": "physical_right_side_view",
+          "evidence_goal": "Acquire an exact-release physical right-side view for silhouette and cross-surface correspondence.",
+          "priority_weight": 1,
+          "content_inferred": false
+        }
+      ],
+      "source_urls": [
+        "https://www.bricklink.com/catalogItemInv.asp?M=adv025"
+      ]
+    },
+    {
+      "reference_set_id": "refset-flatart-alp020-fig-000093",
+      "sample_id": "physicalrelease::bricklink::alp020",
+      "subject": "Ogel - Trans-Red Hook",
+      "identifiers": {
+        "bricklink_minifigure_id": "alp020",
+        "rebrickable_fig_num": "fig-000093"
+      },
+      "priority_score": 5,
+      "existing_evidence_records": 1,
+      "existing_canonical_roles": [
+        "head_front"
+      ],
+      "multi_surface": false,
+      "same_component_cross_surface_correspondences": 0,
+      "targets": [
+        {
+          "target": "head_rear_evidence",
+          "evidence_goal": "Acquire an exact-release rear head view; do not assume a reverse print exists.",
+          "priority_weight": 3,
+          "content_inferred": false
+        },
+        {
+          "target": "physical_left_side_view",
+          "evidence_goal": "Acquire an exact-release physical left-side view for silhouette and cross-surface correspondence.",
+          "priority_weight": 1,
+          "content_inferred": false
+        },
+        {
+          "target": "physical_right_side_view",
+          "evidence_goal": "Acquire an exact-release physical right-side view for silhouette and cross-surface correspondence.",
+          "priority_weight": 1,
+          "content_inferred": false
+        }
+      ],
+      "source_urls": [
+        "https://www.bricklink.com/catalogItemInv.asp?M=alp020"
+      ]
+    },
+    {
+      "reference_set_id": "refset-flatart-col110-fig-001489",
+      "sample_id": "physicalrelease::bricklink::col110",
+      "subject": "Evil Knight",
+      "identifiers": {
+        "bricklink_minifigure_id": "col110",
+        "rebrickable_fig_num": "fig-001489"
+      },
+      "priority_score": 2,
+      "existing_evidence_records": 1,
+      "existing_canonical_roles": [
+        "accessory_primary"
+      ],
+      "multi_surface": false,
+      "same_component_cross_surface_correspondences": 0,
+      "targets": [
+        {
+          "target": "physical_left_side_view",
+          "evidence_goal": "Acquire an exact-release physical left-side view for silhouette and cross-surface correspondence.",
+          "priority_weight": 1,
+          "content_inferred": false
+        },
+        {
+          "target": "physical_right_side_view",
+          "evidence_goal": "Acquire an exact-release physical right-side view for silhouette and cross-surface correspondence.",
+          "priority_weight": 1,
+          "content_inferred": false
+        }
+      ],
+      "source_urls": [
+        "https://www.bricklink.com/catalogItemInv.asp?M=col110",
+        "https://www.bricklink.com/catalogItemInv.asp?S=col07-14"
+      ]
+    }
+  ],
+  "policy": [
+    "A missing view is an acquisition target, not evidence that unseen decoration or geometry exists.",
+    "Exact release identity must be preserved when adding new media.",
+    "Rear and side evidence must come from directly observed, provenance-retaining source material.",
+    "Flat-art and physical-photo evidence remain distinct evidence classes."
+  ]
+}
