@@ -41,10 +41,17 @@ def queue_record(pair_id: str, score: float) -> dict:
     }
 
 
-def existing_review(pair_id: str, status: str = "submitted") -> dict:
+def existing_review(
+    pair_id: str,
+    status: str = "submitted",
+    reviewer_id: str = "reviewer-a",
+) -> dict:
     return {
         "translation_pair_id": pair_id,
         "review_status": status,
+        "reviewer": {
+            "reviewer_id": reviewer_id,
+        },
     }
 
 
@@ -110,6 +117,51 @@ def test_second_review_uses_adjudication_status() -> None:
     )
 
     assert [row["translation_pair_id"] for row in selected] == ["pair-a"]
+
+
+def test_second_review_accepts_needs_independent_second_review_status() -> None:
+    tool = load_tool()
+    queue = [queue_record("pair-a", 10)]
+
+    selected = tool.select(
+        queue,
+        mode="second_review",
+        limit=10,
+        reviewer_id="reviewer-b",
+        existing_reviews=[existing_review("pair-a", reviewer_id="reviewer-a")],
+        adjudication_rows=[
+            adjudication("pair-a", "needs_independent_second_review"),
+        ],
+    )
+
+    assert [row["translation_pair_id"] for row in selected] == ["pair-a"]
+
+
+def test_second_review_excludes_pairs_already_reviewed_by_assigned_reviewer() -> None:
+    tool = load_tool()
+    queue = [queue_record("pair-a", 10)]
+    existing = [existing_review("pair-a", reviewer_id="reviewer-a")]
+    rows = [adjudication("pair-a", "needs_second_review")]
+
+    duplicate = tool.select(
+        queue,
+        mode="second_review",
+        limit=10,
+        reviewer_id="REVIEWER-A",
+        existing_reviews=existing,
+        adjudication_rows=rows,
+    )
+    independent = tool.select(
+        queue,
+        mode="second_review",
+        limit=10,
+        reviewer_id="reviewer-b",
+        existing_reviews=existing,
+        adjudication_rows=rows,
+    )
+
+    assert duplicate == []
+    assert [row["translation_pair_id"] for row in independent] == ["pair-a"]
 
 
 def test_adjudication_mode_targets_conflict_states() -> None:
