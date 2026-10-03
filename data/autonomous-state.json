@@ -63,10 +63,10 @@
   ],
   "pending_validation": [],
   "continuation": {
-    "instruction": "Do not restart completed architecture gates. Fortnite batches 0001-0004 now have 100 submitted GPT-5.6 Sol first reviews with 417 annotations and zero training-eligible records; 644 of the 744 high-priority pairs remain without a first review. Require a genuinely independent second review plus adjudication before promotion. The independent-review pipeline and manual second-review workflow are validated. Materialize/review batch 0005 next, while also obtaining a genuinely distinct second reviewer/model for existing submitted pairs. Then continue multi-view evidence expansion, visual grammar, and failure-corpus work. Preserve exact hashes, provenance, uncertainty, and no-hidden-view rules."
+    "instruction": "Do not restart completed architecture gates. Fortnite batches 0001-0005 now have 125 submitted GPT-5.6 Sol first reviews with 517 annotations and zero training-eligible records; 619 of the 744 high-priority pairs remain without a first review. Require a genuinely independent second review plus adjudication before promotion. The independent-review pipeline and manual second-review workflow are validated. Materialize/review batch 0006 next, while also obtaining a genuinely distinct second reviewer/model for existing submitted pairs. Then continue multi-view evidence expansion, visual grammar, and failure-corpus work. Preserve exact hashes, provenance, uncertainty, and no-hidden-view rules."
   },
-  "last_meaningful_commit": "4991692cc21b40eadac7fce01a0936d6e59b8c88",
-  "latest_validated_test_commit": "4991692cc21b40eadac7fce01a0936d6e59b8c88",
+  "last_meaningful_commit": "b698200220e4b87430af8b2c7794aea75fd4243c",
+  "latest_validated_test_commit": "b698200220e4b87430af8b2c7794aea75fd4243c",
   "completed_batches": [
     {
       "id": "body_architecture_reference_acquisition_v1",
@@ -382,7 +382,33 @@
         "requires_independent_second_review": true,
         "requires_adjudication": true
       }
+    },
+    {
+      "id": "fortnite_semantic_first_review_batch_0005_gpt56sol",
+      "status": "validated_noncanonical",
+      "details": {
+        "batch_id": "fortnite-review-first_review-6d278dbd84ee5b33",
+        "materialization_commit": "03d05a45c366b105f5a0801cc325e69b92b27f23",
+        "submitted_reviews": 25,
+        "total_annotations": 100,
+        "cumulative_submitted_reviews": 125,
+        "cumulative_annotations": 517,
+        "eligible_pairs_total": 744,
+        "eligible_pairs_remaining_first_review": 619,
+        "reviewer_id": "openai_chatgpt_visual_review_batch5",
+        "model_id": "GPT-5.6 Sol",
+        "model_revision": "2026-10-03",
+        "review_bundle_workflow_run_id": 37143503917,
+        "review_bundle_artifact_id": 11281935166,
+        "canonicalization_commit": "6860ef0da292098ce63ee17ad75d0cc740cff363",
+        "regression_test_commit": "b698200220e4b87430af8b2c7794aea75fd4243c",
+        "validated_test_run_id": 37143855221,
+        "full_suite_tests_passed": 430,
+        "training_eligible": 0,
+        "requires_independent_second_review": true,
+        "requires_adjudication": true
+      }
     }
   ],
-  "latest_test_lock_commit": "4991692cc21b40eadac7fce01a0936d6e59b8c88"
+  "latest_test_lock_commit": "b698200220e4b87430af8b2c7794aea75fd4243c"
 }
