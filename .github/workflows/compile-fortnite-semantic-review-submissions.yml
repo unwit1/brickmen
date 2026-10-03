@@ -7,7 +7,7 @@ on:
       - ".github/workflows/compile-fortnite-semantic-review-submissions.yml"
       - "tools/knowledge/build_fortnite_semantic_review_submission.py"
       - "tools/knowledge/build_fortnite_semantic_review_progress.py"
-      - "knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/*-decisions.json.gz"
+      - "knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/*-decisions.json.gz"\n      - "knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/*-decisions.json"
 
 permissions:
   contents: write
@@ -33,7 +33,7 @@ jobs:
           set -euo pipefail
           shopt -s nullglob
           REVIEW_DIR="knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches"
-          DECISION_FILES=("$REVIEW_DIR"/*-decisions.json.gz)
+          DECISION_FILES=("$REVIEW_DIR"/*-decisions.json "$REVIEW_DIR"/*-decisions.json.gz)
           if (( ${#DECISION_FILES[@]} == 0 )); then
             echo "No compact decision files found."
             exit 0
