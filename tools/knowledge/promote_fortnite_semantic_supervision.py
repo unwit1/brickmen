@@ -11,7 +11,7 @@ import json
 from pathlib import Path
 from typing import Any, Iterable
 
-VERSION = "fortnite-semantic-supervision-promotion/v1"
+VERSION = "fortnite-semantic-supervision-promotion/v2"
 
 
 def iter_jsonl(paths: Iterable[Path]):
@@ -32,6 +32,11 @@ def index_reviews(records: Iterable[dict[str, Any]]) -> dict[str, dict[str, Any]
             raise ValueError(f"duplicate review_id: {review_id}")
         by_id[review_id] = record
     return by_id
+
+
+def reviewer_principal(record: dict[str, Any]) -> str:
+    reviewer = record.get("reviewer") or {}
+    return str(reviewer.get("reviewer_id") or "").strip().casefold()
 
 
 def promote(
@@ -82,6 +87,35 @@ def promote(
                 f"selected review {selected_review_id!r} has no adjudicated review refs"
             )
 
+        referenced_submitted: list[dict[str, Any]] = []
+        for referenced_id in adjudicates:
+            referenced = review_by_id.get(referenced_id)
+            if referenced is None:
+                raise ValueError(
+                    f"selected review {selected_review_id!r} references missing submitted review "
+                    f"{referenced_id!r}"
+                )
+            if referenced.get("translation_pair_id") != pair_id:
+                raise ValueError(
+                    f"adjudicated review reference {referenced_id!r} belongs to another pair"
+                )
+            if referenced.get("review_status") != "submitted":
+                raise ValueError(
+                    f"adjudicated review reference {referenced_id!r} is not submitted"
+                )
+            referenced_submitted.append(referenced)
+
+        independent_principals = {
+            reviewer_principal(record)
+            for record in referenced_submitted
+            if reviewer_principal(record)
+        }
+        if len(independent_principals) < 2:
+            raise ValueError(
+                f"selected review {selected_review_id!r} requires at least two independent "
+                "submitted reviewers"
+            )
+
         supervision.append(
             {
                 "schema": "fortnite-semantic-supervision/v1",
@@ -102,6 +136,7 @@ def promote(
                 "promotion": {
                     "training_eligible": True,
                     "source_status": "adjudicated",
+                    "independent_submitted_reviewer_count": len(independent_principals),
                     "processor_version": VERSION,
                 },
             }
@@ -123,8 +158,9 @@ def promote(
         "supervision": supervision,
         "skipped": skipped,
         "policy": (
-            "Only explicit adjudicated queue rows may be promoted. Reviewer agreement "
-            "without adjudication and all unresolved conflicts remain non-canonical."
+            "Only explicit adjudicated queue rows backed by at least two independent "
+            "submitted reviewers may be promoted. Reviewer agreement without adjudication "
+            "and all unresolved conflicts remain non-canonical."
         ),
     }
 
