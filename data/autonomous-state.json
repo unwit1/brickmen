@@ -63,10 +63,10 @@
   ],
   "pending_validation": [],
   "continuation": {
-    "instruction": "Do not restart completed architecture gates. Fortnite batches 0001-0003 have 75 submitted GPT-5.6 Sol first reviews with 317 annotations and zero training-eligible records; batch 0004 is materialized and awaits first review. Require a genuinely independent second review plus adjudication before promotion. The validated v2 independence gate now prevents duplicate-reviewer second passes, requires explicit second-review assignment, provides a blind end-to-end second-review preparation tool, and rechecks independence at promotion. Continue batch-0004 first-review coverage, obtain a genuinely distinct second reviewer for existing submitted pairs, expand multi-view evidence, visual grammar, and failure-corpus work. Preserve exact hashes, provenance, uncertainty, and no-hidden-view rules."
+    "instruction": "Do not restart completed architecture gates. Fortnite batches 0001-0003 have 75 submitted GPT-5.6 Sol first reviews with 317 annotations and zero training-eligible records; batch 0004 is materialized and awaits first review. Require a genuinely independent second review plus adjudication before promotion. The validated independence pipeline now includes identity-safe adjudication/promotion gates, blind second-review preparation, and a successful manual second-review workflow path. Continue batch-0004 first-review coverage; use the workflow's second_review mode only with a genuinely distinct reviewer/model for existing submitted pairs. Then continue multi-view evidence expansion, visual grammar, and failure-corpus work. Preserve exact hashes, provenance, uncertainty, and no-hidden-view rules."
   },
-  "last_meaningful_commit": "b28c9b892f3b2c2f0ca283c1613e6513a4d6346e",
-  "latest_validated_test_commit": "b28c9b892f3b2c2f0ca283c1613e6513a4d6346e",
+  "last_meaningful_commit": "30dc8e5d01bce9a0b118e33e5290aa1b9aba628f",
+  "latest_validated_test_commit": "30dc8e5d01bce9a0b118e33e5290aa1b9aba628f",
   "completed_batches": [
     {
       "id": "body_architecture_reference_acquisition_v1",
@@ -341,9 +341,9 @@
       "id": "fortnite_semantic_independence_gate_v2",
       "status": "validated",
       "details": {
-        "implementation_commit": "b28c9b892f3b2c2f0ca283c1613e6513a4d6346e",
-        "validated_test_run_id": 37142532406,
-        "full_suite_tests_passed": 425,
+        "implementation_commit": "30dc8e5d01bce9a0b118e33e5290aa1b9aba628f",
+        "validated_test_run_id": 37142721848,
+        "full_suite_tests_passed": 426,
         "adjudication_queue_version": "fortnite-semantic-adjudication-queue/v2",
         "promotion_version": "fortnite-semantic-supervision-promotion/v2",
         "second_review_preparation_version": "fortnite-semantic-second-review-preparation/v1",
@@ -352,9 +352,12 @@
         "second_review_requires_explicit_reviewer_id": true,
         "blind_second_review_does_not_copy_first_review_annotations": true,
         "promotion_rechecks_independence": true,
-        "first_review_deterministic_output_preserved": true
+        "first_review_deterministic_output_preserved": true,
+        "second_review_workflow_dispatch": true,
+        "second_review_workflow_run_id": 37142712478,
+        "second_review_workflow_run_conclusion": "success"
       }
     }
   ],
-  "latest_test_lock_commit": "b28c9b892f3b2c2f0ca283c1613e6513a4d6346e"
+  "latest_test_lock_commit": "30dc8e5d01bce9a0b118e33e5290aa1b9aba628f"
 }
