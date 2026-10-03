@@ -101,10 +101,14 @@ Current priority order:
   - 5 releases with explicit torso-front + torso-rear evidence;
   - 5 same-decorated-component multi-surface correspondences.
 - Surface linkage is provenance-only: no hidden surface, pixel alignment, or geometry equivalence is inferred.
+- A deterministic multi-view acquisition queue now ranks missing exact-release rear/side evidence without asserting unseen decoration exists: 15 torso-rear targets, 10 head-rear targets, 7 lower-body rear/side targets, and left/right physical side-view targets for all 23 releases.
+- Highest-priority current acquisition targets are Jungle Boy (col106) and Princess Leia - Slave Outfit (sw0070), where multiple exact front surfaces are already known but complementary rear/side evidence is absent.
 - Canonical artifacts:
   - `knowledge/libraries/lego-minifigure-customs/data/exact-release-flat-art-reference-sets-v1.jsonl`
   - `knowledge/libraries/lego-minifigure-customs/data/exact-release-flat-art-reference-sets-v1-summary.json`
   - `tools/knowledge/build_exact_release_flat_art_reference_sets.py`
+  - `knowledge/libraries/lego-minifigure-customs/data/exact-release-multiview-gap-queue-v1.json`
+  - `tools/knowledge/build_exact_release_multiview_gap_queue.py`
 
 ### Fortnite semantic translation supervision pipeline
 
