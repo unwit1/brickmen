@@ -37,3 +37,18 @@ def test_manual_dispatch_can_prepare_blind_independent_second_review() -> None:
     assert '--reviewer-id "$REVIEWER_ID"' in source
     assert '--reviewer-type "$REVIEWER_TYPE"' in source
     assert 'OFFSET=$(( (BATCH_INDEX - 1) * 25 ))' in source
+
+
+def test_pull_request_bundle_generation_cannot_persist_a_new_batch() -> None:
+    source = WORKFLOW.read_text(encoding="utf-8")
+    pr_block = source.split(
+        'if [[ "$GITHUB_EVENT_NAME" == "pull_request" ]]; then',
+        1,
+    )[1].split(
+        'elif [[ "$GITHUB_EVENT_NAME" == "push" ]]; then',
+        1,
+    )[0]
+
+    assert 'BATCH_INDEX="$(tr -d \'[:space:]\' < .github/fortnite-semantic-review-trigger)"' in pr_block
+    assert "TRIGGER_REQUESTED=1" not in pr_block
+    assert "git push" not in pr_block
