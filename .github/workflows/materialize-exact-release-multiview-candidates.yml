@@ -1,0 +1,47 @@
+name: Materialize Exact-Release Multiview Candidates
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - "knowledge/libraries/lego-minifigure-customs/data/exact-release-multiview-source-candidates-v1.json"
+      - "tools/knowledge/materialize_exact_release_multiview_candidates.py"
+      - ".github/workflows/materialize-exact-release-multiview-candidates.yml"
+  push:
+    branches: [main]
+    paths:
+      - "knowledge/libraries/lego-minifigure-customs/data/exact-release-multiview-source-candidates-v1.json"
+      - "tools/knowledge/materialize_exact_release_multiview_candidates.py"
+      - ".github/workflows/materialize-exact-release-multiview-candidates.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out Brickmen
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Materialize source candidates
+        run: |
+          python tools/knowledge/materialize_exact_release_multiview_candidates.py \
+            --input knowledge/libraries/lego-minifigure-customs/data/exact-release-multiview-source-candidates-v1.json \
+            --output-dir .agent-local/exact-release-multiview/media \
+            --manifest .agent-local/exact-release-multiview/manifest.json
+
+      - name: Upload review artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: exact-release-multiview-candidates-${{ github.run_id }}
+          path: .agent-local/exact-release-multiview/
+          if-no-files-found: error
+          retention-days: 14
