@@ -2,8 +2,8 @@
 
 Last updated: 2026-10-01
 Base commit before autonomous bootstrap: `bda2cac8ea8b68bb9e3e5b4d0cf380a9c6ee3ae6`
-Last meaningful benchmark/development checkpoint: `dedb89665ba1a6b64e282422d855fc1eab2da492`
-Latest validated test-lock checkpoint: `8c182c21c9c81b89abcfda018f9ab8ce8176c9ab`
+Last meaningful benchmark/development checkpoint: `b28c9b892f3b2c2f0ca283c1613e6513a4d6346e`
+Latest validated test-lock checkpoint: `b28c9b892f3b2c2f0ca283c1613e6513a4d6346e`
 Status: active
 
 ## Current major objective
@@ -137,7 +137,7 @@ Current priority order:
 - Exact-hash and canonical-ID regression validation passed in LEGO Knowledge Tool Tests run `36892803590` on commit `8c182c21c9c81b89abcfda018f9ab8ce8176c9ab`.
 - Across batches 0001-0003, first-review coverage is now 75/744 high-priority pairs with 317 annotations; 669 high-priority pairs remain.
 
-### Independent second-review gate hardening — pending CI validation
+### Independent second-review gate hardening — validated
 
 - Adjudication queue semantics are now `fortnite-semantic-adjudication-queue/v2`.
 - Two submitted reviews only count as an independent second-review pair when their declared reviewer IDs are distinct.
@@ -146,8 +146,8 @@ Current priority order:
 - Second-review work-batch selection now recognizes both `needs_second_review` and `needs_independent_second_review`, excludes pairs already reviewed by the assigned reviewer identity, and refuses unassigned second-review batches.
 - First-review batch IDs/policy output remain byte-stable; reviewer identity only affects second-review batch IDs.
 - Regression coverage was added for duplicate same-reviewer submissions and promotion attempts that try to reuse the same reviewer twice.
-- Implementation checkpoint: `dedb89665ba1a6b64e282422d855fc1eab2da492`.
-- Focused local checks passed for the independence logic (5 adjudication/promotion tests and 4 second-review-selection tests), with a committed regression test covering the final explicit-reviewer guard. No GitHub Actions run auto-triggered from these connector commits, so this checkpoint remains pending full CI; the latest validated test-lock remains `8c182c21c9c81b89abcfda018f9ab8ce8176c9ab`.
+- Validated implementation checkpoint: `b28c9b892f3b2c2f0ca283c1613e6513a4d6346e`.
+- The end-to-end `prepare_fortnite_semantic_second_review.py` helper now composes adjudication-state building and blind second-review selection while keeping prior semantic annotations out of the reviewer batch.\n- LEGO Knowledge Tool Tests run `37142532406` passed the full suite at this checkpoint: **425 passed**.
 - Batch 0004 is already materialized and remains the next first-review coverage target.
 
 
@@ -230,7 +230,7 @@ Fresh validation observed on the current checkpoint:
 - SAM2 canonical generation run `36806483552` completed successfully and persisted the canonical 10-record metadata-only candidate manifest;
 - run-13 canonical SAM2 pixel and PNG hashes exactly matched all 10 visually inspected run-12 derivatives.
 
-## Continuation rule
+## Validation update — 2026-10-03\n\n- LEGO Knowledge Tool Tests run `37142532406` completed successfully on commit `b28c9b892f3b2c2f0ca283c1613e6513a4d6346e`: 425 tests passed.\n- This validates the v2 reviewer-independence gate, promotion defense, identity-safe second-review selection, explicit reviewer assignment, blind second-review preparation helper, and preservation of deterministic first-review output.\n\n## Continuation rule
 
 A completed batch, commit, source family, or research phase is not an endpoint. Validate, persist, update state, choose the next task, and continue.
 
