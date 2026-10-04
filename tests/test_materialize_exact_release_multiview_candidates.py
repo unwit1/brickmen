@@ -274,3 +274,55 @@ def test_all_provider_options_block_without_accepting_bytes(tmp_path: Path) -> N
     assert row["canonical_eligible"] is False
     assert row["training_eligible"] is False
     assert list(tmp_path.iterdir()) == []
+
+
+def test_image_candidate_index_selects_non_default_page_image(tmp_path: Path) -> None:
+    tool = load_tool()
+    page_url = "https://example.test/fig/"
+    front_url = "https://cdn.example.test/front.jpg"
+    rear_url = "https://cdn.example.test/rear.jpg"
+    page = (
+        f'<html><head><meta property="og:image" content="{front_url}"></head>'
+        f'<body><img src="{front_url}"><img src="{rear_url}"></body></html>'
+    ).encode()
+    rear = b"rear-view-bytes"
+
+    def fetcher(url: str):
+        if url == page_url:
+            return page, "text/html", page_url
+        if url == rear_url:
+            return rear, "image/jpeg", rear_url
+        if url == front_url:
+            raise AssertionError("front image should not be fetched when candidate index is 1")
+        raise AssertionError(url)
+
+    doc = {
+        "schema": "exact-release-multiview-source-candidates/v1",
+        "candidates": [
+            {
+                "candidate_id": "candidate-indexed",
+                "reference_set_id": "refset-1",
+                "subject": "Subject",
+                "identifiers": {"bricklink_minifigure_id": "m1"},
+                "observed_view": "rear",
+                "source_options": [
+                    {
+                        "source_provider": "Example",
+                        "source_page_url": page_url,
+                        "image_candidate_index": 1,
+                    }
+                ],
+            }
+        ],
+    }
+
+    result = tool.materialize(doc, tmp_path, fetcher=fetcher)
+    row = result["results"][0]
+
+    assert row["resolved_image_candidates"] == [front_url, rear_url]
+    assert row["selected_image_candidate_index"] == 1
+    assert row["resolved_image_url"] == rear_url
+    assert row["image_sha256"] == tool.sha256_bytes(rear)
+    assert row["exact_release_visual_identity_verified"] is False
+    assert row["canonical_eligible"] is False
+    assert row["training_eligible"] is False
