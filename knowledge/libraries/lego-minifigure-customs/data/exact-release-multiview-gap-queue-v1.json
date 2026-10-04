@@ -1,124 +1,23 @@
 {
   "schema": "exact-release-multiview-gap-queue/v1",
-  "processor_version": "exact-release-multiview-gap-queue/v1",
+  "processor_version": "exact-release-multiview-gap-queue/v2",
   "source_reference_sets": 23,
+  "reviewed_candidate_records": 2,
+  "reviewed_reference_sets": 2,
+  "reviewed_satisfied_target_counts": {
+    "lower_body_rear_or_side_evidence": 2,
+    "torso_rear_evidence": 2
+  },
   "queued_reference_sets": 23,
+  "completed_reference_sets": [],
   "target_counts": {
     "head_rear_evidence": 10,
-    "lower_body_rear_or_side_evidence": 7,
+    "lower_body_rear_or_side_evidence": 5,
     "physical_left_side_view": 23,
     "physical_right_side_view": 23,
-    "torso_rear_evidence": 15
+    "torso_rear_evidence": 13
   },
   "queue": [
-    {
-      "reference_set_id": "refset-flatart-col106-fig-000935",
-      "sample_id": "physicalrelease::bricklink::col106",
-      "subject": "Jungle Boy",
-      "identifiers": {
-        "bricklink_minifigure_id": "col106",
-        "rebrickable_fig_num": "fig-000935"
-      },
-      "priority_score": 13,
-      "existing_evidence_records": 3,
-      "existing_canonical_roles": [
-        "head_front",
-        "hips_legs_front_or_unspecified",
-        "torso_front"
-      ],
-      "multi_surface": true,
-      "same_component_cross_surface_correspondences": 0,
-      "targets": [
-        {
-          "target": "torso_rear_evidence",
-          "evidence_goal": "Acquire an exact-release rear torso view, even if the rear proves undecorated.",
-          "priority_weight": 4,
-          "content_inferred": false
-        },
-        {
-          "target": "head_rear_evidence",
-          "evidence_goal": "Acquire an exact-release rear head view; do not assume a reverse print exists.",
-          "priority_weight": 3,
-          "content_inferred": false
-        },
-        {
-          "target": "lower_body_rear_or_side_evidence",
-          "evidence_goal": "Acquire exact-release rear or side lower-body evidence beyond the current front/unspecified flat-art view.",
-          "priority_weight": 2,
-          "content_inferred": false
-        },
-        {
-          "target": "physical_left_side_view",
-          "evidence_goal": "Acquire an exact-release physical left-side view for silhouette and cross-surface correspondence.",
-          "priority_weight": 1,
-          "content_inferred": false
-        },
-        {
-          "target": "physical_right_side_view",
-          "evidence_goal": "Acquire an exact-release physical right-side view for silhouette and cross-surface correspondence.",
-          "priority_weight": 1,
-          "content_inferred": false
-        }
-      ],
-      "source_urls": [
-        "https://www.bricklink.com/catalogItemInv.asp?M=col106"
-      ]
-    },
-    {
-      "reference_set_id": "refset-flatart-sw0070-fig-003522",
-      "sample_id": "physicalrelease::bricklink::sw0070",
-      "subject": "Princess Leia - Slave Outfit",
-      "identifiers": {
-        "bricklink_minifigure_id": "sw0070",
-        "rebrickable_fig_num": "fig-003522"
-      },
-      "priority_score": 13,
-      "existing_evidence_records": 3,
-      "existing_canonical_roles": [
-        "head_front",
-        "hips_legs_front_or_unspecified",
-        "torso_front"
-      ],
-      "multi_surface": true,
-      "same_component_cross_surface_correspondences": 0,
-      "targets": [
-        {
-          "target": "torso_rear_evidence",
-          "evidence_goal": "Acquire an exact-release rear torso view, even if the rear proves undecorated.",
-          "priority_weight": 4,
-          "content_inferred": false
-        },
-        {
-          "target": "head_rear_evidence",
-          "evidence_goal": "Acquire an exact-release rear head view; do not assume a reverse print exists.",
-          "priority_weight": 3,
-          "content_inferred": false
-        },
-        {
-          "target": "lower_body_rear_or_side_evidence",
-          "evidence_goal": "Acquire exact-release rear or side lower-body evidence beyond the current front/unspecified flat-art view.",
-          "priority_weight": 2,
-          "content_inferred": false
-        },
-        {
-          "target": "physical_left_side_view",
-          "evidence_goal": "Acquire an exact-release physical left-side view for silhouette and cross-surface correspondence.",
-          "priority_weight": 1,
-          "content_inferred": false
-        },
-        {
-          "target": "physical_right_side_view",
-          "evidence_goal": "Acquire an exact-release physical right-side view for silhouette and cross-surface correspondence.",
-          "priority_weight": 1,
-          "content_inferred": false
-        }
-      ],
-      "source_urls": [
-        "https://www.bricklink.com/catalogItemInv.asp?M=sw0070&viewCodes=Y",
-        "https://www.bricklink.com/catalogList.asp?catID=1098&catType=P&catXrefLevel=0&dispColor=115&dispView=F&itemYear=2003&pg=1&v=2",
-        "https://www.bricklink.com/v2/catalog/catalogitem.page?P=973pb0087c01"
-      ]
-    },
     {
       "reference_set_id": "refset-flatart-col140-fig-000110",
       "sample_id": "physicalrelease::bricklink::col140",
@@ -135,6 +34,8 @@
       ],
       "multi_surface": true,
       "same_component_cross_surface_correspondences": 0,
+      "satisfied_targets_from_reviewed_evidence": [],
+      "reviewed_evidence": [],
       "targets": [
         {
           "target": "torso_rear_evidence",
@@ -181,6 +82,8 @@
       ],
       "multi_surface": true,
       "same_component_cross_surface_correspondences": 0,
+      "satisfied_targets_from_reviewed_evidence": [],
+      "reviewed_evidence": [],
       "targets": [
         {
           "target": "torso_rear_evidence",
@@ -227,6 +130,8 @@
       ],
       "multi_surface": true,
       "same_component_cross_surface_correspondences": 0,
+      "satisfied_targets_from_reviewed_evidence": [],
+      "reviewed_evidence": [],
       "targets": [
         {
           "target": "torso_rear_evidence",
@@ -273,6 +178,8 @@
       ],
       "multi_surface": true,
       "same_component_cross_surface_correspondences": 0,
+      "satisfied_targets_from_reviewed_evidence": [],
+      "reviewed_evidence": [],
       "targets": [
         {
           "target": "torso_rear_evidence",
@@ -324,6 +231,8 @@
       ],
       "multi_surface": true,
       "same_component_cross_surface_correspondences": 1,
+      "satisfied_targets_from_reviewed_evidence": [],
+      "reviewed_evidence": [],
       "targets": [
         {
           "target": "head_rear_evidence",
@@ -370,6 +279,8 @@
       ],
       "multi_surface": true,
       "same_component_cross_surface_correspondences": 0,
+      "satisfied_targets_from_reviewed_evidence": [],
+      "reviewed_evidence": [],
       "targets": [
         {
           "target": "torso_rear_evidence",
@@ -416,6 +327,8 @@
       ],
       "multi_surface": true,
       "same_component_cross_surface_correspondences": 0,
+      "satisfied_targets_from_reviewed_evidence": [],
+      "reviewed_evidence": [],
       "targets": [
         {
           "target": "torso_rear_evidence",
@@ -463,6 +376,8 @@
       ],
       "multi_surface": true,
       "same_component_cross_surface_correspondences": 1,
+      "satisfied_targets_from_reviewed_evidence": [],
+      "reviewed_evidence": [],
       "targets": [
         {
           "target": "head_rear_evidence",
@@ -488,6 +403,64 @@
       ]
     },
     {
+      "reference_set_id": "refset-flatart-col106-fig-000935",
+      "sample_id": "physicalrelease::bricklink::col106",
+      "subject": "Jungle Boy",
+      "identifiers": {
+        "bricklink_minifigure_id": "col106",
+        "rebrickable_fig_num": "fig-000935"
+      },
+      "priority_score": 7,
+      "existing_evidence_records": 3,
+      "existing_canonical_roles": [
+        "head_front",
+        "hips_legs_front_or_unspecified",
+        "torso_front"
+      ],
+      "multi_surface": true,
+      "same_component_cross_surface_correspondences": 0,
+      "satisfied_targets_from_reviewed_evidence": [
+        "lower_body_rear_or_side_evidence",
+        "torso_rear_evidence"
+      ],
+      "reviewed_evidence": [
+        {
+          "candidate_id": "multiview-candidate-col106-fig-000935-rear",
+          "image_sha256": "e5737a408bab760429b9a0715e295a67b551383d6833fa4c9d7b10dd1a8c5380",
+          "source_provider": "Brick Orbit",
+          "observed_view": "rear",
+          "status": "verified_rear_view",
+          "satisfies_targets": [
+            "lower_body_rear_or_side_evidence",
+            "torso_rear_evidence"
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "target": "head_rear_evidence",
+          "evidence_goal": "Acquire an exact-release rear head view; do not assume a reverse print exists.",
+          "priority_weight": 3,
+          "content_inferred": false
+        },
+        {
+          "target": "physical_left_side_view",
+          "evidence_goal": "Acquire an exact-release physical left-side view for silhouette and cross-surface correspondence.",
+          "priority_weight": 1,
+          "content_inferred": false
+        },
+        {
+          "target": "physical_right_side_view",
+          "evidence_goal": "Acquire an exact-release physical right-side view for silhouette and cross-surface correspondence.",
+          "priority_weight": 1,
+          "content_inferred": false
+        }
+      ],
+      "source_urls": [
+        "https://www.bricklink.com/catalogItemInv.asp?M=col106"
+      ]
+    },
+    {
       "reference_set_id": "refset-flatart-mof001-fig-000900",
       "sample_id": "physicalrelease::bricklink::mof001",
       "subject": "Mummy - Glow In Dark Pattern",
@@ -504,6 +477,8 @@
       ],
       "multi_surface": true,
       "same_component_cross_surface_correspondences": 1,
+      "satisfied_targets_from_reviewed_evidence": [],
+      "reviewed_evidence": [],
       "targets": [
         {
           "target": "lower_body_rear_or_side_evidence",
@@ -545,6 +520,8 @@
       ],
       "multi_surface": true,
       "same_component_cross_surface_correspondences": 1,
+      "satisfied_targets_from_reviewed_evidence": [],
+      "reviewed_evidence": [],
       "targets": [
         {
           "target": "lower_body_rear_or_side_evidence",
@@ -570,6 +547,66 @@
       ]
     },
     {
+      "reference_set_id": "refset-flatart-sw0070-fig-003522",
+      "sample_id": "physicalrelease::bricklink::sw0070",
+      "subject": "Princess Leia - Slave Outfit",
+      "identifiers": {
+        "bricklink_minifigure_id": "sw0070",
+        "rebrickable_fig_num": "fig-003522"
+      },
+      "priority_score": 7,
+      "existing_evidence_records": 3,
+      "existing_canonical_roles": [
+        "head_front",
+        "hips_legs_front_or_unspecified",
+        "torso_front"
+      ],
+      "multi_surface": true,
+      "same_component_cross_surface_correspondences": 0,
+      "satisfied_targets_from_reviewed_evidence": [
+        "lower_body_rear_or_side_evidence",
+        "torso_rear_evidence"
+      ],
+      "reviewed_evidence": [
+        {
+          "candidate_id": "multiview-candidate-sw0070-fig-003522-rear",
+          "image_sha256": "417419e70a9fada641fb3c3a0023d4aa5f08301037f1f63a00514f620d8b92bf",
+          "source_provider": "iBricktoys",
+          "observed_view": "rear",
+          "status": "verified_rear_view",
+          "satisfies_targets": [
+            "lower_body_rear_or_side_evidence",
+            "torso_rear_evidence"
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "target": "head_rear_evidence",
+          "evidence_goal": "Acquire an exact-release rear head view; do not assume a reverse print exists.",
+          "priority_weight": 3,
+          "content_inferred": false
+        },
+        {
+          "target": "physical_left_side_view",
+          "evidence_goal": "Acquire an exact-release physical left-side view for silhouette and cross-surface correspondence.",
+          "priority_weight": 1,
+          "content_inferred": false
+        },
+        {
+          "target": "physical_right_side_view",
+          "evidence_goal": "Acquire an exact-release physical right-side view for silhouette and cross-surface correspondence.",
+          "priority_weight": 1,
+          "content_inferred": false
+        }
+      ],
+      "source_urls": [
+        "https://www.bricklink.com/catalogItemInv.asp?M=sw0070&viewCodes=Y",
+        "https://www.bricklink.com/catalogList.asp?catID=1098&catType=P&catXrefLevel=0&dispColor=115&dispView=F&itemYear=2003&pg=1&v=2",
+        "https://www.bricklink.com/v2/catalog/catalogitem.page?P=973pb0087c01"
+      ]
+    },
+    {
       "reference_set_id": "refset-flatart-col031-fig-000046",
       "sample_id": "physicalrelease::bricklink::col031",
       "subject": "Surfer, Series 2",
@@ -584,6 +621,8 @@
       ],
       "multi_surface": false,
       "same_component_cross_surface_correspondences": 0,
+      "satisfied_targets_from_reviewed_evidence": [],
+      "reviewed_evidence": [],
       "targets": [
         {
           "target": "torso_rear_evidence",
@@ -624,6 +663,8 @@
       ],
       "multi_surface": false,
       "same_component_cross_surface_correspondences": 0,
+      "satisfied_targets_from_reviewed_evidence": [],
+      "reviewed_evidence": [],
       "targets": [
         {
           "target": "torso_rear_evidence",
@@ -663,6 +704,8 @@
       ],
       "multi_surface": false,
       "same_component_cross_surface_correspondences": 0,
+      "satisfied_targets_from_reviewed_evidence": [],
+      "reviewed_evidence": [],
       "targets": [
         {
           "target": "torso_rear_evidence",
@@ -702,6 +745,8 @@
       ],
       "multi_surface": false,
       "same_component_cross_surface_correspondences": 0,
+      "satisfied_targets_from_reviewed_evidence": [],
+      "reviewed_evidence": [],
       "targets": [
         {
           "target": "torso_rear_evidence",
@@ -741,6 +786,8 @@
       ],
       "multi_surface": false,
       "same_component_cross_surface_correspondences": 0,
+      "satisfied_targets_from_reviewed_evidence": [],
+      "reviewed_evidence": [],
       "targets": [
         {
           "target": "torso_rear_evidence",
@@ -780,6 +827,8 @@
       ],
       "multi_surface": false,
       "same_component_cross_surface_correspondences": 0,
+      "satisfied_targets_from_reviewed_evidence": [],
+      "reviewed_evidence": [],
       "targets": [
         {
           "target": "torso_rear_evidence",
@@ -819,6 +868,8 @@
       ],
       "multi_surface": false,
       "same_component_cross_surface_correspondences": 0,
+      "satisfied_targets_from_reviewed_evidence": [],
+      "reviewed_evidence": [],
       "targets": [
         {
           "target": "torso_rear_evidence",
@@ -860,6 +911,8 @@
       ],
       "multi_surface": true,
       "same_component_cross_surface_correspondences": 1,
+      "satisfied_targets_from_reviewed_evidence": [],
+      "reviewed_evidence": [],
       "targets": [
         {
           "target": "physical_left_side_view",
@@ -895,6 +948,8 @@
       ],
       "multi_surface": false,
       "same_component_cross_surface_correspondences": 0,
+      "satisfied_targets_from_reviewed_evidence": [],
+      "reviewed_evidence": [],
       "targets": [
         {
           "target": "head_rear_evidence",
@@ -934,6 +989,8 @@
       ],
       "multi_surface": false,
       "same_component_cross_surface_correspondences": 0,
+      "satisfied_targets_from_reviewed_evidence": [],
+      "reviewed_evidence": [],
       "targets": [
         {
           "target": "head_rear_evidence",
@@ -973,6 +1030,8 @@
       ],
       "multi_surface": false,
       "same_component_cross_surface_correspondences": 0,
+      "satisfied_targets_from_reviewed_evidence": [],
+      "reviewed_evidence": [],
       "targets": [
         {
           "target": "physical_left_side_view",
@@ -997,6 +1056,8 @@
     "A missing view is an acquisition target, not evidence that unseen decoration or geometry exists.",
     "Exact release identity must be preserved when adding new media.",
     "Rear and side evidence must come from directly observed, provenance-retaining source material.",
+    "Only byte-verified, hash-bound visual-review records may suppress an acquisition target.",
+    "A verified rear photograph may satisfy a rear torso or lower-body evidence target while leaving an obscured rear-head target open.",
     "Flat-art and physical-photo evidence remain distinct evidence classes."
   ]
 }
