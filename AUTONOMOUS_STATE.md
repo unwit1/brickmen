@@ -208,6 +208,17 @@ Current priority order:
 - Across batches 0001-0009, first-review coverage is now 225/744 high-priority pairs with 917 annotations; 519 high-priority pairs remain.
 - The provisional critic-evidence corpus now contains 772 noncanonical transformation/loss items across 225 pairs; all remain canonical- and training-ineligible pending the same independence/adjudication gates.
 
+### Fortnite semantic first-review batch 0010
+
+- Deterministic batch 0010 was materialized at commit `ba5869f5e1dc31c29cce3652bb8a152654ac9c34`.
+- Exact hash-pinned review media came from workflow run `37170592535`, artifact `11290094924`, batch `fortnite-review-first_review-90d8b11eb807c392`.
+- Batch 0010 adds 25 submitted GPT-5.6 Sol first reviews with 100 explicit semantic annotations.
+- Compact visual decisions are byte-locked at `fortnite-first-review-batch-0010-gpt56sol-decisions.json.gz`; canonical JSONL and summary are deterministically compiled through the existing submission builder.
+- Observations remain limited to directly visible source/front and LEGO wide/front evidence. Rear and hidden surfaces are not inferred, and lower-body equivalence is not claimed where the LEGO render is upper-body framed.
+- The batch remains non-canonical and training-ineligible pending a genuinely independent second review and explicit adjudication.
+- Across batches 0001-0010, first-review coverage is now 250/744 high-priority pairs with 1,017 annotations; 494 high-priority pairs remain.
+- The provisional critic-evidence corpus now contains 853 noncanonical transformation/loss items across 250 pairs; all remain canonical- and training-ineligible pending the same independence/adjudication gates.
+
 ### Independent second-review gate hardening — validated
 
 - Adjudication queue semantics are now `fortnite-semantic-adjudication-queue/v2`.
@@ -221,19 +232,19 @@ Current priority order:
 - The end-to-end `prepare_fortnite_semantic_second_review.py` helper now composes adjudication-state building and blind second-review selection while keeping prior semantic annotations out of the reviewer batch.
 - LEGO Knowledge Tool Tests run `37142721848` passed the full suite at this checkpoint: **426 passed**.
 - Build Fortnite Semantic Review UI run `37142712478` completed successfully after the workflow integration.
-- Batch 0009 first review is complete; batch 0010 is the next first-review coverage target.
+- Batch 0010 first review is complete; batch 0011 is the next first-review coverage target.
 
 
 ## Active blockers / constraints
 
-1. **Fortnite semantic supervision adjudication** — batches 0001-0009 now provide 225 submitted first reviews (917 annotations total), but canonical supervision still requires independent second reviews and explicit adjudication. The remaining 519 high-priority pairs still lack submitted first-review coverage.
+1. **Fortnite semantic supervision adjudication** — batches 0001-0010 now provide 250 submitted first reviews (1,017 annotations total), but canonical supervision still requires independent second reviews and explicit adjudication. The remaining 494 high-priority pairs still lack submitted first-review coverage.
 2. **Physical multi-view ground truth** — structured exact-release flat-art correspondence has improved, but exact rear/side physical photography remains limited; do not synthesize hidden views.
 3. **Reference-fit torso segmentation** — lower-vs-upper torso segment length remains underidentified until additional landmarks are available.
 
 ## Highest-value next work
 
 ### P0
-1. Continue Fortnite first-review coverage with batch 0010 next; obtain genuinely independent second reviews for existing submitted batches and adjudicate before any canonical promotion.
+1. Continue Fortnite first-review coverage with batch 0011 next; obtain genuinely independent second reviews for existing submitted batches and adjudicate before any canonical promotion.
 2. Expand exact-release multi-view ReferenceSets and cross-surface correspondence beyond structured flat-art, without inventing hidden views.
 
 ### P1
