@@ -94,9 +94,8 @@ def test_source_only_omission_scores_above_plain_simplification() -> None:
     assert by_pair["pair-omit"]["hardcase_score"] > by_pair["pair-simple"]["hardcase_score"]
 
 
-def test_hardcase_builder_is_deterministic() -> None:
+def test_checked_in_hardcase_queue_matches_builder() -> None:
     tool = load_tool()
-    rows = load_jsonl(INPUT)
-    first = tool.build(rows)
-    second = tool.build(rows)
-    assert first == second
+    expected = tool.build(load_jsonl(INPUT))
+    actual = json.loads(OUTPUT.read_text(encoding="utf-8"))
+    assert actual == expected
