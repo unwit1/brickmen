@@ -108,7 +108,10 @@ def test_seeded_multiview_candidates_are_exact_release_and_noncanonical() -> Non
     for candidate in doc["candidates"]:
         ref = refs[candidate["reference_set_id"]]
         assert candidate["identifiers"] == ref["identifiers"]
-        assert candidate["byte_verified"] is False
+        assert candidate["byte_verified"] is True
         assert candidate["canonical_eligible"] is False
         assert candidate["training_eligible"] is False
-        assert candidate["exact_image_sha256"] is None
+        assert isinstance(candidate["exact_image_sha256"], str)
+        assert len(candidate["exact_image_sha256"]) == 64
+        assert candidate["visual_review"]["status"] == "verified_rear_view"
+        assert candidate["visual_review"]["image_sha256"] == candidate["exact_image_sha256"]
