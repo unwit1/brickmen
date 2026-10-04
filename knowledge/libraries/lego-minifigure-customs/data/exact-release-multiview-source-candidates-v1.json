@@ -93,7 +93,8 @@
           "source_provider": "iBricktoys",
           "source_page_url": "https://www.ibricktoys.com/LEGO-sw070-Princess-Leia-Jabba-Slave-with-Neck-Bracket-with-Back-Stud",
           "source_identifier": "sw070",
-          "identity_match_basis": "Provider identifies a 2003 yellow-skin Princess Leia Jabba Slave minifigure with neck bracket/back stud; listed component inventory matches the BrickLink sw0070 release despite the provider's shortened sw070 identifier."
+          "identity_match_basis": "Provider identifies a 2003 yellow-skin Princess Leia Jabba Slave minifigure with neck bracket/back stud; listed component inventory matches the BrickLink sw0070 release despite the provider's shortened sw070 identifier. The selected page image candidate is the provider's 500x500 '-1' alternate view and must still be visually confirmed as the rear.",
+          "image_candidate_index": 8
         }
       ],
       "acquisition_research": {
@@ -102,7 +103,8 @@
         "notes": [
           "Rebrickable remains the preferred identity-linked source but returned HTTP 403 from GitHub-hosted acquisition.",
           "iBricktoys uses identifier sw070 for the 2003 yellow-skin release; this is treated as a source alias candidate rather than silently rewriting the canonical BrickLink sw0070 identifier.",
-          "The alternate-provider rear image and identity must be visually verified after byte materialization before canonical promotion."
+          "The alternate-provider rear image and identity must be visually verified after byte materialization before canonical promotion.",
+          "The iBricktoys page exposes separate 500x500 front and '-1' alternate image assets; candidate index 8 selects the alternate asset for explicit rear-view verification."
         ]
       }
     }
