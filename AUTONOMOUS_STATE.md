@@ -125,6 +125,15 @@ Current priority order:
 - Review schema/validator, conflict-preserving adjudication, adjudicated-only promotion, batching, and local review UI are implemented.
 - Deterministic machine-readable progress is now derived at `knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-semantic-review-progress.json` by `tools/knowledge/build_fortnite_semantic_review_progress.py`; use that artifact as the source of truth for coverage counts and next-batch selection instead of hand-edited prose.
 - Measurement heuristics remain prioritization context only; they never become semantic labels automatically.
+- Provisional critic evidence is now derived from submitted semantic reviews only, with all items remaining noncanonical and training-ineligible.
+- A deterministic critic hard-case queue ranks reviewed pairs for evaluation pressure-testing. Current queue: 250 pairs from 853 critic items; highest score 24; 25 pairs include source-only loss, 1 includes explicit review uncertainty, 248 span multiple critic categories, and 245 span multiple regions.
+- Hard-case scoring is transparent and evaluation-only: omissions/uncertainty/palette changes/exaggeration/representation transfer weigh more heavily than ordinary simplification, with bonuses for source-only loss and cross-region/category complexity.
+- Canonical artifacts:
+  - `knowledge/libraries/lego-minifigure-customs/data/fortnite-semantic-critic-evidence-v1.jsonl`
+  - `knowledge/libraries/lego-minifigure-customs/data/fortnite-semantic-critic-evidence-v1-summary.json`
+  - `knowledge/libraries/lego-minifigure-customs/data/fortnite-semantic-critic-hardcase-queue-v1.json`
+  - `tools/knowledge/build_fortnite_semantic_critic_evidence.py`
+  - `tools/knowledge/build_fortnite_semantic_critic_hardcase_queue.py`
 
 ### Fortnite semantic first-review batch 0002
 
