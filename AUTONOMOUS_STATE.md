@@ -101,10 +101,11 @@ Current priority order:
   - 5 releases with explicit torso-front + torso-rear evidence;
   - 5 same-decorated-component multi-surface correspondences.
 - Surface linkage is provenance-only: no hidden surface, pixel alignment, or geometry equivalence is inferred.
-- A deterministic multi-view acquisition queue now ranks missing exact-release rear/side evidence without asserting unseen decoration exists: 15 torso-rear targets, 10 head-rear targets, 7 lower-body rear/side targets, and left/right physical side-view targets for all 23 releases.
-- Highest-priority current acquisition targets are Jungle Boy (col106) and Princess Leia - Slave Outfit (sw0070), where multiple exact front surfaces are already known but complementary rear/side evidence is absent.
-- Exact-release Rebrickable rear-photo leads for both top targets are now preserved in `exact-release-multiview-source-candidates-v1.json` as noncanonical, unpinned acquisition candidates. They are explicitly byte-unverified and training-ineligible until the exact image assets are fetched, hashed, and reviewed.
-- `materialize_exact_release_multiview_candidates.py` now attempts byte-pinned acquisition without promotion, records per-candidate provider failures as structured blocked state, and supports an explicit direct-image URL when a trustworthy asset URL is known. GitHub-hosted acquisition currently receives HTTP 403 from the two seeded Rebrickable page URLs, so no bytes or hashes have been accepted for those candidates.
+- The deterministic multi-view acquisition queue now consumes byte-verified visual-review evidence as well as flat-art completeness without asserting unseen decoration exists. Current unresolved targets: 13 torso-rear, 10 head-rear, 5 lower-body rear/side, and left/right physical side-view targets for all 23 releases (74 unresolved targets total, down from 78).
+- Jungle Boy (`col106` / `fig-000935`) now has an exact byte-pinned rear photograph from Brick Orbit. SHA-256 `e5737a408bab760429b9a0715e295a67b551383d6833fa4c9d7b10dd1a8c5380`; exact reviewed bytes came from workflow run `37172037261`, artifact `11291039621`. Rear torso and rear lower-body evidence are directly visible and close those two acquisition targets; the rear head remains obscured by the hair element and stays open.
+- Princess Leia - Slave Outfit (`sw0070` / `fig-003522`) now has an exact byte-pinned rear photograph from iBricktoys' `sw070` alias page, whose 2003 yellow-skin component inventory matches the canonical release. SHA-256 `417419e70a9fada641fb3c3a0023d4aa5f08301037f1f63a00514f620d8b92bf`; exact reviewed bytes came from workflow run `37172037261`, artifact `11291039621`. Rear torso around the neck bracket and rear lower body are directly visible; the rear head remains hair-obscured and stays open.
+- `materialize_exact_release_multiview_candidates.py` now supports ordered provider fallbacks, explicit page-image candidate selection, structured failed-attempt provenance, and expected SHA-256 pinning. A provider changing previously reviewed bytes becomes a blocked hash-drift event rather than silently reusing an old visual approval.
+- Rebrickable remains blocked with HTTP 403 from GitHub-hosted acquisition for these two targets; that blocker is preserved as provenance rather than discarded. Brick Cycle's Jungle Boy fallback returned HTTP 404; Brick Orbit successfully supplied the verified fallback.
 - Canonical artifacts:
   - `knowledge/libraries/lego-minifigure-customs/data/exact-release-flat-art-reference-sets-v1.jsonl`
   - `knowledge/libraries/lego-minifigure-customs/data/exact-release-flat-art-reference-sets-v1-summary.json`
@@ -112,6 +113,8 @@ Current priority order:
   - `knowledge/libraries/lego-minifigure-customs/data/exact-release-multiview-gap-queue-v1.json`
   - `knowledge/libraries/lego-minifigure-customs/data/exact-release-multiview-source-candidates-v1.json`
   - `tools/knowledge/build_exact_release_multiview_gap_queue.py`
+  - `tools/knowledge/materialize_exact_release_multiview_candidates.py`
+  - `.github/workflows/materialize-exact-release-multiview-candidates.yml`
 
 ### Fortnite semantic translation supervision pipeline
 

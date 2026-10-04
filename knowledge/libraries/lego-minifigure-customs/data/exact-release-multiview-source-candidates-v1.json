@@ -1,6 +1,6 @@
 {
   "schema": "exact-release-multiview-source-candidates/v1",
-  "processor_version": "manual-web-evidence-seed/v1",
+  "processor_version": "manual-web-evidence-seed/v2",
   "generated_at": "2026-10-03",
   "candidates": [
     {
@@ -15,21 +15,77 @@
       "source_page_url": "https://rebrickable.com/minifigs/fig-000935/jungle-boy/",
       "observed_view": "rear",
       "observed_features": [
-        "rear physical view of the exact fig-000935 release is available",
-        "rear torso appears undecorated yellow in the indexed image",
-        "rear head surface is substantially obscured by the hair element",
-        "rear legs are visible"
+        "rear physical view is directly visible",
+        "rear torso is visible and appears undecorated yellow",
+        "rear lower body is visible",
+        "rear head surface is substantially obscured by the brown hair element"
       ],
-      "acquisition_status": "source_candidate",
-      "byte_verified": false,
-      "exact_image_sha256": null,
+      "acquisition_status": "byte_verified_visual_reviewed",
+      "byte_verified": true,
+      "exact_image_sha256": "e5737a408bab760429b9a0715e295a67b551383d6833fa4c9d7b10dd1a8c5380",
       "canonical_eligible": false,
       "training_eligible": false,
       "limitations": [
-        "Observation comes from a web-indexed image preview and is not yet byte-pinned.",
-        "No claim is made about surfaces hidden by the hair or camera angle.",
-        "The exact image asset must be fetched, hashed, and reviewed before canonical promotion."
-      ]
+        "The exact image bytes are SHA-256 pinned and the rear view has been visually reviewed.",
+        "This record is evidence only and remains canonical-ineligible and training-ineligible until downstream promotion rules explicitly admit it.",
+        "No claim is made about surfaces hidden by hair, neck bracket, accessories, or camera angle."
+      ],
+      "source_options": [
+        {
+          "source_provider": "Rebrickable",
+          "source_page_url": "https://rebrickable.com/minifigs/fig-000935/jungle-boy/",
+          "source_identifier": "fig-000935",
+          "identity_match_basis": "Exact Rebrickable figure identifier already linked to this ReferenceSet."
+        },
+        {
+          "source_provider": "Brick Cycle",
+          "source_page_url": "https://www.brickcycle.com.au/products/lego-jungle-boy-collectible-minifigure-series-7-col106-marked",
+          "source_identifier": "col106",
+          "identity_match_basis": "Provider page title explicitly identifies LEGO Jungle Boy, Collectible Minifigure Series 7, col106; indexed imagery includes a rear physical view."
+        },
+        {
+          "source_provider": "Brick Orbit",
+          "source_page_url": "https://brickorbit.com/products/jungle-boy-series-7-col106-collectible-minifigures-genuine-lego-minifigure-used-borb000487",
+          "source_identifier": "col106",
+          "identity_match_basis": "Provider page explicitly identifies JUNGLE BOY, SERIES 7 (col106), lists first appearance 2012, and states the product photos depict the exact genuine LEGO item; indexed imagery includes a rear physical view. Page image candidate index 11 resolves the exact-item 317921 rear photograph; view selection was visually verified before pinning.",
+          "image_candidate_index": 11,
+          "expected_image_sha256": "e5737a408bab760429b9a0715e295a67b551383d6833fa4c9d7b10dd1a8c5380"
+        }
+      ],
+      "acquisition_research": {
+        "updated_at": "2026-10-03",
+        "status": "fallback_provider_found",
+        "notes": [
+          "Rebrickable remains the preferred identity-linked source but returned HTTP 403 from GitHub-hosted acquisition.",
+          "Brick Cycle is retained as an alternate exact-catalog candidate source for byte materialization.",
+          "Any alternate-provider bytes still require explicit visual identity review before canonical promotion.",
+          "Brick Orbit is retained as an additional col106 fallback with multiple exact-item product photos, including an indexed rear view; any materialized asset still requires explicit visual identity/view verification.",
+          "Brick Orbit candidate index 11 resolves file 317921 at 1445px width and has been visually verified as the rear view before byte pinning."
+        ]
+      },
+      "visual_review": {
+        "status": "verified_rear_view",
+        "reviewed_at": "2026-10-03",
+        "workflow_run_id": 37172037261,
+        "workflow_artifact_id": 11291039621,
+        "source_provider": "Brick Orbit",
+        "resolved_image_url": "https://brickorbit.com/cdn/shop/files/jungle-boy-series-7-col106-collectible-minifigures-used-lego-minifigure-317921.jpg?v=1712213594&width=1445",
+        "image_sha256": "e5737a408bab760429b9a0715e295a67b551383d6833fa4c9d7b10dd1a8c5380",
+        "image_bytes": 119190,
+        "exact_release_identity_review_status": "verified_against_declared_catalog identity and provider evidence",
+        "observed_view": "rear",
+        "directly_visible_features": [
+          "rear physical view is directly visible",
+          "rear torso is visible and appears undecorated yellow",
+          "rear lower body is visible",
+          "rear head surface is substantially obscured by the brown hair element"
+        ],
+        "hidden_surface_policy": "No claim is made about head or other surfaces obscured by hair, bracket, accessories, or camera angle.",
+        "satisfies_targets": [
+          "torso_rear_evidence",
+          "lower_body_rear_or_side_evidence"
+        ]
+      }
     },
     {
       "candidate_id": "multiview-candidate-sw0070-fig-003522-rear",
@@ -43,22 +99,72 @@
       "source_page_url": "https://rebrickable.com/minifigs/fig-003522/princess-leia-slave-outfit-yellow-skin-neck-bracket/",
       "observed_view": "rear",
       "observed_features": [
-        "rear physical view of the exact fig-003522 release is available",
+        "rear physical view is directly visible",
         "light gray neck bracket is visible across the upper back",
-        "rear torso appears yellow where unobscured by the neck bracket",
-        "rear legs are visible",
-        "rear head surface is largely obscured by the hair element"
+        "rear torso is visible around the bracket and appears undecorated yellow in visible areas",
+        "rear lower body is visible",
+        "rear head surface is substantially obscured by the brown hair element"
       ],
-      "acquisition_status": "source_candidate",
-      "byte_verified": false,
-      "exact_image_sha256": null,
+      "acquisition_status": "byte_verified_visual_reviewed",
+      "byte_verified": true,
+      "exact_image_sha256": "417419e70a9fada641fb3c3a0023d4aa5f08301037f1f63a00514f620d8b92bf",
       "canonical_eligible": false,
       "training_eligible": false,
       "limitations": [
-        "Observation comes from a web-indexed image preview and is not yet byte-pinned.",
-        "No claim is made about surfaces hidden by the hair, neck bracket, or camera angle.",
-        "The exact image asset must be fetched, hashed, and reviewed before canonical promotion."
-      ]
+        "The exact image bytes are SHA-256 pinned and the rear view has been visually reviewed.",
+        "This record is evidence only and remains canonical-ineligible and training-ineligible until downstream promotion rules explicitly admit it.",
+        "No claim is made about surfaces hidden by hair, neck bracket, accessories, or camera angle."
+      ],
+      "source_options": [
+        {
+          "source_provider": "Rebrickable",
+          "source_page_url": "https://rebrickable.com/minifigs/fig-003522/princess-leia-slave-outfit-yellow-skin-neck-bracket/",
+          "source_identifier": "fig-003522",
+          "identity_match_basis": "Exact Rebrickable figure identifier already linked to this ReferenceSet."
+        },
+        {
+          "source_provider": "iBricktoys",
+          "source_page_url": "https://www.ibricktoys.com/LEGO-sw070-Princess-Leia-Jabba-Slave-with-Neck-Bracket-with-Back-Stud",
+          "source_identifier": "sw070",
+          "identity_match_basis": "Provider identifies a 2003 yellow-skin Princess Leia Jabba Slave minifigure with neck bracket/back stud; listed component inventory matches the BrickLink sw0070 release despite the provider's shortened sw070 identifier. The selected page image candidate is the provider's 500x500 '-1' alternate view and must still be visually confirmed as the rear.",
+          "image_candidate_index": 8,
+          "expected_image_sha256": "417419e70a9fada641fb3c3a0023d4aa5f08301037f1f63a00514f620d8b92bf"
+        }
+      ],
+      "acquisition_research": {
+        "updated_at": "2026-10-03",
+        "status": "fallback_provider_found",
+        "notes": [
+          "Rebrickable remains the preferred identity-linked source but returned HTTP 403 from GitHub-hosted acquisition.",
+          "iBricktoys uses identifier sw070 for the 2003 yellow-skin release; this is treated as a source alias candidate rather than silently rewriting the canonical BrickLink sw0070 identifier.",
+          "The alternate-provider rear image and identity must be visually verified after byte materialization before canonical promotion.",
+          "The iBricktoys page exposes separate 500x500 front and '-1' alternate image assets; candidate index 8 selects the alternate asset for explicit rear-view verification."
+        ]
+      },
+      "visual_review": {
+        "status": "verified_rear_view",
+        "reviewed_at": "2026-10-03",
+        "workflow_run_id": 37172037261,
+        "workflow_artifact_id": 11291039621,
+        "source_provider": "iBricktoys",
+        "resolved_image_url": "https://www.ibricktoys.com/image/cache/data/minifigures/l/sw070-1-500x500.jpg",
+        "image_sha256": "417419e70a9fada641fb3c3a0023d4aa5f08301037f1f63a00514f620d8b92bf",
+        "image_bytes": 24322,
+        "exact_release_identity_review_status": "verified_against_declared_catalog identity and provider evidence",
+        "observed_view": "rear",
+        "directly_visible_features": [
+          "rear physical view is directly visible",
+          "light gray neck bracket is visible across the upper back",
+          "rear torso is visible around the bracket and appears undecorated yellow in visible areas",
+          "rear lower body is visible",
+          "rear head surface is substantially obscured by the brown hair element"
+        ],
+        "hidden_surface_policy": "No claim is made about head or other surfaces obscured by hair, bracket, accessories, or camera angle.",
+        "satisfies_targets": [
+          "torso_rear_evidence",
+          "lower_body_rear_or_side_evidence"
+        ]
+      }
     }
   ],
   "policy": [
