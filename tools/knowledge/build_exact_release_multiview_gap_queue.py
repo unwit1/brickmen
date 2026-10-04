@@ -4,10 +4,11 @@ from __future__ import annotations
 
 import argparse
 import json
+from collections import defaultdict
 from pathlib import Path
 from typing import Any
 
-VERSION = "exact-release-multiview-gap-queue/v1"
+VERSION = "exact-release-multiview-gap-queue/v2"
 ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_INPUT = (
     ROOT
@@ -16,6 +17,14 @@ DEFAULT_INPUT = (
     / "lego-minifigure-customs"
     / "data"
     / "exact-release-flat-art-reference-sets-v1.jsonl"
+)
+DEFAULT_REVIEWED_CANDIDATES = (
+    ROOT
+    / "knowledge"
+    / "libraries"
+    / "lego-minifigure-customs"
+    / "data"
+    / "exact-release-multiview-source-candidates-v1.json"
 )
 DEFAULT_OUTPUT = (
     ROOT
@@ -33,11 +42,19 @@ def iter_jsonl(path: Path):
             yield json.loads(line)
 
 
-def acquisition_targets(reference_set: dict[str, Any]) -> list[dict[str, Any]]:
+def acquisition_targets(
+    reference_set: dict[str, Any],
+    satisfied_targets: set[str] | None = None,
+) -> list[dict[str, Any]]:
+    satisfied_targets = satisfied_targets or set()
     completeness = reference_set.get("completeness") or {}
     targets: list[dict[str, Any]] = []
 
-    if completeness.get("has_torso_front") and not completeness.get("has_torso_rear"):
+    if (
+        completeness.get("has_torso_front")
+        and not completeness.get("has_torso_rear")
+        and "torso_rear_evidence" not in satisfied_targets
+    ):
         targets.append(
             {
                 "target": "torso_rear_evidence",
@@ -47,7 +64,11 @@ def acquisition_targets(reference_set: dict[str, Any]) -> list[dict[str, Any]]:
             }
         )
 
-    if completeness.get("has_head_front") and not completeness.get("has_head_reverse"):
+    if (
+        completeness.get("has_head_front")
+        and not completeness.get("has_head_reverse")
+        and "head_rear_evidence" not in satisfied_targets
+    ):
         targets.append(
             {
                 "target": "head_rear_evidence",
@@ -57,7 +78,10 @@ def acquisition_targets(reference_set: dict[str, Any]) -> list[dict[str, Any]]:
             }
         )
 
-    if completeness.get("has_lower_body"):
+    if (
+        completeness.get("has_lower_body")
+        and "lower_body_rear_or_side_evidence" not in satisfied_targets
+    ):
         targets.append(
             {
                 "target": "lower_body_rear_or_side_evidence",
@@ -68,31 +92,94 @@ def acquisition_targets(reference_set: dict[str, Any]) -> list[dict[str, Any]]:
         )
 
     # Flat art does not establish physical side appearance or three-dimensional fit.
-    targets.extend(
-        [
-            {
-                "target": "physical_left_side_view",
-                "evidence_goal": "Acquire an exact-release physical left-side view for silhouette and cross-surface correspondence.",
-                "priority_weight": 1,
-                "content_inferred": False,
-            },
-            {
-                "target": "physical_right_side_view",
-                "evidence_goal": "Acquire an exact-release physical right-side view for silhouette and cross-surface correspondence.",
-                "priority_weight": 1,
-                "content_inferred": False,
-            },
-        ]
-    )
+    for target, goal in (
+        (
+            "physical_left_side_view",
+            "Acquire an exact-release physical left-side view for silhouette and cross-surface correspondence.",
+        ),
+        (
+            "physical_right_side_view",
+            "Acquire an exact-release physical right-side view for silhouette and cross-surface correspondence.",
+        ),
+    ):
+        if target not in satisfied_targets:
+            targets.append(
+                {
+                    "target": target,
+                    "evidence_goal": goal,
+                    "priority_weight": 1,
+                    "content_inferred": False,
+                }
+            )
     return targets
 
 
-def build(reference_sets: list[dict[str, Any]]) -> dict[str, Any]:
-    queue: list[dict[str, Any]] = []
-    for row in reference_sets:
-        targets = acquisition_targets(row)
-        if not targets:
+def reviewed_evidence_index(
+    candidates: list[dict[str, Any]] | None,
+) -> dict[str, dict[str, Any]]:
+    index: dict[str, dict[str, Any]] = defaultdict(
+        lambda: {"satisfied_targets": set(), "evidence": []}
+    )
+    for candidate in candidates or []:
+        if candidate.get("byte_verified") is not True:
             continue
+        if candidate.get("canonical_eligible") is not False:
+            raise ValueError("reviewed candidate evidence must remain canonical-ineligible")
+        if candidate.get("training_eligible") is not False:
+            raise ValueError("reviewed candidate evidence must remain training-ineligible")
+
+        exact_sha = candidate.get("exact_image_sha256")
+        review = candidate.get("visual_review") or {}
+        if review.get("status") != "verified_rear_view":
+            continue
+        if review.get("image_sha256") != exact_sha:
+            raise ValueError(
+                f"{candidate.get('candidate_id')}: visual review hash does not match exact_image_sha256"
+            )
+        satisfied = review.get("satisfies_targets") or []
+        if not isinstance(satisfied, list):
+            raise ValueError("visual_review.satisfies_targets must be a list")
+
+        ref_id = str(candidate.get("reference_set_id") or "")
+        if not ref_id:
+            raise ValueError("reviewed candidate missing reference_set_id")
+        for target in satisfied:
+            if not isinstance(target, str) or not target:
+                raise ValueError("reviewed satisfied target must be a non-empty string")
+            index[ref_id]["satisfied_targets"].add(target)
+        index[ref_id]["evidence"].append(
+            {
+                "candidate_id": candidate.get("candidate_id"),
+                "image_sha256": exact_sha,
+                "source_provider": review.get("source_provider"),
+                "observed_view": review.get("observed_view"),
+                "status": review.get("status"),
+                "satisfies_targets": sorted(set(satisfied)),
+            }
+        )
+    return index
+
+
+def build(
+    reference_sets: list[dict[str, Any]],
+    reviewed_candidates: list[dict[str, Any]] | None = None,
+) -> dict[str, Any]:
+    evidence_index = reviewed_evidence_index(reviewed_candidates)
+    queue: list[dict[str, Any]] = []
+    completed_reference_sets: list[str] = []
+
+    for row in reference_sets:
+        ref_id = str(row["reference_set_id"])
+        reviewed = evidence_index.get(
+            ref_id,
+            {"satisfied_targets": set(), "evidence": []},
+        )
+        satisfied_targets = set(reviewed["satisfied_targets"])
+        targets = acquisition_targets(row, satisfied_targets)
+        if not targets:
+            completed_reference_sets.append(ref_id)
+            continue
+
         completeness = row.get("completeness") or {}
         evidence_records = int(completeness.get("evidence_records") or 0)
         multi_surface_bonus = 2 if completeness.get("multi_surface") else 0
@@ -105,7 +192,7 @@ def build(reference_sets: list[dict[str, Any]]) -> dict[str, Any]:
 
         queue.append(
             {
-                "reference_set_id": row["reference_set_id"],
+                "reference_set_id": ref_id,
                 "sample_id": row["sample_id"],
                 "subject": row.get("subject"),
                 "identifiers": row.get("identifiers") or {},
@@ -118,6 +205,8 @@ def build(reference_sets: list[dict[str, Any]]) -> dict[str, Any]:
                 "same_component_cross_surface_correspondences": len(
                     row.get("same_component_cross_surface_correspondence") or []
                 ),
+                "satisfied_targets_from_reviewed_evidence": sorted(satisfied_targets),
+                "reviewed_evidence": list(reviewed["evidence"]),
                 "targets": targets,
                 "source_urls": sorted(
                     {
@@ -144,17 +233,28 @@ def build(reference_sets: list[dict[str, Any]]) -> dict[str, Any]:
             name = str(target["target"])
             target_counts[name] = target_counts.get(name, 0) + 1
 
+    reviewed_satisfied_counts: dict[str, int] = {}
+    for item in evidence_index.values():
+        for target in item["satisfied_targets"]:
+            reviewed_satisfied_counts[target] = reviewed_satisfied_counts.get(target, 0) + 1
+
     return {
         "schema": "exact-release-multiview-gap-queue/v1",
         "processor_version": VERSION,
         "source_reference_sets": len(reference_sets),
+        "reviewed_candidate_records": len(reviewed_candidates or []),
+        "reviewed_reference_sets": len(evidence_index),
+        "reviewed_satisfied_target_counts": dict(sorted(reviewed_satisfied_counts.items())),
         "queued_reference_sets": len(queue),
+        "completed_reference_sets": sorted(completed_reference_sets),
         "target_counts": dict(sorted(target_counts.items())),
         "queue": queue,
         "policy": [
             "A missing view is an acquisition target, not evidence that unseen decoration or geometry exists.",
             "Exact release identity must be preserved when adding new media.",
             "Rear and side evidence must come from directly observed, provenance-retaining source material.",
+            "Only byte-verified, hash-bound visual-review records may suppress an acquisition target.",
+            "A verified rear photograph may satisfy a rear torso or lower-body evidence target while leaving an obscured rear-head target open.",
             "Flat-art and physical-photo evidence remain distinct evidence classes.",
         ],
     }
@@ -163,10 +263,19 @@ def build(reference_sets: list[dict[str, Any]]) -> dict[str, Any]:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--input", type=Path, default=DEFAULT_INPUT)
+    parser.add_argument(
+        "--reviewed-candidates",
+        type=Path,
+        default=DEFAULT_REVIEWED_CANDIDATES,
+    )
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     args = parser.parse_args()
 
-    result = build(list(iter_jsonl(args.input)))
+    candidates_doc = json.loads(args.reviewed_candidates.read_text(encoding="utf-8"))
+    result = build(
+        list(iter_jsonl(args.input)),
+        list(candidates_doc.get("candidates") or []),
+    )
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(
         json.dumps(result, indent=2, ensure_ascii=False) + "\n",
