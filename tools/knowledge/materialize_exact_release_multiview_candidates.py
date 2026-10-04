@@ -36,26 +36,28 @@ def sha256_bytes(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
-def extract_image_url(html: str, base_url: str) -> str:
+def extract_image_urls(html: str, base_url: str) -> list[str]:
+    values: list[str] = []
     patterns = [
         r'<meta[^>]+property=["\']og:image["\'][^>]+content=["\']([^"\']+)["\']',
         r'<meta[^>]+content=["\']([^"\']+)["\'][^>]+property=["\']og:image["\']',
         r'<meta[^>]+name=["\']twitter:image(?::src)?["\'][^>]+content=["\']([^"\']+)["\']',
         r'<meta[^>]+content=["\']([^"\']+)["\'][^>]+name=["\']twitter:image(?::src)?["\']',
+        r'<img[^>]+(?:data-zoom-image|data-image|data-src|src)=["\']([^"\']+)["\']',
+        r'<a[^>]+href=["\']([^"\']+\.(?:png|jpe?g|webp)(?:\?[^"\']*)?)["\']',
     ]
     for pattern in patterns:
-        match = re.search(pattern, html, flags=re.IGNORECASE)
-        if match:
-            return urllib.parse.urljoin(base_url, match.group(1).strip())
+        for match in re.finditer(pattern, html, flags=re.IGNORECASE):
+            value = urllib.parse.urljoin(base_url, match.group(1).strip())
+            if value not in values:
+                values.append(value)
+    if not values:
+        raise ValueError(f"could not resolve image URL from {base_url}")
+    return values
 
-    image_match = re.search(
-        r'<img[^>]+(?:src|data-src)=["\']([^"\']+)["\']',
-        html,
-        flags=re.IGNORECASE,
-    )
-    if image_match:
-        return urllib.parse.urljoin(base_url, image_match.group(1).strip())
-    raise ValueError(f"could not resolve image URL from {base_url}")
+
+def extract_image_url(html: str, base_url: str) -> str:
+    return extract_image_urls(html, base_url)[0]
 
 
 def default_fetch(url: str) -> tuple[bytes, str | None, str]:
@@ -178,7 +180,20 @@ def materialize(
                     assert isinstance(page_url, str) and page_url
                     page_bytes, page_type, resolved_page_url = fetcher(page_url)
                     html = page_bytes.decode("utf-8", errors="replace")
-                    image_url = extract_image_url(html, resolved_page_url)
+                    image_candidates = extract_image_urls(html, resolved_page_url)
+                    candidate_index = option.get("image_candidate_index", 0)
+                    if not isinstance(candidate_index, int) or candidate_index < 0:
+                        raise ValueError("image_candidate_index must be a non-negative integer")
+                    if candidate_index >= len(image_candidates):
+                        raise ValueError(
+                            f"image_candidate_index {candidate_index} out of range "
+                            f"for {len(image_candidates)} discovered image candidates"
+                        )
+                    image_url = image_candidates[candidate_index]
+
+                if isinstance(direct_image_url, str) and direct_image_url:
+                    image_candidates = [direct_image_url]
+                    candidate_index = 0
 
                 image_bytes, image_type, resolved_image_url = fetcher(image_url)
                 suffix = extension_for(resolved_image_url, image_type)
@@ -190,6 +205,8 @@ def materialize(
                     "status": "materialized",
                     "resolved_source_page_url": resolved_page_url,
                     "resolved_image_url": resolved_image_url,
+                    "resolved_image_candidates": image_candidates,
+                    "selected_image_candidate_index": candidate_index,
                     "image_content_type": image_type,
                     "image_sha256": sha256_bytes(image_bytes),
                     "image_bytes": len(image_bytes),
@@ -207,6 +224,8 @@ def materialize(
                     "resolved_source_page_url": resolved_page_url,
                     "source_page_content_type": page_type,
                     "resolved_image_url": resolved_image_url,
+                    "resolved_image_candidates": image_candidates,
+                    "selected_image_candidate_index": candidate_index,
                     "image_content_type": image_type,
                     "local_path": output_path.name,
                     "image_sha256": sha256_bytes(image_bytes),
