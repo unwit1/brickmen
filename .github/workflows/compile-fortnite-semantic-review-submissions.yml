@@ -7,6 +7,7 @@ on:
       - ".github/workflows/compile-fortnite-semantic-review-submissions.yml"
       - "tools/knowledge/build_fortnite_semantic_review_submission.py"
       - "tools/knowledge/build_fortnite_semantic_review_progress.py"
+      - "tools/knowledge/build_fortnite_semantic_critic_evidence.py"
       - "knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/*-decisions.json.gz"
 
 permissions:
@@ -60,6 +61,7 @@ jobs:
           done
 
           python tools/knowledge/build_fortnite_semantic_review_progress.py
+          python tools/knowledge/build_fortnite_semantic_critic_evidence.py
 
       - name: Persist deterministic generated review state
         shell: bash
@@ -67,7 +69,9 @@ jobs:
           set -euo pipefail
           git config user.name "brickmen-review-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/
+          git add knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/ \
+            knowledge/libraries/lego-minifigure-customs/data/fortnite-semantic-critic-evidence-v1.jsonl \
+            knowledge/libraries/lego-minifigure-customs/data/fortnite-semantic-critic-evidence-v1-summary.json
           if git diff --cached --quiet; then
             echo "Generated semantic review state is already current."
             exit 0
