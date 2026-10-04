@@ -1,0 +1,41 @@
+{
+  "schema": "fortnite-semantic-critic-evidence-summary/v1",
+  "processor_version": "fortnite-semantic-critic-evidence/v1",
+  "source_review_files": 8,
+  "submitted_reviews": 200,
+  "unique_translation_pairs": 200,
+  "critic_evidence_items": 694,
+  "unique_critic_pairs": 200,
+  "high_confidence_items": 690,
+  "decision_counts": {
+    "color_block_changed": 19,
+    "exaggerated": 13,
+    "moved_to_accessory": 11,
+    "moved_to_mould": 230,
+    "omitted": 23,
+    "simplified": 397,
+    "uncertain": 1
+  },
+  "category_counts": {
+    "detail_compression": 397,
+    "feature_exaggeration": 13,
+    "feature_loss": 23,
+    "palette_or_block_change": 19,
+    "representation_transfer": 241,
+    "review_uncertainty": 1
+  },
+  "region_counts": {
+    "accessory_or_silhouette": 32,
+    "head": 370,
+    "lower_body": 5,
+    "torso": 287
+  },
+  "training_eligible_items": 0,
+  "canonical_eligible_items": 0,
+  "policy": [
+    "Derived critic items preserve submitted-review status and are not canonical supervision.",
+    "Only explicit semantic annotations are admitted; measurement signals are never copied into critic evidence.",
+    "Preserved and not-applicable annotations are excluded because this corpus targets transformation, loss, and uncertainty.",
+    "Independent second review and explicit adjudication remain required before any canonical promotion."
+  ]
+}
