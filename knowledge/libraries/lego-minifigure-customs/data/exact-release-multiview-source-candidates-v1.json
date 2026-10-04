@@ -1,6 +1,6 @@
 {
   "schema": "exact-release-multiview-source-candidates/v1",
-  "processor_version": "manual-web-evidence-seed/v1",
+  "processor_version": "manual-web-evidence-seed/v2",
   "generated_at": "2026-10-03",
   "candidates": [
     {
@@ -29,7 +29,30 @@
         "Observation comes from a web-indexed image preview and is not yet byte-pinned.",
         "No claim is made about surfaces hidden by the hair or camera angle.",
         "The exact image asset must be fetched, hashed, and reviewed before canonical promotion."
-      ]
+      ],
+      "source_options": [
+        {
+          "source_provider": "Rebrickable",
+          "source_page_url": "https://rebrickable.com/minifigs/fig-000935/jungle-boy/",
+          "source_identifier": "fig-000935",
+          "identity_match_basis": "Exact Rebrickable figure identifier already linked to this ReferenceSet."
+        },
+        {
+          "source_provider": "Brick Cycle",
+          "source_page_url": "https://www.brickcycle.com.au/products/lego-jungle-boy-collectible-minifigure-series-7-col106-marked",
+          "source_identifier": "col106",
+          "identity_match_basis": "Provider page title explicitly identifies LEGO Jungle Boy, Collectible Minifigure Series 7, col106; indexed imagery includes a rear physical view."
+        }
+      ],
+      "acquisition_research": {
+        "updated_at": "2026-10-03",
+        "status": "fallback_provider_found",
+        "notes": [
+          "Rebrickable remains the preferred identity-linked source but returned HTTP 403 from GitHub-hosted acquisition.",
+          "Brick Cycle is retained as an alternate exact-catalog candidate source for byte materialization.",
+          "Any alternate-provider bytes still require explicit visual identity review before canonical promotion."
+        ]
+      }
     },
     {
       "candidate_id": "multiview-candidate-sw0070-fig-003522-rear",
@@ -58,7 +81,30 @@
         "Observation comes from a web-indexed image preview and is not yet byte-pinned.",
         "No claim is made about surfaces hidden by the hair, neck bracket, or camera angle.",
         "The exact image asset must be fetched, hashed, and reviewed before canonical promotion."
-      ]
+      ],
+      "source_options": [
+        {
+          "source_provider": "Rebrickable",
+          "source_page_url": "https://rebrickable.com/minifigs/fig-003522/princess-leia-slave-outfit-yellow-skin-neck-bracket/",
+          "source_identifier": "fig-003522",
+          "identity_match_basis": "Exact Rebrickable figure identifier already linked to this ReferenceSet."
+        },
+        {
+          "source_provider": "iBricktoys",
+          "source_page_url": "https://www.ibricktoys.com/LEGO-sw070-Princess-Leia-Jabba-Slave-with-Neck-Bracket-with-Back-Stud",
+          "source_identifier": "sw070",
+          "identity_match_basis": "Provider identifies a 2003 yellow-skin Princess Leia Jabba Slave minifigure with neck bracket/back stud; listed component inventory matches the BrickLink sw0070 release despite the provider's shortened sw070 identifier."
+        }
+      ],
+      "acquisition_research": {
+        "updated_at": "2026-10-03",
+        "status": "fallback_provider_found",
+        "notes": [
+          "Rebrickable remains the preferred identity-linked source but returned HTTP 403 from GitHub-hosted acquisition.",
+          "iBricktoys uses identifier sw070 for the 2003 yellow-skin release; this is treated as a source alias candidate rather than silently rewriting the canonical BrickLink sw0070 identifier.",
+          "The alternate-provider rear image and identity must be visually verified after byte materialization before canonical promotion."
+        ]
+      }
     }
   ],
   "policy": [
