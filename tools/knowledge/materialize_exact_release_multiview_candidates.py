@@ -137,6 +137,8 @@ def _source_metadata(option: dict[str, Any], index: int) -> dict[str, Any]:
         "source_identifier": option.get("source_identifier"),
         "declared_source_page_url": option.get("source_page_url"),
         "declared_direct_image_url": option.get("direct_image_url"),
+        "image_candidate_index": option.get("image_candidate_index"),
+        "expected_image_sha256": option.get("expected_image_sha256"),
         "identity_match_basis": option.get("identity_match_basis"),
     }
 
@@ -196,6 +198,20 @@ def materialize(
                     candidate_index = 0
 
                 image_bytes, image_type, resolved_image_url = fetcher(image_url)
+                image_sha256 = sha256_bytes(image_bytes)
+                expected_sha256 = option.get("expected_image_sha256")
+                if expected_sha256 is not None:
+                    if not (
+                        isinstance(expected_sha256, str)
+                        and re.fullmatch(r"[0-9a-fA-F]{64}", expected_sha256)
+                    ):
+                        raise ValueError("expected_image_sha256 must be a 64-character hex digest")
+                    if image_sha256.lower() != expected_sha256.lower():
+                        raise ValueError(
+                            "image SHA-256 mismatch: "
+                            f"expected {expected_sha256.lower()}, got {image_sha256.lower()}"
+                        )
+
                 suffix = extension_for(resolved_image_url, image_type)
                 output_path = output_dir / f"{candidate_id}{suffix}"
                 output_path.write_bytes(image_bytes)
@@ -208,7 +224,7 @@ def materialize(
                     "resolved_image_candidates": image_candidates,
                     "selected_image_candidate_index": candidate_index,
                     "image_content_type": image_type,
-                    "image_sha256": sha256_bytes(image_bytes),
+                    "image_sha256": image_sha256,
                     "image_bytes": len(image_bytes),
                 }
                 attempts.append(attempt)
@@ -228,7 +244,7 @@ def materialize(
                     "selected_image_candidate_index": candidate_index,
                     "image_content_type": image_type,
                     "local_path": output_path.name,
-                    "image_sha256": sha256_bytes(image_bytes),
+                    "image_sha256": image_sha256,
                     "image_bytes": len(image_bytes),
                     "byte_materialized": True,
                     "visual_review_status": "pending",
