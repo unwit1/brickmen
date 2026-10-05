@@ -16,7 +16,8 @@ The manifest output is suitable for detection/view/geometry/style-measurement ex
 but authority remains community_structured rather than LEGO-primary.
 """
 from __future__ import annotations
-import argparse,hashlib,json,math,subprocess,sys
+import argparse,hashlib,json,math,subprocess,sys,uuid
+from PIL import Image
 from datetime import datetime,timezone
 from pathlib import Path
 
@@ -24,7 +25,7 @@ ROOT=Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:sys.path.insert(0,str(ROOT))
 from tools.geometry.ingest_ldraw_geometry import flatten_ldraw
 
-VERSION="ldraw-pattern-multiview-render/v3"
+VERSION="ldraw-pattern-multiview-render/v4"
 
 VIEWS=[
  ("front",0,0),
@@ -64,13 +65,35 @@ def dependency_snapshot(root,rec):
                for d in result["dependencies"]]
  payload={"schema":"ldraw-dependency-snapshot/v1","files":[{"path":d["path"],"sha256":d["sha256"]} for d in dependencies]}
  digest=hashlib.sha256(json.dumps(payload,sort_keys=True,separators=(",",":")).encode()).hexdigest()
+ root_path=(root/rec["source_path"]).resolve()
+ if sha256(root_path)!=rec.get("sha256"):
+  raise ValueError("Root bytes changed during dependency inventory")
+ for dependency in dependencies:
+  text=(root/dependency["path"]).read_text(encoding="utf-8",errors="replace")
+  if any(line.strip().upper().startswith("0 !TEXMAP") for line in text.splitlines()):
+   raise ValueError("Texture-mapped parts require a texture dependency inventory before rendering")
+ color_config=root/"LDConfig.ldr"
+ if color_config.is_file():
+  if not color_config.resolve().is_relative_to(root.resolve()):
+   raise ValueError("Color configuration outside library")
+  dependencies.append({"path":"LDConfig.ldr","sha256":sha256(color_config),"license":None})
+ dependencies.sort(key=lambda d:d["path"])
+ payload["files"]=[{"path":d["path"],"sha256":d["sha256"]} for d in dependencies]
+ digest=hashlib.sha256(json.dumps(payload,sort_keys=True,separators=(",",":")).encode()).hexdigest()
  if rec.get("dependencies_sha256") and rec["dependencies_sha256"]!=digest:
   raise ValueError("Dependency snapshot does not match the pinned dependencies_sha256")
  return dependencies,digest
 
-def render(exe,source,out,lat,lon,width,height,edges,zoom):
+def render(exe,source,out,lat,lon,width,height,edges,zoom,root,settings):
  cmd=[
   str(exe),str(source),
+  f"-LDrawDir={root}",
+  "-LDrawZip=",
+  f"-IniFile={settings}",
+  "-AllowPrimitiveSubstitution=0",
+  "-AutoCrop=0",
+  f"-ProcessLDConfig={1 if (root/'LDConfig.ldr').is_file() else 0}",
+  f"-LDConfig={root/'LDConfig.ldr'}",
   f"-SaveSnapshot={out}",
   f"-SaveWidth={width}",
   f"-SaveHeight={height}",
@@ -96,11 +119,14 @@ def main():
  ap.add_argument("--zoom",type=float,default=0.92)
  ap.add_argument("--limit",type=int)
  args=ap.parse_args()
+ if args.limit is not None and args.limit<=0:ap.error("Limit must be positive")
  if args.width<=0 or args.height<=0 or not math.isfinite(args.zoom) or args.zoom<=0:
   ap.error("Width, height and zoom must be positive")
  root=args.ldraw_root.resolve(); exe=args.ldview.resolve(); out=args.output_dir.resolve(); out.mkdir(parents=True,exist_ok=True)
  if not exe.is_file():ap.error("LDView executable not found")
- configuration={"width":args.width,"height":args.height,"zoom":args.zoom,
+ settings=out/"brickmen-render-settings.ini"
+ settings.write_text("[General]\n",encoding="utf-8",newline="\n")
+ configuration={"settings_sha256":sha256(settings),"primitive_substitution":False,"autocrop":False,"width":args.width,"height":args.height,"zoom":args.zoom,
                 "renderer_sha256":sha256(exe),"library_revision":args.library_revision}
  profiles=[]
  if args.profile in ("physical_like","both"):profiles.append(("physical_like",False))
@@ -119,15 +145,25 @@ def main():
    failures+=1;errors.append({"source_path":rec["source_path"],"stage":"dependency_inventory","reason":str(exc)});continue
   record_configuration={**configuration,"dependencies_sha256":dependencies_sha256}
   source_count+=1
+  source_records=[]
   stem=Path(rec.get("ldraw_name") or source.name).stem.replace(" ","_")
   for profile,edges in profiles:
    for view,lat,lon in VIEWS:
     render_id=render_identity(rec,profile,view,record_configuration)
     target=out/profile/stem/f"{view}-{render_id}.png";target.parent.mkdir(parents=True,exist_ok=True)
-    rc,detail=render(exe,source,target,lat,lon,args.width,args.height,edges,args.zoom)
-    if rc!=0 or not target.exists():
+    pending=target.with_name(f".{render_id}-{uuid.uuid4().hex}.pending.png")
+    rc,detail=render(exe,source,pending,lat,lon,args.width,args.height,edges,args.zoom,root,settings)
+    if rc!=0 or not pending.is_file():
      failures+=1;errors.append({"source_path":rec["source_path"],"stage":"render","view":view,"reason":detail});continue
-    records.append({
+    try:
+     with Image.open(pending) as snapshot:
+      if snapshot.format!="PNG" or snapshot.size!=(args.width,args.height):
+       raise ValueError("Renderer output is not a PNG on the requested pixel grid")
+      snapshot.verify()
+    except (ValueError,OSError) as exc:
+     failures+=1;errors.append({"source_path":rec["source_path"],"stage":"render_integrity","view":view,"reason":str(exc)});continue
+    pending.replace(target)
+    source_records.append({
       "derived_asset_id":render_id,
       "sample_id":rec.get("sample_id") or rec["reference_asset_id"],
       "source_reference_asset_id":rec["reference_asset_id"],
@@ -154,10 +190,14 @@ def main():
       "processor_version":VERSION,
       "created_at":now_iso()
     })
+  if sha256(exe)!=configuration["renderer_sha256"] or sha256(settings)!=configuration["settings_sha256"] or any(not (root/d["path"]).is_file() or sha256(root/d["path"])!=d["sha256"] for d in dependencies):
+   failures+=1;errors.append({"source_path":rec["source_path"],"stage":"dependency_integrity","reason":"Source dependencies changed during rendering"})
+  else:
+   records.extend(source_records)
  manifest=out/"render_manifest.jsonl"
  with manifest.open("w",encoding="utf-8") as f:
   for r in records:f.write(json.dumps(r,ensure_ascii=False)+"\n")
- report={"schema":"ldraw-pattern-multiview-render-report/v1","version":VERSION,"sources_rendered":source_count,"renders":len(records),"failures":failures,"errors":errors,"profiles":[p[0] for p in profiles],"views":[v[0] for v in VIEWS],"manifest":str(manifest)}
+ report={"schema":"ldraw-pattern-multiview-render-report/v1","version":VERSION,"sources_attempted":source_count,"sources_rendered":len({r["source_reference_asset_id"] for r in records}),"renders":len(records),"failures":failures,"errors":errors,"profiles":[p[0] for p in profiles],"views":[v[0] for v in VIEWS],"manifest":str(manifest)}
  (out/"import_report.json").write_text(json.dumps(report,indent=2),encoding="utf-8")
  print(json.dumps(report,indent=2))
  return 2 if failures else 0

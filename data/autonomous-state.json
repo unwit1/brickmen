@@ -59,14 +59,22 @@
       "id": "physical_multiview_ground_truth",
       "reason": "Exact rear/side physical evidence requires additional source access, credentials, or controlled capture.",
       "fallback": "Continue reviewed exact-release structured surface correspondence, digital/physical crosswalks, and other evidence-backed work without synthesizing missing views."
+    },
+    {
+      "id": "local_blind_second_review_original_media",
+      "pair_id": "fortnitepair-016dd37b62c6404356d5d866",
+      "reason": "Live source download fails the original exact SHA-256 pin. Original GitHub artifact was returned by connector, but local download of its file reference returned HTTP 403. No second review was submitted.",
+      "expected_source_sha256": "8bcdcc16aeee9242267785d62ca87d839a860cb1b4d273bd2c2a7032594b6516",
+      "original_artifact_id": 11137649234,
+      "fallback": "Recover original byte-matched media through an accessible artifact path; meanwhile continue batch 0011 first review, real generation evaluation, and other independent work."
     }
   ],
   "pending_validation": [],
   "continuation": {
     "instruction": "Do not restart completed architecture gates. 250/744 high-priority pairs have submitted first reviews with 1017 annotations; 494 remain. Review first-review batch 0011. Obtain genuinely independent second reviews and explicit adjudication before canonical promotion. Preserve exact hashes, source appearance, uncertainty, and no-hidden-view rules. Continue exact-release multiview evidence and generation evaluation with the existing tools."
   },
-  "last_meaningful_commit": "75915c3c958b76827f27b91174394b7782728774",
-  "latest_validated_test_commit": "75915c3c958b76827f27b91174394b7782728774",
+  "last_meaningful_commit": "7610c66731c6c6fae99a32bf5d0d074f69b61471",
+  "latest_validated_test_commit": "7610c66731c6c6fae99a32bf5d0d074f69b61471",
   "completed_batches": [
     {
       "id": "body_architecture_reference_acquisition_v1",
@@ -410,7 +418,7 @@
       }
     }
   ],
-  "latest_test_lock_commit": "75915c3c958b76827f27b91174394b7782728774",
+  "latest_test_lock_commit": "7610c66731c6c6fae99a32bf5d0d074f69b61471",
   "semantic_review_frontier": {
     "eligible_pairs": 744,
     "complete_first_review_batch_count": 10,
@@ -437,10 +445,11 @@
   },
   "completed_batches_are_historical_snapshots": true,
   "latest_validation": {
-    "checkpoint": "75915c3c958b76827f27b91174394b7782728774",
-    "local_tests_passed": 539,
-    "github_validation_run_id": 37339563419,
-    "github_knowledge_tests_run_id": 37339563215,
+    "checkpoint": "7610c66731c6c6fae99a32bf5d0d074f69b61471",
+    "local_tests_passed": 558,
+    "github_validation_run_id": 37357094404,
+    "github_knowledge_tests_run_id": 37357094461,
+    "github_review_ui_run_id": 37357094660,
     "status": "passed"
   },
   "generation_accuracy_frontier": {
@@ -452,10 +461,20 @@
       "landmark_max_error",
       "print_zone_containment"
     ],
-    "latest_local_tests_passed": 552,
+    "latest_local_tests_passed": 560,
     "real_generated_output_benchmark": "pending",
     "semantic_feature_review": "required",
     "physical_fit": "unvalidated",
-    "next": "Benchmark actual generated outputs with reviewed registration and P0 feature checks; audit renderer configuration and dependent appearance assets."
+    "next": "Benchmark actual generated outputs with reviewed registration and P0 feature checks; audit renderer configuration and dependent appearance assets.",
+    "renderer_configuration": "isolated_preferences_explicit_library_color_config_and_fresh_png_checks",
+    "texture_mapped_parts": "blocked_until_texture_dependency_inventory"
+  },
+  "semantic_evidence_gate": {
+    "queue_version": "v3",
+    "promotion_version": "v3",
+    "requires_matching_source_and_lego_hashes": true,
+    "requires_matching_observed_scope": true,
+    "blind_second_review_retains_hashes": true,
+    "cohort": "frozen_original_queue_snapshot"
   }
 }

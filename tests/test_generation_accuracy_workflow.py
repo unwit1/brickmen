@@ -223,7 +223,8 @@ def test_render_manifest_feeds_part_reference_sets(tmp_path, monkeypatch):
     monkeypatch.setattr(sys, "argv", ["renderer", "--manifest", str(manifest), "--ldraw-root", str(source.parent.parent), "--ldview", str(executable), "--library-revision", "test-library-v1", "--output-dir", str(output), "--profile", "physical_like"])
 
     def fake_render(exe, source_path, target, *args):
-        target.write_bytes(b"synthetic render; no real image or LDView invocation")
+        from PIL import Image
+        Image.new("RGBA", (1024, 1024), (255, 0, 0, 255)).save(target)
         return 0, ""
 
     monkeypatch.setattr(RENDERER, "render", fake_render)
@@ -231,6 +232,9 @@ def test_render_manifest_feeds_part_reference_sets(tmp_path, monkeypatch):
     records = [json.loads(line) for line in (output / "render_manifest.jsonl").read_text().splitlines()]
     refset = REFERENCES.build_reference_sets(records, "part")[0]
     assert all(refset["completeness"].values())
+    monkeypatch.setattr(RENDERER, "render", lambda *args: (0, "no new snapshot"))
+    assert RENDERER.main() == 2
+    assert not (output / "render_manifest.jsonl").read_text()
     source.write_text("0 Changed source", encoding="utf-8")
     assert RENDERER.main() == 2
     assert json.loads((output / "import_report.json").read_text())["failures"] == 1
@@ -321,7 +325,7 @@ def test_render_dependencies_cannot_escape_declared_library(tmp_path):
     (tmp_path / "outside.dat").write_text("3 16 0 0 0 1 0 0 0 1 0\n")
     (library / "parent.dat").write_text("1 16 0 0 0 1 0 0 0 1 0 0 0 1 ../outside.dat\n")
     with pytest.raises(ValueError, match="outside library"):
-        dependency_snapshot(library, {"source_path": "parent.dat"})
+        dependency_snapshot(library, {"source_path": "parent.dat", "sha256": RENDERER.sha256(library / "parent.dat")})
 
 
 @pytest.mark.parametrize("mutation,error", [
@@ -376,3 +380,36 @@ def test_prompt_contains_selected_contract_policies():
     report, prompt = COMPILER.compile_brief(brief)
     assert report["status"] == "ready_for_metadata_review"
     assert "concept mesh is nonfunctional until connector engineering/validation" in prompt
+
+
+def test_snapshot_includes_color_configuration_and_rejects_untracked_textures(tmp_path):
+    root = tmp_path / "library"
+    root.mkdir()
+    part = root / "part.dat"
+    part.write_text("3 16 0 0 0 1 0 0 0 1 0\n")
+    record = {"source_path": "part.dat", "sha256": RENDERER.sha256(part)}
+    original = RENDERER.dependency_snapshot(root, record)[1]
+    colors = root / "LDConfig.ldr"
+    colors.write_text("0 Synthetic test colors\n")
+    deps, changed = RENDERER.dependency_snapshot(root, record)
+    assert changed != original
+    assert any(d["path"] == "LDConfig.ldr" and d["sha256"] == RENDERER.sha256(colors) for d in deps)
+    part.write_text(part.read_text() + "0 !TEXMAP START PLANAR 0 0 0 1 0 0 0 1 0 untracked.png\n")
+    record["sha256"] = RENDERER.sha256(part)
+    with pytest.raises(ValueError, match="texture dependency inventory"):
+        RENDERER.dependency_snapshot(root, record)
+
+
+def test_render_command_sets_library_and_isolated_settings(tmp_path, monkeypatch):
+    from types import SimpleNamespace
+    calls = []
+    def fake_run(command, **kwargs):
+        calls.append(command)
+        return SimpleNamespace(returncode=0, stderr="", stdout="")
+    monkeypatch.setattr(RENDERER.subprocess, "run", fake_run)
+    root, settings = tmp_path / "library", tmp_path / "settings.ini"
+    RENDERER.render(Path("renderer"), Path("part.dat"), Path("output.png"), 0, 0, 512, 512, False, .92, root, settings)
+    assert f"-LDrawDir={root}" in calls[0]
+    assert f"-IniFile={settings}" in calls[0]
+    assert "-LDrawZip=" in calls[0] and "-AllowPrimitiveSubstitution=0" in calls[0]
+    assert "-AutoCrop=0" in calls[0]
