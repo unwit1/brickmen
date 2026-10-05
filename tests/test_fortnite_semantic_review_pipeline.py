@@ -58,6 +58,7 @@ def test_semantic_review_pipeline_end_to_end() -> None:
         reviewer_type="human",
     )
     template = work["items"][0]["review_template"]
+    template["evidence"].update(source_image_sha256="a" * 64, lego_image_sha256="b" * 64)
 
     first = __import__("copy").deepcopy(template)
     first["reviewer"]["reviewer_id"] = "reviewer-a"

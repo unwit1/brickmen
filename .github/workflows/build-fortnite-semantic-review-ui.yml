@@ -70,7 +70,7 @@ jobs:
       REVIEWER_ID: ${{ inputs.reviewer_id || 'unassigned' }}
       REVIEWER_TYPE: ${{ inputs.reviewer_type || 'human' }}
       BATCH_PATH: ${{ inputs.batch_path || '' }}
-      QUEUE_PATH: knowledge/libraries/lego-minifigure-customs/data/bulk-ingestion/fortnite-semantic-review-queue-latest.jsonl
+      QUEUE_PATH: knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-queue-v1.jsonl.gz
     steps:
       - name: Check out Brickmen
         uses: actions/checkout@v4

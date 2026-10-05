@@ -59,8 +59,8 @@ def review(
         "evidence": {
             "source_image_url": f"https://example.test/{pair_id}-source.png",
             "lego_image_url": f"https://example.test/{pair_id}-lego.png",
-            "source_image_sha256": None,
-            "lego_image_sha256": None,
+            "source_image_sha256": "a" * 64,
+            "lego_image_sha256": "b" * 64,
             "evidence_scope": "front_pair",
             "claims_unobserved_surfaces": False,
         },
@@ -167,3 +167,12 @@ def test_direct_script_execution_is_available() -> None:
     assert result.returncode == 0, result.stderr
     assert "--existing-reviews" in result.stdout
     assert "--reviewer-id" in result.stdout
+
+
+def test_blind_batch_retains_byte_pins_without_semantic_annotations():
+    tool = load_tool()
+    result = tool.prepare([queue_record("pair-a")], [review("r1", "pair-a", "reviewer-a")], reviewer_id="reviewer-b")
+    evidence = result["batch"]["items"][0]["review_template"]["evidence"]
+    assert evidence["source_image_sha256"] == "a" * 64
+    assert evidence["lego_image_sha256"] == "b" * 64
+    assert "SECRET-FIRST-REVIEW-FEATURE" not in json.dumps(result["batch"])

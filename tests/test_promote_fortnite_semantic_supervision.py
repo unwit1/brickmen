@@ -46,8 +46,8 @@ def review(
         "evidence": {
             "source_image_url": "https://example.test/source.png",
             "lego_image_url": "https://example.test/lego.png",
-            "source_image_sha256": None,
-            "lego_image_sha256": None,
+            "source_image_sha256": "a" * 64,
+            "lego_image_sha256": "b" * 64,
             "evidence_scope": "front_pair",
             "claims_unobserved_surfaces": False,
         },
@@ -239,3 +239,15 @@ def test_duplicate_review_ids_are_rejected() -> None:
         assert "duplicate review_id" in str(exc)
     else:
         raise AssertionError("expected duplicate review IDs to be rejected")
+
+
+def test_forged_eligible_queue_cannot_bypass_exact_evidence_matching():
+    import pytest
+    tool = load_tool()
+    records = [review("r1"), review("r2"), review("a1", status="adjudicated", role="adjudicator", adjudicates=["r1", "r2"])]
+    records[1]["evidence"]["lego_image_sha256"] = "c" * 64
+    with pytest.raises(ValueError, match="different exact evidence"):
+        tool.promote(records, [queue_row()])
+    records[1]["evidence"]["lego_image_sha256"] = None
+    with pytest.raises(ValueError, match="require exact"):
+        tool.promote(records, [queue_row()])

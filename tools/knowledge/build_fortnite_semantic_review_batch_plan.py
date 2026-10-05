@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import gzip
 import json
 import sys
 from pathlib import Path
@@ -21,8 +22,8 @@ DEFAULT_QUEUE = (
     / "libraries"
     / "lego-minifigure-customs"
     / "data"
-    / "bulk-ingestion"
-    / "fortnite-semantic-review-queue-latest.jsonl"
+    / "semantic-review-batches"
+    / "fortnite-first-review-queue-v1.jsonl.gz"
 )
 DEFAULT_BATCH_DIR = (
     ROOT
@@ -37,7 +38,8 @@ DEFAULT_OUTPUT = DEFAULT_BATCH_DIR / "fortnite-first-review-batch-plan.json"
 
 def sha256_file(path: Path) -> str:
     digest = hashlib.sha256()
-    with path.open("rb") as handle:
+    opener = gzip.open if path.suffix == ".gz" else open
+    with opener(path, "rb") as handle:
         for chunk in iter(lambda: handle.read(1024 * 1024), b""):
             digest.update(chunk)
     return digest.hexdigest()
@@ -109,6 +111,7 @@ def build_plan(
         "processor_version": VERSION,
         "queue_path": queue_path.relative_to(ROOT).as_posix(),
         "queue_sha256": sha256_file(queue_path),
+        "queue_hash_scope": "decompressed_jsonl_bytes",
         "mode": "first_review",
         "min_priority_score": min_priority_score,
         "batch_size": batch_size,

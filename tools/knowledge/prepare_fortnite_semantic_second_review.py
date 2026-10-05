@@ -26,7 +26,9 @@ from tools.knowledge.build_fortnite_semantic_review_work_batch import (
     iter_jsonl,
 )
 
-VERSION = "fortnite-semantic-second-review-preparation/v1"
+from tools.knowledge.fortnite_semantic_evidence import require_shared_evidence
+
+VERSION = "fortnite-semantic-second-review-preparation/v2"
 
 
 def _reviewer_principals_by_pair(
@@ -77,6 +79,16 @@ def prepare(
         reviewer_id=reviewer_id,
         reviewer_type=reviewer_type,
     )
+    for item in batch["items"]:
+        prior = [record for record in reviews if record.get("translation_pair_id") == item["translation_pair_id"] and record.get("review_status") == "submitted"]
+        source_hash, lego_hash, scope = require_shared_evidence(prior)
+        original = prior[0]["evidence"]
+        evidence = item["review_template"]["evidence"]
+        evidence.update(source_image_sha256=source_hash, lego_image_sha256=lego_hash, evidence_scope=scope)
+        for role in ("source", "lego"):
+            item[f"{role}_image_url"] = original[f"{role}_image_url"]
+            evidence[f"{role}_image_url"] = original[f"{role}_image_url"]
+        item["exact_evidence_binding"] = "matches_prior_submitted_review"
     prior_reviewers = _reviewer_principals_by_pair(reviews)
     selected_pair_ids = [
         str(item["translation_pair_id"])
@@ -85,7 +97,7 @@ def prepare(
     ]
 
     return {
-        "schema": "fortnite-semantic-second-review-preparation/v1",
+        "schema": "fortnite-semantic-second-review-preparation/v2",
         "processor_version": VERSION,
         "reviewer_id": reviewer_id,
         "reviewer_type": reviewer_type,

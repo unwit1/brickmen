@@ -47,8 +47,8 @@ def review(
         "evidence": {
             "source_image_url": "https://example.test/source.png",
             "lego_image_url": "https://example.test/lego.png",
-            "source_image_sha256": None,
-            "lego_image_sha256": None,
+            "source_image_sha256": "a" * 64,
+            "lego_image_sha256": "b" * 64,
             "evidence_scope": "front_pair",
             "claims_unobserved_surfaces": False,
         },
@@ -242,3 +242,29 @@ def test_build_reports_pair_level_status_counts() -> None:
         "agreement_candidate": 1,
         "needs_adjudication": 1,
     }
+
+
+def test_semantic_agreement_on_different_bytes_is_not_an_agreement_candidate():
+    tool = load_tool()
+    first, second = review("r1"), review("r2")
+    second["evidence"]["source_image_sha256"] = "c" * 64
+    row = tool.classify_group([first, second])
+    assert row["status"] == "evidence_conflict"
+    assert row["training_eligible"] is False
+    assert row["evidence_snapshot_count"] == 2
+
+
+def test_unpinned_reviews_cannot_be_promoted_by_adjudication():
+    tool = load_tool()
+    records = [review("r1"), review("r2"), review("a1", status="adjudicated", role="adjudicator", adjudicates=["r1", "r2"])]
+    records[0]["evidence"]["source_image_sha256"] = None
+    row = tool.classify_group(records)
+    assert row["status"] == "needs_exact_evidence"
+    assert row["training_eligible"] is False
+
+
+def test_adjudicator_must_observe_the_same_evidence_scope():
+    tool = load_tool()
+    records = [review("r1"), review("r2"), review("a1", status="adjudicated", role="adjudicator", adjudicates=["r1", "r2"])]
+    records[-1]["evidence"]["evidence_scope"] = "multiview"
+    assert tool.classify_group(records)["status"] == "evidence_conflict"

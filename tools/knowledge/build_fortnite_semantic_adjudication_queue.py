@@ -10,11 +10,17 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any, Iterable
 
-VERSION = "fortnite-semantic-adjudication-queue/v2"
+ROOT = Path(__file__).resolve().parents[2]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+from tools.knowledge.fortnite_semantic_evidence import evidence_identity, require_shared_evidence
+
+VERSION = "fortnite-semantic-adjudication-queue/v3"
 
 
 def iter_jsonl(paths: Iterable[Path]):
@@ -159,7 +165,18 @@ def classify_group(records: list[dict[str, Any]]) -> dict[str, Any]:
 
     adjudicated_hashes = {payload_hash(record) for record in adjudicated}
 
-    if adjudicator_ref_errors:
+    bound_records = submitted + adjudicated
+    evidence_missing = any(evidence_identity(record) is None for record in bound_records)
+    evidence_variants = {evidence_identity(record) for record in bound_records if evidence_identity(record) is not None}
+    if evidence_missing:
+        status = "needs_exact_evidence"
+        training_eligible = False
+        selected_review_id = None
+    elif len(evidence_variants) > 1:
+        status = "evidence_conflict"
+        training_eligible = False
+        selected_review_id = None
+    elif adjudicator_ref_errors:
         status = "invalid_adjudicator_references"
         training_eligible = False
         selected_review_id = None
@@ -206,6 +223,8 @@ def classify_group(records: list[dict[str, Any]]) -> dict[str, Any]:
         "submitted_review_count": len(submitted),
         "draft_review_count": len(drafts),
         "adjudicated_review_count": len(adjudicated),
+        "evidence_snapshot_count": len(evidence_variants),
+        "evidence_hashes_missing": evidence_missing,
         "submitted_payload_count": len(submitted_hashes),
         "independent_submitted_reviewer_count": independent_submitted_review_count,
         "adjudicated_payload_count": len(adjudicated_hashes),

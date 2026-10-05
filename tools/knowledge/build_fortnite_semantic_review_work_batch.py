@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import gzip
 import json
 from pathlib import Path
 from typing import Any, Iterable
@@ -19,7 +20,8 @@ MODES = {"first_review", "second_review", "adjudication"}
 
 def iter_jsonl(paths: Iterable[Path]):
     for path in paths:
-        with path.open("r", encoding="utf-8") as handle:
+        opener = gzip.open if path.suffix == ".gz" else open
+        with opener(path, "rt", encoding="utf-8") as handle:
             for line in handle:
                 if line.strip():
                     yield json.loads(line)

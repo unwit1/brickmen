@@ -281,8 +281,8 @@ def test_checked_in_first_batch_matches_builder() -> None:
         / "libraries"
         / "lego-minifigure-customs"
         / "data"
-        / "bulk-ingestion"
-        / "fortnite-semantic-review-queue-latest.jsonl"
+        / "semantic-review-batches"
+        / "fortnite-first-review-queue-v1.jsonl.gz"
     )
     batch_path = (
         root

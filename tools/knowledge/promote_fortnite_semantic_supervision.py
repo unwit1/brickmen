@@ -8,10 +8,16 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from pathlib import Path
 from typing import Any, Iterable
 
-VERSION = "fortnite-semantic-supervision-promotion/v2"
+ROOT = Path(__file__).resolve().parents[2]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+from tools.knowledge.fortnite_semantic_evidence import evidence_identity, require_shared_evidence
+
+VERSION = "fortnite-semantic-supervision-promotion/v3"
 
 
 def iter_jsonl(paths: Iterable[Path]):
@@ -115,6 +121,8 @@ def promote(
                 f"selected review {selected_review_id!r} requires at least two independent "
                 "submitted reviewers"
             )
+
+        require_shared_evidence([review, *referenced_submitted])
 
         supervision.append(
             {

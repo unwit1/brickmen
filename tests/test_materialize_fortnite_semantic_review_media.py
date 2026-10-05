@@ -112,3 +112,13 @@ def test_empty_batch_is_rejected(tmp_path: Path) -> None:
         assert "at least one review item" in str(exc)
     else:
         raise AssertionError("expected empty batch to fail")
+
+
+def test_materializer_refuses_changed_bytes_in_pinned_second_review(tmp_path):
+    import pytest
+    tool = load_tool()
+    candidate = batch()
+    candidate["items"][0]["review_template"]["evidence"]["source_image_sha256"] = "a" * 64
+    with pytest.raises(ValueError, match="exact evidence hash mismatch"):
+        tool.materialize_batch(candidate, tmp_path, fetcher=lambda url: (b"changed image bytes", "image/png", url))
+    assert not list(tmp_path.glob("*.png"))

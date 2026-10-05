@@ -18,7 +18,7 @@ import urllib.request
 from pathlib import Path
 from typing import Any, Callable
 
-VERSION = "fortnite-semantic-review-media-materializer/v1"
+VERSION = "fortnite-semantic-review-media-materializer/v2"
 ALLOWED_HOSTS = {"fortnite-api.com"}
 MAX_IMAGE_BYTES = 25 * 1024 * 1024
 SAFE_ID = re.compile(r"[^A-Za-z0-9._-]+")
@@ -107,10 +107,15 @@ def materialize_batch(
                 raise ValueError(f"{pair_id}: missing {item_key}")
             _validate_url(url)
 
+            expected_hash = evidence.get(evidence_hash_key)
+            if expected_hash is not None and (not isinstance(expected_hash, str) or not re.fullmatch(r"[0-9a-fA-F]{64}", expected_hash)):
+                raise ValueError(f"{pair_id}: invalid expected {role} hash")
             cached = cache.get(url)
             if cached is None:
                 data, content_type, final_url = fetcher(url)
                 digest = hashlib.sha256(data).hexdigest()
+                if expected_hash and expected_hash.lower() != digest:
+                    raise ValueError(f"{pair_id}: exact evidence hash mismatch for {role}")
                 suffix = _suffix(url, content_type)
                 filename = f"{safe_pair}--{role}--{digest[:16]}{suffix}"
                 path = output_dir / filename
@@ -125,6 +130,8 @@ def materialize_batch(
                 }
                 cache[url] = cached
 
+            if expected_hash and expected_hash.lower() != cached["sha256"]:
+                raise ValueError(f"{pair_id}: exact evidence hash mismatch for {role}")
             local_asset = f"media/{cached['filename']}"
             item[f"{role}_image_local_asset"] = local_asset
             item[f"{role}_image_sha256"] = cached["sha256"]
