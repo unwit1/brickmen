@@ -86,10 +86,6 @@ def type1_transform(tokens: Sequence[str]) -> tuple[float, ...]:
     return (a, b, c, x, d, e, f, y, g, h, i, z)
 
 
-def sha256_text(text: str) -> str:
-    return hashlib.sha256(text.encode("utf-8")).hexdigest()
-
-
 def header_metadata(text: str) -> dict[str, Any]:
     result: dict[str, Any] = {
         "name": None,
@@ -188,6 +184,7 @@ def flatten_ldraw(
     root_file: str,
     *,
     strict_missing: bool = True,
+    confine_to_library: bool = False,
     max_depth: int = 128,
 ) -> dict[str, Any]:
     root = Path(ldraw_root).resolve()
@@ -220,13 +217,23 @@ def flatten_ldraw(
             chain = " -> ".join(relative_label(p) for p in (*stack, path))
             raise ValueError(f"Cyclic LDraw subfile reference: {chain}")
 
-        text = path.read_text(encoding="utf-8", errors="replace")
+        if confine_to_library and not path.resolve().is_relative_to(root):
+            raise ValueError(f"LDraw dependency outside library: {path}")
+
+        source_bytes = path.read_bytes()
+        # Preserve read_text's UTF-8 replacement and universal-newline parsing,
+        # while provenance identifies the original bytes rather than decoded text.
+        text = (
+            source_bytes.decode("utf-8", errors="replace")
+            .replace("\r\n", "\n")
+            .replace("\r", "\n")
+        )
         label = relative_label(path)
         record = dependencies.setdefault(
             label,
             {
                 "path": label,
-                "sha256": sha256_text(text),
+                "sha256": hashlib.sha256(source_bytes).hexdigest(),
                 "bytes_utf8": len(text.encode("utf-8")),
                 "metadata": header_metadata(text),
                 "occurrences": 0,

@@ -36,14 +36,14 @@ def content_hash(value):
                                      ensure_ascii=False, allow_nan=False).encode()).hexdigest()
 
 
-def compile_brief(brief, data_dir=DATA, base_dir=None):
+def _compile_brief(brief, data_dir=DATA, base_dir=None):
     contracts = read_json(data_dir / "ai-output-contracts.json")
     protocol = read_json(data_dir / "chatgpt-control-generation-schema.json")
     packet_template = protocol["control_generation_packet"]
     errors, warnings = [], []
 
-    def need(value, label):
-        valid_type = isinstance(value, (str, list)) or (label == "canonical_parts.color_id" and type(value) is int)
+    def need(value, label, collection=False):
+        valid_type = (isinstance(value, list) if collection else isinstance(value, str)) or (label == "canonical_parts.color_id" and type(value) is int)
         if not valid_type or not known(value):
             errors.append(f"Missing or unresolved {label}")
 
@@ -91,8 +91,10 @@ def compile_brief(brief, data_dir=DATA, base_dir=None):
             need(identity.get(key), f"target_identity.{key}")
 
     refs = packet.get("references") or []
-    need(refs, "references")
-    ref_ids, roles, views, attachments = set(), set(), set(), []
+    need(refs, "references", collection=True)
+    ref_ids, roles, attachments = set(), set(), []
+    appearance_views, geometry_views, production_views = set(), set(), set()
+    appearance_roles = {"identity_primary", "identity_secondary", "costume_front", "costume_back", "side_reference", "face_closeup", "mask_headgear"}
     allowed_roles = set(packet_template["references"][0]["semantic_role"].split("|"))
     for reference in refs:
         ref_id = reference.get("reference_id")
@@ -110,9 +112,18 @@ def compile_brief(brief, data_dir=DATA, base_dir=None):
         roles.add(role)
         need(reference.get("provenance_id"), f"reference {ref_id} provenance_id")
         view = reference.get("view")
+        if view is not None and not isinstance(view, str):
+            raise ValueError("Reference view must be a string")
         if known(view):
-            views.add(view)
+            if role in appearance_roles:
+                appearance_views.add(view)
+            elif role == "geometry_template":
+                geometry_views.add(view)
+            elif role == "production_template":
+                production_views.add(view)
         local = reference.get("local_path")
+        if local is not None and not isinstance(local, str):
+            raise ValueError("Reference local_path must be a string")
         if local:
             path = Path(local)
             if not path.is_absolute():
@@ -132,13 +143,15 @@ def compile_brief(brief, data_dir=DATA, base_dir=None):
     if kind == "minifigure" and "identity_primary" not in roles:
         errors.append("An identity_primary reference is required")
     required_views = brief.get("required_views") or []
-    need(required_views, "required_views")
+    need(required_views, "required_views", collection=True)
+    requires_appearance = kind == "minifigure" or output == "print_art"
+    covered_views = appearance_views if requires_appearance else geometry_views | appearance_views
     for view in required_views:
-        if view not in views:
+        if view not in covered_views:
             errors.append(f"Missing reference view: {view}")
 
     features = packet.get("critical_features") or []
-    need(features, "critical_features")
+    need(features, "critical_features", collection=True)
     feature_names = set()
     for feature in features:
         name = feature.get("feature")
@@ -153,7 +166,7 @@ def compile_brief(brief, data_dir=DATA, base_dir=None):
         evidence = feature.get("source_reference_ids") or []
         if not isinstance(evidence, list) or any(not isinstance(item, str) for item in evidence):
             raise ValueError("source_reference_ids must be a list of strings")
-        need(evidence, f"feature {name} evidence")
+        need(evidence, f"feature {name} evidence", collection=True)
         for ref_id in evidence:
             if ref_id not in ref_ids:
                 errors.append(f"Feature {name} cites missing reference {ref_id}")
@@ -164,7 +177,7 @@ def compile_brief(brief, data_dir=DATA, base_dir=None):
     parts = locks.get("canonical_parts") or []
     if not isinstance(parts, list):
         raise ValueError("canonical_parts must be a list")
-    need(parts, "canonical_parts")
+    need(parts, "canonical_parts", collection=True)
     part_slots = set()
     for part in parts:
         if not isinstance(part, dict):
@@ -176,7 +189,7 @@ def compile_brief(brief, data_dir=DATA, base_dir=None):
             errors.append(f"Duplicate part slot: {part.get('slot')}")
         part_slots.add(part.get("slot"))
     required_slots = brief.get("required_part_slots") or []
-    need(required_slots, "required_part_slots")
+    need(required_slots, "required_part_slots", collection=True)
     for slot in required_slots:
         if slot not in part_slots:
             errors.append(f"Missing canonical part slot: {slot}")
@@ -208,7 +221,7 @@ def compile_brief(brief, data_dir=DATA, base_dir=None):
         value = brief
         for key in field.split("."):
             value = value.get(key) if isinstance(value, dict) else None
-        need(value, field)
+        need(value, field, collection=field.endswith(".template_boundaries"))
     for role in contract.get("reference_roles", []):
         if role not in roles:
             errors.append(f"Output contract requires a {role} reference")
@@ -223,6 +236,9 @@ def compile_brief(brief, data_dir=DATA, base_dir=None):
         "contracts_sha256": content_hash(contracts), "protocol_sha256": content_hash(protocol),
         "status": "blocked" if errors else "ready_for_metadata_review",
         "errors": errors, "warnings": warnings, "verified_local_attachments": attachments,
+        "view_coverage": {"required": required_views, "appearance": sorted(appearance_views),
+                          "geometry": sorted(geometry_views), "production": sorted(production_views),
+                          "required_axis": "appearance" if requires_appearance else "geometry_or_appearance"},
         "required_output_fields": contracts["outputs"].get(output, {}).get("required", []),
         "required_deliverables": contracts["outputs"].get(output, {}).get("deliverables", []),
         "automatic_reject_conditions": contracts["automatic_reject_conditions"],
@@ -245,6 +261,14 @@ def compile_brief(brief, data_dir=DATA, base_dir=None):
         sections.append("Required output metadata:\n" + json.dumps(manifest["required_output_fields"]))
         prompt = "\n\n".join(sections) + "\n"
     return manifest, prompt
+
+
+def compile_brief(brief, data_dir=DATA, base_dir=None):
+    """Return a blocked preflight for malformed inputs, consistently with the CLI."""
+    try:
+        return _compile_brief(brief, data_dir, base_dir)
+    except (ValueError, TypeError, KeyError, AttributeError, OSError) as exc:
+        return {"schema_version": VERSION, "status": "blocked", "errors": [f"Invalid brief: {exc}"], "warnings": []}, None
 
 
 def new_brief(kind, data_dir=DATA):

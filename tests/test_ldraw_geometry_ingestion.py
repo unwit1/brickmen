@@ -1,3 +1,4 @@
+import hashlib
 from pathlib import Path
 
 import pytest
@@ -126,3 +127,46 @@ def test_obj_can_export_brickmen_frame(tmp_path):
     # Child reference includes raw LDraw point (10,20,30), which maps to
     # Brickmen (10,30,-20).
     assert "v 10.000000000 30.000000000 -20.000000000" in payload
+
+
+@pytest.mark.parametrize("newline", [b"\r\n", b"\r"])
+def test_manifest_hashes_original_line_endings_in_recursive_dependencies(tmp_path, newline):
+    root = synthetic_library(tmp_path)
+    for path in sorted(root.rglob("*.dat")):
+        normalized_bytes = path.read_text(encoding="utf-8").encode("utf-8")
+        path.write_bytes(normalized_bytes.replace(b"\n", newline))
+
+    result = flatten_ldraw(root, "root.dat")
+
+    assert result["triangle_count"] == 3
+    for dependency in result["dependencies"]:
+        source_bytes = (root / dependency["path"]).read_bytes()
+        assert dependency["sha256"] == hashlib.sha256(source_bytes).hexdigest()
+        assert dependency["sha256"] != hashlib.sha256(
+            source_bytes.replace(newline, b"\n")
+        ).hexdigest()
+    assert result["dependencies"][0]["metadata"]["name"] == "root.dat"
+
+
+def test_manifest_hashes_non_utf8_bytes_without_changing_replacement_decoding(tmp_path):
+    root = tmp_path / "ldraw"
+    source = root / "parts" / "legacy.dat"
+    source.parent.mkdir(parents=True)
+    source_bytes = (
+        b"0 Legacy fixture\n0 Author: Legacy \xff author\n"
+        b"3 16 0 0 0 5 0 0 0 5 0\n"
+    )
+    source.write_bytes(source_bytes)
+
+    result = flatten_ldraw(root, "legacy.dat")
+    dependency = result["dependencies"][0]
+
+    assert dependency["sha256"] == hashlib.sha256(source_bytes).hexdigest()
+    assert dependency["sha256"] != hashlib.sha256(
+        source_bytes.decode("utf-8", errors="replace").encode("utf-8")
+    ).hexdigest()
+    assert dependency["metadata"]["author"] == "Legacy \ufffd author"
+    assert result["triangle_count"] == 1
+    assert result["triangles_ldu"][0] == (
+        (0.0, 0.0, 0.0), (5.0, 0.0, 0.0), (0.0, 5.0, 0.0)
+    )

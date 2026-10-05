@@ -86,4 +86,6 @@ The migrated bulk-ingestion workflow invoked `tools/knowledge/inventory_training
 - Original processor version: `training-source-tree-inventory/v1`.
 - Source-side cleanup: not performed; this generic utility may serve other Agent OS source inventories. New Brickmen workflow changes use the local dependency.
 
+Integration note: the local checkout used for that initial verification was behind GitHub. The current upstream already contained a maintained Brickmen inventory utility; that newer implementation was retained when the continuation was rebased onto `cf587fd`. The SHA above records the initially compared source, not the retained utility's current bytes.
+
 Post-migration development also consolidates 20 fieldless `batch-005` manufacturing descriptors into `data/capability-backlog.json`, retaining old paths as record pointers. Their former `schema_ready` labels did not signify executable schemas; the canonical backlog labels them `specification_pending`. This preserves topic/provenance metadata while removing repeated boilerplate and avoids treating migration completeness as production readiness.

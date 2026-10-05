@@ -16,11 +16,15 @@ The manifest output is suitable for detection/view/geometry/style-measurement ex
 but authority remains community_structured rather than LEGO-primary.
 """
 from __future__ import annotations
-import argparse,hashlib,json,subprocess
+import argparse,hashlib,json,math,subprocess,sys
 from datetime import datetime,timezone
 from pathlib import Path
 
-VERSION="ldraw-pattern-multiview-render/v2"
+ROOT=Path(__file__).resolve().parents[2]
+if str(ROOT) not in sys.path:sys.path.insert(0,str(ROOT))
+from tools.geometry.ingest_ldraw_geometry import flatten_ldraw
+
+VERSION="ldraw-pattern-multiview-render/v3"
 
 VIEWS=[
  ("front",0,0),
@@ -53,6 +57,17 @@ def render_identity(rec, profile, view, configuration):
           "configuration":configuration,"version":VERSION}
  return "ldrawrender-"+hashlib.sha256(json.dumps(payload,sort_keys=True,separators=(",",":")).encode()).hexdigest()[:24]
 
+def dependency_snapshot(root,rec):
+ """Reuse hierarchy ingestion to bind every resolved source file, not just the root."""
+ result=flatten_ldraw(root,rec["source_path"],strict_missing=True,confine_to_library=True)
+ dependencies=[{"path":d["path"],"sha256":d["sha256"],"license":d["metadata"].get("license")}
+               for d in result["dependencies"]]
+ payload={"schema":"ldraw-dependency-snapshot/v1","files":[{"path":d["path"],"sha256":d["sha256"]} for d in dependencies]}
+ digest=hashlib.sha256(json.dumps(payload,sort_keys=True,separators=(",",":")).encode()).hexdigest()
+ if rec.get("dependencies_sha256") and rec["dependencies_sha256"]!=digest:
+  raise ValueError("Dependency snapshot does not match the pinned dependencies_sha256")
+ return dependencies,digest
+
 def render(exe,source,out,lat,lon,width,height,edges,zoom):
  cmd=[
   str(exe),str(source),
@@ -81,7 +96,7 @@ def main():
  ap.add_argument("--zoom",type=float,default=0.92)
  ap.add_argument("--limit",type=int)
  args=ap.parse_args()
- if args.width<=0 or args.height<=0 or args.zoom<=0:
+ if args.width<=0 or args.height<=0 or not math.isfinite(args.zoom) or args.zoom<=0:
   ap.error("Width, height and zoom must be positive")
  root=args.ldraw_root.resolve(); exe=args.ldview.resolve(); out=args.output_dir.resolve(); out.mkdir(parents=True,exist_ok=True)
  if not exe.is_file():ap.error("LDView executable not found")
@@ -90,25 +105,30 @@ def main():
  profiles=[]
  if args.profile in ("physical_like","both"):profiles.append(("physical_like",False))
  if args.profile in ("structural_edges","both"):profiles.append(("structural_edges",True))
- records=[];failures=0;source_count=0
+ records=[];failures=0;source_count=0;errors=[]
  for rec in load(args.manifest.resolve()):
   if args.limit is not None and source_count>=args.limit:break
   source=(root/rec["source_path"]).resolve()
   if not source.is_relative_to(root) or not source.is_file():
-   failures+=1;continue
+   failures+=1;errors.append({"source_path":rec["source_path"],"stage":"source_integrity","reason":"Source missing or outside library"});continue
   if sha256(source)!=rec.get("sha256"):
-   failures+=1;continue
+   failures+=1;errors.append({"source_path":rec["source_path"],"stage":"source_integrity","reason":"Source hash mismatch"});continue
+  try:
+   dependencies,dependencies_sha256=dependency_snapshot(root,rec)
+  except (ValueError,OSError,RecursionError) as exc:
+   failures+=1;errors.append({"source_path":rec["source_path"],"stage":"dependency_inventory","reason":str(exc)});continue
+  record_configuration={**configuration,"dependencies_sha256":dependencies_sha256}
   source_count+=1
   stem=Path(rec.get("ldraw_name") or source.name).stem.replace(" ","_")
   for profile,edges in profiles:
    for view,lat,lon in VIEWS:
-    render_id=render_identity(rec,profile,view,configuration)
+    render_id=render_identity(rec,profile,view,record_configuration)
     target=out/profile/stem/f"{view}-{render_id}.png";target.parent.mkdir(parents=True,exist_ok=True)
     rc,detail=render(exe,source,target,lat,lon,args.width,args.height,edges,args.zoom)
     if rc!=0 or not target.exists():
-     failures+=1;continue
+     failures+=1;errors.append({"source_path":rec["source_path"],"stage":"render","view":view,"reason":detail});continue
     records.append({
-      "derived_asset_id":render_identity(rec,profile,view,configuration),
+      "derived_asset_id":render_id,
       "sample_id":rec.get("sample_id") or rec["reference_asset_id"],
       "source_reference_asset_id":rec["reference_asset_id"],
       "source_path":rec["source_path"],
@@ -118,7 +138,10 @@ def main():
       "authority":"community_structured",
       "component_type":rec.get("component_type"),
       "render_profile":profile,
-      "render_configuration":configuration,
+      "render_configuration":record_configuration,
+      "geometry_revision":dependencies_sha256,
+      "geometry_dependencies":dependencies,
+      "dependency_binding":"verified_expected" if rec.get("dependencies_sha256") else "captured_current_bytes",
       "view":view,
       "latitude":lat,
       "longitude":lon,
@@ -134,7 +157,7 @@ def main():
  manifest=out/"render_manifest.jsonl"
  with manifest.open("w",encoding="utf-8") as f:
   for r in records:f.write(json.dumps(r,ensure_ascii=False)+"\n")
- report={"schema":"ldraw-pattern-multiview-render-report/v1","version":VERSION,"sources_rendered":source_count,"renders":len(records),"failures":failures,"profiles":[p[0] for p in profiles],"views":[v[0] for v in VIEWS],"manifest":str(manifest)}
+ report={"schema":"ldraw-pattern-multiview-render-report/v1","version":VERSION,"sources_rendered":source_count,"renders":len(records),"failures":failures,"errors":errors,"profiles":[p[0] for p in profiles],"views":[v[0] for v in VIEWS],"manifest":str(manifest)}
  (out/"import_report.json").write_text(json.dumps(report,indent=2),encoding="utf-8")
  print(json.dumps(report,indent=2))
  return 2 if failures else 0

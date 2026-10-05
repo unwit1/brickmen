@@ -12,8 +12,8 @@ def test_pact_wrapper_preflight_requires_upstream_entry_and_exr(tmp_path: Path):
     mask=tmp_path/"parts.exr"; mask.write_bytes(b"x")
     plan=preflight(repo,image,mask,tmp_path/"out")
     assert plan["entrypoint"]==str((repo/"infer_imgs.py").resolve())
-    assert plan["staged_image"].endswith("case_000/brickmen_processed.png")
-    assert plan["staged_mask"].endswith("case_000/brickmen_mask.exr")
+    assert Path(plan["staged_image"]).parts[-2:] == ("case_000", "brickmen_processed.png")
+    assert Path(plan["staged_mask"]).parts[-2:] == ("case_000", "brickmen_mask.exr")
     assert plan["production_geometry_authority"] is False
 
 

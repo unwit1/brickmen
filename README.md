@@ -28,7 +28,7 @@ python tools/validate_repo.py
 python -m pytest tests -q
 ```
 
-See the [development state](knowledge/libraries/lego-minifigure-customs/development-state.md) for tested capabilities, remaining gaps and the next development step.
+Use [AUTONOMOUS_STATE.md](AUTONOMOUS_STATE.md) and `data/autonomous-state.json` for the canonical current frontier. The brief compiler supplements the existing [body-generation pipeline](knowledge/libraries/lego-minifigure-customs/body-generation-pipeline-state.md) and [LDraw geometry ingestion](knowledge/libraries/lego-minifigure-customs/ldraw-geometry-ingestion.md); it does not replace either.
 
 ## Initial migration source
 

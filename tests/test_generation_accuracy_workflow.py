@@ -213,7 +213,7 @@ def test_render_identity_tracks_source_and_configuration():
 def test_render_manifest_feeds_part_reference_sets(tmp_path, monkeypatch):
     source = tmp_path / "library/parts/test.dat"
     source.parent.mkdir(parents=True)
-    source.write_text("0 Synthetic fixture only", encoding="utf-8")
+    source.write_text("0 Synthetic fixture only\n3 16 0 0 0 5 0 0 0 5 0\n", encoding="utf-8")
     executable = tmp_path / "fake-ldview.exe"
     executable.write_bytes(b"test executable identity")
     manifest = tmp_path / "source.jsonl"
@@ -257,3 +257,68 @@ def test_malformed_rerun_clears_stale_prompt(tmp_path, payload):
     assert subprocess.run(command, capture_output=True).returncode == 2
     assert not (out / "prompt.txt").exists()
     assert json.loads((out / "preflight.json").read_text())["status"] == "blocked"
+
+
+def test_geometry_templates_do_not_replace_missing_appearance_views():
+    brief = valid_brief()
+    for ref in brief["generation_packet"]["references"]:
+        if ref.get("view") in {"rear", "left", "right"}:
+            ref["semantic_role"] = "geometry_template"
+    report, prompt = COMPILER.compile_brief(brief)
+    assert report["status"] == "blocked"
+    assert report["view_coverage"]["appearance"] == ["front"]
+    assert report["view_coverage"]["geometry"] == ["left", "rear", "right"]
+    assert all(f"Missing reference view: {view}" in report["errors"] for view in ("rear", "left", "right"))
+    assert prompt is None
+
+
+@pytest.mark.parametrize("field", ["part_id", "slot", "namespace", "geometry_revision"])
+def test_part_identity_fields_cannot_be_lists(field):
+    brief = valid_brief()
+    brief["generation_packet"]["structural_locks"]["canonical_parts"][0][field] = ["ambiguous", "identity"]
+    report, prompt = COMPILER.compile_brief(brief)
+    assert report["status"] == "blocked"
+    assert prompt is None
+
+
+@pytest.mark.parametrize("field,value", [("view", ["front"]), ("local_path", ["asset.png"]), ("provenance_id", ["source"]), ("reference_id", {"id": "source"})])
+def test_malformed_reference_fields_return_blocked_api_results(field, value):
+    brief = valid_brief()
+    brief["generation_packet"]["references"][0][field] = value
+    report, prompt = COMPILER.compile_brief(brief)
+    assert report["status"] == "blocked"
+    assert report["errors"]
+    assert prompt is None
+
+
+def test_dependency_snapshot_tracks_changed_child_bytes_and_enforces_pins(tmp_path):
+    root = tmp_path / "ldraw"
+    parts = root / "parts"
+    parts.mkdir(parents=True)
+    parent = parts / "parent.dat"
+    child = parts / "child.dat"
+    parent.write_bytes(b"0 Parent\n1 16 0 0 0 1 0 0 0 1 0 0 0 1 child.dat\n")
+    child.write_bytes(b"0 Child\n3 16 0 0 0 5 0 0 0 5 0\n")
+    record = {"source_path": "parts/parent.dat", "reference_asset_id": "parent", "sha256": RENDERER.sha256(parent)}
+    dependencies, original = RENDERER.dependency_snapshot(root, record)
+    assert len(dependencies) == 2
+    pinned = {**record, "dependencies_sha256": original}
+    assert RENDERER.dependency_snapshot(root, pinned)[1] == original
+    child.write_bytes(child.read_bytes().replace(b"5 0 0", b"6 0 0"))
+    assert RENDERER.sha256(parent) == record["sha256"]
+    assert RENDERER.dependency_snapshot(root, record)[1] != original
+    with pytest.raises(ValueError, match="pinned"):
+        RENDERER.dependency_snapshot(root, pinned)
+    child.unlink()
+    with pytest.raises(FileNotFoundError):
+        RENDERER.dependency_snapshot(root, record)
+
+
+def test_render_dependencies_cannot_escape_declared_library(tmp_path):
+    from tools.knowledge.render_ldraw_pattern_training_views import dependency_snapshot
+    library = tmp_path / "library"
+    library.mkdir()
+    (tmp_path / "outside.dat").write_text("3 16 0 0 0 1 0 0 0 1 0\n")
+    (library / "parent.dat").write_text("1 16 0 0 0 1 0 0 0 1 0 0 0 1 ../outside.dat\n")
+    with pytest.raises(ValueError, match="outside library"):
+        dependency_snapshot(library, {"source_path": "parent.dat"})
