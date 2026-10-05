@@ -1,6 +1,6 @@
 {
   "schema": "lego-training-bulk-ingestion-status/v1",
-  "created_at": "2026-09-26T23:14:20.261470+00:00",
+  "created_at": "2026-10-05T16:30:37.613095+00:00",
   "status_counts": {
     "blocked_local_or_interactive": 11,
     "complete": 10,
@@ -33,14 +33,14 @@
       "source_id": "bricklink_api_enrichment",
       "status": "blocked_local_or_interactive",
       "reason": "needs_user_BrickLink_API_credentials_and_registered_endpoint_IP",
-      "created_at": "2026-09-26T23:14:20.229400+00:00",
+      "created_at": "2026-10-05T16:30:37.575265+00:00",
       "_status_file": "bricklink_api_enrichment.json"
     },
     {
       "source_id": "bricksfinder",
       "status": "complete",
       "exit_code": 0,
-      "created_at": "2026-09-26T23:02:16.866138+00:00",
+      "created_at": "2026-10-05T16:15:28.848014+00:00",
       "git_commit": "68139a2bb1d356f0a37d8edcc8df16de74b9f70d",
       "files": 69,
       "total_bytes": 57949136,
@@ -81,7 +81,7 @@
       "source_id": "bricksfinder_caption_rows",
       "status": "structured_caption_supervision_ingested",
       "exit_code": 0,
-      "created_at": "2026-09-26T23:09:34.199062+00:00",
+      "created_at": "2026-10-05T16:24:21.066468+00:00",
       "schema": "bricksfinder-caption-ingest-manifest/v1",
       "processor_version": "bricksfinder-caption-ingest/v1",
       "dataset": "Armaggheddon/lego_minifigure_captions",
@@ -121,10 +121,10 @@
       "source_id": "bricksfinder_hf",
       "status": "complete",
       "exit_code": 0,
-      "created_at": "2026-09-26T23:02:32.115340+00:00",
+      "created_at": "2026-10-05T16:15:45.955108+00:00",
       "dataset_sha": "1e320360dca012382e091f5e8106a4e758586652",
       "file_count": 5,
-      "downloads": 131,
+      "downloads": 125,
       "tags": [
         "task_categories:image-to-text",
         "task_categories:text-to-image",
@@ -175,7 +175,7 @@
       "source_id": "bricksfinder_reconciliation",
       "status": "reconciliation_queue_ready",
       "exit_code": 0,
-      "created_at": "2026-09-26T23:09:34.441903+00:00",
+      "created_at": "2026-10-05T16:24:21.362872+00:00",
       "schema": "bricksfinder-reconciliation-summary/v1",
       "processor_version": "bricksfinder-reconciliation-queue/v1",
       "input_records": 12966,
@@ -195,7 +195,7 @@
       "source_id": "compatible_brand_catalog_candidates",
       "status": "catalog_backed_brand_code_candidates_ready",
       "exit_code": 0,
-      "created_at": "2026-09-26T23:02:31.875002+00:00",
+      "created_at": "2026-10-05T16:15:45.594257+00:00",
       "schema": "compatible-brand-catalog-candidate-summary/v1",
       "processor_version": "compatible-brand-catalog-candidates/v1",
       "stable_prefix_candidates": 76,
@@ -207,50 +207,50 @@
       "source_id": "controlled_physical_photography",
       "status": "blocked_local_or_interactive",
       "reason": "needs_physical_figures_and_capture_rig",
-      "created_at": "2026-09-26T23:14:20.229400+00:00",
+      "created_at": "2026-10-05T16:30:37.575265+00:00",
       "_status_file": "controlled_physical_photography.json"
     },
     {
       "source_id": "decorated_head_semantics",
       "status": "weak_catalog_semantic_corpus_ready",
       "exit_code": 0,
-      "created_at": "2026-09-26T23:00:17.258643+00:00",
+      "created_at": "2026-10-05T16:12:37.425408+00:00",
       "schema": "decorated-head-semantic-corpus-summary/v1",
       "processor_version": "decorated-head-semantic-corpus/v1",
-      "unique_decorated_head_parts": 4198,
-      "parts_with_semantic_tags": 3463,
-      "parts_with_weak_expression_candidates": 2009,
-      "alternate_expression_or_dual_side_candidates": 743,
+      "unique_decorated_head_parts": 4116,
+      "parts_with_semantic_tags": 3393,
+      "parts_with_weak_expression_candidates": 1999,
+      "alternate_expression_or_dual_side_candidates": 746,
       "feature_counts": {
-        "eyebrows": 2099,
-        "smile": 1240,
-        "open_mouth": 713,
-        "teeth": 651,
-        "angry": 514,
-        "beard": 413,
-        "glasses": 402,
+        "eyebrows": 2072,
+        "smile": 1231,
+        "open_mouth": 695,
+        "teeth": 647,
+        "angry": 512,
+        "beard": 414,
         "scar": 401,
+        "glasses": 400,
         "moustache": 390,
         "grin": 258,
         "stubble": 250,
         "scared": 220,
-        "wrinkles": 201,
-        "eyelashes": 198,
-        "makeup": 170,
-        "frown": 165,
-        "freckles": 136,
+        "wrinkles": 203,
+        "eyelashes": 196,
+        "frown": 167,
+        "makeup": 161,
+        "freckles": 123,
         "goggles": 104,
         "sunglasses": 97,
-        "tongue": 74,
-        "headset": 56,
+        "tongue": 73,
+        "headset": 55,
         "surprised": 54,
         "eyepatch": 42
       },
       "weak_expression_counts": {
-        "happiness_candidate": 1462,
-        "anger_candidate": 514,
+        "happiness_candidate": 1453,
+        "anger_candidate": 512,
         "fear_candidate": 220,
-        "sadness_or_displeasure_candidate": 165,
+        "sadness_or_displeasure_candidate": 167,
         "surprise_candidate": 54
       },
       "_status_file": "decorated_head_semantics.json"
@@ -259,10 +259,10 @@
       "source_id": "face_semantic_distributions",
       "status": "weak_semantic_distributions_ready",
       "exit_code": 0,
-      "created_at": "2026-09-26T23:00:17.475611+00:00",
+      "created_at": "2026-10-05T16:12:37.672260+00:00",
       "schema": "face-semantic-distribution-summary/v1",
       "processor_version": "face-semantic-distributions/v1",
-      "decorated_head_records": 4198,
+      "decorated_head_records": 4116,
       "theme_groups": 307,
       "era_groups": 6,
       "distribution_records": 313,
@@ -272,20 +272,20 @@
       "source_id": "film_frame_corpus",
       "status": "blocked_local_or_interactive",
       "reason": "needs_legally_obtained_local_video_files",
-      "created_at": "2026-09-26T23:14:20.229400+00:00",
+      "created_at": "2026-10-05T16:30:37.575265+00:00",
       "_status_file": "film_frame_corpus.json"
     },
     {
       "source_id": "flat_art_catalog_crosswalk",
       "status": "candidate_only_requires_independent_confirmation",
       "exit_code": 0,
-      "created_at": "2026-09-26T23:02:25.485811+00:00",
+      "created_at": "2026-10-05T16:15:38.580229+00:00",
       "schema": "flat-art-catalog-crosswalk-candidate-summary/v1",
       "processor_version": "flat-art-catalog-crosswalk-candidates/v8",
       "rioforce_records": 129,
-      "physical_samples_indexed": 17226,
-      "component_records_indexed": 82410,
-      "ldraw_exact_ids_indexed": 4348,
+      "physical_samples_indexed": 17276,
+      "component_records_indexed": 82624,
+      "ldraw_exact_ids_indexed": 4353,
       "min_figure_score_for_exact": 0.9,
       "asset_class_minifigure_surface_map": 102,
       "with_figure_candidates": 79,
@@ -302,11 +302,11 @@
       "source_id": "flat_art_crosswalk",
       "status": "candidate_only_requires_independent_confirmation",
       "exit_code": 0,
-      "created_at": "2026-09-26T23:02:22.605571+00:00",
+      "created_at": "2026-10-05T16:15:35.292772+00:00",
       "schema": "flat-art-crosswalk-candidate-summary/v1",
       "processor_version": "flat-art-crosswalk-candidates/v1",
       "rioforce_records": 129,
-      "ldraw_records": 4352,
+      "ldraw_records": 4357,
       "records_with_candidates": 43,
       "records_without_candidates": 86,
       "component_counts": {
@@ -327,34 +327,34 @@
       "source_id": "flickr_bobs_full_decals",
       "status": "blocked_local_or_interactive",
       "reason": "needs_Flickr_enumeration_export_or_API_for_reliable_full_collection",
-      "created_at": "2026-09-26T23:14:20.229400+00:00",
+      "created_at": "2026-10-05T16:30:37.575265+00:00",
       "_status_file": "flickr_bobs_full_decals.json"
     },
     {
       "source_id": "fortnite_lego_styles",
       "status": "complete",
       "exit_code": 0,
-      "created_at": "2026-09-26T23:09:36.582871+00:00",
-      "source_commit": "f0955be073c90eb0efb942dff416d7cdb802a6ac",
+      "created_at": "2026-10-05T16:24:23.738603+00:00",
+      "source_commit": "f1a412ae5d657ac94dd0169fb973a1aaa5cb22e9",
       "schema": "fortnite-lego-translation-pair-summary/v2",
       "processor_version": "fortnite-lego-translation-pairs/v2",
       "input_sha256": {
-        "br": "f8a2fa0b946f1f2ca8b5f01108ab205463e84c03321f85fd01d60a80f9f0d685",
-        "lego": "44f7e4b025659b391502309d5f54c2d2b35f45776af410df16e910f689c72546"
+        "br": "97a993f68f8b1b9c4d980787bb1875770df3f87250e771ef8d99e29aee55b5c9",
+        "lego": "6548e3285ba1fb12856c96f8e1fae450bcab524e45deeaee35d55ff3235b2bec"
       },
-      "br_records": 16414,
-      "lego_records": 2494,
-      "candidate_pairs": 2494,
+      "br_records": 16507,
+      "lego_records": 2504,
+      "candidate_pairs": 2504,
       "unmatched_lego": 0,
       "pair_methods": {
-        "embedded_br_id": 2494
+        "embedded_br_id": 2504
       },
       "image_coverage": {
-        "source_has_image": 2494,
-        "lego_has_image": 2480,
-        "both_have_images": 2480
+        "source_has_image": 2504,
+        "lego_has_image": 2490,
+        "both_have_images": 2490
       },
-      "semantic_annotation_queue_records": 2494,
+      "semantic_annotation_queue_records": 2504,
       "lego_top_level_fields": [
         "added",
         "cosmeticId",
@@ -388,50 +388,50 @@
       "source_id": "fortnite_semantic_review_queue",
       "status": "semantic_review_queue_ready",
       "exit_code": 0,
-      "created_at": "2026-09-26T23:14:14.051514+00:00",
+      "created_at": "2026-10-05T16:30:30.340077+00:00",
       "schema": "fortnite-semantic-review-queue-summary/v1",
       "processor_version": "fortnite-semantic-review-queue/v1",
-      "complete_feature_records": 2494,
-      "direct_image_records": 2480,
+      "complete_feature_records": 2504,
+      "direct_image_records": 2490,
       "alias_fallback_records": 14,
       "missing_image_records": 0,
-      "records_with_measurement_signals": 2492,
-      "high_priority_records": 744,
+      "records_with_measurement_signals": 2499,
+      "high_priority_records": 421,
       "_status_file": "fortnite_semantic_review_queue.json"
     },
     {
       "source_id": "fortnite_translation_controls",
       "status": "deterministic_controls_ready",
       "exit_code": 0,
-      "created_at": "2026-09-26T23:09:36.883780+00:00",
+      "created_at": "2026-10-05T16:24:24.092636+00:00",
       "schema": "translation-control-pair-summary/v1",
       "processor_version": "translation-control-pairs/v1",
-      "input_pairs": 2494,
-      "usable_pairs": 2494,
-      "positive_controls": 2494,
-      "global_wrong_identity_negatives": 2494,
-      "hard_group_wrong_identity_negatives": 1394,
-      "total_controls": 6382,
-      "group_count": 1318,
+      "input_pairs": 2504,
+      "usable_pairs": 2504,
+      "positive_controls": 2504,
+      "global_wrong_identity_negatives": 2504,
+      "hard_group_wrong_identity_negatives": 1403,
+      "total_controls": 6411,
+      "group_count": 1321,
       "_status_file": "fortnite_translation_controls.json"
     },
     {
       "source_id": "fortnite_visual_differences",
       "status": "complete",
       "exit_code": 0,
-      "created_at": "2026-09-26T23:14:13.665807+00:00",
+      "created_at": "2026-10-05T16:30:29.909987+00:00",
       "schema": "fortnite-translation-visual-feature-summary/v2",
       "processor_version": "fortnite-translation-visual-features/v2",
-      "pair_records_requested": 2494,
-      "complete": 2494,
+      "pair_records_requested": 2504,
+      "complete": 2504,
       "errors": 0,
       "missing_preferred_image": 0,
       "alias_fallbacks_attached": 14,
       "complete_via_alias_fallback": 14,
       "heuristic_signal_counts": {
-        "lower_edge_density_in_lego": 234,
-        "smaller_effective_palette_in_lego": 354,
-        "large_silhouette_bbox_change": 2384
+        "lower_edge_density_in_lego": 11,
+        "smaller_effective_palette_in_lego": 73,
+        "large_silhouette_bbox_change": 2451
       },
       "semantic_policy": "derived visual measurements support review; they do not auto-assert preserve/simplify/omit/mould/accessory labels",
       "_status_file": "fortnite_visual_differences.json"
@@ -440,10 +440,10 @@
       "source_id": "herobloks_brand_gaps",
       "status": "brand_registry_gap_queue_ready",
       "exit_code": 0,
-      "created_at": "2026-09-26T23:02:31.572980+00:00",
-      "hero_bloks_brand_records": 1353,
+      "created_at": "2026-10-05T16:15:45.380217+00:00",
+      "hero_bloks_brand_records": 1364,
       "known_registry_matches": 58,
-      "unmodeled_brand_slugs": 1295,
+      "unmodeled_brand_slugs": 1306,
       "unmodeled_with_stable_prefix_candidate": 61,
       "_status_file": "herobloks_brand_gaps.json"
     },
@@ -451,11 +451,11 @@
       "source_id": "herobloks_brand_review_queues",
       "status": "compact_review_queues_ready",
       "exit_code": 0,
-      "created_at": "2026-09-26T23:02:31.784469+00:00",
+      "created_at": "2026-10-05T16:15:45.494682+00:00",
       "schema": "herobloks-brand-review-queue-summary/v1",
       "processor_version": "herobloks-brand-review-queues/v1",
-      "total_brand_records": 1353,
-      "unmodeled_brand_records": 1295,
+      "total_brand_records": 1364,
+      "unmodeled_brand_records": 1306,
       "stable_prefix_unmodeled_records": 61,
       "top_review_queue_records": 500,
       "_status_file": "herobloks_brand_review_queues.json"
@@ -464,19 +464,19 @@
       "source_id": "herobloks_catalog",
       "status": "catalog_index_snapshot_complete",
       "exit_code": 0,
-      "created_at": "2026-09-26T23:02:31.320700+00:00",
+      "created_at": "2026-10-05T16:15:45.100985+00:00",
       "schema": "herobloks-catalog-census-summary/v1",
       "processor_version": "herobloks-catalog-census/v1",
       "source_url": "https://www.herobloks.com/list",
-      "source_sha256": "b9582526253a5843a205276dee1368d17b207e66fceba5a1af1a70ea986f985c",
-      "source_bytes": 11688114,
-      "figure_records": 59758,
-      "brand_slug_count": 1353,
-      "serial_prefix_candidate_count": 6705,
+      "source_sha256": "0687f5882f84d7c7a2f3033e000948596e29dad1cc61ffafaf4b1beb471f78e1",
+      "source_bytes": 11739712,
+      "figure_records": 60014,
+      "brand_slug_count": 1364,
+      "serial_prefix_candidate_count": 6739,
       "top_brand_slugs": [
         {
           "brand_slug": "lego",
-          "count": 12151
+          "count": 12150
         },
         {
           "brand_slug": "pogo",
@@ -484,7 +484,7 @@
         },
         {
           "brand_slug": "engineerio",
-          "count": 2002
+          "count": 2004
         },
         {
           "brand_slug": "kopf",
@@ -504,11 +504,11 @@
         },
         {
           "brand_slug": "unknown",
-          "count": 1172
+          "count": 1173
         },
         {
           "brand_slug": "calypso-customs",
-          "count": 1117
+          "count": 1119
         },
         {
           "brand_slug": "lele",
@@ -520,15 +520,15 @@
         },
         {
           "brand_slug": "bigkidbrix",
-          "count": 906
+          "count": 909
+        },
+        {
+          "brand_slug": "g-(2)",
+          "count": 796
         },
         {
           "brand_slug": "tv",
           "count": 789
-        },
-        {
-          "brand_slug": "g-(2)",
-          "count": 788
         },
         {
           "brand_slug": "poppunkmunky",
@@ -548,7 +548,7 @@
         },
         {
           "brand_slug": "onlinesailin",
-          "count": 553
+          "count": 554
         },
         {
           "brand_slug": "tp",
@@ -556,7 +556,7 @@
         },
         {
           "brand_slug": "firestar-toys",
-          "count": 506
+          "count": 510
         },
         {
           "brand_slug": "penzora",
@@ -571,28 +571,28 @@
           "count": 426
         },
         {
+          "brand_slug": "christo7108",
+          "count": 404
+        },
+        {
           "brand_slug": "kdl",
           "count": 404
         },
         {
-          "brand_slug": "christo7108",
-          "count": 403
-        },
-        {
           "brand_slug": "sfxminifigures",
-          "count": 395
+          "count": 399
         },
         {
           "brand_slug": "bela",
           "count": 372
         },
         {
-          "brand_slug": "jin-custom",
-          "count": 364
+          "brand_slug": "unknown-custom",
+          "count": 372
         },
         {
-          "brand_slug": "unknown-custom",
-          "count": 362
+          "brand_slug": "jin-custom",
+          "count": 370
         },
         {
           "brand_slug": "jlb",
@@ -604,15 +604,15 @@
         },
         {
           "brand_slug": "earthly-brick",
-          "count": 280
+          "count": 283
+        },
+        {
+          "brand_slug": "guangdong-ruizhida",
+          "count": 274
         },
         {
           "brand_slug": "minifigfx",
           "count": 270
-        },
-        {
-          "brand_slug": "guangdong-ruizhida",
-          "count": 266
         },
         {
           "brand_slug": "dargo",
@@ -620,7 +620,7 @@
         },
         {
           "brand_slug": "abnormal",
-          "count": 242
+          "count": 243
         },
         {
           "brand_slug": "life-brick",
@@ -671,16 +671,16 @@
           "count": 172
         },
         {
+          "brand_slug": "forbidden-bricks",
+          "count": 166
+        },
+        {
           "brand_slug": "minifig-madness",
           "count": 164
         },
         {
           "brand_slug": "feelings",
           "count": 164
-        },
-        {
-          "brand_slug": "forbidden-bricks",
-          "count": 157
         },
         {
           "brand_slug": "jinrun",
@@ -697,6 +697,10 @@
         {
           "brand_slug": "chengyi",
           "count": 148
+        },
+        {
+          "brand_slug": "qx-brick",
+          "count": 138
         },
         {
           "brand_slug": "lebq",
@@ -719,8 +723,8 @@
           "count": 131
         },
         {
-          "brand_slug": "qx-brick",
-          "count": 130
+          "brand_slug": "jonak-toys",
+          "count": 131
         },
         {
           "brand_slug": "clone-army-customs",
@@ -739,11 +743,15 @@
           "count": 120
         },
         {
-          "brand_slug": "jonak-toys",
-          "count": 120
+          "brand_slug": "lg-blocks",
+          "count": 114
         },
         {
-          "brand_slug": "lg-blocks",
+          "brand_slug": "dazzle-brick",
+          "count": 114
+        },
+        {
+          "brand_slug": "omega-brick-customs",
           "count": 114
         },
         {
@@ -759,19 +767,15 @@
           "count": 109
         },
         {
-          "brand_slug": "dazzle-brick",
-          "count": 109
-        },
-        {
-          "brand_slug": "rt",
-          "count": 105
+          "brand_slug": "hell-yeah-shop",
+          "count": 108
         },
         {
           "brand_slug": "venom-custom-brick-works",
-          "count": 105
+          "count": 107
         },
         {
-          "brand_slug": "hell-yeah-shop",
+          "brand_slug": "rt",
           "count": 105
         },
         {
@@ -783,8 +787,8 @@
           "count": 102
         },
         {
-          "brand_slug": "omega-brick-customs",
-          "count": 99
+          "brand_slug": "dergs-customs",
+          "count": 101
         },
         {
           "brand_slug": "yg",
@@ -793,10 +797,6 @@
         {
           "brand_slug": "itoys",
           "count": 96
-        },
-        {
-          "brand_slug": "dergs-customs",
-          "count": 95
         },
         {
           "brand_slug": "minifigs4u",
@@ -812,7 +812,7 @@
         },
         {
           "brand_slug": "eclipsegrafx",
-          "count": 92
+          "count": 93
         },
         {
           "brand_slug": "w",
@@ -828,7 +828,7 @@
         },
         {
           "brand_slug": "hades-dc-brick",
-          "count": 85
+          "count": 86
         },
         {
           "brand_slug": "ksz",
@@ -843,7 +843,15 @@
           "count": 83
         },
         {
+          "brand_slug": "zkj.-brick",
+          "count": 82
+        },
+        {
           "brand_slug": "j's-little-things",
+          "count": 81
+        },
+        {
+          "brand_slug": "ym-brick",
           "count": 81
         },
         {
@@ -852,11 +860,7 @@
         },
         {
           "brand_slug": "hera-brick-x-boss-toys",
-          "count": 79
-        },
-        {
-          "brand_slug": "ym-brick",
-          "count": 78
+          "count": 80
         },
         {
           "brand_slug": "funny-brick",
@@ -868,10 +872,6 @@
         },
         {
           "brand_slug": "panlos",
-          "count": 76
-        },
-        {
-          "brand_slug": "mb",
           "count": 76
         }
       ],
@@ -914,7 +914,7 @@
         },
         {
           "prefix": "GH",
-          "count": 690
+          "count": 698
         },
         {
           "prefix": "HP",
@@ -938,7 +938,7 @@
         },
         {
           "prefix": "SPIDERMAN",
-          "count": 502
+          "count": 508
         },
         {
           "prefix": "COL",
@@ -950,7 +950,7 @@
         },
         {
           "prefix": "IRONMANMK",
-          "count": 456
+          "count": 458
         },
         {
           "prefix": "HOL",
@@ -970,7 +970,7 @@
         },
         {
           "prefix": "BATMAN",
-          "count": 355
+          "count": 363
         },
         {
           "prefix": "IDEA",
@@ -982,7 +982,7 @@
         },
         {
           "prefix": "N",
-          "count": 262
+          "count": 270
         },
         {
           "prefix": "DY",
@@ -997,12 +997,12 @@
           "count": 209
         },
         {
-          "prefix": "TLM",
-          "count": 201
+          "prefix": "FSMF",
+          "count": 203
         },
         {
-          "prefix": "FSMF",
-          "count": 200
+          "prefix": "TLM",
+          "count": 201
         },
         {
           "prefix": "MG",
@@ -1030,6 +1030,10 @@
         },
         {
           "prefix": "CAPTAINAMERICA",
+          "count": 172
+        },
+        {
+          "prefix": "GREENLANTERN",
           "count": 168
         },
         {
@@ -1039,10 +1043,6 @@
         {
           "prefix": "D",
           "count": 158
-        },
-        {
-          "prefix": "GREENLANTERN",
-          "count": 157
         },
         {
           "prefix": "SUPERMAN",
@@ -1061,12 +1061,12 @@
           "count": 151
         },
         {
-          "prefix": "CY",
+          "prefix": "DAREDEVIL",
           "count": 147
         },
         {
-          "prefix": "DAREDEVIL",
-          "count": 146
+          "prefix": "CY",
+          "count": 147
         },
         {
           "prefix": "M",
@@ -1146,7 +1146,7 @@
         },
         {
           "prefix": "PUNISHER",
-          "count": 90
+          "count": 91
         },
         {
           "prefix": "NO",
@@ -1173,12 +1173,12 @@
           "count": 82
         },
         {
-          "prefix": "NIGHTWING",
-          "count": 77
+          "prefix": "ROBIN",
+          "count": 81
         },
         {
-          "prefix": "ROBIN",
-          "count": 77
+          "prefix": "NIGHTWING",
+          "count": 78
         },
         {
           "prefix": "JOKER",
@@ -1201,12 +1201,12 @@
           "count": 74
         },
         {
-          "prefix": "CRS",
+          "prefix": "THOR",
           "count": 73
         },
         {
-          "prefix": "THOR",
-          "count": 72
+          "prefix": "CRS",
+          "count": 73
         },
         {
           "prefix": "MA",
@@ -1241,6 +1241,10 @@
           "count": 61
         },
         {
+          "prefix": "SPARTAN",
+          "count": 58
+        },
+        {
           "prefix": "SP",
           "count": 58
         },
@@ -1249,16 +1253,12 @@
           "count": 57
         },
         {
-          "prefix": "SPARTAN",
+          "prefix": "INVISIBLEWOMAN",
           "count": 56
         },
         {
           "prefix": "ZB",
           "count": 56
-        },
-        {
-          "prefix": "INVISIBLEWOMAN",
-          "count": 55
         },
         {
           "prefix": "IAJ",
@@ -1273,7 +1273,7 @@
           "count": 54
         },
         {
-          "prefix": "F",
+          "prefix": "MRFANTASTIC",
           "count": 54
         }
       ],
@@ -1839,7 +1839,7 @@
         "g-(2)": [
           {
             "prefix": "GH",
-            "count": 689
+            "count": 697
           },
           {
             "prefix": "G",
@@ -2119,7 +2119,7 @@
         "firestar-toys": [
           {
             "prefix": "FSMF",
-            "count": 200
+            "count": 203
           },
           {
             "prefix": "FST",
@@ -2127,7 +2127,7 @@
           },
           {
             "prefix": "PADF",
-            "count": 39
+            "count": 40
           },
           {
             "prefix": "CCMF",
@@ -2321,7 +2321,7 @@
           },
           {
             "prefix": "IRONMANMK",
-            "count": 15
+            "count": 16
           },
           {
             "prefix": "SPIDERMAN",
@@ -2478,6 +2478,88 @@
             "count": 4
           }
         ],
+        "unknown-custom": [
+          {
+            "prefix": "IRONMANMK",
+            "count": 14
+          },
+          {
+            "prefix": "SPIDERMAN",
+            "count": 11
+          },
+          {
+            "prefix": "R",
+            "count": 6
+          },
+          {
+            "prefix": "S",
+            "count": 6
+          },
+          {
+            "prefix": "GREENLANTERN",
+            "count": 5
+          },
+          {
+            "prefix": "STARSAPPHIRE",
+            "count": 5
+          },
+          {
+            "prefix": "DAVIDBECKHAM",
+            "count": 4
+          },
+          {
+            "prefix": "SUPERMAN",
+            "count": 4
+          },
+          {
+            "prefix": "THOR",
+            "count": 4
+          },
+          {
+            "prefix": "HUMANTORCH",
+            "count": 4
+          },
+          {
+            "prefix": "DAREDEVIL",
+            "count": 4
+          },
+          {
+            "prefix": "CAPTAINAMERICA",
+            "count": 4
+          },
+          {
+            "prefix": "VENOM",
+            "count": 4
+          },
+          {
+            "prefix": "BATMAN",
+            "count": 3
+          },
+          {
+            "prefix": "BOBAFETT",
+            "count": 3
+          },
+          {
+            "prefix": "C",
+            "count": 3
+          },
+          {
+            "prefix": "LEBRONJAMES",
+            "count": 3
+          },
+          {
+            "prefix": "MRFANTASTIC",
+            "count": 3
+          },
+          {
+            "prefix": "THANOS",
+            "count": 3
+          },
+          {
+            "prefix": "BLUEMARVEL",
+            "count": 3
+          }
+        ],
         "jin-custom": [
           {
             "prefix": "SPIDERMAN",
@@ -2489,7 +2571,7 @@
           },
           {
             "prefix": "IRONMANMK",
-            "count": 15
+            "count": 16
           },
           {
             "prefix": "VENOM",
@@ -2509,7 +2591,7 @@
           },
           {
             "prefix": "BATMAN",
-            "count": 7
+            "count": 8
           },
           {
             "prefix": "RHINO",
@@ -2557,88 +2639,6 @@
           },
           {
             "prefix": "WOLVERINE",
-            "count": 3
-          }
-        ],
-        "unknown-custom": [
-          {
-            "prefix": "IRONMANMK",
-            "count": 14
-          },
-          {
-            "prefix": "SPIDERMAN",
-            "count": 10
-          },
-          {
-            "prefix": "R",
-            "count": 6
-          },
-          {
-            "prefix": "S",
-            "count": 6
-          },
-          {
-            "prefix": "BATMAN",
-            "count": 4
-          },
-          {
-            "prefix": "DAVIDBECKHAM",
-            "count": 4
-          },
-          {
-            "prefix": "SUPERMAN",
-            "count": 4
-          },
-          {
-            "prefix": "THOR",
-            "count": 4
-          },
-          {
-            "prefix": "HUMANTORCH",
-            "count": 4
-          },
-          {
-            "prefix": "DAREDEVIL",
-            "count": 4
-          },
-          {
-            "prefix": "CAPTAINAMERICA",
-            "count": 4
-          },
-          {
-            "prefix": "GREENLANTERN",
-            "count": 4
-          },
-          {
-            "prefix": "STARSAPPHIRE",
-            "count": 4
-          },
-          {
-            "prefix": "VENOM",
-            "count": 4
-          },
-          {
-            "prefix": "BOBAFETT",
-            "count": 3
-          },
-          {
-            "prefix": "C",
-            "count": 3
-          },
-          {
-            "prefix": "LEBRONJAMES",
-            "count": 3
-          },
-          {
-            "prefix": "MRFANTASTIC",
-            "count": 3
-          },
-          {
-            "prefix": "THANOS",
-            "count": 3
-          },
-          {
-            "prefix": "BLUEMARVEL",
             "count": 3
           }
         ],
@@ -2705,7 +2705,7 @@
         "earthly-brick": [
           {
             "prefix": "SPIDERMAN",
-            "count": 12
+            "count": 13
           },
           {
             "prefix": "TONYSTARK",
@@ -2787,7 +2787,7 @@
         "guangdong-ruizhida": [
           {
             "prefix": "N",
-            "count": 262
+            "count": 270
           },
           {
             "prefix": "JR",
@@ -2797,7 +2797,7 @@
         "abnormal": [
           {
             "prefix": "BATMAN",
-            "count": 22
+            "count": 23
           },
           {
             "prefix": "THEJOKER",
@@ -3460,6 +3460,88 @@
             "count": 1
           }
         ],
+        "forbidden-bricks": [
+          {
+            "prefix": "BATTLEDROID",
+            "count": 11
+          },
+          {
+            "prefix": "GREENLANTERN",
+            "count": 10
+          },
+          {
+            "prefix": "ROBIN",
+            "count": 8
+          },
+          {
+            "prefix": "KILLERCROC",
+            "count": 7
+          },
+          {
+            "prefix": "JOKER",
+            "count": 6
+          },
+          {
+            "prefix": "BATMAN",
+            "count": 5
+          },
+          {
+            "prefix": "SUPERMAN",
+            "count": 4
+          },
+          {
+            "prefix": "REDHOOD",
+            "count": 4
+          },
+          {
+            "prefix": "BIZARRO",
+            "count": 3
+          },
+          {
+            "prefix": "THEJOKER",
+            "count": 3
+          },
+          {
+            "prefix": "HULK",
+            "count": 3
+          },
+          {
+            "prefix": "SPIDERMAN",
+            "count": 3
+          },
+          {
+            "prefix": "THERIDDLER",
+            "count": 2
+          },
+          {
+            "prefix": "HECTORHAMMOND",
+            "count": 2
+          },
+          {
+            "prefix": "SPEEDY",
+            "count": 2
+          },
+          {
+            "prefix": "COMMISSIONERGORDON",
+            "count": 2
+          },
+          {
+            "prefix": "DEADMAN",
+            "count": 2
+          },
+          {
+            "prefix": "MOTHGOON",
+            "count": 2
+          },
+          {
+            "prefix": "CLARKKENT",
+            "count": 2
+          },
+          {
+            "prefix": "CLAYFACE",
+            "count": 2
+          }
+        ],
         "mega-bloks": [
           {
             "prefix": "AS",
@@ -3706,88 +3788,6 @@
             "count": 1
           }
         ],
-        "forbidden-bricks": [
-          {
-            "prefix": "BATTLEDROID",
-            "count": 11
-          },
-          {
-            "prefix": "ROBIN",
-            "count": 8
-          },
-          {
-            "prefix": "GREENLANTERN",
-            "count": 8
-          },
-          {
-            "prefix": "KILLERCROC",
-            "count": 7
-          },
-          {
-            "prefix": "JOKER",
-            "count": 6
-          },
-          {
-            "prefix": "BATMAN",
-            "count": 5
-          },
-          {
-            "prefix": "SUPERMAN",
-            "count": 4
-          },
-          {
-            "prefix": "REDHOOD",
-            "count": 4
-          },
-          {
-            "prefix": "BIZARRO",
-            "count": 3
-          },
-          {
-            "prefix": "THEJOKER",
-            "count": 3
-          },
-          {
-            "prefix": "HULK",
-            "count": 3
-          },
-          {
-            "prefix": "SPIDERMAN",
-            "count": 3
-          },
-          {
-            "prefix": "THERIDDLER",
-            "count": 2
-          },
-          {
-            "prefix": "HECTORHAMMOND",
-            "count": 2
-          },
-          {
-            "prefix": "SPEEDY",
-            "count": 2
-          },
-          {
-            "prefix": "COMMISSIONERGORDON",
-            "count": 2
-          },
-          {
-            "prefix": "DEADMAN",
-            "count": 2
-          },
-          {
-            "prefix": "MOTHGOON",
-            "count": 2
-          },
-          {
-            "prefix": "CLARKKENT",
-            "count": 2
-          },
-          {
-            "prefix": "CLAYFACE",
-            "count": 2
-          }
-        ],
         "minibigs": [
           {
             "prefix": "THEJOKER",
@@ -3887,6 +3887,88 @@
           },
           {
             "prefix": "IRONMANMK",
+            "count": 1
+          }
+        ],
+        "qx-brick": [
+          {
+            "prefix": "WOLVERINE",
+            "count": 3
+          },
+          {
+            "prefix": "X",
+            "count": 3
+          },
+          {
+            "prefix": "NIGHTCRAWLER",
+            "count": 2
+          },
+          {
+            "prefix": "MISTYKNIGHT",
+            "count": 2
+          },
+          {
+            "prefix": "SHADOWCAT",
+            "count": 2
+          },
+          {
+            "prefix": "DEATHLOK",
+            "count": 2
+          },
+          {
+            "prefix": "POLARIS",
+            "count": 2
+          },
+          {
+            "prefix": "RADIOACTIVESPIDERMAN",
+            "count": 2
+          },
+          {
+            "prefix": "SPIDERMAN",
+            "count": 2
+          },
+          {
+            "prefix": "MRFANTASTIC",
+            "count": 2
+          },
+          {
+            "prefix": "ANGEL",
+            "count": 2
+          },
+          {
+            "prefix": "NAMORTHESUBMARINER",
+            "count": 1
+          },
+          {
+            "prefix": "VULCAN",
+            "count": 1
+          },
+          {
+            "prefix": "WONG",
+            "count": 1
+          },
+          {
+            "prefix": "ELSABLOODSTONE",
+            "count": 1
+          },
+          {
+            "prefix": "LEGION",
+            "count": 1
+          },
+          {
+            "prefix": "SWORDMASTER",
+            "count": 1
+          },
+          {
+            "prefix": "THUNDESTRIKE",
+            "count": 1
+          },
+          {
+            "prefix": "COLLEENWING",
+            "count": 1
+          },
+          {
+            "prefix": "MOLTENMAN",
             "count": 1
           }
         ],
@@ -4054,85 +4136,85 @@
             "count": 1
           }
         ],
-        "qx-brick": [
+        "jonak-toys": [
           {
-            "prefix": "WOLVERINE",
-            "count": 3
+            "prefix": "KILLERCROC",
+            "count": 13
           },
           {
-            "prefix": "NIGHTCRAWLER",
-            "count": 2
+            "prefix": "BATMAN",
+            "count": 13
           },
           {
-            "prefix": "MISTYKNIGHT",
-            "count": 2
+            "prefix": "BATMANBEYOND",
+            "count": 13
           },
           {
-            "prefix": "SHADOWCAT",
-            "count": 2
+            "prefix": "NIGHTWING",
+            "count": 11
           },
           {
-            "prefix": "DEATHLOK",
-            "count": 2
-          },
-          {
-            "prefix": "POLARIS",
-            "count": 2
-          },
-          {
-            "prefix": "RADIOACTIVESPIDERMAN",
-            "count": 2
+            "prefix": "TWOFACE",
+            "count": 8
           },
           {
             "prefix": "SPIDERMAN",
+            "count": 8
+          },
+          {
+            "prefix": "THEJOKER",
+            "count": 6
+          },
+          {
+            "prefix": "DEADPOOL",
+            "count": 6
+          },
+          {
+            "prefix": "ROBIN",
+            "count": 5
+          },
+          {
+            "prefix": "HARLEYQUINN",
+            "count": 3
+          },
+          {
+            "prefix": "PENGUINHENCHMAN",
             "count": 2
           },
           {
-            "prefix": "X",
+            "prefix": "THEPENGUIN",
             "count": 2
           },
           {
-            "prefix": "MRFANTASTIC",
+            "prefix": "JAY",
             "count": 2
           },
           {
-            "prefix": "ANGEL",
+            "prefix": "SUPERMAN",
             "count": 2
           },
           {
-            "prefix": "NAMORTHESUBMARINER",
+            "prefix": "DARKPHOENIX",
+            "count": 2
+          },
+          {
+            "prefix": "LUMINARAUNDULI",
+            "count": 2
+          },
+          {
+            "prefix": "SHAAKTI",
+            "count": 2
+          },
+          {
+            "prefix": "GREENLANTERN",
+            "count": 2
+          },
+          {
+            "prefix": "CAPTAINARGYUS",
             "count": 1
           },
           {
-            "prefix": "VULCAN",
-            "count": 1
-          },
-          {
-            "prefix": "WONG",
-            "count": 1
-          },
-          {
-            "prefix": "ELSABLOODSTONE",
-            "count": 1
-          },
-          {
-            "prefix": "LEGION",
-            "count": 1
-          },
-          {
-            "prefix": "SWORDMASTER",
-            "count": 1
-          },
-          {
-            "prefix": "THUNDESTRIKE",
-            "count": 1
-          },
-          {
-            "prefix": "COLLEENWING",
-            "count": 1
-          },
-          {
-            "prefix": "MOLTENMAN",
+            "prefix": "DOMINOSQUAD",
             "count": 1
           }
         ],
@@ -4424,88 +4506,6 @@
             "count": 1
           }
         ],
-        "jonak-toys": [
-          {
-            "prefix": "KILLERCROC",
-            "count": 13
-          },
-          {
-            "prefix": "BATMAN",
-            "count": 13
-          },
-          {
-            "prefix": "BATMANBEYOND",
-            "count": 13
-          },
-          {
-            "prefix": "NIGHTWING",
-            "count": 10
-          },
-          {
-            "prefix": "TWOFACE",
-            "count": 8
-          },
-          {
-            "prefix": "THEJOKER",
-            "count": 6
-          },
-          {
-            "prefix": "DEADPOOL",
-            "count": 6
-          },
-          {
-            "prefix": "SPIDERMAN",
-            "count": 6
-          },
-          {
-            "prefix": "ROBIN",
-            "count": 5
-          },
-          {
-            "prefix": "HARLEYQUINN",
-            "count": 2
-          },
-          {
-            "prefix": "PENGUINHENCHMAN",
-            "count": 2
-          },
-          {
-            "prefix": "THEPENGUIN",
-            "count": 2
-          },
-          {
-            "prefix": "JAY",
-            "count": 2
-          },
-          {
-            "prefix": "SUPERMAN",
-            "count": 2
-          },
-          {
-            "prefix": "LUMINARAUNDULI",
-            "count": 2
-          },
-          {
-            "prefix": "SHAAKTI",
-            "count": 2
-          },
-          {
-            "prefix": "CAPTAINARGYUS",
-            "count": 1
-          },
-          {
-            "prefix": "DOMINOSQUAD",
-            "count": 1
-          },
-          {
-            "prefix": "CINDRALLIG",
-            "count": 1
-          },
-          {
-            "prefix": "SCARECROW",
-            "count": 1
-          }
-        ],
         "brick-rebellion-customs": [
           {
             "prefix": "BATMAN",
@@ -4588,10 +4588,174 @@
             "count": 2
           }
         ],
+        "dazzle-brick": [
+          {
+            "prefix": "BATGIRL",
+            "count": 10
+          },
+          {
+            "prefix": "BATMAN",
+            "count": 9
+          },
+          {
+            "prefix": "ATOM",
+            "count": 8
+          },
+          {
+            "prefix": "ROBIN",
+            "count": 7
+          },
+          {
+            "prefix": "HUMANTORCH",
+            "count": 5
+          },
+          {
+            "prefix": "SLUSHH",
+            "count": 5
+          },
+          {
+            "prefix": "GREENLANTERN",
+            "count": 5
+          },
+          {
+            "prefix": "DAREDEVIL",
+            "count": 4
+          },
+          {
+            "prefix": "SHADE",
+            "count": 4
+          },
+          {
+            "prefix": "GIGANTA",
+            "count": 3
+          },
+          {
+            "prefix": "YELLOWLANTERN",
+            "count": 3
+          },
+          {
+            "prefix": "EMMAFROST",
+            "count": 2
+          },
+          {
+            "prefix": "AGENTVENOM",
+            "count": 2
+          },
+          {
+            "prefix": "ATOMICA",
+            "count": 2
+          },
+          {
+            "prefix": "WHITELANTERN",
+            "count": 2
+          },
+          {
+            "prefix": "THEJOKER",
+            "count": 2
+          },
+          {
+            "prefix": "CATWOMAN",
+            "count": 2
+          },
+          {
+            "prefix": "SPIDERMAN",
+            "count": 2
+          },
+          {
+            "prefix": "BLACKLANTERN",
+            "count": 2
+          },
+          {
+            "prefix": "BLACKFIRE",
+            "count": 2
+          }
+        ],
         "lg-blocks": [
           {
             "prefix": "LG",
             "count": 114
+          }
+        ],
+        "omega-brick-customs": [
+          {
+            "prefix": "BATMAN",
+            "count": 12
+          },
+          {
+            "prefix": "ROBIN",
+            "count": 6
+          },
+          {
+            "prefix": "POISONIVY",
+            "count": 4
+          },
+          {
+            "prefix": "SILVERSURFER",
+            "count": 4
+          },
+          {
+            "prefix": "ICEMAN",
+            "count": 4
+          },
+          {
+            "prefix": "DEATHSTROKE",
+            "count": 2
+          },
+          {
+            "prefix": "TWOFACE",
+            "count": 2
+          },
+          {
+            "prefix": "THEJOKER",
+            "count": 2
+          },
+          {
+            "prefix": "CATWOMAN",
+            "count": 2
+          },
+          {
+            "prefix": "IRONMANBLEEDINGEDGE",
+            "count": 2
+          },
+          {
+            "prefix": "SUPERMAN",
+            "count": 2
+          },
+          {
+            "prefix": "METALLO",
+            "count": 2
+          },
+          {
+            "prefix": "GHOSTRIDER",
+            "count": 2
+          },
+          {
+            "prefix": "DAREDEVIL",
+            "count": 2
+          },
+          {
+            "prefix": "CAPTAINAMERICA",
+            "count": 2
+          },
+          {
+            "prefix": "FLASHPOINTBATMAN",
+            "count": 1
+          },
+          {
+            "prefix": "ABSOLUTEBATMAN",
+            "count": 1
+          },
+          {
+            "prefix": "KILLERCROC",
+            "count": 1
+          },
+          {
+            "prefix": "BANE",
+            "count": 1
+          },
+          {
+            "prefix": "NIGHTWING",
+            "count": 1
           }
         ],
         "minifigures.com": [
@@ -4760,88 +4924,6 @@
             "count": 1
           }
         ],
-        "dazzle-brick": [
-          {
-            "prefix": "BATGIRL",
-            "count": 10
-          },
-          {
-            "prefix": "ATOM",
-            "count": 8
-          },
-          {
-            "prefix": "ROBIN",
-            "count": 6
-          },
-          {
-            "prefix": "HUMANTORCH",
-            "count": 5
-          },
-          {
-            "prefix": "BATMAN",
-            "count": 5
-          },
-          {
-            "prefix": "SLUSHH",
-            "count": 5
-          },
-          {
-            "prefix": "GREENLANTERN",
-            "count": 5
-          },
-          {
-            "prefix": "DAREDEVIL",
-            "count": 4
-          },
-          {
-            "prefix": "SHADE",
-            "count": 4
-          },
-          {
-            "prefix": "GIGANTA",
-            "count": 3
-          },
-          {
-            "prefix": "YELLOWLANTERN",
-            "count": 3
-          },
-          {
-            "prefix": "EMMAFROST",
-            "count": 2
-          },
-          {
-            "prefix": "AGENTVENOM",
-            "count": 2
-          },
-          {
-            "prefix": "ATOMICA",
-            "count": 2
-          },
-          {
-            "prefix": "WHITELANTERN",
-            "count": 2
-          },
-          {
-            "prefix": "THEJOKER",
-            "count": 2
-          },
-          {
-            "prefix": "CATWOMAN",
-            "count": 2
-          },
-          {
-            "prefix": "SPIDERMAN",
-            "count": 2
-          },
-          {
-            "prefix": "BLACKLANTERN",
-            "count": 2
-          },
-          {
-            "prefix": "BLACKFIRE",
-            "count": 2
-          }
-        ],
         "small-green-pea": [
           {
             "prefix": "SGP",
@@ -5006,16 +5088,6 @@
             "count": 2
           }
         ],
-        "rt": [
-          {
-            "prefix": "RT",
-            "count": 70
-          },
-          {
-            "prefix": "H",
-            "count": 35
-          }
-        ],
         "venom-custom-brick-works": [
           {
             "prefix": "CLAYFACE",
@@ -5082,6 +5154,10 @@
             "count": 2
           },
           {
+            "prefix": "BOSSK",
+            "count": 2
+          },
+          {
             "prefix": "HUSH",
             "count": 1
           },
@@ -5092,10 +5168,16 @@
           {
             "prefix": "YETI",
             "count": 1
+          }
+        ],
+        "rt": [
+          {
+            "prefix": "RT",
+            "count": 70
           },
           {
-            "prefix": "SYMBIOTESPIDERMAN",
-            "count": 1
+            "prefix": "H",
+            "count": 35
           }
         ],
         "m": [
@@ -5152,114 +5234,6 @@
             "count": 1
           }
         ],
-        "omega-brick-customs": [
-          {
-            "prefix": "BATMAN",
-            "count": 12
-          },
-          {
-            "prefix": "ROBIN",
-            "count": 6
-          },
-          {
-            "prefix": "POISONIVY",
-            "count": 4
-          },
-          {
-            "prefix": "SILVERSURFER",
-            "count": 4
-          },
-          {
-            "prefix": "ICEMAN",
-            "count": 4
-          },
-          {
-            "prefix": "DEATHSTROKE",
-            "count": 2
-          },
-          {
-            "prefix": "TWOFACE",
-            "count": 2
-          },
-          {
-            "prefix": "THEJOKER",
-            "count": 2
-          },
-          {
-            "prefix": "CATWOMAN",
-            "count": 2
-          },
-          {
-            "prefix": "SUPERMAN",
-            "count": 2
-          },
-          {
-            "prefix": "METALLO",
-            "count": 2
-          },
-          {
-            "prefix": "GHOSTRIDER",
-            "count": 2
-          },
-          {
-            "prefix": "DAREDEVIL",
-            "count": 2
-          },
-          {
-            "prefix": "FLASHPOINTBATMAN",
-            "count": 1
-          },
-          {
-            "prefix": "ABSOLUTEBATMAN",
-            "count": 1
-          },
-          {
-            "prefix": "KILLERCROC",
-            "count": 1
-          },
-          {
-            "prefix": "BANE",
-            "count": 1
-          },
-          {
-            "prefix": "NIGHTWING",
-            "count": 1
-          },
-          {
-            "prefix": "HARLEYQUINN",
-            "count": 1
-          },
-          {
-            "prefix": "THERIDDLER",
-            "count": 1
-          }
-        ],
-        "jinrun": [
-          {
-            "prefix": "JR",
-            "count": 91
-          },
-          {
-            "prefix": "SENATECOMMANDO",
-            "count": 1
-          },
-          {
-            "prefix": "ROYALGUARD",
-            "count": 1
-          },
-          {
-            "prefix": "SCOUTTROOPER",
-            "count": 1
-          },
-          {
-            "prefix": "SHADOWGUARD",
-            "count": 1
-          },
-          {
-            "prefix": "WOLFPACKCLONETROOPER",
-            "count": 1
-          }
-        ],
         "dergs-customs": [
           {
             "prefix": "BATMAN",
@@ -5275,6 +5249,10 @@
           },
           {
             "prefix": "THEJOKER",
+            "count": 4
+          },
+          {
+            "prefix": "GREENLANTERN",
             "count": 4
           },
           {
@@ -5303,10 +5281,6 @@
           },
           {
             "prefix": "ROBIN",
-            "count": 2
-          },
-          {
-            "prefix": "GREENLANTERN",
             "count": 2
           },
           {
@@ -5339,6 +5313,32 @@
           },
           {
             "prefix": "CLOCKKING",
+            "count": 1
+          }
+        ],
+        "jinrun": [
+          {
+            "prefix": "JR",
+            "count": 91
+          },
+          {
+            "prefix": "SENATECOMMANDO",
+            "count": 1
+          },
+          {
+            "prefix": "ROYALGUARD",
+            "count": 1
+          },
+          {
+            "prefix": "SCOUTTROOPER",
+            "count": 1
+          },
+          {
+            "prefix": "SHADOWGUARD",
+            "count": 1
+          },
+          {
+            "prefix": "WOLFPACKCLONETROOPER",
             "count": 1
           }
         ],
@@ -5424,88 +5424,6 @@
             "count": 1
           }
         ],
-        "ug-minifigures": [
-          {
-            "prefix": "IRONMANMK",
-            "count": 16
-          },
-          {
-            "prefix": "BATMAN",
-            "count": 8
-          },
-          {
-            "prefix": "IRONMANMODEL",
-            "count": 6
-          },
-          {
-            "prefix": "DRFATE",
-            "count": 6
-          },
-          {
-            "prefix": "DEADPOOL",
-            "count": 5
-          },
-          {
-            "prefix": "UG",
-            "count": 4
-          },
-          {
-            "prefix": "BROTHERHOODBATMAN",
-            "count": 4
-          },
-          {
-            "prefix": "VAMPIREBATMAN",
-            "count": 3
-          },
-          {
-            "prefix": "REDDEATH",
-            "count": 3
-          },
-          {
-            "prefix": "THANOS",
-            "count": 3
-          },
-          {
-            "prefix": "BLACKPANTHER",
-            "count": 3
-          },
-          {
-            "prefix": "WINTERSOLDIER",
-            "count": 2
-          },
-          {
-            "prefix": "SANTAWONDERWOMAN",
-            "count": 2
-          },
-          {
-            "prefix": "SAMURAIBATMAN",
-            "count": 2
-          },
-          {
-            "prefix": "DAREDEVIL",
-            "count": 1
-          },
-          {
-            "prefix": "HELLBOY",
-            "count": 1
-          },
-          {
-            "prefix": "REDSONBATMAN",
-            "count": 1
-          },
-          {
-            "prefix": "TWOFACEBATMAN",
-            "count": 1
-          },
-          {
-            "prefix": "MURDERMACHINE",
-            "count": 1
-          },
-          {
-            "prefix": "BATWING",
-            "count": 1
-          }
-        ],
         "eclipsegrafx": [
           {
             "prefix": "HILLARYCLINTON",
@@ -5585,6 +5503,88 @@
           },
           {
             "prefix": "SOLDIER",
+            "count": 1
+          }
+        ],
+        "ug-minifigures": [
+          {
+            "prefix": "IRONMANMK",
+            "count": 16
+          },
+          {
+            "prefix": "BATMAN",
+            "count": 8
+          },
+          {
+            "prefix": "IRONMANMODEL",
+            "count": 6
+          },
+          {
+            "prefix": "DRFATE",
+            "count": 6
+          },
+          {
+            "prefix": "DEADPOOL",
+            "count": 5
+          },
+          {
+            "prefix": "UG",
+            "count": 4
+          },
+          {
+            "prefix": "BROTHERHOODBATMAN",
+            "count": 4
+          },
+          {
+            "prefix": "VAMPIREBATMAN",
+            "count": 3
+          },
+          {
+            "prefix": "REDDEATH",
+            "count": 3
+          },
+          {
+            "prefix": "THANOS",
+            "count": 3
+          },
+          {
+            "prefix": "BLACKPANTHER",
+            "count": 3
+          },
+          {
+            "prefix": "WINTERSOLDIER",
+            "count": 2
+          },
+          {
+            "prefix": "SANTAWONDERWOMAN",
+            "count": 2
+          },
+          {
+            "prefix": "SAMURAIBATMAN",
+            "count": 2
+          },
+          {
+            "prefix": "DAREDEVIL",
+            "count": 1
+          },
+          {
+            "prefix": "HELLBOY",
+            "count": 1
+          },
+          {
+            "prefix": "REDSONBATMAN",
+            "count": 1
+          },
+          {
+            "prefix": "TWOFACEBATMAN",
+            "count": 1
+          },
+          {
+            "prefix": "MURDERMACHINE",
+            "count": 1
+          },
+          {
+            "prefix": "BATWING",
             "count": 1
           }
         ],
@@ -5840,88 +5840,6 @@
             "count": 1
           }
         ],
-        "minifigs-factory": [
-          {
-            "prefix": "MF",
-            "count": 8
-          },
-          {
-            "prefix": "BATMAN",
-            "count": 5
-          },
-          {
-            "prefix": "CUSTODIAN",
-            "count": 3
-          },
-          {
-            "prefix": "IRONMAN",
-            "count": 3
-          },
-          {
-            "prefix": "MONSTERHUNTER",
-            "count": 3
-          },
-          {
-            "prefix": "IRONMANMK",
-            "count": 2
-          },
-          {
-            "prefix": "GREYKNIGHT",
-            "count": 2
-          },
-          {
-            "prefix": "FROSTWYRMS",
-            "count": 2
-          },
-          {
-            "prefix": "BEARGRYLLS",
-            "count": 1
-          },
-          {
-            "prefix": "QUEENMOTHEROFXUAN",
-            "count": 1
-          },
-          {
-            "prefix": "QINGLONG",
-            "count": 1
-          },
-          {
-            "prefix": "CAPTAINMARVEL",
-            "count": 1
-          },
-          {
-            "prefix": "SYLVANASWINDRUNNER",
-            "count": 1
-          },
-          {
-            "prefix": "EDWARDELRIC",
-            "count": 1
-          },
-          {
-            "prefix": "GUL",
-            "count": 1
-          },
-          {
-            "prefix": "GROMMASHHELLSCREAM",
-            "count": 1
-          },
-          {
-            "prefix": "TYRAEL",
-            "count": 1
-          },
-          {
-            "prefix": "ILLIDANSTORMRAGE",
-            "count": 1
-          },
-          {
-            "prefix": "TOSHINORIYAGI",
-            "count": 1
-          },
-          {
-            "prefix": "OPTIMUSPRIME",
-            "count": 1
-          }
-        ],
         "hades-dc-brick": [
           {
             "prefix": "BATMAN",
@@ -6001,6 +5919,88 @@
           },
           {
             "prefix": "FLASHPOINTJOKER",
+            "count": 1
+          }
+        ],
+        "minifigs-factory": [
+          {
+            "prefix": "MF",
+            "count": 8
+          },
+          {
+            "prefix": "BATMAN",
+            "count": 5
+          },
+          {
+            "prefix": "CUSTODIAN",
+            "count": 3
+          },
+          {
+            "prefix": "IRONMAN",
+            "count": 3
+          },
+          {
+            "prefix": "MONSTERHUNTER",
+            "count": 3
+          },
+          {
+            "prefix": "IRONMANMK",
+            "count": 2
+          },
+          {
+            "prefix": "GREYKNIGHT",
+            "count": 2
+          },
+          {
+            "prefix": "FROSTWYRMS",
+            "count": 2
+          },
+          {
+            "prefix": "BEARGRYLLS",
+            "count": 1
+          },
+          {
+            "prefix": "QUEENMOTHEROFXUAN",
+            "count": 1
+          },
+          {
+            "prefix": "QINGLONG",
+            "count": 1
+          },
+          {
+            "prefix": "CAPTAINMARVEL",
+            "count": 1
+          },
+          {
+            "prefix": "SYLVANASWINDRUNNER",
+            "count": 1
+          },
+          {
+            "prefix": "EDWARDELRIC",
+            "count": 1
+          },
+          {
+            "prefix": "GUL",
+            "count": 1
+          },
+          {
+            "prefix": "GROMMASHHELLSCREAM",
+            "count": 1
+          },
+          {
+            "prefix": "TYRAEL",
+            "count": 1
+          },
+          {
+            "prefix": "ILLIDANSTORMRAGE",
+            "count": 1
+          },
+          {
+            "prefix": "TOSHINORIYAGI",
+            "count": 1
+          },
+          {
+            "prefix": "OPTIMUSPRIME",
             "count": 1
           }
         ],
@@ -6180,85 +6180,85 @@
             "count": 1
           }
         ],
-        "brothersfigure": [
+        "zkj.-brick": [
           {
-            "prefix": "SH",
-            "count": 21
+            "prefix": "GREENLANTERN",
+            "count": 14
           },
           {
-            "prefix": "BF",
-            "count": 16
+            "prefix": "REDLANTERN",
+            "count": 9
           },
           {
-            "prefix": "BFR",
-            "count": 5
+            "prefix": "YELLOWLANTERN",
+            "count": 8
           },
           {
-            "prefix": "BFL",
-            "count": 5
+            "prefix": "ORANGELANTERN",
+            "count": 4
           },
           {
-            "prefix": "BFLITEWAVEII",
-            "count": 5
-          },
-          {
-            "prefix": "BFV",
+            "prefix": "WHITELANTERN",
             "count": 3
           },
           {
-            "prefix": "BM",
+            "prefix": "DOCTORBEDLAM",
             "count": 2
           },
           {
-            "prefix": "BFM",
+            "prefix": "STARSAPPHIRE",
             "count": 2
           },
           {
-            "prefix": "THOR",
+            "prefix": "DESAAD",
             "count": 2
           },
           {
-            "prefix": "IRONMANMK",
+            "prefix": "EVILSTAR",
             "count": 2
           },
           {
-            "prefix": "LOKI",
+            "prefix": "STARMAN",
             "count": 2
           },
           {
-            "prefix": "BFG",
+            "prefix": "REDTORNADO",
+            "count": 2
+          },
+          {
+            "prefix": "VIGILANTE",
             "count": 1
           },
           {
-            "prefix": "ROBINS",
+            "prefix": "REDLANTERNRAZER",
             "count": 1
           },
           {
-            "prefix": "CAPTAINMARVEL",
+            "prefix": "GRAFTOREN",
             "count": 1
           },
           {
-            "prefix": "BFY",
+            "prefix": "KIRRTKALLAK",
             "count": 1
           },
           {
-            "prefix": "STANLEE",
+            "prefix": "JAVELIN",
             "count": 1
           },
           {
-            "prefix": "CATWOMAN",
+            "prefix": "SOJOURNERMULLEIN",
             "count": 1
           },
           {
-            "prefix": "SWAMPTHING",
+            "prefix": "REDLANTERNATROCITUS",
             "count": 1
           },
           {
-            "prefix": "LORDTHOR",
+            "prefix": "DOCTORSIVANA",
             "count": 1
           },
           {
-            "prefix": "CAPTAINAMERICA",
+            "prefix": "MANTIS",
             "count": 1
           }
         ],
@@ -6344,88 +6344,6 @@
             "count": 2
           }
         ],
-        "j's-little-things": [
-          {
-            "prefix": "JSLT",
-            "count": 39
-          },
-          {
-            "prefix": "BOIL",
-            "count": 2
-          },
-          {
-            "prefix": "WAXER",
-            "count": 2
-          },
-          {
-            "prefix": "CAPTAINREX",
-            "count": 2
-          },
-          {
-            "prefix": "COMMANDERBLY",
-            "count": 2
-          },
-          {
-            "prefix": "IMPERIALSOLDIER",
-            "count": 2
-          },
-          {
-            "prefix": "FORDO",
-            "count": 1
-          },
-          {
-            "prefix": "FIVES",
-            "count": 1
-          },
-          {
-            "prefix": "ARCTROOPER",
-            "count": 1
-          },
-          {
-            "prefix": "HAVOCSQUADTROOPER",
-            "count": 1
-          },
-          {
-            "prefix": "JACEMALCOM",
-            "count": 1
-          },
-          {
-            "prefix": "SATELESHAN",
-            "count": 1
-          },
-          {
-            "prefix": "COMMANDERCODY",
-            "count": 1
-          },
-          {
-            "prefix": "CLONECOLDASSAULTTROOPER",
-            "count": 1
-          },
-          {
-            "prefix": "THIRE",
-            "count": 1
-          },
-          {
-            "prefix": "THORN",
-            "count": 1
-          },
-          {
-            "prefix": "COMMANDERFOX",
-            "count": 1
-          },
-          {
-            "prefix": "COMMANDERSTONE",
-            "count": 1
-          },
-          {
-            "prefix": "CORUSCANTGUARDRIOTTROOPER",
-            "count": 1
-          },
-          {
-            "prefix": "CAPTAINJAYFON",
-            "count": 1
-          }
-        ],
         "ym-brick": [
           {
             "prefix": "STEPFORDCUCKOO",
@@ -6505,6 +6423,170 @@
           },
           {
             "prefix": "OMEGARED",
+            "count": 1
+          }
+        ],
+        "brothersfigure": [
+          {
+            "prefix": "SH",
+            "count": 21
+          },
+          {
+            "prefix": "BF",
+            "count": 16
+          },
+          {
+            "prefix": "BFR",
+            "count": 5
+          },
+          {
+            "prefix": "BFL",
+            "count": 5
+          },
+          {
+            "prefix": "BFLITEWAVEII",
+            "count": 5
+          },
+          {
+            "prefix": "BFV",
+            "count": 3
+          },
+          {
+            "prefix": "BM",
+            "count": 2
+          },
+          {
+            "prefix": "BFM",
+            "count": 2
+          },
+          {
+            "prefix": "THOR",
+            "count": 2
+          },
+          {
+            "prefix": "IRONMANMK",
+            "count": 2
+          },
+          {
+            "prefix": "LOKI",
+            "count": 2
+          },
+          {
+            "prefix": "BFG",
+            "count": 1
+          },
+          {
+            "prefix": "ROBINS",
+            "count": 1
+          },
+          {
+            "prefix": "CAPTAINMARVEL",
+            "count": 1
+          },
+          {
+            "prefix": "BFY",
+            "count": 1
+          },
+          {
+            "prefix": "STANLEE",
+            "count": 1
+          },
+          {
+            "prefix": "CATWOMAN",
+            "count": 1
+          },
+          {
+            "prefix": "SWAMPTHING",
+            "count": 1
+          },
+          {
+            "prefix": "LORDTHOR",
+            "count": 1
+          },
+          {
+            "prefix": "CAPTAINAMERICA",
+            "count": 1
+          }
+        ],
+        "j's-little-things": [
+          {
+            "prefix": "JSLT",
+            "count": 39
+          },
+          {
+            "prefix": "BOIL",
+            "count": 2
+          },
+          {
+            "prefix": "WAXER",
+            "count": 2
+          },
+          {
+            "prefix": "CAPTAINREX",
+            "count": 2
+          },
+          {
+            "prefix": "COMMANDERBLY",
+            "count": 2
+          },
+          {
+            "prefix": "IMPERIALSOLDIER",
+            "count": 2
+          },
+          {
+            "prefix": "FORDO",
+            "count": 1
+          },
+          {
+            "prefix": "FIVES",
+            "count": 1
+          },
+          {
+            "prefix": "ARCTROOPER",
+            "count": 1
+          },
+          {
+            "prefix": "HAVOCSQUADTROOPER",
+            "count": 1
+          },
+          {
+            "prefix": "JACEMALCOM",
+            "count": 1
+          },
+          {
+            "prefix": "SATELESHAN",
+            "count": 1
+          },
+          {
+            "prefix": "COMMANDERCODY",
+            "count": 1
+          },
+          {
+            "prefix": "CLONECOLDASSAULTTROOPER",
+            "count": 1
+          },
+          {
+            "prefix": "THIRE",
+            "count": 1
+          },
+          {
+            "prefix": "THORN",
+            "count": 1
+          },
+          {
+            "prefix": "COMMANDERFOX",
+            "count": 1
+          },
+          {
+            "prefix": "COMMANDERSTONE",
+            "count": 1
+          },
+          {
+            "prefix": "CORUSCANTGUARDRIOTTROOPER",
+            "count": 1
+          },
+          {
+            "prefix": "CAPTAINJAYFON",
             "count": 1
           }
         ],
@@ -6594,88 +6676,6 @@
           {
             "prefix": "MB",
             "count": 76
-          }
-        ],
-        "zkj.-brick": [
-          {
-            "prefix": "GREENLANTERN",
-            "count": 14
-          },
-          {
-            "prefix": "REDLANTERN",
-            "count": 9
-          },
-          {
-            "prefix": "YELLOWLANTERN",
-            "count": 8
-          },
-          {
-            "prefix": "ORANGELANTERN",
-            "count": 4
-          },
-          {
-            "prefix": "WHITELANTERN",
-            "count": 3
-          },
-          {
-            "prefix": "DOCTORBEDLAM",
-            "count": 2
-          },
-          {
-            "prefix": "STARSAPPHIRE",
-            "count": 2
-          },
-          {
-            "prefix": "EVILSTAR",
-            "count": 2
-          },
-          {
-            "prefix": "STARMAN",
-            "count": 2
-          },
-          {
-            "prefix": "VIGILANTE",
-            "count": 1
-          },
-          {
-            "prefix": "REDLANTERNRAZER",
-            "count": 1
-          },
-          {
-            "prefix": "GRAFTOREN",
-            "count": 1
-          },
-          {
-            "prefix": "KIRRTKALLAK",
-            "count": 1
-          },
-          {
-            "prefix": "JAVELIN",
-            "count": 1
-          },
-          {
-            "prefix": "SOJOURNERMULLEIN",
-            "count": 1
-          },
-          {
-            "prefix": "REDLANTERNATROCITUS",
-            "count": 1
-          },
-          {
-            "prefix": "DOCTORSIVANA",
-            "count": 1
-          },
-          {
-            "prefix": "MANTIS",
-            "count": 1
-          },
-          {
-            "prefix": "ZJK",
-            "count": 1
-          },
-          {
-            "prefix": "YELLOWLANTERNSUPERMAN",
-            "count": 1
           }
         ],
         "dt": [
@@ -6784,88 +6784,6 @@
             "count": 1
           }
         ],
-        "top-mountain-brick": [
-          {
-            "prefix": "IRONMANMK",
-            "count": 43
-          },
-          {
-            "prefix": "WARMACHINEMK",
-            "count": 5
-          },
-          {
-            "prefix": "WHIPLASHMKII",
-            "count": 2
-          },
-          {
-            "prefix": "SAKAARIANIRONMAN",
-            "count": 2
-          },
-          {
-            "prefix": "TONYSTARK",
-            "count": 2
-          },
-          {
-            "prefix": "RONIN",
-            "count": 2
-          },
-          {
-            "prefix": "SUNWUKONG",
-            "count": 1
-          },
-          {
-            "prefix": "CAPTAINMARVEL",
-            "count": 1
-          },
-          {
-            "prefix": "JOKER",
-            "count": 1
-          },
-          {
-            "prefix": "IRONPATRIOT",
-            "count": 1
-          },
-          {
-            "prefix": "THEMANDALORIAN",
-            "count": 1
-          },
-          {
-            "prefix": "LOKI",
-            "count": 1
-          },
-          {
-            "prefix": "IRONPATRIOTMK",
-            "count": 1
-          },
-          {
-            "prefix": "LUNASNOW",
-            "count": 1
-          },
-          {
-            "prefix": "IRONMONGER",
-            "count": 1
-          },
-          {
-            "prefix": "INVINCIBLEIRONMAN",
-            "count": 1
-          },
-          {
-            "prefix": "ULTIMATEULTRON",
-            "count": 1
-          },
-          {
-            "prefix": "CAPTAINAMERICA",
-            "count": 1
-          },
-          {
-            "prefix": "THOR",
-            "count": 1
-          },
-          {
-            "prefix": "TMB",
-            "count": 1
-          }
-        ],
         "d-made": [
           {
             "prefix": "TERMINATORT",
@@ -6945,6 +6863,88 @@
           },
           {
             "prefix": "THEJOKER",
+            "count": 1
+          }
+        ],
+        "top-mountain-brick": [
+          {
+            "prefix": "IRONMANMK",
+            "count": 43
+          },
+          {
+            "prefix": "WARMACHINEMK",
+            "count": 5
+          },
+          {
+            "prefix": "WHIPLASHMKII",
+            "count": 2
+          },
+          {
+            "prefix": "SAKAARIANIRONMAN",
+            "count": 2
+          },
+          {
+            "prefix": "TONYSTARK",
+            "count": 2
+          },
+          {
+            "prefix": "RONIN",
+            "count": 2
+          },
+          {
+            "prefix": "SUNWUKONG",
+            "count": 1
+          },
+          {
+            "prefix": "CAPTAINMARVEL",
+            "count": 1
+          },
+          {
+            "prefix": "JOKER",
+            "count": 1
+          },
+          {
+            "prefix": "IRONPATRIOT",
+            "count": 1
+          },
+          {
+            "prefix": "THEMANDALORIAN",
+            "count": 1
+          },
+          {
+            "prefix": "LOKI",
+            "count": 1
+          },
+          {
+            "prefix": "IRONPATRIOTMK",
+            "count": 1
+          },
+          {
+            "prefix": "LUNASNOW",
+            "count": 1
+          },
+          {
+            "prefix": "IRONMONGER",
+            "count": 1
+          },
+          {
+            "prefix": "INVINCIBLEIRONMAN",
+            "count": 1
+          },
+          {
+            "prefix": "ULTIMATEULTRON",
+            "count": 1
+          },
+          {
+            "prefix": "CAPTAINAMERICA",
+            "count": 1
+          },
+          {
+            "prefix": "THOR",
+            "count": 1
+          },
+          {
+            "prefix": "TMB",
             "count": 1
           }
         ],
@@ -7292,85 +7292,85 @@
             "count": 1
           }
         ],
-        "leqo-leqo": [
+        "av-figures": [
+          {
+            "prefix": "WOLFPACKCLONETROOPER",
+            "count": 4
+          },
+          {
+            "prefix": "SPARTAN",
+            "count": 3
+          },
+          {
+            "prefix": "CAPTAINREX",
+            "count": 2
+          },
+          {
+            "prefix": "CLONETROOPER",
+            "count": 2
+          },
           {
             "prefix": "SPIDERMAN",
-            "count": 7
-          },
-          {
-            "prefix": "JIANGSHI",
-            "count": 3
-          },
-          {
-            "prefix": "IRONSPIDER",
-            "count": 3
-          },
-          {
-            "prefix": "ROBOCOP",
-            "count": 3
-          },
-          {
-            "prefix": "VALENTINOROSSI",
             "count": 2
           },
           {
-            "prefix": "HANAMICHISAKURAGI",
+            "prefix": "AGAMEMNON",
             "count": 2
           },
           {
-            "prefix": "GOLDLIGHTAN",
+            "prefix": "ASAJJVENTRESS",
             "count": 2
           },
           {
-            "prefix": "THEJOKER",
-            "count": 2
-          },
-          {
-            "prefix": "IRONMANMODEL",
+            "prefix": "PLOKOON",
             "count": 2
           },
           {
             "prefix": "IRONMANMK",
-            "count": 2
-          },
-          {
-            "prefix": "KAMENRIDERBLACKRX",
             "count": 1
           },
           {
-            "prefix": "NARUTOUZUMAKI",
+            "prefix": "COMMANDERCODY",
             "count": 1
           },
           {
-            "prefix": "MICHAELJACKSON",
+            "prefix": "IMPERIALSHOCKTROOPER",
             "count": 1
           },
           {
-            "prefix": "BATMANARKHAMKNIGHT",
+            "prefix": "GREGOR",
             "count": 1
           },
           {
-            "prefix": "SUPPAMAN",
+            "prefix": "CHERRYBLOSSOMSTORMTROOPER",
             "count": 1
           },
           {
-            "prefix": "STEPHENCURRY",
+            "prefix": "CADBANE",
             "count": 1
           },
           {
-            "prefix": "LEBRONJAMES",
+            "prefix": "TODO",
             "count": 1
           },
           {
-            "prefix": "MICHAELJORDAN",
+            "prefix": "MARROK",
             "count": 1
           },
           {
-            "prefix": "SCOTTIEPIPPEN",
+            "prefix": "ELEVENTHBROTHER",
             "count": 1
           },
           {
-            "prefix": "DENNISRODMAN",
+            "prefix": "CORUSCANTUNDERWORLDPOLICECAPTAIN",
+            "count": 1
+          },
+          {
+            "prefix": "CORUSCANTUNDERWORLDPOLICEGRUNT",
+            "count": 1
+          },
+          {
+            "prefix": "ICARUS",
             "count": 1
           }
         ]
@@ -7381,18 +7381,18 @@
       "source_id": "human_evaluation",
       "status": "blocked_local_or_interactive",
       "reason": "needs_reviewer_sessions",
-      "created_at": "2026-09-26T23:14:20.229400+00:00",
+      "created_at": "2026-10-05T16:30:37.575265+00:00",
       "_status_file": "human_evaluation.json"
     },
     {
       "source_id": "ldraw_official_library",
       "status": "complete",
       "exit_code": 0,
-      "created_at": "2026-09-26T23:00:26.671149+00:00",
-      "parts_indexed": 4352,
+      "created_at": "2026-10-05T16:12:48.923569+00:00",
+      "parts_indexed": 4357,
       "previews_rendered": 0,
       "license_counts": {
-        "!LICENSE Licensed under CC BY 4.0 : see CAreadme.txt": 4132,
+        "!LICENSE Licensed under CC BY 4.0 : see CAreadme.txt": 4137,
         "!LICENSE Licensed under CC BY 2.0 and CC BY 4.0 : see CAreadme.txt": 220
       },
       "_status_file": "ldraw.json"
@@ -7401,14 +7401,14 @@
       "source_id": "legacy_game_assets",
       "status": "blocked_local_or_interactive",
       "reason": "needs_local_game_files_or_preserved_archives",
-      "created_at": "2026-09-26T23:14:20.229400+00:00",
+      "created_at": "2026-10-05T16:30:37.575265+00:00",
       "_status_file": "legacy_game_assets.json"
     },
     {
       "source_id": "lego_face_grouped_splits",
       "status": "ready",
       "exit_code": 0,
-      "created_at": "2026-09-26T23:02:21.820599+00:00",
+      "created_at": "2026-10-05T16:15:34.406306+00:00",
       "schema": "lego-face-grouped-split-summary/v1",
       "processor_version": "lego-face-grouped-splits/v1",
       "records": 2574,
@@ -7528,7 +7528,7 @@
       "source_id": "lego_face_vae",
       "status": "training_face_corpus_indexed",
       "exit_code": 0,
-      "created_at": "2026-09-26T23:02:21.642038+00:00",
+      "created_at": "2026-10-05T16:15:34.225151+00:00",
       "source_commit": "01c55ce88d57d8bb5674f14a8afcc9121d9b4877",
       "schema": "lego-face-vae-dataset-index-summary/v1",
       "processor_version": "lego-face-vae-dataset-index/v1",
@@ -7582,17 +7582,17 @@
       "source_id": "lego_pick_a_brick_full",
       "status": "complete",
       "exit_code": 0,
-      "created_at": "2026-09-26T23:00:15.168298+00:00",
+      "created_at": "2026-10-05T16:12:35.187992+00:00",
       "snapshot": {
         "schema": "lego-pick-a-brick-snapshot/v1",
         "processor_version": "lego-pick-a-brick-snapshot/v1",
-        "created_at": "2026-09-26T23:00:13.666614+00:00",
+        "created_at": "2026-10-05T16:12:33.420643+00:00",
         "locale": "en-US",
         "query": "",
         "endpoint": "https://www.lego.com/api/graphql/PickABrickQuery",
-        "total_reported": 4442,
-        "primary_results": 4442,
-        "unique_element_variants": 17242,
+        "total_reported": 4598,
+        "primary_results": 4598,
+        "unique_element_variants": 18066,
         "pages": 12,
         "page_counts": [
           400,
@@ -7606,40 +7606,40 @@
           400,
           400,
           400,
-          42
+          198
         ],
         "availability_counts": {
-          "AVAILABLE": 16621,
-          "OUT_OF_STOCK": 621
+          "AVAILABLE": 15964,
+          "OUT_OF_STOCK": 2102
         },
         "delivery_channel_counts": {
-          "bap": 1897,
-          "pab": 15185,
-          "None": 160
+          "bap": 1715,
+          "pab": 15721,
+          "None": 630
         },
         "currency_counts": {
-          "None": 12800,
-          "USD": 4442
+          "None": 13468,
+          "USD": 4598
         },
         "next_stage": "crosswalk element_id/design_id against official/Rebrickable/BrickLink component records and classify minifigure surfaces"
       },
       "crosswalk": {
         "schema": "pab-rebrickable-crosswalk-summary/v1",
-        "created_at": "2026-09-26T23:00:14.984961+00:00",
+        "created_at": "2026-10-05T16:12:35.020967+00:00",
         "processor_version": "pab-rebrickable-crosswalk/v1",
-        "pab_elements": 17242,
-        "exact_rebrickable_element_matches": 17236,
+        "pab_elements": 18066,
+        "exact_rebrickable_element_matches": 18060,
         "unmatched_pab_elements": 6,
-        "matched_elements_used_in_minifigure_census": 4019,
-        "matched_printed_minifigure_components": 405,
+        "matched_elements_used_in_minifigure_census": 4092,
+        "matched_printed_minifigure_components": 420,
         "minifigure_component_role_observations": {
-          "other": 10371,
-          "hips": 7626,
-          "headgear": 7472,
-          "head": 3854,
-          "torso": 1656,
-          "leg": 983,
-          "bodywear": 231,
+          "other": 10445,
+          "hips": 7653,
+          "headgear": 7569,
+          "head": 3844,
+          "torso": 1677,
+          "leg": 984,
+          "bodywear": 232,
           "hand": 218,
           "arm": 179,
           "weapon_or_tool": 165
@@ -7652,35 +7652,35 @@
       "source_id": "licensed_reference_books",
       "status": "blocked_local_or_interactive",
       "reason": "needs_local_purchased_or_scanned_book_files",
-      "created_at": "2026-09-26T23:14:20.229400+00:00",
+      "created_at": "2026-10-05T16:30:37.575265+00:00",
       "_status_file": "licensed_reference_books.json"
     },
     {
       "source_id": "manufacturing_validation",
       "status": "blocked_local_or_interactive",
       "reason": "needs_printed_physical_samples_and_measurements",
-      "created_at": "2026-09-26T23:14:20.229400+00:00",
+      "created_at": "2026-10-05T16:30:37.575265+00:00",
       "_status_file": "manufacturing_validation.json"
     },
     {
       "source_id": "mask_headgear_candidates",
       "status": "candidate_corpus_ready",
       "exit_code": 0,
-      "created_at": "2026-09-26T23:00:18.987734+00:00",
+      "created_at": "2026-10-05T16:12:39.361775+00:00",
       "schema": "mask-headgear-candidate-corpus-summary/v1",
-      "processor_version": "mask-headgear-candidate-corpus/v2",
-      "physical_figures_indexed": 17226,
-      "candidate_figures": 14289,
+      "processor_version": "mask-headgear-candidate-corpus/v4",
+      "physical_figures_indexed": 17276,
+      "candidate_figures": 14278,
       "route_candidate_counts": {
-        "helmet_plus_head": 3574,
-        "separate_mask_headgear": 707,
-        "head_print_plus_headgear": 695,
-        "modified_or_nonhuman_head": 397,
-        "hood_plus_head": 361,
-        "cowl_plus_head": 184,
-        "head_print_or_decorated_head_only": 176,
+        "helmet_plus_head": 3570,
+        "separate_mask_headgear": 709,
+        "head_print_plus_headgear": 690,
+        "hood_plus_head": 366,
+        "modified_or_nonhuman_head": 195,
+        "cowl_plus_head": 185,
+        "head_print_or_decorated_head_only": 184,
         "costume_head_cover": 83,
-        "transparent_dome_or_bubble_headgear": 25
+        "transparent_dome_or_bubble_headgear": 24
       },
       "_status_file": "mask_headgear_candidates.json"
     },
@@ -7688,30 +7688,30 @@
       "source_id": "mask_headgear_ranked",
       "status": "ranked_route_candidates_ready",
       "exit_code": 0,
-      "created_at": "2026-09-26T23:02:22.320034+00:00",
+      "created_at": "2026-10-05T16:15:34.949956+00:00",
       "schema": "mask-headgear-route-ranking-summary/v1",
       "processor_version": "mask-headgear-route-ranking/v1",
-      "records": 14289,
+      "records": 14278,
       "confidence_bands": {
-        "high_component_route_candidate": 894,
-        "medium_component_route_candidate": 1081,
-        "low_or_generic_headgear_candidate": 12314
+        "high_component_route_candidate": 845,
+        "medium_component_route_candidate": 1091,
+        "low_or_generic_headgear_candidate": 12342
       },
-      "high_priority_records": 894,
+      "high_priority_records": 845,
       "_status_file": "mask_headgear_ranked.json"
     },
     {
       "source_id": "mecabricks_bulk_assets",
       "status": "blocked_local_or_interactive",
       "reason": "needs_export/API_or_approved_bulk_acquisition_path",
-      "created_at": "2026-09-26T23:14:20.229400+00:00",
+      "created_at": "2026-10-05T16:30:37.575265+00:00",
       "_status_file": "mecabricks_bulk_assets.json"
     },
     {
       "source_id": "minifig_svg_decals",
       "status": "complete",
       "exit_code": 0,
-      "created_at": "2026-09-26T23:02:18.270173+00:00",
+      "created_at": "2026-10-05T16:15:30.256028+00:00",
       "git_commit": "5c4d6b27aafb2c1e777de358b8a49ea1efe327ba",
       "files": 221,
       "total_bytes": 21120940,
@@ -7748,7 +7748,7 @@
     },
     {
       "source_id": "official_lego_zip_bundles",
-      "created_at": "2026-09-26T23:00:39.651461+00:00",
+      "created_at": "2026-10-05T16:13:18.714680+00:00",
       "bundle_count": 12,
       "complete": 12,
       "failed": 0,
@@ -7756,7 +7756,7 @@
         {
           "bundle_id": "minifigure_40th",
           "schema": "zip-bundle-index-summary/v1",
-          "created_at": "2026-09-26T23:00:26.851457+00:00",
+          "created_at": "2026-10-05T16:12:49.626207+00:00",
           "processor_version": "zip-bundle-index/v1",
           "source_url": "https://www.lego.com/cdn/cs/aboutus/assets/bltc241695af5a4e401/assets.zip",
           "zip_sha256": "f5158696ebfe21ab0f459a5db228f5e3277e6a7307d446cae0b426c6d42a65b3",
@@ -7779,7 +7779,7 @@
         {
           "bundle_id": "lego_games_25_year",
           "schema": "zip-bundle-index-summary/v1",
-          "created_at": "2026-09-26T23:00:27.281797+00:00",
+          "created_at": "2026-10-05T16:12:51.633808+00:00",
           "processor_version": "zip-bundle-index/v1",
           "source_url": "https://www.lego.com/cdn/cs/aboutus/assets/bltfd3ccb605641c314/LEGO_Games_Asset_Bundle.zip",
           "zip_sha256": "137ba183956c49df19ae28c7c57fe86dfd9b8bc23744f58b768976b4738ddaa8",
@@ -7803,7 +7803,7 @@
         {
           "bundle_id": "skywalker_jedi",
           "schema": "zip-bundle-index-summary/v1",
-          "created_at": "2026-09-26T23:00:28.240796+00:00",
+          "created_at": "2026-10-05T16:12:55.360170+00:00",
           "processor_version": "zip-bundle-index/v1",
           "source_url": "https://www.lego.com/cdn/cs/catalog/assets/blt814631c7161a8fbe/Jedi.zip",
           "zip_sha256": "d5ee35b51e81b2122a34e67cf9b3e9688f0c1f0d0a14a41e3c98d7d84754816a",
@@ -7825,7 +7825,7 @@
         {
           "bundle_id": "skywalker_dark_side",
           "schema": "zip-bundle-index-summary/v1",
-          "created_at": "2026-09-26T23:00:28.870315+00:00",
+          "created_at": "2026-10-05T16:12:58.173454+00:00",
           "processor_version": "zip-bundle-index/v1",
           "source_url": "https://www.lego.com/cdn/cs/catalog/assets/bltd21c93a75bb1fc88/Dark_Side.zip",
           "zip_sha256": "928955af090dd80780cfd44403c40965cd97d9c586d831e1d73ef8acc033061a",
@@ -7847,7 +7847,7 @@
         {
           "bundle_id": "skywalker_hero",
           "schema": "zip-bundle-index-summary/v1",
-          "created_at": "2026-09-26T23:00:33.544543+00:00",
+          "created_at": "2026-10-05T16:13:04.363415+00:00",
           "processor_version": "zip-bundle-index/v1",
           "source_url": "https://www.lego.com/cdn/cs/catalog/assets/blt248569e8450ae5f3/Hero.zip",
           "zip_sha256": "8d67f5b8be26565835addc1a784ceee0759c744e124c0cb82c72ef856a565068",
@@ -7869,7 +7869,7 @@
         {
           "bundle_id": "skywalker_villain",
           "schema": "zip-bundle-index-summary/v1",
-          "created_at": "2026-09-26T23:00:35.672281+00:00",
+          "created_at": "2026-10-05T16:13:07.988332+00:00",
           "processor_version": "zip-bundle-index/v1",
           "source_url": "https://www.lego.com/cdn/cs/catalog/assets/blt9a5602e35e69be8f/Villain.zip",
           "zip_sha256": "107a71a64dadfb394cf1132f4fd6feca0fde93686f122cea3ded430c5472f5e5",
@@ -7891,7 +7891,7 @@
         {
           "bundle_id": "skywalker_scavenger",
           "schema": "zip-bundle-index-summary/v1",
-          "created_at": "2026-09-26T23:00:36.127801+00:00",
+          "created_at": "2026-10-05T16:13:08.785237+00:00",
           "processor_version": "zip-bundle-index/v1",
           "source_url": "https://www.lego.com/cdn/cs/catalog/assets/blt2eefd607fc52ab6c/Scavenger.zip",
           "zip_sha256": "af46ff27501daafba1c23d8f9415c4882220c56127bfdb7a523b3bc7cfba0e5f",
@@ -7913,7 +7913,7 @@
         {
           "bundle_id": "skywalker_scoundrel",
           "schema": "zip-bundle-index-summary/v1",
-          "created_at": "2026-09-26T23:00:36.722388+00:00",
+          "created_at": "2026-10-05T16:13:10.515355+00:00",
           "processor_version": "zip-bundle-index/v1",
           "source_url": "https://www.lego.com/cdn/cs/catalog/assets/blt626c99f2400b9da9/Scoundrel.zip",
           "zip_sha256": "eb4b75930110acc8b90fa8ae7dc66d1473db3389f839b9d8df81b0b3af50db5c",
@@ -7935,7 +7935,7 @@
         {
           "bundle_id": "skywalker_bounty_hunter",
           "schema": "zip-bundle-index-summary/v1",
-          "created_at": "2026-09-26T23:00:37.140770+00:00",
+          "created_at": "2026-10-05T16:13:11.727639+00:00",
           "processor_version": "zip-bundle-index/v1",
           "source_url": "https://www.lego.com/cdn/cs/catalog/assets/bltf2b858555922801e/Bounty_Hunter.zip",
           "zip_sha256": "329b32d52ece15c2a7d7f448dcb6d325eb3347a96c594fe3b0a66fc2dcd369b9",
@@ -7957,7 +7957,7 @@
         {
           "bundle_id": "skywalker_astromech",
           "schema": "zip-bundle-index-summary/v1",
-          "created_at": "2026-09-26T23:00:37.516460+00:00",
+          "created_at": "2026-10-05T16:13:12.438476+00:00",
           "processor_version": "zip-bundle-index/v1",
           "source_url": "https://www.lego.com/cdn/cs/catalog/assets/blt9f0021b547d9d9f5/Astromech.zip",
           "zip_sha256": "e9a405115faa75b674722798435065377d77335894828ab3718f5ad0b6bbfd8e",
@@ -7979,7 +7979,7 @@
         {
           "bundle_id": "skywalker_protocol",
           "schema": "zip-bundle-index-summary/v1",
-          "created_at": "2026-09-26T23:00:37.975589+00:00",
+          "created_at": "2026-10-05T16:13:14.114865+00:00",
           "processor_version": "zip-bundle-index/v1",
           "source_url": "https://www.lego.com/cdn/cs/catalog/assets/bltaefd80825ac1b1b8/Protocol.zip",
           "zip_sha256": "0a2997fd66fbcb0fb5322c29b4234feaa35ae059c8200b1597cd48d2d83037f2",
@@ -8001,7 +8001,7 @@
         {
           "bundle_id": "skywalker_extra",
           "schema": "zip-bundle-index-summary/v1",
-          "created_at": "2026-09-26T23:00:39.468656+00:00",
+          "created_at": "2026-10-05T16:13:18.509847+00:00",
           "processor_version": "zip-bundle-index/v1",
           "source_url": "https://www.lego.com/cdn/cs/catalog/assets/bltdf5a538c4d3523d9/Extras.zip",
           "zip_sha256": "a6c21f97f37707f5d57cf18c18a48301a679bc2864797bc99f4a552966034bf9",
@@ -8028,7 +8028,7 @@
       "source_id": "official_zip_raster_features",
       "status": "derived_visual_features_ready",
       "exit_code": 0,
-      "created_at": "2026-09-26T23:01:18.800678+00:00",
+      "created_at": "2026-10-05T16:14:05.743609+00:00",
       "schema": "official-zip-raster-feature-summary/v1",
       "processor_version": "official-zip-raster-features/v1",
       "raster_assets_profiled": 397,
@@ -8059,49 +8059,49 @@
       "source_id": "rebrickable_bulk",
       "status": "complete",
       "exit_code": 0,
-      "created_at": "2026-09-26T23:00:00.818849+00:00",
+      "created_at": "2026-10-05T16:12:18.877581+00:00",
       "counts": {
-        "physical_samples": 17226,
-        "figure_reference_assets": 17226,
-        "component_records": 82410,
-        "component_reference_assets": 82272,
-        "set_occurrence_links": 25828,
+        "physical_samples": 17276,
+        "figure_reference_assets": 17276,
+        "component_records": 82624,
+        "component_reference_assets": 82494,
+        "set_occurrence_links": 25884,
         "figures_without_catalog_image": 0,
         "figures_without_set_occurrence": 318,
         "figures_without_component_inventory": 1,
-        "printed_component_records": 30374
+        "printed_component_records": 30470
       },
       "processor_version": "lego-reference-manifest/v2",
       "source_files": {
         "minifigs": {
-          "sha256": "90efdde3fb4bf50b178575fbefaf81e6793d9c53e2ae69e87b1b5488e9da83ea"
+          "sha256": "570705c3514efb1dd9b413ded71d1dc149c333a0fbfac88a30f989e153fbd407"
         },
         "inventories": {
-          "sha256": "b470a3c1bff096b4cf4e615b7583f77fd88f5b671317a9d2cdc50b787d44b380"
+          "sha256": "5b7c3f303b001d22cac71bc036ea46514cddbc4a3a9deb264d29604ccf324f27"
         },
         "inventory_minifigs": {
-          "sha256": "b3338faed8b89874362e467d714fc0ba38ffc2857bbc71f46c845e1449af5aa2"
+          "sha256": "292c99fd9298d98cd678a3680624c76b11c1a1ff210fa20fe8ae35e70c87403e"
         },
         "sets": {
-          "sha256": "e4a9e97c3842be461ccde3d009f5ed29db3d8191aec9a3d92f11f92038ba98dc"
+          "sha256": "b2a582ab7b08279e903cc91beee9f1a4956238d740a863696f405abd2e6307eb"
         },
         "themes": {
-          "sha256": "1d5b0d74b410208fe8f76dba9cf238450e123e981276861c741808561a122472"
+          "sha256": "d0274560183358c5e31223a9989838525a3d6abed018b94f666d16ac118f0a82"
         },
         "inventory_parts": {
-          "sha256": "c4649e734d9750b86500dcb6b60ccb56ad31d3e51134708e6762f2edee735776"
+          "sha256": "71dc364e9de39021f7e41395c1909e38c4eee7c198ca72ee7beac27a5df112f8"
         },
         "parts": {
-          "sha256": "7fb9e560e5fde2af836b9eeb7ccada150f19e344ba7814c602cc2e119905cddc"
+          "sha256": "a8fcff550fdaa217b4e38f7a150e2f775184eebe212aa9f65b3c0aef1b5257c4"
         },
         "colors": {
-          "sha256": "4c4eb0fe70180cbbd80855320258164b6b0409ad162bc8e3b0afb8f92475d97d"
+          "sha256": "718e7705200694064b67f2b80f765b5b41fa2534310475285d71666f194936a6"
         },
         "part_relationships": {
-          "sha256": "85cf1f4817f87a6b2341cd4ee300908bad3060212d7a9fba5125d890c76bdae7"
+          "sha256": "c09cacce1ea80329e9e3a909f3496e7874fc4d2d769e3119df51c7afcfa68e6f"
         },
         "elements": {
-          "sha256": "8790eedab240a3e1323462cb27ace3ba6c17fb94348d0fafee7851310bba626d"
+          "sha256": "7a774511e34655be2eda9e57080879b521f9a564453ea922f81980ac19a5632b"
         }
       },
       "_status_file": "rebrickable.json"
@@ -8110,7 +8110,7 @@
       "source_id": "rioforce_face_review_queue",
       "status": "review_queue_ready",
       "exit_code": 0,
-      "created_at": "2026-09-26T23:02:22.368083+00:00",
+      "created_at": "2026-10-05T16:15:35.004765+00:00",
       "schema": "face-landmark-review-queue-summary/v1",
       "processor_version": "face-landmark-review-queue/v1",
       "records": 38,
@@ -8124,7 +8124,7 @@
       "source_id": "rioforce_face_svg",
       "status": "candidate_geometry_requires_semantic_review",
       "exit_code": 0,
-      "created_at": "2026-09-26T23:02:18.405473+00:00",
+      "created_at": "2026-10-05T16:15:30.376633+00:00",
       "schema": "rioforce-face-svg-profile-summary/v1",
       "processor_version": "rioforce-face-svg-profile/v1",
       "face_like_svg_records": 38,
@@ -8144,7 +8144,7 @@
       "source_id": "rioforce_lego_textures",
       "status": "complete",
       "exit_code": 0,
-      "created_at": "2026-09-26T23:02:13.431668+00:00",
+      "created_at": "2026-10-05T16:15:25.085296+00:00",
       "git_commit": "7f602f70a160499138693d8e163be2d338e23049",
       "files": 245,
       "total_bytes": 16744055,
@@ -8200,25 +8200,25 @@
       "source_id": "skywalker_crosswalk_review",
       "status": "grouped_review_queue_ready",
       "exit_code": 0,
-      "created_at": "2026-09-26T23:02:12.553790+00:00",
+      "created_at": "2026-10-05T16:15:24.016863+00:00",
       "schema": "skywalker-crosswalk-review-summary/v1",
       "processor_version": "skywalker-crosswalk-review/v3",
       "records": 377,
       "base_character_groups": 247,
       "multi_variant_groups": 36,
       "confidence_bands": {
-        "strong_candidate": 62,
-        "review_candidate": 33,
-        "unresolved": 282
+        "strong_candidate": 61,
+        "review_candidate": 32,
+        "unresolved": 284
       },
       "character_identity_status_counts": {
-        "exact_catalog_name_match": 55,
-        "candidate_identity_review_required": 322
+        "exact_catalog_name_match": 47,
+        "candidate_identity_review_required": 330
       },
       "temporal_relation_counts": {
-        "physical_predates_game": 287,
-        "physical_postdates_game": 79,
-        "same_calendar_year_timing_unresolved": 11
+        "physical_predates_game": 342,
+        "physical_postdates_game": 18,
+        "same_calendar_year_timing_unresolved": 17
       },
       "game_launch_reference_year": 2022,
       "automatic_physical_equivalence_promotions": 0,
@@ -8228,40 +8228,42 @@
       "source_id": "skywalker_physical_crosswalk",
       "status": "candidate_crosswalk_requires_independent_confirmation",
       "exit_code": 0,
-      "created_at": "2026-09-26T23:02:12.404901+00:00",
+      "created_at": "2026-10-05T16:15:23.840592+00:00",
       "schema": "skywalker-physical-crosswalk-candidate-summary/v1",
-      "processor_version": "skywalker-physical-crosswalk-candidates/v4",
+      "processor_version": "skywalker-physical-crosswalk-candidates/v7",
       "digital_profile_assets": 377,
-      "star_wars_physical_candidates_indexed": 1549,
+      "star_wars_physical_candidates_indexed": 1555,
       "records_written": 377,
       "confidence_bands": {
-        "strong_candidate": 62,
-        "review_candidate": 33,
-        "unresolved": 282
+        "strong_candidate": 61,
+        "review_candidate": 32,
+        "unresolved": 284
       },
       "top_k": 5,
-      "component_inventory_summaries_loaded": 17225,
+      "component_inventory_summaries_loaded": 17275,
+      "source_plausibility_reference_year": 2022,
+      "later_release_candidate_penalty": 0.08,
       "_status_file": "skywalker_physical_crosswalk.json"
     },
     {
       "source_id": "theme_era_profiles",
       "status": "aggregate_profiles_ready",
       "exit_code": 0,
-      "created_at": "2026-09-26T23:00:16.292953+00:00",
+      "created_at": "2026-10-05T16:12:36.363710+00:00",
       "schema": "minifigure-theme-era-profile-summary/v1",
       "processor_version": "minifigure-theme-era-profile/v1",
-      "physical_samples": 17226,
+      "physical_samples": 17276,
       "top_level_theme_profiles": 123,
       "era_profiles": 6,
       "profile_records": 129,
       "largest_theme_profiles": [
         {
           "name": "City",
-          "figure_count": 1974
+          "figure_count": 1975
         },
         {
           "name": "Star Wars",
-          "figure_count": 1479
+          "figure_count": 1485
         },
         {
           "name": "Ninjago",
@@ -8281,11 +8283,11 @@
         },
         {
           "name": "Super Heroes Marvel",
-          "figure_count": 741
+          "figure_count": 755
         },
         {
           "name": "Seasonal",
-          "figure_count": 683
+          "figure_count": 691
         },
         {
           "name": "Harry Potter",
@@ -8301,7 +8303,7 @@
         },
         {
           "name": "Super Heroes DC",
-          "figure_count": 438
+          "figure_count": 439
         },
         {
           "name": "Educational and Dacta",
@@ -8317,15 +8319,15 @@
         },
         {
           "name": "unknown",
-          "figure_count": 320
+          "figure_count": 318
+        },
+        {
+          "name": "LEGO Ideas and CUUSOO",
+          "figure_count": 287
         },
         {
           "name": "Minecraft",
           "figure_count": 281
-        },
-        {
-          "name": "LEGO Ideas and CUUSOO",
-          "figure_count": 274
         },
         {
           "name": "Sports",
@@ -8342,14 +8344,14 @@
       "source_id": "tt_games_assets",
       "status": "blocked_local_or_interactive",
       "reason": "needs_legally_obtained_local_game_installations",
-      "created_at": "2026-09-26T23:14:20.229400+00:00",
+      "created_at": "2026-10-05T16:30:37.575265+00:00",
       "_status_file": "tt_games_assets.json"
     },
     {
       "source_id": "uefn_canonical_renders",
       "status": "blocked_local_or_interactive",
       "reason": "needs_local_UEFN_installation_and_controlled_capture",
-      "created_at": "2026-09-26T23:14:20.229400+00:00",
+      "created_at": "2026-10-05T16:30:37.575265+00:00",
       "_status_file": "uefn_canonical_renders.json"
     },
     {
@@ -8357,12 +8359,12 @@
       "processor_version": "training-source-web-profile/v1",
       "source_id": "bobs_customs",
       "requested_url": "https://bobscustoms.co.uk/",
-      "created_at": "2026-09-26T23:14:14.120943+00:00",
+      "created_at": "2026-10-05T16:30:30.426993+00:00",
       "status": "ok",
       "final_url": "https://bobscustoms.co.uk/password",
       "content_type": "text/html; charset=utf-8",
-      "content_bytes": 215857,
-      "content_sha256": "66ddeb2595d99b5040915c051f7c4abe481e070e3657104a251045863b14616d",
+      "content_bytes": 217642,
+      "content_sha256": "09be3baf0659e78df1547f5d1be918a02ac5f1064612c94ade9a7893758c153d",
       "image_count": 1,
       "link_count": 5,
       "image_urls": [
@@ -8381,12 +8383,12 @@
       "processor_version": "training-source-web-profile/v1",
       "source_id": "bricklink_studio_minifig",
       "requested_url": "https://studiohelp.bricklink.com/hc/en-us/articles/5877834417303-Creating-a-decorated-minifig",
-      "created_at": "2026-09-26T23:14:17.889450+00:00",
+      "created_at": "2026-10-05T16:30:34.532430+00:00",
       "status": "ok",
       "final_url": "https://studiohelp.bricklink.com/hc/en-us/articles/5877834417303-Creating-a-decorated-minifig",
       "content_type": "text/html; charset=utf-8",
-      "content_bytes": 19322,
-      "content_sha256": "ce9a2573ab135acf82fdc750e8ad0ec2d0b4a1747ca5318ae2a03c3ff65ed1d5",
+      "content_bytes": 19284,
+      "content_sha256": "e5beb0820672a7558688e9c12af78c60a304027fe8750c4b9fa4eb93493a9910",
       "image_count": 11,
       "link_count": 23,
       "image_urls": [
@@ -8414,196 +8416,196 @@
       "processor_version": "training-source-web-profile/v1",
       "source_id": "fortnite_lego_styles",
       "requested_url": "https://dev.epicgames.com/documentation/fortnite/lego-asset-inventory-in-fortnite-creative",
-      "created_at": "2026-09-26T23:14:18.782377+00:00",
+      "created_at": "2026-10-05T16:30:35.578633+00:00",
       "status": "ok",
       "final_url": "https://dev.epicgames.com/documentation/fortnite/lego-asset-inventory-in-fortnite-creative",
       "content_type": "text/html; charset=utf-8",
-      "content_bytes": 403373,
-      "content_sha256": "2b71a0b392eba0f7aa1cbdb393dfe63b1e5b3c72fe635d4166fff4546193068c",
+      "content_bytes": 403351,
+      "content_sha256": "f343494eb174a13e281ecdbe90b63b84edf5a811d3296871ef63af3a51ba3116",
       "image_count": 182,
       "link_count": 152,
       "image_urls": [
-        "https://dev.epicgames.com/community/api/documentation/image/001a341b-327e-4e6d-acb4-1884d9403590?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/001a341b-327e-4e6d-acb4-1884d9403590?resizing_type=fit&width=1400&height=1399",
-        "https://dev.epicgames.com/community/api/documentation/image/001a341b-327e-4e6d-acb4-1884d9403590?resizing_type=fit&width=2800&height=2798",
-        "https://dev.epicgames.com/community/api/documentation/image/001a341b-327e-4e6d-acb4-1884d9403590?resizing_type=fit&width=768&height=768",
-        "https://dev.epicgames.com/community/api/documentation/image/02d8e9a9-33d5-4b5b-b227-9c1a8c078114?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/0b5e48f5-3ea1-4160-8602-e319b90b701e?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/0eda5f80-64a1-4336-8252-c10ec5d8c9e6?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/10f29155-197a-45d3-beb8-abc09f844faa?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/160f0b1c-2e4d-4f1a-80d3-0c62ff367cc2?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/17561672-936d-45ae-bd0e-1487e16942aa?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/17c07b6a-7948-4df8-a6da-a25c6a508fcf?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/1821b0d3-8166-44d5-855a-b6033276e88c?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/1c6b46c8-cb7c-4247-88d1-b67f77658b22?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/1c6b46c8-cb7c-4247-88d1-b67f77658b22?resizing_type=fit&width=1400&height=787",
-        "https://dev.epicgames.com/community/api/documentation/image/1c6b46c8-cb7c-4247-88d1-b67f77658b22?resizing_type=fit&width=2800&height=1575",
-        "https://dev.epicgames.com/community/api/documentation/image/1c6b46c8-cb7c-4247-88d1-b67f77658b22?resizing_type=fit&width=768&height=432",
-        "https://dev.epicgames.com/community/api/documentation/image/1d2c2749-6402-4368-84c0-c81c29ef6df5?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/1d35c822-5255-44ee-a7d0-571c4ed3665d?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/204036e3-4474-4bbb-9ea0-595e0bb7bc72?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/2130f48d-444f-47fa-8d70-d81242930b71?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/215ccaae-c1fc-4306-a9be-e70e742394f8?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/00d60edd-6488-465d-984b-2e852817e8ab?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/02d0e99b-9818-4de6-9835-12effe238080?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/02d0e99b-9818-4de6-9835-12effe238080?resizing_type=fit&width=1400&height=787",
+        "https://dev.epicgames.com/community/api/documentation/image/02d0e99b-9818-4de6-9835-12effe238080?resizing_type=fit&width=2800&height=1575",
+        "https://dev.epicgames.com/community/api/documentation/image/02d0e99b-9818-4de6-9835-12effe238080?resizing_type=fit&width=768&height=432",
+        "https://dev.epicgames.com/community/api/documentation/image/034f3961-c6d4-4f35-9fea-0c339a646445?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/0466415f-75ce-48fe-94c7-cd7d4ae53200?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/046eab87-1b94-41c9-a613-51fd4f0172ed?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/046eab87-1b94-41c9-a613-51fd4f0172ed?resizing_type=fit&width=1400&height=647",
+        "https://dev.epicgames.com/community/api/documentation/image/046eab87-1b94-41c9-a613-51fd4f0172ed?resizing_type=fit&width=2800&height=1293",
+        "https://dev.epicgames.com/community/api/documentation/image/046eab87-1b94-41c9-a613-51fd4f0172ed?resizing_type=fit&width=768&height=355",
+        "https://dev.epicgames.com/community/api/documentation/image/055415b0-d253-4659-bbf1-5b990abaca25?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/06022668-e35e-4588-8439-955250f13fe9?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/0d9aa394-e5c2-4f8d-8dfc-fa12c5af95cc?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/0da98211-e6ae-4fdf-9065-bb305c948af6?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/12c772a5-a31d-4b74-94f5-47d6492f6e50?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/1dd47b42-4595-4572-a085-af755675a127?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/1dd47b42-4595-4572-a085-af755675a127?resizing_type=fit&width=1400&height=1021",
+        "https://dev.epicgames.com/community/api/documentation/image/1dd47b42-4595-4572-a085-af755675a127?resizing_type=fit&width=768&height=560",
+        "https://dev.epicgames.com/community/api/documentation/image/1dd55e43-84c8-4e4b-b2ee-e422a17829cc?resizing_type=fit",
         "https://dev.epicgames.com/community/api/documentation/image/226c9459-6efc-4a88-9697-c5151238fc7d?resizing_type=fill&width=1920&height=335",
-        "https://dev.epicgames.com/community/api/documentation/image/234fd00d-ce39-43d4-b62e-ca59accf2d0f?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/27fcce43-ac08-4fa6-b19c-ff9a2c018cd6?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/2e12cdce-1d33-4db7-ac08-59b0b14d055a?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/2e12cdce-1d33-4db7-ac08-59b0b14d055a?resizing_type=fit&width=1400&height=580",
-        "https://dev.epicgames.com/community/api/documentation/image/2e12cdce-1d33-4db7-ac08-59b0b14d055a?resizing_type=fit&width=2800&height=1160",
-        "https://dev.epicgames.com/community/api/documentation/image/2e12cdce-1d33-4db7-ac08-59b0b14d055a?resizing_type=fit&width=768&height=318",
-        "https://dev.epicgames.com/community/api/documentation/image/3daf935f-2a53-4117-889f-a85fc079271b?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/405bca5a-ad5e-424c-8618-b9a153fa2b27?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/40689790-56ee-49f6-8331-5f248b5b6dda?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/417c358d-ec21-4077-b313-174f59f7c128?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/4916d8f6-9ec5-4f35-9973-d28f87628538?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/4cac8dcd-c518-418e-a21c-066c260cee79?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/4cac8dcd-c518-418e-a21c-066c260cee79?resizing_type=fit&width=1400&height=787",
-        "https://dev.epicgames.com/community/api/documentation/image/4cac8dcd-c518-418e-a21c-066c260cee79?resizing_type=fit&width=2800&height=1575",
-        "https://dev.epicgames.com/community/api/documentation/image/4cac8dcd-c518-418e-a21c-066c260cee79?resizing_type=fit&width=768&height=432",
-        "https://dev.epicgames.com/community/api/documentation/image/4de6a21c-0edd-4620-9cd5-699eab96eda1?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/5074bc57-52d3-4d05-9142-d789cf40a146?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/51beaaf6-eced-4829-865c-ff17c18534ee?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/5392e98d-779e-4295-9846-ca49637031cc?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/5497139f-9586-4131-822b-ddd3e8b7ffd2?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/5497139f-9586-4131-822b-ddd3e8b7ffd2?resizing_type=fit&width=1400&height=787",
-        "https://dev.epicgames.com/community/api/documentation/image/5497139f-9586-4131-822b-ddd3e8b7ffd2?resizing_type=fit&width=2800&height=1575",
-        "https://dev.epicgames.com/community/api/documentation/image/5497139f-9586-4131-822b-ddd3e8b7ffd2?resizing_type=fit&width=768&height=432",
-        "https://dev.epicgames.com/community/api/documentation/image/56655534-19d4-4dcc-864e-d299b8b62192?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/57f1fb1a-1c25-4a23-a363-6ca40959b3e8?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/5eb4dd8f-76e4-4701-ab0b-d486c0929d7f?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/60951133-a1ec-41d8-8da0-5a870469b657?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/60951133-a1ec-41d8-8da0-5a870469b657?resizing_type=fit&width=1400&height=787",
-        "https://dev.epicgames.com/community/api/documentation/image/60951133-a1ec-41d8-8da0-5a870469b657?resizing_type=fit&width=2800&height=1575",
-        "https://dev.epicgames.com/community/api/documentation/image/60951133-a1ec-41d8-8da0-5a870469b657?resizing_type=fit&width=768&height=432",
-        "https://dev.epicgames.com/community/api/documentation/image/61b93ba0-b15b-4aad-ada0-30366ac7ef4a?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/61dd6b48-560c-4979-be28-2cdd307e079d?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/61efbf73-ee49-4d4f-b6ea-aeff66ed476d?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/6584f410-70a9-4925-ad79-764d8bb7c2d0?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/6a09fe30-bb94-4849-a45e-906d174e700b?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/6b3c2d6c-ee27-4238-a5ab-cac49befd219?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/6b3c2d6c-ee27-4238-a5ab-cac49befd219?resizing_type=fit&width=1400&height=463",
-        "https://dev.epicgames.com/community/api/documentation/image/6b3c2d6c-ee27-4238-a5ab-cac49befd219?resizing_type=fit&width=2800&height=925",
-        "https://dev.epicgames.com/community/api/documentation/image/6b3c2d6c-ee27-4238-a5ab-cac49befd219?resizing_type=fit&width=768&height=254",
-        "https://dev.epicgames.com/community/api/documentation/image/6b9cb382-1cac-4c8c-8e2f-ae2e7da29023?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/6b9cb382-1cac-4c8c-8e2f-ae2e7da29023?resizing_type=fit&width=1400&height=1008",
-        "https://dev.epicgames.com/community/api/documentation/image/6b9cb382-1cac-4c8c-8e2f-ae2e7da29023?resizing_type=fit&width=2800&height=2016",
-        "https://dev.epicgames.com/community/api/documentation/image/6b9cb382-1cac-4c8c-8e2f-ae2e7da29023?resizing_type=fit&width=768&height=553",
+        "https://dev.epicgames.com/community/api/documentation/image/26c03b5d-3c7f-4c60-a5cb-03580a40274c?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/26c682eb-f927-4369-9220-46b54dab9000?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/293da143-cd06-425b-aa0a-ddc1073cc4db?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/293da143-cd06-425b-aa0a-ddc1073cc4db?resizing_type=fit&width=1400&height=801",
+        "https://dev.epicgames.com/community/api/documentation/image/293da143-cd06-425b-aa0a-ddc1073cc4db?resizing_type=fit&width=768&height=439",
+        "https://dev.epicgames.com/community/api/documentation/image/2b43a4cf-8b68-4e27-a48d-4dfa11864837?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/34247aab-48ef-43df-98c5-de1b5dd30f95?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/3862c718-8ecd-43f0-aa72-60da082ba4f0?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/3862c718-8ecd-43f0-aa72-60da082ba4f0?resizing_type=fit&width=1400&height=787",
+        "https://dev.epicgames.com/community/api/documentation/image/3862c718-8ecd-43f0-aa72-60da082ba4f0?resizing_type=fit&width=2800&height=1575",
+        "https://dev.epicgames.com/community/api/documentation/image/3862c718-8ecd-43f0-aa72-60da082ba4f0?resizing_type=fit&width=768&height=432",
+        "https://dev.epicgames.com/community/api/documentation/image/3c930d66-f9c0-488d-a15b-fa8a2cc46112?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/3e4c432f-3785-4867-a611-2270d49b7f40?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/3ec711db-f322-413c-94af-a9b48ef5be25?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/4171f524-7965-4ec4-ac12-9718d7b31fef?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/47ba682c-803f-4e77-8759-86f950e9519e?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/4837ad40-1c7f-4686-b5e1-ac558dd38726?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/4ebc5b40-ac27-4f38-ab6d-9e59f04f2ebb?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/4ebc5b40-ac27-4f38-ab6d-9e59f04f2ebb?resizing_type=fit&width=1400&height=463",
+        "https://dev.epicgames.com/community/api/documentation/image/4ebc5b40-ac27-4f38-ab6d-9e59f04f2ebb?resizing_type=fit&width=2800&height=925",
+        "https://dev.epicgames.com/community/api/documentation/image/4ebc5b40-ac27-4f38-ab6d-9e59f04f2ebb?resizing_type=fit&width=768&height=254",
+        "https://dev.epicgames.com/community/api/documentation/image/4f577fb4-3706-4e7b-95d6-4a6cb055007a?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/4f577fb4-3706-4e7b-95d6-4a6cb055007a?resizing_type=fit&width=1400&height=787",
+        "https://dev.epicgames.com/community/api/documentation/image/4f577fb4-3706-4e7b-95d6-4a6cb055007a?resizing_type=fit&width=2800&height=1575",
+        "https://dev.epicgames.com/community/api/documentation/image/4f577fb4-3706-4e7b-95d6-4a6cb055007a?resizing_type=fit&width=768&height=432",
+        "https://dev.epicgames.com/community/api/documentation/image/4f605ee1-750b-4210-8958-f62511a11988?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/4faf1dc7-2462-44d9-b17c-caa1364e804a?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/518796bb-9fdd-46b1-8f75-daf53afe5a8f?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/54abe340-19a9-46cb-83c5-adce7529065d?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/57823358-d8eb-46df-ae51-d1cd6718b76e?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/57823358-d8eb-46df-ae51-d1cd6718b76e?resizing_type=fit&width=1400&height=787",
+        "https://dev.epicgames.com/community/api/documentation/image/57823358-d8eb-46df-ae51-d1cd6718b76e?resizing_type=fit&width=2800&height=1575",
+        "https://dev.epicgames.com/community/api/documentation/image/57823358-d8eb-46df-ae51-d1cd6718b76e?resizing_type=fit&width=768&height=432",
+        "https://dev.epicgames.com/community/api/documentation/image/5d9dd3d0-5f45-45d1-8709-0dbc2b2af9d7?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/5fe7c5ea-3fa1-4fb5-adf2-f32643fb6390?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/601bf0cb-3b7d-43ca-8a12-16edf321923f?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/60d17880-12de-4197-aa82-65154bb16412?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/699a0db7-c1ee-4687-898c-eacc0ac26486?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/699a0db7-c1ee-4687-898c-eacc0ac26486?resizing_type=fit&width=1400&height=580",
+        "https://dev.epicgames.com/community/api/documentation/image/699a0db7-c1ee-4687-898c-eacc0ac26486?resizing_type=fit&width=2800&height=1160",
+        "https://dev.epicgames.com/community/api/documentation/image/699a0db7-c1ee-4687-898c-eacc0ac26486?resizing_type=fit&width=768&height=318",
+        "https://dev.epicgames.com/community/api/documentation/image/6c31ffb3-deec-4ed5-bb69-8a0f9287d966?resizing_type=fit",
         "https://dev.epicgames.com/community/api/documentation/image/6db0387a-4e88-46f4-9550-cd18b8c64b28?resizing_type=fit&width=160&height=92",
-        "https://dev.epicgames.com/community/api/documentation/image/6e3961d3-96cd-4365-ad18-17bca2e3a2d5?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/70525638-ed82-4d6c-bf73-ef6cbd76e0ab?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/7225ab0b-78fe-41e5-b773-0013c72e7257?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/73092b0c-c0b3-443d-abc0-f335736e1dbb?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/7887cdb2-ea61-4a48-9376-305441eadb82?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/7887cdb2-ea61-4a48-9376-305441eadb82?resizing_type=fit&width=1400&height=989",
-        "https://dev.epicgames.com/community/api/documentation/image/7887cdb2-ea61-4a48-9376-305441eadb82?resizing_type=fit&width=2800&height=1978",
-        "https://dev.epicgames.com/community/api/documentation/image/7887cdb2-ea61-4a48-9376-305441eadb82?resizing_type=fit&width=768&height=542",
-        "https://dev.epicgames.com/community/api/documentation/image/794d5d6a-18b0-412c-9bab-0a243eafe500?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/794d5d6a-18b0-412c-9bab-0a243eafe500?resizing_type=fit&width=1400&height=787",
-        "https://dev.epicgames.com/community/api/documentation/image/794d5d6a-18b0-412c-9bab-0a243eafe500?resizing_type=fit&width=2800&height=1575",
-        "https://dev.epicgames.com/community/api/documentation/image/794d5d6a-18b0-412c-9bab-0a243eafe500?resizing_type=fit&width=768&height=432",
-        "https://dev.epicgames.com/community/api/documentation/image/797e82e3-89f6-48e0-acfe-cfc117c46b48?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/79a9eba7-a9a1-4e55-b85c-ae49e0faa73c?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/7b164f79-43f4-4b5d-8c50-bb423892c971?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/7c8ec3da-998f-4216-82d2-74a3f836902d?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/866d7fa9-9a95-408f-8f51-819b6e6a7726?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/877cd217-2600-492b-901a-9dbcde397dbb?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/8ca4fdb0-ad1e-4a05-9516-9d8a74414092?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/8d95b8ae-dc0b-4c5b-8fc0-29fb105aee8b?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/8dff2694-3b66-4515-a985-6f756d61bc62?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/8e461ca4-c4f2-46e6-bbfe-ceb8b7eee5c6?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/8fa3fb5d-cc1d-4f86-8893-49e210f1dec1?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/8fa3fb5d-cc1d-4f86-8893-49e210f1dec1?resizing_type=fit&width=1400&height=1021",
-        "https://dev.epicgames.com/community/api/documentation/image/8fa3fb5d-cc1d-4f86-8893-49e210f1dec1?resizing_type=fit&width=768&height=560",
-        "https://dev.epicgames.com/community/api/documentation/image/902ab395-d3c0-47c6-adf8-53dacae5782f?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/90bdbdef-a4ef-4ef7-a4e1-a6f8c7e1732c?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/949cacef-c170-44a9-a90c-48cf3ae61348?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/97b71eda-5c77-4a32-84e2-58b0d82f2fa8?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/97b71eda-5c77-4a32-84e2-58b0d82f2fa8?resizing_type=fit&width=1400&height=801",
-        "https://dev.epicgames.com/community/api/documentation/image/97b71eda-5c77-4a32-84e2-58b0d82f2fa8?resizing_type=fit&width=768&height=439",
-        "https://dev.epicgames.com/community/api/documentation/image/9acd8513-4957-4acc-864e-607883316a36?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/9c859b11-8398-4c68-a2c4-c7ac306b40a9?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/9c859b11-8398-4c68-a2c4-c7ac306b40a9?resizing_type=fit&width=1400&height=787",
-        "https://dev.epicgames.com/community/api/documentation/image/9c859b11-8398-4c68-a2c4-c7ac306b40a9?resizing_type=fit&width=2800&height=1575",
-        "https://dev.epicgames.com/community/api/documentation/image/9c859b11-8398-4c68-a2c4-c7ac306b40a9?resizing_type=fit&width=768&height=432",
-        "https://dev.epicgames.com/community/api/documentation/image/9dc8502a-f683-4a71-a299-5f3c4f91e8eb?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/9dc8502a-f683-4a71-a299-5f3c4f91e8eb?resizing_type=fit&width=1400&height=1021",
-        "https://dev.epicgames.com/community/api/documentation/image/9dc8502a-f683-4a71-a299-5f3c4f91e8eb?resizing_type=fit&width=768&height=560",
-        "https://dev.epicgames.com/community/api/documentation/image/9dfc3d39-b132-4aff-970f-79901a494852?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/9dfc3d39-b132-4aff-970f-79901a494852?resizing_type=fit&width=1400&height=787",
-        "https://dev.epicgames.com/community/api/documentation/image/9dfc3d39-b132-4aff-970f-79901a494852?resizing_type=fit&width=2800&height=1575",
-        "https://dev.epicgames.com/community/api/documentation/image/9dfc3d39-b132-4aff-970f-79901a494852?resizing_type=fit&width=768&height=432",
-        "https://dev.epicgames.com/community/api/documentation/image/a0e9eb17-7bb4-4921-a458-dee8201b0dfa?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/a0e9eb17-7bb4-4921-a458-dee8201b0dfa?resizing_type=fit&width=1400&height=647",
-        "https://dev.epicgames.com/community/api/documentation/image/a0e9eb17-7bb4-4921-a458-dee8201b0dfa?resizing_type=fit&width=2800&height=1293",
-        "https://dev.epicgames.com/community/api/documentation/image/a0e9eb17-7bb4-4921-a458-dee8201b0dfa?resizing_type=fit&width=768&height=355",
-        "https://dev.epicgames.com/community/api/documentation/image/a1d4785f-4418-48c5-9951-04d2010e34db?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/a22a4a7c-ecb1-4601-bbc2-7957825d14ee?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/a7ce7567-df3b-478f-9fef-b3d1c3c504a3?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/ab836c79-3e1a-47c1-a29c-bd9bdcc5d069?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/ad9b5fb0-10f1-4bd1-9463-27c686a9db65?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/aeefb713-7c48-4863-9987-b94da3e04ad8?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/b4fa5af1-78fa-47ad-8a12-a720a1f71918?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/b4fa5af1-78fa-47ad-8a12-a720a1f71918?resizing_type=fit&width=1400&height=787",
-        "https://dev.epicgames.com/community/api/documentation/image/b4fa5af1-78fa-47ad-8a12-a720a1f71918?resizing_type=fit&width=2800&height=1575",
-        "https://dev.epicgames.com/community/api/documentation/image/b4fa5af1-78fa-47ad-8a12-a720a1f71918?resizing_type=fit&width=768&height=432",
-        "https://dev.epicgames.com/community/api/documentation/image/b775b43e-94ca-4807-9dfa-7c06750a5a86?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/b775b43e-94ca-4807-9dfa-7c06750a5a86?resizing_type=fit&width=1400&height=787",
-        "https://dev.epicgames.com/community/api/documentation/image/b775b43e-94ca-4807-9dfa-7c06750a5a86?resizing_type=fit&width=2800&height=1575",
-        "https://dev.epicgames.com/community/api/documentation/image/b775b43e-94ca-4807-9dfa-7c06750a5a86?resizing_type=fit&width=768&height=432",
-        "https://dev.epicgames.com/community/api/documentation/image/b7b530cc-37d9-41e5-b030-ed85e7bd89f7?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/b87619f7-5505-4ca0-88e1-5056732dcc70?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/b88ac14d-f358-41ca-8ff3-1714e6e5281f?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/b95604e5-2737-4caa-a5e5-88e7457cf503?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/be39c8a5-f83b-4bb9-9147-00b67794d8b9?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/bef85e5c-4de8-4525-a237-f9150eefa3d5?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/c31d4a7e-9bd4-4c7b-a95c-5afdf9f21ce7?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/c354bc91-b3d3-43fe-b51a-177b6e006748?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/c7011322-69c3-4707-bb4d-9f134f3c9dc1?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/c7285899-f59c-46b0-a51b-4666529a084f?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/c809ba81-51d4-4886-aff0-e14fe5a4e323?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/c84fa93f-7e83-4e22-8ea1-82df3ba18197?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/caf681c8-09b4-4087-8a53-d129aff5a346?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/ce133992-cc4e-4ae8-b103-57b8936d10a2?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/d0b11093-b9e5-4263-bbf3-ef8cab43d220?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/d524aeb0-6214-4329-bffb-712e87d41ebe?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/d524aeb0-6214-4329-bffb-712e87d41ebe?resizing_type=fit&width=1400&height=787",
-        "https://dev.epicgames.com/community/api/documentation/image/d524aeb0-6214-4329-bffb-712e87d41ebe?resizing_type=fit&width=2800&height=1575",
-        "https://dev.epicgames.com/community/api/documentation/image/d524aeb0-6214-4329-bffb-712e87d41ebe?resizing_type=fit&width=768&height=432",
+        "https://dev.epicgames.com/community/api/documentation/image/6e01a92a-ad74-4403-b530-35441529a65f?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/750be049-42e3-41a5-98d3-1f6312c990aa?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/795ebf07-4407-4f6a-ac7f-5fb3fc807559?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/795ebf07-4407-4f6a-ac7f-5fb3fc807559?resizing_type=fit&width=1400&height=787",
+        "https://dev.epicgames.com/community/api/documentation/image/795ebf07-4407-4f6a-ac7f-5fb3fc807559?resizing_type=fit&width=2800&height=1575",
+        "https://dev.epicgames.com/community/api/documentation/image/795ebf07-4407-4f6a-ac7f-5fb3fc807559?resizing_type=fit&width=768&height=432",
+        "https://dev.epicgames.com/community/api/documentation/image/7d517ccb-264d-4a3b-82f1-253f4a4206bb?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/7d647616-f788-4077-8795-fdf836a86365?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/7d6d581d-c8b0-4362-b57c-7bbf3888246c?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/7df09619-9b95-454b-a3e4-38544caf1374?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/7e321477-8875-47f8-bec6-6bcdcadfa59f?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/8091424c-7db4-47bd-9565-cb58b8d71889?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/81a1af43-b2da-4391-a458-082c40b4132a?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/841fcd0a-7c0c-4db7-b74f-b3ba4731efa4?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/860be8bc-84e2-42d1-a0fe-f6b2743edea9?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/87212bb1-7081-4da7-bacb-2aad598d1e5b?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/8779a345-f764-4bab-afa8-4624be973251?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/8e751bb7-a787-46fe-b8c4-a410139777e2?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/91adbfe5-4baf-4e7b-871f-3a276f57af87?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/91bb8adc-0235-4bf2-adfd-9372d7a0ece6?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/91bb8adc-0235-4bf2-adfd-9372d7a0ece6?resizing_type=fit&width=1400&height=787",
+        "https://dev.epicgames.com/community/api/documentation/image/91bb8adc-0235-4bf2-adfd-9372d7a0ece6?resizing_type=fit&width=2800&height=1575",
+        "https://dev.epicgames.com/community/api/documentation/image/91bb8adc-0235-4bf2-adfd-9372d7a0ece6?resizing_type=fit&width=768&height=432",
+        "https://dev.epicgames.com/community/api/documentation/image/9463ba37-82d0-40a4-b296-c5aa79e37422?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/96fa8f75-f839-4616-827a-5671ea556929?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/97531263-c9c9-408c-967c-f71f1bbb6be3?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/975a56a3-b80e-4de0-b99d-d479833dbacd?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/97707e7d-7334-4297-a529-a7b3fd6185c1?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/97a1f7a1-c72c-4109-b787-7e6ee5998466?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/9b4d498c-84c6-4ce8-8508-1f89adca84fb?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/9c47ff5a-c56f-40e9-9f33-713f4f5fb2bc?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/9d3d9429-40a6-4080-97a7-dc811fa6506b?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/9f5d76ce-adb8-40ac-99b3-6bcccc665c5e?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/9f5d76ce-adb8-40ac-99b3-6bcccc665c5e?resizing_type=fit&width=1400&height=787",
+        "https://dev.epicgames.com/community/api/documentation/image/9f5d76ce-adb8-40ac-99b3-6bcccc665c5e?resizing_type=fit&width=2800&height=1575",
+        "https://dev.epicgames.com/community/api/documentation/image/9f5d76ce-adb8-40ac-99b3-6bcccc665c5e?resizing_type=fit&width=768&height=432",
+        "https://dev.epicgames.com/community/api/documentation/image/a039be60-a8f7-4434-81f5-4e13c718df16?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/a039be60-a8f7-4434-81f5-4e13c718df16?resizing_type=fit&width=1400&height=787",
+        "https://dev.epicgames.com/community/api/documentation/image/a039be60-a8f7-4434-81f5-4e13c718df16?resizing_type=fit&width=2800&height=1575",
+        "https://dev.epicgames.com/community/api/documentation/image/a039be60-a8f7-4434-81f5-4e13c718df16?resizing_type=fit&width=768&height=432",
+        "https://dev.epicgames.com/community/api/documentation/image/a1fd3b43-62f0-4cad-aae9-cea06e1bc3ea?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/a5b3be0f-490c-4835-b964-cd05ec4b55c6?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/a5b3be0f-490c-4835-b964-cd05ec4b55c6?resizing_type=fit&width=1400&height=989",
+        "https://dev.epicgames.com/community/api/documentation/image/a5b3be0f-490c-4835-b964-cd05ec4b55c6?resizing_type=fit&width=2800&height=1978",
+        "https://dev.epicgames.com/community/api/documentation/image/a5b3be0f-490c-4835-b964-cd05ec4b55c6?resizing_type=fit&width=768&height=542",
+        "https://dev.epicgames.com/community/api/documentation/image/a84f3311-3631-4555-849b-deb46756c9f5?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/a9409d31-21a7-4831-85f6-cff9faa50acf?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/aa029dcd-8dba-465e-8a6b-e58f2761ed3a?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/aa029dcd-8dba-465e-8a6b-e58f2761ed3a?resizing_type=fit&width=1400&height=1399",
+        "https://dev.epicgames.com/community/api/documentation/image/aa029dcd-8dba-465e-8a6b-e58f2761ed3a?resizing_type=fit&width=2800&height=2798",
+        "https://dev.epicgames.com/community/api/documentation/image/aa029dcd-8dba-465e-8a6b-e58f2761ed3a?resizing_type=fit&width=768&height=768",
+        "https://dev.epicgames.com/community/api/documentation/image/ac1178c3-8b0e-48c5-afda-55a61428435a?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/acf143b6-396c-4b03-9bd5-9bafbb00d1d3?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/add42356-06d4-4e05-a10f-cee1d79cc075?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/aead5ea6-63db-4529-a5b6-3b13ee2f2940?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/aef41984-e273-44fb-9cb7-e6d2a45640e8?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/b2608adc-03b7-4be6-b4f1-c48e0a1a3d09?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/b3f2e8f9-1b15-43f9-9739-dd5b7d473f73?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/b3f2e8f9-1b15-43f9-9739-dd5b7d473f73?resizing_type=fit&width=1400&height=1008",
+        "https://dev.epicgames.com/community/api/documentation/image/b3f2e8f9-1b15-43f9-9739-dd5b7d473f73?resizing_type=fit&width=2800&height=2016",
+        "https://dev.epicgames.com/community/api/documentation/image/b3f2e8f9-1b15-43f9-9739-dd5b7d473f73?resizing_type=fit&width=768&height=553",
+        "https://dev.epicgames.com/community/api/documentation/image/b4bf739c-b237-4d3b-b5e5-5b4544c7f71b?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/b5621bc0-4717-4e61-8f67-afd2c6857c1e?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/b664c09e-0398-4a2e-ac1f-e796b2ddf0de?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/b68bd9cd-e301-45ca-b10a-5488450764a3?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/b68bd9cd-e301-45ca-b10a-5488450764a3?resizing_type=fit&width=1400&height=787",
+        "https://dev.epicgames.com/community/api/documentation/image/b68bd9cd-e301-45ca-b10a-5488450764a3?resizing_type=fit&width=2800&height=1575",
+        "https://dev.epicgames.com/community/api/documentation/image/b68bd9cd-e301-45ca-b10a-5488450764a3?resizing_type=fit&width=768&height=432",
+        "https://dev.epicgames.com/community/api/documentation/image/b711d0e2-e119-4c6e-aad1-384cca0199b3?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/b9611f77-b353-4e5b-af50-8c0dc73edd19?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/bc32a365-5473-4b1a-8b91-2241d787b774?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/bcdb63c0-dc23-4456-a925-acb967a48c1b?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/bcdb63c0-dc23-4456-a925-acb967a48c1b?resizing_type=fit&width=1400&height=540",
+        "https://dev.epicgames.com/community/api/documentation/image/bcdb63c0-dc23-4456-a925-acb967a48c1b?resizing_type=fit&width=2800&height=1079",
+        "https://dev.epicgames.com/community/api/documentation/image/bcdb63c0-dc23-4456-a925-acb967a48c1b?resizing_type=fit&width=768&height=296",
+        "https://dev.epicgames.com/community/api/documentation/image/c0a42104-b268-4555-8cb5-ed57bd5c685d?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/c0f5997a-3224-4af0-b837-694947212a64?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/c97d0ddf-a6d3-4a71-b05c-50bc3b52c909?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/c97d0ddf-a6d3-4a71-b05c-50bc3b52c909?resizing_type=fit&width=1400&height=787",
+        "https://dev.epicgames.com/community/api/documentation/image/c97d0ddf-a6d3-4a71-b05c-50bc3b52c909?resizing_type=fit&width=2800&height=1575",
+        "https://dev.epicgames.com/community/api/documentation/image/c97d0ddf-a6d3-4a71-b05c-50bc3b52c909?resizing_type=fit&width=768&height=432",
+        "https://dev.epicgames.com/community/api/documentation/image/cc4bda59-74aa-4fe8-9bb4-be340f125c91?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/cd0bef4b-5f57-4e83-9505-2f1fcf6900b0?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/cd1ad385-2dcd-478d-a15d-685c6571c5fc?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/ceffaac9-4ecf-435a-b2c3-cc4a98627d74?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/cf275bcb-1a8b-4aae-9652-7b8c8fa86b02?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/cf46ce0f-9d4d-425c-a3a5-2780c819fa9e?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/cf46ce0f-9d4d-425c-a3a5-2780c819fa9e?resizing_type=fit&width=1400&height=1021",
+        "https://dev.epicgames.com/community/api/documentation/image/cf46ce0f-9d4d-425c-a3a5-2780c819fa9e?resizing_type=fit&width=768&height=560",
+        "https://dev.epicgames.com/community/api/documentation/image/d2e118f5-9a88-47ca-9aa1-4b63afd332d6?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/d2f01b53-b88c-45e5-903f-b74119e86839?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/d62b264d-0dd0-4847-8316-c10121f13fc7?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/d62b264d-0dd0-4847-8316-c10121f13fc7?resizing_type=fit&width=1400&height=1399",
+        "https://dev.epicgames.com/community/api/documentation/image/d62b264d-0dd0-4847-8316-c10121f13fc7?resizing_type=fit&width=2800&height=2798",
+        "https://dev.epicgames.com/community/api/documentation/image/d62b264d-0dd0-4847-8316-c10121f13fc7?resizing_type=fit&width=768&height=768",
         "https://dev.epicgames.com/community/api/documentation/image/d6970853-47c2-4129-b6a8-2bd8351d7495?resizing_type=fit&width=160&height=92",
-        "https://dev.epicgames.com/community/api/documentation/image/d741886e-5969-4df8-9a74-aaf6dc9ac1b0?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/dcacde52-989c-4838-9e52-8df51e74dc78?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/dd85b892-0cf1-4961-9a03-032dd095d9ff?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/de25313b-a0e6-4bc5-8398-aab99f06c5c0?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/df3b1903-e6cf-43d3-8c8a-689043d41edf?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/df585c67-4151-4b0e-9171-f67177a6c23b?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/df585c67-4151-4b0e-9171-f67177a6c23b?resizing_type=fit&width=1400&height=1399",
-        "https://dev.epicgames.com/community/api/documentation/image/df585c67-4151-4b0e-9171-f67177a6c23b?resizing_type=fit&width=2800&height=2798",
-        "https://dev.epicgames.com/community/api/documentation/image/df585c67-4151-4b0e-9171-f67177a6c23b?resizing_type=fit&width=768&height=768",
-        "https://dev.epicgames.com/community/api/documentation/image/df630bdb-79c6-492c-b88d-75780b787022?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/e07cace4-81ba-4fc4-9eaf-953e747624a7?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/e07cace4-81ba-4fc4-9eaf-953e747624a7?resizing_type=fit&width=1400&height=787",
-        "https://dev.epicgames.com/community/api/documentation/image/e07cace4-81ba-4fc4-9eaf-953e747624a7?resizing_type=fit&width=2800&height=1575",
-        "https://dev.epicgames.com/community/api/documentation/image/e07cace4-81ba-4fc4-9eaf-953e747624a7?resizing_type=fit&width=768&height=432",
-        "https://dev.epicgames.com/community/api/documentation/image/e2c90803-af5b-49e0-9bf2-6e886306d613?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/e2c90803-af5b-49e0-9bf2-6e886306d613?resizing_type=fit&width=1400&height=787",
-        "https://dev.epicgames.com/community/api/documentation/image/e2c90803-af5b-49e0-9bf2-6e886306d613?resizing_type=fit&width=2800&height=1575",
-        "https://dev.epicgames.com/community/api/documentation/image/e2c90803-af5b-49e0-9bf2-6e886306d613?resizing_type=fit&width=768&height=432",
-        "https://dev.epicgames.com/community/api/documentation/image/e6b5a1be-64e1-4165-866a-d67fe6d412c4?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/eb89498a-b365-446a-b9af-25ec3f129c91?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/ec18e419-ff55-40cc-8874-6a73ff020522?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/ec7438c0-85ed-43ae-810f-ca469b2ebe63?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/edcf2857-11fc-4ac7-aaf1-542c0dc8811c?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/f13e2e12-1448-4d67-aabd-7335df42ddf7?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/f310a76f-984c-47ee-b94b-fd1920a2aee4?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/f310a76f-984c-47ee-b94b-fd1920a2aee4?resizing_type=fit&width=1400&height=540",
-        "https://dev.epicgames.com/community/api/documentation/image/f310a76f-984c-47ee-b94b-fd1920a2aee4?resizing_type=fit&width=2800&height=1079",
-        "https://dev.epicgames.com/community/api/documentation/image/f310a76f-984c-47ee-b94b-fd1920a2aee4?resizing_type=fit&width=768&height=296",
-        "https://dev.epicgames.com/community/api/documentation/image/f33b5c3d-7cac-4474-8093-457821c94a07?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/f6733d0d-203f-4ce6-913c-fef8ef54a9f0?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/f6e80e8f-9a59-416a-a621-5b5bcd5a5b2f?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/f8b7ecc4-0b4c-48ac-818c-6309b6d27734?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/f90502b9-bfdb-43a3-a79a-2b0935760e13?resizing_type=fit",
-        "https://dev.epicgames.com/community/api/documentation/image/fba7de53-b747-4a97-b00e-4e6cc463e0c0?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/da85ee5a-762c-43a8-8779-893dea99df02?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/dab9465c-5569-44a8-b999-3b123ccc976c?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/dd6a3159-506e-437b-ac11-d802b3ac979a?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/de08f629-7624-436f-8f64-61a899a4da82?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/defa29b8-4173-47d0-b450-dc01f760c0fe?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/e2b5bc69-1932-4777-80ba-90fc941ec5b6?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/e68f7ba3-51c6-4d1d-b4e1-430c8d808b79?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/f0e9cb38-6256-4de8-b70b-389fb1eac6bc?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/f0e9cb38-6256-4de8-b70b-389fb1eac6bc?resizing_type=fit&width=1400&height=787",
+        "https://dev.epicgames.com/community/api/documentation/image/f0e9cb38-6256-4de8-b70b-389fb1eac6bc?resizing_type=fit&width=2800&height=1575",
+        "https://dev.epicgames.com/community/api/documentation/image/f0e9cb38-6256-4de8-b70b-389fb1eac6bc?resizing_type=fit&width=768&height=432",
+        "https://dev.epicgames.com/community/api/documentation/image/f1a591ed-5e3c-4a88-95c7-ba93439ff7ca?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/f317291f-e0fb-473f-9751-090dbf654202?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/f67c10b0-f812-46f8-9978-23fdaf68577c?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/f7f83d38-6dcc-4214-850f-472063a92da4?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/f8209827-e70d-4b82-ad97-2bb13094bd78?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/faf9151b-241f-4862-b2bd-0f517779403f?resizing_type=fit",
+        "https://dev.epicgames.com/community/api/documentation/image/faf9151b-241f-4862-b2bd-0f517779403f?resizing_type=fit&width=1400&height=787",
+        "https://dev.epicgames.com/community/api/documentation/image/faf9151b-241f-4862-b2bd-0f517779403f?resizing_type=fit&width=2800&height=1575",
+        "https://dev.epicgames.com/community/api/documentation/image/faf9151b-241f-4862-b2bd-0f517779403f?resizing_type=fit&width=768&height=432",
+        "https://dev.epicgames.com/community/api/documentation/image/fe7d2cf2-e41b-4564-acca-59fb99317b9f?resizing_type=fit",
         "https://edc-cdn.net/assets/images/logo-epic.svg"
       ],
       "outbound_hosts": {
@@ -8618,14 +8620,14 @@
       "processor_version": "training-source-web-profile/v1",
       "source_id": "ldraw_updates",
       "requested_url": "https://library.ldraw.org/updates",
-      "created_at": "2026-09-26T23:14:14.739110+00:00",
+      "created_at": "2026-10-05T16:30:31.954072+00:00",
       "status": "ok",
       "final_url": "https://library.ldraw.org/updates",
       "content_type": "text/html; charset=utf-8",
-      "content_bytes": 249251,
-      "content_sha256": "e04748a931f0bf3cd83056f02b7db4f1b06e95462735031aae6c71e97880315e",
-      "image_count": 112,
-      "link_count": 308,
+      "content_bytes": 251195,
+      "content_sha256": "18989ae74027e9e6a321b3a7212eb64bfb757326960c51988b5280b1e63c052b",
+      "image_count": 113,
+      "link_count": 310,
       "image_urls": [
         "https://library.ldraw.org/images/banners/tracker.png",
         "https://library.ldraw.org/images/updates/0801.png",
@@ -8645,7 +8647,7 @@
         "https://library.ldraw.org/images/updates/default.png"
       ],
       "outbound_hosts": {
-        "library.ldraw.org": 305,
+        "library.ldraw.org": 307,
         "www.ldraw.org": 2,
         "www.lego.com": 1
       },
@@ -8657,19 +8659,91 @@
       "processor_version": "training-source-web-profile/v1",
       "source_id": "lego_pick_a_brick_minifig",
       "requested_url": "https://www.lego.com/en-us/pick-and-build/pick-a-brick?category=7",
-      "created_at": "2026-09-26T23:14:16.831651+00:00",
+      "created_at": "2026-10-05T16:30:33.665720+00:00",
       "status": "ok",
       "final_url": "https://www.lego.com/en-us/pick-and-build/pick-a-brick?category=7",
       "content_type": "text/html; charset=utf-8",
-      "content_bytes": 775684,
-      "content_sha256": "986959ba4a3bbb5aa904a0536c255a0e572fb0a0bb436510a09410fee21660fd",
-      "image_count": 63,
-      "link_count": 527,
+      "content_bytes": 904389,
+      "content_sha256": "98ecd563854215f30f9493d39766bc464d0d27f2dfb61289ece7207954b91b90",
+      "image_count": 213,
+      "link_count": 552,
       "image_urls": [
         "https://assets.lego.com/logos/v4.10.0/brand-lego.svg",
-        "https://assets.lego.com/logos/v4.5.0/brand-lego.svg",
-        "https://assets.lego.com/logos/v8.6.0/brand-lego.svg",
-        "https://assets.lego.com/logos/v8.6.0/theme-duplo.svg",
+        "https://assets.lego.com/logos/v8.9.0/brand-lego.svg",
+        "https://assets.lego.com/logos/v8.9.0/theme-duplo.svg",
+        "https://assets.lego.com/thumbnails/latest/generic-thumbnail-no-approval.png",
+        "https://assets.lego.com/thumbnails/latest/interest-thumbnail-adults-welcome.png",
+        "https://assets.lego.com/thumbnails/latest/interest-thumbnail-all.png",
+        "https://assets.lego.com/thumbnails/latest/interest-thumbnail-animals.png",
+        "https://assets.lego.com/thumbnails/latest/interest-thumbnail-arts-and-crafts.png",
+        "https://assets.lego.com/thumbnails/latest/interest-thumbnail-buildings.png",
+        "https://assets.lego.com/thumbnails/latest/interest-thumbnail-cars.png",
+        "https://assets.lego.com/thumbnails/latest/interest-thumbnail-coding-for-kids.png",
+        "https://assets.lego.com/thumbnails/latest/interest-thumbnail-dragons.png",
+        "https://assets.lego.com/thumbnails/latest/interest-thumbnail-fantasy.png",
+        "https://assets.lego.com/thumbnails/latest/interest-thumbnail-film.png",
+        "https://assets.lego.com/thumbnails/latest/interest-thumbnail-football.png",
+        "https://assets.lego.com/thumbnails/latest/interest-thumbnail-formula-one.png",
+        "https://assets.lego.com/thumbnails/latest/interest-thumbnail-gaming.png",
+        "https://assets.lego.com/thumbnails/latest/interest-thumbnail-learn-to-build.png",
+        "https://assets.lego.com/thumbnails/latest/interest-thumbnail-music.png",
+        "https://assets.lego.com/thumbnails/latest/interest-thumbnail-ninjas.png",
+        "https://assets.lego.com/thumbnails/latest/interest-thumbnail-preschool.png",
+        "https://assets.lego.com/thumbnails/latest/interest-thumbnail-princesses.png",
+        "https://assets.lego.com/thumbnails/latest/interest-thumbnail-real-life-heroes.png",
+        "https://assets.lego.com/thumbnails/latest/interest-thumbnail-robots.png",
+        "https://assets.lego.com/thumbnails/latest/interest-thumbnail-seasonal.png",
+        "https://assets.lego.com/thumbnails/latest/interest-thumbnail-space.png",
+        "https://assets.lego.com/thumbnails/latest/interest-thumbnail-sports.png",
+        "https://assets.lego.com/thumbnails/latest/interest-thumbnail-stem.png",
+        "https://assets.lego.com/thumbnails/latest/interest-thumbnail-trains.png",
+        "https://assets.lego.com/thumbnails/latest/interest-thumbnail-travel.png",
+        "https://assets.lego.com/thumbnails/latest/interest-thumbnail-tvshows.png",
+        "https://assets.lego.com/thumbnails/latest/interest-thumbnail-vehicles.png",
+        "https://assets.lego.com/thumbnails/latest/theme-thumbnail-DC.png",
+        "https://assets.lego.com/thumbnails/latest/theme-thumbnail-animal-crossing.png",
+        "https://assets.lego.com/thumbnails/latest/theme-thumbnail-architecture.png",
+        "https://assets.lego.com/thumbnails/latest/theme-thumbnail-art.png",
+        "https://assets.lego.com/thumbnails/latest/theme-thumbnail-batman.png",
+        "https://assets.lego.com/thumbnails/latest/theme-thumbnail-bluey.png",
+        "https://assets.lego.com/thumbnails/latest/theme-thumbnail-botanicals.png",
+        "https://assets.lego.com/thumbnails/latest/theme-thumbnail-braille.png",
+        "https://assets.lego.com/thumbnails/latest/theme-thumbnail-brick-headz.png",
+        "https://assets.lego.com/thumbnails/latest/theme-thumbnail-city.png",
+        "https://assets.lego.com/thumbnails/latest/theme-thumbnail-classic.png",
+        "https://assets.lego.com/thumbnails/latest/theme-thumbnail-creator-3-1.png",
+        "https://assets.lego.com/thumbnails/latest/theme-thumbnail-disney.png",
+        "https://assets.lego.com/thumbnails/latest/theme-thumbnail-dreamzz.png",
+        "https://assets.lego.com/thumbnails/latest/theme-thumbnail-duplo.png",
+        "https://assets.lego.com/thumbnails/latest/theme-thumbnail-education.png",
+        "https://assets.lego.com/thumbnails/latest/theme-thumbnail-fortnite.png",
+        "https://assets.lego.com/thumbnails/latest/theme-thumbnail-friends.png",
+        "https://assets.lego.com/thumbnails/latest/theme-thumbnail-gabby-dollhouse.png",
+        "https://assets.lego.com/thumbnails/latest/theme-thumbnail-harry-potter.png",
+        "https://assets.lego.com/thumbnails/latest/theme-thumbnail-icons.png",
+        "https://assets.lego.com/thumbnails/latest/theme-thumbnail-ideas.png",
+        "https://assets.lego.com/thumbnails/latest/theme-thumbnail-jurassic-park.png",
+        "https://assets.lego.com/thumbnails/latest/theme-thumbnail-lord-of-the-rings.png",
+        "https://assets.lego.com/thumbnails/latest/theme-thumbnail-marvel.png",
+        "https://assets.lego.com/thumbnails/latest/theme-thumbnail-minecraft.png",
+        "https://assets.lego.com/thumbnails/latest/theme-thumbnail-minifigures.png",
+        "https://assets.lego.com/thumbnails/latest/theme-thumbnail-monkie-kid.png",
+        "https://assets.lego.com/thumbnails/latest/theme-thumbnail-nike.png",
+        "https://assets.lego.com/thumbnails/latest/theme-thumbnail-ninjago.png",
+        "https://assets.lego.com/thumbnails/latest/theme-thumbnail-one-piece.png",
+        "https://assets.lego.com/thumbnails/latest/theme-thumbnail-peppa-pig.png",
+        "https://assets.lego.com/thumbnails/latest/theme-thumbnail-pokemon.png",
+        "https://assets.lego.com/thumbnails/latest/theme-thumbnail-powered-up.png",
+        "https://assets.lego.com/thumbnails/latest/theme-thumbnail-serious-play.png",
+        "https://assets.lego.com/thumbnails/latest/theme-thumbnail-sonic.png",
+        "https://assets.lego.com/thumbnails/latest/theme-thumbnail-speed-champions.png",
+        "https://assets.lego.com/thumbnails/latest/theme-thumbnail-starwars.png",
+        "https://assets.lego.com/thumbnails/latest/theme-thumbnail-super-mario.png",
+        "https://assets.lego.com/thumbnails/latest/theme-thumbnail-technic.png",
+        "https://assets.lego.com/thumbnails/latest/theme-thumbnail-victoria.png",
+        "https://assets.lego.com/thumbnails/latest/theme-thumbnail-wednesday.png",
+        "https://assets.lego.com/thumbnails/latest/theme-thumbnail-wicked.png",
+        "https://assets.lego.com/thumbnails/latest/theme-thumbnail-zelda.png",
         "https://www.lego.com/_next/static/images/safety-na-2f4a95f9c1127cb2..svg",
         "https://www.lego.com/cdn/cs/set/assets/blt5bfdc202890c29ca/add_to_bag_modal_icon_desktop.png?format=webply&fit=crop&quality=75&width=200&dpr=1",
         "https://www.lego.com/cdn/cs/set/assets/blt5bfdc202890c29ca/add_to_bag_modal_icon_desktop.png?format=webply&fit=crop&quality=75&width=600&dpr=1",
@@ -8719,29 +8793,28 @@
         "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6434831.jpg",
         "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6434845.jpg",
         "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6435090.jpg",
-        "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6438262.jpg",
         "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6442943.jpg",
         "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6491580.jpg",
         "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6527907.jpg",
         "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6530009.jpg",
         "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6588855.jpg",
+        "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6620679.jpg",
         "https://www.lego.com/cdn/product-assets/element.img.photoreal.192x192/6657250.jpg"
       ],
       "outbound_hosts": {
-        "www.lego.com": 509,
+        "www.lego.com": 535,
         "": 3,
         "education.lego.com": 2,
         "ideas.lego.com": 2,
         "learningthroughplay.com": 2,
         "connect.studentbeans.com": 2,
         "www.legobraillebricks.com": 2,
-        "kids.lego.com": 1,
         "www.facebook.com": 1,
         "www.instagram.com": 1,
         "m.youtube.com": 1,
         "www.tiktok.com": 1
       },
-      "media_candidate_count": 60,
+      "media_candidate_count": 132,
       "_status_file": "web-lego_pick_a_brick_minifig.json"
     },
     {
@@ -8749,27 +8822,27 @@
       "processor_version": "training-source-web-profile/v1",
       "source_id": "mecabricks",
       "requested_url": "https://www.mecabricks.com/",
-      "created_at": "2026-09-26T23:14:18.155649+00:00",
+      "created_at": "2026-10-05T16:30:34.843721+00:00",
       "status": "ok",
       "final_url": "https://www.mecabricks.com/",
       "content_type": "text/html; charset=UTF-8",
-      "content_bytes": 24333,
-      "content_sha256": "8e2ec7e8f216ac78c2fcba4dd705b087d0db59d6d8f9d396fcf0e6b22bb804be",
+      "content_bytes": 24435,
+      "content_sha256": "71b950dc9c56da40fb6dcd0a7280bfdc7632ed679cd881f7a5d3950514b4ca43",
       "image_count": 12,
       "link_count": 70,
       "image_urls": [
-        "https://d1xez26aurxsp6.cloudfront.net/models/79a8N73Xj8w/thumbnails/6ab06dc21c11b.png",
-        "https://d1xez26aurxsp6.cloudfront.net/models/PkaJ0RqgjxM/thumbnails/6ab31de633155.png",
-        "https://d1xez26aurxsp6.cloudfront.net/models/mLvzbOzBvAw/thumbnails/6aac115496da8.png",
-        "https://d1xez26aurxsp6.cloudfront.net/models/mLvzbw94vAw/thumbnails/6aaeb25aa4750.png",
-        "https://d1xez26aurxsp6.cloudfront.net/models/oK2w1Zo0v9k/thumbnails/6ab6fca818fdf.png",
-        "https://d1xez26aurxsp6.cloudfront.net/models/oK2w1xG9v9k/thumbnails/6ab0d5b663c35.png",
-        "https://d1xez26aurxsp6.cloudfront.net/renderings/Dm7kEV/6ab7e20ad661e.png",
-        "https://d1xez26aurxsp6.cloudfront.net/renderings/VEkm8D/6ab6e1636e1f0.png",
-        "https://d1xez26aurxsp6.cloudfront.net/renderings/VwNEqb/6ab809c299451.jpg",
-        "https://d1xez26aurxsp6.cloudfront.net/renderings/beXZ4D/6ab81d79f0d07.jpg",
-        "https://d1xez26aurxsp6.cloudfront.net/renderings/jGJ9eV/6ab7e24dd574a.jpg",
-        "https://d1xez26aurxsp6.cloudfront.net/renderings/jgPwWD/6ab6acc779ad9.jpg"
+        "https://d1xez26aurxsp6.cloudfront.net/models/07vNoAgZaAm/thumbnails/6ab99be68a74f.png",
+        "https://d1xez26aurxsp6.cloudfront.net/models/1k2qmmmE2E0/thumbnails/6abe7f03564f4.png",
+        "https://d1xez26aurxsp6.cloudfront.net/models/Jk2EMbll29A/thumbnails/6aba97190f1ac.png",
+        "https://d1xez26aurxsp6.cloudfront.net/models/bJ2bRRdX2yB/thumbnails/6ac266b588bc6.png",
+        "https://d1xez26aurxsp6.cloudfront.net/models/r121wLxnvlB/thumbnails/6ab2474c9f2b1.png",
+        "https://d1xez26aurxsp6.cloudfront.net/models/zOjoXDGQv6Z/thumbnails/6abfe5b4e46fd.png",
+        "https://d1xez26aurxsp6.cloudfront.net/renderings/DkxXPb/6ac2c56b9b5f7.png",
+        "https://d1xez26aurxsp6.cloudfront.net/renderings/VX9y8j/6ac27d4b47117.jpg",
+        "https://d1xez26aurxsp6.cloudfront.net/renderings/VwNAqb/6ac24bbd49157.jpg",
+        "https://d1xez26aurxsp6.cloudfront.net/renderings/b3AvXj/6ac1587a1ef8f.jpg",
+        "https://d1xez26aurxsp6.cloudfront.net/renderings/jQvzdD/6ac3374546849.jpg",
+        "https://d1xez26aurxsp6.cloudfront.net/renderings/jR64nj/6ac27c543b459.jpg"
       ],
       "outbound_hosts": {
         "mecabricks.com": 48,
