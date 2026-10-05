@@ -15,7 +15,7 @@ from typing import Any, Iterable
 ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
-from tools.knowledge.fortnite_semantic_evidence import evidence_identity, require_shared_evidence
+from tools.knowledge.fortnite_semantic_evidence import evidence_identity, require_shared_evidence, reviewer_principal
 
 VERSION = "fortnite-semantic-supervision-promotion/v3"
 
@@ -38,11 +38,6 @@ def index_reviews(records: Iterable[dict[str, Any]]) -> dict[str, dict[str, Any]
             raise ValueError(f"duplicate review_id: {review_id}")
         by_id[review_id] = record
     return by_id
-
-
-def reviewer_principal(record: dict[str, Any]) -> str:
-    reviewer = record.get("reviewer") or {}
-    return str(reviewer.get("reviewer_id") or "").strip().casefold()
 
 
 def promote(

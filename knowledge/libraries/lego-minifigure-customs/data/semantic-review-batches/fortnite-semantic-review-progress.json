@@ -1,6 +1,6 @@
 {
-  "schema": "fortnite-semantic-review-progress/v1",
-  "processor_version": "fortnite-semantic-review-progress/v1",
+  "schema": "fortnite-semantic-review-progress/v2",
+  "processor_version": "fortnite-semantic-review-progress/v2",
   "plan_path": "knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-plan.json",
   "plan_batch_count": 30,
   "eligible_pairs": 744,
@@ -11,6 +11,11 @@
   "remaining_first_review_pairs": 469,
   "submitted_semantic_annotations": 1117,
   "independently_double_reviewed_pairs": 0,
+  "distinct_reviewer_pairs": 0,
+  "double_review_evidence_blocked_pairs": 0,
+  "evidence_blocked_double_review_pair_ids": [],
+  "first_review_pairs_with_exact_evidence": 275,
+  "first_review_pairs_missing_exact_evidence": 0,
   "adjudicated_pairs": 0,
   "review_pairs_outside_materialized_plan": [],
   "invalid_review_records": 0,
@@ -416,7 +421,8 @@
   "policy": [
     "Progress is derived from the checked-in batch plan, materialized batch membership, and structurally valid review records.",
     "A pair counts as first-reviewed after at least one submitted reviewer-role record.",
-    "Independent double review requires at least two distinct submitted reviewer IDs for the same pair.",
+    "Independent double review requires at least two normalized declared reviewer IDs and matching exact source/LEGO hashes and observed scope across the submitted reviews for the pair.",
+    "Declared reviewer IDs do not prove that reviewers were genuinely independent; verify the review process separately.",
     "Adjudicated counts are descriptive only; canonical promotion must still pass the dedicated independence and promotion gates.",
     "Measurement signals never count as semantic review evidence."
   ]

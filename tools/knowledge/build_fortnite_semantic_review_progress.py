@@ -14,8 +14,9 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from tools.knowledge.validate_fortnite_semantic_reviews import annotation_count, validate_record
+from tools.knowledge.fortnite_semantic_evidence import evidence_identity, require_shared_evidence, reviewer_principal
 
-VERSION = "fortnite-semantic-review-progress/v1"
+VERSION = "fortnite-semantic-review-progress/v2"
 DEFAULT_BATCH_DIR = (
     ROOT
     / "knowledge"
@@ -119,11 +120,13 @@ def build_progress(
     ]
 
     reviewers_by_pair: dict[str, set[str]] = defaultdict(set)
+    reviews_by_pair: dict[str, list[dict[str, Any]]] = defaultdict(list)
     submitted_records_by_pair: dict[str, int] = defaultdict(int)
     for row in submitted_records:
         pair_id = str(row.get("translation_pair_id") or "")
-        reviewer_id = str(row.get("reviewer", {}).get("reviewer_id") or "")
+        reviewer_id = reviewer_principal(row)
         if pair_id:
+            reviews_by_pair[pair_id].append(row)
             submitted_records_by_pair[pair_id] += 1
             if reviewer_id:
                 reviewers_by_pair[pair_id].add(reviewer_id)
@@ -137,10 +140,23 @@ def build_progress(
     review_pairs = set(reviewers_by_pair)
     in_plan_review_pairs = review_pairs & materialized_pairs
     out_of_plan_review_pairs = sorted(review_pairs - materialized_pairs)
-    independent_pair_ids = {
+    distinct_reviewer_pair_ids = {
         pair_id
         for pair_id, reviewer_ids in reviewers_by_pair.items()
         if len(reviewer_ids) >= 2 and pair_id in materialized_pairs
+    }
+    independent_pair_ids: set[str] = set()
+    evidence_blocked_pair_ids: set[str] = set()
+    for pair_id in distinct_reviewer_pair_ids:
+        try:
+            require_shared_evidence(reviews_by_pair[pair_id])
+        except ValueError:
+            evidence_blocked_pair_ids.add(pair_id)
+        else:
+            independent_pair_ids.add(pair_id)
+    exact_first_review_pairs = {
+        pair_id for pair_id in in_plan_review_pairs
+        if any(evidence_identity(row) is not None for row in reviews_by_pair[pair_id])
     }
     in_plan_adjudicated_pairs = adjudicated_pair_ids & materialized_pairs
 
@@ -195,7 +211,7 @@ def build_progress(
     submitted_first_review_pairs = len(in_plan_review_pairs)
 
     return {
-        "schema": "fortnite-semantic-review-progress/v1",
+        "schema": "fortnite-semantic-review-progress/v2",
         "processor_version": VERSION,
         "plan_path": _relative(plan_path),
         "plan_batch_count": int(plan.get("batch_count") or len(batch_progress)),
@@ -209,6 +225,11 @@ def build_progress(
             annotation_count(row) for row in submitted_records
         ),
         "independently_double_reviewed_pairs": len(independent_pair_ids),
+        "distinct_reviewer_pairs": len(distinct_reviewer_pair_ids),
+        "double_review_evidence_blocked_pairs": len(evidence_blocked_pair_ids),
+        "evidence_blocked_double_review_pair_ids": sorted(evidence_blocked_pair_ids),
+        "first_review_pairs_with_exact_evidence": len(exact_first_review_pairs),
+        "first_review_pairs_missing_exact_evidence": len(in_plan_review_pairs - exact_first_review_pairs),
         "adjudicated_pairs": len(in_plan_adjudicated_pairs),
         "review_pairs_outside_materialized_plan": out_of_plan_review_pairs,
         "invalid_review_records": 0,
@@ -239,7 +260,8 @@ def build_progress(
         "policy": [
             "Progress is derived from the checked-in batch plan, materialized batch membership, and structurally valid review records.",
             "A pair counts as first-reviewed after at least one submitted reviewer-role record.",
-            "Independent double review requires at least two distinct submitted reviewer IDs for the same pair.",
+            "Independent double review requires at least two normalized declared reviewer IDs and matching exact source/LEGO hashes and observed scope across the submitted reviews for the pair.",
+            "Declared reviewer IDs do not prove that reviewers were genuinely independent; verify the review process separately.",
             "Adjudicated counts are descriptive only; canonical promotion must still pass the dedicated independence and promotion gates.",
             "Measurement signals never count as semantic review evidence.",
         ],

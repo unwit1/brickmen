@@ -18,7 +18,7 @@ from typing import Any, Iterable
 ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
-from tools.knowledge.fortnite_semantic_evidence import evidence_identity, require_shared_evidence
+from tools.knowledge.fortnite_semantic_evidence import evidence_identity, require_shared_evidence, reviewer_principal
 
 VERSION = "fortnite-semantic-adjudication-queue/v3"
 
@@ -77,12 +77,6 @@ def payload_hash(record: dict[str, Any]) -> str:
         ensure_ascii=False,
     ).encode("utf-8")
     return hashlib.sha256(raw).hexdigest()
-
-
-def reviewer_principal(record: dict[str, Any]) -> str:
-    """Return the declared reviewer identity used for independence checks."""
-    reviewer = record.get("reviewer") or {}
-    return str(reviewer.get("reviewer_id") or "").strip().casefold()
 
 
 def _review_stub(record: dict[str, Any]) -> dict[str, Any]:

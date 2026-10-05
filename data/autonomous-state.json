@@ -74,7 +74,7 @@
     "instruction": "Do not restart completed architecture gates. 275/744 high-priority pairs have submitted first reviews with 1117 annotations; 469 remain. Review first-review batch 0012. Obtain genuinely independent second reviews and explicit adjudication before canonical promotion. Preserve exact hashes, source appearance, uncertainty, and no-hidden-view rules. Continue exact-release multiview evidence and generation evaluation with the existing tools."
   },
   "last_meaningful_commit": "7610c66731c6c6fae99a32bf5d0d074f69b61471",
-  "latest_validated_test_commit": "7610c66731c6c6fae99a32bf5d0d074f69b61471",
+  "latest_validated_test_commit": "1ad3f80f402edfe0f8f61a19fb7d2a134fc6dd3e",
   "completed_batches": [
     {
       "id": "body_architecture_reference_acquisition_v1",
@@ -418,7 +418,7 @@
       }
     }
   ],
-  "latest_test_lock_commit": "7610c66731c6c6fae99a32bf5d0d074f69b61471",
+  "latest_test_lock_commit": "1ad3f80f402edfe0f8f61a19fb7d2a134fc6dd3e",
   "semantic_review_frontier": {
     "eligible_pairs": 744,
     "complete_first_review_batch_count": 11,
@@ -434,15 +434,14 @@
       "path": "knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-0012.json",
       "selected_records": 25
     },
-    "evidence_sha256": "9480167037342e5f34ea78e9982dd97674a2bdde6343880461469651ea600945"
+    "evidence_sha256": "075147889cbc89416b9f16cb3303ffd469953a8545f91b227008355b5727756d"
   },
   "completed_batches_are_historical_snapshots": true,
   "latest_validation": {
-    "checkpoint": "7610c66731c6c6fae99a32bf5d0d074f69b61471",
-    "local_tests_passed": 558,
-    "github_validation_run_id": 37357094404,
-    "github_knowledge_tests_run_id": 37357094461,
-    "github_review_ui_run_id": 37357094660,
+    "checkpoint": "1ad3f80f402edfe0f8f61a19fb7d2a134fc6dd3e",
+    "local_tests_passed": 560,
+    "github_validation_run_id": 37357650448,
+    "github_knowledge_tests_run_id": 37357650291,
     "status": "passed"
   },
   "generation_accuracy_frontier": {
@@ -454,7 +453,7 @@
       "landmark_max_error",
       "print_zone_containment"
     ],
-    "latest_local_tests_passed": 560,
+    "latest_local_tests_passed": 574,
     "real_generated_output_benchmark": "pending",
     "semantic_feature_review": "required",
     "physical_fit": "unvalidated",
@@ -468,6 +467,10 @@
     "requires_matching_source_and_lego_hashes": true,
     "requires_matching_observed_scope": true,
     "blind_second_review_retains_hashes": true,
-    "cohort": "frozen_original_queue_snapshot"
+    "cohort": "frozen_original_queue_snapshot",
+    "submission_builder_version": "v2",
+    "progress_version": "v2",
+    "normalized_reviewer_principal_shared": true,
+    "local_submission_requires_materialized_hashes": true
   }
 }

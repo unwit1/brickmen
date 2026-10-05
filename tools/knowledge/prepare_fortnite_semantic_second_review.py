@@ -26,7 +26,7 @@ from tools.knowledge.build_fortnite_semantic_review_work_batch import (
     iter_jsonl,
 )
 
-from tools.knowledge.fortnite_semantic_evidence import require_shared_evidence
+from tools.knowledge.fortnite_semantic_evidence import require_shared_evidence, reviewer_principal
 
 VERSION = "fortnite-semantic-second-review-preparation/v2"
 
@@ -39,13 +39,12 @@ def _reviewer_principals_by_pair(
         if record.get("review_status") != "submitted":
             continue
         pair_id = record.get("translation_pair_id")
-        reviewer = record.get("reviewer") or {}
-        reviewer_id = reviewer.get("reviewer_id")
+        reviewer_id = reviewer_principal(record)
         if not isinstance(pair_id, str) or not pair_id:
             continue
-        if not isinstance(reviewer_id, str) or not reviewer_id.strip():
+        if not reviewer_id:
             continue
-        by_pair.setdefault(pair_id, set()).add(reviewer_id.strip().casefold())
+        by_pair.setdefault(pair_id, set()).add(reviewer_id)
     return {
         pair_id: sorted(principals)
         for pair_id, principals in sorted(by_pair.items())

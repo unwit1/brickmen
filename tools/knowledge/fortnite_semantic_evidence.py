@@ -6,6 +6,12 @@ import re
 HASH = re.compile(r"[0-9a-fA-F]{64}\Z")
 
 
+def reviewer_principal(record):
+    """Normalize the declared identity consistently across review gates."""
+    reviewer = record.get("reviewer") or {}
+    return str(reviewer.get("reviewer_id") or "").strip().casefold()
+
+
 def evidence_identity(record):
     evidence = record.get("evidence") or {}
     values = [evidence.get("source_image_sha256"), evidence.get("lego_image_sha256")]
