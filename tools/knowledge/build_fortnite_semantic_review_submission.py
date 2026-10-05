@@ -21,7 +21,7 @@ from tools.knowledge.validate_fortnite_semantic_reviews import (
     validate_record,
 )
 
-VERSION = "fortnite-semantic-review-submission-builder/v1"
+VERSION = "fortnite-semantic-review-submission-builder/v2"
 DECISION_SCHEMA = "fortnite-semantic-review-decision-batch/v1"
 HEX64 = re.compile(r"^[0-9a-f]{64}$")
 REGION_ORDER = ("head", "torso", "lower_body", "accessory_or_silhouette")
@@ -71,12 +71,25 @@ def build_submission(
     created_at = decisions.get("created_at")
     if not isinstance(created_at, str) or not created_at:
         raise ValueError("decision batch requires created_at")
+    bundle_source = decisions.get("review_bundle_source", "github_actions_review_bundle")
+    if bundle_source not in {
+        "github_actions_review_bundle", "local_exact_byte_materialization"
+    }:
+        raise ValueError("unsupported review_bundle_source")
+    bundle_provenance = {"source": bundle_source, "batch_id": batch.get("batch_id")}
+    if bundle_source == "github_actions_review_bundle":
+        bundle_provenance.update(
+            workflow_run_id=decisions.get("workflow_run_id"),
+            artifact_id=decisions.get("workflow_artifact_id"),
+        )
 
     compact_records = decisions.get("records")
     if not isinstance(compact_records, list):
         raise ValueError("decision batch records must be a list")
     by_pair: dict[str, dict[str, Any]] = {}
     for row in compact_records:
+        if not isinstance(row, dict):
+            raise ValueError("decision records must be objects")
         pair_id = str(row.get("id") or "")
         if not pair_id or pair_id in by_pair:
             raise ValueError(f"duplicate or missing decision pair id: {pair_id!r}")
@@ -96,9 +109,28 @@ def build_submission(
         raise ValueError(f"decision pair set mismatch: missing={missing} extra={extra}")
 
     records: list[dict[str, Any]] = []
+    fully_bound_pairs = 0
+    unbound_hashes = 0
     for item in batch_items:
         pair_id = str(item["translation_pair_id"])
         compact = by_pair[pair_id]
+        template_evidence = item.get("review_template", {}).get("evidence") or {}
+        bound_roles = 0
+        for role, compact_key in (("source", "sh"), ("lego", "lh")):
+            hash_key = f"{role}_image_sha256"
+            pins = [item.get(hash_key), template_evidence.get(hash_key)]
+            pins = [pin for pin in pins if pin is not None]
+            if pins:
+                if any(not isinstance(pin, str) or not HEX64.fullmatch(pin) for pin in pins):
+                    raise ValueError(f"{pair_id}: invalid materialized {hash_key}")
+                if any(pin != compact[compact_key] for pin in pins):
+                    raise ValueError(f"{pair_id}: decision {hash_key} does not match materialized evidence")
+                bound_roles += 1
+            else:
+                unbound_hashes += 1
+                if bundle_source == "local_exact_byte_materialization":
+                    raise ValueError(f"{pair_id}: local materialization requires pinned {hash_key}")
+        fully_bound_pairs += int(bound_roles == 2)
         regions = _decode_annotations(compact.get("a") or [])
         record = {
             "schema": "fortnite-semantic-review/v1",
@@ -127,12 +159,7 @@ def build_submission(
             "adjudicates_review_ids": [],
             "created_at": created_at,
             "provenance": [
-                {
-                    "source": "github_actions_review_bundle",
-                    "workflow_run_id": decisions.get("workflow_run_id"),
-                    "artifact_id": decisions.get("workflow_artifact_id"),
-                    "batch_id": batch.get("batch_id"),
-                },
+                dict(bundle_provenance),
                 {
                     "source": "direct_visual_inspection_of_hash_verified_pair",
                     "source_image_sha256": compact["sh"],
@@ -163,6 +190,13 @@ def build_submission(
         "exact_source_hashes": len({row["evidence"]["source_image_sha256"] for row in records}),
         "exact_lego_hashes": len({row["evidence"]["lego_image_sha256"] for row in records}),
         "training_eligible": 0,
+        "review_bundle_source": bundle_source,
+        "evidence_binding": {
+            "fully_bound_pairs": fully_bound_pairs,
+            "unbound_image_hashes": unbound_hashes,
+            "status": "bound_to_materialized_hashes" if unbound_hashes == 0 else "legacy_unbound_hashes",
+            "policy": "Hash binding verifies byte identity declarations; it does not verify semantic correctness or physical fit.",
+        },
         "workflow_run_id": decisions.get("workflow_run_id"),
         "workflow_artifact_id": decisions.get("workflow_artifact_id"),
         "policy": (

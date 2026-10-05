@@ -23,8 +23,8 @@ These are evidence input gates; they do not establish generated-image accuracy o
 
 ## Semantic review frontier
 
-- First reviews: 250/744 pairs;
-  494 remain, with 1017 submitted annotations.
+- First reviews: 275/744 pairs;
+  469 remain, with 1117 submitted annotations.
 - Independent double reviews: 0.
 - Adjudicated pairs: 0; promotion must still pass the dedicated eligibility gate.
 - [Derived progress](knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-semantic-review-progress.json)
@@ -39,7 +39,7 @@ These are evidence input gates; they do not establish generated-image accuracy o
 - Maintain the current model, dataset, paper, and tool registry.
 - Expand cross-catalog minifigure-part/geometry crosswalks and continue ontology-breaker searches.
 
-Do not restart completed architecture gates. 250/744 high-priority pairs have submitted first reviews with 1017 annotations; 494 remain. Review first-review batch 0011. Obtain genuinely independent second reviews and explicit adjudication before canonical promotion. Preserve exact hashes, source appearance, uncertainty, and no-hidden-view rules. Continue exact-release multiview evidence and generation evaluation with the existing tools.
+Do not restart completed architecture gates. 275/744 high-priority pairs have submitted first reviews with 1117 annotations; 469 remain. Review first-review batch 0012. Obtain genuinely independent second reviews and explicit adjudication before canonical promotion. Preserve exact hashes, source appearance, uncertainty, and no-hidden-view rules. Continue exact-release multiview evidence and generation evaluation with the existing tools.
 
 ## Constraints and reusable paths
 

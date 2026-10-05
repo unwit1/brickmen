@@ -1,7 +1,10 @@
 from __future__ import annotations
 
 import importlib.util
+import json
 from pathlib import Path
+
+import pytest
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "knowledge" / "libraries" / "lego-minifigure-customs" / "data"
@@ -17,6 +20,8 @@ BATCH9 = BATCH_DIR / "fortnite-first-review-batch-0009.json"
 DECISIONS9 = BATCH_DIR / "fortnite-first-review-batch-0009-gpt56sol-decisions.json.gz"
 BATCH10 = BATCH_DIR / "fortnite-first-review-batch-0010.json"
 DECISIONS10 = BATCH_DIR / "fortnite-first-review-batch-0010-gpt56sol-decisions.json.gz"
+BATCH11 = BATCH_DIR / "fortnite-first-review-batch-0011.json"
+DECISIONS11 = BATCH_DIR / "fortnite-first-review-batch-0011-codex-gpt6-decisions.json.gz"
 
 
 def load_tool():
@@ -239,3 +244,73 @@ def test_batch_0010_compact_decisions_compile_to_valid_canonical_reviews() -> No
         )
         assert direct["source_image_sha256"] == review["evidence"]["source_image_sha256"]
         assert direct["lego_image_sha256"] == review["evidence"]["lego_image_sha256"]
+
+
+def pinned_fixture(tmp_path: Path, *, bundle_source: str = "local_exact_byte_materialization"):
+    tool = load_tool()
+    batch = json.loads(BATCH.read_text(encoding="utf-8"))
+    batch["items"] = batch["items"][:1]
+    decisions = tool.load_json(DECISIONS)
+    decisions["records"] = decisions["records"][:1]
+    decisions["review_bundle_source"] = bundle_source
+    item, row = batch["items"][0], decisions["records"][0]
+    for role, key in (("source", "sh"), ("lego", "lh")):
+        item[f"{role}_image_sha256"] = row[key]
+        item["review_template"]["evidence"][f"{role}_image_sha256"] = row[key]
+    batch_path, decisions_path = tmp_path / "batch.json", tmp_path / "decisions.json"
+    batch_path.write_text(json.dumps(batch), encoding="utf-8")
+    decisions_path.write_text(json.dumps(decisions), encoding="utf-8")
+    return tool, batch, batch_path, decisions_path
+
+
+@pytest.mark.parametrize("role", ["source", "lego"])
+@pytest.mark.parametrize("location", ["item", "template"])
+def test_decision_hash_must_match_every_materialized_pin(tmp_path, role, location):
+    tool, batch, batch_path, decisions_path = pinned_fixture(tmp_path)
+    target = batch["items"][0]
+    if location == "template":
+        target = target["review_template"]["evidence"]
+    target[f"{role}_image_sha256"] = "f" * 64
+    batch_path.write_text(json.dumps(batch), encoding="utf-8")
+    with pytest.raises(ValueError, match="does not match materialized evidence"):
+        tool.build_submission(batch_path, decisions_path)
+
+
+def test_local_provenance_has_bound_hashes_without_invented_workflow(tmp_path):
+    tool, _, batch_path, decisions_path = pinned_fixture(tmp_path)
+    records, summary = tool.build_submission(batch_path, decisions_path)
+    provenance = records[0]["provenance"][0]
+    assert provenance["source"] == "local_exact_byte_materialization"
+    assert "workflow_run_id" not in provenance and "artifact_id" not in provenance
+    assert summary["evidence_binding"]["fully_bound_pairs"] == 1
+    assert summary["evidence_binding"]["unbound_image_hashes"] == 0
+    assert summary["training_eligible"] == 0
+
+
+def test_local_materialization_rejects_missing_hash_pin(tmp_path):
+    tool, batch, batch_path, decisions_path = pinned_fixture(tmp_path)
+    batch["items"][0].pop("source_image_sha256")
+    batch["items"][0]["review_template"]["evidence"]["source_image_sha256"] = None
+    batch_path.write_text(json.dumps(batch), encoding="utf-8")
+    with pytest.raises(ValueError, match="requires pinned source_image_sha256"):
+        tool.build_submission(batch_path, decisions_path)
+
+
+def test_legacy_unbound_decisions_are_reported_without_rewriting_history():
+    tool = load_tool()
+    _, summary = tool.build_submission(BATCH, DECISIONS)
+    assert summary["evidence_binding"]["status"] == "legacy_unbound_hashes"
+    assert summary["evidence_binding"]["unbound_image_hashes"] == 50
+
+
+def test_batch_0011_compiles_reproducibly_with_complete_local_hash_binding():
+    tool = load_tool()
+    records, summary = tool.build_submission(BATCH11, DECISIONS11)
+    saved = BATCH_DIR / "fortnite-first-review-batch-0011-codex-gpt6-submitted.jsonl"
+    assert records == [json.loads(line) for line in saved.read_text(encoding="utf-8").splitlines()]
+    assert summary["submitted_reviews"] == 25
+    assert summary["total_annotations"] == 100
+    assert summary["evidence_binding"]["fully_bound_pairs"] == 25
+    assert summary["evidence_binding"]["unbound_image_hashes"] == 0
+    assert summary["training_eligible"] == 0
+    assert all(row["evidence"]["claims_unobserved_surfaces"] is False for row in records)
