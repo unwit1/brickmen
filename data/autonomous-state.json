@@ -65,8 +65,8 @@
   "continuation": {
     "instruction": "Do not restart completed architecture gates. 250/744 high-priority pairs have submitted first reviews with 1017 annotations; 494 remain. Review first-review batch 0011. Obtain genuinely independent second reviews and explicit adjudication before canonical promotion. Preserve exact hashes, source appearance, uncertainty, and no-hidden-view rules. Continue exact-release multiview evidence and generation evaluation with the existing tools."
   },
-  "last_meaningful_commit": "6e4f8ba1315edf5088ad93a497686f6de7db042b",
-  "latest_validated_test_commit": "6e4f8ba1315edf5088ad93a497686f6de7db042b",
+  "last_meaningful_commit": "75915c3c958b76827f27b91174394b7782728774",
+  "latest_validated_test_commit": "75915c3c958b76827f27b91174394b7782728774",
   "completed_batches": [
     {
       "id": "body_architecture_reference_acquisition_v1",
@@ -410,7 +410,7 @@
       }
     }
   ],
-  "latest_test_lock_commit": "6e4f8ba1315edf5088ad93a497686f6de7db042b",
+  "latest_test_lock_commit": "75915c3c958b76827f27b91174394b7782728774",
   "semantic_review_frontier": {
     "eligible_pairs": 744,
     "complete_first_review_batch_count": 10,
@@ -437,11 +437,25 @@
   },
   "completed_batches_are_historical_snapshots": true,
   "latest_validation": {
-    "checkpoint": "6e4f8ba1315edf5088ad93a497686f6de7db042b",
-    "local_tests_passed": 521,
-    "github_validation_run_id": 37338839587,
-    "github_knowledge_tests_run_id": 37338839558,
-    "github_geometry_tests_run_id": 37338839573,
+    "checkpoint": "75915c3c958b76827f27b91174394b7782728774",
+    "local_tests_passed": 539,
+    "github_validation_run_id": 37339563419,
+    "github_knowledge_tests_run_id": 37339563215,
     "status": "passed"
+  },
+  "generation_accuracy_frontier": {
+    "brief_preflight": "implemented_metadata_review_only",
+    "geometry_dependencies": "recursive_exact_byte_snapshot",
+    "registered_output_measurements": [
+      "silhouette_iou",
+      "landmark_error",
+      "landmark_max_error",
+      "print_zone_containment"
+    ],
+    "latest_local_tests_passed": 552,
+    "real_generated_output_benchmark": "pending",
+    "semantic_feature_review": "required",
+    "physical_fit": "unvalidated",
+    "next": "Benchmark actual generated outputs with reviewed registration and P0 feature checks; audit renderer configuration and dependent appearance assets."
   }
 }

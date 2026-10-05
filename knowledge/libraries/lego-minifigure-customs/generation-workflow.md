@@ -75,6 +75,39 @@ The v2 splitter joins requested groups, identical `sha256`, shared `source_refer
 
 Use `data/ai-evaluation-metrics.json` for geometry, artwork and multiview measures. Record source fidelity, official likeness and production feasibility separately. Evaluate P0 features individually; a missing essential feature fails even if an average score looks good. Use matched reference roles and repeat important runs; retain failed outputs to avoid selecting only a lucky result.
 
+### Measure registered outputs
+
+Use the existing metrics with reviewed binary masks rather than asking the evaluator to infer foreground or alignment:
+
+```powershell
+python tools/knowledge/evaluate_generation_output.py --request work/my-design/evaluation.json --output work/my-design/evaluation-report.json
+```
+
+A minimal request is:
+
+```json
+{
+  "schema": "brickmen-generation-evaluation/v1",
+  "registration_status": "reviewed",
+  "alignment_id": "camera-and-crop-v1",
+  "assets": {
+    "reference_silhouette": {"local_path": "reference-mask.png", "sha256": "exact-file-sha256"},
+    "candidate_silhouette": {"local_path": "output-mask.png", "sha256": "exact-file-sha256"}
+  },
+  "landmarks": {
+    "reference": {"left_eye": [100, 120], "right_eye": [160, 120]},
+    "candidate": {"left_eye": [101, 120], "right_eye": [160, 122]}
+  },
+  "thresholds": {"silhouette_iou": 0.95, "landmark_max_error": 0.01}
+}
+```
+
+Threshold values above are illustrative, not measured LEGO acceptance limits. Omit thresholds to record measurements without pass/fail. Masks must be single-channel black/white (0/255), share the exact pixel grid, and identify the same camera, object view and crop. Preserve their derivation from the actual output/reference hashes and the registration review in run provenance. The evaluator verifies supplied mask bytes; it cannot establish that a hand-supplied mask depicts the intended object. Landmarks are optional, must use the exact same labels, and are normalized by the image diagonal; maximum error exposes a displaced feature that the average could hide.
+
+For decoration, supply `art_mask` and `safe_zone`, plus `keepout_mask` when applicable, using the same asset shape. Containment counts art outside the safe zone and art overlapping any keep-out; empty art cannot pass. Silhouette inputs are optional for a print-only measurement. No automatic resizing, segmentation or missing-landmark inference occurs.
+
+The report binds request, metric registry and input hashes, and distinguishes technical checks from unreviewed semantic features and unvalidated manufacturing/fit. Review P0 details, part IDs, colors, left/right orientation, hidden surfaces and official likeness separately, even when silhouette overlap is perfect. A blocked rerun replaces a stale successful report.
+
 Correct the smallest faulty region. Keep part geometry, colors and accepted features locked. Record the changed fields and measured failure in the existing control protocol's revision/result records. A prompt compiler is not an image scorer: silhouette IoU, landmarks, surface containment and feature presence still require actual measurements or review.
 
 For print art, provide a `production_template` reference, production process, positive physical dimensions_mm (width and height), resolved template boundaries and output.template_revision before compilation. The production reference must declare scale_status calibrated, calibration_provenance_id and the matching template_revision. These declarations remain subject to evidence and physical proof; the declared target type must match the output contract. Move to calibrated surface templates and vector masters; apply safe areas, keep-outs and measured minimum features. For new parts, replace concept connectors with engineered connectors and test clearance/fit. For production, require the existing output contract, dated calibration, prototype evidence, frozen revisions and human approval. The preflight exposes these requirements but does not certify their completion.

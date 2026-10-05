@@ -17,4 +17,5 @@ jobs:
           python-version: '3.12'
       - run: python -m pip install pytest pillow numpy
       - run: python tools/validate_repo.py
+      - run: python tools/knowledge/sync_autonomous_state.py --check
       - run: python -m pytest tests -q
