@@ -4,6 +4,8 @@ Research snapshot: 2026-09-24
 
 ## Purpose
 
+For executable commands and v2 input/coverage behavior, see [generation-workflow.md](generation-workflow.md). The reference builder ranks evidence, preserves explicit conflicts and supports separate standalone-part coverage; it does not infer truth from an authority score.
+
 An OfficialVisualSample may have dozens of source occurrences:
 - LEGO product render;
 - LEGO press image;

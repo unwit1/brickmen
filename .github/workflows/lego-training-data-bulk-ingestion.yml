@@ -24,7 +24,7 @@ jobs:
       DEST: knowledge/libraries/lego-minifigure-customs/data/bulk-ingestion
 
     steps:
-      - name: Check out Agent OS
+      - name: Check out Brickmen
         uses: actions/checkout@v4
         with:
           fetch-depth: 1
@@ -65,7 +65,7 @@ jobs:
           files=(themes.csv.gz colors.csv.gz parts.csv.gz part_relationships.csv.gz elements.csv.gz sets.csv.gz minifigs.csv.gz inventories.csv.gz inventory_parts.csv.gz inventory_minifigs.csv.gz)
           ok=1
           for file in "${files[@]}"; do
-            curl --fail --location --retry 4 --retry-delay 2 --connect-timeout 30               --user-agent "PersonalAgentOS-LEGOReferenceResearch/1.0"               --output "$src/raw/$file" "$base/$file" || ok=0
+            curl --fail --location --retry 4 --retry-delay 2 --connect-timeout 30               --user-agent "Brickmen-LEGOReferenceResearch/1.0"               --output "$src/raw/$file" "$base/$file" || ok=0
           done
           if [ "$ok" = 1 ]; then
             (cd "$src/raw" && sha256sum *.csv.gz | sort > source_hashes.sha256)

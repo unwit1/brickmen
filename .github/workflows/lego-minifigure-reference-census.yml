@@ -17,7 +17,7 @@ jobs:
     timeout-minutes: 20
 
     steps:
-      - name: Check out Agent OS
+      - name: Check out Brickmen
         uses: actions/checkout@v4
 
       - name: Set up Python
@@ -46,7 +46,7 @@ jobs:
           )
           for file in "${files[@]}"; do
             echo "Downloading $file"
-            curl --fail --location --retry 4 --retry-delay 2               --user-agent "PersonalAgentOS-LEGOReferenceResearch/1.0"               --output "$file" "$base/$file"
+            curl --fail --location --retry 4 --retry-delay 2               --user-agent "Brickmen-LEGOReferenceResearch/1.0"               --output "$file" "$base/$file"
           done
           sha256sum *.csv.gz | sort > source_hashes.sha256
           ls -lh

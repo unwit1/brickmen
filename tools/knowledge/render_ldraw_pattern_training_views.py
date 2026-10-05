@@ -20,7 +20,7 @@ import argparse,hashlib,json,subprocess
 from datetime import datetime,timezone
 from pathlib import Path
 
-VERSION="ldraw-pattern-multiview-render/v1"
+VERSION="ldraw-pattern-multiview-render/v2"
 
 VIEWS=[
  ("front",0,0),
@@ -46,6 +46,13 @@ def load(path):
   for line in f:
    if line.strip():yield json.loads(line)
 
+def render_identity(rec, profile, view, configuration):
+ """Pin a derived asset to both its source revision and render configuration."""
+ payload={"source_reference_asset_id":rec["reference_asset_id"],
+          "source_sha256":rec["sha256"],"profile":profile,"view":view,
+          "configuration":configuration,"version":VERSION}
+ return "ldrawrender-"+hashlib.sha256(json.dumps(payload,sort_keys=True,separators=(",",":")).encode()).hexdigest()[:24]
+
 def render(exe,source,out,lat,lon,width,height,edges,zoom):
  cmd=[
   str(exe),str(source),
@@ -66,6 +73,7 @@ def main():
  ap.add_argument("--manifest",type=Path,required=True)
  ap.add_argument("--ldraw-root",type=Path,required=True)
  ap.add_argument("--ldview",type=Path,required=True)
+ ap.add_argument("--library-revision",required=True,help="Pinned library archive hash or commit, including dependencies")
  ap.add_argument("--output-dir",type=Path,required=True)
  ap.add_argument("--profile",choices=["physical_like","structural_edges","both"],default="both")
  ap.add_argument("--width",type=int,default=1024)
@@ -73,25 +81,35 @@ def main():
  ap.add_argument("--zoom",type=float,default=0.92)
  ap.add_argument("--limit",type=int)
  args=ap.parse_args()
+ if args.width<=0 or args.height<=0 or args.zoom<=0:
+  ap.error("Width, height and zoom must be positive")
  root=args.ldraw_root.resolve(); exe=args.ldview.resolve(); out=args.output_dir.resolve(); out.mkdir(parents=True,exist_ok=True)
+ if not exe.is_file():ap.error("LDView executable not found")
+ configuration={"width":args.width,"height":args.height,"zoom":args.zoom,
+                "renderer_sha256":sha256(exe),"library_revision":args.library_revision}
  profiles=[]
  if args.profile in ("physical_like","both"):profiles.append(("physical_like",False))
  if args.profile in ("structural_edges","both"):profiles.append(("structural_edges",True))
  records=[];failures=0;source_count=0
  for rec in load(args.manifest.resolve()):
   if args.limit is not None and source_count>=args.limit:break
-  source=root/rec["source_path"]
-  if not source.is_file():continue
+  source=(root/rec["source_path"]).resolve()
+  if not source.is_relative_to(root) or not source.is_file():
+   failures+=1;continue
+  if sha256(source)!=rec.get("sha256"):
+   failures+=1;continue
   source_count+=1
   stem=Path(rec.get("ldraw_name") or source.name).stem.replace(" ","_")
   for profile,edges in profiles:
    for view,lat,lon in VIEWS:
-    target=out/profile/stem/f"{view}.png";target.parent.mkdir(parents=True,exist_ok=True)
+    render_id=render_identity(rec,profile,view,configuration)
+    target=out/profile/stem/f"{view}-{render_id}.png";target.parent.mkdir(parents=True,exist_ok=True)
     rc,detail=render(exe,source,target,lat,lon,args.width,args.height,edges,args.zoom)
     if rc!=0 or not target.exists():
      failures+=1;continue
     records.append({
-      "derived_asset_id":"ldrawrender-"+hashlib.sha256((rec["reference_asset_id"]+"|"+profile+"|"+view+"|"+VERSION).encode()).hexdigest()[:24],
+      "derived_asset_id":render_identity(rec,profile,view,configuration),
+      "sample_id":rec.get("sample_id") or rec["reference_asset_id"],
       "source_reference_asset_id":rec["reference_asset_id"],
       "source_path":rec["source_path"],
       "source_sha256":rec.get("sha256"),
@@ -100,6 +118,7 @@ def main():
       "authority":"community_structured",
       "component_type":rec.get("component_type"),
       "render_profile":profile,
+      "render_configuration":configuration,
       "view":view,
       "latitude":lat,
       "longitude":lon,
@@ -118,5 +137,5 @@ def main():
  report={"schema":"ldraw-pattern-multiview-render-report/v1","version":VERSION,"sources_rendered":source_count,"renders":len(records),"failures":failures,"profiles":[p[0] for p in profiles],"views":[v[0] for v in VIEWS],"manifest":str(manifest)}
  (out/"import_report.json").write_text(json.dumps(report,indent=2),encoding="utf-8")
  print(json.dumps(report,indent=2))
-
-if __name__=="__main__":main()
+ return 2 if failures else 0
+if __name__=="__main__":raise SystemExit(main())

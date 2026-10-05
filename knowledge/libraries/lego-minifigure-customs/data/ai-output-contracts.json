@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.1",
+  "schema_version": "0.2",
   "outputs": {
     "concept_render": {
       "required": [
@@ -12,6 +12,11 @@
       ],
       "forbidden": [
         "untracked geometry substitution"
+      ],
+      "target_types": [
+        "concept_render",
+        "catalog_render",
+        "multi_view_sheet"
       ]
     },
     "print_art": {
@@ -30,6 +35,23 @@
         "VARNISH_if_used",
         "proof",
         "keepout_check"
+      ],
+      "target_types": [
+        "flat_head_art",
+        "torso_front",
+        "torso_back",
+        "arm_art",
+        "leg_art",
+        "helmet_art",
+        "full_decal_sheet"
+      ],
+      "preflight_required": [
+        "generation_packet.output.production_process",
+        "generation_packet.output.dimensions_or_aspect",
+        "generation_packet.structural_locks.template_boundaries"
+      ],
+      "reference_roles": [
+        "production_template"
       ]
     },
     "resin_concept": {
@@ -39,7 +61,11 @@
         "concept_mesh",
         "reference_views"
       ],
-      "warning": "concept mesh is nonfunctional until connector engineering/validation"
+      "warning": "concept mesh is nonfunctional until connector engineering/validation",
+      "target_types": [
+        "new_part_concept",
+        "multi_view_sheet"
+      ]
     },
     "production_package": {
       "required": [
@@ -51,6 +77,28 @@
         "QC_standard",
         "rights_record",
         "proof_render"
+      ],
+      "target_types": [
+        "production_package"
+      ]
+    },
+    "part_render": {
+      "required": [
+        "canonical_part_id",
+        "geometry_revision",
+        "camera_id",
+        "part_spec",
+        "reference_provenance",
+        "generation_provenance"
+      ],
+      "forbidden": [
+        "untracked geometry substitution"
+      ],
+      "target_types": [
+        "part_render",
+        "catalog_render",
+        "new_part_concept",
+        "multi_view_sheet"
       ]
     }
   },

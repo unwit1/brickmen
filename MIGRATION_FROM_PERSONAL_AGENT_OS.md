@@ -76,3 +76,14 @@ Additional completed migration/cleanup:
 - `.github/lego-census-trigger` removed from Agent OS after verifying the identical Brickmen copy.
 
 The two generically named training-source tools were classified as Brickmen-owned because their implementation is explicitly LEGO-research scoped and no non-LEGO Agent OS references were found.
+
+## Workflow dependency repair — 2026-10-05
+
+The migrated bulk-ingestion workflow invoked `tools/knowledge/inventory_training_source_tree.py`, but that utility had not been copied into Brickmen. It is now present and byte-verified against the original Agent OS checkout:
+
+- Source/destination path: `tools/knowledge/inventory_training_source_tree.py`.
+- Source SHA-256: `748f0a76f07fe3eefe3c79c865761a09a6314b7f6dca92c89e5595ebf2808deb`.
+- Original processor version: `training-source-tree-inventory/v1`.
+- Source-side cleanup: not performed; this generic utility may serve other Agent OS source inventories. New Brickmen workflow changes use the local dependency.
+
+Post-migration development also consolidates 20 fieldless `batch-005` manufacturing descriptors into `data/capability-backlog.json`, retaining old paths as record pointers. Their former `schema_ready` labels did not signify executable schemas; the canonical backlog labels them `specification_pending`. This preserves topic/provenance metadata while removing repeated boilerplate and avoids treating migration completeness as production readiness.
