@@ -3,10 +3,10 @@
   "project": "brickmen",
   "mode": "autonomous",
   "status": "active",
-  "updated_date": "2026-10-01",
+  "updated_date": "2026-10-05",
   "base_commit_before_bootstrap": "bda2cac8ea8b68bb9e3e5b4d0cf380a9c6ee3ae6",
   "current_objective": "advance_semantic_multiview_visual_grammar_after_completing_architecture_input_safety",
-  "current_workstream": "fortnite_semantic_first_review_batch_0004_plus_exact_release_multiview",
+  "current_workstream": "fortnite_semantic_first_review_batch_0011_plus_exact_release_multiview",
   "current_frontier": [
     "source_appearance_to_minifigure_semantic_translation",
     "multi_view_correspondence",
@@ -18,8 +18,8 @@
   "known_gaps": [
     {
       "id": "fortnite_semantic_review_labels",
-      "description": "Batches 0001-0003 now contain 75 exact-hash-bound submitted model reviews with 317 annotations total. They remain non-canonical pending genuinely independent second review and explicit adjudication; 669 high-priority pairs remain for first-review coverage.",
-      "status": "first_review_batches_0001_0003_submitted_pending_independent_second_review_and_more_first_review"
+      "description": "Do not restart completed architecture gates. 250/744 high-priority pairs have submitted first reviews with 1017 annotations; 494 remain. Review first-review batch 0011. Obtain genuinely independent second reviews and explicit adjudication before canonical promotion. Preserve exact hashes, source appearance, uncertainty, and no-hidden-view rules. Continue exact-release multiview evidence and generation evaluation with the existing tools.",
+      "status": "pending_independent_second_review_and_remaining_first_review"
     },
     {
       "id": "physical_multiview_ground_truth",
@@ -35,7 +35,7 @@
   "highest_value_tasks": [
     {
       "priority": "P0",
-      "task": "Continue Fortnite first-review coverage from batch 0004 onward; obtain a genuinely independent second review for batch 0001 and adjudicate before canonical promotion."
+      "task": "Review first-review batch 0011; obtain independent second reviews and adjudicate before canonical promotion."
     },
     {
       "priority": "P0",
@@ -63,10 +63,10 @@
   ],
   "pending_validation": [],
   "continuation": {
-    "instruction": "Do not restart completed architecture gates. Fortnite batches 0001-0005 now have 125 submitted GPT-5.6 Sol first reviews with 517 annotations and zero training-eligible records; 619 of the 744 high-priority pairs remain without a first review. Require a genuinely independent second review plus adjudication before promotion. The independent-review pipeline and manual second-review workflow are validated. Materialize/review batch 0006 next, while also obtaining a genuinely distinct second reviewer/model for existing submitted pairs. Then continue multi-view evidence expansion, visual grammar, and failure-corpus work. Preserve exact hashes, provenance, uncertainty, and no-hidden-view rules."
+    "instruction": "Do not restart completed architecture gates. 250/744 high-priority pairs have submitted first reviews with 1017 annotations; 494 remain. Review first-review batch 0011. Obtain genuinely independent second reviews and explicit adjudication before canonical promotion. Preserve exact hashes, source appearance, uncertainty, and no-hidden-view rules. Continue exact-release multiview evidence and generation evaluation with the existing tools."
   },
-  "last_meaningful_commit": "b698200220e4b87430af8b2c7794aea75fd4243c",
-  "latest_validated_test_commit": "b698200220e4b87430af8b2c7794aea75fd4243c",
+  "last_meaningful_commit": "6e4f8ba1315edf5088ad93a497686f6de7db042b",
+  "latest_validated_test_commit": "6e4f8ba1315edf5088ad93a497686f6de7db042b",
   "completed_batches": [
     {
       "id": "body_architecture_reference_acquisition_v1",
@@ -410,5 +410,38 @@
       }
     }
   ],
-  "latest_test_lock_commit": "b698200220e4b87430af8b2c7794aea75fd4243c"
+  "latest_test_lock_commit": "6e4f8ba1315edf5088ad93a497686f6de7db042b",
+  "semantic_review_frontier": {
+    "eligible_pairs": 744,
+    "complete_first_review_batch_count": 10,
+    "submitted_first_review_pairs": 250,
+    "remaining_first_review_pairs": 494,
+    "submitted_semantic_annotations": 1017,
+    "independently_double_reviewed_pairs": 0,
+    "adjudicated_pairs": 0,
+    "next_materialized_incomplete_batch": {
+      "batch_index": 11,
+      "batch_id": "fortnite-review-first_review-0c07730e6a913d1b",
+      "path": "knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-0011.json",
+      "selected_records": 25,
+      "submitted_pairs": 0,
+      "remaining_first_review_pairs": 25
+    },
+    "next_planned_batch": {
+      "batch_index": 12,
+      "batch_id": "fortnite-review-first_review-7d81d0201accc4d7",
+      "path": "knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-0012.json",
+      "selected_records": 25
+    },
+    "evidence_sha256": "95dcf5738733cea334e7b276c1c5d01b64c65bdf06cf9bc20a56f34a4414e25e"
+  },
+  "completed_batches_are_historical_snapshots": true,
+  "latest_validation": {
+    "checkpoint": "6e4f8ba1315edf5088ad93a497686f6de7db042b",
+    "local_tests_passed": 521,
+    "github_validation_run_id": 37338839587,
+    "github_knowledge_tests_run_id": 37338839558,
+    "github_geometry_tests_run_id": 37338839573,
+    "status": "passed"
+  }
 }

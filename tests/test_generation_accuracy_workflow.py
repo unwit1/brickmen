@@ -322,3 +322,57 @@ def test_render_dependencies_cannot_escape_declared_library(tmp_path):
     (library / "parent.dat").write_text("1 16 0 0 0 1 0 0 0 1 0 0 0 1 ../outside.dat\n")
     with pytest.raises(ValueError, match="outside library"):
         dependency_snapshot(library, {"source_path": "parent.dat"})
+
+
+@pytest.mark.parametrize("mutation,error", [
+    (lambda p: (p["transformation"].update(change_only=["change geometry"]), p.update(forbidden_changes=["change geometry"])), "contradicts"),
+    (lambda p: p["transformation"].update(change_only="change geometry"), "list of resolved strings"),
+    (lambda p: p["references"][1].update(unresolved_conflicts=["wrong outfit"]), "unresolved conflicts"),
+    (lambda p: p["references"][1].update(source_appearance="another outfit"), "different source appearance"),
+    (lambda p: p["critical_features"][0].update(source_reference_ids=["geometry"]), "lacks appearance evidence"),
+])
+def test_explicit_conflicts_and_geometry_only_appearance_claims_block(mutation, error):
+    brief = valid_brief()
+    mutation(brief["generation_packet"])
+    report, prompt = COMPILER.compile_brief(brief)
+    assert any(error in e for e in report["errors"])
+    assert prompt is None
+
+
+def print_brief():
+    brief = valid_brief()
+    brief["output_contract"] = "print_art"
+    packet = brief["generation_packet"]
+    packet["output"].update(target_type="torso_front", production_process="UV", dimensions_or_aspect="synthetic fixture", dimensions_mm={"width": 12.0, "height": 15.0}, template_revision="test-template-v1")
+    packet["structural_locks"]["template_boundaries"] = ["test safe zone"]
+    packet["references"].append({"reference_id": "production", "semantic_role": "production_template", "provenance_id": "synthetic test only", "scale_status": "calibrated", "calibration_provenance_id": "test-calibration", "template_revision": "test-template-v1"})
+    return brief
+
+
+@pytest.mark.parametrize("mutation,error", [
+    (lambda p: p["output"].pop("dimensions_mm"), "positive finite dimensions_mm"),
+    (lambda p: p["output"].update(dimensions_mm={"width": 0, "height": -3}), "positive finite dimensions_mm"),
+    (lambda p: p["structural_locks"].update(template_boundaries=[None]), "resolved surface constraints"),
+    (lambda p: p["structural_locks"].update(template_boundaries=["unknown"]), "resolved surface constraints"),
+    (lambda p: p["references"][-1].update(scale_status="unknown"), "must be calibrated"),
+    (lambda p: p["references"][-1].update(template_revision="old-v0"), "revision must match"),
+])
+def test_print_brief_requires_resolved_scale_and_template(mutation, error):
+    brief = print_brief()
+    mutation(brief["generation_packet"])
+    report, prompt = COMPILER.compile_brief(brief)
+    assert any(error in e for e in report["errors"])
+    assert prompt is None
+
+
+def test_prompt_contains_selected_contract_policies():
+    report, prompt = COMPILER.compile_brief(print_brief())
+    assert report["status"] == "ready_for_metadata_review"
+    assert "WHITE" in prompt and "keepout_check" in prompt
+    assert "template scale unknown" in prompt and "first physical prototype" in prompt
+    brief = valid_brief("part")
+    brief["output_contract"] = "resin_concept"
+    brief["generation_packet"]["output"]["target_type"] = "new_part_concept"
+    report, prompt = COMPILER.compile_brief(brief)
+    assert report["status"] == "ready_for_metadata_review"
+    assert "concept mesh is nonfunctional until connector engineering/validation" in prompt

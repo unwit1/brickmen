@@ -10,6 +10,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import math
 from pathlib import Path
 
 VERSION = "brickmen-generation-brief/v1"
@@ -110,6 +111,11 @@ def _compile_brief(brief, data_dir=DATA, base_dir=None):
         if role not in allowed_roles:
             errors.append(f"Unknown semantic_role: {role}")
         roles.add(role)
+        if reference.get("unresolved_conflicts"):
+            errors.append(f"Reference {ref_id} has unresolved conflicts")
+        if role in appearance_roles and reference.get("source_appearance") is not None:
+            if reference["source_appearance"] != identity.get("source_appearance"):
+                errors.append(f"Reference {ref_id} belongs to a different source appearance")
         need(reference.get("provenance_id"), f"reference {ref_id} provenance_id")
         view = reference.get("view")
         if view is not None and not isinstance(view, str):
@@ -153,6 +159,7 @@ def _compile_brief(brief, data_dir=DATA, base_dir=None):
     features = packet.get("critical_features") or []
     need(features, "critical_features", collection=True)
     feature_names = set()
+    ref_by_id = {r.get("reference_id"): r for r in refs}
     for feature in features:
         name = feature.get("feature")
         if name is not None and not isinstance(name, str):
@@ -170,6 +177,16 @@ def _compile_brief(brief, data_dir=DATA, base_dir=None):
         for ref_id in evidence:
             if ref_id not in ref_ids:
                 errors.append(f"Feature {name} cites missing reference {ref_id}")
+        evidence_kind = feature.get("evidence_kind", "appearance")
+        evidence_roles = {
+            "appearance": appearance_roles,
+            "geometry": appearance_roles | {"geometry_template"},
+            "production": {"production_template"},
+        }
+        if evidence_kind not in evidence_roles:
+            errors.append(f"Invalid evidence_kind for feature {name}")
+        elif not any(ref_by_id.get(rid, {}).get("semantic_role") in evidence_roles[evidence_kind] for rid in evidence):
+            errors.append(f"Feature {name} lacks {evidence_kind} evidence")
 
     locks = packet.get("structural_locks") or {}
     for key in ("geometry_profile", "geometry_revision", "pose", "camera_view"):
@@ -205,6 +222,11 @@ def _compile_brief(brief, data_dir=DATA, base_dir=None):
         errors.append("preserve_by_default must be true; enumerate allowed edits")
     allowed = packet.get("allowed_changes") or []
     forbidden = packet.get("forbidden_changes") or []
+    change_only = transformation.get("change_only", [])
+    if not isinstance(change_only, list) or any(not isinstance(item, str) or not known(item) for item in change_only):
+        raise ValueError("transformation.change_only must be a list of resolved strings")
+    if set(change_only) & set(forbidden):
+        errors.append("transformation.change_only contradicts forbidden_changes")
     if set(allowed) & set(forbidden):
         errors.append("The same change cannot be both allowed and forbidden")
     rendering = packet.get("rendering") or {}
@@ -222,9 +244,24 @@ def _compile_brief(brief, data_dir=DATA, base_dir=None):
         for key in field.split("."):
             value = value.get(key) if isinstance(value, dict) else None
         need(value, field, collection=field.endswith(".template_boundaries"))
+        if field.endswith(".template_boundaries") and isinstance(value, list):
+            if any(not isinstance(item, str) or not known(item) for item in value):
+                errors.append("Template boundaries must identify resolved surface constraints")
     for role in contract.get("reference_roles", []):
         if role not in roles:
             errors.append(f"Output contract requires a {role} reference")
+    if output == "print_art":
+        dimensions = output_spec.get("dimensions_mm", {})
+        if not isinstance(dimensions, dict) or any(type(dimensions.get(axis)) not in (int, float) or not math.isfinite(dimensions[axis]) or dimensions[axis] <= 0 for axis in ("width", "height")):
+            errors.append("Print art requires positive finite dimensions_mm.width and dimensions_mm.height")
+        need(output_spec.get("template_revision"), "output.template_revision")
+        for reference in refs:
+            if reference.get("semantic_role") == "production_template":
+                if reference.get("scale_status") != "calibrated":
+                    errors.append("Production template scale_status must be calibrated")
+                need(reference.get("calibration_provenance_id"), "production template calibration_provenance_id")
+                if reference.get("template_revision") != output_spec.get("template_revision") or not known(reference.get("template_revision")):
+                    errors.append("Production template revision must match output.template_revision")
     if brief.get("unresolved_conflicts"):
         errors.append("Resolve evidence conflicts before compilation")
     for unknown in brief.get("unknowns") or []:
@@ -241,6 +278,8 @@ def _compile_brief(brief, data_dir=DATA, base_dir=None):
                           "required_axis": "appearance" if requires_appearance else "geometry_or_appearance"},
         "required_output_fields": contracts["outputs"].get(output, {}).get("required", []),
         "required_deliverables": contracts["outputs"].get(output, {}).get("deliverables", []),
+        "contract_warning": contract.get("warning"),
+        "contract_forbidden": contract.get("forbidden", []),
         "automatic_reject_conditions": contracts["automatic_reject_conditions"],
         "human_review": contracts["human_review"],
         "feature_checklist": [{"feature": f.get("feature"), "priority": f.get("priority"),
@@ -259,6 +298,13 @@ def _compile_brief(brief, data_dir=DATA, base_dir=None):
                 sections.append(f"{key}:\n" + json.dumps(packet[key], indent=2, ensure_ascii=False))
         sections.append("Unknowns:\n" + json.dumps(brief.get("unknowns", []), ensure_ascii=False))
         sections.append("Required output metadata:\n" + json.dumps(manifest["required_output_fields"]))
+        sections.append("Output contract requirements:\n" + json.dumps({
+            "deliverables": manifest["required_deliverables"],
+            "forbidden": manifest["contract_forbidden"],
+            "warning": manifest["contract_warning"],
+            "automatic_reject_conditions": manifest["automatic_reject_conditions"],
+            "human_review": manifest["human_review"],
+        }, indent=2, ensure_ascii=False))
         prompt = "\n\n".join(sections) + "\n"
     return manifest, prompt
 
