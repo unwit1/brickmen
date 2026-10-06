@@ -95,6 +95,7 @@ def main(argv=None) -> int:
     ap.add_argument("--library-revision", help="Required for previews: pinned library archive hash or commit")
     ap.add_argument("--render-width", type=int, default=1024)
     ap.add_argument("--render-height", type=int, default=1024)
+    ap.add_argument("--lighting", choices=["lit", "unlit"], default="lit", help="Lighting mode for optional verified previews")
     args = ap.parse_args(argv)
     root = args.ldraw_root.resolve()
     parts_dir = root / "parts"
@@ -166,6 +167,7 @@ def main(argv=None) -> int:
             "--manifest", str(manifest), "--ldraw-root", str(root), "--ldview", str(args.ldview.resolve()),
             "--library-revision", args.library_revision, "--output-dir", str(render_out),
             "--profile", "physical_like", "--view", "front", "--width", str(args.render_width),
+            "--lighting", args.lighting,
             "--height", str(args.render_height)], quiet=True)
         render_manifest = render_out / "render_manifest.jsonl"
         previews = {r["source_reference_asset_id"]: r for r in renderer.load(render_manifest)}

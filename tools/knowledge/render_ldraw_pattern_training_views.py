@@ -25,7 +25,7 @@ ROOT=Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:sys.path.insert(0,str(ROOT))
 from tools.geometry.ingest_ldraw_geometry import flatten_ldraw, reference_candidates
 
-VERSION="ldraw-pattern-multiview-render/v7"
+VERSION="ldraw-pattern-multiview-render/v8"
 
 VIEWS=[
  ("front",0,0),
@@ -196,7 +196,7 @@ def training_rights(dependencies):
  if not statuses or "requires_permission" in statuses:return "requires_permission"
  return "allowed_with_attribution" if "allowed_with_attribution" in statuses else "allowed_open"
 
-def render(exe,source,out,lat,lon,width,height,edges,zoom,root,settings):
+def render(exe,source,out,lat,lon,width,height,edges,zoom,root,settings,lighting="lit"):
  cmd=[
   str(exe),str(source),
   f"-LDrawDir={root}",
@@ -208,6 +208,11 @@ def render(exe,source,out,lat,lon,width,height,edges,zoom,root,settings):
   "-TextureFilterType=9987",
   "-AnisoLevel=1",
   "-AutoCrop=0",
+  f"-Lighting={1 if lighting=='lit' else 0}",
+  "-UseQualityLighting=0",
+  f"-UseSpecular={1 if lighting=='lit' else 0}",
+  "-PerformSmoothing=1",
+  "-UseFlatShading=0",
   f"-ProcessLDConfig={1 if (root/'LDConfig.ldr').is_file() else 0}",
   f"-LDConfig={root/'LDConfig.ldr'}",
   f"-SaveSnapshot={out}",
@@ -235,6 +240,7 @@ def main(argv=None, *, quiet=False):
  ap.add_argument("--library-revision",required=True,help="Pinned library archive hash or commit, including dependencies")
  ap.add_argument("--output-dir",type=Path,required=True)
  ap.add_argument("--profile",choices=["physical_like","structural_edges","both"],default="both")
+ ap.add_argument("--lighting",choices=["lit","unlit"],default="lit",help="Unlit removes simulated shading for decoration/color inspection; neither mode is physical evidence")
  ap.add_argument("--width",type=int,default=1024)
  ap.add_argument("--height",type=int,default=1024)
  ap.add_argument("--zoom",type=float,default=0.92)
@@ -252,6 +258,7 @@ def main(argv=None, *, quiet=False):
  settings=out/"brickmen-render-settings.ini"
  settings.write_text("[General]\n",encoding="utf-8",newline="\n")
  configuration={"settings_sha256":sha256(settings),"primitive_substitution":False,"autocrop":False,"texture_mapping":True,"texture_studs":False,"texture_filter":9987,"anisotropy":1,"width":args.width,"height":args.height,"zoom":args.zoom,
+                "lighting":args.lighting,"quality_lighting":False,"specular":args.lighting=="lit","smooth_curves":True,"flat_shading":False,
                 "renderer_sha256":sha256(exe),"library_revision":args.library_revision}
  profiles=[]
  if args.profile in ("physical_like","both"):profiles.append(("physical_like",False))
@@ -279,7 +286,7 @@ def main(argv=None, *, quiet=False):
     render_id=render_identity(rec,profile,view,record_configuration)
     target=out/profile/stem/f"{view}-{render_id}.png";target.parent.mkdir(parents=True,exist_ok=True)
     pending=target.with_name(f".{render_id}-{uuid.uuid4().hex}.pending.png")
-    rc,detail=render(exe,source,pending,lat,lon,args.width,args.height,edges,args.zoom,root,settings)
+    rc,detail=render(exe,source,pending,lat,lon,args.width,args.height,edges,args.zoom,root,settings,args.lighting)
     if rc!=0 or not pending.is_file():
      failures+=1;errors.append({"source_path":rec["source_path"],"stage":"render","view":view,"reason":detail});continue
     try:

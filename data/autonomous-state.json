@@ -75,7 +75,7 @@
     "instruction": "Do not restart completed architecture gates. 275/744 high-priority pairs have submitted first reviews with 1117 annotations; 469 remain. Review first-review batch 0012. Obtain genuinely independent second reviews and explicit adjudication before canonical promotion. Preserve exact hashes, source appearance, uncertainty, and no-hidden-view rules. Continue exact-release multiview evidence and generation evaluation with the existing tools."
   },
   "last_meaningful_commit": "7610c66731c6c6fae99a32bf5d0d074f69b61471",
-  "latest_validated_test_commit": "271502be831ff13c9b61d3f4d3b19cc204242c37",
+  "latest_validated_test_commit": "18e1eed826a7b09036ff7f4371b8a723f6f3faa3",
   "completed_batches": [
     {
       "id": "body_architecture_reference_acquisition_v1",
@@ -419,7 +419,7 @@
       }
     }
   ],
-  "latest_test_lock_commit": "271502be831ff13c9b61d3f4d3b19cc204242c37",
+  "latest_test_lock_commit": "18e1eed826a7b09036ff7f4371b8a723f6f3faa3",
   "semantic_review_frontier": {
     "eligible_pairs": 744,
     "complete_first_review_batch_count": 11,
@@ -439,18 +439,20 @@
   },
   "completed_batches_are_historical_snapshots": true,
   "latest_validation": {
-    "checkpoint": "271502be831ff13c9b61d3f4d3b19cc204242c37",
-    "local_tests_passed": 615,
+    "checkpoint": "18e1eed826a7b09036ff7f4371b8a723f6f3faa3",
+    "local_tests_passed": 626,
     "github_runs": [
       {
-        "name": "LEGO Knowledge Tool Tests",
-        "run_id": 37481939913,
-        "conclusion": "success"
+        "name": "Validate Brickmen",
+        "status": "completed",
+        "conclusion": "success",
+        "id": 37484158232
       },
       {
-        "name": "Validate Brickmen",
-        "run_id": 37481939950,
-        "conclusion": "success"
+        "name": "LEGO Knowledge Tool Tests",
+        "status": "completed",
+        "conclusion": "success",
+        "id": 37484158130
       }
     ],
     "status": "passed"
@@ -464,11 +466,11 @@
       "landmark_max_error",
       "print_zone_containment"
     ],
-    "latest_local_tests_passed": 626,
+    "latest_local_tests_passed": 627,
     "real_generated_output_benchmark": "pending",
     "semantic_feature_review": "required",
     "physical_fit": "unvalidated",
-    "next": "Investigate patterned-head shading artifacts, benchmark actual generated outputs with reviewed references, and continue batch 0012/independent semantic reviews.",
+    "next": "Benchmark actual generated outputs with reviewed appearance/geometry references; continue batch 0012 and independent semantic review. Curved texture UV accuracy and physical calibration remain open.",
     "renderer_configuration": "isolated_preferences_explicit_library_color_config_and_fresh_png_checks",
     "texture_mapped_parts": "external_PNG_inventory_and_actual_LDView_4.7_PLANAR_CYLINDRICAL_SPHERICAL_smokes_passed",
     "texture_dependency_inventory": "v2; geometry, external PNG textures, glossmaps and color configuration pinned",
@@ -479,7 +481,7 @@
     ],
     "dependency_license_gate": "all geometry/texture dependency licenses required; byte-bound provenance declarations supported",
     "part_catalog": "existing_indexer_v2; 24858 declared standalone parts/shortcuts indexed from a pinned real library; focused --part selection supported",
-    "preview_rendering": "shared_renderer_v7; canonical view selection, fresh outputs and structured media preserved",
+    "preview_rendering": "shared_renderer_v8; explicit lit/unlit configuration, preserved structured media and fresh PNG verification",
     "renderer_smoke_test": {
       "test": "tests/test_index_ldraw_parts.py::test_real_ldview_texture_changes_pixels_and_revision",
       "environment_variable": "BRICKMEN_LDVIEW_EXECUTABLE",
@@ -608,6 +610,60 @@
         "no real source likeness validation",
         "no physical fit validation"
       ]
+    },
+    "lighting_experiment": {
+      "date": "2026-10-06",
+      "part_id": "3626cp01",
+      "source_sha256": "0634368409e8aaf90c315dde09ce98906f82fac11bd9dfd7dbad1126022b72b9",
+      "face_roi_px": [
+        170,
+        160,
+        340,
+        345
+      ],
+      "measurements": [
+        {
+          "variant": "baseline",
+          "opaque_gray_colors_in_face_roi": 46
+        },
+        {
+          "variant": "quality",
+          "opaque_gray_colors_in_face_roi": 34
+        },
+        {
+          "variant": "no_specular",
+          "opaque_gray_colors_in_face_roi": 8
+        },
+        {
+          "variant": "unlit",
+          "opaque_gray_colors_in_face_roi": 1
+        }
+      ],
+      "visual_findings": "Quality lighting and no-specular retain triangular surface patches; unlit removes visible patch in inspected front view",
+      "neutral_real_parts_rendered": 4,
+      "neutral_outputs": [
+        {
+          "part_id": "3001",
+          "image_sha256": "b2a88c12a5da6209a0256886c343c5bcc9da6b9279d32012d46a72032c7b22c0",
+          "derived_asset_id": "ldrawrender-6bafe8e67da405e6c6e938f9"
+        },
+        {
+          "part_id": "3626c",
+          "image_sha256": "c8133208ac5f04177954e3d9fc40c63e3a5ef9199458c211d3d0979a7c5d8625",
+          "derived_asset_id": "ldrawrender-a8455d567ea09c618ae374eb"
+        },
+        {
+          "part_id": "3626cp01",
+          "image_sha256": "e5ab77877e4f1112c2b4493110966e4f47487f72988aa953534da1609218b4bb",
+          "derived_asset_id": "ldrawrender-ed2cadd32f2d783c3def3ee3"
+        },
+        {
+          "part_id": "973",
+          "image_sha256": "24605b26164e33f1f17f9e149a10210c565e6c3b3074ea9044ae9afd33c9d343",
+          "derived_asset_id": "ldrawrender-d3c085f9e43d113982488011"
+        }
+      ],
+      "limit": "neutral inspection only; no correction of CAD normals or physical color/fit validation"
     }
   },
   "semantic_evidence_gate": {

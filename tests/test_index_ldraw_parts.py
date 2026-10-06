@@ -127,9 +127,10 @@ def test_preview_uses_shared_inventory_and_rejects_stale_images(tmp_path, monkey
     Image.new("RGBA", (8, 8)).save(stale)
     calls = []
 
-    def fake_render(exe, source, target, lat, lon, width, height, edges, zoom, library, settings):
+    def fake_render(exe, source, target, lat, lon, width, height, edges, zoom, library, settings, lighting="lit"):
         calls.append(target)
         assert library == root and not edges and (lat, lon) == (0, 0)
+        assert lighting == "unlit"
         assert target.resolve().is_relative_to(out.resolve())
         if write_output:
             Image.new("RGBA", (width, height), "red").save(target)
@@ -138,6 +139,7 @@ def test_preview_uses_shared_inventory_and_rejects_stale_images(tmp_path, monkey
     monkeypatch.setattr(RENDER, "render", fake_render)
     result = INDEX.main(args(root, out, "patterned_parts") + [
         "--ldview", str(exe), "--library-revision", "synthetic-library",
+        "--lighting", "unlit",
         "--render-width", "8", "--render-height", "8"])
     report, entries = records(out)
     assert result == (0 if write_output else 2)
@@ -146,6 +148,7 @@ def test_preview_uses_shared_inventory_and_rejects_stale_images(tmp_path, monkey
     if write_output:
         rendered = [json.loads(line) for line in Path(report["render_manifest"]).read_text().splitlines()]
         assert rendered[0]["view"] == "front"
+        assert rendered[0]["render_configuration"]["lighting"] == "unlit"
         assert rendered[0]["part_namespace"] == "ldraw" and rendered[0]["part_id"] == "tile"
         reference_set = REFERENCES.build_reference_sets(rendered, target_kind="part")[0]
         assert "structured_component_pattern" in reference_set["slots"]
@@ -230,6 +233,23 @@ def test_renderer_execution_failures_are_reported(tmp_path, monkeypatch, error):
     rc, detail = RENDER.render(tmp_path / "exe", tmp_path / "part", tmp_path / "out.png",
                                0, 0, 8, 8, False, .92, tmp_path, tmp_path / "settings")
     assert rc == 2 and "LDView execution failed" in detail
+
+
+def test_unlit_rendering_is_explicit_and_changes_identity(tmp_path, monkeypatch):
+    from types import SimpleNamespace
+    commands = []
+    def capture(command, **kwargs):
+        commands.append(command)
+        return SimpleNamespace(returncode=0, stderr="", stdout="")
+    monkeypatch.setattr(RENDER.subprocess, "run", capture)
+    for lighting in ("lit", "unlit"):
+        RENDER.render(tmp_path / "exe", tmp_path / "part", tmp_path / "out.png",
+                      0, 0, 8, 8, False, .92, tmp_path, tmp_path / "settings", lighting)
+    assert "-Lighting=1" in commands[0] and "-UseSpecular=1" in commands[0]
+    assert "-Lighting=0" in commands[1] and "-UseSpecular=0" in commands[1]
+    assert all("-PerformSmoothing=1" in c and "-UseFlatShading=0" in c for c in commands)
+    source = {"reference_asset_id": "fixture", "sha256": "a" * 64}
+    assert RENDER.render_identity(source, "physical_like", "front", {"lighting": "lit"}) != RENDER.render_identity(source, "physical_like", "front", {"lighting": "unlit"})
 
 
 def texture_smoke_geometry(projection):
