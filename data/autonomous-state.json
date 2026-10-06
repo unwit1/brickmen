@@ -78,12 +78,14 @@
       "original_media_archive_sha256": "3203133b7be1c11bdc70884852f5c76f7536670e37b1e16b1f9731a74e3e2510"
     }
   ],
-  "pending_validation": [],
+  "pending_validation": [
+    "Reviewer UI v2 live-browser integration remains unverified: browser automation timed out during initial navigation. WebCrypto helpers, whole generated-script parsing and metadata roundtrips passed."
+  ],
   "continuation": {
     "instruction": "Do not restart completed architecture gates. 300/744 high-priority pairs have submitted first reviews with 1243 annotations; 444 remain. Review first-review batch 0013. Obtain genuinely independent second reviews and explicit adjudication before canonical promotion. Preserve exact hashes, source appearance, uncertainty, and no-hidden-view rules. Continue exact-release multiview evidence and generation evaluation with the existing tools."
   },
   "last_meaningful_commit": "7610c66731c6c6fae99a32bf5d0d074f69b61471",
-  "latest_validated_test_commit": "cdc369acaa7be87207dba0897ec34f5140adb749",
+  "latest_validated_test_commit": "3d4aef7d879bd79ef5c1d30687eb2c5a10999b10",
   "completed_batches": [
     {
       "id": "body_architecture_reference_acquisition_v1",
@@ -427,7 +429,7 @@
       }
     }
   ],
-  "latest_test_lock_commit": "cdc369acaa7be87207dba0897ec34f5140adb749",
+  "latest_test_lock_commit": "3d4aef7d879bd79ef5c1d30687eb2c5a10999b10",
   "semantic_review_frontier": {
     "eligible_pairs": 744,
     "complete_first_review_batch_count": 12,
@@ -447,35 +449,29 @@
   },
   "completed_batches_are_historical_snapshots": true,
   "latest_validation": {
-    "checkpoint": "cdc369acaa7be87207dba0897ec34f5140adb749",
-    "local_tests_passed": 627,
+    "checkpoint": "3d4aef7d879bd79ef5c1d30687eb2c5a10999b10",
+    "local_tests_passed": 645,
     "github_runs": [
       {
-        "name": "Validate Brickmen",
-        "id": 37487779164,
-        "status": "completed",
-        "conclusion": "success"
-      },
-      {
-        "name": "Compile Fortnite Semantic Review Submissions",
-        "id": 37487779235,
-        "status": "completed",
-        "conclusion": "success"
-      },
-      {
         "name": "Build Fortnite Semantic Review UI",
-        "id": 37487779134,
+        "id": 37522810196,
         "status": "completed",
-        "conclusion": "failure"
+        "conclusion": "success"
       },
       {
         "name": "LEGO Knowledge Tool Tests",
-        "id": 37487779300,
+        "id": 37522809358,
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "Validate Brickmen",
+        "id": 37522809379,
         "status": "completed",
         "conclusion": "success"
       }
     ],
-    "status": "core_validation_passed; UI acquisition blocked by changed live media"
+    "status": "passed"
   },
   "generation_accuracy_frontier": {
     "brief_preflight": "implemented_metadata_review_only",
@@ -486,7 +482,7 @@
       "landmark_max_error",
       "print_zone_containment"
     ],
-    "latest_local_tests_passed": 645,
+    "latest_local_tests_passed": 652,
     "real_generated_output_benchmark": "one_part_one_front_view_two_sequential_outputs_measured; constraints_failed; broader_benchmark_pending",
     "semantic_feature_review": "required",
     "physical_fit": "unvalidated",
@@ -718,6 +714,14 @@
     "progress_version": "v2",
     "normalized_reviewer_principal_shared": true,
     "local_submission_requires_materialized_hashes": true,
-    "archive_reuse": "materializer_v3; original exact-media manifest reused with confined paths, verified bytes and all item/template pins; no network fallback"
+    "archive_reuse": "materializer_v3; original exact-media manifest reused with confined paths, verified bytes and all item/template pins; no network fallback",
+    "reviewer_ui": "v2; hashes captured bytes before image display/submission; folder recovery, legacy export proof gate, draft edit protection, complete JS parsing and JSON roundtrip checks",
+    "batch12_reviewer_archive": {
+      "archive": "brickmen-batch12-reviewer-v2.zip",
+      "sha256": "ffb9cc49a9265029f5ba8fd5932669fd3e61f05669e0a829ec5a7ccd585e8e55",
+      "bytes": 2934055,
+      "images": 50,
+      "records": 25
+    }
   }
 }

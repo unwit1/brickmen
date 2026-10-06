@@ -13,18 +13,20 @@ from __future__ import annotations
 import argparse
 import html
 import json
+import re
 from pathlib import Path
 from typing import Any, Mapping
 
 BATCH_SCHEMA = "fortnite-semantic-review-work-batch/v1"
-VERSION = "fortnite-semantic-review-ui/v1"
+VERSION = "fortnite-semantic-review-ui/v2"
 
 
 def _script_json(value: Any) -> str:
     return (
         json.dumps(value, separators=(",", ":"), ensure_ascii=False)
-        .replace("</", "<\\/")
-        .replace("<!--", "<\\!--")
+        .replace("<", "\\u003c")
+        .replace(">", "\\u003e")
+        .replace("&", "\\u0026")
     )
 
 
@@ -56,13 +58,25 @@ def validate_batch(batch: Mapping[str, Any]) -> None:
             raise ValueError(
                 f"items[{index}] must forbid claims_unobserved_surfaces"
             )
+        for role in ("source", "lego"):
+            url_key, hash_key = f"{role}_image_url", f"{role}_image_sha256"
+            if evidence.get(url_key) not in (None, item[url_key]):
+                raise ValueError(f"items[{index}] conflicting {role} evidence URLs")
+            pins = [pin for pin in (item.get(hash_key), evidence.get(hash_key)) if pin is not None]
+            if any(not isinstance(pin, str) or not re.fullmatch(r"[0-9a-fA-F]{64}", pin) for pin in pins):
+                raise ValueError(f"items[{index}] invalid {role} evidence hash")
+            if len({pin.lower() for pin in pins}) > 1:
+                raise ValueError(f"items[{index}] conflicting {role} evidence hashes")
+            local = item.get(f"{role}_image_local_asset")
+            if local is not None and (not isinstance(local, str) or not local or local.startswith("/") or "\\" in local or ":" in local or ".." in local.split("/")):
+                raise ValueError(f"items[{index}] local media path must stay relative to the review folder")
 
 
 def build_review_html(batch: Mapping[str, Any]) -> str:
     validate_batch(batch)
     embedded = _script_json(batch)
     title = html.escape(str(batch.get("batch_id") or "Fortnite semantic review"))
-    return f"""<!doctype html>
+    return rf"""<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -76,6 +90,7 @@ header{{display:flex;gap:12px;align-items:center;padding:10px 14px;border-bottom
 header strong{{font-size:14px}} header .spacer{{flex:1}}
 button,input,select,textarea{{font:inherit;color:#eee;background:#20232a;border:1px solid #4b505a;border-radius:6px;padding:7px}}
 button{{cursor:pointer}} button.primary{{background:#2746b9}} button.good{{background:#1f6b43}}
+button:disabled{{opacity:.5;cursor:wait}}
 main{{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(360px,.75fr);min-height:0}}
 .visual{{padding:12px;overflow:auto;border-right:1px solid #30333a}}
 .images{{display:grid;grid-template-columns:1fr 1fr;gap:10px}}
@@ -110,12 +125,15 @@ hr{{border:0;border-top:1px solid #30333a;margin:14px 0}}
   <span id="pair-id" class="small"></span>
   <span class="spacer"></span>
   <button id="save">Save draft</button>
-  <button id="submit" class="good">Mark submitted</button>
+  <button id="submit" class="good" disabled>Mark submitted</button>
   <button id="export" class="primary">Export JSONL</button>
   <span id="status" class="status"></span>
 </header>
 <main>
 <section class="visual">
+  <label for="media-folder">Choose the extracted review folder if images do not load automatically</label>
+  <input id="media-folder" type="file" webkitdirectory multiple>
+  <p id="media-status" class="small" role="status">Checking the reviewed image versions…</p>
   <div class="images">
     <div class="figure">
       <h2>Source appearance</h2>
@@ -172,6 +190,79 @@ const regionNames = ["head","torso","lower_body","accessory_or_silhouette"];
 const storageKey = "brickmen-semantic-review:" + batch.batch_id;
 let index = 0;
 let saved = JSON.parse(localStorage.getItem(storageKey) || "{{}}");
+let mediaEpoch=0, verifiedMedia={{}}, imageUrls=[], selectedFiles=[];
+
+// BEGIN MEDIA BINDING HELPERS
+function expectedMediaHash(item,role){{
+  const key=role+"_image_sha256", evidence=item.review_template?.evidence||{{}};
+  const pins=[item[key],evidence[key]].filter(x=>x!==null&&x!==undefined);
+  if(!pins.length || pins.some(x=>typeof x!=="string"||!/^[0-9a-f]{{64}}$/i.test(x))) throw new Error("Materialize the exact images before submitting a review.");
+  if(new Set(pins.map(x=>x.toLowerCase())).size!==1) throw new Error("Conflicting reviewed image versions.");
+  return pins[0].toLowerCase();
+}}
+async function verifyImageBytes(bytes,item,role){{
+  const expected=expectedMediaHash(item,role);
+  if(!globalThis.crypto?.subtle) throw new Error("Image checking needs a current browser or localhost preview.");
+  const digest=await crypto.subtle.digest("SHA-256",bytes);
+  const actual=Array.from(new Uint8Array(digest),x=>x.toString(16).padStart(2,"0")).join("");
+  if(actual!==expected) throw new Error("The "+role+" image differs from the reviewed version. Use the preserved media folder.");
+  return actual;
+}}
+function hasVerifiedProvenance(record,item){{
+  try{{
+    const source=expectedMediaHash(item,"source"), lego=expectedMediaHash(item,"lego");
+    if(record.evidence?.source_image_sha256!==source||record.evidence?.lego_image_sha256!==lego) return false;
+    return (record.provenance||[]).some(p=>p.source==="browser_verified_exact_media"&&p.processor_version==="{VERSION}"&&p.source_image_sha256===source&&p.lego_image_sha256===lego);
+  }}catch{{return false}}
+}}
+function reviewedPayload(record){{
+  return JSON.stringify([record?.reviewer,record?.evidence,record?.annotations,record?.limitations,record?.adjudicates_review_ids]);
+}}
+// END MEDIA BINDING HELPERS
+
+async function loadReviewedImages(item){{
+  const epoch=++mediaEpoch;
+  verifiedMedia={{}};
+  document.getElementById("submit").disabled=true;
+  for(const url of imageUrls)URL.revokeObjectURL(url);
+  imageUrls=[];
+  for(const role of ["source","lego"])document.getElementById(role+"-image").removeAttribute("src");
+  const message=document.getElementById("media-status");message.textContent="Checking the reviewed image versions…";
+  try{{
+    const checked=await Promise.all(["source","lego"].map(async role=>{{
+      expectedMediaHash(item,role);
+      const asset=item[role+"_image_local_asset"], url=asset||item[role+"_image_url"];
+      let bytes;
+      if(selectedFiles.length){{
+        const matches=selectedFiles.filter(file=>asset&&(file.webkitRelativePath===asset||file.webkitRelativePath.endsWith("/"+asset)));
+        if(matches.length!==1)throw new Error("Choose the full extracted review folder containing its media folder.");
+        bytes=await matches[0].arrayBuffer();
+      }}else{{
+        const response=await fetch(url,{{cache:"no-store",credentials:"omit"}});
+        if(!response.ok)throw new Error("Images could not be loaded. Choose the preserved review folder.");
+        bytes=await response.arrayBuffer();
+      }}
+      const hash=await verifyImageBytes(bytes,item,role);
+      return {{role,bytes,hash}};
+    }}));
+    if(epoch!==mediaEpoch)return;
+    const pins={{}};
+    await Promise.all(checked.map(async image=>{{
+      const element=document.getElementById(image.role+"-image"), url=URL.createObjectURL(new Blob([image.bytes]));
+      imageUrls.push(url);element.src=url;
+      await element.decode();pins[image.role]=image.hash;
+    }}));
+    if(epoch!==mediaEpoch)return;
+    verifiedMedia=pins;
+    document.getElementById("submit").disabled=false;
+    message.textContent="Both images match the preserved review versions. Ready for direct review.";
+  }}catch(error){{
+    if(epoch!==mediaEpoch)return;
+    verifiedMedia={{}};
+    for(const role of ["source","lego"])document.getElementById(role+"-image").removeAttribute("src");
+    message.textContent=error.message;
+  }}
+}}
 
 function lines(value){{return value.split(/\r?\n/).map(x=>x.trim()).filter(Boolean)}}
 function status(msg,bad=false){{const el=document.getElementById("status");el.textContent=msg;el.style.color=bad?"#ff9b9b":"#8ee7b1"}}
@@ -190,6 +281,7 @@ function selectHtml(values,selected){{
 }}
 function annotationRow(region,item={{}}){{
   const row=document.createElement("div"); row.className="annotation"; row.dataset.region=region;
+  row.dataset.notes=JSON.stringify(item.notes??null);
   row.innerHTML =
     '<div><label>Feature</label><input class="feature"></div>'+
     '<div><label>Decision</label><select class="decision">'+selectHtml(decisions,item.decision||"uncertain")+'</select></div>'+
@@ -217,8 +309,7 @@ function render(){{
   const item=currentItem(), record=currentRecord();
   document.getElementById("counter").textContent=(index+1)+" / "+batch.items.length;
   document.getElementById("pair-id").textContent=item.translation_pair_id+" · priority "+item.review_priority_score;
-  document.getElementById("source-image").src=item.source_image_local_asset||item.source_image_url;
-  document.getElementById("lego-image").src=item.lego_image_local_asset||item.lego_image_url;
+  loadReviewedImages(item);
   document.getElementById("source-url").textContent=item.source_image_url+(item.source_image_sha256?" · sha256 "+item.source_image_sha256:"");
   document.getElementById("lego-url").textContent=item.lego_image_url+(item.lego_image_sha256?" · sha256 "+item.lego_image_sha256:"");
   const sig=document.getElementById("signals");sig.replaceChildren();
@@ -263,7 +354,7 @@ function collect(){{
         decision:row.querySelector(".decision").value,
         confidence:Number(row.querySelector(".confidence").value),
         evidence_basis:row.querySelector(".basis").value,
-        notes:null
+        notes:JSON.parse(row.dataset.notes||"null")
       }});
     }});
   }});
@@ -276,35 +367,50 @@ function collect(){{
 }}
 function save(submit=false){{
   const item=currentItem(), record=collect();
-  if(!record.reviewer.reviewer_id){{status("reviewer ID required",true);return false}}
+  if(!record.reviewer.reviewer_id||record.reviewer.reviewer_id.toLowerCase()==="unassigned"){{status("Choose your reviewer ID before saving",true);return false}}
   if((record.reviewer.reviewer_type==="model"||record.reviewer.reviewer_type==="hybrid") && (!record.reviewer.model_id||!record.reviewer.model_revision)){{
     status("model/hybrid review requires model ID and revision",true);return false;
   }}
   const count=Object.values(record.annotations.regions).reduce((n,x)=>n+x.length,0);
   if(submit && count===0){{status("submitted review requires at least one annotation",true);return false}}
   if(submit){{
+    if(!verifiedMedia.source||!verifiedMedia.lego||verifiedMedia.source!==expectedMediaHash(item,"source")||verifiedMedia.lego!==expectedMediaHash(item,"lego")){{status("Check both preserved images before submitting",true);return false}}
+    record.evidence.source_image_sha256=verifiedMedia.source;
+    record.evidence.lego_image_sha256=verifiedMedia.lego;
+    record.provenance=(record.provenance||[]).filter(p=>p.source!=="browser_verified_exact_media");
+    record.provenance.push({{source:"browser_verified_exact_media",processor_version:"{VERSION}",source_image_sha256:verifiedMedia.source,lego_image_sha256:verifiedMedia.lego}});
     record.review_status=record.reviewer.review_role==="adjudicator"?"adjudicated":"submitted";
     record.created_at=new Date().toISOString();
-  }} else if(!record.created_at) record.review_status="draft";
+  }} else if(!record.created_at||reviewedPayload(record)!==reviewedPayload(saved[item.translation_pair_id])){{
+    record.review_status="draft";record.created_at=null;
+    record.provenance=(record.provenance||[]).filter(p=>p.source!=="browser_verified_exact_media");
+  }}
   saved[item.translation_pair_id]=record;
   localStorage.setItem(storageKey,JSON.stringify(saved));
   status("saved "+record.review_status);
   return true;
 }}
 function exportJsonl(){{
-  save(false);
+  if(!saveIfChanged())return;
   const rows=batch.items.map(x=>saved[x.translation_pair_id]).filter(Boolean);
+  if(!rows.length){{status("Save a review before exporting",true);return}}
+  const needsReview=rows.filter(record=>["submitted","adjudicated"].includes(record.review_status)&&!hasVerifiedProvenance(record,batch.items.find(x=>x.translation_pair_id===record.translation_pair_id)));
+  if(needsReview.length){{status("Check images and resubmit "+needsReview.length+" older review records before export",true);return}}
   const text=rows.map(x=>JSON.stringify(x)).join("\n")+"\n";
   const blob=new Blob([text],{{type:"application/x-ndjson"}});
   const url=URL.createObjectURL(blob),a=document.createElement("a");
   a.href=url;a.download=batch.batch_id+"-reviews.jsonl";a.click();URL.revokeObjectURL(url);
   status("exported "+rows.length+" review records");
 }}
-document.getElementById("prev").onclick=()=>{{save(false);index=(index-1+batch.items.length)%batch.items.length;render()}};
-document.getElementById("next").onclick=()=>{{save(false);index=(index+1)%batch.items.length;render()}};
+function saveIfChanged(){{
+  return reviewedPayload(collect())===reviewedPayload(currentRecord())||save(false);
+}}
+document.getElementById("prev").onclick=()=>{{if(!saveIfChanged())return;index=(index-1+batch.items.length)%batch.items.length;render()}};
+document.getElementById("next").onclick=()=>{{if(!saveIfChanged())return;index=(index+1)%batch.items.length;render()}};
 document.getElementById("save").onclick=()=>save(false);
 document.getElementById("submit").onclick=()=>save(true);
 document.getElementById("export").onclick=exportJsonl;
+document.getElementById("media-folder").onchange=event=>{{selectedFiles=Array.from(event.target.files);loadReviewedImages(currentItem())}};
 render();
 </script>
 </body>

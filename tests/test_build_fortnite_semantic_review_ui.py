@@ -1,7 +1,13 @@
 from __future__ import annotations
 
 import importlib.util
+import hashlib
+import json
+import shutil
+import subprocess
 from pathlib import Path
+
+import pytest
 
 
 TOOL = (
@@ -131,11 +137,71 @@ def test_materialized_batch_prefers_local_exact_media() -> None:
 
     html = tool.build_review_html(value)
 
-    assert "source_image_local_asset||item.source_image_url" in html
-    assert "lego_image_local_asset||item.lego_image_url" in html
+    assert "loadReviewedImages(item)" in html
+    assert "await verifyImageBytes(bytes,item,role)" in html
     assert "sha256" in html
     assert "media/source--abc.png" in html
     assert "media/lego--def.png" in html
+
+
+@pytest.mark.parametrize('mutation,error', [
+    (lambda i:i.update(source_image_sha256='bad'),'invalid source evidence hash'),
+    (lambda i:i['review_template']['evidence'].update(source_image_sha256='b'*64),'conflicting source evidence hashes'),
+    (lambda i:i['review_template']['evidence'].update(source_image_url='https://example.test/other.png'),'conflicting source evidence URLs'),
+    (lambda i:i.update(source_image_local_asset='../other.png'),'relative to the review folder'),
+    (lambda i:i.update(source_image_local_asset='https://example.test/other.png'),'relative to the review folder'),
+])
+def test_conflicting_pins_and_escaping_media_paths_fail_before_build(mutation,error):
+    value=batch();value['items'][0]['source_image_sha256']='a'*64
+    mutation(value['items'][0])
+    with pytest.raises(ValueError,match=error):load_tool().build_review_html(value)
+
+
+def test_actual_browser_hash_helpers_reject_changed_bytes_and_stale_review_proof():
+    node=shutil.which('node')
+    if not node:pytest.skip('Node is needed to exercise browser WebCrypto helpers')
+    page=load_tool().build_review_html(batch())
+    helpers=page.split('// BEGIN MEDIA BINDING HELPERS')[1].split('// END MEDIA BINDING HELPERS')[0]
+    data=b'exact synthetic image bytes';sha=hashlib.sha256(data).hexdigest()
+    item=batch()['items'][0]
+    for role in ('source','lego'):
+        item[role+'_image_sha256']=sha.upper()
+        item['review_template']['evidence'][role+'_image_sha256']=sha
+    harness='import {webcrypto} from "node:crypto"; import assert from "node:assert/strict"; Object.defineProperty(globalThis,"crypto",{value:webcrypto});\n'+helpers
+    harness+='\nconst item='+json.dumps(item)+'; const bytes=new TextEncoder().encode('+json.dumps(data.decode())+');\n'
+    harness+='''
+assert.equal(await verifyImageBytes(bytes,item,'source'),expectedMediaHash(item,'source'));
+await assert.rejects(verifyImageBytes(new TextEncoder().encode('changed'),item,'source'),/differs from the reviewed version/);
+const conflict=structuredClone(item);conflict.source_image_sha256='b'.repeat(64);
+assert.throws(()=>expectedMediaHash(conflict,'source'),/Conflicting/);
+const absent=structuredClone(item);delete absent.source_image_sha256;delete absent.review_template.evidence.source_image_sha256;
+assert.throws(()=>expectedMediaHash(absent,'source'),/Materialize/);
+const invalid=structuredClone(item);invalid.source_image_sha256='bad';
+assert.throws(()=>expectedMediaHash(invalid,'source'),/Materialize/);
+const hash=expectedMediaHash(item,'source');
+const record={evidence:{source_image_sha256:hash,lego_image_sha256:hash},provenance:[]};
+assert.equal(hasVerifiedProvenance(record,item),false);
+record.provenance=[{source:'browser_verified_exact_media',processor_version:'fortnite-semantic-review-ui/v2',source_image_sha256:hash,lego_image_sha256:hash}];
+assert.equal(hasVerifiedProvenance(record,item),true);
+record.evidence.lego_image_sha256='b'.repeat(64);assert.equal(hasVerifiedProvenance(record,item),false);
+record.evidence.lego_image_sha256=hash;record.provenance[0].processor_version='fortnite-semantic-review-ui/v1';assert.equal(hasVerifiedProvenance(record,item),false);
+const edited=structuredClone(record);edited.annotations={regions:{head:[{feature:'changed face'}]}};
+assert.notEqual(reviewedPayload(edited),reviewedPayload(record));
+'''
+    result=subprocess.run([node,'--input-type=module','-e',harness],capture_output=True,text=True)
+    assert result.returncode==0,result.stderr
+
+
+def test_generated_page_script_parses_after_rendering_and_navigation_preserves_edits():
+    node=shutil.which('node')
+    if not node:pytest.skip('Node is needed to parse generated JavaScript')
+    page=load_tool().build_review_html(batch())
+    script=page.split('<script>')[1].split('</script>')[0]
+    result=subprocess.run([node,'--check','-'],input=script,capture_output=True,text=True)
+    assert result.returncode==0,result.stderr
+    assert 'if(!saveIfChanged())return' in script
+    assert 'record.review_status="draft";record.created_at=null' in script
+    assert 'JSON.parse(row.dataset.notes||"null")' in script
 
 
 def test_batch_validation_rejects_missing_items() -> None:
@@ -186,7 +252,8 @@ def test_script_json_prevents_script_breakout() -> None:
 
     assert "</script>" not in encoded
     assert "<!--" not in encoded
-    assert "<\\/script>" in encoded
+    assert json.loads(encoded) == {"x": "</script><!--"}
+    assert "<" not in encoded
 
 
 def test_checked_in_first_batch_builds_ui() -> None:
