@@ -1,6 +1,7 @@
 """Synthetic catalog and rendering integration fixtures, not accuracy evidence."""
 import hashlib
 import json
+import math
 import os
 import subprocess
 import sys
@@ -192,17 +193,51 @@ def test_renderer_execution_failures_are_reported(tmp_path, monkeypatch, error):
     assert rc == 2 and "LDView execution failed" in detail
 
 
+def texture_smoke_geometry(projection):
+    if projection == "PLANAR":
+        return "PLANAR -10 -10 0 10 -10 0 -10 10 0", [
+            "4 16 -10 -10 0 10 -10 0 10 10 0 -10 10 0"]
+
+    def point(latitude, longitude):
+        lat, lon = math.radians(latitude), math.radians(longitude)
+        return (10 * math.cos(lat) * math.sin(lon), 10 * math.sin(lat),
+                -10 * math.cos(lat) * math.cos(lon))
+
+    def face(points):
+        return f"{len(points)} 16 " + " ".join(f"{v:.8f}" for p in points for v in p)
+
+    geometry = []
+    for lon in range(-180, 180, 15):
+        if projection == "CYLINDRICAL":
+            bottom = point(0, lon)
+            next_bottom = point(0, lon + 15)
+            geometry.append(face([(bottom[0], -10, bottom[2]), (next_bottom[0], -10, next_bottom[2]),
+                                  (next_bottom[0], 10, next_bottom[2]), (bottom[0], 10, bottom[2])]))
+        else:
+            for lat in range(-75, 75, 15):
+                geometry.append(face([point(lat, lon), point(lat, lon + 15),
+                                      point(lat + 15, lon + 15), point(lat + 15, lon)]))
+            geometry.append(face([point(-90, 0), point(-75, lon + 15), point(-75, lon)]))
+            geometry.append(face([point(90, 0), point(75, lon), point(75, lon + 15)]))
+    parameters = ("CYLINDRICAL 0 10 0 0 -10 0 0 10 -10 360" if projection == "CYLINDRICAL"
+                  else "SPHERICAL 0 0 0 0 0 -10 0 -10 0 360 180")
+    return parameters, geometry
+
+
+@pytest.mark.parametrize("projection", ["PLANAR", "CYLINDRICAL", "SPHERICAL"])
 @pytest.mark.skipif(not os.environ.get("BRICKMEN_LDVIEW_EXECUTABLE"), reason="optional real LDView texture smoke test")
-def test_real_ldview_texture_changes_pixels_and_revision(tmp_path):
+def test_real_ldview_texture_changes_pixels_and_revision(tmp_path, projection):
     root = tmp_path / "library"
     (root / "parts/textures").mkdir(parents=True)
     (root / "p").mkdir()
     (root / "LDConfig.ldr").write_text("0 Synthetic smoke colors\n0 !COLOUR Yellow CODE 14 VALUE #FFFF00 EDGE #333333\n0 !COLOUR Main_Colour CODE 16 VALUE #888888 EDGE #333333\n")
     path = part(root, "texture-smoke.dat", "Tile with Synthetic Pattern", "Unofficial_Part")
     header = path.read_bytes().split(b"3 16", 1)[0]
-    path.write_bytes(header + b"0 !TEXMAP START PLANAR -10 -10 0 10 -10 0 -10 10 0 face.png\n"
-                     b"0 !: 4 16 -10 -10 0 10 -10 0 10 10 0 -10 10 0\n0 !TEXMAP FALLBACK\n"
-                     b"4 14 -10 -10 0 10 -10 0 10 10 0 -10 10 0\n0 !TEXMAP END\n")
+    parameters, geometry = texture_smoke_geometry(projection)
+    mapped = "\n".join("0 !: " + line for line in geometry)
+    fallback = "\n".join(line.replace(" 16 ", " 14 ", 1) for line in geometry)
+    path.write_bytes(header + (f"0 !TEXMAP START {parameters} face.png\n{mapped}\n"
+                               f"0 !TEXMAP FALLBACK\n{fallback}\n0 !TEXMAP END\n").encode())
     captures = []
     for variant, color in [("original", (255, 0, 0)), ("changed", (255, 0, 255))]:
         texture = Image.new("RGB", (32, 32), "blue")

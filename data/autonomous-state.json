@@ -464,13 +464,13 @@
       "landmark_max_error",
       "print_zone_containment"
     ],
-    "latest_local_tests_passed": 618,
+    "latest_local_tests_passed": 620,
     "real_generated_output_benchmark": "pending",
     "semantic_feature_review": "required",
     "physical_fit": "unvalidated",
-    "next": "Expand real rendering checks across curved texture projections and actual catalog parts; benchmark generated outputs; continue batch 0012 and independent review.",
+    "next": "Index and render real pinned catalog parts, benchmark actual generated outputs, and continue batch 0012/independent semantic review.",
     "renderer_configuration": "isolated_preferences_explicit_library_color_config_and_fresh_png_checks",
-    "texture_mapped_parts": "external_PNG_inventory_and_actual_LDView_4.7_PLANAR_smoke_passed",
+    "texture_mapped_parts": "external_PNG_inventory_and_actual_LDView_4.7_PLANAR_CYLINDRICAL_SPHERICAL_smokes_passed",
     "texture_dependency_inventory": "v2; geometry, external PNG textures, glossmaps and color configuration pinned",
     "unsupported_texture_features": [
       "GLOSSMAP rendering",
@@ -508,9 +508,50 @@
         "unchanged source hash"
       ],
       "limits": [
-        "synthetic fixture only",
-        "PLANAR projection only",
-        "no source likeness or physical fit claim"
+        "synthetic fixtures only",
+        "visible texture/change checks do not establish full UV-coordinate accuracy",
+        "no real-source likeness or physical fit claim"
+      ],
+      "curved_projection_experiments": [
+        {
+          "projection": "PLANAR",
+          "source_sha256": "8846104627b9e57dc259a27540babb8715839eec4bd2fdd412666d42287a0883",
+          "output_sha256": [
+            "d96cc14c080f8d87b5cb315b6c6abb9b4aed92d02f4844b7b5285decc6037784",
+            "292a8fa6cefc28f1d20702a690124dba2e3cfc76edb863a9bae52ffabe7f0d29"
+          ],
+          "input_revision": [
+            "e1dd6f66aae0f23e9cdcea21348fd316da6434dabd46fb4e0a9c3120896a31c1",
+            "4c8a127f04eea21f5bd7717ec5a9c6522ce2a86d1a62f57fb41c62ece5604f6e"
+          ],
+          "visible_colors_and_texture_change_assertions": "passed"
+        },
+        {
+          "projection": "CYLINDRICAL",
+          "source_sha256": "f2a3ce3e14a4dd74b222494f8ad8594927b081d5db7e5d39de9ef16bca06dba8",
+          "output_sha256": [
+            "3253a9f8da888d15452eee3ef8c29acb6643cef9d80456b4f31a75f3c185e422",
+            "f1a28efbf2bc508d6f93051fa3f7e1f3d950210a41f643025994d99d2691bfe7"
+          ],
+          "input_revision": [
+            "c171666a44ecb383bf5fab0579757ddd831bb75876cc47f2a31aa4cf1c536c08",
+            "67e562c9be3921671bef021a5c0f076256f52477930d2104cd12bdc405b4cf60"
+          ],
+          "visible_colors_and_texture_change_assertions": "passed"
+        },
+        {
+          "projection": "SPHERICAL",
+          "source_sha256": "7ea13574fa0e392c9c338a40218bbfd618cbf5e5cf4f9059c8b270d1838a93df",
+          "output_sha256": [
+            "3e1c72c6558d4810c24e3503b651298134ea296922b9c16d89787fb79d309ec6",
+            "2a5b97377c799a69705b6815d4c77309537b8ba997d08161153dfa56278a5a86"
+          ],
+          "input_revision": [
+            "6779b1c9e2cf3d4d222a624cdd8aafe2fe1bd12c6fe2be8362337817c6f1fa3c",
+            "433bf854394892f6f4c484f05248fcec820d3ee80fcb84232a0812518ee9f61c"
+          ],
+          "visible_colors_and_texture_change_assertions": "passed"
+        }
       ]
     }
   },
