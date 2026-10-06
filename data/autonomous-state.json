@@ -84,6 +84,14 @@
       "reason": "Review UI run 37525693008 refused live bytes that differ from the exact reviewed SHA-256. Original pins remain unchanged.",
       "fallback": "All 50 original images verified from preserved local archive; reviewer v2 rebuilt using verified_archive acquisition. Use original archived bytes for independent review.",
       "original_media_archive_sha256": "70ac6083e4dac98e56402c3bd1411bd68a83ade680628a40966362056c653393"
+    },
+    {
+      "id": "batch14_live_media_changed",
+      "pair_id": "fortnitepair-a34fa3df2c03bc4895981ce1",
+      "role": "lego",
+      "reason": "Review UI run37527301191 refused live bytes that differ from the exact reviewed SHA-256. Original pins remain unchanged.",
+      "fallback": "All50 original images verified from preserved local archive; reviewer v2 rebuilt with verified_archive acquisition. Use original bytes for independent review.",
+      "original_media_archive_sha256": "88b5d7c22bcc4ecd0a268416f5e3190e650b211451e4d47624f3285ea2b54a0d"
     }
   ],
   "pending_validation": [
@@ -93,7 +101,7 @@
     "instruction": "Do not restart completed architecture gates. 350/744 high-priority pairs have submitted first reviews with 1520 annotations; 394 remain. Review first-review batch 0015. Obtain genuinely independent second reviews and explicit adjudication before canonical promotion. Preserve exact hashes, source appearance, uncertainty, and no-hidden-view rules. Continue exact-release multiview evidence and generation evaluation with the existing tools."
   },
   "last_meaningful_commit": "7610c66731c6c6fae99a32bf5d0d074f69b61471",
-  "latest_validated_test_commit": "0bd17be5f68e399e3fbb8038bb2555a006381df3",
+  "latest_validated_test_commit": "e2b7fca167eb6fcaecd59defeb16f57f5860f642",
   "completed_batches": [
     {
       "id": "body_architecture_reference_acquisition_v1",
@@ -437,7 +445,7 @@
       }
     }
   ],
-  "latest_test_lock_commit": "0bd17be5f68e399e3fbb8038bb2555a006381df3",
+  "latest_test_lock_commit": "e2b7fca167eb6fcaecd59defeb16f57f5860f642",
   "semantic_review_frontier": {
     "eligible_pairs": 744,
     "complete_first_review_batch_count": 14,
@@ -457,23 +465,36 @@
   },
   "completed_batches_are_historical_snapshots": true,
   "latest_validation": {
-    "checkpoint": "0bd17be5f68e399e3fbb8038bb2555a006381df3",
+    "checkpoint": "e2b7fca167eb6fcaecd59defeb16f57f5860f642",
     "local_tests_passed": 676,
     "github_runs": [
       {
-        "name": "LEGO Knowledge Tool Tests",
-        "id": 37526439598,
+        "name": "Compile Fortnite Semantic Review Submissions",
+        "id": 37527301133,
         "status": "completed",
         "conclusion": "success"
       },
       {
         "name": "Validate Brickmen",
-        "id": 37526439533,
+        "id": 37527301185,
         "status": "completed",
         "conclusion": "success"
+      },
+      {
+        "name": "LEGO Knowledge Tool Tests",
+        "id": 37527301138,
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "Build Fortnite Semantic Review UI",
+        "id": 37527301191,
+        "status": "completed",
+        "conclusion": "failure"
       }
     ],
-    "status": "passed"
+    "status": "core_checks_passed_live_media_blocked",
+    "current_local_tests_passed": 683
   },
   "generation_accuracy_frontier": {
     "brief_preflight": "implemented_metadata_review_only",
@@ -484,7 +505,7 @@
       "landmark_max_error",
       "print_zone_containment"
     ],
-    "latest_local_tests_passed": 676,
+    "latest_local_tests_passed": 683,
     "real_generated_output_benchmark": "one_part_one_front_view_two_sequential_outputs_measured; constraints_failed; broader_benchmark_pending",
     "semantic_feature_review": "required",
     "physical_fit": "unvalidated",
@@ -750,6 +771,21 @@
       "archive": "brickmen-batch13-reviewer-v2.zip",
       "sha256": "d82a367ad21f168feaede0a5687c8398d07ccd3972e4b66994e4a2b8c7c65928",
       "bytes": 3051883,
+      "images": 50,
+      "records": 25
+    },
+    "hardcase_priority": {
+      "processor_version": "fortnite-semantic-critic-hardcase-queue/v2",
+      "unique_critic_items": 1287,
+      "unpaired_uncertainty_items": 99,
+      "duplicates_ignored": 0,
+      "queue_sha256": "71e756001a79b03328664132823a2602192e5fcd1be5f63aa3f4fd52e18fa02f",
+      "policy": "Unpaired uncertainty retained without translation-priority score; identical critic IDs count once, conflicts fail; no eligibility promotion."
+    },
+    "batch14_reviewer_archive": {
+      "archive": "brickmen-batch14-reviewer-v2.zip",
+      "sha256": "aa0de69802b2bc230457d5e23613e497aac376b7cb602ed44b9db7386e5950d6",
+      "bytes": 3272121,
       "images": 50,
       "records": 25
     }

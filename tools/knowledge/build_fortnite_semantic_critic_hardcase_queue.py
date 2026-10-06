@@ -13,7 +13,7 @@ from pathlib import Path
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[2]
-VERSION = "fortnite-semantic-critic-hardcase-queue/v1"
+VERSION = "fortnite-semantic-critic-hardcase-queue/v2"
 DEFAULT_INPUT = (
     ROOT
     / "knowledge"
@@ -51,6 +51,9 @@ def iter_jsonl(path: Path):
 
 def build(rows: list[dict[str, Any]]) -> dict[str, Any]:
     by_pair: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    source_files: dict[str, set[str]] = defaultdict(set)
+    seen: dict[str, dict[str, Any]] = {}
+    duplicate_count = 0
     for row in rows:
         if row.get("schema") != "fortnite-semantic-critic-evidence/v1":
             continue
@@ -61,6 +64,17 @@ def build(rows: list[dict[str, Any]]) -> dict[str, Any]:
         pair_id = str(row.get("translation_pair_id") or "")
         if not pair_id:
             raise ValueError("critic evidence missing translation_pair_id")
+        critic_id = row.get("critic_id")
+        if not isinstance(critic_id, str) or not critic_id.strip():
+            raise ValueError("critic evidence missing critic_id")
+        source_files[pair_id].add(str(row["source_review_file"]))
+        payload = {key: value for key, value in row.items() if key != "source_review_file"}
+        if critic_id in seen:
+            if payload != seen[critic_id]:
+                raise ValueError(f"conflicting duplicate critic_id: {critic_id}")
+            duplicate_count += 1
+            continue
+        seen[critic_id] = payload
         by_pair[pair_id].append(row)
 
     queue: list[dict[str, Any]] = []
@@ -70,20 +84,30 @@ def build(rows: list[dict[str, Any]]) -> dict[str, Any]:
         regions = sorted({str(item.get("region")) for item in items})
         source_only_count = sum(item.get("evidence_basis") == "source_only" for item in items)
         uncertain_count = decisions.get("uncertain", 0)
-        lower_confidence_count = sum(
+        # An unpaired uncertain feature is unresolved evidence, not an observed
+        # translation failure. Retain it for acquisition without score inflation.
+        unpaired_uncertainty = [item for item in items if item.get("decision") == "uncertain"
+                                and item.get("evidence_basis") != "observed_in_both"]
+        priority_items = [item for item in items if not (item.get("decision") == "uncertain"
+                           and item.get("evidence_basis") != "observed_in_both")]
+        priority_categories = {str(item.get("critic_category")) for item in priority_items}
+        priority_regions = {str(item.get("region")) for item in priority_items}
+        lower_confidence_priority_count = sum(
             isinstance(item.get("confidence"), (int, float))
             and float(item["confidence"]) < 0.9
-            for item in items
+            for item in priority_items
         )
         base_score = sum(
             DECISION_WEIGHT.get(str(item.get("decision")), 0)
-            for item in items
+            for item in priority_items
         )
-        category_diversity_bonus = max(len(categories) - 1, 0) * 2
-        region_diversity_bonus = max(len(regions) - 1, 0)
-        source_only_bonus = source_only_count * 2
-        uncertainty_bonus = uncertain_count * 3
-        lower_confidence_bonus = lower_confidence_count
+        lower_confidence_count = sum(isinstance(item.get("confidence"), (int, float))
+                                     and float(item["confidence"]) < 0.9 for item in items)
+        category_diversity_bonus = max(len(priority_categories) - 1, 0) * 2
+        region_diversity_bonus = max(len(priority_regions) - 1, 0)
+        source_only_bonus = sum(item.get("evidence_basis") == "source_only" for item in priority_items) * 2
+        uncertainty_bonus = sum(item.get("decision") == "uncertain" for item in priority_items) * 3
+        lower_confidence_bonus = lower_confidence_priority_count
 
         score = (
             base_score
@@ -95,7 +119,7 @@ def build(rows: list[dict[str, Any]]) -> dict[str, Any]:
         )
 
         source_review_ids = sorted({str(item["source_review_id"]) for item in items})
-        source_review_files = sorted({str(item["source_review_file"]) for item in items})
+        source_review_files = sorted(source_files[pair_id])
         source_hashes = sorted(
             {str(item["evidence"]["source_image_sha256"]) for item in items}
         )
@@ -112,7 +136,12 @@ def build(rows: list[dict[str, Any]]) -> dict[str, Any]:
                 "region_count": len(regions),
                 "source_only_item_count": source_only_count,
                 "uncertain_item_count": uncertain_count,
+                "unpaired_uncertainty_item_count": len(unpaired_uncertainty),
+                "translation_priority_item_count": len(priority_items),
+                "unpaired_uncertainty_critic_ids": sorted(item["critic_id"] for item in unpaired_uncertainty),
+                "source_only_omitted_item_count": sum(item.get("decision") == "omitted" and item.get("evidence_basis") == "source_only" for item in items),
                 "lower_confidence_item_count": lower_confidence_count,
+                "lower_confidence_priority_item_count": lower_confidence_priority_count,
                 "decision_counts": dict(sorted(decisions.items())),
                 "critic_categories": categories,
                 "regions": regions,
@@ -130,7 +159,7 @@ def build(rows: list[dict[str, Any]]) -> dict[str, Any]:
     queue.sort(
         key=lambda row: (
             -int(row["hardcase_score"]),
-            -int(row["critic_item_count"]),
+            -int(row["translation_priority_item_count"]),
             str(row["translation_pair_id"]),
         )
     )
@@ -143,12 +172,16 @@ def build(rows: list[dict[str, Any]]) -> dict[str, Any]:
         "schema": "fortnite-semantic-critic-hardcase-queue/v1",
         "processor_version": VERSION,
         "source_critic_items": len(rows),
+        "unique_critic_items": len(seen),
+        "duplicate_critic_items_ignored": duplicate_count,
+        "unpaired_uncertainty_items": sum(row["unpaired_uncertainty_item_count"] for row in queue),
         "queued_pairs": len(queue),
         "max_hardcase_score": max(score_values, default=0),
         "min_hardcase_score": min(score_values, default=0),
         "pairs_with_source_only_loss": sum(
-            int(row["source_only_item_count"]) > 0 for row in queue
+            int(row["source_only_omitted_item_count"]) > 0 for row in queue
         ),
+        "pairs_with_source_only_evidence": sum(int(row["source_only_item_count"]) > 0 for row in queue),
         "pairs_with_uncertainty": sum(
             int(row["uncertain_item_count"]) > 0 for row in queue
         ),
@@ -165,11 +198,16 @@ def build(rows: list[dict[str, Any]]) -> dict[str, Any]:
             "source_only_bonus_per_item": 2,
             "uncertainty_bonus_per_item": 3,
             "lower_confidence_bonus_per_item": 1,
+            "unpaired_uncertainty_contribution": 0,
+            "diversity_and_tie_break_inputs": "translation_priority_items_only",
         },
         "policy": [
             "The score is a deterministic evaluation-priority heuristic, not a quality label.",
             "Only explicit submitted-review critic evidence contributes to the queue.",
             "Measurement signals and unobserved surfaces do not contribute to scoring.",
+            "Uncertain annotations without observed_in_both evidence remain acquisition/review gaps and contribute no translation-priority score or tie-break bonus.",
+            "Identical critic IDs count once; conflicting duplicate IDs fail. All source-file links are retained.",
+            "Source-only loss counts only explicit omitted decisions, not source-only uncertainty.",
             "Every queue item remains canonical-ineligible and training-ineligible.",
             "Independent second review and explicit adjudication remain required before canonical promotion.",
         ],
