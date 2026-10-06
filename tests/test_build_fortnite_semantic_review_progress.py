@@ -40,11 +40,11 @@ def test_current_fortnite_semantic_review_progress_baseline() -> None:
     assert result["eligible_pairs"] == 744
     plan = json.loads((PROGRESS.parent / "fortnite-first-review-batch-plan.json").read_text(encoding="utf-8"))
     assert result["materialized_batch_count"] == plan["materialized_batch_count"]
-    assert result["complete_first_review_batch_count"] == 12
-    assert result["submitted_reviewer_records"] == 300
-    assert result["submitted_first_review_pairs"] == 300
-    assert result["remaining_first_review_pairs"] == 444
-    assert result["submitted_semantic_annotations"] == 1243
+    assert result["complete_first_review_batch_count"] == 13
+    assert result["submitted_reviewer_records"] == 325
+    assert result["submitted_first_review_pairs"] == 325
+    assert result["remaining_first_review_pairs"] == 419
+    assert result["submitted_semantic_annotations"] == 1383
     assert result["independently_double_reviewed_pairs"] == 0
     assert result["adjudicated_pairs"] == 0
     assert result["invalid_review_records"] == 0
