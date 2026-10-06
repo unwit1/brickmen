@@ -143,25 +143,8 @@ def _try_case_insensitive(base: Path, rel: Path) -> Path | None:
 
 
 def resolve_reference(ldraw_root: Path, current_file: Path, ref: str) -> Path | None:
-    normalized = Path(ref.replace("\\", "/"))
-    candidates = [
-        current_file.parent / normalized,
-        ldraw_root / "parts" / normalized,
-        ldraw_root / "p" / normalized,
-        ldraw_root / "models" / normalized,
-        ldraw_root / normalized,
-    ]
-    for candidate in candidates:
-        if candidate.is_file():
-            return candidate.resolve()
-
-    bases = [current_file.parent, ldraw_root / "parts", ldraw_root / "p", ldraw_root / "models", ldraw_root]
-    for base in bases:
-        if base.exists():
-            found = _try_case_insensitive(base, normalized)
-            if found:
-                return found.resolve()
-    return None
+    matches = reference_candidates(ldraw_root, current_file, ref)
+    return matches[0] if matches else None
 
 
 def resolve_root_file(ldraw_root: Path, root_file: str) -> Path:
@@ -175,6 +158,25 @@ def resolve_root_file(ldraw_root: Path, root_file: str) -> Path:
     return resolved
 
 
+def reference_candidates(ldraw_root: Path, current_file: Path, reference: str, *, extra_bases=()) -> list[Path]:
+    """Expose all local lookup matches so appearance inventory can reject shadows."""
+    normalized = Path(reference.replace("\\", "/"))
+    bases = [current_file.parent, ldraw_root / "parts", ldraw_root / "p",
+             ldraw_root / "models", ldraw_root, *extra_bases]
+    matches = []
+    # Preserve the resolver's original exact-name-first priority. Case-insensitive
+    # fallback comes only after all exact matches, and aliases are deduplicated.
+    for base in bases:
+        candidate = base / normalized
+        if candidate.is_file() and candidate.resolve() not in matches:
+            matches.append(candidate.resolve())
+    for base in bases:
+        found = _try_case_insensitive(base, normalized) if base.is_dir() else None
+        if found and found.resolve() not in matches:
+            matches.append(found.resolve())
+    return matches
+
+
 def _vertex_tokens(tokens: Sequence[str], start: int) -> tuple[float, float, float]:
     return tuple(map(float, tokens[start : start + 3]))  # type: ignore[return-value]
 
@@ -185,6 +187,7 @@ def flatten_ldraw(
     *,
     strict_missing: bool = True,
     confine_to_library: bool = False,
+    inventory_texmap_geometry: bool = False,
     max_depth: int = 128,
 ) -> dict[str, Any]:
     root = Path(ldraw_root).resolve()
@@ -249,6 +252,14 @@ def flatten_ldraw(
             stripped = raw.strip()
             if not stripped:
                 continue
+            # Inventory all referenced branches, including TEXMAP comment-wrapped
+            # geometry. This mode is conservative dependency discovery, not a
+            # textured mesh exporter: fallback geometry is also retained.
+            wrapped = stripped.split(maxsplit=2)
+            if inventory_texmap_geometry and wrapped[:2] == ["0", "!:"]:
+                stripped = wrapped[2].strip() if len(wrapped) == 3 else ""
+                if not stripped or stripped.split()[0] not in {"1", "2", "3", "4", "5"}:
+                    raise ValueError(f"Malformed TEXMAP wrapped geometry in {label}")
             tokens = stripped.split()
             line_type = tokens[0]
             if line_type in line_counts:
@@ -392,6 +403,7 @@ def flatten_ldraw(
         "unresolved_references": unresolved,
         "triangles_ldu": triangles,
         "production_geometry_authority": False,
+        "geometry_mode": "texmap_all_branches_inventory" if inventory_texmap_geometry else "standard_geometry",
         "warning": (
             "Flattened LDraw geometry is reference CAD. Nominal LDU conversion does "
             "not establish mould tolerances, fit forces, friction, or printable clearances."

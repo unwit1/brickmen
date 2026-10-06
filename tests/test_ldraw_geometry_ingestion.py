@@ -170,3 +170,14 @@ def test_manifest_hashes_non_utf8_bytes_without_changing_replacement_decoding(tm
     assert result["triangles_ldu"][0] == (
         (0.0, 0.0, 0.0), (5.0, 0.0, 0.0), (0.0, 5.0, 0.0)
     )
+
+
+def test_texmap_inventory_discovers_wrapped_subfiles_without_changing_mesh_default(tmp_path):
+    root = synthetic_library(tmp_path)
+    parent = root / "parts/root.dat"
+    parent.write_text("0 !: 1 16 0 0 0 1 0 0 0 1 0 0 0 1 s/child.dat\n")
+    normal = flatten_ldraw(root, "root.dat")
+    inventory = flatten_ldraw(root, "root.dat", inventory_texmap_geometry=True)
+    assert normal["source_file_count"] == 1 and normal["triangle_count"] == 0
+    assert inventory["source_file_count"] == 2
+    assert inventory["geometry_mode"] == "texmap_all_branches_inventory"

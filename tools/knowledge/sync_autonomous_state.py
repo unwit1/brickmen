@@ -56,7 +56,12 @@ def synchronize(state, progress):
             gap["description"] = instruction
             gap["status"] = "pending_independent_second_review_and_remaining_first_review"
     for task in result.get("highest_value_tasks", []):
-        if "Fortnite first-review" in task.get("task", ""):
+        text = task.get("task", "").casefold()
+        if (task.get("id") == "fortnite_semantic_first_review"
+                or "fortnite first-review" in text
+                or text.startswith("review first-review batch ")
+                or text.startswith("first-review coverage is complete")):
+            task["id"] = "fortnite_semantic_first_review"
             task["task"] = first_step + "; obtain independent second reviews and adjudicate before canonical promotion."
     result["continuation"] = {"instruction": instruction}
     result["completed_batches_are_historical_snapshots"] = True

@@ -396,7 +396,7 @@ def test_snapshot_includes_color_configuration_and_rejects_untracked_textures(tm
     assert any(d["path"] == "LDConfig.ldr" and d["sha256"] == RENDERER.sha256(colors) for d in deps)
     part.write_text(part.read_text() + "0 !TEXMAP START PLANAR 0 0 0 1 0 0 0 1 0 untracked.png\n")
     record["sha256"] = RENDERER.sha256(part)
-    with pytest.raises(ValueError, match="texture dependency inventory"):
+    with pytest.raises(FileNotFoundError, match="Missing texture dependency"):
         RENDERER.dependency_snapshot(root, record)
 
 
@@ -413,3 +413,156 @@ def test_render_command_sets_library_and_isolated_settings(tmp_path, monkeypatch
     assert f"-IniFile={settings}" in calls[0]
     assert "-LDrawZip=" in calls[0] and "-AllowPrimitiveSubstitution=0" in calls[0]
     assert "-AutoCrop=0" in calls[0]
+    assert "-Texmaps=1" in calls[0] and "-TextureStuds=0" in calls[0]
+    assert "-TextureFilterType=9987" in calls[0] and "-AnisoLevel=1" in calls[0]
+
+
+def textured_library(tmp_path, gloss=False):
+    from PIL import Image
+    root = tmp_path / "library"
+    (root / "parts/textures").mkdir(parents=True)
+    child = root / "parts/child.dat"
+    child.write_text("0 Child\n0 !LICENSE CC0\n3 16 0 0 0 1 0 0 0 1 0\n")
+    part = root / "parts/part.dat"
+    suffix = ' GLOSSMAP "shine map.png"' if gloss else ""
+    part.write_text('0 Part\n0 !LICENSE CC0\n0 !TEXMAP START PLANAR 0 0 0 1 0 0 0 1 0 "face map.png"' + suffix +
+                    '\n0 !: 1 16 0 0 0 1 0 0 0 1 0 0 0 1 child.dat\n0 !TEXMAP END\n')
+    Image.new("RGBA", (4, 4), (255, 0, 0, 255)).save(root / "parts/textures/face map.png")
+    if gloss:
+        Image.new("L", (4, 4), 128).save(root / "parts/textures/shine map.png")
+    return root, {"source_path": "parts/part.dat", "sha256": RENDERER.sha256(part), "reference_asset_id": "fixture"}
+
+
+def test_texture_and_wrapped_child_bytes_bind_render_revision(tmp_path):
+    root, record = textured_library(tmp_path)
+    dependencies, original = RENDERER.dependency_snapshot(root, record)
+    assert {d["path"] for d in dependencies} == {"parts/part.dat", "parts/child.dat", "parts/textures/face map.png"}
+    texture = next(d for d in dependencies if d["kind"] == "texture")
+    assert texture["roles"] == ["texture"]
+    assert texture["references"][0]["parent"] == "parts/part.dat"
+    assert RENDERER.training_rights(dependencies) == "requires_permission"
+    from PIL import Image
+    Image.new("RGBA", (4, 4), (0, 0, 255, 255)).save(root / texture["path"])
+    assert RENDERER.dependency_snapshot(root, record)[1] != original
+    with pytest.raises(ValueError, match="pinned"):
+        RENDERER.dependency_snapshot(root, {**record, "dependencies_sha256": original})
+
+
+def test_texture_license_declaration_is_byte_bound_and_cannot_override_header(tmp_path):
+    root, record = textured_library(tmp_path)
+    texture = "parts/textures/face map.png"
+    record["dependency_licenses"] = {texture: {"license": "CC BY 4.0", "sha256": RENDERER.sha256(root / texture), "provenance_id": "synthetic license fixture"}}
+    dependencies, _ = RENDERER.dependency_snapshot(root, record)
+    assert RENDERER.training_rights(dependencies) == "allowed_with_attribution"
+    record["dependency_licenses"][texture]["sha256"] = "f" * 64
+    with pytest.raises(ValueError, match="byte-bound license"):
+        RENDERER.dependency_snapshot(root, record)
+    record["dependency_licenses"] = {"parts/child.dat": {"license": "CC BY 4.0", "sha256": RENDERER.sha256(root / "parts/child.dat"), "provenance_id": "fixture"}}
+    with pytest.raises(ValueError, match="conflicts with source header"):
+        RENDERER.dependency_snapshot(root, record)
+
+
+@pytest.mark.parametrize("mutation,message", [
+    (lambda root: (root / "parts/textures/face map.png").write_bytes(b"invalid image"), "Invalid PNG texture"),
+    (lambda root: (root / "parts/textures/face map.png").unlink(), "Missing texture dependency"),
+    (lambda root: (root / "textures").mkdir(), None),
+])
+def test_texture_input_validation(tmp_path, mutation, message):
+    root, record = textured_library(tmp_path)
+    mutation(root)
+    if message is None:
+        from PIL import Image
+        Image.new("RGBA", (4, 4), (0, 0, 255, 255)).save(root / "textures/face map.png")
+        message = "Ambiguous texture lookup"
+    with pytest.raises((ValueError, OSError), match=message):
+        RENDERER.dependency_snapshot(root, record)
+
+
+@pytest.mark.parametrize("declaration, message", [
+    ('0 !TEXMAP START PLANAR 0 0 0 1 0 0 0 1 0 ../escape.png', "outside library"),
+    ('0 !TEXMAP START PLANAR 0 0 0 1 0 0 0 1 0 "C:/escape.png"', "outside library"),
+    ('0 !TEXMAP START PLANAR 0 0 0 1 0 0 0 1 0 "unterminated', "quoting"),
+    ('0 !TEXMAP START PLANAR nan 0 0 1 0 0 0 1 0 face.png', "nonfinite"),
+    ('0 !TEXMAP START PLANAR 0 0 0 1 0 0 2 0 0 face.png', "degenerate"),
+    ('0 !TEXMAP START CUBIC 0 0 0 1 0 0 0 1 0 face.png', "projection"),
+    ('0 !TEXMAP NEXT PLANAR 0 0 0 1 0 0 0 1 0 face.png\n0 BFC CERTIFY CCW', "must precede"),
+    ('0 !TEXMAP NEXT PLANAR 0 0 0 1 0 0 0 1 0 face.png', "no following"),
+    ('0 !DATA embedded.png', "embedded"),
+])
+def test_unsupported_or_malformed_texture_declarations_fail_closed(declaration, message):
+    with pytest.raises(ValueError, match=message):
+        RENDERER.texture_references(declaration, "test.dat")
+
+
+@pytest.mark.parametrize("method,angles", [("PLANAR", ""), ("CYLINDRICAL", " 360"), ("SPHERICAL", " 360 180")])
+def test_supported_projection_parameter_counts(method, angles):
+    refs = RENDERER.texture_references(f'0 !TEXMAP START {method} 0 0 0 1 0 0 0 1 0{angles} "face map.png"', "test.dat")
+    assert refs[0]["reference"] == "face map.png"
+    assert refs[0]["projection"] == method
+
+
+def test_glossmap_is_inventoried_but_cannot_silently_render_without_support(tmp_path, monkeypatch):
+    root, record = textured_library(tmp_path, gloss=True)
+    dependencies, _ = RENDERER.dependency_snapshot(root, record)
+    assert any("glossmap" in d.get("roles", []) for d in dependencies)
+    executable = tmp_path / "renderer.exe"
+    executable.write_bytes(b"synthetic renderer")
+    manifest = tmp_path / "source.jsonl"
+    manifest.write_text(json.dumps(record) + "\n")
+    output = tmp_path / "output"
+    monkeypatch.setattr(sys, "argv", ["renderer", "--manifest", str(manifest), "--ldraw-root", str(root), "--ldview", str(executable), "--library-revision", "fixture", "--output-dir", str(output)])
+    monkeypatch.setattr(RENDERER, "render", lambda *args: pytest.fail("Unsupported glossmap reached renderer"))
+    assert RENDERER.main() == 2
+    report = json.loads((output / "import_report.json").read_text())
+    assert report["renders"] == 0 and "GLOSSMAP" in report["errors"][0]["reason"]
+
+
+@pytest.mark.parametrize("license", [None, "not CC0", "CC BY 4.0 with additional restrictions", "CC BY-NC 4.0"])
+def test_unknown_or_restricted_dependency_cannot_inherit_open_root_rights(license):
+    dependencies = [{"kind": "geometry", "license": "CC0"}, {"kind": "texture", "license": license}]
+    assert RENDERER.training_rights(dependencies) == "requires_permission"
+
+
+def test_texmap_whitespace_variants_do_not_hide_assets():
+    references = RENDERER.texture_references('0\t!TEXMAP  START PLANAR 0 0 0 1 0 0 0 1 0 "face map.png"', "test.dat")
+    assert references[0]["reference"] == "face map.png"
+    with pytest.raises(ValueError, match="embedded"):
+        RENDERER.texture_references("0  !DATA image.png", "test.dat")
+
+
+@pytest.mark.parametrize("change", ["texture_bytes", "shadow_file", "color_configuration"])
+def test_changed_appearance_inputs_during_render_cannot_enter_manifest(tmp_path, monkeypatch, change):
+    from PIL import Image
+    root, record = textured_library(tmp_path)
+    executable = tmp_path / "renderer.exe"
+    executable.write_bytes(b"synthetic renderer")
+    manifest = tmp_path / "source.jsonl"
+    manifest.write_text(json.dumps(record) + "\n")
+    output = tmp_path / "output"
+    monkeypatch.setattr(sys, "argv", ["renderer", "--manifest", str(manifest), "--ldraw-root", str(root), "--ldview", str(executable), "--library-revision", "fixture", "--output-dir", str(output), "--profile", "physical_like", "--width", "8", "--height", "8"])
+    monkeypatch.setattr(RENDERER, "VIEWS", [("front", 0, 0)])
+    def fake_render(exe, source, target, *args):
+        Image.new("RGBA", (8, 8), (255, 0, 0, 255)).save(target)
+        if change == "texture_bytes":
+            Image.new("RGBA", (4, 4), (0, 0, 255, 255)).save(root / "parts/textures/face map.png")
+        elif change == "shadow_file":
+            (root / "textures").mkdir()
+            Image.new("RGBA", (4, 4), (255, 0, 0, 255)).save(root / "textures/face map.png")
+        else:
+            (root / "LDConfig.ldr").write_text("0 Added during rendering\n")
+        return 0, ""
+    monkeypatch.setattr(RENDERER, "render", fake_render)
+    assert RENDERER.main() == 2
+    assert (output / "render_manifest.jsonl").read_text() == ""
+    errors = json.loads((output / "import_report.json").read_text())["errors"]
+    assert len(errors) == 1 and errors[0]["stage"] == "dependency_integrity"
+
+
+def test_corrupt_png_crc_is_reported_as_invalid_texture(tmp_path):
+    root, record = textured_library(tmp_path)
+    texture = root / "parts/textures/face map.png"
+    raw = bytearray(texture.read_bytes())
+    raw[29] ^= 1  # First byte of IHDR checksum; preserve PNG signature and dimensions.
+    texture.write_bytes(raw)
+    with pytest.raises(ValueError, match="Invalid PNG texture"):
+        RENDERER.dependency_snapshot(root, record)

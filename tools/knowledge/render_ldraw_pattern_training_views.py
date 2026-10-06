@@ -16,16 +16,16 @@ The manifest output is suitable for detection/view/geometry/style-measurement ex
 but authority remains community_structured rather than LEGO-primary.
 """
 from __future__ import annotations
-import argparse,hashlib,json,math,subprocess,sys,uuid
+import argparse,hashlib,io,json,math,re,shlex,subprocess,sys,uuid
 from PIL import Image
 from datetime import datetime,timezone
-from pathlib import Path
+from pathlib import Path, PureWindowsPath
 
 ROOT=Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:sys.path.insert(0,str(ROOT))
-from tools.geometry.ingest_ldraw_geometry import flatten_ldraw
+from tools.geometry.ingest_ldraw_geometry import flatten_ldraw, reference_candidates
 
-VERSION="ldraw-pattern-multiview-render/v4"
+VERSION="ldraw-pattern-multiview-render/v5"
 
 VIEWS=[
  ("front",0,0),
@@ -58,31 +58,143 @@ def render_identity(rec, profile, view, configuration):
           "configuration":configuration,"version":VERSION}
  return "ldrawrender-"+hashlib.sha256(json.dumps(payload,sort_keys=True,separators=(",",":")).encode()).hexdigest()[:24]
 
+def texture_references(text, label):
+ """Validate external-PNG TEXMAP declarations and list their appearance assets."""
+ references=[]; active=False; fallback=False; next_pending=False
+ for number,raw in enumerate(text.splitlines(),1):
+  line=raw.strip()
+  if not line:continue
+  if next_pending:
+   if line.split()[0] not in {"1","2","3","4","5"}:
+    raise ValueError(f"{label}:{number}: TEXMAP NEXT must precede a geometry line")
+   next_pending=False
+  words=line.split()
+  if words[:2] in (["0","FILE"],["0","!DATA"]):
+   raise ValueError(f"{label}:{number}: embedded MPD/DATA assets are not inventoried")
+  if words==["0","STEP"]:
+   active=False;fallback=False
+  if words[:2]!=["0","!TEXMAP"]:continue
+  try:tokens=shlex.split(line,posix=True)
+  except ValueError as exc:raise ValueError(f"{label}:{number}: malformed TEXMAP quoting") from exc
+  if len(tokens)<3:raise ValueError(f"{label}:{number}: malformed TEXMAP command")
+  command=tokens[2]
+  if command in {"END","FALLBACK"}:
+   if len(tokens)!=3:raise ValueError(f"{label}:{number}: malformed TEXMAP {command}")
+   if command=="FALLBACK":
+    if not active or fallback:raise ValueError(f"{label}:{number}: TEXMAP FALLBACK without START or repeated")
+    fallback=True
+   if command=="END":active=False;fallback=False
+   continue
+  if command not in {"START","NEXT"} or len(tokens)<4:
+   raise ValueError(f"{label}:{number}: unsupported TEXMAP command")
+  if active:raise ValueError(f"{label}:{number}: nested TEXMAP requires verified renderer support")
+  count={"PLANAR":9,"CYLINDRICAL":10,"SPHERICAL":11}.get(tokens[3])
+  if count is None:raise ValueError(f"{label}:{number}: unsupported TEXMAP projection")
+  if len(tokens) not in {5+count,7+count}:
+   raise ValueError(f"{label}:{number}: malformed TEXMAP parameters or filename")
+  try:parameters=[float(v) for v in tokens[4:4+count]]
+  except ValueError as exc:raise ValueError(f"{label}:{number}: invalid TEXMAP coordinates") from exc
+  if any(not math.isfinite(v) for v in parameters) or any(v<=0 for v in parameters[9:]):
+   raise ValueError(f"{label}:{number}: nonfinite coordinates or nonpositive TEXMAP angles")
+  u=[parameters[i+3]-parameters[i] for i in range(3)]
+  v=[parameters[i+6]-parameters[i] for i in range(3)]
+  cross=[u[1]*v[2]-u[2]*v[1],u[2]*v[0]-u[0]*v[2],u[0]*v[1]-u[1]*v[0]]
+  if not any(cross) or any(not math.isfinite(c) for c in cross):
+   raise ValueError(f"{label}:{number}: degenerate TEXMAP projection")
+  assets=[("texture",tokens[4+count])]
+  if len(tokens)==7+count:
+   if tokens[5+count]!="GLOSSMAP":raise ValueError(f"{label}:{number}: malformed TEXMAP GLOSSMAP")
+   assets.append(("glossmap",tokens[6+count]))
+  for kind,name in assets:
+   normalized=name.replace("\\","/")
+   if not name or PureWindowsPath(name).drive or normalized.startswith("/") or ".." in Path(normalized).parts:
+    raise ValueError(f"{label}:{number}: texture path outside library")
+   if Path(normalized).suffix.casefold()!=".png":
+    raise ValueError(f"{label}:{number}: TEXMAP assets must be external PNG files")
+   references.append({"kind":kind,"reference":normalized,"parent":label,"line":number,"projection":tokens[3]})
+  active=command=="START";fallback=False;next_pending=command=="NEXT"
+ if next_pending:raise ValueError(f"{label}: TEXMAP NEXT has no following geometry")
+ return references
+
+def resolve_texture(root,current,name):
+ """Use the shared resolver, preferring textures/ as required by TEXMAP."""
+ for reference in ("textures/"+name,name):
+  # Reject shadow copies: different loader search orders must not select an
+  # unrecorded appearance asset. The local library is the only search boundary.
+  matches=set(reference_candidates(root,current,reference,
+              extra_bases=(root/"unofficial/parts",root/"unofficial/p")))
+  if matches:
+   if len(matches)!=1:raise ValueError(f"Ambiguous texture lookup: {name}")
+   path=matches.pop()
+   if not path.is_relative_to(root.resolve()):raise ValueError("Texture dependency outside library")
+   return path
+ raise FileNotFoundError(f"Missing texture dependency: {name}")
+
 def dependency_snapshot(root,rec):
  """Reuse hierarchy ingestion to bind every resolved source file, not just the root."""
- result=flatten_ldraw(root,rec["source_path"],strict_missing=True,confine_to_library=True)
- dependencies=[{"path":d["path"],"sha256":d["sha256"],"license":d["metadata"].get("license")}
+ root=root.resolve()
+ result=flatten_ldraw(root,rec["source_path"],strict_missing=True,confine_to_library=True,inventory_texmap_geometry=True)
+ dependencies=[{"path":d["path"],"sha256":d["sha256"],"license":d["metadata"].get("license"),"kind":"geometry"}
                for d in result["dependencies"]]
- payload={"schema":"ldraw-dependency-snapshot/v1","files":[{"path":d["path"],"sha256":d["sha256"]} for d in dependencies]}
- digest=hashlib.sha256(json.dumps(payload,sort_keys=True,separators=(",",":")).encode()).hexdigest()
+ payload={"schema":"ldraw-dependency-snapshot/v2"}
  root_path=(root/rec["source_path"]).resolve()
  if sha256(root_path)!=rec.get("sha256"):
   raise ValueError("Root bytes changed during dependency inventory")
+ textures={}
  for dependency in dependencies:
-  text=(root/dependency["path"]).read_text(encoding="utf-8",errors="replace")
-  if any(line.strip().upper().startswith("0 !TEXMAP") for line in text.splitlines()):
-   raise ValueError("Texture-mapped parts require a texture dependency inventory before rendering")
+  source=root/dependency["path"]
+  raw=source.read_bytes()
+  if hashlib.sha256(raw).hexdigest()!=dependency["sha256"]:
+   raise ValueError("Geometry bytes changed during dependency inventory")
+  for ref in texture_references(raw.decode("utf-8",errors="replace"),dependency["path"]):
+   path=resolve_texture(root,source,ref["reference"])
+   label=path.relative_to(root).as_posix(); raw_texture=path.read_bytes()
+   try:
+    with Image.open(io.BytesIO(raw_texture)) as png:
+     if png.format!="PNG":raise ValueError(f"Texture is not PNG: {label}")
+     png.verify()
+   except (OSError,SyntaxError) as exc:
+    raise ValueError(f"Invalid PNG texture: {label}") from exc
+   digest=hashlib.sha256(raw_texture).hexdigest()
+   item=textures.setdefault(label,{"path":label,"sha256":digest,"license":None,"kind":"texture","roles":[],"references":[]})
+   if digest!=item["sha256"]:raise ValueError("Texture bytes changed during dependency inventory")
+   if ref["kind"] not in item["roles"]:item["roles"].append(ref["kind"])
+   item["references"].append(ref)
+ dependencies.extend(textures.values())
  color_config=root/"LDConfig.ldr"
  if color_config.is_file():
   if not color_config.resolve().is_relative_to(root.resolve()):
    raise ValueError("Color configuration outside library")
-  dependencies.append({"path":"LDConfig.ldr","sha256":sha256(color_config),"license":None})
+  dependencies.append({"path":"LDConfig.ldr","sha256":sha256(color_config),"license":None,"kind":"color_configuration"})
+ declarations=rec.get("dependency_licenses") or {}
+ if not isinstance(declarations,dict):raise ValueError("dependency_licenses must be an object")
+ for dependency in dependencies:
+  declaration=declarations.get(dependency["path"])
+  if declaration is not None:
+   if (not isinstance(declaration,dict) or declaration.get("sha256")!=dependency["sha256"]
+       or not isinstance(declaration.get("license"),str) or not declaration["license"].strip()
+       or not isinstance(declaration.get("provenance_id"),str) or not declaration["provenance_id"].strip()):
+    raise ValueError(f"Invalid byte-bound license declaration: {dependency['path']}")
+   if dependency["license"] and declaration["license"]!=dependency["license"]:
+    raise ValueError(f"License declaration conflicts with source header: {dependency['path']}")
+   dependency["license"]=declaration["license"];dependency["license_provenance_id"]=declaration["provenance_id"]
  dependencies.sort(key=lambda d:d["path"])
  payload["files"]=[{"path":d["path"],"sha256":d["sha256"]} for d in dependencies]
  digest=hashlib.sha256(json.dumps(payload,sort_keys=True,separators=(",",":")).encode()).hexdigest()
  if rec.get("dependencies_sha256") and rec["dependencies_sha256"]!=digest:
   raise ValueError("Dependency snapshot does not match the pinned dependencies_sha256")
  return dependencies,digest
+
+def training_rights(dependencies):
+ """A permissive root cannot erase unknown/restricted dependency licenses."""
+ licenses=[d.get("license") for d in dependencies if d["kind"]!="color_configuration"]
+ statuses=[]
+ for license in licenses:
+  if isinstance(license,str) and re.fullmatch(r"(?:Licensed under |Redistributable under )?CC0(?: 1\.0)?(?: : see .+)?",license.strip(),re.I):statuses.append("allowed_open")
+  elif isinstance(license,str) and re.fullmatch(r"(?:Licensed under |Redistributable under )?CC BY 4\.0(?: : see .+)?",license.strip(),re.I):statuses.append("allowed_with_attribution")
+  else:statuses.append("requires_permission")
+ if not statuses or "requires_permission" in statuses:return "requires_permission"
+ return "allowed_with_attribution" if "allowed_with_attribution" in statuses else "allowed_open"
 
 def render(exe,source,out,lat,lon,width,height,edges,zoom,root,settings):
  cmd=[
@@ -91,6 +203,10 @@ def render(exe,source,out,lat,lon,width,height,edges,zoom,root,settings):
   "-LDrawZip=",
   f"-IniFile={settings}",
   "-AllowPrimitiveSubstitution=0",
+  "-Texmaps=1",
+  "-TextureStuds=0",
+  "-TextureFilterType=9987",
+  "-AnisoLevel=1",
   "-AutoCrop=0",
   f"-ProcessLDConfig={1 if (root/'LDConfig.ldr').is_file() else 0}",
   f"-LDConfig={root/'LDConfig.ldr'}",
@@ -126,7 +242,7 @@ def main():
  if not exe.is_file():ap.error("LDView executable not found")
  settings=out/"brickmen-render-settings.ini"
  settings.write_text("[General]\n",encoding="utf-8",newline="\n")
- configuration={"settings_sha256":sha256(settings),"primitive_substitution":False,"autocrop":False,"width":args.width,"height":args.height,"zoom":args.zoom,
+ configuration={"settings_sha256":sha256(settings),"primitive_substitution":False,"autocrop":False,"texture_mapping":True,"texture_studs":False,"texture_filter":9987,"anisotropy":1,"width":args.width,"height":args.height,"zoom":args.zoom,
                 "renderer_sha256":sha256(exe),"library_revision":args.library_revision}
  profiles=[]
  if args.profile in ("physical_like","both"):profiles.append(("physical_like",False))
@@ -141,6 +257,8 @@ def main():
    failures+=1;errors.append({"source_path":rec["source_path"],"stage":"source_integrity","reason":"Source hash mismatch"});continue
   try:
    dependencies,dependencies_sha256=dependency_snapshot(root,rec)
+   if any("glossmap" in d.get("roles",[]) for d in dependencies):
+    raise ValueError("GLOSSMAP rendering requires verified renderer support; assets are inventoried but rendering is blocked")
   except (ValueError,OSError,RecursionError) as exc:
    failures+=1;errors.append({"source_path":rec["source_path"],"stage":"dependency_inventory","reason":str(exc)});continue
   record_configuration={**configuration,"dependencies_sha256":dependencies_sha256}
@@ -176,7 +294,9 @@ def main():
       "render_profile":profile,
       "render_configuration":record_configuration,
       "geometry_revision":dependencies_sha256,
-      "geometry_dependencies":dependencies,
+      "geometry_dependencies":[d for d in dependencies if d["kind"]=="geometry"],
+      "appearance_dependencies":[d for d in dependencies if d["kind"]!="geometry"],
+      "render_dependencies":dependencies,
       "dependency_binding":"verified_expected" if rec.get("dependencies_sha256") else "captured_current_bytes",
       "view":view,
       "latitude":lat,
@@ -186,11 +306,14 @@ def main():
       "edge_lines":edges,
       "local_path":str(target),
       "sha256":sha256(target),
-      "training_rights_status":"allowed_with_attribution" if "CC BY" in str(rec.get("license") or "") else "allowed_open" if "CC0" in str(rec.get("license") or "") else "requires_permission",
+      "training_rights_status":training_rights(dependencies),
       "processor_version":VERSION,
       "created_at":now_iso()
     })
-  if sha256(exe)!=configuration["renderer_sha256"] or sha256(settings)!=configuration["settings_sha256"] or any(not (root/d["path"]).is_file() or sha256(root/d["path"])!=d["sha256"] for d in dependencies):
+  try:
+   changed=dependency_snapshot(root,rec)[1]!=dependencies_sha256
+  except (ValueError,OSError,RecursionError):changed=True
+  if changed or sha256(exe)!=configuration["renderer_sha256"] or sha256(settings)!=configuration["settings_sha256"]:
    failures+=1;errors.append({"source_path":rec["source_path"],"stage":"dependency_integrity","reason":"Source dependencies changed during rendering"})
   else:
    records.extend(source_records)

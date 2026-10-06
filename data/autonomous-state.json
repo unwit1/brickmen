@@ -3,7 +3,7 @@
   "project": "brickmen",
   "mode": "autonomous",
   "status": "active",
-  "updated_date": "2026-10-05",
+  "updated_date": "2026-10-06",
   "base_commit_before_bootstrap": "bda2cac8ea8b68bb9e3e5b4d0cf380a9c6ee3ae6",
   "current_objective": "advance_semantic_multiview_visual_grammar_after_completing_architecture_input_safety",
   "current_workstream": "fortnite_semantic_first_review_batch_0012_plus_exact_release_multiview",
@@ -35,7 +35,8 @@
   "highest_value_tasks": [
     {
       "priority": "P0",
-      "task": "Review first-review batch 0011; obtain independent second reviews and adjudicate before canonical promotion."
+      "task": "Review first-review batch 0012; obtain independent second reviews and adjudicate before canonical promotion.",
+      "id": "fortnite_semantic_first_review"
     },
     {
       "priority": "P0",
@@ -455,13 +456,20 @@
       "landmark_max_error",
       "print_zone_containment"
     ],
-    "latest_local_tests_passed": 574,
+    "latest_local_tests_passed": 604,
     "real_generated_output_benchmark": "pending",
     "semantic_feature_review": "required",
     "physical_fit": "unvalidated",
-    "next": "Benchmark actual generated outputs with reviewed registration and P0 feature checks; audit renderer configuration and dependent appearance assets.",
+    "next": "Run a real LDView texture smoke test and actual generated-output benchmarks; broaden the existing indexer for other part families.",
     "renderer_configuration": "isolated_preferences_explicit_library_color_config_and_fresh_png_checks",
-    "texture_mapped_parts": "blocked_until_texture_dependency_inventory"
+    "texture_mapped_parts": "external_PNG_inventory_validated; actual_renderer_smoke_pending",
+    "texture_dependency_inventory": "v2; geometry, external PNG textures, glossmaps and color configuration pinned",
+    "unsupported_texture_features": [
+      "GLOSSMAP rendering",
+      "embedded MPD/DATA assets",
+      "nested TEXMAP blocks"
+    ],
+    "dependency_license_gate": "all geometry/texture dependency licenses required; byte-bound provenance declarations supported"
   },
   "semantic_evidence_gate": {
     "queue_version": "v3",

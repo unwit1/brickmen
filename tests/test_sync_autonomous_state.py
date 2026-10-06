@@ -53,3 +53,23 @@ def test_completed_first_reviews_do_not_claim_canonical_completion():
     result = synchronize(state, progress)
     assert "independent_second_review" in result["current_workstream"]
     assert "explicit adjudication" in result["continuation"]["instruction"]
+
+
+def test_priority_moves_again_after_generated_task_text_replaces_original():
+    state, progress = sample()
+    first = synchronize(state, progress)
+    progress.update(submitted_first_review_pairs=275, remaining_first_review_pairs=469,
+                    next_materialized_incomplete_batch=None)
+    second = synchronize(first, progress)
+    assert second["highest_value_tasks"][0]["id"] == "fortnite_semantic_first_review"
+    assert "0012" in second["highest_value_tasks"][0]["task"]
+    assert "0011" not in second["highest_value_tasks"][0]["task"]
+
+
+def test_existing_generated_priority_is_migrated_without_duplicate_tasks():
+    state, progress = sample()
+    state["highest_value_tasks"][0]["task"] = "Review first-review batch 0010; obtain independent second reviews."
+    result = synchronize(state, progress)
+    assert len(result["highest_value_tasks"]) == 1
+    assert result["highest_value_tasks"][0]["id"] == "fortnite_semantic_first_review"
+    assert "0011" in result["highest_value_tasks"][0]["task"]
