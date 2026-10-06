@@ -1,218 +1,185 @@
 #!/usr/bin/env python3
-"""Index patterned minifigure parts from a local LDraw Parts Library.
+"""Index local LDraw parts; optional previews reuse the verified renderer.
 
-The LDraw Parts Library is community-run and not authored/approved by LEGO. This tool
-preserves each file's LDraw license header and treats the library as secondary structured
-evidence for official LEGO part/pattern reconstructions.
-
-Optional rendering uses LDView if --ldview is supplied. Generated previews stay local.
+Default selection and IDs remain compatible with the minifigure-pattern catalog.
+Broader catalogs require declared standalone Part/Shortcut headers. LDraw remains
+community reconstruction evidence; its identifiers are not LEGO design IDs.
 """
-
 from __future__ import annotations
 
 import argparse
 import hashlib
 import json
-import re
-import shutil
-import subprocess
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-PROCESSOR_VERSION = "ldraw-minifig-pattern-index/v1"
+ROOT = Path(__file__).resolve().parents[2]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+from tools.geometry.ingest_ldraw_geometry import header_metadata
 
-MINIFIG_TOKENS = (
-    "minifig head",
-    "minifig torso",
-    "minifig hips",
-    "minifig leg",
-    "minifig arm",
-    "minifig hand",
-    "minifig helmet",
-    "minifig headgear",
-    "minifig cowl",
-    "minifig hair",
-    "minifig neck",
-)
-
-HEADER_KEYS = ("Name:", "Author:", "!LDRAW_ORG", "!LICENSE", "!KEYWORDS", "!CMDLINE")
+PROCESSOR_VERSION = "ldraw-minifig-pattern-index/v2"
+COMPONENTS = ("head", "torso", "hips", "leg", "arm", "hand", "helmet",
+              "headgear", "cowl", "hair", "neck")
+MINIFIG_TOKENS = tuple(f"minifig {component}" for component in COMPONENTS)
+STANDALONE_TYPES = {"Part", "Shortcut", "Unofficial_Part", "Unofficial_Shortcut"}
+CATALOG_FILES = {"minifig_patterns": "ldraw_minifig_patterns.jsonl",
+                 "patterned_parts": "ldraw_part_patterns.jsonl",
+                 "all_parts": "ldraw_parts.jsonl"}
 
 
-def now_iso() -> str:
-    return datetime.now(timezone.utc).isoformat()
-
-
-def sha256_file(path: Path) -> str:
-    h = hashlib.sha256()
-    with path.open("rb") as f:
-        for chunk in iter(lambda: f.read(1024 * 1024), b""):
-            h.update(chunk)
-    return h.hexdigest()
-
-
-def parse_header(path: Path) -> dict:
-    result = {
-        "description": "",
-        "name": "",
-        "author": "",
-        "ldraw_org": "",
-        "license": "",
-        "keywords": [],
-        "cmdline": "",
-    }
-    try:
-        lines = path.read_text(encoding="utf-8", errors="replace").splitlines()
-    except OSError:
-        return result
-    if lines and lines[0].startswith("0 "):
-        result["description"] = lines[0][2:].strip()
-    for line in lines[1:80]:
-        if not line.startswith("0 "):
+def parse_header(path: Path, source_bytes: bytes | None = None) -> dict:
+    """Parse the leading header from the same bytes used for the source hash."""
+    raw = path.read_bytes() if source_bytes is None else source_bytes
+    lines = []
+    for line in raw.decode("utf-8-sig", errors="replace").splitlines():
+        fields = line.strip().split(maxsplit=1)
+        if fields and fields[0] != "0":
             break
-        text = line[2:].strip()
-        if text.startswith("Name:"):
-            result["name"] = text.split(":", 1)[1].strip()
-        elif text.startswith("Author:"):
-            result["author"] = text.split(":", 1)[1].strip()
-        elif text.startswith("!LDRAW_ORG"):
-            result["ldraw_org"] = text
-        elif text.startswith("!LICENSE"):
-            result["license"] = text
-        elif text.startswith("!KEYWORDS"):
-            result["keywords"].extend(
-                part.strip() for part in text.split("!KEYWORDS", 1)[1].split(",") if part.strip()
-            )
-        elif text.startswith("!CMDLINE"):
-            result["cmdline"] = text.split("!CMDLINE", 1)[1].strip()
+        lines.append(line)
+    metadata = header_metadata("\n".join(lines))
+    result = {key: metadata.get(key) or "" for key in
+              ("description", "name", "author", "category")}
+    for key, prefix in (("ldraw_org", "!LDRAW_ORG"), ("license", "!LICENSE")):
+        result[key] = f"{prefix} {metadata[key]}" if metadata[key] else ""
+    result["part_type"] = (metadata["ldraw_org"] or "").split()[0] if metadata["ldraw_org"] else ""
+    result.update(keywords=[], cmdline="")
+    for line in lines:
+        fields = line.strip().split(maxsplit=2)
+        if len(fields) < 3:
+            continue
+        if fields[1] == "!KEYWORDS":
+            result["keywords"].extend(p.strip() for p in fields[2].split(",") if p.strip())
+        elif fields[1] == "!CMDLINE":
+            result["cmdline"] = fields[2]
     return result
 
 
 def classify_component(description: str) -> str:
     lower = description.lower()
-    for component in (
-        "head", "torso", "hips", "leg", "arm", "hand", "helmet",
-        "headgear", "cowl", "hair", "neck"
-    ):
+    for component in COMPONENTS:
         if f"minifig {component}" in lower:
             return component
-    return "other_minifig"
+    return "other_minifig" if "minifig" in lower else "other_part"
 
 
 def looks_relevant(header: dict) -> bool:
     description = header["description"].lower()
-    if not any(token in description for token in MINIFIG_TOKENS):
+    return (any(token in description for token in MINIFIG_TOKENS)
+            and any(token in description for token in ("pattern", "printed", "with ")))
+
+
+def selected(header: dict, catalog: str) -> bool:
+    if catalog == "minifig_patterns":
+        return looks_relevant(header)
+    if header["part_type"] not in STANDALONE_TYPES:
         return False
-    return "pattern" in description or "printed" in description or "with " in description
+    return catalog == "all_parts" or any(
+        token in header["description"].lower() for token in ("pattern", "printed"))
 
 
-def render_preview(ldview: Path, part: Path, output: Path, width: int, height: int) -> tuple[bool, str]:
-    output.parent.mkdir(parents=True, exist_ok=True)
-    cmd = [
-        str(ldview),
-        str(part),
-        f"-SaveSnapshot={output}",
-        f"-SaveWidth={width}",
-        f"-SaveHeight={height}",
-        "-SaveZoomToFit=1",
-        "-AutoCrop=1",
-        "-SaveAlpha=1",
-    ]
-    proc = subprocess.run(cmd, capture_output=True, text=True, check=False)
-    return proc.returncode == 0, (proc.stderr or proc.stdout)[-2000:]
+def write_manifest(path: Path, records: list[dict]) -> None:
+    with path.open("w", encoding="utf-8", newline="\n") as stream:
+        for record in records:
+            stream.write(json.dumps(record, ensure_ascii=False) + "\n")
 
 
-def main() -> None:
-    ap = argparse.ArgumentParser()
+def main(argv=None) -> int:
+    ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--ldraw-root", type=Path, required=True)
     ap.add_argument("--output-dir", type=Path, required=True)
+    ap.add_argument("--catalog", choices=list(CATALOG_FILES), default="minifig_patterns")
     ap.add_argument("--ldview", type=Path)
+    ap.add_argument("--library-revision", help="Required for previews: pinned library archive hash or commit")
     ap.add_argument("--render-width", type=int, default=1024)
     ap.add_argument("--render-height", type=int, default=1024)
-    args = ap.parse_args()
-
+    args = ap.parse_args(argv)
     root = args.ldraw_root.resolve()
     parts_dir = root / "parts"
     if not parts_dir.is_dir():
-        raise SystemExit(f"LDraw parts directory not found: {parts_dir}")
-
+        ap.error(f"LDraw parts directory not found: {parts_dir}")
+    if args.render_width <= 0 or args.render_height <= 0:
+        ap.error("Render width and height must be positive")
+    if args.ldview and (not args.library_revision or not args.library_revision.strip()):
+        ap.error("--library-revision is required with --ldview")
+    if args.ldview and not args.ldview.is_file():
+        ap.error("LDView executable not found")
     out = args.output_dir.resolve()
     out.mkdir(parents=True, exist_ok=True)
-    previews = out / "previews"
-
-    ldview = args.ldview.resolve() if args.ldview else None
-    if ldview and not ldview.exists():
-        raise SystemExit(f"LDView executable not found: {ldview}")
-
-    manifest_path = out / "ldraw_minifig_patterns.jsonl"
-    count = 0
-    rendered = 0
-    render_errors = 0
+    manifest = out / CATALOG_FILES[args.catalog]
+    records = []
+    identities = set()
     license_counts: dict[str, int] = {}
+    for path in sorted(p for p in parts_dir.rglob("*") if p.is_file() and p.suffix.lower() == ".dat"):
+        if not path.resolve().is_relative_to(root):
+            ap.error(f"Part resolves outside the library: {path}")
+        raw = path.read_bytes()
+        header = parse_header(path, raw)
+        if not selected(header, args.catalog):
+            continue
+        digest = hashlib.sha256(raw).hexdigest()
+        identity = f"ldraw-{path.stem}-{digest[:16]}"
+        if identity in identities:
+            ap.error(f"Duplicate asset identity in library: {identity}; resolve duplicate standalone sources")
+        identities.add(identity)
+        license_text = header["license"] or "unknown"
+        license_counts[license_text] = license_counts.get(license_text, 0) + 1
+        records.append({
+            "reference_asset_id": identity,
+            "medium": "structured_pattern_reconstruction" if args.catalog != "all_parts" else "structured_part_reconstruction",
+            "authority": "community_structured", "source_system": "LDraw Parts Library",
+            "source_path": path.relative_to(root).as_posix(), "sha256": digest,
+            "description": header["description"], "component_type": classify_component(header["description"]),
+            "ldraw_name": header["name"], "author": header["author"],
+            "ldraw_org": header["ldraw_org"], "license": license_text,
+            "keywords": header["keywords"], "cmdline": header["cmdline"],
+            "part_namespace": "ldraw", "part_id": path.stem, "part_type": header["part_type"] or "unknown",
+            "category": header["category"] or None, "category_source": "header" if header["category"] else "not_supplied",
+            "catalog": args.catalog, "selection_basis": "description_heuristic" if args.catalog != "all_parts" else "declared_standalone_type",
+            "preview_path": None, "render_status": "not_requested",
+            "storage_policy": "LDraw license governs source; generated previews local by default",
+            "processor_version": PROCESSOR_VERSION,
+        })
+    write_manifest(manifest, records)
+    render_manifest = None
+    rendered = 0
+    failures = 0
+    if args.ldview:
+        from tools.knowledge import render_ldraw_pattern_training_views as renderer
 
-    with manifest_path.open("w", encoding="utf-8") as mf:
-        for path in sorted(parts_dir.rglob("*.dat")):
-            header = parse_header(path)
-            if not looks_relevant(header):
-                continue
-
-            rel = path.relative_to(root).as_posix()
-            digest = sha256_file(path)
-            license_text = header["license"] or "unknown"
-            license_counts[license_text] = license_counts.get(license_text, 0) + 1
-            preview_path = None
-            render_status = "not_requested"
-
-            if ldview:
-                preview_path = previews / (path.stem + ".png")
-                ok, detail = render_preview(
-                    ldview, path, preview_path, args.render_width, args.render_height
-                )
-                if ok:
-                    rendered += 1
-                    render_status = "rendered"
-                else:
-                    render_errors += 1
-                    render_status = "error"
-                    preview_path = None
-
-            record = {
-                "reference_asset_id": f"ldraw-{path.stem}-{digest[:16]}",
-                "medium": "structured_pattern_reconstruction",
-                "authority": "community_structured",
-                "source_system": "LDraw Parts Library",
-                "source_path": rel,
-                "sha256": digest,
-                "description": header["description"],
-                "component_type": classify_component(header["description"]),
-                "ldraw_name": header["name"],
-                "author": header["author"],
-                "ldraw_org": header["ldraw_org"],
-                "license": license_text,
-                "keywords": header["keywords"],
-                "cmdline": header["cmdline"],
-                "preview_path": str(preview_path) if preview_path else None,
-                "render_status": render_status,
-                "storage_policy": "LDraw license governs source; generated previews local by default",
-                "processor_version": PROCESSOR_VERSION,
-            }
-            mf.write(json.dumps(record, ensure_ascii=False) + "\n")
-            count += 1
-
+        render_out = out / "rendered"
+        result = renderer.main([
+            "--manifest", str(manifest), "--ldraw-root", str(root), "--ldview", str(args.ldview.resolve()),
+            "--library-revision", args.library_revision, "--output-dir", str(render_out),
+            "--profile", "physical_like", "--view", "front", "--width", str(args.render_width),
+            "--height", str(args.render_height)], quiet=True)
+        render_manifest = render_out / "render_manifest.jsonl"
+        previews = {r["source_reference_asset_id"]: r for r in renderer.load(render_manifest)}
+        for record in records:
+            preview = previews.get(record["reference_asset_id"])
+            if preview:
+                record.update(preview_path=preview["local_path"], render_status="rendered",
+                              preview_sha256=preview["sha256"], derived_asset_id=preview["derived_asset_id"])
+                rendered += 1
+            else:
+                record["render_status"] = "error"
+                failures += 1
+        write_manifest(manifest, records)
+        if result and not failures:
+            failures = 1
     report = {
-        "schema": "ldraw-minifig-pattern-index-report/v1",
-        "created_at": now_iso(),
-        "processor_version": PROCESSOR_VERSION,
-        "ldraw_root": str(root),
-        "parts_indexed": count,
-        "previews_rendered": rendered,
-        "render_errors": render_errors,
-        "license_counts": license_counts,
-        "manifest": str(manifest_path),
-        "note": "LDraw is an unofficial community reconstruction source. Preserve attribution/license and never relabel as LEGO-authored art.",
+        "schema": "ldraw-minifig-pattern-index-report/v2", "created_at": datetime.now(timezone.utc).isoformat(),
+        "processor_version": PROCESSOR_VERSION, "ldraw_root": str(root), "catalog": args.catalog,
+        "parts_indexed": len(records), "previews_rendered": rendered, "render_errors": failures,
+        "license_counts": license_counts, "manifest": str(manifest),
+        "render_manifest": str(render_manifest) if render_manifest else None,
+        "note": "LDraw is community reconstruction evidence. Preserve attribution/license and catalog namespace; generated previews do not validate physical fit.",
     }
     (out / "import_report.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
     print(json.dumps(report, indent=2))
+    return 2 if failures else 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

@@ -25,7 +25,7 @@ ROOT=Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:sys.path.insert(0,str(ROOT))
 from tools.geometry.ingest_ldraw_geometry import flatten_ldraw, reference_candidates
 
-VERSION="ldraw-pattern-multiview-render/v5"
+VERSION="ldraw-pattern-multiview-render/v6"
 
 VIEWS=[
  ("front",0,0),
@@ -222,7 +222,7 @@ def render(exe,source,out,lat,lon,width,height,edges,zoom,root,settings):
  p=subprocess.run(cmd,capture_output=True,text=True,check=False)
  return p.returncode,(p.stderr or p.stdout)[-2000:]
 
-def main():
+def main(argv=None, *, quiet=False):
  ap=argparse.ArgumentParser()
  ap.add_argument("--manifest",type=Path,required=True)
  ap.add_argument("--ldraw-root",type=Path,required=True)
@@ -234,7 +234,11 @@ def main():
  ap.add_argument("--height",type=int,default=1024)
  ap.add_argument("--zoom",type=float,default=0.92)
  ap.add_argument("--limit",type=int)
- args=ap.parse_args()
+ ap.add_argument("--view",action="append",choices=[v[0] for v in VIEWS],help="Select repeatable canonical views; default is all views")
+ args=ap.parse_args(argv)
+ if args.view and len(args.view)!=len(set(args.view)):ap.error("Duplicate requested view")
+ if not args.library_revision.strip():ap.error("Library revision must not be empty")
+ views=[v for v in VIEWS if args.view is None or v[0] in args.view]
  if args.limit is not None and args.limit<=0:ap.error("Limit must be positive")
  if args.width<=0 or args.height<=0 or not math.isfinite(args.zoom) or args.zoom<=0:
   ap.error("Width, height and zoom must be positive")
@@ -264,9 +268,9 @@ def main():
   record_configuration={**configuration,"dependencies_sha256":dependencies_sha256}
   source_count+=1
   source_records=[]
-  stem=Path(rec.get("ldraw_name") or source.name).stem.replace(" ","_")
+  stem=re.sub(r"[^A-Za-z0-9_-]","_",source.stem) or "part"
   for profile,edges in profiles:
-   for view,lat,lon in VIEWS:
+   for view,lat,lon in views:
     render_id=render_identity(rec,profile,view,record_configuration)
     target=out/profile/stem/f"{view}-{render_id}.png";target.parent.mkdir(parents=True,exist_ok=True)
     pending=target.with_name(f".{render_id}-{uuid.uuid4().hex}.pending.png")
@@ -278,7 +282,7 @@ def main():
       if snapshot.format!="PNG" or snapshot.size!=(args.width,args.height):
        raise ValueError("Renderer output is not a PNG on the requested pixel grid")
       snapshot.verify()
-    except (ValueError,OSError) as exc:
+    except (ValueError,OSError,SyntaxError) as exc:
      failures+=1;errors.append({"source_path":rec["source_path"],"stage":"render_integrity","view":view,"reason":str(exc)});continue
     pending.replace(target)
     source_records.append({
@@ -320,8 +324,8 @@ def main():
  manifest=out/"render_manifest.jsonl"
  with manifest.open("w",encoding="utf-8") as f:
   for r in records:f.write(json.dumps(r,ensure_ascii=False)+"\n")
- report={"schema":"ldraw-pattern-multiview-render-report/v1","version":VERSION,"sources_attempted":source_count,"sources_rendered":len({r["source_reference_asset_id"] for r in records}),"renders":len(records),"failures":failures,"errors":errors,"profiles":[p[0] for p in profiles],"views":[v[0] for v in VIEWS],"manifest":str(manifest)}
+ report={"schema":"ldraw-pattern-multiview-render-report/v1","version":VERSION,"sources_attempted":source_count,"sources_rendered":len({r["source_reference_asset_id"] for r in records}),"renders":len(records),"failures":failures,"errors":errors,"profiles":[p[0] for p in profiles],"views":[v[0] for v in views],"manifest":str(manifest)}
  (out/"import_report.json").write_text(json.dumps(report,indent=2),encoding="utf-8")
- print(json.dumps(report,indent=2))
+ if not quiet:print(json.dumps(report,indent=2))
  return 2 if failures else 0
 if __name__=="__main__":raise SystemExit(main())

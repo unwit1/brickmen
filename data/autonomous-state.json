@@ -75,7 +75,7 @@
     "instruction": "Do not restart completed architecture gates. 275/744 high-priority pairs have submitted first reviews with 1117 annotations; 469 remain. Review first-review batch 0012. Obtain genuinely independent second reviews and explicit adjudication before canonical promotion. Preserve exact hashes, source appearance, uncertainty, and no-hidden-view rules. Continue exact-release multiview evidence and generation evaluation with the existing tools."
   },
   "last_meaningful_commit": "7610c66731c6c6fae99a32bf5d0d074f69b61471",
-  "latest_validated_test_commit": "31ce1bc8c1a18eddb7fd8647e23d802eaeb0dea1",
+  "latest_validated_test_commit": "25c9aaa43851867fb68e707d3fa76ff1b1ef18db",
   "completed_batches": [
     {
       "id": "body_architecture_reference_acquisition_v1",
@@ -419,7 +419,7 @@
       }
     }
   ],
-  "latest_test_lock_commit": "31ce1bc8c1a18eddb7fd8647e23d802eaeb0dea1",
+  "latest_test_lock_commit": "25c9aaa43851867fb68e707d3fa76ff1b1ef18db",
   "semantic_review_frontier": {
     "eligible_pairs": 744,
     "complete_first_review_batch_count": 11,
@@ -439,12 +439,12 @@
   },
   "completed_batches_are_historical_snapshots": true,
   "latest_validation": {
-    "checkpoint": "31ce1bc8c1a18eddb7fd8647e23d802eaeb0dea1",
-    "local_tests_passed": 574,
-    "github_validation_run_id": 37360242826,
-    "github_knowledge_tests_run_id": 37360243206,
-    "github_review_ui_run_id": 37360242916,
-    "github_submission_compilation_run_id": 37360242874,
+    "checkpoint": "25c9aaa43851867fb68e707d3fa76ff1b1ef18db",
+    "local_tests_passed": 604,
+    "github_validation_run_id": 37480501978,
+    "github_knowledge_tests_run_id": 37480502079,
+    "github_body_geometry_run_id": 37480501952,
+    "github_giant_reference_run_id": 37480501996,
     "status": "passed"
   },
   "generation_accuracy_frontier": {
@@ -456,11 +456,11 @@
       "landmark_max_error",
       "print_zone_containment"
     ],
-    "latest_local_tests_passed": 604,
+    "latest_local_tests_passed": 615,
     "real_generated_output_benchmark": "pending",
     "semantic_feature_review": "required",
     "physical_fit": "unvalidated",
-    "next": "Run a real LDView texture smoke test and actual generated-output benchmarks; broaden the existing indexer for other part families.",
+    "next": "Run actual LDView texture smoke test and generated-output benchmarks; continue first-review batch 0012 and independent review.",
     "renderer_configuration": "isolated_preferences_explicit_library_color_config_and_fresh_png_checks",
     "texture_mapped_parts": "external_PNG_inventory_validated; actual_renderer_smoke_pending",
     "texture_dependency_inventory": "v2; geometry, external PNG textures, glossmaps and color configuration pinned",
@@ -469,7 +469,9 @@
       "embedded MPD/DATA assets",
       "nested TEXMAP blocks"
     ],
-    "dependency_license_gate": "all geometry/texture dependency licenses required; byte-bound provenance declarations supported"
+    "dependency_license_gate": "all geometry/texture dependency licenses required; byte-bound provenance declarations supported",
+    "part_catalog": "existing_indexer_v2; default minifig patterns, patterned parts, all declared standalone parts/shortcuts",
+    "preview_rendering": "shared_renderer_v6; canonical view selection and verified fresh outputs"
   },
   "semantic_evidence_gate": {
     "queue_version": "v3",
