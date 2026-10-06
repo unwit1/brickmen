@@ -1,0 +1,126 @@
+{
+  "schema": "brickmen-actual-generation-experiment/v1",
+  "experiment_id": "head-3626cp01-neutral-reconstruction-v1",
+  "recorded_at": "2026-10-06T15:37:06.639718+00:00",
+  "reference": {
+    "namespace": "ldraw",
+    "part_id": "3626cp01",
+    "authority": "community_structured",
+    "image_sha256": "e5ab77877e4f1112c2b4493110966e4f47487f72988aa953534da1609218b4bb",
+    "source_sha256": "0634368409e8aaf90c315dde09ce98906f82fac11bd9dfd7dbad1126022b72b9",
+    "geometry_revision": "606b463f250f426c2b558f01599fa6cf10e3c77cea1647c168e6ecbac18ffff5",
+    "derived_asset_id": "ldrawrender-ed2cadd32f2d783c3def3ee3",
+    "library_revision": "f3e496d0ede69ca7942fa4aa198e661ee2d22723906101e2e339d8917a4dd5f2"
+  },
+  "provider": {
+    "surface": "built-in imagegen",
+    "exact_model_revision": "unavailable",
+    "seed": "unavailable"
+  },
+  "registration": {
+    "method": "whole-canvas resolution normalization to 512x512; no crop, box fitting or shape warping",
+    "mask_threshold": "alpha >= 128",
+    "review": "direct same-chat model inspection; provisional"
+  },
+  "runs": [
+    {
+      "run_id": "head-neutral-v1",
+      "output_sha256": "584d718b6ce990ce46bf45b5f9bb6874bc06393b28c5304304d256bc062f4a1c",
+      "output_dimensions_px": [
+        1254,
+        1254
+      ],
+      "prompt_sha256": "295f8e0e1c79a7a457e559d06463d071871501bbd4dd8df5ef26207a7091f8a9",
+      "evaluation_report_sha256": "ace5aca86492dbc0581d3ffd47cd1c8660dbde9288ad8c34bcbcc13a7bd58d39",
+      "request_sha256": "6941b4021e1c3956623ae2062f2f2117e4e48933a8cf4d759eba7ec00fe065f3",
+      "registration_evidence_sha256": "a60a583c84f57a86671c4d927751fcbe8dfc316803d756cef7f086516f896030",
+      "measurements": {
+        "silhouette_iou": 0.9959289983799787,
+        "landmark_error": 0.0007341734601921112,
+        "landmark_max_error": 0.001260613080440539,
+        "landmark_count": 3
+      },
+      "technical_status": "technical_checks_passed",
+      "provenance_status": "verified_byte_bindings_as_declared",
+      "forehead_probe": {
+        "registered_roi_px": [
+          210,
+          165,
+          300,
+          210
+        ],
+        "alpha_at_least_128_pixels": 23871,
+        "alpha_range": [
+          253,
+          254
+        ],
+        "unique_rgb_colors": 162,
+        "pixels_differing_from_required_999999": 23700
+      },
+      "rendering_constraints": "failed",
+      "provisional_feature_review": [
+        "Top stud and lower neck visible; outline similar but not exact.",
+        "Two round eyes and one curved smile visible; no invented teeth or brows observed.",
+        "Individual feature inspection is same-chat provisional evidence, not independent adjudication.",
+        "Technical metrics pass illustrative thresholds, while rendering constraints fail."
+      ],
+      "physical_fit": "unvalidated"
+    },
+    {
+      "run_id": "head-neutral-v2",
+      "output_sha256": "54c2a7acbe05351f023a298a74e52c35eaa4708382c1b1f698f50e370c1b2825",
+      "output_dimensions_px": [
+        1254,
+        1254
+      ],
+      "prompt_sha256": "f5590173a007429d72c9a1f3a489a479b6edce5a1dfa0e3f4bbe407b1074a52b",
+      "evaluation_report_sha256": "a1a432359ce711e6d70bc5c211f7638398f4d37d4903ec5de7d47ce4fbd4684e",
+      "request_sha256": "ed64281ff3c9cfdaed93a900b7e0eb736b31c0dc84faf5ad89aaaf3a4366657c",
+      "registration_evidence_sha256": "7237053fadefab3245a0d96bfd1d2b295077630f3e42511b93ff42d098165160",
+      "measurements": {
+        "silhouette_iou": 0.9919081814958741,
+        "landmark_error": 0.0008248640226925753,
+        "landmark_max_error": 0.0012973693869672237,
+        "landmark_count": 3
+      },
+      "technical_status": "technical_checks_passed",
+      "provenance_status": "verified_byte_bindings_as_declared",
+      "forehead_probe": {
+        "registered_roi_px": [
+          210,
+          165,
+          300,
+          210
+        ],
+        "alpha_at_least_128_pixels": 23871,
+        "alpha_range": [
+          253,
+          254
+        ],
+        "unique_rgb_colors": 66,
+        "pixels_differing_from_required_999999": 23871
+      },
+      "rendering_constraints": "failed",
+      "provisional_feature_review": [
+        "Top stud and lower neck visible; outline similar but not exact.",
+        "Two round eyes and one curved smile visible; no invented teeth or brows observed.",
+        "Individual feature inspection is same-chat provisional evidence, not independent adjudication.",
+        "Technical metrics pass illustrative thresholds, while rendering constraints fail."
+      ],
+      "physical_fit": "unvalidated"
+    }
+  ],
+  "limitations": [
+    "One front view of one community CAD part; two sequential runs, not independent random samples.",
+    "Illustrative technical thresholds, not official calibrated LEGO acceptance limits.",
+    "Mask/landmark derivation and semantic review are provisional model evidence.",
+    "No physical appearance, hidden-view, color calibration, mold crosswalk, manufacturing or fit validation.",
+    "Archived requests use portable paths; original image, mask, registration and prompt bytes are preserved."
+  ],
+  "evidence_archive": {
+    "archive": "brickmen-head-accuracy-evidence.zip",
+    "sha256": "08b17cbfac1fef7de40eba89c62a96a67e188e701b38e049d51184653515ea27",
+    "bytes": 1470615,
+    "runs": 2
+  }
+}

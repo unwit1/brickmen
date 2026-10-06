@@ -16,11 +16,71 @@ from pathlib import Path
 from PIL import Image
 
 VERSION = "brickmen-generation-evaluation/v1"
+PROCESSOR_VERSION = "brickmen-generation-evaluation/v2"
 DATA = Path(__file__).resolve().parents[2] / "knowledge/libraries/lego-minifigure-customs/data"
 
 
 def digest(value):
     return hashlib.sha256(json.dumps(value, sort_keys=True, separators=(",", ":"), allow_nan=False).encode()).hexdigest()
+
+
+def pinned_bytes(asset, base_dir, label):
+    if not isinstance(asset, dict) or not isinstance(asset.get("local_path"), str):
+        raise ValueError(f"{label} requires local_path and sha256")
+    raw = (Path(base_dir) / asset["local_path"]).resolve().read_bytes()
+    sha = hashlib.sha256(raw).hexdigest()
+    if asset.get("sha256") != sha:
+        raise ValueError(f"{label} hash missing or mismatched")
+    return raw, sha
+
+
+def verify_provenance(request, base_dir, masks, grid):
+    """Bind supplied measurements to image and registration bytes, not semantic truth."""
+    provenance = request.get("provenance")
+    if provenance is None:
+        return {"provenance_status": "masks_only"}
+    if not isinstance(provenance, dict) or set(provenance) != {"source_images", "registration"}:
+        raise ValueError("Provenance requires source_images and registration")
+    sources = provenance["source_images"]
+    if not isinstance(sources, dict) or "candidate" not in sources or set(sources) - {"reference", "candidate", "production_template"}:
+        raise ValueError("Source images require candidate and known evidence roles")
+    required_roles = {"candidate"}
+    if "reference_silhouette" in masks:
+        required_roles.add("reference")
+    if "safe_zone" in masks:
+        required_roles.add("production_template")
+    if not required_roles <= set(sources):
+        raise ValueError("Source images missing a measured reference or production template")
+    captured = {}
+    for role, asset in sorted(sources.items()):
+        raw, sha = pinned_bytes(asset, base_dir, f"source image {role}")
+        with Image.open(BytesIO(raw)) as image:
+            image.load()
+            captured[role] = {"image_sha256": sha, "original_dimensions_px": list(image.size)}
+    raw, registration_sha = pinned_bytes(provenance["registration"], base_dir, "registration evidence")
+    registration = json.loads(raw.decode("utf-8-sig"))
+    if not isinstance(registration, dict) or registration.get("schema") != "brickmen-registration-evidence/v1":
+        raise ValueError("Registration evidence schema must be brickmen-registration-evidence/v1")
+    if registration.get("alignment_id") != request["alignment_id"]:
+        raise ValueError("Registration evidence alignment_id differs from request")
+    notes, derivation = registration.get("review_notes"), registration.get("mask_derivation")
+    if (not isinstance(registration.get("reviewer"), str) or not registration["reviewer"].strip()
+            or not isinstance(notes, list) or not notes or any(not isinstance(note, str) or not note.strip() for note in notes)
+            or not isinstance(derivation, dict) or not isinstance(derivation.get("method"), str) or not derivation["method"].strip()):
+        raise ValueError("Registration evidence requires reviewer, review_notes and mask_derivation")
+    declared = registration.get("source_images")
+    if not isinstance(declared, dict) or set(declared) != set(captured):
+        raise ValueError("Registration source image roles differ from provenance")
+    for role, pin in captured.items():
+        if not isinstance(declared[role], dict) or any(declared[role].get(key) != value for key, value in pin.items()):
+            raise ValueError(f"Registration source image pin differs: {role}")
+    if registration.get("mask_sha256") != masks or registration.get("pixel_grid") != list(grid):
+        raise ValueError("Registration mask pins or pixel grid differ from measurement inputs")
+    if registration.get("landmarks") != request.get("landmarks"):
+        raise ValueError("Registration landmarks differ from measurement inputs")
+    return {"provenance_status": "verified_byte_bindings_as_declared",
+            "source_image_sha256": {role: pin["image_sha256"] for role, pin in captured.items()},
+            "registration_evidence_sha256": registration_sha}
 
 
 def evaluate(request, base_dir, data_dir=DATA):
@@ -36,13 +96,7 @@ def evaluate(request, base_dir, data_dir=DATA):
         raise ValueError("Unknown mask role")
     masks, hashes, grid = {}, {}, None
     for role, asset in assets.items():
-        if not isinstance(asset, dict) or not isinstance(asset.get("local_path"), str):
-            raise ValueError(f"{role} requires local_path and sha256")
-        path = (Path(base_dir) / asset["local_path"]).resolve()
-        raw = path.read_bytes()
-        sha = hashlib.sha256(raw).hexdigest()
-        if asset.get("sha256") != sha:
-            raise ValueError(f"{role} hash missing or mismatched")
+        raw, sha = pinned_bytes(asset, base_dir, role)
         with Image.open(BytesIO(raw)) as image:
             if image.mode not in {"1", "L"}:
                 raise ValueError(f"{role} must be a single-channel binary mask, not a rendered image")
@@ -109,13 +163,16 @@ def evaluate(request, base_dir, data_dir=DATA):
         passed = measurements[metric] >= threshold if directions[metric] == "minimum" else measurements[metric] <= threshold
         checks.append({"metric": metric, "direction": directions[metric], "threshold": threshold, "passed": passed})
     registry = json.loads((data_dir / "ai-evaluation-metrics.json").read_text(encoding="utf-8"))
+    provenance = verify_provenance(request, base_dir, hashes, grid)
     return {
-        "schema": VERSION, "request_sha256": digest(request), "metrics_registry_sha256": digest(registry),
+        "schema": VERSION, "processor_version": PROCESSOR_VERSION,
+        "request_sha256": digest(request), "metrics_registry_sha256": digest(registry), **provenance,
         "alignment_id": request["alignment_id"], "registration_status": "reviewed_as_declared",
         "pixel_grid": list(grid), "input_sha256": hashes, "measurements": measurements, "checks": checks,
         "status": "technical_checks_failed" if any(not c["passed"] for c in checks) else "technical_checks_passed" if checks else "measurements_only",
         "semantic_features": "unreviewed", "physical_fit": "unvalidated", "manufacturing": "unvalidated",
         "limitations": ["Registration and masks are supplied evidence, not automatically verified truth.",
+                       "Image and registration byte bindings do not establish that masks or landmarks correctly describe those images.",
                        "Thresholds are declared for this run, not calibrated official accuracy criteria.",
                        "Matching silhouette cannot establish part identity, source fidelity, style, hidden surfaces, or P0 feature presence."],
     }
@@ -131,8 +188,8 @@ def main():
     try:
         request = json.loads(args.request.read_text(encoding="utf-8-sig"))
         report = evaluate(request, args.request.resolve().parent)
-    except (ValueError, TypeError, KeyError, OSError) as exc:
-        report = {"schema": VERSION, "status": "blocked", "errors": [str(exc)]}
+    except (ValueError, TypeError, KeyError, OSError, SyntaxError) as exc:
+        report = {"schema": VERSION, "processor_version": PROCESSOR_VERSION, "status": "blocked", "errors": [str(exc)]}
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8", newline="\n")
     print(json.dumps({"status": report["status"], "measurements": report.get("measurements", {}), "errors": report.get("errors", [])}))

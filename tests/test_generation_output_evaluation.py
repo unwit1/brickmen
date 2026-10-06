@@ -45,6 +45,7 @@ def test_matching_silhouette_never_promotes_semantic_or_physical_accuracy(tmp_pa
     assert report["status"] == "technical_checks_passed"
     assert report["semantic_features"] == "unreviewed"
     assert report["physical_fit"] == "unvalidated"
+    assert report["provenance_status"] == "masks_only"
     assert evaluate({k: v for k, v in req.items() if k != "thresholds"}, tmp_path)["status"] == "measurements_only"
 
 
@@ -101,3 +102,76 @@ def test_failed_rerun_replaces_stale_success_report(tmp_path):
     path.write_text("{broken")
     assert subprocess.run(command, capture_output=True).returncode == 2
     assert json.loads(output.read_text())["status"] == "blocked"
+
+
+def bound_request(tmp_path):
+    req = request(tmp_path)
+    images, pins = {}, {}
+    for role, color in (("reference", "red"), ("candidate", "blue")):
+        path = tmp_path / f"{role}-image.png"
+        Image.new("RGB", (2, 2), color).save(path)
+        sha = hashlib.sha256(path.read_bytes()).hexdigest()
+        images[role] = {"local_path": path.name, "sha256": sha}
+        pins[role] = {"image_sha256": sha, "original_dimensions_px": [2, 2]}
+    req["provenance"] = {"source_images": images}
+    registration = {"schema": "brickmen-registration-evidence/v1", "alignment_id": req["alignment_id"],
+                    "reviewer": "synthetic-test-reviewer", "review_notes": ["Synthetic provenance fixture, not segmentation truth."],
+                    "mask_derivation": {"method": "supplied synthetic masks"}, "source_images": pins,
+                    "pixel_grid": [2, 2], "mask_sha256": {role: asset["sha256"] for role, asset in req["assets"].items()},
+                    "landmarks": None}
+    pin_registration(tmp_path, req, registration)
+    return req, registration
+
+
+def pin_registration(tmp_path, req, registration):
+    path = tmp_path / "registration.json"
+    path.write_text(json.dumps(registration))
+    req["provenance"]["registration"] = {"local_path": path.name, "sha256": hashlib.sha256(path.read_bytes()).hexdigest()}
+
+
+def test_source_and_registration_bytes_are_bound_without_semantic_promotion(tmp_path):
+    req, _ = bound_request(tmp_path)
+    result = evaluate(req, tmp_path)
+    assert result["provenance_status"] == "verified_byte_bindings_as_declared"
+    assert result["source_image_sha256"] == {role: asset["sha256"] for role, asset in req["provenance"]["source_images"].items()}
+    assert result["registration_evidence_sha256"] == req["provenance"]["registration"]["sha256"]
+    assert result["semantic_features"] == "unreviewed"
+    assert result["physical_fit"] == "unvalidated"
+
+
+def test_changed_candidate_cannot_reuse_old_registered_masks(tmp_path):
+    req, _ = bound_request(tmp_path)
+    path = tmp_path / req["provenance"]["source_images"]["candidate"]["local_path"]
+    Image.new("RGB", (2, 2), "green").save(path)
+    with pytest.raises(ValueError, match="source image candidate hash"):
+        evaluate(req, tmp_path)
+    req["provenance"]["source_images"]["candidate"]["sha256"] = hashlib.sha256(path.read_bytes()).hexdigest()
+    with pytest.raises(ValueError, match="Registration source image pin differs"):
+        evaluate(req, tmp_path)
+
+
+@pytest.mark.parametrize("mutation,error", [
+    (lambda r: r.update(alignment_id="other-camera"), "alignment_id differs"),
+    (lambda r: r.update(mask_sha256={}), "mask pins or pixel grid"),
+    (lambda r: r.update(pixel_grid=[3, 2]), "mask pins or pixel grid"),
+    (lambda r: r.update(landmarks={"reference": {"eye": [0, 0]}, "candidate": {"eye": [0, 1]}}), "landmarks differ"),
+    (lambda r: r.update(review_notes=[]), "requires reviewer"),
+    (lambda r: r["source_images"]["candidate"].update(original_dimensions_px=[3, 2]), "source image pin differs"),
+])
+def test_registration_must_match_measured_evidence(tmp_path, mutation, error):
+    req, registration = bound_request(tmp_path)
+    mutation(registration)
+    pin_registration(tmp_path, req, registration)
+    with pytest.raises(ValueError, match=error):
+        evaluate(req, tmp_path)
+
+
+def test_missing_reference_source_or_changed_registration_is_rejected(tmp_path):
+    req, _ = bound_request(tmp_path)
+    del req["provenance"]["source_images"]["reference"]
+    with pytest.raises(ValueError, match="missing a measured reference"):
+        evaluate(req, tmp_path)
+    req, _ = bound_request(tmp_path)
+    (tmp_path / "registration.json").write_text("{}")
+    with pytest.raises(ValueError, match="registration evidence hash"):
+        evaluate(req, tmp_path)

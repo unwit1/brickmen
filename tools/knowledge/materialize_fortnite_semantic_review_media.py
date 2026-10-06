@@ -18,7 +18,7 @@ import urllib.request
 from pathlib import Path
 from typing import Any, Callable
 
-VERSION = "fortnite-semantic-review-media-materializer/v2"
+VERSION = "fortnite-semantic-review-media-materializer/v3"
 ALLOWED_HOSTS = {"fortnite-api.com"}
 MAX_IMAGE_BYTES = 25 * 1024 * 1024
 SAFE_ID = re.compile(r"[^A-Za-z0-9._-]+")
@@ -73,10 +73,27 @@ def materialize_batch(
     output_dir: Path,
     *,
     fetcher: Callable[[str], tuple[bytes, str | None, str]] = fetch_url,
+    archive_manifest: dict[str, Any] | None = None,
+    archive_root: Path | None = None,
 ) -> tuple[dict[str, Any], dict[str, Any]]:
     items = batch.get("items")
     if not isinstance(items, list) or not items:
         raise ValueError("batch requires at least one review item")
+
+    archived = {}
+    if (archive_manifest is None) != (archive_root is None):
+        raise ValueError("Archive manifest and archive root must be supplied together")
+    if archive_manifest is not None:
+        if not isinstance(archive_manifest, dict) or archive_manifest.get("schema") != "fortnite-semantic-review-media-manifest/v1" or not isinstance(archive_manifest.get("records"), list):
+            raise ValueError("Archive requires an existing exact-media manifest")
+        archive_root = archive_root.resolve()
+        for row in archive_manifest["records"]:
+            if not isinstance(row, dict) or not isinstance(row.get("translation_pair_id"), str) or not row["translation_pair_id"]:
+                raise ValueError("Archive record requires translation_pair_id")
+            pair_id = row["translation_pair_id"]
+            if pair_id in archived:
+                raise ValueError(f"Duplicate archive pair: {pair_id}")
+            archived[pair_id] = row
 
     output_dir.mkdir(parents=True, exist_ok=True)
     result = copy.deepcopy(batch)
@@ -106,13 +123,46 @@ def materialize_batch(
             if not isinstance(url, str) or not url:
                 raise ValueError(f"{pair_id}: missing {item_key}")
             _validate_url(url)
+            if evidence.get(evidence_url_key) not in (None, url):
+                raise ValueError(f"{pair_id}: conflicting item/template {role} URLs")
 
-            expected_hash = evidence.get(evidence_hash_key)
-            if expected_hash is not None and (not isinstance(expected_hash, str) or not re.fullmatch(r"[0-9a-fA-F]{64}", expected_hash)):
+            pins = [pin for pin in (item.get(evidence_hash_key), evidence.get(evidence_hash_key)) if pin is not None]
+            if any(not isinstance(pin, str) or not re.fullmatch(r"[0-9a-fA-F]{64}", pin) for pin in pins):
                 raise ValueError(f"{pair_id}: invalid expected {role} hash")
+            pins = {pin.lower() for pin in pins}
+            if len(pins) > 1:
+                raise ValueError(f"{pair_id}: conflicting item/template {role} hashes")
+            expected_hash = next(iter(pins), None)
+            archived_entry = None
+            if archive_manifest is not None:
+                archived_entry = archived.get(pair_id, {}).get(role)
+                if not isinstance(archived_entry, dict) or archived_entry.get("url") != url:
+                    raise ValueError(f"{pair_id}: missing or mismatched archived {role} URL")
+                archive_hash = archived_entry.get("sha256")
+                if not isinstance(archive_hash, str) or not re.fullmatch(r"[0-9a-fA-F]{64}", archive_hash):
+                    raise ValueError(f"{pair_id}: invalid archived {role} hash")
+                if expected_hash and expected_hash != archive_hash.lower():
+                    raise ValueError(f"{pair_id}: exact evidence hash mismatch for archived {role}")
+                expected_hash = archive_hash.lower()
             cached = cache.get(url)
             if cached is None:
-                data, content_type, final_url = fetcher(url)
+                if archived_entry is None:
+                    data, content_type, final_url = fetcher(url)
+                    acquisition = "download"
+                else:
+                    local = archived_entry.get("local_asset")
+                    if not isinstance(local, str) or not local:
+                        raise ValueError(f"{pair_id}: archived {role} requires local_asset")
+                    path = (archive_root / local).resolve()
+                    if not path.is_relative_to(archive_root):
+                        raise ValueError(f"{pair_id}: archived path escapes archive root")
+                    with path.open("rb") as source:
+                        data = source.read(MAX_IMAGE_BYTES + 1)
+                    if not data or len(data) > MAX_IMAGE_BYTES:
+                        raise ValueError(f"{pair_id}: archived media empty or exceeds size limit")
+                    content_type = archived_entry.get("content_type")
+                    final_url = archived_entry.get("final_url") or url
+                    acquisition = "verified_archive"
                 digest = hashlib.sha256(data).hexdigest()
                 if expected_hash and expected_hash.lower() != digest:
                     raise ValueError(f"{pair_id}: exact evidence hash mismatch for {role}")
@@ -127,6 +177,7 @@ def materialize_batch(
                     "size_bytes": len(data),
                     "content_type": content_type,
                     "filename": filename,
+                    "acquisition": acquisition,
                 }
                 cache[url] = cached
 
@@ -145,6 +196,7 @@ def materialize_batch(
                 "size_bytes": cached["size_bytes"],
                 "content_type": cached["content_type"],
                 "local_asset": local_asset,
+                "acquisition": cached["acquisition"],
             }
 
         provenance = template.setdefault("provenance", [])
@@ -163,7 +215,7 @@ def materialize_batch(
         "records": len(manifest_records),
         "unique_urls": len(cache),
         "policy": (
-            "Hashes bind semantic review evidence to exact downloaded bytes. "
+            "Hashes bind semantic review evidence to exact downloaded or verified archived bytes. "
             "Materialization does not create semantic annotations or training eligibility."
         ),
     }
@@ -184,10 +236,27 @@ def main() -> None:
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--output-batch", type=Path, required=True)
     parser.add_argument("--manifest", type=Path, required=True)
+    parser.add_argument("--archive-manifest", type=Path, help="Existing exact-media manifest; requires --archive-root")
+    parser.add_argument("--archive-root", type=Path, help="Root containing archived local_asset paths; no network fallback")
     args = parser.parse_args()
 
-    batch = json.loads(args.batch.read_text(encoding="utf-8"))
-    output, manifest = materialize_batch(batch, args.output_dir)
+    if bool(args.archive_manifest) != bool(args.archive_root):
+        parser.error("--archive-manifest and --archive-root must be supplied together")
+    inputs = {args.batch.resolve()}
+    if args.archive_manifest:
+        inputs.add(args.archive_manifest.resolve())
+    outputs = {args.output_batch.resolve(), args.manifest.resolve()}
+    if len(outputs) != 2 or inputs & outputs:
+        parser.error("Output batch/manifest must be distinct and must not overwrite input evidence")
+    try:
+        batch = json.loads(args.batch.read_text(encoding="utf-8"))
+        archive = json.loads(args.archive_manifest.read_text(encoding="utf-8")) if args.archive_manifest else None
+        output, manifest = materialize_batch(batch, args.output_dir, archive_manifest=archive, archive_root=args.archive_root)
+    except (ValueError, TypeError, KeyError, OSError) as exc:
+        for path in (args.output_batch, args.manifest):
+            if path.is_file():
+                path.unlink()  # A failed rerun must not retain a stale successful materialization.
+        parser.exit(2, f"Exact review media materialization failed: {exc}\n")
     args.output_batch.parent.mkdir(parents=True, exist_ok=True)
     args.manifest.parent.mkdir(parents=True, exist_ok=True)
     args.output_batch.write_text(
