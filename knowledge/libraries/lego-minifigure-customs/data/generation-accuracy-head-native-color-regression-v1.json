@@ -1,0 +1,86 @@
+{
+  "schema": "brickmen-native-color-regression/v1",
+  "processor_version": "brickmen-generation-evaluation/v3",
+  "original_experiment_record": "knowledge/libraries/lego-minifigure-customs/data/generation-accuracy-head-experiment-v1.json",
+  "registration_review": "Previously inspected plain forehead region; declared native coordinates derived by inward rounding of the reviewed whole-canvas scale. No new generation, resampling or image recoloring.",
+  "runs": [
+    {
+      "run": "v1",
+      "output_sha256": "584d718b6ce990ce46bf45b5f9bb6874bc06393b28c5304304d256bc062f4a1c",
+      "status": "technical_checks_failed",
+      "region": {
+        "id": "plain-forehead",
+        "box_px": [
+          515,
+          405,
+          734,
+          514
+        ],
+        "target_rgba": [
+          153,
+          153,
+          153,
+          255
+        ],
+        "max_channel_delta": 0,
+        "minimum_match_fraction": 1,
+        "sampled_pixels": 23871,
+        "matching_pixels": 0,
+        "match_fraction": 0.0,
+        "unique_rgba_values": 236,
+        "observed_max_channel_delta": 10,
+        "observed_alpha_range": [
+          253,
+          254
+        ]
+      },
+      "registration_sha256": "58c1f73b81e69a0e8d905aa7443b093922c5617770c338f8a0d89a61a8d205a1",
+      "request_sha256": "df51e90338cff59cb4b27b14991c91f9fb9aa8d25ab2d0d6564f5378db01e65e",
+      "report_file_sha256": "6b6822f043f497078ed5a9c2a1931c9c8455dee62c5d8956c8da23d2d770cfa7"
+    },
+    {
+      "run": "v2",
+      "output_sha256": "54c2a7acbe05351f023a298a74e52c35eaa4708382c1b1f698f50e370c1b2825",
+      "status": "technical_checks_failed",
+      "region": {
+        "id": "plain-forehead",
+        "box_px": [
+          515,
+          405,
+          734,
+          514
+        ],
+        "target_rgba": [
+          153,
+          153,
+          153,
+          255
+        ],
+        "max_channel_delta": 0,
+        "minimum_match_fraction": 1,
+        "sampled_pixels": 23871,
+        "matching_pixels": 0,
+        "match_fraction": 0.0,
+        "unique_rgba_values": 103,
+        "observed_max_channel_delta": 9,
+        "observed_alpha_range": [
+          253,
+          254
+        ]
+      },
+      "registration_sha256": "c65d0aa5a8f84d7764eab24da756750323b86e4b172f2c0ac7d2f71f984eb862",
+      "request_sha256": "2ef86e1c5b4fea1186437552c1fc068dd9f2b72d7bfbc806c83f503f60100a2e",
+      "report_file_sha256": "1c4e9e0411bc8e7b09bf5ecb9f15bd4c5980aa8fc955aa99aa64f1d96f439641"
+    }
+  ],
+  "limits": [
+    "One community CAD part and one view.",
+    "Region review remains same-chat provisional.",
+    "Digital RGBA consistency, not physical color or manufacturing validation."
+  ],
+  "evidence_archive": {
+    "archive": "brickmen-head-native-color-evidence.zip",
+    "sha256": "0c1f8288bf94164da88e469e4c6fc25a23e0bf46f95c4373cbf862dc5273e12d",
+    "bytes": 1438003
+  }
+}

@@ -76,6 +76,14 @@
       "reason": "Review UI run 37487779134 refused live bytes that differ from the exact reviewed SHA-256. Hash pins remain unchanged.",
       "fallback": "All 50 original images verified from preserved local archive; review UI rebuilt offline with materializer v3. Use original archived bytes for independent review.",
       "original_media_archive_sha256": "3203133b7be1c11bdc70884852f5c76f7536670e37b1e16b1f9731a74e3e2510"
+    },
+    {
+      "id": "batch13_live_media_changed",
+      "pair_id": "fortnitepair-710996d20cf21b5e7eb69b53",
+      "role": "lego",
+      "reason": "Review UI run 37525693008 refused live bytes that differ from the exact reviewed SHA-256. Original pins remain unchanged.",
+      "fallback": "All 50 original images verified from preserved local archive; reviewer v2 rebuilt using verified_archive acquisition. Use original archived bytes for independent review.",
+      "original_media_archive_sha256": "70ac6083e4dac98e56402c3bd1411bd68a83ade680628a40966362056c653393"
     }
   ],
   "pending_validation": [
@@ -85,7 +93,7 @@
     "instruction": "Do not restart completed architecture gates. 325/744 high-priority pairs have submitted first reviews with 1383 annotations; 419 remain. Review first-review batch 0014. Obtain genuinely independent second reviews and explicit adjudication before canonical promotion. Preserve exact hashes, source appearance, uncertainty, and no-hidden-view rules. Continue exact-release multiview evidence and generation evaluation with the existing tools."
   },
   "last_meaningful_commit": "7610c66731c6c6fae99a32bf5d0d074f69b61471",
-  "latest_validated_test_commit": "6b6d447e8336c494266d1f4ebce097bce0f9f02e",
+  "latest_validated_test_commit": "8cf02cf16e4e56eea34eca0268cd369cbf48ced3",
   "completed_batches": [
     {
       "id": "body_architecture_reference_acquisition_v1",
@@ -429,7 +437,7 @@
       }
     }
   ],
-  "latest_test_lock_commit": "6b6d447e8336c494266d1f4ebce097bce0f9f02e",
+  "latest_test_lock_commit": "8cf02cf16e4e56eea34eca0268cd369cbf48ced3",
   "semantic_review_frontier": {
     "eligible_pairs": 744,
     "complete_first_review_batch_count": 13,
@@ -449,31 +457,36 @@
   },
   "completed_batches_are_historical_snapshots": true,
   "latest_validation": {
-    "checkpoint": "6b6d447e8336c494266d1f4ebce097bce0f9f02e",
+    "checkpoint": "8cf02cf16e4e56eea34eca0268cd369cbf48ced3",
     "local_tests_passed": 652,
-    "final_focused_tests_passed": 14,
     "github_runs": [
       {
-        "name": "LEGO Knowledge Tool Tests",
-        "id": 37524276919,
-        "status": "completed",
-        "conclusion": "success"
-      },
-      {
-        "name": "Validate Brickmen",
-        "id": 37524276861,
+        "name": "Compile Fortnite Semantic Review Submissions",
+        "id": 37525693196,
         "status": "completed",
         "conclusion": "success"
       },
       {
         "name": "Build Fortnite Semantic Review UI",
-        "id": 37524276848,
+        "id": 37525693008,
+        "status": "completed",
+        "conclusion": "failure"
+      },
+      {
+        "name": "LEGO Knowledge Tool Tests",
+        "id": 37525693016,
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "Validate Brickmen",
+        "id": 37525693186,
         "status": "completed",
         "conclusion": "success"
       }
     ],
-    "status": "passed",
-    "current_local_tests_passed": 652
+    "status": "core_checks_passed_live_media_blocked",
+    "current_local_tests_passed": 676
   },
   "generation_accuracy_frontier": {
     "brief_preflight": "implemented_metadata_review_only",
@@ -484,7 +497,7 @@
       "landmark_max_error",
       "print_zone_containment"
     ],
-    "latest_local_tests_passed": 652,
+    "latest_local_tests_passed": 676,
     "real_generated_output_benchmark": "one_part_one_front_view_two_sequential_outputs_measured; constraints_failed; broader_benchmark_pending",
     "semantic_feature_review": "required",
     "physical_fit": "unvalidated",
@@ -703,7 +716,28 @@
         "runs": 2
       }
     },
-    "evaluation_provenance": "evaluator_v2; optional original image and reviewed registration byte bindings; unbound requests marked masks_only"
+    "evaluation_provenance": "evaluator_v3; original image and registration byte bindings; native RGBA region constraints bound to reviewed registration; input/report alias protection; unbound requests remain masks_only",
+    "native_color_regression": {
+      "record": "knowledge/libraries/lego-minifigure-customs/data/generation-accuracy-head-native-color-regression-v1.json",
+      "status": "both_retained_outputs_technical_checks_failed",
+      "native_roi_px": [
+        515,
+        405,
+        734,
+        514
+      ],
+      "sampled_pixels_each": 23871,
+      "exact_opaque_target_pixels_each": 0,
+      "unique_rgba_values": [
+        236,
+        103
+      ],
+      "evidence_archive": {
+        "archive": "brickmen-head-native-color-evidence.zip",
+        "sha256": "0c1f8288bf94164da88e469e4c6fc25a23e0bf46f95c4373cbf862dc5273e12d",
+        "bytes": 1438003
+      }
+    }
   },
   "semantic_evidence_gate": {
     "queue_version": "v3",
@@ -722,6 +756,13 @@
       "archive": "brickmen-batch12-reviewer-v2.zip",
       "sha256": "ffb9cc49a9265029f5ba8fd5932669fd3e61f05669e0a829ec5a7ccd585e8e55",
       "bytes": 2934055,
+      "images": 50,
+      "records": 25
+    },
+    "batch13_reviewer_archive": {
+      "archive": "brickmen-batch13-reviewer-v2.zip",
+      "sha256": "d82a367ad21f168feaede0a5687c8398d07ccd3972e4b66994e4a2b8c7c65928",
+      "bytes": 3051883,
       "images": 50,
       "records": 25
     }

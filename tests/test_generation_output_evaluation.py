@@ -175,3 +175,165 @@ def test_missing_reference_source_or_changed_registration_is_rejected(tmp_path):
     (tmp_path / "registration.json").write_text("{}")
     with pytest.raises(ValueError, match="registration evidence hash"):
         evaluate(req, tmp_path)
+
+
+def color_request(tmp_path, pixels=None, size=(3, 2)):
+    req, registration = bound_request(tmp_path)
+    path = tmp_path / "candidate-image.png"
+    image = Image.new("RGBA", size, (153, 153, 153, 255))
+    if pixels is not None:
+        image.putdata(pixels)
+    image.save(path)
+    sha = hashlib.sha256(path.read_bytes()).hexdigest()
+    req["provenance"]["source_images"]["candidate"]["sha256"] = sha
+    registration["source_images"]["candidate"] = {"image_sha256": sha, "original_dimensions_px": list(size)}
+    req["flat_color"] = {"interpretation": "decoded_rgba_bytes", "regions": [
+        {"id": "plain-forehead", "box_px": [1, 0, 3, 2], "target_rgba": [153, 153, 153, 255],
+         "max_channel_delta": 0, "minimum_match_fraction": 1}]}
+    registration["flat_color"] = deepcopy(req["flat_color"])
+    pin_registration(tmp_path, req, registration)
+    req["assets"]["candidate_silhouette"] = deepcopy(req["assets"]["reference_silhouette"])
+    registration["mask_sha256"] = {role: asset["sha256"] for role, asset in req["assets"].items()}
+    pin_registration(tmp_path, req, registration)
+    req["thresholds"] = {"silhouette_iou": 1}
+    return req, registration
+
+
+def test_native_color_roi_is_not_scaled_to_registered_mask_grid(tmp_path):
+    req, _ = color_request(tmp_path, [(0, 0, 0, 0), (153, 153, 153, 255), (153, 153, 153, 255)] * 2)
+    report = evaluate(req, tmp_path)
+    assert report["pixel_grid"] == [2, 2]
+    assert report["flat_color_candidate_dimensions_px"] == [3, 2]
+    region = report["flat_color_regions"][0]
+    assert region["sampled_pixels"] == region["matching_pixels"] == 4
+    assert region["unique_rgba_values"] == 1
+    assert report["status"] == "technical_checks_passed"
+    assert report["semantic_features"] == "unreviewed"
+    assert report["physical_fit"] == "unvalidated"
+
+
+@pytest.mark.parametrize("bad_pixel", [(154, 153, 153, 255), (153, 153, 153, 254)])
+def test_shading_or_interior_alpha_fails_even_when_silhouette_passes(tmp_path, bad_pixel):
+    pixels = [(153, 153, 153, 255)] * 6
+    pixels[1] = bad_pixel
+    req, _ = color_request(tmp_path, pixels)
+    report = evaluate(req, tmp_path)
+    assert report["checks"][0]["passed"] is True
+    assert report["checks"][1]["passed"] is False
+    assert report["flat_color_regions"][0]["match_fraction"] == .75
+    assert report["flat_color_regions"][0]["observed_max_channel_delta"] == 1
+    assert report["status"] == "technical_checks_failed"
+
+
+def test_color_tolerance_is_explicit_and_bound_to_registration(tmp_path):
+    req, registration = color_request(tmp_path, [(154, 153, 153, 254)] * 6)
+    req["flat_color"]["regions"][0]["max_channel_delta"] = 1
+    with pytest.raises(ValueError, match="flat color regions differ"):
+        evaluate(req, tmp_path)
+    registration["flat_color"] = deepcopy(req["flat_color"])
+    pin_registration(tmp_path, req, registration)
+    assert evaluate(req, tmp_path)["status"] == "technical_checks_passed"
+
+
+@pytest.mark.parametrize("mutation,error", [
+    (lambda c: c.update(interpretation="physical_color"), "decoded_rgba_bytes"),
+    (lambda c: c.update(regions=[]), "nonempty regions"),
+    (lambda c: c["regions"][0].update(box_px=[0, 0, 0, 2]), "nonempty integer rectangle"),
+    (lambda c: c["regions"][0].update(box_px=[0, 0, 4, 2]), "native candidate image"),
+    (lambda c: c["regions"][0].update(box_px=[True, 0, 3, 2]), "integer rectangle"),
+    (lambda c: c["regions"][0].update(target_rgba=[153, 153, 153, True]), "integer bytes"),
+    (lambda c: c["regions"][0].update(max_channel_delta=True), "integer byte distance"),
+    (lambda c: c["regions"][0].update(minimum_match_fraction=0), "finite in"),
+    (lambda c: c["regions"][0].update(minimum_match_fraction=float("nan")), "finite in"),
+    (lambda c: c["regions"][0].update(minimum_match_fraction=True), "finite in"),
+    (lambda c: c["regions"].append(deepcopy(c["regions"][0])), "nonempty and unique"),
+])
+def test_invalid_native_color_regions_cannot_silently_pass(tmp_path, mutation, error):
+    req, registration = color_request(tmp_path)
+    mutation(req["flat_color"])
+    registration["flat_color"] = deepcopy(req["flat_color"])
+    pin_registration(tmp_path, req, registration)
+    with pytest.raises(ValueError, match=error):
+        evaluate(req, tmp_path)
+
+
+def test_color_requires_original_image_and_reviewed_region_binding(tmp_path):
+    req, registration = color_request(tmp_path)
+    del req["provenance"]
+    with pytest.raises(ValueError, match="byte-bound source image"):
+        evaluate(req, tmp_path)
+    req, registration = color_request(tmp_path)
+    del registration["flat_color"]
+    pin_registration(tmp_path, req, registration)
+    with pytest.raises(ValueError, match="flat color regions differ"):
+        evaluate(req, tmp_path)
+
+
+def test_cli_color_failure_has_nonzero_exit_and_retains_measurements(tmp_path):
+    req, _ = color_request(tmp_path, [(153, 153, 153, 254)] * 6)
+    path, output = tmp_path / "request.json", tmp_path / "report.json"
+    path.write_text(json.dumps(req))
+    result = subprocess.run([sys.executable, "-B", str(Path(__file__).resolve().parents[1] / "tools/knowledge/evaluate_generation_output.py"),
+                             "--request", str(path), "--output", str(output)], capture_output=True)
+    assert result.returncode == 2
+    report = json.loads(output.read_text())
+    assert report["status"] == "technical_checks_failed"
+    assert report["flat_color_regions"][0]["matching_pixels"] == 0
+
+
+def test_each_color_region_fails_individually_instead_of_averaging(tmp_path):
+    req, registration = color_request(tmp_path, [(0, 0, 0, 0), (153, 153, 153, 255), (153, 153, 153, 255)] * 2)
+    req["flat_color"]["regions"].append({"id": "bad-interior", "box_px": [0, 0, 1, 2],
+        "target_rgba": [153, 153, 153, 255], "max_channel_delta": 0, "minimum_match_fraction": 1})
+    registration["flat_color"] = deepcopy(req["flat_color"])
+    pin_registration(tmp_path, req, registration)
+    report = evaluate(req, tmp_path)
+    assert [c["passed"] for c in report["checks"] if "region_id" in c] == [True, False]
+    assert report["status"] == "technical_checks_failed"
+
+
+@pytest.mark.parametrize("mode,accepted", [("RGB", True), ("P", False)])
+def test_color_mode_is_explicit_and_rgb_has_opaque_alpha(tmp_path, mode, accepted):
+    req, registration = color_request(tmp_path)
+    path = tmp_path / "candidate-image.png"
+    with Image.open(path) as original:
+        original.convert(mode).save(tmp_path / "converted.png")
+    path.write_bytes((tmp_path / "converted.png").read_bytes())
+    sha = hashlib.sha256(path.read_bytes()).hexdigest()
+    req["provenance"]["source_images"]["candidate"]["sha256"] = sha
+    registration["source_images"]["candidate"]["image_sha256"] = sha
+    pin_registration(tmp_path, req, registration)
+    if accepted:
+        assert evaluate(req, tmp_path)["flat_color_regions"][0]["observed_alpha_range"] == [255, 255]
+    else:
+        with pytest.raises(ValueError, match="single-frame RGB or RGBA"):
+            evaluate(req, tmp_path)
+
+
+def test_animated_image_cannot_pass_by_sampling_only_first_frame(tmp_path):
+    req, registration = color_request(tmp_path)
+    path = tmp_path / "candidate-image.png"
+    Image.new("RGBA", (3, 2), (153, 153, 153, 255)).save(path, save_all=True,
+        append_images=[Image.new("RGBA", (3, 2), "red")], duration=100, loop=0)
+    sha = hashlib.sha256(path.read_bytes()).hexdigest()
+    req["provenance"]["source_images"]["candidate"]["sha256"] = sha
+    registration["source_images"]["candidate"]["image_sha256"] = sha
+    pin_registration(tmp_path, req, registration)
+    with pytest.raises(ValueError, match="single-frame RGB or RGBA"):
+        evaluate(req, tmp_path)
+
+
+@pytest.mark.parametrize("role", ["mask", "candidate", "registration"])
+def test_cli_cannot_replace_original_evidence_with_report(tmp_path, role):
+    req, _ = color_request(tmp_path)
+    asset = req["assets"]["reference_silhouette"] if role == "mask" else (
+        req["provenance"]["registration"] if role == "registration" else req["provenance"]["source_images"]["candidate"])
+    output = tmp_path / asset["local_path"]
+    original = output.read_bytes()
+    path = tmp_path / "request.json"
+    path.write_text(json.dumps(req))
+    result = subprocess.run([sys.executable, "-B", str(Path(__file__).resolve().parents[1] / "tools/knowledge/evaluate_generation_output.py"),
+                             "--request", str(path), "--output", str(output)], capture_output=True)
+    assert result.returncode == 2
+    assert b"must not overwrite an evidence input" in result.stderr
+    assert output.read_bytes() == original

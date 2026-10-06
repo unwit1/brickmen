@@ -122,11 +122,30 @@ Threshold values above are illustrative, not measured LEGO acceptance limits. Om
 
 For decoration, supply `art_mask` and `safe_zone`, plus `keepout_mask` when applicable, using the same asset shape. Containment counts art outside the safe zone and art overlapping any keep-out; empty art cannot pass. Silhouette inputs are optional for a print-only measurement. No automatic resizing, segmentation or missing-landmark inference occurs.
 
-The report binds request, metric registry and input hashes, and distinguishes technical checks from unreviewed semantic features and unvalidated manufacturing/fit. Review P0 details, part IDs, colors, left/right orientation, hidden surfaces and official likeness separately, even when silhouette overlap is perfect. A blocked rerun replaces a stale successful report.
+The report binds request, metric registry and input hashes, and distinguishes technical checks from unreviewed semantic features and unvalidated manufacturing/fit. Review P0 details, part IDs, colors, left/right orientation, hidden surfaces and official likeness separately, even when silhouette overlap is perfect. A blocked rerun replaces a stale successful report. An output path that aliases any declared evidence input is rejected before writing, preserving original images, masks and registration files.
 
 Evaluator processor v2 also accepts optional `provenance` with `source_images` (each role has `local_path` and `sha256`) and a byte-pinned `registration` JSON file. Include `candidate`, plus `reference` for silhouette comparison and `production_template` for print containment. The registration uses schema `brickmen-registration-evidence/v1`, the same `alignment_id`, a named `reviewer`, nonempty `review_notes`, and `mask_derivation.method`. Its `source_images` must pin each original `image_sha256` and `original_dimensions_px`; `mask_sha256`, `pixel_grid` and `landmarks` must match the exact measurement request. The evaluator checks the image bytes, dimensions, registration bytes and these bindings. It reports `verified_byte_bindings_as_declared`; requests without this provenance remain `masks_only`. Neither status verifies segmentation, correspondence or a reviewer's judgment. Any explicit resolution normalization belongs in the reviewed derivation record; the evaluator itself still never resizes inputs.
 
+Processor v3 adds optional `flat_color` constraints to this same evaluator. Supply byte-bound provenance and copy the exact constraint into the reviewed registration's `flat_color` field. Regions use **native candidate-image coordinates**, independently of the mask grid; choose an interior region so silhouette antialiasing is excluded. For example:
+
+```json
+{
+  "interpretation": "decoded_rgba_bytes",
+  "regions": [{
+    "id": "plain-forehead",
+    "box_px": [210, 165, 300, 210],
+    "target_rgba": [153, 153, 153, 255],
+    "max_channel_delta": 0,
+    "minimum_match_fraction": 1
+  }]
+}
+```
+
+The rectangle uses `[left, top, right, bottom]` with exclusive right/bottom boundaries. A zero channel tolerance and a match fraction of one require every interior RGBA pixel to match, including full opacity; shading or interior transparency fails even when silhouette checks pass. Different tolerances are explicit run declarations and must also match the registration. The report records sampled/matching pixels, distinct RGBA values, maximum channel difference and alpha range. It reads the captured single-frame RGB/RGBA candidate bytes without resampling, automatic region selection, orientation correction or color-profile conversion. This measures digital channel consistency, not calibrated physical color. Missing provenance, stale region bindings, unsupported image modes and empty/out-of-bounds rectangles block the run. Keep P0 semantic review separate.
+
 The first actual reconstruction experiment (2026-10-06, LDraw 3626cp01 neutral front) measured 0.995929 silhouette IoU after declared whole-canvas resolution normalization, yet failed the flat-color constraint: the generator added shading and returned 1254×1254 instead of the requested 512×512. A targeted exact-palette revision still failed flat color and reduced silhouette IoU to 0.991908. Both original outputs, masks, registration, exact prompts and individual feature reviews were retained; the compact [experiment record](data/generation-accuracy-head-experiment-v1.json) binds them. Use the existing unlit CAD renderer when exact geometry and flat color must be preserved. This one-view experiment demonstrates why geometry metrics and constraint review remain separate; it does not validate physical likeness, hidden surfaces, production or general model accuracy.
+
+The v3 evaluator reproduced both failures on the original bytes, using native forehead rectangle `[515,405,734,514]`: neither output had a single exact opaque #999999 pixel among 23,871 sampled pixels. Both had alpha values 253–254; their distinct RGBA counts were 236 and 103. Silhouette/landmark thresholds still passed, while the combined reports correctly returned `technical_checks_failed`. The [native-color regression record](data/generation-accuracy-head-native-color-regression-v1.json) pins the original output hashes, updated reviewed region declarations, reports and a separate portable evidence archive; the original experiment archive is preserved.
 
 Correct the smallest faulty region. Keep part geometry, colors and accepted features locked. Record the changed fields and measured failure in the existing control protocol's revision/result records. A prompt compiler is not an image scorer: silhouette IoU, landmarks, surface containment and feature presence still require actual measurements or review.
 

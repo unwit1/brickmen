@@ -16,12 +16,24 @@ from pathlib import Path
 from PIL import Image
 
 VERSION = "brickmen-generation-evaluation/v1"
-PROCESSOR_VERSION = "brickmen-generation-evaluation/v2"
+PROCESSOR_VERSION = "brickmen-generation-evaluation/v3"
 DATA = Path(__file__).resolve().parents[2] / "knowledge/libraries/lego-minifigure-customs/data"
 
 
 def digest(value):
     return hashlib.sha256(json.dumps(value, sort_keys=True, separators=(",", ":"), allow_nan=False).encode()).hexdigest()
+
+
+def declared_input_paths(value, base_dir):
+    """Protect every declared local input, including malformed nested requests."""
+    if isinstance(value, dict):
+        if isinstance(value.get("local_path"), str):
+            yield (Path(base_dir) / value["local_path"]).resolve()
+        for child in value.values():
+            yield from declared_input_paths(child, base_dir)
+    elif isinstance(value, list):
+        for child in value:
+            yield from declared_input_paths(child, base_dir)
 
 
 def pinned_bytes(asset, base_dir, label):
@@ -34,10 +46,55 @@ def pinned_bytes(asset, base_dir, label):
     return raw, sha
 
 
+def measure_flat_color(config, image):
+    """Sample declared native rectangles without resizing or color management."""
+    if (not isinstance(config, dict) or set(config) != {"interpretation", "regions"}
+            or config["interpretation"] != "decoded_rgba_bytes"
+            or not isinstance(config["regions"], list) or not config["regions"]):
+        raise ValueError("Flat color requires decoded_rgba_bytes and nonempty regions")
+    if image.mode not in {"RGB", "RGBA"} or getattr(image, "n_frames", 1) != 1:
+        raise ValueError("Flat color requires a single-frame RGB or RGBA image")
+    width, height = image.size
+    rgba, regions, checks, seen = image.convert("RGBA"), [], [], set()
+    for region in config["regions"]:
+        if not isinstance(region, dict) or set(region) != {"id", "box_px", "target_rgba", "max_channel_delta", "minimum_match_fraction"}:
+            raise ValueError("Flat color region requires id, box_px, target_rgba, max_channel_delta and minimum_match_fraction")
+        name, box, target = region["id"], region["box_px"], region["target_rgba"]
+        if not isinstance(name, str) or not name.strip() or name in seen:
+            raise ValueError("Flat color region IDs must be nonempty and unique")
+        seen.add(name)
+        if (not isinstance(box, list) or len(box) != 4 or any(type(v) is not int for v in box)
+                or not (0 <= box[0] < box[2] <= width and 0 <= box[1] < box[3] <= height)):
+            raise ValueError("Flat color box_px must be a nonempty integer rectangle within the native candidate image")
+        if not isinstance(target, list) or len(target) != 4 or any(type(v) is not int or not 0 <= v <= 255 for v in target):
+            raise ValueError("Flat color target_rgba must contain four integer bytes")
+        tolerance, minimum = region["max_channel_delta"], region["minimum_match_fraction"]
+        if type(tolerance) is not int or not 0 <= tolerance <= 255:
+            raise ValueError("Flat color max_channel_delta must be an integer byte distance")
+        if type(minimum) not in (int, float) or not math.isfinite(minimum) or not 0 < minimum <= 1:
+            raise ValueError("Flat color minimum_match_fraction must be finite in (0, 1]")
+        raw = rgba.crop(tuple(box)).tobytes()
+        pixels = [tuple(raw[i:i + 4]) for i in range(0, len(raw), 4)]
+        deltas = [max(abs(a - b) for a, b in zip(pixel, target)) for pixel in pixels]
+        matched = sum(delta <= tolerance for delta in deltas)
+        fraction = matched / len(pixels)
+        regions.append({**region, "sampled_pixels": len(pixels), "matching_pixels": matched,
+                        "match_fraction": fraction, "unique_rgba_values": len(set(pixels)),
+                        "observed_max_channel_delta": max(deltas),
+                        "observed_alpha_range": [min(p[3] for p in pixels), max(p[3] for p in pixels)]})
+        checks.append({"constraint": "flat_color_region", "region_id": name,
+                       "minimum_match_fraction": minimum, "observed_match_fraction": fraction,
+                       "passed": fraction >= minimum})
+    return {"flat_color_interpretation": "decoded_rgba_bytes", "flat_color_candidate_dimensions_px": [width, height],
+            "flat_color_regions": regions}, checks
+
+
 def verify_provenance(request, base_dir, masks, grid):
     """Bind supplied measurements to image and registration bytes, not semantic truth."""
     provenance = request.get("provenance")
     if provenance is None:
+        if request.get("flat_color") is not None:
+            raise ValueError("Flat color requires byte-bound source image and registration provenance")
         return {"provenance_status": "masks_only"}
     if not isinstance(provenance, dict) or set(provenance) != {"source_images", "registration"}:
         raise ValueError("Provenance requires source_images and registration")
@@ -51,12 +108,16 @@ def verify_provenance(request, base_dir, masks, grid):
         required_roles.add("production_template")
     if not required_roles <= set(sources):
         raise ValueError("Source images missing a measured reference or production template")
-    captured = {}
+    captured, candidate_image = {}, None
     for role, asset in sorted(sources.items()):
         raw, sha = pinned_bytes(asset, base_dir, f"source image {role}")
         with Image.open(BytesIO(raw)) as image:
             image.load()
             captured[role] = {"image_sha256": sha, "original_dimensions_px": list(image.size)}
+            if role == "candidate" and request.get("flat_color") is not None:
+                if getattr(image, "n_frames", 1) != 1:
+                    raise ValueError("Flat color requires a single-frame RGB or RGBA image")
+                candidate_image = image.copy()
     raw, registration_sha = pinned_bytes(provenance["registration"], base_dir, "registration evidence")
     registration = json.loads(raw.decode("utf-8-sig"))
     if not isinstance(registration, dict) or registration.get("schema") != "brickmen-registration-evidence/v1":
@@ -78,9 +139,16 @@ def verify_provenance(request, base_dir, masks, grid):
         raise ValueError("Registration mask pins or pixel grid differ from measurement inputs")
     if registration.get("landmarks") != request.get("landmarks"):
         raise ValueError("Registration landmarks differ from measurement inputs")
-    return {"provenance_status": "verified_byte_bindings_as_declared",
+    flat_measurements, flat_checks = ({}, []) if candidate_image is None else measure_flat_color(request["flat_color"], candidate_image)
+    if registration.get("flat_color") != request.get("flat_color"):
+        raise ValueError("Registration flat color regions differ from measurement inputs")
+    result = {"provenance_status": "verified_byte_bindings_as_declared",
             "source_image_sha256": {role: pin["image_sha256"] for role, pin in captured.items()},
             "registration_evidence_sha256": registration_sha}
+    if candidate_image is not None:
+        result.update(flat_measurements)
+        result["flat_color_checks"] = flat_checks
+    return result
 
 
 def evaluate(request, base_dir, data_dir=DATA):
@@ -164,6 +232,7 @@ def evaluate(request, base_dir, data_dir=DATA):
         checks.append({"metric": metric, "direction": directions[metric], "threshold": threshold, "passed": passed})
     registry = json.loads((data_dir / "ai-evaluation-metrics.json").read_text(encoding="utf-8"))
     provenance = verify_provenance(request, base_dir, hashes, grid)
+    checks.extend(provenance.pop("flat_color_checks", []))
     return {
         "schema": VERSION, "processor_version": PROCESSOR_VERSION,
         "request_sha256": digest(request), "metrics_registry_sha256": digest(registry), **provenance,
@@ -174,6 +243,7 @@ def evaluate(request, base_dir, data_dir=DATA):
         "limitations": ["Registration and masks are supplied evidence, not automatically verified truth.",
                        "Image and registration byte bindings do not establish that masks or landmarks correctly describe those images.",
                        "Thresholds are declared for this run, not calibrated official accuracy criteria.",
+                       "Flat color samples decoded native RGBA bytes without color management, resizing or inferred regions; it does not establish physical color accuracy.",
                        "Matching silhouette cannot establish part identity, source fidelity, style, hidden surfaces, or P0 feature presence."],
     }
 
@@ -187,6 +257,8 @@ def main():
         parser.error("Output must not overwrite the request")
     try:
         request = json.loads(args.request.read_text(encoding="utf-8-sig"))
+        if args.output.resolve() in set(declared_input_paths(request, args.request.resolve().parent)):
+            parser.error("Output must not overwrite an evidence input")
         report = evaluate(request, args.request.resolve().parent)
     except (ValueError, TypeError, KeyError, OSError, SyntaxError) as exc:
         report = {"schema": VERSION, "processor_version": PROCESSOR_VERSION, "status": "blocked", "errors": [str(exc)]}
