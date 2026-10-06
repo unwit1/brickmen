@@ -6,7 +6,7 @@
   "updated_date": "2026-10-06",
   "base_commit_before_bootstrap": "bda2cac8ea8b68bb9e3e5b4d0cf380a9c6ee3ae6",
   "current_objective": "advance_semantic_multiview_visual_grammar_after_completing_architecture_input_safety",
-  "current_workstream": "fortnite_semantic_first_review_batch_0012_plus_exact_release_multiview",
+  "current_workstream": "fortnite_semantic_first_review_batch_0013_plus_exact_release_multiview",
   "current_frontier": [
     "source_appearance_to_minifigure_semantic_translation",
     "multi_view_correspondence",
@@ -18,7 +18,7 @@
   "known_gaps": [
     {
       "id": "fortnite_semantic_review_labels",
-      "description": "Do not restart completed architecture gates. 275/744 high-priority pairs have submitted first reviews with 1117 annotations; 469 remain. Review first-review batch 0012. Obtain genuinely independent second reviews and explicit adjudication before canonical promotion. Preserve exact hashes, source appearance, uncertainty, and no-hidden-view rules. Continue exact-release multiview evidence and generation evaluation with the existing tools.",
+      "description": "Do not restart completed architecture gates. 300/744 high-priority pairs have submitted first reviews with 1243 annotations; 444 remain. Review first-review batch 0013. Obtain genuinely independent second reviews and explicit adjudication before canonical promotion. Preserve exact hashes, source appearance, uncertainty, and no-hidden-view rules. Continue exact-release multiview evidence and generation evaluation with the existing tools.",
       "status": "pending_independent_second_review_and_remaining_first_review"
     },
     {
@@ -35,7 +35,7 @@
   "highest_value_tasks": [
     {
       "priority": "P0",
-      "task": "Review first-review batch 0012; obtain independent second reviews and adjudicate before canonical promotion.",
+      "task": "Review first-review batch 0013; obtain independent second reviews and adjudicate before canonical promotion.",
       "id": "fortnite_semantic_first_review"
     },
     {
@@ -72,10 +72,10 @@
   ],
   "pending_validation": [],
   "continuation": {
-    "instruction": "Do not restart completed architecture gates. 275/744 high-priority pairs have submitted first reviews with 1117 annotations; 469 remain. Review first-review batch 0012. Obtain genuinely independent second reviews and explicit adjudication before canonical promotion. Preserve exact hashes, source appearance, uncertainty, and no-hidden-view rules. Continue exact-release multiview evidence and generation evaluation with the existing tools."
+    "instruction": "Do not restart completed architecture gates. 300/744 high-priority pairs have submitted first reviews with 1243 annotations; 444 remain. Review first-review batch 0013. Obtain genuinely independent second reviews and explicit adjudication before canonical promotion. Preserve exact hashes, source appearance, uncertainty, and no-hidden-view rules. Continue exact-release multiview evidence and generation evaluation with the existing tools."
   },
   "last_meaningful_commit": "7610c66731c6c6fae99a32bf5d0d074f69b61471",
-  "latest_validated_test_commit": "18e1eed826a7b09036ff7f4371b8a723f6f3faa3",
+  "latest_validated_test_commit": "4f2d894a3f3c1d80bd556ea6796a9577c9137d78",
   "completed_batches": [
     {
       "id": "body_architecture_reference_acquisition_v1",
@@ -419,40 +419,40 @@
       }
     }
   ],
-  "latest_test_lock_commit": "18e1eed826a7b09036ff7f4371b8a723f6f3faa3",
+  "latest_test_lock_commit": "4f2d894a3f3c1d80bd556ea6796a9577c9137d78",
   "semantic_review_frontier": {
     "eligible_pairs": 744,
-    "complete_first_review_batch_count": 11,
-    "submitted_first_review_pairs": 275,
-    "remaining_first_review_pairs": 469,
-    "submitted_semantic_annotations": 1117,
+    "complete_first_review_batch_count": 12,
+    "submitted_first_review_pairs": 300,
+    "remaining_first_review_pairs": 444,
+    "submitted_semantic_annotations": 1243,
     "independently_double_reviewed_pairs": 0,
     "adjudicated_pairs": 0,
     "next_materialized_incomplete_batch": null,
     "next_planned_batch": {
-      "batch_index": 12,
-      "batch_id": "fortnite-review-first_review-7d81d0201accc4d7",
-      "path": "knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-0012.json",
+      "batch_index": 13,
+      "batch_id": "fortnite-review-first_review-7e5eb014479b3a16",
+      "path": "knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-0013.json",
       "selected_records": 25
     },
-    "evidence_sha256": "075147889cbc89416b9f16cb3303ffd469953a8545f91b227008355b5727756d"
+    "evidence_sha256": "f23317f5b8c745487c22e0cf37817923c06336cfb594e5e9247759ebc55af4ba"
   },
   "completed_batches_are_historical_snapshots": true,
   "latest_validation": {
-    "checkpoint": "18e1eed826a7b09036ff7f4371b8a723f6f3faa3",
-    "local_tests_passed": 626,
+    "checkpoint": "4f2d894a3f3c1d80bd556ea6796a9577c9137d78",
+    "local_tests_passed": 627,
     "github_runs": [
       {
         "name": "Validate Brickmen",
+        "id": 37484884198,
         "status": "completed",
-        "conclusion": "success",
-        "id": 37484158232
+        "conclusion": "success"
       },
       {
         "name": "LEGO Knowledge Tool Tests",
+        "id": 37484884176,
         "status": "completed",
-        "conclusion": "success",
-        "id": 37484158130
+        "conclusion": "success"
       }
     ],
     "status": "passed"
@@ -470,7 +470,7 @@
     "real_generated_output_benchmark": "pending",
     "semantic_feature_review": "required",
     "physical_fit": "unvalidated",
-    "next": "Benchmark actual generated outputs with reviewed appearance/geometry references; continue batch 0012 and independent semantic review. Curved texture UV accuracy and physical calibration remain open.",
+    "next": "Benchmark actual generated outputs with reviewed appearance/geometry references; continue batch 0013 and independent semantic review. Curved texture UV accuracy and physical calibration remain open.",
     "renderer_configuration": "isolated_preferences_explicit_library_color_config_and_fresh_png_checks",
     "texture_mapped_parts": "external_PNG_inventory_and_actual_LDView_4.7_PLANAR_CYLINDRICAL_SPHERICAL_smokes_passed",
     "texture_dependency_inventory": "v2; geometry, external PNG textures, glossmaps and color configuration pinned",

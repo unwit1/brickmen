@@ -6,6 +6,7 @@ on:
     paths:
       - ".github/workflows/compile-fortnite-semantic-review-submissions.yml"
       - "tools/knowledge/build_fortnite_semantic_review_submission.py"
+      - "tools/knowledge/build_fortnite_semantic_review_batch_plan.py"
       - "tools/knowledge/build_fortnite_semantic_review_progress.py"
       - "tools/knowledge/build_fortnite_semantic_critic_evidence.py"
       - "tools/knowledge/build_fortnite_semantic_critic_hardcase_queue.py"
@@ -61,6 +62,7 @@ jobs:
               --summary "$summary"
           done
 
+          python tools/knowledge/build_fortnite_semantic_review_batch_plan.py
           python tools/knowledge/build_fortnite_semantic_review_progress.py
           python tools/knowledge/build_fortnite_semantic_critic_evidence.py
           python tools/knowledge/build_fortnite_semantic_critic_hardcase_queue.py
