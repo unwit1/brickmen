@@ -75,7 +75,7 @@
     "instruction": "Do not restart completed architecture gates. 275/744 high-priority pairs have submitted first reviews with 1117 annotations; 469 remain. Review first-review batch 0012. Obtain genuinely independent second reviews and explicit adjudication before canonical promotion. Preserve exact hashes, source appearance, uncertainty, and no-hidden-view rules. Continue exact-release multiview evidence and generation evaluation with the existing tools."
   },
   "last_meaningful_commit": "7610c66731c6c6fae99a32bf5d0d074f69b61471",
-  "latest_validated_test_commit": "25c9aaa43851867fb68e707d3fa76ff1b1ef18db",
+  "latest_validated_test_commit": "271502be831ff13c9b61d3f4d3b19cc204242c37",
   "completed_batches": [
     {
       "id": "body_architecture_reference_acquisition_v1",
@@ -419,7 +419,7 @@
       }
     }
   ],
-  "latest_test_lock_commit": "25c9aaa43851867fb68e707d3fa76ff1b1ef18db",
+  "latest_test_lock_commit": "271502be831ff13c9b61d3f4d3b19cc204242c37",
   "semantic_review_frontier": {
     "eligible_pairs": 744,
     "complete_first_review_batch_count": 11,
@@ -439,12 +439,20 @@
   },
   "completed_batches_are_historical_snapshots": true,
   "latest_validation": {
-    "checkpoint": "25c9aaa43851867fb68e707d3fa76ff1b1ef18db",
-    "local_tests_passed": 604,
-    "github_validation_run_id": 37480501978,
-    "github_knowledge_tests_run_id": 37480502079,
-    "github_body_geometry_run_id": 37480501952,
-    "github_giant_reference_run_id": 37480501996,
+    "checkpoint": "271502be831ff13c9b61d3f4d3b19cc204242c37",
+    "local_tests_passed": 615,
+    "github_runs": [
+      {
+        "name": "LEGO Knowledge Tool Tests",
+        "run_id": 37481939913,
+        "conclusion": "success"
+      },
+      {
+        "name": "Validate Brickmen",
+        "run_id": 37481939950,
+        "conclusion": "success"
+      }
+    ],
     "status": "passed"
   },
   "generation_accuracy_frontier": {
@@ -456,13 +464,13 @@
       "landmark_max_error",
       "print_zone_containment"
     ],
-    "latest_local_tests_passed": 615,
+    "latest_local_tests_passed": 618,
     "real_generated_output_benchmark": "pending",
     "semantic_feature_review": "required",
     "physical_fit": "unvalidated",
-    "next": "Run actual LDView texture smoke test and generated-output benchmarks; continue first-review batch 0012 and independent review.",
+    "next": "Expand real rendering checks across curved texture projections and actual catalog parts; benchmark generated outputs; continue batch 0012 and independent review.",
     "renderer_configuration": "isolated_preferences_explicit_library_color_config_and_fresh_png_checks",
-    "texture_mapped_parts": "external_PNG_inventory_validated; actual_renderer_smoke_pending",
+    "texture_mapped_parts": "external_PNG_inventory_and_actual_LDView_4.7_PLANAR_smoke_passed",
     "texture_dependency_inventory": "v2; geometry, external PNG textures, glossmaps and color configuration pinned",
     "unsupported_texture_features": [
       "GLOSSMAP rendering",
@@ -471,7 +479,40 @@
     ],
     "dependency_license_gate": "all geometry/texture dependency licenses required; byte-bound provenance declarations supported",
     "part_catalog": "existing_indexer_v2; default minifig patterns, patterned parts, all declared standalone parts/shortcuts",
-    "preview_rendering": "shared_renderer_v6; canonical view selection and verified fresh outputs"
+    "preview_rendering": "shared_renderer_v6; canonical view selection and verified fresh outputs",
+    "renderer_smoke_test": {
+      "test": "tests/test_index_ldraw_parts.py::test_real_ldview_texture_changes_pixels_and_revision",
+      "environment_variable": "BRICKMEN_LDVIEW_EXECUTABLE",
+      "date": "2026-10-06",
+      "renderer_release": "https://github.com/tcobbs/ldview/releases/tag/v4.7",
+      "portable_archive_sha256": "da7cbc77aadc07c8e0cdc737e0fcc8103a33ea745099835ec587c8eeb257bb3a",
+      "renderer_executable_sha256": "f63540fa0a5a53377b1612555a1f8f4d99f10965b7628ad66aa83e391f9e45f0",
+      "fixture": "synthetic planar textured tile; source unchanged, texture red/blue changed to magenta/blue",
+      "dimensions_px": [
+        256,
+        256
+      ],
+      "image_sha256": [
+        "d96cc14c080f8d87b5cb315b6c6abb9b4aed92d02f4844b7b5285decc6037784",
+        "292a8fa6cefc28f1d20702a690124dba2e3cfc76edb863a9bae52ffabe7f0d29"
+      ],
+      "render_input_revision": [
+        "a2d8bc07f36518b263d13a68961131858ad29583ee9c0bc4ed25e4e4a9ed941b",
+        "fd4d263c998f5a133debdd89ef24c5ca055ab7215169f2b14b3bdf354b26c569"
+      ],
+      "verified": [
+        "fresh output PNG",
+        "visible texture colors",
+        "changed pixels",
+        "changed image and dependency hashes",
+        "unchanged source hash"
+      ],
+      "limits": [
+        "synthetic fixture only",
+        "PLANAR projection only",
+        "no source likeness or physical fit claim"
+      ]
+    }
   },
   "semantic_evidence_gate": {
     "queue_version": "v3",

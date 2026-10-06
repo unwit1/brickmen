@@ -16,7 +16,7 @@ The manifest output is suitable for detection/view/geometry/style-measurement ex
 but authority remains community_structured rather than LEGO-primary.
 """
 from __future__ import annotations
-import argparse,hashlib,io,json,math,re,shlex,subprocess,sys,uuid
+import argparse,hashlib,io,json,math,os,re,shlex,subprocess,sys,uuid
 from PIL import Image
 from datetime import datetime,timezone
 from pathlib import Path, PureWindowsPath
@@ -219,7 +219,12 @@ def render(exe,source,out,lat,lon,width,height,edges,zoom,root,settings):
   f"-DefaultZoom={zoom}",
   f"-ShowHighlightLines={1 if edges else 0}",
  ]
- p=subprocess.run(cmd,capture_output=True,text=True,check=False)
+ options={"timeout":120}
+ if os.name=="nt":
+  startup=subprocess.STARTUPINFO();startup.dwFlags|=subprocess.STARTF_USESHOWWINDOW;startup.wShowWindow=0
+  options["startupinfo"]=startup
+ try:p=subprocess.run(cmd,capture_output=True,text=True,check=False,**options)
+ except (OSError,subprocess.TimeoutExpired) as exc:return 2,f"LDView execution failed: {exc}"
  return p.returncode,(p.stderr or p.stdout)[-2000:]
 
 def main(argv=None, *, quiet=False):

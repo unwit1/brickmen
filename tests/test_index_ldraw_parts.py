@@ -1,6 +1,8 @@
 """Synthetic catalog and rendering integration fixtures, not accuracy evidence."""
 import hashlib
 import json
+import os
+import subprocess
 import sys
 from pathlib import Path
 
@@ -177,3 +179,50 @@ def test_duplicate_asset_ids_cannot_silently_cross_link_previews(tmp_path):
     with pytest.raises(SystemExit) as exc:
         INDEX.main(args(root, out, "all_parts"))
     assert exc.value.code == 2 and not (out / "ldraw_parts.jsonl").exists()
+
+
+@pytest.mark.parametrize("error", [OSError("unavailable"), subprocess.TimeoutExpired("renderer", 120)])
+def test_renderer_execution_failures_are_reported(tmp_path, monkeypatch, error):
+    def fail(*args, **kwargs):
+        assert kwargs["timeout"] == 120
+        raise error
+    monkeypatch.setattr(RENDER.subprocess, "run", fail)
+    rc, detail = RENDER.render(tmp_path / "exe", tmp_path / "part", tmp_path / "out.png",
+                               0, 0, 8, 8, False, .92, tmp_path, tmp_path / "settings")
+    assert rc == 2 and "LDView execution failed" in detail
+
+
+@pytest.mark.skipif(not os.environ.get("BRICKMEN_LDVIEW_EXECUTABLE"), reason="optional real LDView texture smoke test")
+def test_real_ldview_texture_changes_pixels_and_revision(tmp_path):
+    root = tmp_path / "library"
+    (root / "parts/textures").mkdir(parents=True)
+    (root / "p").mkdir()
+    (root / "LDConfig.ldr").write_text("0 Synthetic smoke colors\n0 !COLOUR Yellow CODE 14 VALUE #FFFF00 EDGE #333333\n0 !COLOUR Main_Colour CODE 16 VALUE #888888 EDGE #333333\n")
+    path = part(root, "texture-smoke.dat", "Tile with Synthetic Pattern", "Unofficial_Part")
+    header = path.read_bytes().split(b"3 16", 1)[0]
+    path.write_bytes(header + b"0 !TEXMAP START PLANAR -10 -10 0 10 -10 0 -10 10 0 face.png\n"
+                     b"0 !: 4 16 -10 -10 0 10 -10 0 10 10 0 -10 10 0\n0 !TEXMAP FALLBACK\n"
+                     b"4 14 -10 -10 0 10 -10 0 10 10 0 -10 10 0\n0 !TEXMAP END\n")
+    captures = []
+    for variant, color in [("original", (255, 0, 0)), ("changed", (255, 0, 255))]:
+        texture = Image.new("RGB", (32, 32), "blue")
+        texture.paste(color, (0, 0, 16, 32))
+        texture.save(root / "parts/textures/face.png")
+        out = tmp_path / variant
+        assert INDEX.main(args(root, out, "patterned_parts") + [
+            "--ldview", os.environ["BRICKMEN_LDVIEW_EXECUTABLE"],
+            "--library-revision", "synthetic-texture-smoke-v1",
+            "--render-width", "256", "--render-height", "256"]) == 0
+        report, rows = records(out)
+        render = json.loads(Path(report["render_manifest"]).read_text())
+        assert render["training_rights_status"] == "requires_permission"  # Texture license is undeclared.
+        with Image.open(rows[0]["preview_path"]) as image:
+            image = image.convert("RGBA")
+            pixels = list(image.get_flattened_data())
+        assert sum(p[:3] == color and p[3] == 255 for p in pixels) > 1000
+        assert sum(p == (0, 0, 255, 255) for p in pixels) > 1000
+        captures.append((render, pixels))
+    assert captures[0][0]["source_sha256"] == captures[1][0]["source_sha256"]
+    for key in ("geometry_revision", "derived_asset_id", "sha256"):
+        assert captures[0][0][key] != captures[1][0][key]
+    assert captures[0][1] != captures[1][1]
