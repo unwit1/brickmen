@@ -464,11 +464,11 @@
       "landmark_max_error",
       "print_zone_containment"
     ],
-    "latest_local_tests_passed": 620,
+    "latest_local_tests_passed": 626,
     "real_generated_output_benchmark": "pending",
     "semantic_feature_review": "required",
     "physical_fit": "unvalidated",
-    "next": "Index and render real pinned catalog parts, benchmark actual generated outputs, and continue batch 0012/independent semantic review.",
+    "next": "Investigate patterned-head shading artifacts, benchmark actual generated outputs with reviewed references, and continue batch 0012/independent semantic reviews.",
     "renderer_configuration": "isolated_preferences_explicit_library_color_config_and_fresh_png_checks",
     "texture_mapped_parts": "external_PNG_inventory_and_actual_LDView_4.7_PLANAR_CYLINDRICAL_SPHERICAL_smokes_passed",
     "texture_dependency_inventory": "v2; geometry, external PNG textures, glossmaps and color configuration pinned",
@@ -478,8 +478,8 @@
       "nested TEXMAP blocks"
     ],
     "dependency_license_gate": "all geometry/texture dependency licenses required; byte-bound provenance declarations supported",
-    "part_catalog": "existing_indexer_v2; default minifig patterns, patterned parts, all declared standalone parts/shortcuts",
-    "preview_rendering": "shared_renderer_v6; canonical view selection and verified fresh outputs",
+    "part_catalog": "existing_indexer_v2; 24858 declared standalone parts/shortcuts indexed from a pinned real library; focused --part selection supported",
+    "preview_rendering": "shared_renderer_v7; canonical view selection, fresh outputs and structured media preserved",
     "renderer_smoke_test": {
       "test": "tests/test_index_ldraw_parts.py::test_real_ldview_texture_changes_pixels_and_revision",
       "environment_variable": "BRICKMEN_LDVIEW_EXECUTABLE",
@@ -552,6 +552,61 @@
           ],
           "visible_colors_and_texture_change_assertions": "passed"
         }
+      ]
+    },
+    "reference_evidence_separation": "builder_v3; current and legacy LDraw renders never complete physical appearance views",
+    "real_catalog_render_experiment": {
+      "schema": "brickmen-community-part-render-experiment/v1",
+      "date": "2026-10-06",
+      "archive_source": "https://library.ldraw.org/library/updates/complete.zip",
+      "archive_sha256": "f3e496d0ede69ca7942fa4aa198e661ee2d22723906101e2e339d8917a4dd5f2",
+      "catalog_parts_indexed": 24858,
+      "parts": [
+        {
+          "part_id": "3001",
+          "source_path": "parts/3001.dat",
+          "source_sha256": "70968cb5e4baa92dc6a1939aca7526b8566a17dbea49da9b91182aa864e412c4",
+          "author": "James Jessiman",
+          "license": "!LICENSE Licensed under CC BY 4.0 : see CAreadme.txt",
+          "dependency_count": 11
+        },
+        {
+          "part_id": "3626c",
+          "source_path": "parts/3626c.dat",
+          "source_sha256": "538729132df1cd01bd1811c0dbac5a1bbda5d11d9cfb755797401c19641a6657",
+          "author": "J.C. Tchang [tchang]",
+          "license": "!LICENSE Licensed under CC BY 4.0 : see CAreadme.txt",
+          "dependency_count": 14
+        },
+        {
+          "part_id": "3626cp01",
+          "source_path": "parts/3626cp01.dat",
+          "source_sha256": "0634368409e8aaf90c315dde09ce98906f82fac11bd9dfd7dbad1126022b72b9",
+          "author": "J.C. Tchang [tchang]",
+          "license": "!LICENSE Licensed under CC BY 4.0 : see CAreadme.txt",
+          "dependency_count": 17
+        },
+        {
+          "part_id": "973",
+          "source_path": "parts/973.dat",
+          "source_sha256": "bc916535c228a21d472db6868c591d8e8c7a9c6340b300aba07a7ba22f972ad9",
+          "author": "Steve Bliss [sbliss]",
+          "license": "!LICENSE Licensed under CC BY 4.0 : see CAreadme.txt",
+          "dependency_count": 13
+        }
+      ],
+      "render_count": 24,
+      "renderer_version": "ldraw-pattern-multiview-render/v7",
+      "reference_builder": "minifigure-reference-set/v3",
+      "render_manifest_sha256": "6183f489a7fb769fde1d7035b936d647122898d4192d901263ac6fec819cdb95",
+      "pack_sha256": "f6f5166708e6cf416f37c7fb8557a804462b7b7132a596b05803b3932faabba0",
+      "pack_bytes": 229023,
+      "physical_view_completeness": false,
+      "limitations": [
+        "community digital reconstruction",
+        "default color and visible shading artifacts",
+        "no real source likeness validation",
+        "no physical fit validation"
       ]
     }
   },

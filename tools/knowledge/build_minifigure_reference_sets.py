@@ -13,7 +13,7 @@ import json
 import math
 from pathlib import Path
 
-VERSION = 'minifigure-reference-set/v2'
+VERSION = 'minifigure-reference-set/v3'
 AUTHORITY = {
     'lego_primary': 100, 'rights_holder_primary': 95, 'developer_primary': 95,
     'official_film_local_copy': 90, 'licensed_game_primary': 90,
@@ -57,6 +57,8 @@ def role(record, target_kind='minifigure'):
     raw_view = str(record.get('view') or 'unknown').lower()
     view = VIEW_ALIASES.get(raw_view, raw_view)
     medium = str(record.get('medium') or '').lower()
+    if str(record.get('processor_version') or '').startswith('ldraw-pattern-multiview-render/'):
+        medium = 'structured_pattern' if 'pattern' in medium else 'structured_geometry'
     for match, slot in [('game_texture', 'game_texture'), ('game_model', 'game_model_render'),
                         ('film', 'film_expression_states'), ('pattern', 'structured_component_pattern'),
                         ('geometry', 'structured_geometry')]:

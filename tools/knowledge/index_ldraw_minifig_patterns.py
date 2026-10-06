@@ -90,6 +90,7 @@ def main(argv=None) -> int:
     ap.add_argument("--ldraw-root", type=Path, required=True)
     ap.add_argument("--output-dir", type=Path, required=True)
     ap.add_argument("--catalog", choices=list(CATALOG_FILES), default="minifig_patterns")
+    ap.add_argument("--part", action="append", help="Select a .dat path relative to parts/; repeat to avoid scanning the full catalog")
     ap.add_argument("--ldview", type=Path)
     ap.add_argument("--library-revision", help="Required for previews: pinned library archive hash or commit")
     ap.add_argument("--render-width", type=int, default=1024)
@@ -105,13 +106,25 @@ def main(argv=None) -> int:
         ap.error("--library-revision is required with --ldview")
     if args.ldview and not args.ldview.is_file():
         ap.error("LDView executable not found")
+    if args.part:
+        paths = []
+        for name in args.part:
+            path = parts_dir / name
+            if (Path(name).is_absolute() or not path.resolve().is_relative_to(parts_dir.resolve())
+                    or not path.is_file() or path.suffix.lower() != ".dat"):
+                ap.error(f"Selected part must be an existing .dat file inside parts/: {name}")
+            if path.resolve() in {p.resolve() for p in paths}:
+                ap.error(f"Duplicate selected part: {name}")
+            paths.append(path)
+    else:
+        paths = (p for p in parts_dir.rglob("*") if p.is_file() and p.suffix.lower() == ".dat")
     out = args.output_dir.resolve()
     out.mkdir(parents=True, exist_ok=True)
     manifest = out / CATALOG_FILES[args.catalog]
     records = []
     identities = set()
     license_counts: dict[str, int] = {}
-    for path in sorted(p for p in parts_dir.rglob("*") if p.is_file() and p.suffix.lower() == ".dat"):
+    for path in sorted(paths):
         if not path.resolve().is_relative_to(root):
             ap.error(f"Part resolves outside the library: {path}")
         raw = path.read_bytes()

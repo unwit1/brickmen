@@ -14,6 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from tools.knowledge import index_ldraw_minifig_patterns as INDEX
 from tools.knowledge import render_ldraw_pattern_training_views as RENDER
+from tools.knowledge import build_minifigure_reference_sets as REFERENCES
 
 
 def part(root, name, description, kind="Part", extra="", newline="\n"):
@@ -90,6 +91,28 @@ def test_geometry_comments_do_not_override_catalog_header(tmp_path):
     assert header["category"] == "" and header["part_type"] == "Part"
 
 
+def test_explicit_parts_avoid_scanning_unselected_files(tmp_path, monkeypatch):
+    root = tmp_path / "library"
+    part(root, "selected.dat", "Brick")
+    part(root, "other.dat", "Other Brick")
+    def no_scan(*args, **kwargs):
+        raise AssertionError("Explicit part selection should not scan the catalog")
+    monkeypatch.setattr(Path, "rglob", no_scan)
+    out = tmp_path / "out"
+    assert INDEX.main(args(root, out, "all_parts") + ["--part", "selected.dat"]) == 0
+    assert [r["part_id"] for r in records(out)[1]] == ["selected"]
+
+
+@pytest.mark.parametrize("names", [["../outside.dat"], ["missing.dat"], ["selected.dat", "selected.dat"]])
+def test_invalid_part_selection_fails_before_output(tmp_path, names):
+    root = tmp_path / "library"
+    part(root, "selected.dat", "Brick")
+    out = tmp_path / "out"
+    with pytest.raises(SystemExit) as exc:
+        INDEX.main(args(root, out, "all_parts") + [value for name in names for value in ("--part", name)])
+    assert exc.value.code == 2 and not out.exists()
+
+
 @pytest.mark.parametrize("write_output,expected_status", [(True, "rendered"), (False, "error")])
 def test_preview_uses_shared_inventory_and_rejects_stale_images(tmp_path, monkeypatch, capsys, write_output, expected_status):
     root = tmp_path / "library"
@@ -123,6 +146,10 @@ def test_preview_uses_shared_inventory_and_rejects_stale_images(tmp_path, monkey
     if write_output:
         rendered = [json.loads(line) for line in Path(report["render_manifest"]).read_text().splitlines()]
         assert rendered[0]["view"] == "front"
+        assert rendered[0]["part_namespace"] == "ldraw" and rendered[0]["part_id"] == "tile"
+        reference_set = REFERENCES.build_reference_sets(rendered, target_kind="part")[0]
+        assert "structured_component_pattern" in reference_set["slots"]
+        assert "part_front" in reference_set["missing_roles"]
         assert rendered[0]["geometry_dependencies"][0]["path"] == "parts/tile.dat"
         assert entries[0]["preview_sha256"] == rendered[0]["sha256"]
         assert entries[0]["preview_path"] != str(stale)
@@ -180,6 +207,18 @@ def test_duplicate_asset_ids_cannot_silently_cross_link_previews(tmp_path):
     with pytest.raises(SystemExit) as exc:
         INDEX.main(args(root, out, "all_parts"))
     assert exc.value.code == 2 and not (out / "ldraw_parts.jsonl").exists()
+
+
+@pytest.mark.parametrize("medium", [None, "physical_photograph"])
+def test_legacy_ldraw_renders_do_not_complete_physical_appearance_views(medium):
+    render = {"sample_id": "synthetic", "derived_asset_id": "synthetic-render",
+              "source_reference_asset_id": "synthetic-source", "view": "front",
+              "authority": "community_structured", "processor_version": "ldraw-pattern-multiview-render/v5"}
+    if medium:
+        render["medium"] = medium
+    reference = REFERENCES.build_reference_sets([render], target_kind="part")[0]
+    assert "structured_geometry" in reference["slots"]
+    assert "part_front" in reference["missing_roles"]
 
 
 @pytest.mark.parametrize("error", [OSError("unavailable"), subprocess.TimeoutExpired("renderer", 120)])

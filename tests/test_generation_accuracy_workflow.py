@@ -231,7 +231,10 @@ def test_render_manifest_feeds_part_reference_sets(tmp_path, monkeypatch):
     assert RENDERER.main() == 0
     records = [json.loads(line) for line in (output / "render_manifest.jsonl").read_text().splitlines()]
     refset = REFERENCES.build_reference_sets(records, "part")[0]
-    assert all(refset["completeness"].values())
+    assert len(records) == 9
+    assert "structured_geometry" in refset["slots"]
+    assert not any(refset["completeness"].values())
+    assert set(refset["missing_roles"]) == {"part_front", "part_rear", "part_left", "part_right"}
     monkeypatch.setattr(RENDERER, "render", lambda *args: (0, "no new snapshot"))
     assert RENDERER.main() == 2
     assert not (output / "render_manifest.jsonl").read_text()

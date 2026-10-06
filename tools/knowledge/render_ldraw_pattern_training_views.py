@@ -25,7 +25,7 @@ ROOT=Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:sys.path.insert(0,str(ROOT))
 from tools.geometry.ingest_ldraw_geometry import flatten_ldraw, reference_candidates
 
-VERSION="ldraw-pattern-multiview-render/v6"
+VERSION="ldraw-pattern-multiview-render/v7"
 
 VIEWS=[
  ("front",0,0),
@@ -299,6 +299,12 @@ def main(argv=None, *, quiet=False):
       "source_author":rec.get("author"),
       "source_license":rec.get("license"),
       "authority":"community_structured",
+      "medium":"structured_pattern_reconstruction" if "pattern" in str(rec.get("medium","")).lower() else "structured_geometry_reconstruction",
+      "source_medium":rec.get("medium"),
+      "part_namespace":rec.get("part_namespace","ldraw"),
+      "part_id":rec.get("part_id",source.stem),
+      "part_type":rec.get("part_type"),
+      "category":rec.get("category"),
       "component_type":rec.get("component_type"),
       "render_profile":profile,
       "render_configuration":record_configuration,
