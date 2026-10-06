@@ -1,0 +1,2897 @@
+{
+  "schema": "fortnite-semantic-review-work-batch/v1",
+  "processor_version": "fortnite-semantic-review-work-batch/v1",
+  "batch_id": "fortnite-review-first_review-b6d9934acac4dc24",
+  "mode": "first_review",
+  "offset": 325,
+  "limit": 25,
+  "min_priority_score": 6.0,
+  "selected_records": 25,
+  "reviewer_id": "unassigned",
+  "reviewer_type": "human",
+  "items": [
+    {
+      "translation_pair_id": "fortnitepair-817f69169ce0017244553e6c",
+      "review_priority_score": 7.5,
+      "lego_image_resolution": "direct_pair",
+      "source_image_url": "https://fortnite-api.com/images/cosmetics/br/character_missusmind_suit/featured.png",
+      "lego_image_url": "https://fortnite-api.com/images/cosmetics/lego/character_missusmind_suit/wide.png",
+      "measurement_signals": [
+        {
+          "signal": "moderate_edge_reduction",
+          "region": "head_upper",
+          "value": 0.7967
+        },
+        {
+          "signal": "edge_increase",
+          "region": "torso_middle",
+          "value": 1.517
+        },
+        {
+          "signal": "palette_increase",
+          "region": "torso_middle",
+          "value": 2
+        },
+        {
+          "signal": "edge_increase",
+          "region": "legs_lower",
+          "value": 1.5571
+        },
+        {
+          "signal": "palette_increase",
+          "region": "legs_lower",
+          "value": 2
+        },
+        {
+          "signal": "large_silhouette_bbox_change",
+          "region": "global",
+          "value": true
+        }
+      ],
+      "measurement_signal_policy": "Signals only prioritize review and must not be copied into semantic labels without direct visual evidence.",
+      "review_template": {
+        "schema": "fortnite-semantic-review/v1",
+        "review_id": null,
+        "translation_pair_id": "fortnitepair-817f69169ce0017244553e6c",
+        "reviewer": {
+          "reviewer_type": "human",
+          "reviewer_id": "unassigned",
+          "model_id": null,
+          "model_revision": null,
+          "review_role": "reviewer"
+        },
+        "evidence": {
+          "source_image_url": "https://fortnite-api.com/images/cosmetics/br/character_missusmind_suit/featured.png",
+          "lego_image_url": "https://fortnite-api.com/images/cosmetics/lego/character_missusmind_suit/wide.png",
+          "source_image_sha256": "17c4980e5c1f2f498adc002069c8c4d1e8f61983247e21b0533c6dd4f89cf9ec",
+          "lego_image_sha256": "fb3676aa23a8c31a74beed974aa5fd2975f08d431b73bc38055d828362813686",
+          "evidence_scope": "front_pair",
+          "claims_unobserved_surfaces": false
+        },
+        "annotations": {
+          "regions": {
+            "head": [],
+            "torso": [],
+            "lower_body": [],
+            "accessory_or_silhouette": []
+          },
+          "identity_critical_features": [],
+          "mask_headgear_route": null,
+          "expression_translation": null
+        },
+        "limitations": [],
+        "measurement_signal_refs": [
+          {
+            "signal": "moderate_edge_reduction",
+            "region": "head_upper",
+            "value": 0.7967,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "edge_increase",
+            "region": "torso_middle",
+            "value": 1.517,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "palette_increase",
+            "region": "torso_middle",
+            "value": 2,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "edge_increase",
+            "region": "legs_lower",
+            "value": 1.5571,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "palette_increase",
+            "region": "legs_lower",
+            "value": 2,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "large_silhouette_bbox_change",
+            "region": "global",
+            "value": true,
+            "role": "review_prioritization_only"
+          }
+        ],
+        "review_status": "draft",
+        "adjudicates_review_ids": [],
+        "created_at": null,
+        "provenance": [
+          {
+            "source": "fortnite_semantic_review_queue",
+            "processor_version": "fortnite-semantic-review-queue/v1",
+            "review_priority_score": 7.5
+          },
+          {
+            "source": "fortnite_semantic_review_media_materialization",
+            "processor_version": "fortnite-semantic-review-media-materializer/v3",
+            "source_image_sha256": "17c4980e5c1f2f498adc002069c8c4d1e8f61983247e21b0533c6dd4f89cf9ec",
+            "lego_image_sha256": "fb3676aa23a8c31a74beed974aa5fd2975f08d431b73bc38055d828362813686"
+          }
+        ]
+      },
+      "source_image_sha256": "17c4980e5c1f2f498adc002069c8c4d1e8f61983247e21b0533c6dd4f89cf9ec",
+      "lego_image_sha256": "fb3676aa23a8c31a74beed974aa5fd2975f08d431b73bc38055d828362813686"
+    },
+    {
+      "translation_pair_id": "fortnitepair-81c0c3bb0e54cb6e7ba7268f",
+      "review_priority_score": 7.5,
+      "lego_image_resolution": "direct_pair",
+      "source_image_url": "https://fortnite-api.com/images/cosmetics/br/cid_894_athena_commando_m_palespooky/featured.png",
+      "lego_image_url": "https://fortnite-api.com/images/cosmetics/lego/cid_894_athena_commando_m_palespooky/wide.png",
+      "measurement_signals": [
+        {
+          "signal": "palette_increase",
+          "region": "head_upper",
+          "value": 2
+        },
+        {
+          "signal": "edge_increase",
+          "region": "torso_middle",
+          "value": 1.5489
+        },
+        {
+          "signal": "palette_increase",
+          "region": "torso_middle",
+          "value": 2
+        },
+        {
+          "signal": "edge_increase",
+          "region": "legs_lower",
+          "value": 2.103
+        },
+        {
+          "signal": "palette_increase",
+          "region": "legs_lower",
+          "value": 2
+        },
+        {
+          "signal": "large_silhouette_bbox_change",
+          "region": "global",
+          "value": true
+        }
+      ],
+      "measurement_signal_policy": "Signals only prioritize review and must not be copied into semantic labels without direct visual evidence.",
+      "review_template": {
+        "schema": "fortnite-semantic-review/v1",
+        "review_id": null,
+        "translation_pair_id": "fortnitepair-81c0c3bb0e54cb6e7ba7268f",
+        "reviewer": {
+          "reviewer_type": "human",
+          "reviewer_id": "unassigned",
+          "model_id": null,
+          "model_revision": null,
+          "review_role": "reviewer"
+        },
+        "evidence": {
+          "source_image_url": "https://fortnite-api.com/images/cosmetics/br/cid_894_athena_commando_m_palespooky/featured.png",
+          "lego_image_url": "https://fortnite-api.com/images/cosmetics/lego/cid_894_athena_commando_m_palespooky/wide.png",
+          "source_image_sha256": "cef1fec86fd0b199b7dd8f92d8e5e464a94d314676f1e892f3a1d31936747e49",
+          "lego_image_sha256": "adc7cb2bcef2355bcf3bb286cd8a02843091e17f748cd2e533525b08ec574668",
+          "evidence_scope": "front_pair",
+          "claims_unobserved_surfaces": false
+        },
+        "annotations": {
+          "regions": {
+            "head": [],
+            "torso": [],
+            "lower_body": [],
+            "accessory_or_silhouette": []
+          },
+          "identity_critical_features": [],
+          "mask_headgear_route": null,
+          "expression_translation": null
+        },
+        "limitations": [],
+        "measurement_signal_refs": [
+          {
+            "signal": "palette_increase",
+            "region": "head_upper",
+            "value": 2,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "edge_increase",
+            "region": "torso_middle",
+            "value": 1.5489,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "palette_increase",
+            "region": "torso_middle",
+            "value": 2,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "edge_increase",
+            "region": "legs_lower",
+            "value": 2.103,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "palette_increase",
+            "region": "legs_lower",
+            "value": 2,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "large_silhouette_bbox_change",
+            "region": "global",
+            "value": true,
+            "role": "review_prioritization_only"
+          }
+        ],
+        "review_status": "draft",
+        "adjudicates_review_ids": [],
+        "created_at": null,
+        "provenance": [
+          {
+            "source": "fortnite_semantic_review_queue",
+            "processor_version": "fortnite-semantic-review-queue/v1",
+            "review_priority_score": 7.5
+          },
+          {
+            "source": "fortnite_semantic_review_media_materialization",
+            "processor_version": "fortnite-semantic-review-media-materializer/v3",
+            "source_image_sha256": "cef1fec86fd0b199b7dd8f92d8e5e464a94d314676f1e892f3a1d31936747e49",
+            "lego_image_sha256": "adc7cb2bcef2355bcf3bb286cd8a02843091e17f748cd2e533525b08ec574668"
+          }
+        ]
+      },
+      "source_image_sha256": "cef1fec86fd0b199b7dd8f92d8e5e464a94d314676f1e892f3a1d31936747e49",
+      "lego_image_sha256": "adc7cb2bcef2355bcf3bb286cd8a02843091e17f748cd2e533525b08ec574668"
+    },
+    {
+      "translation_pair_id": "fortnitepair-82d4db4b750289294baa012b",
+      "review_priority_score": 7.5,
+      "lego_image_resolution": "direct_pair",
+      "source_image_url": "https://fortnite-api.com/images/cosmetics/br/character_iciclecane_bright/featured.png",
+      "lego_image_url": "https://fortnite-api.com/images/cosmetics/lego/character_iciclecane_bright/wide.png",
+      "measurement_signals": [
+        {
+          "signal": "substantial_edge_reduction",
+          "region": "head_upper",
+          "value": 0.3422
+        },
+        {
+          "signal": "moderate_edge_reduction",
+          "region": "torso_middle",
+          "value": 0.773
+        },
+        {
+          "signal": "edge_increase",
+          "region": "legs_lower",
+          "value": 1.6221
+        },
+        {
+          "signal": "large_silhouette_bbox_change",
+          "region": "global",
+          "value": true
+        }
+      ],
+      "measurement_signal_policy": "Signals only prioritize review and must not be copied into semantic labels without direct visual evidence.",
+      "review_template": {
+        "schema": "fortnite-semantic-review/v1",
+        "review_id": null,
+        "translation_pair_id": "fortnitepair-82d4db4b750289294baa012b",
+        "reviewer": {
+          "reviewer_type": "human",
+          "reviewer_id": "unassigned",
+          "model_id": null,
+          "model_revision": null,
+          "review_role": "reviewer"
+        },
+        "evidence": {
+          "source_image_url": "https://fortnite-api.com/images/cosmetics/br/character_iciclecane_bright/featured.png",
+          "lego_image_url": "https://fortnite-api.com/images/cosmetics/lego/character_iciclecane_bright/wide.png",
+          "source_image_sha256": "982a922f9909f8bb9f253ea91e5be96be8eb7845ba872fb0a6f1aae67a33c879",
+          "lego_image_sha256": "97565c6c5ea073b310bb47e89a4ba3213887330c9636e228a2b1a451df399345",
+          "evidence_scope": "front_pair",
+          "claims_unobserved_surfaces": false
+        },
+        "annotations": {
+          "regions": {
+            "head": [],
+            "torso": [],
+            "lower_body": [],
+            "accessory_or_silhouette": []
+          },
+          "identity_critical_features": [],
+          "mask_headgear_route": null,
+          "expression_translation": null
+        },
+        "limitations": [],
+        "measurement_signal_refs": [
+          {
+            "signal": "substantial_edge_reduction",
+            "region": "head_upper",
+            "value": 0.3422,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "moderate_edge_reduction",
+            "region": "torso_middle",
+            "value": 0.773,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "edge_increase",
+            "region": "legs_lower",
+            "value": 1.6221,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "large_silhouette_bbox_change",
+            "region": "global",
+            "value": true,
+            "role": "review_prioritization_only"
+          }
+        ],
+        "review_status": "draft",
+        "adjudicates_review_ids": [],
+        "created_at": null,
+        "provenance": [
+          {
+            "source": "fortnite_semantic_review_queue",
+            "processor_version": "fortnite-semantic-review-queue/v1",
+            "review_priority_score": 7.5
+          },
+          {
+            "source": "fortnite_semantic_review_media_materialization",
+            "processor_version": "fortnite-semantic-review-media-materializer/v3",
+            "source_image_sha256": "982a922f9909f8bb9f253ea91e5be96be8eb7845ba872fb0a6f1aae67a33c879",
+            "lego_image_sha256": "97565c6c5ea073b310bb47e89a4ba3213887330c9636e228a2b1a451df399345"
+          }
+        ]
+      },
+      "source_image_sha256": "982a922f9909f8bb9f253ea91e5be96be8eb7845ba872fb0a6f1aae67a33c879",
+      "lego_image_sha256": "97565c6c5ea073b310bb47e89a4ba3213887330c9636e228a2b1a451df399345"
+    },
+    {
+      "translation_pair_id": "fortnitepair-840b5c003f9c22ca13d18e50",
+      "review_priority_score": 7.5,
+      "lego_image_resolution": "direct_pair",
+      "source_image_url": "https://fortnite-api.com/images/cosmetics/br/cid_666_athena_commando_m_arcticcamo/featured.png",
+      "lego_image_url": "https://fortnite-api.com/images/cosmetics/lego/cid_666_athena_commando_m_arcticcamo/wide.png",
+      "measurement_signals": [
+        {
+          "signal": "substantial_edge_reduction",
+          "region": "head_upper",
+          "value": 0.5628
+        },
+        {
+          "signal": "moderate_edge_reduction",
+          "region": "torso_middle",
+          "value": 0.7844
+        },
+        {
+          "signal": "edge_increase",
+          "region": "legs_lower",
+          "value": 1.3743
+        },
+        {
+          "signal": "large_silhouette_bbox_change",
+          "region": "global",
+          "value": true
+        }
+      ],
+      "measurement_signal_policy": "Signals only prioritize review and must not be copied into semantic labels without direct visual evidence.",
+      "review_template": {
+        "schema": "fortnite-semantic-review/v1",
+        "review_id": null,
+        "translation_pair_id": "fortnitepair-840b5c003f9c22ca13d18e50",
+        "reviewer": {
+          "reviewer_type": "human",
+          "reviewer_id": "unassigned",
+          "model_id": null,
+          "model_revision": null,
+          "review_role": "reviewer"
+        },
+        "evidence": {
+          "source_image_url": "https://fortnite-api.com/images/cosmetics/br/cid_666_athena_commando_m_arcticcamo/featured.png",
+          "lego_image_url": "https://fortnite-api.com/images/cosmetics/lego/cid_666_athena_commando_m_arcticcamo/wide.png",
+          "source_image_sha256": "eb9a160e4f9a334c5a1453357b9b582fa8ba088717cd3f420d94f02e88aa08ef",
+          "lego_image_sha256": "8724fd2c2fb75882bb41d2fef4dd05a4e6b10db8c2a3190c918b61ed2acc5db2",
+          "evidence_scope": "front_pair",
+          "claims_unobserved_surfaces": false
+        },
+        "annotations": {
+          "regions": {
+            "head": [],
+            "torso": [],
+            "lower_body": [],
+            "accessory_or_silhouette": []
+          },
+          "identity_critical_features": [],
+          "mask_headgear_route": null,
+          "expression_translation": null
+        },
+        "limitations": [],
+        "measurement_signal_refs": [
+          {
+            "signal": "substantial_edge_reduction",
+            "region": "head_upper",
+            "value": 0.5628,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "moderate_edge_reduction",
+            "region": "torso_middle",
+            "value": 0.7844,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "edge_increase",
+            "region": "legs_lower",
+            "value": 1.3743,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "large_silhouette_bbox_change",
+            "region": "global",
+            "value": true,
+            "role": "review_prioritization_only"
+          }
+        ],
+        "review_status": "draft",
+        "adjudicates_review_ids": [],
+        "created_at": null,
+        "provenance": [
+          {
+            "source": "fortnite_semantic_review_queue",
+            "processor_version": "fortnite-semantic-review-queue/v1",
+            "review_priority_score": 7.5
+          },
+          {
+            "source": "fortnite_semantic_review_media_materialization",
+            "processor_version": "fortnite-semantic-review-media-materializer/v3",
+            "source_image_sha256": "eb9a160e4f9a334c5a1453357b9b582fa8ba088717cd3f420d94f02e88aa08ef",
+            "lego_image_sha256": "8724fd2c2fb75882bb41d2fef4dd05a4e6b10db8c2a3190c918b61ed2acc5db2"
+          }
+        ]
+      },
+      "source_image_sha256": "eb9a160e4f9a334c5a1453357b9b582fa8ba088717cd3f420d94f02e88aa08ef",
+      "lego_image_sha256": "8724fd2c2fb75882bb41d2fef4dd05a4e6b10db8c2a3190c918b61ed2acc5db2"
+    },
+    {
+      "translation_pair_id": "fortnitepair-8437fcf181195494dcc740f5",
+      "review_priority_score": 7.5,
+      "lego_image_resolution": "direct_pair",
+      "source_image_url": "https://fortnite-api.com/images/cosmetics/br/cid_a_313_athena_commando_m_blizzardbomber/featured.png",
+      "lego_image_url": "https://fortnite-api.com/images/cosmetics/lego/cid_a_313_athena_commando_m_blizzardbomber/wide.png",
+      "measurement_signals": [
+        {
+          "signal": "moderate_edge_reduction",
+          "region": "head_upper",
+          "value": 0.7229
+        },
+        {
+          "signal": "substantial_edge_reduction",
+          "region": "torso_middle",
+          "value": 0.6486
+        },
+        {
+          "signal": "edge_increase",
+          "region": "legs_lower",
+          "value": 1.6048
+        },
+        {
+          "signal": "large_silhouette_bbox_change",
+          "region": "global",
+          "value": true
+        }
+      ],
+      "measurement_signal_policy": "Signals only prioritize review and must not be copied into semantic labels without direct visual evidence.",
+      "review_template": {
+        "schema": "fortnite-semantic-review/v1",
+        "review_id": null,
+        "translation_pair_id": "fortnitepair-8437fcf181195494dcc740f5",
+        "reviewer": {
+          "reviewer_type": "human",
+          "reviewer_id": "unassigned",
+          "model_id": null,
+          "model_revision": null,
+          "review_role": "reviewer"
+        },
+        "evidence": {
+          "source_image_url": "https://fortnite-api.com/images/cosmetics/br/cid_a_313_athena_commando_m_blizzardbomber/featured.png",
+          "lego_image_url": "https://fortnite-api.com/images/cosmetics/lego/cid_a_313_athena_commando_m_blizzardbomber/wide.png",
+          "source_image_sha256": "df8e3b2ea305afab2964a42e9ba93375cd6d3d359790a0cff680a5c4554246ba",
+          "lego_image_sha256": "7e80d1197d7ef55d939616ac2e65564ae696556036f4e8783c5f880c2eafcd4c",
+          "evidence_scope": "front_pair",
+          "claims_unobserved_surfaces": false
+        },
+        "annotations": {
+          "regions": {
+            "head": [],
+            "torso": [],
+            "lower_body": [],
+            "accessory_or_silhouette": []
+          },
+          "identity_critical_features": [],
+          "mask_headgear_route": null,
+          "expression_translation": null
+        },
+        "limitations": [],
+        "measurement_signal_refs": [
+          {
+            "signal": "moderate_edge_reduction",
+            "region": "head_upper",
+            "value": 0.7229,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "substantial_edge_reduction",
+            "region": "torso_middle",
+            "value": 0.6486,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "edge_increase",
+            "region": "legs_lower",
+            "value": 1.6048,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "large_silhouette_bbox_change",
+            "region": "global",
+            "value": true,
+            "role": "review_prioritization_only"
+          }
+        ],
+        "review_status": "draft",
+        "adjudicates_review_ids": [],
+        "created_at": null,
+        "provenance": [
+          {
+            "source": "fortnite_semantic_review_queue",
+            "processor_version": "fortnite-semantic-review-queue/v1",
+            "review_priority_score": 7.5
+          },
+          {
+            "source": "fortnite_semantic_review_media_materialization",
+            "processor_version": "fortnite-semantic-review-media-materializer/v3",
+            "source_image_sha256": "df8e3b2ea305afab2964a42e9ba93375cd6d3d359790a0cff680a5c4554246ba",
+            "lego_image_sha256": "7e80d1197d7ef55d939616ac2e65564ae696556036f4e8783c5f880c2eafcd4c"
+          }
+        ]
+      },
+      "source_image_sha256": "df8e3b2ea305afab2964a42e9ba93375cd6d3d359790a0cff680a5c4554246ba",
+      "lego_image_sha256": "7e80d1197d7ef55d939616ac2e65564ae696556036f4e8783c5f880c2eafcd4c"
+    },
+    {
+      "translation_pair_id": "fortnitepair-847a38a4cbe8942cee112d45",
+      "review_priority_score": 7.5,
+      "lego_image_resolution": "direct_pair",
+      "source_image_url": "https://fortnite-api.com/images/cosmetics/br/cid_a_258_athena_commando_f_neoncattech/featured.png",
+      "lego_image_url": "https://fortnite-api.com/images/cosmetics/lego/cid_a_258_athena_commando_f_neoncattech/wide.png",
+      "measurement_signals": [
+        {
+          "signal": "moderate_edge_reduction",
+          "region": "head_upper",
+          "value": 0.806
+        },
+        {
+          "signal": "edge_increase",
+          "region": "torso_middle",
+          "value": 1.5795
+        },
+        {
+          "signal": "palette_increase",
+          "region": "torso_middle",
+          "value": 2
+        },
+        {
+          "signal": "edge_increase",
+          "region": "legs_lower",
+          "value": 1.9521
+        },
+        {
+          "signal": "palette_increase",
+          "region": "legs_lower",
+          "value": 2
+        },
+        {
+          "signal": "large_silhouette_bbox_change",
+          "region": "global",
+          "value": true
+        }
+      ],
+      "measurement_signal_policy": "Signals only prioritize review and must not be copied into semantic labels without direct visual evidence.",
+      "review_template": {
+        "schema": "fortnite-semantic-review/v1",
+        "review_id": null,
+        "translation_pair_id": "fortnitepair-847a38a4cbe8942cee112d45",
+        "reviewer": {
+          "reviewer_type": "human",
+          "reviewer_id": "unassigned",
+          "model_id": null,
+          "model_revision": null,
+          "review_role": "reviewer"
+        },
+        "evidence": {
+          "source_image_url": "https://fortnite-api.com/images/cosmetics/br/cid_a_258_athena_commando_f_neoncattech/featured.png",
+          "lego_image_url": "https://fortnite-api.com/images/cosmetics/lego/cid_a_258_athena_commando_f_neoncattech/wide.png",
+          "source_image_sha256": "3ce18158e5fddf3a677f66adf5581c8df3559d6cc503b1756a8e6e694b3a5f32",
+          "lego_image_sha256": "bb1a25bf2163bdeb698ab7a83c1198b432c3c6b646fbc5db55fa7b04aa59613d",
+          "evidence_scope": "front_pair",
+          "claims_unobserved_surfaces": false
+        },
+        "annotations": {
+          "regions": {
+            "head": [],
+            "torso": [],
+            "lower_body": [],
+            "accessory_or_silhouette": []
+          },
+          "identity_critical_features": [],
+          "mask_headgear_route": null,
+          "expression_translation": null
+        },
+        "limitations": [],
+        "measurement_signal_refs": [
+          {
+            "signal": "moderate_edge_reduction",
+            "region": "head_upper",
+            "value": 0.806,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "edge_increase",
+            "region": "torso_middle",
+            "value": 1.5795,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "palette_increase",
+            "region": "torso_middle",
+            "value": 2,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "edge_increase",
+            "region": "legs_lower",
+            "value": 1.9521,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "palette_increase",
+            "region": "legs_lower",
+            "value": 2,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "large_silhouette_bbox_change",
+            "region": "global",
+            "value": true,
+            "role": "review_prioritization_only"
+          }
+        ],
+        "review_status": "draft",
+        "adjudicates_review_ids": [],
+        "created_at": null,
+        "provenance": [
+          {
+            "source": "fortnite_semantic_review_queue",
+            "processor_version": "fortnite-semantic-review-queue/v1",
+            "review_priority_score": 7.5
+          },
+          {
+            "source": "fortnite_semantic_review_media_materialization",
+            "processor_version": "fortnite-semantic-review-media-materializer/v3",
+            "source_image_sha256": "3ce18158e5fddf3a677f66adf5581c8df3559d6cc503b1756a8e6e694b3a5f32",
+            "lego_image_sha256": "bb1a25bf2163bdeb698ab7a83c1198b432c3c6b646fbc5db55fa7b04aa59613d"
+          }
+        ]
+      },
+      "source_image_sha256": "3ce18158e5fddf3a677f66adf5581c8df3559d6cc503b1756a8e6e694b3a5f32",
+      "lego_image_sha256": "bb1a25bf2163bdeb698ab7a83c1198b432c3c6b646fbc5db55fa7b04aa59613d"
+    },
+    {
+      "translation_pair_id": "fortnitepair-880c5a5581fa8f6fb04c5284",
+      "review_priority_score": 7.5,
+      "lego_image_resolution": "direct_pair",
+      "source_image_url": "https://fortnite-api.com/images/cosmetics/br/character_hitmanfncs/featured.png",
+      "lego_image_url": "https://fortnite-api.com/images/cosmetics/lego/character_hitmanfncs/wide.png",
+      "measurement_signals": [
+        {
+          "signal": "edge_increase",
+          "region": "head_upper",
+          "value": 1.388
+        },
+        {
+          "signal": "edge_increase",
+          "region": "torso_middle",
+          "value": 2.7567
+        },
+        {
+          "signal": "palette_increase",
+          "region": "torso_middle",
+          "value": 2
+        },
+        {
+          "signal": "edge_increase",
+          "region": "legs_lower",
+          "value": 1.5545
+        },
+        {
+          "signal": "palette_increase",
+          "region": "legs_lower",
+          "value": 2
+        },
+        {
+          "signal": "large_silhouette_bbox_change",
+          "region": "global",
+          "value": true
+        }
+      ],
+      "measurement_signal_policy": "Signals only prioritize review and must not be copied into semantic labels without direct visual evidence.",
+      "review_template": {
+        "schema": "fortnite-semantic-review/v1",
+        "review_id": null,
+        "translation_pair_id": "fortnitepair-880c5a5581fa8f6fb04c5284",
+        "reviewer": {
+          "reviewer_type": "human",
+          "reviewer_id": "unassigned",
+          "model_id": null,
+          "model_revision": null,
+          "review_role": "reviewer"
+        },
+        "evidence": {
+          "source_image_url": "https://fortnite-api.com/images/cosmetics/br/character_hitmanfncs/featured.png",
+          "lego_image_url": "https://fortnite-api.com/images/cosmetics/lego/character_hitmanfncs/wide.png",
+          "source_image_sha256": "c0b3f414eeca979e59e0553b6a275fcd9362f4b11861c33c768733fbc7eaf754",
+          "lego_image_sha256": "aefd39bf621e004835429c280f064e359e09e52368899bcba536eafc186c5201",
+          "evidence_scope": "front_pair",
+          "claims_unobserved_surfaces": false
+        },
+        "annotations": {
+          "regions": {
+            "head": [],
+            "torso": [],
+            "lower_body": [],
+            "accessory_or_silhouette": []
+          },
+          "identity_critical_features": [],
+          "mask_headgear_route": null,
+          "expression_translation": null
+        },
+        "limitations": [],
+        "measurement_signal_refs": [
+          {
+            "signal": "edge_increase",
+            "region": "head_upper",
+            "value": 1.388,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "edge_increase",
+            "region": "torso_middle",
+            "value": 2.7567,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "palette_increase",
+            "region": "torso_middle",
+            "value": 2,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "edge_increase",
+            "region": "legs_lower",
+            "value": 1.5545,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "palette_increase",
+            "region": "legs_lower",
+            "value": 2,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "large_silhouette_bbox_change",
+            "region": "global",
+            "value": true,
+            "role": "review_prioritization_only"
+          }
+        ],
+        "review_status": "draft",
+        "adjudicates_review_ids": [],
+        "created_at": null,
+        "provenance": [
+          {
+            "source": "fortnite_semantic_review_queue",
+            "processor_version": "fortnite-semantic-review-queue/v1",
+            "review_priority_score": 7.5
+          },
+          {
+            "source": "fortnite_semantic_review_media_materialization",
+            "processor_version": "fortnite-semantic-review-media-materializer/v3",
+            "source_image_sha256": "c0b3f414eeca979e59e0553b6a275fcd9362f4b11861c33c768733fbc7eaf754",
+            "lego_image_sha256": "aefd39bf621e004835429c280f064e359e09e52368899bcba536eafc186c5201"
+          }
+        ]
+      },
+      "source_image_sha256": "c0b3f414eeca979e59e0553b6a275fcd9362f4b11861c33c768733fbc7eaf754",
+      "lego_image_sha256": "aefd39bf621e004835429c280f064e359e09e52368899bcba536eafc186c5201"
+    },
+    {
+      "translation_pair_id": "fortnitepair-8db5867bfd2953969ff52ab8",
+      "review_priority_score": 7.5,
+      "lego_image_resolution": "direct_pair",
+      "source_image_url": "https://fortnite-api.com/images/cosmetics/br/cid_125_athena_commando_m_tacticalwoodland/featured.png",
+      "lego_image_url": "https://fortnite-api.com/images/cosmetics/lego/cid_125_athena_commando_m_tacticalwoodland/wide.png",
+      "measurement_signals": [
+        {
+          "signal": "substantial_edge_reduction",
+          "region": "head_upper",
+          "value": 0.6069
+        },
+        {
+          "signal": "moderate_edge_reduction",
+          "region": "torso_middle",
+          "value": 0.8196
+        },
+        {
+          "signal": "edge_increase",
+          "region": "legs_lower",
+          "value": 1.979
+        },
+        {
+          "signal": "large_silhouette_bbox_change",
+          "region": "global",
+          "value": true
+        }
+      ],
+      "measurement_signal_policy": "Signals only prioritize review and must not be copied into semantic labels without direct visual evidence.",
+      "review_template": {
+        "schema": "fortnite-semantic-review/v1",
+        "review_id": null,
+        "translation_pair_id": "fortnitepair-8db5867bfd2953969ff52ab8",
+        "reviewer": {
+          "reviewer_type": "human",
+          "reviewer_id": "unassigned",
+          "model_id": null,
+          "model_revision": null,
+          "review_role": "reviewer"
+        },
+        "evidence": {
+          "source_image_url": "https://fortnite-api.com/images/cosmetics/br/cid_125_athena_commando_m_tacticalwoodland/featured.png",
+          "lego_image_url": "https://fortnite-api.com/images/cosmetics/lego/cid_125_athena_commando_m_tacticalwoodland/wide.png",
+          "source_image_sha256": "bf61834b8dbb51ebc86e20c223a7071bb6264503cc2947b9a1f4cfc23787fbe6",
+          "lego_image_sha256": "f65839772fe5442aab731a5b0fda2ca2a3c1ef8ed68e4f4d2bb820dcad283808",
+          "evidence_scope": "front_pair",
+          "claims_unobserved_surfaces": false
+        },
+        "annotations": {
+          "regions": {
+            "head": [],
+            "torso": [],
+            "lower_body": [],
+            "accessory_or_silhouette": []
+          },
+          "identity_critical_features": [],
+          "mask_headgear_route": null,
+          "expression_translation": null
+        },
+        "limitations": [],
+        "measurement_signal_refs": [
+          {
+            "signal": "substantial_edge_reduction",
+            "region": "head_upper",
+            "value": 0.6069,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "moderate_edge_reduction",
+            "region": "torso_middle",
+            "value": 0.8196,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "edge_increase",
+            "region": "legs_lower",
+            "value": 1.979,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "large_silhouette_bbox_change",
+            "region": "global",
+            "value": true,
+            "role": "review_prioritization_only"
+          }
+        ],
+        "review_status": "draft",
+        "adjudicates_review_ids": [],
+        "created_at": null,
+        "provenance": [
+          {
+            "source": "fortnite_semantic_review_queue",
+            "processor_version": "fortnite-semantic-review-queue/v1",
+            "review_priority_score": 7.5
+          },
+          {
+            "source": "fortnite_semantic_review_media_materialization",
+            "processor_version": "fortnite-semantic-review-media-materializer/v3",
+            "source_image_sha256": "bf61834b8dbb51ebc86e20c223a7071bb6264503cc2947b9a1f4cfc23787fbe6",
+            "lego_image_sha256": "f65839772fe5442aab731a5b0fda2ca2a3c1ef8ed68e4f4d2bb820dcad283808"
+          }
+        ]
+      },
+      "source_image_sha256": "bf61834b8dbb51ebc86e20c223a7071bb6264503cc2947b9a1f4cfc23787fbe6",
+      "lego_image_sha256": "f65839772fe5442aab731a5b0fda2ca2a3c1ef8ed68e4f4d2bb820dcad283808"
+    },
+    {
+      "translation_pair_id": "fortnitepair-9431ccd1c07465006c8d22a8",
+      "review_priority_score": 7.5,
+      "lego_image_resolution": "direct_pair",
+      "source_image_url": "https://fortnite-api.com/images/cosmetics/br/cid_163_athena_commando_f_viking/featured.png",
+      "lego_image_url": "https://fortnite-api.com/images/cosmetics/lego/cid_163_athena_commando_f_viking/wide.png",
+      "measurement_signals": [
+        {
+          "signal": "substantial_edge_reduction",
+          "region": "head_upper",
+          "value": 0.4415
+        },
+        {
+          "signal": "edge_increase",
+          "region": "torso_middle",
+          "value": 1.2991
+        },
+        {
+          "signal": "edge_increase",
+          "region": "legs_lower",
+          "value": 1.4401
+        },
+        {
+          "signal": "large_silhouette_bbox_change",
+          "region": "global",
+          "value": true
+        }
+      ],
+      "measurement_signal_policy": "Signals only prioritize review and must not be copied into semantic labels without direct visual evidence.",
+      "review_template": {
+        "schema": "fortnite-semantic-review/v1",
+        "review_id": null,
+        "translation_pair_id": "fortnitepair-9431ccd1c07465006c8d22a8",
+        "reviewer": {
+          "reviewer_type": "human",
+          "reviewer_id": "unassigned",
+          "model_id": null,
+          "model_revision": null,
+          "review_role": "reviewer"
+        },
+        "evidence": {
+          "source_image_url": "https://fortnite-api.com/images/cosmetics/br/cid_163_athena_commando_f_viking/featured.png",
+          "lego_image_url": "https://fortnite-api.com/images/cosmetics/lego/cid_163_athena_commando_f_viking/wide.png",
+          "source_image_sha256": "29e94d13fe8027ddd41d62db60d03fc4a00d06a3b08867f6b841c67d01eee670",
+          "lego_image_sha256": "c865d4b707c8ef4c2efd0113d90448ccdb33b388cf2523a022dbfe5b8733f643",
+          "evidence_scope": "front_pair",
+          "claims_unobserved_surfaces": false
+        },
+        "annotations": {
+          "regions": {
+            "head": [],
+            "torso": [],
+            "lower_body": [],
+            "accessory_or_silhouette": []
+          },
+          "identity_critical_features": [],
+          "mask_headgear_route": null,
+          "expression_translation": null
+        },
+        "limitations": [],
+        "measurement_signal_refs": [
+          {
+            "signal": "substantial_edge_reduction",
+            "region": "head_upper",
+            "value": 0.4415,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "edge_increase",
+            "region": "torso_middle",
+            "value": 1.2991,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "edge_increase",
+            "region": "legs_lower",
+            "value": 1.4401,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "large_silhouette_bbox_change",
+            "region": "global",
+            "value": true,
+            "role": "review_prioritization_only"
+          }
+        ],
+        "review_status": "draft",
+        "adjudicates_review_ids": [],
+        "created_at": null,
+        "provenance": [
+          {
+            "source": "fortnite_semantic_review_queue",
+            "processor_version": "fortnite-semantic-review-queue/v1",
+            "review_priority_score": 7.5
+          },
+          {
+            "source": "fortnite_semantic_review_media_materialization",
+            "processor_version": "fortnite-semantic-review-media-materializer/v3",
+            "source_image_sha256": "29e94d13fe8027ddd41d62db60d03fc4a00d06a3b08867f6b841c67d01eee670",
+            "lego_image_sha256": "c865d4b707c8ef4c2efd0113d90448ccdb33b388cf2523a022dbfe5b8733f643"
+          }
+        ]
+      },
+      "source_image_sha256": "29e94d13fe8027ddd41d62db60d03fc4a00d06a3b08867f6b841c67d01eee670",
+      "lego_image_sha256": "c865d4b707c8ef4c2efd0113d90448ccdb33b388cf2523a022dbfe5b8733f643"
+    },
+    {
+      "translation_pair_id": "fortnitepair-94c4b1e37b1ddbf8af66d456",
+      "review_priority_score": 7.5,
+      "lego_image_resolution": "direct_pair",
+      "source_image_url": "https://fortnite-api.com/images/cosmetics/br/cid_a_240_athena_commando_f_grasshopper_b_9rsi1/featured.png",
+      "lego_image_url": "https://fortnite-api.com/images/cosmetics/lego/cid_a_240_athena_commando_f_grasshopper_b_9rsi1/wide.png",
+      "measurement_signals": [
+        {
+          "signal": "edge_increase",
+          "region": "head_upper",
+          "value": 1.8874
+        },
+        {
+          "signal": "palette_increase",
+          "region": "head_upper",
+          "value": 2
+        },
+        {
+          "signal": "edge_increase",
+          "region": "torso_middle",
+          "value": 1.2839
+        },
+        {
+          "signal": "edge_increase",
+          "region": "legs_lower",
+          "value": 1.2524
+        },
+        {
+          "signal": "palette_increase",
+          "region": "legs_lower",
+          "value": 2
+        },
+        {
+          "signal": "large_silhouette_bbox_change",
+          "region": "global",
+          "value": true
+        }
+      ],
+      "measurement_signal_policy": "Signals only prioritize review and must not be copied into semantic labels without direct visual evidence.",
+      "review_template": {
+        "schema": "fortnite-semantic-review/v1",
+        "review_id": null,
+        "translation_pair_id": "fortnitepair-94c4b1e37b1ddbf8af66d456",
+        "reviewer": {
+          "reviewer_type": "human",
+          "reviewer_id": "unassigned",
+          "model_id": null,
+          "model_revision": null,
+          "review_role": "reviewer"
+        },
+        "evidence": {
+          "source_image_url": "https://fortnite-api.com/images/cosmetics/br/cid_a_240_athena_commando_f_grasshopper_b_9rsi1/featured.png",
+          "lego_image_url": "https://fortnite-api.com/images/cosmetics/lego/cid_a_240_athena_commando_f_grasshopper_b_9rsi1/wide.png",
+          "source_image_sha256": "7c849caf600b1f04038aaf772610920e06de19f6823ff1ece1510b653874fe95",
+          "lego_image_sha256": "ce9493715b3c478ba9ecfbfe09d73416212935ac32872c737dbfa9b0547f5b05",
+          "evidence_scope": "front_pair",
+          "claims_unobserved_surfaces": false
+        },
+        "annotations": {
+          "regions": {
+            "head": [],
+            "torso": [],
+            "lower_body": [],
+            "accessory_or_silhouette": []
+          },
+          "identity_critical_features": [],
+          "mask_headgear_route": null,
+          "expression_translation": null
+        },
+        "limitations": [],
+        "measurement_signal_refs": [
+          {
+            "signal": "edge_increase",
+            "region": "head_upper",
+            "value": 1.8874,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "palette_increase",
+            "region": "head_upper",
+            "value": 2,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "edge_increase",
+            "region": "torso_middle",
+            "value": 1.2839,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "edge_increase",
+            "region": "legs_lower",
+            "value": 1.2524,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "palette_increase",
+            "region": "legs_lower",
+            "value": 2,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "large_silhouette_bbox_change",
+            "region": "global",
+            "value": true,
+            "role": "review_prioritization_only"
+          }
+        ],
+        "review_status": "draft",
+        "adjudicates_review_ids": [],
+        "created_at": null,
+        "provenance": [
+          {
+            "source": "fortnite_semantic_review_queue",
+            "processor_version": "fortnite-semantic-review-queue/v1",
+            "review_priority_score": 7.5
+          },
+          {
+            "source": "fortnite_semantic_review_media_materialization",
+            "processor_version": "fortnite-semantic-review-media-materializer/v3",
+            "source_image_sha256": "7c849caf600b1f04038aaf772610920e06de19f6823ff1ece1510b653874fe95",
+            "lego_image_sha256": "ce9493715b3c478ba9ecfbfe09d73416212935ac32872c737dbfa9b0547f5b05"
+          }
+        ]
+      },
+      "source_image_sha256": "7c849caf600b1f04038aaf772610920e06de19f6823ff1ece1510b653874fe95",
+      "lego_image_sha256": "ce9493715b3c478ba9ecfbfe09d73416212935ac32872c737dbfa9b0547f5b05"
+    },
+    {
+      "translation_pair_id": "fortnitepair-98f8fc07462468de1e3dbffb",
+      "review_priority_score": 7.5,
+      "lego_image_resolution": "direct_pair",
+      "source_image_url": "https://fortnite-api.com/images/cosmetics/br/cid_a_272_athena_commando_f_prime/featured.png",
+      "lego_image_url": "https://fortnite-api.com/images/cosmetics/lego/cid_a_272_athena_commando_f_prime/wide.png",
+      "measurement_signals": [
+        {
+          "signal": "substantial_edge_reduction",
+          "region": "head_upper",
+          "value": 0.5412
+        },
+        {
+          "signal": "edge_increase",
+          "region": "torso_middle",
+          "value": 1.3165
+        },
+        {
+          "signal": "edge_increase",
+          "region": "legs_lower",
+          "value": 1.7455
+        },
+        {
+          "signal": "large_silhouette_bbox_change",
+          "region": "global",
+          "value": true
+        }
+      ],
+      "measurement_signal_policy": "Signals only prioritize review and must not be copied into semantic labels without direct visual evidence.",
+      "review_template": {
+        "schema": "fortnite-semantic-review/v1",
+        "review_id": null,
+        "translation_pair_id": "fortnitepair-98f8fc07462468de1e3dbffb",
+        "reviewer": {
+          "reviewer_type": "human",
+          "reviewer_id": "unassigned",
+          "model_id": null,
+          "model_revision": null,
+          "review_role": "reviewer"
+        },
+        "evidence": {
+          "source_image_url": "https://fortnite-api.com/images/cosmetics/br/cid_a_272_athena_commando_f_prime/featured.png",
+          "lego_image_url": "https://fortnite-api.com/images/cosmetics/lego/cid_a_272_athena_commando_f_prime/wide.png",
+          "source_image_sha256": "0b7522f4d8c30370c257ca0d800457d8bac2b2a47f01ab049e28cd49b63007c0",
+          "lego_image_sha256": "3fb76ae88d71a219fa2b3a871d27bf7588849e26346d68fbcdb98ba5a244c885",
+          "evidence_scope": "front_pair",
+          "claims_unobserved_surfaces": false
+        },
+        "annotations": {
+          "regions": {
+            "head": [],
+            "torso": [],
+            "lower_body": [],
+            "accessory_or_silhouette": []
+          },
+          "identity_critical_features": [],
+          "mask_headgear_route": null,
+          "expression_translation": null
+        },
+        "limitations": [],
+        "measurement_signal_refs": [
+          {
+            "signal": "substantial_edge_reduction",
+            "region": "head_upper",
+            "value": 0.5412,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "edge_increase",
+            "region": "torso_middle",
+            "value": 1.3165,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "edge_increase",
+            "region": "legs_lower",
+            "value": 1.7455,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "large_silhouette_bbox_change",
+            "region": "global",
+            "value": true,
+            "role": "review_prioritization_only"
+          }
+        ],
+        "review_status": "draft",
+        "adjudicates_review_ids": [],
+        "created_at": null,
+        "provenance": [
+          {
+            "source": "fortnite_semantic_review_queue",
+            "processor_version": "fortnite-semantic-review-queue/v1",
+            "review_priority_score": 7.5
+          },
+          {
+            "source": "fortnite_semantic_review_media_materialization",
+            "processor_version": "fortnite-semantic-review-media-materializer/v3",
+            "source_image_sha256": "0b7522f4d8c30370c257ca0d800457d8bac2b2a47f01ab049e28cd49b63007c0",
+            "lego_image_sha256": "3fb76ae88d71a219fa2b3a871d27bf7588849e26346d68fbcdb98ba5a244c885"
+          }
+        ]
+      },
+      "source_image_sha256": "0b7522f4d8c30370c257ca0d800457d8bac2b2a47f01ab049e28cd49b63007c0",
+      "lego_image_sha256": "3fb76ae88d71a219fa2b3a871d27bf7588849e26346d68fbcdb98ba5a244c885"
+    },
+    {
+      "translation_pair_id": "fortnitepair-9d11ff817a8bd96d9cdad452",
+      "review_priority_score": 7.5,
+      "lego_image_resolution": "direct_pair",
+      "source_image_url": "https://fortnite-api.com/images/cosmetics/br/cid_088_athena_commando_m_spaceblack/featured.png",
+      "lego_image_url": "https://fortnite-api.com/images/cosmetics/lego/cid_088_athena_commando_m_spaceblack/wide.png",
+      "measurement_signals": [
+        {
+          "signal": "moderate_edge_reduction",
+          "region": "head_upper",
+          "value": 0.7518
+        },
+        {
+          "signal": "palette_increase",
+          "region": "head_upper",
+          "value": 2
+        },
+        {
+          "signal": "edge_increase",
+          "region": "torso_middle",
+          "value": 1.8597
+        },
+        {
+          "signal": "palette_increase",
+          "region": "torso_middle",
+          "value": 2
+        },
+        {
+          "signal": "edge_increase",
+          "region": "legs_lower",
+          "value": 2.2178
+        },
+        {
+          "signal": "large_silhouette_bbox_change",
+          "region": "global",
+          "value": true
+        }
+      ],
+      "measurement_signal_policy": "Signals only prioritize review and must not be copied into semantic labels without direct visual evidence.",
+      "review_template": {
+        "schema": "fortnite-semantic-review/v1",
+        "review_id": null,
+        "translation_pair_id": "fortnitepair-9d11ff817a8bd96d9cdad452",
+        "reviewer": {
+          "reviewer_type": "human",
+          "reviewer_id": "unassigned",
+          "model_id": null,
+          "model_revision": null,
+          "review_role": "reviewer"
+        },
+        "evidence": {
+          "source_image_url": "https://fortnite-api.com/images/cosmetics/br/cid_088_athena_commando_m_spaceblack/featured.png",
+          "lego_image_url": "https://fortnite-api.com/images/cosmetics/lego/cid_088_athena_commando_m_spaceblack/wide.png",
+          "source_image_sha256": "0fc11babfceef88899f1ffa5bd0e68af27e35db502590fc51eecc86fac9e19ea",
+          "lego_image_sha256": "3d81b72a1390033bb1d2ab6af70652ff7eeb1a148cb40ecaf1e28f7cda9145ca",
+          "evidence_scope": "front_pair",
+          "claims_unobserved_surfaces": false
+        },
+        "annotations": {
+          "regions": {
+            "head": [],
+            "torso": [],
+            "lower_body": [],
+            "accessory_or_silhouette": []
+          },
+          "identity_critical_features": [],
+          "mask_headgear_route": null,
+          "expression_translation": null
+        },
+        "limitations": [],
+        "measurement_signal_refs": [
+          {
+            "signal": "moderate_edge_reduction",
+            "region": "head_upper",
+            "value": 0.7518,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "palette_increase",
+            "region": "head_upper",
+            "value": 2,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "edge_increase",
+            "region": "torso_middle",
+            "value": 1.8597,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "palette_increase",
+            "region": "torso_middle",
+            "value": 2,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "edge_increase",
+            "region": "legs_lower",
+            "value": 2.2178,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "large_silhouette_bbox_change",
+            "region": "global",
+            "value": true,
+            "role": "review_prioritization_only"
+          }
+        ],
+        "review_status": "draft",
+        "adjudicates_review_ids": [],
+        "created_at": null,
+        "provenance": [
+          {
+            "source": "fortnite_semantic_review_queue",
+            "processor_version": "fortnite-semantic-review-queue/v1",
+            "review_priority_score": 7.5
+          },
+          {
+            "source": "fortnite_semantic_review_media_materialization",
+            "processor_version": "fortnite-semantic-review-media-materializer/v3",
+            "source_image_sha256": "0fc11babfceef88899f1ffa5bd0e68af27e35db502590fc51eecc86fac9e19ea",
+            "lego_image_sha256": "3d81b72a1390033bb1d2ab6af70652ff7eeb1a148cb40ecaf1e28f7cda9145ca"
+          }
+        ]
+      },
+      "source_image_sha256": "0fc11babfceef88899f1ffa5bd0e68af27e35db502590fc51eecc86fac9e19ea",
+      "lego_image_sha256": "3d81b72a1390033bb1d2ab6af70652ff7eeb1a148cb40ecaf1e28f7cda9145ca"
+    },
+    {
+      "translation_pair_id": "fortnitepair-a0b365a1ed8cdc176264ecd4",
+      "review_priority_score": 7.5,
+      "lego_image_resolution": "direct_pair",
+      "source_image_url": "https://fortnite-api.com/images/cosmetics/br/cid_139_athena_commando_m_fighterpilot/featured.png",
+      "lego_image_url": "https://fortnite-api.com/images/cosmetics/lego/cid_139_athena_commando_m_fighterpilot/wide.png",
+      "measurement_signals": [
+        {
+          "signal": "substantial_edge_reduction",
+          "region": "head_upper",
+          "value": 0.3451
+        },
+        {
+          "signal": "moderate_edge_reduction",
+          "region": "torso_middle",
+          "value": 0.8283
+        },
+        {
+          "signal": "edge_increase",
+          "region": "legs_lower",
+          "value": 3.051
+        },
+        {
+          "signal": "large_silhouette_bbox_change",
+          "region": "global",
+          "value": true
+        }
+      ],
+      "measurement_signal_policy": "Signals only prioritize review and must not be copied into semantic labels without direct visual evidence.",
+      "review_template": {
+        "schema": "fortnite-semantic-review/v1",
+        "review_id": null,
+        "translation_pair_id": "fortnitepair-a0b365a1ed8cdc176264ecd4",
+        "reviewer": {
+          "reviewer_type": "human",
+          "reviewer_id": "unassigned",
+          "model_id": null,
+          "model_revision": null,
+          "review_role": "reviewer"
+        },
+        "evidence": {
+          "source_image_url": "https://fortnite-api.com/images/cosmetics/br/cid_139_athena_commando_m_fighterpilot/featured.png",
+          "lego_image_url": "https://fortnite-api.com/images/cosmetics/lego/cid_139_athena_commando_m_fighterpilot/wide.png",
+          "source_image_sha256": "d2576d5ef50790ea026284263ced73d11a244ace099c4c9dde299bc37f92501c",
+          "lego_image_sha256": "074cfc6dfa7f0a4b95e60c24b320c599e8cd982452317a25311c35d4169aa991",
+          "evidence_scope": "front_pair",
+          "claims_unobserved_surfaces": false
+        },
+        "annotations": {
+          "regions": {
+            "head": [],
+            "torso": [],
+            "lower_body": [],
+            "accessory_or_silhouette": []
+          },
+          "identity_critical_features": [],
+          "mask_headgear_route": null,
+          "expression_translation": null
+        },
+        "limitations": [],
+        "measurement_signal_refs": [
+          {
+            "signal": "substantial_edge_reduction",
+            "region": "head_upper",
+            "value": 0.3451,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "moderate_edge_reduction",
+            "region": "torso_middle",
+            "value": 0.8283,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "edge_increase",
+            "region": "legs_lower",
+            "value": 3.051,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "large_silhouette_bbox_change",
+            "region": "global",
+            "value": true,
+            "role": "review_prioritization_only"
+          }
+        ],
+        "review_status": "draft",
+        "adjudicates_review_ids": [],
+        "created_at": null,
+        "provenance": [
+          {
+            "source": "fortnite_semantic_review_queue",
+            "processor_version": "fortnite-semantic-review-queue/v1",
+            "review_priority_score": 7.5
+          },
+          {
+            "source": "fortnite_semantic_review_media_materialization",
+            "processor_version": "fortnite-semantic-review-media-materializer/v3",
+            "source_image_sha256": "d2576d5ef50790ea026284263ced73d11a244ace099c4c9dde299bc37f92501c",
+            "lego_image_sha256": "074cfc6dfa7f0a4b95e60c24b320c599e8cd982452317a25311c35d4169aa991"
+          }
+        ]
+      },
+      "source_image_sha256": "d2576d5ef50790ea026284263ced73d11a244ace099c4c9dde299bc37f92501c",
+      "lego_image_sha256": "074cfc6dfa7f0a4b95e60c24b320c599e8cd982452317a25311c35d4169aa991"
+    },
+    {
+      "translation_pair_id": "fortnitepair-a34fa3df2c03bc4895981ce1",
+      "review_priority_score": 7.5,
+      "lego_image_resolution": "direct_pair",
+      "source_image_url": "https://fortnite-api.com/images/cosmetics/br/character_quickburst_plains/featured.png",
+      "lego_image_url": "https://fortnite-api.com/images/cosmetics/lego/character_quickburst_plains/wide.png",
+      "measurement_signals": [
+        {
+          "signal": "substantial_edge_reduction",
+          "region": "head_upper",
+          "value": 0.6076
+        },
+        {
+          "signal": "moderate_edge_reduction",
+          "region": "torso_middle",
+          "value": 0.789
+        },
+        {
+          "signal": "edge_increase",
+          "region": "legs_lower",
+          "value": 1.4516
+        },
+        {
+          "signal": "large_silhouette_bbox_change",
+          "region": "global",
+          "value": true
+        }
+      ],
+      "measurement_signal_policy": "Signals only prioritize review and must not be copied into semantic labels without direct visual evidence.",
+      "review_template": {
+        "schema": "fortnite-semantic-review/v1",
+        "review_id": null,
+        "translation_pair_id": "fortnitepair-a34fa3df2c03bc4895981ce1",
+        "reviewer": {
+          "reviewer_type": "human",
+          "reviewer_id": "unassigned",
+          "model_id": null,
+          "model_revision": null,
+          "review_role": "reviewer"
+        },
+        "evidence": {
+          "source_image_url": "https://fortnite-api.com/images/cosmetics/br/character_quickburst_plains/featured.png",
+          "lego_image_url": "https://fortnite-api.com/images/cosmetics/lego/character_quickburst_plains/wide.png",
+          "source_image_sha256": "b409e6db8d60215b4b85cc3e9c44849d9195aaf083c06b91dfedfe76c933822b",
+          "lego_image_sha256": "f8d5b8603ac2ca0c0200917e4726e22435b7bd85807b958e2508fbc5872f09b0",
+          "evidence_scope": "front_pair",
+          "claims_unobserved_surfaces": false
+        },
+        "annotations": {
+          "regions": {
+            "head": [],
+            "torso": [],
+            "lower_body": [],
+            "accessory_or_silhouette": []
+          },
+          "identity_critical_features": [],
+          "mask_headgear_route": null,
+          "expression_translation": null
+        },
+        "limitations": [],
+        "measurement_signal_refs": [
+          {
+            "signal": "substantial_edge_reduction",
+            "region": "head_upper",
+            "value": 0.6076,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "moderate_edge_reduction",
+            "region": "torso_middle",
+            "value": 0.789,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "edge_increase",
+            "region": "legs_lower",
+            "value": 1.4516,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "large_silhouette_bbox_change",
+            "region": "global",
+            "value": true,
+            "role": "review_prioritization_only"
+          }
+        ],
+        "review_status": "draft",
+        "adjudicates_review_ids": [],
+        "created_at": null,
+        "provenance": [
+          {
+            "source": "fortnite_semantic_review_queue",
+            "processor_version": "fortnite-semantic-review-queue/v1",
+            "review_priority_score": 7.5
+          },
+          {
+            "source": "fortnite_semantic_review_media_materialization",
+            "processor_version": "fortnite-semantic-review-media-materializer/v3",
+            "source_image_sha256": "b409e6db8d60215b4b85cc3e9c44849d9195aaf083c06b91dfedfe76c933822b",
+            "lego_image_sha256": "f8d5b8603ac2ca0c0200917e4726e22435b7bd85807b958e2508fbc5872f09b0"
+          }
+        ]
+      },
+      "source_image_sha256": "b409e6db8d60215b4b85cc3e9c44849d9195aaf083c06b91dfedfe76c933822b",
+      "lego_image_sha256": "f8d5b8603ac2ca0c0200917e4726e22435b7bd85807b958e2508fbc5872f09b0"
+    },
+    {
+      "translation_pair_id": "fortnitepair-a36eddc470a39c52bf35a403",
+      "review_priority_score": 7.5,
+      "lego_image_resolution": "direct_pair",
+      "source_image_url": "https://fortnite-api.com/images/cosmetics/br/cid_517_athena_commando_m_darkeaglefire/featured.png",
+      "lego_image_url": "https://fortnite-api.com/images/cosmetics/lego/cid_517_athena_commando_m_darkeaglefire/wide.png",
+      "measurement_signals": [
+        {
+          "signal": "moderate_edge_reduction",
+          "region": "head_upper",
+          "value": 0.8219
+        },
+        {
+          "signal": "edge_increase",
+          "region": "torso_middle",
+          "value": 1.5504
+        },
+        {
+          "signal": "palette_increase",
+          "region": "torso_middle",
+          "value": 2
+        },
+        {
+          "signal": "edge_increase",
+          "region": "legs_lower",
+          "value": 1.8183
+        },
+        {
+          "signal": "palette_increase",
+          "region": "legs_lower",
+          "value": 2
+        },
+        {
+          "signal": "large_silhouette_bbox_change",
+          "region": "global",
+          "value": true
+        }
+      ],
+      "measurement_signal_policy": "Signals only prioritize review and must not be copied into semantic labels without direct visual evidence.",
+      "review_template": {
+        "schema": "fortnite-semantic-review/v1",
+        "review_id": null,
+        "translation_pair_id": "fortnitepair-a36eddc470a39c52bf35a403",
+        "reviewer": {
+          "reviewer_type": "human",
+          "reviewer_id": "unassigned",
+          "model_id": null,
+          "model_revision": null,
+          "review_role": "reviewer"
+        },
+        "evidence": {
+          "source_image_url": "https://fortnite-api.com/images/cosmetics/br/cid_517_athena_commando_m_darkeaglefire/featured.png",
+          "lego_image_url": "https://fortnite-api.com/images/cosmetics/lego/cid_517_athena_commando_m_darkeaglefire/wide.png",
+          "source_image_sha256": "c808aa7f615ef72fd7dac3bff7578c339668246c9bfa26f991b9a14ba1c202a3",
+          "lego_image_sha256": "b3a6b5b383277662d0146243577e217683579b47f23c3ea9cc2d5a6471a3b9c6",
+          "evidence_scope": "front_pair",
+          "claims_unobserved_surfaces": false
+        },
+        "annotations": {
+          "regions": {
+            "head": [],
+            "torso": [],
+            "lower_body": [],
+            "accessory_or_silhouette": []
+          },
+          "identity_critical_features": [],
+          "mask_headgear_route": null,
+          "expression_translation": null
+        },
+        "limitations": [],
+        "measurement_signal_refs": [
+          {
+            "signal": "moderate_edge_reduction",
+            "region": "head_upper",
+            "value": 0.8219,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "edge_increase",
+            "region": "torso_middle",
+            "value": 1.5504,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "palette_increase",
+            "region": "torso_middle",
+            "value": 2,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "edge_increase",
+            "region": "legs_lower",
+            "value": 1.8183,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "palette_increase",
+            "region": "legs_lower",
+            "value": 2,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "large_silhouette_bbox_change",
+            "region": "global",
+            "value": true,
+            "role": "review_prioritization_only"
+          }
+        ],
+        "review_status": "draft",
+        "adjudicates_review_ids": [],
+        "created_at": null,
+        "provenance": [
+          {
+            "source": "fortnite_semantic_review_queue",
+            "processor_version": "fortnite-semantic-review-queue/v1",
+            "review_priority_score": 7.5
+          },
+          {
+            "source": "fortnite_semantic_review_media_materialization",
+            "processor_version": "fortnite-semantic-review-media-materializer/v3",
+            "source_image_sha256": "c808aa7f615ef72fd7dac3bff7578c339668246c9bfa26f991b9a14ba1c202a3",
+            "lego_image_sha256": "b3a6b5b383277662d0146243577e217683579b47f23c3ea9cc2d5a6471a3b9c6"
+          }
+        ]
+      },
+      "source_image_sha256": "c808aa7f615ef72fd7dac3bff7578c339668246c9bfa26f991b9a14ba1c202a3",
+      "lego_image_sha256": "b3a6b5b383277662d0146243577e217683579b47f23c3ea9cc2d5a6471a3b9c6"
+    },
+    {
+      "translation_pair_id": "fortnitepair-a3f6920c4c4ff6109e3ae0d5",
+      "review_priority_score": 7.5,
+      "lego_image_resolution": "direct_pair",
+      "source_image_url": "https://fortnite-api.com/images/cosmetics/br/character_brokengravel_brunt/featured.png",
+      "lego_image_url": "https://fortnite-api.com/images/cosmetics/lego/character_brokengravel_brunt/wide.png",
+      "measurement_signals": [
+        {
+          "signal": "moderate_edge_reduction",
+          "region": "head_upper",
+          "value": 0.835
+        },
+        {
+          "signal": "palette_increase",
+          "region": "head_upper",
+          "value": 2
+        },
+        {
+          "signal": "moderate_edge_reduction",
+          "region": "torso_middle",
+          "value": 0.8418
+        },
+        {
+          "signal": "edge_increase",
+          "region": "legs_lower",
+          "value": 2.0831
+        },
+        {
+          "signal": "palette_increase",
+          "region": "legs_lower",
+          "value": 2
+        },
+        {
+          "signal": "large_silhouette_bbox_change",
+          "region": "global",
+          "value": true
+        }
+      ],
+      "measurement_signal_policy": "Signals only prioritize review and must not be copied into semantic labels without direct visual evidence.",
+      "review_template": {
+        "schema": "fortnite-semantic-review/v1",
+        "review_id": null,
+        "translation_pair_id": "fortnitepair-a3f6920c4c4ff6109e3ae0d5",
+        "reviewer": {
+          "reviewer_type": "human",
+          "reviewer_id": "unassigned",
+          "model_id": null,
+          "model_revision": null,
+          "review_role": "reviewer"
+        },
+        "evidence": {
+          "source_image_url": "https://fortnite-api.com/images/cosmetics/br/character_brokengravel_brunt/featured.png",
+          "lego_image_url": "https://fortnite-api.com/images/cosmetics/lego/character_brokengravel_brunt/wide.png",
+          "source_image_sha256": "eeb691457e5a4c2d776c7d6583d732ba9e473c280ac23e2f3b967ed0350f5be9",
+          "lego_image_sha256": "59bc00ab0aded07e71e81a768d83a31abc8357f4de37b7317a989e7fde5925a7",
+          "evidence_scope": "front_pair",
+          "claims_unobserved_surfaces": false
+        },
+        "annotations": {
+          "regions": {
+            "head": [],
+            "torso": [],
+            "lower_body": [],
+            "accessory_or_silhouette": []
+          },
+          "identity_critical_features": [],
+          "mask_headgear_route": null,
+          "expression_translation": null
+        },
+        "limitations": [],
+        "measurement_signal_refs": [
+          {
+            "signal": "moderate_edge_reduction",
+            "region": "head_upper",
+            "value": 0.835,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "palette_increase",
+            "region": "head_upper",
+            "value": 2,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "moderate_edge_reduction",
+            "region": "torso_middle",
+            "value": 0.8418,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "edge_increase",
+            "region": "legs_lower",
+            "value": 2.0831,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "palette_increase",
+            "region": "legs_lower",
+            "value": 2,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "large_silhouette_bbox_change",
+            "region": "global",
+            "value": true,
+            "role": "review_prioritization_only"
+          }
+        ],
+        "review_status": "draft",
+        "adjudicates_review_ids": [],
+        "created_at": null,
+        "provenance": [
+          {
+            "source": "fortnite_semantic_review_queue",
+            "processor_version": "fortnite-semantic-review-queue/v1",
+            "review_priority_score": 7.5
+          },
+          {
+            "source": "fortnite_semantic_review_media_materialization",
+            "processor_version": "fortnite-semantic-review-media-materializer/v3",
+            "source_image_sha256": "eeb691457e5a4c2d776c7d6583d732ba9e473c280ac23e2f3b967ed0350f5be9",
+            "lego_image_sha256": "59bc00ab0aded07e71e81a768d83a31abc8357f4de37b7317a989e7fde5925a7"
+          }
+        ]
+      },
+      "source_image_sha256": "eeb691457e5a4c2d776c7d6583d732ba9e473c280ac23e2f3b967ed0350f5be9",
+      "lego_image_sha256": "59bc00ab0aded07e71e81a768d83a31abc8357f4de37b7317a989e7fde5925a7"
+    },
+    {
+      "translation_pair_id": "fortnitepair-a4b203430c9c3e05cc715c21",
+      "review_priority_score": 7.5,
+      "lego_image_resolution": "direct_pair",
+      "source_image_url": "https://fortnite-api.com/images/cosmetics/br/cid_028_athena_commando_f/featured.png",
+      "lego_image_url": "https://fortnite-api.com/images/cosmetics/lego/cid_028_athena_commando_f/wide.png",
+      "measurement_signals": [
+        {
+          "signal": "moderate_edge_reduction",
+          "region": "head_upper",
+          "value": 0.8348
+        },
+        {
+          "signal": "moderate_edge_reduction",
+          "region": "torso_middle",
+          "value": 0.7053
+        },
+        {
+          "signal": "moderate_edge_reduction",
+          "region": "legs_lower",
+          "value": 0.722
+        },
+        {
+          "signal": "lower_edge_density_in_lego",
+          "region": "global",
+          "value": true
+        },
+        {
+          "signal": "smaller_effective_palette_in_lego",
+          "region": "global",
+          "value": true
+        },
+        {
+          "signal": "large_silhouette_bbox_change",
+          "region": "global",
+          "value": true
+        }
+      ],
+      "measurement_signal_policy": "Signals only prioritize review and must not be copied into semantic labels without direct visual evidence.",
+      "review_template": {
+        "schema": "fortnite-semantic-review/v1",
+        "review_id": null,
+        "translation_pair_id": "fortnitepair-a4b203430c9c3e05cc715c21",
+        "reviewer": {
+          "reviewer_type": "human",
+          "reviewer_id": "unassigned",
+          "model_id": null,
+          "model_revision": null,
+          "review_role": "reviewer"
+        },
+        "evidence": {
+          "source_image_url": "https://fortnite-api.com/images/cosmetics/br/cid_028_athena_commando_f/featured.png",
+          "lego_image_url": "https://fortnite-api.com/images/cosmetics/lego/cid_028_athena_commando_f/wide.png",
+          "source_image_sha256": "d7d9fa056eb55ec46a40d9f073b6f5ceb111ea721b11d7fc97ce6a85f97463de",
+          "lego_image_sha256": "997de5c3bac9939ebc855c8d7ee1206484dad79ee108a340ddc800f0788e88ea",
+          "evidence_scope": "front_pair",
+          "claims_unobserved_surfaces": false
+        },
+        "annotations": {
+          "regions": {
+            "head": [],
+            "torso": [],
+            "lower_body": [],
+            "accessory_or_silhouette": []
+          },
+          "identity_critical_features": [],
+          "mask_headgear_route": null,
+          "expression_translation": null
+        },
+        "limitations": [],
+        "measurement_signal_refs": [
+          {
+            "signal": "moderate_edge_reduction",
+            "region": "head_upper",
+            "value": 0.8348,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "moderate_edge_reduction",
+            "region": "torso_middle",
+            "value": 0.7053,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "moderate_edge_reduction",
+            "region": "legs_lower",
+            "value": 0.722,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "lower_edge_density_in_lego",
+            "region": "global",
+            "value": true,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "smaller_effective_palette_in_lego",
+            "region": "global",
+            "value": true,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "large_silhouette_bbox_change",
+            "region": "global",
+            "value": true,
+            "role": "review_prioritization_only"
+          }
+        ],
+        "review_status": "draft",
+        "adjudicates_review_ids": [],
+        "created_at": null,
+        "provenance": [
+          {
+            "source": "fortnite_semantic_review_queue",
+            "processor_version": "fortnite-semantic-review-queue/v1",
+            "review_priority_score": 7.5
+          },
+          {
+            "source": "fortnite_semantic_review_media_materialization",
+            "processor_version": "fortnite-semantic-review-media-materializer/v3",
+            "source_image_sha256": "d7d9fa056eb55ec46a40d9f073b6f5ceb111ea721b11d7fc97ce6a85f97463de",
+            "lego_image_sha256": "997de5c3bac9939ebc855c8d7ee1206484dad79ee108a340ddc800f0788e88ea"
+          }
+        ]
+      },
+      "source_image_sha256": "d7d9fa056eb55ec46a40d9f073b6f5ceb111ea721b11d7fc97ce6a85f97463de",
+      "lego_image_sha256": "997de5c3bac9939ebc855c8d7ee1206484dad79ee108a340ddc800f0788e88ea"
+    },
+    {
+      "translation_pair_id": "fortnitepair-a4b2cdf93890d08b6529e053",
+      "review_priority_score": 7.5,
+      "lego_image_resolution": "direct_pair",
+      "source_image_url": "https://fortnite-api.com/images/cosmetics/br/character_raveneon/featured.png",
+      "lego_image_url": "https://fortnite-api.com/images/cosmetics/lego/character_raveneon/wide.png",
+      "measurement_signals": [
+        {
+          "signal": "substantial_edge_reduction",
+          "region": "head_upper",
+          "value": 0.4759
+        },
+        {
+          "signal": "moderate_edge_reduction",
+          "region": "torso_middle",
+          "value": 0.8058
+        },
+        {
+          "signal": "edge_increase",
+          "region": "legs_lower",
+          "value": 1.7856
+        },
+        {
+          "signal": "large_silhouette_bbox_change",
+          "region": "global",
+          "value": true
+        }
+      ],
+      "measurement_signal_policy": "Signals only prioritize review and must not be copied into semantic labels without direct visual evidence.",
+      "review_template": {
+        "schema": "fortnite-semantic-review/v1",
+        "review_id": null,
+        "translation_pair_id": "fortnitepair-a4b2cdf93890d08b6529e053",
+        "reviewer": {
+          "reviewer_type": "human",
+          "reviewer_id": "unassigned",
+          "model_id": null,
+          "model_revision": null,
+          "review_role": "reviewer"
+        },
+        "evidence": {
+          "source_image_url": "https://fortnite-api.com/images/cosmetics/br/character_raveneon/featured.png",
+          "lego_image_url": "https://fortnite-api.com/images/cosmetics/lego/character_raveneon/wide.png",
+          "source_image_sha256": "771aad2bf16d02d48d874b3626b670a12aa6fa6f9944ec389a944dd24ec17a35",
+          "lego_image_sha256": "350df6a94b913c9e125c14b5457277d430b901c3a95dc96c5742183e693b66a0",
+          "evidence_scope": "front_pair",
+          "claims_unobserved_surfaces": false
+        },
+        "annotations": {
+          "regions": {
+            "head": [],
+            "torso": [],
+            "lower_body": [],
+            "accessory_or_silhouette": []
+          },
+          "identity_critical_features": [],
+          "mask_headgear_route": null,
+          "expression_translation": null
+        },
+        "limitations": [],
+        "measurement_signal_refs": [
+          {
+            "signal": "substantial_edge_reduction",
+            "region": "head_upper",
+            "value": 0.4759,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "moderate_edge_reduction",
+            "region": "torso_middle",
+            "value": 0.8058,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "edge_increase",
+            "region": "legs_lower",
+            "value": 1.7856,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "large_silhouette_bbox_change",
+            "region": "global",
+            "value": true,
+            "role": "review_prioritization_only"
+          }
+        ],
+        "review_status": "draft",
+        "adjudicates_review_ids": [],
+        "created_at": null,
+        "provenance": [
+          {
+            "source": "fortnite_semantic_review_queue",
+            "processor_version": "fortnite-semantic-review-queue/v1",
+            "review_priority_score": 7.5
+          },
+          {
+            "source": "fortnite_semantic_review_media_materialization",
+            "processor_version": "fortnite-semantic-review-media-materializer/v3",
+            "source_image_sha256": "771aad2bf16d02d48d874b3626b670a12aa6fa6f9944ec389a944dd24ec17a35",
+            "lego_image_sha256": "350df6a94b913c9e125c14b5457277d430b901c3a95dc96c5742183e693b66a0"
+          }
+        ]
+      },
+      "source_image_sha256": "771aad2bf16d02d48d874b3626b670a12aa6fa6f9944ec389a944dd24ec17a35",
+      "lego_image_sha256": "350df6a94b913c9e125c14b5457277d430b901c3a95dc96c5742183e693b66a0"
+    },
+    {
+      "translation_pair_id": "fortnitepair-a81c11a854af82d5b418bda8",
+      "review_priority_score": 7.5,
+      "lego_image_resolution": "direct_pair",
+      "source_image_url": "https://fortnite-api.com/images/cosmetics/br/character_ironclash/featured.png",
+      "lego_image_url": "https://fortnite-api.com/images/cosmetics/lego/character_ironclash/wide.png",
+      "measurement_signals": [
+        {
+          "signal": "moderate_edge_reduction",
+          "region": "head_upper",
+          "value": 0.7507
+        },
+        {
+          "signal": "substantial_edge_reduction",
+          "region": "torso_middle",
+          "value": 0.6627
+        },
+        {
+          "signal": "edge_increase",
+          "region": "legs_lower",
+          "value": 1.5307
+        },
+        {
+          "signal": "large_silhouette_bbox_change",
+          "region": "global",
+          "value": true
+        }
+      ],
+      "measurement_signal_policy": "Signals only prioritize review and must not be copied into semantic labels without direct visual evidence.",
+      "review_template": {
+        "schema": "fortnite-semantic-review/v1",
+        "review_id": null,
+        "translation_pair_id": "fortnitepair-a81c11a854af82d5b418bda8",
+        "reviewer": {
+          "reviewer_type": "human",
+          "reviewer_id": "unassigned",
+          "model_id": null,
+          "model_revision": null,
+          "review_role": "reviewer"
+        },
+        "evidence": {
+          "source_image_url": "https://fortnite-api.com/images/cosmetics/br/character_ironclash/featured.png",
+          "lego_image_url": "https://fortnite-api.com/images/cosmetics/lego/character_ironclash/wide.png",
+          "source_image_sha256": "63caf038341df8f38a242328e0ca7e5b07f4961b04cf0a771ce673b5c54e3367",
+          "lego_image_sha256": "d443a1147530f8e063b51494c46f35e114f51d81069b3565e52185e8f48932ef",
+          "evidence_scope": "front_pair",
+          "claims_unobserved_surfaces": false
+        },
+        "annotations": {
+          "regions": {
+            "head": [],
+            "torso": [],
+            "lower_body": [],
+            "accessory_or_silhouette": []
+          },
+          "identity_critical_features": [],
+          "mask_headgear_route": null,
+          "expression_translation": null
+        },
+        "limitations": [],
+        "measurement_signal_refs": [
+          {
+            "signal": "moderate_edge_reduction",
+            "region": "head_upper",
+            "value": 0.7507,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "substantial_edge_reduction",
+            "region": "torso_middle",
+            "value": 0.6627,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "edge_increase",
+            "region": "legs_lower",
+            "value": 1.5307,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "large_silhouette_bbox_change",
+            "region": "global",
+            "value": true,
+            "role": "review_prioritization_only"
+          }
+        ],
+        "review_status": "draft",
+        "adjudicates_review_ids": [],
+        "created_at": null,
+        "provenance": [
+          {
+            "source": "fortnite_semantic_review_queue",
+            "processor_version": "fortnite-semantic-review-queue/v1",
+            "review_priority_score": 7.5
+          },
+          {
+            "source": "fortnite_semantic_review_media_materialization",
+            "processor_version": "fortnite-semantic-review-media-materializer/v3",
+            "source_image_sha256": "63caf038341df8f38a242328e0ca7e5b07f4961b04cf0a771ce673b5c54e3367",
+            "lego_image_sha256": "d443a1147530f8e063b51494c46f35e114f51d81069b3565e52185e8f48932ef"
+          }
+        ]
+      },
+      "source_image_sha256": "63caf038341df8f38a242328e0ca7e5b07f4961b04cf0a771ce673b5c54e3367",
+      "lego_image_sha256": "d443a1147530f8e063b51494c46f35e114f51d81069b3565e52185e8f48932ef"
+    },
+    {
+      "translation_pair_id": "fortnitepair-a99f1cda2aa62c04c125c983",
+      "review_priority_score": 7.5,
+      "lego_image_resolution": "direct_pair",
+      "source_image_url": "https://fortnite-api.com/images/cosmetics/br/character_crownorder/featured.png",
+      "lego_image_url": "https://fortnite-api.com/images/cosmetics/lego/character_crownorder/wide.png",
+      "measurement_signals": [
+        {
+          "signal": "substantial_edge_reduction",
+          "region": "head_upper",
+          "value": 0.6207
+        },
+        {
+          "signal": "edge_increase",
+          "region": "torso_middle",
+          "value": 1.2616
+        },
+        {
+          "signal": "edge_increase",
+          "region": "legs_lower",
+          "value": 1.9709
+        },
+        {
+          "signal": "large_silhouette_bbox_change",
+          "region": "global",
+          "value": true
+        }
+      ],
+      "measurement_signal_policy": "Signals only prioritize review and must not be copied into semantic labels without direct visual evidence.",
+      "review_template": {
+        "schema": "fortnite-semantic-review/v1",
+        "review_id": null,
+        "translation_pair_id": "fortnitepair-a99f1cda2aa62c04c125c983",
+        "reviewer": {
+          "reviewer_type": "human",
+          "reviewer_id": "unassigned",
+          "model_id": null,
+          "model_revision": null,
+          "review_role": "reviewer"
+        },
+        "evidence": {
+          "source_image_url": "https://fortnite-api.com/images/cosmetics/br/character_crownorder/featured.png",
+          "lego_image_url": "https://fortnite-api.com/images/cosmetics/lego/character_crownorder/wide.png",
+          "source_image_sha256": "f512d022eba79f89d26a9dd787d86668f0791210ea0deb41047acc2455be4d82",
+          "lego_image_sha256": "c30b67f9bd19a8f69868b678f439a75da28a5ccf2d47910f4fdd9a7d876fac14",
+          "evidence_scope": "front_pair",
+          "claims_unobserved_surfaces": false
+        },
+        "annotations": {
+          "regions": {
+            "head": [],
+            "torso": [],
+            "lower_body": [],
+            "accessory_or_silhouette": []
+          },
+          "identity_critical_features": [],
+          "mask_headgear_route": null,
+          "expression_translation": null
+        },
+        "limitations": [],
+        "measurement_signal_refs": [
+          {
+            "signal": "substantial_edge_reduction",
+            "region": "head_upper",
+            "value": 0.6207,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "edge_increase",
+            "region": "torso_middle",
+            "value": 1.2616,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "edge_increase",
+            "region": "legs_lower",
+            "value": 1.9709,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "large_silhouette_bbox_change",
+            "region": "global",
+            "value": true,
+            "role": "review_prioritization_only"
+          }
+        ],
+        "review_status": "draft",
+        "adjudicates_review_ids": [],
+        "created_at": null,
+        "provenance": [
+          {
+            "source": "fortnite_semantic_review_queue",
+            "processor_version": "fortnite-semantic-review-queue/v1",
+            "review_priority_score": 7.5
+          },
+          {
+            "source": "fortnite_semantic_review_media_materialization",
+            "processor_version": "fortnite-semantic-review-media-materializer/v3",
+            "source_image_sha256": "f512d022eba79f89d26a9dd787d86668f0791210ea0deb41047acc2455be4d82",
+            "lego_image_sha256": "c30b67f9bd19a8f69868b678f439a75da28a5ccf2d47910f4fdd9a7d876fac14"
+          }
+        ]
+      },
+      "source_image_sha256": "f512d022eba79f89d26a9dd787d86668f0791210ea0deb41047acc2455be4d82",
+      "lego_image_sha256": "c30b67f9bd19a8f69868b678f439a75da28a5ccf2d47910f4fdd9a7d876fac14"
+    },
+    {
+      "translation_pair_id": "fortnitepair-a9f110fbf2c43417f3341cdd",
+      "review_priority_score": 7.5,
+      "lego_image_resolution": "direct_pair",
+      "source_image_url": "https://fortnite-api.com/images/cosmetics/br/cid_a_150_athena_commando_f_pliant_d/featured.png",
+      "lego_image_url": "https://fortnite-api.com/images/cosmetics/lego/cid_a_150_athena_commando_f_pliant_d/wide.png",
+      "measurement_signals": [
+        {
+          "signal": "substantial_edge_reduction",
+          "region": "head_upper",
+          "value": 0.5404
+        },
+        {
+          "signal": "moderate_edge_reduction",
+          "region": "torso_middle",
+          "value": 0.7797
+        },
+        {
+          "signal": "edge_increase",
+          "region": "legs_lower",
+          "value": 1.6295
+        },
+        {
+          "signal": "large_silhouette_bbox_change",
+          "region": "global",
+          "value": true
+        }
+      ],
+      "measurement_signal_policy": "Signals only prioritize review and must not be copied into semantic labels without direct visual evidence.",
+      "review_template": {
+        "schema": "fortnite-semantic-review/v1",
+        "review_id": null,
+        "translation_pair_id": "fortnitepair-a9f110fbf2c43417f3341cdd",
+        "reviewer": {
+          "reviewer_type": "human",
+          "reviewer_id": "unassigned",
+          "model_id": null,
+          "model_revision": null,
+          "review_role": "reviewer"
+        },
+        "evidence": {
+          "source_image_url": "https://fortnite-api.com/images/cosmetics/br/cid_a_150_athena_commando_f_pliant_d/featured.png",
+          "lego_image_url": "https://fortnite-api.com/images/cosmetics/lego/cid_a_150_athena_commando_f_pliant_d/wide.png",
+          "source_image_sha256": "d9ebde217308fe7820ff7e3b6bd7c051a9550f6c20986716c697e8740c4ce00d",
+          "lego_image_sha256": "40effc07418cbe0c7351445449a8f6af1ff5ad838517919292af7a8927564b2b",
+          "evidence_scope": "front_pair",
+          "claims_unobserved_surfaces": false
+        },
+        "annotations": {
+          "regions": {
+            "head": [],
+            "torso": [],
+            "lower_body": [],
+            "accessory_or_silhouette": []
+          },
+          "identity_critical_features": [],
+          "mask_headgear_route": null,
+          "expression_translation": null
+        },
+        "limitations": [],
+        "measurement_signal_refs": [
+          {
+            "signal": "substantial_edge_reduction",
+            "region": "head_upper",
+            "value": 0.5404,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "moderate_edge_reduction",
+            "region": "torso_middle",
+            "value": 0.7797,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "edge_increase",
+            "region": "legs_lower",
+            "value": 1.6295,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "large_silhouette_bbox_change",
+            "region": "global",
+            "value": true,
+            "role": "review_prioritization_only"
+          }
+        ],
+        "review_status": "draft",
+        "adjudicates_review_ids": [],
+        "created_at": null,
+        "provenance": [
+          {
+            "source": "fortnite_semantic_review_queue",
+            "processor_version": "fortnite-semantic-review-queue/v1",
+            "review_priority_score": 7.5
+          },
+          {
+            "source": "fortnite_semantic_review_media_materialization",
+            "processor_version": "fortnite-semantic-review-media-materializer/v3",
+            "source_image_sha256": "d9ebde217308fe7820ff7e3b6bd7c051a9550f6c20986716c697e8740c4ce00d",
+            "lego_image_sha256": "40effc07418cbe0c7351445449a8f6af1ff5ad838517919292af7a8927564b2b"
+          }
+        ]
+      },
+      "source_image_sha256": "d9ebde217308fe7820ff7e3b6bd7c051a9550f6c20986716c697e8740c4ce00d",
+      "lego_image_sha256": "40effc07418cbe0c7351445449a8f6af1ff5ad838517919292af7a8927564b2b"
+    },
+    {
+      "translation_pair_id": "fortnitepair-af39c1fa3408caa7f1acd5bd",
+      "review_priority_score": 7.5,
+      "lego_image_resolution": "direct_pair",
+      "source_image_url": "https://fortnite-api.com/images/cosmetics/br/character_stridemicegiant/featured.png",
+      "lego_image_url": "https://fortnite-api.com/images/cosmetics/lego/character_stridemicegiant/wide.png",
+      "measurement_signals": [
+        {
+          "signal": "substantial_edge_reduction",
+          "region": "head_upper",
+          "value": 0.6811
+        },
+        {
+          "signal": "edge_increase",
+          "region": "torso_middle",
+          "value": 1.7411
+        },
+        {
+          "signal": "edge_increase",
+          "region": "legs_lower",
+          "value": 1.4122
+        },
+        {
+          "signal": "large_silhouette_bbox_change",
+          "region": "global",
+          "value": true
+        }
+      ],
+      "measurement_signal_policy": "Signals only prioritize review and must not be copied into semantic labels without direct visual evidence.",
+      "review_template": {
+        "schema": "fortnite-semantic-review/v1",
+        "review_id": null,
+        "translation_pair_id": "fortnitepair-af39c1fa3408caa7f1acd5bd",
+        "reviewer": {
+          "reviewer_type": "human",
+          "reviewer_id": "unassigned",
+          "model_id": null,
+          "model_revision": null,
+          "review_role": "reviewer"
+        },
+        "evidence": {
+          "source_image_url": "https://fortnite-api.com/images/cosmetics/br/character_stridemicegiant/featured.png",
+          "lego_image_url": "https://fortnite-api.com/images/cosmetics/lego/character_stridemicegiant/wide.png",
+          "source_image_sha256": "8070dddf283782ac86ac85c80dfa0527f1e6ad84fb62858a320b5ab93f3918f4",
+          "lego_image_sha256": "f3e411ec94c28bc577041378e861529269b43deb9cc2ba83509bb959fd692e99",
+          "evidence_scope": "front_pair",
+          "claims_unobserved_surfaces": false
+        },
+        "annotations": {
+          "regions": {
+            "head": [],
+            "torso": [],
+            "lower_body": [],
+            "accessory_or_silhouette": []
+          },
+          "identity_critical_features": [],
+          "mask_headgear_route": null,
+          "expression_translation": null
+        },
+        "limitations": [],
+        "measurement_signal_refs": [
+          {
+            "signal": "substantial_edge_reduction",
+            "region": "head_upper",
+            "value": 0.6811,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "edge_increase",
+            "region": "torso_middle",
+            "value": 1.7411,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "edge_increase",
+            "region": "legs_lower",
+            "value": 1.4122,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "large_silhouette_bbox_change",
+            "region": "global",
+            "value": true,
+            "role": "review_prioritization_only"
+          }
+        ],
+        "review_status": "draft",
+        "adjudicates_review_ids": [],
+        "created_at": null,
+        "provenance": [
+          {
+            "source": "fortnite_semantic_review_queue",
+            "processor_version": "fortnite-semantic-review-queue/v1",
+            "review_priority_score": 7.5
+          },
+          {
+            "source": "fortnite_semantic_review_media_materialization",
+            "processor_version": "fortnite-semantic-review-media-materializer/v3",
+            "source_image_sha256": "8070dddf283782ac86ac85c80dfa0527f1e6ad84fb62858a320b5ab93f3918f4",
+            "lego_image_sha256": "f3e411ec94c28bc577041378e861529269b43deb9cc2ba83509bb959fd692e99"
+          }
+        ]
+      },
+      "source_image_sha256": "8070dddf283782ac86ac85c80dfa0527f1e6ad84fb62858a320b5ab93f3918f4",
+      "lego_image_sha256": "f3e411ec94c28bc577041378e861529269b43deb9cc2ba83509bb959fd692e99"
+    },
+    {
+      "translation_pair_id": "fortnitepair-b2d5fcf471447bddeb9ea4c0",
+      "review_priority_score": 7.5,
+      "lego_image_resolution": "direct_pair",
+      "source_image_url": "https://fortnite-api.com/images/cosmetics/br/character_tactickale_e/featured.png",
+      "lego_image_url": "https://fortnite-api.com/images/cosmetics/lego/character_tactickale_e/wide.png",
+      "measurement_signals": [
+        {
+          "signal": "moderate_edge_reduction",
+          "region": "head_upper",
+          "value": 0.7886
+        },
+        {
+          "signal": "substantial_edge_reduction",
+          "region": "torso_middle",
+          "value": 0.6862
+        },
+        {
+          "signal": "edge_increase",
+          "region": "legs_lower",
+          "value": 1.3499
+        },
+        {
+          "signal": "large_silhouette_bbox_change",
+          "region": "global",
+          "value": true
+        }
+      ],
+      "measurement_signal_policy": "Signals only prioritize review and must not be copied into semantic labels without direct visual evidence.",
+      "review_template": {
+        "schema": "fortnite-semantic-review/v1",
+        "review_id": null,
+        "translation_pair_id": "fortnitepair-b2d5fcf471447bddeb9ea4c0",
+        "reviewer": {
+          "reviewer_type": "human",
+          "reviewer_id": "unassigned",
+          "model_id": null,
+          "model_revision": null,
+          "review_role": "reviewer"
+        },
+        "evidence": {
+          "source_image_url": "https://fortnite-api.com/images/cosmetics/br/character_tactickale_e/featured.png",
+          "lego_image_url": "https://fortnite-api.com/images/cosmetics/lego/character_tactickale_e/wide.png",
+          "source_image_sha256": "f8390ba446730f0e1b5d8cbeb89bc34277346aacbf47bea2c7710a9e7250d0a5",
+          "lego_image_sha256": "8f1ad996b61dbcd299ec12bc2dd59c4ce7fa8b8066c15d80f13e56d2a8829d20",
+          "evidence_scope": "front_pair",
+          "claims_unobserved_surfaces": false
+        },
+        "annotations": {
+          "regions": {
+            "head": [],
+            "torso": [],
+            "lower_body": [],
+            "accessory_or_silhouette": []
+          },
+          "identity_critical_features": [],
+          "mask_headgear_route": null,
+          "expression_translation": null
+        },
+        "limitations": [],
+        "measurement_signal_refs": [
+          {
+            "signal": "moderate_edge_reduction",
+            "region": "head_upper",
+            "value": 0.7886,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "substantial_edge_reduction",
+            "region": "torso_middle",
+            "value": 0.6862,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "edge_increase",
+            "region": "legs_lower",
+            "value": 1.3499,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "large_silhouette_bbox_change",
+            "region": "global",
+            "value": true,
+            "role": "review_prioritization_only"
+          }
+        ],
+        "review_status": "draft",
+        "adjudicates_review_ids": [],
+        "created_at": null,
+        "provenance": [
+          {
+            "source": "fortnite_semantic_review_queue",
+            "processor_version": "fortnite-semantic-review-queue/v1",
+            "review_priority_score": 7.5
+          },
+          {
+            "source": "fortnite_semantic_review_media_materialization",
+            "processor_version": "fortnite-semantic-review-media-materializer/v3",
+            "source_image_sha256": "f8390ba446730f0e1b5d8cbeb89bc34277346aacbf47bea2c7710a9e7250d0a5",
+            "lego_image_sha256": "8f1ad996b61dbcd299ec12bc2dd59c4ce7fa8b8066c15d80f13e56d2a8829d20"
+          }
+        ]
+      },
+      "source_image_sha256": "f8390ba446730f0e1b5d8cbeb89bc34277346aacbf47bea2c7710a9e7250d0a5",
+      "lego_image_sha256": "8f1ad996b61dbcd299ec12bc2dd59c4ce7fa8b8066c15d80f13e56d2a8829d20"
+    },
+    {
+      "translation_pair_id": "fortnitepair-b4ae30f69e4c751f4ec31050",
+      "review_priority_score": 7.5,
+      "lego_image_resolution": "direct_pair",
+      "source_image_url": "https://fortnite-api.com/images/cosmetics/br/cid_a_322_athena_commando_f_renegaderaiderice/featured.png",
+      "lego_image_url": "https://fortnite-api.com/images/cosmetics/lego/cid_a_322_athena_commando_f_renegaderaiderice/wide.png",
+      "measurement_signals": [
+        {
+          "signal": "edge_increase",
+          "region": "head_upper",
+          "value": 1.5079
+        },
+        {
+          "signal": "edge_increase",
+          "region": "torso_middle",
+          "value": 1.5154
+        },
+        {
+          "signal": "palette_increase",
+          "region": "torso_middle",
+          "value": 2
+        },
+        {
+          "signal": "edge_increase",
+          "region": "legs_lower",
+          "value": 1.646
+        },
+        {
+          "signal": "palette_increase",
+          "region": "legs_lower",
+          "value": 2
+        },
+        {
+          "signal": "large_silhouette_bbox_change",
+          "region": "global",
+          "value": true
+        }
+      ],
+      "measurement_signal_policy": "Signals only prioritize review and must not be copied into semantic labels without direct visual evidence.",
+      "review_template": {
+        "schema": "fortnite-semantic-review/v1",
+        "review_id": null,
+        "translation_pair_id": "fortnitepair-b4ae30f69e4c751f4ec31050",
+        "reviewer": {
+          "reviewer_type": "human",
+          "reviewer_id": "unassigned",
+          "model_id": null,
+          "model_revision": null,
+          "review_role": "reviewer"
+        },
+        "evidence": {
+          "source_image_url": "https://fortnite-api.com/images/cosmetics/br/cid_a_322_athena_commando_f_renegaderaiderice/featured.png",
+          "lego_image_url": "https://fortnite-api.com/images/cosmetics/lego/cid_a_322_athena_commando_f_renegaderaiderice/wide.png",
+          "source_image_sha256": "5dddbc656921408574b411de310fbf0fba9f843a843a75463c85d7b7c8c9ab75",
+          "lego_image_sha256": "a7cf2bfba4813f3511ca450dbebb6d0445eb04aaec18cba4d74ad10165f47f3c",
+          "evidence_scope": "front_pair",
+          "claims_unobserved_surfaces": false
+        },
+        "annotations": {
+          "regions": {
+            "head": [],
+            "torso": [],
+            "lower_body": [],
+            "accessory_or_silhouette": []
+          },
+          "identity_critical_features": [],
+          "mask_headgear_route": null,
+          "expression_translation": null
+        },
+        "limitations": [],
+        "measurement_signal_refs": [
+          {
+            "signal": "edge_increase",
+            "region": "head_upper",
+            "value": 1.5079,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "edge_increase",
+            "region": "torso_middle",
+            "value": 1.5154,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "palette_increase",
+            "region": "torso_middle",
+            "value": 2,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "edge_increase",
+            "region": "legs_lower",
+            "value": 1.646,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "palette_increase",
+            "region": "legs_lower",
+            "value": 2,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "large_silhouette_bbox_change",
+            "region": "global",
+            "value": true,
+            "role": "review_prioritization_only"
+          }
+        ],
+        "review_status": "draft",
+        "adjudicates_review_ids": [],
+        "created_at": null,
+        "provenance": [
+          {
+            "source": "fortnite_semantic_review_queue",
+            "processor_version": "fortnite-semantic-review-queue/v1",
+            "review_priority_score": 7.5
+          },
+          {
+            "source": "fortnite_semantic_review_media_materialization",
+            "processor_version": "fortnite-semantic-review-media-materializer/v3",
+            "source_image_sha256": "5dddbc656921408574b411de310fbf0fba9f843a843a75463c85d7b7c8c9ab75",
+            "lego_image_sha256": "a7cf2bfba4813f3511ca450dbebb6d0445eb04aaec18cba4d74ad10165f47f3c"
+          }
+        ]
+      },
+      "source_image_sha256": "5dddbc656921408574b411de310fbf0fba9f843a843a75463c85d7b7c8c9ab75",
+      "lego_image_sha256": "a7cf2bfba4813f3511ca450dbebb6d0445eb04aaec18cba4d74ad10165f47f3c"
+    },
+    {
+      "translation_pair_id": "fortnitepair-b4b980471e73582b9e499fc3",
+      "review_priority_score": 7.5,
+      "lego_image_resolution": "direct_pair",
+      "source_image_url": "https://fortnite-api.com/images/cosmetics/br/cid_a_337_athena_commando_f_zest_zbxgn/featured.png",
+      "lego_image_url": "https://fortnite-api.com/images/cosmetics/lego/cid_a_337_athena_commando_f_zest_zbxgn/wide.png",
+      "measurement_signals": [
+        {
+          "signal": "substantial_edge_reduction",
+          "region": "head_upper",
+          "value": 0.6402
+        },
+        {
+          "signal": "moderate_edge_reduction",
+          "region": "torso_middle",
+          "value": 0.7839
+        },
+        {
+          "signal": "edge_increase",
+          "region": "legs_lower",
+          "value": 1.3567
+        },
+        {
+          "signal": "large_silhouette_bbox_change",
+          "region": "global",
+          "value": true
+        }
+      ],
+      "measurement_signal_policy": "Signals only prioritize review and must not be copied into semantic labels without direct visual evidence.",
+      "review_template": {
+        "schema": "fortnite-semantic-review/v1",
+        "review_id": null,
+        "translation_pair_id": "fortnitepair-b4b980471e73582b9e499fc3",
+        "reviewer": {
+          "reviewer_type": "human",
+          "reviewer_id": "unassigned",
+          "model_id": null,
+          "model_revision": null,
+          "review_role": "reviewer"
+        },
+        "evidence": {
+          "source_image_url": "https://fortnite-api.com/images/cosmetics/br/cid_a_337_athena_commando_f_zest_zbxgn/featured.png",
+          "lego_image_url": "https://fortnite-api.com/images/cosmetics/lego/cid_a_337_athena_commando_f_zest_zbxgn/wide.png",
+          "source_image_sha256": "8e43d1e85451c80fb48fd20ab5e80eb425256c29f055cd085c16aadb6e7880f9",
+          "lego_image_sha256": "15d042eb62be45521e51c62d7dc37dc7e5c4dcd40d19dd281d52bb7262384f52",
+          "evidence_scope": "front_pair",
+          "claims_unobserved_surfaces": false
+        },
+        "annotations": {
+          "regions": {
+            "head": [],
+            "torso": [],
+            "lower_body": [],
+            "accessory_or_silhouette": []
+          },
+          "identity_critical_features": [],
+          "mask_headgear_route": null,
+          "expression_translation": null
+        },
+        "limitations": [],
+        "measurement_signal_refs": [
+          {
+            "signal": "substantial_edge_reduction",
+            "region": "head_upper",
+            "value": 0.6402,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "moderate_edge_reduction",
+            "region": "torso_middle",
+            "value": 0.7839,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "edge_increase",
+            "region": "legs_lower",
+            "value": 1.3567,
+            "role": "review_prioritization_only"
+          },
+          {
+            "signal": "large_silhouette_bbox_change",
+            "region": "global",
+            "value": true,
+            "role": "review_prioritization_only"
+          }
+        ],
+        "review_status": "draft",
+        "adjudicates_review_ids": [],
+        "created_at": null,
+        "provenance": [
+          {
+            "source": "fortnite_semantic_review_queue",
+            "processor_version": "fortnite-semantic-review-queue/v1",
+            "review_priority_score": 7.5
+          },
+          {
+            "source": "fortnite_semantic_review_media_materialization",
+            "processor_version": "fortnite-semantic-review-media-materializer/v3",
+            "source_image_sha256": "8e43d1e85451c80fb48fd20ab5e80eb425256c29f055cd085c16aadb6e7880f9",
+            "lego_image_sha256": "15d042eb62be45521e51c62d7dc37dc7e5c4dcd40d19dd281d52bb7262384f52"
+          }
+        ]
+      },
+      "source_image_sha256": "8e43d1e85451c80fb48fd20ab5e80eb425256c29f055cd085c16aadb6e7880f9",
+      "lego_image_sha256": "15d042eb62be45521e51c62d7dc37dc7e5c4dcd40d19dd281d52bb7262384f52"
+    }
+  ],
+  "policy": [
+    "Work batches are deterministic for the same queue, mode, filters, and offset.",
+    "Measurement signals are prioritization hints only.",
+    "Do not infer hidden or rear features from front-only evidence.",
+    "First and second reviews remain non-canonical until explicit adjudication."
+  ],
+  "media_materializer_version": "fortnite-semantic-review-media-materializer/v3",
+  "media_materialization": {
+    "status": "complete",
+    "records": 25,
+    "unique_urls": 50,
+    "policy": "Hashes bind semantic review evidence to exact downloaded or verified archived bytes. Materialization does not create semantic annotations or training eligibility."
+  }
+}
