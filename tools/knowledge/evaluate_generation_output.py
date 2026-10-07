@@ -83,14 +83,21 @@ def measure_flat_color(config, image):
         if type(minimum) not in (int, float) or not math.isfinite(minimum) or not 0 < minimum <= 1:
             raise ValueError("Flat color minimum_match_fraction must be finite in (0, 1]")
         raw = rgba.crop(tuple(box)).tobytes()
-        pixels = [tuple(raw[i:i + 4]) for i in range(0, len(raw), 4)]
-        deltas = [max(abs(a - b) for a, b in zip(pixel, target)) for pixel in pixels]
-        matched = sum(delta <= tolerance for delta in deltas)
-        fraction = matched / len(pixels)
-        regions.append({**region, "sampled_pixels": len(pixels), "matching_pixels": matched,
-                        "match_fraction": fraction, "unique_rgba_values": len(set(pixels)),
-                        "observed_max_channel_delta": max(deltas),
-                        "observed_alpha_range": [min(p[3] for p in pixels), max(p[3] for p in pixels)]})
+        sampled = len(raw) // 4
+        matched, maximum_delta, alpha_min, alpha_max, colors = 0, 0, 255, 0, set()
+        for offset in range(0, len(raw), 4):
+            pixel = raw[offset:offset + 4]
+            delta = max(abs(pixel[0] - target[0]), abs(pixel[1] - target[1]),
+                        abs(pixel[2] - target[2]), abs(pixel[3] - target[3]))
+            matched += delta <= tolerance
+            maximum_delta = max(maximum_delta, delta)
+            alpha_min, alpha_max = min(alpha_min, pixel[3]), max(alpha_max, pixel[3])
+            colors.add(pixel)
+        fraction = matched / sampled
+        regions.append({**region, "sampled_pixels": sampled, "matching_pixels": matched,
+                        "match_fraction": fraction, "unique_rgba_values": len(colors),
+                        "observed_max_channel_delta": maximum_delta,
+                        "observed_alpha_range": [alpha_min, alpha_max]})
         checks.append({"constraint": "flat_color_region", "region_id": name,
                        "minimum_match_fraction": minimum, "observed_match_fraction": fraction,
                        "passed": fraction >= minimum})
