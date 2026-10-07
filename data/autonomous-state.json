@@ -114,7 +114,7 @@
     "instruction": "Do not restart completed architecture gates. 400/744 high-priority pairs have submitted first reviews with 1800 annotations; 344 remain. Review first-review batch 0017. Obtain genuinely independent second reviews and explicit adjudication before canonical promotion. Preserve exact hashes, source appearance, uncertainty, and no-hidden-view rules. Continue exact-release multiview evidence and generation evaluation with the existing tools."
   },
   "last_meaningful_commit": "7610c66731c6c6fae99a32bf5d0d074f69b61471",
-  "latest_validated_test_commit": "e4c6cec2333a13b99d34e3cd8061f1a5554325d5",
+  "latest_validated_test_commit": "b86fb1bf7b240a65edd89f44605beb69db0133e5",
   "completed_batches": [
     {
       "id": "body_architecture_reference_acquisition_v1",
@@ -458,7 +458,7 @@
       }
     }
   ],
-  "latest_test_lock_commit": "e4c6cec2333a13b99d34e3cd8061f1a5554325d5",
+  "latest_test_lock_commit": "b86fb1bf7b240a65edd89f44605beb69db0133e5",
   "semantic_review_frontier": {
     "eligible_pairs": 744,
     "complete_first_review_batch_count": 16,
@@ -478,60 +478,24 @@
   },
   "completed_batches_are_historical_snapshots": true,
   "latest_validation": {
-    "checkpoint": "e4c6cec2333a13b99d34e3cd8061f1a5554325d5",
-    "local_tests_passed": 706,
-    "current_local_tests_passed": 719,
+    "checkpoint": "b86fb1bf7b240a65edd89f44605beb69db0133e5",
+    "local_tests_passed": 719,
+    "current_local_tests_passed": 722,
     "github_runs": [
       {
-        "name": "Compile Fortnite Semantic Review Submissions",
-        "id": 37635036696,
+        "name": "LEGO Knowledge Tool Tests",
+        "id": 37635675465,
         "status": "completed",
         "conclusion": "success"
       },
       {
         "name": "Validate Brickmen",
-        "id": 37635036715,
-        "status": "completed",
-        "conclusion": "success"
-      },
-      {
-        "name": "LEGO Knowledge Tool Tests",
-        "id": 37635036639,
-        "status": "completed",
-        "conclusion": "success"
-      },
-      {
-        "name": "Build Fortnite Semantic Review UI",
-        "id": 37635036698,
-        "status": "completed",
-        "conclusion": "failure"
-      },
-      {
-        "name": "Compile Fortnite Semantic Review Submissions",
-        "id": 37635035256,
-        "status": "completed",
-        "conclusion": "success"
-      },
-      {
-        "name": "LEGO Knowledge Tool Tests",
-        "id": 37635035246,
-        "status": "completed",
-        "conclusion": "success"
-      },
-      {
-        "name": "Build Fortnite Semantic Review UI",
-        "id": 37635035207,
-        "status": "completed",
-        "conclusion": "failure"
-      },
-      {
-        "name": "Validate Brickmen",
-        "id": 37635035245,
+        "id": 37635675235,
         "status": "completed",
         "conclusion": "success"
       }
     ],
-    "status": "core_checks_passed_live_media_ui_blocked_originals_recovered"
+    "status": "passed"
   },
   "generation_accuracy_frontier": {
     "brief_preflight": "processor_v2_metadata_review_only; requested edits must be explicitly allowed; compiled outputs cannot overwrite or remove brief/reference inputs",
@@ -542,7 +506,7 @@
       "landmark_max_error",
       "print_zone_containment"
     ],
-    "latest_local_tests_passed": 719,
+    "latest_local_tests_passed": 722,
     "real_generated_output_benchmark": "two_parts_one_view_each_three_actual_outputs; required constraints failed; broader benchmark pending",
     "semantic_feature_review": "required",
     "physical_fit": "unvalidated",
@@ -840,10 +804,10 @@
     },
     "hardcase_priority": {
       "processor_version": "fortnite-semantic-critic-hardcase-queue/v2",
-      "unique_critic_items": 1287,
-      "unpaired_uncertainty_items": 99,
+      "unique_critic_items": 1529,
+      "unpaired_uncertainty_items": 157,
       "duplicates_ignored": 0,
-      "queue_sha256": "71e756001a79b03328664132823a2602192e5fcd1be5f63aa3f4fd52e18fa02f",
+      "queue_sha256": "9f8b27156bb701decfe9dedafedba16287ae1bffd404eba2ce192523ffcd33ba",
       "policy": "Unpaired uncertainty retained without translation-priority score; identical critic IDs count once, conflicts fail; no eligibility promotion."
     },
     "batch14_reviewer_archive": {

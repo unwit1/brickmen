@@ -1,8 +1,13 @@
 from copy import deepcopy
+import hashlib
+import json
+import sys
 
 import pytest
 
 from tools.knowledge.sync_autonomous_state import synchronize
+from tools.knowledge import sync_autonomous_state as tool
+from tools.knowledge.build_fortnite_semantic_critic_hardcase_queue import build as build_queue
 
 
 def sample():
@@ -73,3 +78,55 @@ def test_existing_generated_priority_is_migrated_without_duplicate_tasks():
     assert len(result["highest_value_tasks"]) == 1
     assert result["highest_value_tasks"][0]["id"] == "fortnite_semantic_first_review"
     assert "0011" in result["highest_value_tasks"][0]["task"]
+
+
+def test_current_critic_snapshot_replaces_stale_counts_without_changing_history():
+    state, progress = sample()
+    state["semantic_evidence_gate"] = {"hardcase_priority": {"unique_critic_items": 900, "policy": "Keep explicit provisional policy."}}
+    before = deepcopy(state)
+    queue = build_queue([])
+    result = synchronize(state, progress, queue)
+    snapshot = result["semantic_evidence_gate"]["hardcase_priority"]
+    assert snapshot["unique_critic_items"] == 0
+    assert snapshot["unpaired_uncertainty_items"] == 0
+    assert snapshot["duplicates_ignored"] == 0
+    assert snapshot["queue_sha256"] == hashlib.sha256((json.dumps(queue, indent=2, ensure_ascii=False) + "\n").encode()).hexdigest()
+    assert snapshot["policy"] == "Keep explicit provisional policy."
+    assert result["completed_batches"] == state["completed_batches"]
+    assert state == before
+    assert synchronize(result, progress, queue) == result
+
+
+def test_critic_snapshot_can_be_created_without_previous_gate():
+    state, progress = sample()
+    result = synchronize(state, progress, build_queue([]))
+    assert result["semantic_evidence_gate"]["hardcase_priority"]["processor_version"].endswith("/v2")
+    assert "no eligibility promotion" in result["semantic_evidence_gate"]["hardcase_priority"]["policy"]
+
+
+def test_check_detects_stale_critic_artifact_without_rewriting_it(tmp_path, monkeypatch):
+    state, progress = sample()
+    state.update(updated_date="2026-10-07", status="active", latest_validated_test_commit="synthetic")
+    data = tmp_path / "knowledge/libraries/lego-minifigure-customs/data"
+    batches = data / "semantic-review-batches"
+    batches.mkdir(parents=True)
+    (tmp_path / "data").mkdir()
+    (tmp_path / "data/autonomous-state.json").write_text(json.dumps(state))
+    for filename in ("body-architecture-benchmark-model-input-manifest.json", "body-architecture-recognition-challenge-model-input-manifest-v4.json", "body-architecture-custom-model-input-manifest-v1.json"):
+        (data / filename).write_text(json.dumps({"summary": {"model_input_allowed_cases": 1, "total_cases": 1, "blocked_cases": 0}}))
+    monkeypatch.setattr(tool, "ROOT", tmp_path)
+    monkeypatch.setattr(tool, "DATA", data)
+    monkeypatch.setattr(tool, "DEFAULT_BATCH_DIR", batches)
+    monkeypatch.setattr(tool, "build_progress", lambda *_: deepcopy(progress))
+    monkeypatch.setattr(tool, "build_critic_evidence", lambda *_: ([], {"synthetic_summary": True}))
+    monkeypatch.setattr(sys, "argv", ["sync"])
+    assert tool.main() == 0
+    monkeypatch.setattr(sys, "argv", ["sync", "--check"])
+    assert tool.main() == 0
+    path = data / "fortnite-semantic-critic-hardcase-queue-v1.json"
+    path.write_text("{}\n")
+    assert tool.main() == 2
+    assert path.read_text() == "{}\n"
+    monkeypatch.setattr(sys, "argv", ["sync"])
+    assert tool.main() == 0
+    assert json.loads(path.read_text())["unique_critic_items"] == 0

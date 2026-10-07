@@ -13,11 +13,13 @@ ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 from tools.knowledge.build_fortnite_semantic_review_progress import build_progress, DEFAULT_PLAN, DEFAULT_BATCH_DIR
+from tools.knowledge.build_fortnite_semantic_critic_evidence import build as build_critic_evidence
+from tools.knowledge.build_fortnite_semantic_critic_hardcase_queue import build as build_hardcase_queue
 
 DATA = ROOT / "knowledge/libraries/lego-minifigure-customs/data"
 
 
-def synchronize(state, progress):
+def synchronize(state, progress, hardcase_queue=None):
     """Preserve historical checkpoints while updating every active continuation field."""
     if progress.get("invalid_review_records") != 0:
         raise ValueError("Cannot synchronize from invalid semantic reviews")
@@ -65,6 +67,19 @@ def synchronize(state, progress):
             task["task"] = first_step + "; obtain independent second reviews and adjudicate before canonical promotion."
     result["continuation"] = {"instruction": instruction}
     result["completed_batches_are_historical_snapshots"] = True
+    if hardcase_queue is not None:
+        gate = result.setdefault("semantic_evidence_gate", {})
+        previous = gate.get("hardcase_priority", {})
+        gate["hardcase_priority"] = {
+            "processor_version": hardcase_queue["processor_version"],
+            "unique_critic_items": hardcase_queue["unique_critic_items"],
+            "unpaired_uncertainty_items": hardcase_queue["unpaired_uncertainty_items"],
+            "duplicates_ignored": hardcase_queue["duplicate_critic_items_ignored"],
+            "queue_sha256": hashlib.sha256(
+                (json.dumps(hardcase_queue, indent=2, ensure_ascii=False) + "\n").encode("utf-8")
+            ).hexdigest(),
+            "policy": previous.get("policy", "Unpaired uncertainty retained without translation-priority score; identical critic IDs count once, conflicts fail; no eligibility promotion."),
+        }
     return result
 
 
@@ -145,7 +160,9 @@ def main():
     state_path = ROOT / "data/autonomous-state.json"
     state = json.loads(state_path.read_text(encoding="utf-8"))
     progress = build_progress(DEFAULT_PLAN, DEFAULT_BATCH_DIR)
-    updated = synchronize(state, progress)
+    critics, critic_summary = build_critic_evidence(DEFAULT_BATCH_DIR)
+    hardcase_queue = build_hardcase_queue(critics)
+    updated = synchronize(state, progress, hardcase_queue)
     if args.updated_date:
         from datetime import date
         date.fromisoformat(args.updated_date)
@@ -162,6 +179,9 @@ def main():
         state_path: json.dumps(updated, indent=2, ensure_ascii=False) + "\n",
         ROOT / "AUTONOMOUS_STATE.md": render_markdown(updated, summaries),
         DEFAULT_BATCH_DIR / "fortnite-semantic-review-progress.json": json.dumps(progress, indent=2, ensure_ascii=False) + "\n",
+        DATA / "fortnite-semantic-critic-evidence-v1.jsonl": "".join(json.dumps(row, ensure_ascii=False) + "\n" for row in critics),
+        DATA / "fortnite-semantic-critic-evidence-v1-summary.json": json.dumps(critic_summary, indent=2, ensure_ascii=False) + "\n",
+        DATA / "fortnite-semantic-critic-hardcase-queue-v1.json": json.dumps(hardcase_queue, indent=2, ensure_ascii=False) + "\n",
     }
     stale = [path for path, content in outputs.items() if not path.exists() or path.read_text(encoding="utf-8") != content]
     if not args.check:
