@@ -16,7 +16,7 @@ from pathlib import Path
 from PIL import Image
 
 VERSION = "brickmen-generation-evaluation/v1"
-PROCESSOR_VERSION = "brickmen-generation-evaluation/v3"
+PROCESSOR_VERSION = "brickmen-generation-evaluation/v4"
 DATA = Path(__file__).resolve().parents[2] / "knowledge/libraries/lego-minifigure-customs/data"
 
 
@@ -92,9 +92,16 @@ def measure_flat_color(config, image):
 def verify_provenance(request, base_dir, masks, grid):
     """Bind supplied measurements to image and registration bytes, not semantic truth."""
     provenance = request.get("provenance")
+    dimension_constraint = "candidate_dimensions_px" in request
+    required_dimensions = request.get("candidate_dimensions_px")
+    if dimension_constraint and (not isinstance(required_dimensions, list) or len(required_dimensions) != 2
+                                 or any(type(v) is not int or v <= 0 for v in required_dimensions)):
+        raise ValueError("candidate_dimensions_px requires two positive integer native dimensions")
     if provenance is None:
         if request.get("flat_color") is not None:
             raise ValueError("Flat color requires byte-bound source image and registration provenance")
+        if dimension_constraint:
+            raise ValueError("Native dimensions require byte-bound source image and registration provenance")
         return {"provenance_status": "masks_only"}
     if not isinstance(provenance, dict) or set(provenance) != {"source_images", "registration"}:
         raise ValueError("Provenance requires source_images and registration")
@@ -114,6 +121,8 @@ def verify_provenance(request, base_dir, masks, grid):
         with Image.open(BytesIO(raw)) as image:
             image.load()
             captured[role] = {"image_sha256": sha, "original_dimensions_px": list(image.size)}
+            if role == "candidate" and dimension_constraint and getattr(image, "n_frames", 1) != 1:
+                raise ValueError("Native dimensions require a single-frame candidate image")
             if role == "candidate" and request.get("flat_color") is not None:
                 if getattr(image, "n_frames", 1) != 1:
                     raise ValueError("Flat color requires a single-frame RGB or RGBA image")
@@ -139,6 +148,8 @@ def verify_provenance(request, base_dir, masks, grid):
         raise ValueError("Registration mask pins or pixel grid differ from measurement inputs")
     if registration.get("landmarks") != request.get("landmarks"):
         raise ValueError("Registration landmarks differ from measurement inputs")
+    if registration.get("candidate_dimensions_px") != required_dimensions:
+        raise ValueError("Registration candidate dimensions constraint differs from measurement inputs")
     flat_measurements, flat_checks = ({}, []) if candidate_image is None else measure_flat_color(request["flat_color"], candidate_image)
     if registration.get("flat_color") != request.get("flat_color"):
         raise ValueError("Registration flat color regions differ from measurement inputs")
@@ -148,6 +159,12 @@ def verify_provenance(request, base_dir, masks, grid):
     if candidate_image is not None:
         result.update(flat_measurements)
         result["flat_color_checks"] = flat_checks
+    if dimension_constraint:
+        native_dimensions = captured["candidate"]["original_dimensions_px"]
+        result["native_candidate_dimensions_px"] = native_dimensions
+        result["native_dimension_checks"] = [{"constraint": "candidate_dimensions_px",
+            "required_dimensions_px": required_dimensions, "observed_dimensions_px": native_dimensions,
+            "passed": native_dimensions == required_dimensions}]
     return result
 
 
@@ -233,6 +250,7 @@ def evaluate(request, base_dir, data_dir=DATA):
     registry = json.loads((data_dir / "ai-evaluation-metrics.json").read_text(encoding="utf-8"))
     provenance = verify_provenance(request, base_dir, hashes, grid)
     checks.extend(provenance.pop("flat_color_checks", []))
+    checks.extend(provenance.pop("native_dimension_checks", []))
     return {
         "schema": VERSION, "processor_version": PROCESSOR_VERSION,
         "request_sha256": digest(request), "metrics_registry_sha256": digest(registry), **provenance,
@@ -244,6 +262,7 @@ def evaluate(request, base_dir, data_dir=DATA):
                        "Image and registration byte bindings do not establish that masks or landmarks correctly describe those images.",
                        "Thresholds are declared for this run, not calibrated official accuracy criteria.",
                        "Flat color samples decoded native RGBA bytes without color management, resizing or inferred regions; it does not establish physical color accuracy.",
+                       "Native dimensions describe decoded source pixels without resizing or orientation correction; registered masks do not waive requested output size.",
                        "Matching silhouette cannot establish part identity, source fidelity, style, hidden surfaces, or P0 feature presence."],
     }
 

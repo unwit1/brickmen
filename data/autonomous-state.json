@@ -106,7 +106,7 @@
     "instruction": "Do not restart completed architecture gates. 375/744 high-priority pairs have submitted first reviews with 1659 annotations; 369 remain. Review first-review batch 0016. Obtain genuinely independent second reviews and explicit adjudication before canonical promotion. Preserve exact hashes, source appearance, uncertainty, and no-hidden-view rules. Continue exact-release multiview evidence and generation evaluation with the existing tools."
   },
   "last_meaningful_commit": "7610c66731c6c6fae99a32bf5d0d074f69b61471",
-  "latest_validated_test_commit": "8ac39da0080eb65f2223c0f4625a33a30027b329",
+  "latest_validated_test_commit": "223cfd5d335d86fa958e4591cc8c392e450d89aa",
   "completed_batches": [
     {
       "id": "body_architecture_reference_acquisition_v1",
@@ -450,7 +450,7 @@
       }
     }
   ],
-  "latest_test_lock_commit": "8ac39da0080eb65f2223c0f4625a33a30027b329",
+  "latest_test_lock_commit": "223cfd5d335d86fa958e4591cc8c392e450d89aa",
   "semantic_review_frontier": {
     "eligible_pairs": 744,
     "complete_first_review_batch_count": 15,
@@ -470,36 +470,24 @@
   },
   "completed_batches_are_historical_snapshots": true,
   "latest_validation": {
-    "checkpoint": "8ac39da0080eb65f2223c0f4625a33a30027b329",
-    "local_tests_passed": 683,
-    "current_local_tests_passed": 693,
+    "checkpoint": "223cfd5d335d86fa958e4591cc8c392e450d89aa",
+    "local_tests_passed": 693,
+    "current_local_tests_passed": 706,
     "github_runs": [
       {
-        "name": "Validate Brickmen",
-        "id": 37631835347,
-        "status": "completed",
-        "conclusion": "success"
-      },
-      {
-        "name": "Compile Fortnite Semantic Review Submissions",
-        "id": 37631834915,
-        "status": "completed",
-        "conclusion": "success"
-      },
-      {
         "name": "LEGO Knowledge Tool Tests",
-        "id": 37631835324,
+        "id": 37632635067,
         "status": "completed",
         "conclusion": "success"
       },
       {
-        "name": "Build Fortnite Semantic Review UI",
-        "id": 37631835063,
+        "name": "Validate Brickmen",
+        "id": 37632634989,
         "status": "completed",
-        "conclusion": "failure"
+        "conclusion": "success"
       }
     ],
-    "status": "core_checks_passed_live_media_blocked"
+    "status": "passed"
   },
   "generation_accuracy_frontier": {
     "brief_preflight": "processor_v2_metadata_review_only; requested edits must be explicitly allowed; compiled outputs cannot overwrite or remove brief/reference inputs",
@@ -510,11 +498,11 @@
       "landmark_max_error",
       "print_zone_containment"
     ],
-    "latest_local_tests_passed": 693,
-    "real_generated_output_benchmark": "one_part_one_front_view_two_sequential_outputs_measured; constraints_failed; broader_benchmark_pending",
+    "latest_local_tests_passed": 706,
+    "real_generated_output_benchmark": "two_parts_one_view_each_three_actual_outputs; required constraints failed; broader benchmark pending",
     "semantic_feature_review": "required",
     "physical_fit": "unvalidated",
-    "next": "Continue batch 0016 and independent semantic review. Expand actual output tests across parts and P0 constraints; reuse exact CAD rendering for fixed geometry/flat colors. Curved UV accuracy and physical calibration remain open.",
+    "next": "Continue batch 0016 and independent semantic review. Expand appearance/decoration and multi-view output tests across parts; reuse unlit CAD for exact geometry/flat colors. Native size now fails automatically when declared. Curved UV accuracy and physical calibration remain open.",
     "renderer_configuration": "isolated_preferences_explicit_library_color_config_and_fresh_png_checks",
     "texture_mapped_parts": "external_PNG_inventory_and_actual_LDView_4.7_PLANAR_CYLINDRICAL_SPHERICAL_smokes_passed",
     "texture_dependency_inventory": "v2; geometry, external PNG textures, glossmaps and color configuration pinned",
@@ -729,7 +717,7 @@
         "runs": 2
       }
     },
-    "evaluation_provenance": "evaluator_v3; original image and registration byte bindings; native RGBA region constraints bound to reviewed registration; input/report alias protection; unbound requests remain masks_only",
+    "evaluation_provenance": "evaluator_v4; original image and registration byte bindings; native RGBA region and candidate dimension constraints bound to reviewed registration; input/report alias protection; unbound requests remain masks_only",
     "native_color_regression": {
       "record": "knowledge/libraries/lego-minifigure-customs/data/generation-accuracy-head-native-color-regression-v1.json",
       "status": "both_retained_outputs_technical_checks_failed",
@@ -749,6 +737,33 @@
         "archive": "brickmen-head-native-color-evidence.zip",
         "sha256": "0c1f8288bf94164da88e469e4c6fc25a23e0bf46f95c4373cbf862dc5273e12d",
         "bytes": 1438003
+      }
+    },
+    "actual_brick_output_experiment": {
+      "record": "knowledge/libraries/lego-minifigure-customs/data/generation-accuracy-brick-experiment-v1.json",
+      "part_namespace": "ldraw",
+      "part_id": "3001",
+      "view": "elevated_front_right",
+      "actual_outputs": 1,
+      "silhouette_iou": 0.9816192467287141,
+      "native_dimensions_px": [
+        1254,
+        1254
+      ],
+      "required_dimensions_px": [
+        512,
+        512
+      ],
+      "interior_pixels_exact_opaque_gray": 0,
+      "sampled_interior_pixels": 31974,
+      "status": "technical_checks_failed",
+      "evaluator": "brickmen-generation-evaluation/v4",
+      "archive": {
+        "filename": "brickmen-brick-accuracy-evidence.zip",
+        "sha256": "9851685a89f083cee3b3dcfcb4686c3444f31ab316412dc0da833e9ceae0e912",
+        "bytes": 509296,
+        "original_images_unchanged": true,
+        "source_dependencies_included": true
       }
     }
   },

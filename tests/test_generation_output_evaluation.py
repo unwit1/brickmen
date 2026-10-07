@@ -139,6 +139,85 @@ def test_source_and_registration_bytes_are_bound_without_semantic_promotion(tmp_
     assert result["physical_fit"] == "unvalidated"
 
 
+def test_native_dimensions_are_checked_independently_of_registered_mask_grid(tmp_path):
+    req, registration = color_request(tmp_path, size=(3, 2))
+    req["candidate_dimensions_px"] = [2, 2]
+    registration["candidate_dimensions_px"] = [2, 2]
+    pin_registration(tmp_path, req, registration)
+    report = evaluate(req, tmp_path)
+    assert report["pixel_grid"] == [2, 2]
+    assert report["measurements"]["silhouette_iou"] == 1
+    assert report["flat_color_regions"][0]["match_fraction"] == 1
+    assert report["native_candidate_dimensions_px"] == [3, 2]
+    assert report["status"] == "technical_checks_failed"
+    dimension_check = next(c for c in report["checks"] if c.get("constraint") == "candidate_dimensions_px")
+    assert dimension_check["passed"] is False
+    req["candidate_dimensions_px"] = registration["candidate_dimensions_px"] = [3, 2]
+    pin_registration(tmp_path, req, registration)
+    assert evaluate(req, tmp_path)["status"] == "technical_checks_passed"
+
+
+def test_native_dimensions_do_not_require_flat_color_sampling(tmp_path):
+    req, registration = bound_request(tmp_path)
+    req["candidate_dimensions_px"] = registration["candidate_dimensions_px"] = [2, 2]
+    pin_registration(tmp_path, req, registration)
+    report = evaluate(req, tmp_path)
+    assert report["status"] == "technical_checks_passed"
+    assert report["native_candidate_dimensions_px"] == [2, 2]
+    assert "flat_color_regions" not in report
+    assert report["semantic_features"] == "unreviewed"
+
+
+@pytest.mark.parametrize("dimensions", [None, [], [2], [2, 2, 2], [True, 2], [2.0, 2], [0, 2], [2, -1]])
+def test_native_dimensions_require_positive_integer_pair(tmp_path, dimensions):
+    req, registration = bound_request(tmp_path)
+    req["candidate_dimensions_px"] = registration["candidate_dimensions_px"] = dimensions
+    pin_registration(tmp_path, req, registration)
+    with pytest.raises(ValueError, match="two positive integer"):
+        evaluate(req, tmp_path)
+
+
+def test_native_dimensions_require_matching_registration_and_original_bytes(tmp_path):
+    req = request(tmp_path)
+    req["candidate_dimensions_px"] = [2, 2]
+    with pytest.raises(ValueError, match="byte-bound"):
+        evaluate(req, tmp_path)
+    req, registration = bound_request(tmp_path)
+    req["candidate_dimensions_px"] = [2, 2]
+    with pytest.raises(ValueError, match="dimensions constraint differs"):
+        evaluate(req, tmp_path)
+    registration["candidate_dimensions_px"] = [3, 2]
+    pin_registration(tmp_path, req, registration)
+    with pytest.raises(ValueError, match="dimensions constraint differs"):
+        evaluate(req, tmp_path)
+
+
+def test_cli_rejects_wrong_native_size_despite_passing_registered_silhouette(tmp_path):
+    req, registration = color_request(tmp_path)
+    req["candidate_dimensions_px"] = registration["candidate_dimensions_px"] = [2, 2]
+    pin_registration(tmp_path, req, registration)
+    path, output = tmp_path / "request.json", tmp_path / "report.json"
+    path.write_text(json.dumps(req))
+    command = [sys.executable, "-B", str(Path(__file__).resolve().parents[1] / "tools/knowledge/evaluate_generation_output.py"),
+               "--request", str(path), "--output", str(output)]
+    assert subprocess.run(command, capture_output=True).returncode == 2
+    assert json.loads(output.read_text())["status"] == "technical_checks_failed"
+
+
+def test_native_dimension_constraint_rejects_animation_without_color_constraint(tmp_path):
+    req, registration = bound_request(tmp_path)
+    path = tmp_path / "candidate-image.png"
+    Image.new("RGBA", (2, 2), "red").save(path, save_all=True,
+        append_images=[Image.new("RGBA", (2, 2), "blue")], duration=100, loop=0)
+    sha = hashlib.sha256(path.read_bytes()).hexdigest()
+    req["provenance"]["source_images"]["candidate"]["sha256"] = sha
+    registration["source_images"]["candidate"]["image_sha256"] = sha
+    req["candidate_dimensions_px"] = registration["candidate_dimensions_px"] = [2, 2]
+    pin_registration(tmp_path, req, registration)
+    with pytest.raises(ValueError, match="single-frame"):
+        evaluate(req, tmp_path)
+
+
 def test_changed_candidate_cannot_reuse_old_registered_masks(tmp_path):
     req, _ = bound_request(tmp_path)
     path = tmp_path / req["provenance"]["source_images"]["candidate"]["local_path"]

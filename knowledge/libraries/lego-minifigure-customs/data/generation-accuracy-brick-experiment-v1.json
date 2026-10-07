@@ -1,0 +1,99 @@
+{
+  "schema": "brickmen-generation-accuracy-experiment/v1",
+  "experiment_id": "brickmen-3001-elevated-front-right-flat-reconstruction-20261007",
+  "created_at": "2026-10-07T14:02:44.152327+00:00",
+  "part_namespace": "ldraw",
+  "part_id": "3001",
+  "target_view": "elevated_front_right",
+  "camera_degrees": {
+    "latitude": 25,
+    "longitude": 45
+  },
+  "provider": {
+    "surface": "built_in_image_gen",
+    "exact_model_revision": "unavailable",
+    "seed": "unavailable"
+  },
+  "generation_count": 1,
+  "prompt_sha256": "abc249111c0a947c6a18291c096a57b91a1e6e4940668fdd1756b1bfbcefab00",
+  "source_image_sha256": "ff139631d1c1974ea717730169f71b4a1bf206d897f35949568895859eeaef3b",
+  "output_image_sha256": "ba4e95d1cf67e657ea2584f38bd85aa48384e7717b13d92fc6567f071401bfa1",
+  "reference_geometry_revision": "cc45aca432996f4116d5de61b53f3bf781d6f3bee8c9f1695de507c8b783a723",
+  "reference_library_revision": "f3e496d0ede69ca7942fa4aa198e661ee2d22723906101e2e339d8917a4dd5f2",
+  "evaluator": "brickmen-generation-evaluation/v4",
+  "evaluation_request_sha256": "97c6790fb2ecf1e378e9dfa9d454cd446909f8c7ce184ee764f09ca5e6326613",
+  "evaluation_report_sha256": "96ad884c8729038fca8d6c08bf6ae1d06328fdf0d9954926e3cd908955a46a3f",
+  "measurements": {
+    "silhouette_iou": 0.9816192467287141
+  },
+  "flat_color_regions": [
+    {
+      "id": "plain-brick-body",
+      "box_px": [
+        515,
+        490,
+        734,
+        636
+      ],
+      "target_rgba": [
+        153,
+        153,
+        153,
+        255
+      ],
+      "max_channel_delta": 0,
+      "minimum_match_fraction": 1,
+      "sampled_pixels": 31974,
+      "matching_pixels": 0,
+      "match_fraction": 0.0,
+      "unique_rgba_values": 44,
+      "observed_max_channel_delta": 13,
+      "observed_alpha_range": [
+        253,
+        254
+      ]
+    }
+  ],
+  "dimension_check": {
+    "required_native_dimensions_px": [
+      512,
+      512
+    ],
+    "observed_native_dimensions_px": [
+      1254,
+      1254
+    ],
+    "passed": false,
+    "assessment": "Byte-bound evaluator v4 native candidate_dimensions_px constraint; registered mask normalization does not waive output size."
+  },
+  "technical_evaluation_status": "technical_checks_failed",
+  "required_constraints_status": "failed",
+  "semantic_feature_review": {
+    "reviewer": "codex same-chat provisional direct review",
+    "outer_shape": "similar elevated outline; measured IoU below must be considered separately",
+    "material_appearance": "native exact opaque gray constraint failed",
+    "stud_and_underside_details": "not established from this flat silhouette",
+    "independent_review": false
+  },
+  "cad_positive_control": {
+    "purpose": "byte-identical CAD image and exact interior ROI test; not model performance",
+    "status": "technical_checks_passed",
+    "silhouette_iou": 1.0,
+    "match_fraction": 1.0
+  },
+  "limitations": [
+    "One part/view/output; not a general model benchmark.",
+    "Whole-canvas resolution normalization is declared; native image size remains a separate failed requirement.",
+    "Uniform unlit silhouette hides internal surface distinctions; hidden studs/underside and physical measurements are unvalidated.",
+    "Same-chat region/registration review is provisional, not independent adjudication.",
+    "Decoded RGBA bytes are not calibrated physical color."
+  ],
+  "recommended_route": "Reuse exact unlit CAD rendering for fixed part geometry/palette. Keep generative output provisional until each requested constraint passes.",
+  "local_evidence_archive": {
+    "filename": "brickmen-brick-accuracy-evidence.zip",
+    "sha256": "9851685a89f083cee3b3dcfcb4686c3444f31ab316412dc0da833e9ceae0e912",
+    "bytes": 509296,
+    "original_images_unchanged": true,
+    "source_dependencies_included": true
+  }
+}
