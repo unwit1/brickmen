@@ -1,18 +1,18 @@
 {
   "schema": "fortnite-semantic-critic-hardcase-queue/v1",
   "processor_version": "fortnite-semantic-critic-hardcase-queue/v2",
-  "source_critic_items": 1404,
-  "unique_critic_items": 1404,
+  "source_critic_items": 1529,
+  "unique_critic_items": 1529,
   "duplicate_critic_items_ignored": 0,
-  "unpaired_uncertainty_items": 128,
-  "queued_pairs": 375,
+  "unpaired_uncertainty_items": 157,
+  "queued_pairs": 400,
   "max_hardcase_score": 29,
   "min_hardcase_score": 1,
   "pairs_with_source_only_loss": 26,
-  "pairs_with_source_only_evidence": 136,
-  "pairs_with_uncertainty": 112,
-  "pairs_with_multiple_categories": 371,
-  "pairs_with_multiple_regions": 369,
+  "pairs_with_source_only_evidence": 161,
+  "pairs_with_uncertainty": 137,
+  "pairs_with_multiple_categories": 396,
+  "pairs_with_multiple_regions": 394,
   "scoring": {
     "decision_weight": {
       "uncertain": 6,
@@ -708,6 +708,61 @@
       "rank": 13
     },
     {
+      "translation_pair_id": "fortnitepair-f38c53a538edfe8abe3f092c",
+      "hardcase_score": 22,
+      "critic_item_count": 6,
+      "category_count": 5,
+      "region_count": 4,
+      "source_only_item_count": 1,
+      "uncertain_item_count": 1,
+      "unpaired_uncertainty_item_count": 1,
+      "translation_priority_item_count": 5,
+      "unpaired_uncertainty_critic_ids": [
+        "semcritic-ee7b376d1323d090f7dfa35b"
+      ],
+      "source_only_omitted_item_count": 0,
+      "lower_confidence_item_count": 0,
+      "lower_confidence_priority_item_count": 0,
+      "decision_counts": {
+        "color_block_changed": 1,
+        "exaggerated": 1,
+        "moved_to_accessory": 1,
+        "moved_to_mould": 1,
+        "simplified": 1,
+        "uncertain": 1
+      },
+      "critic_categories": [
+        "detail_compression",
+        "feature_exaggeration",
+        "palette_or_block_change",
+        "representation_transfer",
+        "review_uncertainty"
+      ],
+      "regions": [
+        "accessory_or_silhouette",
+        "head",
+        "lower_body",
+        "torso"
+      ],
+      "source_review_ids": [
+        "semreview-76a0ee5787f26f3f29b02d0e"
+      ],
+      "source_review_files": [
+        "knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-0016-codex-gpt6-submitted.jsonl"
+      ],
+      "source_image_sha256": [
+        "2c36eba8f0c2cf9ef7600b6a6088b31ff191480a3cb7ad383d0582f78d665b6b"
+      ],
+      "lego_image_sha256": [
+        "136e31fcd70be1c0541cda5e3230ebda71e0e8ae8bd1f78ef837fae25267c715"
+      ],
+      "evaluation_status": "provisional_submitted_review_evidence",
+      "canonical_eligible": false,
+      "training_eligible": false,
+      "requires_independent_review_and_adjudication": true,
+      "rank": 14
+    },
+    {
       "translation_pair_id": "fortnitepair-4ef87ebd264b3cd1fc5398bd",
       "hardcase_score": 22,
       "critic_item_count": 4,
@@ -753,7 +808,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 14
+      "rank": 15
     },
     {
       "translation_pair_id": "fortnitepair-d98336ad8bf595a408554dd1",
@@ -802,7 +857,61 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 15
+      "rank": 16
+    },
+    {
+      "translation_pair_id": "fortnitepair-f545f4e847bbb2ebf24f8df6",
+      "hardcase_score": 21,
+      "critic_item_count": 6,
+      "category_count": 5,
+      "region_count": 4,
+      "source_only_item_count": 1,
+      "uncertain_item_count": 1,
+      "unpaired_uncertainty_item_count": 1,
+      "translation_priority_item_count": 5,
+      "unpaired_uncertainty_critic_ids": [
+        "semcritic-968f6fc9ea67ae817f3f2ba4"
+      ],
+      "source_only_omitted_item_count": 0,
+      "lower_confidence_item_count": 0,
+      "lower_confidence_priority_item_count": 0,
+      "decision_counts": {
+        "exaggerated": 1,
+        "moved_to_mould": 1,
+        "omitted": 1,
+        "simplified": 2,
+        "uncertain": 1
+      },
+      "critic_categories": [
+        "detail_compression",
+        "feature_exaggeration",
+        "feature_loss",
+        "representation_transfer",
+        "review_uncertainty"
+      ],
+      "regions": [
+        "accessory_or_silhouette",
+        "head",
+        "lower_body",
+        "torso"
+      ],
+      "source_review_ids": [
+        "semreview-e0194c25100234ba6bb6933b"
+      ],
+      "source_review_files": [
+        "knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-0016-codex-gpt6-submitted.jsonl"
+      ],
+      "source_image_sha256": [
+        "cc1b09c8011acb6559ae74d9407fbf93db2be912a7de5444e487996bd223b166"
+      ],
+      "lego_image_sha256": [
+        "3fb76ae88d71a219fa2b3a871d27bf7588849e26346d68fbcdb98ba5a244c885"
+      ],
+      "evaluation_status": "provisional_submitted_review_evidence",
+      "canonical_eligible": false,
+      "training_eligible": false,
+      "requires_independent_review_and_adjudication": true,
+      "rank": 17
     },
     {
       "translation_pair_id": "fortnitepair-394bb5d7e554b419a8fc73b6",
@@ -854,7 +963,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 16
+      "rank": 18
     },
     {
       "translation_pair_id": "fortnitepair-58b89859ee6986fe643a940d",
@@ -902,7 +1011,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 17
+      "rank": 19
     },
     {
       "translation_pair_id": "fortnitepair-6305f890518606d3f9779008",
@@ -950,7 +1059,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 18
+      "rank": 20
     },
     {
       "translation_pair_id": "fortnitepair-e41e59e175aa5fb06e2535ed",
@@ -998,7 +1107,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 19
+      "rank": 21
     },
     {
       "translation_pair_id": "fortnitepair-1d4786feccc52c46bbdbad2f",
@@ -1045,7 +1154,113 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 20
+      "rank": 22
+    },
+    {
+      "translation_pair_id": "fortnitepair-298dd0dd9adaed85fd339f05",
+      "hardcase_score": 20,
+      "critic_item_count": 6,
+      "category_count": 4,
+      "region_count": 4,
+      "source_only_item_count": 1,
+      "uncertain_item_count": 1,
+      "unpaired_uncertainty_item_count": 1,
+      "translation_priority_item_count": 5,
+      "unpaired_uncertainty_critic_ids": [
+        "semcritic-6ed0c693c2f4d9cc14f37f41"
+      ],
+      "source_only_omitted_item_count": 0,
+      "lower_confidence_item_count": 0,
+      "lower_confidence_priority_item_count": 0,
+      "decision_counts": {
+        "moved_to_mould": 1,
+        "omitted": 2,
+        "simplified": 2,
+        "uncertain": 1
+      },
+      "critic_categories": [
+        "detail_compression",
+        "feature_loss",
+        "representation_transfer",
+        "review_uncertainty"
+      ],
+      "regions": [
+        "accessory_or_silhouette",
+        "head",
+        "lower_body",
+        "torso"
+      ],
+      "source_review_ids": [
+        "semreview-fe9f615005aed22d692fa3ab"
+      ],
+      "source_review_files": [
+        "knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-0016-codex-gpt6-submitted.jsonl"
+      ],
+      "source_image_sha256": [
+        "b07791f6f4fab45ef5bb6089686033debb02dd7c4168cea2d9e144c17df1cb94"
+      ],
+      "lego_image_sha256": [
+        "1a7b5a2cb59a8b011ae7b02ccc02529299eccc3cf31c08bbea55c78615fec947"
+      ],
+      "evaluation_status": "provisional_submitted_review_evidence",
+      "canonical_eligible": false,
+      "training_eligible": false,
+      "requires_independent_review_and_adjudication": true,
+      "rank": 23
+    },
+    {
+      "translation_pair_id": "fortnitepair-37dd75be2897eb78b8ee2750",
+      "hardcase_score": 20,
+      "critic_item_count": 6,
+      "category_count": 5,
+      "region_count": 4,
+      "source_only_item_count": 1,
+      "uncertain_item_count": 1,
+      "unpaired_uncertainty_item_count": 1,
+      "translation_priority_item_count": 5,
+      "unpaired_uncertainty_critic_ids": [
+        "semcritic-ccc843579435e61e9035dc71"
+      ],
+      "source_only_omitted_item_count": 0,
+      "lower_confidence_item_count": 0,
+      "lower_confidence_priority_item_count": 0,
+      "decision_counts": {
+        "color_block_changed": 1,
+        "exaggerated": 1,
+        "moved_to_mould": 1,
+        "simplified": 2,
+        "uncertain": 1
+      },
+      "critic_categories": [
+        "detail_compression",
+        "feature_exaggeration",
+        "palette_or_block_change",
+        "representation_transfer",
+        "review_uncertainty"
+      ],
+      "regions": [
+        "accessory_or_silhouette",
+        "head",
+        "lower_body",
+        "torso"
+      ],
+      "source_review_ids": [
+        "semreview-676f0656563614459a3358c0"
+      ],
+      "source_review_files": [
+        "knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-0016-codex-gpt6-submitted.jsonl"
+      ],
+      "source_image_sha256": [
+        "e73aec9620070038b5b1a535470803f4a61f51afb8e409fa6a90a88ea4b2f5c4"
+      ],
+      "lego_image_sha256": [
+        "13307cd50ffdc8a03df68663eb945ef7b889141488950f5f43d57a888f9fc749"
+      ],
+      "evaluation_status": "provisional_submitted_review_evidence",
+      "canonical_eligible": false,
+      "training_eligible": false,
+      "requires_independent_review_and_adjudication": true,
+      "rank": 24
     },
     {
       "translation_pair_id": "fortnitepair-6d99c361683964509495f22f",
@@ -1095,7 +1310,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 21
+      "rank": 25
     },
     {
       "translation_pair_id": "fortnitepair-6a6056ed45b7283bdd61a3e6",
@@ -1146,7 +1361,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 22
+      "rank": 26
     },
     {
       "translation_pair_id": "fortnitepair-2cdacdd1713769f9808faf5a",
@@ -1196,7 +1411,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 23
+      "rank": 27
     },
     {
       "translation_pair_id": "fortnitepair-a3f6920c4c4ff6109e3ae0d5",
@@ -1246,7 +1461,60 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 24
+      "rank": 28
+    },
+    {
+      "translation_pair_id": "fortnitepair-e36f1d62d1e788a399ed2559",
+      "hardcase_score": 19,
+      "critic_item_count": 5,
+      "category_count": 5,
+      "region_count": 3,
+      "source_only_item_count": 1,
+      "uncertain_item_count": 1,
+      "unpaired_uncertainty_item_count": 1,
+      "translation_priority_item_count": 4,
+      "unpaired_uncertainty_critic_ids": [
+        "semcritic-e6af4064edd309338e9d0418"
+      ],
+      "source_only_omitted_item_count": 0,
+      "lower_confidence_item_count": 0,
+      "lower_confidence_priority_item_count": 0,
+      "decision_counts": {
+        "exaggerated": 1,
+        "moved_to_mould": 1,
+        "omitted": 1,
+        "simplified": 1,
+        "uncertain": 1
+      },
+      "critic_categories": [
+        "detail_compression",
+        "feature_exaggeration",
+        "feature_loss",
+        "representation_transfer",
+        "review_uncertainty"
+      ],
+      "regions": [
+        "head",
+        "lower_body",
+        "torso"
+      ],
+      "source_review_ids": [
+        "semreview-8b176b121dfb1791470882a5"
+      ],
+      "source_review_files": [
+        "knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-0016-codex-gpt6-submitted.jsonl"
+      ],
+      "source_image_sha256": [
+        "d800b5d4d5dfa46cd22e22c1e01bcee1d36c330052d2e012fc92d178eddf9629"
+      ],
+      "lego_image_sha256": [
+        "0c2379add7d65c3d2409343569ab94db9e1f644f36b48dfa5fe877d26d8edd85"
+      ],
+      "evaluation_status": "provisional_submitted_review_evidence",
+      "canonical_eligible": false,
+      "training_eligible": false,
+      "requires_independent_review_and_adjudication": true,
+      "rank": 29
     },
     {
       "translation_pair_id": "fortnitepair-b269225cd78682a31742cd04",
@@ -1292,7 +1560,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 25
+      "rank": 30
     },
     {
       "translation_pair_id": "fortnitepair-d33ef18e4ff518d4ca02b2a6",
@@ -1340,7 +1608,58 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 26
+      "rank": 31
+    },
+    {
+      "translation_pair_id": "fortnitepair-e5da3dd779a2439f42a2e374",
+      "hardcase_score": 18,
+      "critic_item_count": 5,
+      "category_count": 4,
+      "region_count": 3,
+      "source_only_item_count": 1,
+      "uncertain_item_count": 1,
+      "unpaired_uncertainty_item_count": 1,
+      "translation_priority_item_count": 4,
+      "unpaired_uncertainty_critic_ids": [
+        "semcritic-1dd9373ed961dfb264caad04"
+      ],
+      "source_only_omitted_item_count": 0,
+      "lower_confidence_item_count": 0,
+      "lower_confidence_priority_item_count": 0,
+      "decision_counts": {
+        "color_block_changed": 2,
+        "exaggerated": 1,
+        "simplified": 1,
+        "uncertain": 1
+      },
+      "critic_categories": [
+        "detail_compression",
+        "feature_exaggeration",
+        "palette_or_block_change",
+        "review_uncertainty"
+      ],
+      "regions": [
+        "head",
+        "lower_body",
+        "torso"
+      ],
+      "source_review_ids": [
+        "semreview-1241187d6019e2cad20df899"
+      ],
+      "source_review_files": [
+        "knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-0016-codex-gpt6-submitted.jsonl"
+      ],
+      "source_image_sha256": [
+        "882143e3e0d51cdc4039662e5b616598e1b8e173cdc634dd8585b91d9ec98e7b"
+      ],
+      "lego_image_sha256": [
+        "88cf48ac2a2a6130c910456cf0d0f3a75d7e4af63ec0a52bd064ad8df37e37da"
+      ],
+      "evaluation_status": "provisional_submitted_review_evidence",
+      "canonical_eligible": false,
+      "training_eligible": false,
+      "requires_independent_review_and_adjudication": true,
+      "rank": 32
     },
     {
       "translation_pair_id": "fortnitepair-0fc3c63a07a119072da67948",
@@ -1386,7 +1705,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 27
+      "rank": 33
     },
     {
       "translation_pair_id": "fortnitepair-5d50f46457f1a54922c2494d",
@@ -1432,7 +1751,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 28
+      "rank": 34
     },
     {
       "translation_pair_id": "fortnitepair-817f69169ce0017244553e6c",
@@ -1481,7 +1800,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 29
+      "rank": 35
     },
     {
       "translation_pair_id": "fortnitepair-2ab316b781e8c7993b34ceb6",
@@ -1533,7 +1852,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 30
+      "rank": 36
     },
     {
       "translation_pair_id": "fortnitepair-33faed460adddf86fd257b1c",
@@ -1580,7 +1899,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 31
+      "rank": 37
     },
     {
       "translation_pair_id": "fortnitepair-4a32a093b33e5a33b6417d72",
@@ -1627,7 +1946,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 32
+      "rank": 38
     },
     {
       "translation_pair_id": "fortnitepair-64c5554c7a105b7a13d38a18",
@@ -1674,7 +1993,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 33
+      "rank": 39
     },
     {
       "translation_pair_id": "fortnitepair-686b043a8c7f1be7a934a55d",
@@ -1721,7 +2040,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 34
+      "rank": 40
     },
     {
       "translation_pair_id": "fortnitepair-989631fae8da54ebbce87348",
@@ -1766,7 +2085,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 35
+      "rank": 41
     },
     {
       "translation_pair_id": "fortnitepair-a9cc44358e902a6a058bbfc9",
@@ -1813,7 +2132,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 36
+      "rank": 42
     },
     {
       "translation_pair_id": "fortnitepair-af39c1fa3408caa7f1acd5bd",
@@ -1865,7 +2184,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 37
+      "rank": 43
     },
     {
       "translation_pair_id": "fortnitepair-db46742c407758b7b4da8b53",
@@ -1912,7 +2231,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 38
+      "rank": 44
     },
     {
       "translation_pair_id": "fortnitepair-f3d2d4b81496846143ae6ad8",
@@ -1959,7 +2278,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 39
+      "rank": 45
     },
     {
       "translation_pair_id": "fortnitepair-f44ecab394b3f6ece2e27e2b",
@@ -2006,7 +2325,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 40
+      "rank": 46
     },
     {
       "translation_pair_id": "fortnitepair-827049f17dd75aeb488038f8",
@@ -2052,7 +2371,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 41
+      "rank": 47
     },
     {
       "translation_pair_id": "fortnitepair-5c45574a7078ba1b6b1ceac3",
@@ -2104,7 +2423,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 42
+      "rank": 48
     },
     {
       "translation_pair_id": "fortnitepair-c6c0159d173c3c41c10ebbf3",
@@ -2156,7 +2475,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 43
+      "rank": 49
     },
     {
       "translation_pair_id": "fortnitepair-1461430f32958c6cd203bc8e",
@@ -2202,7 +2521,60 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 44
+      "rank": 50
+    },
+    {
+      "translation_pair_id": "fortnitepair-209bfb10af4b3c041dc54973",
+      "hardcase_score": 16,
+      "critic_item_count": 5,
+      "category_count": 4,
+      "region_count": 4,
+      "source_only_item_count": 1,
+      "uncertain_item_count": 1,
+      "unpaired_uncertainty_item_count": 1,
+      "translation_priority_item_count": 4,
+      "unpaired_uncertainty_critic_ids": [
+        "semcritic-9c37dc2643f68c583111f8a4"
+      ],
+      "source_only_omitted_item_count": 0,
+      "lower_confidence_item_count": 0,
+      "lower_confidence_priority_item_count": 0,
+      "decision_counts": {
+        "exaggerated": 1,
+        "moved_to_accessory": 1,
+        "moved_to_mould": 1,
+        "simplified": 1,
+        "uncertain": 1
+      },
+      "critic_categories": [
+        "detail_compression",
+        "feature_exaggeration",
+        "representation_transfer",
+        "review_uncertainty"
+      ],
+      "regions": [
+        "accessory_or_silhouette",
+        "head",
+        "lower_body",
+        "torso"
+      ],
+      "source_review_ids": [
+        "semreview-bf4cf8ebc2cd4564b0a69c77"
+      ],
+      "source_review_files": [
+        "knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-0016-codex-gpt6-submitted.jsonl"
+      ],
+      "source_image_sha256": [
+        "66de0a1c494e9ba97f2beeb9b7928535b9c8386a767e1f67fdc1b926027a9c4c"
+      ],
+      "lego_image_sha256": [
+        "3feee9575f112424df802a3d2d644dcc6e682e7f071d32fb0b9e88d96ee9a8fd"
+      ],
+      "evaluation_status": "provisional_submitted_review_evidence",
+      "canonical_eligible": false,
+      "training_eligible": false,
+      "requires_independent_review_and_adjudication": true,
+      "rank": 51
     },
     {
       "translation_pair_id": "fortnitepair-26827391b177c429f2cb7949",
@@ -2255,7 +2627,114 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 45
+      "rank": 52
+    },
+    {
+      "translation_pair_id": "fortnitepair-e9a74e2ad76da72ce3b9163f",
+      "hardcase_score": 16,
+      "critic_item_count": 6,
+      "category_count": 4,
+      "region_count": 4,
+      "source_only_item_count": 2,
+      "uncertain_item_count": 2,
+      "unpaired_uncertainty_item_count": 2,
+      "translation_priority_item_count": 4,
+      "unpaired_uncertainty_critic_ids": [
+        "semcritic-8a203f9d5c8bf21634f4edcb",
+        "semcritic-abcf35b9b83a22f8938b1e3c"
+      ],
+      "source_only_omitted_item_count": 0,
+      "lower_confidence_item_count": 0,
+      "lower_confidence_priority_item_count": 0,
+      "decision_counts": {
+        "exaggerated": 1,
+        "moved_to_accessory": 1,
+        "moved_to_mould": 1,
+        "simplified": 1,
+        "uncertain": 2
+      },
+      "critic_categories": [
+        "detail_compression",
+        "feature_exaggeration",
+        "representation_transfer",
+        "review_uncertainty"
+      ],
+      "regions": [
+        "accessory_or_silhouette",
+        "head",
+        "lower_body",
+        "torso"
+      ],
+      "source_review_ids": [
+        "semreview-bac1eddae00e728c9e874363"
+      ],
+      "source_review_files": [
+        "knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-0016-codex-gpt6-submitted.jsonl"
+      ],
+      "source_image_sha256": [
+        "6a4e5e575a709cc0d3f63dc4d0646a0614f2247029c9d64a12b9e2727120407d"
+      ],
+      "lego_image_sha256": [
+        "25a07dbbbfa8571d7a4fcfc1ee00e0ea1b21d8b3733833562d1ade4fb5a41e4b"
+      ],
+      "evaluation_status": "provisional_submitted_review_evidence",
+      "canonical_eligible": false,
+      "training_eligible": false,
+      "requires_independent_review_and_adjudication": true,
+      "rank": 53
+    },
+    {
+      "translation_pair_id": "fortnitepair-ff032c05d2b6be81f6da0aaf",
+      "hardcase_score": 16,
+      "critic_item_count": 5,
+      "category_count": 4,
+      "region_count": 4,
+      "source_only_item_count": 1,
+      "uncertain_item_count": 1,
+      "unpaired_uncertainty_item_count": 1,
+      "translation_priority_item_count": 4,
+      "unpaired_uncertainty_critic_ids": [
+        "semcritic-ed8c45a632e31661c60a34f1"
+      ],
+      "source_only_omitted_item_count": 0,
+      "lower_confidence_item_count": 0,
+      "lower_confidence_priority_item_count": 0,
+      "decision_counts": {
+        "color_block_changed": 1,
+        "moved_to_accessory": 1,
+        "moved_to_mould": 1,
+        "simplified": 1,
+        "uncertain": 1
+      },
+      "critic_categories": [
+        "detail_compression",
+        "palette_or_block_change",
+        "representation_transfer",
+        "review_uncertainty"
+      ],
+      "regions": [
+        "accessory_or_silhouette",
+        "head",
+        "lower_body",
+        "torso"
+      ],
+      "source_review_ids": [
+        "semreview-6cf3b90182dfc059f7c5b106"
+      ],
+      "source_review_files": [
+        "knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-0016-codex-gpt6-submitted.jsonl"
+      ],
+      "source_image_sha256": [
+        "482d9239e323d443a017ac8be11d703729d2591bd8a4cb2cf1133a41b8d014e0"
+      ],
+      "lego_image_sha256": [
+        "5fffd3d234e451b0853daa7aa3903235ae3524fcb1ea35614644ff8b04487da3"
+      ],
+      "evaluation_status": "provisional_submitted_review_evidence",
+      "canonical_eligible": false,
+      "training_eligible": false,
+      "requires_independent_review_and_adjudication": true,
+      "rank": 54
     },
     {
       "translation_pair_id": "fortnitepair-15868e73e43a89f994a4a448",
@@ -2302,7 +2781,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 46
+      "rank": 55
     },
     {
       "translation_pair_id": "fortnitepair-30cfcc46eea5ff25776ceac0",
@@ -2349,7 +2828,111 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 47
+      "rank": 56
+    },
+    {
+      "translation_pair_id": "fortnitepair-3cb8e0cedea90425eb0c12e3",
+      "hardcase_score": 15,
+      "critic_item_count": 6,
+      "category_count": 4,
+      "region_count": 4,
+      "source_only_item_count": 1,
+      "uncertain_item_count": 1,
+      "unpaired_uncertainty_item_count": 1,
+      "translation_priority_item_count": 5,
+      "unpaired_uncertainty_critic_ids": [
+        "semcritic-63967236925092750ea59a3a"
+      ],
+      "source_only_omitted_item_count": 0,
+      "lower_confidence_item_count": 0,
+      "lower_confidence_priority_item_count": 0,
+      "decision_counts": {
+        "exaggerated": 1,
+        "moved_to_mould": 1,
+        "simplified": 3,
+        "uncertain": 1
+      },
+      "critic_categories": [
+        "detail_compression",
+        "feature_exaggeration",
+        "representation_transfer",
+        "review_uncertainty"
+      ],
+      "regions": [
+        "accessory_or_silhouette",
+        "head",
+        "lower_body",
+        "torso"
+      ],
+      "source_review_ids": [
+        "semreview-97e53016297d47fb4337b1b9"
+      ],
+      "source_review_files": [
+        "knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-0016-codex-gpt6-submitted.jsonl"
+      ],
+      "source_image_sha256": [
+        "3403156e15615b1beee0c0268680144c866522dda8fbdea591adf7e4c2996f35"
+      ],
+      "lego_image_sha256": [
+        "2e8ae4249cbe3088db5f888d2ec022a8998cccab19d91f9931fbbf00d966a3ec"
+      ],
+      "evaluation_status": "provisional_submitted_review_evidence",
+      "canonical_eligible": false,
+      "training_eligible": false,
+      "requires_independent_review_and_adjudication": true,
+      "rank": 57
+    },
+    {
+      "translation_pair_id": "fortnitepair-f8b051b89bf67d75affb694d",
+      "hardcase_score": 15,
+      "critic_item_count": 6,
+      "category_count": 4,
+      "region_count": 4,
+      "source_only_item_count": 1,
+      "uncertain_item_count": 1,
+      "unpaired_uncertainty_item_count": 1,
+      "translation_priority_item_count": 5,
+      "unpaired_uncertainty_critic_ids": [
+        "semcritic-1111f50b8675a6f75a3a4192"
+      ],
+      "source_only_omitted_item_count": 0,
+      "lower_confidence_item_count": 0,
+      "lower_confidence_priority_item_count": 0,
+      "decision_counts": {
+        "exaggerated": 1,
+        "moved_to_mould": 1,
+        "simplified": 3,
+        "uncertain": 1
+      },
+      "critic_categories": [
+        "detail_compression",
+        "feature_exaggeration",
+        "representation_transfer",
+        "review_uncertainty"
+      ],
+      "regions": [
+        "accessory_or_silhouette",
+        "head",
+        "lower_body",
+        "torso"
+      ],
+      "source_review_ids": [
+        "semreview-b98a97372cd099a23f5b7363"
+      ],
+      "source_review_files": [
+        "knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-0016-codex-gpt6-submitted.jsonl"
+      ],
+      "source_image_sha256": [
+        "697a042ea67db4751f687253cc669fa6ea79970bbea894d30df8e0e0f1676120"
+      ],
+      "lego_image_sha256": [
+        "28a25537863a231cd19df5c91b429a06c61f3b4d1f56e9bc348b8a543f07a80e"
+      ],
+      "evaluation_status": "provisional_submitted_review_evidence",
+      "canonical_eligible": false,
+      "training_eligible": false,
+      "requires_independent_review_and_adjudication": true,
+      "rank": 58
     },
     {
       "translation_pair_id": "fortnitepair-805d90d7d5e099b0ea4bfe3c",
@@ -2396,7 +2979,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 48
+      "rank": 59
     },
     {
       "translation_pair_id": "fortnitepair-82d4db4b750289294baa012b",
@@ -2448,7 +3031,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 49
+      "rank": 60
     },
     {
       "translation_pair_id": "fortnitepair-f2b42a14c354172f413552f8",
@@ -2500,7 +3083,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 50
+      "rank": 61
     },
     {
       "translation_pair_id": "fortnitepair-58b8ef5647838213f6f25754",
@@ -2546,7 +3129,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 51
+      "rank": 62
     },
     {
       "translation_pair_id": "fortnitepair-07e24bdd513b31f8c5afe231",
@@ -2592,7 +3175,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 52
+      "rank": 63
     },
     {
       "translation_pair_id": "fortnitepair-1cbc203d6f9154adc7a39048",
@@ -2638,7 +3221,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 53
+      "rank": 64
     },
     {
       "translation_pair_id": "fortnitepair-1edd21c75c41480a0f58d41c",
@@ -2684,7 +3267,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 54
+      "rank": 65
     },
     {
       "translation_pair_id": "fortnitepair-23ce61f80fecf3cd77e1bde7",
@@ -2736,7 +3319,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 55
+      "rank": 66
     },
     {
       "translation_pair_id": "fortnitepair-31ea99b5fccbf1eda8756649",
@@ -2788,7 +3371,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 56
+      "rank": 67
     },
     {
       "translation_pair_id": "fortnitepair-35a3a390c5ffca57c1b0a15a",
@@ -2835,7 +3418,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 57
+      "rank": 68
     },
     {
       "translation_pair_id": "fortnitepair-50de6e95bc69b365c7995c69",
@@ -2887,7 +3470,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 58
+      "rank": 69
     },
     {
       "translation_pair_id": "fortnitepair-54320d0c0713a9880a7ad00d",
@@ -2934,7 +3517,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 59
+      "rank": 70
     },
     {
       "translation_pair_id": "fortnitepair-65046ed0ae27ed021b25aaae",
@@ -2986,7 +3569,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 60
+      "rank": 71
     },
     {
       "translation_pair_id": "fortnitepair-6589a1d04703de08948830ea",
@@ -3033,7 +3616,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 61
+      "rank": 72
     },
     {
       "translation_pair_id": "fortnitepair-6b6be9c21b507db0bf3f6d6a",
@@ -3080,7 +3663,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 62
+      "rank": 73
     },
     {
       "translation_pair_id": "fortnitepair-6f9539a8e1f2e30f6154d433",
@@ -3132,7 +3715,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 63
+      "rank": 74
     },
     {
       "translation_pair_id": "fortnitepair-705d1f43de9b7e7e87b69042",
@@ -3179,7 +3762,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 64
+      "rank": 75
     },
     {
       "translation_pair_id": "fortnitepair-786e2038b7a0c6575b324585",
@@ -3226,7 +3809,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 65
+      "rank": 76
     },
     {
       "translation_pair_id": "fortnitepair-7eca83d0e37ae96e15113fc8",
@@ -3273,7 +3856,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 66
+      "rank": 77
     },
     {
       "translation_pair_id": "fortnitepair-8db5867bfd2953969ff52ab8",
@@ -3325,7 +3908,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 67
+      "rank": 78
     },
     {
       "translation_pair_id": "fortnitepair-b98a14b4e2fbbfec18e4152b",
@@ -3372,7 +3955,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 68
+      "rank": 79
     },
     {
       "translation_pair_id": "fortnitepair-bbadf435a243fe3bb60e3bcc",
@@ -3424,7 +4007,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 69
+      "rank": 80
     },
     {
       "translation_pair_id": "fortnitepair-bbc3839a26ab990cf5c6aadb",
@@ -3476,7 +4059,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 70
+      "rank": 81
     },
     {
       "translation_pair_id": "fortnitepair-c5eb857e8a5b1ae8e46b85e6",
@@ -3528,7 +4111,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 71
+      "rank": 82
     },
     {
       "translation_pair_id": "fortnitepair-cb10b5abadebcd51fec1d462",
@@ -3579,7 +4162,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 72
+      "rank": 83
     },
     {
       "translation_pair_id": "fortnitepair-d16371795aff135596bf4b2e",
@@ -3631,7 +4214,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 73
+      "rank": 84
     },
     {
       "translation_pair_id": "fortnitepair-d974bc3cff0b613145bacf79",
@@ -3683,7 +4266,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 74
+      "rank": 85
     },
     {
       "translation_pair_id": "fortnitepair-da1552d4bd21483c78ac6ecd",
@@ -3736,7 +4319,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 75
+      "rank": 86
     },
     {
       "translation_pair_id": "fortnitepair-db628e5943b67ff38617f833",
@@ -3787,7 +4370,59 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 76
+      "rank": 87
+    },
+    {
+      "translation_pair_id": "fortnitepair-e8cb2992f66e3fb68eea6db4",
+      "hardcase_score": 14,
+      "critic_item_count": 5,
+      "category_count": 4,
+      "region_count": 4,
+      "source_only_item_count": 1,
+      "uncertain_item_count": 1,
+      "unpaired_uncertainty_item_count": 1,
+      "translation_priority_item_count": 4,
+      "unpaired_uncertainty_critic_ids": [
+        "semcritic-70282bf62ed6b5f63ef15a7d"
+      ],
+      "source_only_omitted_item_count": 0,
+      "lower_confidence_item_count": 0,
+      "lower_confidence_priority_item_count": 0,
+      "decision_counts": {
+        "exaggerated": 1,
+        "moved_to_mould": 1,
+        "simplified": 2,
+        "uncertain": 1
+      },
+      "critic_categories": [
+        "detail_compression",
+        "feature_exaggeration",
+        "representation_transfer",
+        "review_uncertainty"
+      ],
+      "regions": [
+        "accessory_or_silhouette",
+        "head",
+        "lower_body",
+        "torso"
+      ],
+      "source_review_ids": [
+        "semreview-e71d5eda0c73f10db28ca846"
+      ],
+      "source_review_files": [
+        "knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-0016-codex-gpt6-submitted.jsonl"
+      ],
+      "source_image_sha256": [
+        "c09db8bdd9e13338de5515648626e77fccc574ce70da4d443a0b9fe4dea925f0"
+      ],
+      "lego_image_sha256": [
+        "25191ec3ff141d1beedc33747d74515a815b6cf0b76e78f5f60dc81e83e32c50"
+      ],
+      "evaluation_status": "provisional_submitted_review_evidence",
+      "canonical_eligible": false,
+      "training_eligible": false,
+      "requires_independent_review_and_adjudication": true,
+      "rank": 88
     },
     {
       "translation_pair_id": "fortnitepair-a4d455777f1f0f543e0dac47",
@@ -3833,7 +4468,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 77
+      "rank": 89
     },
     {
       "translation_pair_id": "fortnitepair-53856fa8c4705a5054dfeb3b",
@@ -3880,7 +4515,58 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 78
+      "rank": 90
+    },
+    {
+      "translation_pair_id": "fortnitepair-03cdc5835a71b0bd96f153cd",
+      "hardcase_score": 13,
+      "critic_item_count": 5,
+      "category_count": 4,
+      "region_count": 3,
+      "source_only_item_count": 1,
+      "uncertain_item_count": 1,
+      "unpaired_uncertainty_item_count": 1,
+      "translation_priority_item_count": 4,
+      "unpaired_uncertainty_critic_ids": [
+        "semcritic-f3001d80846bc4243b8b42d8"
+      ],
+      "source_only_omitted_item_count": 0,
+      "lower_confidence_item_count": 0,
+      "lower_confidence_priority_item_count": 0,
+      "decision_counts": {
+        "exaggerated": 1,
+        "moved_to_mould": 1,
+        "simplified": 2,
+        "uncertain": 1
+      },
+      "critic_categories": [
+        "detail_compression",
+        "feature_exaggeration",
+        "representation_transfer",
+        "review_uncertainty"
+      ],
+      "regions": [
+        "head",
+        "lower_body",
+        "torso"
+      ],
+      "source_review_ids": [
+        "semreview-df74ca3b7d8087a1312418b9"
+      ],
+      "source_review_files": [
+        "knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-0016-codex-gpt6-submitted.jsonl"
+      ],
+      "source_image_sha256": [
+        "f2eae3c081b3c39fddb737a6f58b352d8d6252cb092a653b9ec81d5bfc0df9d2"
+      ],
+      "lego_image_sha256": [
+        "0500487e35fd550b8bb790213a91880995399594f3304996a0c771e8a4d938ba"
+      ],
+      "evaluation_status": "provisional_submitted_review_evidence",
+      "canonical_eligible": false,
+      "training_eligible": false,
+      "requires_independent_review_and_adjudication": true,
+      "rank": 91
     },
     {
       "translation_pair_id": "fortnitepair-06cda114aa3929b0dcf1c864",
@@ -3926,7 +4612,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 79
+      "rank": 92
     },
     {
       "translation_pair_id": "fortnitepair-0fe3dee1354450847d723dfc",
@@ -3972,7 +4658,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 80
+      "rank": 93
     },
     {
       "translation_pair_id": "fortnitepair-14c87d83493e5b9c589f8281",
@@ -4022,7 +4708,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 81
+      "rank": 94
     },
     {
       "translation_pair_id": "fortnitepair-3367ef076e53cae6511e8c96",
@@ -4068,7 +4754,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 82
+      "rank": 95
     },
     {
       "translation_pair_id": "fortnitepair-4fb329e69407f7f88638819b",
@@ -4114,7 +4800,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 83
+      "rank": 96
     },
     {
       "translation_pair_id": "fortnitepair-98f8fc07462468de1e3dbffb",
@@ -4165,7 +4851,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 84
+      "rank": 97
     },
     {
       "translation_pair_id": "fortnitepair-997d7f04adfee74af95103db",
@@ -4211,7 +4897,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 85
+      "rank": 98
     },
     {
       "translation_pair_id": "fortnitepair-b79f423654670b0402956d4e",
@@ -4262,7 +4948,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 86
+      "rank": 99
     },
     {
       "translation_pair_id": "fortnitepair-be3db379c16589295bbbcd0f",
@@ -4308,7 +4994,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 87
+      "rank": 100
     },
     {
       "translation_pair_id": "fortnitepair-bf3e75ab0c2408001af279af",
@@ -4359,7 +5045,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 88
+      "rank": 101
     },
     {
       "translation_pair_id": "fortnitepair-da686b2ca690c14f18e5d502",
@@ -4405,7 +5091,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 89
+      "rank": 102
     },
     {
       "translation_pair_id": "fortnitepair-e2e75fd399b7ca2fd711d09c",
@@ -4451,7 +5137,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 90
+      "rank": 103
     },
     {
       "translation_pair_id": "fortnitepair-fd71fc7de9a8bfcdf655d2cc",
@@ -4497,7 +5183,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 91
+      "rank": 104
     },
     {
       "translation_pair_id": "fortnitepair-78355332f5960db7f664ed2f",
@@ -4547,7 +5233,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 92
+      "rank": 105
     },
     {
       "translation_pair_id": "fortnitepair-e63d70b58bd08d7a20632e9b",
@@ -4593,7 +5279,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 93
+      "rank": 106
     },
     {
       "translation_pair_id": "fortnitepair-00979f701384b714efcaf223",
@@ -4644,7 +5330,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 94
+      "rank": 107
     },
     {
       "translation_pair_id": "fortnitepair-028b0251fc0a3efba01ce55e",
@@ -4695,7 +5381,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 95
+      "rank": 108
     },
     {
       "translation_pair_id": "fortnitepair-0511a5b20591f71461d18622",
@@ -4741,7 +5427,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 96
+      "rank": 109
     },
     {
       "translation_pair_id": "fortnitepair-0b4174bac4d669590c1d7b31",
@@ -4787,7 +5473,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 97
+      "rank": 110
     },
     {
       "translation_pair_id": "fortnitepair-0cf650ae7f889549a31f3dd8",
@@ -4833,7 +5519,58 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 98
+      "rank": 111
+    },
+    {
+      "translation_pair_id": "fortnitepair-1b1c8b69be86d153a9608fc6",
+      "hardcase_score": 12,
+      "critic_item_count": 4,
+      "category_count": 4,
+      "region_count": 3,
+      "source_only_item_count": 1,
+      "uncertain_item_count": 1,
+      "unpaired_uncertainty_item_count": 1,
+      "translation_priority_item_count": 3,
+      "unpaired_uncertainty_critic_ids": [
+        "semcritic-02b9667d62487615262eb51a"
+      ],
+      "source_only_omitted_item_count": 0,
+      "lower_confidence_item_count": 0,
+      "lower_confidence_priority_item_count": 0,
+      "decision_counts": {
+        "exaggerated": 1,
+        "moved_to_mould": 1,
+        "simplified": 1,
+        "uncertain": 1
+      },
+      "critic_categories": [
+        "detail_compression",
+        "feature_exaggeration",
+        "representation_transfer",
+        "review_uncertainty"
+      ],
+      "regions": [
+        "head",
+        "lower_body",
+        "torso"
+      ],
+      "source_review_ids": [
+        "semreview-ef0d5a864f9a8679303d0632"
+      ],
+      "source_review_files": [
+        "knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-0016-codex-gpt6-submitted.jsonl"
+      ],
+      "source_image_sha256": [
+        "138b1d52e1613e206274eebdb136be586085a902f4084b8adea55ebe843525d9"
+      ],
+      "lego_image_sha256": [
+        "be616ef5e037ae2052f2e7594ad463d625af3ecc3747d5883565775094492b40"
+      ],
+      "evaluation_status": "provisional_submitted_review_evidence",
+      "canonical_eligible": false,
+      "training_eligible": false,
+      "requires_independent_review_and_adjudication": true,
+      "rank": 112
     },
     {
       "translation_pair_id": "fortnitepair-27564a45ec327c37bdab6021",
@@ -4877,7 +5614,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 99
+      "rank": 113
     },
     {
       "translation_pair_id": "fortnitepair-3d91c4dcc68b676f6a9a5fbf",
@@ -4921,7 +5658,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 100
+      "rank": 114
     },
     {
       "translation_pair_id": "fortnitepair-424787f50c51b66218f27615",
@@ -4971,7 +5708,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 101
+      "rank": 115
     },
     {
       "translation_pair_id": "fortnitepair-48caa181cede8be805962579",
@@ -5017,7 +5754,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 102
+      "rank": 116
     },
     {
       "translation_pair_id": "fortnitepair-4a83156a28ac883075ec2bd8",
@@ -5068,7 +5805,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 103
+      "rank": 117
     },
     {
       "translation_pair_id": "fortnitepair-4a93ea006485532a2b305132",
@@ -5114,7 +5851,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 104
+      "rank": 118
     },
     {
       "translation_pair_id": "fortnitepair-629e410c379b71cebdb9b991",
@@ -5160,7 +5897,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 105
+      "rank": 119
     },
     {
       "translation_pair_id": "fortnitepair-69fa7670622d6caa3c9c7b02",
@@ -5211,7 +5948,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 106
+      "rank": 120
     },
     {
       "translation_pair_id": "fortnitepair-7e4da4a2110971b822bd7ee1",
@@ -5257,7 +5994,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 107
+      "rank": 121
     },
     {
       "translation_pair_id": "fortnitepair-880c5a5581fa8f6fb04c5284",
@@ -5308,7 +6045,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 108
+      "rank": 122
     },
     {
       "translation_pair_id": "fortnitepair-b41f43a01ba0936f0c64e449",
@@ -5354,7 +6091,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 109
+      "rank": 123
     },
     {
       "translation_pair_id": "fortnitepair-cde791cddda8fdfe9f49ab28",
@@ -5405,7 +6142,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 110
+      "rank": 124
     },
     {
       "translation_pair_id": "fortnitepair-d5155c4d0ef2ea98b090a8f3",
@@ -5456,7 +6193,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 111
+      "rank": 125
     },
     {
       "translation_pair_id": "fortnitepair-d8c61764523e83a504254d33",
@@ -5507,7 +6244,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 112
+      "rank": 126
     },
     {
       "translation_pair_id": "fortnitepair-f4c0a92b718f776c2e9072a3",
@@ -5553,7 +6290,60 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 113
+      "rank": 127
+    },
+    {
+      "translation_pair_id": "fortnitepair-fb7a4b6642ba111df2530565",
+      "hardcase_score": 12,
+      "critic_item_count": 5,
+      "category_count": 4,
+      "region_count": 4,
+      "source_only_item_count": 2,
+      "uncertain_item_count": 2,
+      "unpaired_uncertainty_item_count": 2,
+      "translation_priority_item_count": 3,
+      "unpaired_uncertainty_critic_ids": [
+        "semcritic-2bde696bae742f7d7eca0ee5",
+        "semcritic-aa6f66985bcb3f520017f7e7"
+      ],
+      "source_only_omitted_item_count": 0,
+      "lower_confidence_item_count": 0,
+      "lower_confidence_priority_item_count": 0,
+      "decision_counts": {
+        "exaggerated": 1,
+        "moved_to_mould": 1,
+        "simplified": 1,
+        "uncertain": 2
+      },
+      "critic_categories": [
+        "detail_compression",
+        "feature_exaggeration",
+        "representation_transfer",
+        "review_uncertainty"
+      ],
+      "regions": [
+        "accessory_or_silhouette",
+        "head",
+        "lower_body",
+        "torso"
+      ],
+      "source_review_ids": [
+        "semreview-fdb4d6e4841c398b7f9e968e"
+      ],
+      "source_review_files": [
+        "knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-0016-codex-gpt6-submitted.jsonl"
+      ],
+      "source_image_sha256": [
+        "ff4bf405ab441b82b50a9292312c1c03a1417032ad6d4d57a9373d2ed7b7a7cb"
+      ],
+      "lego_image_sha256": [
+        "b4bc55bc2a576539fdbeefbc5e8c21d4ed64c5c2b576499b483ad5abb9b7090d"
+      ],
+      "evaluation_status": "provisional_submitted_review_evidence",
+      "canonical_eligible": false,
+      "training_eligible": false,
+      "requires_independent_review_and_adjudication": true,
+      "rank": 128
     },
     {
       "translation_pair_id": "fortnitepair-52d03e7aed878caef14aa7e6",
@@ -5599,7 +6389,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 114
+      "rank": 129
     },
     {
       "translation_pair_id": "fortnitepair-5aa25eeb429a4e2984c6531d",
@@ -5645,7 +6435,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 115
+      "rank": 130
     },
     {
       "translation_pair_id": "fortnitepair-7c982b49e1dcc06943a5ee3b",
@@ -5691,7 +6481,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 116
+      "rank": 131
     },
     {
       "translation_pair_id": "fortnitepair-a81c11a854af82d5b418bda8",
@@ -5741,7 +6531,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 117
+      "rank": 132
     },
     {
       "translation_pair_id": "fortnitepair-b7b376ab6d8c2f6b83467010",
@@ -5786,7 +6576,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 118
+      "rank": 133
     },
     {
       "translation_pair_id": "fortnitepair-e6ad94c916330d6e45e60e54",
@@ -5832,7 +6622,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 119
+      "rank": 134
     },
     {
       "translation_pair_id": "fortnitepair-fd46a44226213294a2822914",
@@ -5878,7 +6668,57 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 120
+      "rank": 135
+    },
+    {
+      "translation_pair_id": "fortnitepair-169bf62c5b431913398e45da",
+      "hardcase_score": 10,
+      "critic_item_count": 6,
+      "category_count": 3,
+      "region_count": 4,
+      "source_only_item_count": 1,
+      "uncertain_item_count": 1,
+      "unpaired_uncertainty_item_count": 1,
+      "translation_priority_item_count": 5,
+      "unpaired_uncertainty_critic_ids": [
+        "semcritic-47b8ff3c301a193ee869f7bd"
+      ],
+      "source_only_omitted_item_count": 0,
+      "lower_confidence_item_count": 0,
+      "lower_confidence_priority_item_count": 0,
+      "decision_counts": {
+        "moved_to_mould": 1,
+        "simplified": 4,
+        "uncertain": 1
+      },
+      "critic_categories": [
+        "detail_compression",
+        "representation_transfer",
+        "review_uncertainty"
+      ],
+      "regions": [
+        "accessory_or_silhouette",
+        "head",
+        "lower_body",
+        "torso"
+      ],
+      "source_review_ids": [
+        "semreview-5a9cc6c184aee66b0e8a215e"
+      ],
+      "source_review_files": [
+        "knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-0016-codex-gpt6-submitted.jsonl"
+      ],
+      "source_image_sha256": [
+        "5af1be58ce2f9d93f00fa9600723b87104ca1e9543d609366b875ae34d85d164"
+      ],
+      "lego_image_sha256": [
+        "8820c6cfddf4bf08689f3b2f24ca0ee907918bd3aa39e7af262f58cd1480f86a"
+      ],
+      "evaluation_status": "provisional_submitted_review_evidence",
+      "canonical_eligible": false,
+      "training_eligible": false,
+      "requires_independent_review_and_adjudication": true,
+      "rank": 136
     },
     {
       "translation_pair_id": "fortnitepair-21eb7c0e8f1a61b97c84c69e",
@@ -5928,7 +6768,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 121
+      "rank": 137
     },
     {
       "translation_pair_id": "fortnitepair-2f8362ccee92a677f819aafd",
@@ -5973,7 +6813,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 122
+      "rank": 138
     },
     {
       "translation_pair_id": "fortnitepair-43f9cad601b493622d42ca72",
@@ -6023,7 +6863,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 123
+      "rank": 139
     },
     {
       "translation_pair_id": "fortnitepair-7f04ebcdaf24de8b70661922",
@@ -6068,7 +6908,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 124
+      "rank": 140
     },
     {
       "translation_pair_id": "fortnitepair-c8aeb28df43bf051a1073baa",
@@ -6113,7 +6953,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 125
+      "rank": 141
     },
     {
       "translation_pair_id": "fortnitepair-ccc7352f478de0b46221f63d",
@@ -6157,7 +6997,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 126
+      "rank": 142
     },
     {
       "translation_pair_id": "fortnitepair-f37822454dc40171836c6dbb",
@@ -6202,7 +7042,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 127
+      "rank": 143
     },
     {
       "translation_pair_id": "fortnitepair-9266b5c08d854f835aa204e8",
@@ -6247,7 +7087,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 128
+      "rank": 144
     },
     {
       "translation_pair_id": "fortnitepair-94c4b1e37b1ddbf8af66d456",
@@ -6295,7 +7135,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 129
+      "rank": 145
     },
     {
       "translation_pair_id": "fortnitepair-a7ac592e0f30f29d3fc2f7d4",
@@ -6340,7 +7180,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 130
+      "rank": 146
     },
     {
       "translation_pair_id": "fortnitepair-cdccf4406a2bdb5cda9452df",
@@ -6383,7 +7223,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 131
+      "rank": 147
     },
     {
       "translation_pair_id": "fortnitepair-5ba46988ba91f035fea23bc8",
@@ -6427,7 +7267,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 132
+      "rank": 148
     },
     {
       "translation_pair_id": "fortnitepair-e5b036c526277276ed2cbd58",
@@ -6471,7 +7311,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 133
+      "rank": 149
     },
     {
       "translation_pair_id": "fortnitepair-026bdcd1a570d30d2f6c0607",
@@ -6516,7 +7356,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 134
+      "rank": 150
     },
     {
       "translation_pair_id": "fortnitepair-063169cc0573b69d99e49e05",
@@ -6561,7 +7401,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 135
+      "rank": 151
     },
     {
       "translation_pair_id": "fortnitepair-0b28328e74d89fa85ee4001a",
@@ -6611,7 +7451,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 136
+      "rank": 152
     },
     {
       "translation_pair_id": "fortnitepair-0e0f849b2d53879bebeef972",
@@ -6661,7 +7501,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 137
+      "rank": 153
     },
     {
       "translation_pair_id": "fortnitepair-1341ef109a5d889f7ec46f97",
@@ -6711,7 +7551,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 138
+      "rank": 154
     },
     {
       "translation_pair_id": "fortnitepair-25d8984ea92e82daf51094b2",
@@ -6756,7 +7596,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 139
+      "rank": 155
     },
     {
       "translation_pair_id": "fortnitepair-26768395d44ea0e532afd176",
@@ -6806,7 +7646,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 140
+      "rank": 156
     },
     {
       "translation_pair_id": "fortnitepair-26aaccefd3b0a590e0d6b828",
@@ -6856,7 +7696,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 141
+      "rank": 157
     },
     {
       "translation_pair_id": "fortnitepair-489aa670219269c24dbebd26",
@@ -6900,7 +7740,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 142
+      "rank": 158
     },
     {
       "translation_pair_id": "fortnitepair-56e3fda0e293aa7c18de98e2",
@@ -6945,7 +7785,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 143
+      "rank": 159
     },
     {
       "translation_pair_id": "fortnitepair-571da361994177a49ba2db93",
@@ -6990,7 +7830,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 144
+      "rank": 160
     },
     {
       "translation_pair_id": "fortnitepair-5c5e9b684b64aafaa7c103dc",
@@ -7040,7 +7880,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 145
+      "rank": 161
     },
     {
       "translation_pair_id": "fortnitepair-62b1d3a69ffee8208d492628",
@@ -7085,7 +7925,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 146
+      "rank": 162
     },
     {
       "translation_pair_id": "fortnitepair-644d16825598c2c851b14b45",
@@ -7129,7 +7969,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 147
+      "rank": 163
     },
     {
       "translation_pair_id": "fortnitepair-66b37054e88a66da2fff0d1d",
@@ -7174,7 +8014,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 148
+      "rank": 164
     },
     {
       "translation_pair_id": "fortnitepair-67eef8444973b9efdf48b4f8",
@@ -7218,7 +8058,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 149
+      "rank": 165
     },
     {
       "translation_pair_id": "fortnitepair-6843b4f84eec6bdf74cc3d59",
@@ -7262,7 +8102,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 150
+      "rank": 166
     },
     {
       "translation_pair_id": "fortnitepair-6bde72b761f3f2fde384ba8c",
@@ -7306,7 +8146,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 151
+      "rank": 167
     },
     {
       "translation_pair_id": "fortnitepair-6d492ff6a5e0800ec586e308",
@@ -7351,7 +8191,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 152
+      "rank": 168
     },
     {
       "translation_pair_id": "fortnitepair-6fd6dc3b11cd48055977c206",
@@ -7395,7 +8235,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 153
+      "rank": 169
     },
     {
       "translation_pair_id": "fortnitepair-710996d20cf21b5e7eb69b53",
@@ -7445,7 +8285,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 154
+      "rank": 170
     },
     {
       "translation_pair_id": "fortnitepair-72e26f86affeb8bc2b78e89c",
@@ -7489,7 +8329,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 155
+      "rank": 171
     },
     {
       "translation_pair_id": "fortnitepair-84f339d2ce155399916e76d6",
@@ -7533,7 +8373,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 156
+      "rank": 172
     },
     {
       "translation_pair_id": "fortnitepair-8f6891d476a23740cf3c7ff8",
@@ -7577,7 +8417,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 157
+      "rank": 173
     },
     {
       "translation_pair_id": "fortnitepair-93705f370aa997989de5373f",
@@ -7622,7 +8462,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 158
+      "rank": 174
     },
     {
       "translation_pair_id": "fortnitepair-9431ccd1c07465006c8d22a8",
@@ -7672,7 +8512,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 159
+      "rank": 175
     },
     {
       "translation_pair_id": "fortnitepair-9836b692ccd9b664569ab35e",
@@ -7717,7 +8557,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 160
+      "rank": 176
     },
     {
       "translation_pair_id": "fortnitepair-9d782379fe9ef84ce0fde8b0",
@@ -7761,7 +8601,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 161
+      "rank": 177
     },
     {
       "translation_pair_id": "fortnitepair-a34fa3df2c03bc4895981ce1",
@@ -7811,7 +8651,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 162
+      "rank": 178
     },
     {
       "translation_pair_id": "fortnitepair-a99f1cda2aa62c04c125c983",
@@ -7861,7 +8701,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 163
+      "rank": 179
     },
     {
       "translation_pair_id": "fortnitepair-b5d79c746e2cba700e8adc91",
@@ -7905,7 +8745,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 164
+      "rank": 180
     },
     {
       "translation_pair_id": "fortnitepair-bbc63bb927b3ccd66e219469",
@@ -7949,7 +8789,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 165
+      "rank": 181
     },
     {
       "translation_pair_id": "fortnitepair-c0a979956ddb60c5dbeb3c0f",
@@ -8000,7 +8840,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 166
+      "rank": 182
     },
     {
       "translation_pair_id": "fortnitepair-c2f9da38c3f6234b9fc1a996",
@@ -8044,7 +8884,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 167
+      "rank": 183
     },
     {
       "translation_pair_id": "fortnitepair-c454bd7c59f66287a6d97661",
@@ -8089,7 +8929,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 168
+      "rank": 184
     },
     {
       "translation_pair_id": "fortnitepair-c7bbebd7586a876cf46bdf1d",
@@ -8134,7 +8974,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 169
+      "rank": 185
     },
     {
       "translation_pair_id": "fortnitepair-cee33959e3d7bcebd5a73b36",
@@ -8178,7 +9018,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 170
+      "rank": 186
     },
     {
       "translation_pair_id": "fortnitepair-d38f651d106e572a92d7cf90",
@@ -8223,7 +9063,57 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 171
+      "rank": 187
+    },
+    {
+      "translation_pair_id": "fortnitepair-e05fbffaa389cde199b2a560",
+      "hardcase_score": 9,
+      "critic_item_count": 5,
+      "category_count": 3,
+      "region_count": 4,
+      "source_only_item_count": 1,
+      "uncertain_item_count": 1,
+      "unpaired_uncertainty_item_count": 1,
+      "translation_priority_item_count": 4,
+      "unpaired_uncertainty_critic_ids": [
+        "semcritic-fb847540cd0b7bd102f31cc9"
+      ],
+      "source_only_omitted_item_count": 0,
+      "lower_confidence_item_count": 0,
+      "lower_confidence_priority_item_count": 0,
+      "decision_counts": {
+        "moved_to_mould": 1,
+        "simplified": 3,
+        "uncertain": 1
+      },
+      "critic_categories": [
+        "detail_compression",
+        "representation_transfer",
+        "review_uncertainty"
+      ],
+      "regions": [
+        "accessory_or_silhouette",
+        "head",
+        "lower_body",
+        "torso"
+      ],
+      "source_review_ids": [
+        "semreview-3aa44f890b40e05674dff0e6"
+      ],
+      "source_review_files": [
+        "knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-0016-codex-gpt6-submitted.jsonl"
+      ],
+      "source_image_sha256": [
+        "669c1cb44aa7a9102b4a3d940e402247ae34cb67bffa44871dd1a0599b1ee1bc"
+      ],
+      "lego_image_sha256": [
+        "944a6d2dacb61a3ee63f2569a5134460db2cefafba055da8e39a7b723669d2fa"
+      ],
+      "evaluation_status": "provisional_submitted_review_evidence",
+      "canonical_eligible": false,
+      "training_eligible": false,
+      "requires_independent_review_and_adjudication": true,
+      "rank": 188
     },
     {
       "translation_pair_id": "fortnitepair-e0bda6bd79ba1d451fcafecf",
@@ -8268,7 +9158,56 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 172
+      "rank": 189
+    },
+    {
+      "translation_pair_id": "fortnitepair-e4535cf4e8d481aca3876032",
+      "hardcase_score": 9,
+      "critic_item_count": 5,
+      "category_count": 3,
+      "region_count": 3,
+      "source_only_item_count": 1,
+      "uncertain_item_count": 1,
+      "unpaired_uncertainty_item_count": 1,
+      "translation_priority_item_count": 4,
+      "unpaired_uncertainty_critic_ids": [
+        "semcritic-17847a524044b8b07954813b"
+      ],
+      "source_only_omitted_item_count": 0,
+      "lower_confidence_item_count": 0,
+      "lower_confidence_priority_item_count": 0,
+      "decision_counts": {
+        "moved_to_mould": 2,
+        "simplified": 2,
+        "uncertain": 1
+      },
+      "critic_categories": [
+        "detail_compression",
+        "representation_transfer",
+        "review_uncertainty"
+      ],
+      "regions": [
+        "accessory_or_silhouette",
+        "head",
+        "lower_body"
+      ],
+      "source_review_ids": [
+        "semreview-784655bb256bb62820c30af3"
+      ],
+      "source_review_files": [
+        "knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-0016-codex-gpt6-submitted.jsonl"
+      ],
+      "source_image_sha256": [
+        "3b6aabc49751c41348009df264ccee08bcab30e19e427f5579b8cb5d01eb8c3c"
+      ],
+      "lego_image_sha256": [
+        "597d285f16b3a51ce57bc1731bf626d64a3cff32cceb81f7e084ce2f0c889c9b"
+      ],
+      "evaluation_status": "provisional_submitted_review_evidence",
+      "canonical_eligible": false,
+      "training_eligible": false,
+      "requires_independent_review_and_adjudication": true,
+      "rank": 190
     },
     {
       "translation_pair_id": "fortnitepair-f21be1502eb2c01c87335d45",
@@ -8312,7 +9251,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 173
+      "rank": 191
     },
     {
       "translation_pair_id": "fortnitepair-f73dfaf29927d12de41d8f60",
@@ -8362,7 +9301,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 174
+      "rank": 192
     },
     {
       "translation_pair_id": "fortnitepair-fedb45387a54c3fb65c3f287",
@@ -8406,7 +9345,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 175
+      "rank": 193
     },
     {
       "translation_pair_id": "fortnitepair-1b997222f73b0aa6ab95d08c",
@@ -8451,7 +9390,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 176
+      "rank": 194
     },
     {
       "translation_pair_id": "fortnitepair-22609894bc6c35e54d6335e4",
@@ -8501,7 +9440,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 177
+      "rank": 195
     },
     {
       "translation_pair_id": "fortnitepair-3a426f8657acd68bc13cae48",
@@ -8545,7 +9484,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 178
+      "rank": 196
     },
     {
       "translation_pair_id": "fortnitepair-46c8b120e736d2cbd26162de",
@@ -8589,7 +9528,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 179
+      "rank": 197
     },
     {
       "translation_pair_id": "fortnitepair-b591aa0cb9a2cf7a62aa9bfd",
@@ -8638,7 +9577,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 180
+      "rank": 198
     },
     {
       "translation_pair_id": "fortnitepair-c2b3aa498cf2e4e6de839890",
@@ -8683,7 +9622,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 181
+      "rank": 199
     },
     {
       "translation_pair_id": "fortnitepair-d45dd0cfa610e5d190c65839",
@@ -8727,7 +9666,56 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 182
+      "rank": 200
+    },
+    {
+      "translation_pair_id": "fortnitepair-ddb77bcc07021878b0d0b6f0",
+      "hardcase_score": 9,
+      "critic_item_count": 4,
+      "category_count": 3,
+      "region_count": 3,
+      "source_only_item_count": 1,
+      "uncertain_item_count": 1,
+      "unpaired_uncertainty_item_count": 1,
+      "translation_priority_item_count": 3,
+      "unpaired_uncertainty_critic_ids": [
+        "semcritic-3f4e2076ec6ffa8beea54440"
+      ],
+      "source_only_omitted_item_count": 0,
+      "lower_confidence_item_count": 0,
+      "lower_confidence_priority_item_count": 0,
+      "decision_counts": {
+        "exaggerated": 1,
+        "simplified": 2,
+        "uncertain": 1
+      },
+      "critic_categories": [
+        "detail_compression",
+        "feature_exaggeration",
+        "review_uncertainty"
+      ],
+      "regions": [
+        "head",
+        "lower_body",
+        "torso"
+      ],
+      "source_review_ids": [
+        "semreview-ed58c946b9a10e088145fd34"
+      ],
+      "source_review_files": [
+        "knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-0016-codex-gpt6-submitted.jsonl"
+      ],
+      "source_image_sha256": [
+        "1a558947ff46017bfaeff194306f754a4ad374d2b69b4ea4a2391b67c7636acd"
+      ],
+      "lego_image_sha256": [
+        "77adadcd70b2026c7f3f8c2c13d8ce22c6817e4a6f27afc7b3285a607e2ff527"
+      ],
+      "evaluation_status": "provisional_submitted_review_evidence",
+      "canonical_eligible": false,
+      "training_eligible": false,
+      "requires_independent_review_and_adjudication": true,
+      "rank": 201
     },
     {
       "translation_pair_id": "fortnitepair-e41773b1faeb6dc8fa1bb2ab",
@@ -8772,7 +9760,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 183
+      "rank": 202
     },
     {
       "translation_pair_id": "fortnitepair-fb44db65407a8604685b7f51",
@@ -8817,7 +9805,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 184
+      "rank": 203
     },
     {
       "translation_pair_id": "fortnitepair-0d02a87cc89433c1ade612c8",
@@ -8861,7 +9849,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 185
+      "rank": 204
     },
     {
       "translation_pair_id": "fortnitepair-14617db830e66511ab0b32a8",
@@ -8905,7 +9893,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 186
+      "rank": 205
     },
     {
       "translation_pair_id": "fortnitepair-15b8918bf87d9c1027268b93",
@@ -8949,7 +9937,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 187
+      "rank": 206
     },
     {
       "translation_pair_id": "fortnitepair-163ca356caa1d9f94a67071b",
@@ -8993,7 +9981,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 188
+      "rank": 207
     },
     {
       "translation_pair_id": "fortnitepair-1a796dfa77cf179394d2cc8b",
@@ -9037,7 +10025,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 189
+      "rank": 208
     },
     {
       "translation_pair_id": "fortnitepair-1c9a911eade76495ac3f3c37",
@@ -9081,7 +10069,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 190
+      "rank": 209
     },
     {
       "translation_pair_id": "fortnitepair-20f19f771eb01d8b45ed1cbe",
@@ -9125,7 +10113,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 191
+      "rank": 210
     },
     {
       "translation_pair_id": "fortnitepair-281a6988b866da234865f0ae",
@@ -9169,7 +10157,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 192
+      "rank": 211
     },
     {
       "translation_pair_id": "fortnitepair-29414d5110e3859154cd5564",
@@ -9213,7 +10201,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 193
+      "rank": 212
     },
     {
       "translation_pair_id": "fortnitepair-2edb1f71934863db79ddf070",
@@ -9257,7 +10245,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 194
+      "rank": 213
     },
     {
       "translation_pair_id": "fortnitepair-2fb63b16ff339928ff354edb",
@@ -9301,7 +10289,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 195
+      "rank": 214
     },
     {
       "translation_pair_id": "fortnitepair-37f70e4e75515a3b49b5697c",
@@ -9345,7 +10333,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 196
+      "rank": 215
     },
     {
       "translation_pair_id": "fortnitepair-382cd05d082d8e548470aa9c",
@@ -9389,7 +10377,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 197
+      "rank": 216
     },
     {
       "translation_pair_id": "fortnitepair-57230999285196c300d332a3",
@@ -9433,7 +10421,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 198
+      "rank": 217
     },
     {
       "translation_pair_id": "fortnitepair-5fa4a02d1a9fe635d7a3c31e",
@@ -9477,7 +10465,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 199
+      "rank": 218
     },
     {
       "translation_pair_id": "fortnitepair-62256761467276b405ae5bac",
@@ -9521,7 +10509,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 200
+      "rank": 219
     },
     {
       "translation_pair_id": "fortnitepair-6fe96cb7071077ed804fd360",
@@ -9565,7 +10553,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 201
+      "rank": 220
     },
     {
       "translation_pair_id": "fortnitepair-703e01a8a994dd0777f3e66a",
@@ -9609,7 +10597,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 202
+      "rank": 221
     },
     {
       "translation_pair_id": "fortnitepair-7303ca5d4ec20c40fec0903e",
@@ -9653,7 +10641,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 203
+      "rank": 222
     },
     {
       "translation_pair_id": "fortnitepair-779aa1d6147bef41f71485a7",
@@ -9697,7 +10685,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 204
+      "rank": 223
     },
     {
       "translation_pair_id": "fortnitepair-77b88453578fa3d4e8f1434b",
@@ -9741,7 +10729,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 205
+      "rank": 224
     },
     {
       "translation_pair_id": "fortnitepair-8f1af5b134223bdaced256e7",
@@ -9785,7 +10773,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 206
+      "rank": 225
     },
     {
       "translation_pair_id": "fortnitepair-943945fc1bacc71356781780",
@@ -9829,7 +10817,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 207
+      "rank": 226
     },
     {
       "translation_pair_id": "fortnitepair-949968da9e8f584f752b14c4",
@@ -9873,7 +10861,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 208
+      "rank": 227
     },
     {
       "translation_pair_id": "fortnitepair-a7664273b967c4c2b78cf124",
@@ -9917,7 +10905,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 209
+      "rank": 228
     },
     {
       "translation_pair_id": "fortnitepair-abfa6b81a29a5d115121f620",
@@ -9961,7 +10949,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 210
+      "rank": 229
     },
     {
       "translation_pair_id": "fortnitepair-b350be21b25464579b002548",
@@ -10005,7 +10993,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 211
+      "rank": 230
     },
     {
       "translation_pair_id": "fortnitepair-bb0bf05a0030b535254da152",
@@ -10049,7 +11037,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 212
+      "rank": 231
     },
     {
       "translation_pair_id": "fortnitepair-bc7698b1b0f527c5c1e3cfc2",
@@ -10093,7 +11081,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 213
+      "rank": 232
     },
     {
       "translation_pair_id": "fortnitepair-c35ecbf3e4b6c9acdeda3859",
@@ -10137,7 +11125,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 214
+      "rank": 233
     },
     {
       "translation_pair_id": "fortnitepair-c73304ec5291e404049b5d9b",
@@ -10181,7 +11169,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 215
+      "rank": 234
     },
     {
       "translation_pair_id": "fortnitepair-c7f85bffd16dad7cc9d37f33",
@@ -10225,7 +11213,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 216
+      "rank": 235
     },
     {
       "translation_pair_id": "fortnitepair-ced822e8713e5f94d354aa88",
@@ -10269,7 +11257,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 217
+      "rank": 236
     },
     {
       "translation_pair_id": "fortnitepair-cf1f833c6123df5fe20b92d0",
@@ -10313,7 +11301,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 218
+      "rank": 237
     },
     {
       "translation_pair_id": "fortnitepair-d67723c95fac0f596749528c",
@@ -10357,7 +11345,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 219
+      "rank": 238
     },
     {
       "translation_pair_id": "fortnitepair-d9fda3f589fe32c7fda85d9c",
@@ -10401,7 +11389,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 220
+      "rank": 239
     },
     {
       "translation_pair_id": "fortnitepair-e0e908c119dc2c4126af747b",
@@ -10445,7 +11433,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 221
+      "rank": 240
     },
     {
       "translation_pair_id": "fortnitepair-ff3f52eb1719190341dad741",
@@ -10489,7 +11477,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 222
+      "rank": 241
     },
     {
       "translation_pair_id": "fortnitepair-022fd51dd5a7da9ba93200ef",
@@ -10534,7 +11522,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 223
+      "rank": 242
     },
     {
       "translation_pair_id": "fortnitepair-0c8ce97d6a8b0b103f7488de",
@@ -10578,7 +11566,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 224
+      "rank": 243
     },
     {
       "translation_pair_id": "fortnitepair-16215626d9693d8275f43589",
@@ -10622,7 +11610,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 225
+      "rank": 244
     },
     {
       "translation_pair_id": "fortnitepair-2b690474c1dfcdc2a4b70a40",
@@ -10666,7 +11654,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 226
+      "rank": 245
     },
     {
       "translation_pair_id": "fortnitepair-365490c397f1b2d485f05ba7",
@@ -10717,7 +11705,57 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 227
+      "rank": 246
+    },
+    {
+      "translation_pair_id": "fortnitepair-390b53b52f7317794ae8b9c9",
+      "hardcase_score": 8,
+      "critic_item_count": 4,
+      "category_count": 3,
+      "region_count": 4,
+      "source_only_item_count": 1,
+      "uncertain_item_count": 1,
+      "unpaired_uncertainty_item_count": 1,
+      "translation_priority_item_count": 3,
+      "unpaired_uncertainty_critic_ids": [
+        "semcritic-6d2a135ae9d2c815f7ea79d2"
+      ],
+      "source_only_omitted_item_count": 0,
+      "lower_confidence_item_count": 0,
+      "lower_confidence_priority_item_count": 0,
+      "decision_counts": {
+        "moved_to_mould": 1,
+        "simplified": 2,
+        "uncertain": 1
+      },
+      "critic_categories": [
+        "detail_compression",
+        "representation_transfer",
+        "review_uncertainty"
+      ],
+      "regions": [
+        "accessory_or_silhouette",
+        "head",
+        "lower_body",
+        "torso"
+      ],
+      "source_review_ids": [
+        "semreview-1a8c0515e53f3674fdee5f5e"
+      ],
+      "source_review_files": [
+        "knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-0016-codex-gpt6-submitted.jsonl"
+      ],
+      "source_image_sha256": [
+        "c5525d2753c9218eaaf577c2342188177eb55e26ba8dc1831d43a6cc42228a53"
+      ],
+      "lego_image_sha256": [
+        "99f7b04a44a2b1222f9a6f72dffc2a5ff3e560c8f69add36a8ee9cf1e5f3b166"
+      ],
+      "evaluation_status": "provisional_submitted_review_evidence",
+      "canonical_eligible": false,
+      "training_eligible": false,
+      "requires_independent_review_and_adjudication": true,
+      "rank": 247
     },
     {
       "translation_pair_id": "fortnitepair-3ddc7bbe1afbae962d862544",
@@ -10762,7 +11800,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 228
+      "rank": 248
     },
     {
       "translation_pair_id": "fortnitepair-42dee8f93f9ce6bd803d2f15",
@@ -10811,7 +11849,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 229
+      "rank": 249
     },
     {
       "translation_pair_id": "fortnitepair-55a0f0df10ff2d6e20cfaea2",
@@ -10856,7 +11894,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 230
+      "rank": 250
     },
     {
       "translation_pair_id": "fortnitepair-598940ce4e2dbb2a8eaa4069",
@@ -10900,7 +11938,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 231
+      "rank": 251
     },
     {
       "translation_pair_id": "fortnitepair-692f8ee8311cf7924ae14060",
@@ -10949,7 +11987,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 232
+      "rank": 252
     },
     {
       "translation_pair_id": "fortnitepair-6b4c9ab23bc8089896d5f5f8",
@@ -10993,7 +12031,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 233
+      "rank": 253
     },
     {
       "translation_pair_id": "fortnitepair-6b8479c047724bf1cbf14882",
@@ -11037,7 +12075,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 234
+      "rank": 254
     },
     {
       "translation_pair_id": "fortnitepair-6c1a71649867a3707e0af5cd",
@@ -11081,7 +12119,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 235
+      "rank": 255
     },
     {
       "translation_pair_id": "fortnitepair-6ded566dab7a6b20dd878fab",
@@ -11125,7 +12163,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 236
+      "rank": 256
     },
     {
       "translation_pair_id": "fortnitepair-78e018b52c678c7f20e00531",
@@ -11169,7 +12207,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 237
+      "rank": 257
     },
     {
       "translation_pair_id": "fortnitepair-81f59d065d78116e0bc866fb",
@@ -11213,7 +12251,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 238
+      "rank": 258
     },
     {
       "translation_pair_id": "fortnitepair-8437fcf181195494dcc740f5",
@@ -11263,7 +12301,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 239
+      "rank": 259
     },
     {
       "translation_pair_id": "fortnitepair-a08af0ef9c9cf43cf2d54757",
@@ -11307,7 +12345,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 240
+      "rank": 260
     },
     {
       "translation_pair_id": "fortnitepair-a134aaeb1663ba17f2a3c95a",
@@ -11352,7 +12390,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 241
+      "rank": 261
     },
     {
       "translation_pair_id": "fortnitepair-a4b203430c9c3e05cc715c21",
@@ -11402,7 +12440,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 242
+      "rank": 262
     },
     {
       "translation_pair_id": "fortnitepair-b21cbe3db6e92f9ec0654da7",
@@ -11446,7 +12484,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 243
+      "rank": 263
     },
     {
       "translation_pair_id": "fortnitepair-b6903703bf4a52931e05d797",
@@ -11491,7 +12529,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 244
+      "rank": 264
     },
     {
       "translation_pair_id": "fortnitepair-b7efca44b407ce046a1eec53",
@@ -11535,7 +12573,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 245
+      "rank": 265
     },
     {
       "translation_pair_id": "fortnitepair-c89c06f4448f5197acd30c41",
@@ -11585,7 +12623,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 246
+      "rank": 266
     },
     {
       "translation_pair_id": "fortnitepair-c9d892c4623b26f00eb7dcad",
@@ -11629,7 +12667,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 247
+      "rank": 267
     },
     {
       "translation_pair_id": "fortnitepair-d168de04e72556bf8f04263f",
@@ -11673,7 +12711,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 248
+      "rank": 268
     },
     {
       "translation_pair_id": "fortnitepair-d1e58e38bdda9971cce7fd26",
@@ -11723,7 +12761,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 249
+      "rank": 269
     },
     {
       "translation_pair_id": "fortnitepair-d9f2172b6cea5a1925e5b630",
@@ -11768,7 +12806,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 250
+      "rank": 270
     },
     {
       "translation_pair_id": "fortnitepair-dd4ec819804bd98c5edb82f2",
@@ -11813,7 +12851,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 251
+      "rank": 271
     },
     {
       "translation_pair_id": "fortnitepair-de5fbf2341a50643c0a59ded",
@@ -11857,7 +12895,58 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 252
+      "rank": 272
+    },
+    {
+      "translation_pair_id": "fortnitepair-e131245c4354c54adc5b90bd",
+      "hardcase_score": 8,
+      "critic_item_count": 5,
+      "category_count": 3,
+      "region_count": 4,
+      "source_only_item_count": 2,
+      "uncertain_item_count": 2,
+      "unpaired_uncertainty_item_count": 2,
+      "translation_priority_item_count": 3,
+      "unpaired_uncertainty_critic_ids": [
+        "semcritic-2911fa3e59bcb5b4179fe060",
+        "semcritic-abd7ccbad9d4a2730c9181db"
+      ],
+      "source_only_omitted_item_count": 0,
+      "lower_confidence_item_count": 0,
+      "lower_confidence_priority_item_count": 0,
+      "decision_counts": {
+        "moved_to_mould": 1,
+        "simplified": 2,
+        "uncertain": 2
+      },
+      "critic_categories": [
+        "detail_compression",
+        "representation_transfer",
+        "review_uncertainty"
+      ],
+      "regions": [
+        "accessory_or_silhouette",
+        "head",
+        "lower_body",
+        "torso"
+      ],
+      "source_review_ids": [
+        "semreview-53bf80e33b814e35391bdb8b"
+      ],
+      "source_review_files": [
+        "knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-0016-codex-gpt6-submitted.jsonl"
+      ],
+      "source_image_sha256": [
+        "4fb3c272ae8f52e9bed961b3220bcfb6dfd43dcc6ab39d6452aba956c9a7d36a"
+      ],
+      "lego_image_sha256": [
+        "31a0ea1eb898ed552e1f8060a155f63220854d33534ed04913529ace1b59d6d8"
+      ],
+      "evaluation_status": "provisional_submitted_review_evidence",
+      "canonical_eligible": false,
+      "training_eligible": false,
+      "requires_independent_review_and_adjudication": true,
+      "rank": 273
     },
     {
       "translation_pair_id": "fortnitepair-eeec028efa8377d4896c6fb2",
@@ -11907,7 +12996,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 253
+      "rank": 274
     },
     {
       "translation_pair_id": "fortnitepair-0f91d1028fc34c1aa451f281",
@@ -11957,7 +13046,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 254
+      "rank": 275
     },
     {
       "translation_pair_id": "fortnitepair-4a9e9c205070aae76a3b7065",
@@ -12001,7 +13090,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 255
+      "rank": 276
     },
     {
       "translation_pair_id": "fortnitepair-595aea8635224dbae4d24632",
@@ -12051,7 +13140,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 256
+      "rank": 277
     },
     {
       "translation_pair_id": "fortnitepair-94de52225813ff9b2e36282a",
@@ -12095,7 +13184,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 257
+      "rank": 278
     },
     {
       "translation_pair_id": "fortnitepair-ce72ca62706275b35fd01df5",
@@ -12145,7 +13234,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 258
+      "rank": 279
     },
     {
       "translation_pair_id": "fortnitepair-045c081b59b5effd06102cc0",
@@ -12189,7 +13278,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 259
+      "rank": 280
     },
     {
       "translation_pair_id": "fortnitepair-0f8a00f7491ffb27f6286fc8",
@@ -12233,7 +13322,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 260
+      "rank": 281
     },
     {
       "translation_pair_id": "fortnitepair-10ae27c8e57df953d38ff34d",
@@ -12277,7 +13366,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 261
+      "rank": 282
     },
     {
       "translation_pair_id": "fortnitepair-14fd64e36c649802610ab57d",
@@ -12321,7 +13410,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 262
+      "rank": 283
     },
     {
       "translation_pair_id": "fortnitepair-19d959f92a0a35b50cc3ddbc",
@@ -12365,7 +13454,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 263
+      "rank": 284
     },
     {
       "translation_pair_id": "fortnitepair-1c84a038477fa48199de67cb",
@@ -12409,7 +13498,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 264
+      "rank": 285
     },
     {
       "translation_pair_id": "fortnitepair-24d6d7fbe6c6ccc232ed759f",
@@ -12453,7 +13542,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 265
+      "rank": 286
     },
     {
       "translation_pair_id": "fortnitepair-25c2882dbb92eb868ff60e07",
@@ -12497,7 +13586,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 266
+      "rank": 287
     },
     {
       "translation_pair_id": "fortnitepair-25d2aaeb8cc4b4577061019b",
@@ -12541,7 +13630,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 267
+      "rank": 288
     },
     {
       "translation_pair_id": "fortnitepair-2721424d48dddb90f248e63f",
@@ -12585,7 +13674,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 268
+      "rank": 289
     },
     {
       "translation_pair_id": "fortnitepair-2af786c61d296f04630a6c37",
@@ -12629,7 +13718,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 269
+      "rank": 290
     },
     {
       "translation_pair_id": "fortnitepair-2f97a607d2b209bf2c56dad2",
@@ -12673,7 +13762,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 270
+      "rank": 291
     },
     {
       "translation_pair_id": "fortnitepair-330fd297d4d9b985deb97fc5",
@@ -12717,7 +13806,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 271
+      "rank": 292
     },
     {
       "translation_pair_id": "fortnitepair-33c484030077ad8a6f0b9d8b",
@@ -12766,7 +13855,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 272
+      "rank": 293
     },
     {
       "translation_pair_id": "fortnitepair-39099a8774c1447060f52929",
@@ -12810,7 +13899,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 273
+      "rank": 294
     },
     {
       "translation_pair_id": "fortnitepair-39cc7e691771c2bef12586f4",
@@ -12854,7 +13943,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 274
+      "rank": 295
     },
     {
       "translation_pair_id": "fortnitepair-3bf0b30135589183f9789dae",
@@ -12898,7 +13987,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 275
+      "rank": 296
     },
     {
       "translation_pair_id": "fortnitepair-3ce82b506b09e29f2ddb69ce",
@@ -12942,7 +14031,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 276
+      "rank": 297
     },
     {
       "translation_pair_id": "fortnitepair-3eb64e681a1b3973de6f8478",
@@ -12985,7 +14074,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 277
+      "rank": 298
     },
     {
       "translation_pair_id": "fortnitepair-42934e645beffd1b00618ef2",
@@ -13029,7 +14118,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 278
+      "rank": 299
     },
     {
       "translation_pair_id": "fortnitepair-42d23b07fb703cd7c730b725",
@@ -13073,7 +14162,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 279
+      "rank": 300
     },
     {
       "translation_pair_id": "fortnitepair-4b9d1461cc94b3adbf37cbec",
@@ -13117,7 +14206,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 280
+      "rank": 301
     },
     {
       "translation_pair_id": "fortnitepair-4bfb459e99b915627c4ff896",
@@ -13161,7 +14250,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 281
+      "rank": 302
     },
     {
       "translation_pair_id": "fortnitepair-4d88112f09cfc7e587fcdf93",
@@ -13212,7 +14301,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 282
+      "rank": 303
     },
     {
       "translation_pair_id": "fortnitepair-52efa3cca3e45394db8ee2bf",
@@ -13256,7 +14345,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 283
+      "rank": 304
     },
     {
       "translation_pair_id": "fortnitepair-5e72684ec908450beff17fdd",
@@ -13300,7 +14389,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 284
+      "rank": 305
     },
     {
       "translation_pair_id": "fortnitepair-63e3cbd050d635ddeeb80ed1",
@@ -13344,7 +14433,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 285
+      "rank": 306
     },
     {
       "translation_pair_id": "fortnitepair-6442d126af5b10e5b4c5a13d",
@@ -13388,7 +14477,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 286
+      "rank": 307
     },
     {
       "translation_pair_id": "fortnitepair-64d0656a3557010bfff0601f",
@@ -13439,7 +14528,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 287
+      "rank": 308
     },
     {
       "translation_pair_id": "fortnitepair-65e264965061d02e83fdc202",
@@ -13483,7 +14572,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 288
+      "rank": 309
     },
     {
       "translation_pair_id": "fortnitepair-6855095080917a0a62470ea3",
@@ -13527,7 +14616,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 289
+      "rank": 310
     },
     {
       "translation_pair_id": "fortnitepair-774f32a02618385642abd7a9",
@@ -13571,7 +14660,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 290
+      "rank": 311
     },
     {
       "translation_pair_id": "fortnitepair-7e3e0abe52d64be47e0de60d",
@@ -13615,7 +14704,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 291
+      "rank": 312
     },
     {
       "translation_pair_id": "fortnitepair-7f84de3077dbb729fed47a85",
@@ -13659,7 +14748,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 292
+      "rank": 313
     },
     {
       "translation_pair_id": "fortnitepair-81a2555fe353c0e7162c7dcb",
@@ -13703,7 +14792,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 293
+      "rank": 314
     },
     {
       "translation_pair_id": "fortnitepair-81c0c3bb0e54cb6e7ba7268f",
@@ -13752,7 +14841,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 294
+      "rank": 315
     },
     {
       "translation_pair_id": "fortnitepair-840b5c003f9c22ca13d18e50",
@@ -13801,7 +14890,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 295
+      "rank": 316
     },
     {
       "translation_pair_id": "fortnitepair-876a871a0cd01142ac5fcb29",
@@ -13845,7 +14934,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 296
+      "rank": 317
     },
     {
       "translation_pair_id": "fortnitepair-88347cf51a9dc6bf87258917",
@@ -13889,7 +14978,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 297
+      "rank": 318
     },
     {
       "translation_pair_id": "fortnitepair-892a73305c430afd31f9a730",
@@ -13933,7 +15022,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 298
+      "rank": 319
     },
     {
       "translation_pair_id": "fortnitepair-8ef0de5122f475fc776980ce",
@@ -13977,7 +15066,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 299
+      "rank": 320
     },
     {
       "translation_pair_id": "fortnitepair-90299e1c811a3bf73c338d48",
@@ -14021,7 +15110,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 300
+      "rank": 321
     },
     {
       "translation_pair_id": "fortnitepair-91746e82f73f5dea0f97bb1a",
@@ -14065,7 +15154,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 301
+      "rank": 322
     },
     {
       "translation_pair_id": "fortnitepair-a36eddc470a39c52bf35a403",
@@ -14115,7 +15204,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 302
+      "rank": 323
     },
     {
       "translation_pair_id": "fortnitepair-a429c914726894e77fd001eb",
@@ -14159,7 +15248,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 303
+      "rank": 324
     },
     {
       "translation_pair_id": "fortnitepair-a4fab2a4dc2e5fcb952b3f2f",
@@ -14203,7 +15292,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 304
+      "rank": 325
     },
     {
       "translation_pair_id": "fortnitepair-a51edc712994271c2d28cc70",
@@ -14247,7 +15336,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 305
+      "rank": 326
     },
     {
       "translation_pair_id": "fortnitepair-a933e9bf2fd04a9a5648d1a4",
@@ -14291,7 +15380,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 306
+      "rank": 327
     },
     {
       "translation_pair_id": "fortnitepair-afa8694f7a40a88f0f81283e",
@@ -14335,7 +15424,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 307
+      "rank": 328
     },
     {
       "translation_pair_id": "fortnitepair-b10f530c613d552b84dd81e9",
@@ -14379,7 +15468,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 308
+      "rank": 329
     },
     {
       "translation_pair_id": "fortnitepair-b1c507dc5764105fb09685a2",
@@ -14423,7 +15512,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 309
+      "rank": 330
     },
     {
       "translation_pair_id": "fortnitepair-b4ae30f69e4c751f4ec31050",
@@ -14472,7 +15561,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 310
+      "rank": 331
     },
     {
       "translation_pair_id": "fortnitepair-b4b980471e73582b9e499fc3",
@@ -14521,7 +15610,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 311
+      "rank": 332
     },
     {
       "translation_pair_id": "fortnitepair-b85211e57214199a0db8dec1",
@@ -14565,7 +15654,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 312
+      "rank": 333
     },
     {
       "translation_pair_id": "fortnitepair-bcd4ca47e2f7282c4353a1fd",
@@ -14609,7 +15698,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 313
+      "rank": 334
     },
     {
       "translation_pair_id": "fortnitepair-c33c6a928336a844484ac145",
@@ -14653,7 +15742,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 314
+      "rank": 335
     },
     {
       "translation_pair_id": "fortnitepair-c9ae6c3edad8943151c84a12",
@@ -14697,7 +15786,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 315
+      "rank": 336
     },
     {
       "translation_pair_id": "fortnitepair-ca3e982619744d05db367ed7",
@@ -14741,7 +15830,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 316
+      "rank": 337
     },
     {
       "translation_pair_id": "fortnitepair-cbf1a3226e183e3df55de571",
@@ -14785,7 +15874,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 317
+      "rank": 338
     },
     {
       "translation_pair_id": "fortnitepair-cc809a49a2f3de22210a1fe3",
@@ -14829,7 +15918,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 318
+      "rank": 339
     },
     {
       "translation_pair_id": "fortnitepair-cfff471eb973a4fe41ac59a4",
@@ -14873,7 +15962,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 319
+      "rank": 340
     },
     {
       "translation_pair_id": "fortnitepair-d260830c9ef8a7605a5ec84a",
@@ -14917,7 +16006,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 320
+      "rank": 341
     },
     {
       "translation_pair_id": "fortnitepair-e19a6e356dd7e7941cf1e183",
@@ -14961,7 +16050,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 321
+      "rank": 342
     },
     {
       "translation_pair_id": "fortnitepair-e1eb157d2cc9734fff804520",
@@ -15005,7 +16094,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 322
+      "rank": 343
     },
     {
       "translation_pair_id": "fortnitepair-e34d8bc5d810208518e967f7",
@@ -15049,7 +16138,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 323
+      "rank": 344
     },
     {
       "translation_pair_id": "fortnitepair-e506ac78e3f32c56e37c6157",
@@ -15093,7 +16182,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 324
+      "rank": 345
     },
     {
       "translation_pair_id": "fortnitepair-e83b43dcf220720f6ffe211e",
@@ -15137,7 +16226,56 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 325
+      "rank": 346
+    },
+    {
+      "translation_pair_id": "fortnitepair-ea3d499a63787a877fbb3112",
+      "hardcase_score": 7,
+      "critic_item_count": 4,
+      "category_count": 3,
+      "region_count": 3,
+      "source_only_item_count": 1,
+      "uncertain_item_count": 1,
+      "unpaired_uncertainty_item_count": 1,
+      "translation_priority_item_count": 3,
+      "unpaired_uncertainty_critic_ids": [
+        "semcritic-f4f98496376824976c3febfb"
+      ],
+      "source_only_omitted_item_count": 0,
+      "lower_confidence_item_count": 0,
+      "lower_confidence_priority_item_count": 0,
+      "decision_counts": {
+        "moved_to_mould": 1,
+        "simplified": 2,
+        "uncertain": 1
+      },
+      "critic_categories": [
+        "detail_compression",
+        "representation_transfer",
+        "review_uncertainty"
+      ],
+      "regions": [
+        "head",
+        "lower_body",
+        "torso"
+      ],
+      "source_review_ids": [
+        "semreview-546a25dac31bd0f3609c6e91"
+      ],
+      "source_review_files": [
+        "knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-0016-codex-gpt6-submitted.jsonl"
+      ],
+      "source_image_sha256": [
+        "326bfa7e24c23665e92ee4bbe9e239b8a333ae4395101172233083b030cd6c21"
+      ],
+      "lego_image_sha256": [
+        "97e86edf9088f67725291bc9e84fb9abc83b2ef36547bde052194e9e4c227340"
+      ],
+      "evaluation_status": "provisional_submitted_review_evidence",
+      "canonical_eligible": false,
+      "training_eligible": false,
+      "requires_independent_review_and_adjudication": true,
+      "rank": 347
     },
     {
       "translation_pair_id": "fortnitepair-ea906fe66ad2ceb76cf84b4b",
@@ -15180,7 +16318,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 326
+      "rank": 348
     },
     {
       "translation_pair_id": "fortnitepair-ed41ba51c44ff578e4459f61",
@@ -15224,7 +16362,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 327
+      "rank": 349
     },
     {
       "translation_pair_id": "fortnitepair-f10f2ae8d1d55cc634608ca1",
@@ -15268,7 +16406,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 328
+      "rank": 350
     },
     {
       "translation_pair_id": "fortnitepair-f77d88847f2a943ad116d62a",
@@ -15312,7 +16450,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 329
+      "rank": 351
     },
     {
       "translation_pair_id": "fortnitepair-f938270d5bcb90467a667e59",
@@ -15356,7 +16494,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 330
+      "rank": 352
     },
     {
       "translation_pair_id": "fortnitepair-fa6f7f444fef9c38553abf01",
@@ -15400,7 +16538,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 331
+      "rank": 353
     },
     {
       "translation_pair_id": "fortnitepair-ff0f78498036cd8bc58b58b1",
@@ -15444,7 +16582,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 332
+      "rank": 354
     },
     {
       "translation_pair_id": "fortnitepair-ff8c3d12bad6314ffc59479c",
@@ -15488,7 +16626,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 333
+      "rank": 355
     },
     {
       "translation_pair_id": "fortnitepair-3e377e3b0853ee7ddd97de72",
@@ -15537,7 +16675,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 334
+      "rank": 356
     },
     {
       "translation_pair_id": "fortnitepair-e5062b38cc90a47836f18bf6",
@@ -15585,7 +16723,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 335
+      "rank": 357
     },
     {
       "translation_pair_id": "fortnitepair-070caa87289c685dd7117b2d",
@@ -15629,7 +16767,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 336
+      "rank": 358
     },
     {
       "translation_pair_id": "fortnitepair-0fe19cd2ccd26532fe4ffe69",
@@ -15673,7 +16811,56 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 337
+      "rank": 359
+    },
+    {
+      "translation_pair_id": "fortnitepair-0ff7316c1070b891f5fb52cd",
+      "hardcase_score": 6,
+      "critic_item_count": 3,
+      "category_count": 3,
+      "region_count": 3,
+      "source_only_item_count": 1,
+      "uncertain_item_count": 1,
+      "unpaired_uncertainty_item_count": 1,
+      "translation_priority_item_count": 2,
+      "unpaired_uncertainty_critic_ids": [
+        "semcritic-3f738b44b14ba9b7c9eca62c"
+      ],
+      "source_only_omitted_item_count": 0,
+      "lower_confidence_item_count": 0,
+      "lower_confidence_priority_item_count": 0,
+      "decision_counts": {
+        "moved_to_mould": 1,
+        "simplified": 1,
+        "uncertain": 1
+      },
+      "critic_categories": [
+        "detail_compression",
+        "representation_transfer",
+        "review_uncertainty"
+      ],
+      "regions": [
+        "accessory_or_silhouette",
+        "head",
+        "lower_body"
+      ],
+      "source_review_ids": [
+        "semreview-0c0875e16bb30d2d9946911a"
+      ],
+      "source_review_files": [
+        "knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-0016-codex-gpt6-submitted.jsonl"
+      ],
+      "source_image_sha256": [
+        "4453c3b8cbf15f4a3948f3050dd43f99240631efe5ca50e16c89ad70ea347e43"
+      ],
+      "lego_image_sha256": [
+        "2217bf5f4c02a2eeafa57a73a1b788514f540cf220cc2a7c12ca4e29995dbc73"
+      ],
+      "evaluation_status": "provisional_submitted_review_evidence",
+      "canonical_eligible": false,
+      "training_eligible": false,
+      "requires_independent_review_and_adjudication": true,
+      "rank": 360
     },
     {
       "translation_pair_id": "fortnitepair-121d950b2d286b75cab7d6d4",
@@ -15723,7 +16910,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 338
+      "rank": 361
     },
     {
       "translation_pair_id": "fortnitepair-1835711aa2e4b0282c1ea072",
@@ -15767,7 +16954,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 339
+      "rank": 362
     },
     {
       "translation_pair_id": "fortnitepair-251aced3943bf94c0200d605",
@@ -15811,7 +16998,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 340
+      "rank": 363
     },
     {
       "translation_pair_id": "fortnitepair-2dd804f25e5110eb0c8c37bb",
@@ -15855,7 +17042,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 341
+      "rank": 364
     },
     {
       "translation_pair_id": "fortnitepair-4676c3d84cc4db42d6317c4f",
@@ -15899,7 +17086,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 342
+      "rank": 365
     },
     {
       "translation_pair_id": "fortnitepair-5a3c2d1b1fb683aa0fc615ff",
@@ -15943,7 +17130,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 343
+      "rank": 366
     },
     {
       "translation_pair_id": "fortnitepair-5f61862450a20c4919849ed0",
@@ -15987,7 +17174,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 344
+      "rank": 367
     },
     {
       "translation_pair_id": "fortnitepair-65a1bceeebdbfcca18d57d7c",
@@ -16031,7 +17218,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 345
+      "rank": 368
     },
     {
       "translation_pair_id": "fortnitepair-7ff6a05f1745832ddf0937f6",
@@ -16075,7 +17262,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 346
+      "rank": 369
     },
     {
       "translation_pair_id": "fortnitepair-9d11ff817a8bd96d9cdad452",
@@ -16124,7 +17311,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 347
+      "rank": 370
     },
     {
       "translation_pair_id": "fortnitepair-a0b365a1ed8cdc176264ecd4",
@@ -16175,7 +17362,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 348
+      "rank": 371
     },
     {
       "translation_pair_id": "fortnitepair-a312f8874c714f995577eb80",
@@ -16219,7 +17406,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 349
+      "rank": 372
     },
     {
       "translation_pair_id": "fortnitepair-ab5df30aeb84eb4eb1e0c293",
@@ -16269,7 +17456,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 350
+      "rank": 373
     },
     {
       "translation_pair_id": "fortnitepair-c631b5b865e07734452c5679",
@@ -16313,7 +17500,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 351
+      "rank": 374
     },
     {
       "translation_pair_id": "fortnitepair-d4eb7555f7ecae7d16bfbbe9",
@@ -16362,7 +17549,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 352
+      "rank": 375
     },
     {
       "translation_pair_id": "fortnitepair-d6f71ca77ab305045e8b9c58",
@@ -16413,7 +17600,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 353
+      "rank": 376
     },
     {
       "translation_pair_id": "fortnitepair-ddb62075f3434fb3f6d78a02",
@@ -16457,7 +17644,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 354
+      "rank": 377
     },
     {
       "translation_pair_id": "fortnitepair-e2bf9c063d16d1c939896b76",
@@ -16506,7 +17693,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 355
+      "rank": 378
     },
     {
       "translation_pair_id": "fortnitepair-ebdf6ee72b92f84dead46cc9",
@@ -16555,7 +17742,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 356
+      "rank": 379
     },
     {
       "translation_pair_id": "fortnitepair-f3d03007425dfbf81de1f38e",
@@ -16603,7 +17790,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 357
+      "rank": 380
     },
     {
       "translation_pair_id": "fortnitepair-faefe6d3aca6e5410e241999",
@@ -16647,7 +17834,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 358
+      "rank": 381
     },
     {
       "translation_pair_id": "fortnitepair-fb6013fe4fa25062ef7d8c95",
@@ -16691,7 +17878,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 359
+      "rank": 382
     },
     {
       "translation_pair_id": "fortnitepair-e0be0dfd62e5bba38962700d",
@@ -16733,7 +17920,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 360
+      "rank": 383
     },
     {
       "translation_pair_id": "fortnitepair-87c96731f65010ccf1da6ffc",
@@ -16776,7 +17963,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 361
+      "rank": 384
     },
     {
       "translation_pair_id": "fortnitepair-c0fbb4a388db6c62d3af22cb",
@@ -16824,7 +18011,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 362
+      "rank": 385
     },
     {
       "translation_pair_id": "fortnitepair-ce04b713886b78b7ea6a2cbb",
@@ -16872,7 +18059,56 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 363
+      "rank": 386
+    },
+    {
+      "translation_pair_id": "fortnitepair-eb9fccb4f19f8049b819d5e3",
+      "hardcase_score": 5,
+      "critic_item_count": 5,
+      "category_count": 2,
+      "region_count": 4,
+      "source_only_item_count": 1,
+      "uncertain_item_count": 2,
+      "unpaired_uncertainty_item_count": 2,
+      "translation_priority_item_count": 3,
+      "unpaired_uncertainty_critic_ids": [
+        "semcritic-92718dbe77e4cd060a9177ef",
+        "semcritic-cc87115c4310bdf201ad8add"
+      ],
+      "source_only_omitted_item_count": 0,
+      "lower_confidence_item_count": 0,
+      "lower_confidence_priority_item_count": 0,
+      "decision_counts": {
+        "simplified": 3,
+        "uncertain": 2
+      },
+      "critic_categories": [
+        "detail_compression",
+        "review_uncertainty"
+      ],
+      "regions": [
+        "accessory_or_silhouette",
+        "head",
+        "lower_body",
+        "torso"
+      ],
+      "source_review_ids": [
+        "semreview-e6d20007d8a347bca72d01fd"
+      ],
+      "source_review_files": [
+        "knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-0016-codex-gpt6-submitted.jsonl"
+      ],
+      "source_image_sha256": [
+        "41621709155c0da3098cf053ce78b9960f166ae15bd646455ab186770b3a51c0"
+      ],
+      "lego_image_sha256": [
+        "2c2523d5574eeaf18a85fbe052ceaec8c0e4ffb55ba6c0d8b8a634fa50eaad12"
+      ],
+      "evaluation_status": "provisional_submitted_review_evidence",
+      "canonical_eligible": false,
+      "training_eligible": false,
+      "requires_independent_review_and_adjudication": true,
+      "rank": 387
     },
     {
       "translation_pair_id": "fortnitepair-2043b20479ce4cc5f62581cf",
@@ -16919,7 +18155,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 364
+      "rank": 388
     },
     {
       "translation_pair_id": "fortnitepair-6eaf69dcdaf6763aa751c3ae",
@@ -16962,7 +18198,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 365
+      "rank": 389
     },
     {
       "translation_pair_id": "fortnitepair-b7414c0e15187c21e99a8e1e",
@@ -17005,7 +18241,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 366
+      "rank": 390
     },
     {
       "translation_pair_id": "fortnitepair-37bd44437ca67de81a50ee19",
@@ -17052,7 +18288,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 367
+      "rank": 391
     },
     {
       "translation_pair_id": "fortnitepair-ee27628ec1f73db683b69af0",
@@ -17099,7 +18335,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 368
+      "rank": 392
     },
     {
       "translation_pair_id": "fortnitepair-8a0d4421944869d4b990d91b",
@@ -17141,7 +18377,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 369
+      "rank": 393
     },
     {
       "translation_pair_id": "fortnitepair-a4b2cdf93890d08b6529e053",
@@ -17188,7 +18424,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 370
+      "rank": 394
     },
     {
       "translation_pair_id": "fortnitepair-bb96ff0198e21e0920bfa80d",
@@ -17235,7 +18471,54 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 371
+      "rank": 395
+    },
+    {
+      "translation_pair_id": "fortnitepair-eb39e180a77cb48f84c1ce43",
+      "hardcase_score": 3,
+      "critic_item_count": 3,
+      "category_count": 2,
+      "region_count": 3,
+      "source_only_item_count": 1,
+      "uncertain_item_count": 1,
+      "unpaired_uncertainty_item_count": 1,
+      "translation_priority_item_count": 2,
+      "unpaired_uncertainty_critic_ids": [
+        "semcritic-da832048128058d40df9044b"
+      ],
+      "source_only_omitted_item_count": 0,
+      "lower_confidence_item_count": 0,
+      "lower_confidence_priority_item_count": 0,
+      "decision_counts": {
+        "simplified": 2,
+        "uncertain": 1
+      },
+      "critic_categories": [
+        "detail_compression",
+        "review_uncertainty"
+      ],
+      "regions": [
+        "head",
+        "lower_body",
+        "torso"
+      ],
+      "source_review_ids": [
+        "semreview-d60e2b08a46cb16bf60ba422"
+      ],
+      "source_review_files": [
+        "knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-0016-codex-gpt6-submitted.jsonl"
+      ],
+      "source_image_sha256": [
+        "fa02741e5ecc1a57531314f757676bdee49bd437969c5f6112a6982f8020e2ba"
+      ],
+      "lego_image_sha256": [
+        "c7b75db2a77c8ddc7f343858123412fab3ff109993265352f64d6ea5bb11ff82"
+      ],
+      "evaluation_status": "provisional_submitted_review_evidence",
+      "canonical_eligible": false,
+      "training_eligible": false,
+      "requires_independent_review_and_adjudication": true,
+      "rank": 396
     },
     {
       "translation_pair_id": "fortnitepair-ec4297f63ea24ca439603ed0",
@@ -17282,7 +18565,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 372
+      "rank": 397
     },
     {
       "translation_pair_id": "fortnitepair-f1b2965065457cd032d77b59",
@@ -17329,7 +18612,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 373
+      "rank": 398
     },
     {
       "translation_pair_id": "fortnitepair-850e67a42b2beaf66567877f",
@@ -17370,7 +18653,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 374
+      "rank": 399
     },
     {
       "translation_pair_id": "fortnitepair-e339c951152dc3a2a4be4aa2",
@@ -17416,7 +18699,7 @@
       "canonical_eligible": false,
       "training_eligible": false,
       "requires_independent_review_and_adjudication": true,
-      "rank": 375
+      "rank": 400
     }
   ]
 }
