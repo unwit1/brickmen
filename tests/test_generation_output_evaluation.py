@@ -416,3 +416,52 @@ def test_cli_cannot_replace_original_evidence_with_report(tmp_path, role):
     assert result.returncode == 2
     assert b"must not overwrite an evidence input" in result.stderr
     assert output.read_bytes() == original
+
+
+@pytest.mark.parametrize("malformed", [False, True])
+def test_cli_protects_hardlink_to_request_even_when_json_is_invalid(tmp_path, malformed):
+    req = request(tmp_path)
+    path, output = tmp_path / "request.json", tmp_path / "report.json"
+    path.write_text("{broken" if malformed else json.dumps(req))
+    original = path.read_bytes()
+    output.hardlink_to(path)
+    result = subprocess.run([sys.executable, "-B", str(Path(__file__).resolve().parents[1] / "tools/knowledge/evaluate_generation_output.py"),
+                             "--request", str(path), "--output", str(output)], capture_output=True)
+    assert result.returncode == 2
+    assert b"must not overwrite the request" in result.stderr
+    assert path.read_bytes() == output.read_bytes() == original
+
+
+@pytest.mark.parametrize("role", ["mask", "candidate", "registration"])
+@pytest.mark.parametrize("malformed", [False, True])
+def test_cli_preserves_hardlinked_evidence_before_evaluation_or_blocked_report(tmp_path, role, malformed):
+    req, _ = color_request(tmp_path)
+    asset = req["assets"]["reference_silhouette"] if role == "mask" else (
+        req["provenance"]["registration"] if role == "registration" else req["provenance"]["source_images"]["candidate"])
+    evidence = tmp_path / asset["local_path"]
+    original = evidence.read_bytes()
+    output = tmp_path / "report.json"
+    output.hardlink_to(evidence)
+    if malformed:
+        req["schema"] = "invalid"
+    path = tmp_path / "request.json"
+    path.write_text(json.dumps(req))
+    result = subprocess.run([sys.executable, "-B", str(Path(__file__).resolve().parents[1] / "tools/knowledge/evaluate_generation_output.py"),
+                             "--request", str(path), "--output", str(output)], capture_output=True)
+    assert result.returncode == 2
+    assert b"must not overwrite an evidence input" in result.stderr
+    assert evidence.read_bytes() == output.read_bytes() == original
+
+
+@pytest.mark.parametrize("role", ["reference_silhouette", "candidate_silhouette", "art_mask", "safe_zone", "keepout_mask"])
+def test_animated_binary_mask_cannot_hide_changed_later_frame(tmp_path, role):
+    req = request(tmp_path)
+    if role in {"art_mask", "safe_zone", "keepout_mask"}:
+        req["assets"] = {"art_mask": mask(tmp_path, "art", [255] * 4),
+                         "safe_zone": mask(tmp_path, "safe", [255] * 4)}
+    path = tmp_path / "animated-mask.png"
+    Image.new("L", (2, 2), 255).save(path, save_all=True,
+        append_images=[Image.new("L", (2, 2), 0)], duration=100, loop=0)
+    req["assets"][role] = {"local_path": path.name, "sha256": hashlib.sha256(path.read_bytes()).hexdigest()}
+    with pytest.raises(ValueError, match="single-frame binary mask"):
+        evaluate(req, tmp_path)

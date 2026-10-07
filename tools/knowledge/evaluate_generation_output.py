@@ -16,7 +16,7 @@ from pathlib import Path
 from PIL import Image
 
 VERSION = "brickmen-generation-evaluation/v1"
-PROCESSOR_VERSION = "brickmen-generation-evaluation/v4"
+PROCESSOR_VERSION = "brickmen-generation-evaluation/v5"
 DATA = Path(__file__).resolve().parents[2] / "knowledge/libraries/lego-minifigure-customs/data"
 
 
@@ -34,6 +34,15 @@ def declared_input_paths(value, base_dir):
     elif isinstance(value, list):
         for child in value:
             yield from declared_input_paths(child, base_dir)
+
+
+def protect_report_inputs(output_path, inputs, label):
+    """Reject path and file-identity aliases before any report write."""
+    output = output_path.resolve()
+    for source in inputs:
+        source = source.resolve()
+        if output == source or (output.exists() and source.exists() and output.samefile(source)):
+            raise ValueError(f"Output must not overwrite {label}")
 
 
 def pinned_bytes(asset, base_dir, label):
@@ -183,6 +192,8 @@ def evaluate(request, base_dir, data_dir=DATA):
     for role, asset in assets.items():
         raw, sha = pinned_bytes(asset, base_dir, role)
         with Image.open(BytesIO(raw)) as image:
+            if getattr(image, "n_frames", 1) != 1:
+                raise ValueError(f"{role} must be a single-frame binary mask")
             if image.mode not in {"1", "L"}:
                 raise ValueError(f"{role} must be a single-channel binary mask, not a rendered image")
             image = image.convert("L")
@@ -272,12 +283,16 @@ def main():
     parser.add_argument("--request", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
-    if args.request.resolve() == args.output.resolve():
-        parser.error("Output must not overwrite the request")
+    try:
+        protect_report_inputs(args.output, [args.request], "the request")
+    except ValueError as exc:
+        parser.error(str(exc))
     try:
         request = json.loads(args.request.read_text(encoding="utf-8-sig"))
-        if args.output.resolve() in set(declared_input_paths(request, args.request.resolve().parent)):
-            parser.error("Output must not overwrite an evidence input")
+        try:
+            protect_report_inputs(args.output, declared_input_paths(request, args.request.resolve().parent), "an evidence input")
+        except ValueError as exc:
+            parser.error(str(exc))
         report = evaluate(request, args.request.resolve().parent)
     except (ValueError, TypeError, KeyError, OSError, SyntaxError) as exc:
         report = {"schema": VERSION, "processor_version": PROCESSOR_VERSION, "status": "blocked", "errors": [str(exc)]}

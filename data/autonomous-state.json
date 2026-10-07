@@ -97,6 +97,14 @@
       "id": "batch15_live_media_changed",
       "description": "Hosted reviewer build 37631835063 rejected LEGO image bytes for fortnitepair-bb96ff0198e21e0920bfa80d. Preserve original pins and use recovered reviewer v2; never silently repin a submitted review.",
       "status": "original_media_verified_and_recovered_offline"
+    },
+    {
+      "id": "batch16_live_media_changed",
+      "pair_id": "fortnitepair-ddb77bcc07021878b0d0b6f0",
+      "role": "lego",
+      "reason": "Hosted reviewer job112839089425/run37635036698 refused live bytes different from the exact reviewed SHA-256. Original pins remain unchanged.",
+      "fallback": "All50 originals reverified with verified_archive acquisition; offline reviewer v2 rebuilt without submitted annotations.",
+      "original_media_archive_sha256": "67cb9151c4d48da6ed31029e8c630294481f3a39ea4ec9c57e8dbe9401649745"
     }
   ],
   "pending_validation": [
@@ -106,7 +114,7 @@
     "instruction": "Do not restart completed architecture gates. 400/744 high-priority pairs have submitted first reviews with 1800 annotations; 344 remain. Review first-review batch 0017. Obtain genuinely independent second reviews and explicit adjudication before canonical promotion. Preserve exact hashes, source appearance, uncertainty, and no-hidden-view rules. Continue exact-release multiview evidence and generation evaluation with the existing tools."
   },
   "last_meaningful_commit": "7610c66731c6c6fae99a32bf5d0d074f69b61471",
-  "latest_validated_test_commit": "02ecdd917494bc83cd05346d807ac84063f2b8a7",
+  "latest_validated_test_commit": "e4c6cec2333a13b99d34e3cd8061f1a5554325d5",
   "completed_batches": [
     {
       "id": "body_architecture_reference_acquisition_v1",
@@ -450,7 +458,7 @@
       }
     }
   ],
-  "latest_test_lock_commit": "02ecdd917494bc83cd05346d807ac84063f2b8a7",
+  "latest_test_lock_commit": "e4c6cec2333a13b99d34e3cd8061f1a5554325d5",
   "semantic_review_frontier": {
     "eligible_pairs": 744,
     "complete_first_review_batch_count": 16,
@@ -470,23 +478,60 @@
   },
   "completed_batches_are_historical_snapshots": true,
   "latest_validation": {
-    "checkpoint": "02ecdd917494bc83cd05346d807ac84063f2b8a7",
+    "checkpoint": "e4c6cec2333a13b99d34e3cd8061f1a5554325d5",
     "local_tests_passed": 706,
+    "current_local_tests_passed": 719,
     "github_runs": [
       {
-        "name": "LEGO Knowledge Tool Tests",
-        "id": 37633522661,
+        "name": "Compile Fortnite Semantic Review Submissions",
+        "id": 37635036696,
         "status": "completed",
         "conclusion": "success"
       },
       {
         "name": "Validate Brickmen",
-        "id": 37633522654,
+        "id": 37635036715,
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "LEGO Knowledge Tool Tests",
+        "id": 37635036639,
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "Build Fortnite Semantic Review UI",
+        "id": 37635036698,
+        "status": "completed",
+        "conclusion": "failure"
+      },
+      {
+        "name": "Compile Fortnite Semantic Review Submissions",
+        "id": 37635035256,
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "LEGO Knowledge Tool Tests",
+        "id": 37635035246,
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "Build Fortnite Semantic Review UI",
+        "id": 37635035207,
+        "status": "completed",
+        "conclusion": "failure"
+      },
+      {
+        "name": "Validate Brickmen",
+        "id": 37635035245,
         "status": "completed",
         "conclusion": "success"
       }
     ],
-    "status": "passed"
+    "status": "core_checks_passed_live_media_ui_blocked_originals_recovered"
   },
   "generation_accuracy_frontier": {
     "brief_preflight": "processor_v2_metadata_review_only; requested edits must be explicitly allowed; compiled outputs cannot overwrite or remove brief/reference inputs",
@@ -497,7 +542,7 @@
       "landmark_max_error",
       "print_zone_containment"
     ],
-    "latest_local_tests_passed": 706,
+    "latest_local_tests_passed": 719,
     "real_generated_output_benchmark": "two_parts_one_view_each_three_actual_outputs; required constraints failed; broader benchmark pending",
     "semantic_feature_review": "required",
     "physical_fit": "unvalidated",
@@ -716,7 +761,7 @@
         "runs": 2
       }
     },
-    "evaluation_provenance": "evaluator_v4; original image and registration byte bindings; native RGBA region and candidate dimension constraints bound to reviewed registration; input/report alias protection; unbound requests remain masks_only",
+    "evaluation_provenance": "evaluator_v5; image/registration byte bindings; native RGBA and candidate dimension constraints; filesystem identity protects evidence and request even on blocked reruns; masks must be single-frame; unbound requests remain masks_only",
     "native_color_regression": {
       "record": "knowledge/libraries/lego-minifigure-customs/data/generation-accuracy-head-native-color-regression-v1.json",
       "status": "both_retained_outputs_technical_checks_failed",
@@ -816,6 +861,18 @@
       "live_media_failure_run": 37631835063,
       "exact_media_archive": "brickmen-batch15-exact-media.zip",
       "exact_media_sha256": "2656d64d4ee06f41d81cff9e92ea16e28eb9d9fe21d5c4b7046f5fb4853352cd",
+      "annotations_included": false,
+      "live_browser_integration": "unverified_navigation_timeout"
+    },
+    "batch16_reviewer_archive": {
+      "archive": "brickmen-batch16-reviewer-v2.zip",
+      "sha256": "f3eb6ff264a8c3ba697c38ff69190858859cd82a0ee93eba47f1044c0456fc06",
+      "bytes": 2854279,
+      "images": 50,
+      "records": 25,
+      "live_media_failure_run": 37635036698,
+      "exact_media_archive": "brickmen-batch16-exact-media.zip",
+      "exact_media_sha256": "67cb9151c4d48da6ed31029e8c630294481f3a39ea4ec9c57e8dbe9401649745",
       "annotations_included": false,
       "live_browser_integration": "unverified_navigation_timeout"
     }
