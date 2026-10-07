@@ -14,6 +14,7 @@ import math
 from pathlib import Path
 
 VERSION = "brickmen-generation-brief/v1"
+PROCESSOR_VERSION = "brickmen-generation-brief/v2"
 DATA = Path(__file__).resolve().parents[2] / "knowledge/libraries/lego-minifigure-customs/data"
 UNKNOWN = {"unknown", "pending", "tbd", "todo", "unavailable", ""}
 
@@ -79,8 +80,8 @@ def _compile_brief(brief, data_dir=DATA, base_dir=None):
         if any(not isinstance(item, str) or not known(item) for item in brief.get(key, [])):
             raise ValueError(f"{key} entries must be resolved strings")
     for key in ("allowed_changes", "forbidden_changes"):
-        if any(not isinstance(item, str) for item in packet.get(key, [])):
-            raise ValueError(f"{key} entries must be strings")
+        if any(not isinstance(item, str) or not known(item) for item in packet.get(key, [])):
+            raise ValueError(f"{key} entries must be resolved strings")
     for key in ("references", "critical_features"):
         if any(not isinstance(item, dict) for item in packet.get(key, [])):
             raise ValueError(f"{key} entries must be objects")
@@ -227,6 +228,9 @@ def _compile_brief(brief, data_dir=DATA, base_dir=None):
         raise ValueError("transformation.change_only must be a list of resolved strings")
     if set(change_only) & set(forbidden):
         errors.append("transformation.change_only contradicts forbidden_changes")
+    undeclared = sorted(set(change_only) - set(allowed))
+    if undeclared:
+        errors.append("transformation.change_only must be explicitly listed in allowed_changes: " + ", ".join(undeclared))
     if set(allowed) & set(forbidden):
         errors.append("The same change cannot be both allowed and forbidden")
     rendering = packet.get("rendering") or {}
@@ -268,7 +272,8 @@ def _compile_brief(brief, data_dir=DATA, base_dir=None):
         warnings.append(f"Unresolved design detail: {unknown}; do not invent it")
 
     manifest = {
-        "schema_version": VERSION, "brief_id": brief.get("brief_id"), "target_kind": kind,
+        "schema_version": VERSION, "processor_version": PROCESSOR_VERSION,
+        "brief_id": brief.get("brief_id"), "target_kind": kind,
         "output_contract": output, "brief_sha256": content_hash(brief),
         "contracts_sha256": content_hash(contracts), "protocol_sha256": content_hash(protocol),
         "status": "blocked" if errors else "ready_for_metadata_review",
@@ -314,7 +319,25 @@ def compile_brief(brief, data_dir=DATA, base_dir=None):
     try:
         return _compile_brief(brief, data_dir, base_dir)
     except (ValueError, TypeError, KeyError, AttributeError, OSError) as exc:
-        return {"schema_version": VERSION, "status": "blocked", "errors": [f"Invalid brief: {exc}"], "warnings": []}, None
+        return {"schema_version": VERSION, "processor_version": PROCESSOR_VERSION,
+                "status": "blocked", "errors": [f"Invalid brief: {exc}"], "warnings": []}, None
+
+
+def protect_compilation_inputs(brief, input_path, output_dir):
+    """Reject output aliases before writing or removing any compiled artifact."""
+    inputs = [input_path.resolve()]
+    packet = brief.get("generation_packet") if isinstance(brief, dict) else None
+    references = packet.get("references") if isinstance(packet, dict) else None
+    if isinstance(references, list):
+        for reference in references:
+            local = reference.get("local_path") if isinstance(reference, dict) else None
+            if isinstance(local, str) and local:
+                inputs.append((input_path.resolve().parent / local).resolve())
+    for name in ("preflight.json", "prompt.txt"):
+        output = (output_dir / name).resolve()
+        for source in inputs:
+            if output == source or (output.exists() and source.exists() and output.samefile(source)):
+                raise ValueError(f"Compiled {name} would overwrite or remove a brief/reference input; use another output directory")
 
 
 def new_brief(kind, data_dir=DATA):
@@ -357,12 +380,18 @@ def main():
         return 0
     if args.output_dir.resolve() == args.input.resolve().parent:
         parser.error("Use a separate output directory")
+    brief = None
     try:
         brief = read_json(args.input)
         manifest, prompt = compile_brief(brief, base_dir=args.input.resolve().parent)
     except (ValueError, TypeError, KeyError, AttributeError, OSError) as exc:
-        manifest = {"schema_version": VERSION, "status": "blocked", "errors": [f"Invalid brief: {exc}"], "warnings": []}
+        manifest = {"schema_version": VERSION, "processor_version": PROCESSOR_VERSION,
+                    "status": "blocked", "errors": [f"Invalid brief: {exc}"], "warnings": []}
         prompt = None
+    try:
+        protect_compilation_inputs(brief, args.input, args.output_dir)
+    except (ValueError, OSError) as exc:
+        parser.error(str(exc))
     args.output_dir.mkdir(parents=True, exist_ok=True)
     (args.output_dir / "preflight.json").write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     prompt_path = args.output_dir / "prompt.txt"

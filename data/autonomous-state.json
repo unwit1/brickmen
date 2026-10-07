@@ -92,6 +92,11 @@
       "reason": "Review UI run37527301191 refused live bytes that differ from the exact reviewed SHA-256. Original pins remain unchanged.",
       "fallback": "All50 original images verified from preserved local archive; reviewer v2 rebuilt with verified_archive acquisition. Use original bytes for independent review.",
       "original_media_archive_sha256": "88b5d7c22bcc4ecd0a268416f5e3190e650b211451e4d47624f3285ea2b54a0d"
+    },
+    {
+      "id": "batch15_live_media_changed",
+      "description": "Hosted reviewer build 37631835063 rejected LEGO image bytes for fortnitepair-bb96ff0198e21e0920bfa80d. Preserve original pins and use recovered reviewer v2; never silently repin a submitted review.",
+      "status": "original_media_verified_and_recovered_offline"
     }
   ],
   "pending_validation": [
@@ -101,7 +106,7 @@
     "instruction": "Do not restart completed architecture gates. 375/744 high-priority pairs have submitted first reviews with 1659 annotations; 369 remain. Review first-review batch 0016. Obtain genuinely independent second reviews and explicit adjudication before canonical promotion. Preserve exact hashes, source appearance, uncertainty, and no-hidden-view rules. Continue exact-release multiview evidence and generation evaluation with the existing tools."
   },
   "last_meaningful_commit": "7610c66731c6c6fae99a32bf5d0d074f69b61471",
-  "latest_validated_test_commit": "66ab006f3b39cfcacd21951e61431c51441edccb",
+  "latest_validated_test_commit": "8ac39da0080eb65f2223c0f4625a33a30027b329",
   "completed_batches": [
     {
       "id": "body_architecture_reference_acquisition_v1",
@@ -445,7 +450,7 @@
       }
     }
   ],
-  "latest_test_lock_commit": "66ab006f3b39cfcacd21951e61431c51441edccb",
+  "latest_test_lock_commit": "8ac39da0080eb65f2223c0f4625a33a30027b329",
   "semantic_review_frontier": {
     "eligible_pairs": 744,
     "complete_first_review_batch_count": 15,
@@ -465,32 +470,39 @@
   },
   "completed_batches_are_historical_snapshots": true,
   "latest_validation": {
-    "checkpoint": "66ab006f3b39cfcacd21951e61431c51441edccb",
+    "checkpoint": "8ac39da0080eb65f2223c0f4625a33a30027b329",
     "local_tests_passed": 683,
+    "current_local_tests_passed": 693,
     "github_runs": [
       {
-        "name": "Compile Fortnite Semantic Review Submissions",
-        "id": 37527759860,
+        "name": "Validate Brickmen",
+        "id": 37631835347,
         "status": "completed",
         "conclusion": "success"
       },
       {
-        "name": "Validate Brickmen",
-        "id": 37527759821,
+        "name": "Compile Fortnite Semantic Review Submissions",
+        "id": 37631834915,
         "status": "completed",
         "conclusion": "success"
       },
       {
         "name": "LEGO Knowledge Tool Tests",
-        "id": 37527759801,
+        "id": 37631835324,
         "status": "completed",
         "conclusion": "success"
+      },
+      {
+        "name": "Build Fortnite Semantic Review UI",
+        "id": 37631835063,
+        "status": "completed",
+        "conclusion": "failure"
       }
     ],
-    "status": "passed"
+    "status": "core_checks_passed_live_media_blocked"
   },
   "generation_accuracy_frontier": {
-    "brief_preflight": "implemented_metadata_review_only",
+    "brief_preflight": "processor_v2_metadata_review_only; requested edits must be explicitly allowed; compiled outputs cannot overwrite or remove brief/reference inputs",
     "geometry_dependencies": "recursive_exact_byte_snapshot",
     "registered_output_measurements": [
       "silhouette_iou",
@@ -498,7 +510,7 @@
       "landmark_max_error",
       "print_zone_containment"
     ],
-    "latest_local_tests_passed": 683,
+    "latest_local_tests_passed": 693,
     "real_generated_output_benchmark": "one_part_one_front_view_two_sequential_outputs_measured; constraints_failed; broader_benchmark_pending",
     "semantic_feature_review": "required",
     "physical_fit": "unvalidated",
@@ -781,6 +793,17 @@
       "bytes": 3272121,
       "images": 50,
       "records": 25
+    },
+    "batch15_reviewer_archive": {
+      "archive": "brickmen-batch15-reviewer-v2.zip",
+      "sha256": "a75dc712ceca4413097085f4861996d19e991b5c2db2c8a38146bd245d70c571",
+      "images": 50,
+      "records": 25,
+      "live_media_failure_run": 37631835063,
+      "exact_media_archive": "brickmen-batch15-exact-media.zip",
+      "exact_media_sha256": "2656d64d4ee06f41d81cff9e92ea16e28eb9d9fe21d5c4b7046f5fb4853352cd",
+      "annotations_included": false,
+      "live_browser_integration": "unverified_navigation_timeout"
     }
   }
 }

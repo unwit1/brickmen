@@ -202,6 +202,71 @@ def test_cli_clears_stale_prompt_on_blocked_rerun(tmp_path):
     assert json.loads((out / "preflight.json").read_text())["status"] == "blocked"
 
 
+def test_requested_changes_must_be_allowed_without_requesting_every_allowed_change():
+    brief = valid_brief()
+    packet = brief["generation_packet"]
+    packet["transformation"]["change_only"] = ["replace left sleeve print"]
+    packet["allowed_changes"] = ["replace left sleeve print", "replace right sleeve print"]
+    report, prompt = COMPILER.compile_brief(brief)
+    assert report["status"] == "ready_for_metadata_review"
+    assert report["processor_version"] == "brickmen-generation-brief/v2"
+    assert prompt is not None
+    packet["transformation"]["change_only"].append("replace head mould")
+    report, prompt = COMPILER.compile_brief(brief)
+    assert any("explicitly listed in allowed_changes: replace head mould" in error for error in report["errors"])
+    assert prompt is None
+
+
+@pytest.mark.parametrize("field,value", [("allowed_changes", "unknown"), ("allowed_changes", " "),
+                                        ("forbidden_changes", "pending")])
+def test_change_permissions_require_resolved_descriptions(field, value):
+    brief = valid_brief()
+    brief["generation_packet"][field] = [value]
+    report, prompt = COMPILER.compile_brief(brief)
+    assert report["status"] == "blocked"
+    assert prompt is None
+
+
+@pytest.mark.parametrize("name,blocked", [("prompt.txt", False), ("prompt.txt", True),
+                                       ("preflight.json", False), ("preflight.json", True)])
+def test_cli_never_overwrites_or_removes_reference_inputs(tmp_path, name, blocked):
+    brief = valid_brief()
+    out = tmp_path / "compiled"
+    out.mkdir()
+    reference = out / name
+    original = b"original exact reference bytes"
+    reference.write_bytes(original)
+    brief["generation_packet"]["references"][0].update(
+        local_path=f"compiled/{name}", sha256=hashlib.sha256(original).hexdigest())
+    if blocked:
+        brief["generation_packet"]["critical_features"] = []
+    path = tmp_path / "brief.json"
+    path.write_text(json.dumps(brief), encoding="utf-8")
+    result = subprocess.run([sys.executable, "-B", str(ROOT / "tools/knowledge/compile_generation_brief.py"),
+                             "--input", str(path), "--output-dir", str(out)], capture_output=True, text=True)
+    assert result.returncode == 2
+    assert "overwrite or remove" in result.stderr
+    assert reference.read_bytes() == original
+    assert list(out.iterdir()) == [reference]
+
+
+@pytest.mark.parametrize("malformed", [False, True])
+def test_cli_protects_hard_link_to_input_brief(tmp_path, malformed):
+    path = tmp_path / "brief.json"
+    original = b"{broken" if malformed else json.dumps(valid_brief()).encode()
+    path.write_bytes(original)
+    out = tmp_path / "compiled"
+    out.mkdir()
+    alias = out / "preflight.json"
+    alias.hardlink_to(path)
+    result = subprocess.run([sys.executable, "-B", str(ROOT / "tools/knowledge/compile_generation_brief.py"),
+                             "--input", str(path), "--output-dir", str(out)], capture_output=True, text=True)
+    assert result.returncode == 2
+    assert "overwrite or remove" in result.stderr
+    assert path.read_bytes() == alias.read_bytes() == original
+    assert not (out / "prompt.txt").exists()
+
+
 def test_render_identity_tracks_source_and_configuration():
     record = {"reference_asset_id": "reference", "sha256": "source-hash"}
     config = {"width": 1024, "library_revision": "library-v1"}

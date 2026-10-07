@@ -23,7 +23,7 @@ The scaffold is intentionally incomplete. Complete `brief.json` before compiling
 | `required_views` | Evidence required for this job. The default is front/rear/left/right. Add top/interior/interface views for relevant parts. Narrow the list only when the deliverable explicitly has that scope. The compiler checks declarations, not visual orientation. |
 | `official_style` | Relevant existing style profile, era/theme and analogue samples. Keep physical factory style distinct from game/film style; supply actual analogue references. Profiles in this corpus are research descriptions, not calibrated statistical thresholds. |
 | `mask_translation` | Explicitly choose head print, existing headgear plus print, new part plus print, hybrid, or not applicable. Determine shape versus decoration before generation. |
-| `transformation`, `allowed_changes`, `forbidden_changes` | Preserve by default; enumerate the intended changes and avoid contradictions. |
+| `transformation`, `allowed_changes`, `forbidden_changes` | Preserve by default. Every `transformation.change_only` entry must appear verbatim in `allowed_changes`; allowed changes are permission, while `change_only` selects the requested edits. Use resolved descriptions and avoid contradictions. |
 | `rendering` | View, projection, lighting, background and framing. The view must agree with the structural camera lock. |
 | `unknowns` | Unseen seams, uncertain colors or unmeasured dimensions. Unknowns remain visible warnings and must not become invented facts. Required fields/views cannot be waived by listing them here. |
 | `output_contract` | Select from the existing output-contract file. `concept_render` is for assemblies; `part_render` for independent parts. Print art, resin concepts and production packages retain their specialist requirements. |
@@ -37,6 +37,8 @@ python tools/knowledge/compile_generation_brief.py --input work/my-design/brief.
 ```
 
 `preflight.json` contains errors, warnings, declared output requirements, an unreviewed feature checklist, attachment hashes, and hashes of the brief and policy inputs. An incomplete/conflicted brief exits with code 2 and produces no prompt; a failed rerun removes the previous `prompt.txt`. Success means `ready_for_metadata_review`, not verified visual accuracy. Resolve warnings or retain their limitations explicitly before generation.
+
+Brief processor v2 also rejects compiled output paths that would overwrite the input brief or an attached reference, including filesystem aliases. This check runs before creating or removing output files; choose a different output directory when it fails. The original brief schema remains unchanged.
 
 Use `prompt.txt` and the same role-labelled references with the chosen provider. Archive the preflight, actual workflow/model revision, seed if exposed, reference hashes, output hashes and reviewer decisions. Do not invent provider metadata. Local attachment paths in the prompt are locators: the user or model runner must attach the actual files; the compiler does not upload them.
 
