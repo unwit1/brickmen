@@ -3,10 +3,10 @@
   "project": "brickmen",
   "mode": "autonomous",
   "status": "active",
-  "updated_date": "2026-10-06",
+  "updated_date": "2026-10-07",
   "base_commit_before_bootstrap": "bda2cac8ea8b68bb9e3e5b4d0cf380a9c6ee3ae6",
   "current_objective": "advance_semantic_multiview_visual_grammar_after_completing_architecture_input_safety",
-  "current_workstream": "fortnite_semantic_first_review_batch_0015_plus_exact_release_multiview",
+  "current_workstream": "fortnite_semantic_first_review_batch_0016_plus_exact_release_multiview",
   "current_frontier": [
     "source_appearance_to_minifigure_semantic_translation",
     "multi_view_correspondence",
@@ -18,7 +18,7 @@
   "known_gaps": [
     {
       "id": "fortnite_semantic_review_labels",
-      "description": "Do not restart completed architecture gates. 350/744 high-priority pairs have submitted first reviews with 1520 annotations; 394 remain. Review first-review batch 0015. Obtain genuinely independent second reviews and explicit adjudication before canonical promotion. Preserve exact hashes, source appearance, uncertainty, and no-hidden-view rules. Continue exact-release multiview evidence and generation evaluation with the existing tools.",
+      "description": "Do not restart completed architecture gates. 375/744 high-priority pairs have submitted first reviews with 1659 annotations; 369 remain. Review first-review batch 0016. Obtain genuinely independent second reviews and explicit adjudication before canonical promotion. Preserve exact hashes, source appearance, uncertainty, and no-hidden-view rules. Continue exact-release multiview evidence and generation evaluation with the existing tools.",
       "status": "pending_independent_second_review_and_remaining_first_review"
     },
     {
@@ -35,7 +35,7 @@
   "highest_value_tasks": [
     {
       "priority": "P0",
-      "task": "Review first-review batch 0015; obtain independent second reviews and adjudicate before canonical promotion.",
+      "task": "Review first-review batch 0016; obtain independent second reviews and adjudicate before canonical promotion.",
       "id": "fortnite_semantic_first_review"
     },
     {
@@ -98,10 +98,10 @@
     "Reviewer UI v2 live-browser integration remains unverified: browser automation timed out during initial navigation. WebCrypto helpers, whole generated-script parsing and metadata roundtrips passed."
   ],
   "continuation": {
-    "instruction": "Do not restart completed architecture gates. 350/744 high-priority pairs have submitted first reviews with 1520 annotations; 394 remain. Review first-review batch 0015. Obtain genuinely independent second reviews and explicit adjudication before canonical promotion. Preserve exact hashes, source appearance, uncertainty, and no-hidden-view rules. Continue exact-release multiview evidence and generation evaluation with the existing tools."
+    "instruction": "Do not restart completed architecture gates. 375/744 high-priority pairs have submitted first reviews with 1659 annotations; 369 remain. Review first-review batch 0016. Obtain genuinely independent second reviews and explicit adjudication before canonical promotion. Preserve exact hashes, source appearance, uncertainty, and no-hidden-view rules. Continue exact-release multiview evidence and generation evaluation with the existing tools."
   },
   "last_meaningful_commit": "7610c66731c6c6fae99a32bf5d0d074f69b61471",
-  "latest_validated_test_commit": "e2b7fca167eb6fcaecd59defeb16f57f5860f642",
+  "latest_validated_test_commit": "66ab006f3b39cfcacd21951e61431c51441edccb",
   "completed_batches": [
     {
       "id": "body_architecture_reference_acquisition_v1",
@@ -445,56 +445,49 @@
       }
     }
   ],
-  "latest_test_lock_commit": "e2b7fca167eb6fcaecd59defeb16f57f5860f642",
+  "latest_test_lock_commit": "66ab006f3b39cfcacd21951e61431c51441edccb",
   "semantic_review_frontier": {
     "eligible_pairs": 744,
-    "complete_first_review_batch_count": 14,
-    "submitted_first_review_pairs": 350,
-    "remaining_first_review_pairs": 394,
-    "submitted_semantic_annotations": 1520,
+    "complete_first_review_batch_count": 15,
+    "submitted_first_review_pairs": 375,
+    "remaining_first_review_pairs": 369,
+    "submitted_semantic_annotations": 1659,
     "independently_double_reviewed_pairs": 0,
     "adjudicated_pairs": 0,
     "next_materialized_incomplete_batch": null,
     "next_planned_batch": {
-      "batch_index": 15,
-      "batch_id": "fortnite-review-first_review-84fd0940ba2b03fd",
-      "path": "knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-0015.json",
+      "batch_index": 16,
+      "batch_id": "fortnite-review-first_review-af62e1a718692786",
+      "path": "knowledge/libraries/lego-minifigure-customs/data/semantic-review-batches/fortnite-first-review-batch-0016.json",
       "selected_records": 25
     },
-    "evidence_sha256": "df4cf679482c98e461d98286478d6f88f7e54151f535cf7a3fa28a6781dc6e4a"
+    "evidence_sha256": "2f4c90fd8b773d6f0057a7423a50183efe8b6a4fed3c1301faa66fef87392365"
   },
   "completed_batches_are_historical_snapshots": true,
   "latest_validation": {
-    "checkpoint": "e2b7fca167eb6fcaecd59defeb16f57f5860f642",
-    "local_tests_passed": 676,
+    "checkpoint": "66ab006f3b39cfcacd21951e61431c51441edccb",
+    "local_tests_passed": 683,
     "github_runs": [
       {
         "name": "Compile Fortnite Semantic Review Submissions",
-        "id": 37527301133,
+        "id": 37527759860,
         "status": "completed",
         "conclusion": "success"
       },
       {
         "name": "Validate Brickmen",
-        "id": 37527301185,
+        "id": 37527759821,
         "status": "completed",
         "conclusion": "success"
       },
       {
         "name": "LEGO Knowledge Tool Tests",
-        "id": 37527301138,
+        "id": 37527759801,
         "status": "completed",
         "conclusion": "success"
-      },
-      {
-        "name": "Build Fortnite Semantic Review UI",
-        "id": 37527301191,
-        "status": "completed",
-        "conclusion": "failure"
       }
     ],
-    "status": "core_checks_passed_live_media_blocked",
-    "current_local_tests_passed": 683
+    "status": "passed"
   },
   "generation_accuracy_frontier": {
     "brief_preflight": "implemented_metadata_review_only",
@@ -509,7 +502,7 @@
     "real_generated_output_benchmark": "one_part_one_front_view_two_sequential_outputs_measured; constraints_failed; broader_benchmark_pending",
     "semantic_feature_review": "required",
     "physical_fit": "unvalidated",
-    "next": "Continue batch 0015 and independent semantic review. Expand actual output tests across parts and P0 constraints; reuse exact CAD rendering for fixed geometry/flat colors. Curved UV accuracy and physical calibration remain open.",
+    "next": "Continue batch 0016 and independent semantic review. Expand actual output tests across parts and P0 constraints; reuse exact CAD rendering for fixed geometry/flat colors. Curved UV accuracy and physical calibration remain open.",
     "renderer_configuration": "isolated_preferences_explicit_library_color_config_and_fresh_png_checks",
     "texture_mapped_parts": "external_PNG_inventory_and_actual_LDView_4.7_PLANAR_CYLINDRICAL_SPHERICAL_smokes_passed",
     "texture_dependency_inventory": "v2; geometry, external PNG textures, glossmaps and color configuration pinned",
